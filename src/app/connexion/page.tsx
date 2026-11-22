@@ -4,6 +4,7 @@ import { Logo } from '@/components/Logo';
 import { LoginForm } from './LoginForm';
 
 export const metadata = { title: 'Connexion' };
+export const dynamic = 'force-dynamic';
 
 export default async function LoginPage() {
   if (await currentUser()) redirect('/');
@@ -17,6 +18,7 @@ export default async function LoginPage() {
         </div>
         <LoginForm />
         <p className="muted text-xs">Mot de passe oublié ? Demande à ton parent de le réinitialiser depuis son espace.</p>
+        <p className="text-[11px] text-muted-2 m-0">Version {process.env.APP_VERSION ?? 'dev'}</p>
       </div>
     </main>
   );
