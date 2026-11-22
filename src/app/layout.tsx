@@ -9,6 +9,7 @@ export const metadata: Metadata = {
   title: { default: 'Syllig Study', template: '%s · Syllig Study' },
   description: 'Le parcours qui fait progresser.',
   robots: { index: false, follow: false },
+  icons: { icon: '/favicon.svg' },
 };
 export const viewport: Viewport = { width: 'device-width', initialScale: 1 };
 
