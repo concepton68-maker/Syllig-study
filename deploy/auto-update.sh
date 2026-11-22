@@ -15,6 +15,9 @@ FAILED="$DIR/.deploy-failed"                # version déjà tentée sans succè
 [ -f "$FAILED" ] && [ "$(cat "$FAILED")" = "$NEW" ] && exit 0
 {
   echo "=== $(date -Is) mise à jour ${CUR:0:7} → ${NEW:0:7} : $(git log -1 --format=%s "$NEW")"
+  # filet de sécurité : sauvegarde de la base et image de la version en place
+  ./deploy/backup.sh || echo "(sauvegarde préalable impossible)"
+  docker image tag syllig-study:latest syllig-study:precedente 2>/dev/null || true
   git reset -q --hard "$NEW"
   if ./deploy/install.sh "$DOMAIN"; then
     rm -f "$FAILED"
@@ -23,6 +26,8 @@ FAILED="$DIR/.deploy-failed"                # version déjà tentée sans succè
     echo "$NEW" > "$FAILED"
     echo "=== $(date -Is) ÉCHEC : retour à la version ${CUR:0:7} (la version ${NEW:0:7} ne sera pas retentée)"
     git reset -q --hard "$CUR"
-    ./deploy/install.sh "$DOMAIN" || echo "=== $(date -Is) ATTENTION : la version précédente n'a pas redémarré"
+    # on remet l'image qui tournait, sans reconstruire
+    docker image tag syllig-study:precedente syllig-study:latest 2>/dev/null || true
+    SKIP_BUILD=1 ./deploy/install.sh "$DOMAIN" || echo "=== $(date -Is) ATTENTION : la version précédente n'a pas redémarré"
   fi
 } >> "$LOG" 2>&1

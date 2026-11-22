@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { sql } from '@/lib/db';
 import { requireParent } from '@/lib/access';
 import { PageTitle } from '@/components/Shell';
-import { AddChildForm, ResetForm } from './Forms';
+import { AddChildForm } from './Forms';
 import { Screen } from '@/components/Layout';
 
 export const metadata = { title: 'Mes enfants' };
@@ -16,15 +16,15 @@ export default async function Children() {
   const byId = new Map(logins.map(l => [l.id, l]));
   return (
     <Screen top={<>
-      <PageTitle kicker="Mes enfants" title="Comptes de vos enfants" sub="Chaque enfant a son propre compte, son niveau et son parcours. Les comptes sont créés par vous, sans inscription libre." />
+      <PageTitle kicker="Mes enfants" title="Vos enfants" sub="Une fiche par enfant : ses cours, ses règles et son thème, son compte. Les comptes sont créés par vous, sans inscription libre." />
     </>}>
       {students.map(s => (
         <section key={s.id} className="card flex flex-wrap justify-between items-start gap-4">
           <div><h2 className="text-xl font-semibold">{s.first_name}</h2><span className="muted text-sm">{s.level_name} · identifiant : <strong>{byId.get(s.id)?.login}</strong>
             {byId.get(s.id)?.last_login_at ? ` · dernière connexion le ${byId.get(s.id)!.last_login_at!.toLocaleDateString('fr-FR', { timeZone: 'Europe/Paris' })}` : ' · jamais connecté'}</span></div>
-          <div className="flex flex-col items-end gap-3">
-            <Link className="btn btn-primary" href={`/parent/enfants/${s.id}`}>Gérer le parcours</Link>
-            <ResetForm studentId={s.id} />
+          <div className="flex flex-wrap gap-2">
+            <Link className="btn btn-primary" href={`/parent/enfants/${s.id}`}>Ouvrir la fiche</Link>
+            <Link className="btn" href={`/parent/enfants/${s.id}?onglet=regles`}>Règles et thème</Link>
           </div>
         </section>
       ))}

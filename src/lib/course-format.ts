@@ -96,7 +96,7 @@ export const CourseDocument = z.object({
   evaluation: z.object({
     duration_min: z.number().int().positive(),
     conditions: str.optional(),
-    total_points: z.number().positive().default(20),
+    total_points: z.literal(20, { message: 'les évaluations sont notées sur 20' }).default(20),
     variants: z.array(z.object({
       texts: z.array(SupportText).default([]),
       sections: z.array(z.object({ label: text, questions: z.array(Question).min(1) })).min(1),

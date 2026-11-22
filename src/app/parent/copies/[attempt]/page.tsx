@@ -39,7 +39,7 @@ export default async function CopyReview({ params, searchParams }: { params: Pro
           <h1 className="text-[28px] font-bold">{c.title}</h1>
           <span className="muted text-sm">{mins !== null ? `Remise en ${mins} min sur ${doc.evaluation.duration_min}` : ''}{a.focus_losses ? ` · ${a.focus_losses} sortie(s) de fenêtre (${a.focus_lost_seconds} s)` : ' · aucune sortie de fenêtre'}{a.paste_blocked ? ` · ${a.paste_blocked} collage(s) bloqué(s)` : ''}</span>
         </div>
-        <Link className="btn" href={`/parent/copies?eleve=${student.id}`}>‹ Retour aux copies</Link>
+        <Link className="btn" href="/parent/a-faire">‹ À faire</Link>
       </div>
     }>
       {!graded && !a.proposal && <p className="m-0 rounded-xl bg-soft px-4 py-3 text-sm">Pas encore de proposition de Claude pour cette copie : vous pouvez l’exporter depuis la page précédente, ou corriger vous-même avec le corrigé et le barème.</p>}

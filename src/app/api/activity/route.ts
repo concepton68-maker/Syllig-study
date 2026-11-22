@@ -22,7 +22,7 @@ async function closeSession(id: string, studentId: string) {
 
 export async function POST(req: Request) {
   const u = await currentUser();
-  if (!u || u.role !== 'student') return NextResponse.json({ error: 'non autorisé' }, { status: 401 });
+  if (!u || !u.roles.includes('student')) return NextResponse.json({ error: 'non autorisé' }, { status: 401 });
   const [st] = await sql<{ id: string }[]>`select id from students where user_id = ${u.id}`;
   if (!st) return NextResponse.json({ error: 'élève introuvable' }, { status: 404 });
   let body;

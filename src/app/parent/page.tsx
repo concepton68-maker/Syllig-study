@@ -6,7 +6,6 @@ import { recentSessions, lookTogether, subjectProgress, KIND } from '@/lib/paren
 import { MASTERY } from '@/lib/settings';
 import { PageTitle } from '@/components/Shell';
 import { ChildPicker } from '@/components/ChildPicker';
-import { decideEvalRequest } from './actions';
 import { Screen } from '@/components/Layout';
 
 export const metadata = { title: 'Tableau de bord' };
@@ -57,6 +56,15 @@ export default async function ParentDashboard({ searchParams }: { searchParams: 
         <Link className="btn" href={`/parent/journal${q}`}>Voir le journal détaillé</Link>
       </PageTitle>
 
+    </>}>
+      {(requests.length > 0 || toGrade.length > 0) && (
+        <Link href="/parent/a-faire" className="card no-underline text-ink border-brand-mid bg-brand-soft flex flex-wrap items-center justify-between gap-3">
+          <span><strong>À faire</strong><span className="block text-sm text-ink-2">
+            {[requests.length ? `${requests.length} demande${requests.length > 1 ? 's' : ''} d’évaluation` : '', toGrade.length ? `${toGrade.length} copie${toGrade.length > 1 ? 's' : ''} à valider` : ''].filter(Boolean).join(' · ')}
+          </span></span>
+          <span className="btn btn-primary">Ouvrir</span>
+        </Link>
+      )}
       <section aria-label="Indicateurs clés" className="flex flex-wrap gap-4">
         {kpis.map(k => (
           <div key={k.label} className="card flex-[1_1_210px] flex flex-col gap-2">
@@ -67,7 +75,7 @@ export default async function ParentDashboard({ searchParams }: { searchParams: 
           </div>
         ))}
       </section>
-    </>}>
+
 
       <div className="flex flex-wrap gap-6 items-start">
         <section className="card flex-[999_1_560px] min-w-0 flex flex-col gap-4">
@@ -95,22 +103,7 @@ export default async function ParentDashboard({ searchParams }: { searchParams: 
         </section>
 
         <section className="card flex-[1_1_360px] flex flex-col gap-3">
-          <h2 className="text-xl font-semibold">À votre niveau</h2>
-          {requests.map(r => (
-            <article key={r.id} className="p-3.5 rounded-xl bg-brand-soft flex flex-col gap-2">
-              <strong className="text-sm">{student.first_name} demande à passer l’évaluation « {r.title} »</strong>
-              <div className="flex gap-2">
-                <form action={decideEvalRequest.bind(null, r.id, true)}><button className="btn btn-primary" type="submit">Autoriser</button></form>
-                <form action={decideEvalRequest.bind(null, r.id, false)}><button className="btn" type="submit">Plus tard</button></form>
-              </div>
-            </article>
-          ))}
-          {toGrade.length > 0 && (
-            <Link href={`/parent/copies${q}`} className="p-3.5 rounded-xl bg-brand-soft no-underline text-ink flex flex-col gap-1">
-              <strong className="text-sm">{toGrade.length} copie{toGrade.length > 1 ? 's' : ''} à corriger</strong>
-              <span className="text-[13px] text-ink-2">{toGrade.map(t => t.title).join(' · ')} — exportez-les pour Claude, puis importez le résultat.</span>
-            </Link>
-          )}
+          <h2 className="text-xl font-semibold">Points marquants</h2>
           {recentGains.map((g, i) => (
             <div key={i} className="p-3.5 rounded-xl bg-brand-soft"><strong className="text-sm">Niveau « {MASTERY.labels[g.mastery]} » atteint</strong><div className="text-[13px] text-ink-2">{g.title}</div></div>
           ))}
@@ -120,7 +113,7 @@ export default async function ParentDashboard({ searchParams }: { searchParams: 
               <span className="text-[13px] text-ink-2">{KIND[x.kind]} · {why}. Rien d’alarmant en soi : demandez-lui de vous expliquer une question, c’est la meilleure vérification.</span>
             </Link>
           ))}
-          {!requests.length && !toGrade.length && !recentGains.length && !toLook.length && <span className="text-sm muted">Rien à signaler cette semaine.</span>}
+          {!recentGains.length && !toLook.length && <span className="text-sm muted">Rien de particulier cette semaine.</span>}
         </section>
       </div>
 

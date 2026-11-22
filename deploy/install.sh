@@ -25,7 +25,7 @@ echo "2/5 · Construction et démarrage des conteneurs (quelques minutes la prem
 export APP_VERSION="$(git -C "$DIR" rev-parse --short HEAD 2>/dev/null || echo archive)"
 export APP_RELEASE="$(cat "$DIR/VERSION" 2>/dev/null || echo 0.00)"
 export APP_STARTED="$(date -Is)"
-docker compose build --pull
+if [ "${SKIP_BUILD:-0}" != 1 ]; then docker compose build --pull; fi
 docker compose up -d
 for i in $(seq 1 60); do
   curl -fs -o /dev/null "http://127.0.0.1:${PORT}/connexion" 2>/dev/null && break

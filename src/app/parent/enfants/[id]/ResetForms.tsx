@@ -24,13 +24,19 @@ export function ResetCourse({ studentId, courseId, title }: { studentId: string;
 
 export function ResetStudent({ studentId, firstName }: { studentId: string; firstName: string }) {
   const [state, action, pending] = useActionState(resetStudentAction, undefined);
+  const [purge, setPurge] = useState(false);
+  const [confirmName, setConfirmName] = useState('');
   return (
     <form action={action} className="flex flex-col gap-3">
       <input type="hidden" name="student" value={studentId} />
+      {/* la valeur envoyée suit toujours la case affichée, même après une erreur */}
+      <input type="hidden" name="purge" value={purge ? 'on' : ''} />
       <span className="text-sm text-ink-2">Efface toute la progression de {firstName} : leçons, exercices, évaluations, notes, points, révisions et temps de travail. Ne touche pas aux comptes, aux règles ni au thème.</span>
-      <label className="flex items-center gap-2 text-sm"><input type="checkbox" name="purge" className="w-4 h-4" /> Effacer aussi le journal d’activité (irréversible ; sinon une trace de la réinitialisation y est ajoutée)</label>
+      <label className="flex items-center gap-2 text-sm"><input type="checkbox" className="w-4 h-4" checked={purge} onChange={e => setPurge(e.target.checked)} /> Effacer aussi le journal d’activité (irréversible ; sinon une trace de la réinitialisation y est ajoutée)</label>
+      {purge && <label className="flex flex-col gap-1 text-sm font-semibold max-w-sm">Votre mot de passe (parent)
+        <input className="field" name="password" type="password" autoComplete="current-password" required /></label>}
       <label className="flex flex-col gap-1 text-sm font-semibold max-w-sm">Pour confirmer, tapez le prénom « {firstName} »
-        <input className="field" name="confirm" autoComplete="off" required />
+        <input className="field" name="confirm" autoComplete="off" required value={confirmName} onChange={e => setConfirmName(e.target.value)} />
       </label>
       <div><button className="btn bg-warm text-white border-warm hover:bg-warm-dark hover:text-white" type="submit" disabled={pending}>{pending ? 'Réinitialisation…' : 'Réinitialiser tout le parcours'}</button></div>
       {state?.error && <span role="alert" className="text-sm text-warm-dark">{state.error}</span>}

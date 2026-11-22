@@ -8,7 +8,8 @@ import { getAttempt, expireIfNeeded } from '@/lib/evaluation';
 import { ActivityTracker } from '@/components/ActivityTracker';
 import { Screen, PaneScreen } from '@/components/Layout';
 import { EvalRunner } from './Runner';
-import { evalAvailability, startEvaluation } from './actions';
+import { startEvaluation } from './actions';
+import { evalAvailability } from '@/lib/evaluation';
 
 export const dynamic = 'force-dynamic';
 

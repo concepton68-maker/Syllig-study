@@ -53,7 +53,7 @@ export async function recomputeMastery(studentId: string, courseId: number) {
     a.started_at.getTime() - p.lesson_done_at!.getTime() >= MASTERY.masteredDelayDays * 864e5)) m = 5;
   const mastery = Math.max(m, p.mastery);
   if (mastery > p.mastery) await logEvent(studentId, 'niveau_atteint', { courseId, data: { niveau: mastery, libelle: MASTERY.labels[mastery] } });
-  await sql`update course_progress set mastery = ${mastery}, best_eval_score = ${best}, updated_at = now()
+  await sql`update course_progress set mastery = greatest(mastery, ${mastery}), best_eval_score = ${best}, updated_at = now()
     where student_id = ${studentId} and course_id = ${courseId}`;
   return mastery;
 }
@@ -122,13 +122,16 @@ export function pickNext(items: ParcoursItem[], retryDelayDays: number) {
 }
 
 export async function gradeAttemptFinal(attemptId: string, scores: Record<string, number>, feedback: Record<string, string>, gradedBy: string) {
-  const [a] = await sql<{ student_id: string; course_id: number; attempt_no: number }[]>`
-    select student_id, course_id, attempt_no from eval_attempts where id = ${attemptId}`;
   const total = Math.round(Object.values(scores).reduce((x, y) => x + y, 0) * 100) / 100;
-  const [prev] = await sql<{ best: string | null }[]>`select max(final_score) as best from eval_attempts
-    where student_id = ${a.student_id} and course_id = ${a.course_id} and status = 'graded'`;
-  await sql`update eval_attempts set status = 'graded', scores = ${sql.json(scores)}, feedback = ${sql.json(feedback)},
-    final_score = ${total}, graded_by = ${gradedBy}, graded_at = now() where id = ${attemptId}`;
+  // une seule validation possible : le passage de « remise » à « notée » est atomique
+  const [a] = await sql<{ student_id: string; course_id: number; attempt_no: number; best: string | null }[]>`
+    update eval_attempts e set status = 'graded', scores = ${sql.json(scores)}, feedback = ${sql.json(feedback)},
+      final_score = ${total}, graded_by = ${gradedBy}, graded_at = now()
+    where e.id = ${attemptId} and e.status = 'submitted'
+    returning e.student_id, e.course_id, e.attempt_no,
+      (select max(final_score) from eval_attempts o where o.student_id = e.student_id and o.course_id = e.course_id and o.status = 'graded' and o.id <> e.id) as best`;
+  if (!a) return null;
+  const prev = { best: a.best };
   await sql`update course_progress set next_review_at = ${nextReviewDate(total)} where student_id = ${a.student_id} and course_id = ${a.course_id}`;
   await logEvent(a.student_id, 'evaluation_notee', { courseId: a.course_id, actorId: gradedBy, data: { tentative: a.attempt_no, note: total } });
   const before = prev.best === null ? null : Number(prev.best);

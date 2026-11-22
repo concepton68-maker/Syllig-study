@@ -21,19 +21,31 @@ async function wipe(tx: typeof sql, studentId: string, courseId: number | null, 
   return counts;
 }
 
+export class ResetRefused extends Error {}
+
 export async function resetCourse(studentId: string, courseId: number, actorId: string, opts: { withSessions: boolean }) {
   return sql.begin(async tx => {
-    await tx`select pg_advisory_xact_lock(hashtext(${'reset:' + studentId}))`;
+    await tx`select pg_advisory_xact_lock(hashtext(${'student:' + studentId}))`;
+    const [running] = await tx`select 1 from eval_attempts where student_id = ${studentId} and course_id = ${courseId} and status = 'in_progress'`;
+    if (running) throw new ResetRefused('Une évaluation de ce cours est en train d’être passée : attendez la fin avant de réinitialiser.');
+    // ce qui va être effacé, gardé dans la trace du journal
+    const [avant] = await tx`select coalesce(p.mastery, 0) as niveau, p.best_eval_score as meilleure_note,
+        (select coalesce(sum(amount), 0)::int from points_ledger where student_id = ${studentId} and course_id = ${courseId}) as points_retires,
+        (select coalesce(json_agg(json_build_object('tentative', attempt_no, 'note', final_score, 'statut', status) order by attempt_no), '[]'::json)
+           from eval_attempts where student_id = ${studentId} and course_id = ${courseId}) as tentatives
+      from (select 1) x left join course_progress p on p.student_id = ${studentId} and p.course_id = ${courseId}`;
     const counts = await wipe(tx as unknown as typeof sql, studentId, courseId, opts.withSessions);
     await tx`insert into activity_log (student_id, event, course_id, actor_id, data, prev_hash, hash)
-      values (${studentId}, 'cours_reinitialise', ${courseId}, ${actorId}, ${tx.json({ ...counts, temps_efface: opts.withSessions })}, '', '')`;
+      values (${studentId}, 'cours_reinitialise', ${courseId}, ${actorId}, ${tx.json({ ...counts, temps_efface: opts.withSessions, avant })}, '', '')`;
     return counts;
   });
 }
 
 export async function resetStudent(studentId: string, actorId: string, opts: { purgeLog: boolean }) {
   return sql.begin(async tx => {
-    await tx`select pg_advisory_xact_lock(hashtext(${'reset:' + studentId}))`;
+    await tx`select pg_advisory_xact_lock(hashtext(${'student:' + studentId}))`;
+    const [running] = await tx`select 1 from eval_attempts where student_id = ${studentId} and status = 'in_progress'`;
+    if (running) throw new ResetRefused('Une évaluation est en train d’être passée : attendez la fin avant de tout réinitialiser.');
     const counts = await wipe(tx as unknown as typeof sql, studentId, null, true);
     if (opts.purgeLog) {
       // seule voie d'effacement du journal (même mécanisme que le droit à l'effacement)

@@ -20,7 +20,7 @@ export default async function Bilan({ params }: { params: Promise<{ id: string; 
   let a = await getAttempt(attempt);
   if (!a || a.student_id !== student.id || a.course_id !== course.id) notFound();
   a = await expireIfNeeded(a);
-  if (a.status === 'in_progress' || a.status === 'requested' || a.status === 'approved') notFound();
+  if (a.status !== 'submitted' && a.status !== 'graded') notFound();
   const doc = (await versionById(a.version_id))!.document;
   const b = await bilanData(a, doc);
   const variant = doc.evaluation.variants[a.variant % doc.evaluation.variants.length];

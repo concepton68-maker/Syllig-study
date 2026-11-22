@@ -31,10 +31,20 @@ async function get(key, question, opts = {}) {
 }
 const hash = p => { if (p.length < 8) { console.error('Mot de passe : 8 caractères minimum'); process.exit(1); } return bcrypt.hashSync(p, 12); };
 
-if (!['admin', 'family'].includes(kind)) { console.error('Usage : node scripts/create-user.mjs admin | family'); process.exit(1); }
+if (!['admin', 'family', 'add-role'].includes(kind)) { console.error('Usage : node scripts/create-user.mjs admin | family | add-role'); process.exit(1); }
 const sql = postgres(process.env.DATABASE_URL, { max: 1, onnotice: () => {} });
 try {
-  if (kind === 'admin') {
+  if (kind === 'add-role') {
+    // donne un rôle de plus à un compte existant (ex. le parent devient aussi administrateur du contenu)
+    const login = (await get('login', '  E-mail du compte existant : ')).toLowerCase();
+    const role = await get('role', '  Rôle à ajouter (admin ou parent) : ');
+    if (!['admin', 'parent'].includes(role)) throw new Error('Rôle attendu : admin ou parent');
+    const [u] = await sql`select id, role from users where login = ${login}`;
+    if (!u) throw new Error('Compte introuvable : ' + login);
+    if (u.role === 'student') throw new Error('Un compte élève ne peut pas recevoir d’autre rôle.');
+    await sql`insert into user_roles (user_id, role) values (${u.id}, ${role}) on conflict do nothing`;
+    console.log(`Rôle « ${role} » ajouté à ${login}. Il peut basculer d’espace depuis la barre du haut.`);
+  } else if (kind === 'admin') {
     console.log('Compte administrateur (gestion des cours)');
     const login = (await get('login', '  E-mail : ')).toLowerCase();
     const name = await get('name', '  Prénom : ');

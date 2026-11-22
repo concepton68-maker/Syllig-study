@@ -36,6 +36,9 @@ Les questions s'affichent une à une ; les mots de passe ne s'affichent pas à l
 
 ## Mises à jour automatiques
 Le serveur vérifie GitHub toutes les 2 minutes (`/etc/cron.d/syllig-study`). À chaque nouvelle version sur la branche `main`, il l'installe tout seul ; en cas d'échec, il revient à la version précédente.
+- Avant chaque mise à jour : sauvegarde de la base (dossier `backups/`) et conservation de l'image en place ; en cas d'échec, cette image est remise telle quelle.
+- Règle de développement : les migrations de base ne font qu'ajouter (colonnes, tables, index), pour que la version précédente fonctionne encore si elle doit être remise.
+- Sécurité : tout ce qui arrive sur `main` est installé. Protéger le compte GitHub (double authentification) et la branche `main`.
 - Version en ligne : https://study.syllig.com/api/version
 - Historique des mises à jour : `sudo tail -50 /var/log/syllig-study-deploy.log`
 

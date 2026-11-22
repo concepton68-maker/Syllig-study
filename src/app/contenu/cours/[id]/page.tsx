@@ -29,13 +29,14 @@ function QuestionAdmin({ q }: { q: Question }) {
   );
 }
 
-export default async function CoursePreview({ params, searchParams }: { params: Promise<{ id: string }>; searchParams: Promise<{ v?: string; importe?: string }> }) {
+export default async function CoursePreview({ params, searchParams }: { params: Promise<{ id: string }>; searchParams: Promise<{ v?: string; importe?: string; onglet?: string }> }) {
   const { id } = await params;
   const sp = await searchParams;
   const courseId = Number(id);
   if (!Number.isInteger(courseId)) notFound();
   const versions = await sql<V[]>`select id, version, status, document, imported_at, source_name, published_at from course_versions where course_id = ${courseId} order by version desc`;
   if (!versions.length) notFound();
+  const tab = ['lecon', 'exercices', 'evaluation'].includes(sp.onglet ?? '') ? sp.onglet! : 'lecon';
   const v = versions.find(x => x.id === sp.v) ?? versions.find(x => x.status === 'draft') ?? versions.find(x => x.status === 'published') ?? versions[0];
   const doc = v.document;
   const check = validateCourse(doc);
@@ -62,10 +63,17 @@ export default async function CoursePreview({ params, searchParams }: { params: 
       )}
 
       <div className="flex flex-wrap gap-2 text-sm">
-        {versions.map(x => <Link key={x.id} href={`?v=${x.id}`} className={`pill ${x.id === v.id ? 'bg-brand text-white' : 'bg-white border border-line text-ink-2'}`}>v{x.version} · {({ draft: 'brouillon', published: 'publiée', archived: 'archivée' } as Record<string, string>)[x.status]}</Link>)}
+        {versions.map(x => <Link key={x.id} href={`?v=${x.id}&onglet=${tab}`} className={`pill ${x.id === v.id ? 'bg-brand text-white' : 'bg-white border border-line text-ink-2'}`}>v{x.version} · {({ draft: 'brouillon', published: 'publiée', archived: 'archivée' } as Record<string, string>)[x.status]}</Link>)}
       </div>
 
-      <section className="card flex flex-col gap-4">
+      <nav aria-label="Parties du cours" className="flex flex-wrap gap-2 border-b border-line pb-3">
+        {[['lecon', '① Leçon'], ['exercices', '② Exercices'], ['evaluation', '③ Évaluation et corrigés']].map(([id, label]) => (
+          <Link key={id} href={`?v=${v.id}&onglet=${id}`} aria-current={tab === id ? 'page' : undefined}
+            className={`navlink border ${tab === id ? 'bg-brand text-white border-brand hover:bg-brand-dark hover:text-white' : 'border-line'}`}>{label}</Link>
+        ))}
+      </nav>
+
+      {tab === 'lecon' && <section className="card flex flex-col gap-4">
         <h2 className="text-2xl font-semibold">① Leçon · {doc.lesson.duration_min} min</h2>
         {doc.lesson.objectives.length > 0 && <ul className="m-0 pl-6 list-disc">{doc.lesson.objectives.map((o, i) => <li key={i}>{o}</li>)}</ul>}
         {doc.lesson.essential && <BlockView block={{ type: 'callout', kind: 'essentiel', text: doc.lesson.essential }} />}
@@ -91,16 +99,16 @@ export default async function CoursePreview({ params, searchParams }: { params: 
           <div className="border-t border-line pt-4"><h3 className="text-xl font-semibold mb-2">Fiche mémo</h3>
             <table className="tbl"><tbody>{doc.lesson.memo.map((m, i) => <tr key={i}><td className="font-semibold w-48">{m.label}</td><td><RichText text={m.text} /></td></tr>)}</tbody></table></div>
         )}
-      </section>
+      </section>}
 
-      <section className="card flex flex-col gap-4">
+      {tab === 'exercices' && <section className="card flex flex-col gap-4">
         <h2 className="text-2xl font-semibold">② Exercices · {doc.exercises.duration_min} min · seuil {doc.exercises.pass_threshold}/10</h2>
         {doc.exercises.instructions && <p className="m-0">{doc.exercises.instructions}</p>}
         {doc.exercises.texts.map(t => <SupportTextView key={t.id} t={t} />)}
         {doc.exercises.items.map(q => <QuestionAdmin key={q.id} q={q} />)}
-      </section>
+      </section>}
 
-      <section className="card flex flex-col gap-4">
+      {tab === 'evaluation' && <section className="card flex flex-col gap-4">
         <h2 className="text-2xl font-semibold">③ Évaluation · {doc.evaluation.duration_min} min · /{doc.evaluation.total_points} · {doc.evaluation.variants.length} sujet{doc.evaluation.variants.length > 1 ? 's' : ''}</h2>
         {doc.evaluation.conditions && <p className="m-0">{doc.evaluation.conditions}</p>}
         {doc.evaluation.variants.map((ev, vi) => (
@@ -112,7 +120,7 @@ export default async function CoursePreview({ params, searchParams }: { params: 
             ))}
           </div>
         ))}
-      </section>
+      </section>}
     </Screen>
   );
 }

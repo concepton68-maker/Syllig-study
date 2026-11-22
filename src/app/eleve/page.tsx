@@ -7,6 +7,7 @@ import { sql } from '@/lib/db';
 import { PageTitle } from '@/components/Shell';
 import { MasteryPill } from '@/components/Mastery';
 import { PaneScreen, Panes, Pane } from '@/components/Layout';
+import { EmptyState, PriorityPill } from '@/components/EmptyState';
 
 export const metadata = { title: 'Aujourd’hui' };
 export const dynamic = 'force-dynamic';
@@ -18,7 +19,10 @@ export default async function Today() {
   const [w, s] = await Promise.all([weekStats(student.id), streak(student.id)]);
   const next = pickNext(items, student.settings.retry_delay_days);
   const step = next ? nextStep(next, student.settings.retry_delay_days) : null;
-  const upcoming = items.filter(c => c !== next && nextStep(c, student.settings.retry_delay_days).kind !== 'done').slice(0, 6);
+  // « Ensuite » : uniquement des cours disponibles où il reste quelque chose à faire
+  const upcoming = items.filter(c => c !== next && c.published && !['done', 'soon'].includes(nextStep(c, student.settings.retry_delay_days).kind)).slice(0, 5);
+  const soonCount = items.filter(c => !c.published).length;
+  const acquired = items.filter(c => c.mastery >= 4);
   const reviews = items.filter(c => c.next_review_at && new Date(c.next_review_at).getTime() < Date.now() + 7 * 864e5)
     .sort((a, b) => new Date(a.next_review_at!).getTime() - new Date(b.next_review_at!).getTime());
   const waiting = items.filter(c => c.pending_attempt === 'submitted');
@@ -26,37 +30,26 @@ export default async function Today() {
     select a.id, a.course_id, c.title, a.final_score from eval_attempts a join courses c on c.id = a.course_id
     where a.student_id = ${student.id} and a.status = 'graded' and a.graded_at > now() - interval '3 days' order by a.graded_at desc limit 1`;
   const pct = Math.min(100, Math.round((w.active / goal) * 100));
-  const C = 2 * Math.PI * 23;
+  const C = 2 * Math.PI * 17;
 
   return (
-    <PaneScreen top={<div className="flex flex-col gap-4">
-      <div className="flex flex-wrap justify-between items-center gap-5">
+    <PaneScreen top={
+      <div className="flex flex-wrap justify-between items-center gap-x-6 gap-y-4">
         <PageTitle spark title={`Salut ${student.first_name}${step?.minutes ? `, prête pour ${step.minutes} minutes ?` : ' !'}`}
-          sub="Ton parcours est calculé pour toi : les priorités d’abord, puis les révisions qui arrivent." />
-        <div className="flex flex-wrap gap-3">
-          <div className="card py-3.5 px-4 flex items-center gap-3.5">
-            <svg width="56" height="56" viewBox="0 0 56 56" role="img" aria-label={`Objectif de la semaine : ${pct} %`}>
-              <circle cx="28" cy="28" r="23" fill="none" style={{ stroke: 'var(--color-track)' }} strokeWidth="7" />
-              <circle cx="28" cy="28" r="23" fill="none" style={{ stroke: 'var(--color-brand)' }} strokeWidth="7" strokeDasharray={`${(C * pct) / 100} ${C}`} strokeLinecap="round" transform="rotate(-90 28 28)" />
+          sub="Ton parcours est calculé pour toi : les priorités d’abord, puis les révisions." />
+        <div className="grid grid-cols-3 gap-3 w-full sm:w-auto">
+          <div className="card !p-3 flex items-center gap-3">
+            <svg width="42" height="42" viewBox="0 0 42 42" role="img" aria-label={`Objectif de la semaine : ${pct} %`} className="shrink-0">
+              <circle cx="21" cy="21" r="17" fill="none" style={{ stroke: 'var(--color-track)' }} strokeWidth="6" />
+              <circle cx="21" cy="21" r="17" fill="none" style={{ stroke: 'var(--color-brand)' }} strokeWidth="6" strokeDasharray={`${(C * pct) / 100} ${C}`} strokeLinecap="round" transform="rotate(-90 21 21)" />
             </svg>
-            <div><strong className="text-lg">{hm(w.active)} / {hm(goal)}</strong><div className="muted text-sm">objectif de la semaine</div></div>
+            <div><strong className="num text-base">{hm(w.active)}</strong><div className="muted text-xs">sur {hm(goal)} cette semaine</div></div>
           </div>
-          <div className="card py-3.5 px-4 flex flex-col justify-center">
-            <strong className="text-lg">{s} jour{s > 1 ? 's' : ''} de suite</strong><div className="muted text-sm">au moins 5 min actives par jour</div>
-          </div>
-          <div className="card py-3.5 px-4 flex flex-col justify-center">
-            <strong className="text-lg text-brand-dark">+{w.week_points} points de progrès</strong><div className="muted text-sm">cette semaine · {w.total_points} au total</div>
-          </div>
+          <div className="card !p-3"><strong className="num text-base">{s} jour{s > 1 ? 's' : ''}</strong><div className="muted text-xs">de suite</div></div>
+          <div className="card !p-3"><strong className="num text-base text-brand-dark">+{w.week_points}</strong><div className="muted text-xs">points cette semaine</div></div>
         </div>
       </div>
-
-      {lastGraded && (
-        <Link href={`/eleve/cours/${lastGraded.course_id}/bilan/${lastGraded.id}`} className="card no-underline text-ink border-brand-mid bg-brand-soft flex flex-wrap justify-between items-center gap-3">
-          <span><strong>Ton bilan est prêt : {lastGraded.title}</strong><span className="block muted text-sm">Clique pour voir ce que tu sais faire maintenant.</span></span>
-          <span className="pill bg-brand text-white">{Number(lastGraded.final_score).toLocaleString('fr-FR')}/20</span>
-        </Link>
-      )}
-      </div>}>
+    }>
       <Panes>
         <Pane className="flex-[999_1_600px]">
           {next && step ? (
@@ -67,7 +60,7 @@ export default async function Today() {
                   <h2 className="text-[26px] font-bold">{next.title}</h2>
                   <span className="muted">{next.subject} · {next.chapter}{next.code ? ` · ${next.code}` : ''}</span>
                 </div>
-                <div className="flex gap-2 items-start">{next.priority === 'prioritaire' && <span className="pill bg-warm-soft text-warm">Prioritaire</span>}<MasteryPill level={next.mastery} /></div>
+                <div className="flex gap-2 items-start">{next.priority === 'prioritaire' && <PriorityPill />}<MasteryPill level={next.mastery} /></div>
               </div>
               <ol className="list-none m-0 p-0 flex flex-wrap gap-2.5" aria-label="Étapes du cours">
                 {[
@@ -90,30 +83,41 @@ export default async function Today() {
               </div>
             </section>
           ) : (
-            <section className="card p-7"><h2 className="text-xl font-semibold">Rien à faire pour l’instant</h2><p className="muted mb-0">De nouveaux cours arrivent bientôt. Tu peux revoir tes résultats en attendant.</p></section>
+            <section className="card p-7">
+              <EmptyState title={acquired.length ? 'Tout est fait pour l’instant, bravo !' : 'Ton premier cours arrive bientôt'}
+                text={acquired.length ? `Tu as acquis ${acquired.length} cours. De nouveaux cours arrivent ; en attendant, revois tes résultats ou tes révisions.` : 'Dès qu’un cours est publié, il apparaît ici.'}
+                action={<Link className="btn" href="/eleve/resultats">Voir mes résultats</Link>} />
+            </section>
           )}
 
           <section className="card flex flex-col gap-1">
-            <div className="flex justify-between items-center mb-2"><h2 className="text-xl font-semibold">Ensuite dans ton parcours</h2><Link href="/eleve/parcours" className="text-sm font-semibold">Tout le parcours</Link></div>
+            <div className="flex justify-between items-center mb-2"><h2 className="text-xl font-semibold">Ensuite dans ton parcours</h2><Link href="/eleve/parcours" className="text-sm font-semibold">Tous mes cours</Link></div>
+            {upcoming.length === 0 && <span className="muted text-sm py-2">{soonCount ? `Les ${soonCount} autres cours du programme arrivent au fur et à mesure.` : 'Rien d’autre pour l’instant.'}</span>}
             {upcoming.map((c, i) => {
               const st = nextStep(c, student.settings.retry_delay_days);
               return (
-                <div key={c.course_id} className="flex flex-wrap items-center gap-3 py-3 border-t border-soft">
-                  <span className="w-7 h-7 rounded-lg bg-soft inline-flex items-center justify-center text-sm font-bold">{i + 2}</span>
+                <Link key={c.course_id} href={stepHref(c.course_id, st)} className="flex flex-wrap items-center gap-3 py-3 border-t border-soft no-underline text-ink hover:bg-surface-2 rounded-lg px-1">
+                  <span className="num w-7 h-7 rounded-lg bg-soft inline-flex items-center justify-center text-sm font-bold">{i + 1}</span>
                   <div className="flex-[1_1_240px] min-w-0"><strong className="text-sm">{c.title}</strong><div className="muted text-sm">{c.subject} · {c.chapter}</div></div>
                   <span className="muted text-sm w-[170px]">{st.label}</span>
-                  {c.priority === 'prioritaire' ? <span className="pill bg-warm-soft text-warm">Prioritaire</span> : <span className="pill bg-soft text-ink-2">Ensuite</span>}
-                </div>
+                  {c.priority === 'prioritaire' && <PriorityPill />}
+                </Link>
               );
             })}
           </section>
         </Pane>
 
         <Pane className="flex-[1_1_340px]">
+          {lastGraded && (
+            <Link href={`/eleve/cours/${lastGraded.course_id}/bilan/${lastGraded.id}`} className="card no-underline text-ink bg-brand-soft border-brand-mid flex flex-col gap-2">
+              <span className="lbl">Ton bilan est prêt</span>
+              <strong>{lastGraded.title}</strong>
+              <span className="flex items-center justify-between gap-2"><span className="muted text-sm">Ce que tu sais faire maintenant</span><span className="pill bg-brand text-white num">{Number(lastGraded.final_score).toLocaleString('fr-FR')}/20</span></span>
+            </Link>
+          )}
           <section className="card flex flex-col gap-3">
             <h2 className="text-xl font-semibold">Révisions</h2>
-            <span className="muted text-sm">Rappels espacés : J+3, J+7, J+14 ou J+30 selon ta note.</span>
-            {reviews.length === 0 && <span className="text-sm">Aucune révision prévue cette semaine.</span>}
+            {reviews.length === 0 && <EmptyState title="Aucune révision cette semaine" text="Après chaque évaluation, une révision courte est programmée (J+3 à J+30 selon ta note)." />}
             {reviews.map(r => {
               const due = new Date(r.next_review_at!);
               const late = due.getTime() < Date.now();
@@ -131,14 +135,6 @@ export default async function Today() {
               {waiting.map(c => <span key={c.course_id} className="text-sm">{c.title} · ton parent valide la correction</span>)}
             </section>
           )}
-          <section className="card flex flex-col gap-2 bg-surface-2">
-            <h2 className="text-lg font-semibold">Ce que tes parents voient</h2>
-            <ul className="m-0 pl-5 text-sm text-ink-2 flex flex-col gap-1.5 list-disc">
-              <li>Ton temps de travail actif et tes séances</li><li>Tes notes et tes niveaux par cours</li><li>Les sorties de fenêtre pendant une évaluation</li>
-            </ul>
-            <span className="lbl mt-1.5">Ce qu’ils ne voient pas</span>
-            <ul className="m-0 pl-5 text-sm text-ink-2 flex flex-col gap-1.5 list-disc"><li>Ton écran, ta caméra ou ton micro</li><li>Les autres sites que tu visites</li></ul>
-          </section>
         </Pane>
       </Panes>
     </PaneScreen>

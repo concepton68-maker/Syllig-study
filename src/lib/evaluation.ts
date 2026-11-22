@@ -53,3 +53,17 @@ export async function expireIfNeeded(a: Attempt) {
   }
   return a;
 }
+
+// Peut-on commencer une évaluation ? (fonction serveur interne, pas une action)
+export async function evalAvailability(studentId: string, courseId: number, exercisesDone: boolean, retryDelayDays: number) {
+  if (!exercisesDone) return { ok: false as const, reason: 'Termine d’abord les exercices.' };
+  const [pending] = await sql<{ id: string; status: string }[]>`select id, status from eval_attempts where student_id = ${studentId} and course_id = ${courseId}
+    and status in ('requested','approved','in_progress','submitted') order by attempt_no desc limit 1`;
+  if (pending) return { ok: false as const, pending };
+  const [last] = await sql<{ graded_at: Date }[]>`select graded_at from eval_attempts where student_id = ${studentId} and course_id = ${courseId} and status = 'graded' order by graded_at desc limit 1`;
+  if (last) {
+    const readyAt = new Date(last.graded_at.getTime() + retryDelayDays * 864e5);
+    if (readyAt.getTime() > Date.now()) return { ok: false as const, readyAt };
+  }
+  return { ok: true as const };
+}

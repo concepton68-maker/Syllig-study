@@ -36,7 +36,7 @@ try {
   await admin.fill('textarea[name=json]', JSON.stringify(bad));
   await admin.click('text=Vérifier et importer en brouillon');
   await admin.waitForSelector('text=Import refusé');
-  ok(await admin.isVisible('text=le barème fait 20 points au lieu de 25'), 'fichier incohérent refusé avec un message clair');
+  ok(await admin.isVisible('text=les évaluations sont notées sur 20'), 'fichier incohérent (barème sur 25) refusé avec un message clair');
 
   console.log('Élève');
   const st = await ctx();
@@ -136,9 +136,10 @@ try {
   const pa = await ctx();
   await login(pa, 'parent@test.local', 'parent-test-1234');
   await shot(pa, '09-parent-tableau-de-bord');
-  ok(await pa.isVisible('text=1 copie à corriger'), 'le parent voit la copie à corriger');
-  await pa.goto(BASE + '/parent/copies');
-  const [dl] = await Promise.all([pa.waitForEvent('download'), pa.click('text=Exporter les copies (1)')]);
+  ok(await pa.isVisible('text=1 copie à valider'), 'le parent voit la copie à valider dès l’accueil');
+  await pa.click('nav >> text=À faire');
+  await pa.waitForURL(/a-faire/);
+  const [dl] = await Promise.all([pa.waitForEvent('download'), pa.click('text=Exporter pour Claude (1)')]);
   const exported = JSON.parse(fs.readFileSync(await dl.path(), 'utf8'));
   ok(exported.copies.length === 1 && exported.copies[0].questions.length === 11, 'export : 1 copie, 11 réponses rédigées (q3 déjà corrigée)');
   ok(!JSON.stringify(exported).includes('Léa'), 'export sans le prénom de l’élève');
@@ -148,6 +149,7 @@ try {
     questions: exported.copies[0].questions.map(q => ({ id: q.id, points: q.points_max * 0.75, commentaire: `Bonne piste sur ${q.id}. Pense à citer le texte.` })) }] };
   const rf = `${SHOTS}/resultat-claude.json`;
   fs.writeFileSync(rf, JSON.stringify(result));
+  await pa.click('summary:has-text("Importer la réponse de Claude")');
   await pa.setInputFiles('input[name=file]', rf);
   await pa.click('text=Importer les propositions');
   await pa.waitForSelector('text=1 copie pré-corrigée');

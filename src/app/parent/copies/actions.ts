@@ -23,7 +23,7 @@ export async function importCorrectionsAction(_: ImportCorrState, form: FormData
   const r = await importResults(raw, ids, u.id);
   if (!r.ok) return { errors: r.errors };
   for (const sid of r.studentIds) await logEvent(sid, 'corrections_importees', { actorId: u.id, data: { copies: r.count } });
-  revalidatePath('/parent/copies');
+  revalidatePath('/parent', 'layout');
   return { ok: r.count, warnings: r.warnings };
 }
 
@@ -60,6 +60,6 @@ export async function validateGrade(form: FormData) {
     await sql`update course_progress set best_eval_score = (select max(final_score) from eval_attempts where student_id = ${a.student_id} and course_id = ${a.course_id} and status = 'graded'), mastery = 0 where student_id = ${a.student_id} and course_id = ${a.course_id}`;
     await recomputeMastery(a.student_id, a.course_id);
   }
-  revalidatePath('/parent/copies');
-  redirect(`/parent/copies?eleve=${a.student_id}&validee=1`);
+  revalidatePath('/parent', 'layout');
+  redirect('/parent/a-faire?validee=1');
 }

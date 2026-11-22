@@ -12,5 +12,5 @@ export async function decideEvalRequest(attemptId: string, approve: boolean) {
   await assertParentOf(u.id, a.student_id);
   await sql`update eval_attempts set status = ${approve ? 'approved' : 'cancelled'}, approved_at = ${approve ? new Date() : null} where id = ${attemptId}`;
   await logEvent(a.student_id, approve ? 'evaluation_autorisee' : 'evaluation_reportee', { courseId: a.course_id, actorId: u.id, data: { tentative: a.attempt_no } });
-  revalidatePath('/parent');
+  revalidatePath('/parent', 'layout');
 }

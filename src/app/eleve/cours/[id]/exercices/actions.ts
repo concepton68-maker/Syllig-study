@@ -4,7 +4,7 @@ import { z } from 'zod';
 import { sql } from '@/lib/db';
 import { loadCourse } from '../data';
 import { autoCorrect } from '@/lib/course-format';
-import { awardOnce, recomputeMastery } from '@/lib/progress';
+import { awardOnce, recomputeMastery, versionById } from '@/lib/progress';
 import { logEvent } from '@/lib/activity';
 
 const Answers = z.record(z.string().max(40), z.string().max(8000));
@@ -27,10 +27,11 @@ export async function saveExerciseDraft(courseIdParam: string, answers: Record<s
 
 // Remise des réponses : les corrigés deviennent visibles, les questions automatiques sont corrigées.
 export async function submitExercises(courseIdParam: string, answers: Record<string, string>) {
-  const { student, course, doc } = await loadCourse(courseIdParam);
+  const { student, course } = await loadCourse(courseIdParam);
   const a = Answers.parse(answers);
   const s = await current(student.id, course.id);
   if (!s || s.submitted_at) return;
+  const doc = (await versionById(s.version_id))!.document;
   const auto: Record<string, boolean> = {};
   for (const q of doc.exercises.items) { const r = autoCorrect(q, a[q.id]); if (r !== null) auto[q.id] = r; }
   await sql`update exercise_submissions set answers = ${sql.json(a)}, auto_results = ${sql.json(auto)}, submitted_at = now() where id = ${s.id}`;
@@ -40,9 +41,10 @@ export async function submitExercises(courseIdParam: string, answers: Record<str
 
 // Auto-correction guidée des réponses rédigées (l'élève compare avec le corrigé)
 export async function validateExercises(courseIdParam: string, selfCheck: Record<string, boolean>) {
-  const { student, course, doc } = await loadCourse(courseIdParam);
+  const { student, course } = await loadCourse(courseIdParam);
   const s = await current(student.id, course.id);
   if (!s || !s.submitted_at || s.checked_at) return;
+  const doc = (await versionById(s.version_id))!.document;
   const [{ auto_results }] = await sql<{ auto_results: Record<string, boolean> }[]>`select auto_results from exercise_submissions where id = ${s.id}`;
   const results = doc.exercises.items.map(q => (q.id in (auto_results ?? {}) ? auto_results[q.id] : !!selfCheck[q.id]));
   const score = Math.round((10 * results.filter(Boolean).length) / results.length);

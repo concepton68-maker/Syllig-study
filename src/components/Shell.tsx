@@ -5,16 +5,28 @@ import { logoutAction } from '@/app/actions';
 export type NavItem = { href: string; label: string; exact?: boolean };
 
 // Coquille de l'application : barre du haut fixe, zone de contenu qui défile (ou se découpe en colonnes)
-export function Shell({ role, nav, right, theme, children }: { role: string; nav: NavItem[]; right?: React.ReactNode; theme?: string; children: React.ReactNode }) {
+export type Space = { href: string; label: string; current: boolean };
+
+export function Shell({ role, nav, right, theme, spaces, version, children }: {
+  role: string; nav: NavItem[]; right?: React.ReactNode; theme?: string; spaces?: Space[]; version?: string; children: React.ReactNode;
+}) {
   return (
     <div className="app h-dvh flex flex-col" data-theme={theme && theme !== 'classique' ? theme : undefined}>
       <header className="app-header shrink-0 border-b border-line">
         <div className="max-w-[1400px] mx-auto px-4 sm:px-6 py-3 flex flex-wrap items-center gap-4">
-          <Logo role={role} />
+          <Logo role={spaces && spaces.length > 1 ? undefined : role} />
+          {spaces && spaces.length > 1 && (
+            <nav aria-label="Changer d’espace" className="flex rounded-full border border-line-strong bg-white p-1">
+              {spaces.map(s => (
+                <a key={s.href} href={s.href} aria-current={s.current ? 'page' : undefined}
+                  className={`px-3.5 py-1.5 rounded-full text-sm font-semibold no-underline ${s.current ? 'bg-brand text-white' : 'text-ink-2 hover:bg-soft'}`}>{s.label}</a>
+              ))}
+            </nav>
+          )}
           <NavLinks items={nav} />
           <div className="flex flex-wrap items-center gap-3">
             {right}
-            <form action={logoutAction}><button className="btn" type="submit">Se déconnecter</button></form>
+            <form action={logoutAction}><button className="text-sm font-semibold text-muted hover:text-ink underline-offset-4 hover:underline min-h-11 px-2" type="submit">Se déconnecter</button></form>
           </div>
         </div>
       </header>

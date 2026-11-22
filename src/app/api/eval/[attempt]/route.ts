@@ -15,7 +15,7 @@ const Body = z.discriminatedUnion('action', [
 export async function POST(req: Request, { params }: { params: Promise<{ attempt: string }> }) {
   const { attempt } = await params;
   const u = await currentUser();
-  if (!u || u.role !== 'student') return NextResponse.json({ error: 'non autorisé' }, { status: 401 });
+  if (!u || !u.roles.includes('student')) return NextResponse.json({ error: 'non autorisé' }, { status: 401 });
   const a = z.string().uuid().safeParse(attempt).success ? await getAttempt(attempt) : null;
   const [st] = await sql<{ id: string }[]>`select id from students where user_id = ${u.id}`;
   if (!a || !st || a.student_id !== st.id) return NextResponse.json({ error: 'introuvable' }, { status: 404 });

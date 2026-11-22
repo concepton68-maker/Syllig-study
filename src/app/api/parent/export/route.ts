@@ -9,7 +9,7 @@ import type { Attempt } from '@/lib/evaluation';
 // Export des copies à corriger (réponses rédigées) — aucun nom d'élève dans le fichier
 export async function GET(req: Request) {
   const u = await currentUser();
-  if (!u || u.role !== 'parent') return NextResponse.json({ error: 'non autorisé' }, { status: 401 });
+  if (!u || !u.roles.includes('parent')) return NextResponse.json({ error: 'non autorisé' }, { status: 401 });
   const ids = (await studentsOfParent(u.id)).map(s => s.id);
   const only = new URL(req.url).searchParams.get('eleve');
   const scope = only && ids.includes(only) ? [only] : ids;

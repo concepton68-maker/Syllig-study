@@ -129,3 +129,167 @@
   /* zones qui défilent : barre fine et discrète */
   .pane { scrollbar-width: thin; scrollbar-color: var(--color-line-strong) transparent; }
 }
+
+/* ═══════ Socle visuel et thèmes « Girly ✦ Ice blue » (glacier) et « Graphite & Volt » (graphite) — issus de l'audit design ═══════ */
+@layer components {
+
+
+/* ───────── 1. Socle commun ───────── */
+:root {
+  /* échelle typo (px) : 12 · 13 · 15 · 17 · 20 · 24 · 30 */
+  --fs-xs: 12px; --fs-sm: 13px; --fs-base: 15px; --fs-md: 17px; --fs-lg: 20px; --fs-xl: 24px; --fs-2xl: 30px;
+  /* rayons */
+  --r-sm: 8px; --r-md: 12px; --r-lg: 16px; --r-xl: 22px; --r-pill: 999px;
+  /* ombres teintées par le thème (--shadow-tint = RGB de l'encre de marque) */
+  --shadow-tint: 16 24 40;
+  --sh-1: 0 1px 2px rgb(var(--shadow-tint) / .06), 0 1px 3px rgb(var(--shadow-tint) / .05);
+  --sh-2: 0 2px 4px rgb(var(--shadow-tint) / .05), 0 8px 24px -6px rgb(var(--shadow-tint) / .12);
+  --sh-3: 0 12px 32px -8px rgb(var(--shadow-tint) / .22);
+  /* espacements : grille de 4 → 4 8 12 16 20 24 32 40 */
+  --header-ink: var(--color-ink); --header-ink-2: var(--color-ink-2);
+  --nav-on-bg: var(--color-brand-soft); --nav-on-ink: var(--color-brand-dark);
+}
+
+/* Barre du haut : plus basse, une seule ligne, contrastée */
+.app-header { box-shadow: var(--sh-1); position: relative; z-index: 2; }
+.app-header > div { padding-top: 10px; padding-bottom: 10px; }
+.app-header .navlink { color: var(--header-ink-2); min-height: 40px; }
+.app-header .navlink:hover { background: rgb(255 255 255 / .12); color: var(--header-ink); }
+.app-header .navlink[aria-current="page"] { background: var(--nav-on-bg); color: var(--nav-on-ink); }
+.app-header .text-ink, .app-header .text-sm.font-semibold { color: var(--header-ink); }
+.app-header .btn { min-height: 38px; font-size: 14px; background: transparent; color: var(--header-ink-2); border-color: transparent; }
+.app-header .btn:hover { background: rgb(255 255 255 / .12); color: var(--header-ink); }
+
+/* En-tête de page : kicker coloré, titre 30/24, sous-titre limité en largeur */
+main h1 { font-size: var(--fs-2xl); line-height: 1.15; font-weight: 700; letter-spacing: -0.015em; }
+main h1 + span.muted, main h1 ~ span.muted { max-width: 64ch; }
+.lbl { font-size: 11.5px; letter-spacing: .08em; color: var(--color-brand-dark); }
+
+/* Cartes : 3 niveaux d'élévation, rayon unique */
+.card { border-radius: var(--r-lg); border-color: var(--color-line); box-shadow: var(--sh-1); padding: 20px 24px; }
+.card.border-2.border-brand { border-width: 1px; border-color: var(--color-brand-mid); box-shadow: var(--sh-3);
+  background: linear-gradient(180deg, var(--color-brand-soft) 0, #fff 120px); }
+section.card > h2, section.card > div > h2, section.card h2.text-xl { font-size: var(--fs-lg); font-weight: 700; }
+
+/* Pastilles : hauteur fixe 24px, graisse 600 */
+.pill { height: 24px; padding: 0 10px; font-size: 12px; line-height: 1; }
+
+/* Boutons : 44px, primaire avec ombre de marque */
+.btn { border-radius: var(--r-md); font-size: var(--fs-base); }
+.btn-primary { box-shadow: 0 6px 16px -6px var(--color-brand); }
+.btn-primary:disabled { opacity: 1; background: var(--color-track); border-color: var(--color-track); color: var(--color-muted); box-shadow: none; }
+
+/* Lignes de liste plus lisibles */
+.border-soft { border-color: var(--color-line); }
+
+/* Barre d'action fixe (pied de leçon / exercices) */
+.bg-surface-2.border-t { background: rgb(255 255 255 / .9); backdrop-filter: blur(8px); }
+
+/* Mobile : navigation sur une ligne qui défile, en-tête compact */
+@media (max-width: 640px) {
+  .app-header > div { flex-wrap: nowrap; overflow-x: auto; gap: 8px; scrollbar-width: none; }
+  .app-header nav { flex: 0 0 auto; flex-wrap: nowrap; }
+  .app-header > div > span:first-child { flex: 0 0 auto; white-space: nowrap; margin-right: 4px; }
+  .app-header .pill, .app-header .text-sm.font-semibold { display: none; }
+  .app-header > div > div { flex-wrap: nowrap; flex: 0 0 auto; }
+  main h1 { font-size: var(--fs-xl); }
+  main .card.py-3\.5 { flex: 1 1 100%; }
+}
+
+/* ───────── 2. Thème « Girly ✦ Ice blue » ─────────
+   Identité du pré-projet : bleu nuit #243049, bleu glacier #4DA9DB, bleu pâle #E8F5FC, rose poudré #F9CCD8.
+   Rôles : bleu nuit = structure (barre, titres), glacier = action, rose poudré = touches « girly » (✦, priorités, accents). */
+[data-theme="glacier"] {
+  --color-ink: #1B2438;         /* texte : bleu nuit approfondi (15,6:1) */
+  --color-ink-2: #34405A;
+  --color-brand: #1F6FA3;       /* glacier profond — 5,44:1 sur blanc, blanc dessus 5,44:1 */
+  --color-brand-dark: #185A86;  /* 7,38:1 */
+  --color-brand-ink: #243049;   /* bleu nuit — 13,2:1 */
+  --color-brand-soft: #E8F5FC;  /* bleu très pâle (identité) */
+  --color-brand-mid: #B9DFF3;   /* glacier clair ; #243049 dessus 9,9:1 */
+  --color-accent: #4DA9DB;      /* bleu glacier identité (décor, anneaux, barres) */
+  --color-accent-soft: #FDEEF3;
+  --color-warm: #B83260;        /* rose framboise doux — 5,73:1 (Prioritaire, retards) */
+  --color-warm-dark: #8A2048;   /* 8,82:1 ; 6,2:1 sur #F9CCD8 */
+  --color-warm-soft: #FDEEF3;
+  --color-warm-mid: #F9CCD8;    /* rose poudré (identité) */
+  --color-line: #D8EAF5;
+  --color-line-strong: #B3D2E6;
+  --color-soft: #EEF6FB;
+  --color-surface-2: #F6FAFD;
+  --color-track: #DDEEF8;
+  --color-bg: #F3F9FD;
+  --font-display: "Quicksand Variable", "Quicksand", "Space Grotesk Variable", ui-sans-serif, system-ui, sans-serif;
+  --header-bg: linear-gradient(90deg, #243049 0%, #2B3A5A 60%, #33476B 100%);
+  --app-bg:
+    radial-gradient(900px 420px at 0% 0%, #FCE4EC 0%, transparent 60%),
+    radial-gradient(1100px 520px at 100% 0%, #E8F5FC 0%, transparent 65%),
+    #F5FAFE;
+  --spark: "✦";
+  --shadow-tint: 36 48 73;
+  --header-ink: #FFFFFF; --header-ink-2: #D6E4F2;
+  --nav-on-bg: #F9CCD8; --nav-on-ink: #243049;   /* onglet actif rose poudré sur bleu nuit : 9,2:1 */
+}
+[data-theme="glacier"] .app-header svg circle { stroke: #F9CCD8 !important; }
+[data-theme="glacier"] .app-header svg path { fill: #4DA9DB !important; }
+[data-theme="glacier"] .app-header .pill { background: rgb(255 255 255 / .14); color: #F9CCD8; }
+[data-theme="glacier"] .spark::before { color: #E0809F; }
+[data-theme="glacier"] h1, [data-theme="glacier"] h2 { color: var(--color-brand-ink); letter-spacing: 0; }
+[data-theme="glacier"] .card { border-radius: 20px; }
+[data-theme="glacier"] .btn { border-radius: var(--r-pill); padding: 0 20px; }
+[data-theme="glacier"] .btn-primary { background: linear-gradient(135deg, #2580B8, #1F6FA3 60%, #1B6699); }
+[data-theme="glacier"] .navlink { border-radius: var(--r-pill); }
+[data-theme="glacier"] .lbl { color: var(--color-warm); }
+/* la carte « prochaine étape » : liseré rose poudré + halo glacier */
+[data-theme="glacier"] .card.border-2.border-brand { border-color: #F9CCD8;
+  background: linear-gradient(160deg, #FFF5F8 0, #FFFFFF 38%, #EEF7FD 100%); }
+/* étape en cours : bleu nuit (pas la même teinte que le bouton principal) */
+[data-theme="glacier"] li.bg-brand { background: #243049; }
+/* barres de progression : dégradé glacier → rose */
+[data-theme="glacier"] .bg-track > .bg-brand { background: linear-gradient(90deg, #4DA9DB, #E8799B); }
+
+/* ───────── 3. Thème garçon « Graphite & Volt » ─────────
+   Graphite sombre + orange volt + indigo : sport/gaming sans tomber dans le « tout bleu ». */
+[data-theme="graphite"] {
+  --color-ink: #141A23;
+  --color-ink-2: #344054;
+  --color-brand: #C2410C;       /* orange volt — 5,18:1 */
+  --color-brand-dark: #9A3412;  /* 7,31:1 */
+  --color-brand-ink: #1C2430;   /* graphite — 15,6:1 */
+  --color-brand-soft: #FFF1E6;
+  --color-brand-mid: #FDCBA4;
+  --color-accent: #84CC16;      /* vert néon (décor uniquement) */
+  --color-accent-soft: #F1FADF;
+  --color-warm: #4338CA;        /* indigo — 7,90:1 (Prioritaire) */
+  --color-warm-dark: #3730A3;   /* 9,93:1 */
+  --color-warm-soft: #EEF0FF;
+  --color-warm-mid: #C9CCFB;
+  --color-line: #E3E6EB;
+  --color-line-strong: #CDD2DA;
+  --color-soft: #F1F3F6;
+  --color-surface-2: #F8F9FB;
+  --color-track: #E6E9EE;
+  --color-bg: #F2F4F7;
+  --font-display: "Space Grotesk Variable", "Space Grotesk", Inter, ui-sans-serif, system-ui, sans-serif;
+  --header-bg: linear-gradient(90deg, #141A23 0%, #1C2430 100%);
+  --app-bg: radial-gradient(1000px 460px at 100% 0%, #FFE7D4 0%, transparent 60%), #F2F4F7;
+  --spark: "▲";
+  --shadow-tint: 20 26 35;
+  --header-ink: #FFFFFF; --header-ink-2: #C9D1DC;
+  --nav-on-bg: #F97316; --nav-on-ink: #141A23;   /* 6,9:1 */
+}
+[data-theme="graphite"] .app-header svg circle { stroke: #F97316 !important; }
+[data-theme="graphite"] .app-header svg path { fill: #84CC16 !important; }
+[data-theme="graphite"] .app-header .pill { background: rgb(255 255 255 / .1); color: #FDBA74; }
+[data-theme="graphite"] h1 { letter-spacing: -0.03em; }
+[data-theme="graphite"] .card { border-radius: 10px; }
+[data-theme="graphite"] .btn { border-radius: 8px; }
+[data-theme="graphite"] .card.border-2.border-brand { border-color: #1C2430; border-width: 1px;
+  background: linear-gradient(180deg, #FFF6EE 0, #fff 120px); box-shadow: 4px 4px 0 #1C2430; }
+[data-theme="graphite"] li.bg-brand { background: #1C2430; }
+[data-theme="graphite"] .bg-track > .bg-brand { background: linear-gradient(90deg, #F97316, #84CC16); }
+[data-theme="glacier"] .btn-primary:disabled { background: var(--color-track); }
+
+  /* chiffres : Inter à chasse fixe (le « 1 » de Space Grotesk se lit mal) */
+  .num { font-family: var(--font-sans); font-variant-numeric: tabular-nums; letter-spacing: -0.02em; }
+}

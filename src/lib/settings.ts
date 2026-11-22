@@ -7,7 +7,9 @@ export type StudentSettings = {
   theme: ThemeId;                // thème d'affichage de l'espace élève
 };
 export const THEMES = [
-  { id: 'rose', name: 'Rose & bleu glacier', desc: 'Rose, lilas et bleu glacier, titres arrondis' },
+  { id: 'glacier', name: 'Girly ✦ Ice blue', desc: 'Bleu nuit, bleu glacier et rose poudré, titres arrondis' },
+  { id: 'rose', name: 'Framboise', desc: 'Rose framboise, lilas et bleu glacier' },
+  { id: 'graphite', name: 'Graphite & Volt', desc: 'Graphite, orange volt et vert néon' },
   { id: 'lagon', name: 'Lagon', desc: 'Bleu-vert franc et vert' },
   { id: 'classique', name: 'Classique', desc: 'Bleu sobre' },
 ] as const;
@@ -20,7 +22,10 @@ export const DEFAULT_SETTINGS: StudentSettings = {
   idle_seconds: 60,
   theme: 'classique',
 };
-export const settingsOf = (raw: unknown): StudentSettings => ({ ...DEFAULT_SETTINGS, ...((raw as object) ?? {}) });
+export const settingsOf = (raw: unknown): StudentSettings => {
+  const s = { ...DEFAULT_SETTINGS, ...((raw as object) ?? {}) } as StudentSettings;
+  return { ...s, retry_delay_days: Math.max(1, s.retry_delay_days) };   // au moins 1 jour entre deux tentatives
+};
 
 // Seuils de maîtrise (section 5 du cadrage) — réglages, pas du code métier dispersé.
 export const MASTERY = {
