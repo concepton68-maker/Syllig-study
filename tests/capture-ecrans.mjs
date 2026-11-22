@@ -1,0 +1,22 @@
+// Captures d'écran de présentation (après tests/e2e-parcours.mjs et tests/demo-activity.mjs)
+import { createRequire } from 'node:module';
+const { chromium } = createRequire(import.meta.url)('playwright');
+const OUT = process.env.OUT, BASE = process.env.BASE ?? 'http://127.0.0.1:3100';
+const b = await chromium.launch();
+const page = async (l, pw) => { const c = await b.newContext({ viewport: { width: 1360, height: 900 }, deviceScaleFactor: 2 }); const p = await c.newPage();
+  await p.goto(BASE + '/connexion'); if (l) { await p.fill('input[name=login]', l); await p.fill('input[name=password]', pw); await p.click('button[type=submit]'); await p.waitForURL(u => !u.pathname.startsWith('/connexion')); } return p; };
+const shot = async (p, name, h) => { await p.waitForLoadState('networkidle'); const full = await p.evaluate(() => document.documentElement.scrollHeight);
+  await p.screenshot({ path: `${OUT}/${name}.png`, fullPage: true, clip: { x: 0, y: 0, width: 1360, height: Math.min(full, h ?? full) } }); };
+const login = await page(); await shot(login, '00-connexion', 900);
+const st = await page('lea', 'lea-test-1234');
+await shot(st, '02-eleve-aujourdhui', 1150);
+await st.goto(BASE + '/eleve/parcours'); await shot(st, '03-eleve-parcours', 1100);
+await st.goto(BASE + '/eleve/resultats'); await shot(st, '12-eleve-resultats', 900);
+const pa = await page('parent@test.local', 'parent-test-1234');
+await shot(pa, '09-parent-tableau-de-bord', 1600);
+await pa.goto(BASE + '/parent/journal'); await shot(pa, '10-parent-journal', 1300);
+await pa.goto(BASE + '/parent/regles'); await shot(pa, '11-parent-regles', 1000);
+const ad = await page('admin@test.local', 'admin-test-1234');
+await shot(ad, '13-contenu-catalogue', 900);
+await ad.goto(BASE + '/contenu/format'); await shot(ad, '14-contenu-consigne-claude', 900);
+await b.close();

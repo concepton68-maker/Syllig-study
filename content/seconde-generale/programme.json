@@ -1,0 +1,1193 @@
+{
+ "level": {
+  "code": "seconde-generale",
+  "name": "Seconde générale"
+ },
+ "source": "Analyse du programme de Seconde (programmes officiels consultés le 21-11-2026)",
+ "subjects": [
+  {
+   "name": "Français",
+   "chapters": [
+    {
+     "name": "Le roman et le récit",
+     "courses": [
+      {
+       "title": "Les caractéristiques du récit",
+       "priority": "ensuite",
+       "code": "C001"
+      },
+      {
+       "title": "Le narrateur et les points de vue",
+       "priority": "ensuite"
+      },
+      {
+       "title": "Personnages, cadre et chronologie",
+       "priority": "ensuite"
+      },
+      {
+       "title": "Le réalisme et le naturalisme",
+       "priority": "ensuite"
+      },
+      {
+       "title": "Le parcours d'un personnage",
+       "priority": "ensuite"
+      }
+     ]
+    },
+    {
+     "name": "La poésie",
+     "courses": [
+      {
+       "title": "Vers, strophes et formes poétiques",
+       "priority": "ensuite"
+      },
+      {
+       "title": "Rimes, rythmes et sonorités",
+       "priority": "ensuite"
+      },
+      {
+       "title": "Images et figures de style",
+       "priority": "ensuite"
+      },
+      {
+       "title": "Poésie lyrique et expression des sentiments",
+       "priority": "ensuite"
+      },
+      {
+       "title": "Poésie engagée",
+       "priority": "ensuite"
+      }
+     ]
+    },
+    {
+     "name": "Le théâtre",
+     "courses": [
+      {
+       "title": "Texte théâtral et double énonciation",
+       "priority": "ensuite"
+      },
+      {
+       "title": "Actes, scènes et didascalies",
+       "priority": "ensuite"
+      },
+      {
+       "title": "Comédie et tragédie",
+       "priority": "ensuite"
+      },
+      {
+       "title": "Conflit, quiproquo et dramaturgie",
+       "priority": "ensuite"
+      },
+      {
+       "title": "Mise en scène et représentation",
+       "priority": "ensuite"
+      }
+     ]
+    },
+    {
+     "name": "La littérature d'idées",
+     "courses": [
+      {
+       "title": "Thèse, arguments et exemples",
+       "priority": "ensuite"
+      },
+      {
+       "title": "Convaincre, persuader et délibérer",
+       "priority": "ensuite"
+      },
+      {
+       "title": "Satire, apologue et argumentation",
+       "priority": "ensuite"
+      },
+      {
+       "title": "Registres et procédés argumentatifs",
+       "priority": "ensuite"
+      },
+      {
+       "title": "La presse et l'information : genres et enjeux (XIXe-XXIe)",
+       "priority": "ensuite",
+       "official_note": "Objet d'étude officiel : « La littérature d'idées et la presse » (XIXe au XXIe siècle)."
+      }
+     ]
+    },
+    {
+     "name": "Langue et méthode",
+     "courses": [
+      {
+       "title": "Classes grammaticales et fonctions",
+       "priority": "prioritaire"
+      },
+      {
+       "title": "Phrase simple et phrase complexe",
+       "priority": "prioritaire"
+      },
+      {
+       "title": "Propositions subordonnées",
+       "priority": "prioritaire"
+      },
+      {
+       "title": "Valeurs des temps et modes",
+       "priority": "prioritaire"
+      },
+      {
+       "title": "Figures de style essentielles",
+       "priority": "ensuite"
+      },
+      {
+       "title": "Méthode du commentaire",
+       "priority": "prioritaire"
+      },
+      {
+       "title": "Méthode de la dissertation",
+       "priority": "ensuite"
+      },
+      {
+       "title": "Méthode de l'explication linéaire",
+       "priority": "prioritaire"
+      },
+      {
+       "title": "Préparer un oral et citer un texte",
+       "priority": "ensuite"
+      }
+     ]
+    }
+   ],
+   "official_sources": [
+    {
+     "texte": "Programme de français de seconde et de première GT",
+     "reference": "Arrêté du 17-1-2019, BOEN spécial n°1 du 22-1-2019 (version eduscol modifiée en 2020)",
+     "application": "En vigueur ; aucune refonte trouvée à ce jour",
+     "lien": "https://eduscol.education.fr/media/5792/download",
+     "contenu": "Quatre objets d'étude : poésie (Moyen Âge au XVIIIe), littérature d'idées et presse (XIXe au XXIe), roman et récit (XVIIIe au XXIe), théâtre (XVIIe au XXIe). Commentaire et dissertation (roman, théâtre) prévus en seconde."
+    }
+   ]
+  },
+  {
+   "name": "Mathématiques",
+   "chapters": [
+    {
+     "name": "Nombres et calculs",
+     "courses": [
+      {
+       "title": "Ensembles de nombres",
+       "priority": "ensuite"
+      },
+      {
+       "title": "Intervalles et représentation sur une droite",
+       "priority": "ensuite"
+      },
+      {
+       "title": "Valeur absolue et distance",
+       "priority": "ensuite"
+      },
+      {
+       "title": "Calcul numérique et priorités",
+       "priority": "prioritaire"
+      },
+      {
+       "title": "Puissances et racines carrées",
+       "priority": "prioritaire"
+      },
+      {
+       "title": "Arithmétique : multiples, diviseurs et nombres premiers",
+       "priority": "ensuite",
+       "official_note": "Ajout du programme 2026 (nombres premiers, test de primalité)."
+      }
+     ]
+    },
+    {
+     "name": "Calcul littéral",
+     "courses": [
+      {
+       "title": "Développer et réduire",
+       "priority": "ensuite"
+      },
+      {
+       "title": "Factoriser",
+       "priority": "ensuite"
+      },
+      {
+       "title": "Identités remarquables",
+       "priority": "prioritaire"
+      },
+      {
+       "title": "Équations et inéquations",
+       "priority": "prioritaire"
+      },
+      {
+       "title": "Résoudre un problème par le calcul",
+       "priority": "ensuite"
+      }
+     ]
+    },
+    {
+     "name": "Fonctions",
+     "courses": [
+      {
+       "title": "Notion de fonction et vocabulaire",
+       "priority": "prioritaire"
+      },
+      {
+       "title": "Images et antécédents",
+       "priority": "prioritaire"
+      },
+      {
+       "title": "Courbe représentative",
+       "priority": "prioritaire"
+      },
+      {
+       "title": "Fonctions de référence",
+       "priority": "prioritaire"
+      },
+      {
+       "title": "Variations et extrema",
+       "priority": "prioritaire"
+      },
+      {
+       "title": "Résolution graphique",
+       "priority": "prioritaire"
+      },
+      {
+       "title": "Ensemble de définition d'une fonction",
+       "priority": "prioritaire",
+       "official_note": "Ajout du programme 2026."
+      },
+      {
+       "title": "Fonctions cube, racine carrée et valeur absolue",
+       "priority": "prioritaire",
+       "official_note": "Ajout du programme 2026 (définition, variations, courbe)."
+      }
+     ]
+    },
+    {
+     "name": "Équations et second degré",
+     "courses": [
+      {
+       "title": "Équations du premier degré",
+       "priority": "ensuite"
+      },
+      {
+       "title": "Équations produit nul",
+       "priority": "prioritaire"
+      },
+      {
+       "title": "Équations du second degré : méthodes de résolution",
+       "priority": "mis_de_cote",
+       "official_note": "Hors programme de seconde : seule l'équation x² = a est citée, sans discriminant (programme 2026)."
+      },
+      {
+       "title": "Signe d'une expression factorisée",
+       "priority": "prioritaire"
+      },
+      {
+       "title": "Équations quotients et comparaison de deux expressions",
+       "priority": "prioritaire",
+       "official_note": "Ajout du programme 2026."
+      }
+     ]
+    },
+    {
+     "name": "Géométrie",
+     "courses": [
+      {
+       "title": "Vecteurs et coordonnées",
+       "priority": "prioritaire"
+      },
+      {
+       "title": "Repérage dans le plan",
+       "priority": "ensuite"
+      },
+      {
+       "title": "Droites et équations réduites",
+       "priority": "prioritaire"
+      },
+      {
+       "title": "Configurations et démonstrations",
+       "priority": "ensuite"
+      },
+      {
+       "title": "Translations, somme de vecteurs et relation de Chasles",
+       "priority": "prioritaire",
+       "official_note": "Ajout du programme 2026."
+      },
+      {
+       "title": "Systèmes de deux équations et intersection de droites",
+       "priority": "ensuite",
+       "official_note": "Ajout du programme 2026."
+      }
+     ]
+    },
+    {
+     "name": "Statistiques et probabilités",
+     "courses": [
+      {
+       "title": "Indicateurs : moyenne, médiane, étendue",
+       "priority": "prioritaire"
+      },
+      {
+       "title": "Tableaux et représentations",
+       "priority": "ensuite"
+      },
+      {
+       "title": "Probabilités et événements",
+       "priority": "prioritaire"
+      },
+      {
+       "title": "Expériences aléatoires",
+       "priority": "ensuite"
+      },
+      {
+       "title": "Quartiles et boîtes à moustaches",
+       "priority": "prioritaire",
+       "official_note": "Notion souvent non vue au collège pendant la transition vers le nouveau programme."
+      },
+      {
+       "title": "Échantillonnage et simulation",
+       "priority": "ensuite",
+       "official_note": "Ajout du programme 2026 (fréquence, échantillon aléatoire)."
+      }
+     ]
+    },
+    {
+     "name": "Algorithmique et programmation",
+     "courses": [
+      {
+       "title": "Algorithmique et programmation en Python",
+       "priority": "ensuite",
+       "official_note": "Rubrique inchangée au programme ; Python est utilisé en statistiques et en algèbre."
+      }
+     ]
+    }
+   ],
+   "official_sources": [
+    {
+     "texte": "Programme de mathématiques de seconde générale et technologique (nouveau programme)",
+     "reference": "BO n°14 du 2 avril 2026",
+     "application": "Rentrée 2026-2027 (classe de seconde)",
+     "lien": "https://eduscol.education.gouv.fr/5817/programmes-et-ressources-en-mathematiques-voie-gt",
+     "contenu": "Nouveau programme publié au BO du 2 avril 2026, applicable en seconde à la rentrée 2026-2027. Thèmes : nombres et calculs / algèbre, fonctions, géométrie, statistiques et probabilités, algorithmique (inchangée)."
+    },
+    {
+     "texte": "Présentation des changements (ce qui disparaît, ce qui apparaît)",
+     "reference": "Académie de Bordeaux, juin 2026 (document pédagogique, non réglementaire)",
+     "application": "Rentrée 2026-2027",
+     "lien": "https://ent2d.ac-bordeaux.fr/disciplines/mathematiques/wp-content/uploads/sites/3/2026/06/Presentation-des-nouveaux-programmes-de-lycee-4.pdf",
+     "contenu": "Ajouts : équation produit nul et quotient, valeur absolue, fonctions cube et racine carrée, quartiles et boîtes à moustaches, échantillonnage, nombres premiers. Retraits : vocabulaire ensembliste, parité des fonctions reportée en première. Les élèves entrant en seconde de 2026 à 2029 n'ont pas vu certaines notions du cycle 4 (identités remarquables, inéquations du premier degré, quartiles)."
+    }
+   ]
+  },
+  {
+   "name": "Histoire-Géographie",
+   "chapters": [
+    {
+     "name": "Histoire",
+     "courses": [
+      {
+       "title": "La périodisation historique",
+       "priority": "prioritaire"
+      },
+      {
+       "title": "Le monde méditerranéen antique",
+       "priority": "prioritaire"
+      },
+      {
+       "title": "La Méditerranée médiévale",
+       "priority": "prioritaire"
+      },
+      {
+       "title": "L'État et les transformations politiques en Europe",
+       "priority": "ensuite",
+       "official_note": "Pas un chapitre officiel. Voir les chapitres ajoutés : Nouveau Monde, modèle britannique, Lumières, société d'ordres."
+      },
+      {
+       "title": "Renaissance, humanisme et réformes religieuses",
+       "priority": "prioritaire"
+      },
+      {
+       "title": "L'affirmation de l'État à l'époque moderne",
+       "priority": "ensuite"
+      },
+      {
+       "title": "L'ouverture atlantique : le « Nouveau Monde »",
+       "priority": "ensuite",
+       "official_note": "Chapitre officiel (thème 2)."
+      },
+      {
+       "title": "Le modèle britannique et son influence",
+       "priority": "ensuite",
+       "official_note": "Chapitre officiel (thème 3)."
+      },
+      {
+       "title": "Les Lumières et le développement des sciences",
+       "priority": "ensuite",
+       "official_note": "Chapitre officiel (thème 4)."
+      },
+      {
+       "title": "Tensions, mutations et crispations de la société d'ordres",
+       "priority": "ensuite",
+       "official_note": "Chapitre officiel (thème 4)."
+      }
+     ]
+    },
+    {
+     "name": "Géographie",
+     "courses": [
+      {
+       "title": "Sociétés et environnements : des équilibres fragiles",
+       "priority": "prioritaire"
+      },
+      {
+       "title": "Territoires, ressources et risques",
+       "priority": "prioritaire"
+      },
+      {
+       "title": "Des mobilités généralisées",
+       "priority": "prioritaire"
+      },
+      {
+       "title": "L'Afrique australe : contrastes de developpement",
+       "priority": "ensuite",
+       "official_note": "Intitulé officiel : « L'Afrique australe : un espace en profonde mutation »."
+      },
+      {
+       "title": "Cartes, échelles et changement d'échelle",
+       "priority": "prioritaire"
+      },
+      {
+       "title": "Trajectoires démographiques : le nombre et le vieillissement",
+       "priority": "ensuite",
+       "official_note": "Question officielle (thème 2)."
+      },
+      {
+       "title": "Développement et inégalités",
+       "priority": "ensuite",
+       "official_note": "Question officielle (thème 2)."
+      },
+      {
+       "title": "La France : milieux, démographie, inégalités et mobilités",
+       "priority": "ensuite",
+       "official_note": "Questions « France » des thèmes 1 à 3."
+      }
+     ]
+    }
+   ],
+   "official_sources": [
+    {
+     "texte": "Programme d'histoire-géographie de seconde GT",
+     "reference": "Arrêté du 17-1-2019, BOEN spécial n°1 du 22-1-2019",
+     "application": "En vigueur ; aucune refonte trouvée à ce jour",
+     "lien": "https://eduscol.education.gouv.fr/sites/default/files/document/spe577annexe1corr1063699pdf-83007.pdf",
+     "contenu": "Histoire : périodisation puis 4 thèmes (8 chapitres). Géographie : 4 thèmes dont « L'Afrique australe : un espace en profonde mutation »."
+    }
+   ]
+  },
+  {
+   "name": "LVA",
+   "chapters": [
+    {
+     "name": "Compréhension et expression",
+     "courses": [
+      {
+       "title": "Se présenter et parler de son quotidien",
+       "priority": "ensuite",
+       "official_note": "Contenu générique : à rattacher aux axes culturels du programme 2025 (voir la ligne ajoutée)."
+      },
+      {
+       "title": "Raconter un événement passé",
+       "priority": "prioritaire"
+      },
+      {
+       "title": "Décrire une personne, un lieu ou une expérience",
+       "priority": "prioritaire"
+      },
+      {
+       "title": "Exprimer une opinion et la justifier",
+       "priority": "prioritaire"
+      },
+      {
+       "title": "Comparer et nuancer",
+       "priority": "ensuite"
+      },
+      {
+       "title": "Compréhension de documents écrits et audio",
+       "priority": "prioritaire"
+      },
+      {
+       "title": "Prendre la parole en continu",
+       "priority": "ensuite"
+      },
+      {
+       "title": "Interagir dans une conversation",
+       "priority": "ensuite"
+      }
+     ]
+    },
+    {
+     "name": "Langue",
+     "courses": [
+      {
+       "title": "Présent et temps du passé",
+       "priority": "prioritaire"
+      },
+      {
+       "title": "Futur et expression du projet",
+       "priority": "ensuite"
+      },
+      {
+       "title": "Questions et négation",
+       "priority": "ensuite"
+      },
+      {
+       "title": "Modaux et expression de l'obligation",
+       "priority": "ensuite"
+      },
+      {
+       "title": "Connecteurs logiques",
+       "priority": "ensuite"
+      },
+      {
+       "title": "Prononciation et accentuation",
+       "priority": "ensuite"
+      },
+      {
+       "title": "Vocabulaire thématique et faux amis",
+       "priority": "ensuite"
+      }
+     ]
+    },
+    {
+     "name": "Culture",
+     "courses": [
+      {
+       "title": "Repères culturels : les axes du programme",
+       "priority": "ensuite",
+       "official_note": "Axes cités dans l'annexe du cadre commun 2025 : représentation de soi et rapport à autrui ; vivre entre générations ; le passé dans le présent ; défis et transitions ; créer et recréer. À confirmer pour la langue étudiée."
+      }
+     ]
+    }
+   ],
+   "official_sources": [
+    {
+     "texte": "Programmes de langues vivantes étrangères et régionales (collège et lycée)",
+     "reference": "Arrêté du 5-5-2025, BO n°22 du 29-5-2025",
+     "application": "Seconde : rentrée 2025-2026",
+     "lien": "https://ent2d.ac-bordeaux.fr/disciplines/espagnol/?p=6366",
+     "contenu": "Programme refondu ; la seconde y est passée dès la rentrée 2025-2026."
+    },
+    {
+     "texte": "Cadre commun : repères culturels et niveaux visés (annexe langues à faible diffusion)",
+     "reference": "Programmes de langues vivantes 2025, annexe 25",
+     "application": "Rentrée 2025-2026",
+     "lien": "https://www.education.gouv.fr/sites/default/files/ensel621_annexe25.pdf",
+     "contenu": "Axes culturels dont : représentation de soi et rapport à autrui ; vivre entre générations ; le passé dans le présent ; défis et transitions ; créer et recréer. Niveaux visés en fin de seconde dans ce cadre : LVA B1+, LVB A2+."
+    }
+   ]
+  },
+  {
+   "name": "LVB",
+   "chapters": [
+    {
+     "name": "Compréhension et expression",
+     "courses": [
+      {
+       "title": "Se présenter et présenter quelqu'un",
+       "priority": "ensuite",
+       "official_note": "Contenu générique : à rattacher aux axes culturels du programme 2025 (voir la ligne ajoutée)."
+      },
+      {
+       "title": "Décrire son environnement",
+       "priority": "ensuite"
+      },
+      {
+       "title": "Raconter au passé",
+       "priority": "ensuite"
+      },
+      {
+       "title": "Exprimer goûts, avis et préférences",
+       "priority": "ensuite"
+      },
+      {
+       "title": "Parler de projets",
+       "priority": "ensuite"
+      },
+      {
+       "title": "Comprendre un document court",
+       "priority": "ensuite"
+      },
+      {
+       "title": "Dialoguer dans des situations courantes",
+       "priority": "ensuite"
+      }
+     ]
+    },
+    {
+     "name": "Langue",
+     "courses": [
+      {
+       "title": "Présent et verbes fréquents",
+       "priority": "ensuite"
+      },
+      {
+       "title": "Temps du passé",
+       "priority": "ensuite"
+      },
+      {
+       "title": "Futur et modalité",
+       "priority": "ensuite"
+      },
+      {
+       "title": "Genre, nombre et accords",
+       "priority": "ensuite"
+      },
+      {
+       "title": "Construction de la phrase",
+       "priority": "ensuite"
+      },
+      {
+       "title": "Questions et négation",
+       "priority": "ensuite"
+      },
+      {
+       "title": "Vocabulaire et prononciation",
+       "priority": "ensuite"
+      }
+     ]
+    },
+    {
+     "name": "Culture",
+     "courses": [
+      {
+       "title": "Repères culturels : les axes du programme",
+       "priority": "ensuite",
+       "official_note": "Axes cités dans l'annexe du cadre commun 2025 : représentation de soi et rapport à autrui ; vivre entre générations ; le passé dans le présent ; défis et transitions ; créer et recréer. À confirmer pour la langue étudiée."
+      }
+     ]
+    }
+   ],
+   "official_sources": [
+    {
+     "texte": "Programmes de langues vivantes étrangères et régionales (collège et lycée)",
+     "reference": "Arrêté du 5-5-2025, BO n°22 du 29-5-2025",
+     "application": "Seconde : rentrée 2025-2026",
+     "lien": "https://ent2d.ac-bordeaux.fr/disciplines/espagnol/?p=6366",
+     "contenu": "Programme refondu ; la seconde y est passée dès la rentrée 2025-2026."
+    },
+    {
+     "texte": "Cadre commun : repères culturels et niveaux visés (annexe langues à faible diffusion)",
+     "reference": "Programmes de langues vivantes 2025, annexe 25",
+     "application": "Rentrée 2025-2026",
+     "lien": "https://www.education.gouv.fr/sites/default/files/ensel621_annexe25.pdf",
+     "contenu": "Axes culturels dont : représentation de soi et rapport à autrui ; vivre entre générations ; le passé dans le présent ; défis et transitions ; créer et recréer. Niveaux visés en fin de seconde dans ce cadre : LVA B1+, LVB A2+."
+    }
+   ]
+  },
+  {
+   "name": "SES",
+   "chapters": [
+    {
+     "name": "Science économique",
+     "courses": [
+      {
+       "title": "Comment les marchés fonctionnent-ils ?",
+       "priority": "ensuite"
+      },
+      {
+       "title": "Offre, demande et prix d'équilibre",
+       "priority": "ensuite"
+      },
+      {
+       "title": "Concurrence et imperfections du marché",
+       "priority": "ensuite"
+      },
+      {
+       "title": "Comment crée-t-on des richesses ?",
+       "priority": "ensuite"
+      },
+      {
+       "title": "Production marchande et non marchande",
+       "priority": "ensuite"
+      },
+      {
+       "title": "Mesurer la richesse : PIB et limites",
+       "priority": "ensuite"
+      }
+     ]
+    },
+    {
+     "name": "Sociologie et science politique",
+     "courses": [
+      {
+       "title": "Comment devenons-nous des acteurs sociaux ?",
+       "priority": "ensuite"
+      },
+      {
+       "title": "Socialisation primaire et secondaire",
+       "priority": "ensuite"
+      },
+      {
+       "title": "Liens entre diplôme, emploi et salaire",
+       "priority": "ensuite"
+      },
+      {
+       "title": "Comment s'organise la vie politique ?",
+       "priority": "ensuite"
+      },
+      {
+       "title": "Opinion publique et comportements électoraux",
+       "priority": "ensuite"
+      }
+     ]
+    },
+    {
+     "name": "Regards croisés",
+     "courses": [
+      {
+       "title": "Rôle de l'assurance et de la protection sociale",
+       "priority": "mis_de_cote",
+       "official_note": "Absent du programme de seconde de SES (regard croisé officiel : diplôme, emploi, salaire)."
+      },
+      {
+       "title": "Organisation et fonctionnement des entreprises",
+       "priority": "mis_de_cote",
+       "official_note": "Absent du programme de seconde de SES."
+      }
+     ]
+    },
+    {
+     "name": "Questionnement introductif",
+     "courses": [
+      {
+       "title": "Comment les économistes, sociologues et politistes raisonnent-ils ?",
+       "priority": "ensuite",
+       "official_note": "Questionnement introductif officiel."
+      }
+     ]
+    }
+   ],
+   "official_sources": [
+    {
+     "texte": "Programme de sciences économiques et sociales de seconde GT",
+     "reference": "Arrêté du 17-1-2019 (NOR MENE1901638A), JO du 20-1-2019",
+     "application": "En vigueur",
+     "lien": "https://eduscol.education.gouv.fr/sites/default/files/document/spe638annexe1063053pdf-82749.pdf",
+     "contenu": "Questionnements : raisonnement des économistes, sociologues et politistes ; création et mesure des richesses ; formation des prix ; acteurs sociaux ; organisation de la vie politique ; regard croisé diplôme, emploi et salaire."
+    }
+   ]
+  },
+  {
+   "name": "Physique-Chimie",
+   "chapters": [
+    {
+     "name": "Constitution et transformations de la matière",
+     "courses": [
+      {
+       "title": "Corps purs et mélanges",
+       "priority": "ensuite"
+      },
+      {
+       "title": "Espèces chimiques et identification",
+       "priority": "ensuite"
+      },
+      {
+       "title": "Solutions et concentrations",
+       "priority": "prioritaire"
+      },
+      {
+       "title": "Modèle de l'atome et éléments chimiques",
+       "priority": "prioritaire"
+      },
+      {
+       "title": "Transformations physiques et chimiques",
+       "priority": "prioritaire"
+      }
+     ]
+    },
+    {
+     "name": "Mouvement et interactions",
+     "courses": [
+      {
+       "title": "Décrire un mouvement",
+       "priority": "prioritaire"
+      },
+      {
+       "title": "Référentiel et trajectoire",
+       "priority": "prioritaire"
+      },
+      {
+       "title": "Vitesse et variation de vitesse",
+       "priority": "prioritaire"
+      },
+      {
+       "title": "Interactions et forces",
+       "priority": "prioritaire"
+      },
+      {
+       "title": "Principe d'inertie : première approche",
+       "priority": "prioritaire"
+      }
+     ]
+    },
+    {
+     "name": "Ondes et signaux",
+     "courses": [
+      {
+       "title": "Émission et propagation de la lumière",
+       "priority": "ensuite"
+      },
+      {
+       "title": "Réflexion et réfraction",
+       "priority": "ensuite"
+      },
+      {
+       "title": "Spectres lumineux",
+       "priority": "ensuite"
+      },
+      {
+       "title": "Son : fréquence et période",
+       "priority": "ensuite"
+      },
+      {
+       "title": "Signaux et capteurs",
+       "priority": "ensuite"
+      }
+     ]
+    },
+    {
+     "name": "Énergie",
+     "courses": [
+      {
+       "title": "Formes et conversions d'énergie",
+       "priority": "ensuite"
+      },
+      {
+       "title": "Transferts thermiques",
+       "priority": "ensuite"
+      },
+      {
+       "title": "Puissance et énergie électrique",
+       "priority": "ensuite"
+      }
+     ]
+    }
+   ],
+   "official_sources": [
+    {
+     "texte": "Programme de physique-chimie de seconde GT",
+     "reference": "Arrêté du 17-1-2019, BOEN spécial n°1 du 22-1-2019",
+     "application": "En vigueur",
+     "lien": "https://www.education.gouv.fr/reussir-au-lycee/les-enseignements-de-la-seconde-generale-et-technologique-41651",
+     "contenu": "Quatre thèmes : constitution et transformations de la matière ; mouvement et interactions ; ondes et signaux ; conversions et transferts d'énergie."
+    }
+   ]
+  },
+  {
+   "name": "SVT",
+   "chapters": [
+    {
+     "name": "La Terre, la vie et l'organisation du vivant",
+     "courses": [
+      {
+       "title": "Organisation du vivant : cellules et tissus",
+       "priority": "ensuite"
+      },
+      {
+       "title": "Information génétique et ADN",
+       "priority": "ensuite"
+      },
+      {
+       "title": "Biodiversité et évolution",
+       "priority": "ensuite"
+      },
+      {
+       "title": "Parenté entre les êtres vivants",
+       "priority": "ensuite"
+      }
+     ]
+    },
+    {
+     "name": "Enjeux contemporains de la planète",
+     "courses": [
+      {
+       "title": "Écosystèmes et interactions",
+       "priority": "ensuite"
+      },
+      {
+       "title": "Flux de matière et d'énergie",
+       "priority": "ensuite"
+      },
+      {
+       "title": "Agrosystèmes et gestion durable",
+       "priority": "ensuite"
+      },
+      {
+       "title": "Ressources et impacts des activités humaines",
+       "priority": "ensuite"
+      }
+     ]
+    },
+    {
+     "name": "Corps humain et santé",
+     "courses": [
+      {
+       "title": "Organisation du corps et santé",
+       "priority": "ensuite"
+      },
+      {
+       "title": "Micro-organismes et santé",
+       "priority": "ensuite"
+      },
+      {
+       "title": "Défenses immunitaires : bases",
+       "priority": "ensuite"
+      },
+      {
+       "title": "Activité physique et fonctionnement de l'organisme",
+       "priority": "ensuite"
+      }
+     ]
+    }
+   ],
+   "official_sources": [
+    {
+     "texte": "Programme de SVT de seconde GT",
+     "reference": "Arrêté du 17-1-2019, BOEN spécial n°1 du 22-1-2019",
+     "application": "En vigueur",
+     "lien": "https://eduscol.education.gouv.fr/5835/programmes-et-ressources-en-sciences-de-la-vie-et-de-la-terre-voie-gt",
+     "contenu": "Trois thématiques : la Terre, la vie et l'organisation du vivant ; enjeux contemporains de la planète ; corps humain et santé."
+    }
+   ]
+  },
+  {
+   "name": "SNT",
+   "chapters": [
+    {
+     "name": "Internet et le Web",
+     "courses": [
+      {
+       "title": "Réseaux et circulation de l'information",
+       "priority": "ensuite"
+      },
+      {
+       "title": "Adresses IP et routage : principes",
+       "priority": "ensuite"
+      },
+      {
+       "title": "Web, URL, navigateur et moteur de recherche",
+       "priority": "ensuite"
+      },
+      {
+       "title": "Données personnelles et identité numérique",
+       "priority": "ensuite"
+      }
+     ]
+    },
+    {
+     "name": "Réseaux sociaux",
+     "courses": [
+      {
+       "title": "Fonctionnement des réseaux sociaux",
+       "priority": "ensuite"
+      },
+      {
+       "title": "Traces numériques et e-réputation",
+       "priority": "ensuite"
+      },
+      {
+       "title": "Désinformation et vérification des sources",
+       "priority": "ensuite"
+      }
+     ]
+    },
+    {
+     "name": "Données et programmation",
+     "courses": [
+      {
+       "title": "Données structurées et formats",
+       "priority": "ensuite"
+      },
+      {
+       "title": "Tableur et traitement de données",
+       "priority": "ensuite"
+      },
+      {
+       "title": "Initiation à Python : variables et instructions",
+       "priority": "ensuite"
+      },
+      {
+       "title": "Conditions, boucles et fonctions",
+       "priority": "ensuite"
+      }
+     ]
+    },
+    {
+     "name": "Images, photographie et géolocalisation",
+     "courses": [
+      {
+       "title": "Pixels, résolution et formats d'image",
+       "priority": "ensuite"
+      },
+      {
+       "title": "Photographie numérique",
+       "priority": "ensuite"
+      },
+      {
+       "title": "GPS et données de localisation",
+       "priority": "ensuite"
+      }
+     ]
+    },
+    {
+     "name": "Informatique embarquée et objets connectés",
+     "courses": [
+      {
+       "title": "Capteurs et actionneurs",
+       "priority": "ensuite"
+      },
+      {
+       "title": "Objets connectés et usages",
+       "priority": "ensuite"
+      },
+      {
+       "title": "Sécurité et impacts environnementaux",
+       "priority": "ensuite"
+      }
+     ]
+    }
+   ],
+   "official_sources": [
+    {
+     "texte": "Programme de sciences numériques et technologie de seconde GT",
+     "reference": "Arrêté du 17-1-2019, BOEN spécial n°1 du 22-1-2019",
+     "application": "Texte de 2019 en vigueur ; révision demandée au CSP (lettre du 20-7-2026)",
+     "lien": "https://eduscol.education.gouv.fr/5841/programmes-et-ressources-en-sciences-numeriques-et-technologie-voie-gt",
+     "contenu": "Sept thèmes : Internet, Web, réseaux sociaux, données structurées, localisation et mobilité, informatique embarquée et objets connectés, photographie numérique."
+    }
+   ]
+  },
+  {
+   "name": "EMC",
+   "chapters": [
+    {
+     "name": "Vie démocratique",
+     "courses": [
+      {
+       "title": "Libertés et droits fondamentaux",
+       "priority": "ensuite",
+       "official_note": "Découpage « Vie démocratique » non repris dans le programme 2024 : voir les trois axes ajoutés."
+      },
+      {
+       "title": "Égalité et lutte contre les discriminations",
+       "priority": "ensuite",
+       "official_note": "Découpage « Vie démocratique » non repris dans le programme 2024 : voir les trois axes ajoutés."
+      },
+      {
+       "title": "Citoyenneté et engagement",
+       "priority": "ensuite",
+       "official_note": "Découpage « Vie démocratique » non repris dans le programme 2024 : voir les trois axes ajoutés."
+      },
+      {
+       "title": "Institutions et principes de la République",
+       "priority": "ensuite",
+       "official_note": "Découpage « Vie démocratique » non repris dans le programme 2024 : voir les trois axes ajoutés."
+      },
+      {
+       "title": "Débat argumenté et esprit critique",
+       "priority": "ensuite",
+       "official_note": "Découpage « Vie démocratique » non repris dans le programme 2024 : voir les trois axes ajoutés."
+      }
+     ]
+    },
+    {
+     "name": "Droits, libertés et responsabilité",
+     "courses": [
+      {
+       "title": "Axe 1 : l'État de droit garantit les droits et libertés et un pluralisme démocratique",
+       "priority": "ensuite",
+       "official_note": "Axe du programme 2024 (livret d'accompagnement 2025)."
+      },
+      {
+       "title": "Axe 2 : liberté et responsabilité, l'exemple de l'information",
+       "priority": "ensuite",
+       "official_note": "Axe du programme 2024 (livret d'accompagnement 2025)."
+      },
+      {
+       "title": "Axe 3 : droits et responsabilité, l'exemple de l'environnement et de la biodiversité",
+       "priority": "ensuite",
+       "official_note": "Axe du programme 2024 (livret d'accompagnement 2025)."
+      }
+     ]
+    }
+   ],
+   "official_sources": [
+    {
+     "texte": "Programme d'enseignement moral et civique",
+     "reference": "Arrêté du 29-5-2024, BOEN n°24 du 13-6-2024",
+     "application": "Tous niveaux à la rentrée 2026-2027",
+     "lien": "https://eduscol.education.gouv.fr/5787/programmes-et-ressources-en-enseignement-moral-et-civique-voie-gt",
+     "contenu": "Nouveau programme en application à tous les niveaux à la rentrée 2026-2027. Thème de la seconde : « Droits, libertés et responsabilité »."
+    },
+    {
+     "texte": "Livret d'accompagnement du programme d'EMC (lycée GT), 2025",
+     "reference": "Eduscol, 2025 (document d'accompagnement, pas le texte du BO)",
+     "application": "Rentrée 2026-2027",
+     "lien": "https://eduscol.education.gouv.fr/sites/default/files/document/2025livretaccompagnementemclyceegtpdf-111387.pdf",
+     "contenu": "Trois axes en seconde (6 h chacun) : État de droit, droits et libertés, pluralisme ; liberté et responsabilité, exemple de l'information ; droits et responsabilité, exemple de l'environnement et de la biodiversité."
+    }
+   ]
+  },
+  {
+   "name": "EPS",
+   "chapters": [
+    {
+     "name": "Pratiques physiques et méthodologie",
+     "courses": [
+      {
+       "title": "Développer ses capacités physiques en sécurité",
+       "priority": "ensuite",
+       "official_note": "Découpage propre au fichier, non comparé au texte officiel (un ajustement du programme d'EPS est en cours)."
+      },
+      {
+       "title": "Construire un projet d'entraînement adapté",
+       "priority": "ensuite",
+       "official_note": "Découpage propre au fichier, non comparé au texte officiel (un ajustement du programme d'EPS est en cours)."
+      },
+      {
+       "title": "Coopérer, respecter les règles et arbitrer",
+       "priority": "ensuite",
+       "official_note": "Découpage propre au fichier, non comparé au texte officiel (un ajustement du programme d'EPS est en cours)."
+      },
+      {
+       "title": "Analyser sa pratique et progresser",
+       "priority": "ensuite",
+       "official_note": "Découpage propre au fichier, non comparé au texte officiel (un ajustement du programme d'EPS est en cours)."
+      },
+      {
+       "title": "Santé, récupération et prévention",
+       "priority": "ensuite",
+       "official_note": "Découpage propre au fichier, non comparé au texte officiel (un ajustement du programme d'EPS est en cours)."
+      }
+     ]
+    }
+   ],
+   "official_sources": [
+    {
+     "texte": "Programme commun d'EPS du lycée",
+     "reference": "Saisine du CSP du 21-9-2026 (ajustement du programme)",
+     "application": "Ajustement en préparation",
+     "lien": "https://www.education.gouv.fr/le-conseil-superieur-des-programmes/les-projets-de-programme-du-lycee-general-technologique-professionnel-et-cap",
+     "contenu": "Le ministre a saisi le CSP pour ajuster le programme commun d'EPS ; aucun nouveau texte publié trouvé à ce jour."
+    }
+   ]
+  }
+ ],
+ "general_sources": [
+  {
+   "texte": "Les enseignements de la seconde générale et technologique",
+   "reference": "Ministère de l'Éducation nationale, page consultée le 21-11-2026",
+   "application": "Année scolaire 2026-2027",
+   "lien": "https://www.education.gouv.fr/reussir-au-lycee/les-enseignements-de-la-seconde-generale-et-technologique-41651",
+   "contenu": "Présentation officielle des enseignements communs de seconde."
+  }
+ ],
+ "sources_checked": "2026-11-21"
+}

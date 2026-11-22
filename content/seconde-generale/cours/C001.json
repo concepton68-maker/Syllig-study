@@ -1,0 +1,271 @@
+{
+  "format": "syllig-course/1",
+  "code": "C001",
+  "level": "seconde-generale",
+  "subject": "Français",
+  "chapter": "Le roman et le récit",
+  "title": "Les caractéristiques du récit",
+  "skills": [
+    { "id": "fr-narrateur", "label": "Identifier le narrateur" },
+    { "id": "fr-focalisation", "label": "Identifier la focalisation" },
+    { "id": "fr-temps-recit", "label": "Analyser l'ordre et le rythme du récit" },
+    { "id": "fr-schema-narratif", "label": "Situer un passage dans le schéma narratif" },
+    { "id": "fr-cadre-personnages", "label": "Analyser le cadre et les personnages" },
+    { "id": "fr-ecriture-recit", "label": "Écrire et réécrire un récit" },
+    { "id": "fr-interpretation", "label": "Interpréter un effet sur le lecteur" }
+  ],
+  "lesson": {
+    "duration_min": 30,
+    "objectives": [
+      "distinguer l'auteur, le narrateur et les personnages ;",
+      "identifier le point de vue (la focalisation) adopté dans un récit ;",
+      "repérer l'ordre et le rythme du temps du récit ;",
+      "reconnaître les étapes du schéma narratif."
+    ],
+    "essential": "Un récit raconte une suite d'événements, réels ou imaginaires, vécus par des personnages dans un cadre précis (lieu et époque). Pour bien lire un récit (roman, nouvelle, conte), on se pose cinq questions : Qui raconte ? Qui voit ? Quand et combien de temps ? Que se passe-t-il ? Où et avec qui ?",
+    "parts": [
+      {
+        "title": "Qui raconte ? L'auteur, le narrateur et les personnages",
+        "blocks": [
+          { "type": "table", "columns": ["Notion", "Définition", "Exemple"], "rows": [
+            ["Auteur", "Personne réelle qui écrit l'œuvre. Son nom figure sur la couverture du livre.", "Guy de Maupassant est l'auteur de « La Parure »."],
+            ["Narrateur", "Voix qui raconte l'histoire. Il est créé par l'auteur, même s'il lui ressemble.", "« Elle ouvrit la porte et s'arrêta. » : une voix extérieure raconte."],
+            ["Personnage", "Être (humain, animal, objet…) qui agit ou subit l'action dans l'histoire.", "Jean Valjean, dans « Les Misérables » de Victor Hugo."]
+          ] },
+          { "type": "table", "columns": ["Type de narrateur", "Définition et pronoms", "Effet et exemple"], "rows": [
+            ["Narrateur-personnage", "Il participe à l'histoire et la raconte lui-même. Pronoms : je, nous.", "Proximité, confidence, subjectivité. Ex. : « Longtemps, je me suis couché de bonne heure. » (Proust)"],
+            ["Narrateur extérieur", "Il ne participe pas à l'histoire : il la raconte de l'extérieur. Pronoms : il, elle, ils.", "Recul, vue d'ensemble, impression d'objectivité."]
+          ] },
+          { "type": "callout", "kind": "plus", "text": "Vocabulaire de Gérard Genette : narrateur homodiégétique (présent dans l'histoire) et narrateur hétérodiégétique (absent de l'histoire)." },
+          { "type": "callout", "kind": "retiens", "text": "En règle générale, ne confonds pas l'auteur (qui écrit) et le narrateur (qui raconte) : même un récit en « je » n'est pas forcément une autobiographie." }
+        ],
+        "checkpoint": { "variants": [
+          { "prompt": "Dans un roman écrit à la première personne, qui dit « je » ?", "options": ["Toujours l'auteur", "Le narrateur, qui peut être un personnage inventé", "Le lecteur"], "answer": 1, "hint": "Relis l'encadré « Je retiens » : un récit en « je » n'est pas forcément une autobiographie.", "explanation": "Le « je » est celui du narrateur, une voix créée par l'auteur." },
+          { "prompt": "« Il marchait seul sous la pluie, sans savoir où aller. » Quel type de narrateur ?", "options": ["Narrateur-personnage", "Narrateur extérieur", "On ne peut pas savoir"], "answer": 1, "hint": "Regarde le pronom utilisé pour désigner le personnage.", "explanation": "Le récit est à la 3e personne : le narrateur ne participe pas à l'histoire." },
+          { "prompt": "Victor Hugo est, pour « Les Misérables »…", "options": ["le narrateur", "un personnage", "l'auteur"], "answer": 2, "hint": "Qui est la personne réelle dont le nom figure sur la couverture ?", "explanation": "Victor Hugo est la personne réelle qui a écrit l'œuvre : l'auteur." }
+        ] }
+      },
+      {
+        "title": "Qui voit ? Le point de vue (la focalisation)",
+        "blocks": [
+          { "type": "callout", "kind": "definition", "text": "Le point de vue, ou focalisation, répond à la question : à travers quels yeux le lecteur découvre-t-il l'histoire ? Autrement dit, que sait le narrateur par rapport aux personnages ?" },
+          { "type": "table", "columns": ["Type", "Ce que sait le narrateur, et indices", "Effet sur le lecteur"], "rows": [
+            ["Focalisation zéro (narrateur omniscient)", "Il en sait plus que les personnages : leurs pensées, leur passé, parfois leur avenir. Indices : pensées de plusieurs personnages, anticipations, commentaires du narrateur.", "Vue d'ensemble : le lecteur est guidé et en sait plus que les personnages."],
+            ["Focalisation interne", "On perçoit l'histoire à travers un seul personnage : on ne sait que ce qu'il voit, sent et pense. Indices : verbes de perception et de pensée, sensations, doutes.", "Identification, empathie, suspense."],
+            ["Focalisation externe", "Le narrateur ne montre que ce qu'une caméra pourrait filmer : gestes, paroles, décor. Indices : actions et dialogues, aucun accès aux pensées, « semblait », « paraissait ».", "Mystère et distance : le lecteur doit interpréter."]
+          ] },
+          { "type": "callout", "kind": "retiens", "text": "Le point de vue ne dépend pas du pronom : un récit à la 3e personne (« il », « elle ») peut très bien être en focalisation interne. Il peut aussi changer d'un passage à l'autre." }
+        ],
+        "checkpoint": { "variants": [
+          { "prompt": "Quelle focalisation est utilisée ?", "quote": "Elle ignorait que, derrière la porte, son frère l'attendait depuis une heure, décidé à tout lui avouer.", "options": ["Focalisation interne", "Focalisation zéro (omniscient)", "Focalisation externe"], "answer": 1, "hint": "Le narrateur sait-il des choses que le personnage ignore ?", "explanation": "Le narrateur sait ce que le personnage ignore : il est omniscient." },
+          { "prompt": "Quelle focalisation est utilisée ?", "quote": "L'homme entra, posa son chapeau sur la table et sourit. Il semblait attendre quelqu'un.", "options": ["Focalisation externe", "Focalisation interne", "Focalisation zéro (omniscient)"], "answer": 0, "hint": "A-t-on accès aux pensées du personnage ? Que montre le mot « semblait » ?", "explanation": "On ne voit que des gestes, comme une caméra : « semblait » montre qu'on n'a pas accès à ses pensées." },
+          { "prompt": "Quelle focalisation est utilisée ?", "quote": "Julie sentit son cœur s'accélérer. Ce bruit, derrière elle… était-ce un pas ? Elle n'osait pas se retourner.", "options": ["Focalisation zéro (omniscient)", "Focalisation externe", "Focalisation interne"], "answer": 2, "hint": "Cherche les verbes de perception et les pensées d'un seul personnage.", "explanation": "On perçoit la scène à travers les sensations et les doutes de Julie, même à la 3e personne." }
+        ] }
+      },
+      {
+        "title": "Quand et combien de temps ? Le temps du récit",
+        "blocks": [
+          { "type": "heading", "text": "Ordre des événements" },
+          { "type": "table", "columns": ["Notion", "Définition", "Exemple"], "rows": [
+            ["Ordre chronologique", "Les événements sont racontés dans l'ordre où ils se sont produits.", "Il se leva, s'habilla, puis sortit."],
+            ["Analepse (retour en arrière, flash-back)", "Le récit évoque un événement antérieur au moment raconté. Elle est souvent signalée par le plus-que-parfait.", "« Trois ans plus tôt, elle avait quitté la ville. »"],
+            ["Prolepse (anticipation)", "Le récit évoque à l'avance un événement qui se produira plus tard.", "« Il ne devait jamais la revoir. »"]
+          ] },
+          { "type": "heading", "text": "Rythme du récit (durée)" },
+          { "type": "table", "columns": ["Notion", "Définition", "Exemple"], "rows": [
+            ["Scène", "La durée du récit est proche de celle de l'histoire ; c'est souvent un dialogue.", "Un échange de répliques rapporté en entier."],
+            ["Sommaire", "Une longue durée est résumée en quelques mots : le récit accélère.", "« Les mois passèrent. »"],
+            ["Ellipse", "Un laps de temps est passé sous silence : rien n'est raconté.", "« Deux ans plus tard, elle revenait. »"],
+            ["Pause", "Le temps de l'histoire s'arrête : description ou commentaire du narrateur.", "La description d'un paysage ou d'un visage."]
+          ] },
+          { "type": "heading", "text": "Temps verbaux" },
+          { "type": "table", "columns": ["Temps", "Emploi", "Exemple"], "rows": [
+            ["Passé simple", "Actions de premier plan, qui font avancer le récit (événements ponctuels).", "Elle ouvrit la porte."],
+            ["Imparfait", "Arrière-plan : description, durée, habitudes.", "La pluie battait les vitres."],
+            ["Plus-que-parfait", "Antériorité : ce qui s'est passé avant l'action principale (souvent une analepse).", "Elle avait promis de revenir."]
+          ] },
+          { "type": "callout", "kind": "retiens", "text": "Le passé simple fait avancer l'action ; l'imparfait installe le décor ; le plus-que-parfait ramène en arrière." }
+        ],
+        "checkpoint": { "variants": [
+          { "prompt": "« Les mois passèrent. » Quel rythme du récit ?", "options": ["Scène", "Sommaire", "Ellipse", "Pause"], "answer": 1, "hint": "On nous dit que du temps passe, en quelques mots : est-ce résumé ou passé sous silence ?", "explanation": "Une longue durée est résumée en trois mots : c'est un sommaire." },
+          { "prompt": "« Trois ans plus tôt, elle avait quitté la ville. » De quoi s'agit-il ?", "options": ["Une prolepse", "Une ellipse", "Une analepse"], "answer": 2, "hint": "« Plus tôt » et le plus-que-parfait : on avance ou on recule dans le temps ?", "explanation": "On revient en arrière dans le temps : c'est une analepse." },
+          { "prompt": "Quel temps fait avancer l'action, au premier plan ?", "options": ["L'imparfait", "Le passé simple", "Le plus-que-parfait"], "answer": 1, "hint": "Relis l'encadré « Je retiens ».", "explanation": "Le passé simple sert aux actions de premier plan." }
+        ] }
+      },
+      {
+        "title": "Que se passe-t-il ? Le schéma narratif",
+        "blocks": [
+          { "type": "table", "columns": ["Étape", "Rôle", "Question pour la repérer"], "rows": [
+            ["1. Situation initiale", "Présente les personnages, le lieu et l'époque. Tout est à l'équilibre.", "Qui ? Où ? Quand ? Comment est la situation au départ ?"],
+            ["2. Élément perturbateur", "Événement qui rompt l'équilibre et lance l'action.", "Qu'est-ce qui change tout ? Quel problème apparaît ?"],
+            ["3. Péripéties", "Suite d'actions et d'obstacles qui s'enchaînent.", "Que fait le personnage ? Quels obstacles rencontre-t-il ?"],
+            ["4. Élément de résolution", "Événement qui met fin aux péripéties et règle le problème.", "Qu'est-ce qui met fin à l'action ?"],
+            ["5. Situation finale", "Un nouvel équilibre s'installe.", "Qu'est-ce qui a changé par rapport au début ?"]
+          ] },
+          { "type": "callout", "kind": "attention", "text": "Tous les récits ne suivent pas ce schéma à la lettre (fins ouvertes, retours en arrière, histoires parallèles)." }
+        ],
+        "checkpoint": { "variants": [
+          { "prompt": "Quelle étape rompt l'équilibre et lance l'action ?", "options": ["La situation initiale", "L'élément perturbateur", "L'élément de résolution"], "answer": 1, "hint": "Quelle étape répond à « Qu'est-ce qui change tout ? »", "explanation": "L'élément perturbateur rompt l'équilibre de départ." },
+          { "prompt": "Quelle étape vient juste avant la situation finale ?", "options": ["Les péripéties", "L'élément de résolution", "L'élément perturbateur"], "answer": 1, "hint": "Relis l'ordre des 5 étapes.", "explanation": "L'élément de résolution met fin aux péripéties, puis la situation finale s'installe." }
+        ] }
+      },
+      {
+        "title": "Où et avec qui ? Cadre, personnages et formes de texte",
+        "blocks": [
+          { "type": "heading", "text": "Cadre et personnages" },
+          { "type": "table", "columns": ["Notion", "Définition", "Exemple"], "rows": [
+            ["Cadre spatio-temporel", "Lieu(x) et époque(s) de l'histoire. Il crée une atmosphère et peut jouer un rôle dans l'action.", "Une gare sous la pluie évoque la solitude."],
+            ["Personnage principal", "Le héros (ou protagoniste) : celui dont l'histoire est racontée. Les autres sont des personnages secondaires.", "Jean Valjean dans « Les Misérables »."],
+            ["Caractérisation", "Le narrateur décrit directement un personnage (portrait) ou le fait connaître indirectement par ses actions et ses paroles.", "Une réplique amère révèle sa solitude."]
+          ] },
+          { "type": "heading", "text": "Les trois formes de texte" },
+          { "type": "table", "columns": ["Forme", "Définition", "Exemple"], "rows": [
+            ["Narration", "Passages qui racontent les actions.", "Elle descendit du train."],
+            ["Description", "Passages qui arrêtent l'action pour montrer un lieu, un objet ou un personnage.", "La gare était minuscule et grise."],
+            ["Dialogue", "Paroles échangées par les personnages (discours direct).", "— Vous attendez quelqu'un ?"]
+          ] },
+          { "type": "heading", "text": "Méthode · Analyser un extrait de récit en 5 questions" },
+          { "type": "table", "columns": ["Question", "Je cherche…", "Je relève…"], "rows": [
+            ["1. Qui raconte ?", "Le pronom et la place du narrateur", "« je », « nous » ou « il », « elle »"],
+            ["2. Qui voit ?", "Ce que le narrateur nous fait savoir", "Verbes de perception et de pensée, accès aux pensées"],
+            ["3. Quand, combien de temps ?", "L'ordre et le rythme", "Temps verbaux, indicateurs de temps, analepse, sommaire, ellipse"],
+            ["4. Que se passe-t-il ?", "L'étape du schéma narratif", "Événement, problème, résolution"],
+            ["5. Quel effet ?", "L'émotion ou la réaction produite", "Suspense, empathie, mystère, nostalgie…"]
+          ] },
+          { "type": "callout", "kind": "methode", "title": "Réflexe", "text": "CITER → NOMMER → EXPLIQUER : je cite un indice du texte, je nomme le procédé (par exemple « focalisation interne »), j'explique l'effet produit sur le lecteur." },
+          { "type": "callout", "kind": "attention", "title": "Pièges à éviter", "text": "✗ Confondre l'auteur (celui qui écrit) et le narrateur (celui qui raconte).\n✗ Croire que « il / elle » signifie focalisation externe : tout dépend de ce que le narrateur nous laisse savoir.\n✗ Confondre sommaire (on résume) et ellipse (on passe sous silence).\n✗ Répondre sans citer le texte : toujours appuyer sa réponse sur un indice.\n✗ Oublier l'effet : nommer un procédé ne suffit pas, il faut l'expliquer." }
+        ],
+        "checkpoint": { "variants": [
+          { "prompt": "« La gare était minuscule et grise. » Quelle forme de texte ?", "options": ["Narration", "Description", "Dialogue"], "answer": 1, "hint": "Ce passage fait-il avancer l'action, ou montre-t-il un lieu ?", "explanation": "Le passage arrête l'action pour montrer un lieu : c'est une description." },
+          { "prompt": "Dans le réflexe d'analyse, que fait-on après avoir cité un indice ?", "options": ["On passe à la question suivante", "On nomme le procédé, puis on explique son effet", "On résume le texte"], "answer": 1, "hint": "CITER → … → …", "explanation": "Citer, nommer, expliquer : l'effet sur le lecteur est indispensable." }
+        ] }
+      }
+    ],
+    "memo": [
+      { "label": "Qui raconte ?", "text": "Le narrateur : « je » (narrateur-personnage) ou « il / elle » (narrateur extérieur)." },
+      { "label": "Qui voit ?", "text": "La focalisation : zéro, interne ou externe." },
+      { "label": "Quand ?", "text": "L'ordre (chronologique, analepse, prolepse) et le rythme (scène, sommaire, ellipse, pause)." },
+      { "label": "Quoi ?", "text": "Le schéma narratif en 5 étapes." },
+      { "label": "Où et avec qui ?", "text": "Le cadre spatio-temporel, les personnages, la narration / la description / le dialogue." }
+    ]
+  },
+  "exercises": {
+    "duration_min": 35,
+    "instructions": "Lis le texte 1 deux fois. Réponds à chaque exercice, puis valide : les corrigés s'affichent seulement après tes réponses.",
+    "pass_threshold": 8,
+    "texts": [
+      { "id": "t1", "label": "Texte 1", "source": "Texte original écrit pour ce cours.", "paragraphs": [
+        "La pluie battait les vitres de la petite gare quand Camille descendit du train, sa valise à la main. Elle leva les yeux vers l'horloge : dix-huit heures douze. Trois ans plus tôt, sur ce même quai, elle avait promis à son père de revenir pour l'été ; elle n'était jamais revenue. Elle serra la poignée de sa valise.",
+        "— Vous attendez quelqu'un ? demanda le chef de gare.",
+        "— Non, répondit-elle. Plus personne ne m'attend ici.",
+        "Il hocha la tête sans insister. Une heure passa ainsi, pendant que Camille fixait la pluie en se demandant si elle aurait le courage de pousser la porte de la maison familiale."
+      ] }
+    ],
+    "items": [
+      { "id": "ex1", "type": "open", "stars": 1, "text_ref": "t1", "lesson_part": 1, "skills": ["fr-narrateur"], "cognitive": "connaitre",
+        "prompt": "Le narrateur est-il un personnage de l'histoire ? Justifie avec un indice grammatical.",
+        "solution": "Non : le récit est à la 3e personne (« Camille », « elle ») et le narrateur n'apparaît jamais en « je ». C'est un narrateur extérieur à l'histoire." },
+      { "id": "ex2", "type": "open", "stars": 1, "text_ref": "t1", "lesson_part": 2, "skills": ["fr-focalisation"], "cognitive": "analyser",
+        "prompt": "Quelle focalisation domine dans ce texte ? Cite le passage qui le prouve.",
+        "solution": "Focalisation interne sur Camille : le narrateur donne accès à ses pensées, par exemple « en se demandant si elle aurait le courage de pousser la porte de la maison familiale »." },
+      { "id": "ex3", "type": "open", "stars": 1, "text_ref": "t1", "lesson_part": 3, "skills": ["fr-temps-recit"], "cognitive": "analyser",
+        "prompt": "Relève l'analepse (retour en arrière) du texte et justifie par deux indices.",
+        "solution": "« Trois ans plus tôt, sur ce même quai, elle avait promis à son père de revenir pour l'été ; elle n'était jamais revenue. » Indices : l'indicateur de temps « Trois ans plus tôt » et le plus-que-parfait (« avait promis », « n'était jamais revenue »)." },
+      { "id": "ex4", "type": "open", "stars": 1, "text_ref": "t1", "lesson_part": 5, "skills": ["fr-cadre-personnages"], "cognitive": "connaitre",
+        "prompt": "Précise le cadre spatio-temporel : où et quand se passe la scène ?",
+        "solution": "Lieu : une petite gare (le quai). Moment : en fin de journée, à 18 h 12, par temps de pluie. L'époque n'est pas précisée." },
+      { "id": "ex5", "type": "qcm", "stars": 2, "text_ref": "t1", "lesson_part": 3, "skills": ["fr-temps-recit"], "cognitive": "analyser",
+        "prompt": "« Une heure passa ainsi » : de quel rythme du récit s'agit-il ?",
+        "options": ["Une scène", "Un sommaire", "Une ellipse", "Une pause"], "answer": 1,
+        "solution": "Sommaire : une heure entière est résumée en une courte phrase (« Une heure passa ainsi »). Ce n'est pas une ellipse, car on nous dit ce qui se passe (Camille fixe la pluie)." },
+      { "id": "ex6", "type": "open", "stars": 2, "text_ref": "t1", "lesson_part": 5, "skills": ["fr-cadre-personnages", "fr-interpretation"], "cognitive": "analyser",
+        "prompt": "Que nous apprend le dialogue sur Camille ? Explique l'effet de la réplique « Plus personne ne m'attend ici ».",
+        "solution": "Le dialogue anime le récit et caractérise Camille par ses paroles. La réplique « Plus personne ne m'attend ici » révèle sa solitude et laisse deviner un passé douloureux : elle crée du mystère." },
+      { "id": "ex7", "type": "open", "stars": 2, "text_ref": "t1", "lesson_part": 4, "skills": ["fr-schema-narratif"], "cognitive": "analyser",
+        "prompt": "À quelle étape du schéma narratif ce passage correspond-il ? Justifie en deux phrases.",
+        "solution": "C'est une situation initiale : on présente le personnage (Camille), le lieu (la gare) et le moment. La promesse non tenue annonce un problème, mais l'élément perturbateur n'est pas encore arrivé." },
+      { "id": "ex8", "type": "open", "stars": 2, "text_ref": "t1", "lesson_part": 1, "skills": ["fr-narrateur", "fr-ecriture-recit"], "cognitive": "rediger",
+        "prompt": "Réécris la première phrase du texte à la 1re personne (narrateur-personnage), puis explique ce que cela change pour le lecteur.",
+        "solution": "« La pluie battait les vitres de la petite gare quand je descendis du train, ma valise à la main. » Le récit devient plus subjectif et plus intime : le lecteur est plus proche du personnage, qui raconte lui-même." },
+      { "id": "ex9", "type": "open", "stars": 3, "text_ref": "t1", "lesson_part": 3, "skills": ["fr-ecriture-recit", "fr-temps-recit"], "cognitive": "rediger",
+        "prompt": "Écriture : prolonge le texte en 5 à 6 lignes en insérant une analepse sur la dernière rencontre entre Camille et son père. Garde la 3e personne et la focalisation interne.",
+        "solution": "Exemple : « Elle se souvint du dernier matin. Son père l'avait accompagnée jusqu'au train, sans un mot, les mains enfoncées dans les poches de son manteau. Quand les portes s'étaient fermées, il avait levé la main, un peu raide, comme pour retenir quelque chose qui lui échappait. Camille n'avait pas osé le regarder longtemps. Aujourd'hui encore, elle se demandait ce qu'il avait voulu lui dire. » Critères : 3e personne, plus-que-parfait pour l'analepse, accès aux pensées de Camille, 5 à 6 lignes." },
+      { "id": "ex10", "type": "open", "stars": 3, "text_ref": "t1", "lesson_part": 2, "skills": ["fr-focalisation", "fr-interpretation"], "cognitive": "rediger",
+        "prompt": "Rédige un paragraphe de 4 à 5 lignes : pourquoi la focalisation interne est-elle bien choisie pour ce début de récit ? Appuie-toi sur un exemple du texte.",
+        "solution": "Exemple : la focalisation interne nous place dans l'esprit de Camille. On partage ses doutes (« si elle aurait le courage… ») et son malaise face au retour. Elle crée aussi du suspense : comme Camille, le lecteur ignore ce qui l'attend dans la maison et pourquoi elle n'est jamais revenue." }
+    ]
+  },
+  "evaluation": {
+    "duration_min": 25,
+    "conditions": "Sans la leçon ni les corrigés, en 25 minutes. Barème : A = 6 points · B = 10 points · C = 4 points.",
+    "total_points": 20,
+    "variants": [
+      {
+        "texts": [
+          { "id": "t2", "label": "Texte 2", "source": "Texte original écrit pour ce cours.", "paragraphs": [
+            "Je n'ai jamais aimé l'odeur du port le matin. Pourtant, ce jour-là, mon grand-père m'y avait traîné avant l'aube.",
+            "« Regarde bien, gamin, m'avait-il dit, tu ne verras plus ça de sitôt. »",
+            "Je ne comprenais pas. Les bateaux se balançaient, immenses, dans la brume grise. Des années ont passé : le port a disparu, et la voix de mon grand-père avec lui."
+          ] }
+        ],
+        "sections": [
+          { "label": "A · Je connais mon cours (6 points)", "questions": [
+            { "id": "q1", "type": "open", "points": 1, "lesson_part": 1, "skills": ["fr-narrateur"], "cognitive": "connaitre",
+              "prompt": "Définis le mot « narrateur ».",
+              "solution": "La voix qui raconte l'histoire. Il est inventé par l'auteur ; ce peut être un personnage ou non.",
+              "rubric": "1 pt : « voix qui raconte » (ou équivalent). 0,5 pt si la réponse confond partiellement avec l'auteur." },
+            { "id": "q2", "type": "open", "points": 1, "lesson_part": 1, "skills": ["fr-narrateur"], "cognitive": "connaitre",
+              "prompt": "Quelle différence y a-t-il entre l'auteur et le narrateur ?",
+              "solution": "L'auteur est la personne réelle qui écrit le livre ; le narrateur est la voix qui raconte dans le texte.",
+              "rubric": "0,5 pt : auteur = personne réelle qui écrit. 0,5 pt : narrateur = voix qui raconte." },
+            { "id": "q3", "type": "short", "points": 1, "lesson_part": 2, "skills": ["fr-focalisation"], "cognitive": "connaitre",
+              "prompt": "Nomme les trois types de focalisation.",
+              "answer": ["zéro, interne, externe", "zero interne externe", "focalisation zéro, focalisation interne, focalisation externe", "interne, externe, zéro", "omnisciente, interne, externe"],
+              "solution": "Focalisation zéro (narrateur omniscient), focalisation interne, focalisation externe.",
+              "rubric": "1 pt si les trois sont cités, 0,5 pt pour deux." },
+            { "id": "q4", "type": "open", "points": 1, "lesson_part": 3, "skills": ["fr-temps-recit"], "cognitive": "connaitre",
+              "prompt": "Qu'est-ce qu'une analepse ?",
+              "solution": "Un retour en arrière : le récit évoque un événement antérieur au moment raconté (flash-back).",
+              "rubric": "1 pt : idée de retour en arrière / événement antérieur." },
+            { "id": "q5", "type": "open", "points": 1, "lesson_part": 4, "skills": ["fr-schema-narratif"], "cognitive": "connaitre",
+              "prompt": "Cite, dans l'ordre, les cinq étapes du schéma narratif.",
+              "solution": "Situation initiale, élément perturbateur, péripéties, élément de résolution, situation finale (ordre exact).",
+              "rubric": "1 pt : les cinq étapes dans l'ordre. 0,5 pt : cinq étapes mais ordre inexact, ou quatre dans l'ordre." },
+            { "id": "q6", "type": "open", "points": 1, "lesson_part": 3, "skills": ["fr-temps-recit"], "cognitive": "connaitre",
+              "prompt": "Quelle différence y a-t-il entre un sommaire et une ellipse ?",
+              "solution": "Le sommaire résume une durée en quelques mots (on sait ce qui s'est passé) ; l'ellipse passe un laps de temps sous silence (rien n'est raconté).",
+              "rubric": "0,5 pt : sommaire = résumé. 0,5 pt : ellipse = passé sous silence." }
+          ] },
+          { "label": "B · J'analyse un texte (10 points)", "questions": [
+            { "id": "q7", "type": "open", "points": 2, "text_ref": "t2", "lesson_part": 1, "skills": ["fr-narrateur"], "cognitive": "analyser",
+              "prompt": "Qui est le narrateur ? Justifie avec un indice grammatical.",
+              "solution": "Le narrateur est un personnage de l'histoire (le petit-fils) : récit à la 1re personne (« je n'ai jamais aimé », « m'y avait traîné »).",
+              "rubric": "1 pt pour l'identification (narrateur-personnage, le petit-fils), 1 pt pour l'indice grammatical (1re personne)." },
+            { "id": "q8", "type": "open", "points": 2, "text_ref": "t2", "lesson_part": 2, "skills": ["fr-focalisation"], "cognitive": "analyser",
+              "prompt": "Quelle focalisation est utilisée ? Appuie-toi sur un passage du texte.",
+              "solution": "Focalisation interne : on découvre la scène à travers les perceptions et les pensées du narrateur (« l'odeur du port », « je ne comprenais pas »).",
+              "rubric": "1 pt pour le type (interne), 1 pt pour un passage pertinent cité." },
+            { "id": "q9", "type": "open", "points": 2, "text_ref": "t2", "lesson_part": 3, "skills": ["fr-temps-recit"], "cognitive": "analyser",
+              "prompt": "Relève un passage qui est une analepse et explique ce qui le montre.",
+              "solution": "« Ce jour-là, mon grand-père m'y avait traîné avant l'aube » (ou la réplique « m'avait-il dit »). Indices : « ce jour-là » et le plus-que-parfait.",
+              "rubric": "1 pt pour le relevé, 1 pt pour l'explication (indicateur de temps et/ou plus-que-parfait)." },
+            { "id": "q10", "type": "open", "points": 2, "text_ref": "t2", "lesson_part": 3, "skills": ["fr-temps-recit", "fr-interpretation"], "cognitive": "analyser",
+              "prompt": "Quel rythme narratif la phrase « Des années ont passé » illustre-t-elle ? Quel effet produit-elle ?",
+              "solution": "Sommaire (ellipse acceptée si l'élève explique que le temps est « sauté »). Effet : le récit accélère, on passe de l'enfance au présent et on mesure le temps écoulé.",
+              "rubric": "1 pt pour le rythme (sommaire, ou ellipse justifiée), 1 pt pour l'effet." },
+            { "id": "q11", "type": "open", "points": 2, "text_ref": "t2", "lesson_part": 5, "skills": ["fr-interpretation"], "cognitive": "analyser",
+              "prompt": "Quel effet la dernière phrase produit-elle sur le lecteur ? Explique en 2 ou 3 lignes.",
+              "solution": "Effet de nostalgie et de perte : le port et le grand-père ont disparu, et l'avertissement du grand-père (« tu ne verras plus ça de sitôt ») s'est réalisé.",
+              "rubric": "1 pt pour l'effet (nostalgie, perte, mélancolie), 1 pt pour la justification appuyée sur le texte." }
+          ] },
+          { "label": "C · J'écris (4 points)", "questions": [
+            { "id": "q12", "type": "open", "points": 4, "text_ref": "t2", "lesson_part": 2, "skills": ["fr-ecriture-recit", "fr-focalisation"], "cognitive": "rediger",
+              "prompt": "Réécris les deux premières phrases du texte 2 à la 3e personne, en focalisation externe : le narrateur ne doit plus dire ce que le personnage pense ou ressent, seulement ce que l'on peut voir ou entendre.",
+              "solution": "Exemple : « Le garçon fronçait le nez à l'odeur du port, ce matin-là. Son grand-père l'y avait emmené avant l'aube. »",
+              "rubric": "1 pt : 3e personne. 1 pt : focalisation externe (aucune pensée ni sentiment direct). 1 pt : sens conservé (port, odeur, grand-père, aube). 1 pt : langue correcte." }
+          ] }
+        ]
+      }
+    ]
+  }
+}
