@@ -22,6 +22,8 @@ fi
 PORT=$(grep -E '^APP_PORT=' .env | cut -d= -f2); PORT=${PORT:-8820}
 
 echo "2/5 · Construction et démarrage des conteneurs (quelques minutes la première fois)"
+export APP_VERSION="$(git -C "$DIR" rev-parse --short HEAD 2>/dev/null || echo archive)"
+export APP_STARTED="$(date -Is)"
 docker compose build --pull
 docker compose up -d
 for i in $(seq 1 60); do
@@ -54,9 +56,14 @@ else
   fi
 fi
 
-echo "4/5 · Sauvegarde nocturne de la base (3 h 17, 30 jours conservés)"
-chmod +x deploy/backup.sh
-echo "17 3 * * * root ${DIR}/deploy/backup.sh >> /var/log/syllig-study-backup.log 2>&1" > /etc/cron.d/syllig-study
+echo "4/5 · Tâches automatiques : sauvegarde nocturne (3 h 17) et mises à jour depuis GitHub (toutes les 2 min)"
+chmod +x deploy/backup.sh deploy/auto-update.sh
+{
+  echo "17 3 * * * root ${DIR}/deploy/backup.sh >> /var/log/syllig-study-backup.log 2>&1"
+  if git -C "$DIR" remote get-url origin >/dev/null 2>&1; then
+    echo "*/2 * * * * root ${DIR}/deploy/auto-update.sh ${DOMAIN}"
+  fi
+} > /etc/cron.d/syllig-study
 chmod 644 /etc/cron.d/syllig-study
 
 echo "5/5 · Vérification DNS"

@@ -24,6 +24,8 @@ services:
         condition: service_healthy
     environment:
       DATABASE_URL: postgres://syllig:${POSTGRES_PASSWORD}@db:5432/syllig
+      APP_VERSION: ${APP_VERSION:-inconnue}
+      APP_STARTED: ${APP_STARTED:-}
     ports:
       - "127.0.0.1:${APP_PORT:-8820}:3000"   # accessible uniquement depuis le serveur (Caddy)
 volumes:

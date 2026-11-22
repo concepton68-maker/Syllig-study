@@ -34,7 +34,12 @@ Les questions s'affichent une à une ; les mots de passe ne s'affichent pas à l
 2. « Format et consigne IA » → télécharger l'exemple `C001.json`.
 3. « Importer un cours » → choisir ce fichier → relire l'aperçu → « Publier cette version ».
 
-## Mettre à jour plus tard
+## Mises à jour automatiques
+Le serveur vérifie GitHub toutes les 2 minutes (`/etc/cron.d/syllig-study`). À chaque nouvelle version sur la branche `main`, il l'installe tout seul ; en cas d'échec, il revient à la version précédente.
+- Version en ligne : https://study.syllig.com/api/version
+- Historique des mises à jour : `sudo tail -50 /var/log/syllig-study-deploy.log`
+
+## Mettre à jour à la main (si besoin)
 Sur le serveur (dossier relié à GitHub) :
 ```
 cd /opt/syllig-study && sudo git pull && sudo ./deploy/install.sh study.syllig.com
