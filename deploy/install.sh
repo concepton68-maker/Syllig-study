@@ -23,6 +23,7 @@ PORT=$(grep -E '^APP_PORT=' .env | cut -d= -f2); PORT=${PORT:-8820}
 
 echo "2/5 · Construction et démarrage des conteneurs (quelques minutes la première fois)"
 export APP_VERSION="$(git -C "$DIR" rev-parse --short HEAD 2>/dev/null || echo archive)"
+export APP_RELEASE="$(cat "$DIR/VERSION" 2>/dev/null || echo 0.00)"
 export APP_STARTED="$(date -Is)"
 docker compose build --pull
 docker compose up -d
@@ -76,7 +77,7 @@ else
 fi
 
 echo
-VERSION=$(git -C "$DIR" log -1 --format='%h · %s' 2>/dev/null || echo "archive")
+VERSION="v${APP_RELEASE} · $(git -C "$DIR" log -1 --format='%h · %s' 2>/dev/null || echo "archive")"
 USERS=$(docker compose exec -T db psql -U syllig -tAc "select count(*) from users" 2>/dev/null || echo 0)
 echo "Terminé. Version installée : ${VERSION}"
 if [ "${USERS:-0}" = "0" ]; then

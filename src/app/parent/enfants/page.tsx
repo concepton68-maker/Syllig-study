@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { sql } from '@/lib/db';
 import { requireParent } from '@/lib/access';
 import { PageTitle } from '@/components/Shell';
@@ -21,7 +22,10 @@ export default async function Children() {
         <section key={s.id} className="card flex flex-wrap justify-between items-start gap-4">
           <div><h2 className="text-xl font-semibold">{s.first_name}</h2><span className="muted text-sm">{s.level_name} · identifiant : <strong>{byId.get(s.id)?.login}</strong>
             {byId.get(s.id)?.last_login_at ? ` · dernière connexion le ${byId.get(s.id)!.last_login_at!.toLocaleDateString('fr-FR', { timeZone: 'Europe/Paris' })}` : ' · jamais connecté'}</span></div>
-          <ResetForm studentId={s.id} />
+          <div className="flex flex-col items-end gap-3">
+            <Link className="btn btn-primary" href={`/parent/enfants/${s.id}`}>Gérer le parcours</Link>
+            <ResetForm studentId={s.id} />
+          </div>
         </section>
       ))}
       <section className="card flex flex-col gap-3 max-w-[760px]"><h2 className="text-xl font-semibold">Ajouter un enfant</h2><AddChildForm levels={levels} /></section>
