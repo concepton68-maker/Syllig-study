@@ -6,6 +6,7 @@ import { publicQuestion } from '@/lib/course-format';
 import { versionById } from '@/lib/progress';
 import { getAttempt, expireIfNeeded } from '@/lib/evaluation';
 import { ActivityTracker } from '@/components/ActivityTracker';
+import { Screen, PaneScreen } from '@/components/Layout';
 import { EvalRunner } from './Runner';
 import { evalAvailability, startEvaluation } from './actions';
 
@@ -35,20 +36,18 @@ export default async function EvaluationPage({ params }: { params: Promise<{ id:
     const v = (await versionById(attempt.version_id))!.document.evaluation;
     const variant = v.variants[attempt.variant % v.variants.length];
     return (
-      <>{header}
-        <div className="max-w-[920px] w-full mx-auto">
+      <PaneScreen top={header}>
           <EvalRunner courseId={id} attemptId={attempt.id} remaining={Math.max(0, Math.round((attempt.deadline_at!.getTime() - Date.now()) / 1000))}
             sections={variant.sections.map(s => ({ label: s.label, questions: s.questions.map(publicQuestion) }))} texts={variant.texts}
             initial={attempt.answers} total={v.total_points} />
-        </div>
-      </>
+      </PaneScreen>
     );
   }
 
   const av = await evalAvailability(student.id, course.id, !!progress.exercises_done_at, student.settings.retry_delay_days);
   const [{ graded }] = await sql<{ graded: number }[]>`select count(*)::int as graded from eval_attempts where student_id = ${student.id} and course_id = ${course.id} and status = 'graded'`;
   return (
-    <>{header}
+    <Screen top={header}>
       <section className="card p-7 max-w-[760px] w-full mx-auto flex flex-col gap-4">
         <h1 className="text-2xl font-bold">{graded ? 'Nouvelle tentative' : 'Prête pour l’évaluation ?'}</h1>
         {doc.evaluation.conditions && <p className="m-0">{doc.evaluation.conditions}</p>}
@@ -68,6 +67,6 @@ export default async function EvaluationPage({ params }: { params: Promise<{ id:
           <p className="m-0 rounded-xl bg-soft px-4 py-3">{'reason' in av ? av.reason : ''} <Link href={`/eleve/cours/${course.id}/exercices`}>Aller aux exercices</Link></p>
         )}
       </section>
-    </>
+    </Screen>
   );
 }

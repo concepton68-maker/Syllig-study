@@ -2,9 +2,9 @@ import type { Block, SupportText } from '@/lib/course-format';
 import { RichText } from './RichText';
 
 const CALLOUT: Record<string, { label: string; cls: string }> = {
-  retiens: { label: 'Je retiens', cls: 'bg-brand-soft text-[#1E2A78]' },
-  definition: { label: 'Définition', cls: 'bg-brand-soft text-[#1E2A78]' },
-  essentiel: { label: 'L’essentiel', cls: 'bg-brand-soft text-[#1E2A78]' },
+  retiens: { label: 'Je retiens', cls: 'bg-brand-soft text-brand-ink' },
+  definition: { label: 'Définition', cls: 'bg-brand-soft text-brand-ink' },
+  essentiel: { label: 'L’essentiel', cls: 'bg-brand-soft text-brand-ink' },
   methode: { label: 'Méthode', cls: 'bg-soft text-ink-2' },
   plus: { label: 'Pour aller plus loin', cls: 'bg-soft text-ink-2' },
   attention: { label: 'Attention', cls: 'bg-warm-soft text-warm-dark' },
@@ -51,7 +51,7 @@ export function BlockView({ block }: { block: Block }) {
 
 export function SupportTextView({ t }: { t: SupportText }) {
   return (
-    <section className="rounded-xl border border-line bg-[#FCFCFD] px-5 py-4">
+    <section className="rounded-xl border border-line bg-surface-2 px-5 py-4">
       <div className="lbl mb-2">{t.label}</div>
       <div className="prose-lesson flex flex-col gap-2">{t.paragraphs.map((p, i) => <p key={i} className="m-0"><RichText text={p} /></p>)}</div>
       {t.source && <p className="muted text-xs mt-2 mb-0">{t.source}</p>}

@@ -2,8 +2,8 @@
 import { useCallback, useEffect, useRef, useState, useTransition } from 'react';
 import type { PublicQuestion, SupportText } from '@/lib/course-format';
 import { RichText } from '@/components/RichText';
-import { SupportTextView } from '@/components/CourseBlocks';
-import { AnswerInput } from '../exercices/Player';
+
+import { AnswerInput, TextsAside } from '../exercices/Player';
 import { submitEvaluation } from './actions';
 
 type Section = { label: string; questions: PublicQuestion[] };
@@ -64,37 +64,55 @@ export function EvalRunner({ courseId, attemptId, remaining, sections, texts, in
   const all = sections.flatMap(s => s.questions);
   const answered = all.filter(q => (answers[q.id] ?? '').trim()).length;
   const mm = String(Math.floor(left / 60)).padStart(2, '0'), ss = String(left % 60).padStart(2, '0');
+  const [tab, setTab] = useState(0);
+  const list = useRef<HTMLDivElement>(null);
+  useEffect(() => { list.current?.scrollTo({ top: 0 }); }, [tab]);
+  const sec = sections[tab];
 
   return (
-    <div className="flex flex-col gap-5">
-      <div className="card sticky top-2 z-10 flex flex-wrap items-center justify-between gap-3 border-brand-mid">
-        <span className={`pill text-base px-4 py-1.5 ${left <= 120 ? 'bg-warm-soft text-warm-dark' : 'bg-brand-soft text-brand-dark'}`} role="timer" aria-live={left <= 60 ? 'assertive' : 'off'}>
-          Temps restant {mm}:{ss}
-        </span>
-        <span className="text-sm muted">{answered} / {all.length} réponses · sauvegarde automatique</span>
-      </div>
-      {notice && <p role="status" className="m-0 rounded-xl bg-soft px-4 py-3 text-sm">{notice}</p>}
-      {texts.map(t => <SupportTextView key={t.id} t={t} />)}
-      {sections.map((s, si) => (
-        <div key={si} className="flex flex-col gap-4">
-          <h2 className="text-lg font-semibold mt-2">{s.label}</h2>
-          {s.questions.map(q => (
-            <section key={q.id} className="card flex flex-col gap-3">
+    <div className="flex flex-wrap gap-6 items-start lg:flex-nowrap lg:items-stretch lg:flex-1 lg:min-h-0">
+      <TextsAside texts={texts} />
+      <section className="card p-0 flex-[999_1_560px] min-w-0 flex flex-col lg:h-full lg:min-h-0 overflow-hidden">
+        <div className="shrink-0 px-4 pt-4 pb-3 border-b border-line flex flex-col gap-3">
+          <div className="flex flex-wrap items-center justify-between gap-3">
+            <span className={`pill text-base px-4 py-1.5 ${left <= 120 ? 'bg-warm-soft text-warm-dark' : 'bg-brand-soft text-brand-dark'}`} role="timer" aria-live={left <= 60 ? 'assertive' : 'off'}>
+              Temps restant {mm}:{ss}
+            </span>
+            <span className="text-sm muted">{answered} / {all.length} réponses · sauvegarde automatique</span>
+          </div>
+          <div role="tablist" aria-label="Sections" className="flex flex-wrap gap-2">
+            {sections.map((s, i) => {
+              const done = s.questions.filter(q => (answers[q.id] ?? '').trim()).length;
+              return (
+                <button key={i} role="tab" type="button" aria-selected={tab === i} onClick={() => setTab(i)}
+                  className={`navlink gap-1.5 border ${tab === i ? 'bg-brand text-white border-brand hover:bg-brand-dark hover:text-white' : 'border-line'}`}>
+                  {s.label.split(' (')[0]} <span className="opacity-80 font-normal">· {done}/{s.questions.length}</span>
+                </button>
+              );
+            })}
+          </div>
+          {notice && <p role="status" className="m-0 rounded-xl bg-soft px-4 py-2.5 text-sm">{notice}</p>}
+        </div>
+        <div ref={list} role="tabpanel" className="flex-1 min-h-0 overflow-y-auto pane p-4 sm:p-6 flex flex-col gap-4 [&>*]:shrink-0">
+          <h2 className="text-lg font-semibold m-0">{sec.label}</h2>
+          {sec.questions.map(q => (
+            <section key={q.id} className="rounded-2xl border border-line p-5 flex flex-col gap-3 bg-white">
               <div className="flex gap-2 items-center text-sm"><strong>{q.id.toUpperCase()}</strong><span className="pill bg-soft text-ink-2">{q.points} pt{(q.points ?? 0) > 1 ? 's' : ''}</span></div>
               <p className="m-0 text-[16px] font-medium"><RichText text={q.prompt} /></p>
               <AnswerInput q={q} value={answers[q.id] ?? ''} onChange={v => set(q.id, v)} noPaste
                 onPasteBlocked={() => { post({ action: 'paste_blocked' }); setNotice('Le collage est désactivé pendant l’évaluation : écris ta réponse toi-même.'); }} />
             </section>
           ))}
+          {tab < sections.length - 1 && <button type="button" className="btn self-end" onClick={() => setTab(tab + 1)}>Section suivante ›</button>}
         </div>
-      ))}
-      <div className="card flex flex-wrap items-center justify-between gap-3">
-        <span className="text-sm">Évaluation notée sur {total}. Tu pourras voir les corrigés juste après la remise.</span>
-        <button className="btn btn-primary" type="button" disabled={pending}
-          onClick={() => { if (confirm(answered < all.length ? `Il reste ${all.length - answered} question(s) sans réponse. Remettre ta copie ?` : 'Remettre ta copie ?')) submit(); }}>
-          {pending ? 'Remise…' : 'Remettre ma copie'}
-        </button>
-      </div>
+        <div className="shrink-0 border-t border-line px-4 sm:px-6 py-3 bg-surface-2 flex flex-wrap items-center justify-between gap-3">
+          <span className="text-sm">Notée sur {total}. Les corrigés s’ouvrent juste après la remise.</span>
+          <button className="btn btn-primary" type="button" disabled={pending}
+            onClick={() => { if (confirm(answered < all.length ? `Il reste ${all.length - answered} question(s) sans réponse. Remettre ta copie ?` : 'Remettre ta copie ?')) submit(); }}>
+            {pending ? 'Remise…' : 'Remettre ma copie'}
+          </button>
+        </div>
+      </section>
     </div>
   );
 }

@@ -8,6 +8,7 @@ import { bilanData } from '@/lib/bilan';
 import { MASTERY } from '@/lib/settings';
 import { RichText } from '@/components/RichText';
 import { SupportTextView } from '@/components/CourseBlocks';
+import { Screen } from '@/components/Layout';
 
 export const dynamic = 'force-dynamic';
 const fr = (n: number) => n.toLocaleString('fr-FR', { maximumFractionDigits: 2 });
@@ -35,16 +36,17 @@ export default async function Bilan({ params }: { params: Promise<{ id: string; 
   else headline = b.total! >= 14 ? `${fr(b.total!)}/${max}, très beau travail ${student.first_name}` : `${fr(b.total!)}/${max} : une base pour progresser`;
 
   return (
-    <>
+    <Screen top={
       <div className="card p-4 flex flex-wrap items-center justify-between gap-3">
         <div><div className="lbl">{course.subject} · {course.chapter} · ③ Évaluation · tentative {a.attempt_no}</div><strong className="font-[family-name:var(--font-display)] text-lg">{course.title}</strong></div>
         <Link className="btn" href="/eleve">Retour à mon parcours</Link>
       </div>
+    }>
 
       <section className="card p-8 flex flex-wrap gap-8 items-center">
         <div className="flex-[1_1_420px] flex flex-col gap-2.5">
           <span className="lbl text-brand-dark">Bilan de ton évaluation</span>
-          <h1 className="text-[32px] font-bold leading-tight">{headline}</h1>
+          <h1 className="text-[32px] font-bold leading-tight spark">{headline}</h1>
           <span className="muted text-base">
             {b.final
               ? (ref !== null ? `Ta tentative précédente la meilleure : ${fr(ref)}/${max}. C’est toujours ta meilleure note qui compte.` : 'C’est ta meilleure note qui compte : tu pourras retenter dans quelques jours pour viser plus haut.')
@@ -69,7 +71,7 @@ export default async function Bilan({ params }: { params: Promise<{ id: string; 
           <ol className="list-none m-0 p-0 flex flex-wrap gap-2" aria-label="Niveaux d’acquisition">
             {MASTERY.labels.slice(1).map((l, i) => {
               const lvl = i + 1, cur = lvl === progress.mastery;
-              return <li key={l} aria-current={cur ? 'step' : undefined} className={`flex-[1_1_140px] p-3.5 rounded-xl ${cur ? 'bg-brand text-white' : lvl < progress.mastery ? 'bg-brand-soft text-[#1E2A78]' : 'bg-white border-[1.5px] border-dashed border-brand-mid text-ink-2'}`}><div className="text-sm font-bold">{l}</div></li>;
+              return <li key={l} aria-current={cur ? 'step' : undefined} className={`flex-[1_1_140px] p-3.5 rounded-xl ${cur ? 'bg-brand text-white' : lvl < progress.mastery ? 'bg-brand-soft text-brand-ink' : 'bg-white border-[1.5px] border-dashed border-brand-mid text-ink-2'}`}><div className="text-sm font-bold">{l}</div></li>;
             })}
           </ol>
           {progress.mastery < 5 && <span className="muted text-sm">Prochain niveau : {progress.mastery < 4 ? `au moins ${MASTERY.evalAcquired}/20 à une prochaine tentative` : `au moins ${MASTERY.evalMastered}/20 sur une tentative passée au moins ${MASTERY.masteredDelayDays} jours après la leçon, pour vérifier que c’est bien retenu`}.</span>}
@@ -83,7 +85,7 @@ export default async function Bilan({ params }: { params: Promise<{ id: string; 
             {b.wins.length === 0 && <span className="text-sm muted">Chaque tentative t’en apprend un peu plus : regarde les corrigés, ils te prépareront à la prochaine.</span>}
             {b.wins.map(w => (
               <div key={w.id} className="flex gap-3 items-start p-3 rounded-xl bg-brand-soft">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1E36A8" strokeWidth="2.5" strokeLinecap="round" aria-hidden="true"><path d="M5 12l5 5L20 7" /></svg>
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" className="text-brand-dark shrink-0" strokeWidth="2.5" strokeLinecap="round" aria-hidden="true"><path d="M5 12l5 5L20 7" /></svg>
                 <strong className="text-sm">{w.label}</strong>
               </div>
             ))}
@@ -113,13 +115,13 @@ export default async function Bilan({ params }: { params: Promise<{ id: string; 
               <span className={`pill ${r.points === null ? 'bg-soft text-ink-2' : r.points >= r.max ? 'bg-brand text-white' : 'bg-brand-soft text-brand-dark'}`}>{r.points === null ? 'en correction' : `${fr(r.points)} / ${fr(r.max)}`}</span></div>
             <div className="text-sm"><span className="lbl">Ta réponse</span><p className="m-0 mt-1 whitespace-pre-wrap">{r.q.type === 'qcm' && r.q.options ? r.q.options[Number(r.answer)] ?? '—' : r.answer || '—'}</p></div>
             {r.comment && <div className="text-sm rounded-lg bg-soft px-3 py-2"><strong>Commentaire : </strong>{r.comment}</div>}
-            <div className="text-sm rounded-lg bg-brand-soft px-3 py-2 text-[#1E2A78]"><strong>Corrigé : </strong><RichText text={r.q.solution} /></div>
+            <div className="text-sm rounded-lg bg-brand-soft px-3 py-2 text-brand-ink"><strong>Corrigé : </strong><RichText text={r.q.solution} /></div>
           </div>
         ))}
         {a.feedback?.general && <p className="m-0 rounded-xl bg-soft px-4 py-3"><strong>Mot de ton parent : </strong>{a.feedback.general}</p>}
       </section>
 
-      <section className="card bg-[#F9FAFB] flex flex-wrap gap-4 items-center justify-between">
+      <section className="card bg-surface-2 flex flex-wrap gap-4 items-center justify-between">
         <div className="flex flex-col gap-1 flex-[1_1_420px]">
           <h2 className="text-base font-semibold">Conditions de l’évaluation</h2>
           <span className="text-sm text-ink-2">
@@ -129,6 +131,6 @@ export default async function Bilan({ params }: { params: Promise<{ id: string; 
         </div>
         <span className="pill bg-white border border-line text-ink-2">Session enregistrée</span>
       </section>
-    </>
+    </Screen>
   );
 }

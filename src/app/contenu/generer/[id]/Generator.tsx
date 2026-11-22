@@ -23,8 +23,8 @@ export function Generator({ ctx }: { ctx: PromptContext }) {
   };
 
   return (
-    <div className="flex flex-wrap gap-6 items-start">
-      <section className="card flex-[1_1_340px] flex flex-col gap-4">
+    <div className="flex flex-wrap gap-6 items-start lg:flex-nowrap lg:items-stretch lg:flex-1 lg:min-h-0">
+      <section className="card flex-[1_1_340px] lg:max-w-[420px] flex flex-col gap-4 lg:h-full lg:overflow-y-auto pane [&>*]:shrink-0">
         <h2 className="text-lg font-semibold">Réglages</h2>
         <div className="flex flex-wrap gap-3">
           <Num label="Leçon (min)" value={o.lessonMinutes} min={10} max={90} onChange={n => set('lessonMinutes', n)} />
@@ -51,7 +51,7 @@ export function Generator({ ctx }: { ctx: PromptContext }) {
           <span>3. <Link href="/contenu/importer">Importez-le</Link> : il est contrôlé puis enregistré en brouillon pour relecture.</span>
         </div>
       </section>
-      <section className="card flex-[999_1_560px] min-w-0 flex flex-col gap-3">
+      <section className="card flex-[999_1_560px] min-w-0 flex flex-col gap-3 lg:h-full lg:min-h-0">
         <div className="flex flex-wrap items-center justify-between gap-2">
           <h2 className="text-lg font-semibold">Consigne prête pour Claude</h2>
           <div className="flex gap-2">
@@ -60,7 +60,7 @@ export function Generator({ ctx }: { ctx: PromptContext }) {
           </div>
         </div>
         <span className="muted text-xs">{prompt.length.toLocaleString('fr-FR')} caractères</span>
-        <textarea readOnly className="field font-mono text-xs min-h-[640px]" value={prompt} aria-label="Consigne générée" />
+        <textarea readOnly className="field font-mono text-xs min-h-[480px] lg:min-h-0 lg:flex-1 resize-none" value={prompt} aria-label="Consigne générée" />
       </section>
     </div>
   );

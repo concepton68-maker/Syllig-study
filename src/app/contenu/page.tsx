@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { sql } from '@/lib/db';
 import { PageTitle } from '@/components/Shell';
+import { Screen } from '@/components/Layout';
 
 export const metadata = { title: 'Catalogue' };
 
@@ -23,10 +24,11 @@ export default async function Catalogue() {
     g.get(r.chapter)!.push(r);
   }
   return (
-    <>
+    <Screen top={<>
       <PageTitle kicker="Catalogue" title={`${pub} cours publiés sur ${total}`} sub="Pour créer un cours : « Préparer la consigne », la coller dans Claude, puis importer le JSON obtenu.">
         <Link className="btn btn-primary" href="/contenu/importer">Importer un cours</Link>
       </PageTitle>
+    </>}>
       {[...groups].map(([subject, chapters]) => (
         <section key={subject} className="card flex flex-col gap-3">
           <h2 className="text-xl font-semibold">{subject}</h2>
@@ -50,6 +52,6 @@ export default async function Catalogue() {
           ))}
         </section>
       ))}
-    </>
+    </Screen>
   );
 }

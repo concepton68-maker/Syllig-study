@@ -3,6 +3,7 @@ import type { Metadata, Viewport } from 'next';
 import '@fontsource-variable/inter';
 import '@fontsource-variable/space-grotesk';
 import '@fontsource-variable/source-serif-4';
+import '@fontsource-variable/quicksand';
 import './globals.css';
 
 export const metadata: Metadata = {

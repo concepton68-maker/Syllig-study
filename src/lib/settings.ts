@@ -4,12 +4,21 @@ export type StudentSettings = {
   retry_delay_days: number;      // délai avant une nouvelle tentative d'évaluation
   eval_requires_approval: boolean;
   idle_seconds: number;          // inactivité avant pause du chrono
+  theme: ThemeId;                // thème d'affichage de l'espace élève
 };
+export const THEMES = [
+  { id: 'rose', name: 'Rose & bleu glacier', desc: 'Rose, lilas et bleu glacier, titres arrondis' },
+  { id: 'lagon', name: 'Lagon', desc: 'Bleu-vert franc et vert' },
+  { id: 'classique', name: 'Classique', desc: 'Bleu sobre' },
+] as const;
+export type ThemeId = (typeof THEMES)[number]['id'];
+export const isTheme = (t: unknown): t is ThemeId => THEMES.some(x => x.id === t);
 export const DEFAULT_SETTINGS: StudentSettings = {
   weekly_goal_minutes: 300,
   retry_delay_days: 3,
   eval_requires_approval: false,
   idle_seconds: 60,
+  theme: 'classique',
 };
 export const settingsOf = (raw: unknown): StudentSettings => ({ ...DEFAULT_SETTINGS, ...((raw as object) ?? {}) });
 

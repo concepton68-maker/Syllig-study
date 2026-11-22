@@ -4,6 +4,7 @@ import { z } from 'zod';
 import { sql } from '@/lib/db';
 import { requireUser, hashPassword } from '@/lib/auth';
 import { assertParentOf } from '@/lib/access';
+import { isTheme } from '@/lib/settings';
 
 export type ChildState = { error?: string; ok?: string } | undefined;
 
@@ -12,6 +13,7 @@ const NewChild = z.object({
   login: z.string().trim().toLowerCase().regex(/^[a-z0-9._-]{3,40}$/, 'Identifiant : 3 à 40 caractères, lettres sans accent, chiffres, point, tiret'),
   password: z.string().min(8, 'Mot de passe : 8 caractères minimum').max(200),
   level: z.string().min(1),
+  theme: z.string().optional(),
 });
 
 export async function addChild(_: ChildState, form: FormData): Promise<ChildState> {
@@ -28,7 +30,7 @@ export async function addChild(_: ChildState, form: FormData): Promise<ChildStat
   await sql.begin(async tx => {
     const [su] = await tx<{ id: string }[]>`insert into users (login, password_hash, display_name, role) values (${p.data.login}, ${hash}, ${p.data.first_name}, 'student') returning id`;
     await tx`insert into household_members values (${h.household_id}, ${su.id}, 'student')`;
-    await tx`insert into students (household_id, user_id, first_name, level_code) values (${h.household_id}, ${su.id}, ${p.data.first_name}, ${p.data.level})`;
+    await tx`insert into students (household_id, user_id, first_name, level_code, settings) values (${h.household_id}, ${su.id}, ${p.data.first_name}, ${p.data.level}, ${tx.json({ theme: isTheme(p.data.theme) ? p.data.theme : 'classique' })})`;
   });
   revalidatePath('/parent/enfants');
   return { ok: `Compte de ${p.data.first_name} créé. Identifiant : ${p.data.login}` };

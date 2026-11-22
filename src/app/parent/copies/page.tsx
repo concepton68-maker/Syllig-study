@@ -4,6 +4,7 @@ import { requireParent } from '@/lib/access';
 import { PageTitle } from '@/components/Shell';
 import { ChildPicker } from '@/components/ChildPicker';
 import { ImportCorrections } from './ImportCorrections';
+import { Screen } from '@/components/Layout';
 
 export const metadata = { title: 'Copies à corriger' };
 export const dynamic = 'force-dynamic';
@@ -21,11 +22,12 @@ export default async function Copies({ searchParams }: { searchParams: Promise<{
   const pending = rows.filter(r => r.status === 'submitted');
   const graded = rows.filter(r => r.status === 'graded');
   return (
-    <>
+    <Screen top={<>
       <ChildPicker students={students} current={student} path="/parent/copies" />
       <PageTitle kicker="Copies à corriger" title={pending.length ? `${pending.length} copie${pending.length > 1 ? 's' : ''} de ${student.first_name} en attente` : 'Aucune copie en attente'}
         sub="Les questions automatiques sont déjà notées. Les réponses rédigées sont corrigées par Claude, puis validées par vous." />
-      {sp.validee && <p role="status" className="m-0 rounded-xl bg-brand-soft text-[#1E2A78] px-4 py-3 text-sm"><strong>Note validée.</strong> Le bilan est maintenant visible dans l’espace de {student.first_name}.</p>}
+    </>}>
+      {sp.validee && <p role="status" className="m-0 rounded-xl bg-brand-soft text-brand-ink px-4 py-3 text-sm"><strong>Note validée.</strong> Le bilan est maintenant visible dans l’espace de {student.first_name}.</p>}
 
       <section className="card flex flex-col gap-4">
         <h2 className="text-xl font-semibold">Corriger avec Claude, en 3 étapes</h2>
@@ -62,6 +64,6 @@ export default async function Copies({ searchParams }: { searchParams: Promise<{
           ))}
         </section>
       )}
-    </>
+    </Screen>
   );
 }

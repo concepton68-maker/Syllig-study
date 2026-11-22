@@ -41,7 +41,7 @@ export function ActivityTracker({ kind, courseId, idleSeconds = 60 }: { kind: st
   return (
     <>
       <span className={`pill ${paused ? 'bg-soft text-ink-2' : 'bg-brand-soft text-brand-dark'}`} aria-live="polite">
-        <span className={`w-2 h-2 rounded-full ${paused ? 'bg-[#98A2B3]' : 'bg-brand'}`} />
+        <span className={`w-2 h-2 rounded-full ${paused ? 'bg-muted-2' : 'bg-brand'}`} />
         {paused ? 'Chrono en pause' : 'Chrono actif'}
       </span>
       {away && (

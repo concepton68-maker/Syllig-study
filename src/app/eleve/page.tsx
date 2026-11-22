@@ -6,6 +6,7 @@ import { stepHref } from '@/lib/links';
 import { sql } from '@/lib/db';
 import { PageTitle } from '@/components/Shell';
 import { MasteryPill } from '@/components/Mastery';
+import { PaneScreen, Panes, Pane } from '@/components/Layout';
 
 export const metadata = { title: 'Aujourd’hui' };
 export const dynamic = 'force-dynamic';
@@ -28,15 +29,15 @@ export default async function Today() {
   const C = 2 * Math.PI * 23;
 
   return (
-    <>
+    <PaneScreen top={<div className="flex flex-col gap-4">
       <div className="flex flex-wrap justify-between items-center gap-5">
-        <PageTitle title={`Salut ${student.first_name}${step?.minutes ? `, prête pour ${step.minutes} minutes ?` : ' !'}`}
+        <PageTitle spark title={`Salut ${student.first_name}${step?.minutes ? `, prête pour ${step.minutes} minutes ?` : ' !'}`}
           sub="Ton parcours est calculé pour toi : les priorités d’abord, puis les révisions qui arrivent." />
         <div className="flex flex-wrap gap-3">
           <div className="card py-3.5 px-4 flex items-center gap-3.5">
             <svg width="56" height="56" viewBox="0 0 56 56" role="img" aria-label={`Objectif de la semaine : ${pct} %`}>
-              <circle cx="28" cy="28" r="23" fill="none" stroke="#EEF0F3" strokeWidth="7" />
-              <circle cx="28" cy="28" r="23" fill="none" stroke="#2F4FD8" strokeWidth="7" strokeDasharray={`${(C * pct) / 100} ${C}`} strokeLinecap="round" transform="rotate(-90 28 28)" />
+              <circle cx="28" cy="28" r="23" fill="none" style={{ stroke: 'var(--color-track)' }} strokeWidth="7" />
+              <circle cx="28" cy="28" r="23" fill="none" style={{ stroke: 'var(--color-brand)' }} strokeWidth="7" strokeDasharray={`${(C * pct) / 100} ${C}`} strokeLinecap="round" transform="rotate(-90 28 28)" />
             </svg>
             <div><strong className="text-lg">{hm(w.active)} / {hm(goal)}</strong><div className="muted text-sm">objectif de la semaine</div></div>
           </div>
@@ -55,9 +56,9 @@ export default async function Today() {
           <span className="pill bg-brand text-white">{Number(lastGraded.final_score).toLocaleString('fr-FR')}/20</span>
         </Link>
       )}
-
-      <div className="flex flex-wrap gap-6 items-start">
-        <div className="flex-[999_1_600px] min-w-0 flex flex-col gap-6">
+      </div>}>
+      <Panes>
+        <Pane className="flex-[999_1_600px]">
           {next && step ? (
             <section className="card p-7 flex flex-col gap-5 border-2 border-brand">
               <div className="flex flex-wrap justify-between gap-3">
@@ -75,7 +76,7 @@ export default async function Today() {
                   { n: '③', name: 'Évaluation', done: next.graded_count > 0, cur: step.kind === 'evaluation' || step.kind === 'retry', meta: `${next.durations?.evaluation} min chrono · sur 20` },
                   { n: '④', name: 'Corrigés', done: next.graded_count > 0, cur: false, meta: 'S’ouvrent après ta réponse' },
                 ].map(x => (
-                  <li key={x.n} className={`flex-[1_1_170px] p-3.5 rounded-xl ${x.cur ? 'bg-brand text-white' : x.done ? 'bg-brand-soft text-[#1E2A78]' : 'bg-soft text-muted'}`}>
+                  <li key={x.n} className={`flex-[1_1_170px] p-3.5 rounded-xl ${x.cur ? 'bg-brand text-white' : x.done ? 'bg-brand-soft text-brand-ink' : 'bg-soft text-muted'}`}>
                     <div className="text-sm font-bold">{x.n} · {x.name}{x.done && !x.cur ? ' ✓' : ''}</div>
                     <div className="text-sm mt-1">{x.meta}</div>
                   </li>
@@ -106,9 +107,9 @@ export default async function Today() {
               );
             })}
           </section>
-        </div>
+        </Pane>
 
-        <aside className="flex-[1_1_340px] flex flex-col gap-6">
+        <Pane className="flex-[1_1_340px]">
           <section className="card flex flex-col gap-3">
             <h2 className="text-xl font-semibold">Révisions</h2>
             <span className="muted text-sm">Rappels espacés : J+3, J+7, J+14 ou J+30 selon ta note.</span>
@@ -130,7 +131,7 @@ export default async function Today() {
               {waiting.map(c => <span key={c.course_id} className="text-sm">{c.title} · ton parent valide la correction</span>)}
             </section>
           )}
-          <section className="card flex flex-col gap-2 bg-[#F9FAFB]">
+          <section className="card flex flex-col gap-2 bg-surface-2">
             <h2 className="text-lg font-semibold">Ce que tes parents voient</h2>
             <ul className="m-0 pl-5 text-sm text-ink-2 flex flex-col gap-1.5 list-disc">
               <li>Ton temps de travail actif et tes séances</li><li>Tes notes et tes niveaux par cours</li><li>Les sorties de fenêtre pendant une évaluation</li>
@@ -138,8 +139,8 @@ export default async function Today() {
             <span className="lbl mt-1.5">Ce qu’ils ne voient pas</span>
             <ul className="m-0 pl-5 text-sm text-ink-2 flex flex-col gap-1.5 list-disc"><li>Ton écran, ta caméra ou ton micro</li><li>Les autres sites que tu visites</li></ul>
           </section>
-        </aside>
-      </div>
-    </>
+        </Pane>
+      </Panes>
+    </PaneScreen>
   );
 }

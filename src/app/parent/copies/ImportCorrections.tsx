@@ -14,7 +14,7 @@ export function ImportCorrections() {
       </label>
       <div><button className="btn btn-primary" type="submit" disabled={pending}>{pending ? 'Vérification…' : 'Importer les propositions'}</button></div>
       {state?.errors && <div role="alert" className="rounded-xl bg-warm-soft text-warm-dark px-4 py-3 text-sm"><strong>Import refusé, rien n’a été enregistré :</strong><ul className="mt-1.5 mb-0 pl-5 list-disc">{state.errors.map((e, i) => <li key={i}>{e}</li>)}</ul></div>}
-      {state?.ok !== undefined && <p role="status" className="m-0 rounded-xl bg-brand-soft text-[#1E2A78] px-4 py-3 text-sm"><strong>{state.ok} copie{state.ok > 1 ? 's' : ''} pré-corrigée{state.ok > 1 ? 's' : ''}.</strong> Ouvre chaque copie pour vérifier et valider la note.{state.warnings?.length ? ` (${state.warnings.join(' ; ')})` : ''}</p>}
+      {state?.ok !== undefined && <p role="status" className="m-0 rounded-xl bg-brand-soft text-brand-ink px-4 py-3 text-sm"><strong>{state.ok} copie{state.ok > 1 ? 's' : ''} pré-corrigée{state.ok > 1 ? 's' : ''}.</strong> Ouvre chaque copie pour vérifier et valider la note.{state.warnings?.length ? ` (${state.warnings.join(' ; ')})` : ''}</p>}
     </form>
   );
 }

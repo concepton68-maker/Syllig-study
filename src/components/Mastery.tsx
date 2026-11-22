@@ -1,11 +1,11 @@
 import { MASTERY } from '@/lib/settings';
 
 const STYLE = [
-  'bg-white border border-dashed border-[#D0D5DD] text-muted',
+  'bg-white border border-dashed border-line-strong text-muted',
   'bg-warm-soft text-warm-dark',
   'bg-warm-mid text-warm-dark',
   'bg-line text-ink',
-  'bg-brand-mid text-[#1E2A78]',
+  'bg-brand-mid text-brand-ink',
   'bg-brand text-white',
 ];
 export function MasteryPill({ level }: { level: number }) {

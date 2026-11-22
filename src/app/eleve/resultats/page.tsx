@@ -3,6 +3,7 @@ import { sql } from '@/lib/db';
 import { requireStudent } from '@/lib/access';
 import { PageTitle } from '@/components/Shell';
 import { MasteryPill } from '@/components/Mastery';
+import { PaneScreen, Panes, Pane } from '@/components/Layout';
 
 export const metadata = { title: 'Mes résultats' };
 export const dynamic = 'force-dynamic';
@@ -19,10 +20,9 @@ export default async function Results() {
   const points = await sql<{ amount: number; reason: string; at: Date; title: string | null }[]>`
     select l.amount, l.reason, l.at, c.title from points_ledger l left join courses c on c.id = l.course_id where l.student_id = ${student.id} order by l.at desc limit 15`;
   return (
-    <>
-      <PageTitle title="Mes résultats" sub="Tes niveaux montent avec tes progrès. C’est toujours ta meilleure note qui compte." />
-      <div className="flex flex-wrap gap-6 items-start">
-        <div className="flex-[999_1_560px] min-w-0 flex flex-col gap-6">
+    <PaneScreen top={<PageTitle title="Mes résultats" sub="Tes niveaux montent avec tes progrès. C’est toujours ta meilleure note qui compte." />}>
+      <Panes>
+        <Pane className="flex-[999_1_560px]">
           <section className="card flex flex-col">
             <h2 className="text-xl font-semibold mb-2">Mes cours</h2>
             {courses.length === 0 && <span className="muted text-sm">Commence ton premier cours pour voir tes niveaux ici.</span>}
@@ -45,14 +45,14 @@ export default async function Results() {
               </div>
             ))}
           </section>
-        </div>
-        <aside className="card flex-[1_1_340px] flex flex-col">
+        </Pane>
+        <Pane className="flex-[1_1_340px]"><section className="card flex flex-col">
           <h2 className="text-xl font-semibold mb-2">Mes points de progrès</h2>
           {points.map((p, i) => (
             <div key={i} className="flex justify-between gap-3 py-2 border-t border-soft text-sm"><span>{p.reason}{p.title ? <span className="block muted">{p.title}</span> : null}</span><strong className="text-brand-dark">+{p.amount}</strong></div>
           ))}
-        </aside>
-      </div>
-    </>
+        </section></Pane>
+      </Panes>
+    </PaneScreen>
   );
 }

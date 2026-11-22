@@ -4,6 +4,7 @@ import { recentSessions, lookTogether, KIND } from '@/lib/parent-data';
 import { hm } from '@/lib/stats';
 import { PageTitle } from '@/components/Shell';
 import { ChildPicker } from '@/components/ChildPicker';
+import { PaneScreen, Panes, Pane } from '@/components/Layout';
 
 export const metadata = { title: 'Journal d’activité' };
 export const dynamic = 'force-dynamic';
@@ -46,7 +47,7 @@ export default async function Journal({ searchParams }: { searchParams: Promise<
   const intact = chk.broken_ids.length === 0;
 
   return (
-    <>
+    <PaneScreen top={<>
       <ChildPicker students={students} current={student} path="/parent/journal" />
       <PageTitle kicker="Journal d’activité horodaté" title={`Chaque séance de ${student.first_name}, telle qu’elle s’est passée`}
         sub="Les heures viennent du serveur, pas de l’ordinateur de l’élève. Le journal ne peut pas être modifié après coup.">
@@ -54,9 +55,9 @@ export default async function Journal({ searchParams }: { searchParams: Promise<
           {intact ? `Journal intact · ${chk.total} événements vérifiés` : `Journal altéré : ${chk.broken_ids.length} ligne(s)`}
         </span>
       </PageTitle>
-
-      <div className="flex flex-wrap gap-6 items-start">
-        <section className="card flex-[999_1_560px] min-w-0 flex flex-col">
+    </>}>
+      <Panes>
+        <Pane className="flex-[999_1_560px]"><section className="card flex flex-col">
           <h2 className="text-xl font-semibold mb-2">Séances</h2>
           {sessions.length === 0 && <span className="muted text-sm">Aucune séance pour l’instant.</span>}
           {sessions.map(s => {
@@ -72,11 +73,11 @@ export default async function Journal({ searchParams }: { searchParams: Promise<
               </div>
             );
           })}
-        </section>
-        <aside className="flex-[1_1_380px] flex flex-col gap-4">
+        </section></Pane>
+        <Pane className="flex-[1_1_380px]">
           <section className="card flex flex-col gap-1">
             <h2 className="text-lg font-semibold mb-2">Derniers événements</h2>
-            <ol className="list-none m-0 p-0 max-h-[640px] overflow-y-auto">
+            <ol className="list-none m-0 p-0">
               {events.map(e => (
                 <li key={e.id} className="flex gap-3 py-2 border-t border-soft text-sm">
                   <span className="w-[112px] shrink-0 muted font-mono text-xs pt-0.5">{e.at.toLocaleString('fr-FR', { timeZone: 'Europe/Paris', day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit' })}</span>
@@ -90,8 +91,8 @@ export default async function Journal({ searchParams }: { searchParams: Promise<
             <span className="muted text-[13px] leading-relaxed">Chaque événement porte l’empreinte du précédent. Effacer ou modifier une ligne casserait la chaîne, ce que la vérification ci-dessus détecterait. La base refuse d’ailleurs toute modification du journal.</span>
             {events[0] && <span className="font-mono text-xs muted break-all">dernier sceau · {events[0].hash.slice(0, 20)}</span>}
           </section>
-        </aside>
-      </div>
-    </>
+        </Pane>
+      </Panes>
+    </PaneScreen>
   );
 }

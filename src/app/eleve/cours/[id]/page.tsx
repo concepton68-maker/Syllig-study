@@ -3,6 +3,7 @@ import { sql } from '@/lib/db';
 import { loadCourse } from './data';
 import { PageTitle } from '@/components/Shell';
 import { MasteryPill } from '@/components/Mastery';
+import { Screen } from '@/components/Layout';
 
 export const dynamic = 'force-dynamic';
 
@@ -18,10 +19,9 @@ export default async function CourseOverview({ params }: { params: Promise<{ id:
     { n: '③', name: 'Évaluation', href: `${base}/evaluation`, done: attempts.some(a => a.status === 'graded'), meta: `${doc.evaluation.duration_min} min chrono · sur ${doc.evaluation.total_points}`, open: !!progress.exercises_done_at },
   ];
   return (
-    <>
-      <PageTitle kicker={`${course.subject} · ${course.chapter}${course.code ? ` · ${course.code}` : ''}`} title={course.title}>
+    <Screen top={<PageTitle kicker={`${course.subject} · ${course.chapter}${course.code ? ` · ${course.code}` : ''}`} title={course.title}>
         <MasteryPill level={progress.mastery} />
-      </PageTitle>
+      </PageTitle>}>
       <section className="card flex flex-col gap-4">
         {doc.lesson.objectives.length > 0 && (<div><span className="lbl">À la fin de ce cours, je sais</span>
           <ul className="mt-2 mb-0 pl-5 list-disc">{doc.lesson.objectives.map((o, i) => <li key={i}>{o.replace(/ ;$|\.$/, '')}</li>)}</ul></div>)}
@@ -29,7 +29,7 @@ export default async function CourseOverview({ params }: { params: Promise<{ id:
           {steps.map(s => (
             <li key={s.n} className="flex-[1_1_220px]">
               {s.open ? (
-                <Link href={s.href} className={`block no-underline p-4 rounded-xl border ${s.done ? 'bg-brand-soft border-brand-mid text-[#1E2A78]' : 'bg-white border-line text-ink'} hover:border-brand`}>
+                <Link href={s.href} className={`block no-underline p-4 rounded-xl border ${s.done ? 'bg-brand-soft border-brand-mid text-brand-ink' : 'bg-white border-line text-ink'} hover:border-brand`}>
                   <div className="font-bold">{s.n} · {s.name}{s.done ? ' ✓' : ''}</div><div className="text-sm mt-1">{s.meta}</div>
                 </Link>
               ) : (
@@ -51,6 +51,6 @@ export default async function CourseOverview({ params }: { params: Promise<{ id:
           ))}
         </section>
       )}
-    </>
+    </Screen>
   );
 }

@@ -10,6 +10,7 @@ import { evalQuestions } from '@/lib/course-format';
 import { RichText } from '@/components/RichText';
 import { SupportTextView } from '@/components/CourseBlocks';
 import { validateGrade } from '../actions';
+import { Screen } from '@/components/Layout';
 
 export const dynamic = 'force-dynamic';
 
@@ -31,7 +32,7 @@ export default async function CopyReview({ params, searchParams }: { params: Pro
   const mins = a.started_at && a.submitted_at ? Math.round((a.submitted_at.getTime() - a.started_at.getTime()) / 60000) : null;
 
   return (
-    <>
+    <Screen top={
       <div className="flex flex-wrap justify-between items-end gap-4">
         <div className="flex flex-col gap-1.5">
           <span className="lbl">{student.first_name} · tentative {a.attempt_no}</span>
@@ -40,6 +41,7 @@ export default async function CopyReview({ params, searchParams }: { params: Pro
         </div>
         <Link className="btn" href={`/parent/copies?eleve=${student.id}`}>‹ Retour aux copies</Link>
       </div>
+    }>
       {!graded && !a.proposal && <p className="m-0 rounded-xl bg-soft px-4 py-3 text-sm">Pas encore de proposition de Claude pour cette copie : vous pouvez l’exporter depuis la page précédente, ou corriger vous-même avec le corrigé et le barème.</p>}
       {erreur && <p role="alert" className="m-0 rounded-xl bg-warm-soft text-warm-dark px-4 py-3 text-sm">{erreur === 'motif' ? 'Indiquez le motif de la modification.' : `Points invalides pour ${erreur.toUpperCase()}.`}</p>}
 
@@ -53,7 +55,7 @@ export default async function CopyReview({ params, searchParams }: { params: Pro
               <div className="flex flex-wrap justify-between gap-2"><strong>{q.id.toUpperCase()} · <RichText text={q.prompt} /></strong><span className="pill bg-soft text-ink-2">/ {q.points}</span></div>
               <div className="rounded-lg border border-line px-3 py-2"><span className="lbl">Réponse de l’élève</span><p className="m-0 mt-1 whitespace-pre-wrap">{q.type === 'qcm' && q.options ? q.options[Number(a.answers[q.id])] ?? '—' : a.answers[q.id] || '—'}</p></div>
               <div className="flex flex-wrap gap-3 text-sm">
-                <div className="flex-[1_1_300px] rounded-lg bg-brand-soft px-3 py-2 text-[#1E2A78]"><strong>Corrigé : </strong><RichText text={q.solution} /></div>
+                <div className="flex-[1_1_300px] rounded-lg bg-brand-soft px-3 py-2 text-brand-ink"><strong>Corrigé : </strong><RichText text={q.solution} /></div>
                 {q.rubric && <div className="flex-[1_1_300px] rounded-lg bg-soft px-3 py-2"><strong>Barème : </strong><RichText text={q.rubric} /></div>}
               </div>
               {auto ? (
@@ -79,6 +81,6 @@ export default async function CopyReview({ params, searchParams }: { params: Pro
           <div><button className="btn btn-primary" type="submit">{graded ? 'Enregistrer la modification' : 'Valider la note'}</button></div>
         </section>
       </form>
-    </>
+    </Screen>
   );
 }

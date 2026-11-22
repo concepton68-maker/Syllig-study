@@ -15,7 +15,7 @@ const ok = (c, m) => { if (!c) throw new Error('ÉCHEC : ' + m); console.log('  
 const browser = await chromium.launch();
 const ctx = async () => { const c = await browser.newContext({ viewport: { width: 1360, height: 900 }, deviceScaleFactor: 2, acceptDownloads: true }); const p = await c.newPage(); p.on('dialog', d => d.accept()); return p; };
 const login = async (p, l, pw) => { await p.goto(BASE + '/connexion'); await p.fill('input[name=login]', l); await p.fill('input[name=password]', pw); await p.click('button[type=submit]'); await p.waitForURL(u => !u.pathname.startsWith('/connexion')); };
-const shot = (p, n) => p.screenshot({ path: `${SHOTS}/${n}.png`, fullPage: true });
+const shot = (p, n) => p.screenshot({ path: `${SHOTS}/${n}.png` });
 
 try {
   console.log('Administrateur');
@@ -44,7 +44,11 @@ try {
   await shot(st, '02-eleve-aujourdhui');
   await st.click('text=Commencer');
   await st.waitForURL(/lecon/);
-  // leçon : une erreur volontaire puis les bonnes réponses
+  // la leçon s'ouvre sur la page d'introduction ; « Suivant » mène à la partie 1
+  await st.waitForSelector('text=Avant de commencer');
+  ok(true, 'leçon en pages : ouverture sur la page « Objectifs »');
+  await shot(st, '03a-lecon-intro');
+  await st.click('button:has-text("Suivant ›")');
   let wrongDone = false;
   for (let part = 0; part < doc.lesson.parts.length; part++) {
     const cp = doc.lesson.parts[part].checkpoint;
@@ -56,6 +60,7 @@ try {
       if (!v) throw new Error('variante inconnue : ' + prompt);
       const buttons = st.locator('section[aria-label="Point de contrôle"] button[aria-pressed]');
       if (!wrongDone) {
+        ok(await st.locator('button:has-text("Suivant ›")').isDisabled(), 'page suivante verrouillée tant que le point de contrôle n’est pas réussi');
         await buttons.nth((v.answer + 1) % v.options.length).click();
         await st.waitForSelector('text=Presque !');
         if (part === 0) await shot(st, '03-point-de-controle-presque');
@@ -67,31 +72,39 @@ try {
       await st.waitForSelector('text=Bien vu !');
       break;
     }
-    await st.click(part < doc.lesson.parts.length - 1 ? 'text=Continuer vers la partie suivante' : 'text=Voir la fiche mémo');
-    await st.waitForLoadState('networkidle');
+    await st.click(part < doc.lesson.parts.length - 1 ? 'button:has-text("Page suivante ›")' : 'button:has-text("Voir la fiche mémo")');
   }
-  await st.waitForSelector('text=Leçon terminée.');
-  ok(true, 'leçon terminée après les 5 points de contrôle (dont une erreur sans pénalité)');
+  await st.waitForSelector('text=Leçon terminée, bravo');
+  ok(true, 'leçon terminée page par page (5 points de contrôle, dont une erreur sans pénalité)');
   await shot(st, '04-lecon-terminee');
 
   await st.click('text=② Faire les exercices');
   await st.waitForURL(/exercices/);
   ok(!(await st.content()).includes(doc.exercises.items[0].solution.slice(0, 40)), 'aucun corrigé envoyé avant la remise');
-  for (const q of doc.exercises.items) {
-    if (q.type === 'qcm') await st.locator(`input[name=${q.id}][value="${q.answer}"]`).check();
-    else await st.fill(`textarea[aria-label="Ta réponse à ${q.id}"]`, 'Réponse de test pour ' + q.id);
+  ok(await st.isVisible('aside[aria-label="Texte support"] >> text=La pluie battait'), 'texte support affiché à côté des questions');
+  const LEVELS = ['Exercices', 'Je repère', 'J’analyse', 'Je rédige'];
+  const levels = [...new Set(doc.exercises.items.map(q => q.stars ?? 0))].sort();
+  for (const l of levels) {
+    await st.click(`[role=tab]:has-text("${LEVELS[l]}")`);
+    for (const q of doc.exercises.items.filter(x => (x.stars ?? 0) === l)) {
+      if (q.type === 'qcm') await st.locator(`input[name=${q.id}][value="${q.answer}"]`).check();
+      else await st.fill(`textarea[aria-label="Ta réponse à ${q.id}"]`, 'Réponse de test pour ' + q.id);
+    }
   }
   await st.waitForTimeout(1500);
   await st.click('text=Valider mes réponses et voir les corrigés');
   await st.waitForSelector('text=Compare avec le corrigé');
-  ok((await st.content()).includes(doc.exercises.items[0].solution.slice(0, 40)), 'corrigés visibles après la remise');
-  const reussi = st.locator('button:has-text("Réussi")');
-  const n = await reussi.count();
-  for (let i = 0; i < n; i++) await reussi.nth(i).click();
-  await st.locator('button:has-text("Pas encore")').last().click();
+  for (const [i, l] of levels.entries()) {
+    await st.click(`[role=tab]:has-text("${LEVELS[l]}")`);
+    const reussi = st.locator('button:text-is("Réussi")');
+    const n = await reussi.count();
+    for (let k = 0; k < n; k++) await reussi.nth(k).click();
+    if (i === levels.length - 1) await st.locator('button:text-is("Pas encore")').last().click();
+  }
+  ok((await st.content()).includes(doc.exercises.items.at(-1).solution.slice(0, 40)), 'corrigés visibles après la remise');
   await st.click('text=Enregistrer mon résultat');
   await st.waitForSelector('text=9 / 10 exercices réussis');
-  ok(true, 'exercices : 9/10 (QCM corrigé automatiquement + auto-correction guidée)');
+  ok(true, 'exercices en onglets : 9/10 (QCM corrigé automatiquement + auto-correction guidée)');
   await shot(st, '05-exercices-corriges');
 
   await st.click('text=③ Passer à l’évaluation');
@@ -100,15 +113,19 @@ try {
   await st.click('button:has-text("Commencer")');
   await st.waitForSelector('[role=timer]');
   ok(!(await st.content()).includes(doc.evaluation.variants[0].sections[0].questions[0].solution.slice(0, 40)), 'aucun corrigé envoyé pendant l’évaluation');
-  for (const s of doc.evaluation.variants[0].sections) for (const q of s.questions) {
-    const sel = q.type === 'short' ? `input[aria-label="Ta réponse à ${q.id}"]` : `textarea[aria-label="Ta réponse à ${q.id}"]`;
-    await st.fill(sel, q.type === 'short' ? 'zéro, interne, externe' : 'Ma réponse à la question ' + q.id);
+  for (const s of doc.evaluation.variants[0].sections) {
+    await st.click(`[role=tab]:has-text("${s.label.split(' (')[0]}")`);
+    for (const q of s.questions) {
+      const sel = q.type === 'short' ? `input[aria-label="Ta réponse à ${q.id}"]` : `textarea[aria-label="Ta réponse à ${q.id}"]`;
+      await st.fill(sel, q.type === 'short' ? 'zéro, interne, externe' : 'Ma réponse à la question ' + q.id);
+    }
   }
+  await st.click(`[role=tab]:has-text("${doc.evaluation.variants[0].sections[1].label.split(' (')[0]}")`);
   // le coller est bloqué et compté
   await st.evaluate(() => { const t = document.querySelector('textarea'); const e = new ClipboardEvent('paste', { bubbles: true, cancelable: true, clipboardData: new DataTransfer() }); t.dispatchEvent(e); });
   await st.waitForSelector('text=Le collage est désactivé');
   ok(true, 'collage bloqué pendant l’évaluation');
-  await st.evaluate(() => window.scrollTo(0, 0)); await st.waitForTimeout(300);
+  ok(await st.locator('[role=timer]').isVisible(), 'chrono toujours visible');
   await st.screenshot({ path: `${SHOTS}/07-evaluation-en-cours.png` });
   await st.click('text=Remettre ma copie');
   await st.waitForURL(/bilan/);

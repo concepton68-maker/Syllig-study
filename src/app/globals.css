@@ -1,16 +1,24 @@
 @import "tailwindcss";
 
+/* Jetons de couleur : les thèmes les redéfinissent (voir plus bas) */
 @theme {
   --color-ink: #101828;
   --color-ink-2: #344054;
   --color-muted: #475467;
+  --color-muted-2: #667085;
   --color-line: #E4E7EC;
+  --color-line-strong: #D0D5DD;
   --color-soft: #F2F4F7;
+  --color-surface-2: #F9FAFB;
+  --color-track: #EEF0F3;
   --color-bg: #F5F6F8;
   --color-brand: #2F4FD8;
   --color-brand-dark: #1E36A8;
+  --color-brand-ink: #1E2A78;
   --color-brand-soft: #EEF2FF;
   --color-brand-mid: #C7D2FE;
+  --color-accent: #2F4FD8;
+  --color-accent-soft: #EEF2FF;
   --color-warm: #B54708;
   --color-warm-dark: #7A2E0B;
   --color-warm-soft: #FEF0E6;
@@ -20,34 +28,104 @@
   --font-serif: "Source Serif 4 Variable", "Source Serif 4", Georgia, "Times New Roman", serif;
 }
 
-/* Styles de base dans la couche « base » : les classes utilitaires (text-white…) restent prioritaires */
+/* ───────── Thèmes d'affichage (choisis par élève) ───────── */
+:root { --header-bg: #fff; --app-bg: var(--color-bg); --spark: none; }
+
+/* Classique — valeurs complètes, pour qu'un aperçu « classique » placé dans un autre thème n'en hérite rien */
+[data-theme="classique"] {
+  --color-brand: #2F4FD8; --color-brand-dark: #1E36A8; --color-brand-ink: #1E2A78; --color-brand-soft: #EEF2FF; --color-brand-mid: #C7D2FE;
+  --color-accent: #2F4FD8; --color-accent-soft: #EEF2FF;
+  --color-warm: #B54708; --color-warm-dark: #7A2E0B; --color-warm-soft: #FEF0E6; --color-warm-mid: #FDDCC4;
+  --color-line: #E4E7EC; --color-line-strong: #D0D5DD; --color-soft: #F2F4F7; --color-surface-2: #F9FAFB; --color-track: #EEF0F3; --color-bg: #F5F6F8;
+  --font-display: "Space Grotesk Variable", "Space Grotesk", Inter, ui-sans-serif, system-ui, sans-serif;
+  --header-bg: #fff; --app-bg: #F5F6F8; --spark: none;
+}
+
+/* Rose & bleu glacier — clin d'œil au « GIRLY ✦ iCE BLUE » du pré-projet */
+[data-theme="rose"] {
+  --color-brand: #C2255C;
+  --color-brand-dark: #A61E4D;
+  --color-brand-ink: #7A1B3E;
+  --color-brand-soft: #FFF0F6;
+  --color-brand-mid: #FCC2D7;
+  --color-accent: #1C7ED6;
+  --color-accent-soft: #E7F5FF;
+  --color-warm: #862E9C;
+  --color-warm-dark: #5F1F70;
+  --color-warm-soft: #F8F0FC;
+  --color-warm-mid: #EEBEFA;
+  --color-line: #F7D6E6;
+  --color-line-strong: #EBB8D0;
+  --color-soft: #FDEFF5;
+  --color-surface-2: #FFF8FB;
+  --color-track: #FBE3EE;
+  --color-bg: #FFF6FA;
+  --font-display: "Quicksand Variable", "Quicksand", "Space Grotesk Variable", ui-sans-serif, system-ui, sans-serif;
+  --header-bg: linear-gradient(90deg, #FFF0F6 0%, #FFFFFF 45%, #E7F5FF 100%);
+  --app-bg: radial-gradient(1200px 600px at 100% 0%, #E7F5FF 0%, transparent 60%), radial-gradient(900px 500px at 0% 100%, #FFE3EF 0%, transparent 55%), #FFF6FA;
+  --spark: "✦";
+}
+
+/* Lagon — bleu-vert franc */
+[data-theme="lagon"] {
+  --color-brand: #0B7285;
+  --color-brand-dark: #0A5C6B;
+  --color-brand-ink: #0B4552;
+  --color-brand-soft: #E3FAFC;
+  --color-brand-mid: #99E9F2;
+  --color-accent: #2F9E44;
+  --color-accent-soft: #EBFBEE;
+  --color-line: #D3EEF2;
+  --color-line-strong: #A5D8DF;
+  --color-soft: #EEF8FA;
+  --color-surface-2: #F6FCFD;
+  --color-track: #DDF2F5;
+  --color-bg: #F2FAFB;
+  --color-warm: #B54708; --color-warm-dark: #7A2E0B; --color-warm-soft: #FEF0E6; --color-warm-mid: #FDDCC4;
+  --font-display: "Space Grotesk Variable", "Space Grotesk", Inter, ui-sans-serif, system-ui, sans-serif;
+  --header-bg: linear-gradient(90deg, #E3FAFC 0%, #FFFFFF 50%, #EBFBEE 100%);
+  --app-bg: radial-gradient(1100px 600px at 100% 0%, #E3FAFC 0%, transparent 60%), #F2FAFB;
+  --spark: none;
+}
+
+/* Styles de base dans la couche « base » : les classes utilitaires restent prioritaires */
 @layer base {
   html { -webkit-text-size-adjust: 100%; }
   body { background: var(--color-bg); color: var(--color-ink); font-family: var(--font-sans); }
   h1, h2, h3 { font-family: var(--font-display); letter-spacing: -0.01em; }
+  [data-theme="rose"] h1, [data-theme="rose"] h2 { letter-spacing: 0; font-weight: 700; }
   a { color: var(--color-brand); }
   a:hover { color: var(--color-brand-dark); }
   :focus-visible { outline: 3px solid var(--color-brand); outline-offset: 2px; }
 }
 
 @layer components {
+  .app { background: var(--app-bg); }
+  .app-header { background: var(--header-bg); }
+  .spark::before { content: var(--spark); color: var(--color-brand); margin-right: 6px; font-size: 0.8em; }
   .card { background: #fff; border: 1px solid var(--color-line); border-radius: 14px; padding: 20px; }
+  [data-theme="rose"] .card { border-radius: 18px; box-shadow: 0 1px 2px rgba(194, 37, 92, 0.06); }
   .lbl { font-size: 12px; font-weight: 600; letter-spacing: .05em; text-transform: uppercase; color: var(--color-muted); }
   .muted { color: var(--color-muted); }
   .pill { display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; border-radius: 999px; font-size: 12px; font-weight: 600; white-space: nowrap; }
   .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 44px; padding: 0 16px; border-radius: 10px;
-         border: 1px solid #D0D5DD; background: #fff; color: var(--color-ink); font-weight: 600; font-size: 15px; cursor: pointer; text-decoration: none; }
+         border: 1px solid var(--color-line-strong); background: #fff; color: var(--color-ink); font-weight: 600; font-size: 15px; cursor: pointer; text-decoration: none; }
+  [data-theme="rose"] .btn { border-radius: 999px; padding: 0 20px; }
   .btn:hover { background: var(--color-soft); color: var(--color-ink); }
-  .btn:disabled { background: var(--color-soft); color: #667085; border-color: var(--color-line); cursor: not-allowed; }
+  .btn:disabled { background: var(--color-soft); color: var(--color-muted-2); border-color: var(--color-line); cursor: not-allowed; }
   .btn-primary { background: var(--color-brand); border-color: var(--color-brand); color: #fff; }
   .btn-primary:hover { background: var(--color-brand-dark); color: #fff; }
-  .field { min-height: 44px; width: 100%; border: 1px solid #D0D5DD; border-radius: 10px; padding: 8px 12px; font: inherit; background: #fff; color: var(--color-ink); }
+  .btn-primary:disabled { background: var(--color-brand); border-color: var(--color-brand); color: #fff; opacity: .5; }
+  .field { min-height: 44px; width: 100%; border: 1px solid var(--color-line-strong); border-radius: 10px; padding: 8px 12px; font: inherit; background: #fff; color: var(--color-ink); }
   textarea.field { min-height: 110px; line-height: 1.5; }
   .prose-lesson { font-family: var(--font-serif); font-size: 18px; line-height: 1.65; color: #1D2939; }
   .tbl { width: 100%; border-collapse: collapse; }
   .tbl th { font-size: 13px; font-weight: 600; text-align: left; padding: 10px 12px; background: var(--color-soft); color: var(--color-ink-2); }
   .tbl td { font-size: 15px; line-height: 1.5; padding: 10px 12px; border-top: 1px solid var(--color-line); vertical-align: top; }
   .navlink { display: inline-flex; align-items: center; min-height: 44px; padding: 0 14px; border-radius: 10px; color: var(--color-ink-2); text-decoration: none; font-weight: 600; font-size: 14px; }
+  [data-theme="rose"] .navlink { border-radius: 999px; }
   .navlink:hover { background: var(--color-soft); color: var(--color-ink); }
   .navlink[aria-current="page"] { background: var(--color-brand-soft); color: var(--color-brand); }
+  /* zones qui défilent : barre fine et discrète */
+  .pane { scrollbar-width: thin; scrollbar-color: var(--color-line-strong) transparent; }
 }

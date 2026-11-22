@@ -7,6 +7,7 @@ import { MASTERY } from '@/lib/settings';
 import { PageTitle } from '@/components/Shell';
 import { ChildPicker } from '@/components/ChildPicker';
 import { decideEvalRequest } from './actions';
+import { Screen } from '@/components/Layout';
 
 export const metadata = { title: 'Tableau de bord' };
 export const dynamic = 'force-dynamic';
@@ -49,7 +50,7 @@ export default async function ParentDashboard({ searchParams }: { searchParams: 
   ];
 
   return (
-    <>
+    <Screen top={<>
       <ChildPicker students={students} current={student} path="/parent" />
       <PageTitle kicker="Cette semaine" title={`${student.first_name} a travaillé ${hm(w.active)}, ${pct} % de son objectif`}
         sub={w.open > w.active ? `Temps actif mesuré. Les ${hm(w.open - w.active)} de pages ouvertes sans activité ne sont pas comptées.` : 'Temps actif mesuré par le serveur, minute par minute.'}>
@@ -61,11 +62,12 @@ export default async function ParentDashboard({ searchParams }: { searchParams: 
           <div key={k.label} className="card flex-[1_1_210px] flex flex-col gap-2">
             <span className="lbl">{k.label}</span>
             <div className="flex items-baseline gap-1.5"><span className="font-[family-name:var(--font-display)] text-[32px] font-bold">{k.value}</span><span className="muted font-semibold">{k.unit}</span></div>
-            <div className="h-2 bg-[#EEF0F3] rounded-full overflow-hidden"><div className="h-full bg-brand rounded-full" style={{ width: `${Math.max(0, Math.min(100, k.bar))}%` }} /></div>
+            <div className="h-2 bg-track rounded-full overflow-hidden"><div className="h-full bg-brand rounded-full" style={{ width: `${Math.max(0, Math.min(100, k.bar))}%` }} /></div>
             <span className="muted text-[13px]">{k.sub}</span>
           </div>
         ))}
       </section>
+    </>}>
 
       <div className="flex flex-wrap gap-6 items-start">
         <section className="card flex-[999_1_560px] min-w-0 flex flex-col gap-4">
@@ -137,7 +139,7 @@ export default async function ParentDashboard({ searchParams }: { searchParams: 
                 return (
                   <tr key={r.subject}>
                     <td className="font-semibold">{r.subject}</td><td>{r.total}</td><td>{r.published}</td><td>{r.started}</td><td>{r.acquired}</td>
-                    <td><div className="flex items-center gap-2.5"><div className="flex-1 h-2 bg-[#EEF0F3] rounded-full overflow-hidden"><div className="h-full bg-brand" style={{ width: `${p}%` }} /></div><span className="text-[13px] font-semibold w-9">{p} %</span></div></td>
+                    <td><div className="flex items-center gap-2.5"><div className="flex-1 h-2 bg-track rounded-full overflow-hidden"><div className="h-full bg-brand" style={{ width: `${p}%` }} /></div><span className="text-[13px] font-semibold w-9">{p} %</span></div></td>
                     <td className="font-semibold">{r.avg ? Number(r.avg).toLocaleString('fr-FR') : '—'}</td>
                   </tr>
                 );
@@ -146,6 +148,6 @@ export default async function ParentDashboard({ searchParams }: { searchParams: 
           </table>
         </div>
       </section>
-    </>
+    </Screen>
   );
 }

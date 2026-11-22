@@ -29,7 +29,7 @@ export function Checkpoint({ courseId, partIndex, total, initial }: { courseId: 
       <div className="flex flex-col gap-2">
         {q.options.map((o, i) => {
           const chosen = picked === i;
-          const cls = chosen && res ? (res.correct ? 'border-brand bg-brand-soft' : 'border-warm bg-warm-soft') : 'border-[#D0D5DD] bg-white hover:border-brand';
+          const cls = chosen && res ? (res.correct ? 'border-brand bg-brand-soft' : 'border-warm bg-warm-soft') : 'border-line-strong bg-white hover:border-brand';
           return (
             <button key={i} type="button" onClick={() => choose(i)} aria-pressed={chosen}
               className={`flex items-center gap-3 min-h-12 px-4 rounded-xl border-[1.5px] text-left font-semibold text-[15px] cursor-pointer ${cls}`} disabled={pending || !!res}>
@@ -39,9 +39,9 @@ export function Checkpoint({ courseId, partIndex, total, initial }: { courseId: 
         })}
       </div>
       {res?.correct && (
-        <div role="status" className="rounded-xl px-4 py-3 bg-brand-soft text-[#1E2A78] text-sm">
+        <div role="status" className="rounded-xl px-4 py-3 bg-brand-soft text-brand-ink text-sm">
           <strong>Bien vu !</strong> {res.message} <strong>+10 points de progrès.</strong>
-          <div className="mt-3"><button className="btn btn-primary" type="button" onClick={() => router.refresh()}>{res.lessonDone ? 'Voir la fiche mémo' : 'Continuer vers la partie suivante'}</button></div>
+          <div className="mt-3"><button className="btn btn-primary" type="button" onClick={() => router.refresh()}>{res.lessonDone ? 'Voir la fiche mémo' : 'Page suivante ›'}</button></div>
         </div>
       )}
       {res && !res.correct && (

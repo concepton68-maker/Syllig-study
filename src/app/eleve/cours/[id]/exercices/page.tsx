@@ -4,8 +4,8 @@ import { sql } from '@/lib/db';
 import { loadCourse } from '../data';
 import { publicQuestion } from '@/lib/course-format';
 import { versionById } from '@/lib/progress';
-import { SupportTextView } from '@/components/CourseBlocks';
 import { ActivityTracker } from '@/components/ActivityTracker';
+import { PaneScreen } from '@/components/Layout';
 import { ExercisesPlayer, type Solved } from './Player';
 import { restartExercises } from './actions';
 
@@ -31,30 +31,25 @@ export default async function ExercisesPage({ params }: { params: Promise<{ id: 
     : null;
 
   return (
-    <>
+    <PaneScreen top={
       <div className="card p-4 flex flex-wrap items-center justify-between gap-3">
         <div className="flex items-center gap-3 flex-wrap">
           <Link className="btn" href={`/eleve/cours/${course.id}`}>‹ Quitter</Link>
-          <div><div className="lbl">{course.subject} · {course.chapter}</div><strong className="font-[family-name:var(--font-display)] text-lg">{course.title} · ② Exercices</strong></div>
+          <div><div className="lbl">{course.subject} · {course.chapter} · environ {ex.duration_min} min · {ex.pass_threshold}/10 pour être prête</div>
+            <strong className="font-[family-name:var(--font-display)] text-lg">{course.title} · ② Exercices</strong></div>
         </div>
         {!sub.checked_at && <ActivityTracker kind="exercises" courseId={course.id} idleSeconds={student.settings.idle_seconds} />}
+        {ex.instructions && <p className="basis-full m-0 muted text-sm">{ex.instructions} Ici, pas de note : tu t’entraînes.</p>}
       </div>
-      <div className="flex flex-col gap-5 max-w-[920px] w-full mx-auto">
-        <section className="card flex flex-col gap-2">
-          <span className="lbl">S’entraîner en 3 niveaux · environ {ex.duration_min} min</span>
-          {ex.instructions && <p className="m-0">{ex.instructions}</p>}
-          <p className="m-0 muted text-sm">Ici, pas de note : tu t’entraînes. {ex.pass_threshold}/10 réussis ou plus, et tu es prête pour l’évaluation.</p>
-        </section>
-        {ex.texts.map(t => <SupportTextView key={t.id} t={t} />)}
-        <ExercisesPlayer courseId={id} items={ex.items.map(publicQuestion)} initial={sub.answers} submitted={!!sub.submitted_at}
-          solved={solved} checked={!!sub.checked_at} initialSelf={sub.self_check ?? {}} threshold={ex.pass_threshold} />
-        {sub.checked_at && (
-          <div className="flex flex-wrap gap-3">
+    }>
+      <ExercisesPlayer courseId={id} items={ex.items.map(publicQuestion)} texts={ex.texts} initial={sub.answers} submitted={!!sub.submitted_at}
+        solved={solved} checked={!!sub.checked_at} initialSelf={sub.self_check ?? {}} threshold={ex.pass_threshold}
+        after={
+          <div className="flex flex-wrap gap-3 pt-2">
             <Link className="btn btn-primary" href={`/eleve/cours/${course.id}/evaluation`}>③ Passer à l’évaluation</Link>
             <form action={restartExercises.bind(null, id)}><button className="btn" type="submit">Refaire les exercices</button></form>
           </div>
-        )}
-      </div>
-    </>
+        } />
+    </PaneScreen>
   );
 }

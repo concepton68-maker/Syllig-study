@@ -6,6 +6,7 @@ import { PageTitle } from '@/components/Shell';
 import { BlockView, SupportTextView, Stars } from '@/components/CourseBlocks';
 import { RichText } from '@/components/RichText';
 import { publishAction } from './actions';
+import { Screen } from '@/components/Layout';
 
 type V = { id: string; version: number; status: string; document: CourseDocument; imported_at: Date; source_name: string | null; published_at: Date | null };
 
@@ -22,7 +23,7 @@ function QuestionAdmin({ q }: { q: Question }) {
       <p className="m-0 text-[15px]"><RichText text={q.prompt} /></p>
       {q.options && <ol className="m-0 pl-6 list-[upper-alpha] text-sm">{q.options.map((o, i) => <li key={i} className={((Array.isArray(q.answer) ? q.answer : [q.answer]) as unknown[]).includes(i) ? 'font-bold text-brand-dark' : ''}>{o}</li>)}</ol>}
       {(q.type === 'numeric' || q.type === 'short') && <p className="m-0 text-sm"><strong>Réponse attendue :</strong> {Array.isArray(q.answer) ? q.answer.join(' · ') : String(q.answer)}{q.tolerance ? ` (± ${q.tolerance})` : ''}</p>}
-      <div className="rounded-lg bg-brand-soft px-3 py-2 text-sm text-[#1E2A78]"><strong>Corrigé :</strong> <RichText text={q.solution} /></div>
+      <div className="rounded-lg bg-brand-soft px-3 py-2 text-sm text-brand-ink"><strong>Corrigé :</strong> <RichText text={q.solution} /></div>
       {q.rubric && <div className="rounded-lg bg-soft px-3 py-2 text-sm"><strong>Barème :</strong> <RichText text={q.rubric} /></div>}
     </div>
   );
@@ -41,7 +42,7 @@ export default async function CoursePreview({ params, searchParams }: { params: 
   const warnings = check.warnings;
 
   return (
-    <>
+    <Screen top={<>
       <PageTitle kicker={`${doc.subject} · ${doc.chapter} · ${doc.code}`} title={doc.title}
         sub={`Version ${v.version} · ${({ draft: 'brouillon', published: 'publiée', archived: 'archivée' } as Record<string, string>)[v.status]} · importée le ${v.imported_at.toLocaleString('fr-FR', { timeZone: 'Europe/Paris' })}${v.source_name ? ` depuis ${v.source_name}` : ''}`}>
         {v.status === 'draft' && (
@@ -52,8 +53,9 @@ export default async function CoursePreview({ params, searchParams }: { params: 
         )}
         <Link className="btn" href="/contenu/importer">Importer une nouvelle version</Link>
       </PageTitle>
+    </>}>
 
-      {sp.importe && <p role="status" className="rounded-xl bg-brand-soft text-[#1E2A78] px-4 py-3 m-0 text-sm"><strong>Import réussi.</strong> Relis le cours ci-dessous (vue complète avec corrigés), puis publie-le.</p>}
+      {sp.importe && <p role="status" className="rounded-xl bg-brand-soft text-brand-ink px-4 py-3 m-0 text-sm"><strong>Import réussi.</strong> Relis le cours ci-dessous (vue complète avec corrigés), puis publie-le.</p>}
       {warnings.length > 0 && (
         <div className="rounded-xl bg-soft px-4 py-3"><strong className="text-sm">Remarques du contrôle automatique</strong>
           <ul className="text-sm mt-2 mb-0 pl-5 list-disc">{warnings.map((w, i) => <li key={i}>{w}</li>)}</ul></div>
@@ -111,6 +113,6 @@ export default async function CoursePreview({ params, searchParams }: { params: 
           </div>
         ))}
       </section>
-    </>
+    </Screen>
   );
 }

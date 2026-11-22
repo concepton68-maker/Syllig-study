@@ -4,6 +4,7 @@ import { parcours, nextStep } from '@/lib/progress';
 import { stepHref } from '@/lib/links';
 import { PageTitle } from '@/components/Shell';
 import { MasteryPill } from '@/components/Mastery';
+import { Screen } from '@/components/Layout';
 
 export const metadata = { title: 'Mon parcours' };
 export const dynamic = 'force-dynamic';
@@ -18,8 +19,7 @@ export default async function Parcours() {
   }
   const done = items.filter(c => c.mastery >= 4).length;
   return (
-    <>
-      <PageTitle kicker={student.level_name} title="Mon parcours" sub={`${done} cours acquis sur ${items.length}. Les cours « bientôt disponibles » arrivent au fur et à mesure.`} />
+    <Screen top={<PageTitle kicker={student.level_name} title="Mon parcours" sub={`${done} cours acquis sur ${items.length}. Les cours « bientôt disponibles » arrivent au fur et à mesure.`} />}>
       {[...bySubject].map(([subject, list]) => (
         <section key={subject} className="card flex flex-col">
           <div className="flex flex-wrap justify-between items-center gap-2 mb-2">
@@ -42,6 +42,6 @@ export default async function Parcours() {
           })}
         </section>
       ))}
-    </>
+    </Screen>
   );
 }
