@@ -35,9 +35,9 @@ Les questions s'affichent une à une ; les mots de passe ne s'affichent pas à l
 3. « Importer un cours » → choisir ce fichier → relire l'aperçu → « Publier cette version ».
 
 ## Mettre à jour plus tard
-Envoyer la nouvelle archive comme à l'étape 1, puis :
+Sur le serveur (dossier relié à GitHub) :
 ```
-cd /opt/syllig-study && sudo tar xzf /tmp/syllig-study.tar.gz -C /opt/syllig-study && sudo ./deploy/install.sh study.syllig.com
+cd /opt/syllig-study && sudo git pull && sudo ./deploy/install.sh study.syllig.com
 ```
 Les données sont conservées (volume Docker `syllig-study_db-data`) ; les migrations de base s'appliquent toutes seules.
 

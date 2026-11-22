@@ -25,7 +25,7 @@ echo "2/5 · Construction et démarrage des conteneurs (quelques minutes la prem
 docker compose build --pull
 docker compose up -d
 for i in $(seq 1 60); do
-  curl -fsS -o /dev/null "http://127.0.0.1:${PORT}/connexion" && break
+  curl -fs -o /dev/null "http://127.0.0.1:${PORT}/connexion" 2>/dev/null && break
   sleep 3
   [ "$i" = 60 ] && { echo "L'application ne répond pas. Journal :"; docker compose logs --tail 50 app; exit 1; }
 done
@@ -69,6 +69,13 @@ else
 fi
 
 echo
-echo "Terminé. Créez maintenant les comptes (voir docs/INSTALLATION.md) :"
-echo "  sudo docker compose -f ${DIR}/docker-compose.yml exec app node scripts/create-user.mjs admin"
-echo "  sudo docker compose -f ${DIR}/docker-compose.yml exec app node scripts/create-user.mjs family"
+VERSION=$(git -C "$DIR" log -1 --format='%h · %s' 2>/dev/null || echo "archive")
+USERS=$(docker compose exec -T db psql -U syllig -tAc "select count(*) from users" 2>/dev/null || echo 0)
+echo "Terminé. Version installée : ${VERSION}"
+if [ "${USERS:-0}" = "0" ]; then
+  echo "Aucun compte pour l'instant. Créez-les (voir docs/INSTALLATION.md) :"
+  echo "  cd ${DIR} && sudo docker compose exec app node scripts/create-user.mjs admin"
+  echo "  cd ${DIR} && sudo docker compose exec app node scripts/create-user.mjs family"
+else
+  echo "Comptes existants conservés (${USERS}). Site : https://${DOMAIN}"
+fi
