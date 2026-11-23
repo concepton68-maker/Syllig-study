@@ -1,4 +1,3 @@
-# syntax=docker/dockerfile:1
 # Syllig Study — image de production (Next.js autonome + outils de base de données)
 # (Le secret « ca » est facultatif : il ne sert qu'aux environnements derrière un proxy TLS ; inutile sur le VPS.)
 FROM node:22-alpine AS build

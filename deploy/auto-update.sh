@@ -11,8 +11,10 @@ cd "$DIR"
 git fetch -q origin main || { echo "$(date -Is) fetch impossible" >> "$LOG"; exit 0; }
 NEW=$(git rev-parse origin/main); CUR=$(git rev-parse HEAD)
 [ "$NEW" = "$CUR" ] && exit 0
-FAILED="$DIR/.deploy-failed"                # version déjà tentée sans succès : on attend la suivante
-[ -f "$FAILED" ] && [ "$(cat "$FAILED")" = "$NEW" ] && exit 0
+FAILED="$DIR/.deploy-failed"                # « commit nombre_d_échecs » : après 3 échecs, on attend la version suivante
+ECHECS=0
+[ -f "$FAILED" ] && [ "$(cut -d' ' -f1 "$FAILED")" = "$NEW" ] && ECHECS=$(cut -d' ' -f2 "$FAILED" -s)
+ECHECS=${ECHECS:-1}; [ "$ECHECS" -ge 3 ] 2>/dev/null && exit 0
 {
   echo "=== $(date -Is) mise à jour ${CUR:0:7} → ${NEW:0:7} : $(git log -1 --format=%s "$NEW")"
   # filet de sécurité : sauvegarde de la base et image de la version en place
@@ -23,8 +25,8 @@ FAILED="$DIR/.deploy-failed"                # version déjà tentée sans succè
     rm -f "$FAILED"
     echo "=== $(date -Is) OK : version ${NEW:0:7} en ligne"
   else
-    echo "$NEW" > "$FAILED"
-    echo "=== $(date -Is) ÉCHEC : retour à la version ${CUR:0:7} (la version ${NEW:0:7} ne sera pas retentée)"
+    echo "$NEW $((ECHECS + 1))" > "$FAILED"
+    echo "=== $(date -Is) ÉCHEC n° $((ECHECS + 1)) : retour à la version ${CUR:0:7} (nouvel essai automatique jusqu'à 3 échecs)"
     git reset -q --hard "$CUR"
     # on remet l'image qui tournait, sans reconstruire
     docker image tag syllig-study:precedente syllig-study:latest 2>/dev/null || true

@@ -25,7 +25,11 @@ echo "2/5 · Construction et démarrage des conteneurs (quelques minutes la prem
 export APP_VERSION="$(git -C "$DIR" rev-parse --short HEAD 2>/dev/null || echo archive)"
 export APP_RELEASE="$(cat "$DIR/VERSION" 2>/dev/null || echo 0.00)"
 export APP_STARTED="$(date -Is)"
-if [ "${SKIP_BUILD:-0}" != 1 ]; then docker compose build --pull; fi
+# pas de --pull ni d'en-tête « syntax » : la construction n'a pas besoin de Docker Hub si l'image de base est déjà là
+# (un incident DNS passager ne bloque plus la mise à jour) ; 3 essais en cas de coupure réseau
+if [ "${SKIP_BUILD:-0}" != 1 ]; then
+  for essai in 1 2 3; do docker compose build && break; [ "$essai" = 3 ] && exit 1; echo "   construction échouée, nouvel essai dans 30 s"; sleep 30; done
+fi
 docker compose up -d
 for i in $(seq 1 60); do
   curl -fs -o /dev/null "http://127.0.0.1:${PORT}/connexion" 2>/dev/null && break
