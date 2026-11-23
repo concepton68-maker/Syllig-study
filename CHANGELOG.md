@@ -32,3 +32,9 @@ Première version numérotée (déjà en ligne avant numérotation : socle, gén
 ## 0.04 — 23/11/2026
 - 4 nouveaux thèmes girly : Lavande, Pêche corail, Barbe à papa, Nuit étoilée (soit 6 thèmes girly au total).
 - Choix du thème rangé par familles (Girly, Garçon, Neutres), avec un aperçu de la barre latérale de chaque thème.
+
+## 0.05 — 23/11/2026
+- Nouveau logo « livre-aurore » (un soleil qui se lève derrière un livre ouvert) :
+  - « Syllig » en lettres à empattements, « STUDY » en capitales espacées.
+  - Présent dans la barre latérale, la barre mobile et la page de connexion, ainsi que dans l'icône d'onglet du navigateur.
+  - Couleurs adaptées à chaque thème.

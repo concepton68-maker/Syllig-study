@@ -18,7 +18,7 @@ export default async function LoginPage() {
   return (
     <main className="min-h-dvh flex bg-[#F6F7FB]">
       <section className="login-hero hidden lg:flex flex-col justify-between w-[46%] max-w-[680px] p-12 text-white">
-        <Logo onDark />
+        <Logo onDark size="lg" id="logo-hero" />
         <div className="flex flex-col gap-8 max-w-[460px]">
           <h1 className="text-[40px] leading-[1.1] font-bold tracking-tight">Le parcours qui fait <span className="login-hl">vraiment progresser</span>.</h1>
           <ul className="flex flex-col gap-5 m-0 p-0 list-none">
@@ -35,7 +35,7 @@ export default async function LoginPage() {
 
       <section className="flex-1 flex items-center justify-center p-6">
         <div className="w-full max-w-[400px] flex flex-col gap-7">
-          <div className="lg:hidden"><Logo /></div>
+          <div className="lg:hidden"><Logo id="logo-login" /></div>
           <div>
             <h2 className="text-[30px] font-bold tracking-tight">Bon retour 👋</h2>
             <p className="muted text-[15px] mt-1.5 mb-0">Connecte-toi pour retrouver ton parcours.</p>

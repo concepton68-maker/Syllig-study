@@ -478,3 +478,13 @@ section.card > h2, section.card > div > h2, section.card h2.text-xl { font-size:
   .btn-primary:disabled { background: var(--color-track); }
   .bg-track > .bg-brand { background: var(--bar-bg, var(--color-brand)); }
 }
+
+/* logo « livre-aurore » : soleil rose poudré et page claire par défaut, adaptés aux thèmes */
+:root { --logo-sun: #F4B6C8; --logo-page: #9ED3F0; }
+[data-theme="graphite"] { --logo-sun: #F97316; --logo-page: #FDBA74; }
+[data-theme="lagon"] { --logo-sun: #FFD6A5; --logo-page: #99E9F2; }
+[data-theme="lavande"] { --logo-sun: #F4C6DE; --logo-page: #D9C9FA; }
+[data-theme="peche"] { --logo-sun: #FFB38A; --logo-page: #FFD6C8; }
+[data-theme="barbe"] { --logo-sun: #FF9BC9; --logo-page: #8EE8DF; }
+[data-theme="etoile"] { --logo-sun: #E9C96A; --logo-page: #CFC4F8; }
+.login-hero { --logo-sun: #F4B6C8; --logo-page: #9ED3F0; }

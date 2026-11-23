@@ -27,7 +27,7 @@ export function Shell({ role, nav, theme, spaces, user, children }: {
     <div className="app h-dvh flex" data-theme={theme && theme !== 'classique' ? theme : undefined}>
       {/* barre latérale */}
       <aside className="sidebar hidden lg:flex">
-        <div className="px-5 pt-6 pb-5"><Logo onDark role={role} /></div>
+        <div className="px-5 pt-6 pb-5"><Logo onDark role={role} id="logo-side" /></div>
         {switcher && <div className="px-4 pb-4">{switcher}</div>}
         <div className="px-3 flex-1 min-h-0 overflow-y-auto"><NavLinks items={nav} /></div>
         <div className="side-foot">
@@ -46,7 +46,7 @@ export function Shell({ role, nav, theme, spaces, user, children }: {
       <div className="flex-1 min-w-0 flex flex-col">
         {/* barre du haut, téléphone et tablette */}
         <header className="mobile-bar lg:hidden">
-          <Logo onDark />
+          <Logo onDark id="logo-mobile" />
           <span className="pill version-pill">v{release}</span>
           <span className="flex-1" />
           {switcher}
