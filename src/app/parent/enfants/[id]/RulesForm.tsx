@@ -30,7 +30,7 @@ export function RulesForm({ studentId, s }: { studentId: string; s: StudentSetti
             <label key={t.id} data-theme={t.id} className="flex-[1_1_200px] flex items-start gap-2.5 p-3 rounded-xl border border-line-strong cursor-pointer bg-brand-soft">
               <input type="radio" name="theme" value={t.id} defaultChecked={s.theme === t.id} className="mt-1 w-4 h-4" />
               <span><strong className="text-brand-ink">{t.name}</strong><span className="block text-sm text-ink-2">{t.desc}</span>
-                <span className="flex gap-1 mt-1.5" aria-hidden="true"><span className="w-5 h-5 rounded-full bg-brand" /><span className="w-5 h-5 rounded-full bg-brand-mid" /><span className="w-5 h-5 rounded-full bg-accent" /></span></span>
+                <span className="flex gap-1 mt-1.5" aria-hidden="true"><span className="w-5 h-5 rounded-full" style={{ background: 'var(--side-bg)' }} /><span className="w-5 h-5 rounded-full bg-brand" /><span className="w-5 h-5 rounded-full bg-brand-mid" /><span className="w-5 h-5 rounded-full bg-accent" /></span></span>
             </label>
           ))}
         </div>

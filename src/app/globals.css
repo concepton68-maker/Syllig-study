@@ -237,7 +237,6 @@ section.card > h2, section.card > div > h2, section.card h2.text-xl { font-size:
 [data-theme="glacier"] h1, [data-theme="glacier"] h2 { color: var(--color-brand-ink); letter-spacing: 0; }
 [data-theme="glacier"] .card { border-radius: 20px; }
 [data-theme="glacier"] .btn { border-radius: var(--r-pill); padding: 0 20px; }
-[data-theme="glacier"] .btn-primary { background: linear-gradient(135deg, #2580B8, #1F6FA3 60%, #1B6699); }
 [data-theme="glacier"] .navlink { border-radius: var(--r-pill); }
 [data-theme="glacier"] .lbl { color: var(--color-warm); }
 /* la carte « prochaine étape » : liseré rose poudré + halo glacier */
@@ -246,7 +245,6 @@ section.card > h2, section.card > div > h2, section.card h2.text-xl { font-size:
 /* étape en cours : bleu nuit (pas la même teinte que le bouton principal) */
 [data-theme="glacier"] li.bg-brand { background: #243049; }
 /* barres de progression : dégradé glacier → rose */
-[data-theme="glacier"] .bg-track > .bg-brand { background: linear-gradient(90deg, #4DA9DB, #E8799B); }
 
 /* ───────── 3. Thème garçon « Graphite & Volt » ─────────
    Graphite sombre + orange volt + indigo : sport/gaming sans tomber dans le « tout bleu ». */
@@ -287,7 +285,6 @@ section.card > h2, section.card > div > h2, section.card h2.text-xl { font-size:
 [data-theme="graphite"] .card.border-2.border-brand { border-color: #1C2430; border-width: 1px;
   background: linear-gradient(180deg, #FFF6EE 0, #fff 120px); box-shadow: 4px 4px 0 #1C2430; }
 [data-theme="graphite"] li.bg-brand { background: #1C2430; }
-[data-theme="graphite"] .bg-track > .bg-brand { background: linear-gradient(90deg, #F97316, #84CC16); }
 [data-theme="glacier"] .btn-primary:disabled { background: var(--color-track); }
 
   /* chiffres : Inter à chasse fixe (le « 1 » de Space Grotesk se lit mal) */
@@ -399,3 +396,85 @@ section.card > h2, section.card > div > h2, section.card h2.text-xl { font-size:
 .login-hl { background: linear-gradient(90deg, #F9CCD8, #9ED3F0); -webkit-background-clip: text; background-clip: text; color: transparent; }
 .login-ico { width: 42px; height: 42px; flex: 0 0 auto; border-radius: 12px; display: inline-flex; align-items: center; justify-content: center;
   background: rgb(255 255 255 / .12); border: 1px solid rgb(255 255 255 / .18); }
+
+/* ═══════ Thèmes girly supplémentaires ═══════ */
+[data-theme="lavande"] {
+  --color-ink: #24183F; --color-ink-2: #43365F;
+  --color-brand: #6D46C9; --color-brand-dark: #5634A8; --color-brand-ink: #3B2370; --color-brand-soft: #F4EFFF; --color-brand-mid: #D9C9FA;
+  --color-accent: #2E9E7E; --color-accent-soft: #E6F7F1;
+  --color-warm: #B4387A; --color-warm-dark: #86245A; --color-warm-soft: #FCEEF6; --color-warm-mid: #F4C6DE;
+  --color-line: #E7DDF8; --color-line-strong: #CFBFEE; --color-soft: #F5F0FD; --color-surface-2: #FAF7FE; --color-track: #ECE3FA; --color-bg: #F8F5FE;
+  --font-display: "Quicksand Variable", "Quicksand", "Space Grotesk Variable", ui-sans-serif, system-ui, sans-serif;
+  --app-bg: radial-gradient(900px 460px at 100% 0%, #EDE4FF 0%, transparent 60%), radial-gradient(700px 420px at 0% 100%, #E3F7EF 0%, transparent 60%), #F9F6FF;
+  --spark: "✿"; --shadow-tint: 59 35 112;
+  --side-bg: radial-gradient(380px 280px at 0% 0%, rgb(244 198 222 / .32), transparent 70%), radial-gradient(420px 300px at 100% 100%, rgb(99 199 166 / .22), transparent 70%), linear-gradient(180deg, #3B2370 0%, #2A1856 100%);
+  --side-ink: #FFFFFF; --side-ink-2: #D6C9F2; --side-on-bg: #E4D6FF; --side-on-ink: #3B2370; --side-on-bar: transparent; --side-hover: rgb(255 255 255 / .08);
+  --side-accent: #B28CFF; --side-accent-2: #63C7A6;
+}
+[data-theme="peche"] {
+  --color-ink: #2E1A1F; --color-ink-2: #55363D;
+  --color-brand: #C23652; --color-brand-dark: #9E2742; --color-brand-ink: #5E1A2B; --color-brand-soft: #FFF1EE; --color-brand-mid: #FFC9BC;
+  --color-accent: #E0773A; --color-accent-soft: #FFF3E8;
+  --color-warm: #7E3FA0; --color-warm-dark: #5E2D78; --color-warm-soft: #F6EEFB; --color-warm-mid: #E2C8F0;
+  --color-line: #F8DDD6; --color-line-strong: #EEC3B8; --color-soft: #FFF3F0; --color-surface-2: #FFF9F7; --color-track: #FBE5DF; --color-bg: #FFF7F4;
+  --font-display: "Quicksand Variable", "Quicksand", "Space Grotesk Variable", ui-sans-serif, system-ui, sans-serif;
+  --app-bg: radial-gradient(900px 460px at 100% 0%, #FFE3D6 0%, transparent 60%), radial-gradient(700px 420px at 0% 100%, #F3E6FB 0%, transparent 60%), #FFF8F5;
+  --spark: "❀"; --shadow-tint: 94 26 43;
+  --side-bg: radial-gradient(400px 300px at 0% 0%, rgb(255 179 138 / .38), transparent 70%), radial-gradient(420px 300px at 100% 100%, rgb(226 200 240 / .25), transparent 70%), linear-gradient(180deg, #7A2335 0%, #4E1626 100%);
+  --side-ink: #FFFFFF; --side-ink-2: #FBD3C8; --side-on-bg: #FFD6C8; --side-on-ink: #7A2335; --side-on-bar: transparent; --side-hover: rgb(255 255 255 / .09);
+  --side-accent: #FF9A76; --side-accent-2: #E2A6F0;
+}
+[data-theme="barbe"] {
+  --color-ink: #2A1638; --color-ink-2: #4A3358;
+  --color-brand: #C2307A; --color-brand-dark: #9C1F5F; --color-brand-ink: #5C1440; --color-brand-soft: #FFEFF7; --color-brand-mid: #FFC2E0;
+  --color-accent: #1E9C9C; --color-accent-soft: #E4F8F8;
+  --color-warm: #6A4BD1; --color-warm-dark: #4E34A8; --color-warm-soft: #F1EDFF; --color-warm-mid: #D3C8FA;
+  --color-line: #F6D9EA; --color-line-strong: #EBBBD6; --color-soft: #FFF2F8; --color-surface-2: #FFFAFC; --color-track: #FCE2F0; --color-bg: #FFF7FB;
+  --font-display: "Quicksand Variable", "Quicksand", "Space Grotesk Variable", ui-sans-serif, system-ui, sans-serif;
+  --app-bg: radial-gradient(900px 460px at 100% 0%, #D9F6F6 0%, transparent 60%), radial-gradient(800px 460px at 0% 100%, #FFE0F0 0%, transparent 60%), #FFF8FC;
+  --spark: "♡"; --shadow-tint: 92 20 64;
+  --side-bg: radial-gradient(380px 280px at 0% 0%, rgb(255 140 198 / .38), transparent 70%), radial-gradient(420px 300px at 100% 100%, rgb(64 224 208 / .30), transparent 70%), linear-gradient(180deg, #4B2A6B 0%, #2E1B4A 100%);
+  --side-ink: #FFFFFF; --side-ink-2: #F2CFE6; --side-on-bg: #FFC2E0; --side-on-ink: #4B2A6B; --side-on-bar: transparent; --side-hover: rgb(255 255 255 / .09);
+  --side-accent: #FF7EB9; --side-accent-2: #40D9C9;
+}
+[data-theme="etoile"] {
+  --color-ink: #1B1440; --color-ink-2: #3A3163;
+  --color-brand: #5B3FBF; --color-brand-dark: #452E99; --color-brand-ink: #2A1B5E; --color-brand-soft: #F0ECFF; --color-brand-mid: #CFC4F8;
+  --color-accent: #A9821A; --color-accent-soft: #FBF5DF;
+  --color-warm: #B23A78; --color-warm-dark: #852657; --color-warm-soft: #FCEEF5; --color-warm-mid: #F3C5DC;
+  --color-line: #E4DFF5; --color-line-strong: #CBC2EA; --color-soft: #F3F0FC; --color-surface-2: #F9F8FE; --color-track: #E9E4FA; --color-bg: #F6F4FC;
+  --font-display: "Quicksand Variable", "Quicksand", "Space Grotesk Variable", ui-sans-serif, system-ui, sans-serif;
+  --app-bg: radial-gradient(900px 460px at 100% 0%, #ECE6FF 0%, transparent 60%), radial-gradient(700px 400px at 0% 100%, #FBF1D6 0%, transparent 60%), #F7F5FD;
+  --spark: "★"; --shadow-tint: 27 20 64;
+  --side-bg: radial-gradient(1.5px 1.5px at 30px 40px, #fff, transparent), radial-gradient(1px 1px at 120px 90px, #fff, transparent), radial-gradient(1.5px 1.5px at 200px 160px, #F6E39B, transparent),
+             radial-gradient(1px 1px at 60px 240px, #fff, transparent), radial-gradient(1.5px 1.5px at 180px 330px, #fff, transparent), radial-gradient(1px 1px at 90px 420px, #F6E39B, transparent),
+             radial-gradient(400px 300px at 0% 0%, rgb(233 201 106 / .22), transparent 70%), radial-gradient(420px 300px at 100% 100%, rgb(243 197 220 / .18), transparent 70%), linear-gradient(180deg, #1B1440 0%, #0F0B2A 100%);
+  --side-ink: #FFFFFF; --side-ink-2: #C7BEEA; --side-on-bg: #E9C96A; --side-on-ink: #1B1440; --side-on-bar: transparent; --side-hover: rgb(255 255 255 / .08);
+  --side-accent: #E9C96A; --side-accent-2: #B28CFF;
+}
+@layer components {
+  :is([data-theme="lavande"], [data-theme="peche"], [data-theme="barbe"], [data-theme="etoile"]) .btn { border-radius: 999px; padding: 0 20px; }
+  :is([data-theme="lavande"], [data-theme="peche"], [data-theme="barbe"], [data-theme="etoile"]) .card { border-radius: 22px; }
+  :is([data-theme="lavande"], [data-theme="peche"], [data-theme="barbe"], [data-theme="etoile"]) :is(h1, h2) { color: var(--color-brand-ink); letter-spacing: 0; }
+  :is([data-theme="lavande"], [data-theme="peche"], [data-theme="barbe"], [data-theme="etoile"]) .page-kicker { color: var(--color-warm); }
+  [data-theme="lavande"] .page-kicker::before { background: linear-gradient(90deg, #B28CFF, #63C7A6); }
+  [data-theme="peche"] .page-kicker::before { background: linear-gradient(90deg, #FF9A76, #C23652); }
+  [data-theme="barbe"] .page-kicker::before { background: linear-gradient(90deg, #FF7EB9, #40D9C9); }
+  [data-theme="etoile"] .page-kicker::before { background: linear-gradient(90deg, #E9C96A, #B28CFF); }
+  [data-theme="etoile"] .spark::before { color: #C9A227; }
+}
+/* bouton principal et barres de progression : une variable par thème (le thème le plus proche l'emporte, aperçus compris) */
+[data-theme="glacier"] { --btn-bg: linear-gradient(135deg, #2580B8, #1F6FA3 60%, #1B6699); --bar-bg: linear-gradient(90deg, #4DA9DB, #E8799B); }
+[data-theme="graphite"] { --bar-bg: linear-gradient(90deg, #F97316, #84CC16); }
+[data-theme="lavande"] { --btn-bg: linear-gradient(135deg, #7C55DB, #6D46C9 60%, #5E3BB8); --bar-bg: linear-gradient(90deg, #8E6CF0, #63C7A6); }
+[data-theme="peche"] { --btn-bg: linear-gradient(135deg, #D9485F, #C23652 60%, #B02D48); --bar-bg: linear-gradient(90deg, #FF8A65, #C23652); }
+[data-theme="barbe"] { --btn-bg: linear-gradient(135deg, #D63E8B, #C2307A 60%, #A9246A); --bar-bg: linear-gradient(90deg, #FF7EB9, #40D9C9); }
+[data-theme="etoile"] { --btn-bg: linear-gradient(135deg, #6A4BD1, #5B3FBF 60%, #4A31A8); --bar-bg: linear-gradient(90deg, #6A4BD1, #E9C96A); }
+:is([data-theme="rose"], [data-theme="lagon"], [data-theme="classique"], [data-theme="graphite"]) { --btn-bg: var(--color-brand); }
+:is([data-theme="rose"], [data-theme="lagon"], [data-theme="classique"]) { --bar-bg: var(--color-brand); }
+@layer components {
+  .btn-primary { background: var(--btn-bg, var(--color-brand)); }
+  .btn-primary:hover { background: var(--color-brand-dark); }
+  .btn-primary:disabled { background: var(--color-track); }
+  .bg-track > .bg-brand { background: var(--bar-bg, var(--color-brand)); }
+}

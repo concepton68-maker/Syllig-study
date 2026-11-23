@@ -7,11 +7,18 @@ export type StudentSettings = {
   theme: ThemeId;                // thème d'affichage de l'espace élève
 };
 export const THEMES = [
-  { id: 'glacier', name: 'Girly ✦ Ice blue', desc: 'Bleu nuit, bleu glacier et rose poudré, titres arrondis' },
-  { id: 'rose', name: 'Framboise', desc: 'Rose framboise, lilas et bleu glacier' },
-  { id: 'graphite', name: 'Graphite & Volt', desc: 'Graphite, orange volt et vert néon' },
-  { id: 'lagon', name: 'Lagon', desc: 'Bleu-vert franc et vert' },
-  { id: 'classique', name: 'Classique', desc: 'Bleu sobre' },
+  { id: 'glacier', kind: 'girly', name: 'Girly ✦ Ice blue', desc: 'Bleu nuit, bleu glacier et rose poudré, titres arrondis' },
+  { id: 'rose', kind: 'girly', name: 'Framboise', desc: 'Rose framboise, lilas et bleu glacier' },
+  { id: 'lavande', kind: 'girly', name: 'Lavande', desc: 'Violet lavande, prune et touches de menthe' },
+  { id: 'peche', kind: 'girly', name: 'Pêche corail', desc: 'Corail, pêche et lilas, ambiance coucher de soleil' },
+  { id: 'barbe', kind: 'girly', name: 'Barbe à papa', desc: 'Rose bonbon et turquoise sur fond violet' },
+  { id: 'etoile', kind: 'girly', name: 'Nuit étoilée', desc: 'Violet profond, doré et rose, très chic' },
+  { id: 'graphite', kind: 'garcon', name: 'Graphite & Volt', desc: 'Graphite, orange volt et vert néon' },
+  { id: 'lagon', kind: 'neutre', name: 'Lagon', desc: 'Bleu-vert franc et vert' },
+  { id: 'classique', kind: 'neutre', name: 'Classique', desc: 'Bleu sobre' },
+] as const;
+export const THEME_KINDS = [
+  { id: 'girly', label: 'Girly' }, { id: 'garcon', label: 'Garçon' }, { id: 'neutre', label: 'Neutres' },
 ] as const;
 export type ThemeId = (typeof THEMES)[number]['id'];
 export const isTheme = (t: unknown): t is ThemeId => THEMES.some(x => x.id === t);

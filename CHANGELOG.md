@@ -28,3 +28,7 @@ Première version numérotée (déjà en ligne avant numérotation : socle, gén
   - Sur téléphone, barre d'onglets en bas.
 - Page de connexion en deux panneaux (présentation et formulaire).
 - Cartes plus élégantes ; tableau de bord parent avec des tuiles de chiffres clés colorées, chacune avec son icône.
+
+## 0.04 — 23/11/2026
+- 4 nouveaux thèmes girly : Lavande, Pêche corail, Barbe à papa, Nuit étoilée (soit 6 thèmes girly au total).
+- Choix du thème rangé par familles (Girly, Garçon, Neutres), avec un aperçu de la barre latérale de chaque thème.
