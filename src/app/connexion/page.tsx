@@ -18,7 +18,7 @@ export default async function LoginPage() {
         </div>
         <LoginForm />
         <p className="muted text-xs">Mot de passe oublié ? Demande à ton parent de le réinitialiser depuis son espace.</p>
-        <p className="text-[11px] text-muted-2 m-0">Version {process.env.APP_RELEASE ?? 'dev'} · {process.env.APP_VERSION ?? 'dev'}</p>
+        <p className="text-sm font-semibold text-muted m-0">Version {process.env.APP_RELEASE ?? 'dev'} · {process.env.APP_VERSION ?? 'dev'}</p>
       </div>
     </main>
   );

@@ -139,7 +139,7 @@ try {
   ok(await pa.isVisible('text=1 copie à valider'), 'le parent voit la copie à valider dès l’accueil');
   await pa.click('nav >> text=À faire');
   await pa.waitForURL(/a-faire/);
-  const [dl] = await Promise.all([pa.waitForEvent('download'), pa.click('text=Exporter pour Claude (1)')]);
+  const [dl] = await Promise.all([pa.waitForEvent('download'), pa.click('text=Tout exporter pour Claude (1)')]);
   const exported = JSON.parse(fs.readFileSync(await dl.path(), 'utf8'));
   ok(exported.copies.length === 1 && exported.copies[0].questions.length === 11, 'export : 1 copie, 11 réponses rédigées (q3 déjà corrigée)');
   ok(!JSON.stringify(exported).includes('Léa'), 'export sans le prénom de l’élève');

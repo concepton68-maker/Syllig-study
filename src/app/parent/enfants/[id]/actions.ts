@@ -71,3 +71,35 @@ export async function setForcedAction(form: FormData) {
   revalidatePath(`/parent/enfants/${s.id}`);
   revalidatePath('/eleve', 'layout');
 }
+
+// ───────── Actions groupées ─────────
+const idsOf = (form: FormData) => form.getAll('ids').map(Number).filter(Number.isInteger);
+
+// Réinitialiser plusieurs cours d'un coup (chaque cours reste tracé séparément dans le journal)
+export async function resetCoursesBulkAction(form: FormData) {
+  const u = await requireUser('parent');
+  const s = await assertParentOf(u.id, z.string().uuid().parse(form.get('student')));
+  const withSessions = form.get('sessions') === 'on';
+  let n = 0, t = 0, p = 0, refus = 0;
+  for (const courseId of idsOf(form)) {
+    try { const c = await resetCourse(s.id, courseId, u.id, { withSessions }); n++; t += c.tentatives; p += c.points; }
+    catch (e) { if (e instanceof ResetRefused) refus++; else throw e; }
+  }
+  revalidatePath('/parent', 'layout');
+  revalidatePath('/eleve', 'layout');
+  redirect(`/parent/enfants/${s.id}?onglet=cours&groupe=${n}&t=${t}&p=${p}&refus=${refus}`);
+}
+
+// Changer la place de plusieurs cours dans le parcours
+export async function setForcedBulkAction(form: FormData) {
+  const u = await requireUser('parent');
+  const s = await assertParentOf(u.id, z.string().uuid().parse(form.get('student')));
+  const v = String(form.get('forced') ?? '');
+  const forced = v === 'now' || v === 'later' ? v : null;
+  const ids = idsOf(form);
+  if (ids.length) await sql`insert into course_progress (student_id, course_id, forced)
+    select ${s.id}, x, ${forced} from unnest(${ids}::int[]) as x
+    on conflict (student_id, course_id) do update set forced = excluded.forced, updated_at = now()`;
+  revalidatePath(`/parent/enfants/${s.id}`);
+  revalidatePath('/eleve', 'layout');
+}

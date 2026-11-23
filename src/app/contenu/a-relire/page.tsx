@@ -3,6 +3,8 @@ import { sql } from '@/lib/db';
 import { PageTitle } from '@/components/Shell';
 import { Screen } from '@/components/Layout';
 import { EmptyState } from '@/components/EmptyState';
+import { BulkBar, BulkCheck } from '@/components/Bulk';
+import { publishBulkAction } from '../cours/[id]/actions';
 
 export const metadata = { title: 'À relire' };
 export const dynamic = 'force-dynamic';
@@ -22,8 +24,11 @@ export default async function ToReview() {
     </PageTitle>}>
       <section className="card flex flex-col">
         {rows.length === 0 && <EmptyState title="Aucun brouillon en attente" text="Préparez une consigne depuis le catalogue, collez-la dans Claude, puis importez le JSON obtenu." action={<Link className="btn" href="/contenu">Ouvrir le catalogue</Link>} />}
+        {rows.length > 1 && <div className="mb-2"><BulkBar formId="bulk-publier" noun="cours"
+          actions={[{ label: 'Publier la sélection', action: publishBulkAction, tone: 'primary', confirm: 'Publier {n} ? Les élèves les verront aussitôt.' }]} /></div>}
         {rows.map(r => (
           <div key={r.id} className="flex flex-wrap items-center gap-3 py-3 border-t border-soft first:border-t-0">
+            {rows.length > 1 && <BulkCheck formId="bulk-publier" value={r.id} label={r.title} />}
             <span className="w-14 text-sm num muted">{r.code ?? '—'}</span>
             <span className="flex-[1_1_300px] min-w-0"><strong>{r.title}</strong><span className="block muted text-sm">{r.subject} · v{r.version}{r.replaces ? ` (remplacera la v${r.replaces} publiée)` : ' · nouveau cours'} · importé le {r.imported_at.toLocaleString('fr-FR', { timeZone: 'Europe/Paris', day: 'numeric', month: 'long', hour: '2-digit', minute: '2-digit' })}</span></span>
             <Link className="btn btn-primary" href={`/contenu/cours/${r.course_id}?v=${r.id}`}>Relire et publier</Link>

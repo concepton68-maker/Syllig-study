@@ -1,8 +1,10 @@
 'use client';
 import { useMemo, useState } from 'react';
 import Link from 'next/link';
+import { BulkBar, BulkCheck } from '@/components/Bulk';
+import { publishBulkAction } from './cours/[id]/actions';
 
-export type CatRow = { id: number; code: string | null; title: string; subject: string; chapter: string; priority: string; published: number | null; draft: number | null };
+export type CatRow = { id: number; code: string | null; title: string; subject: string; chapter: string; priority: string; published: number | null; draft: number | null; draft_id: string | null };
 
 // Catalogue filtrable : recherche, matière, statut
 export function CatalogueList({ rows }: { rows: CatRow[] }) {
@@ -28,10 +30,13 @@ export function CatalogueList({ rows }: { rows: CatRow[] }) {
           </select></label>
         <span className="muted text-sm pb-3">{shown.length} cours</span>
       </div>
+      {rows.some(r => r.draft_id) && <BulkBar formId="bulk-catalogue" noun="brouillon"
+        actions={[{ label: 'Publier les brouillons sélectionnés', action: publishBulkAction, tone: 'primary', confirm: 'Publier {n} ? Les élèves les verront aussitôt.' }]} />}
       <section className="card flex flex-col lg:flex-1 lg:min-h-0 lg:overflow-y-auto pane">
         {shown.length === 0 && <span className="muted text-sm">Aucun cours ne correspond.</span>}
         {shown.map(c => (
           <div key={c.id} className="flex flex-wrap items-center gap-3 py-2.5 border-t border-soft first:border-t-0">
+            {rows.some(r => r.draft_id) && (c.draft_id && (!c.published || (c.draft ?? 0) > c.published) ? <BulkCheck formId="bulk-catalogue" value={c.draft_id} label={c.title} /> : <span className="w-5 shrink-0" />)}
             <span className="w-14 text-sm num muted">{c.code ?? '—'}</span>
             <span className="flex-[1_1_300px] min-w-0"><span className="text-[15px]">{c.title}</span><span className="block muted text-xs">{c.subject} · {c.chapter}</span></span>
             {c.priority === 'prioritaire' && <span className="pill border border-warm text-warm bg-white">▲ Prioritaire</span>}

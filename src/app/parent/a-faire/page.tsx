@@ -4,7 +4,8 @@ import { requireParent } from '@/lib/access';
 import { PageTitle } from '@/components/Shell';
 import { Screen } from '@/components/Layout';
 import { ImportCorrections } from '../copies/ImportCorrections';
-import { decideEvalRequest } from '../actions';
+import { decideEvalRequest, approveRequestsBulk, postponeRequestsBulk } from '../actions';
+import { BulkBar, BulkCheck } from '@/components/Bulk';
 
 export const metadata = { title: 'À faire' };
 export const dynamic = 'force-dynamic';
@@ -36,8 +37,11 @@ export default async function ToDo({ searchParams }: { searchParams: Promise<{ v
       {requests.length > 0 && (
         <section className="card flex flex-col">
           <h2 className="text-xl font-semibold mb-2">Demandes d’évaluation</h2>
+          {requests.length > 1 && <div className="mb-2"><BulkBar formId="bulk-demandes" noun="demande"
+            actions={[{ label: 'Autoriser', action: approveRequestsBulk, tone: 'primary' }, { label: 'Plus tard', action: postponeRequestsBulk }]} /></div>}
           {requests.map(r => (
             <div key={r.id} className="flex flex-wrap items-center gap-3 py-3 border-t border-soft text-sm">
+              {requests.length > 1 && <BulkCheck formId="bulk-demandes" value={r.id} label={r.title} />}
               <span className="flex-[1_1_260px]"><strong>{multi ? `${r.first_name} · ` : ''}{r.title}</strong><span className="block muted">Demandée le {when(r.requested_at)}</span></span>
               <form action={decideEvalRequest.bind(null, r.id, true)}><button className="btn btn-primary" type="submit">Autoriser</button></form>
               <form action={decideEvalRequest.bind(null, r.id, false)}><button className="btn" type="submit">Plus tard</button></form>
@@ -49,11 +53,14 @@ export default async function ToDo({ searchParams }: { searchParams: Promise<{ v
       <section className="card flex flex-col">
         <div className="flex flex-wrap items-center justify-between gap-3 mb-2">
           <h2 className="text-xl font-semibold">Copies à valider</h2>
-          {pending.length > 0 && <a className="btn btn-primary" href="/api/parent/export">Exporter pour Claude ({pending.length})</a>}
+          {pending.length > 0 && <a className="btn btn-primary" href="/api/parent/export">Tout exporter pour Claude ({pending.length})</a>}
         </div>
         {pending.length === 0 && <span className="muted text-sm py-2">Aucune copie en attente.</span>}
+        {pending.length > 1 && <div className="mb-2"><BulkBar formId="bulk-copies" noun="copie"
+          actions={[{ label: 'Exporter la sélection pour Claude', action: '/api/parent/export', tone: 'primary' }]} /></div>}
         {pending.map(r => (
           <div key={r.id} className="flex flex-wrap items-center gap-3 py-3 border-t border-soft text-sm">
+            {pending.length > 1 && <BulkCheck formId="bulk-copies" value={r.id} label={r.title} />}
             <span className="flex-[1_1_260px]"><strong>{multi ? `${r.first_name} · ` : ''}{r.title}</strong><span className="block muted">Tentative {r.attempt_no} · remise le {when(r.submitted_at)}</span></span>
             <span className={`pill ${r.has_proposal ? 'bg-brand-soft text-brand-dark' : 'bg-soft text-ink-2'}`}>{r.has_proposal ? 'Pré-corrigée par Claude' : 'À exporter'}</span>
             <Link className="btn" href={`/parent/copies/${r.id}`}>{r.has_proposal ? 'Vérifier et valider' : 'Corriger moi-même'}</Link>

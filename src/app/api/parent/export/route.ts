@@ -13,10 +13,12 @@ export async function GET(req: Request) {
   const ids = (await studentsOfParent(u.id)).map(s => s.id);
   const only = new URL(req.url).searchParams.get('eleve');
   const scope = only && ids.includes(only) ? [only] : ids;
+  // sélection groupée : seulement les copies cochées (sinon toutes celles en attente)
+  const picked = new URL(req.url).searchParams.getAll('ids').filter(x => /^[0-9a-f-]{36}$/i.test(x));
   const attempts = await sql<(Attempt & { title: string; subject: string; level: string })[]>`
     select a.*, c.title, s.name as subject, l.name as level from eval_attempts a
     join courses c on c.id = a.course_id join chapters ch on ch.id = c.chapter_id join subjects s on s.id = ch.subject_id join levels l on l.code = s.level_code
-    where a.student_id in ${sql(scope.length ? scope : ['00000000-0000-0000-0000-000000000000'])} and a.status = 'submitted' order by a.submitted_at`;
+    where a.student_id in ${sql(scope.length ? scope : ['00000000-0000-0000-0000-000000000000'])} and a.status = 'submitted' ${picked.length ? sql`and a.id in ${sql(picked)}` : sql``} order by a.submitted_at`;
   const file = await buildExport(attempts);
   for (const sid of new Set(attempts.map(a => a.student_id))) await logEvent(sid, 'copies_exportees', { actorId: u.id, data: { copies: attempts.filter(a => a.student_id === sid).length } });
   const name = `copies-a-corriger-${new Date().toISOString().slice(0, 10)}.json`;

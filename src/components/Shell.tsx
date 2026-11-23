@@ -15,6 +15,7 @@ export function Shell({ role, nav, right, theme, spaces, version, children }: {
       <header className="app-header shrink-0 border-b border-line">
         <div className="max-w-[1400px] mx-auto px-4 sm:px-6 py-3 flex flex-wrap items-center gap-4">
           <Logo role={spaces && spaces.length > 1 ? undefined : role} />
+          <span title={`Version en ligne · ${process.env.APP_VERSION ?? 'dev'}`} className="pill border border-line-strong bg-white text-ink-2 text-xs font-semibold num">v{version ?? process.env.APP_RELEASE ?? 'dev'}</span>
           {spaces && spaces.length > 1 && (
             <nav aria-label="Changer d’espace" className="flex rounded-full border border-line-strong bg-white p-1">
               {spaces.map(s => (
@@ -26,7 +27,7 @@ export function Shell({ role, nav, right, theme, spaces, version, children }: {
           <NavLinks items={nav} />
           <div className="flex flex-wrap items-center gap-3">
             {right}
-            <form action={logoutAction}><button className="text-sm font-semibold text-muted hover:text-ink underline-offset-4 hover:underline min-h-11 px-2" type="submit">Se déconnecter</button></form>
+            <form action={logoutAction}><button className="text-sm font-semibold text-[var(--header-ink-2,var(--color-muted))] hover:text-[var(--header-ink,var(--color-ink))] underline-offset-4 hover:underline min-h-11 px-2" type="submit">Se déconnecter</button></form>
           </div>
         </div>
       </header>

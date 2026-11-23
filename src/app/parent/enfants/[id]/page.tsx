@@ -8,7 +8,8 @@ import { MasteryPill } from '@/components/Mastery';
 import { ResetCourse, ResetStudent } from './ResetForms';
 import { RulesForm } from './RulesForm';
 import { ResetForm } from '../Forms';
-import { setForcedAction } from './actions';
+import { setForcedAction, resetCoursesBulkAction, setForcedBulkAction } from './actions';
+import { BulkBar, BulkCheck } from '@/components/Bulk';
 
 export const metadata = { title: 'Fiche enfant' };
 export const dynamic = 'force-dynamic';
@@ -23,7 +24,7 @@ const TABS = [
 ] as const;
 
 // Fiche d'un enfant : tout ce que le parent règle pour lui, au même endroit
-export default async function ChildSheet({ params, searchParams }: { params: Promise<{ id: string }>; searchParams: Promise<{ onglet?: string; reinitialise?: string; t?: string; p?: string }> }) {
+export default async function ChildSheet({ params, searchParams }: { params: Promise<{ id: string }>; searchParams: Promise<{ onglet?: string; reinitialise?: string; t?: string; p?: string; groupe?: string; refus?: string }> }) {
   const { id } = await params;
   const sp = await searchParams;
   const { onglet } = sp;
@@ -56,13 +57,19 @@ export default async function ChildSheet({ params, searchParams }: { params: Pro
     const [resetTitle] = sp.reinitialise ? await sql<{ title: string }[]>`select title from courses where id = ${Number(sp.reinitialise) || 0}` : [];
     body = (
       <>
+        {sp.groupe !== undefined && <p role="status" className="m-0 rounded-xl bg-brand-soft text-brand-ink px-4 py-3 text-sm"><strong>{Number(sp.groupe) || 0} cours remis à zéro.</strong> {Number(sp.t) || 0} tentative(s) d’évaluation et {Number(sp.p) || 0} gain(s) de points effacés.{Number(sp.refus) ? ` ${Number(sp.refus)} cours non réinitialisé(s) : une évaluation y est en cours.` : ''}</p>}
         {resetTitle && <p role="status" className="m-0 rounded-xl bg-brand-soft text-brand-ink px-4 py-3 text-sm"><strong>« {resetTitle.title} » est remis à zéro.</strong> {Number(sp.t) || 0} tentative(s) d’évaluation et {Number(sp.p) || 0} gain(s) de points effacés ; le cours redevient « Pas encore commencé ».</p>}
         <section className="card flex flex-col">
           <h2 className="text-xl font-semibold">Cours commencés</h2>
           <p className="muted text-sm mt-1 mb-3">Réinitialiser un cours efface ses tentatives et ses notes : elles ne comptent plus nulle part (moyenne, niveaux, points).</p>
           {rows.length === 0 && <span className="muted text-sm">Aucun cours commencé pour l’instant.</span>}
+          {rows.length > 1 && <div className="mb-2"><BulkBar formId="bulk-reset" noun="cours" hidden={{ student: s.id }}
+            actions={[{ label: 'Réinitialiser la sélection', action: resetCoursesBulkAction, tone: 'danger', confirm: 'Remettre à zéro {n} ? Tentatives, notes, exercices et points de ces cours seront effacés.' }]}>
+            <label className="flex items-center gap-2"><input type="checkbox" name="sessions" defaultChecked className="w-4 h-4" /> effacer aussi le temps de travail</label>
+          </BulkBar></div>}
           {rows.map(r => (
             <div key={r.course_id} className="flex flex-wrap items-center gap-3 py-3 border-t border-soft text-sm">
+              {rows.length > 1 && <BulkCheck formId="bulk-reset" value={r.course_id} label={r.title} />}
               <span className="flex-[1_1_260px] min-w-0"><strong>{r.title}</strong><span className="block muted">{r.subject}</span></span>
               <MasteryPill level={r.mastery} />
               <span className="w-32">{r.attempts} tentative{r.attempts > 1 ? 's' : ''}{r.best ? ` · ${Number(r.best).toLocaleString('fr-FR')}/20` : ''}</span>
@@ -75,8 +82,15 @@ export default async function ChildSheet({ params, searchParams }: { params: Pro
           <h2 className="text-xl font-semibold">Ordre du parcours</h2>
           <p className="muted text-sm mt-1 mb-3">Par défaut, le parcours suit les priorités du programme. Vous pouvez faire passer un cours en premier, ou le repousser.</p>
           {pub.length === 0 && <span className="muted text-sm">Aucun cours publié pour ce niveau.</span>}
+          {pub.length > 1 && <div className="mb-2"><BulkBar formId="bulk-ordre" noun="cours" hidden={{ student: s.id }}
+            actions={[{ label: 'Appliquer à la sélection', action: setForcedBulkAction, tone: 'primary' }]}>
+            <select className="field w-auto min-w-[200px] !min-h-10" name="forced" aria-label="Place des cours sélectionnés">
+              <option value="">Ordre normal</option><option value="now">À faire en premier</option><option value="later">Plus tard</option>
+            </select>
+          </BulkBar></div>}
           {pub.map(c => (
             <form key={c.course_id} action={setForcedAction} className="flex flex-wrap items-center gap-3 py-2.5 border-t border-soft text-sm">
+              {pub.length > 1 && <BulkCheck formId="bulk-ordre" value={c.course_id} label={c.title} />}
               <input type="hidden" name="student" value={s.id} /><input type="hidden" name="course" value={c.course_id} />
               <span className="flex-[1_1_260px] min-w-0"><strong>{c.title}</strong><span className="block muted">{c.subject}</span></span>
               <MasteryPill level={c.mastery} />

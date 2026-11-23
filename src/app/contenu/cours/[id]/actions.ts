@@ -10,3 +10,14 @@ export async function publishAction(form: FormData) {
   await publishVersion(id);
   revalidatePath(`/contenu/cours/${course}`);
 }
+
+// Publier plusieurs brouillons d'un coup (ids = identifiants de versions)
+export async function publishBulkAction(form: FormData) {
+  await requireUser('admin');
+  for (const id of form.getAll('ids')) {
+    if (typeof id !== 'string' || !/^[0-9a-f-]{36}$/i.test(id)) continue;
+    try { await publishVersion(id); } catch { /* déjà publiée entre-temps : on passe */ }
+  }
+  revalidatePath('/contenu', 'layout');
+  revalidatePath('/eleve', 'layout');
+}

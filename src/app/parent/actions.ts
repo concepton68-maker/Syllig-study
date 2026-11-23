@@ -14,3 +14,10 @@ export async function decideEvalRequest(attemptId: string, approve: boolean) {
   await logEvent(a.student_id, approve ? 'evaluation_autorisee' : 'evaluation_reportee', { courseId: a.course_id, actorId: u.id, data: { tentative: a.attempt_no } });
   revalidatePath('/parent', 'layout');
 }
+
+// Actions groupées sur les demandes d'évaluation
+async function decideMany(form: FormData, approve: boolean) {
+  for (const id of form.getAll('ids')) if (typeof id === 'string' && /^[0-9a-f-]{36}$/i.test(id)) await decideEvalRequest(id, approve);
+}
+export async function approveRequestsBulk(form: FormData) { await decideMany(form, true); }
+export async function postponeRequestsBulk(form: FormData) { await decideMany(form, false); }

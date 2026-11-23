@@ -10,7 +10,8 @@ export default async function Catalogue() {
   const rows = await sql<CatRow[]>`
     select c.id, c.code, c.title, s.name as subject, ch.name as chapter, c.priority,
       (select version from course_versions v where v.course_id = c.id and v.status = 'published') as published,
-      (select max(version) from course_versions v where v.course_id = c.id and v.status = 'draft') as draft
+      (select max(version) from course_versions v where v.course_id = c.id and v.status = 'draft') as draft,
+      (select v.id from course_versions v where v.course_id = c.id and v.status = 'draft' order by version desc limit 1) as draft_id
     from courses c join chapters ch on ch.id = c.chapter_id join subjects s on s.id = ch.subject_id join levels l on l.code = s.level_code
     order by l.position, s.position, ch.position, c.position`;
   const pub = rows.filter(r => r.published).length;
