@@ -1,3 +1,4 @@
+import { Clock, Flame, GraduationCap, BookCheck, Star, type LucideIcon } from 'lucide-react';
 import Link from 'next/link';
 import { sql } from '@/lib/db';
 import { requireParent } from '@/lib/access';
@@ -12,6 +13,14 @@ export const metadata = { title: 'Tableau de bord' };
 export const dynamic = 'force-dynamic';
 
 const DAYS = ['Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam', 'Dim'];
+
+const KPI_STYLE: [LucideIcon, string, string][] = [
+  [Clock, 'tone-brand', 'var(--color-brand)'],
+  [Flame, 'tone-warm', 'var(--color-warm)'],
+  [GraduationCap, 'tone-violet', '#6D4AE0'],
+  [BookCheck, 'tone-green', '#1B9E5A'],
+  [Star, 'tone-accent', 'var(--color-accent)'],
+];
 
 export default async function ParentDashboard({ searchParams }: { searchParams: Promise<{ eleve?: string }> }) {
   const { eleve } = await searchParams;
@@ -65,15 +74,17 @@ export default async function ParentDashboard({ searchParams }: { searchParams: 
           <span className="btn btn-primary">Ouvrir</span>
         </Link>
       )}
-      <section aria-label="Indicateurs clés" className="flex flex-wrap gap-4">
-        {kpis.map(k => (
-          <div key={k.label} className="card flex-[1_1_210px] flex flex-col gap-2">
-            <span className="lbl">{k.label}</span>
-            <div className="flex items-baseline gap-1.5"><span className="font-[family-name:var(--font-display)] text-[32px] font-bold">{k.value}</span><span className="muted font-semibold">{k.unit}</span></div>
-            <div className="h-2 bg-track rounded-full overflow-hidden"><div className="h-full bg-brand rounded-full" style={{ width: `${Math.max(0, Math.min(100, k.bar))}%` }} /></div>
+      <section aria-label="Indicateurs clés" className="grid gap-4 grid-cols-[repeat(auto-fit,minmax(200px,1fr))]">
+        {kpis.map((k, i) => {
+          const [Icon, tone, bar] = KPI_STYLE[i % KPI_STYLE.length];
+          return (
+          <div key={k.label} className="card !p-5 flex flex-col gap-2.5">
+            <div className="flex items-center gap-3"><span className={`kpi-icon ${tone}`}><Icon size={20} aria-hidden="true" /></span><span className="text-[13px] font-semibold text-ink-2 leading-tight">{k.label}</span></div>
+            <div className="flex items-baseline gap-1.5"><span className="font-[family-name:var(--font-display)] text-[30px] font-bold num">{k.value}</span><span className="muted font-semibold">{k.unit}</span></div>
+            <div className="h-1.5 bg-track rounded-full overflow-hidden"><div className="h-full rounded-full" style={{ width: `${Math.max(0, Math.min(100, k.bar))}%`, background: bar }} /></div>
             <span className="muted text-[13px]">{k.sub}</span>
           </div>
-        ))}
+        ); })}
       </section>
 
 

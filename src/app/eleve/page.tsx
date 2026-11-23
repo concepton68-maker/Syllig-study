@@ -1,3 +1,4 @@
+import { Flame, Star } from 'lucide-react';
 import Link from 'next/link';
 import { requireStudent } from '@/lib/access';
 import { parcours, nextStep, pickNext } from '@/lib/progress';
@@ -38,15 +39,17 @@ export default async function Today() {
         <PageTitle spark title={`Salut ${student.first_name}${step?.minutes ? `, prête pour ${step.minutes} minutes ?` : ' !'}`}
           sub="Ton parcours est calculé pour toi : les priorités d’abord, puis les révisions." />
         <div className="grid grid-cols-3 gap-3 w-full sm:w-auto">
-          <div className="card !p-3 flex items-center gap-3">
+          <div className="card !p-3 flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3">
             <svg width="42" height="42" viewBox="0 0 42 42" role="img" aria-label={`Objectif de la semaine : ${pct} %`} className="shrink-0">
               <circle cx="21" cy="21" r="17" fill="none" style={{ stroke: 'var(--color-track)' }} strokeWidth="6" />
               <circle cx="21" cy="21" r="17" fill="none" style={{ stroke: 'var(--color-brand)' }} strokeWidth="6" strokeDasharray={`${(C * pct) / 100} ${C}`} strokeLinecap="round" transform="rotate(-90 21 21)" />
             </svg>
             <div><strong className="num text-base">{hm(w.active)}</strong><div className="muted text-xs">sur {hm(goal)} cette semaine</div></div>
           </div>
-          <div className="card !p-3"><strong className="num text-base">{s} jour{s > 1 ? 's' : ''}</strong><div className="muted text-xs">de suite</div></div>
-          <div className="card !p-3"><strong className="num text-base text-brand-dark">+{w.week_points}</strong><div className="muted text-xs">points cette semaine</div></div>
+          <div className="card !p-3 flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3 sm:min-w-[170px]"><span className="kpi-icon tone-warm"><Flame size={20} aria-hidden="true" /></span>
+            <div><strong className="num text-base">{s} jour{s > 1 ? 's' : ''}</strong><div className="muted text-xs">de suite</div></div></div>
+          <div className="card !p-3 flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3 sm:min-w-[170px]"><span className="kpi-icon tone-brand"><Star size={20} aria-hidden="true" /></span>
+            <div><strong className="num text-base text-brand-dark">+{w.week_points}</strong><div className="muted text-xs">points cette semaine</div></div></div>
         </div>
       </div>
     }>

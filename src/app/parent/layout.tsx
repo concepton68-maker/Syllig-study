@@ -10,11 +10,11 @@ export default async function ParentLayout({ children }: { children: React.React
       and s.household_id in (select household_id from household_members where user_id = ${u.id} and role = 'parent')`;
   return (
     <Shell role="Parent" spaces={spacesFor(u, 'parent')} nav={[
-      { href: '/parent', label: 'Accueil', exact: true },
-      { href: '/parent/a-faire', label: n ? `À faire (${n})` : 'À faire' },
-      { href: '/parent/journal', label: 'Activité' },
-      { href: '/parent/enfants', label: 'Enfants' },
-    ]} right={<span className="text-sm font-semibold">{u.display_name}</span>}>
+      { href: '/parent', label: 'Accueil', icon: 'home', exact: true },
+      { href: '/parent/a-faire', label: 'À faire', icon: 'todo', badge: n },
+      { href: '/parent/journal', label: 'Activité', icon: 'activity' },
+      { href: '/parent/enfants', label: 'Enfants', icon: 'children' },
+    ]} user={{ name: u.display_name, sub: 'Espace parent' }}>
       {children}
     </Shell>
   );

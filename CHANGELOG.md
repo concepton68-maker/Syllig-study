@@ -21,3 +21,10 @@ Première version numérotée (déjà en ligne avant numérotation : socle, gén
   - Parent : réinitialiser plusieurs cours d'un coup, changer l'ordre de plusieurs cours, autoriser ou reporter plusieurs demandes d'évaluation, exporter seulement les copies choisies.
   - Contenu : publier plusieurs brouillons d'un coup (« À relire » et catalogue).
 - Nom « Syllig Study » et « Se déconnecter » de nouveau lisibles sur les thèmes à barre sombre.
+
+## 0.03 — 23/11/2026
+- Nouvel habillage « application » :
+  - Barre latérale sombre aux couleurs du thème, avec icônes, compteurs, profil et déconnexion.
+  - Sur téléphone, barre d'onglets en bas.
+- Page de connexion en deux panneaux (présentation et formulaire).
+- Cartes plus élégantes ; tableau de bord parent avec des tuiles de chiffres clés colorées, chacune avec son icône.
