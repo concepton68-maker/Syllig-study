@@ -280,3 +280,14 @@ Recette complète de l'espace élève (un agent testeur a joué l'élève sur t�
 - Élève : le test apparaît dans « Aujourd'hui ». Réponses enregistrées au fil de l'eau, chrono, mode concentration, puis correction expliquée.
 - Contenu › Leçons à créer (nouveau) : les leçons de rattrapage proposées par les bilans, regroupées (« proposée 2 fois »), sans nom d'élève. Actions groupées : marquer comme créées, écarter, remettre à créer.
 - Téléphone : la barre d'onglets de l'espace Contenu tient sur une ligne.
+
+## 0.27 — 24/11/2026
+- Mistral (France, données traitées dans l'Union européenne) ajouté comme fournisseur d'IA, à côté de Claude et Gemini.
+- Contenu › IA : une clé par fournisseur, chacune vérifiée puis chiffrée, et une IA par tâche (correction, bilan). Mistral Small est conseillé pour les corrections, Mistral Large pour les bilans.
+- RGPD :
+  - Règle Europe : les données d'élèves ne partent que chez un fournisseur européen, sauf dérogation explicite de l'administrateur. L'ancien réglage Gemini est bloqué jusqu'à cette dérogation, et une clé Mistral le remplace d'office.
+  - Consentement du parent par enfant, séparé pour la correction et pour le bilan, désactivé par défaut (Famille › Bilan › Confidentialité et IA). Sans accord, rien n'est envoyé.
+  - Nettoyage avant envoi : prénoms, identifiants, e-mails, téléphones et adresses sont retirés des réponses, y compris dans l'export manuel pour Claude.
+  - Journal des envois : le parent voit exactement ce qui est parti, chez qui (UE ou hors UE) et quand. Il peut effacer des lignes en groupe.
+  - Conservation : les bilans, les tests terminés et le journal sont effacés automatiquement après 6 mois, 1 an ou 2 ans (réglable).
+  - Page publique « Confidentialité » (lien sur la page de connexion) : données, finalités, fournisseurs en service, durées, droits, CNIL.

@@ -10,9 +10,22 @@ import type { Attempt } from './evaluation';
 // IA de correction branchée (choix du propriétaire, 24/11/2026) : la clé est saisie dans l'espace Contenu,
 // l'IA propose les points et les commentaires, le parent valide toujours la note.
 
-export type Provider = 'claude' | 'gemini';
-export type AiConfig = { provider: Provider; model: string; key: string; enabled: boolean };
-export const CLAUDE_MODELS = [
+export type Provider = 'mistral' | 'claude' | 'gemini';
+export type Task = 'correction' | 'bilan';
+export type AiConfig = { provider: Provider; model: string; key: string };
+export type Model = { id: string; label: string };
+
+// Où les données sont traitées : seules les IA « Europe » reçoivent des données d'élèves, sauf dérogation explicite
+export const PROVIDERS: Record<Provider, { name: string; eu: boolean; where: string; help: string; placeholder: string }> = {
+  mistral: { name: 'Mistral (France)', eu: true, where: 'Union européenne', help: 'Clé sur console.mistral.ai › API Keys (offre payante).', placeholder: 'Clé Mistral' },
+  claude: { name: 'Claude (Anthropic)', eu: false, where: 'États-Unis', help: 'Clé sur console.anthropic.com › API Keys.', placeholder: 'sk-ant-…' },
+  gemini: { name: 'Gemini (Google)', eu: false, where: 'États-Unis', help: 'Clé sur aistudio.google.com › Get API key (offre payante).', placeholder: 'AIza…' },
+};
+export const TASKS: Record<Task, { label: string; desc: string }> = {
+  correction: { label: 'Correction des copies', desc: 'Réponses rédigées des élèves (sans nom), énoncés et corrigés.' },
+  bilan: { label: 'Bilan pédagogique et test de positionnement', desc: 'Temps de travail, notes, questions ratées (sans nom).' },
+};
+export const CLAUDE_MODELS: Model[] = [
   { id: 'claude-opus-5-5', label: 'Claude Opus 5.5 — le plus fiable (≈ 5 centimes par copie)' },
   { id: 'claude-sonnet-5-5', label: 'Claude Sonnet 5.5 — intermédiaire (≈ 2 centimes par copie)' },
   { id: 'claude-haiku-5-5', label: 'Claude Haiku 5.5 — le moins cher (moins d’un centime par copie)' },
@@ -33,37 +46,95 @@ function open(sealed: string) {
   return Buffer.concat([d.update(data), d.final()]).toString('utf8');
 }
 
-type Stored = { provider: Provider; model: string; key_sealed: string; key_hint: string; enabled: boolean };
-export async function aiSettings(): Promise<(Omit<Stored, 'key_sealed'> & { hasKey: boolean }) | null> {
-  const [r] = await sql<{ value: Stored }[]>`select value from app_settings where key = 'ia_correction'`;
-  if (!r) return null;
-  const { key_sealed, ...rest } = r.value;
-  return { ...rest, hasKey: !!key_sealed };
+type ProviderStore = { key_sealed: string; key_hint: string; models: Model[]; checked_at: string };
+export type AiSettings = {
+  providers: Partial<Record<Provider, ProviderStore>>;
+  tasks: Partial<Record<Task, { provider: Provider; model: string }>>;
+  enabled: boolean;
+  allow_non_eu: boolean;      // dérogation : données d'élèves envoyées hors Union européenne
+  retention_days: number;     // conservation des bilans et du journal des envois
+};
+const EMPTY: AiSettings = { providers: {}, tasks: {}, enabled: true, allow_non_eu: false, retention_days: 365 };
+
+export async function loadAiSettings(): Promise<AiSettings> {
+  const [r] = await sql<{ value: AiSettings }[]>`select value from app_settings where key = 'ia'`;
+  if (r) return { ...EMPTY, ...r.value };
+  // ancien réglage (une seule IA) : repris tel quel, mais sans dérogation hors UE (à accorder explicitement)
+  const [old] = await sql<{ value: { provider: Provider; model: string; key_sealed: string; key_hint: string; enabled: boolean } }[]>`select value from app_settings where key = 'ia_correction'`;
+  if (!old?.value.key_sealed) return { ...EMPTY };
+  const o = old.value;
+  return { ...EMPTY, enabled: o.enabled,
+    providers: { [o.provider]: { key_sealed: o.key_sealed, key_hint: o.key_hint, models: [{ id: o.model, label: o.model }], checked_at: '' } },
+    tasks: { correction: { provider: o.provider, model: o.model }, bilan: { provider: o.provider, model: o.model } } };
 }
-export async function aiConfig(): Promise<AiConfig | null> {
-  const [r] = await sql<{ value: Stored }[]>`select value from app_settings where key = 'ia_correction'`;
-  if (!r?.value.key_sealed || !r.value.enabled) return null;
-  try { return { provider: r.value.provider, model: r.value.model, key: open(r.value.key_sealed), enabled: true }; }
-  catch { return null; }   // configuration du serveur changée : il faut ressaisir la clé
-}
-export async function saveAiSettings(s: { provider: Provider; model: string; key?: string; enabled: boolean }, userId: string) {
-  const [old] = await sql<{ value: Stored }[]>`select value from app_settings where key = 'ia_correction'`;
-  const keep = old && old.value.provider === s.provider && !s.key;
-  const value: Stored = {
-    provider: s.provider, model: s.model, enabled: s.enabled,
-    key_sealed: s.key ? seal(s.key) : keep ? old.value.key_sealed : '',
-    key_hint: s.key ? `…${s.key.slice(-4)}` : keep ? old.value.key_hint : '',
-  };
-  await sql`insert into app_settings (key, value, updated_by) values ('ia_correction', ${sql.json(value)}, ${userId})
+async function saveAll(v: AiSettings, userId: string | null) {
+  await sql`insert into app_settings (key, value, updated_by) values ('ia', ${sql.json(v)}, ${userId})
     on conflict (key) do update set value = excluded.value, updated_at = now(), updated_by = excluded.updated_by`;
 }
+export async function saveProviderKey(provider: Provider, key: string, models: Model[], userId: string) {
+  const s = await loadAiSettings();
+  s.providers[provider] = { key_sealed: seal(key), key_hint: `…${key.slice(-4)}`, models, checked_at: new Date().toISOString() };
+  await saveAll(s, userId);
+}
+export async function removeProviderKey(provider: Provider, userId: string) {
+  const s = await loadAiSettings();
+  delete s.providers[provider];
+  for (const t of Object.keys(s.tasks) as Task[]) if (s.tasks[t]?.provider === provider) delete s.tasks[t];
+  await saveAll(s, userId);
+}
+export async function saveTaskSettings(v: Pick<AiSettings, 'tasks' | 'enabled' | 'allow_non_eu' | 'retention_days'>, userId: string) {
+  const s = await loadAiSettings();
+  await saveAll({ ...s, ...v }, userId);
+}
 export async function storedKey(provider: Provider) {
-  const [r] = await sql<{ value: Stored }[]>`select value from app_settings where key = 'ia_correction'`;
-  return r && r.value.provider === provider && r.value.key_sealed ? open(r.value.key_sealed) : null;
+  const p = (await loadAiSettings()).providers[provider];
+  try { return p?.key_sealed ? open(p.key_sealed) : null; } catch { return null; }
+}
+// Vue sans les clés (pour l'affichage)
+export async function aiOverview() {
+  const s = await loadAiSettings();
+  const providers = Object.fromEntries(Object.entries(s.providers).map(([k, v]) => [k, { key_hint: v!.key_hint, models: v!.models, checked_at: v!.checked_at }])) as Partial<Record<Provider, { key_hint: string; models: Model[]; checked_at: string }>>;
+  const ready = (t: Task) => taskProblem(s, t) === null;
+  return { ...s, providers, ready: { correction: ready('correction'), bilan: ready('bilan') } };
+}
+function taskProblem(s: AiSettings, task: Task): string | null {
+  if (!s.enabled) return 'L’IA est désactivée (Contenu › IA).';
+  const t = s.tasks[task];
+  if (!t) return `Aucune IA choisie pour « ${TASKS[task].label} » (Contenu › IA).`;
+  if (!s.providers[t.provider]?.key_sealed) return `Pas de clé ${PROVIDERS[t.provider].name} enregistrée (Contenu › IA).`;
+  if (!PROVIDERS[t.provider].eu && !s.allow_non_eu) return `${PROVIDERS[t.provider].name} traite les données hors de l’Union européenne : choisissez une IA européenne pour « ${TASKS[task].label} », ou accordez la dérogation (Contenu › IA).`;
+  return null;
+}
+// Configuration d'une tâche, après toutes les vérifications (IA active, clé, règle Europe)
+export async function aiConfigFor(task: Task): Promise<{ cfg: AiConfig } | { error: string }> {
+  const s = await loadAiSettings();
+  const problem = taskProblem(s, task);
+  if (problem) return { error: problem };
+  const t = s.tasks[task]!;
+  try { return { cfg: { provider: t.provider, model: t.model, key: open(s.providers[t.provider]!.key_sealed) } }; }
+  catch { return { error: 'La clé enregistrée ne peut plus être lue (configuration du serveur changée) : ressaisissez-la (Contenu › IA).' }; }
+}
+
+// Journal des envois à l'IA (ce qui est parti, chez qui, quand), consultable par le parent, purgé après la durée de conservation
+export async function logAiRequest(studentId: string | null, task: Task, cfg: AiConfig, payload: string, error?: string) {
+  await sql`insert into ai_requests (student_id, task, provider, model, eu, payload, error)
+    values (${studentId}, ${task}, ${cfg.provider}, ${cfg.model}, ${PROVIDERS[cfg.provider].eu}, ${payload}, ${error ?? null})`;
+}
+export async function purgeExpired() {
+  const { retention_days: d } = await loadAiSettings();
+  const days = Math.max(30, Math.min(3650, d || 365));
+  await sql`delete from ai_requests where created_at < now() - make_interval(days => ${days})`;
+  await sql`delete from student_reports where created_at < now() - make_interval(days => ${days})`;
+  await sql`delete from placement_tests where status = 'termine' and submitted_at < now() - make_interval(days => ${days})`;
 }
 
 // ── Fournisseurs (adresses remplaçables uniquement pour les tests automatiques)
 const geminiBase = () => process.env.AI_GEMINI_BASE_URL ?? 'https://generativelanguage.googleapis.com';
+const mistralBase = () => process.env.AI_MISTRAL_BASE_URL ?? 'https://api.mistral.ai';
+const mistralError = async (r: Response) => {
+  const j = await r.json().catch(() => null) as { message?: string; detail?: unknown } | null;
+  return `Mistral répond ${r.status}${r.status === 429 ? ' (quota atteint, réessayez plus tard)' : ''}${j?.message ? ` : ${String(j.message).slice(0, 160)}` : ''}`;
+};
 const claude = (key: string) => new Anthropic({ apiKey: key, baseURL: process.env.AI_ANTHROPIC_BASE_URL || undefined, maxRetries: 2, timeout: 180_000 });
 
 // Vérifie la clé et liste les modèles utilisables
@@ -72,6 +143,22 @@ export async function checkKey(provider: Provider, key: string): Promise<{ ok: t
     if (provider === 'claude') {
       await claude(key).models.retrieve('claude-haiku-5-5');
       return { ok: true, models: CLAUDE_MODELS };
+    }
+    if (provider === 'mistral') {
+      const r = await fetch(`${mistralBase()}/v1/models`, { headers: { authorization: `Bearer ${key}` }, signal: AbortSignal.timeout(30_000) });
+      if (!r.ok) return { ok: false, error: r.status === 401 || r.status === 403 ? 'Clé refusée par Mistral.' : await mistralError(r) };
+      const j = await r.json() as { data?: MistralModel[] } | MistralModel[];
+      const list = (Array.isArray(j) ? j : j.data ?? []).filter(m => m.capabilities?.completion_chat && !m.deprecation
+        && !/embed|moderation|ocr|codestral|devstral|voxtral|pixtral|ministral-3b|saba|transcribe/i.test(m.id));
+      // un modèle par famille : de préférence l'alias « -latest » (toujours à jour)
+      const seen = new Set<string>(); const models: Model[] = [];
+      for (const m of [...list].sort((a, b) => Number(b.id.endsWith('-latest')) - Number(a.id.endsWith('-latest')))) {
+        const fam = m.id.replace(/-(latest|\d{4})$/, '');
+        if (seen.has(fam)) continue; seen.add(fam);
+        models.push({ id: m.id, label: mistralLabel(m.id) });
+      }
+      models.sort((a, b) => mistralRank(a.id) - mistralRank(b.id));
+      return models.length ? { ok: true, models } : { ok: false, error: 'Aucun modèle de conversation disponible pour cette clé Mistral.' };
     }
     const r = await fetch(`${geminiBase()}/v1beta/models?pageSize=200`, { headers: { 'x-goog-api-key': key } });
     if (!r.ok) return { ok: false, error: r.status === 400 || r.status === 403 ? 'Clé refusée par Google.' : `Google répond ${r.status}.` };
@@ -85,6 +172,26 @@ export async function checkKey(provider: Provider, key: string): Promise<{ ok: t
     if (e instanceof Anthropic.APIError) return { ok: false, error: `Anthropic répond ${e.status ?? ''} : ${e.message}`.slice(0, 200) };
     return { ok: false, error: `Connexion impossible : ${(e as Error).message}`.slice(0, 200) };
   }
+}
+
+type MistralModel = { id: string; capabilities?: { completion_chat?: boolean }; deprecation?: string | null };
+const mistralRank = (id: string) => /large/i.test(id) ? 0 : /medium/i.test(id) ? 1 : /small/i.test(id) ? 2 : 3;
+const mistralLabel = (id: string) => /large/i.test(id) ? `${id} — le plus capable (bilans)` : /medium/i.test(id) ? `${id} — intermédiaire` : /small/i.test(id) ? `${id} — économique (corrections)` : id;
+// Modèle conseillé par tâche parmi ceux de la clé
+export function defaultModel(provider: Provider, models: Model[], task: Task): string | undefined {
+  if (provider === 'claude') return task === 'bilan' ? 'claude-opus-5-5' : 'claude-sonnet-5-5';
+  if (provider === 'mistral') return (models.find(m => (task === 'bilan' ? /large/ : /small/).test(m.id)) ?? models.find(m => /medium/.test(m.id)) ?? models[0])?.id;
+  return geminiCandidates(models)[0];
+}
+// Vérifie qu'un modèle répond vraiment (une demande minuscule) ; renvoie l'erreur, ou null
+export async function pingModel(provider: Provider, key: string, model: string): Promise<string | null> {
+  if (provider === 'gemini') return pingGemini(key, model);
+  if (provider === 'claude') return null;   // la vérification de la clé suffit (liste de modèles fixe)
+  try {
+    const r = await fetch(`${mistralBase()}/v1/chat/completions`, { method: 'POST', headers: { 'content-type': 'application/json', authorization: `Bearer ${key}` },
+      body: JSON.stringify({ model, messages: [{ role: 'user', content: 'Réponds simplement OK.' }], max_tokens: 5 }), signal: AbortSignal.timeout(30_000) });
+    return r.ok ? null : await mistralError(r);
+  } catch (e) { return `Connexion impossible : ${(e as Error).message}`; }
 }
 
 const geminiVersion = (id: string) => Number(id.match(/gemini-(\d+(?:\.\d+)?)/)?.[1] ?? 0);
@@ -139,11 +246,27 @@ export async function askJson<S extends z.ZodType>(cfg: AiConfig, schema: S, sys
     if (!res.parsed_output) throw new Error('réponse illisible');
     return res.parsed_output as z.infer<S>;
   }
+  const described = `${system}\n\nFormat de réponse obligatoire (JSON Schema) :\n${JSON.stringify(z.toJSONSchema(schema))}`;
+  const parse = (text: string) => schema.safeParse((() => { try { return JSON.parse(text.replace(/^```(?:json)?\s*|\s*```$/g, '')); } catch { return null; } })());
+  if (cfg.provider === 'mistral') {
+    const r = await fetch(`${mistralBase()}/v1/chat/completions`, {
+      method: 'POST', headers: { 'content-type': 'application/json', authorization: `Bearer ${cfg.key}` },
+      body: JSON.stringify({ model: cfg.model, messages: [{ role: 'system', content: described }, { role: 'user', content: user }],
+        response_format: { type: 'json_object' }, max_tokens: 16000 }),
+      signal: AbortSignal.timeout(240_000),
+    });
+    if (!r.ok) throw new Error(await mistralError(r));
+    const j = await r.json() as { choices?: { message?: { content?: string | { text?: string }[] }; finish_reason?: string }[] };
+    const c = j.choices?.[0]?.message?.content;
+    const parsed = parse(typeof c === 'string' ? c : (c ?? []).map(x => x.text ?? '').join(''));
+    if (!parsed.success) throw new Error(j.choices?.[0]?.finish_reason === 'length' ? 'réponse trop longue, interrompue' : 'réponse illisible');
+    return parsed.data as z.infer<S>;
+  }
   const r = await fetch(`${geminiBase()}/v1beta/models/${encodeURIComponent(cfg.model)}:generateContent`, {
     method: 'POST',
     headers: { 'content-type': 'application/json', 'x-goog-api-key': cfg.key },
     body: JSON.stringify({
-      systemInstruction: { parts: [{ text: `${system}\n\nFormat de réponse obligatoire (JSON Schema) :\n${JSON.stringify(z.toJSONSchema(schema))}` }] },
+      systemInstruction: { parts: [{ text: described }] },
       contents: [{ role: 'user', parts: [{ text: user }] }],
       generationConfig: { responseMimeType: 'application/json' },
     }),
@@ -152,7 +275,7 @@ export async function askJson<S extends z.ZodType>(cfg: AiConfig, schema: S, sys
   if (!r.ok) throw new Error(`${await googleError(r)}${r.status === 404 ? ' — modèle indisponible : choisissez-en un autre dans Contenu › IA de correction' : ''}`);
   const j = await r.json() as { candidates?: { content?: { parts?: { text?: string }[] }; finishReason?: string }[] };
   const text = (j.candidates?.[0]?.content?.parts ?? []).map(p => p.text ?? '').join('');
-  const parsed = schema.safeParse((() => { try { return JSON.parse(text.replace(/^```(?:json)?\s*|\s*```$/g, '')); } catch { return null; } })());
+  const parsed = parse(text);
   if (!parsed.success) throw new Error(j.candidates?.[0]?.finishReason === 'MAX_TOKENS' ? 'réponse trop longue, interrompue' : 'réponse illisible');
   return parsed.data as z.infer<S>;
 }
@@ -169,7 +292,9 @@ export async function ensureGeminiModel(cfg: AiConfig): Promise<{ note?: string;
   let next = '';
   if (list.ok) for (const id of geminiCandidates(list.models).filter(id => id !== cfg.model).slice(0, 6)) if (!(await pingGemini(cfg.key, id))) { next = id; break; }
   if (!next) return { error: `Le modèle ${cfg.model} n’est plus disponible chez Google et aucun autre ne répond : vérifiez Contenu › IA de correction.` };
-  await sql`update app_settings set value = jsonb_set(value, '{model}', ${sql.json(next)}), updated_at = now() where key = 'ia_correction'`;
+  const st = await loadAiSettings();
+  for (const t of Object.keys(st.tasks) as Task[]) if (st.tasks[t]?.provider === 'gemini' && st.tasks[t]?.model === cfg.model) st.tasks[t]!.model = next;
+  await saveAll(st, null);
   const note = `Le modèle ${cfg.model} n’est plus disponible chez Google : passage automatique à ${next}`;
   cfg.model = next;
   return { note };
@@ -179,9 +304,16 @@ type ExportedCopy = { ref: string; questions: { id: string; points_max: number |
 
 // Corrige les copies demandées et enregistre les propositions (le parent valide ensuite).
 export async function correctWithAi(attempts: (Attempt & { title: string; subject: string; level: string })[], allowedStudentIds: string[], actorId: string) {
-  const cfg = await aiConfig();
-  if (!cfg) return { ok: 0, errors: ['L’IA de correction n’est pas configurée (espace Contenu › IA de correction).'] };
+  const conf = await aiConfigFor('correction');
+  if ('error' in conf) return { ok: 0, errors: [conf.error] };
+  const cfg = conf.cfg;
   const errors: string[] = [];
+  // consentement du parent (RGPD) : sans accord pour cet enfant, rien n'est envoyé
+  const consent = await sql<{ id: string; first_name: string; settings: { ai_correction?: boolean } }[]>`
+    select id, first_name, settings from students where id in ${sql([...new Set(attempts.map(a => a.student_id)), '00000000-0000-0000-0000-000000000000'])}`;
+  const refused = consent.filter(s => !s.settings?.ai_correction);
+  for (const s of refused) errors.push(`${s.first_name} : correction par l’IA non autorisée (Famille › Bilan › Confidentialité et IA)`);
+  attempts = attempts.filter(a => !refused.some(s => s.id === a.student_id));
   if (attempts.length) {
     const g = await ensureGeminiModel(cfg);
     if (g.error) return { ok: 0, errors: [g.error] };
@@ -196,7 +328,11 @@ export async function correctWithAi(attempts: (Attempt & { title: string; subjec
     for (let c = queue.shift(); c; c = queue.shift()) {
       const title = attempts.find(a => a.id === c!.ref)?.title ?? 'copie';
       try {
-        const g = await askCopy(cfg, system, JSON.stringify(c));
+        const sid = attempts.find(a => a.id === c!.ref)?.student_id ?? null;
+        const payload = JSON.stringify(c);
+        let g;
+        try { g = await askCopy(cfg, system, payload); await logAiRequest(sid, 'correction', cfg, payload); }
+        catch (e) { await logAiRequest(sid, 'correction', cfg, payload, (e as Error).message.slice(0, 300)); throw e; }
         const max = new Map(c.questions.map(q => [q.id, q.points_max ?? 0]));
         const questions = g.questions.filter(q => max.has(q.id))
           .map(q => ({ id: q.id, points: Math.min(max.get(q.id)!, Math.max(0, Math.round(q.points * 4) / 4)), commentaire: q.commentaire.slice(0, 2000) }));
@@ -211,6 +347,7 @@ export async function correctWithAi(attempts: (Attempt & { title: string; subjec
       }
     }
   }));
+  await purgeExpired();
   if (!results.length) return { ok: 0, errors };
   const r = await importResults(JSON.stringify({ format: 'syllig-corrections-resultat/1', copies: results }), allowedStudentIds, actorId);
   if (!r.ok) return { ok: 0, errors: [...errors, ...r.errors] };

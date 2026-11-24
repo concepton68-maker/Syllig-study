@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { AlertTriangle, CheckCircle2, Compass, Gauge, Lightbulb, ListChecks, Sparkles } from 'lucide-react';
 import { sql } from '@/lib/db';
 import { requireParent } from '@/lib/access';
-import { aiSettings } from '@/lib/ai';
+import { aiOverview, PROVIDERS, TASKS } from '@/lib/ai';
 import { studentProfile, type CourseFacts, type Profile } from '@/lib/profile';
 import { ORIGINE_LABEL, IMPLICATION_LABEL, type ReportData } from '@/lib/report';
 import { PageTitle } from '@/components/Shell';
@@ -10,7 +10,8 @@ import { Screen } from '@/components/Layout';
 import { ChildPicker } from '@/components/ChildPicker';
 import { BulkBar, BulkCheck } from '@/components/Bulk';
 import { AiButton } from '../a-faire/AiButton';
-import { requestReport, assignPlacement, deleteReports, deletePlacementTests } from './actions';
+import { requestReport, assignPlacement, deleteReports, deletePlacementTests, saveAiConsent, deleteAiRequests } from './actions';
+import { ShieldCheck } from 'lucide-react';
 
 export const metadata = { title: 'Bilan' };
 export const dynamic = 'force-dynamic';
@@ -21,12 +22,12 @@ type Test = { id: string; report_id: string | null; created_at: Date; status: st
 const day = (d: Date) => d.toLocaleDateString('fr-FR', { timeZone: 'Europe/Paris', day: 'numeric', month: 'long', year: 'numeric' });
 const fr = (n: number) => n.toLocaleString('fr-FR');
 
-export default async function Bilan({ searchParams }: { searchParams: Promise<{ eleve?: string; rapport?: string; erreur?: string; note?: string; test?: string }> }) {
+export default async function Bilan({ searchParams }: { searchParams: Promise<{ eleve?: string; rapport?: string; erreur?: string; note?: string; test?: string; consentement?: string }> }) {
   const sp = await searchParams;
   const { students, student } = await requireParent(sp.eleve);
   if (!student) return <Screen top={<PageTitle kicker="Bilan" title="Aucun enfant" />}><p className="muted">Ajoutez d’abord un enfant.</p></Screen>;
-  const ai = await aiSettings();
-  const aiOn = !!(ai?.enabled && ai.hasKey);
+  const ai = await aiOverview();
+  const aiOn = ai.ready.bilan;
   const profile = await studentProfile(student.id);
   const reports = await sql<Report[]>`select id, created_at, provider, model, data, indicators from student_reports where student_id = ${student.id} order by created_at desc limit 30`;
   const shown = reports.find(r => r.id === sp.rapport) ?? reports[0];
@@ -34,6 +35,10 @@ export default async function Bilan({ searchParams }: { searchParams: Promise<{ 
     from placement_tests where student_id = ${student.id} order by created_at desc limit 20`;
   const openTest = tests.find(t => t.status !== 'termine');
   const name = student.first_name;
+  const consent = { correction: !!student.settings.ai_correction, bilan: !!student.settings.ai_bilan };
+  const sent = await sql<{ id: string; task: string; provider: string; model: string; eu: boolean; payload: string; error: string | null; created_at: Date }[]>`
+    select id::text, task, provider, model, eu, payload, error, created_at from ai_requests where student_id = ${student.id} order by created_at desc limit 50`;
+  const where = (t: 'correction' | 'bilan') => { const c = ai.tasks[t]; return c ? `${PROVIDERS[c.provider].name} (${PROVIDERS[c.provider].eu ? 'Union européenne' : PROVIDERS[c.provider].where})` : 'aucune IA configurée'; };
 
   return (
     <Screen top={<>
@@ -43,6 +48,7 @@ export default async function Bilan({ searchParams }: { searchParams: Promise<{ 
     </>}>
       {sp.erreur && <p role="alert" className="m-0 rounded-xl bg-warm-soft text-warm-dark px-4 py-3 text-sm">{sp.erreur}</p>}
       {sp.note && <p role="status" className="m-0 rounded-xl bg-soft px-4 py-3 text-sm">{sp.note}</p>}
+      {sp.consentement && <p role="status" className="m-0 rounded-xl bg-brand-soft text-brand-ink px-4 py-3 text-sm"><strong>Choix enregistrés pour {name}.</strong> Vous pouvez les changer à tout moment.</p>}
       {sp.test === 'propose' && <p role="status" className="m-0 rounded-xl bg-brand-soft text-brand-ink px-4 py-3 text-sm"><strong>Test proposé à {name}.</strong> Il apparaît dans son espace, rubrique « Aujourd’hui ». Les résultats s’afficheront ici.</p>}
 
       {/* 1. Les faits */}
@@ -64,9 +70,9 @@ export default async function Bilan({ searchParams }: { searchParams: Promise<{ 
       <section className="card flex flex-col gap-4" aria-labelledby="bilan-ia">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <h2 id="bilan-ia" className="text-xl font-semibold m-0 flex items-center gap-2"><Sparkles size={20} aria-hidden="true" />Bilan par l’IA</h2>
-          {aiOn
+          {aiOn && !consent.bilan ? <a className="btn" href="#confidentialite">Autoriser le bilan par l’IA</a> : aiOn
             ? <form action={requestReport.bind(null, student.id)}><AiButton n={0} label={reports.length ? 'Nouveau bilan' : 'Demander un bilan'} busy="Rédaction du bilan… (une à deux minutes)" /></form>
-            : <span className="muted text-sm">IA non configurée : Contenu › IA de correction.</span>}
+            : <span className="muted text-sm">IA non configurée pour le bilan : Contenu › IA.</span>}
         </div>
         {!shown ? <p className="m-0 text-sm">Aucun bilan pour l’instant. L’IA lit les chiffres ci-dessus (sans le prénom de {name}) et rédige un bilan pour vous.</p>
           : <ReportView r={shown} name={name} />}
@@ -88,6 +94,41 @@ export default async function Bilan({ searchParams }: { searchParams: Promise<{ 
             {tests.map(t => <TestRow key={t.id} t={t} name={name} multi={tests.length > 1} />)}
           </>
         )}
+      </section>
+
+      {/* Confidentialité et IA (RGPD) */}
+      <section id="confidentialite" className="card flex flex-col gap-3 scroll-mt-4" aria-labelledby="rgpd">
+        <h2 id="rgpd" className="text-xl font-semibold m-0 flex items-center gap-2"><ShieldCheck size={20} aria-hidden="true" />Confidentialité et IA</h2>
+        <p className="m-0 text-sm">Rien n’est envoyé à une IA pour {name} sans votre accord. Ce qui part ne contient <strong>jamais</strong> son nom : prénoms, identifiants, e-mails, téléphones et adresses sont retirés des réponses avant l’envoi.</p>
+        <form action={saveAiConsent.bind(null, student.id)} className="flex flex-col gap-3">
+          <label className="flex items-start gap-2.5 text-sm">
+            <input type="checkbox" name="ai_correction" defaultChecked={consent.correction} className="w-5 h-5 mt-0.5 accent-[var(--color-brand)]" />
+            <span><strong>Correction des copies par l’IA</strong><span className="block muted">Envoyé : les énoncés, corrigés et réponses rédigées. Chez : {where('correction')}.</span></span>
+          </label>
+          <label className="flex items-start gap-2.5 text-sm">
+            <input type="checkbox" name="ai_bilan" defaultChecked={consent.bilan} className="w-5 h-5 mt-0.5 accent-[var(--color-brand)]" />
+            <span><strong>Bilan pédagogique et test de positionnement par l’IA</strong><span className="block muted">Envoyé : temps de travail, notes, questions ratées et réponses. Chez : {where('bilan')}.</span></span>
+          </label>
+          <div className="flex flex-wrap items-center gap-3"><button className="btn btn-primary" type="submit">Enregistrer mes choix</button>
+            <Link href="/confidentialite" className="font-semibold text-sm">Comment sont protégées les données ?</Link></div>
+        </form>
+        <h3 className="text-base font-semibold m-0 mt-2">Ce qui a été envoyé à une IA</h3>
+        {sent.length === 0 ? <p className="m-0 text-sm muted">Aucun envoi pour {name}.</p> : (
+          <>
+            <BulkBar formId="bulk-envois" noun="envoi" actions={[{ label: 'Effacer du journal', action: deleteAiRequests, tone: 'danger', confirm: 'Effacer {n} du journal ? (le fournisseur ne conserve pas ces données au-delà de ses propres règles)' }]} />
+            {sent.map(r => (
+              <div key={r.id} className="flex flex-wrap items-start gap-3 py-2.5 border-t border-soft text-sm">
+                <BulkCheck formId="bulk-envois" value={r.id} label={`envoi du ${day(r.created_at)}`} />
+                <details className="flex-1 min-w-0">
+                  <summary className="cursor-pointer"><strong>{r.task === 'bilan' ? 'Bilan' : 'Correction'}</strong> · {r.created_at.toLocaleString('fr-FR', { timeZone: 'Europe/Paris', day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' })}
+                    {' · '}{PROVIDERS[r.provider as keyof typeof PROVIDERS]?.name ?? r.provider} <span className={r.eu ? 'text-brand-dark' : 'text-warm-dark'}>({r.eu ? 'UE' : 'hors UE'})</span>{r.error ? <span className="text-warm-dark"> · échec</span> : ''}</summary>
+                  <pre className="mt-2 max-h-72 overflow-auto rounded-lg bg-surface-2 border border-line p-3 text-xs whitespace-pre-wrap break-words">{r.payload}</pre>
+                </details>
+              </div>
+            ))}
+          </>
+        )}
+        <p className="muted text-xs m-0">Les bilans et ce journal sont effacés automatiquement après {ai.retention_days >= 730 ? '2 ans' : ai.retention_days >= 365 ? '1 an' : '6 mois'}.</p>
       </section>
 
       {/* 4. Historique */}

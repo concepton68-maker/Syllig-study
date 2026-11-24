@@ -1,49 +1,75 @@
 'use client';
-import { startTransition, useActionState, useState } from 'react';
-import { saveAi, type AiFormState } from './actions';
+import { startTransition, useActionState } from 'react';
+import { saveKey, saveTasks, type KeyState, type TaskState } from './actions';
 
-type Current = { provider: 'claude' | 'gemini'; model: string; key_hint: string; enabled: boolean; hasKey: boolean } | null;
+type Model = { id: string; label: string };
+type ProviderView = { id: 'mistral' | 'claude' | 'gemini'; name: string; eu: boolean; where: string; help: string; placeholder: string; hint?: string; models: Model[] };
 
-export function AiForm({ current, claudeModels }: { current: Current; claudeModels: { id: string; label: string }[] }) {
-  const [state, action, pending] = useActionState<AiFormState, FormData>(saveAi, undefined);
-  const [provider, setProvider] = useState<'claude' | 'gemini'>(current?.provider ?? 'claude');
-  const models = state?.provider === provider && state.models ? state.models
-    : provider === 'claude' ? claudeModels
-    : current?.provider === 'gemini' ? [{ id: current.model, label: current.model }] : [];
-  const model = state?.provider === provider && state.model ? state.model : current?.provider === provider ? current.model : models[0]?.id;
-  const hint = current?.provider === provider && current.hasKey ? current.key_hint : '';
+// envoi manuel : pas de remise à zéro automatique du formulaire après l'enregistrement
+const send = (action: (fd: FormData) => void) => (e: React.FormEvent<HTMLFormElement>) => { e.preventDefault(); const fd = new FormData(e.currentTarget); startTransition(() => action(fd)); };
+
+export function KeyForm({ p }: { p: ProviderView }) {
+  const [state, action, pending] = useActionState<KeyState, FormData>(saveKey, undefined);
   return (
-    // envoi manuel : pas de remise à zéro automatique du formulaire après l'enregistrement
-    // (sinon le bouton radio revenait sur « Claude » alors que Gemini était enregistré)
-    <form className="flex flex-col gap-5" onSubmit={e => { e.preventDefault(); const fd = new FormData(e.currentTarget); startTransition(() => action(fd)); }}>
-      <fieldset className="flex flex-col gap-2">
-        <legend className="text-sm font-semibold mb-2">Fournisseur</legend>
-        {([['claude', 'Claude (Anthropic)', 'Clé sur console.anthropic.com › API Keys. Le plus fiable pour corriger des réponses rédigées.'],
-           ['gemini', 'Gemini (Google)', 'Clé sur aistudio.google.com › Get API key. Souvent le moins cher.']] as const).map(([v, label, help]) => (
-          <label key={v} className={`flex items-start gap-3 rounded-xl border px-4 py-3 cursor-pointer ${provider === v ? 'border-brand bg-brand-soft' : 'border-line'}`}>
-            <input type="radio" name="provider" value={v} checked={provider === v} onChange={() => setProvider(v)} className="mt-1 accent-[var(--color-brand)]" />
-            <span><strong>{label}</strong><span className="block muted text-sm">{help}</span></span>
-          </label>
-        ))}
-      </fieldset>
-      <label className="flex flex-col gap-1.5 text-sm font-semibold">Clé d’API {hint && <span className="muted font-normal">(enregistrée : {hint} — laissez vide pour la garder)</span>}
-        <input className="field font-mono" name="key" type="password" autoComplete="off" placeholder={hint ? 'Clé enregistrée' : provider === 'claude' ? 'sk-ant-…' : 'AIza…'} />
+    <form onSubmit={send(action)} className="flex flex-col gap-2" data-provider={p.id}>
+      <input type="hidden" name="provider" value={p.id} />
+      <label className="flex flex-col gap-1.5 text-sm font-semibold">Clé {p.name} {p.hint && <span className="muted font-normal">(enregistrée : {p.hint} — collez-en une autre pour la remplacer)</span>}
+        <input className="field font-mono" name="key" type="password" autoComplete="off" placeholder={p.hint ? 'Clé enregistrée' : p.placeholder} required />
       </label>
-      {models.length > 0 && (
-        <label className="flex flex-col gap-1.5 text-sm font-semibold">Modèle
-          <select className="field" name="model" defaultValue={model} key={`${provider}-${model}-${models.length}`}>
-            {models.map(m => <option key={m.id} value={m.id}>{m.label}</option>)}
-          </select>
-          {provider === 'gemini' && !state?.models && <span className="muted font-normal">La liste des modèles Gemini s’affiche après la vérification de la clé.</span>}
-        </label>
-      )}
+      <div className="flex flex-wrap items-center gap-3">
+        <button className="btn btn-primary" type="submit" disabled={pending}>{pending ? 'Vérification…' : 'Vérifier et enregistrer'}</button>
+        <span className="muted text-xs">{p.help}</span>
+      </div>
+      {state?.error && <p role="alert" className="m-0 rounded-xl bg-warm-soft text-warm-dark px-4 py-2.5 text-sm">{state.error}</p>}
+      {state?.ok && <p role="status" className="m-0 rounded-xl bg-brand-soft text-brand-ink px-4 py-2.5 text-sm">{state.ok}</p>}
+    </form>
+  );
+}
+
+export function TaskForm({ providers, tasks, current, enabled, allowNonEu, retention }: {
+  providers: ProviderView[]; tasks: { id: string; label: string; desc: string }[];
+  current: Record<string, { provider: string; model: string } | undefined>; enabled: boolean; allowNonEu: boolean; retention: number;
+}) {
+  const [state, action, pending] = useActionState<TaskState, FormData>(saveTasks, undefined);
+  const usable = providers.filter(p => p.hint);
+  return (
+    <form onSubmit={send(action)} className="flex flex-col gap-4">
+      {usable.length === 0 && <p className="m-0 text-sm">Enregistrez d’abord au moins une clé ci-dessus.</p>}
+      {tasks.map(t => {
+        const cur = current[t.id];
+        return (
+          <label key={t.id} className="flex flex-col gap-1.5 text-sm font-semibold">{t.label}
+            <span className="muted font-normal">Données transmises : {t.desc}</span>
+            {/* key : après l'enregistrement, la liste reflète le choix réellement retenu (ex. modèle retiré remplacé) */}
+            <select key={cur ? `${cur.provider}::${cur.model}` : 'aucune'} className="field" name={`task_${t.id}`} defaultValue={cur ? `${cur.provider}::${cur.model}` : ''}>
+              <option value="">— Pas d’IA pour cette tâche —</option>
+              {usable.map(p => (
+                <optgroup key={p.id} label={`${p.name} · ${p.eu ? 'Union européenne' : p.where}`}>
+                  {(p.models.some(m => cur?.provider === p.id && m.id === cur.model) || cur?.provider !== p.id ? p.models : [...p.models, { id: cur.model, label: cur.model }])
+                    .map(m => <option key={m.id} value={`${p.id}::${m.id}`}>{m.label}</option>)}
+                </optgroup>
+              ))}
+            </select>
+          </label>
+        );
+      })}
+      <label className="flex items-start gap-2.5 text-sm">
+        <input key={String(allowNonEu)} type="checkbox" name="allow_non_eu" defaultChecked={allowNonEu} className="w-5 h-5 mt-0.5 accent-[var(--color-warm)]" />
+        <span><strong>Dérogation : autoriser l’envoi de données d’élèves hors de l’Union européenne</strong> (Claude, Gemini)
+          <span className="block muted">À ne cocher qu’en connaissance de cause : il faut un contrat de sous-traitance avec le fournisseur, et en informer les parents.</span></span>
+      </label>
+      <label className="flex flex-col gap-1.5 text-sm font-semibold max-w-[360px]">Conservation des bilans et du journal des envois
+        <select key={retention} className="field" name="retention" defaultValue={String(retention)}>
+          <option value="180">6 mois</option><option value="365">1 an</option><option value="730">2 ans</option>
+        </select>
+      </label>
       <label className="flex items-center gap-2.5 text-sm font-semibold">
-        <input type="checkbox" name="enabled" defaultChecked={current?.enabled ?? true} className="w-5 h-5 accent-[var(--color-brand)]" />
-        Activer la correction par IA (bouton « Corriger avec l’IA » dans Famille › À faire)
+        <input key={String(enabled)} type="checkbox" name="enabled" defaultChecked={enabled} className="w-5 h-5 accent-[var(--color-brand)]" />
+        IA active (sinon : aucun envoi, pour aucune tâche)
       </label>
       {state?.error && <p role="alert" className="m-0 rounded-xl bg-warm-soft text-warm-dark px-4 py-3 text-sm">{state.error}</p>}
-      {state?.ok && <p role="status" className="m-0 rounded-xl bg-brand-soft text-brand-ink px-4 py-3 text-sm">{state.ok}</p>}
-      <div><button className="btn btn-primary" type="submit" disabled={pending}>{pending ? 'Vérification de la clé…' : 'Vérifier et enregistrer'}</button></div>
+      {state?.ok && <p role="status" className="m-0 rounded-xl bg-brand-soft text-brand-ink px-4 py-3 text-sm">{state.ok}{state.notes?.length ? ` ${state.notes.join(' ')}` : ''}</p>}
+      <div><button className="btn btn-primary" type="submit" disabled={pending || usable.length === 0}>{pending ? 'Vérification des modèles…' : 'Enregistrer les réglages'}</button></div>
     </form>
   );
 }

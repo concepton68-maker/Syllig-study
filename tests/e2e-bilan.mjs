@@ -1,6 +1,6 @@
 // Bilan pédagogique par l'IA : indicateurs mesurés, bilan rédigé, test de positionnement (proposé, passé, corrigé),
 // second bilan qui tient compte du test, leçons de rattrapage dans l'espace Contenu (groupées, actions groupées).
-// Fournisseurs simulés (port 3999) : serveur lancé avec AI_GEMINI_BASE_URL / AI_ANTHROPIC_BASE_URL=http://127.0.0.1:3999.
+// Fournisseurs simulés (port 3999) : serveur lancé avec AI_GEMINI_BASE_URL / AI_ANTHROPIC_BASE_URL / AI_MISTRAL_BASE_URL=http://127.0.0.1:3999.
 // Prérequis : tests/reset-db.sh puis `node scripts/seed.mjs`. Usage : BASE=… DATABASE_URL=… node tests/e2e-bilan.mjs
 import http from 'node:http';
 import { createRequire } from 'node:module';
@@ -40,6 +40,13 @@ const mock = http.createServer((req, res) => {
     const json = (code, o) => { res.writeHead(code, { 'content-type': 'application/json' }); res.end(JSON.stringify(o)); };
     const u = new URL(req.url, 'http://x');
     if (u.pathname.startsWith('/v1/models/')) return json(200, { type: 'model', id: 'claude-haiku-5-5', display_name: 'Claude', created_at: '2026-01-01T00:00:00Z' });
+    if (u.pathname === '/v1/models') return json(200, { data: [{ id: 'mistral-large-latest', capabilities: { completion_chat: true } }, { id: 'mistral-small-latest', capabilities: { completion_chat: true } }] });
+    if (u.pathname === '/v1/chat/completions') {
+      const m = body ? JSON.parse(body) : {};
+      if (!m.response_format) return json(200, { choices: [{ message: { content: 'OK' }, finish_reason: 'stop' }] });
+      inputs.push({ provider: 'mistral', model: m.model, system: m.messages[0].content, user: m.messages[1].content });
+      return json(200, { choices: [{ message: { role: 'assistant', content: JSON.stringify(report(inputs.length)) }, finish_reason: 'stop' }] });
+    }
     if (u.pathname === '/v1beta/models') return json(200, { models: [{ name: 'models/gemini-9.1-flash', displayName: 'Gemini 9.1 Flash', supportedGenerationMethods: ['generateContent'] }] });
     const b = body ? JSON.parse(body) : {};
     if (/:generateContent$/.test(u.pathname)) {
@@ -82,8 +89,9 @@ await el.click('text=Remettre ma copie'); await el.click('button:has-text("Oui, 
 await sql`update eval_attempts set status = 'graded', final_score = 2, scores = coalesce(auto_scores, '{}'::jsonb), graded_at = now() where id = ${att.id}`;
 
 const ad = await page('admin@test.local', 'admin-test-1234');
-await ad.goto(BASE + '/contenu/ia'); await ad.check('input[name=provider][value=gemini]'); await ad.fill('input[name=key]', 'cle'); await ad.click('button:has-text("Vérifier et enregistrer")');
-await ad.waitForSelector('text=La correction par IA est active');
+const setKey = async (provider, key) => { await ad.goto(BASE + '/contenu/ia'); const f = ad.locator(`form[data-provider="${provider}"]`);
+  await f.locator('input[name=key]').fill(key); await f.locator('button:has-text("Vérifier et enregistrer")').click(); await f.locator('[role=status]').waitFor(); };
+await setKey('mistral', 'cle-mistral');
 
 console.log('Indicateurs');
 const pa = await page('parent@test.local', 'parent-test-1234');
@@ -93,10 +101,15 @@ ok(facts.includes('Leçon lue en 4 min pour'), 'leçon survolée repérée (4 mi
 ok(/Évaluation rendue en \d+ min sur/.test(facts) && /% de questions laissées vides/.test(facts), 'évaluation bâclée et copie en partie vide repérées');
 ok(/Exercices\s*8\/10/.test(facts.replace(/\n/g, ' ')) || facts.includes('8/10'), 'exercices 8/10 comparés à l’évaluation 2/20');
 
-console.log('Premier bilan (Gemini)');
+console.log('Premier bilan (Mistral, Europe)');
+ok(await pa.locator('button:has-text("Demander un bilan")').count() === 0 && await pa.locator('a:has-text("Autoriser le bilan par l’IA")').count() === 1, 'sans l’accord du parent : pas de bilan possible, lien vers l’autorisation');
+await pa.click('a:has-text("Autoriser le bilan par l’IA")');
+await pa.check('input[name=ai_bilan]'); await pa.click('button:has-text("Enregistrer mes choix")');
+await pa.waitForSelector('text=Choix enregistrés pour Léa');
 await pa.click('button:has-text("Demander un bilan")');
 await pa.waitForSelector('text=Synthèse numéro 1');
 const in1 = JSON.parse(inputs[0].user.slice(inputs[0].user.indexOf('{')));
+ok(inputs[0].provider === 'mistral' && inputs[0].model === 'mistral-large-latest', 'bilan rédigé par Mistral Large (Europe)');
 ok(!inputs[0].user.includes('Léa') && in1.cours.length >= 1 && in1.cours[0].evaluations[0].wrong.length > 0, 'l’IA reçoit les faits et les questions ratées, sans le prénom');
 ok(in1.programme_syllig.length > 10, 'l’IA reçoit le programme Syllig (pour ne pas proposer des leçons déjà existantes)');
 ok(inputs[0].system.includes('lacunes_anterieures') && inputs[0].system.includes('JSON Schema'), 'consignes d’expert et schéma de réponse envoyés');
@@ -131,8 +144,9 @@ const tv = await pa.locator('section[aria-labelledby="positionnement"]').innerTe
 ok(tv.includes('Fait : 3/6') && tv.includes('Relatifs') && tv.includes('niveau 5e'), 'le parent voit les résultats par notion et par niveau');
 
 console.log('Second bilan (Claude), qui tient compte du test');
-await ad.goto(BASE + '/contenu/ia'); await ad.check('input[name=provider][value=claude]'); await ad.fill('input[name=key]', 'sk-ant-test'); await ad.click('button:has-text("Vérifier et enregistrer")');
-await ad.waitForSelector('text=La correction par IA est active');
+await setKey('claude', 'sk-ant-test');
+await ad.goto(BASE + '/contenu/ia'); await ad.selectOption('select[name=task_bilan]', 'claude::claude-opus-5-5'); await ad.check('input[name=allow_non_eu]');
+await ad.click('button:has-text("Enregistrer les réglages")'); await ad.waitForSelector('text=Réglages enregistrés');
 await pa.click('button:has-text("Nouveau bilan")');
 await pa.waitForSelector('text=Synthèse numéro 2');
 const in2 = JSON.parse(inputs[1].user.slice(inputs[1].user.indexOf('{')));
@@ -140,8 +154,8 @@ ok(inputs[1].provider === 'claude' && in2.tests_de_positionnement.length === 1 &
 ok((await pa.locator('section[aria-labelledby="bilan-ia"]').innerText()).includes('Lacunes des années précédentes'), 'origine affichée : lacunes des années précédentes');
 await pa.locator('section[aria-labelledby="historique"] input[data-bulk="bulk-bilans"]').nth(1).check();
 await pa.click('button:has-text("Supprimer (1)")'); await pa.click('[data-dialog-ok]');
-await pa.waitForLoadState('networkidle');
-ok((await sql`select count(*)::int as n from student_reports`)[0].n === 1, 'suppression groupée d’un ancien bilan');
+let left = 2; for (let i = 0; i < 50 && left !== 1; i++) { await pa.waitForTimeout(100); left = (await sql`select count(*)::int as n from student_reports`)[0].n; }
+ok(left === 1, 'suppression groupée d’un ancien bilan');
 
 console.log('Leçons à créer (espace Contenu)');
 await ad.goto(BASE + '/contenu/a-creer');

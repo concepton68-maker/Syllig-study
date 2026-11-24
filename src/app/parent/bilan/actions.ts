@@ -55,3 +55,23 @@ export async function deletePlacementTests(form: FormData) {
   await mineOnly(u.id, 'placement_tests', form.getAll('ids').map(String));
   revalidatePath('/parent', 'layout'); revalidatePath('/eleve', 'layout');
 }
+
+// Consentement du parent (RGPD) pour cet enfant : correction par l'IA, bilan par l'IA
+export async function saveAiConsent(studentId: string, form: FormData) {
+  const u = await requireUser('parent');
+  await assertParentOf(u.id, studentId);
+  const v = { ai_correction: form.get('ai_correction') === 'on', ai_bilan: form.get('ai_bilan') === 'on' };
+  await sql`update students set settings = settings || ${sql.json(v)} where id = ${studentId}`;
+  await logEvent(studentId, 'consentement_ia', { actorId: u.id, data: { correction: v.ai_correction, bilan: v.ai_bilan } });
+  revalidatePath('/parent', 'layout');
+  redirect(back(studentId, { consentement: '1' }));
+}
+
+// Journal des envois : le parent peut en effacer des lignes
+export async function deleteAiRequests(form: FormData) {
+  const u = await requireUser('parent');
+  const allowed = (await studentsOfParent(u.id)).map(s => s.id);
+  const ids = form.getAll('ids').map(String).filter(x => /^\d+$/.test(x));
+  if (ids.length && allowed.length) await sql`delete from ai_requests where id in ${sql(ids)} and student_id in ${sql(allowed)}`;
+  revalidatePath('/parent/bilan');
+}

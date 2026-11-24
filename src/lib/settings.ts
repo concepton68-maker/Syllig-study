@@ -5,6 +5,8 @@ export type StudentSettings = {
   eval_requires_approval: boolean;
   idle_seconds: number;          // inactivité avant pause du chrono
   theme: ThemeId;                // thème d'affichage de l'espace élève
+  ai_correction: boolean;        // consentement du parent (RGPD) : copies corrigées par l'IA
+  ai_bilan: boolean;             // consentement du parent (RGPD) : bilan pédagogique et test de positionnement par l'IA
 };
 export const THEMES = [
   { id: 'glacier', kind: 'girly', name: 'Girly ✦ Ice blue', desc: 'Bleu nuit, bleu glacier et rose poudré, titres arrondis' },
@@ -28,6 +30,8 @@ export const DEFAULT_SETTINGS: StudentSettings = {
   eval_requires_approval: false,
   idle_seconds: 60,
   theme: 'classique',
+  ai_correction: false,
+  ai_bilan: false,
 };
 export const settingsOf = (raw: unknown): StudentSettings => {
   const s = { ...DEFAULT_SETTINGS, ...((raw as object) ?? {}) } as StudentSettings;

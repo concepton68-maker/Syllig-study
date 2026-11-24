@@ -7,7 +7,7 @@ import { ImportCorrections } from '../copies/ImportCorrections';
 import { decideEvalRequest, approveRequestsBulk, postponeRequestsBulk, dismissPasswordRequests, answerPasswordRequest } from '../actions';
 import { KeyRound } from 'lucide-react';
 import { BulkBar, BulkCheck } from '@/components/Bulk';
-import { aiSettings } from '@/lib/ai';
+import { aiOverview } from '@/lib/ai';
 import { correctWithAiAction, validateProposalsBulk } from '../copies/actions';
 import { AiButton } from './AiButton';
 
@@ -21,8 +21,7 @@ const when = (d: Date | null) => d ? d.toLocaleString('fr-FR', { timeZone: 'Euro
 export default async function ToDo({ searchParams }: { searchParams: Promise<{ validee?: string; mdp?: string; erreur?: string; ia?: string; iaerr?: string; validees?: string }> }) {
   const sp = await searchParams;
   const { students, user } = await requireParent();
-  const ai = await aiSettings();
-  const aiOn = !!(ai?.enabled && ai.hasKey);
+  const aiOn = (await aiOverview()).ready.correction;
   const ids = students.map(s => s.id);
   const rows = ids.length ? await sql<Row[]>`
     select a.id, c.title, s.first_name, a.attempt_no, a.status, a.submitted_at, a.requested_at, a.final_score, (a.proposal is not null) as has_proposal

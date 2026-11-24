@@ -1,7 +1,8 @@
 import 'server-only';
 import { z } from 'zod/v4';
 import { sql } from './db';
-import { aiConfig, askJson, ensureGeminiModel } from './ai';
+import { aiConfigFor, askJson, ensureGeminiModel, logAiRequest, purgeExpired } from './ai';
+import { redact, namesFor } from './redact';
 import { studentProfile, type Profile } from './profile';
 import type { Question } from './course-format';
 
@@ -74,9 +75,15 @@ export function placementQuestion(q: ReportData['test_positionnement']['question
 }
 
 export async function generateReport(studentId: string, actorId: string): Promise<{ id?: string; error?: string; note?: string }> {
-  const cfg = await aiConfig();
-  if (!cfg) return { error: 'L’IA n’est pas configurée (espace Contenu › IA de correction).' };
+  const [st] = await sql<{ settings: { ai_bilan?: boolean } }[]>`select settings from students where id = ${studentId}`;
+  if (!st?.settings?.ai_bilan) return { error: 'Le bilan par l’IA n’est pas autorisé pour cet enfant : cochez-le dans « Confidentialité et IA », en bas de cette page.' };
+  const conf = await aiConfigFor('bilan');
+  if ('error' in conf) return { error: conf.error };
+  const cfg = conf.cfg;
   const profile: Profile = await studentProfile(studentId);
+  // minimisation : ni nom ni coordonnées dans les réponses transmises
+  const names = await namesFor(studentId);
+  for (const c of profile.courses) for (const e of c.evaluations) for (const w of e.wrong) w.reponse = redact(w.reponse, names);
   if (!profile.courses.some(c => c.evaluations.length || c.lesson.active_min || c.checkpoints.parts) && !profile.placement.length)
     return { error: 'Pas encore assez de travail sur la plateforme pour un bilan (aucune leçon, aucun exercice, aucune évaluation).' };
   const g = await ensureGeminiModel(cfg);
@@ -92,11 +99,14 @@ export async function generateReport(studentId: string, actorId: string): Promis
     programme_syllig: programme.map(p => `${p.subject} · ${p.title}`),
   };
   let data: ReportData;
+  const payload = `Données de l'élève (JSON) :\n${JSON.stringify(input)}`;
   try {
-    data = await askJson(cfg, ReportData, SYSTEM, `Données de l'élève (JSON) :\n${JSON.stringify(input)}`, 'high');
+    data = await askJson(cfg, ReportData, SYSTEM, payload, 'high');
+    await logAiRequest(studentId, 'bilan', cfg, payload);
   } catch (e) {
+    await logAiRequest(studentId, 'bilan', cfg, payload, (e as Error).message.slice(0, 300));
     return { error: `Le bilan n’a pas pu être rédigé : ${(e as Error).message}` };
-  }
+  } finally { await purgeExpired(); }
   const [r] = await sql<{ id: string }[]>`insert into student_reports (student_id, created_by, provider, model, indicators, data)
     values (${studentId}, ${actorId}, ${cfg.provider}, ${cfg.model}, ${sql.json(profile)}, ${sql.json(data)}) returning id`;
   for (const l of data.lecons_a_creer.slice(0, 12)) {

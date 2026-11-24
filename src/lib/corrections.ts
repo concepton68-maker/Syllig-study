@@ -4,6 +4,7 @@ import { sql } from './db';
 import { evalQuestions } from './course-format';
 import { versionById } from './progress';
 import type { Attempt } from './evaluation';
+import { redact, namesFor } from './redact';
 
 // Échange de corrections avec Claude, hors plateforme (décision de cadrage : pas d'IA branchée en v1).
 export const CONSIGNE = `Tu es correcteur bienveillant et rigoureux pour Syllig Study (collège et lycée, France).
@@ -16,13 +17,15 @@ Réponds UNIQUEMENT par un JSON au format « format_reponse » (même « ref » 
 
 export async function buildExport(attempts: (Attempt & { title: string; subject: string; level: string })[]) {
   const copies = [];
+  const names = new Map<string, string[]>();
   for (const a of attempts) {
+    if (!names.has(a.student_id)) names.set(a.student_id, await namesFor(a.student_id));
     const doc = (await versionById(a.version_id))!.document;
     const variant = doc.evaluation.variants[a.variant % doc.evaluation.variants.length];
     const texts = new Map(variant.texts.map(t => [t.id, `${t.label} : ${t.paragraphs.join('\n')}`]));
     const questions = evalQuestions(doc, a.variant).filter(q => !(a.auto_scores && q.id in a.auto_scores)).map(q => ({
       id: q.id, points_max: q.points, consigne: q.prompt, ...(q.text_ref ? { texte_support: texts.get(q.text_ref) } : {}),
-      reponse_eleve: a.answers[q.id] ?? '', corrige: q.solution, bareme: q.rubric ?? `Selon la justesse de la réponse, ${q.points} point(s) au maximum.`,
+      reponse_eleve: redact(a.answers[q.id] ?? '', names.get(a.student_id)!),   // minimisation : ni nom, ni coordonnées corrige: q.solution, bareme: q.rubric ?? `Selon la justesse de la réponse, ${q.points} point(s) au maximum.`,
     }));
     if (questions.length) copies.push({ ref: a.id, niveau: a.level, matiere: a.subject, cours: a.title, questions });
   }
