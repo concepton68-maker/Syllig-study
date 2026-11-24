@@ -16,7 +16,7 @@ const ctx = async (mobile) => (await b.newContext(mobile ? { viewport: { width: 
 const login = async (p, l, pw) => { await p.goto(BASE + '/connexion'); await p.fill('input[name=login]', l); await p.fill('input[name=password]', pw); await p.click('button[type=submit]');
   await p.waitForURL(u => !u.pathname.startsWith('/connexion'), { timeout: 5000 }).catch(() => null); return !new URL(p.url()).pathname.startsWith('/connexion'); };
 const errs = [];
-const watch = p => { p.on('pageerror', e => errs.push(`${p.url()} : ${e.message.slice(0, 80)}`)); p.on('dialog', d => { errs.push('fenêtre native : ' + d.message()); d.dismiss(); }); return p; };
+const watch = p => { p.on('pageerror', e => errs.push(`${p.url()} : ${e.message.slice(0, 80)}`)); p.on('dialog', d => { if (p.allowDialog) return d.accept(); errs.push('fenêtre native : ' + d.message()); d.dismiss(); }); return p; };
 
 console.log('Élève');
 const el = watch(await ctx(true));
@@ -49,8 +49,9 @@ const ad = watch(await ctx(false));
 ok(await login(ad, 'admin@test.local', 'admin-test-1234'), 'l’administrateur se connecte');
 await ad.goto(BASE + '/contenu/comptes');
 await ad.waitForSelector('h2:text("Mots de passe oubliés")');
-await ad.click('button:has-text("Créer un lien de nouveau mot de passe")');
-const link = (await ad.locator('code').first().innerText({ timeout: 5000 })).trim();
+const reqs = ad.locator('section:has(h2:text("Mots de passe oubliés"))');
+await reqs.locator('button:has-text("Créer un lien de nouveau mot de passe")').click();
+const link = (await reqs.locator('code:has-text("/connexion/nouveau")').innerText({ timeout: 5000 })).trim();
 ok(link.includes('/connexion/nouveau?jeton='), 'l’administrateur crée un lien à usage unique');
 await pb.goto(link.replace(/^https?:\/\/[^/]+/, BASE));
 await pb.fill('input[name=password]', 'parent-nouveau-9999'); await pb.fill('input[name=confirm]', 'pas-pareil-9999'); await pb.click('button:has-text("Enregistrer")');
@@ -87,6 +88,24 @@ await sd.waitForSelector('.mobile-bar .space-switch');
 const fits = await sd.evaluate(() => { const h = document.querySelector('.mobile-bar'); return `${h.scrollWidth}/${h.clientWidth}`; });
 ok(fits.split('/')[0] <= fits.split('/')[1] && await sd.locator('.mobile-bar a[aria-label="Mon mot de passe"]').isVisible(), `téléphone 360 px, deux espaces : la barre du haut ne déborde pas (${fits})`);
 await sql`delete from user_roles where role = 'admin' and user_id = (select id from users where login = 'parent@test.local')`;
+
+console.log('Vue administrateur : familles et comptes');
+await ad.goto(BASE + '/contenu/comptes');
+const fam = await ad.locator('section[aria-labelledby="familles"]').innerText();
+ok(fam.includes('Identifiant : parent@test.local') && fam.includes('Identifiant : lea') && /Léa\s*·\s*\S/.test(fam), 'l’administrateur voit les parents et les élèves avec leurs identifiants et le niveau');
+const leaRow = ad.locator('section[aria-labelledby="familles"] div.border-soft:has(code:text-is("lea"))');
+await leaRow.locator('button:has-text("Lien nouveau mot de passe")').click();
+const leaLink = (await leaRow.locator('code:has-text("/connexion/nouveau")').innerText({ timeout: 5000 })).trim();
+const sl = watch(await ctx(true)); await sl.goto(leaLink.replace(/^https?:\/\/[^/]+/, BASE));
+await sl.fill('input[name=password]', 'lea-lien-2468'); await sl.fill('input[name=confirm]', 'lea-lien-2468'); await sl.click('button:has-text("Enregistrer")');
+await sl.waitForURL(u => u.pathname.startsWith('/eleve'));
+ok(true, 'lien de nouveau mot de passe créé par l’administrateur pour un compte élève : l’élève arrive connectée');
+await ad.goto(BASE + '/contenu/comptes');
+await ad.locator('section[aria-labelledby="familles"] input[aria-label="Sélectionner Léa"]').check();
+ad.allowDialog = true;   // espace Contenu : confirmation des actions groupées
+await ad.click('button:has-text("Déconnecter de tous les appareils")');
+await ad.waitForLoadState('networkidle');
+await sl.goto(BASE + '/eleve'); ok(new URL(sl.url()).pathname.startsWith('/connexion'), 'action groupée « Déconnecter de tous les appareils » : l’élève doit se reconnecter');
 
 ok(errs.length === 0, `aucune erreur JavaScript ni fenêtre native (${errs.join(' | ') || 'aucune'})`);
 for (const u of saved) await sql`update users set password_hash = ${u.password_hash} where id = ${u.id}`;

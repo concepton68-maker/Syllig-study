@@ -249,3 +249,8 @@ Recette complète de l'espace élève (un agent testeur a joué l'élève sur t�
   - même réponse que l'identifiant existe ou non, demandes limitées ; un changement de mot de passe ferme les sessions ouvertes ailleurs.
 - « Mon mot de passe » (icône clé dans la barre) : chaque compte peut changer son mot de passe.
 - Petits téléphones : la barre du haut ne déborde plus pour un compte à deux espaces (Famille + Contenu).
+
+## 0.22 — 24/11/2026
+- Contenu › Comptes : nouvelle vue « Familles et comptes ». L'administrateur voit toutes les familles, chaque parent et chaque élève avec son identifiant de connexion, son niveau, sa dernière connexion et le nombre d'appareils connectés.
+- Sur chaque compte (adulte ou élève) : « Lien nouveau mot de passe » (lien à usage unique, 48 h).
+- Actions groupées : « Déconnecter de tous les appareils » et « Donner l'accès Contenu » (les comptes élèves sont ignorés).

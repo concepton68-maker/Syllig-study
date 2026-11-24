@@ -6,6 +6,7 @@ import { requireUser } from '@/lib/auth';
 import { PageTitle } from '@/components/Shell';
 import { Screen } from '@/components/Layout';
 import { ResetLink } from './ResetLink';
+import { Families } from './Families';
 import { dismissAdultRequests } from './reset-actions';
 
 export const metadata = { title: 'Comptes' };
@@ -49,7 +50,7 @@ export default async function Accounts({ searchParams }: { searchParams: Promise
     select r.id::text, u.login, u.display_name, r.created_at from password_requests r join users u on u.id = r.user_id
     where r.done_at is null and u.role <> 'student' order by r.created_at`;
   return (
-    <Screen top={<PageTitle kicker="Comptes" title="Accès à l’espace Contenu" sub="Un parent qui gère aussi les cours n’a besoin que d’un compte : donnez-lui l’accès Contenu, il bascule ensuite d’un espace à l’autre depuis la barre du haut." />}>
+    <Screen top={<PageTitle kicker="Comptes" title="Comptes et familles" sub="Tous les parents et élèves de la plateforme, leurs identifiants, et l’accès à l’espace Contenu." />}>
       {sp.ok && <p role="status" className="m-0 rounded-xl bg-brand-soft text-brand-ink px-4 py-3 text-sm max-w-[900px]">{sp.ok}</p>}
       {sp.erreur && <p role="alert" className="m-0 rounded-xl bg-warm-soft text-warm-dark px-4 py-3 text-sm max-w-[900px]">{sp.erreur}</p>}
       {requests.length > 0 && (
@@ -65,8 +66,10 @@ export default async function Accounts({ searchParams }: { searchParams: Promise
           ))}
         </section>
       )}
+      <Families me={me.id} />
       <section className="card flex flex-col max-w-[900px]">
         <h2 className="text-xl font-semibold mb-2">Comptes avec l’accès Contenu</h2>
+        <p className="muted text-sm mt-0 mb-2">Un parent qui gère aussi les cours n’a besoin que d’un compte : avec l’accès Contenu, il bascule d’un espace à l’autre depuis la barre du haut.</p>
         {admins.filter(a => a.id !== me.id && a.roles.includes('parent')).length > 0 && <div className="mb-2"><BulkBar formId="bulk-comptes" noun="compte"
           actions={[{ label: 'Retirer l’accès Contenu', action: revoke, tone: 'danger', confirm: 'Retirer l’accès Contenu à {n} ? Ils gardent leur espace Famille.' }]} /></div>}
         {admins.map(a => (
@@ -89,7 +92,7 @@ export default async function Accounts({ searchParams }: { searchParams: Promise
       </section>
       <section className="card flex flex-col gap-3 max-w-[900px]">
         <h2 className="text-xl font-semibold">Lien de nouveau mot de passe</h2>
-        <p className="muted text-sm m-0">Pour un parent qui ne peut plus se connecter : le lien lui permet de choisir lui-même un nouveau mot de passe (valable 48 h, une seule fois).</p>
+        <p className="muted text-sm m-0">Pour quelqu’un qui ne peut plus se connecter : le lien lui permet de choisir lui-même un nouveau mot de passe (valable 48 h, une seule fois).</p>
         <ResetLink />
       </section>
     </Screen>
