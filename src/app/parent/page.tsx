@@ -17,8 +17,8 @@ const DAYS = ['Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam', 'Dim'];
 const KPI_STYLE: [LucideIcon, string, string][] = [
   [Clock, 'tone-brand', 'var(--color-brand)'],
   [Flame, 'tone-warm', 'var(--color-warm)'],
-  [GraduationCap, 'tone-violet', '#6D4AE0'],
-  [BookCheck, 'tone-green', '#1B9E5A'],
+  [GraduationCap, 'tone-violet', 'var(--color-violet)'],
+  [BookCheck, 'tone-green', 'var(--color-green)'],
   [Star, 'tone-accent', 'var(--color-accent)'],
 ];
 
@@ -53,7 +53,7 @@ export default async function ParentDashboard({ searchParams }: { searchParams: 
     { label: 'Temps actif mesuré', value: hm(w.active), unit: `/ ${hm(goal)}`, sub: 'Objectif hebdomadaire fixé par vous', bar: Math.min(100, pct) },
     { label: 'Régularité', value: String(w.activeDays), unit: 'jours / 7', sub: `Série en cours : ${s} jour${s > 1 ? 's' : ''}`, bar: (w.activeDays / 7) * 100 },
     { label: 'Moyenne des évaluations', value: ev.avg ? Number(ev.avg).toLocaleString('fr-FR') : '—', unit: '/ 20', sub: ev.n ? `Meilleure note retenue, ${ev.n} cours évalué${ev.n > 1 ? 's' : ''}` : 'Pas encore d’évaluation', bar: ev.avg ? (Number(ev.avg) / 20) * 100 : 0 },
-    { label: 'Cours acquis', value: String(acquired), unit: `/ ${total}`, sub: `${published} cours disponible${published > 1 ? 's' : ''} à ce jour`, bar: total ? (acquired / total) * 100 : 0 },
+    { label: 'Cours acquis', value: String(acquired), unit: `/ ${published}`, sub: `parmi les cours disponibles · ${total} au programme`, bar: published ? (acquired / published) * 100 : 0 },
     { label: 'Points de progrès', value: `+${w.week_points}`, unit: 'cette semaine', sub: `${w.total_points} au total`, bar: Math.min(100, w.week_points / 5) },
   ];
 
@@ -136,10 +136,10 @@ export default async function ParentDashboard({ searchParams }: { searchParams: 
         </div>
         <div className="overflow-x-auto">
           <table className="tbl min-w-[720px]">
-            <thead><tr><th>Matière</th><th>Cours</th><th>Disponibles</th><th>Commencés</th><th>Acquis</th><th className="w-[28%]">Progression</th><th>Moyenne /20</th></tr></thead>
+            <thead><tr><th>Matière</th><th>Cours</th><th>Disponibles</th><th>Commencés</th><th>Acquis</th><th className="w-[28%]">Acquis / disponibles</th><th>Moyenne /20</th></tr></thead>
             <tbody>
               {subjects.map(r => {
-                const p = r.total ? Math.round((r.acquired / r.total) * 100) : 0;
+                const p = r.published ? Math.round((r.acquired / r.published) * 100) : 0;
                 return (
                   <tr key={r.subject}>
                     <td className="font-semibold">{r.subject}</td><td>{r.total}</td><td>{r.published}</td><td>{r.started}</td><td>{r.acquired}</td>

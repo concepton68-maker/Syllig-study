@@ -328,7 +328,7 @@
                 "FP1",
                 "nombre de repas programmables par jour",
                 "4",
-                "au moins 2"
+                "minimum"
               ],
               [
                 "FC1 : contenir une réserve",
@@ -415,7 +415,7 @@
         "blocks": [
           {
             "type": "text",
-            "text": "Un même besoin peut être satisfait par des objets très différents selon les époques. Pour **écouter de la musique chez soi ou en se déplaçant**, on est passé du phonographe (fin du XIXe siècle) au disque vinyle, puis à la cassette audio, au CD (années 1980), au baladeur MP3 (fin des années 1990) et enfin à l'écoute en ligne sur smartphone."
+            "text": "Un même besoin peut être satisfait par des objets très différents selon les époques. Pour **écouter de la musique chez soi ou en se déplaçant**, on est passé du phonographe (fin du XIXe siècle) au disque vinyle, puis à la cassette audio, au CD (années 1980), au baladeur MP3 (fin des années 1990) et enfin à l'écoute en ligne (le streaming) sur smartphone."
           },
           {
             "type": "text",
@@ -567,7 +567,13 @@
           "bête à cornes",
           "la bête à cornes",
           "une bête à cornes",
-          "bete a corne"
+          "bete a corne",
+          "la bête à corne",
+          "une bête à corne",
+          "diagramme bête à cornes",
+          "le diagramme bête à cornes",
+          "diagramme de la bête à cornes",
+          "le diagramme de la bête à cornes"
         ],
         "solution": "La bête à cornes."
       },
@@ -636,6 +642,10 @@
         "answer": [
           "principale",
           "fonction principale",
+          "une fonction principale",
+          "la fonction principale",
+          "fonction principale FP",
+          "une fonction principale FP",
           "FP"
         ],
         "solution": "Une fonction principale (FP)."

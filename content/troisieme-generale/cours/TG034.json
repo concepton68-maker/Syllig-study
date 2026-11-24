@@ -615,7 +615,7 @@
           "m3-fractions-somme"
         ],
         "cognitive": "appliquer",
-        "prompt": "Calcule D = 7/6 − 2/3 × 5/4. Donne le résultat sous forme de fraction irréductible (écris-la comme 2/7).",
+        "prompt": "Calcule D = 7/6 − 2/3 × 5/4. Donne le résultat sous forme de fraction irréductible (écris-la avec le signe /, par exemple 2/7).",
         "answer": [
           "1/3"
         ],
@@ -780,7 +780,7 @@
                   "m3-fractions-simplifier"
                 ],
                 "cognitive": "appliquer",
-                "prompt": "Écris la fraction 45/60 sous forme irréductible (écris-la comme 2/7).",
+                "prompt": "Écris la fraction 45/60 sous forme irréductible (écris-la avec le signe /, par exemple 2/7).",
                 "answer": [
                   "3/4"
                 ],
@@ -989,7 +989,7 @@
                   "m3-fractions-simplifier"
                 ],
                 "cognitive": "appliquer",
-                "prompt": "Écris la fraction 56/70 sous forme irréductible (écris-la comme 2/7).",
+                "prompt": "Écris la fraction 56/70 sous forme irréductible (écris-la avec le signe /, par exemple 2/7).",
                 "answer": [
                   "4/5"
                 ],

@@ -81,3 +81,21 @@ Première version numérotée (déjà en ligne avant numérotation : socle, gén
   - Anglais : présent simple et présent en be + -ing.
   - Technologie : besoin et cahier des charges.
 - Correction automatique : le signe moins typographique (claviers de téléphone) est accepté.
+
+## 0.08 — 24/11/2026
+- Correction automatique plus juste :
+  - Dans les réponses courtes, le signe moins, la barre de fraction et la virgule comptent : « -1/3 », « 1/3 » et « 1,3 » ne se confondent plus.
+  - Les 323 réponses attendues des cours ont été revérifiées.
+- Relecture « professeur » des cours de mathématiques, sciences, technologie et anglais. Quatre cours ont été précisés : plus de formulations acceptées, une règle d'orthographe anglaise complétée, des tournures clarifiées.
+- Bibliothèque de cours : un cours corrigé est republié automatiquement en nouvelle version, sauf s'il a été modifié dans l'espace contenu.
+- Espace parent :
+  - Correction d'une copie : les points sont contrôlés avant l'envoi (plus aucune saisie perdue), avec le total en direct et une confirmation avant de rendre la note visible.
+  - Ordre du parcours : les cours sont regroupés par matière, et le choix est enregistré aussitôt.
+  - « Cours acquis » est calculé sur les cours disponibles.
+  - Onglets de la fiche enfant lisibles sur téléphone.
+- Espace contenu :
+  - Confirmation et message à la publication.
+  - Possibilité d'écarter un brouillon, seul ou en groupe.
+  - Niveau affiché sur chaque cours.
+  - Message après l'import de plusieurs fichiers.
+- Numéro de version en haut de la barre latérale.

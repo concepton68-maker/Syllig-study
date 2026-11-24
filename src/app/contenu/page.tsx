@@ -17,7 +17,7 @@ export default async function Catalogue() {
   const pub = rows.filter(r => r.published).length;
   return (
     <div className="flex flex-col gap-5 lg:flex-1 lg:min-h-0">
-      <PageTitle kicker="Catalogue" title={`${pub} cours publiés sur ${rows.length}`} sub="Pour créer un cours : « Préparer la consigne », la coller dans Claude, puis importer le JSON obtenu.">
+      <PageTitle kicker="Catalogue" title={`${pub} cours publié${pub > 1 ? 's' : ''} sur ${rows.length}`} sub="Pour créer un cours : « Préparer la consigne », la coller dans Claude, puis importer le JSON obtenu.">
         <Link className="btn btn-primary" href="/contenu/importer">Importer un cours</Link>
       </PageTitle>
       <CatalogueList rows={rows.map(r => ({ ...r }))} />

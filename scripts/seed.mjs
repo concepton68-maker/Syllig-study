@@ -45,7 +45,7 @@ try {
     // (jamais d'écrasement du travail fait dans l'espace contenu).
     const dirCours = path.join(root, dir, 'cours');
     if (fs.existsSync(dirCours) && process.env.SEED_SANS_BIBLIOTHEQUE !== '1') {
-      let published = 0;
+      let published = 0, updated = 0;
       for (const f of fs.readdirSync(dirCours).filter(x => x.endsWith('.json')).sort()) {
         const doc = JSON.parse(fs.readFileSync(path.join(dirCours, f), 'utf8'));
         const [course] = await sql`
@@ -54,15 +54,30 @@ try {
           order by (c.code = ${doc.code}) desc limit 1`;
         if (!course) { console.warn(`  ${f} : cours introuvable dans le programme (${doc.subject} › ${doc.chapter} › ${doc.title})`); continue; }
         await sql.begin(async tx => {
-          const [{ n }] = await tx`select count(*)::int as n from course_versions where course_id = ${course.id}`;
-          if (n > 0) return;
-          await tx`update courses set code = coalesce(code, ${doc.code}) where id = ${course.id}`;
+          await tx`select pg_advisory_xact_lock(${course.id})`;
+          const [last] = await tx`select id, version, status, source_name, document from course_versions where course_id = ${course.id} order by version desc limit 1`;
+          if (!last) {
+            await tx`update courses set code = coalesce(code, ${doc.code}) where id = ${course.id}`;
+            await tx`insert into course_versions (course_id, version, status, document, source_name, published_at)
+              values (${course.id}, 1, 'published', ${tx.json(doc)}, ${'Bibliothèque Syllig · ' + f}, now())`;
+            published++;
+            return;
+          }
+          // correction d'un cours de la bibliothèque : nouvelle version publiée, seulement si la dernière version
+          // vient elle-même de la bibliothèque (jamais par-dessus un import fait dans l'espace contenu)
+          const fromLibrary = String(last.source_name ?? '').startsWith('Bibliothèque Syllig');
+          if (!fromLibrary || last.status !== 'published') return;
+          if (JSON.stringify(last.document) === JSON.stringify(JSON.parse(JSON.stringify(doc)))) return;
+          const [{ same }] = await tx`select ${tx.json(doc)}::jsonb = ${last.document ? tx.json(last.document) : null}::jsonb as same`;
+          if (same) return;
+          await tx`update course_versions set status = 'archived' where id = ${last.id}`;
           await tx`insert into course_versions (course_id, version, status, document, source_name, published_at)
-            values (${course.id}, 1, 'published', ${tx.json(doc)}, ${'Bibliothèque Syllig · ' + f}, now())`;
-          published++;
+            values (${course.id}, ${last.version + 1}, 'published', ${tx.json(doc)}, ${'Bibliothèque Syllig · ' + f + ' (corrigé)'}, now())`;
+          updated++;
         });
       }
       if (published) console.log(`  ${published} cours de la bibliothèque publiés.`);
+      if (updated) console.log(`  ${updated} cours de la bibliothèque mis à jour (nouvelle version).`);
     }
   }
 } finally {

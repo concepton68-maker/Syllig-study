@@ -5,7 +5,8 @@ import { validateCourse, type CourseDocument, type Question } from '@/lib/course
 import { PageTitle } from '@/components/Shell';
 import { BlockView, SupportTextView, Stars } from '@/components/CourseBlocks';
 import { RichText } from '@/components/RichText';
-import { publishAction } from './actions';
+import { publishAction, discardAction } from './actions';
+import { ConfirmButton } from '@/components/ConfirmButton';
 import { Screen } from '@/components/Layout';
 
 type V = { id: string; version: number; status: string; document: CourseDocument; imported_at: Date; source_name: string | null; published_at: Date | null };
@@ -29,12 +30,13 @@ function QuestionAdmin({ q }: { q: Question }) {
   );
 }
 
-export default async function CoursePreview({ params, searchParams }: { params: Promise<{ id: string }>; searchParams: Promise<{ v?: string; importe?: string; onglet?: string }> }) {
+export default async function CoursePreview({ params, searchParams }: { params: Promise<{ id: string }>; searchParams: Promise<{ v?: string; importe?: string; onglet?: string; publie?: string }> }) {
   const { id } = await params;
   const sp = await searchParams;
   const courseId = Number(id);
   if (!Number.isInteger(courseId)) notFound();
   const versions = await sql<V[]>`select id, version, status, document, imported_at, source_name, published_at from course_versions where course_id = ${courseId} order by version desc`;
+  const [lvl] = await sql<{ name: string }[]>`select l.name from courses c join chapters ch on ch.id = c.chapter_id join subjects s on s.id = ch.subject_id join levels l on l.code = s.level_code where c.id = ${courseId}`;
   if (!versions.length) notFound();
   const tab = ['lecon', 'exercices', 'evaluation'].includes(sp.onglet ?? '') ? sp.onglet! : 'lecon';
   const v = versions.find(x => x.id === sp.v) ?? versions.find(x => x.status === 'draft') ?? versions.find(x => x.status === 'published') ?? versions[0];
@@ -44,19 +46,27 @@ export default async function CoursePreview({ params, searchParams }: { params: 
 
   return (
     <Screen top={<>
-      <PageTitle kicker={`${doc.subject} · ${doc.chapter} · ${doc.code}`} title={doc.title}
+      <PageTitle kicker={`${lvl?.name ?? doc.level} · ${doc.subject} · ${doc.code}`} title={doc.title}
         sub={`Version ${v.version} · ${({ draft: 'brouillon', published: 'publiée', archived: 'archivée' } as Record<string, string>)[v.status]} · importée le ${v.imported_at.toLocaleString('fr-FR', { timeZone: 'Europe/Paris' })}${v.source_name ? ` depuis ${v.source_name}` : ''}`}>
+        <Link className="btn" href={v.status === 'draft' ? '/contenu/a-relire' : '/contenu'}>‹ {v.status === 'draft' ? 'À relire' : 'Catalogue'}</Link>
+        {v.status === 'draft' && (
+          <form action={discardAction}>
+            <input type="hidden" name="version" value={v.id} />
+            <ConfirmButton className="btn btn-danger" message="Écarter ce brouillon ? Il ne sera jamais visible des élèves.">Écarter le brouillon</ConfirmButton>
+          </form>
+        )}
+        <Link className="btn" href={`/contenu/generer/${courseId}`}>Nouvelle consigne</Link>
         {v.status === 'draft' && (
           <form action={publishAction}>
             <input type="hidden" name="version" value={v.id} /><input type="hidden" name="course" value={courseId} />
-            <button className="btn btn-primary" type="submit">Publier cette version</button>
+            <ConfirmButton className="btn btn-primary" message="Publier cette version ? Les élèves la verront aussitôt.">Publier cette version</ConfirmButton>
           </form>
         )}
-        <Link className="btn" href="/contenu/importer">Importer une nouvelle version</Link>
       </PageTitle>
     </>}>
 
-      {sp.importe && <p role="status" className="rounded-xl bg-brand-soft text-brand-ink px-4 py-3 m-0 text-sm"><strong>Import réussi.</strong> Relis le cours ci-dessous (vue complète avec corrigés), puis publie-le.</p>}
+      {sp.publie && <p role="status" className="rounded-xl bg-brand-soft text-brand-ink px-4 py-3 m-0 text-sm"><strong>Publié.</strong> Cette version est maintenant celle que voient les élèves.</p>}
+      {sp.importe && <p role="status" className="rounded-xl bg-brand-soft text-brand-ink px-4 py-3 m-0 text-sm"><strong>Import réussi.</strong> Relisez le cours ci-dessous (vue complète avec corrigés), puis publiez-le.</p>}
       {warnings.length > 0 && (
         <div className="rounded-xl bg-soft px-4 py-3"><strong className="text-sm">Remarques du contrôle automatique</strong>
           <ul className="text-sm mt-2 mb-0 pl-5 list-disc">{warnings.map((w, i) => <li key={i}>{w}</li>)}</ul></div>

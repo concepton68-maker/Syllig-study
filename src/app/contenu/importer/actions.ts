@@ -24,5 +24,5 @@ export async function importAction(_: ImportState, form: FormData): Promise<Impo
   }
   if (errors.length || !last) return { errors, warnings };
   if (inputs.length === 1) redirect(`/contenu/cours/${last.courseId}?v=${last.versionId}&importe=1`);
-  redirect('/contenu?importes=' + inputs.length);
+  redirect('/contenu/a-relire?importes=' + inputs.length);
 }

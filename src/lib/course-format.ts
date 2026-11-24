@@ -202,6 +202,15 @@ export function autoCorrect(q: Question, answer: string | undefined): boolean | 
     const v = Number(a.replace(/[−–]/g, '-').replace(',', '.').replace(/[\s\u00a0\u202f]/g, ''));
     return Number.isFinite(v) && Math.abs(v - Number(q.answer)) <= (q.tolerance ?? 0);
   }
-  const norm = (s: string) => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
-  return (q.answer as string[]).some(x => norm(x) === norm(a));
+  return (q.answer as string[]).some(x => normShort(x) === normShort(a));
+}
+
+// Normalisation des réponses courtes : accents, majuscules et ponctuation ignorés,
+// mais le signe moins, la barre de fraction et la virgule décimale comptent (« -1/3 » ≠ « 1/3 » ≠ « 1,3 »).
+export function normShort(s: string) {
+  return s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase()
+    .replace(/[−–]/g, '-')
+    .replace(/(\d)\s*([\/.,])\s*(?=\d)/g, (_m, d: string, op: string) => d + (op === '/' ? 'q' : 'd'))
+    .replace(/(^|[^a-z0-9])-\s*(?=\d)/g, '$1m')
+    .replace(/[^a-z0-9]+/g, ' ').trim();
 }

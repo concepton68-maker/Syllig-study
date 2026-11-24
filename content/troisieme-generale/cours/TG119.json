@@ -27,7 +27,7 @@
       {
         "title": "Tous les êtres vivants sont faits de cellules",
         "blocks": [
-          { "type": "text", "text": "La **cellule** est l'unité de base du vivant. Certains êtres vivants ne sont formés que d'une seule cellule (**unicellulaires** : bactéries, levures, paramécies) ; d'autres en comptent un très grand nombre (**pluricellulaires** : plantes, animaux, champignons). Le corps humain en contient environ 30 000 milliards." },
+          { "type": "text", "text": "La **cellule** est l'unité de base du vivant. Certains êtres vivants ne sont formés que d'une seule cellule (**unicellulaires** : bactéries, levures, paramécies) ; d'autres en comptent un très grand nombre (**pluricellulaires** : plantes, animaux, la plupart des champignons). Le corps humain en contient environ 30 000 milliards." },
           { "type": "table", "caption": "Ce que l'on observe au microscope", "columns": ["Constituant", "Rôle", "Où le trouve-t-on ?"], "rows": [
             ["Membrane", "limite la cellule et contrôle les échanges", "toutes les cellules"],
             ["Cytoplasme", "lieu de nombreuses réactions chimiques", "toutes les cellules"],
@@ -68,7 +68,7 @@
       {
         "title": "Le noyau contient l'information génétique",
         "blocks": [
-          { "type": "text", "text": "Comment savoir où se trouve, dans la cellule, l'information qui détermine les caractères héréditaires (couleur du pelage, groupe sanguin…) ? Une expérience célèbre répond à cette question : le **clonage de la brebis Dolly**, réalisé en Écosse et née en 1996." },
+          { "type": "text", "text": "Comment savoir où se trouve, dans la cellule, l'information qui détermine les caractères héréditaires (couleur du pelage, groupe sanguin…) ? Une expérience célèbre répond à cette question : le **clonage de la brebis Dolly**, réalisé en Écosse (Dolly est née en 1996)." },
           { "type": "list", "ordered": true, "items": [
             "On prélève une cellule de mamelle d'une brebis A, de race à **tête blanche**, et on garde son noyau.",
             "On prélève un ovule d'une brebis B, de race à **tête noire**, et on lui retire son noyau (on dit qu'il est énucléé).",
@@ -254,7 +254,7 @@
         "skills": ["svt-adn"],
         "cognitive": "connaitre",
         "prompt": "Quelle molécule forme les chromosomes ? (Réponds par son sigle.)",
-        "answer": ["ADN", "l'ADN", "acide désoxyribonucléique", "DNA"],
+        "answer": ["ADN", "l'ADN", "de l'ADN", "molécule d'ADN", "une molécule d'ADN", "la molécule d'ADN", "acide désoxyribonucléique", "l'acide désoxyribonucléique", "DNA"],
         "solution": "L'ADN (acide désoxyribonucléique)."
       },
       {

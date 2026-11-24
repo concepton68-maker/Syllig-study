@@ -10,6 +10,7 @@ import { RulesForm } from './RulesForm';
 import { ResetForm } from '../Forms';
 import { setForcedAction, resetCoursesBulkAction, setForcedBulkAction } from './actions';
 import { BulkBar, BulkCheck } from '@/components/Bulk';
+import { AutoSubmitSelect } from '@/components/AutoSubmitSelect';
 import { YearCard } from '@/components/Dossier';
 import { LevelForm, SubjectsForm } from './LevelForms';
 import { levels as allLevels, yearsOf, yearSummary } from '@/lib/school-years';
@@ -84,7 +85,7 @@ export default async function ChildSheet({ params, searchParams }: { params: Pro
         </section>
         <section className="card flex flex-col">
           <h2 className="text-xl font-semibold">Ordre du parcours</h2>
-          <p className="muted text-sm mt-1 mb-3">Par défaut, le parcours suit les priorités du programme. Vous pouvez faire passer un cours en premier, ou le repousser.</p>
+          <p className="muted text-sm mt-1 mb-3">Par défaut, le parcours suit les priorités du programme en alternant les matières. Faites passer un cours en premier, ou repoussez-le : le choix est enregistré aussitôt.</p>
           {pub.length === 0 && <span className="muted text-sm">Aucun cours publié pour ce niveau.</span>}
           {pub.length > 1 && <div className="mb-2"><BulkBar formId="bulk-ordre" noun="cours" hidden={{ student: s.id }}
             actions={[{ label: 'Appliquer à la sélection', action: setForcedBulkAction, tone: 'primary' }]}>
@@ -92,17 +93,21 @@ export default async function ChildSheet({ params, searchParams }: { params: Pro
               <option value="">Ordre normal</option><option value="now">À faire en premier</option><option value="later">Plus tard</option>
             </select>
           </BulkBar></div>}
-          {pub.map(c => (
-            <form key={c.course_id} action={setForcedAction} className="flex flex-wrap items-center gap-3 py-2.5 border-t border-soft text-sm">
-              {pub.length > 1 && <BulkCheck formId="bulk-ordre" value={c.course_id} label={c.title} />}
-              <input type="hidden" name="student" value={s.id} /><input type="hidden" name="course" value={c.course_id} />
-              <span className="flex-[1_1_260px] min-w-0"><strong>{c.title}</strong><span className="block muted">{c.subject}</span></span>
-              <MasteryPill level={c.mastery} />
-              <select className="field w-auto min-w-[200px]" name="forced" defaultValue={c.forced ?? ''} aria-label={`Place de « ${c.title} » dans le parcours`}>
-                <option value="">Ordre normal</option><option value="now">À faire en premier</option><option value="later">Plus tard</option>
-              </select>
-              <button className="btn" type="submit">Appliquer</button>
-            </form>
+          {[...new Set(pub.map(c => c.subject))].map(subj => (
+            <div key={subj} className="flex flex-col">
+              <h3 className="text-sm font-bold uppercase tracking-wide text-muted mt-4 mb-1">{subj}</h3>
+              {pub.filter(c => c.subject === subj).map(c => (
+                <form key={c.course_id} action={setForcedAction} className="flex flex-wrap items-center gap-3 py-2.5 border-t border-soft text-sm">
+                  {pub.length > 1 && <BulkCheck formId="bulk-ordre" value={c.course_id} label={c.title} />}
+                  <input type="hidden" name="student" value={s.id} /><input type="hidden" name="course" value={c.course_id} />
+                  <span className="flex-[1_1_260px] min-w-0"><strong>{c.title}</strong></span>
+                  <MasteryPill level={c.mastery} />
+                  <AutoSubmitSelect className={`field w-auto min-w-[200px] ${c.forced ? 'border-brand bg-brand-soft' : ''}`} name="forced" defaultValue={c.forced ?? ''} aria-label={`Place de « ${c.title} » dans le parcours`}>
+                    <option value="">Ordre normal</option><option value="now">À faire en premier</option><option value="later">Plus tard</option>
+                  </AutoSubmitSelect>
+                </form>
+              ))}
+            </div>
           ))}
         </section>
       </>
@@ -163,10 +168,10 @@ export default async function ChildSheet({ params, searchParams }: { params: Pro
       <PageTitle kicker="Enfants" title={s.first_name} sub={`${s.level_name} · identifiant ${acc?.login ?? '—'}`}>
         <Link className="btn" href="/parent/enfants">‹ Tous les enfants</Link>
       </PageTitle>
-      <nav aria-label="Rubriques" className="flex flex-wrap gap-2 border-b border-line pb-3">
+      <nav aria-label="Rubriques" className="flex flex-nowrap sm:flex-wrap overflow-x-auto gap-2 border-b border-line pb-3 [scrollbar-width:none]">
         {TABS.map(t => (
           <Link key={t.id} href={`/parent/enfants/${s.id}?onglet=${t.id}`} aria-current={tab === t.id ? 'page' : undefined}
-            className={`navlink border ${tab === t.id ? 'bg-brand text-white border-brand hover:bg-brand-dark hover:text-white' : 'border-line'}`}>{t.label}</Link>
+            className={`navlink border shrink-0 whitespace-nowrap ${tab === t.id ? (t.id === 'zero' ? 'bg-warm text-white border-warm hover:text-white' : 'bg-brand text-white border-brand hover:bg-brand-dark hover:text-white') : t.id === 'zero' ? 'border-warm-mid text-warm-dark' : 'border-line'}`}>{t.label}</Link>
         ))}
       </nav>
     </div>}>

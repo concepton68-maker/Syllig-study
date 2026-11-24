@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { GradeForm } from './GradeForm';
 import { notFound } from 'next/navigation';
 import { z } from 'zod';
 import { sql } from '@/lib/db';
@@ -45,7 +46,9 @@ export default async function CopyReview({ params, searchParams }: { params: Pro
       {!graded && !a.proposal && <p className="m-0 rounded-xl bg-soft px-4 py-3 text-sm">Pas encore de proposition de Claude pour cette copie : vous pouvez l’exporter depuis la page précédente, ou corriger vous-même avec le corrigé et le barème.</p>}
       {erreur && <p role="alert" className="m-0 rounded-xl bg-warm-soft text-warm-dark px-4 py-3 text-sm">{erreur === 'motif' ? 'Indiquez le motif de la modification.' : `Points invalides pour ${erreur.toUpperCase()}.`}</p>}
 
-      <form action={validateGrade} className="flex flex-col gap-4">
+      <GradeForm action={validateGrade} graded={graded} firstName={student.first_name}
+        maxima={Object.fromEntries(qs.filter(q => !(a.auto_scores && q.id in a.auto_scores)).map(q => [q.id, q.points ?? 0]))}
+        autoTotal={qs.reduce((n, q) => n + (a.auto_scores && q.id in a.auto_scores ? a.auto_scores[q.id] : 0), 0)}>
         <input type="hidden" name="attempt" value={a.id} />
         {variant.texts.map(t => <SupportTextView key={t.id} t={t} />)}
         {qs.map(q => {
@@ -63,7 +66,7 @@ export default async function CopyReview({ params, searchParams }: { params: Pro
               ) : (
                 <div className="flex flex-wrap gap-3 items-end">
                   <label className="flex flex-col gap-1 text-sm font-semibold w-36">Points {!graded && a.proposal?.[q.id] ? '(proposés)' : ''}
-                    <input className="field" name={`p_${q.id}`} inputMode="decimal" required defaultValue={val(q.id)?.toString().replace('.', ',') ?? ''} />
+                    <input className="field" name={`p_${q.id}`} inputMode="decimal" required aria-describedby={`max_${q.id}`} defaultValue={val(q.id)?.toString().replace('.', ',') ?? ''} />
                   </label>
                   <label className="flex flex-col gap-1 text-sm font-semibold flex-[1_1_360px]">Commentaire pour l’élève
                     <input className="field" name={`c_${q.id}`} defaultValue={com(q.id) ?? ''} />
@@ -77,10 +80,9 @@ export default async function CopyReview({ params, searchParams }: { params: Pro
           <label className="flex flex-col gap-1 text-sm font-semibold">Mot général pour {student.first_name} (facultatif)
             <textarea className="field min-h-20" name="general" defaultValue={(graded ? a.feedback?.general : a.proposal?.general?.comment) ?? ''} />
           </label>
-          {graded && <label className="flex flex-col gap-1 text-sm font-semibold">Motif de la modification (obligatoire, reste tracé dans le journal)<input className="field" name="motif" /></label>}
-          <div><button className="btn btn-primary" type="submit">{graded ? 'Enregistrer la modification' : 'Valider la note'}</button></div>
+          {graded && <label className="flex flex-col gap-1 text-sm font-semibold">Motif de la modification (obligatoire, reste tracé dans le journal)<input className="field" name="motif" maxLength={300} /></label>}
         </section>
-      </form>
+      </GradeForm>
     </Screen>
   );
 }
