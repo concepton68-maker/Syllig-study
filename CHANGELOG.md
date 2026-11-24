@@ -340,3 +340,10 @@ Recette complète de l'espace élève (un agent testeur a joué l'élève sur t�
   - « Réglages généraux » : dérogation, rédaction automatique des leçons de rattrapage, conservation, IA active.
   - « Remplacer la clé » sur chaque fournisseur, et « Retirer ».
 - Les fonctions attribuables forment une liste centrale extensible : une nouvelle fonction apparaîtra d'elle-même sur la page, dans la règle Europe et sur la page Confidentialité.
+
+## 0.33 — 24/11/2026
+- Page Contenu › IA réorganisée par fonction, la plus simple à comprendre :
+  1. **Qui fait quoi** : une ligne par fonction (correction, bilan, rédaction des cours…), avec l'IA qui s'en charge et son modèle. Une IA hors UE apparaît verrouillée (🔒) pour les fonctions avec données d'élèves, et une attribution devenue interdite est signalée « ⚠ bloqué ».
+  2. **Mes clés** : une ligne par fournisseur (clé ✓, lieu de traitement, fonctions assurées), avec « Changer la clé », « Retirer » et « + Ajouter une clé » (fournisseur dans la liste, puis clé). L'adresse d'API et le modèle sont rangés dans « Options avancées », sauf pour « Autre », où ils sont indispensables.
+  3. Réglages généraux. 4. Travail en arrière-plan.
+- La liste des fonctions reste centrale et extensible : une nouvelle fonction ajoute d'elle-même une ligne à « Qui fait quoi ».

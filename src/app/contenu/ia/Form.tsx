@@ -1,6 +1,6 @@
 'use client';
 import { startTransition, useActionState, useEffect, useState } from 'react';
-import { saveKey, saveTasks, runAutoNow, saveSlot, saveFunctions, type KeyState, type TaskState } from './actions';
+import { saveKey, saveTasks, runAutoNow, saveSlot, saveAssignments, type KeyState, type TaskState } from './actions';
 import { PRESETS } from '@/lib/ai-presets';
 
 type Model = { id: string; label: string };
@@ -18,7 +18,7 @@ export function KeyForm({ p }: { p: ProviderView }) {
   return (
     <form method="post" onSubmit={send(action)} className="flex flex-col gap-2" data-provider={p.id}>
       <input type="hidden" name="provider" value={p.id} />
-      <label className="flex flex-col gap-1.5 text-sm font-semibold">Clé {p.name} {p.hint && <span className="muted font-normal">(enregistrée : {p.hint} — collez-en une autre pour la remplacer)</span>}
+      <label className="flex flex-col gap-1.5 text-sm font-semibold">Nouvelle clé {p.name}
         <input className="field font-mono" name="key" type="password" autoComplete="off" placeholder={p.hint ? 'Clé enregistrée' : p.placeholder} required />
       </label>
       {p.custom && (
@@ -67,55 +67,6 @@ export function TaskForm({ enabled, allowNonEu, retention, autoCours }: { enable
   );
 }
 
-// ── Fonctions attribuables : une case par entrée de la liste centrale (TASKS) ; une nouvelle fonction y apparaît d'elle-même
-export type FnTask = { id: string; label: string; desc: string; studentData: boolean };
-type FnContext = { tasks: FnTask[]; current: Record<string, { provider: string; model: string } | undefined>; names: Record<string, string>; eu?: Record<string, boolean>; allowNonEu: boolean };
-
-function FunctionChecks({ providerId, eu, models, defaults, ctx, prefill }: {
-  providerId: string; eu: boolean; models: Model[]; defaults: Record<string, string | undefined>; ctx: FnContext; prefill?: (t: FnTask) => boolean;
-}) {
-  return (
-    <fieldset className="flex flex-col gap-2 border-0 p-0 m-0">
-      <legend className="text-sm font-semibold mb-1">Utilisé pour</legend>
-      {ctx.tasks.map(t => {
-        const cur = ctx.current[t.id];
-        const blocked = t.studentData && !eu && !ctx.allowNonEu;
-        const mine = cur?.provider === providerId;
-        const checked = prefill ? prefill(t) : mine;
-        return (
-          <div key={t.id} className="flex flex-wrap items-center gap-x-3 gap-y-1.5 text-sm">
-            <label className={`flex items-center gap-2 min-w-[260px] ${blocked ? 'opacity-55' : ''}`}>
-              <input type="checkbox" name={`fn_${t.id}`} defaultChecked={!blocked && checked} disabled={blocked} className="w-5 h-5 accent-[var(--color-brand)]" />
-              <span><strong>{t.label}</strong>
-                <span className="block muted text-xs">{blocked ? 'Données d’élèves hors UE : nécessite la dérogation (Réglages généraux)' : cur && !mine ? `Actuellement : ${ctx.names[cur.provider] ?? cur.provider} — cocher pour le remplacer` : t.studentData ? 'Données d’élèves (sans nom)' : 'Aucune donnée d’élève'}</span></span>
-            </label>
-            {!blocked && models.length > 0 && (
-              <select key={`${providerId}-${t.id}-${mine ? cur!.model : ''}`} className="field !py-1.5 !min-h-0 flex-1 min-w-[200px]" name={`model_${t.id}`} defaultValue={mine ? cur!.model : defaults[t.id] ?? models[0].id} aria-label={`Modèle pour ${t.label}`}>
-                {(mine && !models.some(m => m.id === cur!.model) ? [...models, { id: cur!.model, label: cur!.model }] : models).map(m => <option key={m.id} value={m.id}>{m.label}</option>)}
-              </select>
-            )}
-          </div>
-        );
-      })}
-    </fieldset>
-  );
-}
-
-// Carte d'un fournisseur enregistré : ses fonctions
-export function FunctionsForm({ providerId, eu, models, defaults, ctx }: { providerId: string; eu: boolean; models: Model[]; defaults: Record<string, string | undefined>; ctx: FnContext }) {
-  const [state, action, pending] = useActionState<TaskState, FormData>(saveFunctions, undefined);
-  const ready = useReady();
-  return (
-    <form method="post" onSubmit={send(action)} className="flex flex-col gap-3" data-functions={providerId}>
-      <input type="hidden" name="provider" value={providerId} />
-      <FunctionChecks providerId={providerId} eu={eu} models={models} defaults={defaults} ctx={ctx} />
-      {state?.error && <p role="alert" className="m-0 rounded-xl bg-warm-soft text-warm-dark px-4 py-2.5 text-sm">{state.error}</p>}
-      {state?.ok && <p role="status" className="m-0 rounded-xl bg-brand-soft text-brand-ink px-4 py-2.5 text-sm">{state.ok}{state.notes?.length ? ` ${state.notes.join(' ')}` : ''}</p>}
-      <div><button className="btn" type="submit" disabled={pending || !ready}>{pending ? 'Vérification des modèles…' : 'Enregistrer les fonctions'}</button></div>
-    </form>
-  );
-}
-
 export function RunAutoButton() {
   const [state, action, pending] = useActionState<TaskState, FormData>(async () => runAutoNow(), undefined);
   const ready = useReady();
@@ -127,62 +78,108 @@ export function RunAutoButton() {
   );
 }
 
-// Lignes « Fournisseur » à ajouter : on choisit dans la liste, on colle la clé ; « + » ajoute une ligne de plus
-export function NewProviders({ configured, startWith, ctx }: { configured: string[]; startWith: number; ctx: FnContext }) {
-  const [n, setN] = useState(startWith);
+// ── « Qui fait quoi » : une ligne par fonction de la liste centrale (TASKS) ; une nouvelle fonction y apparaît d'elle-même
+export type FnTask = { id: string; label: string; desc: string; studentData: boolean };
+export type KeyedProvider = { id: string; name: string; eu: boolean; where: string; models: Model[]; defaults: Record<string, string | undefined> };
+
+export function AssignTable({ tasks, providers, current, allowNonEu }: {
+  tasks: FnTask[]; providers: KeyedProvider[]; current: Record<string, { provider: string; model: string } | undefined>; allowNonEu: boolean;
+}) {
+  const [state, action, pending] = useActionState<TaskState, FormData>(saveAssignments, undefined);
+  const ready = useReady();
+  const fromProps = () => Object.fromEntries(tasks.map(t => [t.id, { p: current[t.id]?.provider ?? '', m: current[t.id]?.model ?? '' }]));
+  const [sel, setSel] = useState<Record<string, { p: string; m: string }>>(fromProps);
+  // après l'enregistrement, on affiche ce qui a réellement été retenu (ex. modèle retiré remplacé), sans perdre le message
+  const saved = JSON.stringify(current);
+  useEffect(() => { setSel(fromProps()); }, [saved]); // eslint-disable-line react-hooks/exhaustive-deps
+  const pick = (t: string, p: string) => {
+    const pr = providers.find(x => x.id === p);
+    setSel({ ...sel, [t]: { p, m: pr ? (pr.defaults[t] ?? pr.models[0]?.id ?? '') : '' } });
+  };
+  if (!providers.length) return <p className="m-0 text-sm">Ajoutez d’abord une clé ci-dessous (« Mes clés »).</p>;
   return (
-    <div className="flex flex-col gap-3">
-      {Array.from({ length: n }, (_, i) => <ProviderSlot key={i} index={i} configured={configured} ctx={ctx} />)}
-      <div><button type="button" className="btn inline-flex items-center gap-2" onClick={() => setN(n + 1)}><span aria-hidden="true" className="text-lg leading-none">+</span>Ajouter un fournisseur</button></div>
-    </div>
+    <form method="post" onSubmit={send(action)} className="flex flex-col gap-3" data-assign>
+      <div className="hidden md:grid grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)_minmax(0,1fr)] gap-3 px-1 text-xs font-semibold uppercase tracking-wide text-muted">
+        <span>Fonction</span><span>Fournisseur</span><span>Modèle</span>
+      </div>
+      {tasks.map(t => {
+        const cur = sel[t.id];
+        const pr = providers.find(x => x.id === cur.p);
+        const models = pr ? (pr.models.some(m => m.id === cur.m) || !cur.m ? pr.models : [...pr.models, { id: cur.m, label: cur.m }]) : [];
+        return (
+          <div key={t.id} className="grid gap-2 md:gap-3 md:grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)_minmax(0,1fr)] items-center rounded-xl border border-line px-3 py-2.5">
+            <span className="text-sm"><strong>{t.label}</strong>
+              <span className="block muted text-xs">{t.studentData ? 'Données d’élèves (sans nom) : fournisseur européen' : 'Aucune donnée d’élève : tout fournisseur'}</span>
+              {pr && t.studentData && !pr.eu && !allowNonEu && <span className="block text-xs font-semibold text-warm-dark">⚠ bloqué : {pr.name} est hors UE et la dérogation n’est pas accordée. Choisissez une IA européenne.</span>}</span>
+            <select className="field" name={`task_${t.id}`} value={cur.p} onChange={e => pick(t.id, e.target.value)} aria-label={`Fournisseur pour ${t.label}`}>
+              <option value="">— Aucune IA —</option>
+              {providers.map(p => {
+                const locked = t.studentData && !p.eu && !allowNonEu;
+                return <option key={p.id} value={p.id} disabled={locked}>{p.name}{locked ? ' — 🔒 hors UE (dérogation requise)' : p.eu ? ' · Europe' : ''}</option>;
+              })}
+            </select>
+            {pr ? (
+              <select className="field" name={`model_${t.id}`} value={cur.m} onChange={e => setSel({ ...sel, [t.id]: { ...cur, m: e.target.value } })} aria-label={`Modèle pour ${t.label}`}>
+                {models.map(m => <option key={m.id} value={m.id}>{m.label}</option>)}
+              </select>
+            ) : <span className="muted text-sm">—</span>}
+          </div>
+        );
+      })}
+      {state?.error && <p role="alert" className="m-0 rounded-xl bg-warm-soft text-warm-dark px-4 py-2.5 text-sm">{state.error}</p>}
+      {state?.ok && <p role="status" className="m-0 rounded-xl bg-brand-soft text-brand-ink px-4 py-2.5 text-sm">{state.ok}{state.notes?.length ? ` ${state.notes.join(' ')}` : ''}</p>}
+      <div><button className="btn btn-primary" type="submit" disabled={pending || !ready}>{pending ? 'Vérification…' : 'Enregistrer'}</button></div>
+    </form>
   );
 }
 
-function ProviderSlot({ index, configured, ctx }: { index: number; configured: string[]; ctx: FnContext }) {
+// ── « Mes clés » : ajouter une clé (fournisseur dans la liste + clé ; la technique est dans « Options avancées »)
+export function AddKey({ configured, open }: { configured: string[]; open: boolean }) {
+  const [shown, setShown] = useState(open);
   const [state, action, pending] = useActionState<KeyState, FormData>(saveSlot, undefined);
   const ready = useReady();
-  const choices = PRESETS.filter(p => !(p.builtin && configured.includes(p.id)));
   const [id, setId] = useState('');
   const p = PRESETS.find(x => x.id === id);
-  if (state?.ok) return <p role="status" className="m-0 rounded-xl bg-brand-soft text-brand-ink px-4 py-2.5 text-sm">✓ {state.ok}</p>;
+  if (state?.ok) return <p role="status" className="m-0 rounded-xl bg-brand-soft text-brand-ink px-4 py-2.5 text-sm">✓ {state.ok} Choisissez-le ci-dessus, dans « Qui fait quoi ».</p>;
+  if (!shown) return <div><button type="button" className="btn inline-flex items-center gap-2" onClick={() => setShown(true)}><span aria-hidden="true" className="text-lg leading-none">+</span>Ajouter une clé</button></div>;
+  const other = p?.id === 'autre';
   return (
-    <form method="post" onSubmit={send(action)} className="rounded-2xl border border-line p-4 flex flex-col gap-3" data-slot={index}>
-      <div className="grid gap-3 sm:grid-cols-[minmax(0,1fr)_minmax(0,1.4fr)]">
+    <form method="post" onSubmit={send(action)} className="rounded-xl border border-line p-3 flex flex-col gap-3" data-slot>
+      <div className="grid gap-3 sm:grid-cols-[minmax(0,1fr)_minmax(0,1.3fr)_auto] items-end">
         <label className="flex flex-col gap-1.5 text-sm font-semibold">Fournisseur
           <select className="field" name="preset" value={id} onChange={e => setId(e.target.value)} required>
             <option value="">— Choisir —</option>
-            {choices.map(c => <option key={c.id} value={c.id}>{c.name}{c.where ? ` · ${c.eu ? 'UE' : c.where}` : ''}</option>)}
+            {PRESETS.filter(x => !(x.builtin && configured.includes(x.id))).map(x => <option key={x.id} value={x.id}>{x.name}{x.where ? ` · ${x.eu ? 'Europe' : x.where}` : ''}</option>)}
           </select>
         </label>
         <label className="flex flex-col gap-1.5 text-sm font-semibold">Clé
-          <input className="field font-mono" name="key" type="password" autoComplete="off" required disabled={!p} placeholder={p ? 'Collez la clé' : 'Choisissez d’abord le fournisseur'} />
+          <input className="field font-mono" name="key" type="password" autoComplete="off" required disabled={!p} placeholder={p ? 'Collez la clé' : 'Choisissez le fournisseur'} />
         </label>
+        <button className="btn btn-primary" type="submit" disabled={pending || !ready || !p}>{pending ? 'Vérification…' : 'Vérifier et enregistrer'}</button>
       </div>
-      {p && !p.builtin && (
+      {p && <p className="m-0 muted text-xs">{p.help}</p>}
+      {other && (
+        // « Autre » : ces informations sont indispensables
         <div className="grid gap-3 sm:grid-cols-2">
-          {p.id === 'autre' && <label className="flex flex-col gap-1.5 text-sm font-semibold">Nom affiché<input className="field" name="name" required autoComplete="off" placeholder="ex. Infomaniak" /></label>}
-          <label className="flex flex-col gap-1.5 text-sm font-semibold">Adresse de l’API
-            <input key={p.id} className="field font-mono" name="base_url" required defaultValue={p.base ?? ''} placeholder="https://…" autoComplete="off" /></label>
-          <label className="flex flex-col gap-1.5 text-sm font-semibold">Modèle(s) <span className="muted font-normal">(facultatif si le fournisseur publie sa liste)</span>
-            <input key={`m-${p.id}`} className="field font-mono" name="models" defaultValue={p.modelsHint ?? ''} autoComplete="off" placeholder="ex. nom-du-modele" /></label>
-          {p.id === 'autre' && (
-            <fieldset className="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm border-0 p-0 m-0 sm:col-span-2">
-              <legend className="font-semibold mb-1">Données traitées</legend>
-              <label className="flex items-center gap-2"><input type="radio" name="eu" value="non" defaultChecked />Hors UE</label>
-              <label className="flex items-center gap-2"><input type="radio" name="eu" value="oui" />Dans l’UE (contrat à l’appui)</label>
-              <label className="flex items-center gap-2">Pays <input className="field !py-1.5 !min-h-0 w-36" name="where" autoComplete="off" placeholder="ex. Suisse" /></label>
-            </fieldset>
-          )}
+          <label className="flex flex-col gap-1.5 text-sm font-semibold">Nom affiché<input className="field" name="name" required autoComplete="off" placeholder="ex. Infomaniak" /></label>
+          <label className="flex flex-col gap-1.5 text-sm font-semibold">Adresse de l’API<input className="field font-mono" name="base_url" required placeholder="https://…" autoComplete="off" /></label>
+          <label className="flex flex-col gap-1.5 text-sm font-semibold">Modèle<input className="field font-mono" name="models" autoComplete="off" placeholder="nom du modèle" /></label>
+          <label className="flex flex-col gap-1.5 text-sm font-semibold">Où sont traitées les données ?
+            <select className="field" name="eu" defaultValue="non"><option value="non">Hors Union européenne</option><option value="oui">Dans l’Union européenne</option></select></label>
+          <label className="flex flex-col gap-1.5 text-sm font-semibold">Pays<input className="field" name="where" autoComplete="off" placeholder="ex. Suisse" /></label>
         </div>
       )}
-      {p && (
-        // proposé : les fonctions sans IA (ou bloquées par la règle Europe) que ce fournisseur peut prendre
-        <FunctionChecks key={p.id} providerId={p.builtin ? p.id : `x-new`} eu={p.id === 'autre' ? false : p.eu} models={[]} defaults={{}} ctx={ctx}
-          prefill={t => { const cur = ctx.current[t.id]; const free = !cur || (t.studentData && !ctx.allowNonEu && !ctx.eu?.[cur.provider]); return free && (p.eu || !t.studentData || ctx.allowNonEu); }} />
+      {p && !p.builtin && !other && (
+        <details className="text-sm">
+          <summary className="cursor-pointer muted">Options avancées (adresse de l’API, modèle)</summary>
+          <div className="grid gap-3 sm:grid-cols-2 mt-2">
+            <label className="flex flex-col gap-1.5 font-semibold">Adresse de l’API<input key={p.id} className="field font-mono" name="base_url" defaultValue={p.base ?? ''} autoComplete="off" /></label>
+            <label className="flex flex-col gap-1.5 font-semibold">Modèle <span className="muted font-normal">(si le fournisseur ne publie pas sa liste)</span>
+              <input key={`m-${p.id}`} className="field font-mono" name="models" defaultValue={p.modelsHint ?? ''} autoComplete="off" /></label>
+          </div>
+        </details>
       )}
-      {p && <p className="m-0 muted text-xs">{p.help}{p.where && ` Données traitées : ${p.eu ? 'dans l’Union européenne' : p.where}${p.eu ? '' : ' (correction et bilan seulement avec la dérogation ; libre pour les cours)'}.`}</p>}
       {state?.error && <p role="alert" className="m-0 rounded-xl bg-warm-soft text-warm-dark px-4 py-2.5 text-sm">{state.error}</p>}
-      <div><button className="btn btn-primary" type="submit" disabled={pending || !ready || !p}>{pending ? 'Vérification…' : 'Vérifier et enregistrer'}</button></div>
     </form>
   );
 }

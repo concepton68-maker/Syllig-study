@@ -95,33 +95,6 @@ async function attach(s: AiSettings, p: Provider, t: Task, wanted: string, allow
   return { error: `${TASKS[t].label} : le modèle ${want} ne répond pas (${first}).` };
 }
 
-// Fonctions cochées pour un fournisseur (cases « fn_<tâche> », modèle « model_<tâche> »). Une fonction n'a qu'un fournisseur :
-// la cocher ici la retire de l'autre ; la décocher ici la laisse sans IA.
-async function applyFunctions(p: Provider, form: FormData, userId: string): Promise<TaskState> {
-  const s = await loadAiSettings();
-  const tasks = { ...s.tasks };
-  const notes: string[] = [];
-  for (const t of Object.keys(TASKS) as Task[]) {
-    if (form.get(`fn_${t}`) === 'on') {
-      const r = await attach(s, p, t, String(form.get(`model_${t}`) ?? ''), s.allow_non_eu);
-      if ('error' in r) return { error: r.error };
-      if (r.note) notes.push(r.note);
-      tasks[t] = { provider: p, model: r.model };
-    } else if (tasks[t]?.provider === p) delete tasks[t];
-  }
-  await saveTaskSettings({ tasks }, userId);
-  revalidatePath('/contenu', 'layout'); revalidatePath('/parent', 'layout');
-  return { ok: 'Fonctions enregistrées.', notes };
-}
-
-export async function saveFunctions(_: TaskState, form: FormData): Promise<TaskState> {
-  const u = await requireUser('admin');
-  const p = String(form.get('provider') ?? '');
-  const s = await loadAiSettings();
-  if (!isProvider(p, s) || !s.providers[p]) return { error: 'Fournisseur inconnu.' };
-  return applyFunctions(p, form, u.id);
-}
-
 // Réglages généraux : dérogation hors UE, conservation, rédaction automatique, IA active
 export async function saveTasks(_: TaskState, form: FormData): Promise<TaskState> {
   const u = await requireUser('admin');
@@ -183,11 +156,29 @@ export async function saveSlot(state: KeyState, form: FormData): Promise<KeyStat
     f.set('where', other ? String(form.get('where') ?? '') : preset.where);
     r = await addProvider(state, f);
   }
-  if (!r?.ok || !r.provider) return r;
-  // fonctions cochées dans la ligne : elles font foi (y compris pour décocher ce qui aurait été proposé d'office)
+  return r;
+}
+
+// « Qui fait quoi » : pour chaque fonction de la liste centrale, un fournisseur (ou aucun) et un modèle
+export async function saveAssignments(_: TaskState, form: FormData): Promise<TaskState> {
   const u = await requireUser('admin');
-  const fn = await applyFunctions(r.provider, form, u.id);
-  if (fn?.error) return { ...r, ok: `${r.ok} Mais : ${fn.error}` };
-  const chosen = (Object.keys(TASKS) as Task[]).filter(t => form.get(`fn_${t}`) === 'on').map(t => TASKS[t].label.toLowerCase());
-  return { ...r, ok: `${r.ok}${chosen.length ? ` Utilisé pour : ${chosen.join(', ')}.` : ' Aucune fonction attribuée pour l’instant.'}${fn?.notes?.length ? ` ${fn.notes.join(' ')}` : ''}` };
+  const s = await loadAiSettings();
+  const tasks: typeof s.tasks = {};
+  const notes: string[] = [];
+  for (const t of Object.keys(TASKS) as Task[]) {
+    const p = String(form.get(`task_${t}`) ?? '');
+    if (!p) continue;
+    if (!isProvider(p, s) || !s.providers[p]) return { error: `${TASKS[t].label} : pas de clé enregistrée pour ce fournisseur.` };
+    const cur = s.tasks[t];
+    const wanted = String(form.get(`model_${t}`) ?? '');
+    // inchangé : pas de nouvel essai
+    if (cur && cur.provider === p && cur.model === wanted) { tasks[t] = cur; continue; }
+    const r = await attach(s, p, t, wanted, s.allow_non_eu);
+    if ('error' in r) return { error: r.error };
+    if (r.note) notes.push(r.note);
+    tasks[t] = { provider: p, model: r.model };
+  }
+  await saveTaskSettings({ tasks }, u.id);
+  revalidatePath('/contenu', 'layout'); revalidatePath('/parent', 'layout');
+  return { ok: 'Enregistré.', notes };
 }
