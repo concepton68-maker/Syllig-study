@@ -1,0 +1,1284 @@
+{
+  "format": "syllig-course/1",
+  "code": "TG121",
+  "level": "troisieme-generale",
+  "subject": "SVT",
+  "chapter": "Le vivant et son évolution : génétique",
+  "title": "La division cellulaire (mitose)",
+  "skills": [
+    {
+      "id": "svt-mitose-role",
+      "label": "Expliquer le rôle des divisions cellulaires (croissance, renouvellement, réparation)"
+    },
+    {
+      "id": "svt-duplication",
+      "label": "Décrire la copie de l'ADN avant la division : chromosomes à une ou deux chromatides"
+    },
+    {
+      "id": "svt-mitose-etapes",
+      "label": "Décrire et ordonner les étapes de la mitose"
+    },
+    {
+      "id": "svt-mitose-bilan",
+      "label": "Expliquer que la mitose donne deux cellules-filles génétiquement identiques à la cellule-mère"
+    },
+    {
+      "id": "svt-document",
+      "label": "Exploiter un document (tableau de mesures, observation microscopique)"
+    },
+    {
+      "id": "svt-rediger",
+      "label": "Rédiger une explication scientifique"
+    }
+  ],
+  "lesson": {
+    "duration_min": 35,
+    "objectives": [
+      "comprendre pourquoi les cellules se divisent : croissance, renouvellement, réparation ;",
+      "savoir qu'avant de se diviser, une cellule copie son ADN : chaque chromosome passe à deux chromatides ;",
+      "décrire et ordonner les étapes de la mitose ;",
+      "expliquer pourquoi les deux cellules-filles ont la même information génétique que la cellule-mère ;",
+      "savoir où observer des mitoses et ce qui se passe quand les divisions se dérèglent (cancer)."
+    ],
+    "essential": "Tout organisme pluricellulaire provient d'une seule cellule, la **cellule-œuf**, qui s'est divisée de très nombreuses fois. Avant chaque division, la cellule **copie son ADN** : chaque chromosome, d'abord formé d'**une chromatide**, en possède alors **deux**, identiques. Pendant la **mitose**, les chromosomes se condensent, s'alignent au centre de la cellule, puis les deux chromatides de chaque chromosome se séparent et partent vers deux pôles opposés. On obtient **deux cellules-filles** qui ont le **même nombre de chromosomes** et la **même information génétique** que la cellule-mère (46 chromosomes chez l'être humain).",
+    "parts": [
+      {
+        "title": "D'une cellule-œuf à des milliers de milliards de cellules",
+        "blocks": [
+          {
+            "type": "text",
+            "text": "Ton corps compte environ **30 000 milliards de cellules**. Pourtant, tu as commencé ta vie sous la forme d'une **seule cellule** : la **cellule-œuf**, issue de la fécondation. Comment est-ce possible ? Grâce à la **division cellulaire** : une cellule (la cellule-mère) se divise en **deux cellules-filles**, qui peuvent à leur tour se diviser, et ainsi de suite."
+          },
+          {
+            "type": "formula",
+            "latex": "1 cellule → 2 → 4 → 8 → 16 → …\nAprès 10 divisions successives : 2 × 2 × … × 2 (10 fois) = 1 024 cellules"
+          },
+          {
+            "type": "table",
+            "caption": "À quoi servent les divisions cellulaires ?",
+            "columns": [
+              "Rôle",
+              "Exemples"
+            ],
+            "rows": [
+              [
+                "**Croissance** et développement",
+                "De la cellule-œuf à l'embryon, puis à l'adulte ; une racine de plante qui s'allonge."
+              ],
+              [
+                "**Renouvellement** des cellules",
+                "L'épiderme (couche superficielle de la peau) se renouvelle en un mois environ ; la moelle des os fabrique environ 2 millions de globules rouges par seconde."
+              ],
+              [
+                "**Réparation**",
+                "Cicatrisation d'une plaie, consolidation d'un os cassé."
+              ]
+            ]
+          },
+          {
+            "type": "callout",
+            "kind": "definition",
+            "title": "Mitose",
+            "text": "La **mitose** est la division d'une cellule en **deux cellules-filles** identiques entre elles et identiques à la cellule-mère. C'est ainsi que se divisent les cellules du corps (sauf lors de la formation des gamètes, qui sera vue dans un autre chapitre)."
+          },
+          {
+            "type": "callout",
+            "kind": "retiens",
+            "text": "Un organisme pluricellulaire se forme à partir d'une cellule-œuf par une suite de **mitoses**. Les mitoses permettent la **croissance**, le **renouvellement** et la **réparation** des tissus."
+          }
+        ],
+        "checkpoint": {
+          "variants": [
+            {
+              "prompt": "De quelle cellule provient un être humain ?",
+              "options": [
+                "D'un globule rouge",
+                "D'une cellule de peau",
+                "D'une cellule-œuf",
+                "D'un neurone"
+              ],
+              "answer": 2,
+              "hint": "Relis la première phrase de la partie.",
+              "explanation": "Tout être humain provient d'une seule cellule, la cellule-œuf, formée à la fécondation."
+            },
+            {
+              "prompt": "Une cellule se divise 3 fois de suite (et toutes les cellules obtenues se divisent à chaque fois). Combien de cellules obtient-on ?",
+              "options": [
+                "3",
+                "6",
+                "8",
+                "9"
+              ],
+              "answer": 2,
+              "hint": "1 → 2 → 4 → … : à chaque division, le nombre de cellules double.",
+              "explanation": "1 → 2 → 4 → 8 : on obtient 2 × 2 × 2 = 8 cellules."
+            },
+            {
+              "prompt": "Laquelle de ces situations n'est PAS un rôle des divisions cellulaires ?",
+              "options": [
+                "La digestion des aliments",
+                "La cicatrisation d'une plaie",
+                "Le renouvellement de la peau",
+                "La croissance d'un enfant"
+              ],
+              "answer": 0,
+              "hint": "Regarde le tableau « À quoi servent les divisions cellulaires ? ».",
+              "explanation": "La digestion est la transformation des aliments ; elle ne repose pas sur la division des cellules."
+            }
+          ]
+        }
+      },
+      {
+        "title": "Avant de se diviser, la cellule copie son ADN",
+        "blocks": [
+          {
+            "type": "text",
+            "text": "L'information génétique est portée par les **chromosomes**, situés dans le noyau et formés d'**ADN**. Chez l'être humain, chaque cellule du corps contient **46 chromosomes** (23 paires). Pour que chaque cellule-fille reçoive toute l'information, la cellule doit d'abord **copier** son ADN."
+          },
+          {
+            "type": "table",
+            "caption": "Un chromosome avant et après la copie de l'ADN",
+            "columns": [
+              "",
+              "Avant la copie",
+              "Après la copie"
+            ],
+            "rows": [
+              [
+                "Aspect du chromosome",
+                "Un seul filament : **1 chromatide**",
+                "Deux filaments identiques reliés en un point (le centromère) : **2 chromatides**"
+              ],
+              [
+                "Nombre de chromosomes (humain)",
+                "46",
+                "46 (toujours 46 !)"
+              ],
+              [
+                "Quantité d'ADN dans la cellule",
+                "Q",
+                "2 × Q (elle double)"
+              ]
+            ]
+          },
+          {
+            "type": "callout",
+            "kind": "attention",
+            "text": "Après la copie, le **nombre de chromosomes ne change pas** : il y a toujours 46 chromosomes, mais chacun est formé de **deux chromatides**. C'est la **quantité d'ADN** qui double, pas le nombre de chromosomes."
+          },
+          {
+            "type": "callout",
+            "kind": "plus",
+            "title": "Une copie presque parfaite",
+            "text": "La copie de l'ADN est extrêmement fidèle. Très rarement, une erreur se produit : c'est une **mutation**, qui peut créer un nouvel allèle (chapitre « Gènes, allèles et caractères »)."
+          },
+          {
+            "type": "callout",
+            "kind": "retiens",
+            "text": "Avant la mitose, l'ADN est **copié** : chaque chromosome passe de **1 chromatide** à **2 chromatides identiques**. La quantité d'ADN double ; le nombre de chromosomes reste le même."
+          }
+        ],
+        "checkpoint": {
+          "variants": [
+            {
+              "prompt": "Après la copie de l'ADN, un chromosome est formé de…",
+              "options": [
+                "une chromatide",
+                "quatre chromatides",
+                "deux chromatides différentes",
+                "deux chromatides identiques"
+              ],
+              "answer": 3,
+              "hint": "Regarde la colonne « Après la copie » du tableau.",
+              "explanation": "La copie produit deux chromatides identiques, reliées par le centromère."
+            },
+            {
+              "prompt": "Une cellule humaine vient de copier son ADN. Combien de chromosomes contient-elle ?",
+              "options": [
+                "23",
+                "46",
+                "92",
+                "184"
+              ],
+              "answer": 1,
+              "hint": "Relis l'encadré « Attention ».",
+              "explanation": "Elle contient toujours 46 chromosomes, mais chacun a maintenant deux chromatides (soit 92 chromatides)."
+            },
+            {
+              "prompt": "Pendant la copie de l'ADN, la quantité d'ADN de la cellule…",
+              "options": [
+                "est divisée par deux",
+                "double",
+                "reste la même",
+                "est multipliée par 46"
+              ],
+              "answer": 1,
+              "hint": "Chaque chromosome est recopié en entier.",
+              "explanation": "Chaque chromosome est recopié : la quantité d'ADN double (Q → 2Q)."
+            }
+          ]
+        }
+      },
+      {
+        "title": "Les étapes de la mitose",
+        "blocks": [
+          {
+            "type": "text",
+            "text": "Au microscope, une cellule qui ne se divise pas montre un noyau où les chromosomes, très étirés, ne se distinguent pas. Pendant la mitose, on voit au contraire des **chromosomes bien visibles**, en forme de petits bâtonnets. La mitose est un phénomène **continu**, mais on la décrit en quelques étapes."
+          },
+          {
+            "type": "list",
+            "ordered": true,
+            "items": [
+              "Les chromosomes (à deux chromatides) **se condensent** : ils s'épaississent, se raccourcissent et deviennent visibles. L'enveloppe du noyau disparaît.",
+              "Les chromosomes **s'alignent au centre** de la cellule (sur son « équateur »).",
+              "Les **deux chromatides de chaque chromosome se séparent** et migrent vers **deux pôles opposés** de la cellule.",
+              "Un noyau se reforme à chaque pôle, puis le **cytoplasme se partage** : on obtient **deux cellules-filles**, dont les chromosomes n'ont plus qu'une chromatide."
+            ]
+          },
+          {
+            "type": "callout",
+            "kind": "plus",
+            "title": "Les noms savants des étapes",
+            "text": "Les biologistes nomment ces étapes **prophase**, **métaphase**, **anaphase** et **télophase**. Chez les cellules végétales, entourées d'une paroi rigide, la séparation se fait par la construction d'une nouvelle paroi au milieu de la cellule."
+          },
+          {
+            "type": "callout",
+            "kind": "methode",
+            "title": "Pour ordonner des photos de mitose",
+            "text": "Repère d'abord la cellule où les chromosomes forment une ligne au centre (alignement), puis celle où deux lots de chromosomes s'éloignent (séparation). Avant l'alignement : condensation ; après la séparation : deux cellules-filles."
+          },
+          {
+            "type": "callout",
+            "kind": "retiens",
+            "text": "Condensation → alignement au centre → **séparation des chromatides** vers les pôles → partage en deux cellules-filles."
+          }
+        ],
+        "checkpoint": {
+          "variants": [
+            {
+              "prompt": "Pendant la mitose, que se passe-t-il juste après l'alignement des chromosomes au centre de la cellule ?",
+              "options": [
+                "Les chromatides de chaque chromosome se séparent vers les pôles",
+                "L'ADN est copié",
+                "Les chromosomes se condensent",
+                "La cellule meurt"
+              ],
+              "answer": 0,
+              "hint": "Relis les étapes 2 et 3 de la liste.",
+              "explanation": "Après l'alignement, les deux chromatides de chaque chromosome se séparent et migrent vers deux pôles opposés."
+            },
+            {
+              "prompt": "Pourquoi voit-on bien les chromosomes pendant la mitose ?",
+              "options": [
+                "Parce qu'ils sortent de la cellule",
+                "Parce que leur nombre double",
+                "Parce qu'ils se condensent (épais et courts)",
+                "Parce qu'ils changent de couleur tout seuls"
+              ],
+              "answer": 2,
+              "hint": "Regarde l'étape 1.",
+              "explanation": "Au début de la mitose, les chromosomes se condensent : ils deviennent épais et courts, donc visibles au microscope."
+            },
+            {
+              "prompt": "Quel est l'ordre correct des étapes de la mitose ?",
+              "options": [
+                "Séparation → alignement → condensation → partage",
+                "Condensation → alignement → séparation → partage",
+                "Alignement → condensation → partage → séparation",
+                "Partage → séparation → alignement → condensation"
+              ],
+              "answer": 1,
+              "hint": "Relis l'encadré « Retiens ».",
+              "explanation": "Condensation des chromosomes, alignement au centre, séparation des chromatides, puis partage en deux cellules-filles."
+            }
+          ]
+        }
+      },
+      {
+        "title": "Deux cellules-filles génétiquement identiques",
+        "blocks": [
+          {
+            "type": "text",
+            "text": "Lors de la séparation, chaque cellule-fille reçoit **une chromatide de chaque chromosome**. Or les deux chromatides d'un chromosome sont des copies identiques. Les deux cellules-filles reçoivent donc **exactement la même information génétique**, identique à celle de la cellule-mère."
+          },
+          {
+            "type": "formula",
+            "latex": "Cellule-mère : 46 chromosomes à 1 chromatide (ADN = Q)\n↓ copie de l'ADN\n46 chromosomes à 2 chromatides (ADN = 2Q)\n↓ mitose\n2 cellules-filles : 46 chromosomes à 1 chromatide chacune (ADN = Q chacune)"
+          },
+          {
+            "type": "table",
+            "caption": "Nombre de chromosomes de quelques espèces (le même dans toutes les cellules du corps, sauf les gamètes)",
+            "columns": [
+              "Espèce",
+              "Nombre de chromosomes"
+            ],
+            "rows": [
+              [
+                "Être humain",
+                "46"
+              ],
+              [
+                "Chat",
+                "38"
+              ],
+              [
+                "Chien",
+                "78"
+              ],
+              [
+                "Cheval",
+                "64"
+              ],
+              [
+                "Oignon",
+                "16"
+              ],
+              [
+                "Pois",
+                "14"
+              ]
+            ]
+          },
+          {
+            "type": "callout",
+            "kind": "attention",
+            "text": "Erreur fréquente : « après la mitose, chaque cellule-fille a la moitié des chromosomes ». C'est **faux** ! La cellule-mère avait doublé son ADN avant de se diviser : chaque cellule-fille a **46 chromosomes**, comme la cellule-mère. C'est la quantité d'ADN qui revient à sa valeur de départ (2Q → Q)."
+          },
+          {
+            "type": "callout",
+            "kind": "retiens",
+            "text": "La mitose **conserve** le nombre de chromosomes et l'information génétique. Toutes les cellules du corps (sauf les gamètes) ont donc la **même information génétique que la cellule-œuf**."
+          }
+        ],
+        "checkpoint": {
+          "variants": [
+            {
+              "prompt": "Une cellule de chat (38 chromosomes) fait une mitose. Combien de chromosomes possède chaque cellule-fille ?",
+              "options": [
+                "19",
+                "38",
+                "76",
+                "152"
+              ],
+              "answer": 1,
+              "hint": "La mitose conserve le nombre de chromosomes.",
+              "explanation": "Chaque cellule-fille a 38 chromosomes, comme la cellule-mère."
+            },
+            {
+              "prompt": "Pourquoi les deux cellules-filles ont-elles la même information génétique ?",
+              "options": [
+                "Parce qu'elles fabriquent de nouveaux chromosomes",
+                "Parce qu'elles se partagent les chromosomes au hasard",
+                "Parce qu'elles reçoivent chacune la moitié des chromosomes",
+                "Parce qu'elles reçoivent chacune une chromatide de chaque chromosome, et que les chromatides sont identiques"
+              ],
+              "answer": 3,
+              "hint": "Relis le premier paragraphe de cette partie.",
+              "explanation": "Chaque cellule-fille reçoit une copie (chromatide) de chaque chromosome : les deux ont donc la même information."
+            },
+            {
+              "prompt": "Juste avant la mitose, la quantité d'ADN d'une cellule vaut 8 unités. Combien vaut-elle dans chaque cellule-fille ?",
+              "options": [
+                "2",
+                "4",
+                "8",
+                "16"
+              ],
+              "answer": 1,
+              "hint": "Relis la formule : 2Q → Q.",
+              "explanation": "La quantité d'ADN est partagée en deux : 8 ÷ 2 = 4 unités dans chaque cellule-fille."
+            }
+          ]
+        }
+      },
+      {
+        "title": "Observer la mitose… et quand elle se dérègle",
+        "blocks": [
+          {
+            "type": "text",
+            "text": "Pour observer des mitoses, on choisit un endroit où les cellules se divisent beaucoup : par exemple l'**extrémité d'une racine** d'oignon, la zone qui fait grandir la racine. On écrase un petit morceau entre lame et lamelle après l'avoir traité avec un **colorant** qui colore les chromosomes, puis on observe au microscope."
+          },
+          {
+            "type": "callout",
+            "kind": "methode",
+            "title": "Lire une observation",
+            "text": "Sur une même préparation, la plupart des cellules ne sont pas en train de se diviser (noyau sans chromosomes visibles). Les cellules en mitose se reconnaissent à leurs chromosomes bien visibles : en ligne au centre, ou en deux lots qui s'éloignent."
+          },
+          {
+            "type": "text",
+            "text": "Dans un organisme, les divisions sont **contrôlées** : une cellule ne se divise que lorsque c'est nécessaire (croissance, remplacement, réparation). Parfois, une cellule échappe à ce contrôle : elle se divise sans arrêt et forme une masse de cellules, une **tumeur**. C'est le point de départ d'un **cancer**."
+          },
+          {
+            "type": "callout",
+            "kind": "plus",
+            "title": "Prévenir",
+            "text": "Certains facteurs augmentent le risque de cancer, car ils peuvent abîmer l'ADN : le **tabac**, les **UV** du soleil, l'**alcool**… Se protéger du soleil et ne pas fumer sont des gestes de prévention efficaces."
+          },
+          {
+            "type": "callout",
+            "kind": "retiens",
+            "text": "On observe des mitoses là où les cellules se divisent beaucoup (pointe de racine). Normalement, les divisions sont **contrôlées** ; des divisions **incontrôlées** sont à l'origine des **cancers**."
+          }
+        ],
+        "checkpoint": {
+          "variants": [
+            {
+              "prompt": "Où trouver beaucoup de cellules en mitose chez un oignon ?",
+              "options": [
+                "Dans la pelure sèche",
+                "À l'extrémité des racines",
+                "Dans les feuilles mortes",
+                "Nulle part : les plantes ne font pas de mitose"
+              ],
+              "answer": 1,
+              "hint": "Où la plante grandit-elle ?",
+              "explanation": "L'extrémité des racines est une zone de croissance : les cellules s'y divisent beaucoup."
+            },
+            {
+              "prompt": "Qu'est-ce qui est à l'origine d'un cancer ?",
+              "options": [
+                "Des cellules qui ne se divisent plus jamais",
+                "Une cellule-œuf mal formée",
+                "Des cellules qui se divisent sans contrôle",
+                "Le manque de chromosomes"
+              ],
+              "answer": 2,
+              "hint": "Relis le deuxième paragraphe.",
+              "explanation": "Un cancer commence par une cellule qui se divise de façon incontrôlée et forme une tumeur."
+            },
+            {
+              "prompt": "Sur une préparation de racine, comment reconnaît-on une cellule en mitose ?",
+              "options": [
+                "Elle est plus petite que les autres",
+                "Ses chromosomes sont bien visibles",
+                "Elle n'a pas de cytoplasme",
+                "Elle est verte"
+              ],
+              "answer": 1,
+              "hint": "Relis l'encadré « Lire une observation ».",
+              "explanation": "Pendant la mitose, les chromosomes sont condensés : on les voit bien, en ligne ou en deux lots."
+            }
+          ]
+        }
+      }
+    ],
+    "memo": [
+      {
+        "label": "Mitose",
+        "text": "Division d'une cellule-mère en deux cellules-filles identiques. Rôles : croissance, renouvellement, réparation. Un organisme = cellule-œuf + des milliards de mitoses."
+      },
+      {
+        "label": "Copie de l'ADN",
+        "text": "Avant la mitose : chaque chromosome passe de 1 à 2 chromatides identiques. Nombre de chromosomes inchangé (46) ; quantité d'ADN doublée (Q → 2Q)."
+      },
+      {
+        "label": "Étapes",
+        "text": "Condensation des chromosomes → alignement au centre → séparation des chromatides vers les pôles → partage en deux cellules-filles."
+      },
+      {
+        "label": "Bilan",
+        "text": "Chaque cellule-fille : même nombre de chromosomes (46 chez l'humain), à 1 chromatide, même information génétique que la cellule-mère. ADN : 2Q → Q."
+      },
+      {
+        "label": "Calcul",
+        "text": "1 cellule → 2 → 4 → 8… Après n divisions : 2 × 2 × … (n fois). Ex. : 10 divisions → 1 024 cellules."
+      },
+      {
+        "label": "Observer / santé",
+        "text": "Mitoses visibles à l'extrémité des racines (chromosomes colorés). Divisions incontrôlées → tumeur → cancer (tabac, UV, alcool : facteurs de risque)."
+      }
+    ]
+  },
+  "exercises": {
+    "duration_min": 25,
+    "instructions": "Fais les exercices dans l'ordre : les étoiles indiquent la difficulté. Pour les réponses numériques, écris seulement le nombre. Un petit schéma au brouillon (chromosomes à 1 ou 2 chromatides) aide beaucoup. Les corrigés s'affichent après validation.",
+    "pass_threshold": 8,
+    "texts": [],
+    "items": [
+      {
+        "id": "ex1",
+        "type": "qcm",
+        "stars": 1,
+        "lesson_part": 1,
+        "skills": [
+          "svt-mitose-role"
+        ],
+        "cognitive": "connaitre",
+        "prompt": "La mitose, c'est…",
+        "options": [
+          "la division d'une cellule en deux cellules-filles identiques",
+          "la fusion de deux cellules en une seule",
+          "la copie d'un seul gène",
+          "la mort programmée d'une cellule"
+        ],
+        "answer": 0,
+        "solution": "La **mitose** est la division d'une cellule-mère en **deux cellules-filles** identiques entre elles et à la cellule-mère."
+      },
+      {
+        "id": "ex2",
+        "type": "numeric",
+        "stars": 1,
+        "lesson_part": 2,
+        "skills": [
+          "svt-duplication"
+        ],
+        "cognitive": "connaitre",
+        "prompt": "Combien de chromosomes contient une cellule de la peau d'un être humain ?",
+        "answer": 46,
+        "solution": "**46** chromosomes, soit 23 paires, comme toutes les cellules du corps sauf les gamètes."
+      },
+      {
+        "id": "ex3",
+        "type": "short",
+        "stars": 1,
+        "lesson_part": 2,
+        "skills": [
+          "svt-duplication"
+        ],
+        "cognitive": "connaitre",
+        "prompt": "Après la copie de l'ADN, un chromosome est formé de deux filaments identiques. Comment s'appelle chacun de ces filaments ? (un mot)",
+        "answer": [
+          "chromatide",
+          "une chromatide",
+          "chromatides",
+          "des chromatides",
+          "la chromatide"
+        ],
+        "solution": "Une **chromatide**. Un chromosome dupliqué possède deux chromatides identiques, reliées par le centromère."
+      },
+      {
+        "id": "ex4",
+        "type": "qcm",
+        "stars": 1,
+        "lesson_part": 5,
+        "skills": [
+          "svt-document"
+        ],
+        "cognitive": "connaitre",
+        "prompt": "Pour observer des cellules en mitose chez une plante, quel est le meilleur endroit ?",
+        "options": [
+          "Une graine séchée depuis des années",
+          "Une feuille morte",
+          "Le bois sec du tronc",
+          "L'extrémité d'une racine en croissance"
+        ],
+        "answer": 3,
+        "solution": "L'**extrémité d'une racine** est une zone de croissance : de nombreuses cellules y sont en train de se diviser."
+      },
+      {
+        "id": "ex5",
+        "type": "numeric",
+        "stars": 2,
+        "lesson_part": 1,
+        "skills": [
+          "svt-mitose-role"
+        ],
+        "cognitive": "appliquer",
+        "prompt": "Au laboratoire, une cellule de peau mise en culture se divise environ une fois par jour, et toutes les cellules obtenues font de même. Combien de cellules obtient-on au bout de 6 jours ?",
+        "answer": 64,
+        "solution": "Le nombre de cellules double chaque jour : 1 → 2 → 4 → 8 → 16 → 32 → **64**. (2 multiplié 6 fois par lui-même : 2 × 2 × 2 × 2 × 2 × 2 = 64.)"
+      },
+      {
+        "id": "ex6",
+        "type": "qcm",
+        "stars": 2,
+        "lesson_part": 3,
+        "skills": [
+          "svt-mitose-etapes"
+        ],
+        "cognitive": "appliquer",
+        "prompt": "Lou a photographié quatre cellules de racine : (1) deux lots de chromosomes s'éloignent l'un de l'autre ; (2) les chromosomes sont alignés au centre ; (3) deux cellules-filles sont séparées ; (4) les chromosomes deviennent visibles dans le noyau. Dans quel ordre se sont-elles produites ?",
+        "options": [
+          "1 → 2 → 3 → 4",
+          "2 → 4 → 1 → 3",
+          "4 → 2 → 1 → 3",
+          "4 → 1 → 2 → 3"
+        ],
+        "answer": 2,
+        "solution": "Condensation (4) → alignement au centre (2) → séparation des chromatides vers les pôles (1) → deux cellules-filles (3). Ordre : **4 → 2 → 1 → 3**."
+      },
+      {
+        "id": "ex7",
+        "type": "numeric",
+        "stars": 2,
+        "lesson_part": 2,
+        "skills": [
+          "svt-duplication"
+        ],
+        "cognitive": "appliquer",
+        "prompt": "Une cellule de cheval possède 64 chromosomes. Combien de chromatides compte-t-elle au total juste avant la mitose ?",
+        "answer": 128,
+        "solution": "Juste avant la mitose, l'ADN a été copié : chacun des 64 chromosomes possède 2 chromatides. 64 × 2 = **128** chromatides."
+      },
+      {
+        "id": "ex8",
+        "type": "numeric",
+        "stars": 2,
+        "lesson_part": 4,
+        "skills": [
+          "svt-mitose-bilan"
+        ],
+        "cognitive": "analyser",
+        "prompt": "Juste avant la mitose, la quantité d'ADN d'une cellule vaut 10 unités arbitraires. Combien vaut-elle dans chacune des deux cellules-filles ?",
+        "answer": 5,
+        "solution": "Pendant la mitose, les chromatides de chaque chromosome sont réparties entre les deux cellules-filles : la quantité d'ADN est partagée en deux. 10 ÷ 2 = **5** unités (c'est la quantité qu'avait la cellule-mère avant la copie de son ADN)."
+      },
+      {
+        "id": "ex9",
+        "type": "numeric",
+        "stars": 3,
+        "lesson_part": 1,
+        "skills": [
+          "svt-mitose-role"
+        ],
+        "cognitive": "analyser",
+        "prompt": "En partant d'une seule cellule, combien de divisions successives faut-il au minimum pour dépasser 1 000 cellules ?",
+        "answer": 10,
+        "solution": "On double à chaque division : 2, 4, 8, 16, 32, 64, 128, 256, 512 (après 9 divisions), puis **1 024** après la 10e division. Il faut donc **10** divisions."
+      },
+      {
+        "id": "ex10",
+        "type": "open",
+        "stars": 3,
+        "lesson_part": 4,
+        "skills": [
+          "svt-duplication",
+          "svt-mitose-bilan",
+          "svt-rediger"
+        ],
+        "cognitive": "rediger",
+        "prompt": "Explique pourquoi une cellule de la peau de ton bras possède la même information génétique que la cellule-œuf dont tu es issue. Utilise les mots : mitose, copie de l'ADN, chromatides, chromosomes.",
+        "solution": "Toutes les cellules de mon corps proviennent de la cellule-œuf par une succession de **mitoses**. Avant chaque mitose, la cellule réalise une **copie de son ADN** : chaque **chromosome** passe d'une à deux **chromatides** identiques. Pendant la mitose, les deux chromatides de chaque chromosome se séparent et chaque cellule-fille en reçoit une. Les deux cellules-filles ont donc les mêmes 46 chromosomes et la même information génétique que la cellule-mère. Comme cela se répète à chaque division, la cellule de ma peau a la même information génétique que la cellule-œuf."
+      }
+    ]
+  },
+  "evaluation": {
+    "duration_min": 30,
+    "conditions": "Sans la leçon, en 30 minutes. Lis bien le document avant de répondre ; un schéma au brouillon peut t'aider. Barème : A = 6 points · B = 7 points · C = 7 points.",
+    "total_points": 20,
+    "variants": [
+      {
+        "texts": [
+          {
+            "id": "adn-1",
+            "label": "Document · La quantité d'ADN d'une cellule de peau humaine en culture",
+            "source": "Données simplifiées, créées pour cette évaluation.",
+            "paragraphs": [
+              "Au laboratoire, on mesure la quantité d'ADN contenue dans une cellule de peau humaine (46 chromosomes), en unités arbitraires (u.a.). À 22 h, la cellule s'est divisée : la mesure est faite dans l'une des deux cellules-filles.",
+              "0 h : 10 u.a. · 4 h : 10 u.a. · 8 h : 15 u.a. · 12 h : 20 u.a. · 16 h : 20 u.a. · 20 h : 20 u.a. · 22 h : 10 u.a.",
+              "Une observation au microscope montre que la mitose a lieu entre 20 h et 22 h."
+            ]
+          }
+        ],
+        "sections": [
+          {
+            "label": "A · Je connais (6 points)",
+            "questions": [
+              {
+                "id": "q1",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 1,
+                "skills": [
+                  "svt-mitose-role"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "La mitose est…",
+                "options": [
+                  "la division d'une cellule en deux cellules-filles identiques",
+                  "la fusion d'un ovule et d'un spermatozoïde",
+                  "la copie de l'ADN",
+                  "la disparition des chromosomes"
+                ],
+                "answer": 0,
+                "solution": "La mitose est la division d'une cellule-mère en deux cellules-filles identiques.",
+                "rubric": "1 pt : bonne réponse."
+              },
+              {
+                "id": "q2",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 2,
+                "skills": [
+                  "svt-duplication"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "À quel moment l'ADN de la cellule est-il copié ?",
+                "options": [
+                  "Avant la mitose",
+                  "Après la mitose, dans chaque cellule-fille",
+                  "Pendant la séparation des chromatides",
+                  "Jamais : l'ADN ne se copie pas"
+                ],
+                "answer": 0,
+                "solution": "L'ADN est copié avant la mitose : les chromosomes ont alors deux chromatides.",
+                "rubric": "1 pt : bonne réponse."
+              },
+              {
+                "id": "q3",
+                "type": "numeric",
+                "points": 1,
+                "lesson_part": 2,
+                "skills": [
+                  "svt-duplication"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Combien de chromosomes contient une cellule du foie d'un être humain ?",
+                "answer": 46,
+                "solution": "46 chromosomes (23 paires).",
+                "rubric": "1 pt : 46."
+              },
+              {
+                "id": "q4",
+                "type": "short",
+                "points": 1,
+                "lesson_part": 1,
+                "skills": [
+                  "svt-mitose-role"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Comment s'appelle la cellule unique, issue de la fécondation, dont provient tout l'organisme ? (un ou deux mots)",
+                "answer": [
+                  "cellule-œuf",
+                  "cellule œuf",
+                  "cellule-oeuf",
+                  "cellule oeuf",
+                  "la cellule-œuf",
+                  "la cellule-oeuf",
+                  "une cellule-œuf",
+                  "une cellule-oeuf",
+                  "œuf",
+                  "oeuf",
+                  "un œuf",
+                  "un oeuf",
+                  "zygote",
+                  "le zygote"
+                ],
+                "solution": "La cellule-œuf.",
+                "rubric": "1 pt : cellule-œuf (ou zygote)."
+              },
+              {
+                "id": "q5",
+                "type": "open",
+                "points": 2,
+                "lesson_part": 1,
+                "skills": [
+                  "svt-mitose-role",
+                  "svt-rediger"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Cite deux rôles des mitoses dans le corps humain et donne un exemple pour chacun.",
+                "solution": "Croissance : la cellule-œuf devient un embryon puis un enfant qui grandit. Renouvellement : l'épiderme se renouvelle en un mois environ ; des globules rouges sont fabriqués en permanence. Réparation : cicatrisation d'une plaie, consolidation d'un os cassé.",
+                "rubric": "1 pt par rôle correct accompagné d'un exemple adapté (croissance, renouvellement, réparation) ; 0,5 pt si le rôle est donné sans exemple."
+              }
+            ]
+          },
+          {
+            "label": "B · J'applique (7 points)",
+            "questions": [
+              {
+                "id": "q6",
+                "type": "numeric",
+                "points": 1,
+                "lesson_part": 1,
+                "skills": [
+                  "svt-mitose-role"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Une cellule se divise 3 fois de suite, et toutes les cellules obtenues se divisent à chaque fois. Combien de cellules obtient-on ?",
+                "answer": 8,
+                "solution": "1 → 2 → 4 → 8 cellules.",
+                "rubric": "1 pt : 8."
+              },
+              {
+                "id": "q7",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 2,
+                "skills": [
+                  "svt-duplication"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Les deux chromatides d'un même chromosome sont…",
+                "options": [
+                  "différentes : l'une vient du père, l'autre de la mère",
+                  "deux cellules-filles",
+                  "deux chromosomes différents",
+                  "identiques : ce sont deux copies du même ADN"
+                ],
+                "answer": 3,
+                "solution": "Ce sont deux copies identiques, obtenues lors de la copie de l'ADN.",
+                "rubric": "1 pt : bonne réponse."
+              },
+              {
+                "id": "q8",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 3,
+                "skills": [
+                  "svt-mitose-etapes"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Quel est l'ordre correct des étapes de la mitose ?",
+                "options": [
+                  "Alignement → condensation → partage → séparation",
+                  "Condensation → alignement au centre → séparation des chromatides → partage",
+                  "Séparation des chromatides → condensation → alignement → partage",
+                  "Partage → alignement → condensation → séparation"
+                ],
+                "answer": 1,
+                "solution": "Condensation des chromosomes → alignement au centre → séparation des chromatides vers les pôles → partage en deux cellules-filles.",
+                "rubric": "1 pt : bonne réponse."
+              },
+              {
+                "id": "q9",
+                "type": "numeric",
+                "points": 1,
+                "lesson_part": 4,
+                "skills": [
+                  "svt-mitose-bilan"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Une cellule de chat possède 38 chromosomes. Après une mitose, combien de chromosomes possède chaque cellule-fille ?",
+                "answer": 38,
+                "solution": "La mitose conserve le nombre de chromosomes : 38.",
+                "rubric": "1 pt : 38."
+              },
+              {
+                "id": "q10",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 5,
+                "skills": [
+                  "svt-mitose-role"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Une tumeur se forme lorsque…",
+                "options": [
+                  "des cellules se divisent sans contrôle",
+                  "des cellules arrêtent définitivement de se diviser",
+                  "une cellule perd tous ses chromosomes",
+                  "deux cellules fusionnent"
+                ],
+                "answer": 0,
+                "solution": "Une tumeur est une masse de cellules qui se divisent sans contrôle ; c'est le point de départ d'un cancer.",
+                "rubric": "1 pt : bonne réponse."
+              },
+              {
+                "id": "q11",
+                "type": "open",
+                "points": 2,
+                "lesson_part": 4,
+                "skills": [
+                  "svt-mitose-bilan",
+                  "svt-rediger"
+                ],
+                "cognitive": "rediger",
+                "prompt": "Léo affirme : « Après une mitose, chaque cellule-fille n'a que la moitié des chromosomes de la cellule-mère. » Explique-lui pourquoi il se trompe.",
+                "solution": "Avant la mitose, la cellule copie son ADN : chacun des 46 chromosomes possède alors deux chromatides identiques. Pendant la mitose, ce sont les chromatides qui se séparent : chaque cellule-fille reçoit une chromatide de chaque chromosome. Elle a donc 46 chromosomes, comme la cellule-mère. Seule la quantité d'ADN est divisée par deux (elle avait doublé avant).",
+                "rubric": "1 pt : l'ADN est copié avant la mitose (chromosomes à deux chromatides). 1 pt : les chromatides se séparent, chaque cellule-fille reçoit une chromatide de chaque chromosome → même nombre de chromosomes (46)."
+              }
+            ]
+          },
+          {
+            "label": "C · Problème type brevet : l'ADN d'une cellule de peau (7 points)",
+            "questions": [
+              {
+                "id": "q12",
+                "type": "numeric",
+                "points": 1,
+                "lesson_part": 2,
+                "text_ref": "adn-1",
+                "skills": [
+                  "svt-document"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "D'après le document, quelle est la quantité d'ADN de la cellule à 12 h (en u.a.) ?",
+                "answer": 20,
+                "solution": "20 u.a.",
+                "rubric": "1 pt : 20."
+              },
+              {
+                "id": "q13",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 2,
+                "text_ref": "adn-1",
+                "skills": [
+                  "svt-document",
+                  "svt-duplication"
+                ],
+                "cognitive": "analyser",
+                "prompt": "Pendant quelle période l'ADN de la cellule est-il copié ?",
+                "options": [
+                  "Entre 0 h et 4 h",
+                  "Entre 12 h et 20 h",
+                  "Entre 4 h et 12 h",
+                  "Entre 20 h et 22 h"
+                ],
+                "answer": 2,
+                "solution": "La quantité d'ADN passe de 10 u.a. (4 h) à 20 u.a. (12 h) : elle double, c'est la copie de l'ADN.",
+                "rubric": "1 pt : bonne réponse."
+              },
+              {
+                "id": "q14",
+                "type": "numeric",
+                "points": 1,
+                "lesson_part": 2,
+                "text_ref": "adn-1",
+                "skills": [
+                  "svt-document",
+                  "svt-duplication"
+                ],
+                "cognitive": "analyser",
+                "prompt": "Combien de chromatides la cellule contient-elle au total à 16 h ?",
+                "answer": 92,
+                "solution": "À 16 h, l'ADN a été copié : chacun des 46 chromosomes a 2 chromatides. 46 × 2 = 92 chromatides.",
+                "rubric": "1 pt : 92."
+              },
+              {
+                "id": "q15",
+                "type": "numeric",
+                "points": 1,
+                "lesson_part": 4,
+                "text_ref": "adn-1",
+                "skills": [
+                  "svt-document",
+                  "svt-mitose-bilan"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Combien de chromosomes contient la cellule-fille mesurée à 22 h ?",
+                "answer": 46,
+                "solution": "La mitose conserve le nombre de chromosomes : 46.",
+                "rubric": "1 pt : 46."
+              },
+              {
+                "id": "q16",
+                "type": "open",
+                "points": 3,
+                "lesson_part": 4,
+                "text_ref": "adn-1",
+                "skills": [
+                  "svt-document",
+                  "svt-mitose-bilan",
+                  "svt-rediger"
+                ],
+                "cognitive": "rediger",
+                "prompt": "Entre 20 h et 22 h, la quantité d'ADN passe de 20 à 10 u.a. Explique ce qui se passe pendant cette période, et pourquoi la cellule-fille a pourtant la même information génétique que la cellule de départ.",
+                "solution": "Entre 20 h et 22 h, la cellule réalise une mitose. Les chromosomes, qui ont deux chromatides identiques depuis la copie de l'ADN (entre 4 h et 12 h), s'alignent au centre de la cellule ; puis les deux chromatides de chaque chromosome se séparent et partent vers deux pôles opposés. Chaque cellule-fille reçoit une chromatide de chaque chromosome : la quantité d'ADN est partagée en deux (20 → 10 u.a.). Comme les deux chromatides étaient des copies identiques, chaque cellule-fille possède les 46 chromosomes et la même information génétique que la cellule de départ, qui avait 10 u.a. d'ADN à 0 h.",
+                "rubric": "1 pt : identifier la mitose et la séparation des chromatides (avec la quantité 20 → 10 tirée du document). 1 pt : chaque cellule-fille reçoit une chromatide de chaque chromosome, identique à l'autre (copie de l'ADN faite avant). 1 pt : conclusion : même nombre de chromosomes (46) et même information génétique, même quantité d'ADN qu'au départ (10 u.a.) ; phrases claires."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "texts": [
+          {
+            "id": "adn-2",
+            "label": "Document · La quantité d'ADN d'une cellule de racine de pois",
+            "source": "Données simplifiées, créées pour cette évaluation.",
+            "paragraphs": [
+              "On mesure la quantité d'ADN contenue dans une cellule de l'extrémité d'une racine de pois (14 chromosomes), en unités arbitraires (u.a.). À 20 h, la cellule s'est divisée : la mesure est faite dans l'une des deux cellules-filles.",
+              "0 h : 6 u.a. · 3 h : 6 u.a. · 6 h : 9 u.a. · 9 h : 12 u.a. · 14 h : 12 u.a. · 18 h : 12 u.a. · 20 h : 6 u.a.",
+              "Une observation au microscope montre que la mitose a lieu entre 18 h et 20 h."
+            ]
+          }
+        ],
+        "sections": [
+          {
+            "label": "A · Je connais (6 points)",
+            "questions": [
+              {
+                "id": "q1",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 4,
+                "skills": [
+                  "svt-mitose-bilan"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Les deux cellules-filles obtenues par mitose sont…",
+                "options": [
+                  "différentes l'une de l'autre",
+                  "identiques entre elles et à la cellule-mère",
+                  "deux gamètes",
+                  "privées de noyau"
+                ],
+                "answer": 1,
+                "solution": "Elles sont génétiquement identiques entre elles et à la cellule-mère.",
+                "rubric": "1 pt : bonne réponse."
+              },
+              {
+                "id": "q2",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 3,
+                "skills": [
+                  "svt-mitose-etapes"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Pendant la mitose, les chromosomes sont bien visibles au microscope parce qu'ils…",
+                "options": [
+                  "sont plus nombreux",
+                  "sont colorés naturellement en rouge",
+                  "sortent du noyau en entier",
+                  "sont condensés (épais et courts)"
+                ],
+                "answer": 3,
+                "solution": "Au début de la mitose, les chromosomes se condensent : épais et courts, ils deviennent visibles.",
+                "rubric": "1 pt : bonne réponse."
+              },
+              {
+                "id": "q3",
+                "type": "numeric",
+                "points": 1,
+                "lesson_part": 2,
+                "skills": [
+                  "svt-duplication"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Juste avant la mitose, combien de chromatides possède chaque chromosome ?",
+                "answer": 2,
+                "solution": "2 chromatides identiques, issues de la copie de l'ADN.",
+                "rubric": "1 pt : 2."
+              },
+              {
+                "id": "q4",
+                "type": "short",
+                "points": 1,
+                "lesson_part": 1,
+                "skills": [
+                  "svt-mitose-role"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Comment s'appelle la division d'une cellule en deux cellules-filles génétiquement identiques ? (un mot)",
+                "answer": [
+                  "mitose",
+                  "la mitose",
+                  "une mitose",
+                  "mitoses"
+                ],
+                "solution": "La mitose.",
+                "rubric": "1 pt : mitose."
+              },
+              {
+                "id": "q5",
+                "type": "open",
+                "points": 2,
+                "lesson_part": 2,
+                "skills": [
+                  "svt-duplication",
+                  "svt-rediger"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Décris ce qui arrive à un chromosome lors de la copie de l'ADN, avant la mitose.",
+                "solution": "Avant la copie, le chromosome est formé d'une seule chromatide. Lors de la copie de l'ADN, il est recopié en entier : il est alors formé de deux chromatides identiques, reliées par le centromère. Le nombre de chromosomes ne change pas, mais la quantité d'ADN double.",
+                "rubric": "1 pt : passage d'une chromatide à deux chromatides identiques. 1 pt : nombre de chromosomes inchangé et/ou quantité d'ADN doublée."
+              }
+            ]
+          },
+          {
+            "label": "B · J'applique (7 points)",
+            "questions": [
+              {
+                "id": "q6",
+                "type": "numeric",
+                "points": 1,
+                "lesson_part": 1,
+                "skills": [
+                  "svt-mitose-role"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Une cellule se divise 4 fois de suite, et toutes les cellules obtenues se divisent à chaque fois. Combien de cellules obtient-on ?",
+                "answer": 16,
+                "solution": "1 → 2 → 4 → 8 → 16 cellules.",
+                "rubric": "1 pt : 16."
+              },
+              {
+                "id": "q7",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 2,
+                "skills": [
+                  "svt-duplication"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Après la copie de l'ADN, une cellule humaine contient…",
+                "options": [
+                  "92 chromosomes à 1 chromatide",
+                  "23 chromosomes à 2 chromatides",
+                  "46 chromosomes à 2 chromatides",
+                  "46 chromosomes à 1 chromatide"
+                ],
+                "answer": 2,
+                "solution": "Toujours 46 chromosomes, mais chacun possède maintenant 2 chromatides.",
+                "rubric": "1 pt : bonne réponse."
+              },
+              {
+                "id": "q8",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 3,
+                "skills": [
+                  "svt-mitose-etapes"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Pendant la mitose, que se passe-t-il juste après l'alignement des chromosomes au centre de la cellule ?",
+                "options": [
+                  "L'ADN est copié",
+                  "Les chromatides de chaque chromosome se séparent vers les pôles",
+                  "Les chromosomes se condensent",
+                  "Le noyau disparaît"
+                ],
+                "answer": 1,
+                "solution": "Après l'alignement, les deux chromatides de chaque chromosome se séparent et migrent vers deux pôles opposés.",
+                "rubric": "1 pt : bonne réponse."
+              },
+              {
+                "id": "q9",
+                "type": "numeric",
+                "points": 1,
+                "lesson_part": 4,
+                "skills": [
+                  "svt-mitose-bilan"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Une cellule de chien possède 78 chromosomes. Après une mitose, combien de chromosomes possède chaque cellule-fille ?",
+                "answer": 78,
+                "solution": "La mitose conserve le nombre de chromosomes : 78.",
+                "rubric": "1 pt : 78."
+              },
+              {
+                "id": "q10",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 5,
+                "skills": [
+                  "svt-document"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Pour observer des mitoses chez une plante, on prélève de préférence…",
+                "options": [
+                  "l'extrémité d'une racine en croissance",
+                  "une feuille morte",
+                  "une graine sèche",
+                  "l'écorce d'un vieil arbre"
+                ],
+                "answer": 0,
+                "solution": "L'extrémité d'une racine est une zone de croissance où les cellules se divisent beaucoup.",
+                "rubric": "1 pt : bonne réponse."
+              },
+              {
+                "id": "q11",
+                "type": "open",
+                "points": 2,
+                "lesson_part": 1,
+                "skills": [
+                  "svt-mitose-role",
+                  "svt-mitose-bilan",
+                  "svt-rediger"
+                ],
+                "cognitive": "rediger",
+                "prompt": "Inès s'est coupée au doigt. Une semaine plus tard, la plaie est refermée. Explique comment, grâce aux cellules, la peau a pu se réparer.",
+                "solution": "Autour de la plaie, des cellules de la peau se sont divisées par mitose de nombreuses fois. Chaque mitose donne deux cellules-filles identiques à la cellule-mère : de nouvelles cellules de peau, avec la même information génétique, ont été produites et ont comblé la coupure. C'est la cicatrisation.",
+                "rubric": "1 pt : des cellules de la peau se divisent par mitose (nombreuses divisions). 1 pt : les cellules-filles sont identiques / de nouvelles cellules de peau comblent la plaie (réparation, cicatrisation)."
+              }
+            ]
+          },
+          {
+            "label": "C · Problème type brevet : l'ADN d'une cellule de racine (7 points)",
+            "questions": [
+              {
+                "id": "q12",
+                "type": "numeric",
+                "points": 1,
+                "lesson_part": 2,
+                "text_ref": "adn-2",
+                "skills": [
+                  "svt-document"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "D'après le document, quelle est la quantité d'ADN de la cellule à 9 h (en u.a.) ?",
+                "answer": 12,
+                "solution": "12 u.a.",
+                "rubric": "1 pt : 12."
+              },
+              {
+                "id": "q13",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 2,
+                "text_ref": "adn-2",
+                "skills": [
+                  "svt-document",
+                  "svt-duplication"
+                ],
+                "cognitive": "analyser",
+                "prompt": "Pendant quelle période l'ADN de la cellule est-il copié ?",
+                "options": [
+                  "Entre 0 h et 3 h",
+                  "Entre 18 h et 20 h",
+                  "Entre 9 h et 18 h",
+                  "Entre 3 h et 9 h"
+                ],
+                "answer": 3,
+                "solution": "La quantité d'ADN passe de 6 u.a. (3 h) à 12 u.a. (9 h) : elle double, c'est la copie de l'ADN.",
+                "rubric": "1 pt : bonne réponse."
+              },
+              {
+                "id": "q14",
+                "type": "numeric",
+                "points": 1,
+                "lesson_part": 2,
+                "text_ref": "adn-2",
+                "skills": [
+                  "svt-document",
+                  "svt-duplication"
+                ],
+                "cognitive": "analyser",
+                "prompt": "Combien de chromatides la cellule contient-elle au total à 14 h ?",
+                "answer": 28,
+                "solution": "À 14 h, l'ADN a été copié : chacun des 14 chromosomes a 2 chromatides. 14 × 2 = 28 chromatides.",
+                "rubric": "1 pt : 28."
+              },
+              {
+                "id": "q15",
+                "type": "numeric",
+                "points": 1,
+                "lesson_part": 4,
+                "text_ref": "adn-2",
+                "skills": [
+                  "svt-document",
+                  "svt-mitose-bilan"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Combien de chromosomes contient la cellule-fille mesurée à 20 h ?",
+                "answer": 14,
+                "solution": "La mitose conserve le nombre de chromosomes : 14.",
+                "rubric": "1 pt : 14."
+              },
+              {
+                "id": "q16",
+                "type": "open",
+                "points": 3,
+                "lesson_part": 4,
+                "text_ref": "adn-2",
+                "skills": [
+                  "svt-document",
+                  "svt-mitose-bilan",
+                  "svt-rediger"
+                ],
+                "cognitive": "rediger",
+                "prompt": "Entre 18 h et 20 h, la quantité d'ADN passe de 12 à 6 u.a. Explique ce qui se passe pendant cette période, et pourquoi la cellule-fille a pourtant la même information génétique que la cellule de départ.",
+                "solution": "Entre 18 h et 20 h, la cellule réalise une mitose. Les chromosomes, qui ont deux chromatides identiques depuis la copie de l'ADN (entre 3 h et 9 h), s'alignent au centre de la cellule ; puis les deux chromatides de chaque chromosome se séparent et partent vers deux pôles opposés. Chaque cellule-fille reçoit une chromatide de chaque chromosome : la quantité d'ADN est partagée en deux (12 → 6 u.a.). Comme les deux chromatides étaient des copies identiques, chaque cellule-fille possède les 14 chromosomes et la même information génétique que la cellule de départ, qui avait 6 u.a. d'ADN à 0 h.",
+                "rubric": "1 pt : identifier la mitose et la séparation des chromatides (avec la quantité 12 → 6 tirée du document). 1 pt : chaque cellule-fille reçoit une chromatide de chaque chromosome, identique à l'autre (copie de l'ADN faite avant). 1 pt : conclusion : même nombre de chromosomes (14) et même information génétique, même quantité d'ADN qu'au départ (6 u.a.) ; phrases claires."
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

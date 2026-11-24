@@ -1,0 +1,1236 @@
+{
+  "format": "syllig-course/1",
+  "code": "TG038",
+  "level": "troisieme-generale",
+  "subject": "Mathématiques",
+  "chapter": "Nombres et calculs (début d'année)",
+  "title": "Racines carrées",
+  "skills": [
+    {
+      "id": "m3-rac-definition",
+      "label": "Connaître la définition de la racine carrée d'un nombre positif"
+    },
+    {
+      "id": "m3-rac-carres",
+      "label": "Connaître les carrés parfaits et calculer une racine carrée exacte"
+    },
+    {
+      "id": "m3-rac-encadrer",
+      "label": "Encadrer une racine carrée entre deux entiers et en donner une valeur approchée"
+    },
+    {
+      "id": "m3-rac-equation",
+      "label": "Résoudre une équation du type x² = a"
+    },
+    {
+      "id": "m3-rac-pythagore",
+      "label": "Calculer une longueur avec le théorème de Pythagore et une racine carrée"
+    },
+    {
+      "id": "m3-rac-calcul",
+      "label": "Calculer avec des racines carrées (produit, quotient) et éviter les pièges"
+    },
+    {
+      "id": "m3-rediger",
+      "label": "Rédiger et justifier une réponse comme au brevet"
+    }
+  ],
+  "lesson": {
+    "duration_min": 40,
+    "objectives": [
+      "connaître la définition de la racine carrée d'un nombre positif ;",
+      "reconnaître les carrés parfaits et calculer une racine carrée exacte ;",
+      "encadrer une racine carrée entre deux entiers et en donner une valeur approchée ;",
+      "résoudre une équation du type x² = a ;",
+      "calculer une longueur avec le théorème de Pythagore et utiliser les règles de calcul sur les racines carrées."
+    ],
+    "essential": "La **racine carrée** d'un nombre positif a, notée √a, est le nombre **positif** dont le carré vaut a : √49 = 7 car 7² = 49 et 7 est positif. Un nombre négatif n'a pas de racine carrée, car un carré n'est jamais négatif. Quand a n'est pas un carré parfait, √a est une **valeur exacte** que l'on peut encadrer ou arrondir (√40 ≈ 6,32). La racine carrée sert à résoudre x² = a et à calculer une longueur avec le théorème de Pythagore. Attention : on peut découper la racine d'un **produit**, jamais celle d'une **somme**.",
+    "parts": [
+      {
+        "title": "Définition et carrés parfaits",
+        "blocks": [
+          {
+            "type": "callout",
+            "kind": "definition",
+            "text": "Soit a un nombre **positif**. La **racine carrée** de a, notée **√a**, est le nombre **positif** dont le carré est égal à a.\nAutrement dit : √a est positif et (√a)² = a."
+          },
+          {
+            "type": "formula",
+            "latex": "√49 = 7, car 7² = 49 et 7 est positif\n√0 = 0 et √1 = 1\n√0,25 = 0,5, car 0,5² = 0,25"
+          },
+          {
+            "type": "text",
+            "text": "Un **carré parfait** est le carré d'un nombre entier. Les connaître par cœur te fera gagner beaucoup de temps."
+          },
+          {
+            "type": "table",
+            "caption": "Les carrés parfaits à connaître",
+            "columns": [
+              "n",
+              "1",
+              "2",
+              "3",
+              "4",
+              "5",
+              "6",
+              "7",
+              "8",
+              "9",
+              "10",
+              "11",
+              "12",
+              "13",
+              "14",
+              "15"
+            ],
+            "rows": [
+              [
+                "n²",
+                "1",
+                "4",
+                "9",
+                "16",
+                "25",
+                "36",
+                "49",
+                "64",
+                "81",
+                "100",
+                "121",
+                "144",
+                "169",
+                "196",
+                "225"
+              ]
+            ]
+          },
+          {
+            "type": "callout",
+            "kind": "retiens",
+            "title": "Deux égalités utiles",
+            "text": "Pour tout nombre a positif :\n(√a)² = a, par exemple (√7)² = 7 ;\n√(a²) = a, par exemple √(5²) = √25 = 5."
+          },
+          {
+            "type": "callout",
+            "kind": "attention",
+            "title": "Pièges",
+            "text": "√9 = 3, et non −3 : une racine carrée est toujours **positive** (même si (−3)² = 9 aussi).\n√16 ≠ 8 : prendre la racine, ce n'est **pas** diviser par 2.\n√(−4) **n'existe pas** : aucun nombre n'a un carré négatif."
+          }
+        ],
+        "checkpoint": {
+          "variants": [
+            {
+              "prompt": "Combien vaut √36 ?",
+              "options": [
+                "18",
+                "6",
+                "−6",
+                "1 296"
+              ],
+              "answer": 1,
+              "hint": "Cherche le nombre positif dont le carré vaut 36.",
+              "explanation": "6² = 36 et 6 est positif, donc √36 = 6. 18 est la moitié de 36 (piège), −6 est négatif, 1 296 est le carré de 36."
+            },
+            {
+              "prompt": "Laquelle de ces écritures n'a pas de sens ?",
+              "options": [
+                "√0",
+                "√1",
+                "√(−1)",
+                "√100"
+              ],
+              "answer": 2,
+              "hint": "Un carré peut-il être négatif ?",
+              "explanation": "Aucun nombre n'a un carré égal à −1, donc √(−1) n'existe pas. √0 = 0, √1 = 1, √100 = 10."
+            },
+            {
+              "prompt": "Combien vaut (√5)² ?",
+              "options": [
+                "25",
+                "2,5",
+                "5",
+                "10"
+              ],
+              "answer": 2,
+              "hint": "Relis la définition : quel est le carré de √a ?",
+              "explanation": "Par définition, le carré de √5 est 5 : (√5)² = 5."
+            }
+          ]
+        }
+      },
+      {
+        "title": "Encadrer et arrondir une racine carrée",
+        "blocks": [
+          {
+            "type": "text",
+            "text": "Quand a n'est pas un carré parfait, √a n'est pas un nombre entier. On peut quand même le situer grâce aux carrés parfaits, puis en donner une valeur approchée avec la calculatrice."
+          },
+          {
+            "type": "callout",
+            "kind": "methode",
+            "title": "Encadrer √a entre deux entiers consécutifs",
+            "text": "1. Je cherche les deux carrés parfaits qui entourent a.\n2. Je prends leurs racines.\nExemple : 36 < 40 < 49, donc √36 < √40 < √49, c'est-à-dire **6 < √40 < 7**."
+          },
+          {
+            "type": "formula",
+            "latex": "À la calculatrice : √40 ≈ 6,324 555…\nArrondi au dixième : √40 ≈ 6,3\nArrondi au centième : √40 ≈ 6,32"
+          },
+          {
+            "type": "callout",
+            "kind": "retiens",
+            "title": "Valeur exacte, valeur approchée",
+            "text": "**√40** est la **valeur exacte** : c'est elle qu'on garde dans les calculs.\n**6,32** est une **valeur approchée** (arrondi au centième) : on écrit « ≈ » et non « = ».\nOn n'arrondit qu'à la **fin** d'un calcul, quand l'énoncé le demande."
+          },
+          {
+            "type": "callout",
+            "kind": "attention",
+            "text": "Pour arrondir au centième, regarde le chiffre des **millièmes** : s'il vaut 5 ou plus, on augmente le chiffre des centièmes. √20 ≈ 4,472 1 → **4,47** ; √30 ≈ 5,477 2 → **5,48**."
+          },
+          {
+            "type": "callout",
+            "kind": "plus",
+            "text": "Pour vérifier un encadrement sans calculatrice, élève au carré : 6,3² = 39,69 et 6,4² = 40,96 ; comme 39,69 < 40 < 40,96, on a bien 6,3 < √40 < 6,4."
+          }
+        ],
+        "checkpoint": {
+          "variants": [
+            {
+              "prompt": "Entre quels entiers consécutifs se trouve √20 ?",
+              "options": [
+                "4 et 5",
+                "10 et 11",
+                "19 et 21",
+                "2 et 3"
+              ],
+              "answer": 0,
+              "hint": "Quels carrés parfaits entourent 20 ?",
+              "explanation": "16 < 20 < 25, donc √16 < √20 < √25, c'est-à-dire 4 < √20 < 5."
+            },
+            {
+              "prompt": "√8 ≈ 2,828 4… Quel est son arrondi au dixième ?",
+              "options": [
+                "2,9",
+                "4",
+                "2,8",
+                "2,82"
+              ],
+              "answer": 2,
+              "hint": "Regarde le chiffre des centièmes pour arrondir au dixième.",
+              "explanation": "Le chiffre des centièmes est 2 (moins de 5) : on garde 2,8. « 4 » est le piège « diviser par 2 » ; 2,82 est une troncature au centième."
+            },
+            {
+              "prompt": "Laquelle de ces écritures est une valeur exacte ?",
+              "options": [
+                "1,41",
+                "√2",
+                "1,414",
+                "1,414 2"
+              ],
+              "answer": 1,
+              "hint": "Les décimaux proposés vérifient-ils exactement x² = 2 ?",
+              "explanation": "1,41² = 1,988 1 ; 1,414² = 1,999 396 ; aucun décimal n'a pour carré exactement 2. Seule l'écriture √2 est exacte."
+            }
+          ]
+        }
+      },
+      {
+        "title": "Résoudre une équation du type x² = a",
+        "blocks": [
+          {
+            "type": "text",
+            "text": "Résoudre x² = a, c'est chercher **tous** les nombres dont le carré vaut a. Or un nombre et son opposé ont le même carré : 7² = 49 et (−7)² = 49."
+          },
+          {
+            "type": "table",
+            "caption": "Les solutions de x² = a selon le signe de a",
+            "columns": [
+              "Cas",
+              "Solutions",
+              "Exemple"
+            ],
+            "rows": [
+              [
+                "a > 0",
+                "deux solutions : √a et −√a",
+                "x² = 49 : x = 7 ou x = −7"
+              ],
+              [
+                "a = 0",
+                "une seule solution : 0",
+                "x² = 0 : x = 0"
+              ],
+              [
+                "a < 0",
+                "aucune solution",
+                "x² = −9 : pas de solution"
+              ]
+            ]
+          },
+          {
+            "type": "formula",
+            "latex": "x² = 10\nx = √10 ou x = −√10\nValeurs approchées au centième : x ≈ 3,16 ou x ≈ −3,16"
+          },
+          {
+            "type": "callout",
+            "kind": "methode",
+            "title": "Isoler d'abord x²",
+            "text": "Si l'équation n'est pas directement de la forme x² = a, isole x² :\nx² + 11 = 36\nx² = 36 − 11\nx² = 25\nx = 5 ou x = −5"
+          },
+          {
+            "type": "callout",
+            "kind": "attention",
+            "title": "Ne pas oublier la solution négative… sauf pour une longueur",
+            "text": "L'oubli de −√a est l'erreur la plus fréquente. Mais si x est une **longueur**, une aire ou une durée, seule la solution **positive** a un sens : un carré d'aire 49 cm² a un côté de 7 cm, pas de −7 cm."
+          }
+        ],
+        "checkpoint": {
+          "variants": [
+            {
+              "prompt": "Quelles sont les solutions de x² = 25 ?",
+              "options": [
+                "5 seulement",
+                "5 et −5",
+                "12,5 et −12,5",
+                "Aucune"
+              ],
+              "answer": 1,
+              "hint": "Un nombre et son opposé ont le même carré.",
+              "explanation": "5² = 25 et (−5)² = 25 : l'équation a deux solutions, 5 et −5."
+            },
+            {
+              "prompt": "Combien de solutions a l'équation x² = −9 ?",
+              "options": [
+                "Deux : 3 et −3",
+                "Une : −3",
+                "Aucune",
+                "Une : 3"
+              ],
+              "answer": 2,
+              "hint": "Un carré peut-il être négatif ?",
+              "explanation": "Un carré est toujours positif ou nul : aucun nombre n'a un carré égal à −9. L'équation n'a pas de solution."
+            },
+            {
+              "prompt": "Quelles sont les solutions de x² = 7 ?",
+              "options": [
+                "√7 et −√7",
+                "3,5 et −3,5",
+                "49 et −49",
+                "√7 seulement"
+              ],
+              "answer": 0,
+              "hint": "7 n'est pas un carré parfait : utilise l'écriture avec √.",
+              "explanation": "(√7)² = 7 et (−√7)² = 7 : les deux solutions sont √7 et −√7 (environ 2,65 et −2,65)."
+            }
+          ]
+        }
+      },
+      {
+        "title": "Racines carrées et théorème de Pythagore",
+        "blocks": [
+          {
+            "type": "callout",
+            "kind": "retiens",
+            "title": "Théorème de Pythagore",
+            "text": "Si un triangle ABC est rectangle en A, alors le carré de l'hypoténuse est égal à la somme des carrés des deux autres côtés :\n**BC² = AB² + AC²**\nPour trouver une longueur, on calcule d'abord son **carré**, puis on prend la **racine carrée**."
+          },
+          {
+            "type": "formula",
+            "latex": "Exemple 1 : ABC rectangle en A, AB = 6 cm et AC = 8 cm.\nBC² = AB² + AC² = 6² + 8² = 36 + 64 = 100\nBC = √100 = 10 cm"
+          },
+          {
+            "type": "formula",
+            "latex": "Exemple 2 : ABC rectangle en A, AB = 3 cm et AC = 5 cm.\nBC² = 3² + 5² = 9 + 25 = 34\nBC = √34 cm (valeur exacte) ≈ 5,83 cm (arrondi au centième)"
+          },
+          {
+            "type": "formula",
+            "latex": "Exemple 3 (calculer un petit côté) : ABC rectangle en A, BC = 10 cm et AB = 6 cm.\nBC² = AB² + AC², donc AC² = BC² − AB² = 100 − 36 = 64\nAC = √64 = 8 cm"
+          },
+          {
+            "type": "callout",
+            "kind": "methode",
+            "title": "Rédiger comme au brevet",
+            "text": "1. « Le triangle ABC est rectangle en A, donc d'après le théorème de Pythagore : BC² = AB² + AC². »\n2. Je remplace et je calcule le carré.\n3. « BC est une longueur, donc BC est positive : BC = √… »\n4. Je donne la valeur exacte, puis l'arrondi demandé, avec l'unité."
+          },
+          {
+            "type": "callout",
+            "kind": "attention",
+            "text": "√(6² + 8²) ≠ 6 + 8 ! On calcule d'abord la somme des carrés (100), puis la racine (10). Ici, 6 + 8 = 14 donnerait un résultat faux. Et pour un petit côté, on **soustrait** : AC² = BC² − AB²."
+          }
+        ],
+        "checkpoint": {
+          "variants": [
+            {
+              "prompt": "ABC est rectangle en A, avec AB = 5 cm et AC = 12 cm. Combien mesure BC ?",
+              "options": [
+                "17 cm",
+                "13 cm",
+                "169 cm",
+                "√17 cm"
+              ],
+              "answer": 1,
+              "hint": "Calcule d'abord BC² = AB² + AC², puis prends la racine.",
+              "explanation": "BC² = 5² + 12² = 25 + 144 = 169, donc BC = √169 = 13 cm. 17 cm vient de l'erreur 5 + 12."
+            },
+            {
+              "prompt": "Un triangle est rectangle ; son hypoténuse mesure 10 cm et un autre côté 6 cm. Combien mesure le troisième côté ?",
+              "options": [
+                "4 cm",
+                "√136 cm",
+                "8 cm",
+                "16 cm"
+              ],
+              "answer": 2,
+              "hint": "Pour un petit côté, on soustrait les carrés.",
+              "explanation": "Troisième côté² = 10² − 6² = 100 − 36 = 64, donc il mesure √64 = 8 cm. √136 vient d'une addition à la place de la soustraction."
+            },
+            {
+              "prompt": "Après calcul, on trouve BC² = 18. Que vaut BC ?",
+              "options": [
+                "9",
+                "324",
+                "√18 ≈ 4,24",
+                "18"
+              ],
+              "answer": 2,
+              "hint": "BC est le nombre positif dont le carré vaut 18.",
+              "explanation": "BC = √18 (valeur exacte) ≈ 4,24. 9 est le piège « diviser par 2 », 324 est 18²."
+            }
+          ]
+        }
+      },
+      {
+        "title": "Calculer avec des racines carrées",
+        "blocks": [
+          {
+            "type": "callout",
+            "kind": "retiens",
+            "title": "Produit et quotient",
+            "text": "Pour a et b positifs :\n**√(a × b) = √a × √b**\n**√(a / b) = √a / √b** (avec b non nul)"
+          },
+          {
+            "type": "formula",
+            "latex": "√(4 × 9) = √4 × √9 = 2 × 3 = 6   (vérification : √36 = 6)\n√2 × √18 = √(2 × 18) = √36 = 6\n√(25/4) = √25 / √4 = 5/2 = 2,5"
+          },
+          {
+            "type": "callout",
+            "kind": "attention",
+            "title": "Le piège de la somme",
+            "text": "**√(a + b) n'est pas égal à √a + √b.**\n√(9 + 16) = √25 = 5, alors que √9 + √16 = 3 + 4 = 7.\nMême chose pour la différence : √(25 − 9) = √16 = 4, alors que √25 − √9 = 5 − 3 = 2."
+          },
+          {
+            "type": "callout",
+            "kind": "methode",
+            "title": "Pour une somme sous la racine",
+            "text": "Je calcule **d'abord** ce qu'il y a sous le symbole √, **ensuite** je prends la racine.\n√(36 + 64) = √100 = 10."
+          },
+          {
+            "type": "callout",
+            "kind": "plus",
+            "title": "Pour aller plus loin",
+            "text": "La règle du produit permet de simplifier une racine en faisant apparaître un carré parfait :\n√12 = √(4 × 3) = √4 × √3 = 2√3\n√50 = √(25 × 2) = 5√2"
+          }
+        ],
+        "checkpoint": {
+          "variants": [
+            {
+              "prompt": "Combien vaut √(4 × 49) ?",
+              "options": [
+                "98",
+                "14",
+                "53",
+                "√53"
+              ],
+              "answer": 1,
+              "hint": "Utilise √(a × b) = √a × √b.",
+              "explanation": "√(4 × 49) = √4 × √49 = 2 × 7 = 14 (et en effet 14² = 196 = 4 × 49)."
+            },
+            {
+              "prompt": "Quelle égalité est vraie ?",
+              "options": [
+                "√(16 + 9) = 7",
+                "√(16 + 9) = 5",
+                "√16 + √9 = 5",
+                "√(16 × 9) = 25"
+              ],
+              "answer": 1,
+              "hint": "Calcule d'abord ce qu'il y a sous la racine.",
+              "explanation": "√(16 + 9) = √25 = 5. En revanche √16 + √9 = 4 + 3 = 7, et √(16 × 9) = 4 × 3 = 12."
+            },
+            {
+              "prompt": "Combien vaut √5 × √20 ?",
+              "options": [
+                "5",
+                "10",
+                "25",
+                "100"
+              ],
+              "answer": 1,
+              "hint": "Regroupe sous une seule racine : √a × √b = √(a × b).",
+              "explanation": "√5 × √20 = √(5 × 20) = √100 = 10."
+            }
+          ]
+        }
+      }
+    ],
+    "memo": [
+      {
+        "label": "Définition",
+        "text": "Pour a positif, √a est le nombre positif dont le carré vaut a. (√a)² = a. √(−4) n'existe pas."
+      },
+      {
+        "label": "Carrés parfaits",
+        "text": "1, 4, 9, 16, 25, 36, 49, 64, 81, 100, 121, 144, 169, 196, 225 : leurs racines sont les entiers de 1 à 15."
+      },
+      {
+        "label": "Encadrer",
+        "text": "36 < 40 < 49 donc 6 < √40 < 7. Valeur exacte : √40. Valeur approchée : √40 ≈ 6,32 (au centième)."
+      },
+      {
+        "label": "x² = a",
+        "text": "a > 0 : x = √a ou x = −√a. a = 0 : x = 0. a < 0 : aucune solution. Pour une longueur, on garde la solution positive."
+      },
+      {
+        "label": "Pythagore",
+        "text": "Rectangle en A : BC² = AB² + AC². Hypoténuse : on additionne les carrés. Petit côté : on soustrait. Puis on prend la racine."
+      },
+      {
+        "label": "Calculs",
+        "text": "√(a × b) = √a × √b et √(a / b) = √a / √b. Mais √(a + b) ≠ √a + √b : on calcule d'abord sous la racine."
+      },
+      {
+        "label": "Pièges",
+        "text": "√16 = 4, pas 8 (ce n'est pas une moitié). √9 = 3, pas −3. Ne pas oublier −√a dans x² = a. Arrondir seulement à la fin."
+      }
+    ]
+  },
+  "exercises": {
+    "duration_min": 30,
+    "instructions": "Fais les exercices dans l'ordre : les étoiles indiquent la difficulté. Pour une réponse numérique, écris seulement le nombre (avec une virgule si besoin, par exemple 7,07). Calculatrice autorisée pour les valeurs approchées. Les corrigés s'affichent après validation.",
+    "pass_threshold": 8,
+    "texts": [],
+    "items": [
+      {
+        "id": "ex1",
+        "type": "qcm",
+        "stars": 1,
+        "lesson_part": 1,
+        "skills": [
+          "m3-rac-definition"
+        ],
+        "cognitive": "connaitre",
+        "prompt": "Combien vaut √81 ?",
+        "options": [
+          "40,5",
+          "−9",
+          "9",
+          "6 561"
+        ],
+        "answer": 2,
+        "solution": "9² = 81 et 9 est positif, donc √81 = **9**. 40,5 est la moitié de 81 (piège), −9 est négatif, 6 561 = 81²."
+      },
+      {
+        "id": "ex2",
+        "type": "numeric",
+        "stars": 1,
+        "lesson_part": 1,
+        "skills": [
+          "m3-rac-carres"
+        ],
+        "cognitive": "appliquer",
+        "prompt": "Calcule √144.",
+        "answer": 12,
+        "solution": "12² = 144, donc √144 = **12**."
+      },
+      {
+        "id": "ex3",
+        "type": "qcm",
+        "stars": 1,
+        "lesson_part": 2,
+        "skills": [
+          "m3-rac-encadrer"
+        ],
+        "cognitive": "appliquer",
+        "prompt": "Entre quels entiers consécutifs se trouve √55 ?",
+        "options": [
+          "5 et 6",
+          "7 et 8",
+          "27 et 28",
+          "6 et 7"
+        ],
+        "answer": 1,
+        "solution": "49 < 55 < 64, donc √49 < √55 < √64, c'est-à-dire **7 < √55 < 8**."
+      },
+      {
+        "id": "ex4",
+        "type": "numeric",
+        "stars": 1,
+        "lesson_part": 1,
+        "skills": [
+          "m3-rac-definition"
+        ],
+        "cognitive": "connaitre",
+        "prompt": "Calcule (√13)².",
+        "answer": 13,
+        "solution": "Par définition, le carré de √13 est **13**."
+      },
+      {
+        "id": "ex5",
+        "type": "numeric",
+        "stars": 2,
+        "lesson_part": 2,
+        "skills": [
+          "m3-rac-encadrer"
+        ],
+        "cognitive": "appliquer",
+        "prompt": "Donne l'arrondi au centième de √50.",
+        "answer": 7.07,
+        "tolerance": 0.001,
+        "solution": "À la calculatrice, √50 ≈ 7,071 06… Le chiffre des millièmes est 1 (moins de 5), donc √50 ≈ **7,07**."
+      },
+      {
+        "id": "ex6",
+        "type": "short",
+        "stars": 2,
+        "lesson_part": 3,
+        "skills": [
+          "m3-rac-equation"
+        ],
+        "cognitive": "appliquer",
+        "prompt": "Résous l'équation x² = 64. Écris les deux solutions séparées par « et » (exemple : 2 et -2).",
+        "answer": [
+          "8 et -8",
+          "-8 et 8",
+          "8 ou -8",
+          "-8 ou 8",
+          "x = 8 ou x = -8",
+          "x = -8 ou x = 8",
+          "x = 8 et x = -8",
+          "x = -8 et x = 8",
+          "8 ; -8",
+          "-8 ; 8"
+        ],
+        "solution": "8² = 64 et (−8)² = 64, donc les solutions sont **8 et −8**."
+      },
+      {
+        "id": "ex7",
+        "type": "numeric",
+        "stars": 2,
+        "lesson_part": 4,
+        "skills": [
+          "m3-rac-pythagore"
+        ],
+        "cognitive": "appliquer",
+        "prompt": "Le triangle RST est rectangle en R, avec RS = 9 cm et RT = 12 cm. Calcule ST (en cm).",
+        "answer": 15,
+        "solution": "RST est rectangle en R, donc d'après le théorème de Pythagore : ST² = RS² + RT² = 9² + 12² = 81 + 144 = 225. ST est positive, donc ST = √225 = **15 cm**."
+      },
+      {
+        "id": "ex8",
+        "type": "numeric",
+        "stars": 2,
+        "lesson_part": 4,
+        "skills": [
+          "m3-rac-pythagore",
+          "m3-rac-encadrer"
+        ],
+        "cognitive": "appliquer",
+        "prompt": "Le triangle KLM est rectangle en K, avec KL = 4 cm et KM = 7 cm. Calcule LM, arrondi au dixième de cm.",
+        "answer": 8.1,
+        "tolerance": 0.001,
+        "solution": "LM² = KL² + KM² = 4² + 7² = 16 + 49 = 65, donc LM = √65 cm (valeur exacte). √65 ≈ 8,062, donc LM ≈ **8,1 cm** au dixième."
+      },
+      {
+        "id": "ex9",
+        "type": "qcm",
+        "stars": 3,
+        "lesson_part": 5,
+        "skills": [
+          "m3-rac-calcul"
+        ],
+        "cognitive": "analyser",
+        "prompt": "Laquelle de ces égalités est vraie ?",
+        "options": [
+          "√(9 + 16) = √9 + √16",
+          "√(4 × 25) = √4 × √25",
+          "√(−9) = −3",
+          "√(2² + 3²) = 5"
+        ],
+        "answer": 1,
+        "solution": "√(4 × 25) = √100 = 10 et √4 × √25 = 2 × 5 = 10 : **vraie** (règle du produit).\nLes autres sont fausses : √(9 + 16) = √25 = 5 alors que √9 + √16 = 7 ; √(−9) n'existe pas ; √(2² + 3²) = √13 ≈ 3,6, pas 5."
+      },
+      {
+        "id": "ex10",
+        "type": "open",
+        "stars": 3,
+        "lesson_part": 4,
+        "skills": [
+          "m3-rac-pythagore",
+          "m3-rediger"
+        ],
+        "cognitive": "rediger",
+        "prompt": "Une échelle de 6,5 m est appuyée contre un mur vertical. Son pied est posé sur le sol horizontal, à 2,5 m du mur. À quelle hauteur le haut de l'échelle touche-t-il le mur ? Rédige ta réponse en justifiant.",
+        "solution": "Notons S le pied du mur, P le pied de l'échelle et H le haut de l'échelle. Le mur est vertical et le sol horizontal, donc le triangle PSH est rectangle en S ; son hypoténuse est l'échelle [PH].\nD'après le théorème de Pythagore : PH² = SP² + SH², donc SH² = PH² − SP² = 6,5² − 2,5² = 42,25 − 6,25 = 36.\nSH est une longueur, donc SH = √36 = 6.\nLe haut de l'échelle touche le mur à **6 m** de hauteur.",
+        "rubric": "1 pt : triangle rectangle identifié (mur vertical, sol horizontal) et théorème de Pythagore cité. 1 pt : SH² = 6,5² − 2,5² (soustraction, car on cherche un petit côté). 1 pt : calcul exact (42,25 − 6,25 = 36, puis √36 = 6). 1 pt : phrase réponse avec l'unité (6 m)."
+      }
+    ]
+  },
+  "evaluation": {
+    "duration_min": 40,
+    "conditions": "Sans la leçon, en 40 minutes. Calculatrice autorisée pour les valeurs approchées, mais écris tes calculs. Pour une réponse numérique, écris seulement le nombre. Barème : A = 5 points · B = 7 points · C = 8 points.",
+    "total_points": 20,
+    "variants": [
+      {
+        "texts": [],
+        "sections": [
+          {
+            "label": "A · Je connais (5 points)",
+            "questions": [
+              {
+                "id": "q1",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 1,
+                "skills": [
+                  "m3-rac-definition"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Combien vaut √49 ?",
+                "options": [
+                  "7",
+                  "24,5",
+                  "−7",
+                  "2 401"
+                ],
+                "answer": 0,
+                "solution": "7² = 49 et 7 est positif, donc √49 = 7. Une racine carrée n'est jamais négative, et ce n'est pas une moitié.",
+                "rubric": "1 point pour la bonne réponse, 0 sinon."
+              },
+              {
+                "id": "q2",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 1,
+                "skills": [
+                  "m3-rac-definition"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Laquelle de ces écritures n'a pas de sens ?",
+                "options": [
+                  "√0",
+                  "√0,25",
+                  "√(−16)",
+                  "√16"
+                ],
+                "answer": 2,
+                "solution": "Aucun nombre n'a un carré négatif, donc √(−16) n'existe pas. √0 = 0, √0,25 = 0,5 et √16 = 4.",
+                "rubric": "1 point pour la bonne réponse, 0 sinon."
+              },
+              {
+                "id": "q3",
+                "type": "numeric",
+                "points": 1,
+                "lesson_part": 1,
+                "skills": [
+                  "m3-rac-definition"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Calcule (√7)².",
+                "answer": 7,
+                "solution": "Par définition, le carré de √7 est 7.",
+                "rubric": "1 point pour la bonne réponse, 0 sinon."
+              },
+              {
+                "id": "q4",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 2,
+                "skills": [
+                  "m3-rac-encadrer"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Entre quels entiers consécutifs se trouve √30 ?",
+                "options": [
+                  "4 et 5",
+                  "5 et 6",
+                  "15 et 16",
+                  "29 et 31"
+                ],
+                "answer": 1,
+                "solution": "25 < 30 < 36, donc √25 < √30 < √36, c'est-à-dire 5 < √30 < 6.",
+                "rubric": "1 point pour la bonne réponse, 0 sinon."
+              },
+              {
+                "id": "q5",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 2,
+                "skills": [
+                  "m3-rac-definition",
+                  "m3-rac-encadrer"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Quelle affirmation sur √2 est exacte ?",
+                "options": [
+                  "√2 = 1,414",
+                  "√2 = 1",
+                  "√2 est le nombre positif dont le carré vaut 2 ; √2 ≈ 1,414",
+                  "√2 = 1,41"
+                ],
+                "answer": 2,
+                "solution": "Par définition, √2 est le nombre positif dont le carré vaut 2. 1,414² = 1,999 396 ≠ 2 : 1,414 n'est qu'une valeur approchée, d'où le signe ≈ ; il en va de même pour 1,41 (1,41² = 1,988 1). Et 1² = 1 ≠ 2.",
+                "rubric": "1 point pour la bonne réponse, 0 sinon."
+              }
+            ]
+          },
+          {
+            "label": "B · J'applique (7 points)",
+            "questions": [
+              {
+                "id": "q6",
+                "type": "numeric",
+                "points": 1,
+                "lesson_part": 1,
+                "skills": [
+                  "m3-rac-carres"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Calcule √225.",
+                "answer": 15,
+                "solution": "15² = 225, donc √225 = 15.",
+                "rubric": "1 point pour la bonne réponse, 0 sinon."
+              },
+              {
+                "id": "q7",
+                "type": "numeric",
+                "points": 1,
+                "lesson_part": 2,
+                "skills": [
+                  "m3-rac-encadrer"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Donne l'arrondi au centième de √20.",
+                "answer": 4.47,
+                "tolerance": 0.001,
+                "solution": "√20 ≈ 4,472 1… Le chiffre des millièmes est 2 (moins de 5), donc √20 ≈ 4,47.",
+                "rubric": "1 point pour la bonne réponse, 0 sinon."
+              },
+              {
+                "id": "q8",
+                "type": "short",
+                "points": 2,
+                "lesson_part": 3,
+                "skills": [
+                  "m3-rac-equation"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Résous l'équation x² = 81. Écris les deux solutions séparées par « et » (exemple : 2 et -2).",
+                "answer": [
+                  "9 et -9",
+                  "-9 et 9",
+                  "9 ou -9",
+                  "-9 ou 9",
+                  "x = 9 ou x = -9",
+                  "x = -9 ou x = 9",
+                  "x = 9 et x = -9",
+                  "x = -9 et x = 9",
+                  "9 ; -9",
+                  "-9 ; 9"
+                ],
+                "solution": "9² = 81 et (−9)² = 81, donc l'équation a deux solutions : 9 et −9.",
+                "rubric": "2 points pour les deux solutions 9 et −9 ; 1 point en correction manuelle si seule la solution 9 est donnée."
+              },
+              {
+                "id": "q9",
+                "type": "numeric",
+                "points": 1,
+                "lesson_part": 5,
+                "skills": [
+                  "m3-rac-calcul"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Calcule √2 × √18.",
+                "answer": 6,
+                "solution": "√2 × √18 = √(2 × 18) = √36 = 6.",
+                "rubric": "1 point pour la bonne réponse, 0 sinon."
+              },
+              {
+                "id": "q10",
+                "type": "open",
+                "points": 2,
+                "lesson_part": 5,
+                "skills": [
+                  "m3-rac-calcul",
+                  "m3-rediger"
+                ],
+                "cognitive": "analyser",
+                "prompt": "Léo écrit : « √(36 + 64) = √36 + √64 = 6 + 8 = 14 ». A-t-il raison ? Justifie et donne le résultat correct.",
+                "solution": "Léo a tort : la racine d'une somme n'est pas la somme des racines. Il faut d'abord calculer sous la racine : √(36 + 64) = √100 = 10, et non 14 (d'ailleurs 14² = 196 ≠ 100).",
+                "rubric": "1 pt : « Léo a tort », justifié par la règle (√(a + b) ≠ √a + √b) ou par une vérification (14² = 196 ≠ 100). 1 pt : résultat correct √100 = 10."
+              }
+            ]
+          },
+          {
+            "label": "C · Problème type brevet (8 points)",
+            "questions": [
+              {
+                "id": "q11",
+                "type": "numeric",
+                "points": 1,
+                "lesson_part": 4,
+                "skills": [
+                  "m3-rac-pythagore"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Un terrain a la forme d'un rectangle ABCD avec AB = 24 m et BC = 10 m. On veut tendre une guirlande le long de sa diagonale [AC].\nCalcule AB² + BC².",
+                "answer": 676,
+                "solution": "AB² + BC² = 576 + 100 = 676.",
+                "rubric": "1 point pour la bonne réponse, 0 sinon."
+              },
+              {
+                "id": "q12",
+                "type": "open",
+                "points": 2,
+                "lesson_part": 4,
+                "skills": [
+                  "m3-rac-pythagore",
+                  "m3-rediger"
+                ],
+                "cognitive": "rediger",
+                "prompt": "Démontre que la diagonale [AC] mesure 26 m.",
+                "solution": "ABCD est un rectangle, donc l'angle ABC est droit : le triangle ABC est rectangle en B, d'hypoténuse [AC].\nD'après le théorème de Pythagore : AC² = AB² + BC² = 24² + 10² = 576 + 100 = 676.\nAC est une longueur, donc AC = √676 = 26. La diagonale [AC] mesure bien 26 m.",
+                "rubric": "0,5 pt : triangle ABC rectangle en B justifié (angle d'un rectangle). 0,5 pt : égalité de Pythagore correctement écrite (AC² = AB² + BC²). 0,5 pt : calcul AC² = 676. 0,5 pt : AC = √676 = 26 m, avec conclusion."
+              },
+              {
+                "id": "q13",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 1,
+                "skills": [
+                  "m3-rac-definition"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Le propriétaire veut aussi aménager un potager carré d'aire 45 m². Quelle est la valeur exacte de la longueur de son côté ?",
+                "options": [
+                  "√45 m",
+                  "22,5 m",
+                  "45² m",
+                  "6,7 m"
+                ],
+                "answer": 0,
+                "solution": "Le côté c vérifie c² = 45 et c est positif, donc c = √45 m (valeur exacte). 6,7 m n'est qu'une valeur approchée.",
+                "rubric": "1 point pour la bonne réponse, 0 sinon."
+              },
+              {
+                "id": "q14",
+                "type": "numeric",
+                "points": 2,
+                "lesson_part": 2,
+                "skills": [
+                  "m3-rac-encadrer"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Donne la longueur du côté du potager arrondie au centimètre (c'est-à-dire au centième de mètre), en m.",
+                "answer": 6.71,
+                "tolerance": 0.001,
+                "solution": "Côté = √45 ≈ 6,708 2… m. Le chiffre des millièmes est 8 (5 ou plus), donc on arrondit à 6,71 m.",
+                "rubric": "2 points pour la bonne réponse, 0 sinon."
+              },
+              {
+                "id": "q15",
+                "type": "numeric",
+                "points": 2,
+                "lesson_part": 2,
+                "skills": [
+                  "m3-rac-encadrer",
+                  "m3-rediger"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Pour clôturer le potager, il faut un grillage sur les quatre côtés. Quelle longueur de grillage faut-il, arrondie au dixième de mètre ? (Calcule avec la valeur exacte du côté, puis arrondis.)",
+                "answer": 26.8,
+                "tolerance": 0.001,
+                "solution": "Périmètre = 4 × √45 ≈ 4 × 6,708 2… ≈ 26,832… m. Arrondi au dixième : 26,8 m. (Attention : en partant de l'arrondi 6,71, on obtiendrait 26,84 → 26,8 aussi, mais on doit calculer avec la valeur exacte.)",
+                "rubric": "2 points pour la bonne réponse, 0 sinon."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "texts": [],
+        "sections": [
+          {
+            "label": "A · Je connais (5 points)",
+            "questions": [
+              {
+                "id": "q1",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 1,
+                "skills": [
+                  "m3-rac-definition"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Combien vaut √64 ?",
+                "options": [
+                  "32",
+                  "8",
+                  "−8",
+                  "4 096"
+                ],
+                "answer": 1,
+                "solution": "8² = 64 et 8 est positif, donc √64 = 8. Une racine carrée n'est jamais négative, et ce n'est pas une moitié.",
+                "rubric": "1 point pour la bonne réponse, 0 sinon."
+              },
+              {
+                "id": "q2",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 1,
+                "skills": [
+                  "m3-rac-definition"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Laquelle de ces écritures n'a pas de sens ?",
+                "options": [
+                  "√0",
+                  "√(−25)",
+                  "√0,49",
+                  "√25"
+                ],
+                "answer": 1,
+                "solution": "Aucun nombre n'a un carré négatif, donc √(−25) n'existe pas. √0 = 0, √0,49 = 0,7 et √25 = 5.",
+                "rubric": "1 point pour la bonne réponse, 0 sinon."
+              },
+              {
+                "id": "q3",
+                "type": "numeric",
+                "points": 1,
+                "lesson_part": 1,
+                "skills": [
+                  "m3-rac-definition"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Calcule (√11)².",
+                "answer": 11,
+                "solution": "Par définition, le carré de √11 est 11.",
+                "rubric": "1 point pour la bonne réponse, 0 sinon."
+              },
+              {
+                "id": "q4",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 2,
+                "skills": [
+                  "m3-rac-encadrer"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Entre quels entiers consécutifs se trouve √70 ?",
+                "options": [
+                  "7 et 8",
+                  "35 et 36",
+                  "8 et 9",
+                  "69 et 71"
+                ],
+                "answer": 2,
+                "solution": "64 < 70 < 81, donc √64 < √70 < √81, c'est-à-dire 8 < √70 < 9.",
+                "rubric": "1 point pour la bonne réponse, 0 sinon."
+              },
+              {
+                "id": "q5",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 2,
+                "skills": [
+                  "m3-rac-definition",
+                  "m3-rac-encadrer"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Quelle affirmation sur √3 est exacte ?",
+                "options": [
+                  "√3 = 1,73",
+                  "√3 est le nombre positif dont le carré vaut 3 ; √3 ≈ 1,73",
+                  "√3 = 1,5",
+                  "√3 = 1,732"
+                ],
+                "answer": 1,
+                "solution": "Par définition, √3 est le nombre positif dont le carré vaut 3. 1,73² = 2,992 9 ≠ 3 : 1,73 n'est qu'une valeur approchée, d'où le signe ≈. De même pour 1,732 (1,732² = 2,999 824). 1,5 correspond au piège « diviser par 2 ».",
+                "rubric": "1 point pour la bonne réponse, 0 sinon."
+              }
+            ]
+          },
+          {
+            "label": "B · J'applique (7 points)",
+            "questions": [
+              {
+                "id": "q6",
+                "type": "numeric",
+                "points": 1,
+                "lesson_part": 1,
+                "skills": [
+                  "m3-rac-carres"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Calcule √196.",
+                "answer": 14,
+                "solution": "14² = 196, donc √196 = 14.",
+                "rubric": "1 point pour la bonne réponse, 0 sinon."
+              },
+              {
+                "id": "q7",
+                "type": "numeric",
+                "points": 1,
+                "lesson_part": 2,
+                "skills": [
+                  "m3-rac-encadrer"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Donne l'arrondi au centième de √30.",
+                "answer": 5.48,
+                "tolerance": 0.001,
+                "solution": "√30 ≈ 5,477 2… Le chiffre des millièmes est 7 (5 ou plus), donc √30 ≈ 5,48.",
+                "rubric": "1 point pour la bonne réponse, 0 sinon."
+              },
+              {
+                "id": "q8",
+                "type": "short",
+                "points": 2,
+                "lesson_part": 3,
+                "skills": [
+                  "m3-rac-equation"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Résous l'équation x² = 121. Écris les deux solutions séparées par « et » (exemple : 2 et -2).",
+                "answer": [
+                  "11 et -11",
+                  "-11 et 11",
+                  "11 ou -11",
+                  "-11 ou 11",
+                  "x = 11 ou x = -11",
+                  "x = -11 ou x = 11",
+                  "x = 11 et x = -11",
+                  "x = -11 et x = 11",
+                  "11 ; -11",
+                  "-11 ; 11"
+                ],
+                "solution": "11² = 121 et (−11)² = 121, donc l'équation a deux solutions : 11 et −11.",
+                "rubric": "2 points pour les deux solutions 11 et −11 ; 1 point en correction manuelle si seule la solution 11 est donnée."
+              },
+              {
+                "id": "q9",
+                "type": "numeric",
+                "points": 1,
+                "lesson_part": 5,
+                "skills": [
+                  "m3-rac-calcul"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Calcule √3 × √27.",
+                "answer": 9,
+                "solution": "√3 × √27 = √(3 × 27) = √81 = 9.",
+                "rubric": "1 point pour la bonne réponse, 0 sinon."
+              },
+              {
+                "id": "q10",
+                "type": "open",
+                "points": 2,
+                "lesson_part": 5,
+                "skills": [
+                  "m3-rac-calcul",
+                  "m3-rediger"
+                ],
+                "cognitive": "analyser",
+                "prompt": "Inès écrit : « √(25 + 144) = √25 + √144 = 5 + 12 = 17 ». A-t-elle raison ? Justifie et donne le résultat correct.",
+                "solution": "Inès a tort : la racine d'une somme n'est pas la somme des racines. Il faut d'abord calculer sous la racine : √(25 + 144) = √169 = 13, et non 17 (d'ailleurs 17² = 289 ≠ 169).",
+                "rubric": "1 pt : « Inès a tort », justifié par la règle (√(a + b) ≠ √a + √b) ou par une vérification (17² = 289 ≠ 169). 1 pt : résultat correct √169 = 13."
+              }
+            ]
+          },
+          {
+            "label": "C · Problème type brevet (8 points)",
+            "questions": [
+              {
+                "id": "q11",
+                "type": "numeric",
+                "points": 1,
+                "lesson_part": 4,
+                "skills": [
+                  "m3-rac-pythagore"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Un terrain a la forme d'un rectangle EFGH avec EF = 21 m et FG = 20 m. On veut tendre une guirlande le long de sa diagonale [EG].\nCalcule EF² + FG².",
+                "answer": 841,
+                "solution": "EF² + FG² = 441 + 400 = 841.",
+                "rubric": "1 point pour la bonne réponse, 0 sinon."
+              },
+              {
+                "id": "q12",
+                "type": "open",
+                "points": 2,
+                "lesson_part": 4,
+                "skills": [
+                  "m3-rac-pythagore",
+                  "m3-rediger"
+                ],
+                "cognitive": "rediger",
+                "prompt": "Démontre que la diagonale [EG] mesure 29 m.",
+                "solution": "EFGH est un rectangle, donc l'angle EFG est droit : le triangle EFG est rectangle en F, d'hypoténuse [EG].\nD'après le théorème de Pythagore : EG² = EF² + FG² = 21² + 20² = 441 + 400 = 841.\nEG est une longueur, donc EG = √841 = 29. La diagonale [EG] mesure bien 29 m.",
+                "rubric": "0,5 pt : triangle EFG rectangle en F justifié (angle d'un rectangle). 0,5 pt : égalité de Pythagore correctement écrite (EG² = EF² + FG²). 0,5 pt : calcul EG² = 841. 0,5 pt : EG = √841 = 29 m, avec conclusion."
+              },
+              {
+                "id": "q13",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 1,
+                "skills": [
+                  "m3-rac-definition"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Le propriétaire veut aussi aménager un potager carré d'aire 55 m². Quelle est la valeur exacte de la longueur de son côté ?",
+                "options": [
+                  "√55 m",
+                  "27,5 m",
+                  "55² m",
+                  "7,4 m"
+                ],
+                "answer": 0,
+                "solution": "Le côté c vérifie c² = 55 et c est positif, donc c = √55 m (valeur exacte). 7,4 m n'est qu'une valeur approchée.",
+                "rubric": "1 point pour la bonne réponse, 0 sinon."
+              },
+              {
+                "id": "q14",
+                "type": "numeric",
+                "points": 2,
+                "lesson_part": 2,
+                "skills": [
+                  "m3-rac-encadrer"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Donne la longueur du côté du potager arrondie au centimètre (c'est-à-dire au centième de mètre), en m.",
+                "answer": 7.42,
+                "tolerance": 0.001,
+                "solution": "Côté = √55 ≈ 7,416 2… m. Le chiffre des millièmes est 6 (5 ou plus), donc on arrondit à 7,42 m.",
+                "rubric": "2 points pour la bonne réponse, 0 sinon."
+              },
+              {
+                "id": "q15",
+                "type": "numeric",
+                "points": 2,
+                "lesson_part": 2,
+                "skills": [
+                  "m3-rac-encadrer",
+                  "m3-rediger"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Pour clôturer le potager, il faut un grillage sur les quatre côtés. Quelle longueur de grillage faut-il, arrondie au dixième de mètre ? (Calcule avec la valeur exacte du côté, puis arrondis.)",
+                "answer": 29.7,
+                "tolerance": 0.001,
+                "solution": "Périmètre = 4 × √55 ≈ 4 × 7,416 2… ≈ 29,664… m. Arrondi au dixième : 29,7 m. (En partant de l'arrondi 7,42, on obtiendrait 29,68 → 29,7 aussi, mais on doit calculer avec la valeur exacte.)",
+                "rubric": "2 points pour la bonne réponse, 0 sinon."
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

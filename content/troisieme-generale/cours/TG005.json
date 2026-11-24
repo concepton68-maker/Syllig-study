@@ -1,0 +1,1320 @@
+{
+  "format": "syllig-course/1",
+  "code": "TG005",
+  "level": "troisieme-generale",
+  "subject": "Français",
+  "chapter": "Bases de la langue (début d'année)",
+  "title": "Les temps de l'indicatif et leurs valeurs",
+  "skills": [
+    {
+      "id": "fr-ind-identifier",
+      "label": "Identifier le temps d'un verbe conjugué à l'indicatif (temps simples et composés)"
+    },
+    {
+      "id": "fr-ind-conjuguer",
+      "label": "Conjuguer un verbe aux temps de l'indicatif"
+    },
+    {
+      "id": "fr-ind-present",
+      "label": "Reconnaître les valeurs du présent"
+    },
+    {
+      "id": "fr-ind-recit",
+      "label": "Distinguer les valeurs des temps du récit au passé (passé simple, imparfait, plus-que-parfait, passé antérieur)"
+    },
+    {
+      "id": "fr-ind-discours",
+      "label": "Reconnaître les valeurs du passé composé, du futur et du futur antérieur"
+    },
+    {
+      "id": "fr-ind-justifier",
+      "label": "Justifier l'emploi d'un temps dans un texte, comme au brevet"
+    },
+    {
+      "id": "fr-ind-reecrire",
+      "label": "Réécrire un passage en changeant le temps des verbes"
+    }
+  ],
+  "lesson": {
+    "duration_min": 40,
+    "objectives": [
+      "reconnaître les huit temps de l'indicatif, simples et composés ;",
+      "identifier les valeurs du présent ;",
+      "distinguer le premier plan (passé simple) et l'arrière-plan (imparfait) d'un récit ;",
+      "comprendre les temps qui marquent l'antériorité : plus-que-parfait, passé antérieur, futur antérieur ;",
+      "justifier l'emploi d'un temps et réécrire un passage, comme au brevet."
+    ],
+    "essential": "L'**indicatif** est le mode de la réalité : il présente une action comme certaine, qu'elle soit passée, présente ou future. Il compte **quatre temps simples** (présent, imparfait, passé simple, futur) et **quatre temps composés** (passé composé, plus-que-parfait, passé antérieur, futur antérieur). Chaque temps a une ou plusieurs **valeurs** : il ne situe pas seulement l'action dans le temps, il indique aussi si elle est ponctuelle ou durable, au premier plan ou à l'arrière-plan, antérieure ou non à une autre. Au brevet, **justifier un temps**, c'est le nommer, donner sa valeur et l'expliquer avec le texte.",
+    "parts": [
+      {
+        "title": "Reconnaître les temps de l'indicatif",
+        "blocks": [
+          {
+            "type": "text",
+            "text": "Un verbe conjugué porte un **mode** et un **temps**. L'indicatif présente les faits comme **réels**. Il comporte huit temps : quatre **temps simples** (le verbe tient en un seul mot) et quatre **temps composés** (auxiliaire *avoir* ou *être* + participe passé)."
+          },
+          {
+            "type": "table",
+            "caption": "Chaque temps simple a son temps composé (exemple : le verbe finir, 3e personne du singulier)",
+            "columns": [
+              "Temps simple",
+              "Temps composé correspondant",
+              "Auxiliaire du temps composé"
+            ],
+            "rows": [
+              [
+                "Présent : il finit",
+                "Passé composé : il a fini",
+                "avoir au présent"
+              ],
+              [
+                "Imparfait : il finissait",
+                "Plus-que-parfait : il avait fini",
+                "avoir à l'imparfait"
+              ],
+              [
+                "Passé simple : il finit",
+                "Passé antérieur : il eut fini",
+                "avoir au passé simple"
+              ],
+              [
+                "Futur simple : il finira",
+                "Futur antérieur : il aura fini",
+                "avoir au futur simple"
+              ]
+            ]
+          },
+          {
+            "type": "callout",
+            "kind": "methode",
+            "title": "Identifier un temps composé",
+            "text": "1. Je repère l'auxiliaire (*avoir* ou *être*) et le participe passé.\n2. Je cherche le temps de l'**auxiliaire**.\n3. J'en déduis le temps composé grâce au tableau.\n*Nous étions partis* → *étions* = être à l'imparfait → **plus-que-parfait**."
+          },
+          {
+            "type": "callout",
+            "kind": "attention",
+            "title": "Trois pièges classiques",
+            "text": "**Je suis tombée** n'est pas un présent : c'est l'auxiliaire *être* au présent + un participe passé, donc un **passé composé**.\n**Je chantai** (passé simple) ≠ **je chantais** (imparfait) : à la 1re personne du singulier, seul le *s* les distingue.\n**Je chanterai** (futur) ≠ **je chanterais** (conditionnel, un autre mode, étudié dans un autre cours)."
+          },
+          {
+            "type": "callout",
+            "kind": "plus",
+            "text": "Pour certains verbes, présent et passé simple ont la même forme au singulier : *il finit, il sourit, il surgit*. C'est le contexte qui tranche : dans un récit au passé, *« Soudain, un chat surgit »* est un passé simple."
+          }
+        ],
+        "checkpoint": {
+          "variants": [
+            {
+              "prompt": "« Nous avions fini nos devoirs. » À quel temps est le verbe ?",
+              "options": [
+                "Passé composé",
+                "Plus-que-parfait",
+                "Passé antérieur",
+                "Futur antérieur"
+              ],
+              "answer": 1,
+              "hint": "Cherche d'abord le temps de l'auxiliaire « avions ».",
+              "explanation": "« avions » est l'auxiliaire avoir à l'imparfait : imparfait de l'auxiliaire + participe passé = plus-que-parfait."
+            },
+            {
+              "prompt": "« Je suis tombée dans l'escalier. » À quel temps est le verbe ?",
+              "options": [
+                "Présent",
+                "Passé composé",
+                "Imparfait",
+                "Plus-que-parfait"
+              ],
+              "answer": 1,
+              "hint": "« suis » est-il le verbe principal ou un auxiliaire ? Relis les pièges classiques.",
+              "explanation": "« suis » est l'auxiliaire être au présent, suivi du participe passé « tombée » : c'est un passé composé, pas un présent."
+            },
+            {
+              "prompt": "Quelle forme est au futur simple de l'indicatif ?",
+              "options": [
+                "je chantai",
+                "je chantais",
+                "je chanterais",
+                "je chanterai"
+              ],
+              "answer": 3,
+              "hint": "Compare les terminaisons : -ai, -ais, -rais, -rai.",
+              "explanation": "« je chanterai » est au futur simple. « je chantai » est au passé simple, « je chantais » à l'imparfait et « je chanterais » au conditionnel présent."
+            }
+          ]
+        }
+      },
+      {
+        "title": "Les valeurs du présent",
+        "blocks": [
+          {
+            "type": "text",
+            "text": "Le présent ne sert pas seulement à dire ce qui se passe **maintenant**. Selon le contexte, il peut exprimer une habitude, une vérité qui vaut toujours, ou même des faits passés ou futurs."
+          },
+          {
+            "type": "table",
+            "caption": "Les principales valeurs du présent",
+            "columns": [
+              "Valeur",
+              "Ce qu'elle exprime",
+              "Exemple"
+            ],
+            "rows": [
+              [
+                "Présent d'énonciation",
+                "Ce qui se passe au moment où l'on parle",
+                "*Regarde, il neige !*"
+              ],
+              [
+                "Présent d'habitude (ou de répétition)",
+                "Une action qui se répète",
+                "*Le mardi, je mange à la cantine.*"
+              ],
+              [
+                "Présent de vérité générale",
+                "Une vérité valable en tout temps (loi, définition, proverbe)",
+                "*L'eau gèle à 0 °C.*"
+              ],
+              [
+                "Présent de narration (ou historique)",
+                "Des faits passés racontés au présent pour les rendre vivants",
+                "*En 1789, les Parisiens prennent la Bastille.*"
+              ],
+              [
+                "Présent à valeur de passé récent ou de futur proche",
+                "Une action qui vient d'avoir lieu ou qui va bientôt avoir lieu",
+                "*Je sors à l'instant du cours.* / *Je reviens dans cinq minutes.*"
+              ]
+            ]
+          },
+          {
+            "type": "callout",
+            "kind": "methode",
+            "title": "Trouver la valeur du présent",
+            "text": "Cherche les **indices** autour du verbe :\n• un repère de répétition (*chaque jour, le mardi, souvent*) → habitude ;\n• une date passée (*en 1789*) ou un récit au passé → narration ;\n• aucun repère de temps, une phrase qui vaut toujours → vérité générale ;\n• *dans cinq minutes, à l'instant* → futur proche ou passé récent ;\n• sinon, le moment où l'on parle → énonciation."
+          },
+          {
+            "type": "callout",
+            "kind": "attention",
+            "text": "Le présent de narration raconte des faits **passés**. Ne le confonds pas avec le présent d'énonciation : *« Napoléon naît en 1769 »* ne se passe pas au moment où l'on parle !"
+          }
+        ],
+        "checkpoint": {
+          "variants": [
+            {
+              "prompt": "« Le soleil se lève à l'est. » Quelle est la valeur du présent ?",
+              "options": [
+                "Présent d'énonciation",
+                "Présent de vérité générale",
+                "Présent de narration",
+                "Présent d'habitude"
+              ],
+              "answer": 1,
+              "hint": "Cette phrase est-elle vraie seulement aujourd'hui ?",
+              "explanation": "C'est un fait valable en tout temps : présent de vérité générale."
+            },
+            {
+              "prompt": "« Tous les mercredis, Inès va à la piscine. » Quelle est la valeur du présent ?",
+              "options": [
+                "Présent de narration",
+                "Présent de vérité générale",
+                "Présent d'habitude",
+                "Présent à valeur de futur proche"
+              ],
+              "answer": 2,
+              "hint": "Repère l'indice de temps en début de phrase.",
+              "explanation": "« Tous les mercredis » indique une action qui se répète : présent d'habitude."
+            },
+            {
+              "prompt": "« En 1969, un astronaute marche pour la première fois sur la Lune. » Quelle est la valeur du présent ?",
+              "options": [
+                "Présent de narration (historique)",
+                "Présent d'énonciation",
+                "Présent d'habitude",
+                "Présent de vérité générale"
+              ],
+              "answer": 0,
+              "hint": "La date indique-t-elle le moment où l'on parle ?",
+              "explanation": "Le fait est passé (1969) mais raconté au présent pour le rendre vivant : présent de narration, ou présent historique."
+            }
+          ]
+        }
+      },
+      {
+        "title": "Raconter au passé : passé simple, imparfait, plus-que-parfait",
+        "blocks": [
+          {
+            "type": "text",
+            "text": "Dans un récit au passé, deux temps se partagent le travail, comme au théâtre : le **passé simple** fait avancer l'action sur le devant de la scène (**premier plan**) ; l'**imparfait** peint le décor et ce qui dure (**arrière-plan**)."
+          },
+          {
+            "type": "table",
+            "caption": "Premier plan et arrière-plan",
+            "columns": [
+              "Passé simple (premier plan)",
+              "Imparfait (arrière-plan)"
+            ],
+            "rows": [
+              [
+                "Actions **ponctuelles**, délimitées, souvent brèves",
+                "Actions **en cours**, dont on ne voit ni le début ni la fin"
+              ],
+              [
+                "Actions **successives** qui font avancer l'histoire",
+                "**Description** des lieux et des personnages"
+              ],
+              [
+                "Événement soudain (*soudain, tout à coup, un jour*)",
+                "**Habitude** dans le passé (*chaque soir, autrefois*)"
+              ],
+              [
+                "*Il ouvrit la porte, posa son sac et s'assit.*",
+                "*La pluie tombait ; les rues étaient désertes.*"
+              ]
+            ]
+          },
+          {
+            "type": "quote",
+            "text": "La salle **était** pleine et les spectateurs **bavardaient**. Tout à coup, les lumières **s'éteignirent** et le rideau **se leva**.",
+            "source": "Exemple : imparfait pour le décor et l'action en cours, passé simple pour les événements."
+          },
+          {
+            "type": "callout",
+            "kind": "retiens",
+            "title": "Les temps de l'antériorité dans le récit",
+            "text": "**Plus-que-parfait** : action achevée **avant** un moment du passé. *Il relut la lettre que sa sœur lui avait envoyée.* (l'envoi a eu lieu avant la lecture)\n**Passé antérieur** : action achevée **juste avant** une action au passé simple, surtout après *quand, lorsque, dès que, après que*. *Dès qu'il eut fermé la porte, il s'effondra sur le canapé.*"
+          },
+          {
+            "type": "callout",
+            "kind": "attention",
+            "text": "Ne te fie pas seulement à la durée. *« Il vécut cent ans »* dure longtemps mais reste au passé simple : l'action est vue comme un tout **délimité**, terminé. Pose-toi plutôt la question : l'action fait-elle avancer l'histoire (premier plan) ou forme-t-elle le décor (arrière-plan) ?"
+          }
+        ],
+        "checkpoint": {
+          "variants": [
+            {
+              "prompt": "« La salle était pleine. Tout à coup, les lumières s'éteignirent. » Pourquoi « s'éteignirent » est-il au passé simple ?",
+              "options": [
+                "Il décrit le décor",
+                "Il exprime une habitude",
+                "Il exprime une action brève et soudaine, au premier plan",
+                "Il exprime une action antérieure"
+              ],
+              "answer": 2,
+              "hint": "Repère l'indice « Tout à coup » et relis le tableau premier plan / arrière-plan.",
+              "explanation": "L'extinction des lumières est un événement soudain qui fait avancer le récit : c'est le premier plan, donc le passé simple."
+            },
+            {
+              "prompt": "« Le vieux phare se dressait au bout de la jetée. » Quelle est la valeur de l'imparfait ?",
+              "options": [
+                "Action soudaine",
+                "Description (arrière-plan)",
+                "Action antérieure",
+                "Vérité générale"
+              ],
+              "answer": 1,
+              "hint": "La phrase fait-elle avancer l'histoire ?",
+              "explanation": "La phrase décrit un lieu : imparfait de description, à l'arrière-plan."
+            },
+            {
+              "prompt": "« Il relut la lettre que sa sœur lui avait envoyée. » Pourquoi « avait envoyée » est-il au plus-que-parfait ?",
+              "options": [
+                "L'envoi a eu lieu avant la lecture",
+                "L'envoi se répète chaque jour",
+                "L'envoi aura lieu plus tard",
+                "L'envoi se passe au moment où l'on parle"
+              ],
+              "answer": 0,
+              "hint": "Quelle action a eu lieu en premier ?",
+              "explanation": "Le plus-que-parfait marque une action achevée avant une autre action passée (« relut »)."
+            }
+          ]
+        }
+      },
+      {
+        "title": "Passé composé, futur et futur antérieur",
+        "blocks": [
+          {
+            "type": "text",
+            "text": "Quand quelqu'un parle ou écrit en lien avec **son présent** (dialogue, lettre, journal intime, article), il n'emploie pas le passé simple : il utilise le **passé composé** pour le passé et le **futur** pour l'avenir."
+          },
+          {
+            "type": "callout",
+            "kind": "retiens",
+            "title": "Le passé composé",
+            "text": "Il exprime une action **passée et achevée**, souvent en lien avec le présent : son résultat compte encore. *J'ai perdu mes clés : je ne peux pas rentrer.*\nIl remplace le passé simple à l'oral, dans les lettres et dans beaucoup de récits à la 1re personne. *Hier, je suis allé au cinéma et j'ai adoré le film.*"
+          },
+          {
+            "type": "table",
+            "caption": "Les valeurs du futur",
+            "columns": [
+              "Temps et valeur",
+              "Exemple"
+            ],
+            "rows": [
+              [
+                "Futur simple : action à venir, prévision",
+                "*Demain, il pleuvra sur la Bretagne.*"
+              ],
+              [
+                "Futur simple : ordre ou consigne (plus poli que l'impératif)",
+                "*Vous fermerez la porte en partant.*"
+              ],
+              [
+                "Futur antérieur : action future achevée **avant** une autre action future",
+                "*Quand tu auras lu ce livre, tu me le prêteras.*"
+              ],
+              [
+                "Futur proche (*aller* + infinitif) : action imminente",
+                "*Le train va partir.*"
+              ]
+            ]
+          },
+          {
+            "type": "callout",
+            "kind": "methode",
+            "title": "Repérer le futur antérieur",
+            "text": "Il est souvent après *quand, lorsque, dès que, une fois que*, et le verbe de la principale est au futur simple.\n*Dès que j'**aurai reçu** ma note, je t'**appellerai**.* → d'abord recevoir la note, ensuite appeler : les deux actions sont futures, la première est antérieure."
+          },
+          {
+            "type": "callout",
+            "kind": "attention",
+            "text": "Le **futur proche** n'est pas un temps de l'indicatif à part entière : c'est une tournure (*aller* au présent + infinitif). Dans *« il va partir »*, le verbe *aller* est conjugué au présent."
+          }
+        ],
+        "checkpoint": {
+          "variants": [
+            {
+              "prompt": "« J'ai perdu mes clés : je ne peux pas rentrer. » Quelle est la valeur du passé composé ?",
+              "options": [
+                "Action passée achevée dont le résultat compte dans le présent",
+                "Habitude dans le passé",
+                "Description d'un lieu",
+                "Action à venir"
+              ],
+              "answer": 0,
+              "hint": "La perte des clés a-t-elle encore une conséquence maintenant ?",
+              "explanation": "La perte est passée et achevée, mais son résultat (ne pas pouvoir rentrer) compte dans le présent : c'est la valeur typique du passé composé."
+            },
+            {
+              "prompt": "« Quand tu auras lu ce livre, tu me le prêteras. » À quel temps est « auras lu » et pourquoi ?",
+              "options": [
+                "Passé composé : action passée",
+                "Futur antérieur : action future achevée avant une autre action future",
+                "Futur simple : ordre",
+                "Plus-que-parfait : action antérieure à une action passée"
+              ],
+              "answer": 1,
+              "hint": "Regarde le temps de l'auxiliaire et le temps de « prêteras ».",
+              "explanation": "« auras » = avoir au futur + participe passé : futur antérieur. La lecture sera terminée avant le prêt, lui aussi futur."
+            },
+            {
+              "prompt": "« Vous fermerez la porte en partant. » Quelle est la valeur du futur ?",
+              "options": [
+                "Prévision",
+                "Vérité générale",
+                "Ordre ou consigne",
+                "Action passée"
+              ],
+              "answer": 2,
+              "hint": "Cette phrase prédit-elle l'avenir ou demande-t-elle quelque chose ?",
+              "explanation": "Le futur exprime ici une consigne, plus polie qu'un impératif (« Fermez la porte »)."
+            }
+          ]
+        }
+      },
+      {
+        "title": "Méthode brevet : justifier un temps et réécrire",
+        "blocks": [
+          {
+            "type": "text",
+            "text": "Au brevet, on te demande souvent : *« Identifiez le temps de ce verbe et justifiez son emploi »*, ou de **réécrire** un passage en changeant le temps. Voici comment faire."
+          },
+          {
+            "type": "callout",
+            "kind": "methode",
+            "title": "Justifier l'emploi d'un temps en trois étapes",
+            "text": "1. **Je nomme** le temps (et le mode) : *« s'asseyait » est à l'imparfait de l'indicatif.*\n2. **Je donne la valeur** : habitude, description, action en cours, premier plan, antériorité…\n3. **Je m'appuie sur le texte** : un indice (*chaque soir, soudain*) ou l'opposition avec un autre temps."
+          },
+          {
+            "type": "table",
+            "caption": "Exemple résolu : « Chaque soir, la vieille dame s'asseyait près de la fenêtre. Un soir, elle aperçut une lumière dans la maison d'en face. »",
+            "columns": [
+              "Verbe",
+              "Temps",
+              "Justification"
+            ],
+            "rows": [
+              [
+                "s'asseyait",
+                "Imparfait",
+                "Habitude dans le passé, signalée par « Chaque soir » : c'est l'arrière-plan."
+              ],
+              [
+                "aperçut",
+                "Passé simple",
+                "Événement ponctuel, unique (« Un soir »), qui rompt l'habitude et lance l'action : premier plan."
+              ]
+            ]
+          },
+          {
+            "type": "callout",
+            "kind": "methode",
+            "title": "Réussir une réécriture au passé",
+            "text": "1. Souligne tous les verbes conjugués.\n2. Pour chacun, demande-toi : décor, action en cours ou habitude → **imparfait** ; action qui fait avancer l'histoire → **passé simple** ; action déjà achevée avant → **plus-que-parfait**.\n3. Conjugue avec soin (*il prit, ils prirent, elle s'assit, ils vinrent*).\n4. Recopie tout le reste **sans rien changer**, puis relis."
+          },
+          {
+            "type": "callout",
+            "kind": "attention",
+            "title": "Récit et discours",
+            "text": "Un récit au passé (passé simple, imparfait, plus-que-parfait) peut contenir un **dialogue**. Dans les paroles rapportées directement, les personnages parlent au moment où ils s'expriment : on y trouve le **présent**, le **passé composé** et le **futur**. Ce n'est pas une erreur, c'est un changement de système."
+          }
+        ],
+        "checkpoint": {
+          "variants": [
+            {
+              "prompt": "Au brevet, que doit contenir une bonne réponse à « Justifiez l'emploi de l'imparfait » ?",
+              "options": [
+                "Seulement le nom du temps",
+                "Le nom du temps, sa valeur et un appui sur le texte",
+                "Un résumé du texte",
+                "La conjugaison complète du verbe"
+              ],
+              "answer": 1,
+              "hint": "Relis la méthode en trois étapes.",
+              "explanation": "Nommer le temps ne suffit pas : il faut donner sa valeur et l'expliquer avec un indice du texte."
+            },
+            {
+              "prompt": "Dans un récit au passé simple, un personnage dit : « Je partirai demain. » Pourquoi ce verbe est-il au futur ?",
+              "options": [
+                "C'est une erreur de l'auteur",
+                "Le personnage parle depuis son propre présent : c'est un dialogue",
+                "Le futur sert à décrire le décor",
+                "Le futur remplace le passé simple dans un récit"
+              ],
+              "answer": 1,
+              "hint": "Relis l'encadré « Récit et discours ».",
+              "explanation": "Dans un dialogue, le personnage s'exprime au moment où il parle : le futur situe son départ après ce moment."
+            },
+            {
+              "prompt": "Réécris au passé : « Il ouvre la porte. » Quelle forme convient pour une action qui fait avancer l'histoire ?",
+              "options": [
+                "Il ouvrait la porte.",
+                "Il ouvrit la porte.",
+                "Il ouvrira la porte.",
+                "Il avait ouvert la porte."
+              ],
+              "answer": 1,
+              "hint": "Action ponctuelle de premier plan : quel temps ?",
+              "explanation": "Ouvrir la porte est une action ponctuelle qui fait avancer le récit : passé simple, « il ouvrit »."
+            }
+          ]
+        }
+      }
+    ],
+    "memo": [
+      {
+        "label": "Les 8 temps",
+        "text": "Simples : présent, imparfait, passé simple, futur. Composés (auxiliaire + participe passé) : passé composé, plus-que-parfait, passé antérieur, futur antérieur."
+      },
+      {
+        "label": "Temps composé",
+        "text": "Temps de l'auxiliaire → temps composé. Présent → passé composé ; imparfait → plus-que-parfait ; passé simple → passé antérieur ; futur → futur antérieur."
+      },
+      {
+        "label": "Présent",
+        "text": "Énonciation (maintenant), habitude (chaque jour), vérité générale (toujours vrai), narration (faits passés), passé récent ou futur proche."
+      },
+      {
+        "label": "Récit au passé",
+        "text": "Passé simple = premier plan : actions ponctuelles, successives, soudaines. Imparfait = arrière-plan : décor, description, action en cours, habitude."
+      },
+      {
+        "label": "Antériorité",
+        "text": "Plus-que-parfait : avant un moment du passé. Passé antérieur : juste avant un passé simple (quand, dès que…). Futur antérieur : avant une autre action future."
+      },
+      {
+        "label": "Discours",
+        "text": "Passé composé : passé achevé lié au présent. Futur : action à venir ou ordre poli. Dans un dialogue, présent, passé composé et futur sont normaux."
+      },
+      {
+        "label": "Brevet",
+        "text": "Justifier = nommer le temps + donner la valeur + s'appuyer sur un indice du texte. Réécrire = changer seulement ce qui est demandé, puis relire."
+      }
+    ]
+  },
+  "exercises": {
+    "duration_min": 25,
+    "instructions": "Fais les exercices dans l'ordre : les étoiles indiquent la difficulté. Pour nommer un temps, écris seulement son nom (par exemple « imparfait »). Pour conjuguer, écris seulement la forme verbale, sans le sujet. Les corrigés s'affichent après ta réponse.",
+    "pass_threshold": 8,
+    "texts": [],
+    "items": [
+      {
+        "id": "ex1",
+        "type": "qcm",
+        "stars": 1,
+        "lesson_part": 1,
+        "skills": [
+          "fr-ind-identifier"
+        ],
+        "cognitive": "connaitre",
+        "prompt": "« Ils eurent fini. » À quel temps est le verbe ?",
+        "options": [
+          "Passé composé",
+          "Plus-que-parfait",
+          "Passé antérieur",
+          "Futur antérieur"
+        ],
+        "answer": 2,
+        "solution": "« eurent » est l'auxiliaire avoir au passé simple ; passé simple de l'auxiliaire + participe passé = **passé antérieur**."
+      },
+      {
+        "id": "ex2",
+        "type": "short",
+        "stars": 1,
+        "lesson_part": 1,
+        "skills": [
+          "fr-ind-identifier"
+        ],
+        "cognitive": "connaitre",
+        "prompt": "« Nous avions réservé une table. » À quel temps de l'indicatif est le verbe ? (écris seulement le nom du temps)",
+        "answer": [
+          "plus-que-parfait",
+          "le plus-que-parfait",
+          "plus-que-parfait de l'indicatif",
+          "le plus-que-parfait de l'indicatif",
+          "indicatif plus-que-parfait",
+          "PQP"
+        ],
+        "solution": "**Plus-que-parfait** : « avions » est l'auxiliaire avoir à l'imparfait, suivi du participe passé « réservé »."
+      },
+      {
+        "id": "ex3",
+        "type": "qcm",
+        "stars": 1,
+        "lesson_part": 2,
+        "skills": [
+          "fr-ind-present"
+        ],
+        "cognitive": "analyser",
+        "prompt": "« Attends-moi, je reviens dans cinq minutes ! » Quelle est la valeur du présent « reviens » ?",
+        "options": [
+          "Vérité générale",
+          "Habitude",
+          "Futur proche",
+          "Narration"
+        ],
+        "answer": 2,
+        "solution": "« dans cinq minutes » montre que le retour n'a pas encore eu lieu : le présent a ici une valeur de **futur proche**."
+      },
+      {
+        "id": "ex4",
+        "type": "short",
+        "stars": 1,
+        "lesson_part": 3,
+        "skills": [
+          "fr-ind-conjuguer"
+        ],
+        "cognitive": "appliquer",
+        "prompt": "Conjugue le verbe au passé simple (écris seulement le verbe) : « Les voyageurs (prendre) le dernier train. »",
+        "answer": [
+          "prirent",
+          "ils prirent",
+          "les voyageurs prirent"
+        ],
+        "solution": "**prirent** : passé simple de prendre, 3e personne du pluriel (je pris, tu pris, il prit, nous prîmes, vous prîtes, ils prirent)."
+      },
+      {
+        "id": "ex5",
+        "type": "qcm",
+        "stars": 2,
+        "lesson_part": 3,
+        "skills": [
+          "fr-ind-recit"
+        ],
+        "cognitive": "analyser",
+        "prompt": "« Chaque été, nous partions chez ma tante en Bretagne. » Quelle est la valeur de l'imparfait ?",
+        "options": [
+          "Action soudaine",
+          "Habitude dans le passé",
+          "Action antérieure à une autre",
+          "Description d'un lieu"
+        ],
+        "answer": 1,
+        "solution": "« Chaque été » indique une action qui se répète : imparfait d'**habitude**."
+      },
+      {
+        "id": "ex6",
+        "type": "qcm",
+        "stars": 2,
+        "lesson_part": 3,
+        "skills": [
+          "fr-ind-recit"
+        ],
+        "cognitive": "analyser",
+        "prompt": "« Le soleil se couchait quand soudain un cri déchira le silence. » Pourquoi « déchira » est-il au passé simple ?",
+        "options": [
+          "Il décrit le décor",
+          "Il exprime une habitude",
+          "Il exprime une action brève qui fait avancer le récit, au premier plan",
+          "Il exprime une action en cours"
+        ],
+        "answer": 2,
+        "solution": "Le cri est un événement soudain (« soudain ») et ponctuel qui interrompt l'action en cours (« se couchait », imparfait d'arrière-plan) : c'est le **premier plan**."
+      },
+      {
+        "id": "ex7",
+        "type": "short",
+        "stars": 2,
+        "lesson_part": 4,
+        "skills": [
+          "fr-ind-conjuguer",
+          "fr-ind-discours"
+        ],
+        "cognitive": "appliquer",
+        "prompt": "Conjugue le verbe au futur antérieur (écris seulement le verbe) : « Quand tu (finir) tes devoirs, tu pourras sortir. »",
+        "answer": [
+          "auras fini",
+          "tu auras fini"
+        ],
+        "solution": "**auras fini** : avoir au futur simple + participe passé. Les devoirs seront terminés avant la sortie, elle aussi future (« pourras »)."
+      },
+      {
+        "id": "ex8",
+        "type": "qcm",
+        "stars": 2,
+        "lesson_part": 3,
+        "skills": [
+          "fr-ind-recit"
+        ],
+        "cognitive": "analyser",
+        "prompt": "« Elle retrouva enfin le carnet qu'elle avait perdu l'hiver précédent. » Quelle est la valeur du plus-que-parfait ?",
+        "options": [
+          "Une action future",
+          "Une action achevée avant une autre action passée",
+          "Une habitude",
+          "Une vérité générale"
+        ],
+        "answer": 1,
+        "solution": "La perte du carnet a eu lieu avant qu'elle le retrouve (« retrouva », passé simple) : le plus-que-parfait marque l'**antériorité** dans le passé."
+      },
+      {
+        "id": "ex9",
+        "type": "open",
+        "stars": 3,
+        "lesson_part": 5,
+        "skills": [
+          "fr-ind-justifier",
+          "fr-ind-recit"
+        ],
+        "cognitive": "analyser",
+        "prompt": "« Chaque matin, le berger montait vers les alpages. Un matin, il découvrit une tente plantée près de la source, qui était là depuis la veille. »\nIdentifie le temps des verbes « montait », « découvrit » et « était », puis justifie l'emploi de chacun.",
+        "solution": "« montait » : imparfait de l'indicatif, valeur d'**habitude** (indice « Chaque matin ») ; c'est l'arrière-plan.\n« découvrit » : passé simple, action **ponctuelle**, unique (« Un matin »), qui rompt l'habitude et lance l'histoire : premier plan.\n« était » : imparfait de **description** : il présente une situation qui dure (la tente est là depuis la veille), à l'arrière-plan.",
+        "rubric": "Pour chaque verbe : 0,5 temps exact ; 0,5 valeur correcte appuyée sur un indice du texte (Chaque matin / Un matin / description d'une situation qui dure). Bonus si l'élève oppose premier plan et arrière-plan."
+      },
+      {
+        "id": "ex10",
+        "type": "open",
+        "stars": 3,
+        "lesson_part": 5,
+        "skills": [
+          "fr-ind-reecrire",
+          "fr-ind-conjuguer",
+          "fr-ind-recit"
+        ],
+        "cognitive": "rediger",
+        "prompt": "Réécris ce passage au passé, en employant le passé simple ou l'imparfait selon le cas :\n« Il est minuit. La maison dort. Théo se lève sans bruit, prend sa lampe et descend l'escalier. Une marche craque sous son pied. »",
+        "solution": "« Il **était** minuit. La maison **dormait**. Théo **se leva** sans bruit, **prit** sa lampe et **descendit** l'escalier. Une marche **craqua** sous son pied. »\nImparfait pour le décor (était, dormait) ; passé simple pour les actions successives et ponctuelles qui font avancer l'histoire (se leva, prit, descendit, craqua).",
+        "rubric": "0,5 par verbe correct (7 verbes) : bon temps ET bonne orthographe. Imparfait attendu pour « était » et « dormait » ; passé simple pour « se leva », « prit », « descendit », « craqua ». 0,5 pour une copie sans autre modification ni faute."
+      }
+    ]
+  },
+  "evaluation": {
+    "duration_min": 40,
+    "conditions": "Sans la leçon ni les corrigés, en 40 minutes. Barème : A = 5 points · B = 6 points · C = 9 points. Pour nommer un temps, écris seulement son nom ; pour conjuguer, écris seulement le verbe. Relis-toi, surtout les terminaisons du passé simple et de l'imparfait.",
+    "total_points": 20,
+    "variants": [
+      {
+        "texts": [
+          {
+            "id": "t1",
+            "label": "Le départ en mer",
+            "paragraphs": [
+              "Ce matin-là, la brume recouvrait encore le port. Les bateaux dormaient le long du quai et les mouettes tournaient lentement au-dessus des mâts. Lina avançait sans bruit, son sac serré contre elle. La veille, son grand-père lui avait promis de l'emmener en mer pour la première fois.",
+              "Soudain, une silhouette se dressa derrière les caisses. Lina sursauta, puis reconnut le vieil homme, qui riait de sa frayeur.",
+              "— Tu es en avance ! La mer n'attend personne, mais elle aime les gens ponctuels. Nous partirons dès que le soleil aura percé la brume.",
+              "Lina éclata de rire. Elle grimpa dans la barque et s'installa à l'avant."
+            ],
+            "source": "Texte original écrit pour ce cours."
+          }
+        ],
+        "sections": [
+          {
+            "label": "A · Je reconnais (5 points)",
+            "questions": [
+              {
+                "id": "q1",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 1,
+                "skills": [
+                  "fr-ind-identifier"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "« Nous aurons terminé. » À quel temps est le verbe ?",
+                "options": [
+                  "Futur simple",
+                  "Futur antérieur",
+                  "Passé composé",
+                  "Plus-que-parfait"
+                ],
+                "answer": 1,
+                "solution": "« aurons » est l'auxiliaire avoir au futur simple ; futur de l'auxiliaire + participe passé = futur antérieur.",
+                "rubric": "1 point pour la bonne réponse, 0 sinon."
+              },
+              {
+                "id": "q2",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 1,
+                "skills": [
+                  "fr-ind-identifier"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Quelle forme est au passé simple de l'indicatif ?",
+                "options": [
+                  "il chantait",
+                  "il chanta",
+                  "il chantera",
+                  "il a chanté"
+                ],
+                "answer": 1,
+                "solution": "« il chanta » est au passé simple. « il chantait » : imparfait ; « il chantera » : futur simple ; « il a chanté » : passé composé.",
+                "rubric": "1 point pour la bonne réponse, 0 sinon."
+              },
+              {
+                "id": "q3",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 2,
+                "skills": [
+                  "fr-ind-present"
+                ],
+                "cognitive": "analyser",
+                "prompt": "« La Terre tourne autour du Soleil. » Quelle est la valeur du présent ?",
+                "options": [
+                  "Présent d'énonciation",
+                  "Présent d'habitude",
+                  "Présent de vérité générale",
+                  "Présent de narration"
+                ],
+                "answer": 2,
+                "solution": "C'est une loi valable en tout temps : présent de vérité générale.",
+                "rubric": "1 point pour la bonne réponse, 0 sinon."
+              },
+              {
+                "id": "q4",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 3,
+                "skills": [
+                  "fr-ind-recit"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Quel temps exprime une action achevée avant une autre action passée ?",
+                "options": [
+                  "Le futur antérieur",
+                  "Le présent",
+                  "Le plus-que-parfait",
+                  "Le futur simple"
+                ],
+                "answer": 2,
+                "solution": "Le plus-que-parfait : « Il relut la lettre qu'elle avait écrite. » Le futur antérieur marque l'antériorité dans le futur, pas dans le passé.",
+                "rubric": "1 point pour la bonne réponse, 0 sinon."
+              },
+              {
+                "id": "q5",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 2,
+                "skills": [
+                  "fr-ind-present"
+                ],
+                "cognitive": "analyser",
+                "prompt": "« En 1769, Napoléon Bonaparte naît en Corse. » Quelle est la valeur du présent ?",
+                "options": [
+                  "Présent de narration (historique)",
+                  "Présent d'énonciation",
+                  "Présent de vérité générale",
+                  "Présent à valeur de futur proche"
+                ],
+                "answer": 0,
+                "solution": "Un fait passé (1769) est raconté au présent pour le rendre vivant : présent de narration, ou présent historique.",
+                "rubric": "1 point pour la bonne réponse, 0 sinon."
+              }
+            ]
+          },
+          {
+            "label": "B · Je conjugue et j'analyse (6 points)",
+            "questions": [
+              {
+                "id": "q6",
+                "type": "short",
+                "points": 1,
+                "lesson_part": 3,
+                "skills": [
+                  "fr-ind-conjuguer"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Conjugue le verbe au passé simple (écris seulement le verbe) : « Les randonneurs (arriver) au sommet vers midi. »",
+                "answer": [
+                  "arrivèrent",
+                  "ils arrivèrent",
+                  "les randonneurs arrivèrent"
+                ],
+                "solution": "**arrivèrent** : passé simple d'un verbe en -er, 3e personne du pluriel (terminaison -èrent).",
+                "rubric": "1 point pour « arrivèrent » (accent grave attendu en correction manuelle)."
+              },
+              {
+                "id": "q7",
+                "type": "short",
+                "points": 1,
+                "lesson_part": 3,
+                "skills": [
+                  "fr-ind-conjuguer",
+                  "fr-ind-recit"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Conjugue le verbe au plus-que-parfait (écris seulement le verbe) : « Elle (oublier) ses clés, alors elle attendit devant la porte. »",
+                "answer": [
+                  "avait oublié",
+                  "elle avait oublié"
+                ],
+                "solution": "**avait oublié** : avoir à l'imparfait + participe passé. L'oubli a eu lieu avant l'attente (« attendit »).",
+                "rubric": "1 point pour « avait oublié »."
+              },
+              {
+                "id": "q8",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 3,
+                "skills": [
+                  "fr-ind-recit"
+                ],
+                "cognitive": "analyser",
+                "prompt": "« Pendant que nous dînions, le téléphone sonna. » Quelle est la valeur de l'imparfait « dînions » ?",
+                "options": [
+                  "Habitude",
+                  "Action brève de premier plan",
+                  "Action en cours, à l'arrière-plan, interrompue par un événement",
+                  "Vérité générale"
+                ],
+                "answer": 2,
+                "solution": "Le dîner est en cours quand survient la sonnerie (passé simple, premier plan) : imparfait d'action en cours, à l'arrière-plan.",
+                "rubric": "1 point pour la bonne réponse, 0 sinon."
+              },
+              {
+                "id": "q9",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 4,
+                "skills": [
+                  "fr-ind-discours"
+                ],
+                "cognitive": "analyser",
+                "prompt": "« Tu rangeras ta chambre avant de sortir. » Quelle est la valeur du futur ?",
+                "options": [
+                  "Prévision",
+                  "Ordre ou consigne",
+                  "Action passée",
+                  "Vérité générale"
+                ],
+                "answer": 1,
+                "solution": "La phrase demande quelque chose : futur à valeur d'ordre (plus doux que « Range ta chambre »).",
+                "rubric": "1 point pour la bonne réponse, 0 sinon."
+              },
+              {
+                "id": "q10",
+                "type": "open",
+                "points": 2,
+                "lesson_part": 3,
+                "skills": [
+                  "fr-ind-identifier",
+                  "fr-ind-justifier"
+                ],
+                "cognitive": "analyser",
+                "prompt": "« Quand il eut refermé la porte, il s'effondra sur le canapé. » Identifie le temps de « eut refermé » et justifie son emploi.",
+                "solution": "« eut refermé » est au **passé antérieur** de l'indicatif (auxiliaire avoir au passé simple + participe passé). Il exprime une action achevée **juste avant** une autre action passée au passé simple (« s'effondra ») ; il est introduit par « Quand ».",
+                "rubric": "1 pt : passé antérieur (0 si « plus-que-parfait » ou « passé composé »). 1 pt : valeur d'antériorité immédiate par rapport à « s'effondra » (passé simple), appuyée sur le texte (0,5 si l'antériorité est dite sans lien avec l'autre verbe)."
+              }
+            ]
+          },
+          {
+            "label": "C · Exercice type brevet : étude d'un texte (9 points)",
+            "questions": [
+              {
+                "id": "q11",
+                "type": "short",
+                "points": 1,
+                "text_ref": "t1",
+                "lesson_part": 1,
+                "skills": [
+                  "fr-ind-identifier"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Relève le verbe conjugué au plus-que-parfait dans le premier paragraphe (écris seulement le verbe).",
+                "answer": [
+                  "avait promis",
+                  "lui avait promis",
+                  "son grand-père lui avait promis"
+                ],
+                "solution": "**avait promis** : avoir à l'imparfait + participe passé. La promesse a été faite la veille, avant la scène racontée.",
+                "rubric": "1 point pour « avait promis »."
+              },
+              {
+                "id": "q12",
+                "type": "qcm",
+                "points": 1,
+                "text_ref": "t1",
+                "lesson_part": 2,
+                "skills": [
+                  "fr-ind-present"
+                ],
+                "cognitive": "analyser",
+                "prompt": "« La mer n'attend personne » : quelle est la valeur de ce présent ?",
+                "options": [
+                  "Présent de narration",
+                  "Présent de vérité générale",
+                  "Présent d'habitude",
+                  "Présent à valeur de passé récent"
+                ],
+                "answer": 1,
+                "solution": "Le grand-père énonce une sorte de proverbe, vrai en tout temps : présent de vérité générale.",
+                "rubric": "1 point pour la bonne réponse, 0 sinon."
+              },
+              {
+                "id": "q13",
+                "type": "open",
+                "points": 3,
+                "text_ref": "t1",
+                "lesson_part": 5,
+                "skills": [
+                  "fr-ind-justifier",
+                  "fr-ind-recit"
+                ],
+                "cognitive": "rediger",
+                "prompt": "Comparez le premier paragraphe (« recouvrait », « dormaient », « tournaient », « avançait ») et le deuxième (« se dressa », « sursauta », « reconnut »). Identifiez les deux temps employés et justifiez ce changement en quelques phrases.",
+                "solution": "Le premier paragraphe est à l'**imparfait** : il décrit le décor (la brume, les bateaux, les mouettes) et une action en cours (Lina avance) ; c'est l'**arrière-plan**, on ne voit ni le début ni la fin de ces actions.\nLe deuxième paragraphe passe au **passé simple** : des actions brèves et successives surgissent (la silhouette se dresse, Lina sursaute puis reconnaît son grand-père). C'est le **premier plan** : l'histoire avance. L'adverbe « Soudain » marque cette rupture.",
+                "rubric": "1 pt : les deux temps correctement identifiés (imparfait, passé simple). 1 pt : valeur de l'imparfait (décor, description, action en cours, arrière-plan). 1 pt : valeur du passé simple (actions ponctuelles, successives, premier plan) avec un appui sur le texte (« Soudain » ou l'enchaînement des actions). Retirer 0,5 si la réponse n'est pas rédigée en phrases."
+              },
+              {
+                "id": "q14",
+                "type": "open",
+                "points": 4,
+                "lesson_part": 5,
+                "skills": [
+                  "fr-ind-reecrire",
+                  "fr-ind-conjuguer"
+                ],
+                "cognitive": "rediger",
+                "prompt": "Réécriture. Réécrivez ce passage au passé, en employant le passé simple ou l'imparfait selon le cas :\n« Lina ouvre la fenêtre : la mer brille sous le soleil et le vent est doux. Elle enfile ses bottes, descend l'escalier en courant et rejoint son grand-père, qui l'attend déjà sur le quai. »",
+                "solution": "« Lina **ouvrit** la fenêtre : la mer **brillait** sous le soleil et le vent **était** doux. Elle **enfila** ses bottes, **descendit** l'escalier en courant et **rejoignit** son grand-père, qui l'**attendait** déjà sur le quai. »\nPassé simple pour les actions successives de Lina ; imparfait pour la description (brillait, était) et pour l'action en cours du grand-père (attendait).",
+                "rubric": "0,5 par verbe correct, bon temps et bonne orthographe (7 verbes = 3,5 pts) : ouvrit, brillait, était, enfila, descendit, rejoignit, attendait. 0,5 pt : reste du passage recopié sans erreur ni modification."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "texts": [
+          {
+            "id": "t2",
+            "label": "L'arrivée au stage",
+            "paragraphs": [
+              "Le car s'arrêta enfin sur la place du village. Il pleuvait depuis le matin, et les toits luisaient sous les réverbères. Malik descendit le premier. Il ne connaissait personne ici : ses parents l'avaient inscrit à ce stage de théâtre sans vraiment lui demander son avis.",
+              "Une jeune femme s'approcha avec un parapluie immense.",
+              "— Bienvenue ! Je m'appelle Clara, je suis l'animatrice. Ici, chaque soir, on joue une scène devant tout le groupe. Demain, quand tu auras posé tes affaires, je te présenterai aux autres.",
+              "Malik hocha la tête et la suivit sous l'averse."
+            ],
+            "source": "Texte original écrit pour ce cours."
+          }
+        ],
+        "sections": [
+          {
+            "label": "A · Je reconnais (5 points)",
+            "questions": [
+              {
+                "id": "q1",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 1,
+                "skills": [
+                  "fr-ind-identifier"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "« Ils eurent compris. » À quel temps est le verbe ?",
+                "options": [
+                  "Plus-que-parfait",
+                  "Passé composé",
+                  "Futur antérieur",
+                  "Passé antérieur"
+                ],
+                "answer": 3,
+                "solution": "« eurent » est l'auxiliaire avoir au passé simple ; passé simple de l'auxiliaire + participe passé = passé antérieur.",
+                "rubric": "1 point pour la bonne réponse, 0 sinon."
+              },
+              {
+                "id": "q2",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 1,
+                "skills": [
+                  "fr-ind-identifier"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Quelle forme est à l'imparfait de l'indicatif ?",
+                "options": [
+                  "elle courut",
+                  "elle courra",
+                  "elle courait",
+                  "elle a couru"
+                ],
+                "answer": 2,
+                "solution": "« elle courait » est à l'imparfait. « elle courut » : passé simple ; « elle courra » : futur simple ; « elle a couru » : passé composé.",
+                "rubric": "1 point pour la bonne réponse, 0 sinon."
+              },
+              {
+                "id": "q3",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 2,
+                "skills": [
+                  "fr-ind-present"
+                ],
+                "cognitive": "analyser",
+                "prompt": "« Au niveau de la mer, l'eau bout à 100 °C. » Quelle est la valeur du présent ?",
+                "options": [
+                  "Présent de vérité générale",
+                  "Présent d'énonciation",
+                  "Présent de narration",
+                  "Présent d'habitude"
+                ],
+                "answer": 0,
+                "solution": "C'est une loi scientifique, valable en tout temps : présent de vérité générale.",
+                "rubric": "1 point pour la bonne réponse, 0 sinon."
+              },
+              {
+                "id": "q4",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 4,
+                "skills": [
+                  "fr-ind-discours"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Quel temps exprime une action future achevée avant une autre action future ?",
+                "options": [
+                  "Le plus-que-parfait",
+                  "Le futur antérieur",
+                  "L'imparfait",
+                  "Le passé simple"
+                ],
+                "answer": 1,
+                "solution": "Le futur antérieur : « Quand tu auras fini, tu sortiras. » Le plus-que-parfait marque l'antériorité dans le passé, pas dans le futur.",
+                "rubric": "1 point pour la bonne réponse, 0 sinon."
+              },
+              {
+                "id": "q5",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 2,
+                "skills": [
+                  "fr-ind-present"
+                ],
+                "cognitive": "analyser",
+                "prompt": "« Le 14 juillet 1789, les Parisiens prennent la Bastille. » Quelle est la valeur du présent ?",
+                "options": [
+                  "Présent d'habitude",
+                  "Présent de vérité générale",
+                  "Présent d'énonciation",
+                  "Présent de narration (historique)"
+                ],
+                "answer": 3,
+                "solution": "Un fait passé (1789) est raconté au présent pour le rendre vivant : présent de narration, ou présent historique.",
+                "rubric": "1 point pour la bonne réponse, 0 sinon."
+              }
+            ]
+          },
+          {
+            "label": "B · Je conjugue et j'analyse (6 points)",
+            "questions": [
+              {
+                "id": "q6",
+                "type": "short",
+                "points": 1,
+                "lesson_part": 3,
+                "skills": [
+                  "fr-ind-conjuguer"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Conjugue le verbe au passé simple (écris seulement le verbe) : « Les élèves (marcher) jusqu'au musée. »",
+                "answer": [
+                  "marchèrent",
+                  "ils marchèrent",
+                  "les élèves marchèrent"
+                ],
+                "solution": "**marchèrent** : passé simple d'un verbe en -er, 3e personne du pluriel (terminaison -èrent).",
+                "rubric": "1 point pour « marchèrent » (accent grave attendu en correction manuelle)."
+              },
+              {
+                "id": "q7",
+                "type": "short",
+                "points": 1,
+                "lesson_part": 3,
+                "skills": [
+                  "fr-ind-conjuguer",
+                  "fr-ind-recit"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Conjugue le verbe au plus-que-parfait (écris seulement le verbe) : « Nous (finir) nos devoirs avant le dîner, donc nous pûmes regarder le film. »",
+                "answer": [
+                  "avions fini",
+                  "nous avions fini"
+                ],
+                "solution": "**avions fini** : avoir à l'imparfait + participe passé. Les devoirs ont été terminés avant le film (« pûmes »).",
+                "rubric": "1 point pour « avions fini »."
+              },
+              {
+                "id": "q8",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 3,
+                "skills": [
+                  "fr-ind-recit"
+                ],
+                "cognitive": "analyser",
+                "prompt": "« Autrefois, mon grand-père allait au travail à vélo. » Quelle est la valeur de l'imparfait « allait » ?",
+                "options": [
+                  "Action brève de premier plan",
+                  "Habitude dans le passé",
+                  "Action antérieure à une autre",
+                  "Vérité générale"
+                ],
+                "answer": 1,
+                "solution": "« Autrefois » et le sens (tous les jours) montrent une action répétée : imparfait d'habitude.",
+                "rubric": "1 point pour la bonne réponse, 0 sinon."
+              },
+              {
+                "id": "q9",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 4,
+                "skills": [
+                  "fr-ind-discours"
+                ],
+                "cognitive": "analyser",
+                "prompt": "« Demain, il fera beau sur toute la région. » Quelle est la valeur du futur ?",
+                "options": [
+                  "Ordre ou consigne",
+                  "Habitude passée",
+                  "Vérité générale",
+                  "Action à venir (prévision)"
+                ],
+                "answer": 3,
+                "solution": "La phrase annonce un fait à venir, comme une météo : futur de prévision.",
+                "rubric": "1 point pour la bonne réponse, 0 sinon."
+              },
+              {
+                "id": "q10",
+                "type": "open",
+                "points": 2,
+                "lesson_part": 4,
+                "skills": [
+                  "fr-ind-identifier",
+                  "fr-ind-justifier"
+                ],
+                "cognitive": "analyser",
+                "prompt": "« Je te prêterai mon livre quand je l'aurai terminé. » Identifie le temps de « aurai terminé » et justifie son emploi.",
+                "solution": "« aurai terminé » est au **futur antérieur** de l'indicatif (auxiliaire avoir au futur + participe passé). Il exprime une action future achevée **avant** une autre action future (« prêterai », futur simple) ; il est introduit par « quand ».",
+                "rubric": "1 pt : futur antérieur (0 si « futur simple » ou « passé composé »). 1 pt : valeur d'antériorité par rapport à « prêterai » (futur simple), appuyée sur le texte (0,5 si l'antériorité est dite sans lien avec l'autre verbe)."
+              }
+            ]
+          },
+          {
+            "label": "C · Exercice type brevet : étude d'un texte (9 points)",
+            "questions": [
+              {
+                "id": "q11",
+                "type": "short",
+                "points": 1,
+                "text_ref": "t2",
+                "lesson_part": 1,
+                "skills": [
+                  "fr-ind-identifier"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Relève le verbe conjugué au plus-que-parfait dans le premier paragraphe (écris seulement le verbe).",
+                "answer": [
+                  "avaient inscrit",
+                  "l'avaient inscrit",
+                  "ses parents l'avaient inscrit"
+                ],
+                "solution": "**avaient inscrit** : avoir à l'imparfait + participe passé. L'inscription a eu lieu avant l'arrivée racontée.",
+                "rubric": "1 point pour « avaient inscrit »."
+              },
+              {
+                "id": "q12",
+                "type": "qcm",
+                "points": 1,
+                "text_ref": "t2",
+                "lesson_part": 2,
+                "skills": [
+                  "fr-ind-present"
+                ],
+                "cognitive": "analyser",
+                "prompt": "« Ici, chaque soir, on joue une scène devant tout le groupe » : quelle est la valeur de ce présent ?",
+                "options": [
+                  "Présent de narration",
+                  "Présent à valeur de futur proche",
+                  "Présent d'habitude",
+                  "Présent de vérité générale"
+                ],
+                "answer": 2,
+                "solution": "« chaque soir » indique une action qui se répète : présent d'habitude.",
+                "rubric": "1 point pour la bonne réponse, 0 sinon."
+              },
+              {
+                "id": "q13",
+                "type": "open",
+                "points": 3,
+                "text_ref": "t2",
+                "lesson_part": 5,
+                "skills": [
+                  "fr-ind-justifier",
+                  "fr-ind-recit"
+                ],
+                "cognitive": "rediger",
+                "prompt": "Dans le premier paragraphe, comparez « s'arrêta » et « descendit » d'une part, « pleuvait » et « luisaient » d'autre part. Identifiez les deux temps employés et justifiez leur emploi en quelques phrases.",
+                "solution": "« s'arrêta » et « descendit » sont au **passé simple** : ce sont des actions ponctuelles et successives qui font avancer l'histoire (le car arrive, Malik descend) ; c'est le **premier plan**.\n« pleuvait » et « luisaient » sont à l'**imparfait** : ils décrivent le décor et une situation qui dure (« depuis le matin ») ; c'est l'**arrière-plan**, sur lequel se détachent les actions.",
+                "rubric": "1 pt : les deux temps correctement identifiés (passé simple, imparfait). 1 pt : valeur du passé simple (actions ponctuelles, successives, premier plan). 1 pt : valeur de l'imparfait (décor, description, durée, arrière-plan) avec un appui sur le texte (« depuis le matin » ou la description de la place). Retirer 0,5 si la réponse n'est pas rédigée en phrases."
+              },
+              {
+                "id": "q14",
+                "type": "open",
+                "points": 4,
+                "lesson_part": 5,
+                "skills": [
+                  "fr-ind-reecrire",
+                  "fr-ind-conjuguer"
+                ],
+                "cognitive": "rediger",
+                "prompt": "Réécriture. Réécrivez ce passage au passé, en employant le passé simple ou l'imparfait selon le cas :\n« Malik ouvre la porte du dortoir. La pièce est sombre et sent le bois ciré. Il pose son sac, allume la lampe et découvre un garçon qui lit sur le lit du haut. »",
+                "solution": "« Malik **ouvrit** la porte du dortoir. La pièce **était** sombre et **sentait** le bois ciré. Il **posa** son sac, **alluma** la lampe et **découvrit** un garçon qui **lisait** sur le lit du haut. »\nPassé simple pour les actions successives de Malik ; imparfait pour la description (était, sentait) et pour l'action en cours du garçon (lisait).",
+                "rubric": "0,5 par verbe correct, bon temps et bonne orthographe (7 verbes = 3,5 pts) : ouvrit, était, sentait, posa, alluma, découvrit, lisait. 0,5 pt : reste du passage recopié sans erreur ni modification."
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

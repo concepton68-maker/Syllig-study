@@ -148,3 +148,15 @@ Première version numérotée (déjà en ligne avant numérotation : socle, gén
   - Minuteur annoncé seulement à 5 min, 1 min et 10 s.
 - Parent : l'enfant choisi est retenu d'une page à l'autre.
 - Démarrage du site : un fichier de cours illisible est ignoré au lieu de bloquer le démarrage.
+
+## 0.13 — 24/11/2026
+- 8 nouveaux cours de 3e, soit **30 cours** de 3e générale :
+  - Français : les temps de l'indicatif et leurs valeurs.
+  - Mathématiques : racines carrées.
+  - Histoire : l'Allemagne nazie et les démocraties fragilisées.
+  - EMC : séparation des pouvoirs et laïcité.
+  - Physique-Chimie : tests d'identification des ions.
+  - SVT : la division cellulaire (mitose).
+  - Anglais : present perfect (since, for, already, yet).
+  - Technologie : impact environnemental et cycle de vie d'un objet.
+- Chaque nouveau cours a été parcouru de bout en bout par le test automatique (20/20 avec le corrigé).

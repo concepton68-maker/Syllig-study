@@ -1,0 +1,1184 @@
+{
+  "format": "syllig-course/1",
+  "code": "TG094",
+  "level": "troisieme-generale",
+  "subject": "Enseignement moral et civique",
+  "chapter": "Les règles du jeu démocratique",
+  "title": "Séparation des pouvoirs et laïcité de l'État",
+  "skills": [
+    {
+      "id": "emc-separation",
+      "label": "Expliquer la séparation des pouvoirs et son rôle de protection des libertés"
+    },
+    {
+      "id": "emc-laicite",
+      "label": "Définir la laïcité et en connaître les règles, notamment à l'École"
+    },
+    {
+      "id": "emc-reperes",
+      "label": "Situer les grandes étapes de la séparation des pouvoirs et de la laïcité"
+    },
+    {
+      "id": "emc-acteurs",
+      "label": "Identifier les acteurs et institutions qui font respecter ces principes"
+    },
+    {
+      "id": "emc-analyse-doc",
+      "label": "Analyser un document (nature, auteur, date, idées)"
+    },
+    {
+      "id": "emc-argumenter",
+      "label": "Argumenter et rédiger un développement construit"
+    }
+  ],
+  "lesson": {
+    "duration_min": 35,
+    "objectives": [
+      "comprendre d'où viennent la séparation des pouvoirs et la laïcité ;",
+      "expliquer comment les pouvoirs sont séparés et se contrôlent dans la Ve République ;",
+      "définir la laïcité et connaître ses règles, en particulier à l'École ;",
+      "connaître les repères et les acteurs attendus au brevet."
+    ],
+    "essential": "Pour protéger la liberté des citoyens, la République française repose sur deux grands principes. La **séparation des pouvoirs**, pensée par **Montesquieu** (1748) et affirmée par la Déclaration des droits de l'homme et du citoyen (1789), confie à des institutions différentes le pouvoir de faire la loi (**législatif**), de l'appliquer (**exécutif**) et de juger (**judiciaire**). La **laïcité**, fixée par la loi de séparation des Églises et de l'État du **9 décembre 1905** et inscrite dans la Constitution (« République indivisible, laïque, démocratique et sociale »), garantit la **liberté de conscience** et la **neutralité de l'État** envers toutes les religions.",
+    "parts": [
+      {
+        "title": "Contexte : d'où viennent ces deux principes ?",
+        "blocks": [
+          {
+            "type": "text",
+            "text": "Sous l'**Ancien Régime** (avant 1789), le roi de France concentre tous les pouvoirs : il fait les lois, les fait appliquer et rend la justice. Le catholicisme est religion d'État : les autres croyants sont longtemps persécutés ou tenus à l'écart."
+          },
+          {
+            "type": "quote",
+            "text": "C'est une expérience éternelle que tout homme qui a du pouvoir est porté à en abuser ; il va jusqu'à ce qu'il trouve des limites. […] Pour qu'on ne puisse abuser du pouvoir, il faut que, par la disposition des choses, le pouvoir arrête le pouvoir.",
+            "source": "Montesquieu, De l'esprit des lois, 1748, livre XI, chapitre 4 (texte du domaine public)."
+          },
+          {
+            "type": "text",
+            "text": "Le philosophe des Lumières **Montesquieu** propose donc de **séparer** trois pouvoirs, pour qu'aucun ne devienne tout-puissant. La Révolution reprend cette idée : la **Déclaration des droits de l'homme et du citoyen** (DDHC) du 26 août 1789 affirme qu'une société sans séparation des pouvoirs « n'a point de Constitution » (article 16). Son article 10 protège aussi la liberté des opinions, « même religieuses »."
+          },
+          {
+            "type": "text",
+            "text": "La **laïcité** s'est construite plus lentement, au XIXe siècle, après de longs conflits entre républicains et une partie de l'Église catholique. Les **lois Ferry** (1881-1882) rendent l'école primaire publique gratuite, obligatoire et laïque. Puis la **loi du 9 décembre 1905** sépare les Églises et l'État."
+          },
+          {
+            "type": "callout",
+            "kind": "definition",
+            "title": "Concordat",
+            "text": "Accord signé en 1801 entre Napoléon Bonaparte et le pape. L'État reconnaît plusieurs cultes et paie les prêtres, qu'il contrôle. La loi de 1905 y met fin. Il s'applique encore aujourd'hui en Alsace et en Moselle, qui étaient allemandes en 1905."
+          },
+          {
+            "type": "callout",
+            "kind": "retiens",
+            "text": "Les deux principes servent le même but : protéger la **liberté** des citoyens. La séparation des pouvoirs empêche un pouvoir absolu (Montesquieu, 1748 ; DDHC, 1789). La laïcité garantit la liberté de conscience (lois Ferry, 1881-1882 ; loi de 1905)."
+          }
+        ],
+        "checkpoint": {
+          "variants": [
+            {
+              "prompt": "Quel philosophe des Lumières a pensé la séparation des pouvoirs ?",
+              "options": [
+                "Voltaire",
+                "Montesquieu",
+                "Rousseau",
+                "Jules Ferry"
+              ],
+              "answer": 1,
+              "hint": "Regarde l'auteur de la citation de la partie.",
+              "explanation": "Montesquieu, dans De l'esprit des lois (1748), explique qu'il faut que « le pouvoir arrête le pouvoir »."
+            },
+            {
+              "prompt": "Que dit l'article 16 de la DDHC de 1789 ?",
+              "options": [
+                "Qu'une société sans séparation des pouvoirs n'a pas de Constitution",
+                "Que le roi a tous les pouvoirs",
+                "Que l'école est obligatoire",
+                "Que le catholicisme est religion d'État"
+              ],
+              "answer": 0,
+              "hint": "Relis le troisième paragraphe.",
+              "explanation": "Pour la DDHC, la séparation des pouvoirs et la garantie des droits sont indispensables à une Constitution."
+            },
+            {
+              "prompt": "Quel accord la loi de 1905 abolit-elle (sauf en Alsace-Moselle) ?",
+              "options": [
+                "Le traité de Versailles",
+                "Le Concordat de 1801",
+                "La Charte de la laïcité",
+                "La Constitution de 1958"
+              ],
+              "answer": 1,
+              "hint": "Relis la définition dans l'encadré.",
+              "explanation": "Le Concordat, signé en 1801 par Napoléon Bonaparte et le pape, est abrogé par la loi de 1905, sauf en Alsace-Moselle, alors allemande."
+            }
+          ]
+        }
+      },
+      {
+        "title": "Fonctionnement : la séparation des pouvoirs dans la Ve République",
+        "blocks": [
+          {
+            "type": "text",
+            "text": "La Constitution du 4 octobre 1958 répartit le pouvoir entre plusieurs institutions. Chacune a son rôle, et chacune peut en **limiter** une autre : c'est l'équilibre voulu par Montesquieu."
+          },
+          {
+            "type": "table",
+            "caption": "Les trois pouvoirs en France aujourd'hui",
+            "columns": [
+              "Pouvoir",
+              "Rôle",
+              "Qui l'exerce ?"
+            ],
+            "rows": [
+              [
+                "**Législatif**",
+                "Voter la loi, contrôler le gouvernement, voter le budget.",
+                "Le **Parlement** : Assemblée nationale (577 députés, élus au suffrage universel direct) et Sénat (348 sénateurs, élus au suffrage indirect)."
+              ],
+              [
+                "**Exécutif**",
+                "Faire appliquer les lois, diriger la politique du pays.",
+                "Le **président de la République** (élu pour 5 ans) et le **gouvernement** (Premier ministre et ministres)."
+              ],
+              [
+                "**Judiciaire**",
+                "Juger les personnes qui ne respectent pas la loi, régler les conflits.",
+                "Les **juges** et les tribunaux, indépendants. La Constitution parle d'« **autorité judiciaire** »."
+              ]
+            ]
+          },
+          {
+            "type": "heading",
+            "text": "Des pouvoirs qui se contrôlent"
+          },
+          {
+            "type": "list",
+            "items": [
+              "L'Assemblée nationale peut renverser le gouvernement en votant une **motion de censure** (article 49).",
+              "Le président de la République peut **dissoudre** l'Assemblée nationale (article 12) : de nouvelles élections ont lieu.",
+              "Le **Conseil constitutionnel** (9 membres) vérifie que les lois respectent la Constitution. Depuis 2010, tout citoyen peut, lors d'un procès, contester une loi par une **question prioritaire de constitutionnalité** (QPC).",
+              "Les juges du siège sont **inamovibles** : on ne peut pas les déplacer ou les sanctionner pour une décision qui déplaît au gouvernement. Le président de la République est garant de leur indépendance (article 64)."
+            ]
+          },
+          {
+            "type": "callout",
+            "kind": "plus",
+            "title": "Les contre-pouvoirs",
+            "text": "Dans une démocratie, d'autres acteurs limitent aussi le pouvoir : une **presse libre**, des associations, des syndicats, le **Défenseur des droits** (une autorité indépendante qui aide les citoyens face aux administrations ou aux discriminations), et bien sûr les **citoyens** par leur vote."
+          },
+          {
+            "type": "callout",
+            "kind": "retiens",
+            "text": "Le législatif (Parlement) vote la loi, l'exécutif (président et gouvernement) l'applique, le judiciaire (juges indépendants) juge. Ces pouvoirs sont séparés et se contrôlent mutuellement : c'est la garantie contre la dictature."
+          }
+        ],
+        "checkpoint": {
+          "variants": [
+            {
+              "prompt": "Quelle institution vote la loi en France ?",
+              "options": [
+                "Le président de la République",
+                "Le Parlement",
+                "Le Conseil constitutionnel",
+                "Les tribunaux"
+              ],
+              "answer": 1,
+              "hint": "Regarde la ligne « Législatif » du tableau.",
+              "explanation": "Le Parlement (Assemblée nationale et Sénat) détient le pouvoir législatif : il vote la loi."
+            },
+            {
+              "prompt": "Qui exerce le pouvoir exécutif ?",
+              "options": [
+                "Les juges",
+                "Les députés et les sénateurs",
+                "Le président de la République et le gouvernement",
+                "Les journalistes"
+              ],
+              "answer": 2,
+              "hint": "Regarde la ligne « Exécutif » du tableau.",
+              "explanation": "Le président et le gouvernement font appliquer les lois et dirigent la politique du pays."
+            },
+            {
+              "prompt": "Comment l'Assemblée nationale peut-elle contrôler le gouvernement ?",
+              "options": [
+                "En dissolvant le Sénat",
+                "En votant une motion de censure",
+                "En nommant les juges",
+                "En élisant le président"
+              ],
+              "answer": 1,
+              "hint": "Relis la liste « Des pouvoirs qui se contrôlent ».",
+              "explanation": "Si une motion de censure est adoptée (article 49), le gouvernement doit démissionner."
+            }
+          ]
+        }
+      },
+      {
+        "title": "Notions : la laïcité, ce qu'elle est et ce qu'elle n'est pas",
+        "blocks": [
+          {
+            "type": "quote",
+            "text": "La République assure la liberté de conscience. Elle garantit le libre exercice des cultes sous les seules restrictions édictées ci-après dans l'intérêt de l'ordre public. […] La République ne reconnaît, ne salarie ni ne subventionne aucun culte.",
+            "source": "Loi du 9 décembre 1905 concernant la séparation des Églises et de l'État, articles 1 et 2 (texte officiel)."
+          },
+          {
+            "type": "callout",
+            "kind": "definition",
+            "title": "Laïcité",
+            "text": "Principe qui **sépare l'État et les religions**. L'État est **neutre** : il n'a pas de religion officielle et traite également tous les citoyens, qu'ils soient croyants, athées ou agnostiques. En échange, il garantit à chacun la **liberté de conscience** : liberté de croire, de ne pas croire ou de changer de religion."
+          },
+          {
+            "type": "table",
+            "caption": "Les trois piliers de la laïcité",
+            "columns": [
+              "Pilier",
+              "Ce que cela signifie",
+              "Exemple"
+            ],
+            "rows": [
+              [
+                "**Liberté de conscience**",
+                "Chacun choisit librement ses convictions et peut pratiquer son culte, dans le respect de l'ordre public.",
+                "On peut aller à l'église, à la mosquée, à la synagogue, au temple… ou n'aller nulle part."
+              ],
+              [
+                "**Neutralité de l'État**",
+                "L'État et ses agents (fonctionnaires, enseignants) ne favorisent aucune religion.",
+                "Un enseignant du public ne montre pas ses convictions religieuses pendant son travail."
+              ],
+              [
+                "**Égalité**",
+                "Tous les citoyens sont égaux devant la loi, quelle que soit leur religion.",
+                "Article 1er de la Constitution : la République « respecte toutes les croyances »."
+              ]
+            ]
+          },
+          {
+            "type": "heading",
+            "text": "La laïcité à l'École"
+          },
+          {
+            "type": "text",
+            "text": "L'École publique est laïque depuis les lois Ferry. Depuis la **loi du 15 mars 2004**, dans les écoles, collèges et lycées publics, les élèves ne peuvent pas porter de signes ou tenues par lesquels ils manifestent **ostensiblement** (de façon très visible) une appartenance religieuse. En 2013, une **Charte de la laïcité à l'École** est affichée dans tous les établissements publics."
+          },
+          {
+            "type": "callout",
+            "kind": "attention",
+            "title": "Ce que la laïcité n'est pas",
+            "text": "La laïcité n'est **pas** une hostilité envers les religions : elle les protège toutes. Les règles de neutralité concernent l'**État** et ses agents. Dans la rue, un citoyen peut exprimer sa religion, tant qu'il respecte la loi et l'ordre public."
+          },
+          {
+            "type": "callout",
+            "kind": "retiens",
+            "text": "Laïcité = séparation de l'État et des religions + neutralité de l'État + liberté de conscience pour tous. L'État ne reconnaît et ne paie aucun culte (loi de 1905). À l'école publique, pas de signes religieux ostensibles pour les élèves (loi de 2004)."
+          }
+        ],
+        "checkpoint": {
+          "variants": [
+            {
+              "prompt": "Que garantit la laïcité à chaque citoyen ?",
+              "options": [
+                "L'obligation de pratiquer une religion",
+                "La liberté de croire ou de ne pas croire",
+                "L'interdiction de toute religion",
+                "Une religion officielle pour tous"
+              ],
+              "answer": 1,
+              "hint": "Relis la définition de la laïcité.",
+              "explanation": "La laïcité garantit la liberté de conscience : chacun peut croire, ne pas croire ou changer de religion."
+            },
+            {
+              "prompt": "Qui doit respecter la neutralité religieuse dans l'exercice de son travail ?",
+              "options": [
+                "Un enseignant de l'école publique",
+                "Un passant dans la rue",
+                "Un client d'un magasin",
+                "Un parent à la maison"
+              ],
+              "answer": 0,
+              "hint": "Regarde la ligne « Neutralité de l'État » du tableau.",
+              "explanation": "La neutralité s'impose à l'État et à ses agents, comme les enseignants du public. Les simples citoyens restent libres d'exprimer leur religion dans le respect de la loi."
+            },
+            {
+              "prompt": "Que signifie la phrase de la loi de 1905 « La République ne reconnaît, ne salarie ni ne subventionne aucun culte » ?",
+              "options": [
+                "L'État interdit les religions",
+                "L'État paie les prêtres de toutes les religions",
+                "L'État n'a pas de religion officielle et ne finance aucun culte",
+                "L'État choisit une religion pour la France"
+              ],
+              "answer": 2,
+              "hint": "Relis la citation et la définition qui la suit.",
+              "explanation": "L'État n'a plus de religion officielle et ne paie plus les ministres des cultes : il est neutre."
+            }
+          ]
+        }
+      },
+      {
+        "title": "Repères chronologiques",
+        "blocks": [
+          {
+            "type": "table",
+            "caption": "Les grandes étapes",
+            "columns": [
+              "Date",
+              "Événement",
+              "Principe concerné"
+            ],
+            "rows": [
+              [
+                "1748",
+                "Montesquieu publie *De l'esprit des lois*.",
+                "Séparation des pouvoirs"
+              ],
+              [
+                "**26 août 1789**",
+                "Déclaration des droits de l'homme et du citoyen (articles 10 et 16).",
+                "Les deux"
+              ],
+              [
+                "1792",
+                "L'état civil (naissances, mariages, décès) est confié aux mairies et non plus aux curés.",
+                "Laïcité"
+              ],
+              [
+                "1801",
+                "Concordat entre Napoléon Bonaparte et le pape.",
+                "Laïcité (étape inverse : l'État contrôle et paie les cultes)"
+              ],
+              [
+                "**1881-1882**",
+                "Lois Ferry : école primaire publique gratuite, obligatoire et laïque.",
+                "Laïcité"
+              ],
+              [
+                "**9 décembre 1905**",
+                "Loi de séparation des Églises et de l'État.",
+                "Laïcité"
+              ],
+              [
+                "1946",
+                "La laïcité est inscrite dans la Constitution de la IVe République.",
+                "Laïcité"
+              ],
+              [
+                "**4 octobre 1958**",
+                "Constitution de la Ve République : séparation des pouvoirs ; « République indivisible, laïque, démocratique et sociale » (article 1er).",
+                "Les deux"
+              ],
+              [
+                "15 mars 2004",
+                "Loi sur les signes religieux ostensibles à l'école publique.",
+                "Laïcité"
+              ],
+              [
+                "2008 (appliquée en 2010)",
+                "Révision de la Constitution : création de la QPC.",
+                "Séparation des pouvoirs"
+              ],
+              [
+                "2013",
+                "Charte de la laïcité à l'École.",
+                "Laïcité"
+              ]
+            ]
+          },
+          {
+            "type": "callout",
+            "kind": "methode",
+            "title": "Retenir les repères",
+            "text": "Trois dates suffisent pour bien commencer : **1789** (DDHC), **1905** (séparation des Églises et de l'État) et **1958** (Constitution de la Ve République). Chaque 9 décembre, les écoles célèbrent la journée de la laïcité, en souvenir de la loi de 1905."
+          },
+          {
+            "type": "callout",
+            "kind": "retiens",
+            "text": "La laïcité est le fruit d'une longue histoire : 1789 (liberté des opinions religieuses), 1881-1882 (école laïque), 1905 (séparation des Églises et de l'État), 1946 et 1958 (inscription dans la Constitution)."
+          }
+        ],
+        "checkpoint": {
+          "variants": [
+            {
+              "prompt": "En quelle année est votée la loi de séparation des Églises et de l'État ?",
+              "options": [
+                "1789",
+                "1882",
+                "1905",
+                "1958"
+              ],
+              "answer": 2,
+              "hint": "C'est une date en gras du tableau, au mois de décembre.",
+              "explanation": "La loi de séparation des Églises et de l'État est votée le 9 décembre 1905."
+            },
+            {
+              "prompt": "Que décident les lois Ferry de 1881-1882 ?",
+              "options": [
+                "La séparation des pouvoirs",
+                "Une école primaire publique gratuite, obligatoire et laïque",
+                "Le Concordat",
+                "L'interdiction des signes religieux à l'école"
+              ],
+              "answer": 1,
+              "hint": "Cherche la ligne 1881-1882 dans le tableau.",
+              "explanation": "Les lois Ferry rendent l'école primaire publique gratuite (1881), obligatoire et laïque (1882)."
+            },
+            {
+              "prompt": "Dans quel texte trouve-t-on la phrase « La France est une République indivisible, laïque, démocratique et sociale » ?",
+              "options": [
+                "La loi de 1905",
+                "La Constitution de 1958 (article 1er)",
+                "De l'esprit des lois",
+                "Le Concordat"
+              ],
+              "answer": 1,
+              "hint": "Regarde la ligne du 4 octobre 1958.",
+              "explanation": "C'est l'article 1er de la Constitution de 1958 (déjà présent dans celle de 1946)."
+            }
+          ]
+        }
+      },
+      {
+        "title": "Acteurs : qui fait vivre ces principes ?",
+        "blocks": [
+          {
+            "type": "table",
+            "caption": "Les acteurs",
+            "columns": [
+              "Acteur",
+              "Rôle"
+            ],
+            "rows": [
+              [
+                "**Montesquieu** (1689-1755)",
+                "Philosophe des Lumières, auteur de *De l'esprit des lois* (1748) : théorise la séparation des pouvoirs."
+              ],
+              [
+                "**Jules Ferry** (1832-1893)",
+                "Ministre de l'Instruction publique : lois scolaires de 1881-1882 (école laïque)."
+              ],
+              [
+                "**Aristide Briand** (1862-1932)",
+                "Député, rapporteur de la loi de séparation des Églises et de l'État de 1905, qu'il défend comme une loi d'apaisement."
+              ],
+              [
+                "**Le Conseil constitutionnel**",
+                "Vérifie que les lois respectent la Constitution, y compris la laïcité et les libertés."
+              ],
+              [
+                "**Les juges**",
+                "Indépendants du gouvernement, ils sanctionnent les atteintes à la loi et protègent les libertés individuelles."
+              ],
+              [
+                "**Les enseignants et les personnels de l'École**",
+                "Respectent la neutralité et font vivre la Charte de la laïcité."
+              ],
+              [
+                "**Les citoyens**",
+                "Votent, s'informent, peuvent saisir la justice ou le Défenseur des droits, et respectent les convictions des autres."
+              ]
+            ]
+          },
+          {
+            "type": "callout",
+            "kind": "plus",
+            "title": "Une situation concrète",
+            "text": "Une loi votée par le Parlement semble porter atteinte à la liberté de culte. Avant sa promulgation, des parlementaires peuvent saisir le **Conseil constitutionnel**. Après, un citoyen engagé dans un procès peut poser une **QPC**. Si la loi est jugée contraire à la Constitution, elle est censurée. Voilà comment les pouvoirs se contrôlent pour protéger les libertés."
+          },
+          {
+            "type": "callout",
+            "kind": "essentiel",
+            "text": "La séparation des pouvoirs et la laïcité sont deux règles du jeu démocratique. L'une empêche qu'un seul pouvoir domine tous les autres ; l'autre permet à des citoyens de convictions différentes de vivre ensemble, libres et égaux. Toutes deux sont garanties par la Constitution et protégées par des institutions et par les citoyens eux-mêmes."
+          }
+        ],
+        "checkpoint": {
+          "variants": [
+            {
+              "prompt": "Quel homme politique est le rapporteur de la loi de 1905 ?",
+              "options": [
+                "Jules Ferry",
+                "Aristide Briand",
+                "Montesquieu",
+                "Charles de Gaulle"
+              ],
+              "answer": 1,
+              "hint": "Cherche dans le tableau des acteurs.",
+              "explanation": "Aristide Briand est le rapporteur de la loi de séparation des Églises et de l'État. Jules Ferry, lui, a fait les lois scolaires de 1881-1882."
+            },
+            {
+              "prompt": "Quelle institution peut censurer une loi contraire à la Constitution ?",
+              "options": [
+                "Le Sénat",
+                "Le Conseil constitutionnel",
+                "Le Premier ministre",
+                "Le Défenseur des droits"
+              ],
+              "answer": 1,
+              "hint": "Relis l'encadré « Une situation concrète ».",
+              "explanation": "Le Conseil constitutionnel vérifie la conformité des lois à la Constitution, avant leur promulgation ou par une QPC."
+            },
+            {
+              "prompt": "Quel acteur a fait voter les lois sur l'école laïque en 1881-1882 ?",
+              "options": [
+                "Aristide Briand",
+                "Napoléon Bonaparte",
+                "Jules Ferry",
+                "Montesquieu"
+              ],
+              "answer": 2,
+              "hint": "Regarde le tableau des acteurs.",
+              "explanation": "Jules Ferry, ministre de l'Instruction publique, fait voter les lois qui rendent l'école primaire publique gratuite, obligatoire et laïque."
+            }
+          ]
+        }
+      }
+    ],
+    "memo": [
+      {
+        "label": "Dates du brevet",
+        "text": "1789 : DDHC (art. 10 et 16) · 1881-1882 : lois Ferry (école gratuite, obligatoire, laïque) · 9 décembre 1905 : loi de séparation des Églises et de l'État · 4 octobre 1958 : Constitution de la Ve République · 2004 : loi sur les signes religieux à l'école."
+      },
+      {
+        "label": "Séparation des pouvoirs",
+        "text": "Idée de Montesquieu (1748) : « le pouvoir arrête le pouvoir ». Législatif (Parlement : vote la loi) · Exécutif (président + gouvernement : applique la loi) · Judiciaire (juges indépendants : jugent)."
+      },
+      {
+        "label": "Contrôles",
+        "text": "Motion de censure (art. 49) · dissolution de l'Assemblée (art. 12) · Conseil constitutionnel (9 membres) et QPC (depuis 2010) · indépendance des juges (art. 64) · contre-pouvoirs : presse, Défenseur des droits, citoyens."
+      },
+      {
+        "label": "Laïcité",
+        "text": "Séparation de l'État et des religions ; neutralité de l'État et de ses agents ; liberté de conscience (croire ou ne pas croire) ; égalité de tous. « La République ne reconnaît, ne salarie ni ne subventionne aucun culte » (1905)."
+      },
+      {
+        "label": "À l'École",
+        "text": "École publique laïque (lois Ferry) ; pas de signes religieux ostensibles pour les élèves (loi du 15 mars 2004) ; Charte de la laïcité à l'École (2013)."
+      },
+      {
+        "label": "Acteurs",
+        "text": "Montesquieu · Jules Ferry · Aristide Briand · Conseil constitutionnel · juges · enseignants · citoyens."
+      }
+    ]
+  },
+  "exercises": {
+    "duration_min": 30,
+    "instructions": "Commence par les exercices ★ (je repère), puis ★★ (j'analyse un document) et ★★★ (je rédige). Les deux documents sont de vrais textes : lis-les phrase par phrase. Les corrigés s'affichent après tes réponses : sers-t'en pour progresser !",
+    "pass_threshold": 8,
+    "texts": [
+      {
+        "id": "t1",
+        "label": "Document 1 · Pourquoi séparer les pouvoirs ?",
+        "source": "Montesquieu, De l'esprit des lois, 1748, livre XI, chapitre 6 (extrait, domaine public) ; Déclaration des droits de l'homme et du citoyen, 26 août 1789, article 16.",
+        "paragraphs": [
+          "Il n'y a point encore de liberté si la puissance de juger n'est pas séparée de la puissance législative et de l'exécutrice. […] Tout serait perdu si le même homme, ou le même corps des principaux, ou des nobles, ou du peuple, exerçaient ces trois pouvoirs : celui de faire des lois, celui d'exécuter les résolutions publiques, et celui de juger les crimes ou les différends des particuliers. (Montesquieu)",
+          "Toute société dans laquelle la garantie des droits n'est pas assurée, ni la séparation des pouvoirs déterminée, n'a point de Constitution. (DDHC, article 16)"
+        ]
+      },
+      {
+        "id": "t2",
+        "label": "Document 2 · La loi de séparation des Églises et de l'État",
+        "source": "Loi du 9 décembre 1905 concernant la séparation des Églises et de l'État, articles 1 et 2 (extraits, texte officiel).",
+        "paragraphs": [
+          "Article 1er : La République assure la liberté de conscience. Elle garantit le libre exercice des cultes sous les seules restrictions édictées ci-après dans l'intérêt de l'ordre public.",
+          "Article 2 : La République ne reconnaît, ne salarie ni ne subventionne aucun culte. En conséquence, à partir du 1er janvier qui suivra la promulgation de la présente loi, seront supprimées des budgets de l'État, des départements et des communes, toutes dépenses relatives à l'exercice des cultes. […]"
+        ]
+      }
+    ],
+    "items": [
+      {
+        "id": "ex1",
+        "type": "short",
+        "stars": 1,
+        "lesson_part": 4,
+        "skills": [
+          "emc-reperes",
+          "emc-laicite"
+        ],
+        "cognitive": "connaitre",
+        "prompt": "En quelle année la loi de séparation des Églises et de l'État est-elle votée ? (réponds par une année)",
+        "answer": [
+          "1905",
+          "en 1905",
+          "annee 1905",
+          "l'annee 1905",
+          "decembre 1905",
+          "en decembre 1905",
+          "9 decembre 1905",
+          "le 9 decembre 1905"
+        ],
+        "solution": "En 1905 (loi du 9 décembre 1905)."
+      },
+      {
+        "id": "ex2",
+        "type": "qcm",
+        "stars": 1,
+        "lesson_part": 2,
+        "skills": [
+          "emc-separation"
+        ],
+        "cognitive": "connaitre",
+        "prompt": "Quel pouvoir exercent les juges ?",
+        "options": [
+          "Le pouvoir législatif",
+          "Le pouvoir exécutif",
+          "Le pouvoir judiciaire",
+          "Le pouvoir constituant"
+        ],
+        "answer": 2,
+        "solution": "Les juges exercent le pouvoir judiciaire (la Constitution parle d'« autorité judiciaire ») : ils jugent et règlent les conflits, en toute indépendance."
+      },
+      {
+        "id": "ex3",
+        "type": "short",
+        "stars": 1,
+        "lesson_part": 1,
+        "skills": [
+          "emc-acteurs",
+          "emc-separation"
+        ],
+        "cognitive": "connaitre",
+        "prompt": "Quel philosophe des Lumières a écrit De l'esprit des lois (1748) ?",
+        "answer": [
+          "Montesquieu",
+          "Charles de Montesquieu",
+          "Charles-Louis de Montesquieu",
+          "Charles de Secondat",
+          "Charles-Louis de Secondat",
+          "Charles de Secondat de Montesquieu",
+          "le baron de Montesquieu",
+          "baron de Montesquieu"
+        ],
+        "solution": "Montesquieu (Charles-Louis de Secondat, baron de La Brède et de Montesquieu)."
+      },
+      {
+        "id": "ex4",
+        "type": "qcm",
+        "stars": 1,
+        "lesson_part": 3,
+        "skills": [
+          "emc-laicite"
+        ],
+        "cognitive": "connaitre",
+        "prompt": "Laquelle de ces situations respecte la laïcité ?",
+        "options": [
+          "Un enseignant de collège public affiche ses convictions religieuses en classe",
+          "L'État paie les prêtres catholiques",
+          "Une famille se rend librement le week-end dans un lieu de culte de son choix",
+          "Une mairie impose une religion à ses habitants"
+        ],
+        "answer": 2,
+        "solution": "La liberté de conscience permet à chacun de pratiquer sa religion. Les autres situations sont contraires à la neutralité de l'État ou à la loi de 1905."
+      },
+      {
+        "id": "ex5",
+        "type": "qcm",
+        "stars": 2,
+        "text_ref": "t1",
+        "lesson_part": 1,
+        "skills": [
+          "emc-analyse-doc",
+          "emc-separation"
+        ],
+        "cognitive": "analyser",
+        "prompt": "D'après Montesquieu (document 1), que se passerait-il si un seul homme exerçait les trois pouvoirs ?",
+        "options": [
+          "Le pays serait mieux gouverné",
+          "« Tout serait perdu » : il n'y aurait plus de liberté",
+          "Les lois seraient votées plus vite et c'est souhaitable",
+          "Les juges seraient plus indépendants"
+        ],
+        "answer": 1,
+        "solution": "Montesquieu écrit que « tout serait perdu » : celui qui fait les lois, les applique et juge pourrait abuser de son pouvoir sans limite. La liberté disparaîtrait."
+      },
+      {
+        "id": "ex6",
+        "type": "open",
+        "stars": 2,
+        "text_ref": "t1",
+        "lesson_part": 2,
+        "skills": [
+          "emc-analyse-doc",
+          "emc-separation"
+        ],
+        "cognitive": "analyser",
+        "prompt": "Nomme les trois pouvoirs décrits par Montesquieu dans le document 1, puis indique qui les exerce aujourd'hui en France.",
+        "solution": "« Faire des lois » = pouvoir législatif, exercé par le Parlement (Assemblée nationale et Sénat). « Exécuter les résolutions publiques » = pouvoir exécutif, exercé par le président de la République et le gouvernement. « Juger les crimes ou les différends » = pouvoir judiciaire, exercé par les juges.",
+        "rubric": "1 pt : les trois pouvoirs nommés. 1 pt : les trois institutions correctes (0,5 pt pour deux)."
+      },
+      {
+        "id": "ex7",
+        "type": "open",
+        "stars": 2,
+        "text_ref": "t2",
+        "lesson_part": 3,
+        "skills": [
+          "emc-analyse-doc",
+          "emc-laicite"
+        ],
+        "cognitive": "analyser",
+        "prompt": "Relève dans le document 2 une liberté garantie par la République et une obligation que l'État s'impose à lui-même.",
+        "solution": "Liberté garantie : la « liberté de conscience » et le « libre exercice des cultes » (article 1er). Obligation de l'État : ne reconnaître, ne salarier ni ne subventionner « aucun culte » ; les dépenses pour les cultes sont supprimées des budgets publics (article 2).",
+        "rubric": "1 pt : une liberté citée. 1 pt : une obligation de l'État citée."
+      },
+      {
+        "id": "ex8",
+        "type": "qcm",
+        "stars": 2,
+        "text_ref": "t2",
+        "lesson_part": 3,
+        "skills": [
+          "emc-analyse-doc",
+          "emc-laicite"
+        ],
+        "cognitive": "analyser",
+        "prompt": "Selon l'article 1er (document 2), dans quel cas la liberté de culte peut-elle être limitée ?",
+        "options": [
+          "Jamais, dans aucun cas",
+          "Quand le gouvernement le décide librement",
+          "Dans l'intérêt de l'ordre public, selon les règles prévues par la loi",
+          "Quand une religion est minoritaire"
+        ],
+        "answer": 2,
+        "solution": "Le libre exercice des cultes n'est limité que par « les seules restrictions édictées […] dans l'intérêt de l'ordre public » : la loi fixe ces limites, pas l'arbitraire du gouvernement."
+      },
+      {
+        "id": "ex9",
+        "type": "open",
+        "stars": 3,
+        "lesson_part": 3,
+        "skills": [
+          "emc-laicite",
+          "emc-argumenter"
+        ],
+        "cognitive": "rediger",
+        "prompt": "Rédige un paragraphe argumenté (8 à 10 lignes) : « En quoi la laïcité permet-elle de vivre ensemble ? » Appuie-toi sur un texte de loi et un exemple de la vie au collège.",
+        "solution": "La laïcité permet à des personnes de convictions différentes de vivre ensemble, libres et égales. D'abord, elle garantit la liberté de conscience : chacun peut croire, ne pas croire ou changer de religion (loi de 1905, article 1er). Ensuite, l'État est neutre : il ne reconnaît ni ne finance aucun culte (article 2), donc aucun citoyen n'est favorisé ou défavorisé à cause de sa religion. Au collège public, les enseignants sont neutres et les élèves ne portent pas de signes religieux ostensibles (loi de 2004) : chacun est d'abord un élève, et la classe est un espace protégé des pressions. Ainsi, la laïcité n'est pas contre les religions : elle les protège toutes et favorise le respect mutuel.",
+        "rubric": "1 pt : idée de liberté de conscience. 1 pt : idée de neutralité / égalité. 1 pt : texte de loi cité correctement (1905, 2004 ou Constitution). 1 pt : exemple au collège. 1 pt : paragraphe organisé (connecteurs, conclusion)."
+      },
+      {
+        "id": "ex10",
+        "type": "open",
+        "stars": 3,
+        "lesson_part": 2,
+        "skills": [
+          "emc-separation",
+          "emc-acteurs",
+          "emc-argumenter"
+        ],
+        "cognitive": "rediger",
+        "prompt": "Rédige un développement construit (une quinzaine de lignes) : « Pourquoi la séparation des pouvoirs protège-t-elle les libertés des citoyens ? »",
+        "solution": "Introduction : Montesquieu (1748) explique que « tout homme qui a du pouvoir est porté à en abuser » ; la DDHC (1789, article 16) fait de la séparation des pouvoirs une condition de toute Constitution. Partie 1 – Trois pouvoirs confiés à des institutions différentes : le Parlement vote la loi ; le président et le gouvernement l'appliquent ; les juges, indépendants, jugent. Personne ne concentre tous les pouvoirs. Partie 2 – Des pouvoirs qui se contrôlent : motion de censure (art. 49), dissolution (art. 12), Conseil constitutionnel et QPC, indépendance des juges (art. 64). Partie 3 – Des contre-pouvoirs et des citoyens vigilants : presse libre, Défenseur des droits, élections. Conclusion : sans séparation des pouvoirs, c'est la dictature (exemple de l'Allemagne nazie, où Hitler concentre tous les pouvoirs en 1933-1934) ; avec elle, les libertés sont protégées.",
+        "rubric": "1 pt : introduction (Montesquieu et/ou DDHC). 1,5 pt : les trois pouvoirs et leurs titulaires. 1,5 pt : au moins deux mécanismes de contrôle précis. 1 pt : conclusion et expression (exemple possible d'une dictature)."
+      }
+    ]
+  },
+  "evaluation": {
+    "duration_min": 30,
+    "conditions": "Comme au brevet : sans la leçon ni les corrigés, en 30 minutes. Barème : A = 6 points · B = 6 points · C = 8 points. Appuie-toi sur des textes et des dates précis.",
+    "total_points": 20,
+    "variants": [
+      {
+        "texts": [
+          {
+            "id": "d1",
+            "label": "Document · La Charte de la laïcité à l'École",
+            "source": "D'après la Charte de la laïcité à l'École, publiée par le ministère de l'Éducation nationale en septembre 2013 et affichée dans les établissements publics, articles 2, 3, 6 et 11 (extraits).",
+            "paragraphs": [
+              "Article 2 : La République laïque organise la séparation des religions et de l'État. L'État est neutre à l'égard des convictions religieuses ou spirituelles. Il n'y a pas de religion d'État.",
+              "Article 3 : La laïcité garantit la liberté de conscience à tous. Chacun est libre de croire ou de ne pas croire. Elle permet la libre expression de ses convictions, dans le respect de celles d'autrui et dans les limites de l'ordre public.",
+              "Article 6 : La laïcité de l'École offre aux élèves les conditions pour forger leur personnalité, exercer leur libre arbitre et faire l'apprentissage de la citoyenneté. Elle les protège de tout prosélytisme et de toute pression qui les empêcheraient de faire leurs propres choix.",
+              "Article 11 : Les personnels ont un devoir de stricte neutralité : ils ne doivent pas manifester leurs convictions politiques ou religieuses dans l'exercice de leurs fonctions."
+            ]
+          }
+        ],
+        "sections": [
+          {
+            "label": "A · Je connais mes repères (6 points)",
+            "questions": [
+              {
+                "id": "q1",
+                "type": "short",
+                "points": 1,
+                "lesson_part": 4,
+                "skills": [
+                  "emc-reperes",
+                  "emc-laicite"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "En quelle année la loi de séparation des Églises et de l'État est-elle votée ? (réponds par une année)",
+                "answer": [
+                  "1905",
+                  "en 1905",
+                  "annee 1905",
+                  "l'annee 1905",
+                  "decembre 1905",
+                  "en decembre 1905",
+                  "9 decembre 1905",
+                  "le 9 decembre 1905"
+                ],
+                "solution": "En 1905 (9 décembre 1905).",
+                "rubric": "1 pt : 1905."
+              },
+              {
+                "id": "q2",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 2,
+                "skills": [
+                  "emc-separation"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Quelle institution exerce le pouvoir législatif en France ?",
+                "options": [
+                  "Le gouvernement",
+                  "Le Parlement",
+                  "Le Conseil constitutionnel",
+                  "Les tribunaux"
+                ],
+                "answer": 1,
+                "solution": "Le Parlement (Assemblée nationale et Sénat) vote la loi.",
+                "rubric": "1 pt : bonne réponse."
+              },
+              {
+                "id": "q3",
+                "type": "short",
+                "points": 1,
+                "lesson_part": 1,
+                "skills": [
+                  "emc-acteurs",
+                  "emc-separation"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Quel philosophe a écrit : « il faut que, par la disposition des choses, le pouvoir arrête le pouvoir » ?",
+                "answer": [
+                  "Montesquieu",
+                  "Charles de Montesquieu",
+                  "Charles-Louis de Montesquieu",
+                  "Charles de Secondat",
+                  "Charles-Louis de Secondat",
+                  "le baron de Montesquieu",
+                  "baron de Montesquieu"
+                ],
+                "solution": "Montesquieu, De l'esprit des lois (1748).",
+                "rubric": "1 pt : Montesquieu."
+              },
+              {
+                "id": "q4",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 2,
+                "skills": [
+                  "emc-separation",
+                  "emc-acteurs"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Quel est le rôle du Conseil constitutionnel ?",
+                "options": [
+                  "Voter le budget",
+                  "Vérifier que les lois respectent la Constitution",
+                  "Élire le président de la République",
+                  "Diriger la police"
+                ],
+                "answer": 1,
+                "solution": "Il contrôle la conformité des lois à la Constitution, avant leur promulgation ou à la suite d'une QPC.",
+                "rubric": "1 pt : bonne réponse."
+              },
+              {
+                "id": "q5",
+                "type": "open",
+                "points": 2,
+                "lesson_part": 3,
+                "skills": [
+                  "emc-laicite"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Définis la laïcité et donne un exemple de son application.",
+                "solution": "La laïcité est le principe de séparation de l'État et des religions : l'État est neutre et garantit à tous la liberté de conscience (croire ou ne pas croire) et l'égalité. Exemples : l'État ne paie aucun culte (loi de 1905) ; les enseignants du public sont neutres ; pas de signes religieux ostensibles pour les élèves de l'école publique (loi de 2004).",
+                "rubric": "1 pt : définition (séparation / neutralité de l'État + liberté de conscience). 1 pt : un exemple précis."
+              }
+            ]
+          },
+          {
+            "label": "B · J'analyse un document (6 points)",
+            "questions": [
+              {
+                "id": "q6",
+                "type": "open",
+                "points": 1,
+                "text_ref": "d1",
+                "lesson_part": 3,
+                "skills": [
+                  "emc-analyse-doc"
+                ],
+                "cognitive": "analyser",
+                "prompt": "Présente le document : nature, auteur, date et destinataires.",
+                "solution": "C'est la Charte de la laïcité à l'École, un texte officiel publié par le ministère de l'Éducation nationale en 2013. Elle est affichée dans les écoles, collèges et lycées publics et s'adresse aux élèves, aux personnels et aux familles.",
+                "rubric": "0,5 pt : nature (charte, texte officiel) et auteur (ministère de l'Éducation nationale). 0,5 pt : date (2013) et destinataires (élèves, personnels, familles)."
+              },
+              {
+                "id": "q7",
+                "type": "open",
+                "points": 2,
+                "text_ref": "d1",
+                "lesson_part": 3,
+                "skills": [
+                  "emc-analyse-doc",
+                  "emc-laicite"
+                ],
+                "cognitive": "analyser",
+                "prompt": "Relève deux citations qui montrent que la laïcité est une liberté et non une interdiction des religions.",
+                "solution": "« La laïcité garantit la liberté de conscience à tous » ; « Chacun est libre de croire ou de ne pas croire » ; « Elle permet la libre expression de ses convictions » (article 3) ; elle permet aux élèves d'« exercer leur libre arbitre » et de « faire leurs propres choix » (article 6).",
+                "rubric": "1 pt par citation pertinente et bien recopiée (2 maximum)."
+              },
+              {
+                "id": "q8",
+                "type": "open",
+                "points": 2,
+                "text_ref": "d1",
+                "lesson_part": 3,
+                "skills": [
+                  "emc-analyse-doc",
+                  "emc-laicite"
+                ],
+                "cognitive": "analyser",
+                "prompt": "Qui doit respecter la neutralité selon les articles 2 et 11 ? Explique pourquoi, avec tes connaissances.",
+                "solution": "L'État (article 2) et les personnels de l'École (article 11) doivent être neutres. Comme ils représentent la République, ils doivent traiter tous les élèves de la même façon, quelle que soit leur religion, sans les influencer. C'est l'application de la loi de 1905 : la République ne reconnaît aucun culte.",
+                "rubric": "1 pt : l'État et les personnels. 1 pt : explication (égalité de traitement, ne pas influencer les élèves, loi de 1905)."
+              },
+              {
+                "id": "q9",
+                "type": "open",
+                "points": 1,
+                "text_ref": "d1",
+                "lesson_part": 3,
+                "skills": [
+                  "emc-analyse-doc",
+                  "emc-laicite"
+                ],
+                "cognitive": "analyser",
+                "prompt": "D'après l'article 6, de quoi la laïcité protège-t-elle les élèves ?",
+                "solution": "Elle les protège « de tout prosélytisme » (tentatives de convertir quelqu'un à une religion ou à une idée) et « de toute pression » qui les empêcherait de faire leurs propres choix.",
+                "rubric": "0,5 pt : prosélytisme. 0,5 pt : pressions / liberté de faire ses propres choix."
+              }
+            ]
+          },
+          {
+            "label": "C · Je rédige un développement construit (8 points)",
+            "questions": [
+              {
+                "id": "q10",
+                "type": "open",
+                "points": 8,
+                "lesson_part": 2,
+                "skills": [
+                  "emc-separation",
+                  "emc-acteurs",
+                  "emc-reperes",
+                  "emc-argumenter"
+                ],
+                "cognitive": "rediger",
+                "prompt": "Développement construit (une vingtaine de lignes) : « Montrez que la séparation des pouvoirs protège les libertés des citoyens en France. » Appuie-toi sur des textes et des exemples précis.",
+                "solution": "Introduction : Montesquieu (De l'esprit des lois, 1748) affirme que « le pouvoir arrête le pouvoir » ; la DDHC (1789, article 16) et la Constitution de 1958 reprennent ce principe. Partie 1 – Trois pouvoirs séparés : législatif (Parlement : 577 députés et 348 sénateurs, vote la loi), exécutif (président élu pour 5 ans et gouvernement, appliquent la loi), judiciaire (juges indépendants, inamovibles). Partie 2 – Des pouvoirs qui se limitent : motion de censure (art. 49), dissolution (art. 12), Conseil constitutionnel qui censure les lois contraires à la Constitution, QPC depuis 2010, président garant de l'indépendance de la justice (art. 64). Partie 3 – Des contre-pouvoirs : presse libre, Défenseur des droits, associations, citoyens électeurs. Conclusion : aucun pouvoir ne peut décider seul ; les droits et libertés sont ainsi protégés, contrairement aux dictatures où un chef concentre tous les pouvoirs.",
+                "rubric": "1 pt : introduction (Montesquieu et/ou DDHC, sujet posé). 2 pts : les trois pouvoirs et leurs titulaires, sans erreur. 2,5 pts : au moins trois mécanismes de contrôle précis (motion de censure, dissolution, Conseil constitutionnel, QPC, indépendance des juges). 1,5 pt : contre-pouvoirs et lien avec les libertés. 1 pt : conclusion et expression (phrases construites, connecteurs, vocabulaire civique). Pénalité : -0,5 pt par confusion importante (ex. dire que le président vote la loi)."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "texts": [
+          {
+            "id": "d1",
+            "label": "Document · Les pouvoirs dans la Constitution de 1958",
+            "source": "Constitution du 4 octobre 1958, articles 20, 24, 64 et 66 (extraits, texte officiel en vigueur).",
+            "paragraphs": [
+              "Article 20 : Le Gouvernement détermine et conduit la politique de la nation. […] Il est responsable devant le Parlement […].",
+              "Article 24 : Le Parlement vote la loi. Il contrôle l'action du Gouvernement. Il évalue les politiques publiques. […]",
+              "Article 64 : Le Président de la République est garant de l'indépendance de l'autorité judiciaire. […] Les magistrats du siège sont inamovibles.",
+              "Article 66 : Nul ne peut être arbitrairement détenu. L'autorité judiciaire, gardienne de la liberté individuelle, assure le respect de ce principe dans les conditions prévues par la loi."
+            ]
+          }
+        ],
+        "sections": [
+          {
+            "label": "A · Je connais mes repères (6 points)",
+            "questions": [
+              {
+                "id": "q1",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 4,
+                "skills": [
+                  "emc-reperes",
+                  "emc-laicite"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Quand l'école primaire publique devient-elle gratuite, obligatoire et laïque ?",
+                "options": [
+                  "En 1789",
+                  "En 1801",
+                  "En 1881-1882",
+                  "En 2004"
+                ],
+                "answer": 2,
+                "solution": "Avec les lois Ferry de 1881-1882.",
+                "rubric": "1 pt : bonne réponse (1881-1882)."
+              },
+              {
+                "id": "q2",
+                "type": "short",
+                "points": 1,
+                "lesson_part": 5,
+                "skills": [
+                  "emc-acteurs",
+                  "emc-laicite"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Quel député est le rapporteur de la loi de séparation des Églises et de l'État de 1905 ?",
+                "answer": [
+                  "Aristide Briand",
+                  "Briand",
+                  "A. Briand"
+                ],
+                "solution": "Aristide Briand.",
+                "rubric": "1 pt : Briand."
+              },
+              {
+                "id": "q3",
+                "type": "numeric",
+                "points": 1,
+                "lesson_part": 2,
+                "skills": [
+                  "emc-separation",
+                  "emc-acteurs"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Combien de membres nommés compte le Conseil constitutionnel ? (réponds par un nombre)",
+                "answer": 9,
+                "tolerance": 0,
+                "solution": "9 membres, nommés pour 9 ans (3 par le président de la République, 3 par le président de l'Assemblée nationale, 3 par le président du Sénat).",
+                "rubric": "1 pt : 9."
+              },
+              {
+                "id": "q4",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 3,
+                "skills": [
+                  "emc-laicite"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Que dit la loi du 15 mars 2004 ?",
+                "options": [
+                  "Elle interdit toutes les religions en France",
+                  "Elle interdit aux élèves des écoles, collèges et lycées publics les signes religieux ostensibles",
+                  "Elle rétablit le Concordat",
+                  "Elle crée le Conseil constitutionnel"
+                ],
+                "answer": 1,
+                "solution": "Elle interdit, à l'école publique, le port par les élèves de signes ou tenues manifestant ostensiblement une appartenance religieuse.",
+                "rubric": "1 pt : bonne réponse."
+              },
+              {
+                "id": "q5",
+                "type": "open",
+                "points": 2,
+                "lesson_part": 2,
+                "skills": [
+                  "emc-separation"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Définis la « séparation des pouvoirs » et cite les trois pouvoirs.",
+                "solution": "C'est le principe selon lequel les différentes fonctions de l'État sont confiées à des institutions distinctes, qui se limitent mutuellement, pour éviter les abus de pouvoir. Les trois pouvoirs : législatif (faire la loi), exécutif (appliquer la loi), judiciaire (juger).",
+                "rubric": "1 pt : définition (pouvoirs confiés à des institutions différentes pour éviter les abus). 1 pt : les trois pouvoirs nommés (0,5 pt pour deux)."
+              }
+            ]
+          },
+          {
+            "label": "B · J'analyse un document (6 points)",
+            "questions": [
+              {
+                "id": "q6",
+                "type": "open",
+                "points": 1,
+                "text_ref": "d1",
+                "lesson_part": 2,
+                "skills": [
+                  "emc-analyse-doc"
+                ],
+                "cognitive": "analyser",
+                "prompt": "Présente le document : nature, date et source.",
+                "solution": "Ce sont des extraits (articles 20, 24, 64 et 66) de la Constitution de la Ve République, adoptée par référendum et promulguée le 4 octobre 1958. C'est le texte juridique le plus important de la République.",
+                "rubric": "0,5 pt : nature (articles de la Constitution). 0,5 pt : date (4 octobre 1958) / Ve République."
+              },
+              {
+                "id": "q7",
+                "type": "open",
+                "points": 2,
+                "text_ref": "d1",
+                "lesson_part": 2,
+                "skills": [
+                  "emc-analyse-doc",
+                  "emc-separation"
+                ],
+                "cognitive": "analyser",
+                "prompt": "Relève le rôle du Gouvernement et celui du Parlement. À quel pouvoir chacun correspond-il ?",
+                "solution": "Le Gouvernement « détermine et conduit la politique de la nation » (article 20) : c'est le pouvoir exécutif. Le Parlement « vote la loi », « contrôle l'action du Gouvernement » et « évalue les politiques publiques » (article 24) : c'est le pouvoir législatif.",
+                "rubric": "1 pt : rôle du Gouvernement cité + pouvoir exécutif. 1 pt : rôle du Parlement cité + pouvoir législatif."
+              },
+              {
+                "id": "q8",
+                "type": "open",
+                "points": 2,
+                "text_ref": "d1",
+                "lesson_part": 2,
+                "skills": [
+                  "emc-analyse-doc",
+                  "emc-separation"
+                ],
+                "cognitive": "analyser",
+                "prompt": "Montre, à l'aide des articles 64 et 66 et de tes connaissances, que l'autorité judiciaire est indépendante et qu'elle protège les libertés.",
+                "solution": "Le président est « garant de l'indépendance de l'autorité judiciaire » et les juges du siège sont « inamovibles » : on ne peut pas les déplacer pour une décision qui déplaît (article 64). L'autorité judiciaire est « gardienne de la liberté individuelle » : « nul ne peut être arbitrairement détenu » (article 66), donc personne ne peut être emprisonné sans décision prévue par la loi. Le Conseil supérieur de la magistrature participe aussi à cette indépendance.",
+                "rubric": "1 pt : indépendance justifiée par une citation de l'article 64 (inamovibilité, garant). 1 pt : protection des libertés expliquée avec l'article 66."
+              },
+              {
+                "id": "q9",
+                "type": "open",
+                "points": 1,
+                "text_ref": "d1",
+                "lesson_part": 2,
+                "skills": [
+                  "emc-analyse-doc",
+                  "emc-separation"
+                ],
+                "cognitive": "analyser",
+                "prompt": "D'après l'article 20, devant qui le Gouvernement est-il responsable ? Comment cette responsabilité s'exerce-t-elle concrètement ?",
+                "solution": "Il est responsable devant le Parlement. Concrètement, l'Assemblée nationale peut le renverser en votant une motion de censure (article 49).",
+                "rubric": "0,5 pt : devant le Parlement. 0,5 pt : motion de censure."
+              }
+            ]
+          },
+          {
+            "label": "C · Je rédige un développement construit (8 points)",
+            "questions": [
+              {
+                "id": "q10",
+                "type": "open",
+                "points": 8,
+                "lesson_part": 3,
+                "skills": [
+                  "emc-laicite",
+                  "emc-reperes",
+                  "emc-acteurs",
+                  "emc-argumenter"
+                ],
+                "cognitive": "rediger",
+                "prompt": "Développement construit (une vingtaine de lignes) : « Expliquez comment la laïcité s'est construite en France et ce qu'elle garantit aujourd'hui. » Appuie-toi sur des dates et des textes précis.",
+                "solution": "Introduction : la France est une « République indivisible, laïque, démocratique et sociale » (Constitution de 1958, article 1er). Partie 1 – Une longue construction : sous l'Ancien Régime, religion d'État ; DDHC 1789 (article 10 : liberté des opinions « même religieuses ») ; état civil confié aux mairies (1792) ; Concordat (1801) ; lois Ferry (1881-1882 : école gratuite, obligatoire et laïque) ; loi du 9 décembre 1905 (Aristide Briand) : séparation des Églises et de l'État ; inscription dans les Constitutions de 1946 et 1958. Partie 2 – Ce qu'elle garantit : liberté de conscience (croire ou ne pas croire, libre exercice des cultes) ; neutralité de l'État et de ses agents (« ne reconnaît, ne salarie ni ne subventionne aucun culte ») ; égalité de tous. Partie 3 – À l'École : enseignants neutres, loi de 2004 sur les signes religieux ostensibles, Charte de la laïcité (2013) qui protège les élèves du prosélytisme. Conclusion : la laïcité n'est pas contre les religions ; elle permet de vivre ensemble, libres et égaux.",
+                "rubric": "1 pt : introduction (définition ou article 1er, sujet posé). 2,5 pts : la construction historique (au moins trois étapes datées dont 1905). 2 pts : ce que garantit la laïcité (liberté de conscience, neutralité, égalité). 1,5 pt : application à l'École (au moins deux éléments : neutralité des enseignants, loi de 2004, Charte de 2013). 1 pt : conclusion et expression (phrases construites, connecteurs, vocabulaire civique). Pénalité : -0,5 pt par contresens (ex. dire que la laïcité interdit les religions)."
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

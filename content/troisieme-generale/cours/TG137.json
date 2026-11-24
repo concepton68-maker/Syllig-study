@@ -1,0 +1,1282 @@
+{
+  "format": "syllig-course/1",
+  "code": "TG137",
+  "level": "troisieme-generale",
+  "subject": "Technologie",
+  "chapter": "Objets techniques et société",
+  "title": "Impact environnemental et cycle de vie d'un objet",
+  "skills": [
+    {
+      "id": "te-cycle-vie",
+      "label": "Décrire les étapes du cycle de vie d'un objet technique"
+    },
+    {
+      "id": "te-impact",
+      "label": "Identifier les impacts environnementaux d'un objet (ressources, énergie, émissions, déchets)"
+    },
+    {
+      "id": "te-fin-vie",
+      "label": "Distinguer les solutions de fin de vie (réemploi, réparation, recyclage, valorisation, enfouissement)"
+    },
+    {
+      "id": "te-calcul",
+      "label": "Calculer et comparer des impacts (total, pourcentage, impact par année d'utilisation)"
+    },
+    {
+      "id": "te-ecoconception",
+      "label": "Proposer des pistes d'éco-conception et allonger la durée de vie d'un objet"
+    },
+    {
+      "id": "te-document",
+      "label": "Exploiter un document technique (fiche, tableau de données)"
+    },
+    {
+      "id": "te-rediger",
+      "label": "Argumenter un choix par écrit en s'appuyant sur des données"
+    }
+  ],
+  "lesson": {
+    "duration_min": 35,
+    "objectives": [
+      "décrire les cinq étapes du cycle de vie d'un objet ;",
+      "identifier les impacts environnementaux d'un objet et savoir ce qu'est une ACV ;",
+      "classer les solutions de fin de vie, du réemploi à l'enfouissement ;",
+      "exploiter une fiche d'impact avec des calculs simples (total, pourcentage, impact par an) ;",
+      "proposer des pistes d'éco-conception et des actions pour allonger la durée de vie des objets."
+    ],
+    "essential": "Tout objet a un **cycle de vie** : extraction des matières premières, fabrication, transport, utilisation et fin de vie. À chaque étape, il consomme des ressources et de l'énergie, émet des gaz à effet de serre et produit des déchets. L'**analyse du cycle de vie (ACV)** mesure ces impacts et montre l'étape qui pèse le plus : pour un smartphone, c'est la fabrication ; pour une voiture à essence, l'utilisation. Pour réduire les impacts, on **éco-conçoit** les objets, on les garde plus longtemps, on les répare, on les réemploie, puis on les recycle : c'est l'**économie circulaire**.",
+    "parts": [
+      {
+        "title": "Le cycle de vie d'un objet",
+        "blocks": [
+          {
+            "type": "text",
+            "text": "Un objet technique ne naît pas dans le magasin et ne disparaît pas dans la poubelle ! Avant d'arriver entre tes mains, il a déjà toute une histoire, et il en aura encore une après. C'est son **cycle de vie**."
+          },
+          {
+            "type": "callout",
+            "kind": "definition",
+            "title": "Cycle de vie",
+            "text": "Le **cycle de vie** d'un objet regroupe toutes les étapes de son existence, « du berceau à la tombe » : de l'extraction des matières premières jusqu'à son traitement, une fois devenu un déchet."
+          },
+          {
+            "type": "table",
+            "caption": "Les cinq étapes du cycle de vie (exemple : un smartphone)",
+            "columns": [
+              "Étape",
+              "Ce qui se passe",
+              "Exemple"
+            ],
+            "rows": [
+              [
+                "1. Extraction des matières premières",
+                "On prélève dans la nature les ressources nécessaires.",
+                "Mines de cuivre, d'or, de lithium, de cobalt ; pétrole pour les plastiques."
+              ],
+              [
+                "2. Fabrication",
+                "On transforme les matériaux et on assemble les composants.",
+                "Fabrication de l'écran, des puces électroniques, de la batterie, assemblage en usine."
+              ],
+              [
+                "3. Transport et distribution",
+                "On achemine l'objet jusqu'au magasin et jusqu'à l'utilisateur.",
+                "Bateau, avion, camion, livraison à domicile ; emballage."
+              ],
+              [
+                "4. Utilisation",
+                "L'objet rend service à l'utilisateur.",
+                "Recharges électriques, mises à jour, entretien, réparations."
+              ],
+              [
+                "5. Fin de vie",
+                "L'objet n'est plus utilisé : il faut décider de ce qu'il devient.",
+                "Revente, don, reconditionnement, recyclage… ou, à éviter, la poubelle."
+              ]
+            ]
+          },
+          {
+            "type": "callout",
+            "kind": "retiens",
+            "text": "Les 5 étapes, dans l'ordre : **extraction** des matières premières → **fabrication** → **transport** (distribution) → **utilisation** → **fin de vie**.\nLe transport n'intervient pas qu'une fois : les matériaux et les composants voyagent aussi entre les étapes."
+          },
+          {
+            "type": "callout",
+            "kind": "plus",
+            "title": "Le voyage d'un objet",
+            "text": "Les composants d'un smartphone peuvent venir de plusieurs continents : métaux extraits en Afrique ou en Amérique du Sud, puces fabriquées en Asie, assemblage dans un autre pays… L'objet a parfois parcouru des dizaines de milliers de kilomètres avant d'arriver dans ta poche."
+          }
+        ],
+        "checkpoint": {
+          "variants": [
+            {
+              "prompt": "Quelle est la première étape du cycle de vie d'un objet ?",
+              "options": [
+                "La fabrication",
+                "L'extraction des matières premières",
+                "L'utilisation",
+                "La distribution"
+              ],
+              "answer": 1,
+              "hint": "Avant de fabriquer, de quoi a-t-on besoin ?",
+              "explanation": "Tout commence par l'extraction des matières premières dans la nature (minerais, pétrole, bois…)."
+            },
+            {
+              "prompt": "Recharger son ordinateur portable correspond à quelle étape du cycle de vie ?",
+              "options": [
+                "La fabrication",
+                "Le transport",
+                "L'utilisation",
+                "La fin de vie"
+              ],
+              "answer": 2,
+              "hint": "Pendant quelle étape l'objet rend-il service à l'utilisateur ?",
+              "explanation": "La recharge a lieu pendant que l'on se sert de l'objet : c'est l'étape d'utilisation."
+            },
+            {
+              "prompt": "Quel est l'ordre correct des étapes ?",
+              "options": [
+                "Fabrication → extraction → utilisation → transport → fin de vie",
+                "Extraction → fabrication → transport → utilisation → fin de vie",
+                "Extraction → transport → fin de vie → fabrication → utilisation",
+                "Utilisation → fabrication → extraction → transport → fin de vie"
+              ],
+              "answer": 1,
+              "hint": "Suis le parcours de l'objet, de la mine jusqu'à la déchetterie.",
+              "explanation": "On extrait, on fabrique, on transporte jusqu'à l'utilisateur, on utilise, puis vient la fin de vie."
+            }
+          ]
+        }
+      },
+      {
+        "title": "Les impacts environnementaux et l'analyse du cycle de vie",
+        "blocks": [
+          {
+            "type": "text",
+            "text": "À chaque étape, l'objet a des **impacts sur l'environnement** : il consomme des ressources et il rejette des substances ou des déchets."
+          },
+          {
+            "type": "table",
+            "caption": "Les principaux impacts environnementaux",
+            "columns": [
+              "Type d'impact",
+              "Exemples"
+            ],
+            "rows": [
+              [
+                "Épuisement des ressources",
+                "Métaux rares, eau, pétrole, bois prélevés dans la nature (certaines ressources ne se renouvellent pas)."
+              ],
+              [
+                "Consommation d'énergie",
+                "Énergie pour extraire, fabriquer, transporter, utiliser, recycler."
+              ],
+              [
+                "Émissions de gaz à effet de serre",
+                "Dioxyde de carbone (CO2) rejeté par les usines, les transports, la production d'électricité : il contribue au réchauffement climatique."
+              ],
+              [
+                "Pollutions de l'air, de l'eau et des sols",
+                "Produits chimiques des mines et des usines, fumées."
+              ],
+              [
+                "Déchets",
+                "Emballages, objets jetés, déchets électroniques difficiles à traiter."
+              ]
+            ]
+          },
+          {
+            "type": "callout",
+            "kind": "definition",
+            "title": "Empreinte carbone",
+            "text": "L'**empreinte carbone** d'un objet est la quantité totale de gaz à effet de serre émise pendant tout son cycle de vie. Elle s'exprime en **kilogrammes d'équivalent CO2**, noté **kg CO2e**."
+          },
+          {
+            "type": "callout",
+            "kind": "definition",
+            "title": "Analyse du cycle de vie (ACV)",
+            "text": "L'**ACV** est une méthode qui évalue les impacts environnementaux d'un objet **à chaque étape** de son cycle de vie. Elle permet de repérer l'étape qui pèse le plus, puis de chercher comment la réduire."
+          },
+          {
+            "type": "table",
+            "caption": "L'étape la plus impactante dépend de l'objet",
+            "columns": [
+              "Objet",
+              "Étape qui pèse le plus",
+              "Pourquoi"
+            ],
+            "rows": [
+              [
+                "Smartphone, tablette, ordinateur",
+                "Extraction et fabrication (environ 80 % de l'empreinte carbone d'un smartphone)",
+                "Beaucoup de métaux, des composants électroniques très complexes à produire, et une faible consommation électrique ensuite."
+              ],
+              [
+                "Voiture à essence",
+                "Utilisation",
+                "Elle brûle du carburant pendant des années."
+              ],
+              [
+                "Réfrigérateur, chauffe-eau",
+                "Utilisation",
+                "Ils fonctionnent jour et nuit pendant de nombreuses années."
+              ]
+            ]
+          },
+          {
+            "type": "callout",
+            "kind": "attention",
+            "title": "Ne pas se fier aux apparences",
+            "text": "Un objet qui consomme peu d'électricité n'a pas forcément un faible impact : pour un smartphone, l'essentiel de l'impact est déjà « dépensé » avant même qu'on l'allume pour la première fois !"
+          }
+        ],
+        "checkpoint": {
+          "variants": [
+            {
+              "prompt": "Pour un smartphone, quelle étape a le plus d'impact sur l'empreinte carbone ?",
+              "options": [
+                "L'utilisation (les recharges)",
+                "L'extraction des matières premières et la fabrication",
+                "Le transport jusqu'au magasin",
+                "La fin de vie"
+              ],
+              "answer": 1,
+              "hint": "Regarde le tableau « L'étape la plus impactante dépend de l'objet ».",
+              "explanation": "Pour un smartphone, l'extraction et la fabrication représentent environ 80 % de l'empreinte carbone."
+            },
+            {
+              "prompt": "Que signifie le sigle ACV ?",
+              "options": [
+                "Analyse du cycle de vie",
+                "Assemblage des composants de valeur",
+                "Achat, consommation, vente",
+                "Analyse de la consommation de la voiture"
+              ],
+              "answer": 0,
+              "hint": "C'est une méthode qui étudie toutes les étapes de la vie d'un objet.",
+              "explanation": "ACV = analyse du cycle de vie : on évalue les impacts à chaque étape."
+            },
+            {
+              "prompt": "En quelle unité exprime-t-on l'empreinte carbone d'un objet ?",
+              "options": [
+                "En watts (W)",
+                "En kg CO2e (kilogrammes d'équivalent CO2)",
+                "En kilomètres (km)",
+                "En euros (€)"
+              ],
+              "answer": 1,
+              "hint": "Relis la définition de l'empreinte carbone.",
+              "explanation": "L'empreinte carbone mesure des gaz à effet de serre, exprimés en kg d'équivalent CO2 (kg CO2e)."
+            }
+          ]
+        }
+      },
+      {
+        "title": "Matériaux et fin de vie",
+        "blocks": [
+          {
+            "type": "text",
+            "text": "Le choix des **matériaux** influence l'impact de l'objet à toutes les étapes : extraction, fabrication, masse à transporter… et surtout fin de vie."
+          },
+          {
+            "type": "table",
+            "caption": "Quelques notions sur les matériaux",
+            "columns": [
+              "Notion",
+              "Signification",
+              "Exemples"
+            ],
+            "rows": [
+              [
+                "Matériau recyclable",
+                "Il peut être récupéré et transformé en nouvelle matière première.",
+                "Aluminium, acier, verre, papier-carton, certains plastiques."
+              ],
+              [
+                "Matériau biosourcé",
+                "Il est fabriqué à partir de matière vivante, qui se renouvelle.",
+                "Bois, bambou, lin, chanvre, liège."
+              ],
+              [
+                "Énergie grise",
+                "Énergie dépensée pour extraire, fabriquer, transporter et recycler un matériau ou un objet (tout sauf l'utilisation).",
+                "L'aluminium neuf a une énergie grise élevée ; l'aluminium recyclé en demande environ 95 % de moins."
+              ]
+            ]
+          },
+          {
+            "type": "text",
+            "text": "Quand on ne veut plus d'un objet, plusieurs solutions existent. Elles ne se valent pas : on les classe de la **meilleure** à la **moins bonne** pour l'environnement."
+          },
+          {
+            "type": "table",
+            "caption": "Les solutions de fin de vie, de la meilleure à la moins bonne",
+            "columns": [
+              "Solution",
+              "Ce que c'est",
+              "Exemple"
+            ],
+            "rows": [
+              [
+                "1. Réemploi (réutilisation)",
+                "L'objet sert à nouveau, tel quel, chez quelqu'un d'autre.",
+                "Donner ou revendre un vélo, un téléphone reconditionné."
+              ],
+              [
+                "2. Réparation",
+                "On remplace la pièce défectueuse pour prolonger la vie de l'objet.",
+                "Changer la batterie ou l'écran d'un smartphone."
+              ],
+              [
+                "3. Recyclage",
+                "L'objet est démonté et ses matériaux deviennent de nouvelles matières premières.",
+                "Canettes en aluminium refondues ; métaux récupérés dans les cartes électroniques."
+              ],
+              [
+                "4. Valorisation énergétique",
+                "On brûle les déchets pour produire de la chaleur ou de l'électricité.",
+                "Incinérateur relié à un réseau de chauffage."
+              ],
+              [
+                "5. Enfouissement",
+                "Les déchets sont stockés dans le sol (décharge). C'est la solution à éviter.",
+                "Déchets non triés."
+              ]
+            ]
+          },
+          {
+            "type": "callout",
+            "kind": "attention",
+            "title": "Réemploi ou recyclage ?",
+            "text": "**Réemploi** : l'objet reste un objet et resert (aucune transformation).\n**Recyclage** : l'objet est détruit pour récupérer sa **matière**.\nLe réemploi est meilleur, car il évite de fabriquer un objet neuf."
+          },
+          {
+            "type": "callout",
+            "kind": "retiens",
+            "title": "Les appareils électriques",
+            "text": "Les déchets d'équipements électriques et électroniques (**DEEE**) ne vont jamais à la poubelle ordinaire : on les rapporte en **déchetterie** ou en **magasin**. Ils contiennent des métaux précieux à récupérer et des substances polluantes à traiter."
+          }
+        ],
+        "checkpoint": {
+          "variants": [
+            {
+              "prompt": "Donner son ancien vélo à un voisin qui va l'utiliser tel quel, c'est…",
+              "options": [
+                "du réemploi",
+                "du recyclage",
+                "de la valorisation énergétique",
+                "de l'enfouissement"
+              ],
+              "answer": 0,
+              "hint": "Le vélo est-il transformé ou sert-il à nouveau tel quel ?",
+              "explanation": "Le vélo resert sans transformation : c'est du réemploi, la meilleure solution."
+            },
+            {
+              "prompt": "Que faire d'un vieux sèche-cheveux qui ne fonctionne plus et qu'on ne peut pas réparer ?",
+              "options": [
+                "Le jeter dans la poubelle ordinaire",
+                "Le déposer en déchetterie ou en magasin (filière DEEE)",
+                "Le mettre dans le conteneur à verre",
+                "L'enterrer dans le jardin"
+              ],
+              "answer": 1,
+              "hint": "C'est un appareil électrique : relis l'encadré sur les DEEE.",
+              "explanation": "Les appareils électriques (DEEE) se rapportent en déchetterie ou en magasin pour être dépollués et recyclés."
+            },
+            {
+              "prompt": "Quel matériau est biosourcé ?",
+              "options": [
+                "L'aluminium",
+                "Le verre",
+                "Le bois",
+                "L'acier"
+              ],
+              "answer": 2,
+              "hint": "Un matériau biosourcé vient de la matière vivante.",
+              "explanation": "Le bois vient des arbres : c'est un matériau biosourcé, qui se renouvelle si la forêt est bien gérée."
+            }
+          ]
+        }
+      },
+      {
+        "title": "Calculer et comparer des impacts",
+        "blocks": [
+          {
+            "type": "text",
+            "text": "Une fiche d'ACV donne souvent l'impact de chaque étape. Avec trois calculs simples, tu peux l'exploiter comme un ingénieur !"
+          },
+          {
+            "type": "callout",
+            "kind": "methode",
+            "title": "Trois calculs à connaître",
+            "text": "**1. Impact total** = somme des impacts de toutes les étapes.\n**2. Part d'une étape (en %)** = impact de l'étape ÷ impact total × 100.\n**3. Impact par année d'utilisation** = impact total ÷ nombre d'années d'utilisation."
+          },
+          {
+            "type": "table",
+            "caption": "Exemple : une bouilloire électrique utilisée 5 ans (valeurs simplifiées)",
+            "columns": [
+              "Étape",
+              "Impact (kg CO2e)"
+            ],
+            "rows": [
+              [
+                "Extraction et fabrication",
+                "12"
+              ],
+              [
+                "Transport",
+                "2"
+              ],
+              [
+                "Utilisation (5 ans)",
+                "35"
+              ],
+              [
+                "Fin de vie",
+                "1"
+              ],
+              [
+                "Total",
+                "12 + 2 + 35 + 1 = 50"
+              ]
+            ]
+          },
+          {
+            "type": "text",
+            "text": "Part de l'utilisation : 35 ÷ 50 × 100 = **70 %**. Pour cette bouilloire, c'est l'**utilisation** qui pèse le plus : il faut donc chercher d'abord à réduire l'énergie consommée (ne chauffer que l'eau nécessaire, bien isoler la bouilloire).\nImpact par année : 50 ÷ 5 = **10 kg CO2e par an**."
+          },
+          {
+            "type": "callout",
+            "kind": "methode",
+            "title": "Rappel : l'énergie consommée",
+            "text": "**E = P × t** (E en wattheures Wh, P en watts W, t en heures h). 1 kWh = 1 000 Wh.\nExemple : une bouilloire de 2 000 W qui chauffe 3 minutes (0,05 h) par jour consomme 2 000 × 0,05 = 100 Wh par jour."
+          },
+          {
+            "type": "callout",
+            "kind": "retiens",
+            "title": "Garder un objet plus longtemps",
+            "text": "Quand l'essentiel de l'impact vient de la **fabrication**, garder l'objet **plus longtemps** fait baisser fortement l'impact **par année** : la fabrication est « partagée » sur plus d'années.\nEt acheter un objet **reconditionné** évite une grande partie de l'impact de fabrication d'un objet neuf."
+          }
+        ],
+        "checkpoint": {
+          "variants": [
+            {
+              "prompt": "Un objet a ces impacts : fabrication 30 kg CO2e, transport 5, utilisation 10, fin de vie 5. Quel est l'impact total ?",
+              "options": [
+                "30 kg CO2e",
+                "45 kg CO2e",
+                "50 kg CO2e",
+                "55 kg CO2e"
+              ],
+              "answer": 2,
+              "hint": "Additionne les impacts de toutes les étapes.",
+              "explanation": "30 + 5 + 10 + 5 = 50 kg CO2e."
+            },
+            {
+              "prompt": "Un objet a un impact total de 80 kg CO2e, dont 60 kg CO2e pour la fabrication. Quelle part représente la fabrication ?",
+              "options": [
+                "60 %",
+                "75 %",
+                "80 %",
+                "20 %"
+              ],
+              "answer": 1,
+              "hint": "Part = impact de l'étape ÷ impact total × 100.",
+              "explanation": "60 ÷ 80 × 100 = 75 %."
+            },
+            {
+              "prompt": "Un objet a un impact total de 60 kg CO2e et il est utilisé 3 ans. Quel est son impact par année d'utilisation ?",
+              "options": [
+                "20 kg CO2e par an",
+                "180 kg CO2e par an",
+                "57 kg CO2e par an",
+                "30 kg CO2e par an"
+              ],
+              "answer": 0,
+              "hint": "Impact par année = impact total ÷ nombre d'années.",
+              "explanation": "60 ÷ 3 = 20 kg CO2e par an."
+            }
+          ]
+        }
+      },
+      {
+        "title": "Réduire les impacts : éco-conception et durée de vie",
+        "blocks": [
+          {
+            "type": "callout",
+            "kind": "definition",
+            "title": "Éco-conception",
+            "text": "L'**éco-conception** consiste à concevoir un objet en réduisant ses impacts environnementaux **sur tout son cycle de vie**, tout en répondant toujours au besoin de l'utilisateur."
+          },
+          {
+            "type": "table",
+            "caption": "Des pistes d'éco-conception à chaque étape",
+            "columns": [
+              "Étape",
+              "Pistes"
+            ],
+            "rows": [
+              [
+                "Extraction",
+                "Utiliser moins de matière, des matériaux recyclés ou biosourcés, éviter les matériaux rares ou toxiques."
+              ],
+              [
+                "Fabrication",
+                "Procédés moins gourmands en énergie, moins de chutes de matière, usines alimentées par une électricité peu carbonée."
+              ],
+              [
+                "Transport",
+                "Objet et emballage plus légers et moins volumineux, fabrication plus proche du lieu de vente, transport par bateau ou train plutôt qu'en avion."
+              ],
+              [
+                "Utilisation",
+                "Composants qui consomment peu d'énergie (LED, mode veille économe), objet robuste et réparable, mises à jour durables."
+              ],
+              [
+                "Fin de vie",
+                "Objet facile à démonter (vis plutôt que colle), matériaux faciles à séparer et à recycler, pièces réutilisables."
+              ]
+            ]
+          },
+          {
+            "type": "callout",
+            "kind": "definition",
+            "title": "Obsolescence",
+            "text": "Un objet est **obsolète** quand on cesse de l'utiliser alors qu'il pourrait encore servir, ou quand il ne répond plus aux besoins. Plusieurs formes :\n— **technique** : une pièce casse et ne se répare pas (batterie collée, pièce introuvable) ;\n— **logicielle** : l'appareil ne reçoit plus de mises à jour ou devient trop lent ;\n— **culturelle (ou esthétique)** : on le remplace parce qu'il n'est plus à la mode."
+          },
+          {
+            "type": "text",
+            "text": "En France, la **loi anti-gaspillage pour une économie circulaire** (loi AGEC, 2020) agit sur la durée de vie des objets. Par exemple, un **indice de réparabilité** (une note sur 10) est affiché depuis 2021 sur certains appareils (smartphones, ordinateurs portables…) ; pour d'autres, comme les téléviseurs ou les lave-linge, il est remplacé par un **indice de durabilité**."
+          },
+          {
+            "type": "table",
+            "caption": "Deux modèles d'économie",
+            "columns": [
+              "Économie linéaire",
+              "Économie circulaire"
+            ],
+            "rows": [
+              [
+                "Extraire → fabriquer → consommer → jeter",
+                "Réduire → réemployer → réparer → recycler : les objets et les matières restent en circulation le plus longtemps possible."
+              ],
+              [
+                "Beaucoup de ressources prélevées et de déchets",
+                "Moins de ressources prélevées et moins de déchets"
+              ]
+            ]
+          },
+          {
+            "type": "callout",
+            "kind": "essentiel",
+            "title": "L'essentiel",
+            "text": "Cycle de vie : extraction → fabrication → transport → utilisation → fin de vie.\nL'ACV mesure les impacts à chaque étape ; l'étape la plus lourde dépend de l'objet.\nFin de vie, de la meilleure à la moins bonne solution : réemploi, réparation, recyclage, valorisation énergétique, enfouissement.\nPour réduire les impacts : éco-concevoir, garder les objets plus longtemps, réparer, acheter reconditionné, trier."
+          }
+        ],
+        "checkpoint": {
+          "variants": [
+            {
+              "prompt": "Quelle piste d'éco-conception facilite le recyclage en fin de vie ?",
+              "options": [
+                "Coller tous les composants entre eux",
+                "Assembler les pièces avec des vis pour pouvoir les démonter",
+                "Mélanger plusieurs plastiques dans une même pièce",
+                "Fabriquer l'objet à l'autre bout du monde"
+              ],
+              "answer": 1,
+              "hint": "Pour recycler, il faut pouvoir séparer les matériaux.",
+              "explanation": "Des vis permettent de démonter l'objet et de séparer les matériaux, donc de mieux les recycler (et de réparer)."
+            },
+            {
+              "prompt": "Inès change de téléphone, qui fonctionne parfaitement, seulement parce qu'un nouveau modèle à la mode est sorti. De quel type d'obsolescence s'agit-il ?",
+              "options": [
+                "Obsolescence technique",
+                "Obsolescence logicielle",
+                "Obsolescence culturelle (ou esthétique)",
+                "Ce n'est pas de l'obsolescence"
+              ],
+              "answer": 2,
+              "hint": "Le téléphone marche encore : pourquoi le remplace-t-elle ?",
+              "explanation": "Elle le remplace pour une question de mode : c'est l'obsolescence culturelle (ou esthétique)."
+            },
+            {
+              "prompt": "Quelle phrase décrit l'économie circulaire ?",
+              "options": [
+                "Extraire, fabriquer, consommer, jeter",
+                "Garder les objets et les matières en circulation le plus longtemps possible",
+                "Fabriquer le plus d'objets possible",
+                "Brûler tous les déchets"
+              ],
+              "answer": 1,
+              "hint": "Pense au mot « circulaire » : la matière tourne en boucle.",
+              "explanation": "L'économie circulaire cherche à réduire, réemployer, réparer et recycler pour limiter les ressources prélevées et les déchets."
+            }
+          ]
+        }
+      }
+    ],
+    "memo": [
+      {
+        "label": "Cycle de vie",
+        "text": "Extraction des matières premières → fabrication → transport (distribution) → utilisation → fin de vie."
+      },
+      {
+        "label": "Impacts",
+        "text": "Ressources épuisées, énergie, gaz à effet de serre (empreinte carbone en kg CO2e), pollutions, déchets. L'ACV (analyse du cycle de vie) les mesure étape par étape."
+      },
+      {
+        "label": "Étape la plus lourde",
+        "text": "Smartphone, ordinateur : extraction et fabrication (environ 80 % pour un smartphone). Voiture, réfrigérateur : utilisation."
+      },
+      {
+        "label": "Fin de vie",
+        "text": "De la meilleure à la moins bonne : réemploi, réparation, recyclage, valorisation énergétique, enfouissement. Les DEEE vont en déchetterie ou en magasin."
+      },
+      {
+        "label": "Calculs",
+        "text": "Total = somme des étapes. Part (%) = étape ÷ total × 100. Impact par an = total ÷ nombre d'années. E = P × t."
+      },
+      {
+        "label": "Agir",
+        "text": "Éco-conception (moins de matière, démontable, réparable, économe). Garder ses objets longtemps, réparer, acheter reconditionné, trier. Économie circulaire plutôt que linéaire."
+      }
+    ]
+  },
+  "exercises": {
+    "duration_min": 25,
+    "instructions": "Commence par les exercices ★ (je repère), puis ★★ (j'applique et j'analyse) et ★★★ (je rédige). Pour les calculs, écris la formule, remplace par les valeurs, puis donne seulement le nombre dans la réponse. Tu peux utiliser la calculatrice. Bon travail !",
+    "pass_threshold": 8,
+    "texts": [
+      {
+        "id": "t1",
+        "label": "Fiche · Empreinte carbone d'un smartphone",
+        "source": "Document original écrit pour ce cours (valeurs arrondies et simplifiées, de l'ordre de grandeur des modèles courants).",
+        "paragraphs": [
+          "Extraction des matières premières et fabrication : 40 kg CO2e.",
+          "Transport et distribution : 3 kg CO2e.",
+          "Utilisation (recharges) : 2,5 kg CO2e par année d'utilisation.",
+          "Fin de vie (collecte et recyclage) : 2 kg CO2e.",
+          "En moyenne, un smartphone est utilisé environ 2 ans avant d'être remplacé, alors qu'il pourrait souvent fonctionner plus longtemps (changement de batterie, réparation de l'écran)."
+        ]
+      }
+    ],
+    "items": [
+      {
+        "id": "ex1",
+        "type": "qcm",
+        "stars": 1,
+        "lesson_part": 1,
+        "skills": [
+          "te-cycle-vie"
+        ],
+        "cognitive": "connaitre",
+        "prompt": "Le transport des téléphones par bateau, de l'usine jusqu'au pays où ils sont vendus, correspond à quelle étape du cycle de vie ?",
+        "options": [
+          "Extraction des matières premières",
+          "Fabrication",
+          "Transport et distribution",
+          "Fin de vie"
+        ],
+        "answer": 2,
+        "solution": "Acheminer l'objet de l'usine jusqu'au lieu de vente, c'est l'étape de transport et distribution."
+      },
+      {
+        "id": "ex2",
+        "type": "qcm",
+        "stars": 1,
+        "lesson_part": 2,
+        "skills": [
+          "te-impact"
+        ],
+        "cognitive": "connaitre",
+        "prompt": "Pour lequel de ces objets l'étape d'utilisation est-elle la plus lourde pour l'environnement ?",
+        "options": [
+          "Un smartphone",
+          "Une voiture à essence",
+          "Une tablette",
+          "Une clé USB"
+        ],
+        "answer": 1,
+        "solution": "La voiture à essence brûle du carburant pendant des années : c'est l'utilisation qui pèse le plus. Pour les appareils électroniques, c'est la fabrication."
+      },
+      {
+        "id": "ex3",
+        "type": "short",
+        "stars": 1,
+        "lesson_part": 2,
+        "skills": [
+          "te-impact"
+        ],
+        "cognitive": "connaitre",
+        "prompt": "Comment appelle-t-on la méthode qui évalue les impacts environnementaux d'un objet à chaque étape de sa vie ? (Tu peux donner le nom complet ou le sigle.)",
+        "answer": [
+          "ACV",
+          "analyse du cycle de vie",
+          "l'analyse du cycle de vie",
+          "analyse de cycle de vie",
+          "une analyse du cycle de vie",
+          "analyse des cycles de vie"
+        ],
+        "solution": "L'analyse du cycle de vie (ACV)."
+      },
+      {
+        "id": "ex4",
+        "type": "qcm",
+        "stars": 1,
+        "lesson_part": 3,
+        "skills": [
+          "te-fin-vie"
+        ],
+        "cognitive": "connaitre",
+        "prompt": "Quelle solution de fin de vie est la meilleure pour l'environnement ?",
+        "options": [
+          "Le recyclage",
+          "Le réemploi",
+          "La valorisation énergétique",
+          "L'enfouissement"
+        ],
+        "answer": 1,
+        "solution": "Le réemploi : l'objet sert à nouveau sans transformation, ce qui évite d'en fabriquer un neuf. Le recyclage vient après, car il faut détruire l'objet et retransformer la matière."
+      },
+      {
+        "id": "ex5",
+        "type": "numeric",
+        "stars": 2,
+        "text_ref": "t1",
+        "lesson_part": 4,
+        "skills": [
+          "te-calcul",
+          "te-document"
+        ],
+        "cognitive": "appliquer",
+        "prompt": "Calcule l'empreinte carbone totale, en kg CO2e, d'un smartphone utilisé 2 ans. (Réponds par un nombre.)",
+        "answer": 50,
+        "tolerance": 0,
+        "solution": "Utilisation : 2,5 × 2 = 5 kg CO2e. Total = 40 + 3 + 5 + 2 = 50 kg CO2e."
+      },
+      {
+        "id": "ex6",
+        "type": "numeric",
+        "stars": 2,
+        "text_ref": "t1",
+        "lesson_part": 4,
+        "skills": [
+          "te-calcul",
+          "te-document"
+        ],
+        "cognitive": "appliquer",
+        "prompt": "Pour ce smartphone utilisé 2 ans, quelle part (en %) de l'empreinte totale représentent l'extraction et la fabrication ? (Réponds par un nombre.)",
+        "answer": 80,
+        "tolerance": 0.5,
+        "solution": "Part = 40 ÷ 50 × 100 = 80 %. La fabrication pèse donc bien plus que l'utilisation."
+      },
+      {
+        "id": "ex7",
+        "type": "numeric",
+        "stars": 2,
+        "text_ref": "t1",
+        "lesson_part": 4,
+        "skills": [
+          "te-calcul",
+          "te-document"
+        ],
+        "cognitive": "appliquer",
+        "prompt": "Calcule l'empreinte carbone totale, en kg CO2e, du même smartphone s'il est utilisé 4 ans. (Réponds par un nombre.)",
+        "answer": 55,
+        "tolerance": 0,
+        "solution": "Utilisation : 2,5 × 4 = 10 kg CO2e. Total = 40 + 3 + 10 + 2 = 55 kg CO2e. Deux ans de plus n'ajoutent que 5 kg CO2e."
+      },
+      {
+        "id": "ex8",
+        "type": "qcm",
+        "stars": 2,
+        "lesson_part": 5,
+        "skills": [
+          "te-ecoconception"
+        ],
+        "cognitive": "analyser",
+        "prompt": "Le téléphone de Nolan fonctionne encore, mais il n'accepte plus les mises à jour et certaines applications ne s'ouvrent plus. De quel type d'obsolescence s'agit-il ?",
+        "options": [
+          "Obsolescence logicielle",
+          "Obsolescence culturelle (ou esthétique)",
+          "Obsolescence technique (pièce cassée)",
+          "Ce n'est pas de l'obsolescence"
+        ],
+        "answer": 0,
+        "solution": "Le matériel fonctionne, mais le logiciel n'est plus mis à jour : c'est l'obsolescence logicielle."
+      },
+      {
+        "id": "ex9",
+        "type": "open",
+        "stars": 3,
+        "lesson_part": 5,
+        "skills": [
+          "te-ecoconception",
+          "te-cycle-vie"
+        ],
+        "cognitive": "analyser",
+        "prompt": "Une entreprise veut éco-concevoir une nouvelle bouilloire électrique. Propose trois améliorations, chacune liée à une étape différente du cycle de vie, et explique en une phrase ce que chacune apporte.",
+        "solution": "Exemples : Extraction / fabrication → corps en acier inoxydable recyclé plutôt qu'en plastique neuf : moins de ressources prélevées. Transport → emballage en carton léger et sans plastique, fabrication en Europe : moins d'émissions liées au transport. Utilisation → paroi isolée et graduations pour ne chauffer que l'eau nécessaire : moins d'électricité consommée. Fin de vie → pièces vissées et résistance remplaçable : la bouilloire se répare, puis se démonte facilement pour le recyclage.",
+        "rubric": "Trois améliorations réalistes (1 point chacune), associées chacune à une étape différente du cycle de vie et justifiées par l'impact réduit."
+      },
+      {
+        "id": "ex10",
+        "type": "open",
+        "stars": 3,
+        "text_ref": "t1",
+        "lesson_part": 4,
+        "skills": [
+          "te-calcul",
+          "te-rediger",
+          "te-document"
+        ],
+        "cognitive": "rediger",
+        "prompt": "Un ami affirme : « Mon téléphone consomme très peu d'électricité, donc le changer tous les 2 ans n'a aucune importance pour la planète. » En t'appuyant sur la fiche et sur un calcul d'impact par année (2 ans puis 4 ans), explique-lui en quelques phrases pourquoi il a tort et ce qu'il pourrait faire.",
+        "solution": "Exemple : Tu as raison, la recharge pèse peu : 2,5 kg CO2e par an. Mais l'extraction et la fabrication représentent 40 kg CO2e, soit 80 % de l'empreinte totale sur 2 ans. Si tu gardes ton téléphone 2 ans, l'impact est de 50 ÷ 2 = 25 kg CO2e par an. Si tu le gardes 4 ans, il est de 55 ÷ 4 ≈ 13,8 kg CO2e par an, presque deux fois moins. Changer souvent de téléphone oblige à en fabriquer de nouveaux, et c'est cela qui pèse. Tu peux donc le garder plus longtemps, changer la batterie ou l'écran s'ils s'abîment, et acheter un modèle reconditionné quand il faudra vraiment le remplacer.",
+        "rubric": "Idée que la fabrication pèse le plus (avec la valeur 40 kg CO2e ou 80 %). Deux calculs justes : 25 kg CO2e par an (2 ans) et environ 13,75 kg CO2e par an (4 ans). Conclusion : garder le téléphone plus longtemps réduit l'impact. Au moins une action proposée (réparer, changer la batterie, reconditionné, revendre ou donner l'ancien). Expression claire."
+      }
+    ]
+  },
+  "evaluation": {
+    "duration_min": 30,
+    "conditions": "Sans la leçon, en 30 minutes. Calculatrice autorisée. Lis le document avant de répondre ; pour les calculs, donne seulement le nombre dans la réponse et garde le détail sur ton brouillon. Barème : A = 5 points · B = 10 points · C = 5 points.",
+    "total_points": 20,
+    "variants": [
+      {
+        "texts": [
+          {
+            "id": "d1",
+            "label": "Document · Fiche environnementale d'un ordinateur portable",
+            "source": "Document original écrit pour ce cours (valeurs arrondies et simplifiées).",
+            "paragraphs": [
+              "Extraction des matières premières et fabrication : 200 kg CO2e. L'ordinateur contient notamment du cuivre, de l'aluminium, de l'or et des terres rares.",
+              "Transport et distribution : 10 kg CO2e (fabrication en Asie, transport par bateau puis camion).",
+              "Utilisation : 15 kg CO2e par année d'utilisation.",
+              "Fin de vie (collecte, dépollution, recyclage) : 5 kg CO2e.",
+              "Durée d'utilisation prévue par l'acheteur : 4 ans. Indice de réparabilité : 7,5 / 10. La batterie, la mémoire et le disque se remplacent avec un simple tournevis."
+            ]
+          }
+        ],
+        "sections": [
+          {
+            "label": "A · Je connais (5 points)",
+            "questions": [
+              {
+                "id": "q1",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 1,
+                "skills": [
+                  "te-cycle-vie"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Quel est l'ordre correct des étapes du cycle de vie ?",
+                "options": [
+                  "Extraction → fabrication → transport → utilisation → fin de vie",
+                  "Fabrication → extraction → transport → fin de vie → utilisation",
+                  "Transport → extraction → fabrication → utilisation → fin de vie",
+                  "Extraction → utilisation → fabrication → transport → fin de vie"
+                ],
+                "answer": 0,
+                "solution": "Extraction des matières premières → fabrication → transport et distribution → utilisation → fin de vie.",
+                "rubric": "1 point pour la bonne réponse, 0 sinon."
+              },
+              {
+                "id": "q2",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 2,
+                "skills": [
+                  "te-impact"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Que mesure l'empreinte carbone d'un objet ?",
+                "options": [
+                  "Sa masse en kilogrammes",
+                  "La quantité de gaz à effet de serre émise pendant tout son cycle de vie",
+                  "L'électricité qu'il consomme en une heure",
+                  "Le nombre d'années pendant lesquelles il fonctionne"
+                ],
+                "answer": 1,
+                "solution": "L'empreinte carbone est la quantité de gaz à effet de serre émise sur tout le cycle de vie, en kg CO2e.",
+                "rubric": "1 point pour la bonne réponse, 0 sinon."
+              },
+              {
+                "id": "q3",
+                "type": "short",
+                "points": 1,
+                "lesson_part": 3,
+                "skills": [
+                  "te-fin-vie"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Comment appelle-t-on la solution de fin de vie qui transforme les matériaux d'un objet usagé en nouvelles matières premières ? (Un mot.)",
+                "answer": [
+                  "recyclage",
+                  "le recyclage",
+                  "recycler",
+                  "recycle"
+                ],
+                "solution": "Le recyclage.",
+                "rubric": "1 point pour « recyclage »."
+              },
+              {
+                "id": "q4",
+                "type": "open",
+                "points": 2,
+                "lesson_part": 3,
+                "skills": [
+                  "te-fin-vie"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Explique la différence entre le réemploi et le recyclage, en donnant un exemple de chacun. Laquelle de ces deux solutions est la meilleure pour l'environnement ?",
+                "solution": "Réemploi : l'objet sert à nouveau, tel quel, sans transformation (par exemple, revendre son ordinateur à un autre élève). Recyclage : l'objet est démonté et ses matériaux sont transformés en nouvelles matières premières (par exemple, refondre l'aluminium du boîtier). Le réemploi est meilleur, car il évite de fabriquer un objet neuf et ne demande pas d'énergie pour transformer la matière.",
+                "rubric": "1 pt : deux définitions justes (objet réutilisé tel quel / matière récupérée et transformée). 0,5 pt : deux exemples corrects. 0,5 pt : le réemploi est désigné comme meilleur, avec une raison."
+              }
+            ]
+          },
+          {
+            "label": "B · J'exploite un document (10 points)",
+            "questions": [
+              {
+                "id": "q5",
+                "type": "short",
+                "points": 1,
+                "text_ref": "d1",
+                "lesson_part": 2,
+                "skills": [
+                  "te-document",
+                  "te-impact"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "D'après le document, quelle étape du cycle de vie de cet ordinateur émet le plus de gaz à effet de serre ?",
+                "answer": [
+                  "fabrication",
+                  "la fabrication",
+                  "extraction et fabrication",
+                  "l'extraction et la fabrication",
+                  "extraction des matieres premieres et fabrication",
+                  "l'extraction des matières premières et la fabrication",
+                  "fabrication et extraction",
+                  "la fabrication et l'extraction"
+                ],
+                "solution": "L'extraction des matières premières et la fabrication : 200 kg CO2e, bien plus que les autres étapes.",
+                "rubric": "1 point pour « extraction et fabrication » ou « fabrication »."
+              },
+              {
+                "id": "q6",
+                "type": "qcm",
+                "points": 1,
+                "text_ref": "d1",
+                "lesson_part": 3,
+                "skills": [
+                  "te-fin-vie"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Dans 8 ans, l'ordinateur ne fonctionne plus et n'est pas réparable. Que faut-il en faire ?",
+                "options": [
+                  "Le déposer en déchetterie ou en magasin (filière DEEE)",
+                  "Le jeter dans la poubelle ordinaire",
+                  "Le mettre dans le conteneur à verre",
+                  "Le garder dans un placard pour toujours"
+                ],
+                "answer": 0,
+                "solution": "C'est un déchet d'équipement électrique et électronique (DEEE) : on le rapporte en déchetterie ou en magasin pour le dépolluer et récupérer ses métaux.",
+                "rubric": "1 point pour la bonne réponse, 0 sinon."
+              },
+              {
+                "id": "q7",
+                "type": "numeric",
+                "points": 2,
+                "text_ref": "d1",
+                "lesson_part": 4,
+                "skills": [
+                  "te-calcul",
+                  "te-document"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Calcule l'empreinte carbone totale, en kg CO2e, de cet ordinateur utilisé 4 ans. (Réponds par un nombre.)",
+                "answer": 275,
+                "tolerance": 0,
+                "solution": "Utilisation : 15 × 4 = 60 kg CO2e. Total = 200 + 10 + 60 + 5 = 275 kg CO2e.",
+                "rubric": "2 points pour 275. (En correction manuelle : 1 point si la méthode est juste mais l'utilisation n'a pas été multipliée par 4.)"
+              },
+              {
+                "id": "q8",
+                "type": "numeric",
+                "points": 2,
+                "text_ref": "d1",
+                "lesson_part": 4,
+                "skills": [
+                  "te-calcul"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Quelle part (en %) de l'empreinte totale représentent l'extraction et la fabrication ? Arrondis à l'unité. (Réponds par un nombre.)",
+                "answer": 73,
+                "tolerance": 0.5,
+                "solution": "Part = 200 ÷ 275 × 100 ≈ 72,7 %, soit environ 73 %.",
+                "rubric": "2 points pour 73 (72,7 accepté). (En correction manuelle : 1 point si la formule est juste mais le total utilisé est faux.)"
+              },
+              {
+                "id": "q9",
+                "type": "open",
+                "points": 4,
+                "text_ref": "d1",
+                "lesson_part": 4,
+                "skills": [
+                  "te-calcul",
+                  "te-ecoconception",
+                  "te-rediger",
+                  "te-document"
+                ],
+                "cognitive": "analyser",
+                "prompt": "Au bout de 4 ans, l'ordinateur devient lent et son propriétaire pense à en acheter un neuf. Calcule l'impact par année d'utilisation s'il le garde 4 ans, puis s'il le garde 6 ans. Propose ensuite deux actions pour prolonger sa vie, en t'appuyant sur le document.",
+                "solution": "Sur 4 ans : 275 ÷ 4 ≈ 68,8 kg CO2e par an. Sur 6 ans : utilisation 15 × 6 = 90, total = 200 + 10 + 90 + 5 = 305 kg CO2e, soit 305 ÷ 6 ≈ 50,8 kg CO2e par an. Garder l'ordinateur 2 ans de plus réduit l'impact par an d'environ un quart, car la fabrication (la plus lourde) est partagée sur plus d'années. Actions possibles : ajouter de la mémoire ou remplacer le disque par un modèle plus rapide (faciles à changer avec un tournevis), remplacer la batterie, faire le ménage dans les logiciels ; l'indice de réparabilité de 7,5 / 10 montre qu'il se répare bien. S'il le remplace quand même, il peut le revendre ou le donner (réemploi).",
+                "rubric": "1 pt : impact par an sur 4 ans (environ 68,8 kg CO2e). 1 pt : impact par an sur 6 ans (environ 50,8 kg CO2e, avec le nouveau total de 305). 2 pts : deux actions pertinentes, appuyées sur le document (pièces remplaçables, indice de réparabilité), 1 pt chacune."
+              }
+            ]
+          },
+          {
+            "label": "C · J'argumente (5 points)",
+            "questions": [
+              {
+                "id": "q10",
+                "type": "open",
+                "points": 5,
+                "lesson_part": 5,
+                "skills": [
+                  "te-ecoconception",
+                  "te-fin-vie",
+                  "te-rediger"
+                ],
+                "cognitive": "rediger",
+                "prompt": "Explique ce qu'est l'économie circulaire en l'opposant à l'économie linéaire. Illustre ta réponse avec l'exemple d'un objet de ton choix, puis propose trois actions concrètes (au moins une pour le fabricant et au moins une pour l'utilisateur) qui vont dans le sens de l'économie circulaire.",
+                "solution": "L'économie linéaire suit le schéma « extraire, fabriquer, consommer, jeter » : elle prélève beaucoup de ressources et produit beaucoup de déchets. L'économie circulaire cherche au contraire à garder les objets et les matières en circulation le plus longtemps possible : on réduit, on réemploie, on répare, puis on recycle. Exemple d'un vélo : en économie linéaire, on jette le vélo à la première panne ; en économie circulaire, on le répare, on le revend d'occasion, puis on recycle son cadre en acier ou en aluminium. Actions : pour le fabricant, concevoir un vélo démontable avec des pièces standard et disponibles longtemps, utiliser de l'acier recyclé ; pour l'utilisateur, entretenir et réparer son vélo, acheter d'occasion, le donner ou le revendre au lieu de le jeter.",
+                "rubric": "1 pt : définition de l'économie linéaire (extraire, fabriquer, consommer, jeter). 1,5 pt : définition de l'économie circulaire (garder objets et matières en circulation : réduire, réemployer, réparer, recycler). 1 pt : exemple d'objet cohérent. 1 pt : trois actions concrètes, dont au moins une du fabricant et une de l'utilisateur. 0,5 pt : expression claire et vocabulaire technique."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "texts": [
+          {
+            "id": "d1",
+            "label": "Document · Fiche environnementale d'une tablette tactile",
+            "source": "Document original écrit pour ce cours (valeurs arrondies et simplifiées).",
+            "paragraphs": [
+              "Extraction des matières premières et fabrication : 100 kg CO2e. La tablette contient notamment du lithium et du cobalt (batterie), de l'aluminium (boîtier) et des terres rares.",
+              "Transport et distribution : 6 kg CO2e (fabrication en Asie, transport par avion puis camion).",
+              "Utilisation : 4 kg CO2e par année d'utilisation.",
+              "Fin de vie (collecte, dépollution, recyclage) : 2 kg CO2e.",
+              "Durée d'utilisation prévue par l'acheteur : 3 ans. Indice de réparabilité : 6 / 10. La batterie est collée : elle ne peut être changée qu'en atelier de réparation. Un service de reconditionnement rachète les tablettes qui fonctionnent encore."
+            ]
+          }
+        ],
+        "sections": [
+          {
+            "label": "A · Je connais (5 points)",
+            "questions": [
+              {
+                "id": "q1",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 1,
+                "skills": [
+                  "te-cycle-vie"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "L'assemblage de l'écran, de la batterie et des circuits électroniques en usine correspond à quelle étape du cycle de vie ?",
+                "options": [
+                  "L'extraction des matières premières",
+                  "La fabrication",
+                  "L'utilisation",
+                  "La fin de vie"
+                ],
+                "answer": 1,
+                "solution": "Transformer les matériaux et assembler les composants, c'est l'étape de fabrication.",
+                "rubric": "1 point pour la bonne réponse, 0 sinon."
+              },
+              {
+                "id": "q2",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 2,
+                "skills": [
+                  "te-impact"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "À quoi sert une analyse du cycle de vie (ACV) ?",
+                "options": [
+                  "À calculer le prix de vente d'un objet",
+                  "À évaluer les impacts environnementaux d'un objet à chaque étape de sa vie",
+                  "À mesurer la vitesse d'un objet",
+                  "À prévoir la date de la prochaine panne"
+                ],
+                "answer": 1,
+                "solution": "L'ACV évalue les impacts environnementaux d'un objet étape par étape, pour repérer celle qui pèse le plus.",
+                "rubric": "1 point pour la bonne réponse, 0 sinon."
+              },
+              {
+                "id": "q3",
+                "type": "short",
+                "points": 1,
+                "lesson_part": 5,
+                "skills": [
+                  "te-ecoconception"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Comment appelle-t-on la démarche qui consiste à concevoir un objet en réduisant ses impacts environnementaux sur tout son cycle de vie ? (Un mot.)",
+                "answer": [
+                  "éco-conception",
+                  "écoconception",
+                  "l'éco-conception",
+                  "l'écoconception",
+                  "eco conception",
+                  "ecoconception",
+                  "eco-conception"
+                ],
+                "solution": "L'éco-conception.",
+                "rubric": "1 point pour « éco-conception » (avec ou sans tiret)."
+              },
+              {
+                "id": "q4",
+                "type": "open",
+                "points": 2,
+                "lesson_part": 3,
+                "skills": [
+                  "te-fin-vie"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Explique la différence entre un matériau recyclable et un matériau biosourcé, en donnant un exemple de chacun.",
+                "solution": "Un matériau recyclable peut être récupéré en fin de vie et transformé en nouvelle matière première (par exemple l'aluminium, le verre ou l'acier). Un matériau biosourcé est fabriqué à partir de matière vivante qui se renouvelle (par exemple le bois, le bambou ou le lin). Un matériau peut être les deux à la fois, comme le carton.",
+                "rubric": "1 pt : deux définitions justes (récupéré et retransformé / issu du vivant, renouvelable). 1 pt : deux exemples corrects (0,5 pt chacun)."
+              }
+            ]
+          },
+          {
+            "label": "B · J'exploite un document (10 points)",
+            "questions": [
+              {
+                "id": "q5",
+                "type": "short",
+                "points": 1,
+                "text_ref": "d1",
+                "lesson_part": 2,
+                "skills": [
+                  "te-document",
+                  "te-impact"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "D'après le document, quelle étape du cycle de vie de cette tablette émet le plus de gaz à effet de serre ?",
+                "answer": [
+                  "fabrication",
+                  "la fabrication",
+                  "extraction et fabrication",
+                  "l'extraction et la fabrication",
+                  "extraction des matieres premieres et fabrication",
+                  "l'extraction des matières premières et la fabrication",
+                  "fabrication et extraction",
+                  "la fabrication et l'extraction"
+                ],
+                "solution": "L'extraction des matières premières et la fabrication : 100 kg CO2e, bien plus que les autres étapes.",
+                "rubric": "1 point pour « extraction et fabrication » ou « fabrication »."
+              },
+              {
+                "id": "q6",
+                "type": "qcm",
+                "points": 1,
+                "text_ref": "d1",
+                "lesson_part": 3,
+                "skills": [
+                  "te-fin-vie"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Au bout de 3 ans, la tablette fonctionne encore, mais son propriétaire n'en veut plus. Quelle est la meilleure solution pour l'environnement ?",
+                "options": [
+                  "La faire racheter par le service de reconditionnement pour qu'elle serve à quelqu'un d'autre",
+                  "La déposer directement dans un bac de recyclage",
+                  "La jeter dans la poubelle ordinaire",
+                  "La faire brûler dans un incinérateur"
+                ],
+                "answer": 0,
+                "solution": "La tablette fonctionne : le réemploi (reconditionnement) est la meilleure solution, car il évite de fabriquer une tablette neuve.",
+                "rubric": "1 point pour la bonne réponse, 0 sinon."
+              },
+              {
+                "id": "q7",
+                "type": "numeric",
+                "points": 2,
+                "text_ref": "d1",
+                "lesson_part": 4,
+                "skills": [
+                  "te-calcul",
+                  "te-document"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Calcule l'empreinte carbone totale, en kg CO2e, de cette tablette utilisée 3 ans. (Réponds par un nombre.)",
+                "answer": 120,
+                "tolerance": 0,
+                "solution": "Utilisation : 4 × 3 = 12 kg CO2e. Total = 100 + 6 + 12 + 2 = 120 kg CO2e.",
+                "rubric": "2 points pour 120. (En correction manuelle : 1 point si la méthode est juste mais l'utilisation n'a pas été multipliée par 3.)"
+              },
+              {
+                "id": "q8",
+                "type": "numeric",
+                "points": 2,
+                "text_ref": "d1",
+                "lesson_part": 4,
+                "skills": [
+                  "te-calcul"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Quelle part (en %) de l'empreinte totale représentent l'extraction et la fabrication ? Arrondis à l'unité. (Réponds par un nombre.)",
+                "answer": 83,
+                "tolerance": 0.5,
+                "solution": "Part = 100 ÷ 120 × 100 ≈ 83,3 %, soit environ 83 %.",
+                "rubric": "2 points pour 83 (83,3 accepté). (En correction manuelle : 1 point si la formule est juste mais le total utilisé est faux.)"
+              },
+              {
+                "id": "q9",
+                "type": "open",
+                "points": 4,
+                "text_ref": "d1",
+                "lesson_part": 4,
+                "skills": [
+                  "te-calcul",
+                  "te-ecoconception",
+                  "te-rediger",
+                  "te-document"
+                ],
+                "cognitive": "analyser",
+                "prompt": "Calcule l'impact par année d'utilisation si la tablette est gardée 3 ans, puis si elle est gardée 5 ans. Propose ensuite deux améliorations que le fabricant pourrait apporter pour que la tablette dure plus longtemps, en t'appuyant sur le document.",
+                "solution": "Sur 3 ans : 120 ÷ 3 = 40 kg CO2e par an. Sur 5 ans : utilisation 4 × 5 = 20, total = 100 + 6 + 20 + 2 = 128 kg CO2e, soit 128 ÷ 5 = 25,6 kg CO2e par an. Garder la tablette 2 ans de plus réduit nettement l'impact par an, car la fabrication (la plus lourde) est partagée sur plus d'années. Améliorations : une batterie vissée ou clipsée que l'utilisateur peut changer lui-même (au lieu d'être collée), ce qui améliorerait l'indice de réparabilité (6 / 10) ; des pièces détachées disponibles longtemps ; des mises à jour logicielles assurées pendant de nombreuses années ; transporter les tablettes par bateau plutôt qu'en avion.",
+                "rubric": "1 pt : impact par an sur 3 ans (40 kg CO2e). 1 pt : impact par an sur 5 ans (25,6 kg CO2e, avec le nouveau total de 128). 2 pts : deux améliorations pertinentes pour le fabricant, appuyées sur le document (batterie collée, indice de réparabilité, transport en avion…), 1 pt chacune."
+              }
+            ]
+          },
+          {
+            "label": "C · J'argumente (5 points)",
+            "questions": [
+              {
+                "id": "q10",
+                "type": "open",
+                "points": 5,
+                "lesson_part": 5,
+                "skills": [
+                  "te-ecoconception",
+                  "te-fin-vie",
+                  "te-rediger"
+                ],
+                "cognitive": "rediger",
+                "prompt": "Explique ce qu'est l'obsolescence d'un objet et décris deux formes d'obsolescence avec un exemple pour chacune. Propose ensuite trois actions concrètes (au moins une pour le fabricant et au moins une pour l'utilisateur) pour allonger la durée de vie des objets.",
+                "solution": "Un objet est obsolète quand on arrête de l'utiliser alors qu'il pourrait encore servir, ou quand il ne répond plus aux besoins. Obsolescence technique : une pièce casse et ne peut pas être remplacée, par exemple une batterie collée qui ne tient plus la charge. Obsolescence logicielle : l'appareil ne reçoit plus de mises à jour et certaines applications ne fonctionnent plus. (Obsolescence culturelle : on change de téléphone parce qu'un modèle plus à la mode est sorti.) Actions : pour le fabricant, concevoir des objets démontables avec des pièces détachées disponibles longtemps et assurer les mises à jour plusieurs années ; pour l'utilisateur, protéger et entretenir ses objets, les faire réparer, acheter reconditionné et regarder l'indice de réparabilité avant d'acheter. La loi AGEC (2020) va dans ce sens.",
+                "rubric": "1 pt : définition de l'obsolescence. 1,5 pt : deux formes d'obsolescence correctement décrites avec un exemple chacune. 2 pts : trois actions concrètes et pertinentes, dont au moins une du fabricant et une de l'utilisateur. 0,5 pt : expression claire et vocabulaire technique."
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,1324 @@
+{
+  "format": "syllig-course/1",
+  "code": "TG103",
+  "level": "troisieme-generale",
+  "subject": "Physique-Chimie",
+  "chapter": "Organisation et transformations de la matière",
+  "title": "Tests d'identification des ions",
+  "skills": [
+    {
+      "id": "pc-test-principe",
+      "label": "Décrire le principe d'un test d'identification (réactif, précipité, témoin) et les règles de sécurité"
+    },
+    {
+      "id": "pc-test-cations",
+      "label": "Identifier un cation métallique (Cu²⁺, Fe²⁺, Fe³⁺, Zn²⁺) grâce à la soude"
+    },
+    {
+      "id": "pc-test-anions",
+      "label": "Identifier les ions chlorure et sulfate grâce au réactif adapté"
+    },
+    {
+      "id": "pc-test-conclure",
+      "label": "Interpréter des résultats de tests et nommer une solution ionique"
+    },
+    {
+      "id": "pc-document",
+      "label": "Exploiter un document (tableau de résultats d'expériences)"
+    },
+    {
+      "id": "pc-rediger",
+      "label": "Rédiger un protocole ou une conclusion scientifique"
+    }
+  ],
+  "lesson": {
+    "duration_min": 35,
+    "objectives": [
+      "comprendre le principe d'un test d'identification : un réactif, une observation, une conclusion ;",
+      "connaître les tests des ions cuivre II, fer II, fer III et zinc avec la soude ;",
+      "connaître les tests des ions chlorure (nitrate d'argent) et sulfate (chlorure de baryum) ;",
+      "identifier les ions d'une solution inconnue, puis la nommer et écrire sa formule ;",
+      "travailler en sécurité et utiliser un test témoin."
+    ],
+    "essential": "Les ions sont invisibles : pour savoir lesquels se trouvent dans une solution, on réalise des **tests caractéristiques**. On ajoute quelques gouttes d'un **réactif** et on observe si un **précipité** (un solide qui trouble le liquide) apparaît, et de quelle couleur. Avec la **soude** : Cu²⁺ donne un précipité **bleu**, Fe²⁺ **vert**, Fe³⁺ **rouille**, Zn²⁺ **blanc**. Le **nitrate d'argent** donne un précipité blanc qui noircit à la lumière avec les ions **chlorure** Cl⁻ ; le **chlorure de baryum** donne un précipité blanc avec les ions **sulfate** SO₄²⁻. On fait un test par tube, sur un nouvel échantillon, et on rédige : « j'observe… donc la solution contient… ».",
+    "parts": [
+      {
+        "title": "Le principe d'un test d'identification",
+        "blocks": [
+          {
+            "type": "text",
+            "text": "Une eau minérale, un engrais liquide, une solution du laboratoire : tous contiennent des ions… mais on ne peut pas les voir, même au microscope. Pour savoir **quels ions** sont présents, le chimiste réalise un **test caractéristique** : il ajoute un **réactif** à un petit échantillon de la solution, puis il observe ce qui se passe."
+          },
+          {
+            "type": "callout",
+            "kind": "definition",
+            "title": "Précipité",
+            "text": "Un **précipité** est un solide, très finement divisé, qui apparaît dans un liquide et le rend trouble. Sa formation, et surtout sa **couleur**, est le signe qu'un ion précis est présent."
+          },
+          {
+            "type": "list",
+            "ordered": true,
+            "items": [
+              "Verser environ 2 mL de la solution à tester dans un tube à essais **propre**.",
+              "Ajouter quelques gouttes du réactif avec une pipette compte-gouttes.",
+              "Observer : un précipité apparaît-il ? De quelle couleur ?",
+              "Conclure : l'ion recherché est-il présent ou non ?"
+            ]
+          },
+          {
+            "type": "callout",
+            "kind": "methode",
+            "title": "Le test témoin",
+            "text": "Pour être sûr de bien reconnaître le résultat, on réalise le même test sur une solution dont on **sait** qu'elle contient l'ion recherché : c'est le **témoin**. Il montre l'aspect attendu du précipité et permet de **comparer** avec la solution inconnue. On peut aussi tester de l'eau distillée : il ne doit rien se passer."
+          },
+          {
+            "type": "callout",
+            "kind": "attention",
+            "title": "Sécurité",
+            "text": "Les réactifs utilisés sont **corrosifs** ou **toxiques** : blouse, **lunettes** et **gants** obligatoires. On ne goûte et on ne sent jamais une solution. On lit les pictogrammes de danger sur les flacons."
+          },
+          {
+            "type": "callout",
+            "kind": "retiens",
+            "text": "Test **positif** : l'observation attendue apparaît → l'ion est présent. Test **négatif** : rien ne se passe → l'ion est absent (ou en quantité trop faible pour être détecté)."
+          }
+        ],
+        "checkpoint": {
+          "variants": [
+            {
+              "prompt": "Qu'est-ce qu'un précipité ?",
+              "options": [
+                "Un gaz qui fait des bulles",
+                "Un liquide qui change de couleur",
+                "Un solide qui apparaît dans un liquide et le trouble",
+                "Un ion invisible"
+              ],
+              "answer": 2,
+              "hint": "Relis l'encadré « Précipité ».",
+              "explanation": "Un précipité est un solide très finement divisé qui se forme dans le liquide : il le rend trouble."
+            },
+            {
+              "prompt": "À quoi sert un test témoin ?",
+              "options": [
+                "À comparer avec un résultat connu pour bien l'interpréter",
+                "À accélérer la réaction",
+                "À remplacer le test sur la solution inconnue",
+                "À protéger les yeux"
+              ],
+              "answer": 0,
+              "hint": "Le témoin est une solution dont on connaît déjà le contenu.",
+              "explanation": "Le témoin, réalisé sur une solution qui contient l'ion recherché, montre le résultat attendu : on compare avec la solution inconnue."
+            },
+            {
+              "prompt": "On réalise un test et rien ne se passe. Que peut-on conclure ?",
+              "options": [
+                "Il faut goûter la solution",
+                "L'ion recherché est présent",
+                "Le réactif est un précipité",
+                "L'ion recherché est absent (ou en trop faible quantité)"
+              ],
+              "answer": 3,
+              "hint": "Relis l'encadré « Retiens » : test positif ou négatif ?",
+              "explanation": "Un test négatif indique que l'ion recherché n'est pas présent, ou en quantité trop faible pour être détecté."
+            }
+          ]
+        }
+      },
+      {
+        "title": "Tester les cations métalliques avec la soude",
+        "blocks": [
+          {
+            "type": "text",
+            "text": "Le réactif utilisé est une **solution d'hydroxyde de sodium**, appelée couramment « **soude** ». Elle contient des ions sodium Na⁺ et des ions hydroxyde HO⁻. Ce sont les ions **HO⁻** qui réagissent avec certains cations métalliques pour former un **précipité coloré**."
+          },
+          {
+            "type": "table",
+            "caption": "Test à la soude : la couleur du précipité identifie le cation",
+            "columns": [
+              "Ion recherché",
+              "Formule",
+              "Observation avec la soude"
+            ],
+            "rows": [
+              [
+                "Ion cuivre II",
+                "Cu²⁺",
+                "Précipité **bleu**"
+              ],
+              [
+                "Ion fer II",
+                "Fe²⁺",
+                "Précipité **vert** (qui devient peu à peu couleur rouille en surface, au contact de l'air)"
+              ],
+              [
+                "Ion fer III",
+                "Fe³⁺",
+                "Précipité **orange-brun**, couleur **rouille**"
+              ],
+              [
+                "Ion zinc",
+                "Zn²⁺",
+                "Précipité **blanc** (qui disparaît si l'on ajoute beaucoup de soude)"
+              ]
+            ]
+          },
+          {
+            "type": "callout",
+            "kind": "plus",
+            "title": "Le nom des précipités",
+            "text": "Le précipité est formé par le cation testé et les ions hydroxyde HO⁻ de la soude. Avec Cu²⁺, il s'agit de l'**hydroxyde de cuivre II**, de formule Cu(OH)₂. De même : Fe(OH)₂ (vert), Fe(OH)₃ (rouille), Zn(OH)₂ (blanc)."
+          },
+          {
+            "type": "callout",
+            "kind": "attention",
+            "text": "La couleur d'une solution donne parfois un indice (les solutions contenant Cu²⁺ sont bleues), mais ce n'est **pas une preuve** : seul le test permet de conclure. Le précipité vert de fer II réagit lentement avec le dioxygène de l'air : il faut l'observer **tout de suite**. Enfin, d'autres ions (comme l'ion aluminium Al³⁺) donnent aussi un précipité blanc : un précipité blanc ne suffit pas toujours à affirmer « zinc »."
+          },
+          {
+            "type": "callout",
+            "kind": "retiens",
+            "text": "Avec la soude : **Cu²⁺ → bleu**, **Fe²⁺ → vert**, **Fe³⁺ → rouille**, **Zn²⁺ → blanc**. Astuce : le fer III donne la couleur de la rouille."
+          }
+        ],
+        "checkpoint": {
+          "variants": [
+            {
+              "prompt": "Quelle est la couleur du précipité obtenu en ajoutant de la soude à une solution contenant des ions fer III Fe³⁺ ?",
+              "options": [
+                "Bleu",
+                "Rouille (orange-brun)",
+                "Vert",
+                "Blanc"
+              ],
+              "answer": 1,
+              "hint": "Pense à l'astuce donnée dans l'encadré « Retiens ».",
+              "explanation": "Les ions Fe³⁺ donnent avec la soude un précipité orange-brun, couleur rouille."
+            },
+            {
+              "prompt": "On ajoute de la soude à une solution : un précipité bleu apparaît. Quel ion contient-elle ?",
+              "options": [
+                "Cu²⁺",
+                "Zn²⁺",
+                "Fe³⁺",
+                "Fe²⁺"
+              ],
+              "answer": 0,
+              "hint": "Regarde la première ligne du tableau.",
+              "explanation": "Un précipité bleu avec la soude caractérise les ions cuivre II Cu²⁺."
+            },
+            {
+              "prompt": "Dans la soude, quels ions réagissent avec les cations métalliques pour former le précipité ?",
+              "options": [
+                "Les ions sodium Na⁺",
+                "Les ions chlorure Cl⁻",
+                "Les ions hydroxyde HO⁻",
+                "Les molécules d'eau"
+              ],
+              "answer": 2,
+              "hint": "Relis le premier paragraphe de cette partie.",
+              "explanation": "Ce sont les ions hydroxyde HO⁻ qui forment le précipité avec le cation métallique (par exemple Cu(OH)₂)."
+            }
+          ]
+        }
+      },
+      {
+        "title": "Tester les anions : chlorure et sulfate",
+        "blocks": [
+          {
+            "type": "text",
+            "text": "Pour les anions, on utilise d'autres réactifs. Chacun apporte un cation qui forme un précipité avec l'anion recherché."
+          },
+          {
+            "type": "table",
+            "caption": "Tests des ions chlorure et sulfate",
+            "columns": [
+              "Ion recherché",
+              "Formule",
+              "Réactif",
+              "Observation"
+            ],
+            "rows": [
+              [
+                "Ion chlorure",
+                "Cl⁻",
+                "Nitrate d'argent (contient des ions argent Ag⁺)",
+                "Précipité **blanc** qui **noircit à la lumière**"
+              ],
+              [
+                "Ion sulfate",
+                "SO₄²⁻",
+                "Chlorure de baryum (contient des ions baryum Ba²⁺)",
+                "Précipité **blanc**"
+              ]
+            ]
+          },
+          {
+            "type": "text",
+            "text": "Le précipité blanc du test des ions chlorure est du **chlorure d'argent** (AgCl) ; celui du test des ions sulfate est du **sulfate de baryum** (BaSO₄)."
+          },
+          {
+            "type": "callout",
+            "kind": "attention",
+            "text": "Le nitrate d'argent tache la peau en noir et il est corrosif ; le chlorure de baryum est toxique. Gants et lunettes sont indispensables, et les restes vont dans le bidon de récupération, jamais dans l'évier."
+          },
+          {
+            "type": "callout",
+            "kind": "plus",
+            "title": "Et les ions H⁺ et HO⁻ ?",
+            "text": "Ils ne donnent pas de précipité : on les repère avec le **papier pH**. Une solution acide (pH inférieur à 7) contient plus d'ions H⁺ que d'ions HO⁻ ; une solution basique (pH supérieur à 7) contient plus d'ions HO⁻ que d'ions H⁺. Tu étudieras cela en détail dans le chapitre sur le pH."
+          },
+          {
+            "type": "callout",
+            "kind": "retiens",
+            "text": "**Nitrate d'argent** → précipité blanc qui noircit à la lumière → ions **chlorure Cl⁻**. **Chlorure de baryum** → précipité blanc → ions **sulfate SO₄²⁻**."
+          }
+        ],
+        "checkpoint": {
+          "variants": [
+            {
+              "prompt": "Quel réactif permet de mettre en évidence les ions chlorure Cl⁻ ?",
+              "options": [
+                "La soude",
+                "Le nitrate d'argent",
+                "Le chlorure de baryum",
+                "Le papier pH"
+              ],
+              "answer": 1,
+              "hint": "Regarde la première ligne du tableau.",
+              "explanation": "Le nitrate d'argent donne avec les ions chlorure un précipité blanc qui noircit à la lumière."
+            },
+            {
+              "prompt": "On ajoute du chlorure de baryum à une solution : un précipité blanc apparaît. Quel ion contient-elle ?",
+              "options": [
+                "Ion chlorure Cl⁻",
+                "Ion zinc Zn²⁺",
+                "Ion cuivre II Cu²⁺",
+                "Ion sulfate SO₄²⁻"
+              ],
+              "answer": 3,
+              "hint": "Le chlorure de baryum sert à repérer un anion.",
+              "explanation": "Le chlorure de baryum donne un précipité blanc avec les ions sulfate SO₄²⁻."
+            },
+            {
+              "prompt": "Avec le nitrate d'argent, le précipité caractéristique des ions chlorure…",
+              "options": [
+                "est bleu",
+                "est vert puis devient rouille",
+                "est blanc et noircit à la lumière",
+                "ne se forme qu'avec du papier pH"
+              ],
+              "answer": 2,
+              "hint": "Relis la colonne « Observation » du tableau.",
+              "explanation": "Le chlorure d'argent est un précipité blanc qui noircit à la lumière."
+            }
+          ]
+        }
+      },
+      {
+        "title": "Identifier une solution inconnue et conclure",
+        "blocks": [
+          {
+            "type": "text",
+            "text": "Une solution ionique contient des **cations** et des **anions**. Pour l'identifier, on cherche les deux. Son nom se construit avec l'anion d'abord, puis le cation : une solution d'ions Cu²⁺ et Cl⁻ est une solution de **chlorure de cuivre II**. Sa formule respecte la neutralité électrique (vue au chapitre précédent)."
+          },
+          {
+            "type": "table",
+            "caption": "Quelques solutions ioniques",
+            "columns": [
+              "Nom de la solution",
+              "Ions présents",
+              "Formule"
+            ],
+            "rows": [
+              [
+                "Sulfate de cuivre II",
+                "Cu²⁺ et SO₄²⁻",
+                "(Cu²⁺ + SO₄²⁻)"
+              ],
+              [
+                "Chlorure de cuivre II",
+                "Cu²⁺ et Cl⁻",
+                "(Cu²⁺ + 2 Cl⁻)"
+              ],
+              [
+                "Sulfate de fer II",
+                "Fe²⁺ et SO₄²⁻",
+                "(Fe²⁺ + SO₄²⁻)"
+              ],
+              [
+                "Chlorure de fer III",
+                "Fe³⁺ et Cl⁻",
+                "(Fe³⁺ + 3 Cl⁻)"
+              ],
+              [
+                "Chlorure de zinc",
+                "Zn²⁺ et Cl⁻",
+                "(Zn²⁺ + 2 Cl⁻)"
+              ]
+            ]
+          },
+          {
+            "type": "callout",
+            "kind": "methode",
+            "title": "La démarche",
+            "text": "1. Prélever **un nouvel échantillon** de la solution pour **chaque** test (un tube par réactif).\n2. Noter chaque observation dans un tableau.\n3. Pour chaque test : « J'observe… ; or je sais que… ; donc la solution contient (ou ne contient pas)… ».\n4. Rassembler les résultats : nom et formule de la solution."
+          },
+          {
+            "type": "formula",
+            "latex": "Tube 1 + soude → précipité vert → ions fer II Fe²⁺ présents\nTube 2 + nitrate d'argent → rien → pas d'ions chlorure Cl⁻\nTube 3 + chlorure de baryum → précipité blanc → ions sulfate SO₄²⁻ présents\nConclusion : solution de sulfate de fer II (Fe²⁺ + SO₄²⁻)"
+          },
+          {
+            "type": "callout",
+            "kind": "attention",
+            "title": "Pourquoi un tube par test ?",
+            "text": "Chaque réactif apporte ses propres ions. Le chlorure de baryum, par exemple, apporte des ions chlorure Cl⁻ : si l'on ajoutait ensuite du nitrate d'argent dans le même tube, on verrait un précipité blanc même si la solution de départ ne contenait pas d'ions chlorure !"
+          },
+          {
+            "type": "callout",
+            "kind": "retiens",
+            "text": "Un test pour le cation, un test pour l'anion, **un tube propre par test**. Le nom de la solution : anion + « de » + cation (chlorure de zinc, sulfate de cuivre II…)."
+          }
+        ],
+        "checkpoint": {
+          "variants": [
+            {
+              "prompt": "Une solution contient des ions Fe³⁺ et des ions Cl⁻. Comment s'appelle-t-elle ?",
+              "options": [
+                "Sulfate de fer III",
+                "Chlorure de fer III",
+                "Chlorure de fer II",
+                "Fer de chlorure"
+              ],
+              "answer": 1,
+              "hint": "On nomme d'abord l'anion, puis le cation, sans oublier le chiffre romain.",
+              "explanation": "Cl⁻ est l'ion chlorure et Fe³⁺ l'ion fer III : c'est une solution de chlorure de fer III (Fe³⁺ + 3 Cl⁻)."
+            },
+            {
+              "prompt": "Pourquoi utilise-t-on un nouvel échantillon de solution pour chaque test ?",
+              "options": [
+                "Pour économiser les réactifs",
+                "Parce que chaque réactif apporte des ions qui pourraient fausser le test suivant",
+                "Parce que la solution change de couleur à la lumière",
+                "Ce n'est pas utile"
+              ],
+              "answer": 1,
+              "hint": "Relis l'encadré « Pourquoi un tube par test ? ».",
+              "explanation": "Le réactif ajouté apporte ses propres ions (par exemple Cl⁻ avec le chlorure de baryum) : ils fausseraient le test suivant."
+            },
+            {
+              "prompt": "Une solution donne un précipité bleu avec la soude et un précipité blanc qui noircit avec le nitrate d'argent. Laquelle est-ce ?",
+              "options": [
+                "Chlorure de cuivre II",
+                "Sulfate de cuivre II",
+                "Chlorure de fer II",
+                "Chlorure de zinc"
+              ],
+              "answer": 0,
+              "hint": "Un test pour le cation, un test pour l'anion.",
+              "explanation": "Bleu avec la soude → Cu²⁺ ; blanc qui noircit avec le nitrate d'argent → Cl⁻. C'est le chlorure de cuivre II (Cu²⁺ + 2 Cl⁻)."
+            }
+          ]
+        }
+      }
+    ],
+    "memo": [
+      {
+        "label": "Test",
+        "text": "Réactif ajouté à un petit échantillon → observation (précipité ? couleur ?) → conclusion. Positif = ion présent ; négatif = ion absent ou trop peu abondant."
+      },
+      {
+        "label": "Précipité",
+        "text": "Solide finement divisé qui apparaît et trouble le liquide. Sa couleur identifie l'ion."
+      },
+      {
+        "label": "Soude (HO⁻)",
+        "text": "Cu²⁺ → bleu · Fe²⁺ → vert · Fe³⁺ → rouille · Zn²⁺ → blanc."
+      },
+      {
+        "label": "Nitrate d'argent",
+        "text": "Précipité blanc qui noircit à la lumière → ions chlorure Cl⁻."
+      },
+      {
+        "label": "Chlorure de baryum",
+        "text": "Précipité blanc → ions sulfate SO₄²⁻."
+      },
+      {
+        "label": "Conclure",
+        "text": "Un tube propre par test. « J'observe… or… donc… ». Nom : anion puis cation (chlorure de fer III = Fe³⁺ + 3 Cl⁻)."
+      },
+      {
+        "label": "Sécurité",
+        "text": "Blouse, lunettes, gants. Ne jamais goûter. Témoin pour comparer."
+      }
+    ]
+  },
+  "exercises": {
+    "duration_min": 25,
+    "instructions": "Fais les exercices dans l'ordre : les étoiles indiquent la difficulté. Pour les réponses numériques, écris seulement le nombre. Garde sous les yeux ton tableau des tests : c'est le meilleur outil. Les corrigés s'affichent après validation.",
+    "pass_threshold": 8,
+    "texts": [],
+    "items": [
+      {
+        "id": "ex1",
+        "type": "qcm",
+        "stars": 1,
+        "lesson_part": 2,
+        "skills": [
+          "pc-test-cations"
+        ],
+        "cognitive": "connaitre",
+        "prompt": "Quel réactif permet de mettre en évidence les ions cuivre II Cu²⁺ ?",
+        "options": [
+          "Le nitrate d'argent",
+          "L'eau distillée",
+          "Le chlorure de baryum",
+          "La soude (hydroxyde de sodium)"
+        ],
+        "answer": 3,
+        "solution": "On utilise la **soude** : avec les ions Cu²⁺, elle forme un précipité **bleu** d'hydroxyde de cuivre II."
+      },
+      {
+        "id": "ex2",
+        "type": "qcm",
+        "stars": 1,
+        "lesson_part": 2,
+        "skills": [
+          "pc-test-cations"
+        ],
+        "cognitive": "connaitre",
+        "prompt": "On ajoute quelques gouttes de soude à une solution : un précipité couleur rouille apparaît. Quel ion la solution contient-elle ?",
+        "options": [
+          "Fe²⁺",
+          "Cu²⁺",
+          "Fe³⁺",
+          "Zn²⁺"
+        ],
+        "answer": 2,
+        "solution": "Un précipité couleur rouille (orange-brun) avec la soude caractérise les ions **fer III Fe³⁺**."
+      },
+      {
+        "id": "ex3",
+        "type": "short",
+        "stars": 1,
+        "lesson_part": 1,
+        "skills": [
+          "pc-test-principe"
+        ],
+        "cognitive": "connaitre",
+        "prompt": "Comment appelle-t-on le solide qui apparaît dans un liquide lors d'un test et le rend trouble ? (un mot)",
+        "answer": [
+          "précipité",
+          "un précipité",
+          "le précipité",
+          "precipite",
+          "précipités",
+          "des précipités"
+        ],
+        "solution": "C'est un **précipité**."
+      },
+      {
+        "id": "ex4",
+        "type": "qcm",
+        "stars": 1,
+        "lesson_part": 3,
+        "skills": [
+          "pc-test-anions"
+        ],
+        "cognitive": "connaitre",
+        "prompt": "Avec le nitrate d'argent, une solution donne un précipité blanc qui noircit à la lumière. Quel ion contient-elle ?",
+        "options": [
+          "Ion chlorure Cl⁻",
+          "Ion sulfate SO₄²⁻",
+          "Ion zinc Zn²⁺",
+          "Ion sodium Na⁺"
+        ],
+        "answer": 0,
+        "solution": "C'est le test caractéristique des ions **chlorure Cl⁻** : il se forme du chlorure d'argent, blanc, qui noircit à la lumière."
+      },
+      {
+        "id": "ex5",
+        "type": "qcm",
+        "stars": 2,
+        "lesson_part": 2,
+        "skills": [
+          "pc-test-cations",
+          "pc-test-anions"
+        ],
+        "cognitive": "appliquer",
+        "prompt": "Yanis teste une solution de sulfate de cuivre II (Cu²⁺ + SO₄²⁻) : un tube avec de la soude, un autre tube avec du chlorure de baryum. Qu'observe-t-il ?",
+        "options": [
+          "Un précipité bleu, puis rien",
+          "Un précipité vert, puis rien",
+          "Rien, puis un précipité blanc qui noircit",
+          "Un précipité bleu, puis un précipité blanc"
+        ],
+        "answer": 3,
+        "solution": "Les ions Cu²⁺ donnent avec la soude un précipité **bleu** ; les ions SO₄²⁻ donnent avec le chlorure de baryum un précipité **blanc**."
+      },
+      {
+        "id": "ex6",
+        "type": "numeric",
+        "stars": 2,
+        "lesson_part": 4,
+        "skills": [
+          "pc-test-cations",
+          "pc-test-anions",
+          "pc-test-conclure"
+        ],
+        "cognitive": "analyser",
+        "prompt": "On teste une solution de chlorure de fer II (Fe²⁺ + 2 Cl⁻) avec trois réactifs, chacun dans un tube différent : la soude, le nitrate d'argent et le chlorure de baryum. Dans combien de tubes observe-t-on un précipité ?",
+        "answer": 2,
+        "solution": "Soude → précipité vert (ions Fe²⁺). Nitrate d'argent → précipité blanc qui noircit (ions Cl⁻). Chlorure de baryum → rien (pas d'ions sulfate). Il y a donc **2** tubes avec un précipité."
+      },
+      {
+        "id": "ex7",
+        "type": "qcm",
+        "stars": 2,
+        "lesson_part": 4,
+        "skills": [
+          "pc-test-conclure"
+        ],
+        "cognitive": "analyser",
+        "prompt": "Lina teste une solution inconnue. Avec la soude : rien ne se passe. Avec le nitrate d'argent : précipité blanc qui noircit à la lumière. Quelle conclusion est correcte ?",
+        "options": [
+          "La solution contient des ions Zn²⁺ et Cl⁻",
+          "La solution contient des ions Cl⁻ et pas d'ions Cu²⁺, Fe²⁺, Fe³⁺ ni Zn²⁺",
+          "La solution contient des ions SO₄²⁻",
+          "La solution ne contient aucun ion"
+        ],
+        "answer": 1,
+        "solution": "Le nitrate d'argent révèle les ions **chlorure Cl⁻**. La soude ne donne rien : la solution ne contient aucun des cations Cu²⁺, Fe²⁺, Fe³⁺ ou Zn²⁺. Elle contient forcément un autre cation (par exemple Na⁺ : ce pourrait être de l'eau salée)."
+      },
+      {
+        "id": "ex8",
+        "type": "qcm",
+        "stars": 2,
+        "lesson_part": 2,
+        "skills": [
+          "pc-test-cations",
+          "pc-test-conclure"
+        ],
+        "cognitive": "analyser",
+        "prompt": "Tom ajoute de la soude à une solution : un précipité vert apparaît. Il revient dix minutes plus tard : le haut du précipité est devenu couleur rouille. Quel ion la solution contenait-elle au départ ?",
+        "options": [
+          "Fe²⁺, car le précipité était vert au départ",
+          "Fe³⁺, car le précipité final est rouille",
+          "Cu²⁺",
+          "Zn²⁺"
+        ],
+        "answer": 0,
+        "solution": "On conclut d'après l'observation **immédiate** : le précipité vert caractérise les ions **fer II Fe²⁺**. Au contact du dioxygène de l'air, ce précipité se transforme lentement et prend la couleur rouille en surface."
+      },
+      {
+        "id": "ex9",
+        "type": "numeric",
+        "stars": 3,
+        "lesson_part": 4,
+        "skills": [
+          "pc-test-conclure"
+        ],
+        "cognitive": "appliquer",
+        "prompt": "Une solution de chlorure de fer III a pour formule (Fe³⁺ + 3 Cl⁻). Un petit volume de cette solution contient 600 ions chlorure. Combien contient-il d'ions fer III ?",
+        "answer": 200,
+        "solution": "La formule indique **3 ions chlorure pour 1 ion fer III**. 600 ÷ 3 = **200** ions Fe³⁺. Vérification : 200 × 3 = 600 charges + et 600 × 1 = 600 charges − : la solution est bien neutre."
+      },
+      {
+        "id": "ex10",
+        "type": "open",
+        "stars": 3,
+        "lesson_part": 4,
+        "skills": [
+          "pc-test-principe",
+          "pc-test-conclure",
+          "pc-rediger"
+        ],
+        "cognitive": "rediger",
+        "prompt": "Deux flacons ont perdu leur étiquette. L'un contient du sulfate de cuivre II, l'autre du chlorure de fer III. Rédige un protocole qui permet de savoir lequel est lequel : matériel, étapes, résultats attendus et précautions de sécurité.",
+        "solution": "Je mets blouse, lunettes et gants. Je numérote les flacons 1 et 2. Je verse environ 2 mL du flacon 1 dans un tube à essais propre, et 2 mL du flacon 2 dans un autre tube. J'ajoute quelques gouttes de soude dans chaque tube. Si un précipité **bleu** apparaît, le flacon contient des ions Cu²⁺ : c'est le sulfate de cuivre II. Si un précipité **rouille** apparaît, il contient des ions Fe³⁺ : c'est le chlorure de fer III. Pour confirmer, je peux prélever de nouveaux échantillons : le chlorure de baryum donne un précipité blanc avec le sulfate de cuivre II (ions SO₄²⁻), et le nitrate d'argent un précipité blanc qui noircit avec le chlorure de fer III (ions Cl⁻). Les restes vont dans le bidon de récupération."
+      }
+    ]
+  },
+  "evaluation": {
+    "duration_min": 30,
+    "conditions": "Sans la leçon, en 30 minutes. Lis bien le document avant de répondre. Barème : A = 6 points · B = 7 points · C = 7 points.",
+    "total_points": 20,
+    "variants": [
+      {
+        "texts": [
+          {
+            "id": "flacons-1",
+            "label": "Document · Les flacons de l'atelier de Sacha",
+            "source": "Document original écrit pour cette évaluation (situation imaginaire).",
+            "paragraphs": [
+              "Sacha range l'atelier de chimie du club sciences. Trois flacons, notés A, B et C, ont perdu leur étiquette. On sait que chacun contient l'une des solutions suivantes : sulfate de cuivre II, chlorure de fer III, chlorure de zinc, sulfate de fer II.",
+              "Pour chaque flacon, Sacha prélève trois échantillons dans trois tubes propres et réalise trois tests. Résultats :",
+              "Flacon A : soude → précipité bleu · nitrate d'argent → rien · chlorure de baryum → précipité blanc.",
+              "Flacon B : soude → précipité orange-brun (couleur rouille) · nitrate d'argent → précipité blanc qui noircit à la lumière · chlorure de baryum → rien.",
+              "Flacon C : soude → précipité blanc · nitrate d'argent → précipité blanc qui noircit à la lumière · chlorure de baryum → rien."
+            ]
+          }
+        ],
+        "sections": [
+          {
+            "label": "A · Je connais (6 points)",
+            "questions": [
+              {
+                "id": "q1",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 1,
+                "skills": [
+                  "pc-test-principe"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Un précipité est…",
+                "options": [
+                  "un gaz qui se dégage",
+                  "un réactif qui change de couleur",
+                  "un solide qui apparaît dans un liquide et le trouble",
+                  "un ion négatif"
+                ],
+                "answer": 2,
+                "solution": "Un précipité est un solide finement divisé qui apparaît dans un liquide et le rend trouble.",
+                "rubric": "1 pt : bonne réponse."
+              },
+              {
+                "id": "q2",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 3,
+                "skills": [
+                  "pc-test-anions"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Quel réactif permet de mettre en évidence les ions chlorure Cl⁻ ?",
+                "options": [
+                  "La soude",
+                  "Le nitrate d'argent",
+                  "Le chlorure de baryum",
+                  "Le papier pH"
+                ],
+                "answer": 1,
+                "solution": "Le nitrate d'argent : précipité blanc qui noircit à la lumière.",
+                "rubric": "1 pt : bonne réponse."
+              },
+              {
+                "id": "q3",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 2,
+                "skills": [
+                  "pc-test-cations"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Avec la soude, quel ion donne un précipité couleur rouille ?",
+                "options": [
+                  "Cu²⁺",
+                  "Fe²⁺",
+                  "Zn²⁺",
+                  "Fe³⁺"
+                ],
+                "answer": 3,
+                "solution": "Les ions fer III Fe³⁺ donnent un précipité orange-brun, couleur rouille.",
+                "rubric": "1 pt : bonne réponse."
+              },
+              {
+                "id": "q4",
+                "type": "short",
+                "points": 1,
+                "lesson_part": 2,
+                "skills": [
+                  "pc-test-cations"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "De quelle couleur est le précipité obtenu en ajoutant de la soude à une solution contenant des ions cuivre II Cu²⁺ ? (un mot)",
+                "answer": [
+                  "bleu",
+                  "bleue",
+                  "bleu clair",
+                  "précipité bleu",
+                  "un précipité bleu"
+                ],
+                "solution": "Bleu.",
+                "rubric": "1 pt : bleu."
+              },
+              {
+                "id": "q5",
+                "type": "open",
+                "points": 2,
+                "lesson_part": 1,
+                "skills": [
+                  "pc-test-principe",
+                  "pc-rediger"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Explique ce qu'est un test témoin et à quoi il sert.",
+                "solution": "Un test témoin est le même test, réalisé sur une solution dont on sait qu'elle contient l'ion recherché. Il montre le résultat attendu (par exemple la couleur du précipité) : on peut ainsi comparer avec ce que donne la solution inconnue et conclure avec plus de certitude.",
+                "rubric": "1 pt : même test sur une solution qui contient (de façon sûre) l'ion recherché. 1 pt : sert à comparer / montrer le résultat attendu pour bien interpréter le test."
+              }
+            ]
+          },
+          {
+            "label": "B · J'applique (7 points)",
+            "questions": [
+              {
+                "id": "q6",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 2,
+                "skills": [
+                  "pc-test-cations",
+                  "pc-test-conclure"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "On ajoute de la soude à une solution : un précipité vert apparaît. La solution contient des ions…",
+                "options": [
+                  "cuivre II Cu²⁺",
+                  "fer III Fe³⁺",
+                  "fer II Fe²⁺",
+                  "zinc Zn²⁺"
+                ],
+                "answer": 2,
+                "solution": "Un précipité vert avec la soude caractérise les ions fer II Fe²⁺.",
+                "rubric": "1 pt : bonne réponse."
+              },
+              {
+                "id": "q7",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 1,
+                "skills": [
+                  "pc-test-anions",
+                  "pc-test-conclure"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "On ajoute du nitrate d'argent à une eau : rien ne se passe. Que peut-on conclure ?",
+                "options": [
+                  "L'eau contient des ions chlorure",
+                  "L'eau ne contient pas d'ions chlorure (ou trop peu pour être détectés)",
+                  "L'eau contient des ions sulfate",
+                  "L'eau contient des ions argent"
+                ],
+                "answer": 1,
+                "solution": "Le test est négatif : pas d'ions chlorure Cl⁻, ou en quantité trop faible pour être détectés.",
+                "rubric": "1 pt : bonne réponse."
+              },
+              {
+                "id": "q8",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 4,
+                "skills": [
+                  "pc-test-conclure"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Une solution contient des ions Fe²⁺ et SO₄²⁻. Comment s'appelle-t-elle ?",
+                "options": [
+                  "Sulfate de fer II",
+                  "Chlorure de fer II",
+                  "Sulfate de fer III",
+                  "Fer de sulfate"
+                ],
+                "answer": 0,
+                "solution": "Anion sulfate + cation fer II : sulfate de fer II (Fe²⁺ + SO₄²⁻).",
+                "rubric": "1 pt : bonne réponse."
+              },
+              {
+                "id": "q9",
+                "type": "numeric",
+                "points": 1,
+                "lesson_part": 4,
+                "skills": [
+                  "pc-test-cations",
+                  "pc-test-anions",
+                  "pc-test-conclure"
+                ],
+                "cognitive": "analyser",
+                "prompt": "On teste une solution de chlorure de cuivre II avec la soude, le nitrate d'argent et le chlorure de baryum (un tube par réactif). Dans combien de tubes apparaît un précipité ?",
+                "answer": 2,
+                "solution": "Soude → précipité bleu (Cu²⁺) ; nitrate d'argent → précipité blanc qui noircit (Cl⁻) ; chlorure de baryum → rien (pas de SO₄²⁻). Réponse : 2.",
+                "rubric": "1 pt : 2."
+              },
+              {
+                "id": "q10",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 2,
+                "skills": [
+                  "pc-test-cations",
+                  "pc-test-conclure"
+                ],
+                "cognitive": "analyser",
+                "prompt": "Quel réactif permet de distinguer une solution de sulfate de cuivre II d'une solution de sulfate de fer II ?",
+                "options": [
+                  "Le chlorure de baryum",
+                  "La soude",
+                  "L'eau distillée",
+                  "Aucun réactif ne le permet"
+                ],
+                "answer": 1,
+                "solution": "Les deux solutions contiennent des ions sulfate : le chlorure de baryum donne le même résultat. La soude, elle, donne un précipité bleu avec Cu²⁺ et vert avec Fe²⁺.",
+                "rubric": "1 pt : bonne réponse."
+              },
+              {
+                "id": "q11",
+                "type": "open",
+                "points": 2,
+                "lesson_part": 3,
+                "skills": [
+                  "pc-test-principe",
+                  "pc-test-anions",
+                  "pc-rediger"
+                ],
+                "cognitive": "rediger",
+                "prompt": "Rédige un protocole pour vérifier qu'une eau minérale contient des ions chlorure. Indique les étapes, le résultat attendu si le test est positif et une précaution de sécurité.",
+                "solution": "Avec blouse, lunettes et gants, je verse environ 2 mL d'eau minérale dans un tube à essais propre. J'ajoute quelques gouttes de nitrate d'argent. Si un précipité blanc qui noircit à la lumière apparaît, l'eau contient des ions chlorure Cl⁻.",
+                "rubric": "1 pt : étapes correctes (échantillon dans un tube + quelques gouttes de nitrate d'argent). 0,5 pt : résultat attendu (précipité blanc qui noircit à la lumière). 0,5 pt : une précaution de sécurité (lunettes, gants, blouse)."
+              }
+            ]
+          },
+          {
+            "label": "C · Problème type brevet : les flacons sans étiquette (7 points)",
+            "questions": [
+              {
+                "id": "q12",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 2,
+                "text_ref": "flacons-1",
+                "skills": [
+                  "pc-document",
+                  "pc-test-cations"
+                ],
+                "cognitive": "analyser",
+                "prompt": "D'après le document, quel ion le test à la soude met-il en évidence dans le flacon A ?",
+                "options": [
+                  "SO₄²⁻",
+                  "Fe³⁺",
+                  "Zn²⁺",
+                  "Cu²⁺"
+                ],
+                "answer": 3,
+                "solution": "Précipité bleu avec la soude → ions cuivre II Cu²⁺.",
+                "rubric": "1 pt : bonne réponse."
+              },
+              {
+                "id": "q13",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 3,
+                "text_ref": "flacons-1",
+                "skills": [
+                  "pc-document",
+                  "pc-test-anions"
+                ],
+                "cognitive": "analyser",
+                "prompt": "Quel ion le test au chlorure de baryum met-il en évidence dans le flacon A ?",
+                "options": [
+                  "Cl⁻",
+                  "Ba²⁺",
+                  "SO₄²⁻",
+                  "Cu²⁺"
+                ],
+                "answer": 2,
+                "solution": "Précipité blanc avec le chlorure de baryum → ions sulfate SO₄²⁻. Le flacon A contient donc du sulfate de cuivre II.",
+                "rubric": "1 pt : bonne réponse."
+              },
+              {
+                "id": "q14",
+                "type": "numeric",
+                "points": 1,
+                "lesson_part": 3,
+                "text_ref": "flacons-1",
+                "skills": [
+                  "pc-document",
+                  "pc-test-anions"
+                ],
+                "cognitive": "analyser",
+                "prompt": "Combien de flacons contiennent des ions chlorure ?",
+                "answer": 2,
+                "solution": "Le nitrate d'argent donne un précipité blanc qui noircit avec les flacons B et C : 2 flacons.",
+                "rubric": "1 pt : 2."
+              },
+              {
+                "id": "q15",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 4,
+                "text_ref": "flacons-1",
+                "skills": [
+                  "pc-document",
+                  "pc-test-conclure"
+                ],
+                "cognitive": "analyser",
+                "prompt": "Quelle solution le flacon B contient-il ?",
+                "options": [
+                  "Chlorure de fer III",
+                  "Sulfate de fer II",
+                  "Chlorure de zinc",
+                  "Sulfate de cuivre II"
+                ],
+                "answer": 0,
+                "solution": "Précipité rouille avec la soude → Fe³⁺ ; précipité blanc qui noircit avec le nitrate d'argent → Cl⁻ ; rien avec le chlorure de baryum → pas de SO₄²⁻. C'est le chlorure de fer III (Fe³⁺ + 3 Cl⁻).",
+                "rubric": "1 pt : bonne réponse."
+              },
+              {
+                "id": "q16",
+                "type": "open",
+                "points": 3,
+                "lesson_part": 4,
+                "text_ref": "flacons-1",
+                "skills": [
+                  "pc-document",
+                  "pc-test-conclure",
+                  "pc-rediger"
+                ],
+                "cognitive": "rediger",
+                "prompt": "Rédige la conclusion complète pour le flacon C : ions présents, justification à partir des tests du document, nom et formule de la solution.",
+                "solution": "Avec la soude, le flacon C donne un précipité blanc ; parmi les solutions possibles, seuls les ions zinc Zn²⁺ donnent ce résultat : le flacon C contient des ions Zn²⁺. Avec le nitrate d'argent, il donne un précipité blanc qui noircit à la lumière : il contient des ions chlorure Cl⁻. Le chlorure de baryum ne donne rien : pas d'ions sulfate. Le flacon C contient donc du chlorure de zinc, de formule (Zn²⁺ + 2 Cl⁻).",
+                "rubric": "1 pt : ions Zn²⁺ justifiés par le précipité blanc avec la soude. 1 pt : ions Cl⁻ justifiés par le précipité blanc qui noircit avec le nitrate d'argent (et absence de sulfate). 1 pt : nom « chlorure de zinc » et formule (Zn²⁺ + 2 Cl⁻) ; 0,5 pt seulement si la formule manque ou n'est pas neutre."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "texts": [
+          {
+            "id": "flacons-2",
+            "label": "Document · Les flacons de la réserve de M. Diallo",
+            "source": "Document original écrit pour cette évaluation (situation imaginaire).",
+            "paragraphs": [
+              "M. Diallo, technicien de laboratoire, retrouve dans la réserve trois flacons sans étiquette, notés D, E et F. Chacun contient l'une des solutions suivantes : chlorure de cuivre II, sulfate de fer II, sulfate de zinc, chlorure de fer III.",
+              "Pour chaque flacon, il prélève trois échantillons dans trois tubes propres et réalise trois tests. Résultats :",
+              "Flacon D : soude → précipité bleu · nitrate d'argent → précipité blanc qui noircit à la lumière · chlorure de baryum → rien.",
+              "Flacon E : soude → précipité vert (qui devient couleur rouille en surface au bout de quelques minutes) · nitrate d'argent → rien · chlorure de baryum → précipité blanc.",
+              "Flacon F : soude → précipité blanc · nitrate d'argent → rien · chlorure de baryum → précipité blanc."
+            ]
+          }
+        ],
+        "sections": [
+          {
+            "label": "A · Je connais (6 points)",
+            "questions": [
+              {
+                "id": "q1",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 2,
+                "skills": [
+                  "pc-test-cations"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "La « soude » utilisée pour les tests est…",
+                "options": [
+                  "une solution de nitrate d'argent",
+                  "de l'eau salée",
+                  "une solution de chlorure de baryum",
+                  "une solution d'hydroxyde de sodium"
+                ],
+                "answer": 3,
+                "solution": "La soude est une solution d'hydroxyde de sodium (ions Na⁺ et HO⁻).",
+                "rubric": "1 pt : bonne réponse."
+              },
+              {
+                "id": "q2",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 3,
+                "skills": [
+                  "pc-test-anions"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Quel réactif permet de mettre en évidence les ions sulfate SO₄²⁻ ?",
+                "options": [
+                  "La soude",
+                  "Le chlorure de baryum",
+                  "Le nitrate d'argent",
+                  "Le papier pH"
+                ],
+                "answer": 1,
+                "solution": "Le chlorure de baryum : précipité blanc.",
+                "rubric": "1 pt : bonne réponse."
+              },
+              {
+                "id": "q3",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 2,
+                "skills": [
+                  "pc-test-cations"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Avec la soude, quel ion donne un précipité vert ?",
+                "options": [
+                  "Fe²⁺",
+                  "Cu²⁺",
+                  "Fe³⁺",
+                  "Zn²⁺"
+                ],
+                "answer": 0,
+                "solution": "Les ions fer II Fe²⁺ donnent un précipité vert.",
+                "rubric": "1 pt : bonne réponse."
+              },
+              {
+                "id": "q4",
+                "type": "short",
+                "points": 1,
+                "lesson_part": 3,
+                "skills": [
+                  "pc-test-anions"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "De quelle couleur est le précipité obtenu en ajoutant du chlorure de baryum à une solution contenant des ions sulfate ? (un mot)",
+                "answer": [
+                  "blanc",
+                  "blanche",
+                  "précipité blanc",
+                  "un précipité blanc"
+                ],
+                "solution": "Blanc.",
+                "rubric": "1 pt : blanc."
+              },
+              {
+                "id": "q5",
+                "type": "open",
+                "points": 2,
+                "lesson_part": 1,
+                "skills": [
+                  "pc-test-principe",
+                  "pc-rediger"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Explique ce que signifient « test positif » et « test négatif ».",
+                "solution": "Un test est positif quand l'observation attendue apparaît (par exemple un précipité de la bonne couleur) : l'ion recherché est présent. Il est négatif quand rien ne se passe : l'ion recherché est absent, ou en quantité trop faible pour être détecté.",
+                "rubric": "1 pt : positif = observation attendue → ion présent. 1 pt : négatif = rien ne se passe → ion absent (ou trop peu abondant)."
+              }
+            ]
+          },
+          {
+            "label": "B · J'applique (7 points)",
+            "questions": [
+              {
+                "id": "q6",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 2,
+                "skills": [
+                  "pc-test-cations",
+                  "pc-test-conclure"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "On ajoute de la soude à une solution : un précipité bleu apparaît. La solution contient des ions…",
+                "options": [
+                  "fer III Fe³⁺",
+                  "fer II Fe²⁺",
+                  "cuivre II Cu²⁺",
+                  "zinc Zn²⁺"
+                ],
+                "answer": 2,
+                "solution": "Un précipité bleu avec la soude caractérise les ions cuivre II Cu²⁺.",
+                "rubric": "1 pt : bonne réponse."
+              },
+              {
+                "id": "q7",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 1,
+                "skills": [
+                  "pc-test-anions",
+                  "pc-test-conclure"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "On ajoute du chlorure de baryum à une solution : rien ne se passe. Que peut-on conclure ?",
+                "options": [
+                  "La solution contient des ions sulfate",
+                  "La solution ne contient pas d'ions sulfate (ou trop peu pour être détectés)",
+                  "La solution contient des ions chlorure",
+                  "La solution contient des ions baryum"
+                ],
+                "answer": 1,
+                "solution": "Le test est négatif : pas d'ions sulfate SO₄²⁻, ou en quantité trop faible pour être détectés.",
+                "rubric": "1 pt : bonne réponse."
+              },
+              {
+                "id": "q8",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 4,
+                "skills": [
+                  "pc-test-conclure"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Une solution contient des ions Zn²⁺ et Cl⁻. Comment s'appelle-t-elle ?",
+                "options": [
+                  "Sulfate de zinc",
+                  "Chlorure de cuivre II",
+                  "Zinc de chlorure",
+                  "Chlorure de zinc"
+                ],
+                "answer": 3,
+                "solution": "Anion chlorure + cation zinc : chlorure de zinc (Zn²⁺ + 2 Cl⁻).",
+                "rubric": "1 pt : bonne réponse."
+              },
+              {
+                "id": "q9",
+                "type": "numeric",
+                "points": 1,
+                "lesson_part": 4,
+                "skills": [
+                  "pc-test-cations",
+                  "pc-test-anions",
+                  "pc-test-conclure"
+                ],
+                "cognitive": "analyser",
+                "prompt": "On teste une solution de sulfate de fer III avec la soude, le nitrate d'argent et le chlorure de baryum (un tube par réactif). Dans combien de tubes apparaît un précipité ?",
+                "answer": 2,
+                "solution": "Soude → précipité rouille (Fe³⁺) ; nitrate d'argent → rien (pas de Cl⁻) ; chlorure de baryum → précipité blanc (SO₄²⁻). Réponse : 2.",
+                "rubric": "1 pt : 2."
+              },
+              {
+                "id": "q10",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 3,
+                "skills": [
+                  "pc-test-anions",
+                  "pc-test-conclure"
+                ],
+                "cognitive": "analyser",
+                "prompt": "Quel réactif permet de distinguer une solution de chlorure de sodium d'une solution de sulfate de sodium ?",
+                "options": [
+                  "La soude",
+                  "Le chlorure de baryum",
+                  "L'eau distillée",
+                  "Aucun réactif ne le permet"
+                ],
+                "answer": 1,
+                "solution": "Les deux solutions contiennent des ions sodium Na⁺ : la soude ne donne rien dans les deux cas. Le chlorure de baryum donne un précipité blanc avec le sulfate de sodium (ions SO₄²⁻) et rien avec le chlorure de sodium.",
+                "rubric": "1 pt : bonne réponse."
+              },
+              {
+                "id": "q11",
+                "type": "open",
+                "points": 2,
+                "lesson_part": 2,
+                "skills": [
+                  "pc-test-principe",
+                  "pc-test-cations",
+                  "pc-rediger"
+                ],
+                "cognitive": "rediger",
+                "prompt": "Rédige un protocole pour vérifier qu'une solution contient des ions fer III. Indique les étapes, le résultat attendu si le test est positif et une précaution de sécurité.",
+                "solution": "Avec blouse, lunettes et gants, je verse environ 2 mL de la solution dans un tube à essais propre. J'ajoute quelques gouttes de soude. Si un précipité orange-brun, couleur rouille, apparaît, la solution contient des ions fer III Fe³⁺.",
+                "rubric": "1 pt : étapes correctes (échantillon dans un tube + quelques gouttes de soude). 0,5 pt : résultat attendu (précipité couleur rouille). 0,5 pt : une précaution de sécurité (lunettes, gants, blouse)."
+              }
+            ]
+          },
+          {
+            "label": "C · Problème type brevet : les flacons de la réserve (7 points)",
+            "questions": [
+              {
+                "id": "q12",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 2,
+                "text_ref": "flacons-2",
+                "skills": [
+                  "pc-document",
+                  "pc-test-cations"
+                ],
+                "cognitive": "analyser",
+                "prompt": "D'après le document, quel ion le test à la soude met-il en évidence dans le flacon E ?",
+                "options": [
+                  "Fe³⁺",
+                  "Cu²⁺",
+                  "Fe²⁺",
+                  "Zn²⁺"
+                ],
+                "answer": 2,
+                "solution": "On s'appuie sur l'observation immédiate : précipité vert → ions fer II Fe²⁺. Il devient rouille en surface car il réagit lentement avec le dioxygène de l'air.",
+                "rubric": "1 pt : bonne réponse."
+              },
+              {
+                "id": "q13",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 3,
+                "text_ref": "flacons-2",
+                "skills": [
+                  "pc-document",
+                  "pc-test-anions"
+                ],
+                "cognitive": "analyser",
+                "prompt": "Quel ion le test au nitrate d'argent met-il en évidence dans le flacon D ?",
+                "options": [
+                  "SO₄²⁻",
+                  "Cl⁻",
+                  "Ag⁺",
+                  "Cu²⁺"
+                ],
+                "answer": 1,
+                "solution": "Précipité blanc qui noircit à la lumière → ions chlorure Cl⁻.",
+                "rubric": "1 pt : bonne réponse."
+              },
+              {
+                "id": "q14",
+                "type": "numeric",
+                "points": 1,
+                "lesson_part": 3,
+                "text_ref": "flacons-2",
+                "skills": [
+                  "pc-document",
+                  "pc-test-anions"
+                ],
+                "cognitive": "analyser",
+                "prompt": "Combien de flacons contiennent des ions sulfate ?",
+                "answer": 2,
+                "solution": "Le chlorure de baryum donne un précipité blanc avec les flacons E et F : 2 flacons.",
+                "rubric": "1 pt : 2."
+              },
+              {
+                "id": "q15",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 4,
+                "text_ref": "flacons-2",
+                "skills": [
+                  "pc-document",
+                  "pc-test-conclure"
+                ],
+                "cognitive": "analyser",
+                "prompt": "Quelle solution le flacon D contient-il ?",
+                "options": [
+                  "Chlorure de cuivre II",
+                  "Sulfate de zinc",
+                  "Sulfate de fer II",
+                  "Chlorure de fer III"
+                ],
+                "answer": 0,
+                "solution": "Précipité bleu avec la soude → Cu²⁺ ; précipité blanc qui noircit avec le nitrate d'argent → Cl⁻ ; rien avec le chlorure de baryum. C'est le chlorure de cuivre II (Cu²⁺ + 2 Cl⁻).",
+                "rubric": "1 pt : bonne réponse."
+              },
+              {
+                "id": "q16",
+                "type": "open",
+                "points": 3,
+                "lesson_part": 4,
+                "text_ref": "flacons-2",
+                "skills": [
+                  "pc-document",
+                  "pc-test-conclure",
+                  "pc-rediger"
+                ],
+                "cognitive": "rediger",
+                "prompt": "Rédige la conclusion complète pour le flacon F : ions présents, justification à partir des tests du document, nom et formule de la solution.",
+                "solution": "Avec la soude, le flacon F donne un précipité blanc ; parmi les solutions possibles, seuls les ions zinc Zn²⁺ donnent ce résultat : le flacon F contient des ions Zn²⁺. Avec le chlorure de baryum, il donne un précipité blanc : il contient des ions sulfate SO₄²⁻. Le nitrate d'argent ne donne rien : pas d'ions chlorure. Le flacon F contient donc du sulfate de zinc, de formule (Zn²⁺ + SO₄²⁻).",
+                "rubric": "1 pt : ions Zn²⁺ justifiés par le précipité blanc avec la soude. 1 pt : ions SO₄²⁻ justifiés par le précipité blanc avec le chlorure de baryum (et absence de chlorure). 1 pt : nom « sulfate de zinc » et formule (Zn²⁺ + SO₄²⁻) ; 0,5 pt seulement si la formule manque ou n'est pas neutre."
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

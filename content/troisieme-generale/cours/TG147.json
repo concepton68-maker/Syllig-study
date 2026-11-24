@@ -1,0 +1,1481 @@
+{
+  "format": "syllig-course/1",
+  "code": "TG147",
+  "level": "troisieme-generale",
+  "subject": "Anglais (LV1)",
+  "chapter": "Grammaire et outils de la langue",
+  "title": "Present perfect : since, for, already, yet",
+  "skills": [
+    {
+      "id": "en-pp-forme",
+      "label": "Former le present perfect (have / has + participe passé)"
+    },
+    {
+      "id": "en-pp-participe",
+      "label": "Connaître le participe passé des verbes réguliers et irréguliers fréquents"
+    },
+    {
+      "id": "en-pp-neg-int",
+      "label": "Construire la négation, la question et la réponse courte au present perfect"
+    },
+    {
+      "id": "en-pp-emploi",
+      "label": "Employer le present perfect (bilan, expérience) et le distinguer du prétérit"
+    },
+    {
+      "id": "en-pp-already-yet",
+      "label": "Employer already, yet, just, ever et never"
+    },
+    {
+      "id": "en-pp-since-for",
+      "label": "Exprimer une durée qui dure encore avec since, for et How long"
+    },
+    {
+      "id": "en-ecrire",
+      "label": "Parler de son expérience et de sa vie actuelle dans un court texte"
+    }
+  ],
+  "lesson": {
+    "duration_min": 40,
+    "objectives": [
+      "conjuguer un verbe au present perfect (have / has + participe passé) à toutes les formes ;",
+      "connaître le participe passé des verbes irréguliers fréquents ;",
+      "choisir entre present perfect et prétérit grâce au « test de la date » ;",
+      "employer just, already, yet, ever et never ;",
+      "traduire « depuis » avec since, for et How long."
+    ],
+    "essential": "Le **present perfect** (*I have finished*) relie le passé au **présent** : il fait un bilan, parle d'une expérience ou d'une situation qui dure encore. Dès que le moment passé est précisé (*yesterday, last year, two days ago*), on emploie le **prétérit**. Pour dire « depuis », on utilise le present perfect avec **since** (point de départ) ou **for** (durée). **Already**, **just** et **yet** permettent de dire ce qui est déjà fait… ou pas encore.",
+    "parts": [
+      {
+        "title": "Former le present perfect",
+        "blocks": [
+          {
+            "type": "text",
+            "text": "Le **present perfect** est un temps composé, un peu comme le passé composé français : un auxiliaire + un participe passé. Mais attention, on ne l'emploie pas toujours au même moment que le passé composé (tu le verras dans les parties 3 et 5)."
+          },
+          {
+            "type": "callout",
+            "kind": "retiens",
+            "title": "La formule",
+            "text": "**have / has + participe passé**\n*I have finished. — She has finished.*\nOn utilise **has** avec *he, she, it* (et un nom singulier) ; **have** avec toutes les autres personnes."
+          },
+          {
+            "type": "table",
+            "caption": "Conjugaison de « visit » au present perfect",
+            "columns": [
+              "Forme pleine",
+              "Forme contractée",
+              "Traduction"
+            ],
+            "rows": [
+              [
+                "I have visited",
+                "I've visited",
+                "j'ai visité"
+              ],
+              [
+                "you have visited",
+                "you've visited",
+                "tu as visité"
+              ],
+              [
+                "he / she / it has visited",
+                "he's / she's / it's visited",
+                "il / elle a visité"
+              ],
+              [
+                "we / you / they have visited",
+                "we've / you've / they've visited",
+                "nous avons / vous avez / ils ont visité"
+              ]
+            ]
+          },
+          {
+            "type": "text",
+            "text": "Le **participe passé** des verbes **réguliers** se forme comme le prétérit : base verbale + **-ed** (*work → worked, live → lived, study → studied, stop → stopped*).\nLes verbes **irréguliers** ont un participe passé à apprendre : c'est la **3e colonne** de ta liste de verbes."
+          },
+          {
+            "type": "table",
+            "caption": "Verbes irréguliers fréquents",
+            "columns": [
+              "Base verbale",
+              "Prétérit",
+              "Participe passé",
+              "Sens"
+            ],
+            "rows": [
+              [
+                "be",
+                "was / were",
+                "been",
+                "être"
+              ],
+              [
+                "have",
+                "had",
+                "had",
+                "avoir"
+              ],
+              [
+                "do",
+                "did",
+                "done",
+                "faire"
+              ],
+              [
+                "go",
+                "went",
+                "gone / been",
+                "aller"
+              ],
+              [
+                "see",
+                "saw",
+                "seen",
+                "voir"
+              ],
+              [
+                "eat",
+                "ate",
+                "eaten",
+                "manger"
+              ],
+              [
+                "write",
+                "wrote",
+                "written",
+                "écrire"
+              ],
+              [
+                "take",
+                "took",
+                "taken",
+                "prendre"
+              ],
+              [
+                "break",
+                "broke",
+                "broken",
+                "casser"
+              ],
+              [
+                "speak",
+                "spoke",
+                "spoken",
+                "parler"
+              ],
+              [
+                "know",
+                "knew",
+                "known",
+                "savoir, connaître"
+              ],
+              [
+                "forget",
+                "forgot",
+                "forgotten",
+                "oublier"
+              ],
+              [
+                "give",
+                "gave",
+                "given",
+                "donner"
+              ],
+              [
+                "ride",
+                "rode",
+                "ridden",
+                "monter (à cheval, à vélo)"
+              ],
+              [
+                "buy",
+                "bought",
+                "bought",
+                "acheter"
+              ],
+              [
+                "lose",
+                "lost",
+                "lost",
+                "perdre"
+              ],
+              [
+                "make",
+                "made",
+                "made",
+                "fabriquer, faire"
+              ],
+              [
+                "meet",
+                "met",
+                "met",
+                "rencontrer"
+              ],
+              [
+                "find",
+                "found",
+                "found",
+                "trouver"
+              ],
+              [
+                "read",
+                "read",
+                "read",
+                "lire"
+              ]
+            ]
+          },
+          {
+            "type": "callout",
+            "kind": "attention",
+            "title": "Ne confonds pas les colonnes",
+            "text": "*I have went* est faux : après have / has, on met le **participe passé** (3e colonne), jamais le prétérit (2e colonne).\n*I have gone*, *I have seen*, *she has written* ✔\nEt dans *she's visited*, le **'s** veut dire **has** (pas *is*) : c'est le participe passé qui te le montre."
+          }
+        ],
+        "checkpoint": {
+          "variants": [
+            {
+              "prompt": "Quel est le participe passé de « write » ?",
+              "options": [
+                "wrote",
+                "written",
+                "writed",
+                "writing"
+              ],
+              "answer": 1,
+              "hint": "Cherche la 3e colonne du tableau des verbes irréguliers.",
+              "explanation": "write → wrote → written. « wrote » est le prétérit, pas le participe passé."
+            },
+            {
+              "prompt": "Complète : « My sister ___ finished her homework. »",
+              "options": [
+                "has",
+                "have",
+                "is",
+                "did"
+              ],
+              "answer": 0,
+              "hint": "« My sister » = she. Relis l'encadré « La formule ».",
+              "explanation": "Avec she (my sister), l'auxiliaire est has : she has finished."
+            },
+            {
+              "prompt": "Quelle phrase est au present perfect ?",
+              "options": [
+                "I saw that film.",
+                "I have seen that film.",
+                "I am seeing that film.",
+                "I see that film."
+              ],
+              "answer": 1,
+              "hint": "Cherche have / has suivi d'un participe passé.",
+              "explanation": "« have seen » = have + participe passé de see. Les autres sont au prétérit, au présent en be + -ing et au présent simple."
+            }
+          ]
+        }
+      },
+      {
+        "title": "Négation, question et réponses courtes",
+        "blocks": [
+          {
+            "type": "text",
+            "text": "Bonne nouvelle : pas besoin de *do* ou *did* ! L'auxiliaire **have / has** fait tout le travail."
+          },
+          {
+            "type": "table",
+            "columns": [
+              "Forme",
+              "Construction",
+              "Exemple"
+            ],
+            "rows": [
+              [
+                "Affirmative",
+                "sujet + have / has + participe passé",
+                "*They have visited Rome.*"
+              ],
+              [
+                "Négative",
+                "sujet + haven't / hasn't + participe passé",
+                "*They haven't visited Rome.* — *He hasn't (has not) called me.*"
+              ],
+              [
+                "Interrogative",
+                "Have / Has + sujet + participe passé… ?",
+                "*Have they visited Rome?* — *Has he called you?*"
+              ],
+              [
+                "Question ouverte",
+                "mot interrogatif + have / has + sujet + participe passé… ?",
+                "*Where have you put my keys?*"
+              ]
+            ]
+          },
+          {
+            "type": "callout",
+            "kind": "methode",
+            "title": "Les réponses courtes",
+            "text": "On reprend l'auxiliaire, sans le participe passé :\n*Have you seen my bag?* — **Yes, I have.** / **No, I haven't.**\n*Has Tom arrived?* — **Yes, he has.** / **No, he hasn't.**\nOn ne contracte pas une réponse courte affirmative : on dit *Yes, I have.* (jamais *Yes, I've.*)"
+          },
+          {
+            "type": "text",
+            "text": "Pour parler de ton **expérience** (ce que tu as fait au moins une fois dans ta vie, ou jamais), on utilise **ever** dans les questions et **never** dans les réponses. Ils se placent juste **avant le participe passé**."
+          },
+          {
+            "type": "table",
+            "columns": [
+              "Anglais",
+              "Français"
+            ],
+            "rows": [
+              [
+                "*Have you ever eaten sushi?*",
+                "As-tu déjà mangé des sushis ? (au moins une fois dans ta vie)"
+              ],
+              [
+                "*I have never eaten sushi.*",
+                "Je n'ai jamais mangé de sushis."
+              ],
+              [
+                "*She has never been to Spain.*",
+                "Elle n'est jamais allée en Espagne."
+              ]
+            ]
+          },
+          {
+            "type": "callout",
+            "kind": "attention",
+            "title": "Never est déjà négatif",
+            "text": "*I haven't never…* ✘ : never contient déjà la négation. On dit *I have never…* ✔ ou *I haven't ever…* ✔"
+          },
+          {
+            "type": "callout",
+            "kind": "plus",
+            "title": "Been ou gone ?",
+            "text": "*He has **been** to London.* = il est allé à Londres (et il est revenu).\n*He has **gone** to London.* = il est parti à Londres (et il y est encore)."
+          }
+        ],
+        "checkpoint": {
+          "variants": [
+            {
+              "prompt": "Quelle est la forme négative de « They have visited Rome. » ?",
+              "options": [
+                "They didn't visited Rome.",
+                "They haven't visited Rome.",
+                "They hasn't visited Rome.",
+                "They don't have visited Rome."
+              ],
+              "answer": 1,
+              "hint": "Au present perfect, c'est l'auxiliaire have / has qui porte la négation.",
+              "explanation": "On ajoute not à have : They haven't (have not) visited Rome. Pas de do / did au present perfect."
+            },
+            {
+              "prompt": "« Have you ever been to Scotland? » Quelle réponse courte négative est correcte ?",
+              "options": [
+                "No, I didn't.",
+                "No, I haven't.",
+                "No, I hasn't.",
+                "No, I'm not."
+              ],
+              "answer": 1,
+              "hint": "Reprends l'auxiliaire de la question.",
+              "explanation": "La question est posée avec Have : la réponse courte est No, I haven't."
+            },
+            {
+              "prompt": "Que signifie « I have never eaten sushi. » ?",
+              "options": [
+                "Je n'ai jamais mangé de sushis.",
+                "Je ne mange jamais de sushis.",
+                "Je n'ai pas mangé de sushis hier.",
+                "Je ne mangerai jamais de sushis."
+              ],
+              "answer": 0,
+              "hint": "never + present perfect parle de ton expérience jusqu'à aujourd'hui.",
+              "explanation": "never = jamais ; have eaten = present perfect : je n'ai jamais (de toute ma vie, jusqu'à maintenant) mangé de sushis."
+            }
+          ]
+        }
+      },
+      {
+        "title": "Present perfect ou prétérit ?",
+        "blocks": [
+          {
+            "type": "text",
+            "text": "C'est le point le plus important du chapitre. En français, « j'ai perdu mes clés » et « j'ai perdu mes clés hier » utilisent le même temps. En anglais, **non** !"
+          },
+          {
+            "type": "table",
+            "columns": [
+              "",
+              "Present perfect",
+              "Prétérit simple"
+            ],
+            "rows": [
+              [
+                "Ce qui compte",
+                "le **résultat maintenant**, le bilan, l'expérience",
+                "le **moment passé**, l'action terminée"
+              ],
+              [
+                "Le moment est-il précisé ?",
+                "**non** (ou période pas encore finie : *today, this week…*)",
+                "**oui** : *yesterday, last week, two days ago, in 2020, when I was six…*"
+              ],
+              [
+                "Exemple",
+                "*I've lost my keys.* (je ne les ai toujours pas)",
+                "*I lost my keys yesterday.* (c'est un fait daté)"
+              ]
+            ]
+          },
+          {
+            "type": "callout",
+            "kind": "methode",
+            "title": "Le test de la date",
+            "text": "Pose-toi la question : « **Quand ?** » Si la phrase répond (yesterday, last…, … ago, in 2019, when…), utilise le **prétérit**.\nSi le moment n'est pas dit et que tu fais un **bilan** sur aujourd'hui, utilise le **present perfect**."
+          },
+          {
+            "type": "table",
+            "caption": "Deux phrases, deux points de vue",
+            "columns": [
+              "Phrase",
+              "Ce qu'elle dit"
+            ],
+            "rows": [
+              [
+                "*I have visited London three times.*",
+                "Bilan de ma vie jusqu'à maintenant : trois visites (et peut-être d'autres à venir)."
+              ],
+              [
+                "*I visited London in 2023.*",
+                "Un voyage précis, daté, terminé."
+              ],
+              [
+                "*Oh no! I've broken my glasses!*",
+                "Conséquence visible maintenant : mes lunettes sont cassées."
+              ],
+              [
+                "*I broke my glasses last Monday.*",
+                "Un accident daté (lundi dernier)."
+              ]
+            ]
+          },
+          {
+            "type": "callout",
+            "kind": "attention",
+            "title": "Le piège n°1",
+            "text": "Jamais de present perfect avec un repère de temps passé et terminé.\n*I have seen him yesterday.* ✘ → *I **saw** him yesterday.* ✔\nDe même, une question avec **When** appelle le prétérit : *When **did** you arrive?* ✔"
+          }
+        ],
+        "checkpoint": {
+          "variants": [
+            {
+              "prompt": "Quelle phrase est incorrecte ?",
+              "options": [
+                "I visited Rome in 2022.",
+                "I have visited Rome twice.",
+                "I have visited Rome in 2022.",
+                "I have never visited Rome."
+              ],
+              "answer": 2,
+              "hint": "Repère la phrase qui donne une date ET utilise have.",
+              "explanation": "« in 2022 » date l'action : il faut le prétérit (I visited Rome in 2022). Le present perfect est impossible avec une date passée."
+            },
+            {
+              "prompt": "Complète : « We ___ to Paris last summer. »",
+              "options": [
+                "have gone",
+                "went",
+                "have been",
+                "go"
+              ],
+              "answer": 1,
+              "hint": "Applique le test de la date : la phrase dit-elle « quand » ?",
+              "explanation": "« last summer » est un moment passé et terminé → prétérit simple : went."
+            },
+            {
+              "prompt": "Quel repère de temps est impossible avec le present perfect ?",
+              "options": [
+                "ever",
+                "never",
+                "two days ago",
+                "already"
+              ],
+              "answer": 2,
+              "hint": "Lequel de ces repères donne un moment précis et terminé du passé ?",
+              "explanation": "« two days ago » date l'action : il faut le prétérit. ever, never et already s'emploient avec le present perfect."
+            }
+          ]
+        }
+      },
+      {
+        "title": "Just, already et yet",
+        "blocks": [
+          {
+            "type": "text",
+            "text": "Ces trois petits mots accompagnent très souvent le present perfect pour faire le point sur ce qui est fait… ou pas encore."
+          },
+          {
+            "type": "table",
+            "columns": [
+              "Mot",
+              "Sens",
+              "Place",
+              "Exemple"
+            ],
+            "rows": [
+              [
+                "**just**",
+                "venir de (il y a très peu de temps)",
+                "entre have / has et le participe passé",
+                "*I've just arrived.* = Je viens d'arriver."
+              ],
+              [
+                "**already**",
+                "déjà (plus tôt que prévu)",
+                "en général entre have / has et le participe passé",
+                "*She has already finished.* = Elle a déjà fini."
+              ],
+              [
+                "**yet** (phrase négative)",
+                "pas encore",
+                "en fin de phrase",
+                "*I haven't finished yet.* = Je n'ai pas encore fini."
+              ],
+              [
+                "**yet** (question)",
+                "déjà ? (est-ce fait ?)",
+                "en fin de phrase",
+                "*Have you finished yet?* = As-tu déjà fini ?"
+              ]
+            ]
+          },
+          {
+            "type": "callout",
+            "kind": "methode",
+            "title": "Un moyen de retenir",
+            "text": "**Already** et **just** se glissent **au milieu**, entre have / has et le participe passé.\n**Yet** se place **à la fin**, dans les questions et les phrases négatives."
+          },
+          {
+            "type": "callout",
+            "kind": "attention",
+            "title": "Deux « déjà » en anglais",
+            "text": "« As-tu **déjà** fini ? » → *Have you finished **yet**?* (on demande si c'est fait)\n« As-tu **déjà** vu la mer ? » (au moins une fois dans ta vie) → *Have you **ever** seen the sea?*"
+          },
+          {
+            "type": "text",
+            "text": "Exemple de dialogue :\n— *Have you packed your suitcase yet?*\n— *Yes, I've already packed it. And I've just bought a new swimsuit!*\n— *Great! I haven't started yet…*"
+          }
+        ],
+        "checkpoint": {
+          "variants": [
+            {
+              "prompt": "Complète : « I haven't finished my homework ___. »",
+              "options": [
+                "yet",
+                "already",
+                "just",
+                "ago"
+              ],
+              "answer": 0,
+              "hint": "Quel mot signifie « pas encore » et se place en fin de phrase négative ?",
+              "explanation": "Phrase négative + « pas encore » → yet, en fin de phrase."
+            },
+            {
+              "prompt": "Où se place habituellement « already » ?",
+              "options": [
+                "Entre have / has et le participe passé",
+                "Toujours en toute fin de phrase",
+                "Avant le sujet",
+                "Après le complément, avec une virgule"
+              ],
+              "answer": 0,
+              "hint": "Relis l'encadré « Un moyen de retenir ».",
+              "explanation": "already se glisse au milieu : She has already finished."
+            },
+            {
+              "prompt": "Que signifie « I've just arrived. » ?",
+              "options": [
+                "Je viens d'arriver.",
+                "Je ne suis pas encore arrivé.",
+                "Je suis arrivé hier.",
+                "J'arriverai bientôt."
+              ],
+              "answer": 0,
+              "hint": "Retrouve le sens de just dans le tableau.",
+              "explanation": "just + present perfect = venir de : je viens d'arriver."
+            }
+          ]
+        }
+      },
+      {
+        "title": "Since, for et How long : depuis quand ? depuis combien de temps ?",
+        "blocks": [
+          {
+            "type": "text",
+            "text": "Pour dire qu'une situation a **commencé dans le passé et dure encore maintenant**, le français utilise le présent : « J'habite ici **depuis** trois ans. »\nL'anglais, lui, utilise le **present perfect** : *I **have lived** here **for** three years.*"
+          },
+          {
+            "type": "callout",
+            "kind": "attention",
+            "title": "Le piège n°2",
+            "text": "*I live here since three years.* ✘ (calque du français)\n*I **have lived** here **for** three years.* ✔\nDès que tu vois « depuis » avec une situation qui dure encore, pense present perfect !"
+          },
+          {
+            "type": "table",
+            "caption": "Since ou for ? Les deux se traduisent par « depuis »",
+            "columns": [
+              "",
+              "since",
+              "for"
+            ],
+            "rows": [
+              [
+                "On donne…",
+                "le **point de départ** (une date, un moment)",
+                "la **durée** (une quantité de temps)"
+              ],
+              [
+                "Question à se poser",
+                "Depuis **quand** ?",
+                "Depuis **combien de temps** ?"
+              ],
+              [
+                "Exemples",
+                "*since 2020, since Monday, since 8 o'clock, since my birthday, since I was ten*",
+                "*for three years, for two days, for ten minutes, for a long time, for ages*"
+              ]
+            ]
+          },
+          {
+            "type": "callout",
+            "kind": "methode",
+            "title": "Poser la question",
+            "text": "**How long + have / has + sujet + participe passé… ?**\n*How long have you lived here?* — *For three years.* / *Since 2023.*\n(= Depuis combien de temps habites-tu ici ?)"
+          },
+          {
+            "type": "callout",
+            "kind": "plus",
+            "title": "Pour aller plus loin",
+            "text": "Avec des verbes d'action, les anglophones disent souvent *I've been learning English for four years* (present perfect en be + -ing). Tu l'étudieras plus tard ; avec *live, know, be, have, work*, le present perfect simple que tu viens d'apprendre convient très bien."
+          },
+          {
+            "type": "callout",
+            "kind": "attention",
+            "title": "For avec le prétérit",
+            "text": "*I **lived** in Spain **for** two years.* = j'ai vécu deux ans en Espagne (c'est fini, je n'y vis plus).\n*I **have lived** in Spain **for** two years.* = j'habite en Espagne depuis deux ans (j'y suis encore)."
+          },
+          {
+            "type": "callout",
+            "kind": "essentiel",
+            "title": "L'essentiel",
+            "text": "Present perfect = have / has + participe passé : un lien entre le passé et **maintenant** (bilan, expérience, situation qui dure).\nAvec une date ou un moment terminé → prétérit.\nsince + point de départ ; for + durée ; How long…? pour demander la durée."
+          }
+        ],
+        "checkpoint": {
+          "variants": [
+            {
+              "prompt": "Complète : « I have known Lucy ___ six years. »",
+              "options": [
+                "for",
+                "since",
+                "ago",
+                "during"
+              ],
+              "answer": 0,
+              "hint": "« six years » : est-ce un point de départ ou une durée ?",
+              "explanation": "six years est une durée → for."
+            },
+            {
+              "prompt": "Complète : « They have lived here ___ 2018. »",
+              "options": [
+                "since",
+                "for",
+                "ago",
+                "from"
+              ],
+              "answer": 0,
+              "hint": "« 2018 » : est-ce un point de départ ou une durée ?",
+              "explanation": "2018 est un point de départ (une date) → since."
+            },
+            {
+              "prompt": "Comment traduire « J'habite à Lyon depuis quatre ans. » ?",
+              "options": [
+                "I live in Lyon since four years.",
+                "I have lived in Lyon for four years.",
+                "I have lived in Lyon since four years.",
+                "I lived in Lyon four years ago."
+              ],
+              "answer": 1,
+              "hint": "La situation dure encore : quel temps ? Et « quatre ans » est-il une durée ou une date ?",
+              "explanation": "Situation qui dure encore → present perfect ; quatre ans = durée → for : I have lived in Lyon for four years."
+            }
+          ]
+        }
+      }
+    ],
+    "memo": [
+      {
+        "label": "Formation",
+        "text": "have / has + participe passé (réguliers : -ed ; irréguliers : 3e colonne). I've seen, she's written."
+      },
+      {
+        "label": "Négation / question",
+        "text": "haven't / hasn't + participe passé ; Have / Has + sujet + participe passé ? Réponses courtes : Yes, I have. / No, she hasn't."
+      },
+      {
+        "label": "Emploi",
+        "text": "Lien avec maintenant : résultat présent, bilan, expérience (ever, never). Moment passé précisé (yesterday, last…, ago, in 2020, When…?) → prétérit."
+      },
+      {
+        "label": "Just, already, yet",
+        "text": "just = venir de ; already = déjà (au milieu) ; yet = pas encore (négation) / déjà ? (question), en fin de phrase."
+      },
+      {
+        "label": "Since / for",
+        "text": "« depuis » + situation qui dure encore → present perfect. since + point de départ (since 2020) ; for + durée (for two years). How long have you…?"
+      },
+      {
+        "label": "Pièges",
+        "text": "Pas de have + prétérit (have went ✘). Pas de present perfect avec une date passée. Pas de présent avec since / for (I live here since… ✘)."
+      }
+    ]
+  },
+  "exercises": {
+    "duration_min": 25,
+    "instructions": "Fais les exercices dans l'ordre : les étoiles indiquent la difficulté. Quand il faut compléter un blanc, écris seulement les mots qui manquent (formes contractées ou non, toutes acceptées : « have seen » ou « 've seen »). Les corrigés s'affichent après validation. Courage, tu vas y arriver !",
+    "pass_threshold": 8,
+    "texts": [],
+    "items": [
+      {
+        "id": "ex1",
+        "type": "short",
+        "stars": 1,
+        "lesson_part": 1,
+        "skills": [
+          "en-pp-forme",
+          "en-pp-participe"
+        ],
+        "cognitive": "appliquer",
+        "prompt": "Complète au present perfect : « I ___ (see) this film three times. »",
+        "answer": [
+          "have seen",
+          "'ve seen",
+          "’ve seen",
+          "ve seen"
+        ],
+        "solution": "have seen (ou 've seen) : I → have ; see est irrégulier (see → saw → seen)."
+      },
+      {
+        "id": "ex2",
+        "type": "short",
+        "stars": 1,
+        "lesson_part": 1,
+        "skills": [
+          "en-pp-forme",
+          "en-pp-participe"
+        ],
+        "cognitive": "appliquer",
+        "prompt": "Complète au present perfect : « My brother ___ (break) his arm. »",
+        "answer": [
+          "has broken",
+          "'s broken",
+          "’s broken",
+          "s broken"
+        ],
+        "solution": "has broken (ou 's broken) : my brother = he → has ; break → broke → broken."
+      },
+      {
+        "id": "ex3",
+        "type": "qcm",
+        "stars": 1,
+        "lesson_part": 5,
+        "skills": [
+          "en-pp-since-for"
+        ],
+        "cognitive": "connaitre",
+        "prompt": "Complète : « We have been friends ___ primary school. »",
+        "options": [
+          "since",
+          "for",
+          "ago",
+          "during"
+        ],
+        "answer": 0,
+        "solution": "since : « primary school » indique le point de départ de l'amitié (depuis l'école primaire)."
+      },
+      {
+        "id": "ex4",
+        "type": "short",
+        "stars": 1,
+        "lesson_part": 5,
+        "skills": [
+          "en-pp-since-for"
+        ],
+        "cognitive": "appliquer",
+        "prompt": "Complète avec since ou for : « Emma has played the guitar ___ she was eight. »",
+        "answer": [
+          "since"
+        ],
+        "solution": "since : « she was eight » (quand elle avait huit ans) est un point de départ."
+      },
+      {
+        "id": "ex5",
+        "type": "short",
+        "stars": 2,
+        "lesson_part": 2,
+        "skills": [
+          "en-pp-neg-int",
+          "en-pp-already-yet"
+        ],
+        "cognitive": "appliquer",
+        "prompt": "Complète au present perfect, forme négative : « Tom ___ (not / finish) his project yet. »",
+        "answer": [
+          "hasn't finished",
+          "hasn’t finished",
+          "hasnt finished",
+          "has not finished"
+        ],
+        "solution": "hasn't finished (has not finished) : Tom = he → has ; not se place après has ; finish est régulier."
+      },
+      {
+        "id": "ex6",
+        "type": "qcm",
+        "stars": 2,
+        "lesson_part": 4,
+        "skills": [
+          "en-pp-already-yet"
+        ],
+        "cognitive": "analyser",
+        "prompt": "« I'm not hungry: I have ___ had lunch. »",
+        "options": [
+          "already",
+          "yet",
+          "since",
+          "ever"
+        ],
+        "answer": 0,
+        "solution": "already : phrase affirmative, l'action est déjà faite (je ne suis pas affamé car j'ai déjà déjeuné). yet irait en fin de phrase négative ou interrogative."
+      },
+      {
+        "id": "ex7",
+        "type": "qcm",
+        "stars": 2,
+        "lesson_part": 3,
+        "skills": [
+          "en-pp-emploi"
+        ],
+        "cognitive": "analyser",
+        "prompt": "« I ___ my grandparents last weekend. »",
+        "options": [
+          "visited",
+          "have visited",
+          "have visit",
+          "visit"
+        ],
+        "answer": 0,
+        "solution": "visited : « last weekend » est un moment passé et terminé → prétérit simple. Le present perfect est impossible avec ce repère."
+      },
+      {
+        "id": "ex8",
+        "type": "short",
+        "stars": 2,
+        "lesson_part": 5,
+        "skills": [
+          "en-pp-neg-int",
+          "en-pp-since-for"
+        ],
+        "cognitive": "appliquer",
+        "prompt": "Écris la question en How long qui correspond à cette phrase : « She has lived in Dublin for two years. »",
+        "answer": [
+          "How long has she lived in Dublin?",
+          "How long has she lived in Dublin",
+          "How long has she been living in Dublin?",
+          "How long has she been living in Dublin"
+        ],
+        "solution": "How long has she lived in Dublin? — How long + has + sujet + participe passé."
+      },
+      {
+        "id": "ex9",
+        "type": "short",
+        "stars": 3,
+        "lesson_part": 5,
+        "skills": [
+          "en-pp-since-for",
+          "en-pp-emploi"
+        ],
+        "cognitive": "appliquer",
+        "prompt": "Traduis en anglais : « Nous nous connaissons depuis 2015. » (verbe know ; « nous nous » = we… each other)",
+        "answer": [
+          "We have known each other since 2015",
+          "We've known each other since 2015",
+          "We’ve known each other since 2015",
+          "Weve known each other since 2015",
+          "We have known one another since 2015",
+          "We've known one another since 2015",
+          "We’ve known one another since 2015",
+          "Weve known one another since 2015"
+        ],
+        "solution": "We have known each other since 2015. (ou We've known…) — Situation qui dure encore → present perfect ; 2015 = point de départ → since ; know → knew → known."
+      },
+      {
+        "id": "ex10",
+        "type": "open",
+        "stars": 3,
+        "lesson_part": 5,
+        "skills": [
+          "en-ecrire",
+          "en-pp-already-yet",
+          "en-pp-since-for",
+          "en-pp-emploi"
+        ],
+        "cognitive": "rediger",
+        "prompt": "Write a short message (50 to 70 words) to a new English pen-friend to introduce yourself. Use the present perfect at least five times, with since, for, already (or just), yet and never (or ever).",
+        "solution": "Example: Hi Sam! My name is Léa and I live in a small town in France. I have lived here since 2015. I have studied English for four years and I love it! I have never been to England, but I have already visited Ireland with my family. I have just started a new book in English, but I haven't finished it yet. Have you ever been to France?",
+        "rubric": "Au moins cinq present perfect corrects (have / has + participe passé). since et for bien employés (point de départ / durée). already ou just placé au milieu ; yet en fin de phrase négative ou interrogative ; never ou ever. Pas de present perfect avec une date passée. Message cohérent, longueur respectée."
+      }
+    ]
+  },
+  "evaluation": {
+    "duration_min": 30,
+    "conditions": "Sans la leçon ni les corrigés, en 30 minutes. Barème : A = 6 points · B = 8 points · C = 6 points. Pour compléter un blanc, écris seulement les mots qui manquent (formes contractées ou non acceptées).",
+    "total_points": 20,
+    "variants": [
+      {
+        "texts": [],
+        "sections": [
+          {
+            "label": "A · Je conjugue (6 points)",
+            "questions": [
+              {
+                "id": "q1",
+                "type": "short",
+                "points": 1,
+                "lesson_part": 1,
+                "skills": [
+                  "en-pp-forme",
+                  "en-pp-participe"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Present perfect : « I ___ (lose) my keys. I can't open the door. »",
+                "answer": [
+                  "have lost",
+                  "'ve lost",
+                  "’ve lost",
+                  "ve lost"
+                ],
+                "solution": "have lost (ou 've lost) : I → have ; lose → lost → lost.",
+                "rubric": "1 point pour « have lost » ou « 've lost »."
+              },
+              {
+                "id": "q2",
+                "type": "short",
+                "points": 1,
+                "lesson_part": 1,
+                "skills": [
+                  "en-pp-forme"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Present perfect : « Sarah ___ (visit) Ireland twice. »",
+                "answer": [
+                  "has visited",
+                  "'s visited",
+                  "’s visited",
+                  "s visited"
+                ],
+                "solution": "has visited (ou 's visited) : Sarah = she → has ; visit est régulier.",
+                "rubric": "1 point pour « has visited » ou « 's visited »."
+              },
+              {
+                "id": "q3",
+                "type": "short",
+                "points": 1,
+                "lesson_part": 2,
+                "skills": [
+                  "en-pp-neg-int",
+                  "en-pp-participe"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Present perfect, forme négative : « We ___ (not / eat) yet. »",
+                "answer": [
+                  "haven't eaten",
+                  "haven’t eaten",
+                  "havent eaten",
+                  "have not eaten"
+                ],
+                "solution": "haven't eaten (have not eaten) : we → have ; eat → ate → eaten.",
+                "rubric": "1 point pour « haven't eaten » ou « have not eaten »."
+              },
+              {
+                "id": "q4",
+                "type": "short",
+                "points": 1,
+                "lesson_part": 1,
+                "skills": [
+                  "en-pp-forme",
+                  "en-pp-participe"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Present perfect : « My parents ___ (buy) a new car. »",
+                "answer": [
+                  "have bought",
+                  "'ve bought",
+                  "’ve bought",
+                  "ve bought"
+                ],
+                "solution": "have bought (ou 've bought) : my parents = they → have ; buy → bought → bought.",
+                "rubric": "1 point pour « have bought » ou « 've bought »."
+              },
+              {
+                "id": "q5",
+                "type": "short",
+                "points": 1,
+                "lesson_part": 5,
+                "skills": [
+                  "en-pp-since-for"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Complète avec since ou for : « I have had this bike ___ my birthday. »",
+                "answer": [
+                  "since"
+                ],
+                "solution": "since : « my birthday » est un point de départ.",
+                "rubric": "1 point pour « since »."
+              },
+              {
+                "id": "q6",
+                "type": "short",
+                "points": 1,
+                "lesson_part": 5,
+                "skills": [
+                  "en-pp-since-for"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Complète avec since ou for : « They have worked here ___ ten years. »",
+                "answer": [
+                  "for"
+                ],
+                "solution": "for : « ten years » est une durée.",
+                "rubric": "1 point pour « for »."
+              }
+            ]
+          },
+          {
+            "label": "B · Je choisis et j'explique (8 points)",
+            "questions": [
+              {
+                "id": "q7",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 3,
+                "skills": [
+                  "en-pp-emploi"
+                ],
+                "cognitive": "analyser",
+                "prompt": "« We ___ to the zoo two weeks ago. »",
+                "options": [
+                  "went",
+                  "have gone",
+                  "have been",
+                  "go"
+                ],
+                "answer": 0,
+                "solution": "went : « two weeks ago » date l'action → prétérit simple.",
+                "rubric": "1 point pour la bonne réponse, 0 sinon."
+              },
+              {
+                "id": "q8",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 4,
+                "skills": [
+                  "en-pp-already-yet"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "« The bus hasn't arrived ___. »",
+                "options": [
+                  "yet",
+                  "already",
+                  "just",
+                  "ever"
+                ],
+                "answer": 0,
+                "solution": "yet : phrase négative, « pas encore », en fin de phrase.",
+                "rubric": "1 point pour la bonne réponse, 0 sinon."
+              },
+              {
+                "id": "q9",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 2,
+                "skills": [
+                  "en-pp-neg-int",
+                  "en-pp-participe"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "« ___ you ever ___ to New York? »",
+                "options": [
+                  "Have / been",
+                  "Did / been",
+                  "Has / been",
+                  "Have / went"
+                ],
+                "answer": 0,
+                "solution": "Have / been : question au present perfect avec you → Have ; have been to = être déjà allé quelque part (been est le participe passé de be).",
+                "rubric": "1 point pour la bonne réponse, 0 sinon."
+              },
+              {
+                "id": "q10",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 2,
+                "skills": [
+                  "en-pp-already-yet",
+                  "en-pp-emploi"
+                ],
+                "cognitive": "analyser",
+                "prompt": "Quelle est la bonne traduction de « Je n'ai jamais vu la mer. » ?",
+                "options": [
+                  "I have never seen the sea.",
+                  "I didn't see the sea.",
+                  "I haven't never seen the sea.",
+                  "I have ever seen the sea."
+                ],
+                "answer": 0,
+                "solution": "I have never seen the sea. : expérience de toute une vie → present perfect + never (déjà négatif, donc pas de haven't).",
+                "rubric": "1 point pour la bonne réponse, 0 sinon."
+              },
+              {
+                "id": "q11",
+                "type": "short",
+                "points": 2,
+                "lesson_part": 5,
+                "skills": [
+                  "en-pp-neg-int",
+                  "en-pp-since-for"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Écris la question en How long qui correspond à cette phrase : « Lena has lived in Berlin for three years. »",
+                "answer": [
+                  "How long has Lena lived in Berlin?",
+                  "How long has Lena lived in Berlin",
+                  "How long has she lived in Berlin?",
+                  "How long has she lived in Berlin",
+                  "How long has Lena been living in Berlin?",
+                  "How long has Lena been living in Berlin",
+                  "How long has she been living in Berlin?",
+                  "How long has she been living in Berlin"
+                ],
+                "solution": "How long has Lena lived in Berlin? — How long + has + sujet + participe passé.",
+                "rubric": "2 points pour la question correcte. 1 point si How long et has sont présents mais avec une erreur sur le verbe (« How long has Lena live… ») ou l'ordre des mots. 0 si le temps est faux (« How long does Lena live… »)."
+              },
+              {
+                "id": "q12",
+                "type": "open",
+                "points": 2,
+                "lesson_part": 5,
+                "skills": [
+                  "en-pp-since-for",
+                  "en-pp-emploi"
+                ],
+                "cognitive": "analyser",
+                "prompt": "Un élève écrit : « I live in Nantes since 2020. » Explique en français son erreur, puis écris la phrase correcte.",
+                "solution": "La situation a commencé en 2020 et dure encore aujourd'hui : en anglais, on n'utilise pas le présent mais le present perfect. Phrase correcte : I have lived (I've lived) in Nantes since 2020. Since est bien choisi, car 2020 est un point de départ.",
+                "rubric": "1 pt : explication (situation commencée dans le passé qui dure encore → present perfect, et non présent comme en français). 1 pt : phrase corrigée exacte (I have lived / I've lived in Nantes since 2020)."
+              }
+            ]
+          },
+          {
+            "label": "C · J'écris (6 points)",
+            "questions": [
+              {
+                "id": "q13",
+                "type": "open",
+                "points": 6,
+                "lesson_part": 5,
+                "skills": [
+                  "en-ecrire",
+                  "en-pp-already-yet",
+                  "en-pp-since-for",
+                  "en-pp-emploi",
+                  "en-pp-participe"
+                ],
+                "cognitive": "rediger",
+                "prompt": "Write a short email (60 to 80 words) to an English friend: « My school year so far ». Use the present perfect at least five times (including two irregular verbs), with since or for, already or just, and yet. Add one sentence in the prétérit with a date (yesterday, last…, … ago).",
+                "solution": "Example: Hi Jack! I've been in Year 10 (3e) since September and it's a busy year! I have already written two essays in French and I have just started a project in technology. I haven't chosen my high school yet. I have known my best friend Inès for six years and we have never been in the same class before. Last week, we went to the theatre together. How about you? Have you had a good term?",
+                "rubric": "2 pts : au moins cinq present perfect corrects et bien employés (bilan, expérience, situation qui dure), dont au moins deux verbes irréguliers. 1,5 pt : since ou for, already ou just, et yet correctement employés et placés. 1 pt : une phrase au prétérit avec une date, sans present perfect avec un repère passé. 1,5 pt : texte cohérent, longueur respectée (60 à 80 mots), vocabulaire varié."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "texts": [],
+        "sections": [
+          {
+            "label": "A · Je conjugue (6 points)",
+            "questions": [
+              {
+                "id": "q1",
+                "type": "short",
+                "points": 1,
+                "lesson_part": 1,
+                "skills": [
+                  "en-pp-forme",
+                  "en-pp-participe"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Present perfect : « Oh no! I ___ (break) my glasses. »",
+                "answer": [
+                  "have broken",
+                  "'ve broken",
+                  "’ve broken",
+                  "ve broken"
+                ],
+                "solution": "have broken (ou 've broken) : I → have ; break → broke → broken.",
+                "rubric": "1 point pour « have broken » ou « 've broken »."
+              },
+              {
+                "id": "q2",
+                "type": "short",
+                "points": 1,
+                "lesson_part": 1,
+                "skills": [
+                  "en-pp-forme",
+                  "en-pp-participe"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Present perfect : « Max ___ (meet) a famous singer. »",
+                "answer": [
+                  "has met",
+                  "'s met",
+                  "’s met",
+                  "s met"
+                ],
+                "solution": "has met (ou 's met) : Max = he → has ; meet → met → met.",
+                "rubric": "1 point pour « has met » ou « 's met »."
+              },
+              {
+                "id": "q3",
+                "type": "short",
+                "points": 1,
+                "lesson_part": 2,
+                "skills": [
+                  "en-pp-neg-int"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Present perfect, forme négative : « She ___ (not / call) me yet. »",
+                "answer": [
+                  "hasn't called",
+                  "hasn’t called",
+                  "hasnt called",
+                  "has not called"
+                ],
+                "solution": "hasn't called (has not called) : she → has ; call est régulier.",
+                "rubric": "1 point pour « hasn't called » ou « has not called »."
+              },
+              {
+                "id": "q4",
+                "type": "short",
+                "points": 1,
+                "lesson_part": 1,
+                "skills": [
+                  "en-pp-forme",
+                  "en-pp-participe"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Present perfect : « We ___ (write) three emails to the school. »",
+                "answer": [
+                  "have written",
+                  "'ve written",
+                  "’ve written",
+                  "ve written"
+                ],
+                "solution": "have written (ou 've written) : we → have ; write → wrote → written.",
+                "rubric": "1 point pour « have written » ou « 've written »."
+              },
+              {
+                "id": "q5",
+                "type": "short",
+                "points": 1,
+                "lesson_part": 5,
+                "skills": [
+                  "en-pp-since-for"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Complète avec since ou for : « He has been ill ___ Monday. »",
+                "answer": [
+                  "since"
+                ],
+                "solution": "since : « Monday » est un point de départ.",
+                "rubric": "1 point pour « since »."
+              },
+              {
+                "id": "q6",
+                "type": "short",
+                "points": 1,
+                "lesson_part": 5,
+                "skills": [
+                  "en-pp-since-for"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Complète avec since ou for : « I have known her ___ a long time. »",
+                "answer": [
+                  "for"
+                ],
+                "solution": "for : « a long time » est une durée.",
+                "rubric": "1 point pour « for »."
+              }
+            ]
+          },
+          {
+            "label": "B · Je choisis et j'explique (8 points)",
+            "questions": [
+              {
+                "id": "q7",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 3,
+                "skills": [
+                  "en-pp-emploi"
+                ],
+                "cognitive": "analyser",
+                "prompt": "« My uncle ___ in Australia in 2015. »",
+                "options": [
+                  "lived",
+                  "has lived",
+                  "have lived",
+                  "lives"
+                ],
+                "answer": 0,
+                "solution": "lived : « in 2015 » date l'action → prétérit simple.",
+                "rubric": "1 point pour la bonne réponse, 0 sinon."
+              },
+              {
+                "id": "q8",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 4,
+                "skills": [
+                  "en-pp-already-yet"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "« Don't worry, I have ___ done the washing-up. »",
+                "options": [
+                  "already",
+                  "yet",
+                  "since",
+                  "ago"
+                ],
+                "answer": 0,
+                "solution": "already : phrase affirmative, placé entre have et le participe passé : c'est déjà fait.",
+                "rubric": "1 point pour la bonne réponse, 0 sinon."
+              },
+              {
+                "id": "q9",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 2,
+                "skills": [
+                  "en-pp-neg-int",
+                  "en-pp-participe"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "« ___ your sister ever ___ a horse? »",
+                "options": [
+                  "Has / ridden",
+                  "Have / ridden",
+                  "Has / rode",
+                  "Did / ridden"
+                ],
+                "answer": 0,
+                "solution": "Has / ridden : your sister = she → Has ; participe passé de ride → ridden (rode est le prétérit).",
+                "rubric": "1 point pour la bonne réponse, 0 sinon."
+              },
+              {
+                "id": "q10",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 4,
+                "skills": [
+                  "en-pp-already-yet",
+                  "en-pp-neg-int"
+                ],
+                "cognitive": "analyser",
+                "prompt": "Quelle est la bonne traduction de « Elle ne m'a pas encore répondu. » ?",
+                "options": [
+                  "She hasn't answered me yet.",
+                  "She has answered me already.",
+                  "She didn't answered me yet.",
+                  "She hasn't yet answer me."
+                ],
+                "answer": 0,
+                "solution": "She hasn't answered me yet. : « pas encore » → négation au present perfect + yet en fin de phrase.",
+                "rubric": "1 point pour la bonne réponse, 0 sinon."
+              },
+              {
+                "id": "q11",
+                "type": "short",
+                "points": 2,
+                "lesson_part": 5,
+                "skills": [
+                  "en-pp-neg-int",
+                  "en-pp-since-for"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Écris la question en How long qui correspond à cette phrase : « Tom has played the piano since 2019. »",
+                "answer": [
+                  "How long has Tom played the piano?",
+                  "How long has Tom played the piano",
+                  "How long has he played the piano?",
+                  "How long has he played the piano",
+                  "How long has Tom been playing the piano?",
+                  "How long has Tom been playing the piano",
+                  "How long has he been playing the piano?",
+                  "How long has he been playing the piano"
+                ],
+                "solution": "How long has Tom played the piano? — How long + has + sujet + participe passé.",
+                "rubric": "2 points pour la question correcte. 1 point si How long et has sont présents mais avec une erreur sur le verbe (« How long has Tom play… ») ou l'ordre des mots. 0 si le temps est faux (« How long does Tom play… »)."
+              },
+              {
+                "id": "q12",
+                "type": "open",
+                "points": 2,
+                "lesson_part": 3,
+                "skills": [
+                  "en-pp-emploi"
+                ],
+                "cognitive": "analyser",
+                "prompt": "Un élève écrit : « I have seen Paul yesterday. » Explique en français son erreur, puis écris la phrase correcte.",
+                "solution": "« yesterday » situe l'action à un moment passé et terminé : en anglais, on ne peut pas employer le present perfect avec une date passée, il faut le prétérit simple. Phrase correcte : I saw Paul yesterday.",
+                "rubric": "1 pt : explication (repère passé daté → prétérit, present perfect impossible). 1 pt : phrase corrigée exacte (I saw Paul yesterday)."
+              }
+            ]
+          },
+          {
+            "label": "C · J'écris (6 points)",
+            "questions": [
+              {
+                "id": "q13",
+                "type": "open",
+                "points": 6,
+                "lesson_part": 5,
+                "skills": [
+                  "en-ecrire",
+                  "en-pp-already-yet",
+                  "en-pp-since-for",
+                  "en-pp-emploi",
+                  "en-pp-participe"
+                ],
+                "cognitive": "rediger",
+                "prompt": "Write a short blog post (60 to 80 words): « My hobby and me ». Use the present perfect at least five times (including two irregular verbs), with since or for, already or just, and yet. Add one sentence in the prétérit with a date (yesterday, last…, … ago).",
+                "solution": "Example: I love swimming! I have swum in a club since I was nine, so I have practised for five years now. I have already won two medals and I have just met a new coach. She has taught me a new technique, but I haven't mastered it yet. I have never swum in the sea in winter… maybe one day! Last Saturday, I took part in a big competition in Rennes. Have you ever tried swimming?",
+                "rubric": "2 pts : au moins cinq present perfect corrects et bien employés (bilan, expérience, situation qui dure), dont au moins deux verbes irréguliers. 1,5 pt : since ou for, already ou just, et yet correctement employés et placés. 1 pt : une phrase au prétérit avec une date, sans present perfect avec un repère passé. 1,5 pt : texte cohérent, longueur respectée (60 à 80 mots), vocabulaire varié."
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,1219 @@
+{
+  "format": "syllig-course/1",
+  "code": "TG072",
+  "level": "troisieme-generale",
+  "subject": "Histoire-Géographie",
+  "chapter": "Histoire 1 – L'Europe, un théâtre majeur des guerres totales (1914-1945)",
+  "title": "L'Allemagne nazie et les démocraties fragilisées",
+  "skills": [
+    {
+      "id": "hg-reperes-nazisme",
+      "label": "Situer dans le temps l'Allemagne nazie et le Front populaire"
+    },
+    {
+      "id": "hg-weimar-crise",
+      "label": "Expliquer les fragilités de la république de Weimar et l'arrivée de Hitler au pouvoir"
+    },
+    {
+      "id": "hg-totalitarisme-nazi",
+      "label": "Montrer que l'Allemagne nazie est un régime totalitaire, raciste et antisémite"
+    },
+    {
+      "id": "hg-democraties",
+      "label": "Expliquer comment la démocratie française est fragilisée puis résiste dans les années 1930"
+    },
+    {
+      "id": "hg-analyse-doc",
+      "label": "Analyser un document historique (nature, auteur, date, idées, critique)"
+    },
+    {
+      "id": "hg-redaction",
+      "label": "Rédiger un développement construit"
+    }
+  ],
+  "lesson": {
+    "duration_min": 35,
+    "objectives": [
+      "comprendre pourquoi la démocratie allemande (république de Weimar) est fragile ;",
+      "expliquer comment Hitler arrive au pouvoir en 1933 et installe une dictature ;",
+      "montrer que l'Allemagne nazie est un régime totalitaire, raciste et antisémite ;",
+      "expliquer comment la démocratie française, menacée en 1934, résiste avec le Front populaire en 1936 ;",
+      "connaître les repères et le vocabulaire attendus au brevet."
+    ],
+    "essential": "Après la défaite de 1918, l'Allemagne devient une démocratie, la **république de Weimar**, mais elle est fragilisée par le traité de Versailles, les crises économiques et les violences politiques. Avec la crise de 1929 et le chômage de masse, le parti nazi d'**Adolf Hitler** progresse. Nommé chancelier le **30 janvier 1933**, Hitler détruit la démocratie en quelques mois et impose un **régime totalitaire**, raciste et antisémite, jusqu'en **1945**. En France, la démocratie est elle aussi menacée (émeute du **6 février 1934**), mais elle résiste : en **1936**, le **Front populaire** de **Léon Blum** gagne les élections et vote des lois sociales (congés payés, semaine de 40 heures).",
+    "parts": [
+      {
+        "title": "Contexte : la république de Weimar, une démocratie fragile (1918-1933)",
+        "blocks": [
+          {
+            "type": "text",
+            "text": "En novembre 1918, l'Allemagne perd la Première Guerre mondiale. L'empereur Guillaume II abdique et la **République** est proclamée le 9 novembre 1918. En 1919, une Constitution est rédigée à **Weimar** : c'est une vraie **démocratie** (suffrage universel, y compris pour les femmes, libertés, Parlement appelé **Reichstag**)."
+          },
+          {
+            "type": "text",
+            "text": "Mais cette jeune république est mal aimée. Beaucoup d'Allemands l'accusent d'avoir accepté le **traité de Versailles** (1919), vécu comme une humiliation, un **« diktat »** (une paix imposée) : pertes de territoires, armée limitée à 100 000 hommes, lourdes **réparations** à payer."
+          },
+          {
+            "type": "table",
+            "caption": "Les crises qui fragilisent la république de Weimar",
+            "columns": [
+              "Date",
+              "Crise",
+              "Conséquences"
+            ],
+            "rows": [
+              [
+                "1919-1923",
+                "Violences politiques : tentatives de coups d'État de l'extrême gauche et de l'extrême droite, assassinats de ministres.",
+                "La démocratie paraît faible et contestée."
+              ],
+              [
+                "1923",
+                "**Hyperinflation** : la monnaie (le mark) ne vaut presque plus rien. Les économies des classes moyennes disparaissent.",
+                "Colère et peur du déclassement. En novembre 1923, Hitler tente un coup d'État à Munich : il échoue et va en prison, où il écrit *Mein Kampf*."
+              ],
+              [
+                "1924-1929",
+                "Retour au calme grâce aux prêts américains.",
+                "Le parti nazi obtient de faibles résultats (moins de 3 % des voix en 1928)."
+              ],
+              [
+                "1929-1933",
+                "La **crise de 1929**, partie des États-Unis, frappe durement l'Allemagne : faillites, environ **6 millions de chômeurs** en 1932.",
+                "Les Allemands perdent confiance dans la démocratie. Les partis extrêmes (nazis et communistes) progressent."
+              ]
+            ]
+          },
+          {
+            "type": "callout",
+            "kind": "definition",
+            "title": "Nazisme",
+            "text": "Idéologie d'Adolf Hitler et de son parti, le **NSDAP** (Parti national-socialiste des travailleurs allemands). Elle est **nationaliste**, **raciste** (elle prétend que les « Aryens » forment une race supérieure), **antisémite** (haine des Juifs), antidémocratique et anticommuniste. Elle veut conquérir un **« espace vital »** à l'Est de l'Europe."
+          },
+          {
+            "type": "callout",
+            "kind": "retiens",
+            "text": "La république de Weimar est une démocratie fragile : née de la défaite, accusée d'avoir signé le traité de Versailles, secouée par les crises économiques (1923, puis 1929). Le chômage de masse fait le succès du parti nazi."
+          }
+        ],
+        "checkpoint": {
+          "variants": [
+            {
+              "prompt": "Comment s'appelle la démocratie allemande née après la défaite de 1918 ?",
+              "options": [
+                "Le IIIe Reich",
+                "La république de Weimar",
+                "L'Empire allemand",
+                "La république de Vichy"
+              ],
+              "answer": 1,
+              "hint": "Relis le premier paragraphe : la Constitution porte le nom d'une ville.",
+              "explanation": "La république de Weimar (1918-1933) doit son nom à la ville où sa Constitution a été rédigée en 1919."
+            },
+            {
+              "prompt": "Pourquoi beaucoup d'Allemands appellent-ils le traité de Versailles un « diktat » ?",
+              "options": [
+                "Parce qu'il a été écrit par Hitler",
+                "Parce qu'ils le jugent imposé et humiliant",
+                "Parce qu'il donne de nouveaux territoires à l'Allemagne",
+                "Parce qu'il crée la république de Weimar"
+              ],
+              "answer": 1,
+              "hint": "Cherche la définition entre parenthèses dans le deuxième paragraphe.",
+              "explanation": "Le mot « diktat » désigne une paix imposée sans négociation : pertes de territoires, armée réduite, réparations."
+            },
+            {
+              "prompt": "Quelle crise permet au parti nazi de devenir très puissant au début des années 1930 ?",
+              "options": [
+                "La crise de 1929 et le chômage de masse",
+                "La révolution russe de 1917",
+                "La guerre d'Espagne",
+                "La Seconde Guerre mondiale"
+              ],
+              "answer": 0,
+              "hint": "Regarde la dernière ligne du tableau des crises.",
+              "explanation": "Avec la crise de 1929, l'Allemagne compte environ 6 millions de chômeurs en 1932 : de nombreux électeurs se tournent vers les nazis."
+            }
+          ]
+        }
+      },
+      {
+        "title": "Hitler au pouvoir : de la démocratie à la dictature (1933-1934)",
+        "blocks": [
+          {
+            "type": "text",
+            "text": "En juillet 1932, le parti nazi obtient environ **37 % des voix** : il devient le premier parti au Reichstag, sans avoir la majorité. Des responsables de la droite conservatrice pensent pouvoir contrôler Hitler. Le **30 janvier 1933**, le président **Hindenburg** le nomme **chancelier** (chef du gouvernement) : Hitler arrive au pouvoir **légalement**."
+          },
+          {
+            "type": "callout",
+            "kind": "attention",
+            "title": "Une idée fausse fréquente",
+            "text": "Hitler n'a jamais été élu par une majorité d'Allemands. Il est **nommé** chancelier par le président. C'est ensuite, une fois au pouvoir, qu'il détruit la démocratie."
+          },
+          {
+            "type": "heading",
+            "text": "Les étapes de la mise en place de la dictature"
+          },
+          {
+            "type": "list",
+            "ordered": true,
+            "items": [
+              "**27-28 février 1933** : incendie du Reichstag, dont Hitler accuse les communistes. Un décret suspend les libertés (presse, réunion, expression).",
+              "**Mars 1933** : ouverture du premier camp de concentration à **Dachau**, pour enfermer les opposants (communistes, socialistes…).",
+              "**23 mars 1933** : le Reichstag vote les **pleins pouvoirs** à Hitler : son gouvernement peut faire les lois seul.",
+              "**Mai-juillet 1933** : les syndicats sont dissous ; le **14 juillet 1933**, le parti nazi devient le **parti unique**.",
+              "**30 juin 1934** : « **Nuit des longs couteaux** » : Hitler fait assassiner les chefs des SA (Sections d'assaut) qu'il juge gênants, et des opposants.",
+              "**2 août 1934** : mort de Hindenburg. Hitler devient **Führer** (guide) : chef de l'État et du gouvernement. C'est le début du **IIIe Reich**."
+            ]
+          },
+          {
+            "type": "callout",
+            "kind": "definition",
+            "title": "Dictature",
+            "text": "Régime où une personne ou un parti exerce tous les pouvoirs, sans élections libres ni libertés, et en réprimant les opposants."
+          },
+          {
+            "type": "callout",
+            "kind": "retiens",
+            "text": "Hitler est nommé chancelier le 30 janvier 1933. En un an et demi (1933-1934), il supprime les libertés, interdit les autres partis, enferme ses opposants dans des camps et concentre tous les pouvoirs : il devient le Führer."
+          }
+        ],
+        "checkpoint": {
+          "variants": [
+            {
+              "prompt": "Comment Hitler arrive-t-il au pouvoir le 30 janvier 1933 ?",
+              "options": [
+                "Il est élu président avec la majorité des voix",
+                "Il est nommé chancelier par le président Hindenburg",
+                "Il réussit un coup d'État à Munich",
+                "Il est désigné par le traité de Versailles"
+              ],
+              "answer": 1,
+              "hint": "Relis le premier paragraphe et l'encadré « Une idée fausse fréquente ».",
+              "explanation": "Hitler est nommé chancelier par Hindenburg : il arrive au pouvoir légalement, sans avoir été élu par une majorité."
+            },
+            {
+              "prompt": "Quand le parti nazi devient-il le parti unique en Allemagne ?",
+              "options": [
+                "En janvier 1933",
+                "En juillet 1933",
+                "En 1936",
+                "En 1939"
+              ],
+              "answer": 1,
+              "hint": "Regarde la quatrième étape de la liste.",
+              "explanation": "Une loi du 14 juillet 1933 fait du parti nazi le seul parti autorisé."
+            },
+            {
+              "prompt": "Que se passe-t-il le 2 août 1934 ?",
+              "options": [
+                "Hitler devient Führer, chef de l'État et du gouvernement",
+                "Hitler sort de prison",
+                "Le Reichstag brûle",
+                "Le Front populaire gagne les élections"
+              ],
+              "answer": 0,
+              "hint": "C'est la dernière étape de la liste.",
+              "explanation": "À la mort du président Hindenburg, Hitler réunit les fonctions de président et de chancelier : il devient le Führer."
+            }
+          ]
+        }
+      },
+      {
+        "title": "Notions : un régime totalitaire, raciste et antisémite",
+        "blocks": [
+          {
+            "type": "text",
+            "text": "Comme l'URSS de Staline, l'Allemagne nazie est un **régime totalitaire** : l'État, dirigé par un parti unique et un chef tout-puissant, veut contrôler toute la vie des individus et créer un **« homme nouveau »**. Mais le projet nazi est fondé sur la **race** : il veut construire une **« communauté du peuple »** (Volksgemeinschaft) réservée aux Allemands dits « aryens »."
+          },
+          {
+            "type": "table",
+            "caption": "Les caractéristiques du totalitarisme nazi",
+            "columns": [
+              "Moyen",
+              "Exemples"
+            ],
+            "rows": [
+              [
+                "**Culte du chef**",
+                "Hitler, le « Führer », est présenté comme le sauveur de l'Allemagne. Salut obligatoire « Heil Hitler ! »."
+              ],
+              [
+                "**Propagande**",
+                "Ministère dirigé par **Joseph Goebbels** : radio, cinéma, affiches, immenses rassemblements du parti à Nuremberg."
+              ],
+              [
+                "**Censure**",
+                "Presse contrôlée ; autodafés (livres brûlés en public, mai 1933) ; artistes et savants poussés à l'exil."
+              ],
+              [
+                "**Encadrement de la jeunesse**",
+                "**Jeunesses hitlériennes** (garçons) et Ligue des jeunes filles allemandes : organisations officielles de la jeunesse en 1936, obligatoires à partir de 1939 ; école nazifiée."
+              ],
+              [
+                "**Terreur**",
+                "Police politique (**Gestapo**), **SS** dirigés par **Heinrich Himmler**, **camps de concentration** (Dachau, Buchenwald…)."
+              ],
+              [
+                "**Économie au service de l'État**",
+                "Grands travaux (autoroutes) puis **réarmement** massif : le chômage recule, mais pour préparer la guerre."
+              ]
+            ]
+          },
+          {
+            "type": "callout",
+            "kind": "definition",
+            "title": "Antisémitisme",
+            "text": "Hostilité et haine envers les Juifs. Pour les nazis, les Juifs forment une prétendue « race » ennemie, responsable de tous les malheurs de l'Allemagne. C'est une idée fausse et criminelle."
+          },
+          {
+            "type": "heading",
+            "text": "La persécution des Juifs (environ 500 000 personnes en Allemagne en 1933)"
+          },
+          {
+            "type": "list",
+            "items": [
+              "**1933** : boycott des magasins juifs ; les Juifs sont chassés de la fonction publique.",
+              "**15 septembre 1935** : **lois de Nuremberg**. Les Juifs perdent la citoyenneté allemande ; les mariages entre Juifs et non-Juifs sont interdits.",
+              "**9-10 novembre 1938** : « **Nuit de cristal** » : synagogues incendiées, magasins pillés, au moins 91 Juifs assassinés et environ 30 000 hommes envoyés en camp de concentration.",
+              "Les personnes handicapées, les Tsiganes, les homosexuels et les opposants sont aussi persécutés. À partir de 1939, des dizaines de milliers de personnes handicapées sont assassinées."
+            ]
+          },
+          {
+            "type": "callout",
+            "kind": "retiens",
+            "text": "Le nazisme est un totalitarisme : culte du chef, propagande, encadrement de la jeunesse, terreur. Il est aussi raciste et antisémite : les Juifs sont exclus (lois de Nuremberg, 1935) puis violemment persécutés (Nuit de cristal, 1938). Cette persécution conduira au génocide pendant la Seconde Guerre mondiale."
+          }
+        ],
+        "checkpoint": {
+          "variants": [
+            {
+              "prompt": "Qui dirige la propagande de l'Allemagne nazie ?",
+              "options": [
+                "Heinrich Himmler",
+                "Joseph Goebbels",
+                "Paul von Hindenburg",
+                "Léon Blum"
+              ],
+              "answer": 1,
+              "hint": "Cherche la ligne « Propagande » du tableau.",
+              "explanation": "Joseph Goebbels est ministre de la Propagande. Himmler, lui, dirige les SS."
+            },
+            {
+              "prompt": "Que décident les lois de Nuremberg de 1935 ?",
+              "options": [
+                "Les Juifs perdent la citoyenneté allemande",
+                "Le parti nazi devient parti unique",
+                "Hitler reçoit les pleins pouvoirs",
+                "Les congés payés sont créés"
+              ],
+              "answer": 0,
+              "hint": "Relis la liste sur la persécution des Juifs.",
+              "explanation": "Les lois de Nuremberg (15 septembre 1935) excluent les Juifs de la nation allemande : ils perdent la citoyenneté et ne peuvent plus épouser des non-Juifs."
+            },
+            {
+              "prompt": "Qu'est-ce que la Gestapo ?",
+              "options": [
+                "Une organisation de jeunesse",
+                "Le parlement allemand",
+                "La police politique nazie",
+                "Un camp de concentration"
+              ],
+              "answer": 2,
+              "hint": "Regarde la ligne « Terreur » du tableau.",
+              "explanation": "La Gestapo est la police politique secrète : elle traque, arrête et torture les opposants."
+            }
+          ]
+        }
+      },
+      {
+        "title": "Les démocraties fragilisées : la France des années 1930",
+        "blocks": [
+          {
+            "type": "text",
+            "text": "Dans l'entre-deux-guerres, de nombreuses démocraties européennes disparaissent : l'Italie devient fasciste avec **Mussolini** dès 1922, l'Allemagne nazie en 1933. Les démocraties qui restent, comme la France et le Royaume-Uni, sont elles aussi touchées par la crise de 1929."
+          },
+          {
+            "type": "text",
+            "text": "En France, la crise arrive vers 1931 : chômage, baisse des salaires des ouvriers et des revenus des paysans. Les gouvernements changent souvent et des scandales politico-financiers éclatent. Des **ligues d'extrême droite** (Action française, Croix-de-Feu…) dénoncent la République parlementaire."
+          },
+          {
+            "type": "callout",
+            "kind": "plus",
+            "title": "Le 6 février 1934",
+            "text": "À Paris, les ligues d'extrême droite manifestent place de la Concorde et tentent de marcher sur la Chambre des députés. Les affrontements avec la police font une quinzaine de morts. La gauche y voit une menace fasciste contre la République."
+          },
+          {
+            "type": "text",
+            "text": "Pour défendre la démocratie, les partis de gauche s'unissent : radicaux, socialistes (SFIO) et communistes forment le **Front populaire**, avec le slogan « **Le pain, la paix, la liberté** ». Il gagne les élections législatives d'avril-mai **1936**. Le socialiste **Léon Blum** devient président du Conseil (chef du gouvernement) en juin 1936."
+          },
+          {
+            "type": "table",
+            "caption": "Les réformes du Front populaire (1936)",
+            "columns": [
+              "Réforme",
+              "Contenu"
+            ],
+            "rows": [
+              [
+                "**Accords de Matignon** (7-8 juin 1936)",
+                "Signés entre patrons et syndicats après de grandes grèves avec occupations d'usines : hausse des salaires (de 7 à 15 %), conventions collectives, liberté syndicale, délégués du personnel."
+              ],
+              [
+                "**Congés payés**",
+                "Deux semaines de vacances payées par an : beaucoup d'ouvriers découvrent la mer ou la campagne."
+              ],
+              [
+                "**Semaine de 40 heures**",
+                "La durée du travail baisse, sans baisse de salaire."
+              ],
+              [
+                "**Autres mesures**",
+                "École obligatoire jusqu'à 14 ans ; pour la première fois, trois femmes entrent au gouvernement (alors qu'elles n'ont pas encore le droit de vote)."
+              ]
+            ]
+          },
+          {
+            "type": "callout",
+            "kind": "attention",
+            "text": "Le Front populaire reste fragile : difficultés économiques, divisions face à la guerre d'Espagne (1936). Léon Blum démissionne en juin 1937 et le Front populaire prend fin en 1938. Mais la démocratie française a tenu, et ses lois sociales sont restées."
+          },
+          {
+            "type": "callout",
+            "kind": "retiens",
+            "text": "En France, la démocratie est menacée par la crise et par l'extrême droite (6 février 1934). Elle résiste grâce à l'union des gauches : le Front populaire de Léon Blum gagne les élections de 1936 et vote des lois sociales (congés payés, 40 heures)."
+          }
+        ],
+        "checkpoint": {
+          "variants": [
+            {
+              "prompt": "Qui devient chef du gouvernement après la victoire du Front populaire en 1936 ?",
+              "options": [
+                "Jules Ferry",
+                "Léon Blum",
+                "Charles de Gaulle",
+                "Georges Clemenceau"
+              ],
+              "answer": 1,
+              "hint": "Relis le paragraphe qui suit l'encadré sur le 6 février 1934.",
+              "explanation": "Léon Blum, chef des socialistes (SFIO), devient président du Conseil en juin 1936."
+            },
+            {
+              "prompt": "Laquelle de ces mesures est une loi sociale du Front populaire ?",
+              "options": [
+                "Le droit de vote des femmes",
+                "Les congés payés",
+                "La sécurité sociale",
+                "Le parti unique"
+              ],
+              "answer": 1,
+              "hint": "Regarde le tableau des réformes de 1936.",
+              "explanation": "Les congés payés (deux semaines) sont votés en 1936. Le droit de vote des femmes et la Sécurité sociale datent de 1944-1945."
+            },
+            {
+              "prompt": "Que se passe-t-il à Paris le 6 février 1934 ?",
+              "options": [
+                "Une manifestation des ligues d'extrême droite tourne à l'émeute",
+                "Le Front populaire gagne les élections",
+                "Les accords de Matignon sont signés",
+                "Hitler est nommé chancelier"
+              ],
+              "answer": 0,
+              "hint": "Relis l'encadré « Le 6 février 1934 ».",
+              "explanation": "Les ligues d'extrême droite manifestent contre la République ; les affrontements font une quinzaine de morts. La gauche s'unit ensuite pour défendre la démocratie."
+            }
+          ]
+        }
+      },
+      {
+        "title": "Repères et acteurs à connaître pour le brevet",
+        "blocks": [
+          {
+            "type": "table",
+            "caption": "Les repères chronologiques",
+            "columns": [
+              "Date",
+              "Événement"
+            ],
+            "rows": [
+              [
+                "1919",
+                "Traité de Versailles ; Constitution de la république de Weimar."
+              ],
+              [
+                "1923",
+                "Hyperinflation en Allemagne ; tentative de coup d'État de Hitler à Munich."
+              ],
+              [
+                "1929",
+                "Début de la grande crise économique mondiale."
+              ],
+              [
+                "**30 janvier 1933**",
+                "Hitler nommé chancelier : **1933-1945, Hitler au pouvoir**."
+              ],
+              [
+                "23 mars 1933",
+                "Pleins pouvoirs à Hitler."
+              ],
+              [
+                "6 février 1934",
+                "Émeute des ligues d'extrême droite à Paris."
+              ],
+              [
+                "2 août 1934",
+                "Hitler devient Führer."
+              ],
+              [
+                "15 septembre 1935",
+                "Lois de Nuremberg."
+              ],
+              [
+                "**1936**",
+                "**Victoire électorale et lois sociales du Front populaire** (congés payés, 40 heures)."
+              ],
+              [
+                "9-10 novembre 1938",
+                "Nuit de cristal."
+              ],
+              [
+                "1939-1945",
+                "Seconde Guerre mondiale, déclenchée par l'invasion de la Pologne par l'Allemagne."
+              ]
+            ]
+          },
+          {
+            "type": "table",
+            "caption": "Les acteurs",
+            "columns": [
+              "Acteur",
+              "Rôle"
+            ],
+            "rows": [
+              [
+                "**Adolf Hitler** (1889-1945)",
+                "Chef du parti nazi, chancelier en 1933, Führer de 1934 à sa mort en 1945."
+              ],
+              [
+                "**Paul von Hindenburg**",
+                "Président de la république de Weimar ; nomme Hitler chancelier en 1933."
+              ],
+              [
+                "**Joseph Goebbels**",
+                "Ministre de la Propagande du IIIe Reich."
+              ],
+              [
+                "**Heinrich Himmler**",
+                "Chef des SS et de la police : organise la terreur et les camps."
+              ],
+              [
+                "**Léon Blum** (1872-1950)",
+                "Chef de la SFIO, président du Conseil du Front populaire en 1936."
+              ],
+              [
+                "**Les ligues d'extrême droite**",
+                "Groupes armés et nationalistes hostiles à la République en France (6 février 1934)."
+              ]
+            ]
+          },
+          {
+            "type": "callout",
+            "kind": "methode",
+            "title": "Bien utiliser les repères",
+            "text": "Au brevet, cite toujours une date précise avec l'événement : « Le 30 janvier 1933, Hitler est nommé chancelier » vaut mieux que « Hitler arrive au pouvoir dans les années 1930 »."
+          },
+          {
+            "type": "callout",
+            "kind": "essentiel",
+            "text": "Dans l'Europe des années 1930, la crise fragilise toutes les démocraties. En Allemagne, la démocratie est détruite et remplacée par un régime totalitaire, raciste et antisémite qui prépare la guerre. En France, la démocratie résiste et progresse même sur le plan social avec le Front populaire."
+          }
+        ],
+        "checkpoint": {
+          "variants": [
+            {
+              "prompt": "Quel repère du brevet correspond à la période où Hitler est au pouvoir ?",
+              "options": [
+                "1924-1953",
+                "1933-1945",
+                "1914-1918",
+                "1936-1938"
+              ],
+              "answer": 1,
+              "hint": "Regarde la ligne en gras du 30 janvier 1933 dans le tableau des repères.",
+              "explanation": "Hitler est au pouvoir de 1933 à sa mort en 1945. 1924-1953 correspond à Staline."
+            },
+            {
+              "prompt": "Quel acteur a nommé Hitler chancelier ?",
+              "options": [
+                "Joseph Goebbels",
+                "Heinrich Himmler",
+                "Paul von Hindenburg",
+                "Léon Blum"
+              ],
+              "answer": 2,
+              "hint": "Cherche dans le tableau des acteurs.",
+              "explanation": "Le président Hindenburg nomme Hitler chancelier le 30 janvier 1933."
+            },
+            {
+              "prompt": "Quel événement a lieu en 1936 ?",
+              "options": [
+                "La Nuit de cristal",
+                "La victoire électorale du Front populaire",
+                "L'incendie du Reichstag",
+                "Le traité de Versailles"
+              ],
+              "answer": 1,
+              "hint": "C'est un repère du brevet écrit en gras dans le tableau.",
+              "explanation": "En 1936, le Front populaire gagne les élections et vote les congés payés et la semaine de 40 heures."
+            }
+          ]
+        }
+      }
+    ],
+    "memo": [
+      {
+        "label": "Dates du brevet",
+        "text": "1933-1945 : Hitler au pouvoir (nommé chancelier le 30 janvier 1933) · 1936 : victoire électorale et lois sociales du Front populaire · 1939-1945 : Seconde Guerre mondiale."
+      },
+      {
+        "label": "Weimar (1918-1933)",
+        "text": "Démocratie fragile : traité de Versailles vécu comme un « diktat », hyperinflation (1923), crise de 1929 et environ 6 millions de chômeurs en 1932 → succès du parti nazi (environ 37 % en juillet 1932)."
+      },
+      {
+        "label": "Dictature (1933-1934)",
+        "text": "Incendie du Reichstag et suspension des libertés (février 1933), camp de Dachau, pleins pouvoirs (23 mars 1933), parti unique (14 juillet 1933), Nuit des longs couteaux (30 juin 1934), Hitler Führer (août 1934)."
+      },
+      {
+        "label": "Totalitarisme nazi",
+        "text": "Culte du Führer, propagande (Goebbels), censure, Jeunesses hitlériennes, terreur (Gestapo, SS de Himmler, camps de concentration), réarmement."
+      },
+      {
+        "label": "Antisémitisme",
+        "text": "Boycott (1933), lois de Nuremberg (1935 : les Juifs perdent la citoyenneté), Nuit de cristal (9-10 novembre 1938). Persécution aussi des Tsiganes, handicapés, homosexuels, opposants."
+      },
+      {
+        "label": "France",
+        "text": "Crise et ligues d'extrême droite (6 février 1934) → Front populaire (radicaux, SFIO, communistes) → Léon Blum au pouvoir (1936) : accords de Matignon, congés payés, 40 heures."
+      }
+    ]
+  },
+  "exercises": {
+    "duration_min": 30,
+    "instructions": "Commence par les exercices ★ (je repère), puis ★★ (j'analyse un document) et ★★★ (je rédige). Lis bien les deux documents : ce sont de vrais textes de l'époque, traduits ou extraits. Les corrigés s'affichent après tes réponses : sers-t'en pour progresser !",
+    "pass_threshold": 8,
+    "texts": [
+      {
+        "id": "t1",
+        "label": "Document 1 · Deux lois qui détruisent la démocratie allemande",
+        "source": "D'après la loi pour remédier à la détresse du peuple et du Reich (dite « loi des pleins pouvoirs »), 23 mars 1933, articles 1 et 2, et la loi contre la formation de nouveaux partis, 14 juillet 1933, articles 1 et 2 (traduction, extraits).",
+        "paragraphs": [
+          "Loi du 23 mars 1933. Article 1 : Les lois du Reich peuvent être adoptées, en dehors de la procédure prévue par la Constitution, également par le gouvernement du Reich. Article 2 : Les lois adoptées par le gouvernement du Reich peuvent s'écarter de la Constitution […].",
+          "Loi du 14 juillet 1933. Article 1 : Le Parti national-socialiste des travailleurs allemands est le seul parti politique en Allemagne. Article 2 : Quiconque entreprend de maintenir l'organisation d'un autre parti politique ou de former un nouveau parti politique sera puni de travaux forcés pouvant aller jusqu'à trois ans ou d'une peine de prison de six mois à trois ans […]."
+        ]
+      },
+      {
+        "id": "t2",
+        "label": "Document 2 · Les accords de Matignon",
+        "source": "D'après les accords de Matignon signés le 7 juin 1936 à l'hôtel Matignon (Paris) entre les représentants du patronat (Confédération générale de la production française) et des syndicats (CGT), en présence de Léon Blum (extraits).",
+        "paragraphs": [
+          "Article 1 : La délégation patronale admet l'établissement immédiat de contrats collectifs de travail.",
+          "Article 3 : […] Les employeurs reconnaissent la liberté d'opinion ainsi que le droit pour les travailleurs d'adhérer librement et d'appartenir à un syndicat professionnel.",
+          "Article 4 : Les salaires réels pratiqués pour tous les ouvriers à la date du 25 mai 1936 seront, du jour de la reprise du travail, augmentés suivant une échelle décroissante commençant à 15 % pour les salaires les moins élevés pour arriver à 7 % pour les salaires les plus élevés […].",
+          "Article 5 : […] Il sera institué dans chaque établissement comprenant plus de dix ouvriers […] deux ou plusieurs délégués ouvriers […]."
+        ]
+      }
+    ],
+    "items": [
+      {
+        "id": "ex1",
+        "type": "short",
+        "stars": 1,
+        "lesson_part": 2,
+        "skills": [
+          "hg-reperes-nazisme"
+        ],
+        "cognitive": "connaitre",
+        "prompt": "En quelle année Hitler est-il nommé chancelier ? (réponds par une année)",
+        "answer": [
+          "1933",
+          "en 1933",
+          "annee 1933",
+          "l'annee 1933",
+          "janvier 1933",
+          "en janvier 1933",
+          "30 janvier 1933",
+          "le 30 janvier 1933"
+        ],
+        "solution": "En 1933 : Hitler est nommé chancelier par le président Hindenburg le 30 janvier 1933."
+      },
+      {
+        "id": "ex2",
+        "type": "qcm",
+        "stars": 1,
+        "lesson_part": 1,
+        "skills": [
+          "hg-weimar-crise"
+        ],
+        "cognitive": "connaitre",
+        "prompt": "Pourquoi le parti nazi progresse-t-il fortement entre 1930 et 1932 ?",
+        "options": [
+          "Parce que l'Allemagne vient de gagner la guerre",
+          "Parce que la crise de 1929 provoque un chômage de masse",
+          "Parce que les femmes n'ont pas le droit de vote",
+          "Parce que le Front populaire est au pouvoir en Allemagne"
+        ],
+        "answer": 1,
+        "solution": "La crise de 1929 frappe durement l'Allemagne : environ 6 millions de chômeurs en 1932. Beaucoup d'Allemands perdent confiance dans la démocratie et votent pour les nazis."
+      },
+      {
+        "id": "ex3",
+        "type": "short",
+        "stars": 1,
+        "lesson_part": 4,
+        "skills": [
+          "hg-reperes-nazisme",
+          "hg-democraties"
+        ],
+        "cognitive": "connaitre",
+        "prompt": "Quel homme politique socialiste dirige le gouvernement du Front populaire en 1936 ?",
+        "answer": [
+          "Léon Blum",
+          "Leon Blum",
+          "Blum",
+          "L. Blum"
+        ],
+        "solution": "Léon Blum, chef de la SFIO, président du Conseil à partir de juin 1936."
+      },
+      {
+        "id": "ex4",
+        "type": "qcm",
+        "stars": 1,
+        "lesson_part": 3,
+        "skills": [
+          "hg-totalitarisme-nazi"
+        ],
+        "cognitive": "connaitre",
+        "prompt": "Que se passe-t-il pendant la « Nuit de cristal » (9-10 novembre 1938) ?",
+        "options": [
+          "Les Juifs d'Allemagne sont victimes de violences : synagogues incendiées, magasins pillés, arrestations",
+          "Hitler fait assassiner les chefs des SA",
+          "Le Reichstag est incendié",
+          "Les nazis organisent un grand rassemblement à Nuremberg"
+        ],
+        "answer": 0,
+        "solution": "La Nuit de cristal est un pogrom organisé par les nazis : synagogues incendiées, magasins juifs pillés, au moins 91 morts et environ 30 000 hommes juifs envoyés en camp de concentration. L'assassinat des chefs SA, c'est la Nuit des longs couteaux (1934)."
+      },
+      {
+        "id": "ex5",
+        "type": "qcm",
+        "stars": 2,
+        "text_ref": "t1",
+        "lesson_part": 2,
+        "skills": [
+          "hg-analyse-doc",
+          "hg-weimar-crise"
+        ],
+        "cognitive": "analyser",
+        "prompt": "D'après la loi du 23 mars 1933 (document 1), qui peut désormais faire les lois ?",
+        "options": [
+          "Seulement le Reichstag",
+          "Le gouvernement de Hitler, même contre la Constitution",
+          "Les syndicats",
+          "Le peuple par référendum"
+        ],
+        "answer": 1,
+        "solution": "Le gouvernement du Reich peut adopter des lois seul (article 1), et ces lois peuvent « s'écarter de la Constitution » (article 2). Le Parlement perd son pouvoir : la séparation des pouvoirs disparaît."
+      },
+      {
+        "id": "ex6",
+        "type": "open",
+        "stars": 2,
+        "text_ref": "t1",
+        "lesson_part": 2,
+        "skills": [
+          "hg-analyse-doc",
+          "hg-totalitarisme-nazi"
+        ],
+        "cognitive": "analyser",
+        "prompt": "Explique pourquoi la loi du 14 juillet 1933 (document 1) met fin à la démocratie. Cite le texte.",
+        "solution": "Elle déclare que le parti nazi « est le seul parti politique en Allemagne » et punit de prison ou de travaux forcés ceux qui veulent « former un nouveau parti politique ». Sans pluralisme politique, les électeurs n'ont plus de choix : il n'y a plus de démocratie mais un régime à parti unique.",
+        "rubric": "1 pt : citation sur le parti unique. 1 pt : explication (plus de choix ni d'opposition, opposants punis)."
+      },
+      {
+        "id": "ex7",
+        "type": "open",
+        "stars": 2,
+        "text_ref": "t2",
+        "lesson_part": 4,
+        "skills": [
+          "hg-analyse-doc",
+          "hg-democraties"
+        ],
+        "cognitive": "analyser",
+        "prompt": "Relève dans le document 2 deux avancées obtenues par les ouvriers.",
+        "solution": "Par exemple : la hausse des salaires de 7 à 15 % (article 4) ; les contrats collectifs de travail (article 1) ; la liberté syndicale (article 3) ; l'élection de délégués ouvriers dans les entreprises de plus de dix ouvriers (article 5).",
+        "rubric": "1 pt par avancée correctement relevée (2 maximum)."
+      },
+      {
+        "id": "ex8",
+        "type": "qcm",
+        "stars": 2,
+        "text_ref": "t2",
+        "lesson_part": 4,
+        "skills": [
+          "hg-analyse-doc",
+          "hg-democraties"
+        ],
+        "cognitive": "analyser",
+        "prompt": "Dans quel contexte les accords de Matignon (document 2) sont-ils signés ?",
+        "options": [
+          "Après l'émeute du 6 février 1934",
+          "Après de grandes grèves avec occupations d'usines, juste après la victoire du Front populaire",
+          "Pendant la Seconde Guerre mondiale",
+          "Après l'arrivée de Hitler au pouvoir en France"
+        ],
+        "answer": 1,
+        "solution": "En mai-juin 1936, après la victoire électorale du Front populaire, environ deux millions d'ouvriers font grève et occupent les usines. Léon Blum réunit patrons et syndicats à Matignon : les accords sont signés le 7 juin 1936."
+      },
+      {
+        "id": "ex9",
+        "type": "open",
+        "stars": 3,
+        "lesson_part": 2,
+        "skills": [
+          "hg-weimar-crise",
+          "hg-reperes-nazisme",
+          "hg-redaction"
+        ],
+        "cognitive": "rediger",
+        "prompt": "Rédige un paragraphe (8 à 10 lignes) : « Explique comment Hitler passe de chancelier à dictateur en 1933-1934. » Utilise au moins trois dates précises.",
+        "solution": "Le 30 janvier 1933, le président Hindenburg nomme Hitler chancelier : il arrive au pouvoir légalement. Il profite de l'incendie du Reichstag (27-28 février 1933) pour suspendre les libertés et faire arrêter les communistes ; le camp de Dachau ouvre en mars pour enfermer les opposants. Le 23 mars 1933, le Reichstag lui vote les pleins pouvoirs : son gouvernement peut faire les lois seul. Les syndicats sont dissous et, le 14 juillet 1933, le parti nazi devient parti unique. Le 30 juin 1934, la Nuit des longs couteaux élimine les chefs SA gênants. Enfin, à la mort de Hindenburg (2 août 1934), Hitler devient Führer : il a tous les pouvoirs.",
+        "rubric": "1 pt : arrivée légale au pouvoir (30 janvier 1933, Hindenburg). 2 pts : au moins trois étapes de la dictature (libertés suspendues, Dachau, pleins pouvoirs, parti unique, Nuit des longs couteaux, Führer). 1 pt : au moins trois dates exactes. 1 pt : paragraphe organisé (ordre chronologique, connecteurs)."
+      },
+      {
+        "id": "ex10",
+        "type": "open",
+        "stars": 3,
+        "lesson_part": 4,
+        "skills": [
+          "hg-democraties",
+          "hg-reperes-nazisme",
+          "hg-redaction"
+        ],
+        "cognitive": "rediger",
+        "prompt": "Rédige un développement construit (une quinzaine de lignes) : « Montrez que la démocratie française est fragilisée dans les années 1930 mais qu'elle résiste. »",
+        "solution": "Introduction : dans les années 1930, la crise de 1929 et la montée des régimes totalitaires (Italie, Allemagne nazie depuis 1933) menacent les démocraties. Partie 1 – Une démocratie fragilisée : la crise touche la France vers 1931 (chômage, baisse des revenus) ; instabilité des gouvernements, scandales ; les ligues d'extrême droite (Action française, Croix-de-Feu) attaquent la République ; le 6 février 1934, leur manifestation à Paris tourne à l'émeute (une quinzaine de morts). Partie 2 – Une démocratie qui résiste : les partis de gauche s'unissent dans le Front populaire (radicaux, SFIO, communistes) ; victoire aux élections de 1936 ; Léon Blum devient président du Conseil ; accords de Matignon (hausse des salaires, conventions collectives, délégués), congés payés, semaine de 40 heures. Conclusion : malgré ses limites (fin en 1938), le Front populaire montre que la démocratie française a tenu, contrairement à l'Allemagne.",
+        "rubric": "1 pt : introduction (contexte de crise, sujet posé). 1,5 pt : les fragilités (crise, ligues, 6 février 1934). 1,5 pt : la résistance (Front populaire, 1936, Léon Blum, lois sociales précises). 1 pt : conclusion et expression (comparaison possible avec l'Allemagne)."
+      }
+    ]
+  },
+  "evaluation": {
+    "duration_min": 35,
+    "conditions": "Comme au brevet : sans la leçon ni les corrigés, en 35 minutes. Barème : A = 6 points · B = 6 points · C = 8 points. Soigne la rédaction et cite des repères précis (dates, acteurs, notions).",
+    "total_points": 20,
+    "variants": [
+      {
+        "texts": [
+          {
+            "id": "d1",
+            "label": "Document · Le décret du 28 février 1933",
+            "source": "D'après le décret du président du Reich pour la protection du peuple et de l'État, signé par le président Hindenburg le 28 février 1933, au lendemain de l'incendie du Reichstag, article 1 (traduction, extrait).",
+            "paragraphs": [
+              "Les articles 114, 115, 117, 118, 123, 124 et 153 de la Constitution du Reich allemand sont suspendus jusqu'à nouvel ordre.",
+              "En conséquence, sont permises, même au-delà des limites légales habituelles, des restrictions à la liberté individuelle, au droit de libre expression des opinions, y compris la liberté de la presse, au droit de réunion et d'association, des atteintes au secret de la correspondance, de la poste, du télégraphe et du téléphone, des perquisitions et des saisies […]."
+            ]
+          }
+        ],
+        "sections": [
+          {
+            "label": "A · Je connais mes repères (6 points)",
+            "questions": [
+              {
+                "id": "q1",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 5,
+                "skills": [
+                  "hg-reperes-nazisme"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Quelle période correspond à Hitler au pouvoir ?",
+                "options": [
+                  "1924-1953",
+                  "1933-1945",
+                  "1918-1933",
+                  "1936-1938"
+                ],
+                "answer": 1,
+                "solution": "1933-1945 : de sa nomination comme chancelier (30 janvier 1933) à sa mort (avril 1945).",
+                "rubric": "1 pt : bonne réponse (1933-1945)."
+              },
+              {
+                "id": "q2",
+                "type": "short",
+                "points": 1,
+                "lesson_part": 4,
+                "skills": [
+                  "hg-reperes-nazisme",
+                  "hg-democraties"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "En quelle année le Front populaire gagne-t-il les élections en France ? (réponds par une année)",
+                "answer": [
+                  "1936",
+                  "en 1936",
+                  "annee 1936",
+                  "l'annee 1936",
+                  "mai 1936",
+                  "en mai 1936",
+                  "avril-mai 1936",
+                  "en avril-mai 1936"
+                ],
+                "solution": "En 1936 (élections d'avril-mai 1936).",
+                "rubric": "1 pt : 1936."
+              },
+              {
+                "id": "q3",
+                "type": "short",
+                "points": 1,
+                "lesson_part": 2,
+                "skills": [
+                  "hg-weimar-crise"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Quel président de la république de Weimar nomme Hitler chancelier en 1933 ?",
+                "answer": [
+                  "Hindenburg",
+                  "Paul von Hindenburg",
+                  "von Hindenburg",
+                  "Paul Hindenburg",
+                  "le marechal Hindenburg",
+                  "marechal Hindenburg",
+                  "le president Hindenburg"
+                ],
+                "solution": "Le maréchal Paul von Hindenburg.",
+                "rubric": "1 pt : Hindenburg."
+              },
+              {
+                "id": "q4",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 3,
+                "skills": [
+                  "hg-totalitarisme-nazi"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Que décident les lois de Nuremberg de 1935 ?",
+                "options": [
+                  "Les Juifs perdent la citoyenneté allemande et ne peuvent plus épouser de non-Juifs",
+                  "Le parti nazi devient le parti unique",
+                  "Hitler devient Führer",
+                  "Les congés payés sont créés"
+                ],
+                "answer": 0,
+                "solution": "Les lois de Nuremberg (15 septembre 1935) excluent les Juifs de la nation allemande.",
+                "rubric": "1 pt : bonne réponse."
+              },
+              {
+                "id": "q5",
+                "type": "open",
+                "points": 2,
+                "lesson_part": 3,
+                "skills": [
+                  "hg-totalitarisme-nazi"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Définis le mot « antisémitisme » et donne un exemple de persécution antisémite dans l'Allemagne nazie.",
+                "solution": "L'antisémitisme est l'hostilité et la haine envers les Juifs. Exemples : boycott des magasins juifs (1933), lois de Nuremberg (1935), Nuit de cristal (9-10 novembre 1938).",
+                "rubric": "1 pt : définition correcte (hostilité / haine envers les Juifs). 1 pt : un exemple précis et daté (boycott 1933, lois de Nuremberg 1935, Nuit de cristal 1938)."
+              }
+            ]
+          },
+          {
+            "label": "B · J'analyse un document (6 points)",
+            "questions": [
+              {
+                "id": "q6",
+                "type": "open",
+                "points": 1,
+                "text_ref": "d1",
+                "lesson_part": 2,
+                "skills": [
+                  "hg-analyse-doc"
+                ],
+                "cognitive": "analyser",
+                "prompt": "Présente le document : nature, auteur, date et contexte.",
+                "solution": "C'est un décret (un texte officiel ayant force de loi) signé par le président Hindenburg, à la demande du gouvernement de Hitler, le 28 février 1933, au lendemain de l'incendie du Reichstag, un mois après la nomination de Hitler comme chancelier.",
+                "rubric": "0,5 pt : nature (décret, texte officiel) et auteur (Hindenburg / gouvernement de Hitler). 0,5 pt : date et contexte (28 février 1933, incendie du Reichstag)."
+              },
+              {
+                "id": "q7",
+                "type": "open",
+                "points": 2,
+                "text_ref": "d1",
+                "lesson_part": 2,
+                "skills": [
+                  "hg-analyse-doc",
+                  "hg-weimar-crise"
+                ],
+                "cognitive": "analyser",
+                "prompt": "Relève trois libertés supprimées ou limitées par ce décret.",
+                "solution": "La liberté individuelle, la liberté d'expression (« libre expression des opinions »), la liberté de la presse, le droit de réunion et d'association, le secret de la correspondance (poste, télégraphe, téléphone), la protection du domicile (perquisitions).",
+                "rubric": "2 pts : trois libertés correctement relevées (1 pt pour deux, 0,5 pt pour une)."
+              },
+              {
+                "id": "q8",
+                "type": "open",
+                "points": 2,
+                "text_ref": "d1",
+                "lesson_part": 2,
+                "skills": [
+                  "hg-analyse-doc",
+                  "hg-totalitarisme-nazi"
+                ],
+                "cognitive": "analyser",
+                "prompt": "Explique comment Hitler utilise ce décret pour installer sa dictature. Utilise tes connaissances.",
+                "solution": "Hitler accuse les communistes d'avoir incendié le Reichstag. Grâce au décret, la police peut arrêter sans jugement les opposants (communistes, socialistes), interdire leurs journaux et leurs réunions. Les opposants sont enfermés dans le camp de Dachau (mars 1933). La voie est ouverte aux pleins pouvoirs (23 mars 1933) et au parti unique (14 juillet 1933).",
+                "rubric": "1 pt : le décret permet de réprimer les opposants (arrestations, journaux interdits). 1 pt : au moins une connaissance précise sur la suite (Dachau, pleins pouvoirs, parti unique, Führer en 1934)."
+              },
+              {
+                "id": "q9",
+                "type": "open",
+                "points": 1,
+                "text_ref": "d1",
+                "lesson_part": 2,
+                "skills": [
+                  "hg-analyse-doc"
+                ],
+                "cognitive": "analyser",
+                "prompt": "Le décret dit que les libertés sont suspendues « jusqu'à nouvel ordre ». Montre que cette mesure, présentée comme provisoire, a duré.",
+                "solution": "Le décret n'a jamais été abrogé sous le nazisme : les libertés restent suspendues jusqu'à la chute du régime en 1945. Cette « urgence » provisoire devient la base permanente de la dictature.",
+                "rubric": "0,5 pt : la mesure n'est jamais levée. 0,5 pt : jusqu'en 1945 / pendant tout le IIIe Reich."
+              }
+            ]
+          },
+          {
+            "label": "C · Je rédige un développement construit (8 points)",
+            "questions": [
+              {
+                "id": "q10",
+                "type": "open",
+                "points": 8,
+                "lesson_part": 4,
+                "skills": [
+                  "hg-democraties",
+                  "hg-weimar-crise",
+                  "hg-reperes-nazisme",
+                  "hg-redaction"
+                ],
+                "cognitive": "rediger",
+                "prompt": "Développement construit (une vingtaine de lignes) : « Montrez que, dans les années 1930, les démocraties européennes sont fragilisées, mais que la France résiste. » Utilise des repères précis.",
+                "solution": "Introduction : la crise de 1929 frappe l'Europe et les régimes autoritaires progressent (Italie fasciste depuis 1922). Partie 1 – En Allemagne, la démocratie s'effondre : république de Weimar fragile (traité de Versailles, hyperinflation de 1923), crise de 1929 et environ 6 millions de chômeurs ; succès des nazis ; Hitler nommé chancelier le 30 janvier 1933, puis dictature (libertés suspendues, pleins pouvoirs, parti unique, Führer en 1934). Partie 2 – En France, la démocratie est menacée : crise à partir de 1931, instabilité, scandales, ligues d'extrême droite ; émeute du 6 février 1934. Partie 3 – Mais elle résiste : union des gauches dans le Front populaire ; victoire électorale de 1936 ; Léon Blum ; accords de Matignon, congés payés, semaine de 40 heures. Conclusion : la France reste une démocratie, alors que l'Allemagne nazie prépare la guerre.",
+                "rubric": "1 pt : introduction (crise de 1929, sujet posé). 2 pts : la démocratie allemande détruite (au moins trois éléments précis : Weimar fragile, crise, 30 janvier 1933, étapes de la dictature). 1,5 pt : la démocratie française menacée (crise, ligues, 6 février 1934). 2,5 pts : la résistance du Front populaire (1936, Léon Blum, au moins deux réformes précises). 1 pt : conclusion et expression (phrases construites, connecteurs, vocabulaire historique). Pénalité : -0,5 pt par erreur de repère importante (ex. dire que Hitler a été élu par la majorité)."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "texts": [
+          {
+            "id": "d1",
+            "label": "Document · Léon Blum se souvient des congés payés",
+            "source": "D'après Léon Blum, déclaration devant la cour de Riom, mars 1942. Arrêté par le régime de Vichy, l'ancien chef du gouvernement du Front populaire est jugé et accusé d'avoir mal préparé la France à la guerre (extrait).",
+            "paragraphs": [
+              "Je ne suis pas sorti souvent de mon cabinet ministériel pendant la durée de mon ministère ; mais chaque fois que j'en suis sorti, que j'ai traversé la grande banlieue parisienne et que j'ai vu les routes couvertes de ces théories de tacots, de motos, de tandems avec des couples d'ouvriers vêtus de pull-overs assortis […], j'avais le sentiment, malgré tout, d'avoir, dans une heure difficile et sombre, apporté une embellie, une éclaircie dans des vies difficiles, obscures.",
+              "On ne les avait pas seulement arrachés au cabaret, on ne leur avait pas seulement donné plus de facilité pour la vie de famille, mais on leur avait ouvert une perspective d'avenir, on avait créé chez eux un espoir."
+            ]
+          }
+        ],
+        "sections": [
+          {
+            "label": "A · Je connais mes repères (6 points)",
+            "questions": [
+              {
+                "id": "q1",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 5,
+                "skills": [
+                  "hg-reperes-nazisme"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "En quelle année ont lieu la victoire électorale et les lois sociales du Front populaire ?",
+                "options": [
+                  "1933",
+                  "1934",
+                  "1936",
+                  "1939"
+                ],
+                "answer": 2,
+                "solution": "En 1936.",
+                "rubric": "1 pt : bonne réponse (1936)."
+              },
+              {
+                "id": "q2",
+                "type": "short",
+                "points": 1,
+                "lesson_part": 2,
+                "skills": [
+                  "hg-reperes-nazisme"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "En quelle année Hitler arrive-t-il au pouvoir en Allemagne ? (réponds par une année)",
+                "answer": [
+                  "1933",
+                  "en 1933",
+                  "annee 1933",
+                  "l'annee 1933",
+                  "janvier 1933",
+                  "en janvier 1933",
+                  "30 janvier 1933",
+                  "le 30 janvier 1933"
+                ],
+                "solution": "En 1933 (nommé chancelier le 30 janvier 1933).",
+                "rubric": "1 pt : 1933."
+              },
+              {
+                "id": "q3",
+                "type": "short",
+                "points": 1,
+                "lesson_part": 3,
+                "skills": [
+                  "hg-totalitarisme-nazi"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Quel dirigeant nazi est ministre de la Propagande ?",
+                "answer": [
+                  "Goebbels",
+                  "Joseph Goebbels",
+                  "J. Goebbels",
+                  "Josef Goebbels"
+                ],
+                "solution": "Joseph Goebbels.",
+                "rubric": "1 pt : Goebbels."
+              },
+              {
+                "id": "q4",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 4,
+                "skills": [
+                  "hg-democraties"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Que se passe-t-il à Paris le 6 février 1934 ?",
+                "options": [
+                  "Une émeute des ligues d'extrême droite contre la République",
+                  "La signature des accords de Matignon",
+                  "La victoire du Front populaire",
+                  "La création des congés payés"
+                ],
+                "answer": 0,
+                "solution": "Les ligues d'extrême droite manifestent contre la République ; l'émeute fait une quinzaine de morts.",
+                "rubric": "1 pt : bonne réponse."
+              },
+              {
+                "id": "q5",
+                "type": "open",
+                "points": 2,
+                "lesson_part": 3,
+                "skills": [
+                  "hg-totalitarisme-nazi"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Définis le mot « totalitarisme » et donne un exemple de moyen utilisé par les nazis pour contrôler la population.",
+                "solution": "Régime politique où un parti unique, dirigé par un chef tout-puissant, contrôle tous les aspects de la vie des individus, par la propagande et la terreur, pour créer un « homme nouveau ». Exemples nazis : propagande de Goebbels, Jeunesses hitlériennes, Gestapo, camps de concentration, culte du Führer.",
+                "rubric": "1 pt : définition (parti unique / chef tout-puissant + contrôle de toute la vie). 1 pt : un exemple nazi précis."
+              }
+            ]
+          },
+          {
+            "label": "B · J'analyse un document (6 points)",
+            "questions": [
+              {
+                "id": "q6",
+                "type": "open",
+                "points": 1,
+                "text_ref": "d1",
+                "lesson_part": 4,
+                "skills": [
+                  "hg-analyse-doc"
+                ],
+                "cognitive": "analyser",
+                "prompt": "Présente le document : nature, auteur, date et contexte.",
+                "solution": "C'est une déclaration de Léon Blum, ancien chef du gouvernement du Front populaire (1936-1937), lors de son procès à Riom en 1942. Il est alors prisonnier du régime de Vichy, pendant la Seconde Guerre mondiale.",
+                "rubric": "0,5 pt : nature (déclaration / discours lors d'un procès) et auteur (Léon Blum). 0,5 pt : date et contexte (1942, procès de Riom, régime de Vichy)."
+              },
+              {
+                "id": "q7",
+                "type": "open",
+                "points": 2,
+                "text_ref": "d1",
+                "lesson_part": 4,
+                "skills": [
+                  "hg-analyse-doc",
+                  "hg-democraties"
+                ],
+                "cognitive": "analyser",
+                "prompt": "De quelle mesure du Front populaire Léon Blum parle-t-il ? Relève deux indices dans le texte.",
+                "solution": "Il parle des congés payés (deux semaines de vacances payées, 1936). Indices : « les routes couvertes de ces théories de tacots, de motos, de tandems », « des couples d'ouvriers » qui partent en promenade ou en vacances ; il évoque aussi la « vie de famille ».",
+                "rubric": "1 pt : les congés payés. 1 pt : deux indices cités (0,5 pt par indice)."
+              },
+              {
+                "id": "q8",
+                "type": "open",
+                "points": 2,
+                "text_ref": "d1",
+                "lesson_part": 4,
+                "skills": [
+                  "hg-analyse-doc",
+                  "hg-democraties"
+                ],
+                "cognitive": "analyser",
+                "prompt": "Selon Léon Blum, qu'ont apporté ces réformes aux ouvriers ? Cite le texte, puis cite deux autres réformes du Front populaire.",
+                "solution": "Selon lui, elles ont apporté « une embellie, une éclaircie dans des vies difficiles », plus de temps pour « la vie de famille », « une perspective d'avenir » et « un espoir ». Autres réformes : semaine de 40 heures, hausse des salaires (accords de Matignon), conventions collectives, délégués du personnel, liberté syndicale.",
+                "rubric": "1 pt : apport expliqué avec au moins une citation. 1 pt : deux autres réformes exactes (0,5 pt chacune)."
+              },
+              {
+                "id": "q9",
+                "type": "open",
+                "points": 1,
+                "text_ref": "d1",
+                "lesson_part": 4,
+                "skills": [
+                  "hg-analyse-doc"
+                ],
+                "cognitive": "analyser",
+                "prompt": "Pourquoi faut-il lire ce témoignage avec un esprit critique ?",
+                "solution": "Léon Blum parle de sa propre action, six ans plus tard, au cours d'un procès où il doit se défendre : il a intérêt à présenter le Front populaire de façon positive. Il ne parle pas des difficultés (économie, fin du Front populaire en 1938).",
+                "rubric": "0,5 pt : Blum est l'auteur des réformes et il se défend dans un procès. 0,5 pt : il présente donc surtout les aspects positifs (ou : le texte est écrit plusieurs années après)."
+              }
+            ]
+          },
+          {
+            "label": "C · Je rédige un développement construit (8 points)",
+            "questions": [
+              {
+                "id": "q10",
+                "type": "open",
+                "points": 8,
+                "lesson_part": 3,
+                "skills": [
+                  "hg-totalitarisme-nazi",
+                  "hg-weimar-crise",
+                  "hg-reperes-nazisme",
+                  "hg-redaction"
+                ],
+                "cognitive": "rediger",
+                "prompt": "Développement construit (une vingtaine de lignes) : « Montrez comment Hitler arrive au pouvoir et fait de l'Allemagne un régime totalitaire, raciste et antisémite. » Utilise des repères précis.",
+                "solution": "Introduction : après 1918, l'Allemagne est une démocratie fragile, la république de Weimar ; Hitler est au pouvoir de 1933 à 1945. Partie 1 – L'arrivée au pouvoir : traité de Versailles, hyperinflation de 1923, crise de 1929 (environ 6 millions de chômeurs) ; le parti nazi devient le premier parti en 1932 ; Hitler est nommé chancelier par Hindenburg le 30 janvier 1933. Partie 2 – La dictature et le totalitarisme : libertés suspendues après l'incendie du Reichstag, pleins pouvoirs (23 mars 1933), parti unique (14 juillet 1933), Führer (août 1934) ; culte du chef, propagande de Goebbels, Jeunesses hitlériennes, terreur (Gestapo, SS, camps comme Dachau). Partie 3 – Un régime raciste et antisémite : idée d'une race « aryenne » supérieure ; boycott (1933), lois de Nuremberg (1935), Nuit de cristal (1938) ; persécution des Tsiganes, des handicapés, des homosexuels. Conclusion : un régime totalitaire qui prépare la guerre et la persécution de masse.",
+                "rubric": "1 pt : introduction (Weimar, 1933-1945, sujet posé). 2 pts : l'arrivée au pouvoir (crise, succès électoral, 30 janvier 1933, Hindenburg). 2 pts : dictature et totalitarisme (au moins trois éléments précis). 2 pts : racisme et antisémitisme (au moins deux éléments précis et datés). 1 pt : conclusion et expression (phrases construites, connecteurs, vocabulaire historique). Pénalité : -0,5 pt par erreur de repère importante (ex. dire que Hitler a été élu par la majorité des Allemands)."
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
