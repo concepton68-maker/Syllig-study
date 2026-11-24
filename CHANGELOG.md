@@ -121,3 +121,11 @@ Première version numérotée (déjà en ligne avant numérotation : socle, gén
   - SVT : gènes, allèles et caractères.
   - Technologie : fonctions, solutions techniques et évolution des objets.
 - Soit **22 cours de 3e générale** disponibles, couvrant toutes les matières principales et les deux LV2.
+
+## 0.11 — 24/11/2026
+- Correction d'affichage : le gras et l'italique s'affichent correctement, au lieu des astérisques bruts. C'était le cas dans :
+  - les points de contrôle de la leçon ;
+  - les choix de réponse des exercices et des évaluations ;
+  - les objectifs ;
+  - les bilans, les copies et l'aperçu du cours.
+- Nouveau test : chaque cours de la bibliothèque est parcouru de bout en bout (leçon, exercices, évaluation, correction du parent). Les 22 cours de 3e obtiennent 20/20 avec les réponses du corrigé.

@@ -17,7 +17,7 @@ export function AnswerInput({ q, value, onChange, disabled, noPaste, onPasteBloc
         <legend className="sr-only">Choisis une réponse</legend>
         {q.options.map((o, i) => (
           <label key={i} className={`flex items-center gap-3 min-h-11 px-3.5 rounded-xl border-[1.5px] cursor-pointer ${value === String(i) ? 'border-brand bg-brand-soft' : 'border-line-strong bg-white'}`}>
-            <input type="radio" name={q.id} value={i} checked={value === String(i)} onChange={() => onChange(String(i))} />{o}
+            <input type="radio" name={q.id} value={i} checked={value === String(i)} onChange={() => onChange(String(i))} /><span><RichText text={o} /></span>
           </label>
         ))}
       </fieldset>

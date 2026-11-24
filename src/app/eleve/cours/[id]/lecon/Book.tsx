@@ -74,7 +74,7 @@ export function LessonBook({ courseId, pages, startPage, current, checkpoint, to
               <span className="lbl spark">Avant de commencer</span>
               <h2 className="text-[28px] font-bold">{p.title}</h2>
               {p.objectives.length > 0 && (<div><span className="lbl">À la fin de cette leçon, je sais</span>
-                <ul className="mt-2 mb-0 pl-5 list-disc text-[17px] leading-relaxed">{p.objectives.map((o, i) => <li key={i}>{o}</li>)}</ul></div>)}
+                <ul className="mt-2 mb-0 pl-5 list-disc text-[17px] leading-relaxed">{p.objectives.map((o, i) => <li key={i}><RichText text={o} /></li>)}</ul></div>)}
               {p.essential && <BlockView block={{ type: 'callout', kind: 'essentiel', text: p.essential }} />}
               <p className="muted m-0">{totalParts} parties, chacune suivie d’une petite question pour vérifier que c’est compris.</p>
             </>

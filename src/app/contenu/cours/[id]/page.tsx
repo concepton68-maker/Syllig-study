@@ -22,7 +22,7 @@ function QuestionAdmin({ q }: { q: Question }) {
         {q.skills?.map(s => <span key={s} className="pill bg-brand-soft text-brand-dark">{s}</span>)}
       </div>
       <p className="m-0 text-[15px]"><RichText text={q.prompt} /></p>
-      {q.options && <ol className="m-0 pl-6 list-[upper-alpha] text-sm">{q.options.map((o, i) => <li key={i} className={((Array.isArray(q.answer) ? q.answer : [q.answer]) as unknown[]).includes(i) ? 'font-bold text-brand-dark' : ''}>{o}</li>)}</ol>}
+      {q.options && <ol className="m-0 pl-6 list-[upper-alpha] text-sm">{q.options.map((o, i) => <li key={i} className={((Array.isArray(q.answer) ? q.answer : [q.answer]) as unknown[]).includes(i) ? 'font-bold text-brand-dark' : ''}><RichText text={o} /></li>)}</ol>}
       {(q.type === 'numeric' || q.type === 'short') && <p className="m-0 text-sm"><strong>Réponse attendue :</strong> {Array.isArray(q.answer) ? q.answer.join(' · ') : String(q.answer)}{q.tolerance ? ` (± ${q.tolerance})` : ''}</p>}
       <div className="rounded-lg bg-brand-soft px-3 py-2 text-sm text-brand-ink"><strong>Corrigé :</strong> <RichText text={q.solution} /></div>
       {q.rubric && <div className="rounded-lg bg-soft px-3 py-2 text-sm"><strong>Barème :</strong> <RichText text={q.rubric} /></div>}
@@ -85,7 +85,7 @@ export default async function CoursePreview({ params, searchParams }: { params: 
 
       {tab === 'lecon' && <section className="card flex flex-col gap-4">
         <h2 className="text-2xl font-semibold">① Leçon · {doc.lesson.duration_min} min</h2>
-        {doc.lesson.objectives.length > 0 && <ul className="m-0 pl-6 list-disc">{doc.lesson.objectives.map((o, i) => <li key={i}>{o}</li>)}</ul>}
+        {doc.lesson.objectives.length > 0 && <ul className="m-0 pl-6 list-disc">{doc.lesson.objectives.map((o, i) => <li key={i}><RichText text={o} /></li>)}</ul>}
         {doc.lesson.essential && <BlockView block={{ type: 'callout', kind: 'essentiel', text: doc.lesson.essential }} />}
         {doc.lesson.parts.map((p, i) => (
           <div key={i} className="flex flex-col gap-3 border-t border-line pt-4">
@@ -96,8 +96,8 @@ export default async function CoursePreview({ params, searchParams }: { params: 
                 <span className="lbl text-brand-dark">Point de contrôle · {p.checkpoint.variants.length} variantes</span>
                 {p.checkpoint.variants.map((cv, k) => (
                   <div key={k} className="text-sm">
-                    <strong>{k + 1}. {cv.prompt}</strong>{cv.quote && <em className="block muted">« {cv.quote} »</em>}
-                    <ol className="m-0 pl-6 list-[upper-alpha]">{cv.options.map((o, l) => <li key={l} className={l === cv.answer ? 'font-bold text-brand-dark' : ''}>{o}</li>)}</ol>
+                    <strong>{k + 1}. <RichText text={cv.prompt} /></strong>{cv.quote && <em className="block muted">« <RichText text={cv.quote} /> »</em>}
+                    <ol className="m-0 pl-6 list-[upper-alpha]">{cv.options.map((o, l) => <li key={l} className={l === cv.answer ? 'font-bold text-brand-dark' : ''}><RichText text={o} /></li>)}</ol>
                     {cv.hint && <span className="muted">Indice : {cv.hint}</span>}
                   </div>
                 ))}

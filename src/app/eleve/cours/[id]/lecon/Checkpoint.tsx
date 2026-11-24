@@ -1,4 +1,5 @@
 'use client';
+import { RichText } from '@/components/RichText';
 import { useState, useTransition } from 'react';
 import { useRouter } from 'next/navigation';
 import { answerCheckpoint, type CheckpointResult } from './actions';
@@ -24,8 +25,8 @@ export function Checkpoint({ courseId, partIndex, total, initial }: { courseId: 
         <span className="lbl text-brand-dark">Point de contrôle · partie {partIndex + 1} sur {total}</span>
         {q.attempt > 0 && <span className="muted text-sm">Nouvelle question</span>}
       </div>
-      {q.quote && <p className="prose-lesson italic m-0">« {q.quote} »</p>}
-      <strong className="text-base">{q.prompt}</strong>
+      {q.quote && <p className="prose-lesson italic m-0">« <RichText text={q.quote} /> »</p>}
+      <strong className="text-base"><RichText text={q.prompt} /></strong>
       <div className="flex flex-col gap-2">
         {q.options.map((o, i) => {
           const chosen = picked === i;
@@ -33,20 +34,20 @@ export function Checkpoint({ courseId, partIndex, total, initial }: { courseId: 
           return (
             <button key={i} type="button" onClick={() => choose(i)} aria-pressed={chosen}
               className={`flex items-center gap-3 min-h-12 px-4 rounded-xl border-[1.5px] text-left font-semibold text-[15px] cursor-pointer ${cls}`} disabled={pending || !!res}>
-              <span className="w-[26px] h-[26px] rounded-lg bg-soft inline-flex items-center justify-center text-sm">{String.fromCharCode(65 + i)}</span>{o}
+              <span className="w-[26px] h-[26px] rounded-lg bg-soft inline-flex items-center justify-center text-sm">{String.fromCharCode(65 + i)}</span><span><RichText text={o} /></span>
             </button>
           );
         })}
       </div>
       {res?.correct && (
         <div role="status" className="rounded-xl px-4 py-3 bg-brand-soft text-brand-ink text-sm">
-          <strong>Bien vu !</strong> {res.message} <strong>+10 points de progrès.</strong>
+          <strong>Bien vu !</strong> <RichText text={res.message ?? ''} /> <strong>+10 points de progrès.</strong>
           <div className="mt-3"><button className="btn btn-primary" type="button" onClick={() => router.refresh()}>{res.lessonDone ? 'Voir la fiche mémo' : 'Page suivante ›'}</button></div>
         </div>
       )}
       {res && !res.correct && (
         <div role="status" className="rounded-xl px-4 py-3 bg-warm-soft text-warm-dark text-sm">
-          <strong>Presque !</strong> {res.message} Te tromper ici ne compte pas dans ta note : c’est fait pour apprendre.
+          <strong>Presque !</strong> <RichText text={res.message ?? ''} /> Te tromper ici ne compte pas dans ta note : c’est fait pour apprendre.
           <div className="mt-3"><button className="btn" type="button" onClick={retry}>Réessayer avec une autre question</button></div>
         </div>
       )}
