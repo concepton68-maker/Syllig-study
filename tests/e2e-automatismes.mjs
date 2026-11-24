@@ -47,7 +47,16 @@ const mock = http.createServer((req, res) => {
     if (u.pathname.startsWith('/api/paas/v4/') && req.headers.authorization !== 'Bearer cle-glm') return json(401, { error: { message: 'invalid api key' } });
     if (!u.pathname.endsWith('/chat/completions')) return json(404, {});
     const b = JSON.parse(body);
-    if (!b.response_format) return json(200, { choices: [{ message: { content: 'OK' }, finish_reason: 'stop' }] });
+    const glm = u.pathname.startsWith('/api/paas/v4/');
+    // GLM simulé : refuse le mode JSON (la plateforme doit réessayer sans), et « réfléchit » avant d'écrire
+    if (glm && b.response_format) return json(400, { error: { code: '1210', message: 'Invalid parameter: response_format is not supported' } });
+    const sys0 = b.messages[0]?.role === 'system' ? b.messages[0].content : '';
+    if (sys0.startsWith('Réponds par un objet JSON')) return json(200, { choices: [{ message: { content: '{"ok": true, "phrase": "Bonjour, tout fonctionne."}' }, finish_reason: 'stop' }] });
+    if (sys0.startsWith('Réponds uniquement par un objet JSON')) {
+      res.writeHead(200, { 'content-type': 'text/event-stream' });
+      res.write(`data: ${JSON.stringify({ choices: [{ delta: { content: '{"ok": true}' }, finish_reason: 'stop' }] })}\n\ndata: [DONE]\n\n`); return res.end();
+    }
+    if (!b.response_format && !(glm && b.stream)) return json(200, { choices: [{ message: { content: 'OK' }, finish_reason: 'stop' }] });
     const sys = b.messages[0].content, user = b.messages[1].content;
     let out;
     if (sys.includes('relecteur et inspecteur')) {
@@ -70,6 +79,7 @@ const mock = http.createServer((req, res) => {
       // réponse au fil de l'eau (SSE), en morceaux espacés, comme Mistral
       res.writeHead(200, { 'content-type': 'text/event-stream' });
       const parts = text.match(/[\s\S]{1,3000}/g) ?? [];
+      if (glm) res.write(`data: ${JSON.stringify({ choices: [{ index: 0, delta: { reasoning_content: 'Je réfléchis à la structure du cours… '.repeat(50) }, finish_reason: null }] })}\n\n`);
       let i = 0;
       const next = () => {
         if (i < parts.length) { res.write(`data: ${JSON.stringify({ choices: [{ index: 0, delta: { content: parts[i++] }, finish_reason: null }] })}\n\n`); setTimeout(next, 500); }
@@ -245,6 +255,11 @@ ok(s1.custom['x-glm-z-ai']?.base_url === 'http://127.0.0.1:3999/api/paas/v4' && 
   'GLM ajouté : adresse sans « /v1 », modèle indiqué à la main et vérifié par un essai, clé chiffrée');
 ok(s1.tasks.correction.provider === 'mistral', 'un fournisseur ajouté n’est jamais choisi d’office pour des données d’élèves');
 await ad.goto(BASE + '/contenu/ia');
+await ad.locator('form[data-test="x-glm-z-ai"] button:has-text("Tester")').click();
+await ad.locator('form[data-test="x-glm-z-ai"] [role=status]').waitFor({ timeout: 20_000 });
+ok((await ad.locator('form[data-test="x-glm-z-ai"] [role=status]').innerText()).includes('réception au fil de l’eau ✓'),
+  '« Tester » : GLM répond (réponse structurée malgré le refus du mode JSON, réception au fil de l’eau), diagnostic affiché en clair');
+await ad.goto(BASE + '/contenu/ia');
 ok((await ad.locator('section[aria-labelledby="cles"]').innerText()).includes('Chine / Singapour'), '« Mes clés » indique où GLM traite les données');
 ok(await ad.locator('form[data-assign] select[name=task_correction] option[value="x-glm-z-ai"]').isDisabled(), 'règle Europe : GLM verrouillé pour la correction (données d’élèves) sans dérogation');
 ok((await setFunction('x-glm-z-ai', 'cours', 'glm-4.6')).includes('Enregistré'), '« Qui fait quoi » : GLM choisi pour la rédaction des cours');
@@ -256,7 +271,8 @@ await ad.fill('input[type=search]', glmCourse.title.slice(0, 25));
 await ad.locator(`div:has(> span > span:text-is("${glmCourse.title}")) button:has-text("Rédiger avec l’IA")`).click();
 await ad.locator(`div:has(> span > span:text-is("${glmCourse.title}")) >> text=À relire · v1`).waitFor({ timeout: 60_000 });
 const glmCall = calls.cours.at(-1);
-ok(glmCall.path === '/api/paas/v4/chat/completions' && glmCall.model === 'glm-4.6' && glmCall.stream, 'cours rédigé par GLM (adresse et modèle du fournisseur ajouté, réponse au fil de l’eau) et placé en brouillon');
+ok(glmCall.path === '/api/paas/v4/chat/completions' && glmCall.model === 'glm-4.6' && glmCall.stream,
+  'cours rédigé par GLM et placé en brouillon, alors que GLM refuse le mode JSON et réfléchit avant d’écrire');
 
 // React #418 (écart d'hydratation, intermittent, sans effet visible) : avertissement connu, non bloquant ; toute autre erreur bloque.
 const hydr418 = errs.filter(e => /Minified React error #418/.test(e));

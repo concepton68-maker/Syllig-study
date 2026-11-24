@@ -5,7 +5,7 @@ import { aiOverview, TASKS, defaultModel, type Task } from '@/lib/ai';
 import { PageTitle } from '@/components/Shell';
 import { Screen } from '@/components/Layout';
 import { ConfirmButton } from '@/components/ConfirmButton';
-import { KeyForm, TaskForm, RunAutoButton, AssignTable, AddKey } from './Form';
+import { KeyForm, TaskForm, RunAutoButton, AssignTable, AddKey, TestKey } from './Form';
 import { removeKey, retryJobs, deleteJobs } from './actions';
 import { sql } from '@/lib/db';
 import { BulkBar, BulkCheck } from '@/components/Bulk';
@@ -51,12 +51,13 @@ export default async function AiPage() {
               <span className="muted">clé ✓ {p.hint}</span>
               <span className={`pill ${p.eu ? 'bg-brand-soft text-brand-dark' : 'bg-warm-soft text-warm-dark'}`}>{p.eu ? 'Europe' : p.where}</span>
               <span className="muted text-xs">{tasks.filter(t => o.tasks[t.id]?.provider === p.id).map(t => t.label).join(' · ') || 'aucune fonction'}</span>
-              <span className="ml-auto flex gap-2">
+              <span className="ml-auto flex flex-wrap justify-end gap-2">
+                <TestKey provider={p.id} />
                 <form action={removeKey.bind(null, p.id)}><ConfirmButton className="btn btn-danger !min-h-0 !py-1.5" danger confirmLabel="Retirer"
                   message={`Retirer la clé ${p.name} ? Les fonctions qu’il assure n’auront plus d’IA.`}>Retirer</ConfirmButton></form>
               </span>
             </div>
-            <details className="text-sm"><summary className="cursor-pointer muted">Changer la clé</summary><div className="mt-2"><KeyForm p={p} /></div></details>
+            <details className="text-sm"><summary className="cursor-pointer muted">{p.custom ? 'Changer la clé ou l’adresse' : 'Changer la clé'}</summary><div className="mt-2"><KeyForm p={p} /></div></details>
           </div>
         ))}
         <AddKey configured={providers.map(p => p.id)} open={providers.length === 0} />

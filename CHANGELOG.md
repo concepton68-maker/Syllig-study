@@ -361,3 +361,13 @@ Recette complète de l'espace élève (un agent testeur a joué l'élève sur t�
   - Statut : publié, à relire ou sans contenu, puis l'état de l'IA ou le résultat de la relecture.
   - Un seul bouton principal par ligne, les autres actions dans le menu « ⋯ ».
   - « Prioritaire » est discret, dans la ligne de description.
+
+## 0.36 — 24/11/2026
+- Rédaction de cours avec GLM et les autres fournisseurs compatibles OpenAI, plus robuste :
+  - si le fournisseur refuse le « mode JSON » ou une réponse aussi longue, la plateforme réessaie sans, au lieu d'échouer ;
+  - la réflexion des modèles qui « réfléchissent » avant d'écrire (ex. GLM) est prise en compte : « l'IA réfléchit avant d'écrire… » au lieu d'un blocage apparent ;
+  - les erreurs signalées par le fournisseur en cours de route remontent en clair ;
+  - si la réponse ne contient pas de JSON, le message d'échec montre son début.
+- Mes clés :
+  - bouton « Tester » sur chaque clé : temps de réponse, réponse structurée, réception au fil de l'eau, ou l'erreur exacte avec une piste (crédit épuisé, clé « Coding Plan » qui demande une autre adresse, modèle introuvable…) ;
+  - pour un fournisseur ajouté, « Changer la clé ou l'adresse » permet aussi de corriger l'adresse de l'API.

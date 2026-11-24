@@ -115,11 +115,12 @@ export async function runCourseJob(courseId: number, userId: string | null, jobI
   for (let essai = 1; essai <= 2; essai++) {
     let text: string;
     report(`essai ${essai}/2 · l’IA commence à écrire…`);
-    try { text = await askText(cfg, SYSTEM_COURS, prompt, 32000, n => report(`essai ${essai}/2 · environ ${Math.min(99, Math.round(n / 450))} % rédigé`)); }
+    try { text = await askText(cfg, SYSTEM_COURS, prompt, 32000, n => report(`essai ${essai}/2 · environ ${Math.min(99, Math.round(n / 450))} % rédigé`), n => report(`essai ${essai}/2 · l’IA réfléchit avant d’écrire (${Math.round(n / 1000)} k caractères)…`)); }
     catch (e) { await logAiRequest(null, 'cours', cfg, `Cours ${ctx.code} · ${ctx.title}`, (e as Error).message.slice(0, 300)); throw e; }
     await logAiRequest(null, 'cours', cfg, `Cours ${ctx.code} · ${ctx.title} (essai ${essai})`);
     report(`essai ${essai}/2 · vérification par le validateur`);
     const raw = text.slice(text.indexOf('{'), text.lastIndexOf('}') + 1);
+    if (!raw) { lastErrors = [`la réponse ne contient pas de JSON (début : « ${text.trim().slice(0, 160)} »)`]; continue; }
     const r = await importCourse(raw, `Rédigé par l’IA (${cfg.provider} · ${cfg.model})`, who);
     if (r.ok) {
       await sql`update lesson_suggestions set status = 'creee', updated_at = now() where course_id = ${courseId} and status = 'en_redaction'`;

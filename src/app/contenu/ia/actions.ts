@@ -34,10 +34,17 @@ export async function saveKey(_: KeyState, form: FormData): Promise<KeyState> {
   const key = String(form.get('key') ?? '').trim();
   if (!isProvider(provider, s)) return { error: 'Fournisseur inconnu.' };
   if (!key) return { error: 'Collez la clé.' };
-  const info = providerInfo(provider, s);
+  let info = providerInfo(provider, s);
+  const newBase = String(form.get('base_url') ?? '').trim().replace(/\/+$/, '').replace(/\/(chat\/completions|models)$/, '');
+  if (info.custom && newBase && newBase !== info.base) {
+    try { const url = new URL(newBase); if (url.protocol !== 'https:' && !['localhost', '127.0.0.1'].includes(url.hostname)) return { error: 'L’adresse doit commencer par https://.' }; }
+    catch { return { error: 'Adresse de l’API invalide.' }; }
+    info = { ...info, base: newBase };
+  }
   const manual = String(form.get('models') ?? '').split(/[\s,;]+/).map(x => x.trim()).filter(Boolean).slice(0, 10);
   const check = await checkKey(info, key, manual);
   if (!check.ok) return { error: check.error };
+  if (info.custom && info.base !== s.custom[provider]?.base_url) await saveCustomProvider(provider, { ...s.custom[provider], base_url: info.base! }, u.id);
   await saveProviderKey(provider, key, check.models, u.id);
   await assignDefaults(provider, key, check.models, u.id);
   revalidatePath('/contenu', 'layout'); revalidatePath('/parent', 'layout');
@@ -181,4 +188,36 @@ export async function saveAssignments(_: TaskState, form: FormData): Promise<Tas
   await saveTaskSettings({ tasks }, u.id);
   revalidatePath('/contenu', 'layout'); revalidatePath('/parent', 'layout');
   return { ok: 'Enregistré.', notes, tasks };
+}
+
+// « Tester » une clé : petite demande réelle (réponse structurée, puis réception au fil de l'eau), avec un diagnostic en clair
+export async function testProvider(_: KeyState, form: FormData): Promise<KeyState> {
+  await requireUser('admin');
+  const s = await loadAiSettings();
+  const p = String(form.get('provider') ?? '');
+  if (!isProvider(p, s) || !s.providers[p]) return { error: 'Fournisseur inconnu.' };
+  const info = providerInfo(p, s);
+  const key = await storedKey(p);
+  if (!key) return { error: 'La clé enregistrée ne peut plus être lue : changez-la.' };
+  const used = (Object.keys(TASKS) as Task[]).map(t => s.tasks[t]).find(c => c?.provider === p)?.model;
+  const model = used ?? defaultModel(info, s.providers[p]!.models, 'cours') ?? s.providers[p]!.models[0]?.id;
+  if (!model) return { error: 'Aucun modèle connu pour ce fournisseur.' };
+  const { askJson, askText, oaBase } = await import('@/lib/ai');
+  const { z } = await import('zod/v4');
+  const cfg = { provider: p, model, key, kind: info.kind, base: oaBase(info), eu: info.eu, name: info.name };
+  const hint = (msg: string) =>
+    /balance|余额|insufficient|1113|quota|credit/i.test(msg) ? ' — Piste : crédit épuisé, ou clé d’un abonnement « Coding Plan » qui demande une autre adresse d’API (pour GLM : https://api.z.ai/api/coding/paas/v4), à corriger dans « Changer la clé ».'
+    : /401|403|invalid.*key|unauthori/i.test(msg) ? ' — Piste : clé invalide ou désactivée chez le fournisseur.'
+    : /404|not found|model/i.test(msg) ? ' — Piste : nom du modèle ou adresse d’API incorrects.' : '';
+  const t0 = Date.now();
+  try {
+    const r = await askJson(cfg, z.object({ ok: z.boolean(), phrase: z.string() }), 'Réponds par un objet JSON.', 'Renvoie {"ok": true, "phrase": "<une phrase courte en français>"}.', 'low');
+    const t1 = Date.now();
+    const streamed = await askText(cfg, 'Réponds uniquement par un objet JSON.', 'Renvoie {"ok": true}.', 200);
+    const t2 = Date.now();
+    return { ok: `${info.name} · ${model} : répond en ${((t1 - t0) / 1000).toFixed(1)} s (réponse structurée ✓ « ${r.phrase.slice(0, 60)} »), réception au fil de l’eau ✓ en ${((t2 - t1) / 1000).toFixed(1)} s.` };
+  } catch (e) {
+    const msg = (e as Error).message ?? 'erreur';
+    return { error: `${info.name} · ${model} : ${msg.slice(0, 220)}${hint(msg)}` };
+  }
 }

@@ -1,11 +1,11 @@
 'use client';
 import { startTransition, useActionState, useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { saveKey, saveTasks, runAutoNow, saveSlot, saveAssignments, type KeyState, type TaskState } from './actions';
+import { saveKey, saveTasks, runAutoNow, saveSlot, saveAssignments, testProvider, type KeyState, type TaskState } from './actions';
 import { PRESETS } from '@/lib/ai-presets';
 
 type Model = { id: string; label: string };
-type ProviderView = { id: string; custom?: boolean; name: string; eu: boolean; where: string; help: string; placeholder: string; hint?: string; models: Model[] };
+type ProviderView = { id: string; custom?: boolean; base?: string; name: string; eu: boolean; where: string; help: string; placeholder: string; hint?: string; models: Model[] };
 
 // Page prête (code chargé) : avant, un clic enverrait le formulaire par le navigateur, clé comprise dans l'adresse.
 function useReady() { const [r, setR] = useState(false); useEffect(() => setR(true), []); return r; }
@@ -22,6 +22,10 @@ export function KeyForm({ p }: { p: ProviderView }) {
       <label className="flex flex-col gap-1.5 text-sm font-semibold">Nouvelle clé {p.name}
         <input className="field font-mono" name="key" type="password" autoComplete="off" placeholder={p.hint ? 'Clé enregistrée' : p.placeholder} required />
       </label>
+      {p.custom && (
+        <label className="flex flex-col gap-1.5 text-sm font-semibold">Adresse de l’API
+          <input className="field font-mono" name="base_url" defaultValue={p.base ?? ''} autoComplete="off" /></label>
+      )}
       {p.custom && (
         <label className="flex flex-col gap-1.5 text-sm font-semibold">Modèles à ajouter à la main <span className="muted font-normal">(facultatif, si le fournisseur ne publie pas sa liste ; séparés par des virgules)</span>
           <input className="field font-mono" name="models" autoComplete="off" placeholder="ex. glm-4.6" />
@@ -219,6 +223,20 @@ export function AddKey({ configured, open }: { configured: string[]; open: boole
         </details>
       )}
       {state?.error && <p role="alert" className="m-0 rounded-xl bg-warm-soft text-warm-dark px-4 py-2.5 text-sm">{state.error}</p>}
+    </form>
+  );
+}
+
+// « Tester » : diagnostic d'une clé enregistrée (temps de réponse, réponse structurée, réception au fil de l'eau, erreur et piste)
+export function TestKey({ provider }: { provider: string }) {
+  const [state, action, pending] = useActionState<KeyState, FormData>(testProvider, undefined);
+  const ready = useReady();
+  return (
+    <form method="post" onSubmit={send(action)} className="contents" data-test={provider}>
+      <input type="hidden" name="provider" value={provider} />
+      <button className="btn btn-sm" type="submit" disabled={pending || !ready}>{pending ? 'Test…' : 'Tester'}</button>
+      {state?.ok && <span role="status" className="basis-full text-xs text-brand-dark font-semibold">✓ {state.ok}</span>}
+      {state?.error && <span role="alert" className="basis-full text-xs text-warm-dark font-semibold">✗ {state.error}</span>}
     </form>
   );
 }
