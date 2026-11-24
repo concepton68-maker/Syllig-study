@@ -762,7 +762,9 @@
           "have seen",
           "'ve seen",
           "’ve seen",
-          "ve seen"
+          "ve seen",
+          "I have seen",
+          "I've seen"
         ],
         "solution": "have seen (ou 've seen) : I → have ; see est irrégulier (see → saw → seen)."
       },
@@ -781,7 +783,9 @@
           "has broken",
           "'s broken",
           "’s broken",
-          "s broken"
+          "s broken",
+          "My brother has broken",
+          "My brother's broken"
         ],
         "solution": "has broken (ou 's broken) : my brother = he → has ; break → broke → broken."
       },
@@ -834,7 +838,9 @@
           "hasn't finished",
           "hasn’t finished",
           "hasnt finished",
-          "has not finished"
+          "has not finished",
+          "Tom hasn't finished",
+          "Tom has not finished"
         ],
         "solution": "hasn't finished (has not finished) : Tom = he → has ; not se place après has ; finish est régulier."
       },
@@ -891,7 +897,9 @@
           "How long has she lived in Dublin?",
           "How long has she lived in Dublin",
           "How long has she been living in Dublin?",
-          "How long has she been living in Dublin"
+          "How long has she been living in Dublin",
+          "How long has she lived in Dublin for?",
+          "How long has she been in Dublin?"
         ],
         "solution": "How long has she lived in Dublin? — How long + has + sujet + participe passé."
       },
@@ -962,7 +970,9 @@
                   "have lost",
                   "'ve lost",
                   "’ve lost",
-                  "ve lost"
+                  "ve lost",
+                  "I have lost",
+                  "I've lost"
                 ],
                 "solution": "have lost (ou 've lost) : I → have ; lose → lost → lost.",
                 "rubric": "1 point pour « have lost » ou « 've lost »."
@@ -981,7 +991,9 @@
                   "has visited",
                   "'s visited",
                   "’s visited",
-                  "s visited"
+                  "s visited",
+                  "Sarah has visited",
+                  "Sarah's visited"
                 ],
                 "solution": "has visited (ou 's visited) : Sarah = she → has ; visit est régulier.",
                 "rubric": "1 point pour « has visited » ou « 's visited »."
@@ -1001,7 +1013,9 @@
                   "haven't eaten",
                   "haven’t eaten",
                   "havent eaten",
-                  "have not eaten"
+                  "have not eaten",
+                  "We haven't eaten",
+                  "We have not eaten"
                 ],
                 "solution": "haven't eaten (have not eaten) : we → have ; eat → ate → eaten.",
                 "rubric": "1 point pour « haven't eaten » ou « have not eaten »."
@@ -1021,7 +1035,8 @@
                   "have bought",
                   "'ve bought",
                   "’ve bought",
-                  "ve bought"
+                  "ve bought",
+                  "My parents have bought"
                 ],
                 "solution": "have bought (ou 've bought) : my parents = they → have ; buy → bought → bought.",
                 "rubric": "1 point pour « have bought » ou « 've bought »."
@@ -1164,7 +1179,11 @@
                   "How long has Lena been living in Berlin?",
                   "How long has Lena been living in Berlin",
                   "How long has she been living in Berlin?",
-                  "How long has she been living in Berlin"
+                  "How long has she been living in Berlin",
+                  "How long has Lena lived in Berlin for?",
+                  "How long has she lived in Berlin for?",
+                  "How long has Lena been in Berlin?",
+                  "How long has she been in Berlin?"
                 ],
                 "solution": "How long has Lena lived in Berlin? — How long + has + sujet + participe passé.",
                 "rubric": "2 points pour la question correcte. 1 point si How long et has sont présents mais avec une erreur sur le verbe (« How long has Lena live… ») ou l'ordre des mots. 0 si le temps est faux (« How long does Lena live… »)."
@@ -1230,7 +1249,9 @@
                   "have broken",
                   "'ve broken",
                   "’ve broken",
-                  "ve broken"
+                  "ve broken",
+                  "I have broken",
+                  "I've broken"
                 ],
                 "solution": "have broken (ou 've broken) : I → have ; break → broke → broken.",
                 "rubric": "1 point pour « have broken » ou « 've broken »."
@@ -1250,7 +1271,9 @@
                   "has met",
                   "'s met",
                   "’s met",
-                  "s met"
+                  "s met",
+                  "Max has met",
+                  "Max's met"
                 ],
                 "solution": "has met (ou 's met) : Max = he → has ; meet → met → met.",
                 "rubric": "1 point pour « has met » ou « 's met »."
@@ -1269,7 +1292,9 @@
                   "hasn't called",
                   "hasn’t called",
                   "hasnt called",
-                  "has not called"
+                  "has not called",
+                  "She hasn't called",
+                  "She has not called"
                 ],
                 "solution": "hasn't called (has not called) : she → has ; call est régulier.",
                 "rubric": "1 point pour « hasn't called » ou « has not called »."
@@ -1289,7 +1314,9 @@
                   "have written",
                   "'ve written",
                   "’ve written",
-                  "ve written"
+                  "ve written",
+                  "We have written",
+                  "We've written"
                 ],
                 "solution": "have written (ou 've written) : we → have ; write → wrote → written.",
                 "rubric": "1 point pour « have written » ou « 've written »."
@@ -1432,7 +1459,10 @@
                   "How long has Tom been playing the piano?",
                   "How long has Tom been playing the piano",
                   "How long has he been playing the piano?",
-                  "How long has he been playing the piano"
+                  "How long has he been playing the piano",
+                  "How long has Tom played the piano for?",
+                  "How long has he played the piano for?",
+                  "How long has Tom played piano?"
                 ],
                 "solution": "How long has Tom played the piano? — How long + has + sujet + participe passé.",
                 "rubric": "2 points pour la question correcte. 1 point si How long et has sont présents mais avec une erreur sur le verbe (« How long has Tom play… ») ou l'ordre des mots. 0 si le temps est faux (« How long does Tom play… »)."
@@ -1469,7 +1499,7 @@
                 ],
                 "cognitive": "rediger",
                 "prompt": "Write a short blog post (60 to 80 words): « My hobby and me ». Use the present perfect at least five times (including two irregular verbs), with since or for, already or just, and yet. Add one sentence in the prétérit with a date (yesterday, last…, … ago).",
-                "solution": "Example: I love swimming! I have swum in a club since I was nine, so I have practised for five years now. I have already won two medals and I have just met a new coach. She has taught me a new technique, but I haven't mastered it yet. I have never swum in the sea in winter… maybe one day! Last Saturday, I took part in a big competition in Rennes. Have you ever tried swimming?",
+                "solution": "Example: I love swimming! I have been in a swimming club since I was nine, so I have practised this sport for five years now. I have already won two medals and I have just met a new coach. She has taught me a new technique, but I haven't mastered it yet. I have never swum in the sea in winter… maybe one day! Last Saturday, I took part in a big competition in Rennes. Have you ever tried swimming?",
                 "rubric": "2 pts : au moins cinq present perfect corrects et bien employés (bilan, expérience, situation qui dure), dont au moins deux verbes irréguliers. 1,5 pt : since ou for, already ou just, et yet correctement employés et placés. 1 pt : une phrase au prétérit avec une date, sans present perfect avec un repère passé. 1,5 pt : texte cohérent, longueur respectée (60 à 80 mots), vocabulaire varié."
               }
             ]

@@ -166,3 +166,15 @@ Première version numérotée (déjà en ligne avant numérotation : socle, gén
 - Journal d'activité du parent : filtres (évaluations, leçons et exercices, actions du parent) et navigation vers les événements plus anciens.
 - Exercices : les onglets indiquent les réponses rédigées qui restent à vérifier, et « Pas encore » a un style bien distinct.
 - Niveaux : la 3e générale est bien rangée au collège, avant la Seconde.
+
+## 0.15 — 24/11/2026
+- Relecture « professeur » des 8 cours de la troisième vague :
+  - Français : les réponses où seul l'accent fait la différence passent en QCM.
+  - Histoire : une erreur corrigée sur le IIIe Reich, le texte des accords de Matignon précisé.
+  - EMC : le Concordat de 1801 est mieux expliqué.
+  - Mathématiques : ce qui dépasse le programme de 3e (produit et quotient de racines) passe en « Pour aller plus loin ».
+  - Physique-Chimie : consignes de sécurité sur le chlorure de baryum.
+  - Anglais : plus de formulations acceptées.
+  - Ordre croissant rétabli dans les QCM numériques.
+- Correction automatique : comparaison des décimaux fiabilisée (7,07 et 7,071 sont bien distingués).
+- Les **30 cours de 3e** passent tous le test de bout en bout (20/20 avec le corrigé).

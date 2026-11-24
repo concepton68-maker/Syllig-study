@@ -724,7 +724,7 @@
         "cognitive": "rediger",
         "prompt": "Réécris ce passage au passé, en employant le passé simple ou l'imparfait selon le cas :\n« Il est minuit. La maison dort. Théo se lève sans bruit, prend sa lampe et descend l'escalier. Une marche craque sous son pied. »",
         "solution": "« Il **était** minuit. La maison **dormait**. Théo **se leva** sans bruit, **prit** sa lampe et **descendit** l'escalier. Une marche **craqua** sous son pied. »\nImparfait pour le décor (était, dormait) ; passé simple pour les actions successives et ponctuelles qui font avancer l'histoire (se leva, prit, descendit, craqua).",
-        "rubric": "0,5 par verbe correct (7 verbes) : bon temps ET bonne orthographe. Imparfait attendu pour « était » et « dormait » ; passé simple pour « se leva », « prit », « descendit », « craqua ». 0,5 pour une copie sans autre modification ni faute."
+        "rubric": "0,5 par verbe correct (6 verbes) : bon temps ET bonne orthographe. Imparfait attendu pour « était » et « dormait » ; passé simple pour « se leva », « prit », « descendit », « craqua ». 0,5 pour une copie sans autre modification ni faute."
       }
     ]
   },
@@ -858,21 +858,23 @@
             "questions": [
               {
                 "id": "q6",
-                "type": "short",
+                "type": "qcm",
                 "points": 1,
                 "lesson_part": 3,
                 "skills": [
                   "fr-ind-conjuguer"
                 ],
                 "cognitive": "appliquer",
-                "prompt": "Conjugue le verbe au passé simple (écris seulement le verbe) : « Les randonneurs (arriver) au sommet vers midi. »",
-                "answer": [
+                "prompt": "Choisis la forme correcte du verbe « arriver » au passé simple : « Les randonneurs (arriver) au sommet vers midi. »",
+                "options": [
+                  "arrivaient",
                   "arrivèrent",
-                  "ils arrivèrent",
-                  "les randonneurs arrivèrent"
+                  "arrivérent",
+                  "arrivirent"
                 ],
-                "solution": "**arrivèrent** : passé simple d'un verbe en -er, 3e personne du pluriel (terminaison -èrent).",
-                "rubric": "1 point pour « arrivèrent » (accent grave attendu en correction manuelle)."
+                "answer": 1,
+                "solution": "**arrivèrent** : passé simple d'un verbe en -er, 3e personne du pluriel (terminaison -èrent, avec un accent grave). « arrivaient » est à l'imparfait ; les autres formes n'existent pas.",
+                "rubric": "1 point pour la bonne réponse, 0 sinon."
               },
               {
                 "id": "q7",
@@ -1149,21 +1151,23 @@
             "questions": [
               {
                 "id": "q6",
-                "type": "short",
+                "type": "qcm",
                 "points": 1,
                 "lesson_part": 3,
                 "skills": [
                   "fr-ind-conjuguer"
                 ],
                 "cognitive": "appliquer",
-                "prompt": "Conjugue le verbe au passé simple (écris seulement le verbe) : « Les élèves (marcher) jusqu'au musée. »",
-                "answer": [
-                  "marchèrent",
-                  "ils marchèrent",
-                  "les élèves marchèrent"
+                "prompt": "Choisis la forme correcte du verbe « marcher » au passé simple : « Les élèves (marcher) jusqu'au musée. »",
+                "options": [
+                  "marchérent",
+                  "marchaient",
+                  "marchirent",
+                  "marchèrent"
                 ],
-                "solution": "**marchèrent** : passé simple d'un verbe en -er, 3e personne du pluriel (terminaison -èrent).",
-                "rubric": "1 point pour « marchèrent » (accent grave attendu en correction manuelle)."
+                "answer": 3,
+                "solution": "**marchèrent** : passé simple d'un verbe en -er, 3e personne du pluriel (terminaison -èrent, avec un accent grave). « marchaient » est à l'imparfait ; les autres formes n'existent pas.",
+                "rubric": "1 point pour la bonne réponse, 0 sinon."
               },
               {
                 "id": "q7",
@@ -1200,7 +1204,7 @@
                   "Vérité générale"
                 ],
                 "answer": 1,
-                "solution": "« Autrefois » et le sens (tous les jours) montrent une action répétée : imparfait d'habitude.",
+                "solution": "« Autrefois » et le sens (un trajet refait chaque jour de travail) montrent une action répétée : imparfait d'habitude.",
                 "rubric": "1 point pour la bonne réponse, 0 sinon."
               },
               {

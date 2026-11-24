@@ -28,7 +28,7 @@
     },
     {
       "id": "m3-rac-calcul",
-      "label": "Calculer avec des racines carrées (produit, quotient) et éviter les pièges"
+      "label": "Calculer une expression contenant une racine carrée (d'abord sous la racine) et éviter les pièges"
     },
     {
       "id": "m3-rediger",
@@ -42,9 +42,9 @@
       "reconnaître les carrés parfaits et calculer une racine carrée exacte ;",
       "encadrer une racine carrée entre deux entiers et en donner une valeur approchée ;",
       "résoudre une équation du type x² = a ;",
-      "calculer une longueur avec le théorème de Pythagore et utiliser les règles de calcul sur les racines carrées."
+      "calculer une longueur avec le théorème de Pythagore et calculer une expression contenant une racine carrée sans tomber dans les pièges."
     ],
-    "essential": "La **racine carrée** d'un nombre positif a, notée √a, est le nombre **positif** dont le carré vaut a : √49 = 7 car 7² = 49 et 7 est positif. Un nombre négatif n'a pas de racine carrée, car un carré n'est jamais négatif. Quand a n'est pas un carré parfait, √a est une **valeur exacte** que l'on peut encadrer ou arrondir (√40 ≈ 6,32). La racine carrée sert à résoudre x² = a et à calculer une longueur avec le théorème de Pythagore. Attention : on peut découper la racine d'un **produit**, jamais celle d'une **somme**.",
+    "essential": "La **racine carrée** d'un nombre positif a, notée √a, est le nombre **positif** dont le carré vaut a : √49 = 7 car 7² = 49 et 7 est positif. Un nombre négatif n'a pas de racine carrée, car un carré n'est jamais négatif. Quand a n'est pas un carré parfait, √a est une **valeur exacte** que l'on peut encadrer ou arrondir (√40 ≈ 6,32). La racine carrée sert à résoudre x² = a et à calculer une longueur avec le théorème de Pythagore. Attention : la racine d'une **somme** n'est pas la somme des racines : on calcule d'abord sous la racine.",
     "parts": [
       {
         "title": "Définition et carrés parfaits",
@@ -122,9 +122,9 @@
             {
               "prompt": "Combien vaut √36 ?",
               "options": [
-                "18",
-                "6",
                 "−6",
+                "6",
+                "18",
                 "1 296"
               ],
               "answer": 1,
@@ -146,12 +146,12 @@
             {
               "prompt": "Combien vaut (√5)² ?",
               "options": [
-                "25",
                 "2,5",
                 "5",
-                "10"
+                "10",
+                "25"
               ],
-              "answer": 2,
+              "answer": 1,
               "hint": "Relis la définition : quel est le carré de √a ?",
               "explanation": "Par définition, le carré de √5 est 5 : (√5)² = 5."
             }
@@ -197,24 +197,24 @@
             {
               "prompt": "Entre quels entiers consécutifs se trouve √20 ?",
               "options": [
+                "2 et 3",
                 "4 et 5",
                 "10 et 11",
-                "19 et 21",
-                "2 et 3"
+                "19 et 21"
               ],
-              "answer": 0,
+              "answer": 1,
               "hint": "Quels carrés parfaits entourent 20 ?",
               "explanation": "16 < 20 < 25, donc √16 < √20 < √25, c'est-à-dire 4 < √20 < 5."
             },
             {
               "prompt": "√8 ≈ 2,828 4… Quel est son arrondi au dixième ?",
               "options": [
-                "2,9",
-                "4",
                 "2,8",
-                "2,82"
+                "2,82",
+                "2,9",
+                "4"
               ],
-              "answer": 2,
+              "answer": 0,
               "hint": "Regarde le chiffre des centièmes pour arrondir au dixième.",
               "explanation": "Le chiffre des centièmes est 2 (moins de 5) : on garde 2,8. « 4 » est le piège « diviser par 2 » ; 2,82 est une troncature au centième."
             },
@@ -222,11 +222,11 @@
               "prompt": "Laquelle de ces écritures est une valeur exacte ?",
               "options": [
                 "1,41",
-                "√2",
                 "1,414",
-                "1,414 2"
+                "1,414 2",
+                "√2"
               ],
-              "answer": 1,
+              "answer": 3,
               "hint": "Les décimaux proposés vérifient-ils exactement x² = 2 ?",
               "explanation": "1,41² = 1,988 1 ; 1,414² = 1,999 396 ; aucun décimal n'a pour carré exactement 2. Seule l'écriture √2 est exacte."
             }
@@ -362,10 +362,10 @@
             {
               "prompt": "ABC est rectangle en A, avec AB = 5 cm et AC = 12 cm. Combien mesure BC ?",
               "options": [
-                "17 cm",
+                "√17 cm",
                 "13 cm",
-                "169 cm",
-                "√17 cm"
+                "17 cm",
+                "169 cm"
               ],
               "answer": 1,
               "hint": "Calcule d'abord BC² = AB² + AC², puis prends la racine.",
@@ -375,23 +375,23 @@
               "prompt": "Un triangle est rectangle ; son hypoténuse mesure 10 cm et un autre côté 6 cm. Combien mesure le troisième côté ?",
               "options": [
                 "4 cm",
-                "√136 cm",
                 "8 cm",
+                "√136 cm",
                 "16 cm"
               ],
-              "answer": 2,
+              "answer": 1,
               "hint": "Pour un petit côté, on soustrait les carrés.",
               "explanation": "Troisième côté² = 10² − 6² = 100 − 36 = 64, donc il mesure √64 = 8 cm. √136 vient d'une addition à la place de la soustraction."
             },
             {
               "prompt": "Après calcul, on trouve BC² = 18. Que vaut BC ?",
               "options": [
-                "9",
-                "324",
                 "√18 ≈ 4,24",
-                "18"
+                "9",
+                "18",
+                "324"
               ],
-              "answer": 2,
+              "answer": 0,
               "hint": "BC est le nombre positif dont le carré vaut 18.",
               "explanation": "BC = √18 (valeur exacte) ≈ 4,24. 9 est le piège « diviser par 2 », 324 est 18²."
             }
@@ -403,13 +403,13 @@
         "blocks": [
           {
             "type": "callout",
-            "kind": "retiens",
-            "title": "Produit et quotient",
-            "text": "Pour a et b positifs :\n**√(a × b) = √a × √b**\n**√(a / b) = √a / √b** (avec b non nul)"
+            "kind": "plus",
+            "title": "Pour aller plus loin : produit et quotient",
+            "text": "Ces règles ne sont pas exigées en 3e, mais elles peuvent t'aider. Pour a et b positifs :\n**√(a × b) = √a × √b**\n**√(a / b) = √a / √b** (avec b non nul)"
           },
           {
             "type": "formula",
-            "latex": "√(4 × 9) = √4 × √9 = 2 × 3 = 6   (vérification : √36 = 6)\n√2 × √18 = √(2 × 18) = √36 = 6\n√(25/4) = √25 / √4 = 5/2 = 2,5"
+            "latex": "Pour aller plus loin :\n√(4 × 9) = √4 × √9 = 2 × 3 = 6   (vérification : √36 = 6)\n√2 × √18 = √(2 × 18) = √36 = 6\n√(25/4) = √25 / √4 = 5/2 = 2,5"
           },
           {
             "type": "callout",
@@ -435,14 +435,14 @@
             {
               "prompt": "Combien vaut √(4 × 49) ?",
               "options": [
-                "98",
+                "√53",
                 "14",
                 "53",
-                "√53"
+                "98"
               ],
               "answer": 1,
-              "hint": "Utilise √(a × b) = √a × √b.",
-              "explanation": "√(4 × 49) = √4 × √49 = 2 × 7 = 14 (et en effet 14² = 196 = 4 × 49)."
+              "hint": "Calcule d'abord le produit sous la racine.",
+              "explanation": "4 × 49 = 196, donc √(4 × 49) = √196 = 14 (car 14² = 196). 98 est la moitié de 196 (piège), 53 vient de 4 + 49."
             },
             {
               "prompt": "Quelle égalité est vraie ?",
@@ -457,16 +457,16 @@
               "explanation": "√(16 + 9) = √25 = 5. En revanche √16 + √9 = 4 + 3 = 7, et √(16 × 9) = 4 × 3 = 12."
             },
             {
-              "prompt": "Combien vaut √5 × √20 ?",
+              "prompt": "Combien vaut √(36 + 64) ?",
               "options": [
-                "5",
                 "10",
-                "25",
+                "14",
+                "50",
                 "100"
               ],
-              "answer": 1,
-              "hint": "Regroupe sous une seule racine : √a × √b = √(a × b).",
-              "explanation": "√5 × √20 = √(5 × 20) = √100 = 10."
+              "answer": 0,
+              "hint": "Calcule d'abord ce qu'il y a sous la racine.",
+              "explanation": "36 + 64 = 100, donc √(36 + 64) = √100 = 10. 14 vient de l'erreur √36 + √64 = 6 + 8 ; 50 est la moitié de 100 (piège « diviser par 2 ») ; 100 est le nombre sous la racine, pas sa racine."
             }
           ]
         }
@@ -495,7 +495,7 @@
       },
       {
         "label": "Calculs",
-        "text": "√(a × b) = √a × √b et √(a / b) = √a / √b. Mais √(a + b) ≠ √a + √b : on calcule d'abord sous la racine."
+        "text": "On calcule d'abord sous la racine : √(36 + 64) = √100 = 10. √(a + b) ≠ √a + √b. (Pour aller plus loin : √(a × b) = √a × √b et √(a / b) = √a / √b.)"
       },
       {
         "label": "Pièges",
@@ -520,12 +520,12 @@
         "cognitive": "connaitre",
         "prompt": "Combien vaut √81 ?",
         "options": [
-          "40,5",
           "−9",
           "9",
+          "40,5",
           "6 561"
         ],
-        "answer": 2,
+        "answer": 1,
         "solution": "9² = 81 et 9 est positif, donc √81 = **9**. 40,5 est la moitié de 81 (piège), −9 est négatif, 6 561 = 81²."
       },
       {
@@ -553,11 +553,11 @@
         "prompt": "Entre quels entiers consécutifs se trouve √55 ?",
         "options": [
           "5 et 6",
+          "6 et 7",
           "7 et 8",
-          "27 et 28",
-          "6 et 7"
+          "27 et 28"
         ],
-        "answer": 1,
+        "answer": 2,
         "solution": "49 < 55 < 64, donc √49 < √55 < √64, c'est-à-dire **7 < √55 < 8**."
       },
       {
@@ -584,7 +584,7 @@
         "cognitive": "appliquer",
         "prompt": "Donne l'arrondi au centième de √50.",
         "answer": 7.07,
-        "tolerance": 0.001,
+        "tolerance": 0.0001,
         "solution": "À la calculatrice, √50 ≈ 7,071 06… Le chiffre des millièmes est 1 (moins de 5), donc √50 ≈ **7,07**."
       },
       {
@@ -607,7 +607,11 @@
           "x = 8 et x = -8",
           "x = -8 et x = 8",
           "8 ; -8",
-          "-8 ; 8"
+          "-8 ; 8",
+          "S = {-8 ; 8}",
+          "S = {8 ; -8}",
+          "x = -8 et 8",
+          "x = 8 et -8"
         ],
         "solution": "8² = 64 et (−8)² = 64, donc les solutions sont **8 et −8**."
       },
@@ -636,7 +640,7 @@
         "cognitive": "appliquer",
         "prompt": "Le triangle KLM est rectangle en K, avec KL = 4 cm et KM = 7 cm. Calcule LM, arrondi au dixième de cm.",
         "answer": 8.1,
-        "tolerance": 0.001,
+        "tolerance": 0.0001,
         "solution": "LM² = KL² + KM² = 4² + 7² = 16 + 49 = 65, donc LM = √65 cm (valeur exacte). √65 ≈ 8,062, donc LM ≈ **8,1 cm** au dixième."
       },
       {
@@ -696,12 +700,12 @@
                 "cognitive": "connaitre",
                 "prompt": "Combien vaut √49 ?",
                 "options": [
+                  "−7",
                   "7",
                   "24,5",
-                  "−7",
                   "2 401"
                 ],
-                "answer": 0,
+                "answer": 1,
                 "solution": "7² = 49 et 7 est positif, donc √49 = 7. Une racine carrée n'est jamais négative, et ce n'est pas une moitié.",
                 "rubric": "1 point pour la bonne réponse, 0 sinon."
               },
@@ -810,7 +814,7 @@
                 "cognitive": "appliquer",
                 "prompt": "Donne l'arrondi au centième de √20.",
                 "answer": 4.47,
-                "tolerance": 0.001,
+                "tolerance": 0.0001,
                 "solution": "√20 ≈ 4,472 1… Le chiffre des millièmes est 2 (moins de 5), donc √20 ≈ 4,47.",
                 "rubric": "1 point pour la bonne réponse, 0 sinon."
               },
@@ -834,7 +838,11 @@
                   "x = 9 et x = -9",
                   "x = -9 et x = 9",
                   "9 ; -9",
-                  "-9 ; 9"
+                  "-9 ; 9",
+                  "S = {-9 ; 9}",
+                  "S = {9 ; -9}",
+                  "x = -9 et 9",
+                  "x = 9 et -9"
                 ],
                 "solution": "9² = 81 et (−9)² = 81, donc l'équation a deux solutions : 9 et −9.",
                 "rubric": "2 points pour les deux solutions 9 et −9 ; 1 point en correction manuelle si seule la solution 9 est donnée."
@@ -848,9 +856,9 @@
                   "m3-rac-calcul"
                 ],
                 "cognitive": "appliquer",
-                "prompt": "Calcule √2 × √18.",
-                "answer": 6,
-                "solution": "√2 × √18 = √(2 × 18) = √36 = 6.",
+                "prompt": "Calcule √(9 × 16).",
+                "answer": 12,
+                "solution": "On calcule d'abord sous la racine : 9 × 16 = 144, donc √(9 × 16) = √144 = 12 (car 12² = 144).",
                 "rubric": "1 point pour la bonne réponse, 0 sinon."
               },
               {
@@ -911,12 +919,12 @@
                 "cognitive": "connaitre",
                 "prompt": "Le propriétaire veut aussi aménager un potager carré d'aire 45 m². Quelle est la valeur exacte de la longueur de son côté ?",
                 "options": [
+                  "6,7 m",
                   "√45 m",
                   "22,5 m",
-                  "45² m",
-                  "6,7 m"
+                  "45² m"
                 ],
-                "answer": 0,
+                "answer": 1,
                 "solution": "Le côté c vérifie c² = 45 et c est positif, donc c = √45 m (valeur exacte). 6,7 m n'est qu'une valeur approchée.",
                 "rubric": "1 point pour la bonne réponse, 0 sinon."
               },
@@ -931,7 +939,7 @@
                 "cognitive": "appliquer",
                 "prompt": "Donne la longueur du côté du potager arrondie au centimètre (c'est-à-dire au centième de mètre), en m.",
                 "answer": 6.71,
-                "tolerance": 0.001,
+                "tolerance": 0.0001,
                 "solution": "Côté = √45 ≈ 6,708 2… m. Le chiffre des millièmes est 8 (5 ou plus), donc on arrondit à 6,71 m.",
                 "rubric": "2 points pour la bonne réponse, 0 sinon."
               },
@@ -947,7 +955,7 @@
                 "cognitive": "appliquer",
                 "prompt": "Pour clôturer le potager, il faut un grillage sur les quatre côtés. Quelle longueur de grillage faut-il, arrondie au dixième de mètre ? (Calcule avec la valeur exacte du côté, puis arrondis.)",
                 "answer": 26.8,
-                "tolerance": 0.001,
+                "tolerance": 0.0001,
                 "solution": "Périmètre = 4 × √45 ≈ 4 × 6,708 2… ≈ 26,832… m. Arrondi au dixième : 26,8 m. (Attention : en partant de l'arrondi 6,71, on obtiendrait 26,84 → 26,8 aussi, mais on doit calculer avec la valeur exacte.)",
                 "rubric": "2 points pour la bonne réponse, 0 sinon."
               }
@@ -972,9 +980,9 @@
                 "cognitive": "connaitre",
                 "prompt": "Combien vaut √64 ?",
                 "options": [
-                  "32",
-                  "8",
                   "−8",
+                  "8",
+                  "32",
                   "4 096"
                 ],
                 "answer": 1,
@@ -1027,11 +1035,11 @@
                 "prompt": "Entre quels entiers consécutifs se trouve √70 ?",
                 "options": [
                   "7 et 8",
-                  "35 et 36",
                   "8 et 9",
+                  "35 et 36",
                   "69 et 71"
                 ],
-                "answer": 2,
+                "answer": 1,
                 "solution": "64 < 70 < 81, donc √64 < √70 < √81, c'est-à-dire 8 < √70 < 9.",
                 "rubric": "1 point pour la bonne réponse, 0 sinon."
               },
@@ -1086,7 +1094,7 @@
                 "cognitive": "appliquer",
                 "prompt": "Donne l'arrondi au centième de √30.",
                 "answer": 5.48,
-                "tolerance": 0.001,
+                "tolerance": 0.0001,
                 "solution": "√30 ≈ 5,477 2… Le chiffre des millièmes est 7 (5 ou plus), donc √30 ≈ 5,48.",
                 "rubric": "1 point pour la bonne réponse, 0 sinon."
               },
@@ -1110,7 +1118,11 @@
                   "x = 11 et x = -11",
                   "x = -11 et x = 11",
                   "11 ; -11",
-                  "-11 ; 11"
+                  "-11 ; 11",
+                  "S = {-11 ; 11}",
+                  "S = {11 ; -11}",
+                  "x = -11 et 11",
+                  "x = 11 et -11"
                 ],
                 "solution": "11² = 121 et (−11)² = 121, donc l'équation a deux solutions : 11 et −11.",
                 "rubric": "2 points pour les deux solutions 11 et −11 ; 1 point en correction manuelle si seule la solution 11 est donnée."
@@ -1124,9 +1136,9 @@
                   "m3-rac-calcul"
                 ],
                 "cognitive": "appliquer",
-                "prompt": "Calcule √3 × √27.",
-                "answer": 9,
-                "solution": "√3 × √27 = √(3 × 27) = √81 = 9.",
+                "prompt": "Calcule √(2 × 50).",
+                "answer": 10,
+                "solution": "On calcule d'abord sous la racine : 2 × 50 = 100, donc √(2 × 50) = √100 = 10 (car 10² = 100).",
                 "rubric": "1 point pour la bonne réponse, 0 sinon."
               },
               {
@@ -1187,12 +1199,12 @@
                 "cognitive": "connaitre",
                 "prompt": "Le propriétaire veut aussi aménager un potager carré d'aire 55 m². Quelle est la valeur exacte de la longueur de son côté ?",
                 "options": [
+                  "7,4 m",
                   "√55 m",
                   "27,5 m",
-                  "55² m",
-                  "7,4 m"
+                  "55² m"
                 ],
-                "answer": 0,
+                "answer": 1,
                 "solution": "Le côté c vérifie c² = 55 et c est positif, donc c = √55 m (valeur exacte). 7,4 m n'est qu'une valeur approchée.",
                 "rubric": "1 point pour la bonne réponse, 0 sinon."
               },
@@ -1207,7 +1219,7 @@
                 "cognitive": "appliquer",
                 "prompt": "Donne la longueur du côté du potager arrondie au centimètre (c'est-à-dire au centième de mètre), en m.",
                 "answer": 7.42,
-                "tolerance": 0.001,
+                "tolerance": 0.0001,
                 "solution": "Côté = √55 ≈ 7,416 2… m. Le chiffre des millièmes est 6 (5 ou plus), donc on arrondit à 7,42 m.",
                 "rubric": "2 points pour la bonne réponse, 0 sinon."
               },
@@ -1223,7 +1235,7 @@
                 "cognitive": "appliquer",
                 "prompt": "Pour clôturer le potager, il faut un grillage sur les quatre côtés. Quelle longueur de grillage faut-il, arrondie au dixième de mètre ? (Calcule avec la valeur exacte du côté, puis arrondis.)",
                 "answer": 29.7,
-                "tolerance": 0.001,
+                "tolerance": 0.0001,
                 "solution": "Périmètre = 4 × √55 ≈ 4 × 7,416 2… ≈ 29,664… m. Arrondi au dixième : 29,7 m. (En partant de l'arrondi 7,42, on obtiendrait 29,68 → 29,7 aussi, mais on doit calculer avec la valeur exacte.)",
                 "rubric": "2 points pour la bonne réponse, 0 sinon."
               }

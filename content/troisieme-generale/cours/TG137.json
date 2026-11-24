@@ -475,12 +475,12 @@
             {
               "prompt": "Un objet a un impact total de 80 kg CO2e, dont 60 kg CO2e pour la fabrication. Quelle part représente la fabrication ?",
               "options": [
+                "20 %",
                 "60 %",
                 "75 %",
-                "80 %",
-                "20 %"
+                "80 %"
               ],
-              "answer": 1,
+              "answer": 2,
               "hint": "Part = impact de l'étape ÷ impact total × 100.",
               "explanation": "60 ÷ 80 × 100 = 75 %."
             },
@@ -488,9 +488,9 @@
               "prompt": "Un objet a un impact total de 60 kg CO2e et il est utilisé 3 ans. Quel est son impact par année d'utilisation ?",
               "options": [
                 "20 kg CO2e par an",
-                "180 kg CO2e par an",
+                "30 kg CO2e par an",
                 "57 kg CO2e par an",
-                "30 kg CO2e par an"
+                "180 kg CO2e par an"
               ],
               "answer": 0,
               "hint": "Impact par année = impact total ÷ nombre d'années.",
@@ -546,7 +546,7 @@
           },
           {
             "type": "text",
-            "text": "En France, la **loi anti-gaspillage pour une économie circulaire** (loi AGEC, 2020) agit sur la durée de vie des objets. Par exemple, un **indice de réparabilité** (une note sur 10) est affiché depuis 2021 sur certains appareils (smartphones, ordinateurs portables…) ; pour d'autres, comme les téléviseurs ou les lave-linge, il est remplacé par un **indice de durabilité**."
+            "text": "En France, la **loi anti-gaspillage pour une économie circulaire** (loi AGEC, 2020) agit sur la durée de vie des objets. Par exemple, un **indice de réparabilité** (une note sur 10) est affiché sur certains appareils neufs, comme les ordinateurs portables ; pour d'autres, comme les téléviseurs ou les lave-linge, il est remplacé par un **indice de durabilité**. Ces règles évoluent régulièrement, en France comme en Europe."
           },
           {
             "type": "table",
@@ -767,7 +767,7 @@
         "cognitive": "appliquer",
         "prompt": "Pour ce smartphone utilisé 2 ans, quelle part (en %) de l'empreinte totale représentent l'extraction et la fabrication ? (Réponds par un nombre.)",
         "answer": 80,
-        "tolerance": 0.5,
+        "tolerance": 0,
         "solution": "Part = 40 ÷ 50 × 100 = 80 %. La fabrication pèse donc bien plus que l'utilisation."
       },
       {
@@ -1013,7 +1013,7 @@
                 "cognitive": "appliquer",
                 "prompt": "Quelle part (en %) de l'empreinte totale représentent l'extraction et la fabrication ? Arrondis à l'unité. (Réponds par un nombre.)",
                 "answer": 73,
-                "tolerance": 0.5,
+                "tolerance": 0.3,
                 "solution": "Part = 200 ÷ 275 × 100 ≈ 72,7 %, soit environ 73 %.",
                 "rubric": "2 points pour 73 (72,7 accepté). (En correction manuelle : 1 point si la formule est juste mais le total utilisé est faux.)"
               },
@@ -1232,7 +1232,7 @@
                 "cognitive": "appliquer",
                 "prompt": "Quelle part (en %) de l'empreinte totale représentent l'extraction et la fabrication ? Arrondis à l'unité. (Réponds par un nombre.)",
                 "answer": 83,
-                "tolerance": 0.5,
+                "tolerance": 0.34,
                 "solution": "Part = 100 ÷ 120 × 100 ≈ 83,3 %, soit environ 83 %.",
                 "rubric": "2 points pour 83 (83,3 accepté). (En correction manuelle : 1 point si la formule est juste mais le total utilisé est faux.)"
               },

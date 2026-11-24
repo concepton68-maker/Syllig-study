@@ -163,7 +163,7 @@
               "**23 mars 1933** : le Reichstag vote les **pleins pouvoirs** à Hitler : son gouvernement peut faire les lois seul.",
               "**Mai-juillet 1933** : les syndicats sont dissous ; le **14 juillet 1933**, le parti nazi devient le **parti unique**.",
               "**30 juin 1934** : « **Nuit des longs couteaux** » : Hitler fait assassiner les chefs des SA (Sections d'assaut) qu'il juge gênants, et des opposants.",
-              "**2 août 1934** : mort de Hindenburg. Hitler devient **Führer** (guide) : chef de l'État et du gouvernement. C'est le début du **IIIe Reich**."
+              "**2 août 1934** : mort de Hindenburg. Hitler devient **Führer** (guide) : chef de l'État et du gouvernement. Le **IIIe Reich** (nom que les nazis donnent à leur régime dès 1933) est désormais une dictature totale."
             ]
           },
           {
@@ -512,7 +512,7 @@
               ],
               [
                 "**Les ligues d'extrême droite**",
-                "Groupes armés et nationalistes hostiles à la République en France (6 février 1934)."
+                "Groupes nationalistes, souvent organisés de façon paramilitaire, hostiles à la République en France (6 février 1934)."
               ]
             ]
           },
@@ -599,7 +599,7 @@
   },
   "exercises": {
     "duration_min": 30,
-    "instructions": "Commence par les exercices ★ (je repère), puis ★★ (j'analyse un document) et ★★★ (je rédige). Lis bien les deux documents : ce sont de vrais textes de l'époque, traduits ou extraits. Les corrigés s'affichent après tes réponses : sers-t'en pour progresser !",
+    "instructions": "Commence par les exercices ★ (je repère), puis ★★ (j'analyse un document) et ★★★ (je rédige). Lis bien les deux documents : ce sont de vrais textes de l'époque, traduits, extraits ou légèrement simplifiés. Les corrigés s'affichent après tes réponses : sers-t'en pour progresser !",
     "pass_threshold": 8,
     "texts": [
       {
@@ -614,7 +614,7 @@
       {
         "id": "t2",
         "label": "Document 2 · Les accords de Matignon",
-        "source": "D'après les accords de Matignon signés le 7 juin 1936 à l'hôtel Matignon (Paris) entre les représentants du patronat (Confédération générale de la production française) et des syndicats (CGT), en présence de Léon Blum (extraits).",
+        "source": "D'après les accords de Matignon signés dans la nuit du 7 au 8 juin 1936 à l'hôtel Matignon (Paris) entre les représentants du patronat (Confédération générale de la production française) et des syndicats (CGT), en présence de Léon Blum (extraits, formulation légèrement simplifiée).",
         "paragraphs": [
           "Article 1 : La délégation patronale admet l'établissement immédiat de contrats collectifs de travail.",
           "Article 3 : […] Les employeurs reconnaissent la liberté d'opinion ainsi que le droit pour les travailleurs d'adhérer librement et d'appartenir à un syndicat professionnel.",
@@ -773,7 +773,7 @@
           "Après l'arrivée de Hitler au pouvoir en France"
         ],
         "answer": 1,
-        "solution": "En mai-juin 1936, après la victoire électorale du Front populaire, environ deux millions d'ouvriers font grève et occupent les usines. Léon Blum réunit patrons et syndicats à Matignon : les accords sont signés le 7 juin 1936."
+        "solution": "En mai-juin 1936, après la victoire électorale du Front populaire, environ deux millions d'ouvriers font grève et occupent les usines. Léon Blum réunit patrons et syndicats à Matignon : les accords sont signés dans la nuit du 7 au 8 juin 1936."
       },
       {
         "id": "ex9",

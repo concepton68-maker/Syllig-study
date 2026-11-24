@@ -577,7 +577,7 @@
         "cognitive": "appliquer",
         "prompt": "Au laboratoire, une cellule de peau mise en culture se divise environ une fois par jour, et toutes les cellules obtenues font de même. Combien de cellules obtient-on au bout de 6 jours ?",
         "answer": 64,
-        "solution": "Le nombre de cellules double chaque jour : 1 → 2 → 4 → 8 → 16 → 32 → **64**. (2 multiplié 6 fois par lui-même : 2 × 2 × 2 × 2 × 2 × 2 = 64.)"
+        "solution": "Le nombre de cellules double chaque jour : 1 → 2 → 4 → 8 → 16 → 32 → **64**. (6 facteurs égaux à 2 : 2 × 2 × 2 × 2 × 2 × 2 = 64.)"
       },
       {
         "id": "ex6",
@@ -753,7 +753,9 @@
                   "un œuf",
                   "un oeuf",
                   "zygote",
-                  "le zygote"
+                  "le zygote",
+                  "l'œuf",
+                  "l'oeuf"
                 ],
                 "solution": "La cellule-œuf.",
                 "rubric": "1 pt : cellule-œuf (ou zygote)."
@@ -913,11 +915,11 @@
                 "prompt": "Pendant quelle période l'ADN de la cellule est-il copié ?",
                 "options": [
                   "Entre 0 h et 4 h",
-                  "Entre 12 h et 20 h",
                   "Entre 4 h et 12 h",
+                  "Entre 12 h et 20 h",
                   "Entre 20 h et 22 h"
                 ],
-                "answer": 2,
+                "answer": 1,
                 "solution": "La quantité d'ADN passe de 10 u.a. (4 h) à 20 u.a. (12 h) : elle double, c'est la copie de l'ADN.",
                 "rubric": "1 pt : bonne réponse."
               },
@@ -1107,10 +1109,10 @@
                 "cognitive": "connaitre",
                 "prompt": "Après la copie de l'ADN, une cellule humaine contient…",
                 "options": [
-                  "92 chromosomes à 1 chromatide",
                   "23 chromosomes à 2 chromatides",
+                  "46 chromosomes à 1 chromatide",
                   "46 chromosomes à 2 chromatides",
-                  "46 chromosomes à 1 chromatide"
+                  "92 chromosomes à 1 chromatide"
                 ],
                 "answer": 2,
                 "solution": "Toujours 46 chromosomes, mais chacun possède maintenant 2 chromatides.",
@@ -1219,11 +1221,11 @@
                 "prompt": "Pendant quelle période l'ADN de la cellule est-il copié ?",
                 "options": [
                   "Entre 0 h et 3 h",
-                  "Entre 18 h et 20 h",
+                  "Entre 3 h et 9 h",
                   "Entre 9 h et 18 h",
-                  "Entre 3 h et 9 h"
+                  "Entre 18 h et 20 h"
                 ],
-                "answer": 3,
+                "answer": 1,
                 "solution": "La quantité d'ADN passe de 6 u.a. (3 h) à 12 u.a. (9 h) : elle double, c'est la copie de l'ADN.",
                 "rubric": "1 pt : bonne réponse."
               },

@@ -75,7 +75,7 @@
             "type": "callout",
             "kind": "attention",
             "title": "Sécurité",
-            "text": "Les réactifs utilisés sont **corrosifs** ou **toxiques** : blouse, **lunettes** et **gants** obligatoires. On ne goûte et on ne sent jamais une solution. On lit les pictogrammes de danger sur les flacons."
+            "text": "Les réactifs utilisés sont **corrosifs** ou **toxiques** : blouse, **lunettes** et **gants** obligatoires. On ne goûte et on ne sent jamais une solution. On lit les pictogrammes de danger sur les flacons. Le chlorure de baryum, **toxique**, est manipulé par le professeur."
           },
           {
             "type": "callout",
@@ -258,7 +258,7 @@
           {
             "type": "callout",
             "kind": "attention",
-            "text": "Le nitrate d'argent tache la peau en noir et il est corrosif ; le chlorure de baryum est toxique. Gants et lunettes sont indispensables, et les restes vont dans le bidon de récupération, jamais dans l'évier."
+            "text": "Le nitrate d'argent tache la peau en noir et il est corrosif ; le chlorure de baryum est **toxique** (nocif s'il est avalé ou inhalé) : au collège, c'est le **professeur** qui le manipule ou réalise ce test devant les élèves. Gants et lunettes sont indispensables, et les restes vont dans le bidon de récupération, jamais dans l'évier."
           },
           {
             "type": "callout",
@@ -439,7 +439,7 @@
       },
       {
         "label": "Chlorure de baryum",
-        "text": "Précipité blanc → ions sulfate SO₄²⁻."
+        "text": "Précipité blanc → ions sulfate SO₄²⁻. Réactif toxique, manipulé par le professeur."
       },
       {
         "label": "Conclure",
@@ -447,7 +447,7 @@
       },
       {
         "label": "Sécurité",
-        "text": "Blouse, lunettes, gants. Ne jamais goûter. Témoin pour comparer."
+        "text": "Blouse, lunettes, gants. Ne jamais goûter. Témoin pour comparer. Chlorure de baryum toxique : manipulé par le professeur."
       }
     ]
   },
@@ -511,7 +511,8 @@
           "le précipité",
           "precipite",
           "précipités",
-          "des précipités"
+          "des précipités",
+          "precipites"
         ],
         "solution": "C'est un **précipité**."
       },
@@ -544,7 +545,7 @@
           "pc-test-anions"
         ],
         "cognitive": "appliquer",
-        "prompt": "Yanis teste une solution de sulfate de cuivre II (Cu²⁺ + SO₄²⁻) : un tube avec de la soude, un autre tube avec du chlorure de baryum. Qu'observe-t-il ?",
+        "prompt": "Yanis teste une solution de sulfate de cuivre II (Cu²⁺ + SO₄²⁻) : un tube avec de la soude, puis un autre tube avec du chlorure de baryum (ce second test, avec un réactif toxique, est réalisé par le professeur). Qu'observe-t-il ?",
         "options": [
           "Un précipité bleu, puis rien",
           "Un précipité vert, puis rien",
@@ -633,7 +634,7 @@
         ],
         "cognitive": "rediger",
         "prompt": "Deux flacons ont perdu leur étiquette. L'un contient du sulfate de cuivre II, l'autre du chlorure de fer III. Rédige un protocole qui permet de savoir lequel est lequel : matériel, étapes, résultats attendus et précautions de sécurité.",
-        "solution": "Je mets blouse, lunettes et gants. Je numérote les flacons 1 et 2. Je verse environ 2 mL du flacon 1 dans un tube à essais propre, et 2 mL du flacon 2 dans un autre tube. J'ajoute quelques gouttes de soude dans chaque tube. Si un précipité **bleu** apparaît, le flacon contient des ions Cu²⁺ : c'est le sulfate de cuivre II. Si un précipité **rouille** apparaît, il contient des ions Fe³⁺ : c'est le chlorure de fer III. Pour confirmer, je peux prélever de nouveaux échantillons : le chlorure de baryum donne un précipité blanc avec le sulfate de cuivre II (ions SO₄²⁻), et le nitrate d'argent un précipité blanc qui noircit avec le chlorure de fer III (ions Cl⁻). Les restes vont dans le bidon de récupération."
+        "solution": "Je mets blouse, lunettes et gants. Je numérote les flacons 1 et 2. Je verse environ 2 mL du flacon 1 dans un tube à essais propre, et 2 mL du flacon 2 dans un autre tube. J'ajoute quelques gouttes de soude dans chaque tube. Si un précipité **bleu** apparaît, le flacon contient des ions Cu²⁺ : c'est le sulfate de cuivre II. Si un précipité **rouille** apparaît, il contient des ions Fe³⁺ : c'est le chlorure de fer III. Pour confirmer, on peut prélever de nouveaux échantillons : le chlorure de baryum (toxique, test réalisé par le professeur) donne un précipité blanc avec le sulfate de cuivre II (ions SO₄²⁻), et le nitrate d'argent un précipité blanc qui noircit avec le chlorure de fer III (ions Cl⁻). Les restes vont dans le bidon de récupération."
       }
     ]
   },
@@ -650,7 +651,7 @@
             "source": "Document original écrit pour cette évaluation (situation imaginaire).",
             "paragraphs": [
               "Sacha range l'atelier de chimie du club sciences. Trois flacons, notés A, B et C, ont perdu leur étiquette. On sait que chacun contient l'une des solutions suivantes : sulfate de cuivre II, chlorure de fer III, chlorure de zinc, sulfate de fer II.",
-              "Pour chaque flacon, Sacha prélève trois échantillons dans trois tubes propres et réalise trois tests. Résultats :",
+              "Pour chaque flacon, Sacha prélève trois échantillons dans trois tubes propres et réalise les tests à la soude et au nitrate d'argent ; le test au chlorure de baryum, réactif toxique, est réalisé par son professeur. Résultats :",
               "Flacon A : soude → précipité bleu · nitrate d'argent → rien · chlorure de baryum → précipité blanc.",
               "Flacon B : soude → précipité orange-brun (couleur rouille) · nitrate d'argent → précipité blanc qui noircit à la lumière · chlorure de baryum → rien.",
               "Flacon C : soude → précipité blanc · nitrate d'argent → précipité blanc qui noircit à la lumière · chlorure de baryum → rien."
@@ -736,7 +737,8 @@
                   "bleue",
                   "bleu clair",
                   "précipité bleu",
-                  "un précipité bleu"
+                  "un précipité bleu",
+                  "bleu ciel"
                 ],
                 "solution": "Bleu.",
                 "rubric": "1 pt : bleu."
@@ -1074,7 +1076,8 @@
                   "blanc",
                   "blanche",
                   "précipité blanc",
-                  "un précipité blanc"
+                  "un précipité blanc",
+                  "blanc laiteux"
                 ],
                 "solution": "Blanc.",
                 "rubric": "1 pt : blanc."

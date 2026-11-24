@@ -203,7 +203,8 @@ export function autoCorrect(q: Question, answer: string | undefined): boolean | 
     let v = num(a);
     // unité ou % écrits après le nombre (« 25 % », « 50 km », « 3,5 cm³ ») : on lit le nombre
     if (!Number.isFinite(v)) v = num(a.replace(/\s*[%a-zA-Zµ°²³€$/.]+[a-zA-Z²³/.]*\s*$/, ''));
-    return Number.isFinite(v) && Math.abs(v - Number(q.answer)) <= (q.tolerance ?? 0);
+    // marge de 1e-9 : les décimaux binaires (7,071 − 7,07) ne doivent pas faire échouer une comparaison exacte
+    return Number.isFinite(v) && Math.abs(v - Number(q.answer)) <= (q.tolerance ?? 0) + 1e-9;
   }
   return (q.answer as string[]).some(x => normShort(x) === normShort(a));
 }
