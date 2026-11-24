@@ -20,8 +20,8 @@ export function Shell({ role, nav, theme, spaces, user, children }: {
   );
   const logout = (
     <form action={logoutAction} className="flex items-center gap-1">
-      <a href="/compte" className="side-icon-btn" title="Mon mot de passe" aria-label="Mon mot de passe"><KeyRound size={18} aria-hidden="true" /></a>
-      <button type="submit" className="side-icon-btn" title="Se déconnecter" aria-label="Se déconnecter"><LogOut size={18} aria-hidden="true" /></button>
+      <a href="/compte" className="side-icon-btn" data-tip="Mon mot de passe" aria-label="Mon mot de passe"><KeyRound size={18} aria-hidden="true" /></a>
+      <button type="submit" className="side-icon-btn" data-tip="Se déconnecter" aria-label="Se déconnecter"><LogOut size={18} aria-hidden="true" /></button>
     </form>
   );
   return (
@@ -30,7 +30,7 @@ export function Shell({ role, nav, theme, spaces, user, children }: {
       <aside className="sidebar hidden lg:flex">
         <div className="px-5 pt-6 pb-5 flex items-start justify-between gap-2">
           <Logo onDark id="logo-side" />
-          <span className="pill version-pill mt-1" title={`Version en ligne · ${process.env.APP_VERSION ?? 'dev'}`}>v{release}</span>
+          <span className="pill version-pill mt-1" data-tip-pos="bottom" data-tip={`Version en ligne · ${process.env.APP_VERSION ?? 'dev'}`}>v{release}</span>
         </div>
         {switcher && <div className="px-4 pb-4">{switcher}</div>}
         <div className="px-3 flex-1 min-h-0 overflow-y-auto"><NavLinks items={nav} /></div>
@@ -52,7 +52,7 @@ export function Shell({ role, nav, theme, spaces, user, children }: {
           <span className="pill version-pill">v{release}</span>
           <span className="flex-1" />
           {switcher}
-          <span className="avatar !w-8 !h-8 !text-xs" title={user.name}>{initials}</span>
+          <span className="avatar !w-8 !h-8 !text-xs" data-tip-pos="bottom" data-tip={user.name}>{initials}</span>
           {logout}
         </header>
         <main className="flex-1 min-h-0 overflow-y-auto pane px-4 sm:px-6 lg:px-10 pt-6 lg:pt-8 lg:pb-8">

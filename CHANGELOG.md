@@ -265,3 +265,9 @@ Recette complète de l'espace élève (un agent testeur a joué l'élève sur t�
 - IA de correction : après « Vérifier et enregistrer », le fournisseur choisi (Gemini) reste coché. Avant, le formulaire se remettait sur « Claude » alors que Gemini était bien enregistré.
 - Gemini : Google laisse dans sa liste des modèles retirés, qui répondent « 404 » (ex. gemini-2.5-flash). La plateforme essaie désormais vraiment le modèle avant de l'enregistrer et choisit le « Flash » le plus récent qui répond. Si Google retire un modèle plus tard, la correction passe seule sur un autre et le signale.
 - Les messages d'erreur de Google sont affichés en clair.
+
+## 0.25 — 24/11/2026
+- Plus aucune fenêtre du navigateur (« study.syllig.com indique… ») : toutes les confirmations s'affichent dans une fenêtre aux couleurs de l'application, avec un titre clair, une précision et un bouton qui dit ce qu'il fait (ex. « Valider 9,75/20 »). Échap ou « Annuler » ferment sans rien faire. Sur téléphone, la fenêtre s'ouvre en bas de l'écran, avec de grands boutons.
+- Concerné : validation et modification d'une note, changement de niveau ou d'année, toutes les actions groupées, publication et écartement des cours, « Refaire les exercices ».
+- Bulles des formulaires : à la place de « Veuillez renseigner ce champ » du navigateur, un message en français sous le champ (« Ce champ est à remplir », « Au moins 8 caractères »…), qui disparaît dès que l'on tape.
+- Infobulles (icônes clé et déconnexion, version, « Pas maintenant »…) aux couleurs de l'application.

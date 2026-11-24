@@ -158,6 +158,7 @@ try {
   await pa.waitForSelector('button:has-text("Valider la note")');
   await shot(pa, '10-parent-validation-copie');
   await pa.click('button:has-text("Valider la note")');
+  await pa.click('[data-dialog-ok]');   // fenêtre de confirmation de l’application
   await pa.waitForSelector('text=Note validée.');
   ok(true, 'note validée par le parent');
   await pa.goto(BASE + '/parent/journal');

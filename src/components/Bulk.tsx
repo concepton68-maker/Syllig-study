@@ -1,5 +1,6 @@
 'use client';
 import { useEffect, useState } from 'react';
+import { confirmSubmit, splitQuestion } from './Dialog';
 
 // Actions groupées : chaque ligne d'une liste porte une case <BulkCheck>, reliée par formId au formulaire de la barre <BulkBar>.
 // Les cases peuvent être n'importe où dans la page (pas de formulaires imbriqués) ; la barre compte la sélection
@@ -49,7 +50,7 @@ export function BulkBar({ formId, actions, hidden, children, noun = 'élément',
         {actions.map(a => (
           <button key={a.label} type="submit" disabled={!n}
             {...(typeof a.action === 'string' ? { formAction: a.action, formMethod: 'get' } : { formAction: a.action })}
-            onClick={e => { if (a.confirm && !window.confirm(a.confirm.replace('{n}', plural(n)))) e.preventDefault(); }}
+            onClick={a.confirm ? e => confirmSubmit(e, { ...splitQuestion(a.confirm!.replace('{n}', plural(n))), confirmLabel: `${a.label} (${n})`, tone: a.tone === 'danger' ? 'danger' : 'primary' }) : undefined}
             className={`btn ${a.tone === 'primary' ? 'btn-primary' : a.tone === 'danger' ? 'btn-danger' : ''} disabled:opacity-50`}>
             {a.label}{n ? ` (${n})` : ''}
           </button>

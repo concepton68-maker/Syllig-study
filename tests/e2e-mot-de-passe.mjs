@@ -89,6 +89,11 @@ const fits = await sd.evaluate(() => { const h = document.querySelector('.mobile
 ok(fits.split('/')[0] <= fits.split('/')[1] && await sd.locator('.mobile-bar a[aria-label="Mon mot de passe"]').isVisible(), `téléphone 360 px, deux espaces : la barre du haut ne déborde pas (${fits})`);
 await sql`delete from user_roles where role = 'admin' and user_id = (select id from users where login = 'parent@test.local')`;
 
+console.log('Fenêtres et bulles de l’application');
+await sc.goto(BASE + '/connexion/oubli'); await sc.click('button:has-text("Demander un nouveau mot de passe")');
+ok((await sc.locator('.field-hint').innerText()).includes('Ce champ est à remplir'), 'champ vide : bulle de l’application sous le champ, en français (pas la bulle du navigateur)');
+await sc.fill('input[name=login]', 'x'); ok(await sc.locator('.field-hint').count() === 0, 'la bulle disparaît dès que l’on tape');
+
 console.log('Vue administrateur : familles et comptes');
 await ad.goto(BASE + '/contenu/comptes');
 const fam = await ad.locator('section[aria-labelledby="familles"]').innerText();
@@ -102,8 +107,13 @@ await sl.waitForURL(u => u.pathname.startsWith('/eleve'));
 ok(true, 'lien de nouveau mot de passe créé par l’administrateur pour un compte élève : l’élève arrive connectée');
 await ad.goto(BASE + '/contenu/comptes');
 await ad.locator('section[aria-labelledby="familles"] input[aria-label="Sélectionner Léa"]').check();
-ad.allowDialog = true;   // espace Contenu : confirmation des actions groupées
 await ad.click('button:has-text("Déconnecter de tous les appareils")');
+ok(await ad.locator('[role=alertdialog]').isVisible() && (await ad.locator('[role=alertdialog]').innerText()).includes('Déconnecter 1 compte'), 'confirmation dans une fenêtre de l’application (titre et bouton explicites)');
+await ad.click('[data-dialog-cancel]'); ok(await ad.locator('[role=alertdialog]').count() === 0, '« Annuler » ferme la fenêtre sans rien faire');
+await ad.click('button:has-text("Déconnecter de tous les appareils")'); await ad.keyboard.press('Escape');
+ok(await ad.locator('[role=alertdialog]').count() === 0 && (await sql`select count(*)::int as n from auth_sessions s join users u on u.id = s.user_id where u.login = 'lea'`)[0].n > 0, 'Échap ferme aussi la fenêtre : rien n’a été fait');
+await ad.click('button:has-text("Déconnecter de tous les appareils")');
+await ad.click('[data-dialog-ok]');   // fenêtre de confirmation de l’application
 await ad.waitForLoadState('networkidle');
 await sl.goto(BASE + '/eleve'); ok(new URL(sl.url()).pathname.startsWith('/connexion'), 'action groupée « Déconnecter de tous les appareils » : l’élève doit se reconnecter');
 

@@ -1,5 +1,6 @@
 'use client';
 import { useActionState, useState } from 'react';
+import { confirmSubmit } from '@/components/Dialog';
 import { changeLevelAction, followedSubjectsAction, type ResetState } from './actions';
 
 type Lvl = { code: string; name: string; cycle: string | null; courses: number };
@@ -14,9 +15,9 @@ export function LevelForm({ studentId, firstName, current, currentYear, levels }
   const target = levels.find(l => l.code === level);
   return (
     <form action={action} className="flex flex-col gap-4"
-      onSubmit={e => { if (!window.confirm(mode === 'annee'
-        ? `Clôturer l’année ${currentYear} de ${firstName} et commencer l’année ${next} en ${target?.name} ? Le bilan de l’année en cours sera archivé dans le dossier.`
-        : `Corriger le niveau de l’année en cours de ${firstName} en ${target?.name} ?`)) e.preventDefault(); }}>
+      onSubmit={e => confirmSubmit(e, mode === 'annee'
+        ? { title: `Commencer l’année ${next} en ${target?.name} ?`, message: `L’année ${currentYear} de ${firstName} sera clôturée : son bilan est archivé dans le dossier scolaire.`, confirmLabel: 'Commencer la nouvelle année' }
+        : { title: `Corriger le niveau en ${target?.name} ?`, message: `Le niveau de l’année en cours de ${firstName} est corrigé, sans rien clôturer.`, confirmLabel: 'Corriger le niveau' })}>
       <input type="hidden" name="student" value={studentId} />
       <input type="hidden" name="mode" value={mode} />
       <div className="grid gap-3 sm:grid-cols-2">

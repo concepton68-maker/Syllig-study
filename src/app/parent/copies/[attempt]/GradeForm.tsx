@@ -1,4 +1,5 @@
 'use client';
+import { confirmSubmit } from '@/components/Dialog';
 import { useEffect, useRef, useState } from 'react';
 
 // Formulaire de correction : contrôle des points dans le navigateur (aucune saisie perdue),
@@ -30,7 +31,9 @@ export function GradeForm({ action, maxima, autoTotal, graded, firstName, childr
         if (r.bad) { e.preventDefault(); setError(r.bad); return; }
         const motif = (e.currentTarget.elements.namedItem('motif') as HTMLInputElement | null)?.value.trim();
         if (graded && !motif) { e.preventDefault(); setError('Indiquez le motif de la modification.'); return; }
-        if (!window.confirm(graded ? `Enregistrer la nouvelle note : ${fmt(r.sum)}/20 ?` : `Valider ${fmt(r.sum)}/20 ? ${firstName} verra la note aussitôt.`)) e.preventDefault();
+        confirmSubmit(e, graded
+          ? { title: `Enregistrer la nouvelle note : ${fmt(r.sum)}/20 ?`, message: `${firstName} verra la note modifiée aussitôt.`, confirmLabel: 'Enregistrer' }
+          : { title: `Valider la note de ${fmt(r.sum)}/20 ?`, message: `${firstName} verra la note et vos commentaires aussitôt.`, confirmLabel: `Valider ${fmt(r.sum)}/20`, tone: 'success' });
       }}>
       {children}
       <div className="sticky bottom-0 z-10 card !py-3 flex flex-wrap items-center justify-between gap-3 bg-white/95 backdrop-blur">

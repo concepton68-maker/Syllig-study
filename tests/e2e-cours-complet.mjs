@@ -96,6 +96,7 @@ for (const code of CODES) {
     await pa.goto(`${BASE}/parent/copies/${att.id}`);
     for (const q of variant.sections.flatMap(s => s.questions).filter(q => q.type === 'open')) await pa.fill(`input[name="p_${q.id}"]`, String(q.points).replace('.', ','));
     await pa.click('button:has-text("Valider la note")');
+    await pa.click('[data-dialog-ok]');   // fenêtre de confirmation de l’application
     await pa.waitForSelector('text=Note validée.');
   }
   const [fin] = await sql`select final_score, status from eval_attempts where id = ${att.id}`;

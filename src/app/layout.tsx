@@ -6,6 +6,7 @@ import '@fontsource-variable/source-serif-4';
 import '@fontsource-variable/quicksand';
 import './globals.css';
 import { DeployGuard } from '@/components/DeployGuard';
+import { DialogHost, FieldHints } from '@/components/Dialog';
 
 export const metadata: Metadata = {
   title: { default: 'Syllig Study', template: '%s · Syllig Study' },
@@ -18,7 +19,7 @@ export const viewport: Viewport = { width: 'device-width', initialScale: 1 };
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="fr" className="h-full">
-      <body className="h-full"><DeployGuard />{children}</body>
+      <body className="h-full"><DeployGuard /><FieldHints />{children}<DialogHost /></body>
     </html>
   );
 }

@@ -77,7 +77,7 @@ export default async function ToDo({ searchParams }: { searchParams: Promise<{ v
               {requests.length > 1 && <BulkCheck formId="bulk-demandes" value={r.id} label={r.title} />}
               <span className="flex-[1_1_260px]"><strong>{multi ? `${r.first_name} · ` : ''}{r.title}</strong><span className="block muted">Demandée le {when(r.requested_at)}</span></span>
               <form action={decideEvalRequest.bind(null, r.id, true)}><button className="btn btn-primary" type="submit">Autoriser</button></form>
-              <form action={decideEvalRequest.bind(null, r.id, false)}><button className="btn" type="submit" title="La demande est refusée pour l’instant ; l’élève pourra la refaire.">Pas maintenant</button></form>
+              <form action={decideEvalRequest.bind(null, r.id, false)}><button className="btn" type="submit" data-tip="La demande est refusée pour l’instant ; l’élève pourra la refaire.">Pas maintenant</button></form>
             </div>
           ))}
         </section>

@@ -88,7 +88,7 @@ export default async function Journal({ searchParams }: { searchParams: Promise<
                 <span className="flex-[1_1_220px] min-w-0"><strong>{s.title ?? '—'}</strong><span className="block muted">{s.subject ? `${s.subject} · ` : ''}{KIND[s.kind]}</span></span>
                 <span className="w-[150px]"><strong>{hm(s.active_seconds)}</strong> actives<span className="block muted">sur {hm(s.open_seconds)} ouvertes</span></span>
                 <span className="w-[70px] font-bold">{s.final_score ? `${Number(s.final_score).toLocaleString('fr-FR')}/20` : ''}</span>
-                <span className={`pill ${why ? 'bg-warm-soft text-warm-dark' : 'bg-brand-soft text-brand-dark'}`} title={why ?? undefined}>{why ? 'À regarder ensemble' : 'Conforme'}</span>
+                <span className={`pill ${why ? 'bg-warm-soft text-warm-dark' : 'bg-brand-soft text-brand-dark'}`} data-tip={why ?? undefined} tabIndex={why ? 0 : undefined}>{why ? 'À regarder ensemble' : 'Conforme'}</span>
                 {why && <span className="basis-full muted text-[13px] pl-[162px] max-sm:pl-0">{why}</span>}
               </div>
             );

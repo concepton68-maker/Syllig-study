@@ -541,3 +541,34 @@ section.card > h2, section.card > div > h2, section.card h2.text-xl { font-size:
   .tbl-stack td { border-top: 0; padding: 4px 12px; }
   .tbl-stack td[data-label]:not([data-label=""])::before { content: attr(data-label); display: block; font-size: 11px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--color-muted); margin-bottom: 2px; }
 }
+
+
+/* ── Fenêtre de confirmation de l'application (remplace les fenêtres du navigateur) ── */
+.dialog-backdrop { position: fixed; inset: 0; z-index: 100; display: flex; align-items: center; justify-content: center; padding: 20px;
+  background: rgb(15 18 40 / .45); backdrop-filter: blur(3px); animation: dlg-fade .15s ease-out; }
+.dialog-card { width: 100%; max-width: 460px; background: var(--color-white, #fff); border-radius: 20px; padding: 24px;
+  box-shadow: 0 24px 60px -12px rgb(15 18 40 / .35); display: grid; grid-template-columns: auto 1fr; gap: 14px 16px; animation: dlg-pop .18s cubic-bezier(.2,.9,.3,1.2); }
+.dialog-icon { width: 44px; height: 44px; border-radius: 14px; display: inline-flex; align-items: center; justify-content: center; }
+.dialog-actions { grid-column: 1 / -1; display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 10px; margin-top: 6px; }
+@media (max-width: 479px) {
+  .dialog-backdrop { align-items: flex-end; padding: 12px; }
+  .dialog-card { border-radius: 20px; padding: 20px; }
+  .dialog-actions { flex-direction: column-reverse; } .dialog-actions .btn { width: 100%; justify-content: center; }
+}
+@keyframes dlg-fade { from { opacity: 0; } }
+@keyframes dlg-pop { from { opacity: 0; transform: translateY(8px) scale(.97); } }
+@media (prefers-reduced-motion: reduce) { .dialog-backdrop, .dialog-card { animation: none; } }
+
+/* ── Bulles des champs (remplacent « Veuillez renseigner ce champ ») ── */
+.field-hint { display: flex; align-items: center; gap: 6px; margin-top: 6px; font-size: 13px; font-weight: 600; color: var(--color-warm-dark); }
+.field-hint::before { content: '!'; flex: 0 0 18px; height: 18px; border-radius: 999px; background: var(--color-warm); color: #fff; font-size: 12px; font-weight: 800; display: inline-flex; align-items: center; justify-content: center; }
+[aria-invalid="true"].field, input[aria-invalid="true"], textarea[aria-invalid="true"], select[aria-invalid="true"] { border-color: var(--color-warm) !important; box-shadow: 0 0 0 3px var(--color-warm-soft); }
+
+/* ── Infobulles de l'application (remplacent les bulles « title » du navigateur) ── */
+[data-tip] { position: relative; }
+[data-tip]:hover::after, [data-tip]:focus-visible::after {
+  content: attr(data-tip); position: absolute; left: 50%; bottom: calc(100% + 8px); transform: translateX(-50%); z-index: 70; pointer-events: none;
+  background: #1b1f3b; color: #fff; font-size: 12.5px; font-weight: 600; line-height: 1.35; padding: 6px 10px; border-radius: 8px;
+  width: max-content; max-width: 260px; white-space: normal; text-align: center; box-shadow: 0 8px 20px -6px rgb(0 0 0 / .35); animation: dlg-fade .12s ease-out; }
+[data-tip][data-tip-pos="bottom"]:hover::after, [data-tip][data-tip-pos="bottom"]:focus-visible::after { bottom: auto; top: calc(100% + 8px); }
+@media (hover: none) { [data-tip]:hover::after { display: none; } }

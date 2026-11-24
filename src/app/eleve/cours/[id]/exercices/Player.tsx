@@ -152,7 +152,7 @@ export function ExercisesPlayer({ courseId, items, texts, initial, submitted, so
                     ) : (
                       <div className="flex flex-wrap items-center gap-2" role="group" aria-label="Ton auto-correction">
                         <span className="text-sm font-semibold">Compare avec le corrigé :</span>
-                        <button type="button" disabled={checked || !(answers[q.id] ?? '').trim()} title={!(answers[q.id] ?? '').trim() ? 'Pas de réponse : compte « Pas encore »' : undefined} aria-pressed={self[q.id] === true} className={`btn ${self[q.id] === true ? 'btn-primary' : ''}`} onClick={() => setSelf({ ...self, [q.id]: true })}>Réussi</button>
+                        <button type="button" disabled={checked || !(answers[q.id] ?? '').trim()} data-tip={!(answers[q.id] ?? '').trim() ? 'Pas de réponse : compte « Pas encore »' : undefined} aria-pressed={self[q.id] === true} className={`btn ${self[q.id] === true ? 'btn-primary' : ''}`} onClick={() => setSelf({ ...self, [q.id]: true })}>Réussi</button>
                         <button type="button" disabled={checked} aria-pressed={self[q.id] === false} className={`btn ${self[q.id] === false ? '!bg-warm-soft !border-warm !text-warm-dark' : ''}`} onClick={() => setSelf({ ...self, [q.id]: false })}>Pas encore</button>
                       </div>
                     )}

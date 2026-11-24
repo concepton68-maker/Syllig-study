@@ -52,7 +52,7 @@ export default async function CoursePreview({ params, searchParams }: { params: 
         {v.status === 'draft' && (
           <form action={discardAction}>
             <input type="hidden" name="version" value={v.id} />
-            <ConfirmButton className="btn btn-danger" message="Écarter ce brouillon ? Il ne sera jamais visible des élèves.">Écarter le brouillon</ConfirmButton>
+            <ConfirmButton className="btn btn-danger" danger confirmLabel="Écarter le brouillon" message="Écarter ce brouillon ? Il ne sera jamais visible des élèves.">Écarter le brouillon</ConfirmButton>
           </form>
         )}
         <Link className="btn" href={`/contenu/generer/${courseId}`}>Nouvelle consigne</Link>

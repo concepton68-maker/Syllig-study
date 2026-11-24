@@ -26,6 +26,7 @@ const ad = await login('admin@test.local', 'admin-test-1234');
 await ad.goto(BASE + '/contenu/a-relire');
 await ad.getByLabel('Tout sélectionner').check();
 await ad.getByRole('button', { name: /Publier la sélection \(2\)/ }).click();
+await ad.click('[data-dialog-ok]');   // fenêtre de confirmation de l’application
 await ad.waitForLoadState('networkidle');
 const [{ n: pub }] = await sql`select count(*)::int as n from course_versions v join courses c on c.id = v.course_id where c.id in (2, 3) and v.status = 'published'`;
 ok(pub === 2, '2 brouillons publiés d’un coup');
@@ -47,6 +48,7 @@ await sql`update course_progress set lesson_done_at = now(), mastery = 1 where s
 await pa.goto(`${BASE}/parent/enfants/${st.id}?onglet=cours`);
 await pa.locator('form#bulk-reset').getByLabel('Tout sélectionner').check();
 await pa.getByRole('button', { name: /Réinitialiser la sélection \(3\)/ }).click();
+await pa.click('[data-dialog-ok]');   // fenêtre de confirmation de l’application
 await pa.waitForURL(/groupe=3/);
 ok(await pa.getByText("3 cours remis à zéro.").isVisible(), 'message « 3 cours remis à zéro » (C001 + les 2 nouveaux)');
 const left = await sql`select count(*)::int as n from eval_attempts where student_id = ${st.id}`;

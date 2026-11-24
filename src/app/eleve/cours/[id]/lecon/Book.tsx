@@ -117,7 +117,7 @@ export function LessonBook({ courseId, pages, startPage, current, checkpoint, to
           <span className={`text-sm text-center ${!canNext && page < pages.length - 1 ? 'text-warm-dark font-semibold' : 'muted hidden sm:inline'}`}>
             {!canNext && page < pages.length - 1 ? 'Réponds au point de contrôle pour débloquer la suite' : label(p)}</span>
           <button className="btn btn-primary" type="button" disabled={!canNext} onClick={() => unlocked(page + 1) ? setPage(page + 1) : router.refresh()}
-            title={!canNext && page < pages.length - 1 ? 'Réussis le point de contrôle pour continuer' : undefined}>
+            data-tip={!canNext && page < pages.length - 1 ? 'Réussis le point de contrôle pour continuer' : undefined}>
             {page === pages.length - 1 ? 'Fin' : 'Suivant ›'}
           </button>
         </div>

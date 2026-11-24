@@ -27,6 +27,7 @@ await pa.getByText('Changer de niveau ou passer dans l’année suivante').click
 await pa.getByText('Corriger le niveau de cette année').click();
 await pa.locator('select[name=level]').selectOption('troisieme-generale');
 await pa.getByRole('button', { name: 'Corriger le niveau' }).click();
+await pa.click('[data-dialog-ok]');   // fenêtre de confirmation de l’application
 await pa.waitForURL(/niveau=correction/);
 await pa.getByRole('status').filter({ hasText: 'Niveau corrigé.' }).waitFor({ timeout: 10000 }); ok(true, 'message « Niveau corrigé »');
 const [y1] = await sql`select level_code, status from student_years where student_id = ${st.id} and status = 'en_cours'`;
@@ -57,6 +58,7 @@ await pa.getByText('Changer de niveau ou passer dans l’année suivante').click
 await pa.locator('select[name=level]').selectOption('seconde-generale');
 await pa.fill('input[name=note]', 'Passage en Seconde');
 await pa.getByRole('button', { name: 'Commencer la nouvelle année' }).click();
+await pa.click('[data-dialog-ok]');   // fenêtre de confirmation de l’application
 await pa.waitForURL(/niveau=annee/);
 const ys = await sql`select level_code, status, school_year, summary is not null as has_summary from student_years where student_id = ${st.id} order by started_at`;
 ok(ys.length === 2, 'deux années dans le dossier');

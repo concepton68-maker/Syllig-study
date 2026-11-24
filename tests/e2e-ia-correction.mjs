@@ -137,6 +137,7 @@ ok((await sql`select value->>'model' as m from app_settings`)[0].m === 'gemini-9
 console.log('Validation groupée');
 await pa.locator('label:has-text("Tout sélectionner") input').first().check();
 await pa.click('button:has-text("Valider les notes proposées")');
+await pa.click('[data-dialog-ok]');   // fenêtre de confirmation de l’application
 await pa.waitForSelector('text=2 notes validées');
 const graded = await sql`select id, status, final_score, feedback from eval_attempts where id in ${sql(ids)}`;
 ok(graded.every(g => g.status === 'graded' && Math.abs(Number(g.final_score) - expected[g.id]) < 0.01 && g.feedback.general === 'Bon travail, continue.'),

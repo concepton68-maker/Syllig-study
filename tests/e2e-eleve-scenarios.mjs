@@ -98,6 +98,7 @@ await pa.click('text=Importer les propositions');
 await pa.waitForSelector('text=1 copie pré-corrigée');
 await pa.click('a:has-text("Vérifier et valider")');
 await pa.click('button:has-text("Valider la note")');
+await pa.click('[data-dialog-ok]');   // fenêtre de confirmation de l’application
 await pa.waitForSelector('text=Note validée.');
 const [a3] = await sql`select status, final_score from eval_attempts where id = ${att.id}`;
 const expected = qs.filter(q => q.type !== 'open').reduce((n, q) => n + q.points, 0) + open.reduce((n, q) => n + q.points / 2, 0);
