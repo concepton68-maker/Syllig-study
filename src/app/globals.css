@@ -501,3 +501,16 @@ section.card > h2, section.card > div > h2, section.card h2.text-xl { font-size:
   .app:has([data-exam-focus]) .tabbar,
   .app:has([data-exam-focus]) .mobile-bar nav { display: none; }
 }
+
+/* Écran fixe : la page entière ne bouge jamais (pas de rebond qui ferait apparaître le fond gris sur téléphone/tablette) ;
+   seules les zones de contenu défilent, sans entraîner la page quand elles arrivent au bout. */
+@layer base {
+  html, body { height: 100%; overflow: hidden; overscroll-behavior: none; }
+  body { background: var(--app-bg, #F6F7FB); }
+}
+@layer components {
+  .pane, main { overscroll-behavior: contain; -webkit-overflow-scrolling: touch; }
+  /* repère de positionnement : un élément « absolu » (ex. libellé masqué .sr-only d'un QCM) reste DANS sa zone qui défile,
+     au lieu d'agrandir la page entière (cause de la grande zone grise sous le contenu) */
+  .pane, main, fieldset { position: relative; }
+}

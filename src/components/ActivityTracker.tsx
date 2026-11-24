@@ -13,7 +13,8 @@ export function ActivityTracker({ kind, courseId, idleSeconds = 60 }: { kind: st
     let stopped = false;
     const mark = () => { lastInput.current = Date.now(); setPaused(false); setAway(false); };
     const events = ['pointerdown', 'keydown', 'scroll', 'wheel', 'touchstart', 'mousemove'] as const;
-    events.forEach(e => window.addEventListener(e, mark, { passive: true }));
+    // capture : le défilement des zones intérieures (pas seulement de la fenêtre) compte comme activité
+    events.forEach(e => window.addEventListener(e, mark, { passive: true, capture: true }));
     const isActive = () => document.visibilityState === 'visible' && Date.now() - lastInput.current < idleSeconds * 1000;
     const post = (body: object) => fetch('/api/activity', { method: 'POST', body: JSON.stringify(body), keepalive: true }).then(r => r.json()).catch(() => null);
 
@@ -32,7 +33,7 @@ export function ActivityTracker({ kind, courseId, idleSeconds = 60 }: { kind: st
     return () => {
       stopped = true;
       clearInterval(timer);
-      events.forEach(e => window.removeEventListener(e, mark));
+      events.forEach(e => window.removeEventListener(e, mark, { capture: true }));
       window.removeEventListener('pagehide', end);
       end();
     };

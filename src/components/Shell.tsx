@@ -24,7 +24,7 @@ export function Shell({ role, nav, theme, spaces, user, children }: {
     </form>
   );
   return (
-    <div className="app h-dvh flex" data-theme={theme && theme !== 'classique' ? theme : undefined}>
+    <div className="app h-full flex" data-theme={theme && theme !== 'classique' ? theme : undefined}>
       {/* barre latérale */}
       <aside className="sidebar hidden lg:flex">
         <div className="px-5 pt-6 pb-5 flex items-start justify-between gap-2">

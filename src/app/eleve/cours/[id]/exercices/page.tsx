@@ -40,11 +40,11 @@ export default async function ExercisesPage({ params }: { params: Promise<{ id: 
             <h1 className="font-[family-name:var(--font-display)] !text-lg font-bold m-0 leading-snug">{course.title} · ② Exercices</h1></div>
         </div>
         {!sub.checked_at && <ActivityTracker kind="exercises" courseId={course.id} idleSeconds={student.settings.idle_seconds} />}
-        {ex.instructions && <p className="basis-full m-0 muted text-sm">{ex.instructions} Ici, pas de note : tu t’entraînes.</p>}
       </div>
     }>
       <ExercisesPlayer courseId={id} items={ex.items.map(publicQuestion)} texts={ex.texts} initial={sub.answers} submitted={!!sub.submitted_at}
         solved={solved} checked={!!sub.checked_at} initialSelf={sub.self_check ?? {}} threshold={ex.pass_threshold}
+        instructions={<>{ex.instructions ? `${ex.instructions} ` : ''}Ici, pas de note : tu t’entraînes.</>}
         after={
           <div className="flex flex-wrap gap-3 pt-2">
             <Link className="btn btn-primary" href={`/eleve/cours/${course.id}/evaluation`}>③ Passer à l’évaluation</Link>

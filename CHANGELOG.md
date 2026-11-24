@@ -185,3 +185,17 @@ Première version numérotée (déjà en ligne avant numérotation : socle, gén
   - les consignes de l'évaluation ;
   - le message affiché en quittant la fenêtre ;
   - le bilan.
+
+## 0.17 — 24/11/2026
+- **Zone grise sous le contenu supprimée.**
+  - Cause : un libellé invisible des QCM, prévu pour les lecteurs d'écran, sortait de la zone qui défile et agrandissait la page entière.
+  - La page ne peut plus défiler ni « rebondir » sur téléphone et tablette.
+  - L'application garde toute la hauteur de l'écran après la fermeture du clavier (Firefox Android).
+  - 44 pages vérifiées sur téléphone et sur ordinateur : aucune ne dépasse de l'écran.
+- **Barre d'avancement des questionnaires** (exercices et évaluation) :
+  - Toute la largeur, en haut, avec « X / 10 questions répondues ».
+  - Bouton « Prochaine question sans réponse », qui y amène directement.
+  - Sur téléphone, la barre reste visible en haut de l'écran pendant le défilement.
+  - Les questions déjà répondues ont un contour coloré.
+- Exercices : la consigne passe dans la liste des questions, ce qui laisse plus de place aux questions sur les petits écrans.
+- Le défilement compte désormais comme une activité : la fenêtre de pause n'apparaît plus pendant la lecture.

@@ -2,6 +2,7 @@
 import { useCallback, useEffect, useRef, useState, useTransition } from 'react';
 import type { PublicQuestion, SupportText } from '@/lib/course-format';
 import { RichText } from '@/components/RichText';
+import { AnswerProgress } from '@/components/AnswerProgress';
 
 import { AnswerInput, TextsAside } from '../exercices/Player';
 import { submitEvaluation } from './actions';
@@ -75,18 +76,30 @@ export function EvalRunner({ courseId, attemptId, remaining, sections, texts, in
   const list = useRef<HTMLDivElement>(null);
   useEffect(() => { list.current?.scrollTo({ top: 0 }); }, [tab]);
   const sec = sections[tab];
+  const jump = () => {
+    const i = sections.findIndex(x => x.questions.some(q => !(answers[q.id] ?? '').trim()));
+    if (i < 0) return;
+    const q = sections[i].questions.find(q => !(answers[q.id] ?? '').trim())!;
+    setTab(i);
+    setTimeout(() => {
+      const el = document.getElementById(`q-${q.id}`);
+      el?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      (el?.querySelector('input, textarea') as HTMLElement | null)?.focus({ preventScroll: true });
+    }, 60);
+  };
 
   return (
     <div data-exam-focus className="flex flex-wrap gap-6 items-start lg:flex-nowrap lg:items-stretch lg:flex-1 lg:min-h-0">
       <TextsAside texts={texts} />
-      <section className="card p-0 flex-[999_1_560px] min-w-0 flex flex-col lg:h-full lg:min-h-0 overflow-hidden">
-        <div className="shrink-0 px-4 pt-4 pb-3 border-b border-line flex flex-col gap-3">
+      <section className="card p-0 flex-[999_1_560px] min-w-0 flex flex-col lg:h-full lg:min-h-0 lg:overflow-hidden">
+        <AnswerProgress answered={answered} total={all.length} onJump={jump} />
+        <div className="shrink-0 px-4 pt-3 pb-3 border-b border-line flex flex-col gap-3">
           <div className="flex flex-wrap items-center justify-between gap-3">
             <span className={`pill text-base px-4 py-1.5 ${left <= 120 ? 'bg-warm-soft text-warm-dark' : 'bg-brand-soft text-brand-dark'}`} role="timer" aria-live="off">
               Temps restant {mm}:{ss}
             </span>
             <span className="sr-only" aria-live="assertive">{[300, 60, 10].includes(left) ? `Il reste ${left >= 60 ? `${left / 60} minute${left > 60 ? 's' : ''}` : `${left} secondes`}.` : ''}</span>
-            <span className="text-sm muted">{answered} / {all.length} réponses · sauvegarde automatique</span>
+            <span className="text-sm muted">Sauvegarde automatique</span>
           </div>
           <div role="tablist" aria-label="Sections" className="flex flex-wrap gap-2">
             {sections.map((s, i) => {
@@ -104,7 +117,7 @@ export function EvalRunner({ courseId, attemptId, remaining, sections, texts, in
         <div ref={list} role="tabpanel" className="flex-1 min-h-0 overflow-y-auto pane p-4 sm:p-6 flex flex-col gap-4 [&>*]:shrink-0">
           <h2 className="text-lg font-semibold m-0">{sec.label}</h2>
           {sec.questions.map(q => (
-            <section key={q.id} className="rounded-2xl border border-line p-5 flex flex-col gap-3 bg-white">
+            <section key={q.id} id={`q-${q.id}`} className={`rounded-2xl border p-5 flex flex-col gap-3 bg-white scroll-mt-4 ${(answers[q.id] ?? '').trim() ? 'border-brand-mid' : 'border-line'}`}>
               <div className="flex gap-2 items-center text-sm"><strong>{q.id.toUpperCase()}</strong><span className="pill bg-soft text-ink-2">{q.points} pt{(q.points ?? 0) > 1 ? 's' : ''}</span></div>
               <p className="m-0 text-[16px] font-medium"><RichText text={q.prompt} /></p>
               <AnswerInput q={q} value={answers[q.id] ?? ''} onChange={v => set(q.id, v)} noPaste

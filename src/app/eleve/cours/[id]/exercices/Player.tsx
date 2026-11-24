@@ -3,6 +3,7 @@ import { useEffect, useRef, useState, useTransition } from 'react';
 import type { PublicQuestion, SupportText } from '@/lib/course-format';
 import { RichText } from '@/components/RichText';
 import { Stars, SupportTextView } from '@/components/CourseBlocks';
+import { AnswerProgress } from '@/components/AnswerProgress';
 import { saveExerciseDraft, submitExercises, validateExercises } from './actions';
 
 export type Solved = { solution: string; auto: boolean | null; expected?: string };
@@ -42,9 +43,9 @@ export function TextsAside({ texts }: { texts: SupportText[] }) {
   );
 }
 
-export function ExercisesPlayer({ courseId, items, texts, initial, submitted, solved, checked, initialSelf, threshold, after }: {
+export function ExercisesPlayer({ courseId, items, texts, initial, submitted, solved, checked, initialSelf, threshold, after, instructions }: {
   courseId: string; items: PublicQuestion[]; texts: SupportText[]; initial: Record<string, string>; submitted: boolean;
-  solved: Record<string, Solved> | null; checked: boolean; initialSelf: Record<string, boolean>; threshold: number; after?: React.ReactNode;
+  solved: Record<string, Solved> | null; checked: boolean; initialSelf: Record<string, boolean>; threshold: number; after?: React.ReactNode; instructions?: React.ReactNode;
 }) {
   const [answers, setAnswers] = useState(initial);
   const [self, setSelf] = useState<Record<string, boolean>>(initialSelf);
@@ -71,11 +72,23 @@ export function ExercisesPlayer({ courseId, items, texts, initial, submitted, so
   const score = Math.round((10 * success) / items.length);
   const shown = items.filter(q => (q.stars ?? 0) === tab);
   const tabIdx = levels.indexOf(tab);
+  // aller à la prochaine question sans réponse (change d'onglet si besoin, puis fait défiler jusqu'à elle)
+  const jump = () => {
+    const q = levels.flatMap(l => items.filter(x => (x.stars ?? 0) === l)).find(x => !(answers[x.id] ?? '').trim());
+    if (!q) return;
+    setTab(q.stars ?? 0);
+    setTimeout(() => {
+      const el = document.getElementById(`q-${q.id}`);
+      el?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      (el?.querySelector('input, textarea') as HTMLElement | null)?.focus({ preventScroll: true });
+    }, 60);
+  };
 
   return (
     <div className="flex flex-wrap gap-6 items-start lg:flex-nowrap lg:items-stretch lg:flex-1 lg:min-h-0">
       <TextsAside texts={texts} />
-      <section className="card p-0 flex-[999_1_560px] min-w-0 flex flex-col lg:h-full lg:min-h-0 overflow-hidden">
+      <section className="card p-0 flex-[999_1_560px] min-w-0 flex flex-col lg:h-full lg:min-h-0 lg:overflow-hidden">
+        {!submitted && <AnswerProgress answered={answered} total={items.length} onJump={jump} />}
         <div role="tablist" aria-label="Niveaux" className="shrink-0 flex flex-wrap gap-2 px-4 pt-4 pb-3 border-b border-line">
           {levels.map(l => {
             const qs = items.filter(q => (q.stars ?? 0) === l);
@@ -90,10 +103,11 @@ export function ExercisesPlayer({ courseId, items, texts, initial, submitted, so
           })}
         </div>
         <div ref={list} role="tabpanel" className="flex-1 min-h-0 overflow-y-auto pane p-4 sm:p-6 flex flex-col gap-4 [&>*]:shrink-0">
+          {instructions && tabIdx === 0 && <div className="rounded-2xl bg-surface-2 border border-line px-4 py-3 text-sm text-ink-2"><strong className="text-ink">Consigne · </strong>{instructions}</div>}
           {shown.map(q => {
             const sol = solved?.[q.id];
             return (
-              <section key={q.id} className="rounded-2xl border border-line p-5 flex flex-col gap-3 bg-white">
+              <section key={q.id} id={`q-${q.id}`} className={`rounded-2xl border p-5 flex flex-col gap-3 bg-white scroll-mt-4 ${!submitted && (answers[q.id] ?? '').trim() ? 'border-brand-mid' : 'border-line'}`}>
                 <div className="flex gap-2 items-center text-sm"><strong>Ex. {q.id.replace(/^ex/, '')}</strong><Stars n={q.stars} /></div>
                 <p className="m-0 text-[16px] font-medium"><RichText text={q.prompt} /></p>
                 <AnswerInput q={q} value={answers[q.id] ?? ''} onChange={v => set(q.id, v)} disabled={submitted} />
