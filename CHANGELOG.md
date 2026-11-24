@@ -65,3 +65,19 @@ Première version numérotée (déjà en ligne avant numérotation : socle, gén
     - Comptes : messages de confirmation et retrait groupé avec confirmation.
     - Un seul style « danger » pour toutes les actions destructrices.
     - Libellés clarifiés : « Pas maintenant » au lieu de « Plus tard ».
+
+## 0.07 — 24/11/2026
+- **13 premiers cours de 3e générale**, publiés automatiquement. Chacun comprend :
+  - une leçon en pages avec des points de contrôle ;
+  - 10 exercices sur 3 niveaux ;
+  - une évaluation sur 20, avec 2 sujets.
+- Les cours par matière :
+  - Français : classes de mots et fonctions ; phrase simple et phrase complexe ; propositions subordonnées relatives et conjonctives.
+  - Mathématiques : relatifs et fractions ; puissances et notation scientifique ; nombres premiers.
+  - Histoire : la Première Guerre mondiale ; violences de guerre et génocide des Arméniens.
+  - EMC : la Constitution de la Ve République.
+  - Physique-Chimie : atomes et molécules.
+  - SVT : cellules, chromosomes et ADN.
+  - Anglais : présent simple et présent en be + -ing.
+  - Technologie : besoin et cahier des charges.
+- Correction automatique : le signe moins typographique (claviers de téléphone) est accepté.

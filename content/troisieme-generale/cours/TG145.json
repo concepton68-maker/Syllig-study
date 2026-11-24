@@ -1,0 +1,1217 @@
+{
+  "format": "syllig-course/1",
+  "code": "TG145",
+  "level": "troisieme-generale",
+  "subject": "Anglais (LV1)",
+  "chapter": "Grammaire et outils de la langue",
+  "title": "Présent simple et présent en be + -ing",
+  "skills": [
+    {
+      "id": "en-ps-forme",
+      "label": "Conjuguer au présent simple (affirmation, négation, question)"
+    },
+    {
+      "id": "en-ps-emploi",
+      "label": "Employer le présent simple (habitudes, vérités générales, goûts)"
+    },
+    {
+      "id": "en-bing-forme",
+      "label": "Conjuguer au présent en be + -ing"
+    },
+    {
+      "id": "en-bing-emploi",
+      "label": "Employer be + -ing (action en cours, situation temporaire)"
+    },
+    {
+      "id": "en-choisir",
+      "label": "Choisir entre présent simple et be + -ing"
+    },
+    {
+      "id": "en-ecrire",
+      "label": "Écrire un court texte au présent"
+    }
+  ],
+  "lesson": {
+    "duration_min": 35,
+    "objectives": [
+      "conjuguer un verbe au présent simple, à toutes les formes ;",
+      "conjuguer un verbe au présent en be + -ing, à toutes les formes ;",
+      "savoir quand employer l'un ou l'autre, grâce au sens et aux mots repères ;",
+      "éviter les pièges : -s de la 3e personne, verbes d'état, orthographe en -ing."
+    ],
+    "essential": "En anglais, il existe deux présents. Le **présent simple** (*I play*) sert à parler de ce qui est habituel, général ou permanent. Le **présent en be + -ing** (*I am playing*) sert à parler de ce qui est en train de se passer, ou d'une situation temporaire. Pour choisir, demande-toi : « Est-ce une habitude ou une vérité générale ? » ou « Est-ce que ça se passe maintenant, en ce moment ? »",
+    "parts": [
+      {
+        "title": "Le présent simple : la forme",
+        "blocks": [
+          {
+            "type": "text",
+            "text": "Au présent simple, on utilise la **base verbale** (le verbe sans *to*) à toutes les personnes, sauf à la 3e personne du singulier (*he, she, it*, ou un nom au singulier) où l'on ajoute **-s**."
+          },
+          {
+            "type": "table",
+            "caption": "Le verbe to play au présent simple",
+            "columns": [
+              "Forme",
+              "I / you / we / they",
+              "he / she / it"
+            ],
+            "rows": [
+              [
+                "Affirmative",
+                "I play",
+                "she plays"
+              ],
+              [
+                "Négative",
+                "I don't play (do not play)",
+                "she doesn't play (does not play)"
+              ],
+              [
+                "Interrogative",
+                "Do you play?",
+                "Does she play?"
+              ],
+              [
+                "Réponse courte",
+                "Yes, I do. / No, I don't.",
+                "Yes, she does. / No, she doesn't."
+              ]
+            ]
+          },
+          {
+            "type": "callout",
+            "kind": "attention",
+            "title": "Un seul -s, pas deux !",
+            "text": "À la négation et à la question, c'est l'auxiliaire *does* qui porte la marque de la 3e personne. Le verbe reste à la base verbale.\n*She doesn't play* ✔ — *She doesn't plays* ✘\n*Does he like pizza?* ✔ — *Does he likes pizza?* ✘"
+          },
+          {
+            "type": "table",
+            "caption": "Orthographe du -s à la 3e personne",
+            "columns": [
+              "Verbe terminé par…",
+              "Règle",
+              "Exemples"
+            ],
+            "rows": [
+              [
+                "la plupart des verbes",
+                "+ s",
+                "play → plays, read → reads"
+              ],
+              [
+                "-s, -sh, -ch, -x, -z, -o",
+                "+ es",
+                "watch → watches, fix → fixes, go → goes, do → does"
+              ],
+              [
+                "consonne + y",
+                "y → ies",
+                "study → studies, cry → cries"
+              ],
+              [
+                "voyelle + y",
+                "+ s",
+                "play → plays, enjoy → enjoys"
+              ],
+              [
+                "have (irrégulier)",
+                "has",
+                "she has a dog"
+              ]
+            ]
+          }
+        ],
+        "checkpoint": {
+          "variants": [
+            {
+              "prompt": "Quelle phrase est correcte ?",
+              "options": [
+                "She don't like tea.",
+                "She doesn't likes tea.",
+                "She doesn't like tea.",
+                "She not like tea."
+              ],
+              "answer": 2,
+              "hint": "Relis l'encadré « Un seul -s, pas deux ! ».",
+              "explanation": "À la 3e personne, la négation se fait avec doesn't + base verbale : She doesn't like tea."
+            },
+            {
+              "prompt": "Quelle est la bonne forme de « study » avec « he » ?",
+              "options": [
+                "studys",
+                "studies",
+                "studyes",
+                "study"
+              ],
+              "answer": 1,
+              "hint": "Regarde la lettre placée avant le y.",
+              "explanation": "Consonne (d) + y : le y devient ies → he studies."
+            },
+            {
+              "prompt": "Quelle question est correcte ?",
+              "options": [
+                "Does your brother plays chess?",
+                "Do your brother play chess?",
+                "Does your brother play chess?",
+                "Your brother does play chess?"
+              ],
+              "answer": 2,
+              "hint": "« Your brother » = he. Quel auxiliaire, et quelle forme du verbe après ?",
+              "explanation": "Does + sujet + base verbale : Does your brother play chess?"
+            }
+          ]
+        }
+      },
+      {
+        "title": "Le présent simple : quand l'employer ?",
+        "blocks": [
+          {
+            "type": "text",
+            "text": "Le présent simple décrit ce qui est **vrai en général**, pas seulement à l'instant où l'on parle."
+          },
+          {
+            "type": "table",
+            "columns": [
+              "Emploi",
+              "Exemple"
+            ],
+            "rows": [
+              [
+                "Habitude, action répétée",
+                "*I walk to school every morning.*"
+              ],
+              [
+                "Vérité générale, fait scientifique",
+                "*Water freezes at 0 °C.*"
+              ],
+              [
+                "Situation permanente",
+                "*My aunt lives in Dublin.*"
+              ],
+              [
+                "Goûts, opinions, pensées, possession",
+                "*She loves horror films. I think you're right.*"
+              ]
+            ]
+          },
+          {
+            "type": "callout",
+            "kind": "methode",
+            "title": "Les mots repères du présent simple",
+            "text": "*always, usually, often, sometimes, rarely, never, every day / week, on Mondays, twice a week, in the morning…*"
+          },
+          {
+            "type": "callout",
+            "kind": "attention",
+            "title": "Où placer always, often, never… ?",
+            "text": "Les adverbes de fréquence se placent **avant le verbe** mais **après be** :\n*He often plays video games.* — *He is often late.*"
+          }
+        ],
+        "checkpoint": {
+          "variants": [
+            {
+              "prompt": "Pourquoi la phrase « The sun rises in the east. » est-elle au présent simple ?",
+              "options": [
+                "Parce que l'action se passe en ce moment",
+                "Parce que c'est une vérité générale",
+                "Parce que c'est une situation temporaire",
+                "Parce qu'il y a le mot « now »"
+              ],
+              "answer": 1,
+              "hint": "Est-ce vrai seulement aujourd'hui, ou toujours ?",
+              "explanation": "Le soleil se lève toujours à l'est : c'est une vérité générale, donc présent simple."
+            },
+            {
+              "prompt": "Où se place « never » ? Choisis la phrase correcte.",
+              "options": [
+                "I eat never meat.",
+                "I never eat meat.",
+                "Never I eat meat.",
+                "I eat meat never."
+              ],
+              "answer": 1,
+              "hint": "Relis l'encadré sur la place des adverbes de fréquence.",
+              "explanation": "L'adverbe de fréquence se place avant le verbe : I never eat meat."
+            },
+            {
+              "prompt": "Quel mot repère annonce plutôt un présent simple ?",
+              "options": [
+                "now",
+                "at the moment",
+                "every Saturday",
+                "look!"
+              ],
+              "answer": 2,
+              "hint": "Lequel exprime une répétition ?",
+              "explanation": "« Every Saturday » exprime une habitude : présent simple."
+            }
+          ]
+        }
+      },
+      {
+        "title": "Le présent en be + -ing : la forme",
+        "blocks": [
+          {
+            "type": "text",
+            "text": "On le forme avec l'auxiliaire **be** conjugué au présent (*am, is, are*) suivi du **verbe + -ing**."
+          },
+          {
+            "type": "table",
+            "caption": "Le verbe to read au présent en be + -ing",
+            "columns": [
+              "Forme",
+              "Exemples"
+            ],
+            "rows": [
+              [
+                "Affirmative",
+                "I'm reading (I am reading) — he's reading (he is reading) — they're reading (they are reading)"
+              ],
+              [
+                "Négative",
+                "I'm not reading — she isn't reading (is not) — we aren't reading (are not)"
+              ],
+              [
+                "Interrogative",
+                "Am I reading? — Is he reading? — Are you reading?"
+              ],
+              [
+                "Réponse courte",
+                "Yes, she is. / No, she isn't."
+              ]
+            ]
+          },
+          {
+            "type": "table",
+            "caption": "Orthographe du -ing",
+            "columns": [
+              "Verbe terminé par…",
+              "Règle",
+              "Exemples"
+            ],
+            "rows": [
+              [
+                "la plupart des verbes",
+                "+ ing",
+                "read → reading, play → playing"
+              ],
+              [
+                "-e muet",
+                "on enlève le e",
+                "make → making, write → writing"
+              ],
+              [
+                "-ie",
+                "ie → y",
+                "lie → lying, die → dying"
+              ],
+              [
+                "une syllabe : consonne + voyelle + consonne",
+                "on double la consonne finale",
+                "swim → swimming, run → running, sit → sitting"
+              ]
+            ]
+          },
+          {
+            "type": "callout",
+            "kind": "attention",
+            "title": "N'oublie pas be !",
+            "text": "*She reading a book* ✘ → *She **is** reading a book* ✔. Sans l'auxiliaire be, la phrase est fausse."
+          }
+        ],
+        "checkpoint": {
+          "variants": [
+            {
+              "prompt": "Quelle est la forme -ing de « write » ?",
+              "options": [
+                "writeing",
+                "writting",
+                "writing",
+                "writeng"
+              ],
+              "answer": 2,
+              "hint": "Le verbe se termine par un e muet.",
+              "explanation": "On enlève le e muet : write → writing."
+            },
+            {
+              "prompt": "Complète : « They ___ dinner right now. » (cook)",
+              "options": [
+                "is cooking",
+                "are cooking",
+                "cooking",
+                "cooks"
+              ],
+              "answer": 1,
+              "hint": "Avec « they », quelle forme de be ?",
+              "explanation": "They + are + cooking : They are cooking dinner right now."
+            },
+            {
+              "prompt": "Quelle phrase est la négation correcte de « He is sleeping » ?",
+              "options": [
+                "He doesn't sleeping.",
+                "He isn't sleeping.",
+                "He not sleeping.",
+                "He don't sleep."
+              ],
+              "answer": 1,
+              "hint": "Au présent en be + -ing, c'est be qui porte la négation.",
+              "explanation": "On ajoute not après be : He isn't (is not) sleeping."
+            }
+          ]
+        }
+      },
+      {
+        "title": "Le présent en be + -ing : quand l'employer ?",
+        "blocks": [
+          {
+            "type": "table",
+            "columns": [
+              "Emploi",
+              "Exemple"
+            ],
+            "rows": [
+              [
+                "Action en cours, au moment où l'on parle",
+                "*Be quiet, the baby is sleeping.*"
+              ],
+              [
+                "Situation temporaire, limitée dans le temps",
+                "*This week, I'm staying with my grandparents.*"
+              ],
+              [
+                "Description d'une image ou d'une scène",
+                "*In this picture, two girls are running on a beach.*"
+              ]
+            ]
+          },
+          {
+            "type": "callout",
+            "kind": "methode",
+            "title": "Les mots repères du présent en be + -ing",
+            "text": "*now, right now, at the moment, today, this week, these days, Look! Listen! Be quiet!…*"
+          },
+          {
+            "type": "callout",
+            "kind": "attention",
+            "title": "Les verbes d'état",
+            "text": "Certains verbes expriment un **état** (une pensée, un goût, une possession), pas une action. On les emploie normalement au présent simple, même pour parler de maintenant :\n*like, love, hate, want, need, know, understand, believe, remember, mean, belong…*\n*I know the answer* ✔ — *I am knowing the answer* ✘"
+          },
+          {
+            "type": "callout",
+            "kind": "plus",
+            "title": "Pour aller plus loin",
+            "text": "Le présent en be + -ing peut aussi parler d'un **projet futur déjà organisé** : *I'm meeting Tom tomorrow at 5.* Tu le reverras dans le cours sur le futur."
+          }
+        ],
+        "checkpoint": {
+          "variants": [
+            {
+              "prompt": "Pourquoi dit-on « Look! It's snowing! » ?",
+              "options": [
+                "Parce qu'il neige souvent",
+                "Parce que l'action se déroule en ce moment",
+                "Parce que c'est une vérité générale",
+                "Parce que snow est un verbe d'état"
+              ],
+              "answer": 1,
+              "hint": "Que signifie « Look! » ?",
+              "explanation": "« Look! » montre que l'action est en cours au moment où l'on parle : be + -ing."
+            },
+            {
+              "prompt": "Quelle phrase est correcte ?",
+              "options": [
+                "I am wanting a new phone.",
+                "I want a new phone.",
+                "I wanting a new phone.",
+                "I am want a new phone."
+              ],
+              "answer": 1,
+              "hint": "« want » fait partie d'une liste particulière de verbes.",
+              "explanation": "« want » est un verbe d'état : on l'emploie au présent simple."
+            },
+            {
+              "prompt": "« This month, my mum is working in Paris. » La forme be + -ing indique…",
+              "options": [
+                "une habitude",
+                "une situation temporaire",
+                "une vérité générale",
+                "un goût"
+              ],
+              "answer": 1,
+              "hint": "Regarde le repère de temps au début de la phrase.",
+              "explanation": "« This month » limite la situation dans le temps : c'est temporaire."
+            }
+          ]
+        }
+      },
+      {
+        "title": "Choisir entre les deux présents",
+        "blocks": [
+          {
+            "type": "text",
+            "text": "Les deux présents apparaissent souvent ensemble dans une même phrase, pour opposer l'habitude et ce qui se passe maintenant."
+          },
+          {
+            "type": "table",
+            "columns": [
+              "Présent simple : habituel, général",
+              "Be + -ing : en ce moment, temporaire"
+            ],
+            "rows": [
+              [
+                "*Liam usually wears jeans…*",
+                "*…but today he is wearing a suit.*"
+              ],
+              [
+                "*I play tennis on Wednesdays.*",
+                "*I'm playing tennis right now, call me later!*"
+              ],
+              [
+                "*My dad works in a bank.*",
+                "*This week, he is working from home.*"
+              ]
+            ]
+          },
+          {
+            "type": "callout",
+            "kind": "methode",
+            "title": "Ma méthode en 3 questions",
+            "text": "1. Y a-t-il un mot repère (*every day, usually* / *now, look!*) ?\n2. Est-ce une habitude, une vérité générale, ou une action en cours, temporaire ?\n3. Le verbe est-il un verbe d'état (*like, know, want…*) ? Si oui : présent simple."
+          },
+          {
+            "type": "callout",
+            "kind": "essentiel",
+            "title": "L'essentiel",
+            "text": "Présent simple = habitude, vérité générale, état. *She plays.* / *She doesn't play.* / *Does she play?*\nBe + -ing = action en cours ou temporaire. *She is playing.* / *She isn't playing.* / *Is she playing?*"
+          }
+        ],
+        "checkpoint": {
+          "variants": [
+            {
+              "prompt": "« Emma usually ___ to school, but today she ___ the bus. »",
+              "options": [
+                "walks / takes",
+                "is walking / takes",
+                "walks / is taking",
+                "walk / is taking"
+              ],
+              "answer": 2,
+              "hint": "« usually » = habitude ; « today » = cette fois-ci seulement.",
+              "explanation": "Habitude → walks (avec -s) ; action exceptionnelle aujourd'hui → is taking."
+            },
+            {
+              "prompt": "Choisis la bonne forme : « Listen! Somebody ___ at the door. »",
+              "options": [
+                "knocks",
+                "is knocking",
+                "knock",
+                "are knocking"
+              ],
+              "answer": 1,
+              "hint": "« Listen! » attire l'attention sur ce qui se passe maintenant.",
+              "explanation": "Action en cours : Somebody is knocking at the door."
+            },
+            {
+              "prompt": "Choisis la bonne forme : « I ___ what you mean. »",
+              "options": [
+                "am understanding",
+                "understand",
+                "understands",
+                "understanding"
+              ],
+              "answer": 1,
+              "hint": "Ce verbe fait partie des verbes d'état.",
+              "explanation": "« understand » est un verbe d'état : présent simple, I understand."
+            }
+          ]
+        }
+      }
+    ],
+    "memo": [
+      {
+        "label": "Présent simple",
+        "text": "Base verbale ; -s à he / she / it. Négation : don't / doesn't + base verbale. Question : Do / Does + sujet + base verbale."
+      },
+      {
+        "label": "Emplois du présent simple",
+        "text": "Habitudes, vérités générales, situations permanentes, goûts. Repères : always, usually, often, never, every day…"
+      },
+      {
+        "label": "Be + -ing",
+        "text": "am / is / are + verbe-ing. Négation : I'm not, isn't, aren't. Question : Am / Is / Are + sujet + verbe-ing."
+      },
+      {
+        "label": "Emplois de be + -ing",
+        "text": "Action en cours, situation temporaire, description d'image. Repères : now, at the moment, today, Look! Listen!"
+      },
+      {
+        "label": "Pièges",
+        "text": "Pas de -s après doesn't. Orthographe : watches, studies, making, swimming. Verbes d'état (like, love, want, know, understand) au présent simple."
+      }
+    ]
+  },
+  "exercises": {
+    "duration_min": 25,
+    "instructions": "Fais les exercices dans l'ordre : les étoiles indiquent la difficulté. Quand il faut compléter un blanc, écris seulement la forme verbale qui manque (formes contractées acceptées). Les corrigés s'affichent après validation.",
+    "pass_threshold": 8,
+    "texts": [],
+    "items": [
+      {
+        "id": "ex1",
+        "type": "short",
+        "stars": 1,
+        "lesson_part": 1,
+        "skills": [
+          "en-ps-forme"
+        ],
+        "cognitive": "appliquer",
+        "prompt": "Complète au présent simple : « My sister ___ (watch) a series every evening. »",
+        "answer": [
+          "watches"
+        ],
+        "solution": "watches : 3e personne du singulier (my sister = she), et le verbe se termine par -ch, donc on ajoute -es."
+      },
+      {
+        "id": "ex2",
+        "type": "short",
+        "stars": 1,
+        "lesson_part": 3,
+        "skills": [
+          "en-bing-forme"
+        ],
+        "cognitive": "appliquer",
+        "prompt": "Complète au présent en be + -ing : « Shh! The baby ___ (sleep). »",
+        "answer": [
+          "is sleeping",
+          "'s sleeping"
+        ],
+        "solution": "is sleeping (The baby's sleeping) : « Shh! » montre que l'action est en cours."
+      },
+      {
+        "id": "ex3",
+        "type": "qcm",
+        "stars": 1,
+        "lesson_part": 4,
+        "skills": [
+          "en-bing-emploi"
+        ],
+        "cognitive": "connaitre",
+        "prompt": "Quel mot repère s'emploie avec le présent en be + -ing ?",
+        "options": [
+          "every Sunday",
+          "usually",
+          "right now",
+          "never"
+        ],
+        "answer": 2,
+        "solution": "« right now » (en ce moment même) annonce une action en cours. Les trois autres expriment une habitude ou une fréquence."
+      },
+      {
+        "id": "ex4",
+        "type": "short",
+        "stars": 1,
+        "lesson_part": 1,
+        "skills": [
+          "en-ps-forme"
+        ],
+        "cognitive": "appliquer",
+        "prompt": "Complète à la forme négative du présent simple : « Tom ___ (not / like) spinach. »",
+        "answer": [
+          "doesn't like",
+          "does not like",
+          "doesnt like"
+        ],
+        "solution": "doesn't like (does not like) : Tom = he, donc doesn't + base verbale, sans -s à like."
+      },
+      {
+        "id": "ex5",
+        "type": "short",
+        "stars": 2,
+        "lesson_part": 1,
+        "skills": [
+          "en-ps-forme"
+        ],
+        "cognitive": "appliquer",
+        "prompt": "Écris la question qui correspond à cette phrase : « She speaks Spanish. »",
+        "answer": [
+          "Does she speak Spanish?",
+          "Does she speak Spanish"
+        ],
+        "solution": "Does she speak Spanish? — Does porte la marque de la 3e personne ; le verbe speak reste à la base verbale."
+      },
+      {
+        "id": "ex6",
+        "type": "short",
+        "stars": 2,
+        "lesson_part": 4,
+        "skills": [
+          "en-ps-forme",
+          "en-choisir"
+        ],
+        "cognitive": "appliquer",
+        "prompt": "Complète à la forme négative avec le bon présent : « Sorry, I ___ (not / understand) this word. »",
+        "answer": [
+          "don't understand",
+          "do not understand",
+          "dont understand"
+        ],
+        "solution": "don't understand (do not understand) : understand est un verbe d'état, il reste au présent simple même si l'on parle de maintenant."
+      },
+      {
+        "id": "ex7",
+        "type": "qcm",
+        "stars": 2,
+        "lesson_part": 5,
+        "skills": [
+          "en-choisir"
+        ],
+        "cognitive": "analyser",
+        "prompt": "Choisis la bonne forme : « Hey, Mia! What ___ ? You look so happy! »",
+        "options": [
+          "do you read",
+          "are you reading",
+          "you are reading",
+          "does you read"
+        ],
+        "answer": 1,
+        "solution": "are you reading : on demande ce que Mia est en train de lire, maintenant. Question : Are + sujet + verbe-ing."
+      },
+      {
+        "id": "ex8",
+        "type": "short",
+        "stars": 2,
+        "lesson_part": 3,
+        "skills": [
+          "en-bing-forme"
+        ],
+        "cognitive": "appliquer",
+        "prompt": "Écris la forme en -ing du verbe « swim ».",
+        "answer": [
+          "swimming"
+        ],
+        "solution": "swimming : verbe d'une syllabe terminé par consonne + voyelle + consonne, on double la consonne finale."
+      },
+      {
+        "id": "ex9",
+        "type": "qcm",
+        "stars": 3,
+        "lesson_part": 5,
+        "skills": [
+          "en-choisir"
+        ],
+        "cognitive": "analyser",
+        "prompt": "Choisis la bonne combinaison : « My dad ___ in a bank, but this week he ___ from home because the office is closed. »",
+        "options": [
+          "works / works",
+          "is working / works",
+          "works / is working",
+          "work / is working"
+        ],
+        "answer": 2,
+        "solution": "works / is working : son métier est une situation permanente (présent simple, avec -s) ; « this week » indique une situation temporaire (be + -ing)."
+      },
+      {
+        "id": "ex10",
+        "type": "open",
+        "stars": 3,
+        "lesson_part": 5,
+        "skills": [
+          "en-ecrire",
+          "en-choisir"
+        ],
+        "cognitive": "rediger",
+        "prompt": "Write four sentences about yourself: two about your habits (présent simple, avec un adverbe de fréquence) and two about what you are doing now or this week (be + -ing).",
+        "solution": "Exemple : I usually get up at 7 o'clock. I often listen to music on the bus. Right now, I am doing my English homework. This week, I'm preparing a presentation about London.\nVérifie : -s à la 3e personne si besoin, adverbe avant le verbe, be bien présent devant chaque verbe en -ing."
+      }
+    ]
+  },
+  "evaluation": {
+    "duration_min": 25,
+    "conditions": "Sans la leçon, en 25 minutes. Pour les blancs, écris seulement la forme verbale qui manque (formes contractées acceptées). Barème : A = 6 points · B = 8 points · C = 6 points.",
+    "total_points": 20,
+    "variants": [
+      {
+        "texts": [],
+        "sections": [
+          {
+            "label": "A · Je conjugue (6 points)",
+            "questions": [
+              {
+                "id": "q1",
+                "type": "short",
+                "points": 1,
+                "lesson_part": 1,
+                "skills": [
+                  "en-ps-forme"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Présent simple : « He ___ (fix) old bikes in his garage. »",
+                "answer": [
+                  "fixes"
+                ],
+                "solution": "fixes : 3e personne, verbe terminé par -x → -es."
+              },
+              {
+                "id": "q2",
+                "type": "short",
+                "points": 1,
+                "lesson_part": 3,
+                "skills": [
+                  "en-bing-forme"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Be + -ing, forme négative : « We ___ (not / watch) TV at the moment. »",
+                "answer": [
+                  "aren't watching",
+                  "are not watching",
+                  "'re not watching",
+                  "arent watching"
+                ],
+                "solution": "aren't watching (are not watching / 're not watching)."
+              },
+              {
+                "id": "q3",
+                "type": "short",
+                "points": 1,
+                "lesson_part": 1,
+                "skills": [
+                  "en-ps-forme"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Présent simple : « My little brother ___ (cry) when he is tired. »",
+                "answer": [
+                  "cries"
+                ],
+                "solution": "cries : consonne + y → ies à la 3e personne."
+              },
+              {
+                "id": "q4",
+                "type": "short",
+                "points": 1,
+                "lesson_part": 1,
+                "skills": [
+                  "en-ps-forme"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Présent simple, forme négative : « She ___ (not / drink) coffee. »",
+                "answer": [
+                  "doesn't drink",
+                  "does not drink",
+                  "doesnt drink"
+                ],
+                "solution": "doesn't drink (does not drink) : doesn't + base verbale, sans -s."
+              },
+              {
+                "id": "q5",
+                "type": "short",
+                "points": 1,
+                "lesson_part": 3,
+                "skills": [
+                  "en-bing-forme"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Be + -ing : « Look! Those birds ___ (fly) over the lake. »",
+                "answer": [
+                  "are flying",
+                  "'re flying"
+                ],
+                "solution": "are flying : sujet pluriel → are ; fly + ing = flying."
+              },
+              {
+                "id": "q6",
+                "type": "short",
+                "points": 1,
+                "lesson_part": 3,
+                "skills": [
+                  "en-bing-forme"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Be + -ing : « I ___ (write) an email to my cousin right now. »",
+                "answer": [
+                  "am writing",
+                  "'m writing"
+                ],
+                "solution": "am writing (I'm writing) : on enlève le e muet de write."
+              }
+            ]
+          },
+          {
+            "label": "B · Je choisis et j'explique (8 points)",
+            "questions": [
+              {
+                "id": "q7",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 2,
+                "skills": [
+                  "en-ps-emploi",
+                  "en-choisir"
+                ],
+                "cognitive": "analyser",
+                "prompt": "« Water ___ at 100 °C. »",
+                "options": [
+                  "boils",
+                  "is boiling",
+                  "boil",
+                  "are boiling"
+                ],
+                "answer": 0,
+                "solution": "boils : vérité générale (fait scientifique) → présent simple, avec -s (water = it)."
+              },
+              {
+                "id": "q8",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 4,
+                "skills": [
+                  "en-bing-emploi",
+                  "en-choisir"
+                ],
+                "cognitive": "analyser",
+                "prompt": "« Be quiet! The children ___ . »",
+                "options": [
+                  "sleep",
+                  "sleeps",
+                  "are sleeping",
+                  "is sleeping"
+                ],
+                "answer": 2,
+                "solution": "are sleeping : « Be quiet! » indique une action en cours ; sujet pluriel → are."
+              },
+              {
+                "id": "q9",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 4,
+                "skills": [
+                  "en-choisir"
+                ],
+                "cognitive": "analyser",
+                "prompt": "« I ___ the answer to this question. »",
+                "options": [
+                  "am knowing",
+                  "know",
+                  "knows",
+                  "knowing"
+                ],
+                "answer": 1,
+                "solution": "know : verbe d'état → présent simple, sans -s avec I."
+              },
+              {
+                "id": "q10",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 5,
+                "skills": [
+                  "en-choisir"
+                ],
+                "cognitive": "analyser",
+                "prompt": "« She usually ___ jeans, but today she ___ a dress. »",
+                "options": [
+                  "wears / wears",
+                  "is wearing / wears",
+                  "wears / is wearing",
+                  "wear / is wearing"
+                ],
+                "answer": 2,
+                "solution": "wears / is wearing : habitude (usually) → présent simple ; exception d'aujourd'hui (today) → be + -ing."
+              },
+              {
+                "id": "q11",
+                "type": "short",
+                "points": 2,
+                "lesson_part": 1,
+                "skills": [
+                  "en-ps-forme"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Écris la question qui correspond à cette phrase : « Your friends live in Leeds. »",
+                "answer": [
+                  "Do your friends live in Leeds?",
+                  "Do your friends live in Leeds"
+                ],
+                "solution": "Do your friends live in Leeds? — sujet pluriel → Do ; live reste à la base verbale."
+              },
+              {
+                "id": "q12",
+                "type": "open",
+                "points": 2,
+                "lesson_part": 4,
+                "skills": [
+                  "en-bing-emploi",
+                  "en-choisir"
+                ],
+                "cognitive": "analyser",
+                "prompt": "Explique en français pourquoi on écrit « Don't disturb her, she is reading. » et non « she reads ».",
+                "solution": "L'action est en train de se dérouler au moment où l'on parle : on demande de ne pas la déranger maintenant. On emploie donc le présent en be + -ing (is reading). « She reads » exprimerait une habitude (elle lit en général), ce qui ne correspond pas au sens.",
+                "rubric": "1 pt : idée d'action en cours au moment où l'on parle (indice : « Don't disturb her »). 1 pt : opposition avec le présent simple, qui exprimerait une habitude ou un fait général."
+              }
+            ]
+          },
+          {
+            "label": "C · J'écris (6 points)",
+            "questions": [
+              {
+                "id": "q13",
+                "type": "open",
+                "points": 6,
+                "lesson_part": 5,
+                "skills": [
+                  "en-ecrire",
+                  "en-ps-forme",
+                  "en-bing-forme",
+                  "en-choisir"
+                ],
+                "cognitive": "rediger",
+                "prompt": "Write a short text (60 to 80 words) to an English penfriend. Describe a typical Saturday for you (at least 3 sentences in the présent simple, with frequency adverbs), then say what you are doing right now and this week (at least 3 sentences with be + -ing).",
+                "solution": "Exemple : Hi Sam! On Saturdays, I usually get up late. I always have pancakes for breakfast, and in the afternoon I often go to the swimming pool with my best friend. My brother never comes with us: he hates swimming! Right now, I'm sitting in my bedroom and I'm writing to you. My cat is sleeping on my bed. This week, I'm revising for a big test, so I'm working a lot. Write soon! Léo",
+                "rubric": "2 pts : au moins 3 phrases au présent simple correctes et bien employées (habitudes), dont au moins un adverbe de fréquence bien placé. 2 pts : au moins 3 phrases en be + -ing correctes et bien employées (maintenant / cette semaine). 1 pt : formes exactes (-s à la 3e personne, be présent, orthographe en -ing, verbes d'état au présent simple). 1 pt : texte cohérent, longueur respectée (60 à 80 mots), vocabulaire varié."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "texts": [],
+        "sections": [
+          {
+            "label": "A · Je conjugue (6 points)",
+            "questions": [
+              {
+                "id": "q1",
+                "type": "short",
+                "points": 1,
+                "lesson_part": 1,
+                "skills": [
+                  "en-ps-forme"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Présent simple : « Mrs Lee ___ (teach) maths in a big school. »",
+                "answer": [
+                  "teaches"
+                ],
+                "solution": "teaches : 3e personne, verbe terminé par -ch → -es."
+              },
+              {
+                "id": "q2",
+                "type": "short",
+                "points": 1,
+                "lesson_part": 3,
+                "skills": [
+                  "en-bing-forme"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Be + -ing, forme négative : « They ___ (not / play) football right now because it's raining. »",
+                "answer": [
+                  "aren't playing",
+                  "are not playing",
+                  "'re not playing",
+                  "arent playing"
+                ],
+                "solution": "aren't playing (are not playing / 're not playing)."
+              },
+              {
+                "id": "q3",
+                "type": "short",
+                "points": 1,
+                "lesson_part": 1,
+                "skills": [
+                  "en-ps-forme"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Présent simple : « Paul ___ (study) German on Tuesdays. »",
+                "answer": [
+                  "studies"
+                ],
+                "solution": "studies : consonne + y → ies à la 3e personne."
+              },
+              {
+                "id": "q4",
+                "type": "short",
+                "points": 1,
+                "lesson_part": 1,
+                "skills": [
+                  "en-ps-forme"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Présent simple, forme négative : « My parents ___ (not / eat) meat. »",
+                "answer": [
+                  "don't eat",
+                  "do not eat",
+                  "dont eat"
+                ],
+                "solution": "don't eat (do not eat) : sujet pluriel → don't + base verbale."
+              },
+              {
+                "id": "q5",
+                "type": "short",
+                "points": 1,
+                "lesson_part": 3,
+                "skills": [
+                  "en-bing-forme"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Be + -ing : « Listen! Someone ___ (sing) in the garden. »",
+                "answer": [
+                  "is singing",
+                  "'s singing"
+                ],
+                "solution": "is singing : someone = 3e personne du singulier → is."
+              },
+              {
+                "id": "q6",
+                "type": "short",
+                "points": 1,
+                "lesson_part": 3,
+                "skills": [
+                  "en-bing-forme"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Be + -ing : « I ___ (make) a cake for Mum's birthday at the moment. »",
+                "answer": [
+                  "am making",
+                  "'m making"
+                ],
+                "solution": "am making (I'm making) : on enlève le e muet de make."
+              }
+            ]
+          },
+          {
+            "label": "B · Je choisis et j'explique (8 points)",
+            "questions": [
+              {
+                "id": "q7",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 2,
+                "skills": [
+                  "en-ps-emploi",
+                  "en-choisir"
+                ],
+                "cognitive": "analyser",
+                "prompt": "« The Earth ___ around the Sun. »",
+                "options": [
+                  "is going",
+                  "goes",
+                  "go",
+                  "are going"
+                ],
+                "answer": 1,
+                "solution": "goes : vérité générale → présent simple ; go + es à la 3e personne."
+              },
+              {
+                "id": "q8",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 4,
+                "skills": [
+                  "en-bing-emploi",
+                  "en-choisir"
+                ],
+                "cognitive": "analyser",
+                "prompt": "« Look outside! It ___ again. »",
+                "options": [
+                  "snows",
+                  "snow",
+                  "is snowing",
+                  "are snowing"
+                ],
+                "answer": 2,
+                "solution": "is snowing : « Look outside! » indique une action en cours."
+              },
+              {
+                "id": "q9",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 4,
+                "skills": [
+                  "en-choisir"
+                ],
+                "cognitive": "analyser",
+                "prompt": "« My brother ___ chocolate. »",
+                "options": [
+                  "is loving",
+                  "love",
+                  "loves",
+                  "loving"
+                ],
+                "answer": 2,
+                "solution": "loves : love est un verbe d'état → présent simple, avec -s (my brother = he)."
+              },
+              {
+                "id": "q10",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 5,
+                "skills": [
+                  "en-choisir"
+                ],
+                "cognitive": "analyser",
+                "prompt": "« My cousin ___ in Canada, but this month he ___ with us in France. »",
+                "options": [
+                  "lives / stays",
+                  "is living / stays",
+                  "lives / is staying",
+                  "live / is staying"
+                ],
+                "answer": 2,
+                "solution": "lives / is staying : situation permanente → présent simple ; « this month » → situation temporaire, be + -ing."
+              },
+              {
+                "id": "q11",
+                "type": "short",
+                "points": 2,
+                "lesson_part": 1,
+                "skills": [
+                  "en-ps-forme"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Écris la question qui correspond à cette phrase : « Your brother plays the guitar. »",
+                "answer": [
+                  "Does your brother play the guitar?",
+                  "Does your brother play the guitar"
+                ],
+                "solution": "Does your brother play the guitar? — your brother = he → Does ; play reste à la base verbale (sans -s)."
+              },
+              {
+                "id": "q12",
+                "type": "open",
+                "points": 2,
+                "lesson_part": 4,
+                "skills": [
+                  "en-choisir"
+                ],
+                "cognitive": "analyser",
+                "prompt": "Explique en français pourquoi on écrit « I know the answer. » et non « I am knowing the answer. », même si l'on parle de maintenant.",
+                "solution": "Know est un verbe d'état : il exprime une connaissance, pas une action que l'on est en train de faire. Les verbes d'état (know, like, want, understand…) s'emploient normalement au présent simple, même quand on parle du moment présent.",
+                "rubric": "1 pt : know est un verbe d'état (connaissance, pensée, pas une action). 1 pt : règle : les verbes d'état restent au présent simple, même pour parler de maintenant (un exemple d'autre verbe d'état est un plus)."
+              }
+            ]
+          },
+          {
+            "label": "C · J'écris (6 points)",
+            "questions": [
+              {
+                "id": "q13",
+                "type": "open",
+                "points": 6,
+                "lesson_part": 5,
+                "skills": [
+                  "en-ecrire",
+                  "en-ps-forme",
+                  "en-bing-forme",
+                  "en-choisir"
+                ],
+                "cognitive": "rediger",
+                "prompt": "Write a short message (60 to 80 words) to an English friend. Describe your usual school day (at least 3 sentences in the présent simple, with frequency adverbs), then say what you and your family are doing right now or this week (at least 3 sentences with be + -ing).",
+                "solution": "Exemple : Hi Amy! On school days, I always get up at 6:45. I usually take the bus, and I often meet my friends in front of the school. We never have lessons on Wednesday afternoons. Right now, I'm sitting on the sofa. My dad is cooking pasta and my sister is playing the piano. This week, we are preparing a trip to Scotland! See you soon, Inès",
+                "rubric": "2 pts : au moins 3 phrases au présent simple correctes et bien employées (habitudes), dont au moins un adverbe de fréquence bien placé. 2 pts : au moins 3 phrases en be + -ing correctes et bien employées (maintenant / cette semaine). 1 pt : formes exactes (-s à la 3e personne, be présent, orthographe en -ing, verbes d'état au présent simple). 1 pt : texte cohérent, longueur respectée (60 à 80 mots), vocabulaire varié."
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

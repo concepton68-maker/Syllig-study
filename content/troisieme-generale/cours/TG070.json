@@ -1,0 +1,1159 @@
+{
+  "format": "syllig-course/1",
+  "code": "TG070",
+  "level": "troisieme-generale",
+  "subject": "Histoire-Géographie",
+  "chapter": "Histoire 1 – L'Europe, un théâtre majeur des guerres totales (1914-1945)",
+  "title": "Violences de guerre et génocide des Arméniens",
+  "skills": [
+    {
+      "id": "hg-violences",
+      "label": "Caractériser les violences de guerre contre les soldats et les civils"
+    },
+    {
+      "id": "hg-genocide",
+      "label": "Expliquer le contexte, les étapes et le bilan du génocide des Arméniens"
+    },
+    {
+      "id": "hg-notions-violence",
+      "label": "Définir les notions : génocide, crime contre l'humanité, brutalisation, négationnisme"
+    },
+    {
+      "id": "hg-reperes-violences",
+      "label": "Situer les événements dans le temps et dans l'espace"
+    },
+    {
+      "id": "hg-acteurs-violences",
+      "label": "Identifier les acteurs : responsables, victimes, témoins"
+    },
+    {
+      "id": "hg-analyse-doc",
+      "label": "Analyser un document historique (nature, auteur, date, idées)"
+    },
+    {
+      "id": "hg-redaction",
+      "label": "Rédiger un développement construit"
+    }
+  ],
+  "lesson": {
+    "duration_min": 35,
+    "objectives": [
+      "décrire les violences subies par les soldats et par les civils pendant la Grande Guerre ;",
+      "expliquer le contexte, les étapes et le bilan du génocide des Arméniens ;",
+      "définir les notions de génocide, crime contre l'humanité et négationnisme ;",
+      "connaître les repères, les acteurs et la reconnaissance du génocide."
+    ],
+    "essential": "La Première Guerre mondiale est une guerre de violence de masse, contre les soldats comme contre les civils. En 1915-1916, le gouvernement jeune-turc de l'Empire ottoman organise la destruction des Arméniens : c'est un **génocide**, qui fait environ 1,2 à 1,5 million de victimes. La France l'a reconnu par la loi en 2001.",
+    "parts": [
+      {
+        "title": "Contexte : une guerre d'une violence inédite",
+        "blocks": [
+          {
+            "type": "text",
+            "text": "La Première Guerre mondiale atteint un niveau de violence jamais vu. Cette violence touche les **soldats**, mais aussi, massivement, les **civils**. Ce cours est grave : prends le temps de le lire calmement. Comprendre ces faits, c'est aussi rendre hommage aux victimes."
+          },
+          {
+            "type": "heading",
+            "text": "La violence contre les soldats"
+          },
+          {
+            "type": "text",
+            "text": "Les armes industrielles (artillerie lourde, mitrailleuses, gaz de combat) provoquent des blessures et des morts en masse. Environ 10 millions de soldats meurent. Plusieurs millions de soldats sont faits prisonniers et vivent souvent dans des camps difficiles."
+          },
+          {
+            "type": "heading",
+            "text": "La violence contre les civils en Europe"
+          },
+          {
+            "type": "list",
+            "items": [
+              "**Invasion de 1914** : en Belgique et dans le nord de la France, l'armée allemande, persuadée à tort que des civils tirent sur elle, exécute environ 6 500 civils (par exemple à Dinant, en Belgique) et incendie des villes comme Louvain et sa bibliothèque.",
+              "**Occupation** : dans le nord-est de la France occupé, les habitants subissent réquisitions, travail forcé, prises d'otages et déportations de civils (par exemple à Lille en 1916).",
+              "**Bombardements** de villes : la cathédrale de Reims est touchée dès 1914 ; Paris est bombardé en 1918 par des canons à longue portée.",
+              "**Blocus** : le blocus maritime britannique provoque de graves pénuries et la faim en Allemagne."
+            ]
+          },
+          {
+            "type": "callout",
+            "kind": "definition",
+            "title": "Violence de masse",
+            "text": "Violence qui frappe un très grand nombre de personnes à la fois, soldats ou civils, de façon organisée."
+          },
+          {
+            "type": "callout",
+            "kind": "retiens",
+            "text": "Dans une guerre totale, les civils ne sont plus épargnés : ils deviennent des cibles. La violence la plus extrême est le **génocide des Arméniens**, commis par le gouvernement de l'Empire ottoman en 1915-1916."
+          }
+        ],
+        "checkpoint": {
+          "variants": [
+            {
+              "prompt": "Pendant l'invasion de 1914, que subissent des civils belges et français ?",
+              "options": [
+                "Rien, les civils sont toujours protégés",
+                "Des exécutions et des destructions par l'armée allemande",
+                "Une évacuation vers les États-Unis",
+                "Une mobilisation dans l'armée allemande"
+              ],
+              "answer": 1,
+              "hint": "Relis le premier point de la liste « La violence contre les civils ».",
+              "explanation": "Environ 6 500 civils sont exécutés en 1914 en Belgique et dans le nord de la France ; des villes sont incendiées."
+            },
+            {
+              "prompt": "Qu'est-ce qu'une violence de masse ?",
+              "options": [
+                "Une violence qui touche une seule personne",
+                "Une violence qui frappe un très grand nombre de personnes de façon organisée",
+                "Une bagarre entre soldats",
+                "Un accident industriel"
+              ],
+              "answer": 1,
+              "hint": "Relis l'encadré « Définition ».",
+              "explanation": "La violence de masse frappe un très grand nombre de personnes à la fois, de manière organisée."
+            },
+            {
+              "prompt": "Quel effet a le blocus maritime britannique sur l'Allemagne ?",
+              "options": [
+                "Il provoque des pénuries et la faim",
+                "Il fait entrer l'Allemagne en guerre",
+                "Il libère les prisonniers",
+                "Il n'a aucun effet"
+              ],
+              "answer": 0,
+              "hint": "Cherche le mot « Blocus » dans la liste.",
+              "explanation": "Le blocus empêche l'Allemagne d'importer : pénuries et faim touchent la population civile."
+            }
+          ]
+        }
+      },
+      {
+        "title": "Déroulement : le génocide des Arméniens (1915-1916)",
+        "blocks": [
+          {
+            "type": "heading",
+            "text": "Les Arméniens dans l'Empire ottoman"
+          },
+          {
+            "type": "text",
+            "text": "Les **Arméniens** sont une minorité chrétienne de l'**Empire ottoman**, empire multiethnique à majorité musulmane. Ils sont environ 1,5 à 2 millions selon les estimations. Ils ont déjà subi de grands massacres en 1894-1896 et en 1909 (à Adana)."
+          },
+          {
+            "type": "text",
+            "text": "Depuis 1913, l'Empire est dirigé par les **Jeunes-Turcs** (le Comité Union et Progrès), qui défendent un nationalisme turc et rêvent d'un empire homogène. Trois hommes dominent le pouvoir : **Talaat Pacha**, **Enver Pacha** et **Djemal Pacha**."
+          },
+          {
+            "type": "text",
+            "text": "Fin 1914, l'Empire ottoman entre en guerre aux côtés de l'Allemagne. Après une lourde défaite contre la Russie à **Sarikamich** (janvier 1915), le pouvoir accuse les Arméniens de trahison, présentés comme un « ennemi intérieur ». La guerre sert de prétexte et de couverture."
+          },
+          {
+            "type": "heading",
+            "text": "Les étapes d'une destruction organisée"
+          },
+          {
+            "type": "list",
+            "ordered": true,
+            "items": [
+              "**Début 1915** : les soldats arméniens de l'armée ottomane sont désarmés et envoyés dans des bataillons de travail ; beaucoup sont exécutés.",
+              "**24 avril 1915** : à Constantinople (Istanbul), plusieurs centaines d'intellectuels et de responsables arméniens sont arrêtés ; la plupart sont assassinés. Cette date est devenue celle de la commémoration du génocide.",
+              "**À partir de mai 1915** : une loi ordonne la **déportation** des Arméniens. Dans de nombreuses régions, les hommes sont massacrés sur place. Les femmes, les enfants et les personnes âgées sont déportés à pied, en convois, vers les déserts de Syrie : ce sont des **marches de la mort** (faim, soif, violences, enlèvements, conversions forcées).",
+              "**1916** : les survivants rassemblés dans des camps du désert syrien, notamment autour de **Deir ez-Zor**, sont victimes d'une nouvelle vague de massacres."
+            ]
+          },
+          {
+            "type": "text",
+            "text": "Des unités spéciales, l'« Organisation spéciale », participent aux massacres. Les biens des Arméniens sont confisqués, leurs églises et leurs villages détruits."
+          },
+          {
+            "type": "callout",
+            "kind": "essentiel",
+            "title": "Bilan",
+            "text": "Environ **1,2 à 1,5 million** d'Arméniens sont tués, soit environ les deux tiers des Arméniens de l'Empire. Les survivants se dispersent dans le monde (Liban, Syrie, France, États-Unis…) : c'est la naissance d'une importante **diaspora**."
+          },
+          {
+            "type": "callout",
+            "kind": "attention",
+            "text": "D'autres chrétiens de l'Empire, comme les Assyro-Chaldéens et les Grecs pontiques, sont aussi victimes de violences de masse pendant cette période."
+          },
+          {
+            "type": "callout",
+            "kind": "plus",
+            "text": "Il y eut aussi des résistances et des sauvetages : en 1915, des Arméniens réfugiés sur le mont **Musa Dagh** résistent plusieurs semaines, puis environ 4 000 d'entre eux sont évacués par des navires de guerre français. Certains fonctionnaires ottomans refusent d'appliquer les ordres, et des familles turques, kurdes ou arabes cachent des Arméniens."
+          }
+        ],
+        "checkpoint": {
+          "variants": [
+            {
+              "prompt": "Pourquoi la date du 24 avril 1915 est-elle importante ?",
+              "options": [
+                "C'est le jour de l'entrée en guerre de l'Empire ottoman",
+                "C'est l'arrestation des élites arméniennes de Constantinople, date de commémoration du génocide",
+                "C'est la fin du génocide",
+                "C'est la signature d'un traité de paix"
+              ],
+              "answer": 1,
+              "hint": "Relis l'étape 2 de la liste numérotée.",
+              "explanation": "Le 24 avril 1915, plusieurs centaines d'intellectuels et de responsables arméniens sont arrêtés à Constantinople ; c'est aujourd'hui la date de commémoration."
+            },
+            {
+              "prompt": "Qui dirige l'Empire ottoman pendant le génocide ?",
+              "options": [
+                "Le sultan Abdülhamid II seul",
+                "Les Jeunes-Turcs, avec Talaat, Enver et Djemal",
+                "L'empereur Guillaume II",
+                "Le tsar Nicolas II"
+              ],
+              "answer": 1,
+              "hint": "Relis le deuxième paragraphe de la partie.",
+              "explanation": "Le pouvoir est aux mains des Jeunes-Turcs (Comité Union et Progrès), dominés par Talaat, Enver et Djemal Pacha."
+            },
+            {
+              "prompt": "Combien d'Arméniens sont tués lors du génocide, selon les estimations des historiens ?",
+              "options": [
+                "Environ 10 000",
+                "Environ 100 000",
+                "Environ 1,2 à 1,5 million",
+                "Environ 10 millions"
+              ],
+              "answer": 2,
+              "hint": "Relis l'encadré « Bilan ».",
+              "explanation": "Les historiens estiment qu'environ 1,2 à 1,5 million d'Arméniens sont tués, soit environ les deux tiers des Arméniens de l'Empire."
+            },
+            {
+              "prompt": "Que sont les « marches de la mort » ?",
+              "options": [
+                "Des défilés militaires",
+                "Des déportations à pied, en convois, vers les déserts de Syrie, où beaucoup meurent",
+                "Des manifestations pour la paix",
+                "Des courses organisées par l'armée"
+              ],
+              "answer": 1,
+              "hint": "Relis l'étape 3 de la liste.",
+              "explanation": "Femmes, enfants et personnes âgées sont déportés à pied vers le désert ; la faim, la soif et les violences en tuent un très grand nombre."
+            }
+          ]
+        }
+      },
+      {
+        "title": "Notions clés : nommer les crimes",
+        "blocks": [
+          {
+            "type": "table",
+            "caption": "Les mots pour comprendre",
+            "columns": [
+              "Notion",
+              "Définition",
+              "Exemple"
+            ],
+            "rows": [
+              [
+                "**Génocide**",
+                "Crime commis dans l'**intention de détruire**, en tout ou en partie, un groupe national, ethnique, racial ou religieux, comme tel. Le mot est inventé en 1944 par le juriste **Raphael Lemkin** ; il est défini par une convention de l'ONU le 9 décembre 1948.",
+                "Le génocide des Arméniens (1915-1916)."
+              ],
+              [
+                "**Crime contre l'humanité**",
+                "Crime grave commis contre des civils de façon massive ou organisée (meurtres, déportations…).",
+                "Dès le 24 mai 1915, la France, le Royaume-Uni et la Russie dénoncent les « crimes contre l'humanité et la civilisation » commis contre les Arméniens."
+              ],
+              [
+                "**Déportation**",
+                "Transfert forcé d'une population loin de chez elle.",
+                "Les convois d'Arméniens vers les déserts de Syrie."
+              ],
+              [
+                "**Brutalisation**",
+                "Notion de l'historien George Mosse : la guerre banalise la violence, qui se prolonge après 1918 dans la vie politique.",
+                "La violence des mouvements extrémistes de l'entre-deux-guerres."
+              ],
+              [
+                "**Négationnisme**",
+                "Fait de nier la réalité d'un génocide.",
+                "L'État turc refuse toujours de reconnaître le génocide des Arméniens."
+              ]
+            ]
+          },
+          {
+            "type": "callout",
+            "kind": "methode",
+            "title": "Massacre ou génocide ?",
+            "text": "Un massacre tue de nombreuses personnes. On parle de **génocide** quand il y a une **volonté organisée**, en général par un État, de faire disparaître un groupe **pour ce qu'il est** (ici, parce qu'ils sont Arméniens), y compris les femmes et les enfants."
+          },
+          {
+            "type": "callout",
+            "kind": "retiens",
+            "text": "Le génocide des Arméniens est le premier génocide du XXe siècle. Il a été commis par le gouvernement jeune-turc, à la faveur de la guerre."
+          }
+        ],
+        "checkpoint": {
+          "variants": [
+            {
+              "prompt": "Qu'est-ce qui distingue un génocide d'un massacre ?",
+              "options": [
+                "Le nombre de morts uniquement",
+                "L'intention organisée de détruire un groupe pour ce qu'il est",
+                "Le fait qu'il se déroule pendant une guerre",
+                "L'utilisation d'armes à feu"
+              ],
+              "answer": 1,
+              "hint": "Relis l'encadré « Massacre ou génocide ? ».",
+              "explanation": "Le génocide suppose une intention organisée de détruire un groupe, en tout ou en partie, en raison de son identité."
+            },
+            {
+              "prompt": "Qui a inventé le mot « génocide » ?",
+              "options": [
+                "Henry Morgenthau",
+                "Raphael Lemkin",
+                "George Mosse",
+                "Talaat Pacha"
+              ],
+              "answer": 1,
+              "hint": "Cherche dans la ligne « Génocide » du tableau.",
+              "explanation": "Le juriste Raphael Lemkin invente le mot en 1944."
+            },
+            {
+              "prompt": "Que signifie « négationnisme » ?",
+              "options": [
+                "Le fait de nier la réalité d'un génocide",
+                "Le fait de négocier la paix",
+                "Le fait de refuser de combattre",
+                "Une forme de déportation"
+              ],
+              "answer": 0,
+              "hint": "Regarde la dernière ligne du tableau.",
+              "explanation": "Le négationnisme consiste à nier la réalité d'un génocide."
+            }
+          ]
+        }
+      },
+      {
+        "title": "Repères chronologiques",
+        "blocks": [
+          {
+            "type": "table",
+            "caption": "Des violences de guerre à la reconnaissance du génocide",
+            "columns": [
+              "Date",
+              "Événement"
+            ],
+            "rows": [
+              [
+                "1894-1896 et 1909",
+                "Massacres d'Arméniens dans l'Empire ottoman (dont Adana, 1909)"
+              ],
+              [
+                "Août 1914",
+                "Invasion de la Belgique et du nord de la France : exécutions de civils (Dinant), incendie de Louvain"
+              ],
+              [
+                "Novembre 1914",
+                "L'Empire ottoman entre en guerre aux côtés de l'Allemagne"
+              ],
+              [
+                "Janvier 1915",
+                "Défaite ottomane de Sarikamich face à la Russie"
+              ],
+              [
+                "**24 avril 1915**",
+                "**Arrestation des élites arméniennes de Constantinople** : début symbolique du génocide"
+              ],
+              [
+                "24 mai 1915",
+                "Déclaration de la France, du Royaume-Uni et de la Russie dénonçant des « crimes contre l'humanité et la civilisation »"
+              ],
+              [
+                "Mai 1915 – 1916",
+                "Déportations, marches de la mort et massacres ; massacres de Deir ez-Zor (1916)"
+              ],
+              [
+                "1919-1920",
+                "À Constantinople, des tribunaux militaires ottomans condamnent à mort, en leur absence, les principaux responsables (Talaat, Enver, Djemal), qui ont fui"
+              ],
+              [
+                "1944 – 1948",
+                "Lemkin invente le mot « génocide » (1944) ; convention de l'ONU contre le génocide (9 décembre 1948)"
+              ],
+              [
+                "**29 janvier 2001**",
+                "**Loi française de reconnaissance** : « La France reconnaît publiquement le génocide arménien de 1915. »"
+              ],
+              [
+                "2019",
+                "Le 24 avril devient en France la journée nationale de commémoration du génocide arménien"
+              ]
+            ]
+          },
+          {
+            "type": "callout",
+            "kind": "essentiel",
+            "title": "Repères du brevet",
+            "text": "**1915** : génocide des Arméniens (commémoré le **24 avril**) · **2001** : reconnaissance par la France."
+          }
+        ],
+        "checkpoint": {
+          "variants": [
+            {
+              "prompt": "En quelle année la France reconnaît-elle par la loi le génocide des Arméniens ?",
+              "options": [
+                "1915",
+                "1948",
+                "2001",
+                "2019"
+              ],
+              "answer": 2,
+              "hint": "Cherche le mot « reconnaissance » dans le tableau.",
+              "explanation": "La loi du 29 janvier 2001 dispose : « La France reconnaît publiquement le génocide arménien de 1915. »"
+            },
+            {
+              "prompt": "Quand les Alliés dénoncent-ils des « crimes contre l'humanité et la civilisation » ?",
+              "options": [
+                "Le 24 mai 1915",
+                "Le 11 novembre 1918",
+                "Le 9 décembre 1948",
+                "Le 29 janvier 2001"
+              ],
+              "answer": 0,
+              "hint": "Cherche l'expression entre guillemets dans le tableau.",
+              "explanation": "Dès le 24 mai 1915, la France, le Royaume-Uni et la Russie dénoncent ces crimes."
+            },
+            {
+              "prompt": "Que se passe-t-il en 1948 ?",
+              "options": [
+                "La fin du génocide",
+                "L'adoption par l'ONU d'une convention contre le génocide",
+                "L'entrée en guerre de l'Empire ottoman",
+                "La loi française de reconnaissance"
+              ],
+              "answer": 1,
+              "hint": "Regarde la ligne « 1944 – 1948 ».",
+              "explanation": "Le 9 décembre 1948, l'ONU adopte la convention pour la prévention et la répression du crime de génocide."
+            }
+          ]
+        }
+      },
+      {
+        "title": "Acteurs : responsables, victimes, témoins et mémoire",
+        "blocks": [
+          {
+            "type": "table",
+            "caption": "Les acteurs à connaître",
+            "columns": [
+              "Acteur",
+              "Rôle"
+            ],
+            "rows": [
+              [
+                "Talaat Pacha",
+                "Ministre de l'Intérieur ottoman, principal organisateur des déportations."
+              ],
+              [
+                "Enver Pacha et Djemal Pacha",
+                "Ministres de la Guerre et de la Marine, membres du trio jeune-turc au pouvoir."
+              ],
+              [
+                "Les Arméniens",
+                "Victimes : hommes, femmes, enfants, tués ou déportés parce qu'ils étaient Arméniens."
+              ],
+              [
+                "Henry Morgenthau",
+                "Ambassadeur des États-Unis à Constantinople ; il alerte son gouvernement dès 1915 et publie ses souvenirs en 1918."
+              ],
+              [
+                "Johannes Lepsius et Armin T. Wegner",
+                "Allemands témoins des faits : Lepsius, pasteur, publie un rapport en 1916 ; Wegner, infirmier militaire, photographie les déportés."
+              ],
+              [
+                "Raphael Lemkin",
+                "Juriste qui invente le mot « génocide » (1944)."
+              ]
+            ]
+          },
+          {
+            "type": "heading",
+            "text": "Une mémoire et une reconnaissance difficiles"
+          },
+          {
+            "type": "text",
+            "text": "Après la guerre, les principaux responsables sont condamnés par la justice ottomane, mais en leur absence : ils ont fui et ne purgent pas leur peine. La République de Turquie, fondée en 1923, refuse ensuite de reconnaître le génocide. Les descendants des rescapés se battent pour que la vérité soit reconnue."
+          },
+          {
+            "type": "quote",
+            "text": "La France reconnaît publiquement le génocide arménien de 1915.",
+            "source": "Loi n° 2001-70 du 29 janvier 2001, article unique."
+          },
+          {
+            "type": "text",
+            "text": "D'autres pays et institutions l'ont reconnu, comme le Parlement européen (1987), l'Allemagne (2016) ou les États-Unis (2021). En France, le 24 avril est depuis 2019 une journée nationale de commémoration."
+          },
+          {
+            "type": "callout",
+            "kind": "retiens",
+            "text": "Reconnaître un génocide, c'est dire la vérité historique, honorer les victimes et lutter contre le négationnisme."
+          }
+        ],
+        "checkpoint": {
+          "variants": [
+            {
+              "prompt": "Quel diplomate américain alerte son gouvernement dès 1915 ?",
+              "options": [
+                "Woodrow Wilson",
+                "Henry Morgenthau",
+                "Raphael Lemkin",
+                "Armin T. Wegner"
+              ],
+              "answer": 1,
+              "hint": "Regarde le tableau des acteurs : qui est ambassadeur ?",
+              "explanation": "Henry Morgenthau, ambassadeur des États-Unis à Constantinople, alerte Washington dès 1915."
+            },
+            {
+              "prompt": "Quel responsable ottoman est le principal organisateur des déportations ?",
+              "options": [
+                "Talaat Pacha",
+                "Johannes Lepsius",
+                "Guillaume II",
+                "Henry Morgenthau"
+              ],
+              "answer": 0,
+              "hint": "Regarde la première ligne du tableau.",
+              "explanation": "Talaat Pacha, ministre de l'Intérieur, organise les déportations."
+            },
+            {
+              "prompt": "Pourquoi la reconnaissance du génocide est-elle importante ?",
+              "options": [
+                "Pour désigner un vainqueur de la guerre",
+                "Pour dire la vérité historique, honorer les victimes et lutter contre le négationnisme",
+                "Pour modifier les frontières actuelles",
+                "Elle n'a aucune importance"
+              ],
+              "answer": 1,
+              "hint": "Relis l'encadré « Je retiens ».",
+              "explanation": "Reconnaître un génocide, c'est établir la vérité, honorer les victimes et combattre le négationnisme."
+            }
+          ]
+        }
+      }
+    ],
+    "memo": [
+      {
+        "label": "Violences de guerre",
+        "text": "Soldats (armes industrielles, environ 10 millions de morts) et civils (exécutions de 1914, occupation, bombardements, blocus)."
+      },
+      {
+        "label": "Génocide",
+        "text": "Intention organisée de détruire un groupe, en tout ou en partie, pour ce qu'il est. Mot inventé par Lemkin (1944), convention de l'ONU (1948)."
+      },
+      {
+        "label": "Génocide des Arméniens",
+        "text": "1915-1916, commis par le gouvernement jeune-turc (Talaat, Enver, Djemal) : arrestation des élites (24 avril 1915), déportations, marches de la mort, massacres (Deir ez-Zor)."
+      },
+      {
+        "label": "Bilan",
+        "text": "Environ 1,2 à 1,5 million de morts, soit environ deux tiers des Arméniens de l'Empire ottoman ; naissance d'une diaspora."
+      },
+      {
+        "label": "Témoins",
+        "text": "Henry Morgenthau (ambassadeur américain), Johannes Lepsius, Armin T. Wegner. Déclaration alliée du 24 mai 1915 : « crimes contre l'humanité et la civilisation »."
+      },
+      {
+        "label": "Repères du brevet",
+        "text": "1915 : génocide des Arméniens · 24 avril : commémoration · 29 janvier 2001 : reconnaissance par la France."
+      }
+    ]
+  },
+  "exercises": {
+    "duration_min": 30,
+    "instructions": "Commence par les exercices ★ (je repère), puis ★★ (j'analyse un document) et ★★★ (je rédige). Prends le temps de lire les documents. Les corrigés s'affichent seulement après tes réponses.",
+    "pass_threshold": 8,
+    "texts": [
+      {
+        "id": "t1",
+        "label": "Document 1 · Le témoignage d'un ambassadeur",
+        "source": "Henry Morgenthau, ambassadeur des États-Unis dans l'Empire ottoman de 1913 à 1916, « Ambassador Morgenthau's Story », 1918, chapitre XXIV (extrait traduit de l'anglais pour ce cours, domaine public).",
+        "paragraphs": [
+          "Quand les autorités turques ont donné l'ordre de ces déportations, elles signaient en réalité l'arrêt de mort de tout un peuple ; elles le comprenaient fort bien et, dans leurs conversations avec moi, elles ne cherchaient pas particulièrement à le cacher."
+        ]
+      },
+      {
+        "id": "t2",
+        "label": "Document 2 · Deux textes juridiques",
+        "source": "Convention pour la prévention et la répression du crime de génocide, ONU, 9 décembre 1948, article II (extrait) ; loi n° 2001-70 du 29 janvier 2001 (texte officiel).",
+        "paragraphs": [
+          "Convention de l'ONU (1948) : « Le génocide s'entend de l'un quelconque des actes ci-après, commis dans l'intention de détruire, en tout ou en partie, un groupe national, ethnique, racial ou religieux, comme tel : meurtre de membres du groupe ; atteinte grave à l'intégrité physique ou mentale de membres du groupe ; soumission intentionnelle du groupe à des conditions d'existence devant entraîner sa destruction physique totale ou partielle […]. »",
+          "Loi française du 29 janvier 2001, article unique : « La France reconnaît publiquement le génocide arménien de 1915. »"
+        ]
+      }
+    ],
+    "items": [
+      {
+        "id": "ex1",
+        "type": "short",
+        "stars": 1,
+        "lesson_part": 4,
+        "skills": [
+          "hg-reperes-violences"
+        ],
+        "cognitive": "connaitre",
+        "prompt": "En quelle année commence le génocide des Arméniens ?",
+        "answer": [
+          "1915",
+          "en 1915",
+          "avril 1915",
+          "en avril 1915",
+          "24 avril 1915",
+          "le 24 avril 1915"
+        ],
+        "solution": "1915 (arrestation des élites arméniennes de Constantinople le 24 avril 1915, puis déportations)."
+      },
+      {
+        "id": "ex2",
+        "type": "qcm",
+        "stars": 1,
+        "lesson_part": 2,
+        "skills": [
+          "hg-reperes-violences"
+        ],
+        "cognitive": "connaitre",
+        "prompt": "Quelle date est devenue celle de la commémoration du génocide des Arméniens ?",
+        "options": [
+          "Le 11 novembre",
+          "Le 24 avril",
+          "Le 9 décembre",
+          "Le 28 juin"
+        ],
+        "answer": 1,
+        "solution": "Le 24 avril, jour de l'arrestation des élites arméniennes de Constantinople en 1915."
+      },
+      {
+        "id": "ex3",
+        "type": "short",
+        "stars": 1,
+        "lesson_part": 5,
+        "skills": [
+          "hg-acteurs-violences"
+        ],
+        "cognitive": "connaitre",
+        "prompt": "Quel ministre de l'Intérieur ottoman est le principal organisateur des déportations ?",
+        "answer": [
+          "Talaat",
+          "Talaat Pacha",
+          "Talat",
+          "Talat Pacha",
+          "Mehmed Talaat",
+          "Mehmed Talaat Pacha"
+        ],
+        "solution": "Talaat Pacha."
+      },
+      {
+        "id": "ex4",
+        "type": "short",
+        "stars": 1,
+        "lesson_part": 4,
+        "skills": [
+          "hg-reperes-violences"
+        ],
+        "cognitive": "connaitre",
+        "prompt": "En quelle année la France reconnaît-elle le génocide des Arméniens par une loi ?",
+        "answer": [
+          "2001",
+          "en 2001",
+          "29 janvier 2001",
+          "le 29 janvier 2001",
+          "janvier 2001"
+        ],
+        "solution": "2001 (loi du 29 janvier 2001)."
+      },
+      {
+        "id": "ex5",
+        "type": "open",
+        "stars": 2,
+        "text_ref": "t1",
+        "lesson_part": 5,
+        "skills": [
+          "hg-analyse-doc",
+          "hg-acteurs-violences"
+        ],
+        "cognitive": "analyser",
+        "prompt": "Présente le document 1 : nature, auteur (et sa fonction), date. Pourquoi ce témoin est-il bien placé pour savoir ce qui se passe ?",
+        "solution": "C'est un extrait des souvenirs (mémoires) publiés en 1918 par Henry Morgenthau, ambassadeur des États-Unis dans l'Empire ottoman de 1913 à 1916. Il est bien placé : il vit à Constantinople, rencontre les dirigeants ottomans et reçoit des rapports de consuls et de témoins. Les États-Unis sont alors neutres dans ce conflit (jusqu'en 1917), ce qui renforce la valeur de son témoignage."
+      },
+      {
+        "id": "ex6",
+        "type": "qcm",
+        "stars": 2,
+        "text_ref": "t1",
+        "lesson_part": 2,
+        "skills": [
+          "hg-analyse-doc",
+          "hg-genocide"
+        ],
+        "cognitive": "analyser",
+        "prompt": "Dans le document 1, quelle expression montre que les déportations visent la destruction des Arméniens ?",
+        "options": [
+          "« les autorités turques »",
+          "« l'arrêt de mort de tout un peuple »",
+          "« dans leurs conversations avec moi »",
+          "« ces déportations »"
+        ],
+        "answer": 1,
+        "solution": "« l'arrêt de mort de tout un peuple » : la déportation n'est pas un simple déplacement, elle vise à faire disparaître les Arméniens."
+      },
+      {
+        "id": "ex7",
+        "type": "open",
+        "stars": 2,
+        "text_ref": "t1",
+        "lesson_part": 3,
+        "skills": [
+          "hg-analyse-doc",
+          "hg-notions-violence"
+        ],
+        "cognitive": "analyser",
+        "prompt": "D'après le document 1, les dirigeants ottomans savaient-ils ce qu'ils faisaient ? Justifie avec une citation et explique pourquoi c'est important pour parler de génocide.",
+        "solution": "Oui : « elles le comprenaient fort bien » et « ne cherchaient pas particulièrement à le cacher ». C'est important car le génocide se définit par l'intention de détruire un groupe : ce témoignage montre que cette intention existait au sommet de l'État."
+      },
+      {
+        "id": "ex8",
+        "type": "open",
+        "stars": 2,
+        "text_ref": "t2",
+        "lesson_part": 3,
+        "skills": [
+          "hg-notions-violence",
+          "hg-genocide",
+          "hg-analyse-doc"
+        ],
+        "cognitive": "analyser",
+        "prompt": "À l'aide du document 2 et du cours, montre que les violences subies par les Arméniens correspondent à la définition du génocide (cite au moins deux actes de la convention).",
+        "solution": "La convention parle d'actes commis « dans l'intention de détruire […] un groupe national, ethnique, racial ou religieux ». Les Arméniens sont visés en tant que groupe. On retrouve le « meurtre de membres du groupe » (massacres des hommes, des élites le 24 avril 1915) et la « soumission intentionnelle du groupe à des conditions d'existence devant entraîner sa destruction » (marches de la mort vers les déserts de Syrie, faim et soif)."
+      },
+      {
+        "id": "ex9",
+        "type": "open",
+        "stars": 3,
+        "lesson_part": 1,
+        "skills": [
+          "hg-violences",
+          "hg-redaction"
+        ],
+        "cognitive": "rediger",
+        "prompt": "Rédige un paragraphe argumenté (8 à 10 lignes) : montre que, pendant la Première Guerre mondiale, les civils deviennent des victimes de la guerre en Europe. Utilise au moins deux exemples précis.",
+        "solution": "Exemple : Pendant la Première Guerre mondiale, les civils ne sont plus épargnés. D'abord, lors de l'invasion de 1914, l'armée allemande exécute environ 6 500 civils en Belgique et dans le nord de la France, comme à Dinant, et incendie Louvain. Ensuite, les habitants des régions occupées subissent réquisitions, travail forcé et déportations, comme à Lille en 1916. Enfin, les villes sont bombardées (Reims, Paris en 1918) et le blocus provoque la faim en Allemagne. Les civils sont donc pleinement touchés par la violence de cette guerre totale."
+      },
+      {
+        "id": "ex10",
+        "type": "open",
+        "stars": 3,
+        "lesson_part": 2,
+        "skills": [
+          "hg-genocide",
+          "hg-notions-violence",
+          "hg-redaction"
+        ],
+        "cognitive": "rediger",
+        "prompt": "Rédige un développement construit (une quinzaine de lignes) : « Racontez le génocide des Arméniens et expliquez pourquoi on parle de génocide. » Fais une introduction, deux parties (le contexte et les étapes ; le bilan et la reconnaissance) et une conclusion.",
+        "solution": "Introduction : pendant la Première Guerre mondiale, l'Empire ottoman, dirigé par les Jeunes-Turcs, organise la destruction de sa minorité chrétienne arménienne. Partie 1 : contexte (entrée en guerre fin 1914, défaite de Sarikamich, Arméniens accusés de trahison) ; étapes (soldats désarmés et exécutés, arrestation des élites le 24 avril 1915, loi de déportation de mai 1915, massacres des hommes, marches de la mort vers les déserts de Syrie, massacres de Deir ez-Zor en 1916). Partie 2 : bilan d'environ 1,2 à 1,5 million de morts, soit environ deux tiers des Arméniens de l'Empire ; on parle de génocide car il y a une intention organisée par l'État de détruire un groupe pour ce qu'il est (témoignage de Morgenthau) ; reconnaissance par la France en 2001, mais négationnisme de l'État turc. Conclusion : premier génocide du XXe siècle, il montre jusqu'où peut aller la violence de guerre ; il est commémoré chaque 24 avril."
+      }
+    ]
+  },
+  "evaluation": {
+    "duration_min": 30,
+    "conditions": "Comme au brevet : sans la leçon ni les corrigés, en 30 minutes. Barème : A = 6 points · B = 6 points · C = 8 points. Utilise un vocabulaire précis et des repères exacts.",
+    "total_points": 20,
+    "variants": [
+      {
+        "texts": [
+          {
+            "id": "d1",
+            "label": "Document · Le télégramme de l'ambassadeur",
+            "source": "Henry Morgenthau, ambassadeur des États-Unis à Constantinople, télégramme au secrétaire d'État américain, 16 juillet 1915 (extrait traduit de l'anglais pour ce cours, domaine public).",
+            "paragraphs": [
+              "Les déportations et les excès commis contre des Arméniens paisibles se multiplient et, d'après les récits bouleversants de témoins oculaires, il apparaît qu'une campagne d'extermination raciale est en cours sous le prétexte de représailles contre une rébellion."
+            ]
+          }
+        ],
+        "sections": [
+          {
+            "label": "A · Je connais mes repères (6 points)",
+            "questions": [
+              {
+                "id": "q1",
+                "type": "short",
+                "points": 1,
+                "lesson_part": 4,
+                "skills": [
+                  "hg-reperes-violences"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "En quelle année commence le génocide des Arméniens ?",
+                "answer": [
+                  "1915",
+                  "en 1915",
+                  "avril 1915",
+                  "24 avril 1915",
+                  "le 24 avril 1915"
+                ],
+                "solution": "1915.",
+                "rubric": "1 pt : 1915."
+              },
+              {
+                "id": "q2",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 2,
+                "skills": [
+                  "hg-genocide"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Quel État commet le génocide des Arméniens ?",
+                "options": [
+                  "L'Allemagne",
+                  "L'Empire ottoman",
+                  "La Russie",
+                  "L'Autriche-Hongrie"
+                ],
+                "answer": 1,
+                "solution": "L'Empire ottoman, dirigé par le gouvernement jeune-turc.",
+                "rubric": "1 pt : bonne réponse."
+              },
+              {
+                "id": "q3",
+                "type": "short",
+                "points": 1,
+                "lesson_part": 5,
+                "skills": [
+                  "hg-reperes-violences"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "En quelle année la France reconnaît-elle le génocide des Arméniens par la loi ?",
+                "answer": [
+                  "2001",
+                  "en 2001",
+                  "29 janvier 2001",
+                  "le 29 janvier 2001",
+                  "janvier 2001"
+                ],
+                "solution": "2001 (loi du 29 janvier 2001).",
+                "rubric": "1 pt : 2001."
+              },
+              {
+                "id": "q4",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 2,
+                "skills": [
+                  "hg-genocide"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Combien d'Arméniens environ sont tués lors du génocide ?",
+                "options": [
+                  "Environ 15 000",
+                  "Environ 150 000",
+                  "Environ 1,2 à 1,5 million",
+                  "Environ 12 millions"
+                ],
+                "answer": 2,
+                "solution": "Environ 1,2 à 1,5 million, soit environ les deux tiers des Arméniens de l'Empire.",
+                "rubric": "1 pt : bonne réponse."
+              },
+              {
+                "id": "q5",
+                "type": "open",
+                "points": 2,
+                "lesson_part": 3,
+                "skills": [
+                  "hg-notions-violence"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Définis le mot « génocide ».",
+                "solution": "Un crime commis dans l'intention de détruire, en tout ou en partie, un groupe national, ethnique, racial ou religieux, en raison de ce qu'il est.",
+                "rubric": "1 pt : idée d'intention / de volonté organisée de détruire. 1 pt : un groupe visé pour ce qu'il est (national, ethnique, racial ou religieux)."
+              }
+            ]
+          },
+          {
+            "label": "B · J'analyse un document (6 points)",
+            "questions": [
+              {
+                "id": "q6",
+                "type": "open",
+                "points": 1,
+                "text_ref": "d1",
+                "lesson_part": 5,
+                "skills": [
+                  "hg-analyse-doc"
+                ],
+                "cognitive": "analyser",
+                "prompt": "Présente le document : nature, auteur (et sa fonction), date, destinataire.",
+                "solution": "Un télégramme diplomatique d'Henry Morgenthau, ambassadeur des États-Unis à Constantinople, envoyé le 16 juillet 1915 au secrétaire d'État (ministre des Affaires étrangères) des États-Unis.",
+                "rubric": "0,5 pt : nature (télégramme diplomatique) et date. 0,5 pt : auteur, fonction et destinataire."
+              },
+              {
+                "id": "q7",
+                "type": "open",
+                "points": 2,
+                "text_ref": "d1",
+                "lesson_part": 2,
+                "skills": [
+                  "hg-analyse-doc",
+                  "hg-genocide"
+                ],
+                "cognitive": "analyser",
+                "prompt": "Qu'est-ce que l'ambassadeur décrit ? Sur quoi s'appuie-t-il ? Cite le texte.",
+                "solution": "Il décrit des déportations et des violences (« excès ») contre des Arméniens présentés comme « paisibles », qui se multiplient. Il s'appuie sur les « récits bouleversants de témoins oculaires ».",
+                "rubric": "1 pt : les déportations et violences contre des Arméniens paisibles (citation). 1 pt : les sources de l'ambassadeur, les témoins oculaires (citation)."
+              },
+              {
+                "id": "q8",
+                "type": "open",
+                "points": 2,
+                "text_ref": "d1",
+                "lesson_part": 3,
+                "skills": [
+                  "hg-notions-violence",
+                  "hg-analyse-doc"
+                ],
+                "cognitive": "analyser",
+                "prompt": "Explique l'expression « campagne d'extermination raciale […] sous le prétexte de représailles contre une rébellion ». En quoi montre-t-elle qu'il s'agit d'un génocide ?",
+                "solution": "Pour l'ambassadeur, il ne s'agit pas d'une simple mesure militaire : le but est de faire disparaître les Arméniens (« extermination ») en tant que groupe. Le pouvoir invente un « prétexte » (une prétendue rébellion, l'accusation de trahison après Sarikamich) pour cacher cette intention. Or l'intention de détruire un groupe pour ce qu'il est définit le génocide.",
+                "rubric": "1 pt : explication (volonté de faire disparaître le groupe ; la rébellion n'est qu'un prétexte). 1 pt : lien avec la définition du génocide (intention de détruire un groupe)."
+              },
+              {
+                "id": "q9",
+                "type": "open",
+                "points": 1,
+                "text_ref": "d1",
+                "lesson_part": 5,
+                "skills": [
+                  "hg-analyse-doc"
+                ],
+                "cognitive": "analyser",
+                "prompt": "Pourquoi ce document est-il précieux pour les historiens ?",
+                "solution": "C'est un document écrit au moment même des faits (juillet 1915), par un diplomate d'un pays alors neutre, qui s'appuie sur des témoins. Il prouve que la nature des violences était connue dès 1915 et contredit le négationnisme.",
+                "rubric": "0,5 pt : document contemporain des faits / témoin neutre bien informé. 0,5 pt : preuve contre le négationnisme ou de la connaissance des faits dès 1915."
+              }
+            ]
+          },
+          {
+            "label": "C · Je rédige un développement construit (8 points)",
+            "questions": [
+              {
+                "id": "q10",
+                "type": "open",
+                "points": 8,
+                "lesson_part": 2,
+                "skills": [
+                  "hg-genocide",
+                  "hg-notions-violence",
+                  "hg-reperes-violences",
+                  "hg-redaction"
+                ],
+                "cognitive": "rediger",
+                "prompt": "Développement construit (une vingtaine de lignes) : « Montrez que les Arméniens ont été victimes d'un génocide pendant la Première Guerre mondiale. » Présente le contexte, les étapes, le bilan et la reconnaissance du génocide.",
+                "solution": "Introduction : pendant la Première Guerre mondiale, le gouvernement jeune-turc de l'Empire ottoman organise la destruction de la minorité chrétienne arménienne. Partie 1 – Contexte et étapes : Empire entré en guerre aux côtés de l'Allemagne fin 1914 ; défaite de Sarikamich ; Arméniens accusés de trahison ; soldats désarmés et exécutés ; arrestation des élites à Constantinople le 24 avril 1915 ; loi de déportation (mai 1915), massacres des hommes, marches de la mort vers les déserts de Syrie ; massacres de Deir ez-Zor (1916). Partie 2 – Un génocide : intention organisée par l'État (Talaat, témoignage de Morgenthau) de détruire un groupe pour ce qu'il est ; environ 1,2 à 1,5 million de morts, deux tiers des Arméniens de l'Empire ; dénonciation alliée dès le 24 mai 1915 ; reconnaissance par la France en 2001, malgré le négationnisme de l'État turc. Conclusion : premier génocide du XXe siècle, symbole de la violence de masse de la guerre totale ; commémoré chaque 24 avril.",
+                "rubric": "1 pt : introduction (qui, quand, quoi). 2,5 pts : contexte et étapes (au moins trois éléments précis : entrée en guerre, accusation de trahison, 24 avril 1915, déportations, marches de la mort, massacres). 2,5 pts : justification du mot génocide et bilan (intention organisée par l'État, groupe visé pour ce qu'il est, 1,2 à 1,5 million de morts, reconnaissance en 2001 et/ou négationnisme). 1 pt : conclusion. 1 pt : expression (phrases construites, connecteurs, vocabulaire précis, ton sobre). Pénalité : -0,5 pt par erreur de repère importante."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "texts": [
+          {
+            "id": "d1",
+            "label": "Document · La déclaration des Alliés",
+            "source": "Déclaration commune des gouvernements de la France, du Royaume-Uni et de la Russie, 24 mai 1915, publiée dans la presse française (extrait, domaine public).",
+            "paragraphs": [
+              "Depuis un mois environ, la population kurde et turque de l'Arménie procède de connivence et souvent avec l'aide des autorités ottomanes à des massacres des Arméniens. […]",
+              "En présence de ces nouveaux crimes de la Turquie contre l'humanité et la civilisation, les gouvernements alliés font savoir publiquement à la Sublime Porte qu'ils tiendront personnellement responsables desdits crimes tous les membres du gouvernement ottoman ainsi que ceux de ses agents qui se trouveraient impliqués dans de pareils massacres."
+            ]
+          }
+        ],
+        "sections": [
+          {
+            "label": "A · Je connais mes repères (6 points)",
+            "questions": [
+              {
+                "id": "q1",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 2,
+                "skills": [
+                  "hg-reperes-violences"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Quelle date sert à commémorer le génocide des Arméniens ?",
+                "options": [
+                  "Le 24 avril",
+                  "Le 11 novembre",
+                  "Le 8 mai",
+                  "Le 14 juillet"
+                ],
+                "answer": 0,
+                "solution": "Le 24 avril (arrestation des élites arméniennes de Constantinople le 24 avril 1915).",
+                "rubric": "1 pt : bonne réponse."
+              },
+              {
+                "id": "q2",
+                "type": "short",
+                "points": 1,
+                "lesson_part": 2,
+                "skills": [
+                  "hg-acteurs-violences"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Quel nom donne-t-on au mouvement nationaliste au pouvoir dans l'Empire ottoman pendant la guerre ?",
+                "answer": [
+                  "Jeunes-Turcs",
+                  "les Jeunes-Turcs",
+                  "Jeunes Turcs",
+                  "les Jeunes Turcs",
+                  "Comite Union et Progres",
+                  "le Comite Union et Progres",
+                  "CUP"
+                ],
+                "solution": "Les Jeunes-Turcs (Comité Union et Progrès).",
+                "rubric": "1 pt : Jeunes-Turcs (ou Comité Union et Progrès)."
+              },
+              {
+                "id": "q3",
+                "type": "short",
+                "points": 1,
+                "lesson_part": 5,
+                "skills": [
+                  "hg-acteurs-violences"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Qui est l'ambassadeur des États-Unis qui témoigne du génocide ?",
+                "answer": [
+                  "Morgenthau",
+                  "Henry Morgenthau",
+                  "H. Morgenthau"
+                ],
+                "solution": "Henry Morgenthau.",
+                "rubric": "1 pt : Morgenthau."
+              },
+              {
+                "id": "q4",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 3,
+                "skills": [
+                  "hg-reperes-violences",
+                  "hg-notions-violence"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "En quelle année l'ONU adopte-t-elle la convention contre le génocide ?",
+                "options": [
+                  "1915",
+                  "1919",
+                  "1948",
+                  "2001"
+                ],
+                "answer": 2,
+                "solution": "1948 (9 décembre 1948).",
+                "rubric": "1 pt : bonne réponse."
+              },
+              {
+                "id": "q5",
+                "type": "open",
+                "points": 2,
+                "lesson_part": 3,
+                "skills": [
+                  "hg-notions-violence"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Définis le mot « négationnisme » et donne un exemple.",
+                "solution": "Le négationnisme consiste à nier la réalité d'un génocide. Exemple : l'État turc refuse toujours de reconnaître le génocide des Arméniens.",
+                "rubric": "1 pt : définition (nier la réalité d'un génocide). 1 pt : exemple pertinent."
+              }
+            ]
+          },
+          {
+            "label": "B · J'analyse un document (6 points)",
+            "questions": [
+              {
+                "id": "q6",
+                "type": "open",
+                "points": 1,
+                "text_ref": "d1",
+                "lesson_part": 4,
+                "skills": [
+                  "hg-analyse-doc"
+                ],
+                "cognitive": "analyser",
+                "prompt": "Présente le document : nature, auteurs, date, destinataire.",
+                "solution": "Une déclaration diplomatique commune des gouvernements alliés (France, Royaume-Uni, Russie), publiée le 24 mai 1915. Elle s'adresse au gouvernement ottoman (« la Sublime Porte ») et à l'opinion publique.",
+                "rubric": "0,5 pt : nature (déclaration officielle) et date. 0,5 pt : auteurs (les trois Alliés) et destinataire (gouvernement ottoman)."
+              },
+              {
+                "id": "q7",
+                "type": "open",
+                "points": 2,
+                "text_ref": "d1",
+                "lesson_part": 2,
+                "skills": [
+                  "hg-analyse-doc",
+                  "hg-genocide"
+                ],
+                "cognitive": "analyser",
+                "prompt": "Quels faits les Alliés dénoncent-ils ? Qui en est responsable selon eux ? Cite le texte.",
+                "solution": "Ils dénoncent des « massacres des Arméniens ». Les responsables sont les autorités ottomanes : les massacres ont lieu « avec l'aide des autorités ottomanes », et les Alliés tiendront responsables « tous les membres du gouvernement ottoman » et leurs agents.",
+                "rubric": "1 pt : les massacres des Arméniens (citation). 1 pt : la responsabilité du gouvernement ottoman et de ses agents (citation)."
+              },
+              {
+                "id": "q8",
+                "type": "open",
+                "points": 2,
+                "text_ref": "d1",
+                "lesson_part": 3,
+                "skills": [
+                  "hg-notions-violence",
+                  "hg-analyse-doc"
+                ],
+                "cognitive": "analyser",
+                "prompt": "Explique l'expression « crimes […] contre l'humanité et la civilisation ». Pourquoi est-elle importante dans l'histoire ?",
+                "solution": "Les Alliés considèrent que ces massacres ne sont pas de simples actes de guerre : ils frappent des civils et atteignent l'humanité tout entière. C'est l'une des premières fois qu'on utilise l'idée de « crimes contre l'humanité » et qu'on annonce que les dirigeants d'un État seront personnellement jugés. Cette notion sera reprise et définie en droit après 1945.",
+                "rubric": "1 pt : explication (crime contre des civils, qui dépasse la guerre et concerne toute l'humanité). 1 pt : importance historique (une des premières utilisations ; responsabilité personnelle des dirigeants ; notion reprise après 1945)."
+              },
+              {
+                "id": "q9",
+                "type": "open",
+                "points": 1,
+                "text_ref": "d1",
+                "lesson_part": 5,
+                "skills": [
+                  "hg-analyse-doc",
+                  "hg-reperes-violences"
+                ],
+                "cognitive": "analyser",
+                "prompt": "Les menaces des Alliés ont-elles été suivies d'effets ? Utilise le cours.",
+                "solution": "En partie seulement : le génocide continue en 1915-1916. Après la guerre, des tribunaux ottomans condamnent à mort les principaux responsables (1919-1920), mais en leur absence : ils ont fui et ne purgent pas leur peine.",
+                "rubric": "0,5 pt : le génocide n'est pas arrêté. 0,5 pt : procès de 1919-1920 avec condamnations par contumace (responsables en fuite)."
+              }
+            ]
+          },
+          {
+            "label": "C · Je rédige un développement construit (8 points)",
+            "questions": [
+              {
+                "id": "q10",
+                "type": "open",
+                "points": 8,
+                "lesson_part": 1,
+                "skills": [
+                  "hg-violences",
+                  "hg-genocide",
+                  "hg-reperes-violences",
+                  "hg-redaction"
+                ],
+                "cognitive": "rediger",
+                "prompt": "Développement construit (une vingtaine de lignes) : « Décrivez les violences subies par les civils pendant la Première Guerre mondiale, en Europe et dans l'Empire ottoman. »",
+                "solution": "Introduction : la Première Guerre mondiale est une guerre totale dans laquelle les civils deviennent des cibles. Partie 1 – En Europe : exécutions d'environ 6 500 civils lors de l'invasion de la Belgique et du nord de la France en 1914 (Dinant, incendie de Louvain) ; occupation du nord-est de la France (réquisitions, travail forcé, déportations de civils, Lille 1916) ; bombardements de villes (Reims, Paris en 1918) ; blocus et faim en Allemagne. Partie 2 – Dans l'Empire ottoman, le génocide des Arméniens : arrestation des élites le 24 avril 1915, déportations, marches de la mort, massacres ; environ 1,2 à 1,5 million de morts ; intention de détruire un groupe pour ce qu'il est. Conclusion : la guerre totale efface la distinction entre soldats et civils ; ces violences annoncent la « brutalisation » des sociétés ; le génocide des Arméniens est reconnu par la France en 2001.",
+                "rubric": "1 pt : introduction (guerre totale, civils ciblés). 2,5 pts : violences contre les civils en Europe (au moins trois exemples précis : exécutions de 1914, occupation, déportations, bombardements, blocus). 2,5 pts : le génocide des Arméniens (étapes, bilan d'environ 1,2 à 1,5 million de morts, notion de génocide). 1 pt : conclusion. 1 pt : expression (phrases construites, connecteurs, vocabulaire précis, ton sobre). Pénalité : -0,5 pt par erreur de repère importante."
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

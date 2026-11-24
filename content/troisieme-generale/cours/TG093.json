@@ -1,0 +1,1169 @@
+{
+  "format": "syllig-course/1",
+  "code": "TG093",
+  "level": "troisieme-generale",
+  "subject": "Enseignement moral et civique",
+  "chapter": "Les règles du jeu démocratique",
+  "title": "La Constitution de la Ve République",
+  "skills": [
+    {
+      "id": "emc-principes",
+      "label": "Connaître les principes et les valeurs inscrits dans la Constitution"
+    },
+    {
+      "id": "emc-institutions",
+      "label": "Décrire l'organisation et la séparation des pouvoirs"
+    },
+    {
+      "id": "emc-reperes",
+      "label": "Situer les grandes étapes de la Ve République"
+    },
+    {
+      "id": "emc-notions",
+      "label": "Définir les notions : Constitution, souveraineté, référendum, cohabitation…"
+    },
+    {
+      "id": "emc-acteurs",
+      "label": "Identifier les acteurs de la vie démocratique et leur rôle"
+    },
+    {
+      "id": "emc-analyse-doc",
+      "label": "Analyser un document (nature, auteur, date, idées)"
+    },
+    {
+      "id": "emc-argumenter",
+      "label": "Argumenter et rédiger un développement construit"
+    }
+  ],
+  "lesson": {
+    "duration_min": 35,
+    "objectives": [
+      "expliquer pourquoi et comment la Constitution de 1958 a été adoptée ;",
+      "décrire l'organisation et la séparation des pouvoirs sous la Ve République ;",
+      "connaître les principes et les valeurs inscrits dans la Constitution ;",
+      "situer les grandes révisions et identifier les acteurs de la vie démocratique."
+    ],
+    "essential": "La Constitution du **4 octobre 1958**, adoptée par référendum, fonde la **Ve République**. Elle affirme que la France est une République indivisible, laïque, démocratique et sociale, que la souveraineté appartient au peuple, et elle sépare les pouvoirs : un exécutif fort (président et gouvernement), un Parlement qui vote la loi, une justice indépendante et un Conseil constitutionnel qui veille au respect de la Constitution.",
+    "parts": [
+      {
+        "title": "Contexte : pourquoi une nouvelle Constitution en 1958 ?",
+        "blocks": [
+          {
+            "type": "callout",
+            "kind": "definition",
+            "title": "Constitution",
+            "text": "Texte juridique le plus important d'un État (au sommet de la « hiérarchie des normes »). Elle fixe l'organisation des pouvoirs, leurs relations, et garantit les droits et libertés des citoyens. Toutes les lois doivent la respecter."
+          },
+          {
+            "type": "quote",
+            "text": "Toute société dans laquelle la garantie des droits n'est pas assurée, ni la séparation des pouvoirs déterminée, n'a point de Constitution.",
+            "source": "Déclaration des droits de l'homme et du citoyen, 26 août 1789, article 16 (domaine public)."
+          },
+          {
+            "type": "text",
+            "text": "Depuis 1791, la France a connu une quinzaine de constitutions. La **IVe République** (1946-1958) est un régime parlementaire où l'Assemblée nationale domine. Les gouvernements tombent souvent : plus de vingt gouvernements se succèdent en douze ans. Cette **instabilité** affaiblit l'État, alors que la France est engagée dans la **guerre d'Algérie** (1954-1962)."
+          },
+          {
+            "type": "text",
+            "text": "Le **13 mai 1958**, à Alger, des partisans de l'Algérie française et des militaires se révoltent. Pour éviter une guerre civile, le président de la République **René Coty** fait appel au général **Charles de Gaulle**, investi chef du gouvernement par l'Assemblée le **1er juin 1958**. Il est chargé de préparer une nouvelle Constitution, rédigée notamment par **Michel Debré**."
+          },
+          {
+            "type": "list",
+            "ordered": true,
+            "items": [
+              "**28 septembre 1958** : les Français approuvent la nouvelle Constitution par **référendum**, avec environ 80 % de « oui ».",
+              "**4 octobre 1958** : la Constitution est promulguée : c'est la naissance de la **Ve République**.",
+              "**21 décembre 1958** : Charles de Gaulle est élu président de la République (par un collège d'environ 80 000 élus, et non directement par le peuple)."
+            ]
+          },
+          {
+            "type": "callout",
+            "kind": "retiens",
+            "text": "La Constitution de 1958 veut un **exécutif fort et stable**, avec un président de la République qui a de vrais pouvoirs, pour mettre fin à l'instabilité de la IVe République."
+          }
+        ],
+        "checkpoint": {
+          "variants": [
+            {
+              "prompt": "Qu'est-ce qu'une Constitution ?",
+              "options": [
+                "Une loi votée chaque année",
+                "Le texte le plus important d'un État, qui organise les pouvoirs et garantit les droits",
+                "Un traité entre plusieurs pays",
+                "Le règlement intérieur de l'Assemblée"
+              ],
+              "answer": 1,
+              "hint": "Relis l'encadré « Définition ».",
+              "explanation": "La Constitution est le texte suprême : elle organise les pouvoirs et garantit les droits et libertés."
+            },
+            {
+              "prompt": "Quel problème majeur la Constitution de 1958 cherche-t-elle à résoudre ?",
+              "options": [
+                "Le manque de députés",
+                "L'instabilité des gouvernements de la IVe République",
+                "L'absence de président",
+                "La fin de la monarchie"
+              ],
+              "answer": 1,
+              "hint": "Relis le paragraphe sur la IVe République.",
+              "explanation": "Sous la IVe République, les gouvernements tombent très souvent : la Ve République veut un exécutif stable."
+            },
+            {
+              "prompt": "Comment la Constitution de 1958 est-elle adoptée ?",
+              "options": [
+                "Par un vote des seuls députés",
+                "Par un référendum, le 28 septembre 1958",
+                "Par un décret du général de Gaulle",
+                "Par l'ONU"
+              ],
+              "answer": 1,
+              "hint": "Regarde la liste numérotée.",
+              "explanation": "Les Français l'approuvent par référendum le 28 septembre 1958, avec environ 80 % de « oui »."
+            }
+          ]
+        }
+      },
+      {
+        "title": "Fonctionnement : l'organisation des pouvoirs",
+        "blocks": [
+          {
+            "type": "text",
+            "text": "Comme le demande l'article 16 de la Déclaration de 1789, la Constitution **sépare les pouvoirs** : celui qui fait les lois n'est pas celui qui les applique, ni celui qui juge."
+          },
+          {
+            "type": "table",
+            "caption": "Qui fait quoi sous la Ve République ?",
+            "columns": [
+              "Pouvoir",
+              "Institution",
+              "Désignation",
+              "Rôle principal"
+            ],
+            "rows": [
+              [
+                "Exécutif",
+                "**Président de la République**",
+                "Élu pour 5 ans au suffrage universel direct ; deux mandats consécutifs au maximum",
+                "Veille au respect de la Constitution, nomme le Premier ministre, préside le Conseil des ministres, chef des armées ; peut dissoudre l'Assemblée nationale et proposer un référendum ; promulgue les lois."
+              ],
+              [
+                "Exécutif",
+                "**Gouvernement** (Premier ministre et ministres)",
+                "Nommé par le président",
+                "« Détermine et conduit la politique de la nation » ; propose des projets de loi. Il est responsable devant l'Assemblée nationale, qui peut le renverser par une **motion de censure**."
+              ],
+              [
+                "Législatif",
+                "**Parlement** : Assemblée nationale + Sénat",
+                "577 députés élus pour 5 ans au suffrage universel direct ; 348 sénateurs élus pour 6 ans au suffrage indirect",
+                "Vote la loi et le budget, contrôle l'action du gouvernement, évalue les politiques publiques."
+              ],
+              [
+                "Judiciaire",
+                "**Autorité judiciaire** (juges, tribunaux)",
+                "Magistrats indépendants",
+                "Applique la loi, juge, protège la liberté individuelle."
+              ],
+              [
+                "Contrôle",
+                "**Conseil constitutionnel**",
+                "9 membres nommés pour 9 ans",
+                "Vérifie que les lois respectent la Constitution ; contrôle les élections nationales."
+              ]
+            ]
+          },
+          {
+            "type": "callout",
+            "kind": "methode",
+            "title": "Comment naît une loi ?",
+            "text": "1. Un **projet de loi** (gouvernement) ou une **proposition de loi** (parlementaires) est déposé. 2. Il est discuté et voté par l'Assemblée nationale puis par le Sénat (la « navette »). 3. Le Conseil constitutionnel peut être saisi. 4. Le président de la République **promulgue** la loi, qui est publiée au *Journal officiel*."
+          },
+          {
+            "type": "callout",
+            "kind": "definition",
+            "title": "Cohabitation",
+            "text": "Situation où le président et la majorité de l'Assemblée nationale sont de bords politiques opposés : le président doit nommer un Premier ministre issu de cette majorité. Exemples : 1986-1988, 1993-1995, 1997-2002."
+          },
+          {
+            "type": "callout",
+            "kind": "retiens",
+            "text": "La Ve République est souvent qualifiée de régime **semi-présidentiel** : un président puissant, mais un gouvernement responsable devant l'Assemblée nationale."
+          }
+        ],
+        "checkpoint": {
+          "variants": [
+            {
+              "prompt": "Qui vote les lois sous la Ve République ?",
+              "options": [
+                "Le président de la République",
+                "Le Parlement (Assemblée nationale et Sénat)",
+                "Le Conseil constitutionnel",
+                "Les juges"
+              ],
+              "answer": 1,
+              "hint": "Regarde la ligne « Législatif » du tableau.",
+              "explanation": "Le Parlement, composé de l'Assemblée nationale et du Sénat, vote la loi."
+            },
+            {
+              "prompt": "Comment l'Assemblée nationale peut-elle renverser le gouvernement ?",
+              "options": [
+                "Par une motion de censure",
+                "Par un référendum",
+                "Par la dissolution",
+                "Par un décret"
+              ],
+              "answer": 0,
+              "hint": "Relis la ligne « Gouvernement » du tableau.",
+              "explanation": "Le gouvernement est responsable devant l'Assemblée nationale, qui peut le renverser en votant une motion de censure."
+            },
+            {
+              "prompt": "Quel est le rôle du Conseil constitutionnel ?",
+              "options": [
+                "Élire le président",
+                "Vérifier que les lois respectent la Constitution",
+                "Diriger les armées",
+                "Juger les crimes"
+              ],
+              "answer": 1,
+              "hint": "Regarde la dernière ligne du tableau.",
+              "explanation": "Le Conseil constitutionnel contrôle la conformité des lois à la Constitution."
+            },
+            {
+              "prompt": "Qu'appelle-t-on la cohabitation ?",
+              "options": [
+                "Le fait que le président et le Premier ministre soient du même parti",
+                "Le fait que le président et la majorité de l'Assemblée soient de bords opposés",
+                "La réunion des deux assemblées",
+                "Le partage d'un logement par deux ministres"
+              ],
+              "answer": 1,
+              "hint": "Relis l'encadré « Cohabitation ».",
+              "explanation": "En cohabitation, le président doit nommer un Premier ministre issu d'une majorité qui lui est opposée."
+            }
+          ]
+        }
+      },
+      {
+        "title": "Notions clés : les principes et les valeurs de la République",
+        "blocks": [
+          {
+            "type": "quote",
+            "text": "La France est une République indivisible, laïque, démocratique et sociale. Elle assure l'égalité devant la loi de tous les citoyens sans distinction d'origine, de race ou de religion. Elle respecte toutes les croyances.",
+            "source": "Constitution du 4 octobre 1958, article 1er (extrait)."
+          },
+          {
+            "type": "table",
+            "caption": "Les mots de l'article 1er",
+            "columns": [
+              "Principe",
+              "Ce que cela signifie"
+            ],
+            "rows": [
+              [
+                "Indivisible",
+                "Une seule nation, un seul peuple, la même loi pour tous sur tout le territoire."
+              ],
+              [
+                "Laïque",
+                "L'État est neutre face aux religions ; il garantit la liberté de conscience et respecte toutes les croyances."
+              ],
+              [
+                "Démocratique",
+                "Le pouvoir appartient au peuple, qui l'exerce par le vote ; les libertés sont garanties."
+              ],
+              [
+                "Sociale",
+                "La République veille à la solidarité (protection sociale, accès à l'éducation, à la santé…)."
+              ]
+            ]
+          },
+          {
+            "type": "text",
+            "text": "L'**article 2** fixe les symboles : la langue (le français), le drapeau tricolore, l'hymne (*La Marseillaise*), la devise « **Liberté, Égalité, Fraternité** » et le principe : « gouvernement du peuple, par le peuple et pour le peuple »."
+          },
+          {
+            "type": "callout",
+            "kind": "definition",
+            "title": "Souveraineté nationale",
+            "text": "Le pouvoir suprême appartient au **peuple**, « qui l'exerce par ses représentants et par la voie du référendum » (article 3). Le suffrage est **universel, égal et secret** ; tous les Français majeurs (18 ans), femmes et hommes, sont électeurs."
+          },
+          {
+            "type": "callout",
+            "kind": "definition",
+            "title": "Référendum",
+            "text": "Vote par lequel les citoyens répondent directement par « oui » ou par « non » à une question (exemple : 1958, 1962, 2000)."
+          },
+          {
+            "type": "callout",
+            "kind": "plus",
+            "text": "Le **préambule** de la Constitution renvoie à trois textes qui ont la même valeur : la Déclaration des droits de l'homme et du citoyen (1789), le préambule de la Constitution de 1946 (droits sociaux, égalité femmes-hommes) et la Charte de l'environnement (2004). On parle de « bloc de constitutionnalité »."
+          },
+          {
+            "type": "callout",
+            "kind": "retiens",
+            "text": "La Constitution protège à la fois des **valeurs** (liberté, égalité, fraternité, laïcité) et des **règles** (séparation des pouvoirs, souveraineté du peuple, suffrage universel)."
+          }
+        ],
+        "checkpoint": {
+          "variants": [
+            {
+              "prompt": "Que signifie « République laïque » ?",
+              "options": [
+                "L'État impose une religion",
+                "L'État est neutre face aux religions et respecte toutes les croyances",
+                "Les religions sont interdites",
+                "Chaque région choisit sa religion"
+              ],
+              "answer": 1,
+              "hint": "Regarde la ligne « Laïque » du tableau.",
+              "explanation": "La laïcité : l'État est neutre, garantit la liberté de conscience et respecte toutes les croyances."
+            },
+            {
+              "prompt": "Selon l'article 3, à qui appartient la souveraineté nationale ?",
+              "options": [
+                "Au président de la République",
+                "Au peuple",
+                "Au Parlement",
+                "Au Conseil constitutionnel"
+              ],
+              "answer": 1,
+              "hint": "Relis l'encadré « Souveraineté nationale ».",
+              "explanation": "La souveraineté appartient au peuple, qui l'exerce par ses représentants et par le référendum."
+            },
+            {
+              "prompt": "Quelle est la devise de la République ?",
+              "options": [
+                "« Travail, Famille, Patrie »",
+                "« Liberté, Égalité, Fraternité »",
+                "« Un pour tous, tous pour un »",
+                "« Unité, Progrès, Justice »"
+              ],
+              "answer": 1,
+              "hint": "Relis le paragraphe sur l'article 2.",
+              "explanation": "La devise inscrite dans l'article 2 est « Liberté, Égalité, Fraternité »."
+            }
+          ]
+        }
+      },
+      {
+        "title": "Repères chronologiques : une Constitution qui évolue",
+        "blocks": [
+          {
+            "type": "table",
+            "caption": "De 1958 à aujourd'hui",
+            "columns": [
+              "Date",
+              "Événement"
+            ],
+            "rows": [
+              [
+                "26 août 1789",
+                "Déclaration des droits de l'homme et du citoyen"
+              ],
+              [
+                "13 mai 1958",
+                "Crise d'Alger ; appel au général de Gaulle"
+              ],
+              [
+                "**28 septembre 1958**",
+                "**Référendum** : adoption de la Constitution (environ 80 % de « oui »)"
+              ],
+              [
+                "**4 octobre 1958**",
+                "**Promulgation de la Constitution : naissance de la Ve République**"
+              ],
+              [
+                "21 décembre 1958",
+                "De Gaulle élu président de la République par un collège d'élus"
+              ],
+              [
+                "28 octobre 1962",
+                "Référendum : le président sera désormais élu au **suffrage universel direct**"
+              ],
+              [
+                "Décembre 1965",
+                "Première élection présidentielle au suffrage universel direct (de Gaulle réélu)"
+              ],
+              [
+                "1974",
+                "60 députés ou 60 sénateurs peuvent saisir le Conseil constitutionnel"
+              ],
+              [
+                "1986-1988",
+                "Première cohabitation (François Mitterrand président, Jacques Chirac Premier ministre)"
+              ],
+              [
+                "24 septembre 2000",
+                "Référendum : le mandat présidentiel passe de 7 à 5 ans (**quinquennat**)"
+              ],
+              [
+                "2008",
+                "Grande révision : limite de deux mandats présidentiels consécutifs ; les citoyens peuvent contester une loi devant le Conseil constitutionnel lors d'un procès (« question prioritaire de constitutionnalité », appliquée à partir de 2010)"
+              ],
+              [
+                "Mars 2024",
+                "La liberté garantie aux femmes de recourir à l'IVG est inscrite dans la Constitution"
+              ]
+            ]
+          },
+          {
+            "type": "callout",
+            "kind": "essentiel",
+            "title": "Repères à connaître",
+            "text": "**1958** : Constitution de la Ve République · **1962** : élection du président au suffrage universel direct · **2000** : quinquennat."
+          },
+          {
+            "type": "text",
+            "text": "La Constitution a été révisée plus de vingt fois depuis 1958 : c'est un texte stable, mais qui s'adapte."
+          }
+        ],
+        "checkpoint": {
+          "variants": [
+            {
+              "prompt": "Depuis quelle réforme le président est-il élu au suffrage universel direct ?",
+              "options": [
+                "Celle de 1958",
+                "Celle de 1962",
+                "Celle de 2000",
+                "Celle de 2008"
+              ],
+              "answer": 1,
+              "hint": "Cherche « suffrage universel direct » dans le tableau.",
+              "explanation": "Le référendum du 28 octobre 1962 instaure l'élection du président au suffrage universel direct ; la première a lieu en 1965."
+            },
+            {
+              "prompt": "Que change le référendum de 2000 ?",
+              "options": [
+                "Il crée le Sénat",
+                "Il fait passer le mandat présidentiel de 7 à 5 ans",
+                "Il supprime le Premier ministre",
+                "Il donne le droit de vote aux femmes"
+              ],
+              "answer": 1,
+              "hint": "Cherche le mot « quinquennat ».",
+              "explanation": "Depuis 2000, le président est élu pour 5 ans (quinquennat) au lieu de 7 (septennat)."
+            },
+            {
+              "prompt": "Quelle est la date de naissance de la Ve République ?",
+              "options": [
+                "14 juillet 1789",
+                "4 octobre 1958",
+                "28 octobre 1962",
+                "8 mai 1945"
+              ],
+              "answer": 1,
+              "hint": "C'est la date de promulgation de la Constitution.",
+              "explanation": "La Constitution est promulguée le 4 octobre 1958 : la Ve République commence."
+            }
+          ]
+        }
+      },
+      {
+        "title": "Acteurs : qui fait vivre la Constitution ?",
+        "blocks": [
+          {
+            "type": "table",
+            "caption": "Les acteurs à connaître",
+            "columns": [
+              "Acteur",
+              "Rôle"
+            ],
+            "rows": [
+              [
+                "Charles de Gaulle",
+                "Inspirateur de la Constitution, premier président de la Ve République (1959-1969)."
+              ],
+              [
+                "Michel Debré",
+                "Garde des Sceaux en 1958, principal rédacteur de la Constitution ; premier Premier ministre de la Ve République (1959-1962)."
+              ],
+              [
+                "René Coty",
+                "Dernier président de la IVe République ; il fait appel à de Gaulle en mai 1958."
+              ],
+              [
+                "Les citoyens",
+                "Ils détiennent la souveraineté : ils votent aux élections et aux référendums ; ils peuvent contester une loi (QPC) lors d'un procès."
+              ],
+              [
+                "Le Conseil constitutionnel",
+                "Gardien de la Constitution : il annule les dispositions de loi contraires à la Constitution."
+              ],
+              [
+                "Le Parlement réuni en Congrès",
+                "Députés et sénateurs réunis à Versailles pour réviser la Constitution."
+              ]
+            ]
+          },
+          {
+            "type": "callout",
+            "kind": "methode",
+            "title": "Comment réviser la Constitution ? (article 89)",
+            "text": "L'initiative appartient au président de la République (sur proposition du Premier ministre) ou aux parlementaires. Le texte doit être voté dans les mêmes termes par l'Assemblée nationale et par le Sénat. Il est ensuite adopté soit par **référendum**, soit par le **Congrès** (Parlement réuni), à la majorité des trois cinquièmes."
+          },
+          {
+            "type": "callout",
+            "kind": "attention",
+            "text": "Un pouvoir exceptionnel existe : l'**article 16** permet au président de prendre des pouvoirs étendus en cas de menace grave et immédiate. Il n'a été utilisé qu'une fois, en 1961, lors du putsch des généraux à Alger."
+          },
+          {
+            "type": "callout",
+            "kind": "retiens",
+            "text": "La Constitution vit grâce aux institutions, mais surtout grâce aux **citoyens** : à 18 ans, tu pourras voter et participer pleinement au jeu démocratique."
+          }
+        ],
+        "checkpoint": {
+          "variants": [
+            {
+              "prompt": "Qui est le principal rédacteur de la Constitution de 1958 ?",
+              "options": [
+                "René Coty",
+                "Michel Debré",
+                "Jacques Chirac",
+                "François Mitterrand"
+              ],
+              "answer": 1,
+              "hint": "Regarde le tableau des acteurs.",
+              "explanation": "Michel Debré, garde des Sceaux, rédige le texte avec son équipe, selon les idées du général de Gaulle."
+            },
+            {
+              "prompt": "Comment peut-on réviser la Constitution selon l'article 89 ?",
+              "options": [
+                "Par un simple décret du président",
+                "Par référendum ou par le Congrès à la majorité des trois cinquièmes",
+                "Par une décision du Conseil constitutionnel",
+                "On ne peut jamais la réviser"
+              ],
+              "answer": 1,
+              "hint": "Relis l'encadré « Méthode ».",
+              "explanation": "Après un vote identique des deux assemblées, la révision est adoptée par référendum ou par le Congrès (3/5)."
+            },
+            {
+              "prompt": "Qui est le premier président de la Ve République ?",
+              "options": [
+                "René Coty",
+                "Charles de Gaulle",
+                "Georges Pompidou",
+                "Michel Debré"
+              ],
+              "answer": 1,
+              "hint": "Regarde la première ligne du tableau.",
+              "explanation": "Charles de Gaulle est président de 1959 à 1969."
+            }
+          ]
+        }
+      }
+    ],
+    "memo": [
+      {
+        "label": "Constitution",
+        "text": "Texte suprême qui organise les pouvoirs et garantit les droits et libertés. DDHC, art. 16 : sans garantie des droits ni séparation des pouvoirs, pas de Constitution."
+      },
+      {
+        "label": "Naissance",
+        "text": "Crise du 13 mai 1958 → de Gaulle au pouvoir (1er juin) → référendum du 28 septembre 1958 → promulgation le 4 octobre 1958. Rédacteur : Michel Debré."
+      },
+      {
+        "label": "Principes",
+        "text": "République indivisible, laïque, démocratique et sociale (art. 1). Devise « Liberté, Égalité, Fraternité » (art. 2). Souveraineté du peuple, par ses représentants et le référendum (art. 3)."
+      },
+      {
+        "label": "Pouvoirs",
+        "text": "Exécutif : président (5 ans, suffrage universel direct) + gouvernement responsable devant l'Assemblée. Législatif : Parlement (577 députés, 348 sénateurs). Judiciaire : juges. Contrôle : Conseil constitutionnel."
+      },
+      {
+        "label": "Évolutions",
+        "text": "1962 : président élu au suffrage universel direct · 2000 : quinquennat · 2008 : QPC et deux mandats maximum · 2024 : liberté de recourir à l'IVG."
+      },
+      {
+        "label": "Notions",
+        "text": "Souveraineté nationale, séparation des pouvoirs, référendum, suffrage universel, motion de censure, cohabitation, régime semi-présidentiel."
+      }
+    ]
+  },
+  "exercises": {
+    "duration_min": 30,
+    "instructions": "Commence par les exercices ★ (je repère), puis ★★ (j'analyse un document) et ★★★ (je rédige). Les documents sont de vrais articles de la Constitution : lis-les phrase par phrase. Les corrigés s'affichent après tes réponses.",
+    "pass_threshold": 8,
+    "texts": [
+      {
+        "id": "t1",
+        "label": "Document 1 · Les principes de la République",
+        "source": "Constitution du 4 octobre 1958, articles 1er, 2 et 3 (extraits, texte officiel).",
+        "paragraphs": [
+          "Article 1er : « La France est une République indivisible, laïque, démocratique et sociale. Elle assure l'égalité devant la loi de tous les citoyens sans distinction d'origine, de race ou de religion. Elle respecte toutes les croyances. […] »",
+          "Article 2 : « […] La devise de la République est “Liberté, Égalité, Fraternité”. Son principe est : gouvernement du peuple, par le peuple et pour le peuple. »",
+          "Article 3 : « La souveraineté nationale appartient au peuple qui l'exerce par ses représentants et par la voie du référendum. Aucune section du peuple ni aucun individu ne peut s'en attribuer l'exercice. […] Il [le suffrage] est toujours universel, égal et secret. »"
+        ]
+      },
+      {
+        "id": "t2",
+        "label": "Document 2 · Les pouvoirs du président de la République",
+        "source": "Constitution du 4 octobre 1958, articles 5, 8 et 12 (extraits, texte officiel).",
+        "paragraphs": [
+          "Article 5 : « Le Président de la République veille au respect de la Constitution. Il assure, par son arbitrage, le fonctionnement régulier des pouvoirs publics ainsi que la continuité de l'État. Il est le garant de l'indépendance nationale, de l'intégrité du territoire et du respect des traités. »",
+          "Article 8 : « Le Président de la République nomme le Premier ministre. […] Sur la proposition du Premier ministre, il nomme les autres membres du Gouvernement et met fin à leurs fonctions. »",
+          "Article 12 : « Le Président de la République peut, après consultation du Premier ministre et des présidents des assemblées, prononcer la dissolution de l'Assemblée nationale. […] »"
+        ]
+      }
+    ],
+    "items": [
+      {
+        "id": "ex1",
+        "type": "short",
+        "stars": 1,
+        "lesson_part": 4,
+        "skills": [
+          "emc-reperes"
+        ],
+        "cognitive": "connaitre",
+        "prompt": "En quelle année la Constitution de la Ve République est-elle adoptée ?",
+        "answer": [
+          "1958",
+          "en 1958",
+          "4 octobre 1958",
+          "le 4 octobre 1958",
+          "28 septembre 1958",
+          "le 28 septembre 1958",
+          "octobre 1958",
+          "septembre 1958"
+        ],
+        "solution": "1958 (référendum du 28 septembre, promulgation le 4 octobre 1958)."
+      },
+      {
+        "id": "ex2",
+        "type": "numeric",
+        "stars": 1,
+        "lesson_part": 2,
+        "skills": [
+          "emc-institutions"
+        ],
+        "cognitive": "connaitre",
+        "prompt": "Pour combien d'années le président de la République est-il élu aujourd'hui ? (réponds par un nombre)",
+        "answer": 5,
+        "solution": "5 ans (quinquennat, depuis le référendum de 2000)."
+      },
+      {
+        "id": "ex3",
+        "type": "qcm",
+        "stars": 1,
+        "lesson_part": 2,
+        "skills": [
+          "emc-institutions"
+        ],
+        "cognitive": "connaitre",
+        "prompt": "Quelle institution vérifie que les lois respectent la Constitution ?",
+        "options": [
+          "Le Sénat",
+          "Le Conseil constitutionnel",
+          "Le Conseil des ministres",
+          "La Cour des comptes"
+        ],
+        "answer": 1,
+        "solution": "Le Conseil constitutionnel."
+      },
+      {
+        "id": "ex4",
+        "type": "short",
+        "stars": 1,
+        "lesson_part": 5,
+        "skills": [
+          "emc-acteurs"
+        ],
+        "cognitive": "connaitre",
+        "prompt": "Quel homme politique, garde des Sceaux en 1958, est le principal rédacteur de la Constitution ?",
+        "answer": [
+          "Debre",
+          "Michel Debre",
+          "M. Debre"
+        ],
+        "solution": "Michel Debré."
+      },
+      {
+        "id": "ex5",
+        "type": "qcm",
+        "stars": 2,
+        "text_ref": "t1",
+        "lesson_part": 3,
+        "skills": [
+          "emc-analyse-doc",
+          "emc-principes"
+        ],
+        "cognitive": "analyser",
+        "prompt": "Dans le document 1, quel article affirme que le pouvoir appartient au peuple ?",
+        "options": [
+          "L'article 1er",
+          "L'article 2",
+          "L'article 3",
+          "Aucun"
+        ],
+        "answer": 2,
+        "solution": "L'article 3 : « La souveraineté nationale appartient au peuple »."
+      },
+      {
+        "id": "ex6",
+        "type": "open",
+        "stars": 2,
+        "text_ref": "t1",
+        "lesson_part": 3,
+        "skills": [
+          "emc-analyse-doc",
+          "emc-notions"
+        ],
+        "cognitive": "analyser",
+        "prompt": "D'après le document 1, de quelles deux façons le peuple exerce-t-il sa souveraineté ? Donne un exemple pour chacune.",
+        "solution": "Par ses représentants (il élit des députés, des sénateurs indirectement, le président) et par la voie du référendum (il répond directement par oui ou non, par exemple en 1958 ou en 2000)."
+      },
+      {
+        "id": "ex7",
+        "type": "open",
+        "stars": 2,
+        "text_ref": "t2",
+        "lesson_part": 2,
+        "skills": [
+          "emc-analyse-doc",
+          "emc-institutions"
+        ],
+        "cognitive": "analyser",
+        "prompt": "Relève dans le document 2 trois pouvoirs du président de la République.",
+        "solution": "Il veille au respect de la Constitution et assure le fonctionnement régulier des pouvoirs publics (article 5) ; il nomme le Premier ministre et, sur sa proposition, les autres membres du gouvernement (article 8) ; il peut dissoudre l'Assemblée nationale (article 12). Il est aussi garant de l'indépendance nationale et du respect des traités."
+      },
+      {
+        "id": "ex8",
+        "type": "open",
+        "stars": 2,
+        "text_ref": "t2",
+        "lesson_part": 2,
+        "skills": [
+          "emc-institutions",
+          "emc-analyse-doc"
+        ],
+        "cognitive": "analyser",
+        "prompt": "À l'aide du document 2 et du cours, explique pourquoi on dit que la Ve République a un exécutif fort.",
+        "solution": "Le président a des pouvoirs importants : il nomme le Premier ministre, peut dissoudre l'Assemblée nationale (article 12), proposer un référendum, et dispose de pouvoirs exceptionnels (article 16). Depuis 1962, il est élu au suffrage universel direct, ce qui lui donne une grande légitimité. La Constitution voulait ainsi rompre avec l'instabilité de la IVe République."
+      },
+      {
+        "id": "ex9",
+        "type": "open",
+        "stars": 3,
+        "lesson_part": 2,
+        "skills": [
+          "emc-institutions",
+          "emc-argumenter"
+        ],
+        "cognitive": "rediger",
+        "prompt": "Rédige un paragraphe argumenté (8 à 10 lignes) : explique pourquoi la séparation des pouvoirs protège les libertés des citoyens. Appuie-toi sur l'article 16 de la Déclaration de 1789 et sur un exemple de la Ve République.",
+        "solution": "Exemple : Selon l'article 16 de la Déclaration de 1789, une société sans séparation des pouvoirs « n'a point de Constitution ». En effet, si une seule personne faisait les lois, les appliquait et jugeait, elle pourrait abuser de son pouvoir. Sous la Ve République, le Parlement vote la loi, le gouvernement l'applique et les juges, indépendants, la font respecter. De plus, le Conseil constitutionnel peut annuler une loi contraire aux droits garantis par la Constitution, et l'Assemblée nationale peut renverser le gouvernement par une motion de censure. Chaque pouvoir limite donc les autres : c'est une garantie pour nos libertés."
+      },
+      {
+        "id": "ex10",
+        "type": "open",
+        "stars": 3,
+        "lesson_part": 1,
+        "skills": [
+          "emc-reperes",
+          "emc-institutions",
+          "emc-argumenter"
+        ],
+        "cognitive": "rediger",
+        "prompt": "Rédige un développement construit (une quinzaine de lignes) : « Pourquoi et comment la Constitution de 1958 a-t-elle fondé la Ve République ? » Fais une introduction, deux parties (le contexte et l'adoption ; l'organisation des pouvoirs) et une conclusion.",
+        "solution": "Introduction : la Constitution du 4 octobre 1958 est le texte fondateur de la Ve République, toujours en vigueur. Partie 1 : la IVe République est instable (plus de vingt gouvernements en douze ans) et ne parvient pas à régler la guerre d'Algérie ; après la crise du 13 mai 1958, René Coty fait appel au général de Gaulle ; Michel Debré rédige la Constitution, adoptée par référendum le 28 septembre 1958 (environ 80 % de oui). Partie 2 : un exécutif fort (président élu au suffrage universel direct depuis 1962, qui nomme le Premier ministre et peut dissoudre l'Assemblée) ; un gouvernement responsable devant l'Assemblée ; un Parlement (Assemblée nationale et Sénat) qui vote la loi ; un Conseil constitutionnel ; des principes : République indivisible, laïque, démocratique et sociale. Conclusion : une Constitution stable, révisée plus de vingt fois (quinquennat en 2000, IVG en 2024), qui place la souveraineté entre les mains du peuple."
+      }
+    ]
+  },
+  "evaluation": {
+    "duration_min": 30,
+    "conditions": "Comme au brevet : sans la leçon ni les corrigés, en 30 minutes. Barème : A = 6 points · B = 6 points · C = 8 points. Appuie-toi sur des articles et des dates précis.",
+    "total_points": 20,
+    "variants": [
+      {
+        "texts": [
+          {
+            "id": "d1",
+            "label": "Document · Le citoyen au cœur de la démocratie",
+            "source": "Constitution du 4 octobre 1958, articles 3, 6 et 11 (extraits, texte officiel).",
+            "paragraphs": [
+              "Article 3 : « La souveraineté nationale appartient au peuple qui l'exerce par ses représentants et par la voie du référendum. […] Le suffrage peut être direct ou indirect dans les conditions prévues par la Constitution. Il est toujours universel, égal et secret. Sont électeurs, dans les conditions déterminées par la loi, tous les nationaux français majeurs des deux sexes, jouissant de leurs droits civils et politiques. »",
+              "Article 6 : « Le Président de la République est élu pour cinq ans au suffrage universel direct. Nul ne peut exercer plus de deux mandats consécutifs. […] »",
+              "Article 11 : « Le Président de la République, sur proposition du Gouvernement pendant la durée des sessions ou sur proposition conjointe des deux assemblées, publiée au Journal officiel, peut soumettre au référendum tout projet de loi portant sur l'organisation des pouvoirs publics […]. »"
+            ]
+          }
+        ],
+        "sections": [
+          {
+            "label": "A · Je connais mes repères (6 points)",
+            "questions": [
+              {
+                "id": "q1",
+                "type": "short",
+                "points": 1,
+                "lesson_part": 4,
+                "skills": [
+                  "emc-reperes"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "En quelle année la Constitution de la Ve République est-elle adoptée ?",
+                "answer": [
+                  "1958",
+                  "en 1958",
+                  "4 octobre 1958",
+                  "le 4 octobre 1958",
+                  "28 septembre 1958",
+                  "le 28 septembre 1958",
+                  "octobre 1958",
+                  "septembre 1958"
+                ],
+                "solution": "1958.",
+                "rubric": "1 pt : 1958."
+              },
+              {
+                "id": "q2",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 3,
+                "skills": [
+                  "emc-principes"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Quel mot ne figure PAS dans l'article 1er (« La France est une République … ») ?",
+                "options": [
+                  "Indivisible",
+                  "Laïque",
+                  "Monarchique",
+                  "Sociale"
+                ],
+                "answer": 2,
+                "solution": "« Monarchique » : la France est une République indivisible, laïque, démocratique et sociale.",
+                "rubric": "1 pt : bonne réponse."
+              },
+              {
+                "id": "q3",
+                "type": "numeric",
+                "points": 1,
+                "lesson_part": 2,
+                "skills": [
+                  "emc-institutions"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Combien de députés siègent à l'Assemblée nationale ? (réponds par un nombre)",
+                "answer": 577,
+                "solution": "577 députés.",
+                "rubric": "1 pt : 577."
+              },
+              {
+                "id": "q4",
+                "type": "short",
+                "points": 1,
+                "lesson_part": 5,
+                "skills": [
+                  "emc-acteurs"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Qui est le premier président de la Ve République ?",
+                "answer": [
+                  "de Gaulle",
+                  "Charles de Gaulle",
+                  "le general de Gaulle",
+                  "general de Gaulle",
+                  "De Gaulle"
+                ],
+                "solution": "Charles de Gaulle.",
+                "rubric": "1 pt : de Gaulle."
+              },
+              {
+                "id": "q5",
+                "type": "open",
+                "points": 2,
+                "lesson_part": 2,
+                "skills": [
+                  "emc-notions",
+                  "emc-institutions"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Définis la « séparation des pouvoirs » et cite les trois pouvoirs.",
+                "solution": "Principe selon lequel les pouvoirs sont confiés à des institutions différentes, pour éviter qu'une seule personne ne concentre tout le pouvoir et n'en abuse. Les trois pouvoirs : législatif (faire les lois), exécutif (les appliquer), judiciaire (juger).",
+                "rubric": "1 pt : définition (pouvoirs confiés à des institutions distinctes pour éviter les abus). 1 pt : les trois pouvoirs nommés (0,5 pt pour deux)."
+              }
+            ]
+          },
+          {
+            "label": "B · J'analyse un document (6 points)",
+            "questions": [
+              {
+                "id": "q6",
+                "type": "open",
+                "points": 1,
+                "text_ref": "d1",
+                "lesson_part": 3,
+                "skills": [
+                  "emc-analyse-doc"
+                ],
+                "cognitive": "analyser",
+                "prompt": "Présente le document : nature, date et source.",
+                "solution": "Trois articles (3, 6 et 11) de la Constitution de la Ve République, du 4 octobre 1958 : c'est un texte juridique officiel, le plus important de l'État (l'article 6 a été modifié depuis, en 1962, 2000 et 2008).",
+                "rubric": "0,5 pt : nature (articles de la Constitution, texte juridique). 0,5 pt : date (4 octobre 1958)."
+              },
+              {
+                "id": "q7",
+                "type": "open",
+                "points": 2,
+                "text_ref": "d1",
+                "lesson_part": 3,
+                "skills": [
+                  "emc-analyse-doc",
+                  "emc-notions"
+                ],
+                "cognitive": "analyser",
+                "prompt": "Relève deux façons dont les citoyens participent aux décisions selon ce document. Cite le texte.",
+                "solution": "En élisant des représentants (« par ses représentants », le président « élu […] au suffrage universel direct ») et en votant lors d'un référendum (« par la voie du référendum », article 11).",
+                "rubric": "1 pt : élection de représentants / du président, avec citation. 1 pt : référendum, avec citation."
+              },
+              {
+                "id": "q8",
+                "type": "open",
+                "points": 2,
+                "text_ref": "d1",
+                "lesson_part": 3,
+                "skills": [
+                  "emc-notions",
+                  "emc-principes"
+                ],
+                "cognitive": "analyser",
+                "prompt": "Explique ce que signifie un suffrage « universel, égal et secret ». Qui peut voter ?",
+                "solution": "Universel : tous les citoyens majeurs peuvent voter, femmes et hommes. Égal : chaque voix compte autant. Secret : on vote seul dans l'isoloir, sans pression. Peuvent voter les Français majeurs (18 ans) des deux sexes qui jouissent de leurs droits civils et politiques.",
+                "rubric": "1,5 pt : les trois adjectifs expliqués (0,5 pt chacun). 0,5 pt : qui vote (Français majeurs, femmes et hommes, avec leurs droits civiques)."
+              },
+              {
+                "id": "q9",
+                "type": "open",
+                "points": 1,
+                "text_ref": "d1",
+                "lesson_part": 2,
+                "skills": [
+                  "emc-analyse-doc",
+                  "emc-institutions"
+                ],
+                "cognitive": "analyser",
+                "prompt": "Pourquoi l'article 6 limite-t-il le président à deux mandats consécutifs ?",
+                "solution": "Pour éviter qu'une même personne garde trop longtemps le pouvoir et permettre l'alternance : c'est une protection de la démocratie (règle ajoutée en 2008).",
+                "rubric": "0,5 pt : éviter la concentration ou la confiscation du pouvoir. 0,5 pt : lien avec la démocratie / l'alternance."
+              }
+            ]
+          },
+          {
+            "label": "C · Je rédige un développement construit (8 points)",
+            "questions": [
+              {
+                "id": "q10",
+                "type": "open",
+                "points": 8,
+                "lesson_part": 3,
+                "skills": [
+                  "emc-principes",
+                  "emc-institutions",
+                  "emc-reperes",
+                  "emc-argumenter"
+                ],
+                "cognitive": "rediger",
+                "prompt": "Développement construit (une vingtaine de lignes) : « Montrez que la Constitution de 1958 organise une démocratie. » Parle des principes, des institutions et du rôle des citoyens.",
+                "solution": "Introduction : adoptée par référendum le 28 septembre 1958 et promulguée le 4 octobre 1958, la Constitution fonde la Ve République. Partie 1 – Des principes démocratiques : République indivisible, laïque, démocratique et sociale (article 1er) ; devise « Liberté, Égalité, Fraternité » ; « gouvernement du peuple, par le peuple et pour le peuple » ; souveraineté du peuple (article 3) ; droits garantis par le préambule (DDHC de 1789). Partie 2 – Des institutions qui séparent les pouvoirs : président élu au suffrage universel direct (depuis 1962) pour 5 ans ; gouvernement responsable devant l'Assemblée (motion de censure) ; Parlement qui vote la loi ; justice indépendante ; Conseil constitutionnel. Partie 3 (ou intégrée) – Le rôle des citoyens : élections, référendums (1958, 1962, 2000), QPC depuis 2008. Conclusion : une démocratie stable, qui évolue par des révisions (plus de vingt) et repose sur la participation des citoyens.",
+                "rubric": "1 pt : introduction (dates de 1958, sujet posé). 2 pts : principes démocratiques (au moins deux éléments précis : article 1er, devise, souveraineté du peuple, droits). 2 pts : institutions et séparation des pouvoirs (au moins trois éléments). 1 pt : rôle des citoyens (élections, référendum, QPC). 1 pt : conclusion. 1 pt : expression (phrases construites, connecteurs, vocabulaire précis). Pénalité : -0,5 pt par erreur de repère importante."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "texts": [
+          {
+            "id": "d1",
+            "label": "Document · Le gouvernement et le Parlement",
+            "source": "Constitution du 4 octobre 1958, articles 20, 24 et 49 (extraits, texte officiel).",
+            "paragraphs": [
+              "Article 20 : « Le Gouvernement détermine et conduit la politique de la nation. Il dispose de l'administration et de la force armée. Il est responsable devant le Parlement dans les conditions et suivant les procédures prévues aux articles 49 et 50. »",
+              "Article 24 : « Le Parlement vote la loi. Il contrôle l'action du Gouvernement. Il évalue les politiques publiques. Il comprend l'Assemblée nationale et le Sénat. Les députés à l'Assemblée nationale, dont le nombre ne peut excéder cinq cent soixante-dix-sept, sont élus au suffrage direct. Le Sénat, dont le nombre de membres ne peut excéder trois cent quarante-huit, est élu au suffrage indirect. […] »",
+              "Article 49 : « […] L'Assemblée nationale met en cause la responsabilité du Gouvernement par le vote d'une motion de censure. […] »"
+            ]
+          }
+        ],
+        "sections": [
+          {
+            "label": "A · Je connais mes repères (6 points)",
+            "questions": [
+              {
+                "id": "q1",
+                "type": "short",
+                "points": 1,
+                "lesson_part": 4,
+                "skills": [
+                  "emc-reperes"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "En quelle année le président devient-il élu au suffrage universel direct (référendum) ?",
+                "answer": [
+                  "1962",
+                  "en 1962",
+                  "28 octobre 1962",
+                  "le 28 octobre 1962",
+                  "octobre 1962"
+                ],
+                "solution": "1962 (référendum du 28 octobre 1962).",
+                "rubric": "1 pt : 1962."
+              },
+              {
+                "id": "q2",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 3,
+                "skills": [
+                  "emc-principes"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Quelle est la devise de la République inscrite dans la Constitution ?",
+                "options": [
+                  "« Travail, Famille, Patrie »",
+                  "« Liberté, Égalité, Fraternité »",
+                  "« Unité, Paix, Progrès »",
+                  "« Honneur et Patrie »"
+                ],
+                "answer": 1,
+                "solution": "« Liberté, Égalité, Fraternité » (article 2).",
+                "rubric": "1 pt : bonne réponse."
+              },
+              {
+                "id": "q3",
+                "type": "numeric",
+                "points": 1,
+                "lesson_part": 2,
+                "skills": [
+                  "emc-institutions"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Combien de membres compte le Conseil constitutionnel (hors anciens présidents de la République) ? (réponds par un nombre)",
+                "answer": 9,
+                "solution": "9 membres, nommés pour 9 ans.",
+                "rubric": "1 pt : 9."
+              },
+              {
+                "id": "q4",
+                "type": "short",
+                "points": 1,
+                "lesson_part": 5,
+                "skills": [
+                  "emc-acteurs"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Quel président de la IVe République fait appel au général de Gaulle en mai 1958 ?",
+                "answer": [
+                  "Coty",
+                  "Rene Coty",
+                  "R. Coty"
+                ],
+                "solution": "René Coty.",
+                "rubric": "1 pt : Coty."
+              },
+              {
+                "id": "q5",
+                "type": "open",
+                "points": 2,
+                "lesson_part": 3,
+                "skills": [
+                  "emc-notions"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Définis le mot « référendum » et donne un exemple daté.",
+                "solution": "Vote par lequel les citoyens répondent directement par oui ou par non à une question posée. Exemples : 28 septembre 1958 (adoption de la Constitution), 28 octobre 1962 (élection du président au suffrage universel direct), 24 septembre 2000 (quinquennat).",
+                "rubric": "1 pt : définition (vote direct des citoyens, oui/non). 1 pt : exemple exact et daté."
+              }
+            ]
+          },
+          {
+            "label": "B · J'analyse un document (6 points)",
+            "questions": [
+              {
+                "id": "q6",
+                "type": "open",
+                "points": 1,
+                "text_ref": "d1",
+                "lesson_part": 2,
+                "skills": [
+                  "emc-analyse-doc"
+                ],
+                "cognitive": "analyser",
+                "prompt": "Présente le document : nature, date et source.",
+                "solution": "Trois articles (20, 24 et 49) de la Constitution de la Ve République, du 4 octobre 1958 : c'est un texte juridique officiel, le plus important de l'État.",
+                "rubric": "0,5 pt : nature (articles de la Constitution, texte juridique). 0,5 pt : date (4 octobre 1958)."
+              },
+              {
+                "id": "q7",
+                "type": "open",
+                "points": 2,
+                "text_ref": "d1",
+                "lesson_part": 2,
+                "skills": [
+                  "emc-analyse-doc",
+                  "emc-institutions"
+                ],
+                "cognitive": "analyser",
+                "prompt": "Relève le rôle du gouvernement et celui du Parlement. Cite le texte.",
+                "solution": "Le gouvernement « détermine et conduit la politique de la nation » et « dispose de l'administration et de la force armée » (pouvoir exécutif). Le Parlement « vote la loi », « contrôle l'action du Gouvernement » et « évalue les politiques publiques » (pouvoir législatif).",
+                "rubric": "1 pt : rôle du gouvernement, avec citation. 1 pt : rôle du Parlement, avec citation."
+              },
+              {
+                "id": "q8",
+                "type": "open",
+                "points": 2,
+                "text_ref": "d1",
+                "lesson_part": 2,
+                "skills": [
+                  "emc-institutions",
+                  "emc-notions"
+                ],
+                "cognitive": "analyser",
+                "prompt": "Explique comment le Parlement peut contrôler le gouvernement. En quoi est-ce une application de la séparation des pouvoirs ?",
+                "solution": "Le gouvernement est « responsable » devant le Parlement : l'Assemblée nationale peut voter une motion de censure qui oblige le gouvernement à démissionner. Le pouvoir législatif peut ainsi limiter le pouvoir exécutif : les pouvoirs sont séparés et se contrôlent mutuellement, ce qui évite les abus.",
+                "rubric": "1 pt : la motion de censure expliquée (le gouvernement peut être renversé). 1 pt : lien avec la séparation des pouvoirs (un pouvoir en limite un autre)."
+              },
+              {
+                "id": "q9",
+                "type": "open",
+                "points": 1,
+                "text_ref": "d1",
+                "lesson_part": 2,
+                "skills": [
+                  "emc-analyse-doc",
+                  "emc-institutions"
+                ],
+                "cognitive": "analyser",
+                "prompt": "Quelle différence le document fait-il entre l'élection des députés et celle des sénateurs ?",
+                "solution": "Les députés (577 au maximum) sont élus au suffrage direct, par les citoyens ; les sénateurs (348 au maximum) sont élus au suffrage indirect, par des élus (grands électeurs).",
+                "rubric": "0,5 pt : députés élus au suffrage direct. 0,5 pt : sénateurs élus au suffrage indirect (par des élus)."
+              }
+            ]
+          },
+          {
+            "label": "C · Je rédige un développement construit (8 points)",
+            "questions": [
+              {
+                "id": "q10",
+                "type": "open",
+                "points": 8,
+                "lesson_part": 2,
+                "skills": [
+                  "emc-institutions",
+                  "emc-reperes",
+                  "emc-acteurs",
+                  "emc-argumenter"
+                ],
+                "cognitive": "rediger",
+                "prompt": "Développement construit (une vingtaine de lignes) : « Expliquez comment les pouvoirs sont organisés et séparés sous la Ve République, et pourquoi la Constitution de 1958 a voulu un exécutif fort. »",
+                "solution": "Introduction : la Constitution du 4 octobre 1958, rédigée par Michel Debré sous l'impulsion du général de Gaulle, organise les pouvoirs de la Ve République. Partie 1 – Pourquoi un exécutif fort : instabilité de la IVe République (plus de vingt gouvernements en douze ans), guerre d'Algérie, crise du 13 mai 1958 ; volonté d'un président qui assure la continuité de l'État (article 5). Partie 2 – L'organisation des pouvoirs : exécutif (président élu au suffrage universel direct depuis 1962, pour 5 ans depuis 2000 ; il nomme le Premier ministre, peut dissoudre l'Assemblée ; gouvernement qui conduit la politique de la nation) ; législatif (Assemblée nationale de 577 députés et Sénat de 348 sénateurs : vote de la loi, contrôle du gouvernement, motion de censure) ; judiciaire (juges indépendants) ; Conseil constitutionnel. Conclusion : les pouvoirs sont séparés et se contrôlent (DDHC, article 16) ; en cas de cohabitation, l'équilibre change ; la Constitution garantit ainsi les libertés.",
+                "rubric": "1 pt : introduction (date, acteurs, sujet posé). 2,5 pts : pourquoi un exécutif fort (instabilité de la IVe République, crise de 1958, au moins deux éléments précis). 2,5 pts : organisation et séparation des pouvoirs (au moins trois institutions avec leur rôle et un mécanisme de contrôle). 1 pt : conclusion. 1 pt : expression (phrases construites, connecteurs, vocabulaire précis). Pénalité : -0,5 pt par erreur de repère importante."
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -198,7 +198,8 @@ export function autoCorrect(q: Question, answer: string | undefined): boolean | 
     return expected === given;
   }
   if (q.type === 'numeric') {
-    const v = Number(a.replace(',', '.').replace(/\s/g, ''));
+    // signe moins typographique (claviers de téléphone) et espaces fines acceptés
+    const v = Number(a.replace(/[−–]/g, '-').replace(',', '.').replace(/[\s\u00a0\u202f]/g, ''));
     return Number.isFinite(v) && Math.abs(v - Number(q.answer)) <= (q.tolerance ?? 0);
   }
   const norm = (s: string) => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();

@@ -1,0 +1,1125 @@
+{
+  "format": "syllig-course/1",
+  "code": "TG135",
+  "level": "troisieme-generale",
+  "subject": "Technologie",
+  "chapter": "Objets techniques et société",
+  "title": "Analyser le besoin et le cahier des charges",
+  "skills": [
+    {
+      "id": "te-besoin",
+      "label": "Identifier le besoin et la fonction d'usage d'un objet"
+    },
+    {
+      "id": "te-bete-cornes",
+      "label": "Énoncer le besoin avec la bête à cornes"
+    },
+    {
+      "id": "te-fonctions",
+      "label": "Identifier les fonctions principales et les fonctions contraintes"
+    },
+    {
+      "id": "te-pieuvre",
+      "label": "Lire et compléter un diagramme pieuvre"
+    },
+    {
+      "id": "te-cdcf",
+      "label": "Lire et compléter un cahier des charges (critères, niveaux, flexibilité)"
+    },
+    {
+      "id": "te-rediger",
+      "label": "Argumenter un choix technique par écrit"
+    }
+  ],
+  "lesson": {
+    "duration_min": 35,
+    "objectives": [
+      "distinguer le besoin, la fonction d'usage et la fonction d'estime d'un objet ;",
+      "énoncer le besoin auquel répond un objet avec la bête à cornes ;",
+      "identifier ses fonctions de service avec un diagramme pieuvre ;",
+      "lire et compléter un cahier des charges : critères, niveaux, flexibilité ;",
+      "comprendre que les besoins et les objets évoluent avec la société."
+    ],
+    "essential": "Tout objet technique est conçu pour répondre à un **besoin**. Avant de fabriquer quoi que ce soit, on analyse ce besoin : à qui l'objet rend-il service, sur quoi agit-il, dans quel but ? On liste ensuite ce que l'objet doit faire (fonctions principales) et les exigences qu'il doit respecter (fonctions contraintes). Le **cahier des charges** rassemble ces fonctions avec des critères mesurables et des niveaux à atteindre : il sert de contrat entre le client et le concepteur, puis de référence pour vérifier l'objet fini.",
+    "parts": [
+      {
+        "title": "Du besoin à l'objet technique",
+        "blocks": [
+          {
+            "type": "text",
+            "text": "Un **objet technique** est un objet fabriqué par l'être humain pour répondre à un besoin. Un vélo, une lampe, une application de messagerie ou un distributeur de croquettes pour chat sont des objets (ou des services) techniques."
+          },
+          {
+            "type": "callout",
+            "kind": "definition",
+            "title": "Besoin",
+            "text": "Un **besoin** est une nécessité ou un désir éprouvé par un utilisateur. Exemples : se déplacer, s'éclairer, communiquer, nourrir son animal en son absence."
+          },
+          {
+            "type": "table",
+            "caption": "Deux fonctions à ne pas confondre",
+            "columns": [
+              "Fonction",
+              "Question",
+              "Exemple : une gourde"
+            ],
+            "rows": [
+              [
+                "Fonction d'usage",
+                "À quoi sert l'objet ?",
+                "Transporter de l'eau pour boire."
+              ],
+              [
+                "Fonction d'estime",
+                "Pourquoi a-t-on envie de choisir cet objet-là ?",
+                "Couleur, motif, marque, matière agréable au toucher."
+              ]
+            ]
+          },
+          {
+            "type": "text",
+            "text": "Dans ce cours, nous suivrons un exemple : **Croqui**, un distributeur automatique de croquettes imaginé pour les propriétaires de chats qui travaillent toute la journée."
+          },
+          {
+            "type": "callout",
+            "kind": "retiens",
+            "title": "Retiens",
+            "text": "Un objet technique répond à un **besoin**. Sa **fonction d'usage** dit à quoi il sert ; sa **fonction d'estime** dit ce qui le rend attirant."
+          }
+        ],
+        "checkpoint": {
+          "variants": [
+            {
+              "prompt": "Quelle est la fonction d'usage d'un parapluie ?",
+              "options": [
+                "Avoir une jolie couleur",
+                "Protéger l'utilisateur de la pluie",
+                "Être pliable",
+                "Coûter moins de 20 €"
+              ],
+              "answer": 1,
+              "hint": "La fonction d'usage répond à la question « À quoi sert l'objet ? ».",
+              "explanation": "Un parapluie sert à protéger son utilisateur de la pluie. La couleur relève de la fonction d'estime."
+            },
+            {
+              "prompt": "« Je choisis ces écouteurs parce qu'ils sont rose pastel. » Cette raison relève…",
+              "options": [
+                "de la fonction d'usage",
+                "de la fonction d'estime",
+                "d'une fonction principale",
+                "d'un critère de sécurité"
+              ],
+              "answer": 1,
+              "hint": "La couleur sert-elle à écouter de la musique ?",
+              "explanation": "La couleur rend l'objet attirant : c'est la fonction d'estime."
+            }
+          ]
+        }
+      },
+      {
+        "title": "Énoncer le besoin : la bête à cornes",
+        "blocks": [
+          {
+            "type": "text",
+            "text": "Pour énoncer clairement le besoin, on utilise un outil graphique appelé **bête à cornes**. Il répond à trois questions."
+          },
+          {
+            "type": "table",
+            "caption": "La bête à cornes du distributeur Croqui",
+            "columns": [
+              "Question",
+              "Réponse pour Croqui"
+            ],
+            "rows": [
+              [
+                "À qui le produit rend-il service ?",
+                "Au propriétaire du chat."
+              ],
+              [
+                "Sur quoi agit-il ?",
+                "Sur les croquettes (la nourriture du chat)."
+              ],
+              [
+                "Dans quel but ?",
+                "Distribuer automatiquement des portions de croquettes au chat, à heures fixes, même en l'absence du propriétaire."
+              ]
+            ]
+          },
+          {
+            "type": "callout",
+            "kind": "methode",
+            "title": "Construire une bête à cornes",
+            "text": "1. Au centre, j'écris le nom du produit.\n2. En haut à gauche, « À qui rend-il service ? » : l'utilisateur.\n3. En haut à droite, « Sur quoi agit-il ? » : la matière, l'objet ou la personne sur qui il agit.\n4. En bas, « Dans quel but ? » : une phrase qui commence par un verbe à l'infinitif."
+          },
+          {
+            "type": "callout",
+            "kind": "attention",
+            "title": "Le but n'est pas la solution",
+            "text": "« Dans quel but ? » exprime ce que l'on veut obtenir, pas comment on l'obtient. On écrit « distribuer des portions de croquettes », et non « faire tourner une vis grâce à un moteur »."
+          }
+        ],
+        "checkpoint": {
+          "variants": [
+            {
+              "prompt": "Pour un sèche-cheveux, que répond-on à la question « Sur quoi agit-il ? »",
+              "options": [
+                "L'utilisateur",
+                "Les cheveux",
+                "L'électricité",
+                "La prise de courant"
+              ],
+              "answer": 1,
+              "hint": "Qu'est-ce qui est modifié (séché) par le produit ?",
+              "explanation": "Le sèche-cheveux agit sur les cheveux ; il rend service à l'utilisateur."
+            },
+            {
+              "prompt": "Quelle réponse convient à « Dans quel but ? » pour une lampe de bureau ?",
+              "options": [
+                "Avec une ampoule LED",
+                "Éclairer le plan de travail de l'utilisateur",
+                "L'élève",
+                "Elle coûte 25 €"
+              ],
+              "answer": 1,
+              "hint": "Le but commence par un verbe à l'infinitif et ne décrit pas la solution.",
+              "explanation": "Le but est « éclairer le plan de travail ». L'ampoule LED est une solution technique."
+            },
+            {
+              "prompt": "Combien de questions comporte une bête à cornes ?",
+              "options": [
+                "Deux",
+                "Trois",
+                "Quatre",
+                "Cinq"
+              ],
+              "answer": 1,
+              "hint": "Relis le tableau de Croqui.",
+              "explanation": "Trois questions : À qui ? Sur quoi ? Dans quel but ?"
+            }
+          ]
+        }
+      },
+      {
+        "title": "Les fonctions de service : le diagramme pieuvre",
+        "blocks": [
+          {
+            "type": "text",
+            "text": "Un objet est en relation avec de nombreux éléments de son environnement, appelés **éléments du milieu extérieur** : l'utilisateur, l'animal, l'énergie, le lieu, le budget, les normes… Le **diagramme pieuvre** place le produit au centre et ces éléments autour, puis les relie par des fonctions de service."
+          },
+          {
+            "type": "callout",
+            "kind": "definition",
+            "title": "Deux sortes de fonctions de service",
+            "text": "Une **fonction principale (FP)** relie **deux** éléments du milieu extérieur en passant par le produit : c'est la raison d'être de l'objet.\nUne **fonction contrainte (FC)** relie le produit à **un seul** élément : c'est une exigence à respecter (s'adapter, résister, coûter, respecter une norme…)."
+          },
+          {
+            "type": "table",
+            "caption": "Fonctions de service de Croqui",
+            "columns": [
+              "Repère",
+              "Fonction",
+              "Éléments reliés"
+            ],
+            "rows": [
+              [
+                "FP1",
+                "Permettre au propriétaire de nourrir son chat à heures fixes",
+                "propriétaire et chat"
+              ],
+              [
+                "FC1",
+                "Contenir une réserve suffisante de croquettes",
+                "croquettes"
+              ],
+              [
+                "FC2",
+                "Fonctionner avec l'énergie électrique du logement",
+                "énergie"
+              ],
+              [
+                "FC3",
+                "Être sans danger pour le chat et résister à ses coups de patte",
+                "chat"
+              ],
+              [
+                "FC4",
+                "Respecter le budget du propriétaire",
+                "budget"
+              ],
+              [
+                "FC5",
+                "Être assez silencieux pour la maison",
+                "environnement (la maison)"
+              ]
+            ]
+          },
+          {
+            "type": "callout",
+            "kind": "methode",
+            "title": "FP ou FC ?",
+            "text": "Je compte les éléments reliés par la fonction. Deux éléments à travers le produit → FP. Un seul élément → FC."
+          }
+        ],
+        "checkpoint": {
+          "variants": [
+            {
+              "prompt": "« Le vélo doit coûter moins de 300 €. » C'est…",
+              "options": [
+                "une fonction principale",
+                "une fonction contrainte",
+                "une fonction d'estime",
+                "une bête à cornes"
+              ],
+              "answer": 1,
+              "hint": "Combien d'éléments du milieu extérieur cette fonction relie-t-elle ?",
+              "explanation": "Elle relie le produit à un seul élément (le budget) : c'est une fonction contrainte."
+            },
+            {
+              "prompt": "Une fonction principale relie…",
+              "options": [
+                "le produit à un seul élément",
+                "deux éléments du milieu extérieur en passant par le produit",
+                "deux produits entre eux",
+                "le prix à la couleur"
+              ],
+              "answer": 1,
+              "hint": "Relis l'encadré « Deux sortes de fonctions de service ».",
+              "explanation": "Une FP relie deux éléments du milieu extérieur à travers le produit, par exemple le propriétaire et le chat."
+            },
+            {
+              "prompt": "Dans le diagramme pieuvre, que place-t-on au centre ?",
+              "options": [
+                "L'utilisateur",
+                "Le produit",
+                "Le budget",
+                "La fonction principale"
+              ],
+              "answer": 1,
+              "hint": "Les éléments du milieu extérieur sont placés autour de…",
+              "explanation": "Le produit est au centre ; les éléments du milieu extérieur sont autour."
+            }
+          ]
+        }
+      },
+      {
+        "title": "Rédiger le cahier des charges",
+        "blocks": [
+          {
+            "type": "text",
+            "text": "Dire « le distributeur doit être silencieux » ne suffit pas : silencieux comment ? Le **cahier des charges fonctionnel** précise chaque fonction avec un **critère** mesurable, un **niveau** à atteindre et une **flexibilité** (la marge acceptée)."
+          },
+          {
+            "type": "table",
+            "caption": "Extrait du cahier des charges de Croqui",
+            "columns": [
+              "Fonction",
+              "Critère d'appréciation",
+              "Niveau",
+              "Flexibilité"
+            ],
+            "rows": [
+              [
+                "FP1 : nourrir le chat à heures fixes",
+                "masse d'une portion",
+                "25 g",
+                "± 2 g"
+              ],
+              [
+                "FP1",
+                "nombre de repas programmables par jour",
+                "4",
+                "au moins 2"
+              ],
+              [
+                "FC1 : contenir une réserve",
+                "masse de croquettes stockées",
+                "1,5 kg",
+                "minimum"
+              ],
+              [
+                "FC2 : fonctionner à l'électricité",
+                "autonomie sur piles en cas de coupure",
+                "48 h",
+                "minimum"
+              ],
+              [
+                "FC4 : respecter le budget",
+                "prix de vente",
+                "60 €",
+                "± 5 €"
+              ],
+              [
+                "FC5 : être silencieux",
+                "niveau sonore à 1 m",
+                "40 dB",
+                "maximum"
+              ]
+            ]
+          },
+          {
+            "type": "callout",
+            "kind": "methode",
+            "title": "Vérifier si un objet respecte le cahier des charges",
+            "text": "On mesure le critère sur le prototype, puis on compare avec le niveau en tenant compte de la flexibilité.\nExemple : portion visée 25 g ± 2 g, donc acceptée entre 23 g et 27 g. Une portion de 26 g est conforme ; une portion de 28 g ne l'est pas."
+          },
+          {
+            "type": "callout",
+            "kind": "retiens",
+            "title": "Retiens",
+            "text": "Le cahier des charges est un **contrat** entre le client et le concepteur. Chaque fonction y est précisée par un **critère**, un **niveau** et une **flexibilité**. Il sert ensuite à **valider** l'objet réalisé."
+          }
+        ],
+        "checkpoint": {
+          "variants": [
+            {
+              "prompt": "Le budget est fixé à 60 € ± 5 €. Quel prix est acceptable ?",
+              "options": [
+                "52 €",
+                "64 €",
+                "66 €",
+                "70 €"
+              ],
+              "answer": 1,
+              "hint": "Calcule la plage acceptée : de 60 − 5 à 60 + 5.",
+              "explanation": "La plage acceptée va de 55 € à 65 € : seul 64 € convient."
+            },
+            {
+              "prompt": "Pour la fonction « être silencieux », quel est le critère d'appréciation ?",
+              "options": [
+                "40 dB",
+                "Le niveau sonore",
+                "Maximum",
+                "Le chat"
+              ],
+              "answer": 1,
+              "hint": "Le critère est ce que l'on mesure ; le niveau est la valeur visée.",
+              "explanation": "Le critère est le niveau sonore ; 40 dB est le niveau ; « maximum » est la flexibilité."
+            },
+            {
+              "prompt": "À quoi sert le cahier des charges une fois l'objet fabriqué ?",
+              "options": [
+                "À rien",
+                "À vérifier que l'objet répond bien aux exigences",
+                "À choisir la couleur",
+                "À fixer le prix de la matière première"
+              ],
+              "answer": 1,
+              "hint": "Relis l'encadré « Retiens ».",
+              "explanation": "On compare l'objet réalisé au cahier des charges pour le valider."
+            }
+          ]
+        }
+      },
+      {
+        "title": "Des besoins qui évoluent avec la société",
+        "blocks": [
+          {
+            "type": "text",
+            "text": "Un même besoin peut être satisfait par des objets très différents selon les époques. Pour **écouter de la musique chez soi ou en se déplaçant**, on est passé du phonographe (fin du XIXe siècle) au disque vinyle, puis à la cassette audio, au CD (années 1980), au baladeur MP3 (fin des années 1990) et enfin à l'écoute en ligne sur smartphone."
+          },
+          {
+            "type": "text",
+            "text": "Les attentes de la société modifient aussi les cahiers des charges : on y ajoute aujourd'hui des fonctions contraintes qui n'existaient pas autrefois."
+          },
+          {
+            "type": "list",
+            "items": [
+              "**Environnement** : consommer peu d'énergie, utiliser des matériaux recyclables, être réparable.",
+              "**Accessibilité** : être utilisable par une personne âgée ou en situation de handicap.",
+              "**Sécurité et normes** : respecter les normes en vigueur (le marquage CE en Europe, par exemple).",
+              "**Données personnelles** : pour un objet connecté, protéger les informations de l'utilisateur."
+            ]
+          },
+          {
+            "type": "callout",
+            "kind": "plus",
+            "title": "Lien avec la suite",
+            "text": "Une fois le cahier des charges écrit, on cherche les **solutions techniques** capables de réaliser chaque fonction (moteur, capteur, matériau…). Ce sera l'objet du cours « Fonctions, solutions techniques et évolution des objets »."
+          }
+        ],
+        "checkpoint": {
+          "variants": [
+            {
+              "prompt": "Quel besoin ont satisfait successivement le vinyle, le CD et le streaming ?",
+              "options": [
+                "Se déplacer",
+                "Écouter de la musique",
+                "S'éclairer",
+                "Se nourrir"
+              ],
+              "answer": 1,
+              "hint": "Relis le premier paragraphe de la partie.",
+              "explanation": "Ces objets ont tous répondu au même besoin : écouter de la musique."
+            },
+            {
+              "prompt": "« L'objet doit être réparable et ses pièces recyclables. » Cette exigence est liée à…",
+              "options": [
+                "l'esthétique",
+                "l'environnement",
+                "la fonction d'usage",
+                "la bête à cornes"
+              ],
+              "answer": 1,
+              "hint": "Regarde la liste des nouvelles contraintes.",
+              "explanation": "Réparabilité et recyclage sont des contraintes environnementales."
+            }
+          ]
+        }
+      }
+    ],
+    "memo": [
+      {
+        "label": "Besoin",
+        "text": "Nécessité ou désir d'un utilisateur. Fonction d'usage = à quoi sert l'objet ; fonction d'estime = ce qui le rend attirant."
+      },
+      {
+        "label": "Bête à cornes",
+        "text": "À qui rend-il service ? Sur quoi agit-il ? Dans quel but ? (verbe à l'infinitif, sans décrire la solution)."
+      },
+      {
+        "label": "Diagramme pieuvre",
+        "text": "Produit au centre. FP = relie deux éléments du milieu extérieur via le produit. FC = relie le produit à un seul élément."
+      },
+      {
+        "label": "Cahier des charges",
+        "text": "Pour chaque fonction : critère (ce que l'on mesure), niveau (valeur visée), flexibilité (marge). C'est un contrat, puis un outil de validation."
+      },
+      {
+        "label": "Société",
+        "text": "Les besoins sont satisfaits par des objets qui évoluent ; de nouvelles contraintes apparaissent (environnement, accessibilité, normes, données)."
+      }
+    ]
+  },
+  "exercises": {
+    "duration_min": 25,
+    "instructions": "Fais les exercices dans l'ordre : les étoiles indiquent la difficulté. Pour les calculs, écris seulement le nombre. Les corrigés s'affichent après validation.",
+    "pass_threshold": 8,
+    "texts": [],
+    "items": [
+      {
+        "id": "ex1",
+        "type": "qcm",
+        "stars": 1,
+        "lesson_part": 2,
+        "skills": [
+          "te-bete-cornes"
+        ],
+        "cognitive": "connaitre",
+        "prompt": "Pour une brosse à dents électrique, que répond-on à la question « Sur quoi agit-elle ? »",
+        "options": [
+          "Sur l'utilisateur",
+          "Sur les dents",
+          "Sur la batterie",
+          "Sur le dentifrice"
+        ],
+        "answer": 1,
+        "solution": "La brosse à dents agit sur les dents (elle les nettoie). Elle rend service à l'utilisateur."
+      },
+      {
+        "id": "ex2",
+        "type": "qcm",
+        "stars": 1,
+        "lesson_part": 3,
+        "skills": [
+          "te-fonctions"
+        ],
+        "cognitive": "connaitre",
+        "prompt": "« La trottinette doit résister à la pluie. » Il s'agit…",
+        "options": [
+          "d'une fonction principale",
+          "d'une fonction contrainte",
+          "d'une fonction d'estime",
+          "d'un niveau"
+        ],
+        "answer": 1,
+        "solution": "Fonction contrainte : elle relie le produit à un seul élément du milieu extérieur (la météo, l'environnement)."
+      },
+      {
+        "id": "ex3",
+        "type": "qcm",
+        "stars": 1,
+        "lesson_part": 1,
+        "skills": [
+          "te-besoin"
+        ],
+        "cognitive": "connaitre",
+        "prompt": "Quelle phrase décrit la fonction d'usage d'un réveil ?",
+        "options": [
+          "Il est en forme de chat",
+          "Il réveille l'utilisateur à l'heure choisie",
+          "Il coûte 15 €",
+          "Il est en plastique recyclé"
+        ],
+        "answer": 1,
+        "solution": "La fonction d'usage dit à quoi sert l'objet : réveiller l'utilisateur à l'heure choisie. La forme de chat relève de la fonction d'estime."
+      },
+      {
+        "id": "ex4",
+        "type": "short",
+        "stars": 1,
+        "lesson_part": 2,
+        "skills": [
+          "te-bete-cornes"
+        ],
+        "cognitive": "connaitre",
+        "prompt": "Comment s'appelle l'outil graphique qui répond aux questions « À qui ? Sur quoi ? Dans quel but ? » ?",
+        "answer": [
+          "bête à cornes",
+          "la bête à cornes",
+          "une bête à cornes",
+          "bete a corne"
+        ],
+        "solution": "La bête à cornes."
+      },
+      {
+        "id": "ex5",
+        "type": "qcm",
+        "stars": 2,
+        "lesson_part": 4,
+        "skills": [
+          "te-cdcf"
+        ],
+        "cognitive": "appliquer",
+        "prompt": "Pour la fonction « éclairer suffisamment le bureau » d'une lampe, quel critère d'appréciation est mesurable ?",
+        "options": [
+          "La beauté de la lampe",
+          "L'éclairement sur le bureau, en lux",
+          "Le fait que l'élève soit content",
+          "La marque de l'ampoule"
+        ],
+        "answer": 1,
+        "solution": "L'éclairement (en lux) se mesure avec un luxmètre : c'est un critère objectif. Les autres réponses ne sont pas mesurables ou ne concernent pas la fonction."
+      },
+      {
+        "id": "ex6",
+        "type": "numeric",
+        "stars": 2,
+        "lesson_part": 4,
+        "skills": [
+          "te-cdcf"
+        ],
+        "cognitive": "appliquer",
+        "prompt": "Le réservoir de Croqui contient 1,5 kg de croquettes. Le chat en mange 60 g par jour. Pendant combien de jours le distributeur peut-il nourrir le chat sans être rempli ? (1 kg = 1 000 g.)",
+        "answer": 25,
+        "solution": "1,5 kg = 1 500 g. 1 500 ÷ 60 = 25 jours."
+      },
+      {
+        "id": "ex7",
+        "type": "qcm",
+        "stars": 2,
+        "lesson_part": 4,
+        "skills": [
+          "te-cdcf"
+        ],
+        "cognitive": "appliquer",
+        "prompt": "Le cahier des charges d'une gourde indique : contenance 750 mL ± 25 mL. Quelle gourde est conforme ?",
+        "options": [
+          "700 mL",
+          "720 mL",
+          "770 mL",
+          "800 mL"
+        ],
+        "answer": 2,
+        "solution": "Plage acceptée : de 750 − 25 = 725 mL à 750 + 25 = 775 mL. Seule la gourde de 770 mL est conforme."
+      },
+      {
+        "id": "ex8",
+        "type": "short",
+        "stars": 2,
+        "lesson_part": 3,
+        "skills": [
+          "te-pieuvre",
+          "te-fonctions"
+        ],
+        "cognitive": "connaitre",
+        "prompt": "Dans un diagramme pieuvre, comment appelle-t-on une fonction qui relie deux éléments du milieu extérieur en passant par le produit ? (fonction …)",
+        "answer": [
+          "principale",
+          "fonction principale",
+          "FP"
+        ],
+        "solution": "Une fonction principale (FP)."
+      },
+      {
+        "id": "ex9",
+        "type": "numeric",
+        "stars": 3,
+        "lesson_part": 4,
+        "skills": [
+          "te-cdcf"
+        ],
+        "cognitive": "analyser",
+        "prompt": "Le cahier des charges de Croqui exige des portions de 25 g ± 2 g. Sur le prototype, on pèse cinq portions : 24 g ; 27 g ; 28 g ; 22 g ; 26 g. Combien de portions sont conformes ?",
+        "answer": 3,
+        "solution": "Plage acceptée : de 23 g à 27 g. Conformes : 24 g, 27 g et 26 g, soit 3 portions. 28 g est trop lourd et 22 g trop léger : le réglage du prototype doit être amélioré."
+      },
+      {
+        "id": "ex10",
+        "type": "open",
+        "stars": 3,
+        "lesson_part": 3,
+        "skills": [
+          "te-bete-cornes",
+          "te-fonctions",
+          "te-rediger"
+        ],
+        "cognitive": "rediger",
+        "prompt": "On veut concevoir une lampe de chevet pour enfant. Rédige sa bête à cornes (les trois réponses), puis propose deux fonctions contraintes en précisant à quel élément du milieu extérieur chacune est liée.",
+        "solution": "Bête à cornes : à qui rend-elle service ? À l'enfant (et à ses parents). Sur quoi agit-elle ? Sur la chambre / l'espace autour du lit (l'éclairage). Dans quel but ? Éclairer la chambre faiblement pour lire ou se rassurer avant de dormir.\nFonctions contraintes possibles : être sans danger pour l'enfant (élément : enfant / normes de sécurité, pas de pièce chaude ni coupante) ; fonctionner avec l'énergie électrique (élément : énergie) ; coûter moins de 30 € (élément : budget) ; être robuste en cas de chute (élément : environnement)."
+      }
+    ]
+  },
+  "evaluation": {
+    "duration_min": 25,
+    "conditions": "Sans la leçon, en 25 minutes. Calculatrice autorisée. Lis le document avant de répondre. Barème : A = 5 points · B = 10 points · C = 5 points.",
+    "total_points": 20,
+    "variants": [
+      {
+        "texts": [
+          {
+            "id": "t1",
+            "label": "Document : un projet de station de recharge au collège",
+            "source": "Situation originale écrite pour ce cours.",
+            "paragraphs": [
+              "Les élèves du conseil de vie collégienne souhaitent installer au foyer une station de recharge pour téléphones, alimentée par un panneau solaire placé sur le toit.",
+              "Extrait du cahier des charges :",
+              "FP1 : permettre aux élèves de recharger leur téléphone. Critère : nombre de téléphones rechargés en même temps. Niveau : 6. Flexibilité : au moins 6.",
+              "FC1 : utiliser l'énergie solaire. Critère : part de l'énergie d'origine solaire. Niveau : 100 %. Flexibilité : aucune.",
+              "FC2 : respecter le budget du collège. Critère : coût total. Niveau : 400 €. Flexibilité : ± 20 €.",
+              "FC3 : être sans danger pour les élèves. Critère : aucun fil électrique accessible. Niveau : 0 fil accessible. Flexibilité : aucune.",
+              "Un téléphone met environ 2 heures à se recharger complètement. Le foyer est ouvert 8 heures par jour."
+            ]
+          }
+        ],
+        "sections": [
+          {
+            "label": "A · Je connais (5 points)",
+            "questions": [
+              {
+                "id": "q1",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 1,
+                "skills": [
+                  "te-besoin"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "La fonction d'estime d'un objet correspond…",
+                "options": [
+                  "à ce à quoi il sert",
+                  "à ce qui le rend attirant pour l'utilisateur",
+                  "à son prix maximal",
+                  "à sa durée de vie"
+                ],
+                "answer": 1,
+                "solution": "La fonction d'estime correspond à ce qui rend l'objet attirant (couleur, forme, marque…)."
+              },
+              {
+                "id": "q2",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 2,
+                "skills": [
+                  "te-bete-cornes"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Quelle question NE fait PAS partie de la bête à cornes ?",
+                "options": [
+                  "À qui le produit rend-il service ?",
+                  "Sur quoi agit-il ?",
+                  "Combien coûte-t-il ?",
+                  "Dans quel but ?"
+                ],
+                "answer": 2,
+                "solution": "Le coût n'apparaît pas dans la bête à cornes : c'est une fonction contrainte du cahier des charges."
+              },
+              {
+                "id": "q3",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 4,
+                "skills": [
+                  "te-cdcf"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Dans un cahier des charges, la flexibilité indique…",
+                "options": [
+                  "la couleur de l'objet",
+                  "la marge acceptée autour du niveau",
+                  "le nom du client",
+                  "la solution technique choisie"
+                ],
+                "answer": 1,
+                "solution": "La flexibilité est la marge acceptée autour du niveau visé (par exemple ± 5 €)."
+              },
+              {
+                "id": "q4",
+                "type": "open",
+                "points": 2,
+                "lesson_part": 4,
+                "skills": [
+                  "te-besoin",
+                  "te-cdcf"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Définis ce qu'est un besoin, puis explique à quoi sert un cahier des charges.",
+                "solution": "Un besoin est une nécessité ou un désir éprouvé par un utilisateur. Le cahier des charges précise ce que l'objet doit faire et les exigences à respecter (fonctions, critères, niveaux, flexibilités) : c'est un contrat entre le client et le concepteur, qui sert aussi à vérifier l'objet fini.",
+                "rubric": "1 pt : définition du besoin (nécessité ou désir d'un utilisateur). 0,5 pt : contenu du cahier des charges (fonctions avec critères et niveaux). 0,5 pt : rôle de contrat ou de référence pour valider l'objet."
+              }
+            ]
+          },
+          {
+            "label": "B · J'analyse un projet (10 points)",
+            "questions": [
+              {
+                "id": "q5",
+                "type": "open",
+                "points": 3,
+                "text_ref": "t1",
+                "lesson_part": 2,
+                "skills": [
+                  "te-bete-cornes"
+                ],
+                "cognitive": "analyser",
+                "prompt": "Rédige la bête à cornes de la station de recharge : réponds aux trois questions.",
+                "solution": "À qui rend-elle service ? Aux élèves du collège. Sur quoi agit-elle ? Sur les téléphones (leur batterie). Dans quel but ? Recharger les téléphones des élèves au foyer (grâce à l'énergie solaire).",
+                "rubric": "1 pt : « à qui » = les élèves (ou les utilisateurs du foyer). 1 pt : « sur quoi » = les téléphones / leurs batteries. 1 pt : « dans quel but » = une phrase avec un verbe à l'infinitif (recharger…), sans décrire la solution technique."
+              },
+              {
+                "id": "q6",
+                "type": "qcm",
+                "points": 1,
+                "text_ref": "t1",
+                "lesson_part": 3,
+                "skills": [
+                  "te-fonctions"
+                ],
+                "cognitive": "analyser",
+                "prompt": "Pourquoi FC2 (« respecter le budget du collège ») est-elle une fonction contrainte ?",
+                "options": [
+                  "Parce qu'elle relie deux éléments du milieu extérieur",
+                  "Parce qu'elle relie le produit à un seul élément, le budget",
+                  "Parce qu'elle est la plus importante",
+                  "Parce qu'elle concerne les élèves"
+                ],
+                "answer": 1,
+                "solution": "Une fonction contrainte relie le produit à un seul élément du milieu extérieur, ici le budget."
+              },
+              {
+                "id": "q7",
+                "type": "qcm",
+                "points": 1,
+                "text_ref": "t1",
+                "lesson_part": 3,
+                "skills": [
+                  "te-pieuvre"
+                ],
+                "cognitive": "analyser",
+                "prompt": "Quels éléments du milieu extérieur la fonction principale FP1 relie-t-elle ?",
+                "options": [
+                  "Le soleil et le budget",
+                  "Les élèves et leurs téléphones",
+                  "Le toit et le foyer",
+                  "Les fils et le panneau solaire"
+                ],
+                "answer": 1,
+                "solution": "FP1 relie les élèves et leurs téléphones, en passant par la station."
+              },
+              {
+                "id": "q8",
+                "type": "numeric",
+                "points": 2,
+                "text_ref": "t1",
+                "lesson_part": 4,
+                "skills": [
+                  "te-cdcf"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "La station recharge 6 téléphones en même temps. Une recharge complète dure 2 heures et le foyer est ouvert 8 heures. Combien de téléphones, au maximum, peuvent être entièrement rechargés en une journée ?",
+                "answer": 24,
+                "solution": "En 8 heures, on peut faire 8 ÷ 2 = 4 cycles de recharge. 4 × 6 = 24 téléphones au maximum."
+              },
+              {
+                "id": "q9",
+                "type": "qcm",
+                "points": 1,
+                "text_ref": "t1",
+                "lesson_part": 4,
+                "skills": [
+                  "te-cdcf"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Trois devis sont proposés : 375 €, 415 € et 430 €. Lequel respecte FC2 ?",
+                "options": [
+                  "375 € seulement",
+                  "415 € seulement",
+                  "430 € seulement",
+                  "Aucun des trois"
+                ],
+                "answer": 1,
+                "solution": "Plage acceptée : de 380 € à 420 €. Seul le devis à 415 € est conforme."
+              },
+              {
+                "id": "q10",
+                "type": "open",
+                "points": 2,
+                "text_ref": "t1",
+                "lesson_part": 4,
+                "skills": [
+                  "te-cdcf"
+                ],
+                "cognitive": "analyser",
+                "prompt": "Les élèves veulent ajouter la fonction FC4 : « être facile à utiliser ». Propose un critère mesurable et un niveau pour cette fonction.",
+                "solution": "Exemple : critère = temps nécessaire pour brancher son téléphone ; niveau = moins de 10 secondes. Autre exemple : critère = nombre d'actions pour lancer une recharge ; niveau = 1 action (brancher le câble).",
+                "rubric": "1 pt : critère mesurable et en lien avec la facilité d'utilisation. 1 pt : niveau chiffré cohérent avec le critère (une flexibilité est un plus)."
+              }
+            ]
+          },
+          {
+            "label": "C · J'argumente (5 points)",
+            "questions": [
+              {
+                "id": "q11",
+                "type": "open",
+                "points": 5,
+                "lesson_part": 5,
+                "skills": [
+                  "te-rediger",
+                  "te-cdcf",
+                  "te-fonctions"
+                ],
+                "cognitive": "rediger",
+                "prompt": "Le principal du collège demande : « Pourquoi perdre du temps à écrire un cahier des charges ? Achetez directement une station ! » Rédige une réponse argumentée (5 à 8 phrases) : explique le rôle du cahier des charges, puis propose deux nouvelles fonctions contraintes liées aux attentes actuelles de la société.",
+                "solution": "Le cahier des charges permet de préciser exactement ce que la station doit faire et les exigences à respecter : 6 téléphones rechargés à la fois, énergie 100 % solaire, budget de 400 € ± 20 €, sécurité des élèves. Il sert de contrat avec le fournisseur : on peut comparer les devis de façon objective. Une fois la station installée, il permet de vérifier qu'elle répond bien au besoin, critère par critère. Sans lui, on risquerait d'acheter un objet trop cher, dangereux ou mal adapté. On pourrait ajouter deux fonctions contraintes : être réparable et utiliser des matériaux recyclables (environnement), et être utilisable par un élève en fauteuil roulant, par exemple avec des prises placées à moins de 1 m de hauteur (accessibilité).",
+                "rubric": "1 pt : le cahier des charges précise les fonctions et exigences (avec au moins un exemple tiré du document). 1 pt : rôle de contrat / comparaison objective des offres. 1 pt : rôle de validation de l'objet réalisé. 1 pt : deux fonctions contraintes pertinentes liées à la société (environnement, accessibilité, sécurité, données…). 1 pt : réponse argumentée, organisée et rédigée en phrases correctes."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "texts": [
+          {
+            "id": "t1",
+            "label": "Document : un projet d'arrosage automatique",
+            "source": "Situation originale écrite pour ce cours.",
+            "paragraphs": [
+              "Une famille part souvent en week-end et souhaite un système d'arrosage automatique pour les plantes de son balcon, alimenté par une petite réserve d'eau.",
+              "Extrait du cahier des charges :",
+              "FP1 : permettre à la famille d'arroser ses plantes en son absence. Critère : quantité d'eau versée par jour. Niveau : 2 L. Flexibilité : ± 0,2 L.",
+              "FC1 : contenir une réserve d'eau suffisante. Critère : volume de la réserve. Niveau : 10 L. Flexibilité : minimum.",
+              "FC2 : respecter le budget de la famille. Critère : prix d'achat. Niveau : 80 €. Flexibilité : ± 10 €.",
+              "FC3 : résister aux intempéries. Critère : fonctionnement sous la pluie et entre −5 °C et 40 °C. Niveau : aucune panne. Flexibilité : aucune.",
+              "Les plantes doivent être arrosées deux fois par jour, avec la même quantité à chaque fois."
+            ]
+          }
+        ],
+        "sections": [
+          {
+            "label": "A · Je connais (5 points)",
+            "questions": [
+              {
+                "id": "q1",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 1,
+                "skills": [
+                  "te-besoin"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "La fonction d'usage d'un objet correspond…",
+                "options": [
+                  "à ce qui le rend attirant",
+                  "à ce à quoi il sert",
+                  "à sa couleur",
+                  "à sa marque"
+                ],
+                "answer": 1,
+                "solution": "La fonction d'usage dit à quoi sert l'objet."
+              },
+              {
+                "id": "q2",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 3,
+                "skills": [
+                  "te-pieuvre"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Une fonction contrainte relie…",
+                "options": [
+                  "deux éléments du milieu extérieur via le produit",
+                  "le produit à un seul élément du milieu extérieur",
+                  "deux produits entre eux",
+                  "le client au concepteur"
+                ],
+                "answer": 1,
+                "solution": "Une fonction contrainte relie le produit à un seul élément du milieu extérieur."
+              },
+              {
+                "id": "q3",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 4,
+                "skills": [
+                  "te-cdcf"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Dans un cahier des charges, le critère d'appréciation est…",
+                "options": [
+                  "ce que l'on mesure pour vérifier une fonction",
+                  "la marge acceptée",
+                  "le prix de l'objet",
+                  "le nom de l'utilisateur"
+                ],
+                "answer": 0,
+                "solution": "Le critère est la grandeur que l'on mesure (volume, prix, niveau sonore…) pour vérifier une fonction."
+              },
+              {
+                "id": "q4",
+                "type": "open",
+                "points": 2,
+                "lesson_part": 3,
+                "skills": [
+                  "te-fonctions",
+                  "te-pieuvre"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Explique la différence entre une fonction principale et une fonction contrainte, avec un exemple de chaque pour un objet de ton choix.",
+                "solution": "Une fonction principale relie deux éléments du milieu extérieur en passant par le produit : c'est la raison d'être de l'objet (ex. vélo : permettre à l'utilisateur de se déplacer sur la route). Une fonction contrainte relie le produit à un seul élément : c'est une exigence à respecter (ex. le vélo doit coûter moins de 300 €).",
+                "rubric": "0,5 pt : définition de la fonction principale (deux éléments via le produit). 0,5 pt : définition de la fonction contrainte (un seul élément). 1 pt : deux exemples corrects et cohérents avec l'objet choisi (0,5 pt chacun)."
+              }
+            ]
+          },
+          {
+            "label": "B · J'analyse un projet (10 points)",
+            "questions": [
+              {
+                "id": "q5",
+                "type": "open",
+                "points": 3,
+                "text_ref": "t1",
+                "lesson_part": 2,
+                "skills": [
+                  "te-bete-cornes"
+                ],
+                "cognitive": "analyser",
+                "prompt": "Rédige la bête à cornes du système d'arrosage : réponds aux trois questions.",
+                "solution": "À qui rend-il service ? À la famille (les propriétaires des plantes). Sur quoi agit-il ? Sur les plantes du balcon (leur terre). Dans quel but ? Arroser automatiquement les plantes pendant l'absence de la famille.",
+                "rubric": "1 pt : « à qui » = la famille / les propriétaires. 1 pt : « sur quoi » = les plantes (ou leur terre). 1 pt : « dans quel but » = une phrase avec un verbe à l'infinitif (arroser…), sans décrire la solution technique."
+              },
+              {
+                "id": "q6",
+                "type": "qcm",
+                "points": 1,
+                "text_ref": "t1",
+                "lesson_part": 3,
+                "skills": [
+                  "te-fonctions"
+                ],
+                "cognitive": "analyser",
+                "prompt": "Pourquoi FC3 (« résister aux intempéries ») est-elle une fonction contrainte ?",
+                "options": [
+                  "Parce qu'elle relie la famille et les plantes",
+                  "Parce qu'elle relie le produit à un seul élément, l'environnement extérieur",
+                  "Parce qu'elle est facultative",
+                  "Parce qu'elle concerne le prix"
+                ],
+                "answer": 1,
+                "solution": "Elle relie le produit à un seul élément du milieu extérieur : l'environnement (pluie, températures)."
+              },
+              {
+                "id": "q7",
+                "type": "qcm",
+                "points": 1,
+                "text_ref": "t1",
+                "lesson_part": 3,
+                "skills": [
+                  "te-pieuvre"
+                ],
+                "cognitive": "analyser",
+                "prompt": "Quels éléments du milieu extérieur la fonction principale FP1 relie-t-elle ?",
+                "options": [
+                  "La pluie et le budget",
+                  "La famille et les plantes",
+                  "Le balcon et la réserve",
+                  "Le tuyau et le robinet"
+                ],
+                "answer": 1,
+                "solution": "FP1 relie la famille et ses plantes, en passant par le système d'arrosage."
+              },
+              {
+                "id": "q8",
+                "type": "numeric",
+                "points": 2,
+                "text_ref": "t1",
+                "lesson_part": 4,
+                "skills": [
+                  "te-cdcf"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Le système verse 2 L par jour et la réserve contient 10 L. Pendant combien de jours peut-il arroser sans être rempli ?",
+                "answer": 5,
+                "solution": "10 ÷ 2 = 5 jours. C'est suffisant pour un week-end de 2 ou 3 jours."
+              },
+              {
+                "id": "q9",
+                "type": "qcm",
+                "points": 1,
+                "text_ref": "t1",
+                "lesson_part": 4,
+                "skills": [
+                  "te-cdcf"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Lors d'un test, on mesure la quantité d'eau versée en une journée par trois prototypes : 1,7 L, 2,1 L et 2,3 L. Lequel respecte FP1 ?",
+                "options": [
+                  "1,7 L seulement",
+                  "2,1 L seulement",
+                  "2,3 L seulement",
+                  "Aucun des trois"
+                ],
+                "answer": 1,
+                "solution": "Plage acceptée : de 1,8 L à 2,2 L. Seul le prototype qui verse 2,1 L est conforme."
+              },
+              {
+                "id": "q10",
+                "type": "open",
+                "points": 2,
+                "text_ref": "t1",
+                "lesson_part": 4,
+                "skills": [
+                  "te-cdcf"
+                ],
+                "cognitive": "analyser",
+                "prompt": "La famille veut ajouter la fonction FC4 : « ne pas déranger les voisins ». Propose un critère mesurable et un niveau pour cette fonction.",
+                "solution": "Exemple : critère = niveau sonore de la pompe mesuré à 1 m ; niveau = 35 dB maximum. Autre exemple : critère = quantité d'eau qui coule chez le voisin du dessous ; niveau = 0 goutte (récupération de l'eau en excès).",
+                "rubric": "1 pt : critère mesurable et en lien avec la gêne pour les voisins (bruit, écoulement d'eau…). 1 pt : niveau chiffré cohérent avec le critère (une flexibilité est un plus)."
+              }
+            ]
+          },
+          {
+            "label": "C · J'argumente (5 points)",
+            "questions": [
+              {
+                "id": "q11",
+                "type": "open",
+                "points": 5,
+                "lesson_part": 5,
+                "skills": [
+                  "te-rediger",
+                  "te-cdcf",
+                  "te-fonctions"
+                ],
+                "cognitive": "rediger",
+                "prompt": "Un membre de la famille dit : « Pas besoin de cahier des charges, prenons le premier arrosage automatique venu ! » Rédige une réponse argumentée (5 à 8 phrases) : explique le rôle du cahier des charges, puis propose deux nouvelles fonctions contraintes liées aux attentes actuelles de la société.",
+                "solution": "Le cahier des charges précise ce que le système doit faire et les exigences à respecter : verser 2 L ± 0,2 L par jour, avoir une réserve d'au moins 10 L, coûter 80 € ± 10 €, résister aux intempéries. Il permet de comparer les produits proposés de façon objective, au lieu de choisir au hasard. Une fois le système installé, on peut vérifier, critère par critère, qu'il répond bien au besoin. Sans lui, on risquerait un système trop petit, qui laisserait les plantes sans eau, ou qui tomberait en panne sous la pluie. On pourrait ajouter deux fonctions contraintes : économiser l'eau, par exemple en récupérant l'eau de pluie (environnement), et consommer peu d'énergie, avec une pompe alimentée par un petit panneau solaire (énergie et environnement).",
+                "rubric": "1 pt : le cahier des charges précise les fonctions et exigences (avec au moins un exemple tiré du document). 1 pt : rôle de contrat / comparaison objective des offres. 1 pt : rôle de validation de l'objet réalisé. 1 pt : deux fonctions contraintes pertinentes liées à la société (environnement, économie d'eau ou d'énergie, accessibilité, sécurité…). 1 pt : réponse argumentée, organisée et rédigée en phrases correctes."
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

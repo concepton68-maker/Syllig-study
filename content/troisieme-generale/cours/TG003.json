@@ -1,0 +1,339 @@
+{
+  "format": "syllig-course/1",
+  "code": "TG003",
+  "level": "troisieme-generale",
+  "subject": "Français",
+  "chapter": "Bases de la langue (début d'année)",
+  "title": "Les propositions subordonnées relatives et conjonctives",
+  "skills": [
+    { "id": "fr-familles-subordonnees", "label": "Reconnaître les familles de subordonnées (relative, complétive, circonstancielle)" },
+    { "id": "fr-relative", "label": "Identifier une subordonnée relative, son antécédent et sa fonction" },
+    { "id": "fr-pronom-relatif", "label": "Donner la fonction du pronom relatif dans la relative" },
+    { "id": "fr-completive", "label": "Identifier une subordonnée conjonctive complétive et sa fonction" },
+    { "id": "fr-que", "label": "Distinguer « que » pronom relatif et « que » conjonction de subordination" },
+    { "id": "fr-reponse-grammaire", "label": "Rédiger une réponse de grammaire complète (nature et fonction d'une proposition)" },
+    { "id": "fr-ecriture-subordonnees", "label": "Employer des subordonnées relatives et complétives dans ses phrases" }
+  ],
+  "lesson": {
+    "duration_min": 40,
+    "objectives": [
+      "reconnaître les grandes familles de propositions subordonnées ;",
+      "identifier une subordonnée relative, son pronom relatif et son antécédent ;",
+      "donner la fonction du pronom relatif à l'intérieur de la relative ;",
+      "identifier une subordonnée conjonctive complétive et sa fonction ;",
+      "ne plus confondre « que » pronom relatif et « que » conjonction de subordination ;",
+      "rédiger la réponse complète attendue au brevet : nature, mot introducteur, fonction."
+    ],
+    "essential": "Une proposition subordonnée dépend d'une proposition principale. La subordonnée relative est introduite par un pronom relatif (qui, que, dont, où…) et complète un nom, son antécédent. La subordonnée conjonctive complétive est introduite par la conjonction de subordination « que » et complète le plus souvent un verbe, dont elle est COD. Au brevet, on demande souvent la nature et la fonction d'une subordonnée : il faut nommer sa famille, son mot introducteur et le mot qu'elle complète.",
+    "parts": [
+      {
+        "title": "Rappel : les familles de propositions subordonnées",
+        "blocks": [
+          { "type": "text", "text": "Une proposition **subordonnée** est introduite par un mot subordonnant et dépend d'une proposition **principale** : elle ne peut pas former une phrase seule (voir le cours TG002). On distingue plusieurs familles selon le mot qui l'introduit et la fonction qu'elle occupe." },
+          { "type": "table", "columns": ["Famille", "Mot introducteur", "Ce qu'elle complète, sa fonction", "Exemple (subordonnée en gras)"], "rows": [
+            ["Subordonnée relative", "Pronom relatif : qui, que, quoi, dont, où, lequel…", "Un nom ou un pronom (l'antécédent) : complément de l'antécédent.", "J'ai retrouvé la clé **que tu cherchais**."],
+            ["Subordonnée conjonctive complétive", "Conjonction de subordination « que »", "Le plus souvent un verbe : COD du verbe.", "Je crois **que tu as raison**."],
+            ["Subordonnée conjonctive circonstancielle", "Conjonction de subordination : quand, parce que, bien que, pour que, si…", "Toute la phrase : complément circonstanciel (temps, cause, but…).", "Nous sortirons **quand la pluie cessera**."]
+          ] },
+          { "type": "callout", "kind": "retiens", "text": "Pour identifier une subordonnée, je regarde **qui l'introduit** et **ce qu'elle complète** : un nom (relative), un verbe (complétive) ou toute la phrase (circonstancielle)." },
+          { "type": "callout", "kind": "plus", "title": "Pour aller plus loin", "text": "Les subordonnées circonstancielles font l'objet du cours suivant (TG004). Il existe aussi la **subordonnée interrogative indirecte**, introduite par « si » ou un mot interrogatif après un verbe comme « demander » ou « savoir » : « Je me demande **si elle viendra** ». Elle est COD du verbe, comme la complétive." }
+        ],
+        "checkpoint": { "variants": [
+          { "prompt": "Une subordonnée relative complète…", "options": ["un verbe", "un nom ou un pronom, appelé antécédent", "toute la phrase"], "answer": 1, "hint": "Relis la première ligne du tableau.", "explanation": "La relative complète un nom ou un pronom : son antécédent." },
+          { "prompt": "« Nous sortirons quand la pluie cessera. » « quand la pluie cessera » est une subordonnée…", "options": ["relative", "conjonctive complétive", "conjonctive circonstancielle"], "answer": 2, "hint": "Que complète-t-elle : un nom, un verbe ou toute la phrase ? Peut-on la déplacer ?", "explanation": "Introduite par « quand », elle indique une circonstance (le temps) et peut être déplacée : c'est une circonstancielle." },
+          { "prompt": "Quel mot introduit une subordonnée conjonctive complétive ?", "options": ["Le pronom relatif « dont »", "La conjonction de subordination « que »", "La conjonction de coordination « car »"], "answer": 1, "hint": "Relis la deuxième ligne du tableau.", "explanation": "La complétive est introduite par la conjonction de subordination « que »." }
+        ] }
+      },
+      {
+        "title": "La subordonnée relative et son antécédent",
+        "blocks": [
+          { "type": "callout", "kind": "definition", "text": "La **subordonnée relative** est introduite par un **pronom relatif**. Elle complète un nom ou un pronom placé (le plus souvent) juste avant elle : l'**antécédent**. Sa fonction est **complément de l'antécédent** (on dit aussi « complément du nom » antécédent)." },
+          { "type": "table", "columns": ["Pronoms relatifs simples", "Pronoms relatifs composés"], "rows": [
+            ["qui, que (qu'), quoi, dont, où", "lequel, laquelle, lesquels, lesquelles ; auquel, à laquelle, auxquels ; duquel, de laquelle, desquels…"]
+          ] },
+          { "type": "table", "columns": ["Phrase", "Pronom relatif", "Antécédent", "Relative"], "rows": [
+            ["Les élèves **qui ont terminé** peuvent sortir.", "qui", "les élèves", "qui ont terminé"],
+            ["La maison **où vivait ma grand-mère** a été vendue.", "où", "la maison", "où vivait ma grand-mère"],
+            ["Voici l'amie **dont je t'ai parlé**.", "dont", "l'amie", "dont je t'ai parlé"],
+            ["C'est la table **sur laquelle j'ai posé tes clés**.", "laquelle (précédé de « sur »)", "la table", "sur laquelle j'ai posé tes clés"]
+          ] },
+          { "type": "callout", "kind": "methode", "title": "Comme un adjectif", "text": "La relative joue le même rôle qu'un adjectif épithète : elle précise le nom. « Un élève **qui travaille** » ≈ « un élève **travailleur** ». On peut souvent la supprimer : la phrase reste correcte, mais le sens peut changer." },
+          { "type": "callout", "kind": "plus", "title": "Pour aller plus loin", "text": "Une relative peut être **déterminative** (indispensable pour savoir de qui on parle : « Les élèves qui ont terminé peuvent sortir » : pas tous les élèves) ou **explicative** (entre virgules, elle ajoute une information : « Mon cousin, qui habite à Lyon, viendra »).\nCertaines relatives n'ont pas d'antécédent : « **Qui vivra** verra » (proverbe). Elles occupent alors une fonction comme un nom (ici, sujet)." }
+        ],
+        "checkpoint": { "variants": [
+          { "prompt": "« J'ai retrouvé la clé que tu cherchais. » Quel est l'antécédent du pronom relatif ?", "options": ["J'", "la clé", "tu", "cherchais"], "answer": 1, "hint": "Quel nom, placé juste avant le pronom relatif, la relative complète-t-elle ?", "explanation": "« que » reprend « la clé » : c'est l'antécédent." },
+          { "prompt": "Quelle est la fonction d'une subordonnée relative ?", "options": ["COD du verbe principal", "Complément de l'antécédent", "Complément circonstanciel"], "answer": 1, "hint": "Relis l'encadré de définition.", "explanation": "La relative complète un nom (ou un pronom) : elle est complément de l'antécédent." },
+          { "prompt": "Dans « Les randonneurs qui partent tôt évitent la chaleur », quelle est la relative ?", "options": ["Les randonneurs qui partent tôt", "qui partent tôt", "évitent la chaleur"], "answer": 1, "hint": "La relative commence par le pronom relatif et s'arrête avant le verbe de la principale.", "explanation": "La relative est « qui partent tôt » ; elle complète l'antécédent « les randonneurs »." }
+        ] }
+      },
+      {
+        "title": "La fonction du pronom relatif dans la relative",
+        "blocks": [
+          { "type": "text", "text": "Le pronom relatif a **deux rôles** : il relie la relative à l'antécédent, et il occupe lui-même une **fonction à l'intérieur de la relative**. Pour la trouver, on remplace le pronom par son antécédent et on reconstitue une phrase simple." },
+          { "type": "table", "columns": ["Pronom", "Fonction habituelle", "Exemple", "Phrase reconstituée"], "rows": [
+            ["qui", "Sujet du verbe de la relative", "les randonneurs **qui** partent tôt", "**Les randonneurs** partent tôt."],
+            ["que (qu')", "COD du verbe de la relative (parfois attribut)", "le gâteau **que** j'ai goûté", "J'ai goûté **le gâteau**."],
+            ["dont", "Complément construit avec « de » : complément du nom, COI ou complément de l'adjectif", "le voisin **dont** le chien aboie\nla chanson **dont** je me souviens\nun résultat **dont** elle est fière", "Le chien **du voisin** aboie (complément du nom « chien »).\nJe me souviens **de la chanson** (COI).\nElle est fière **de ce résultat** (complément de l'adjectif « fière »)."],
+            ["où", "Complément circonstanciel de lieu ou de temps", "le quartier **où** j'habite\nle jour **où** il est parti", "J'habite **dans ce quartier** (lieu).\nIl est parti **ce jour-là** (temps)."]
+          ] },
+          { "type": "callout", "kind": "attention", "title": "Deux fonctions à ne pas mélanger", "text": "Dans « Le gâteau **que j'ai goûté** était délicieux » :\n– la **relative** « que j'ai goûté » est complément de l'antécédent « gâteau » ;\n– le **pronom relatif** « que » est COD du verbe « ai goûté ».\nLis bien la question : porte-t-elle sur la proposition ou sur le pronom ?" },
+          { "type": "callout", "kind": "retiens", "text": "Après « qui », le verbe s'accorde avec l'antécédent : « C'est **moi** qui **ai** gagné » ; « Ce sont **elles** qui **sont** arrivées »." }
+        ],
+        "checkpoint": { "variants": [
+          { "prompt": "« Le gâteau que j'ai goûté était délicieux. » Quelle est la fonction du pronom « que » ?", "options": ["Sujet de « ai goûté »", "COD de « ai goûté »", "Complément de l'antécédent"], "answer": 1, "hint": "Remplace « que » par son antécédent : « J'ai goûté… ».", "explanation": "« J'ai goûté le gâteau » : « que » est COD du verbe « ai goûté ». (C'est la relative entière qui est complément de l'antécédent.)" },
+          { "prompt": "« Voici le voisin dont le chien aboie toute la nuit. » Quelle est la fonction de « dont » ?", "options": ["COI du verbe « aboie »", "Complément du nom « chien »", "Sujet du verbe « aboie »"], "answer": 1, "hint": "Reconstitue la phrase avec l'antécédent : « Le chien … aboie ».", "explanation": "« Le chien du voisin aboie » : « dont » est complément du nom « chien »." },
+          { "prompt": "« Le quartier où j'habite est calme. » Quelle est la fonction de « où » ?", "options": ["Sujet", "COD", "Complément circonstanciel de lieu"], "answer": 2, "hint": "« J'habite … ce quartier » : quelle circonstance ?", "explanation": "« J'habite dans ce quartier » : « où » est complément circonstanciel de lieu du verbe « habite »." },
+          { "prompt": "« Les élèves qui ont terminé peuvent sortir. » Quelle est la fonction de « qui » ?", "options": ["Sujet de « ont terminé »", "COD de « ont terminé »", "Complément du nom « élèves »"], "answer": 0, "hint": "« … ont terminé » : qui a terminé ?", "explanation": "« Les élèves ont terminé » : « qui » est sujet du verbe « ont terminé »." }
+        ] }
+      },
+      {
+        "title": "La subordonnée conjonctive complétive",
+        "blocks": [
+          { "type": "callout", "kind": "definition", "text": "La **subordonnée conjonctive complétive** est introduite par la **conjonction de subordination « que »**. Elle complète le plus souvent le **verbe** de la principale, dont elle est **COD**. Elle est indispensable : on ne peut pas la supprimer ni la déplacer." },
+          { "type": "text", "text": "On la trouve surtout après des verbes de parole, de pensée, de sentiment ou de volonté : dire, annoncer, expliquer, penser, croire, savoir, espérer, craindre, vouloir, souhaiter…" },
+          { "type": "table", "columns": ["Phrase", "Complétive", "Preuve : remplacement par un pronom"], "rows": [
+            ["Je crois **que tu as raison**.", "que tu as raison", "Je **le** crois. / Je crois **cela**."],
+            ["Le contrôleur a annoncé **que le train aurait du retard**.", "que le train aurait du retard", "Le contrôleur **l'**a annoncé."],
+            ["Je souhaite **que vous passiez de bonnes vacances**.", "que vous passiez de bonnes vacances", "Je **le** souhaite."]
+          ] },
+          { "type": "callout", "kind": "retiens", "title": "Le mode du verbe", "text": "Après un verbe d'opinion ou de déclaration (croire, dire, savoir…), le verbe de la complétive est à l'**indicatif** : « Je sais qu'il **viendra** ».\nAprès un verbe de volonté ou de sentiment (vouloir, souhaiter, craindre…), il est au **subjonctif** : « Je veux qu'il **vienne** »." },
+          { "type": "callout", "kind": "plus", "title": "Autres fonctions possibles", "text": "La complétive peut aussi être :\n– **sujet** : « **Qu'il soit en retard** m'étonne. »\n– **attribut du sujet** : « Mon souhait est **que tu réussisses**. »\n– **complément de l'adjectif** : « Je suis sûre **qu'elle viendra**. »\nMais dans la grande majorité des phrases (et des sujets de brevet), elle est COD." }
+        ],
+        "checkpoint": { "variants": [
+          { "prompt": "« Elle espère que ses amis viendront. » La proposition « que ses amis viendront » est une subordonnée…", "options": ["relative", "conjonctive complétive", "conjonctive circonstancielle"], "answer": 1, "hint": "« que » suit-il un nom ou un verbe ? Peut-on remplacer la proposition par « le » ?", "explanation": "« Elle l'espère » : introduite par la conjonction « que » après le verbe « espère », c'est une complétive COD." },
+          { "prompt": "« Le contrôleur a annoncé que le train aurait du retard. » Quelle est la fonction de la complétive ?", "options": ["Complément de l'antécédent", "COD du verbe « a annoncé »", "Complément circonstanciel de cause"], "answer": 1, "hint": "Remplace la subordonnée par un pronom : « Le contrôleur l'a annoncé ».", "explanation": "On peut la remplacer par « le » : elle est COD du verbe « a annoncé »." },
+          { "prompt": "Quelle manipulation montre qu'une complétive est COD ?", "options": ["La déplacer en tête de phrase", "La remplacer par « le » ou « cela »", "La supprimer"], "answer": 1, "hint": "Relis la colonne « Preuve » du tableau.", "explanation": "Comme un COD, la complétive se remplace par « le » ou « cela » : « Je le crois »." }
+        ] }
+      },
+      {
+        "title": "Méthode : « que » relatif ou « que » conjonction ? Répondre au brevet",
+        "blocks": [
+          { "type": "table", "columns": ["", "« que » pronom relatif", "« que » conjonction de subordination"], "rows": [
+            ["Mot placé avant", "Un nom ou un pronom : l'antécédent", "Un verbe (parfois un adjectif ou un nom comme « l'idée »)"],
+            ["Rôle de « que »", "Il remplace l'antécédent et a une fonction (souvent COD)", "Il relie seulement : il n'a aucune fonction"],
+            ["La proposition sans « que »", "Incomplète : « tu lis… » (il manque le COD)", "Complète : « tu viendras »"],
+            ["Exemple", "Le livre **que tu lis** est passionnant.", "Je sais **que tu viendras**."],
+            ["Nature de la proposition", "Subordonnée relative", "Subordonnée conjonctive complétive"]
+          ] },
+          { "type": "callout", "kind": "methode", "title": "Le test qui marche à tous les coups", "text": "J'enlève « que » et je regarde la suite :\n– s'il manque un élément (souvent le COD) → « que » le remplace → **pronom relatif** ;\n– si la suite forme une proposition complète → « que » ne fait que relier → **conjonction de subordination**." },
+          { "type": "heading", "text": "Réponses types attendues au brevet" },
+          { "type": "list", "items": [
+            "« dont je t'ai parlé » est une **proposition subordonnée relative**, introduite par le **pronom relatif** « dont », qui a pour **antécédent** « l'amie » ; elle est **complément de l'antécédent** « amie ».",
+            "« que le train aurait du retard » est une **proposition subordonnée conjonctive complétive**, introduite par la **conjonction de subordination** « que » ; elle est **COD du verbe** « a annoncé »."
+          ] },
+          { "type": "callout", "kind": "attention", "title": "Pièges à éviter", "text": "✗ Répondre « que = relatif » dès qu'on voit « que » : regarde le mot placé avant.\n✗ Confondre la fonction de la relative (complément de l'antécédent) et celle du pronom relatif (sujet, COD…).\n✗ Oublier de recopier la subordonnée en entier, du mot introducteur jusqu'à son dernier mot.\n✗ Oublier de nommer le mot complété (l'antécédent ou le verbe)." }
+        ],
+        "checkpoint": { "variants": [
+          { "prompt": "Dans quelle phrase « que » est-il une conjonction de subordination ?", "options": ["La lettre que j'attendais est arrivée.", "Je crois que la lettre est arrivée.", "Les fleurs que tu as plantées ont poussé."], "answer": 1, "hint": "Quel mot est placé juste avant « que » : un nom ou un verbe ?", "explanation": "« que » suit le verbe « crois » et « la lettre est arrivée » est complet : c'est une conjonction (complétive)." },
+          { "prompt": "« L'histoire que tu racontes me fait peur. » Que vaut « que » ?", "options": ["Pronom relatif", "Conjonction de subordination", "Conjonction de coordination"], "answer": 0, "hint": "Enlève « que » : « tu racontes… » est-il complet ?", "explanation": "« tu racontes… » : il manque le COD, que « que » remplace (l'histoire). C'est un pronom relatif, d'antécédent « l'histoire »." },
+          { "prompt": "Une réponse complète sur une relative doit nommer…", "options": ["seulement le pronom relatif", "la nature, le pronom relatif, l'antécédent et la fonction", "seulement la fonction"], "answer": 1, "hint": "Relis la première réponse type.", "explanation": "Nature (relative), mot introducteur (pronom relatif), antécédent et fonction (complément de l'antécédent)." }
+        ] }
+      }
+    ],
+    "memo": [
+      { "label": "Relative", "text": "Introduite par un pronom relatif (qui, que, quoi, dont, où, lequel…). Complète un nom, l'antécédent. Fonction : complément de l'antécédent." },
+      { "label": "Pronom relatif", "text": "Il a sa propre fonction dans la relative : qui = sujet ; que = COD ; dont = complément avec « de » ; où = CC de lieu ou de temps. Test : remplacer par l'antécédent." },
+      { "label": "Complétive", "text": "Introduite par la conjonction « que », après un verbe (dire, penser, vouloir…). Fonction : le plus souvent COD du verbe. Test : « Je le crois »." },
+      { "label": "« que » : relatif ou conjonction ?", "text": "Avant « que » : un nom → relatif ; un verbe → conjonction. Sans « que », la suite est incomplète → relatif ; complète → conjonction." },
+      { "label": "Circonstancielle", "text": "Introduite par quand, parce que, bien que, pour que, si… Complément circonstanciel : on peut la déplacer et la supprimer (cours TG004)." },
+      { "label": "Réponse brevet", "text": "Nature + mot introducteur + mot complété + fonction." }
+    ]
+  },
+  "exercises": {
+    "duration_min": 30,
+    "instructions": "Pour relever une subordonnée, recopie-la en entier, du mot introducteur jusqu'à son dernier mot, sans ponctuation autour. Les corrigés s'affichent après ta réponse.",
+    "pass_threshold": 8,
+    "texts": [],
+    "items": [
+      { "id": "ex1", "type": "short", "stars": 1, "lesson_part": 2, "skills": ["fr-relative"], "cognitive": "connaitre",
+        "prompt": "Recopie la subordonnée relative : « Les élèves qui ont terminé leur contrôle peuvent sortir. »",
+        "answer": ["qui ont terminé leur contrôle", "qui ont termine leur controle", "« qui ont terminé leur contrôle »"],
+        "solution": "« qui ont terminé leur contrôle » : introduite par le pronom relatif « qui », elle complète l'antécédent « les élèves »." },
+      { "id": "ex2", "type": "short", "stars": 1, "lesson_part": 2, "skills": ["fr-relative"], "cognitive": "connaitre",
+        "prompt": "Quel est l'antécédent du pronom relatif ? « J'ai enfin retrouvé la clé que tu cherchais depuis lundi. »",
+        "answer": ["la clé", "clé", "la clef", "clef", "le nom clé", "l'antécédent est la clé", "c'est la clé"],
+        "solution": "L'antécédent est « la clé » (le nom « clé ») : le pronom relatif « que » le reprend dans la relative « que tu cherchais depuis lundi »." },
+      { "id": "ex3", "type": "qcm", "stars": 1, "lesson_part": 4, "skills": ["fr-familles-subordonnees", "fr-completive"], "cognitive": "connaitre",
+        "prompt": "« Elle espère que ses amis viendront à son anniversaire. » La proposition « que ses amis viendront à son anniversaire » est une subordonnée…",
+        "options": ["relative", "conjonctive complétive", "conjonctive circonstancielle", "principale"], "answer": 1,
+        "solution": "Conjonctive complétive : elle est introduite par la conjonction de subordination « que », placée après le verbe « espère » ; on peut la remplacer par « le » (« Elle l'espère »)." },
+      { "id": "ex4", "type": "qcm", "stars": 2, "lesson_part": 3, "skills": ["fr-pronom-relatif"], "cognitive": "appliquer",
+        "prompt": "« Le gâteau que j'ai goûté chez ta tante était délicieux. » Quelle est la fonction du pronom relatif « que » ?",
+        "options": ["Sujet du verbe « ai goûté »", "COD du verbe « ai goûté »", "Complément du nom « gâteau »", "Complément circonstanciel de lieu"], "answer": 1,
+        "solution": "COD du verbe « ai goûté » : en remplaçant « que » par son antécédent, on obtient « J'ai goûté le gâteau »." },
+      { "id": "ex5", "type": "qcm", "stars": 2, "lesson_part": 3, "skills": ["fr-pronom-relatif"], "cognitive": "appliquer",
+        "prompt": "« Voici le voisin dont le chien aboie toute la nuit. » Quelle est la fonction du pronom relatif « dont » ?",
+        "options": ["COI du verbe « aboie »", "Complément du nom « chien »", "Sujet du verbe « aboie »", "COD du verbe « aboie »"], "answer": 1,
+        "solution": "Complément du nom « chien » : « Le chien du voisin aboie toute la nuit ». Le sujet de « aboie » est « le chien »." },
+      { "id": "ex6", "type": "qcm", "stars": 2, "lesson_part": 5, "skills": ["fr-que"], "cognitive": "analyser",
+        "prompt": "Dans quelle phrase « que » est-il une conjonction de subordination ?",
+        "options": ["La lettre que j'attendais est enfin arrivée.", "Le film que nous avons vu durait trois heures.", "Je crois que la lettre est arrivée hier.", "Les fleurs que tu as plantées ont poussé."], "answer": 2,
+        "solution": "« Je crois que la lettre est arrivée hier » : « que » suit le verbe « crois » et « la lettre est arrivée hier » est une proposition complète. Dans les trois autres phrases, « que » suit un nom (lettre, film, fleurs) et remplace le COD : c'est un pronom relatif." },
+      { "id": "ex7", "type": "qcm", "stars": 2, "lesson_part": 4, "skills": ["fr-completive"], "cognitive": "appliquer",
+        "prompt": "« Le contrôleur a annoncé que le train aurait vingt minutes de retard. » Quelle est la fonction de la subordonnée « que le train aurait vingt minutes de retard » ?",
+        "options": ["Complément de l'antécédent", "COD du verbe « a annoncé »", "Complément circonstanciel de cause", "Sujet du verbe « a annoncé »"], "answer": 1,
+        "solution": "COD du verbe « a annoncé » : on peut la remplacer par « le » (« Le contrôleur l'a annoncé »). Elle n'a pas d'antécédent : ce n'est pas une relative." },
+      { "id": "ex8", "type": "qcm", "stars": 2, "lesson_part": 3, "skills": ["fr-pronom-relatif"], "cognitive": "appliquer",
+        "prompt": "« Le quartier où j'habite depuis mon enfance est très calme. » Quelle est la fonction du pronom relatif « où » ?",
+        "options": ["Sujet du verbe « habite »", "COD du verbe « habite »", "Complément circonstanciel de lieu du verbe « habite »", "Complément du nom « quartier »"], "answer": 2,
+        "solution": "Complément circonstanciel de lieu : « J'habite dans ce quartier depuis mon enfance »." },
+      { "id": "ex9", "type": "open", "stars": 3, "lesson_part": 3, "skills": ["fr-ecriture-subordonnees", "fr-pronom-relatif"], "cognitive": "rediger",
+        "prompt": "Relie chaque paire de phrases en une seule phrase grâce à un pronom relatif. Indique ensuite le pronom utilisé et sa fonction dans la relative.\na) J'ai lu un roman. Ce roman raconte la vie d'une exploratrice.\nb) Tu m'as parlé de ce musée. Ce musée ferme le lundi.",
+        "solution": "a) « J'ai lu un roman qui raconte la vie d'une exploratrice. » Pronom « qui », sujet du verbe « raconte ».\nb) « Le musée dont tu m'as parlé ferme le lundi. » Pronom « dont », COI du verbe « as parlé » (parler de ce musée).",
+        "rubric": "Par phrase : 1 pour la phrase correcte avec le bon pronom, 0,5 pour la fonction du pronom (total 3)." },
+      { "id": "ex10", "type": "open", "stars": 3, "lesson_part": 5, "skills": ["fr-reponse-grammaire", "fr-relative", "fr-completive"], "cognitive": "analyser",
+        "prompt": "« Le guide nous a expliqué que le sentier que nous voulions prendre était fermé. »\nCette phrase contient deux « que ». Pour chacun, dis s'il est pronom relatif ou conjonction de subordination, puis donne la nature et la fonction de la subordonnée qu'il introduit, en rédigeant une réponse complète.",
+        "solution": "Premier « que » : conjonction de subordination. Il introduit « que le sentier que nous voulions prendre était fermé », proposition subordonnée conjonctive complétive, COD du verbe « a expliqué » (Le guide nous l'a expliqué).\nSecond « que » : pronom relatif, d'antécédent « le sentier ». Il introduit « que nous voulions prendre », proposition subordonnée relative, complément de l'antécédent « sentier ». (Le pronom « que » y est COD du verbe « prendre » : nous voulions prendre le sentier.)",
+        "rubric": "Par « que » : 0,5 pour la nature du mot (conjonction / pronom relatif), 0,5 pour la nature de la subordonnée, 0,5 pour sa fonction (COD de « a expliqué » / complément de l'antécédent « sentier »). Total 3. Accepter que la complétive soit délimitée sans la relative qu'elle contient, si la fonction est juste." }
+    ]
+  },
+  "evaluation": {
+    "duration_min": 30,
+    "conditions": "Sans la leçon ni les corrigés, en 30 minutes. Barème : A = 4 points · B = 11 points · C = 5 points. Quand tu recopies une subordonnée, recopie-la en entier, sans ponctuation autour.",
+    "total_points": 20,
+    "variants": [
+      {
+        "texts": [],
+        "sections": [
+          { "label": "A · Je connais mon cours (4 points)", "questions": [
+            { "id": "q1", "type": "qcm", "points": 1, "lesson_part": 2, "skills": ["fr-relative"], "cognitive": "connaitre",
+              "prompt": "Comment appelle-t-on le nom (ou le pronom) que complète une subordonnée relative ?",
+              "options": ["Le sujet", "L'antécédent", "Le pronom relatif", "La principale"], "answer": 1,
+              "solution": "L'antécédent : c'est le nom ou le pronom que reprend le pronom relatif et que complète la relative.",
+              "rubric": "1 point pour la bonne réponse, 0 sinon." },
+            { "id": "q2", "type": "qcm", "points": 1, "lesson_part": 2, "skills": ["fr-relative"], "cognitive": "connaitre",
+              "prompt": "Quelle liste ne contient que des pronoms relatifs ?",
+              "options": ["qui, que, dont, où", "qui, quand, si, que", "parce que, dont, où, lorsque", "mais, que, quoi, car"], "answer": 0,
+              "solution": "Qui, que, dont, où sont des pronoms relatifs simples. « Quand », « si », « parce que », « lorsque » sont des conjonctions de subordination ; « mais » et « car » des conjonctions de coordination.",
+              "rubric": "1 point pour la bonne réponse, 0 sinon." },
+            { "id": "q3", "type": "open", "points": 2, "lesson_part": 5, "skills": ["fr-que"], "cognitive": "connaitre",
+              "prompt": "Explique comment on distingue « que » pronom relatif et « que » conjonction de subordination. Donne un exemple de chaque.",
+              "solution": "Le « que » pronom relatif suit un nom (son antécédent), qu'il remplace dans la relative, où il a une fonction (souvent COD) : sans lui, la relative est incomplète. Ex. : « Le livre que tu lis est passionnant. » Le « que » conjonction suit généralement un verbe et ne fait que relier ; il n'a pas de fonction : la suite forme une proposition complète. Ex. : « Je sais que tu viendras. »",
+              "rubric": "0,5 : critère pour le pronom relatif (antécédent / fonction / proposition incomplète). 0,5 : critère pour la conjonction (après un verbe / pas de fonction / proposition complète). 0,5 : exemple correct de « que » relatif. 0,5 : exemple correct de « que » conjonction." }
+          ] },
+          { "label": "B · J'analyse des phrases (11 points)", "questions": [
+            { "id": "q4", "type": "short", "points": 1, "lesson_part": 2, "skills": ["fr-relative"], "cognitive": "appliquer",
+              "prompt": "Recopie la subordonnée relative : « Le musicien que nous avons applaudi vient du Mali. »",
+              "answer": ["que nous avons applaudi", "« que nous avons applaudi »"],
+              "solution": "« que nous avons applaudi » : introduite par le pronom relatif « que », elle complète l'antécédent « le musicien ».",
+              "rubric": "1 point si la relative est recopiée exactement, du pronom relatif à « applaudi »." },
+            { "id": "q5", "type": "short", "points": 1, "lesson_part": 2, "skills": ["fr-relative"], "cognitive": "appliquer",
+              "prompt": "Quel est l'antécédent du pronom relatif ? « Je connais une plage où l'eau reste chaude en septembre. »",
+              "answer": ["une plage", "plage", "la plage", "le nom plage", "l'antécédent est une plage", "c'est une plage"],
+              "solution": "L'antécédent est « une plage » (le nom « plage ») : le pronom relatif « où » le reprend.",
+              "rubric": "1 point pour « une plage » ou « plage »." },
+            { "id": "q6", "type": "qcm", "points": 1, "lesson_part": 3, "skills": ["fr-pronom-relatif"], "cognitive": "appliquer",
+              "prompt": "« Les randonneurs qui partent tôt évitent la chaleur. » Quelle est la fonction du pronom relatif « qui » ?",
+              "options": ["Sujet du verbe « partent »", "COD du verbe « partent »", "Complément du nom « randonneurs »", "Complément circonstanciel de temps"], "answer": 0,
+              "solution": "Sujet du verbe « partent » : « Les randonneurs partent tôt ».",
+              "rubric": "1 point pour la bonne réponse, 0 sinon." },
+            { "id": "q7", "type": "qcm", "points": 1, "lesson_part": 3, "skills": ["fr-pronom-relatif"], "cognitive": "analyser",
+              "prompt": "« C'est un livre dont tout le monde parle. » Quelle est la fonction du pronom relatif « dont » ?",
+              "options": ["COD du verbe « parle »", "COI du verbe « parle »", "Complément du nom « monde »", "Sujet du verbe « parle »"], "answer": 1,
+              "solution": "COI du verbe « parle » : « Tout le monde parle de ce livre » (parler de quelque chose).",
+              "rubric": "1 point pour la bonne réponse, 0 sinon." },
+            { "id": "q8", "type": "qcm", "points": 1, "lesson_part": 4, "skills": ["fr-completive", "fr-familles-subordonnees"], "cognitive": "appliquer",
+              "prompt": "« Lina savait qu'elle réussirait son examen. » Quelle est la nature de la proposition « qu'elle réussirait son examen » ?",
+              "options": ["Subordonnée relative", "Subordonnée conjonctive complétive", "Subordonnée conjonctive circonstancielle", "Proposition indépendante"], "answer": 1,
+              "solution": "Subordonnée conjonctive complétive : introduite par la conjonction « que » (élidée en « qu' ») après le verbe « savait », sans antécédent ; « Lina le savait ».",
+              "rubric": "1 point pour la bonne réponse, 0 sinon." },
+            { "id": "q9", "type": "qcm", "points": 1, "lesson_part": 4, "skills": ["fr-completive"], "cognitive": "appliquer",
+              "prompt": "« Je souhaite que vous passiez de bonnes vacances. » Quelle est la fonction de la subordonnée « que vous passiez de bonnes vacances » ?",
+              "options": ["Complément de l'antécédent", "Complément circonstanciel de but", "COD du verbe « souhaite »", "Sujet du verbe « souhaite »"], "answer": 2,
+              "solution": "COD du verbe « souhaite » : « Je le souhaite ».",
+              "rubric": "1 point pour la bonne réponse, 0 sinon." },
+            { "id": "q10", "type": "open", "points": 3, "lesson_part": 5, "skills": ["fr-reponse-grammaire", "fr-relative", "fr-completive"], "cognitive": "analyser",
+              "prompt": "« Le guide, qui connaissait la montagne, affirmait que l'orage n'éclaterait pas avant le soir. »\nRelève les deux propositions subordonnées. Pour chacune, donne sa nature, son mot introducteur et sa fonction, en rédigeant une réponse complète.",
+              "solution": "« qui connaissait la montagne » est une proposition subordonnée relative, introduite par le pronom relatif « qui », d'antécédent « le guide » ; elle est complément de l'antécédent « guide ».\n« que l'orage n'éclaterait pas avant le soir » est une proposition subordonnée conjonctive complétive, introduite par la conjonction de subordination « que » ; elle est COD du verbe « affirmait » (Le guide l'affirmait).",
+              "rubric": "Relative : 0,5 nature, 0,5 mot introducteur (et antécédent), 0,5 fonction. Complétive : 0,5 nature, 0,5 mot introducteur, 0,5 fonction (COD de « affirmait »)." },
+            { "id": "q11", "type": "open", "points": 2, "lesson_part": 4, "skills": ["fr-completive"], "cognitive": "analyser",
+              "prompt": "« Mes parents ont décidé que nous partirions en juillet. » Remplace la subordonnée complétive par un pronom, puis explique ce que cette manipulation prouve.",
+              "solution": "« Mes parents l'ont décidé. » (ou « Mes parents ont décidé cela. ») La complétive peut être remplacée par le pronom COD « le » (ou « cela ») : elle est donc COD du verbe « ont décidé ».",
+              "rubric": "1 : réécriture correcte avec « l' » (ou « cela »). 1 : conclusion (la complétive est COD du verbe « ont décidé »)." }
+          ] },
+          { "label": "C · J'écris (5 points)", "questions": [
+            { "id": "q12", "type": "open", "points": 2, "lesson_part": 3, "skills": ["fr-ecriture-subordonnees", "fr-relative"], "cognitive": "rediger",
+              "prompt": "Relie chaque paire de phrases en une seule phrase grâce à un pronom relatif.\na) Nous avons visité un château. Ce château date du XIIe siècle.\nb) Je t'ai prêté un livre. Tu as beaucoup aimé ce livre.",
+              "solution": "a) « Nous avons visité un château qui date du XIIe siècle. »\nb) « Tu as beaucoup aimé le livre que je t'ai prêté. » (ou « Le livre que je t'ai prêté, tu l'as beaucoup aimé. »)",
+              "rubric": "1 par phrase : 0,5 pour le bon pronom relatif (qui / que), 0,5 pour une phrase correcte qui garde le sens." },
+            { "id": "q13", "type": "open", "points": 3, "lesson_part": 5, "skills": ["fr-ecriture-subordonnees", "fr-relative", "fr-completive"], "cognitive": "rediger",
+              "prompt": "En deux ou trois phrases, raconte un souvenir de vacances. Tu dois employer au moins une subordonnée relative introduite par « dont » ou « où » et au moins une subordonnée conjonctive complétive. Recopie ensuite chaque subordonnée en indiquant sa nature.",
+              "solution": "Exemple : « L'été dernier, nous avons loué une maison où l'on entendait la mer toute la nuit. Le premier soir, mon père a annoncé que nous irions voir les phoques le lendemain. » Relative : « où l'on entendait la mer toute la nuit » (antécédent « une maison »). Complétive : « que nous irions voir les phoques le lendemain » (COD de « a annoncé »).",
+              "rubric": "1 : relative correcte avec « dont » ou « où ». 1 : complétive correcte. 0,5 : subordonnées bien identifiées et nommées. 0,5 : texte correct (orthographe, syntaxe) et sur le thème." }
+          ] }
+        ]
+      },
+      {
+        "texts": [],
+        "sections": [
+          { "label": "A · Je connais mon cours (4 points)", "questions": [
+            { "id": "q1", "type": "qcm", "points": 1, "lesson_part": 4, "skills": ["fr-completive"], "cognitive": "connaitre",
+              "prompt": "Une subordonnée conjonctive complétive est le plus souvent…",
+              "options": ["complément de l'antécédent", "COD du verbe de la principale", "complément circonstanciel", "sujet du verbe de la subordonnée"], "answer": 1,
+              "solution": "La complétive, introduite par « que », est le plus souvent COD du verbe de la principale (Je crois que… → Je le crois).",
+              "rubric": "1 point pour la bonne réponse, 0 sinon." },
+            { "id": "q2", "type": "qcm", "points": 1, "lesson_part": 3, "skills": ["fr-pronom-relatif"], "cognitive": "connaitre",
+              "prompt": "Dans une subordonnée relative, le pronom relatif « qui » est le plus souvent…",
+              "options": ["COD du verbe de la relative", "sujet du verbe de la relative", "complément circonstanciel de lieu", "complément du nom"], "answer": 1,
+              "solution": "« Qui » est le plus souvent sujet du verbe de la relative : « les élèves qui ont terminé » → « les élèves ont terminé ».",
+              "rubric": "1 point pour la bonne réponse, 0 sinon." },
+            { "id": "q3", "type": "open", "points": 2, "lesson_part": 1, "skills": ["fr-familles-subordonnees", "fr-relative", "fr-completive"], "cognitive": "connaitre",
+              "prompt": "Explique la différence entre une subordonnée relative et une subordonnée conjonctive complétive (mot introducteur, mot complété, fonction). Donne un exemple de chacune.",
+              "solution": "La relative est introduite par un pronom relatif (qui, que, dont, où…) ; elle complète un nom, l'antécédent ; elle est complément de l'antécédent. Ex. : « La maison où j'ai grandi est vendue. » La complétive est introduite par la conjonction de subordination « que » ; elle complète le plus souvent un verbe, dont elle est COD. Ex. : « Je pense que tu as raison. »",
+              "rubric": "0,5 : relative (pronom relatif, antécédent, complément de l'antécédent ; au moins deux éléments). 0,5 : complétive (conjonction « que », verbe, COD ; au moins deux éléments). 0,5 : exemple correct de relative. 0,5 : exemple correct de complétive." }
+          ] },
+          { "label": "B · J'analyse des phrases (11 points)", "questions": [
+            { "id": "q4", "type": "short", "points": 1, "lesson_part": 2, "skills": ["fr-relative"], "cognitive": "appliquer",
+              "prompt": "Recopie la subordonnée relative : « La maison où vivait ma grand-mère a été vendue. »",
+              "answer": ["où vivait ma grand-mère", "ou vivait ma grand mere", "« où vivait ma grand-mère »"],
+              "solution": "« où vivait ma grand-mère » : introduite par le pronom relatif « où », elle complète l'antécédent « la maison ».",
+              "rubric": "1 point si la relative est recopiée exactement, du pronom relatif à « grand-mère »." },
+            { "id": "q5", "type": "short", "points": 1, "lesson_part": 2, "skills": ["fr-relative"], "cognitive": "appliquer",
+              "prompt": "Quel est l'antécédent du pronom relatif ? « Il a perdu le stylo que son frère lui avait offert. »",
+              "answer": ["le stylo", "stylo", "un stylo", "le nom stylo", "l'antécédent est le stylo", "c'est le stylo"],
+              "solution": "L'antécédent est « le stylo » (le nom « stylo ») : le pronom relatif « que » le reprend.",
+              "rubric": "1 point pour « le stylo » ou « stylo »." },
+            { "id": "q6", "type": "qcm", "points": 1, "lesson_part": 3, "skills": ["fr-pronom-relatif"], "cognitive": "appliquer",
+              "prompt": "« La chanson que tu fredonnes me rappelle l'été. » Quelle est la fonction du pronom relatif « que » ?",
+              "options": ["Sujet du verbe « fredonnes »", "COD du verbe « fredonnes »", "Complément du nom « chanson »", "COD du verbe « rappelle »"], "answer": 1,
+              "solution": "COD du verbe « fredonnes » : « Tu fredonnes la chanson ».",
+              "rubric": "1 point pour la bonne réponse, 0 sinon." },
+            { "id": "q7", "type": "qcm", "points": 1, "lesson_part": 3, "skills": ["fr-pronom-relatif"], "cognitive": "analyser",
+              "prompt": "« Le film dont nous parlons sort mercredi. » Quelle est la fonction du pronom relatif « dont » ?",
+              "options": ["COD du verbe « parlons »", "COI du verbe « parlons »", "Complément du nom « film »", "Sujet du verbe « sort »"], "answer": 1,
+              "solution": "COI du verbe « parlons » : « Nous parlons de ce film » (parler de quelque chose).",
+              "rubric": "1 point pour la bonne réponse, 0 sinon." },
+            { "id": "q8", "type": "qcm", "points": 1, "lesson_part": 4, "skills": ["fr-completive", "fr-familles-subordonnees"], "cognitive": "appliquer",
+              "prompt": "« Le directeur a annoncé que la sortie serait reportée. » Quelle est la nature de la proposition « que la sortie serait reportée » ?",
+              "options": ["Subordonnée relative", "Subordonnée conjonctive complétive", "Subordonnée conjonctive circonstancielle", "Proposition indépendante"], "answer": 1,
+              "solution": "Subordonnée conjonctive complétive : introduite par la conjonction « que » après le verbe « a annoncé », sans antécédent ; « Le directeur l'a annoncé ».",
+              "rubric": "1 point pour la bonne réponse, 0 sinon." },
+            { "id": "q9", "type": "qcm", "points": 1, "lesson_part": 4, "skills": ["fr-completive"], "cognitive": "appliquer",
+              "prompt": "« Nous espérons que le soleil reviendra demain. » Quelle est la fonction de la subordonnée « que le soleil reviendra demain » ?",
+              "options": ["Complément de l'antécédent", "Complément circonstanciel de temps", "COD du verbe « espérons »", "Sujet du verbe « espérons »"], "answer": 2,
+              "solution": "COD du verbe « espérons » : « Nous l'espérons ».",
+              "rubric": "1 point pour la bonne réponse, 0 sinon." },
+            { "id": "q10", "type": "open", "points": 3, "lesson_part": 5, "skills": ["fr-reponse-grammaire", "fr-relative", "fr-completive"], "cognitive": "analyser",
+              "prompt": "« Mon cousin, qui habite à Lyon, m'a écrit qu'il viendrait pour Noël. »\nRelève les deux propositions subordonnées. Pour chacune, donne sa nature, son mot introducteur et sa fonction, en rédigeant une réponse complète.",
+              "solution": "« qui habite à Lyon » est une proposition subordonnée relative, introduite par le pronom relatif « qui », d'antécédent « mon cousin » ; elle est complément de l'antécédent « cousin ».\n« qu'il viendrait pour Noël » est une proposition subordonnée conjonctive complétive, introduite par la conjonction de subordination « que » (élidée) ; elle est COD du verbe « a écrit » (Mon cousin me l'a écrit).",
+              "rubric": "Relative : 0,5 nature, 0,5 mot introducteur (et antécédent), 0,5 fonction. Complétive : 0,5 nature, 0,5 mot introducteur, 0,5 fonction (COD de « a écrit »)." },
+            { "id": "q11", "type": "open", "points": 2, "lesson_part": 4, "skills": ["fr-completive"], "cognitive": "analyser",
+              "prompt": "« Le professeur a remarqué que plusieurs élèves manquaient. » Remplace la subordonnée complétive par un pronom, puis explique ce que cette manipulation prouve.",
+              "solution": "« Le professeur l'a remarqué. » (ou « Le professeur a remarqué cela. ») La complétive peut être remplacée par le pronom COD « le » (ou « cela ») : elle est donc COD du verbe « a remarqué ».",
+              "rubric": "1 : réécriture correcte avec « l' » (ou « cela »). 1 : conclusion (la complétive est COD du verbe « a remarqué »)." }
+          ] },
+          { "label": "C · J'écris (5 points)", "questions": [
+            { "id": "q12", "type": "open", "points": 2, "lesson_part": 3, "skills": ["fr-ecriture-subordonnees", "fr-relative"], "cognitive": "rediger",
+              "prompt": "Relie chaque paire de phrases en une seule phrase grâce à un pronom relatif.\na) J'ai rencontré une navigatrice. Cette navigatrice a fait le tour du monde.\nb) Tu m'as recommandé un restaurant. Ce restaurant est fermé.",
+              "solution": "a) « J'ai rencontré une navigatrice qui a fait le tour du monde. »\nb) « Le restaurant que tu m'as recommandé est fermé. »",
+              "rubric": "1 par phrase : 0,5 pour le bon pronom relatif (qui / que), 0,5 pour une phrase correcte qui garde le sens." },
+            { "id": "q13", "type": "open", "points": 3, "lesson_part": 5, "skills": ["fr-ecriture-subordonnees", "fr-relative", "fr-completive"], "cognitive": "rediger",
+              "prompt": "En deux ou trois phrases, raconte une journée inoubliable. Tu dois employer au moins une subordonnée relative introduite par « dont » ou « où » et au moins une subordonnée conjonctive complétive. Recopie ensuite chaque subordonnée en indiquant sa nature.",
+              "solution": "Exemple : « C'était le jour où ma petite sœur est née. Mon père m'a dit au téléphone qu'elle avait les cheveux tout noirs. » Relative : « où ma petite sœur est née » (antécédent « le jour »). Complétive : « qu'elle avait les cheveux tout noirs » (COD de « a dit »).",
+              "rubric": "1 : relative correcte avec « dont » ou « où ». 1 : complétive correcte. 0,5 : subordonnées bien identifiées et nommées. 0,5 : texte correct (orthographe, syntaxe) et sur le thème." }
+          ] }
+        ]
+      }
+    ]
+  }
+}
