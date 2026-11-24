@@ -99,3 +99,16 @@ Première version numérotée (déjà en ligne avant numérotation : socle, gén
   - Niveau affiché sur chaque cours.
   - Message après l'import de plusieurs fichiers.
 - Numéro de version en haut de la barre latérale.
+
+## 0.09 — 24/11/2026
+- 4 nouveaux cours de 3e :
+  - Mathématiques : fractions irréductibles et problèmes de partage.
+  - Physique-Chimie : les ions.
+  - Espagnol LV2 : le présent de l'indicatif.
+  - Allemand LV2 : le présent et la place du verbe.
+- Relecture « professeur » des cours de français, d'histoire et d'EMC :
+  - Citations historiques rétablies dans leur texte exact.
+  - Révision constitutionnelle du 8 mars 2024 (IVG) ajoutée.
+  - Précision sur l'article 11 (référendum).
+  - Nuance sur le « premier génocide du XXe siècle ».
+  - Beaucoup plus de formulations acceptées dans les réponses courtes.

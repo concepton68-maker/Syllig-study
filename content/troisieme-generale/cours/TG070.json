@@ -281,7 +281,7 @@
           {
             "type": "callout",
             "kind": "retiens",
-            "text": "Le génocide des Arméniens est le premier génocide du XXe siècle. Il a été commis par le gouvernement jeune-turc, à la faveur de la guerre."
+            "text": "Le génocide des Arméniens est souvent présenté comme le premier génocide du XXe siècle (le massacre des Herero et des Nama, en Namibie sous domination allemande, en 1904-1908, est aussi reconnu comme un génocide). Il a été commis par le gouvernement jeune-turc, à la faveur de la guerre."
           }
         ],
         "checkpoint": {
@@ -638,7 +638,12 @@
           "Talat",
           "Talat Pacha",
           "Mehmed Talaat",
-          "Mehmed Talaat Pacha"
+          "Mehmed Talaat Pacha",
+          "Talaat Pasha",
+          "Talat Pasha",
+          "Mehmed Talat",
+          "Mehmet Talaat",
+          "Mehmed Talaat"
         ],
         "solution": "Talaat Pacha."
       },
@@ -750,7 +755,7 @@
         ],
         "cognitive": "rediger",
         "prompt": "Rédige un développement construit (une quinzaine de lignes) : « Racontez le génocide des Arméniens et expliquez pourquoi on parle de génocide. » Fais une introduction, deux parties (le contexte et les étapes ; le bilan et la reconnaissance) et une conclusion.",
-        "solution": "Introduction : pendant la Première Guerre mondiale, l'Empire ottoman, dirigé par les Jeunes-Turcs, organise la destruction de sa minorité chrétienne arménienne. Partie 1 : contexte (entrée en guerre fin 1914, défaite de Sarikamich, Arméniens accusés de trahison) ; étapes (soldats désarmés et exécutés, arrestation des élites le 24 avril 1915, loi de déportation de mai 1915, massacres des hommes, marches de la mort vers les déserts de Syrie, massacres de Deir ez-Zor en 1916). Partie 2 : bilan d'environ 1,2 à 1,5 million de morts, soit environ deux tiers des Arméniens de l'Empire ; on parle de génocide car il y a une intention organisée par l'État de détruire un groupe pour ce qu'il est (témoignage de Morgenthau) ; reconnaissance par la France en 2001, mais négationnisme de l'État turc. Conclusion : premier génocide du XXe siècle, il montre jusqu'où peut aller la violence de guerre ; il est commémoré chaque 24 avril."
+        "solution": "Introduction : pendant la Première Guerre mondiale, l'Empire ottoman, dirigé par les Jeunes-Turcs, organise la destruction de sa minorité chrétienne arménienne. Partie 1 : contexte (entrée en guerre fin 1914, défaite de Sarikamich, Arméniens accusés de trahison) ; étapes (soldats désarmés et exécutés, arrestation des élites le 24 avril 1915, loi de déportation de mai 1915, massacres des hommes, marches de la mort vers les déserts de Syrie, massacres de Deir ez-Zor en 1916). Partie 2 : bilan d'environ 1,2 à 1,5 million de morts, soit environ deux tiers des Arméniens de l'Empire ; on parle de génocide car il y a une intention organisée par l'État de détruire un groupe pour ce qu'il est (témoignage de Morgenthau) ; reconnaissance par la France en 2001, mais négationnisme de l'État turc. Conclusion : souvent présenté comme le premier génocide du XXe siècle, il montre jusqu'où peut aller la violence de guerre ; il est commémoré chaque 24 avril."
       }
     ]
   },
@@ -788,6 +793,7 @@
                   "1915",
                   "en 1915",
                   "avril 1915",
+                  "en avril 1915",
                   "24 avril 1915",
                   "le 24 avril 1915"
                 ],
@@ -948,7 +954,7 @@
                 ],
                 "cognitive": "rediger",
                 "prompt": "Développement construit (une vingtaine de lignes) : « Montrez que les Arméniens ont été victimes d'un génocide pendant la Première Guerre mondiale. » Présente le contexte, les étapes, le bilan et la reconnaissance du génocide.",
-                "solution": "Introduction : pendant la Première Guerre mondiale, le gouvernement jeune-turc de l'Empire ottoman organise la destruction de la minorité chrétienne arménienne. Partie 1 – Contexte et étapes : Empire entré en guerre aux côtés de l'Allemagne fin 1914 ; défaite de Sarikamich ; Arméniens accusés de trahison ; soldats désarmés et exécutés ; arrestation des élites à Constantinople le 24 avril 1915 ; loi de déportation (mai 1915), massacres des hommes, marches de la mort vers les déserts de Syrie ; massacres de Deir ez-Zor (1916). Partie 2 – Un génocide : intention organisée par l'État (Talaat, témoignage de Morgenthau) de détruire un groupe pour ce qu'il est ; environ 1,2 à 1,5 million de morts, deux tiers des Arméniens de l'Empire ; dénonciation alliée dès le 24 mai 1915 ; reconnaissance par la France en 2001, malgré le négationnisme de l'État turc. Conclusion : premier génocide du XXe siècle, symbole de la violence de masse de la guerre totale ; commémoré chaque 24 avril.",
+                "solution": "Introduction : pendant la Première Guerre mondiale, le gouvernement jeune-turc de l'Empire ottoman organise la destruction de la minorité chrétienne arménienne. Partie 1 – Contexte et étapes : Empire entré en guerre aux côtés de l'Allemagne fin 1914 ; défaite de Sarikamich ; Arméniens accusés de trahison ; soldats désarmés et exécutés ; arrestation des élites à Constantinople le 24 avril 1915 ; loi de déportation (mai 1915), massacres des hommes, marches de la mort vers les déserts de Syrie ; massacres de Deir ez-Zor (1916). Partie 2 – Un génocide : intention organisée par l'État (Talaat, témoignage de Morgenthau) de détruire un groupe pour ce qu'il est ; environ 1,2 à 1,5 million de morts, deux tiers des Arméniens de l'Empire ; dénonciation alliée dès le 24 mai 1915 ; reconnaissance par la France en 2001, malgré le négationnisme de l'État turc. Conclusion : l'un des premiers génocides du XXe siècle, symbole de la violence de masse de la guerre totale ; commémoré chaque 24 avril.",
                 "rubric": "1 pt : introduction (qui, quand, quoi). 2,5 pts : contexte et étapes (au moins trois éléments précis : entrée en guerre, accusation de trahison, 24 avril 1915, déportations, marches de la mort, massacres). 2,5 pts : justification du mot génocide et bilan (intention organisée par l'État, groupe visé pour ce qu'il est, 1,2 à 1,5 million de morts, reconnaissance en 2001 et/ou négationnisme). 1 pt : conclusion. 1 pt : expression (phrases construites, connecteurs, vocabulaire précis, ton sobre). Pénalité : -0,5 pt par erreur de repère importante."
               }
             ]
@@ -1008,7 +1014,12 @@
                   "les Jeunes Turcs",
                   "Comite Union et Progres",
                   "le Comite Union et Progres",
-                  "CUP"
+                  "CUP",
+                  "Jeune-Turc",
+                  "les Jeunes-Turcs (Comite Union et Progres)",
+                  "Union et Progres",
+                  "le mouvement jeune-turc",
+                  "le mouvement des Jeunes-Turcs"
                 ],
                 "solution": "Les Jeunes-Turcs (Comité Union et Progrès).",
                 "rubric": "1 pt : Jeunes-Turcs (ou Comité Union et Progrès)."
@@ -1026,7 +1037,10 @@
                 "answer": [
                   "Morgenthau",
                   "Henry Morgenthau",
-                  "H. Morgenthau"
+                  "H. Morgenthau",
+                  "Henri Morgenthau",
+                  "l'ambassadeur Morgenthau",
+                  "l'ambassadeur Henry Morgenthau"
                 ],
                 "solution": "Henry Morgenthau.",
                 "rubric": "1 pt : Morgenthau."

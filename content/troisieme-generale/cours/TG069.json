@@ -317,7 +317,7 @@
           },
           {
             "type": "quote",
-            "text": "Debout, femmes françaises, jeunes enfants, filles et fils de la patrie ! Remplacez sur le champ du travail ceux qui sont sur le champ de bataille.",
+            "text": "[…] Debout, donc, femmes françaises, jeunes enfants, filles et fils de la patrie. Remplacez sur le champ du travail ceux qui sont sur le champ de bataille.",
             "source": "René Viviani, président du Conseil, « Appel aux femmes françaises », août 1914 (extrait, domaine public)."
           },
           {
@@ -641,7 +641,7 @@
         "label": "Document 1 · L'appel à l'Union sacrée",
         "source": "Raymond Poincaré, président de la République, message lu au Parlement le 4 août 1914 (extrait, domaine public).",
         "paragraphs": [
-          "Dans la guerre qui s'engage, la France aura pour elle le droit, dont aucun peuple, non plus que les individus, ne saurait impunément méconnaître l'éternelle puissance morale.",
+          "Dans la guerre qui s'engage, la France aura pour elle le Droit, dont aucun peuple, non plus qu'aucun individu, ne saurait impunément méconnaître l'éternelle puissance morale.",
           "Elle sera héroïquement défendue par tous ses fils, dont rien ne brisera devant l'ennemi l'union sacrée, et qui sont aujourd'hui fraternellement assemblés dans une même indignation contre l'agresseur et dans une même foi patriotique."
         ]
       },
@@ -836,7 +836,7 @@
             "source": "René Viviani, président du Conseil, « Appel aux femmes françaises », publié au début d'août 1914 (extrait, domaine public).",
             "paragraphs": [
               "Le départ pour l'armée de tous ceux qui peuvent porter les armes laisse les travaux des champs interrompus : la moisson est inachevée, le temps des vendanges est proche. Au nom du gouvernement de la République, au nom de la nation tout entière groupée derrière lui, je fais appel à votre vaillance, à celle des enfants que leur âge seul, et non leur courage, dérobe au combat.",
-              "Debout, femmes françaises, jeunes enfants, filles et fils de la patrie ! Remplacez sur le champ du travail ceux qui sont sur le champ de bataille. Préparez-vous à leur montrer, demain, la terre cultivée, les récoltes rentrées, les champs ensemencés !",
+              "[…] Debout, donc, femmes françaises, jeunes enfants, filles et fils de la patrie. Remplacez sur le champ du travail ceux qui sont sur le champ de bataille. Préparez-vous à leur montrer, demain, la terre cultivée, les récoltes rentrées, les champs ensemencés !",
               "Il n'y a pas, dans ces heures graves, de labeur infime. Tout est grand qui sert le pays. Debout ! À l'action ! À l'œuvre ! Il y aura demain de la gloire pour tout le monde."
             ]
           }
@@ -900,7 +900,9 @@
                   "le general Foch",
                   "general Foch",
                   "marechal Foch",
-                  "le marechal Foch"
+                  "le marechal Foch",
+                  "F. Foch",
+                  "Foch Ferdinand"
                 ],
                 "solution": "Ferdinand Foch.",
                 "rubric": "1 pt : Foch."
@@ -969,7 +971,7 @@
                 ],
                 "cognitive": "analyser",
                 "prompt": "À qui s'adresse cet appel et que leur demande-t-on ? Appuie-toi sur deux citations.",
-                "solution": "Il s'adresse aux femmes et aux enfants (« Debout, femmes françaises, jeunes enfants »). On leur demande de remplacer les hommes mobilisés dans les travaux agricoles : terminer la moisson, faire les vendanges (« Remplacez sur le champ du travail ceux qui sont sur le champ de bataille »).",
+                "solution": "Il s'adresse aux femmes et aux enfants (« Debout, donc, femmes françaises, jeunes enfants »). On leur demande de remplacer les hommes mobilisés dans les travaux agricoles : terminer la moisson, faire les vendanges (« Remplacez sur le champ du travail ceux qui sont sur le champ de bataille »).",
                 "rubric": "1 pt : destinataires (femmes et enfants) avec citation. 1 pt : ce qui est demandé (remplacer les hommes aux champs : moisson, vendanges) avec citation."
               },
               {
@@ -1034,7 +1036,7 @@
             "source": "Georges Clemenceau, président du Conseil, discours à la Chambre des députés, 8 mars 1918 (extrait, domaine public).",
             "paragraphs": [
               "Ma formule est la même partout. Politique intérieure ? Je fais la guerre. Politique extérieure ? Je fais la guerre. Je fais toujours la guerre.",
-              "La Russie nous trahit, je continue de faire la guerre. La malheureuse Roumanie est obligée de capituler, je continue de faire la guerre, et je continuerai jusqu'au dernier quart d'heure."
+              "[…] La Russie nous trahit, je continue de faire la guerre. La malheureuse Roumanie est obligée de capituler, je continue de faire la guerre, et je continuerai jusqu'au dernier quart d'heure."
             ]
           }
         ],
@@ -1097,7 +1099,10 @@
                   "Petain",
                   "Philippe Petain",
                   "le general Petain",
-                  "general Petain"
+                  "general Petain",
+                  "le marechal Petain",
+                  "marechal Petain",
+                  "Petain Philippe"
                 ],
                 "solution": "Philippe Pétain.",
                 "rubric": "1 pt : Pétain."

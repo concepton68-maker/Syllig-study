@@ -144,7 +144,7 @@
                 "Exécutif",
                 "**Président de la République**",
                 "Élu pour 5 ans au suffrage universel direct ; deux mandats consécutifs au maximum",
-                "Veille au respect de la Constitution, nomme le Premier ministre, préside le Conseil des ministres, chef des armées ; peut dissoudre l'Assemblée nationale et proposer un référendum ; promulgue les lois."
+                "Veille au respect de la Constitution, nomme le Premier ministre, préside le Conseil des ministres, chef des armées ; peut dissoudre l'Assemblée nationale et soumettre un projet de loi au référendum (sur proposition du gouvernement ou des deux assemblées) ; promulgue les lois."
               ],
               [
                 "Exécutif",
@@ -401,8 +401,8 @@
                 "Grande révision : limite de deux mandats présidentiels consécutifs ; les citoyens peuvent contester une loi devant le Conseil constitutionnel lors d'un procès (« question prioritaire de constitutionnalité », appliquée à partir de 2010)"
               ],
               [
-                "Mars 2024",
-                "La liberté garantie aux femmes de recourir à l'IVG est inscrite dans la Constitution"
+                "8 mars 2024",
+                "Loi constitutionnelle (votée par le Congrès réuni à Versailles le 4 mars) : l'article 34 précise désormais que « la loi détermine les conditions dans lesquelles s'exerce la liberté garantie à la femme d'avoir recours à une interruption volontaire de grossesse » (IVG)"
               ]
             ]
           },
@@ -414,7 +414,7 @@
           },
           {
             "type": "text",
-            "text": "La Constitution a été révisée plus de vingt fois depuis 1958 : c'est un texte stable, mais qui s'adapte."
+            "text": "La Constitution a été révisée vingt-cinq fois depuis 1958, la dernière fois le 8 mars 2024 : c'est un texte stable, mais qui s'adapte."
           }
         ],
         "checkpoint": {
@@ -499,7 +499,7 @@
             "type": "callout",
             "kind": "methode",
             "title": "Comment réviser la Constitution ? (article 89)",
-            "text": "L'initiative appartient au président de la République (sur proposition du Premier ministre) ou aux parlementaires. Le texte doit être voté dans les mêmes termes par l'Assemblée nationale et par le Sénat. Il est ensuite adopté soit par **référendum**, soit par le **Congrès** (Parlement réuni), à la majorité des trois cinquièmes."
+            "text": "L'initiative appartient au président de la République (sur proposition du Premier ministre) ou aux parlementaires. Le texte doit être voté dans les mêmes termes par l'Assemblée nationale et par le Sénat. Il est ensuite adopté soit par **référendum**, soit par le **Congrès** (Parlement réuni), à la majorité des trois cinquièmes. Le recours au Congrès n'est possible que si la révision vient du président de la République ; une révision proposée par des parlementaires doit passer par le référendum."
           },
           {
             "type": "callout",
@@ -573,7 +573,7 @@
       },
       {
         "label": "Évolutions",
-        "text": "1962 : président élu au suffrage universel direct · 2000 : quinquennat · 2008 : QPC et deux mandats maximum · 2024 : liberté de recourir à l'IVG."
+        "text": "1962 : président élu au suffrage universel direct · 2000 : quinquennat · 2008 : QPC et deux mandats maximum · 8 mars 2024 : liberté garantie de recourir à l'IVG (article 34)."
       },
       {
         "label": "Notions",
@@ -740,7 +740,7 @@
         ],
         "cognitive": "analyser",
         "prompt": "À l'aide du document 2 et du cours, explique pourquoi on dit que la Ve République a un exécutif fort.",
-        "solution": "Le président a des pouvoirs importants : il nomme le Premier ministre, peut dissoudre l'Assemblée nationale (article 12), proposer un référendum, et dispose de pouvoirs exceptionnels (article 16). Depuis 1962, il est élu au suffrage universel direct, ce qui lui donne une grande légitimité. La Constitution voulait ainsi rompre avec l'instabilité de la IVe République."
+        "solution": "Le président a des pouvoirs importants : il nomme le Premier ministre, peut dissoudre l'Assemblée nationale (article 12), soumettre un projet de loi au référendum (article 11), et dispose de pouvoirs exceptionnels (article 16). Depuis 1962, il est élu au suffrage universel direct, ce qui lui donne une grande légitimité. La Constitution voulait ainsi rompre avec l'instabilité de la IVe République."
       },
       {
         "id": "ex9",
@@ -785,7 +785,7 @@
             "paragraphs": [
               "Article 3 : « La souveraineté nationale appartient au peuple qui l'exerce par ses représentants et par la voie du référendum. […] Le suffrage peut être direct ou indirect dans les conditions prévues par la Constitution. Il est toujours universel, égal et secret. Sont électeurs, dans les conditions déterminées par la loi, tous les nationaux français majeurs des deux sexes, jouissant de leurs droits civils et politiques. »",
               "Article 6 : « Le Président de la République est élu pour cinq ans au suffrage universel direct. Nul ne peut exercer plus de deux mandats consécutifs. […] »",
-              "Article 11 : « Le Président de la République, sur proposition du Gouvernement pendant la durée des sessions ou sur proposition conjointe des deux assemblées, publiée au Journal officiel, peut soumettre au référendum tout projet de loi portant sur l'organisation des pouvoirs publics […]. »"
+              "Article 11 : « Le Président de la République, sur proposition du Gouvernement pendant la durée des sessions ou sur proposition conjointe des deux assemblées, publiées au Journal officiel, peut soumettre au référendum tout projet de loi portant sur l'organisation des pouvoirs publics […]. »"
             ]
           }
         ],
@@ -865,7 +865,9 @@
                   "Charles de Gaulle",
                   "le general de Gaulle",
                   "general de Gaulle",
-                  "De Gaulle"
+                  "De Gaulle",
+                  "le general Charles de Gaulle",
+                  "general Charles de Gaulle"
                 ],
                 "solution": "Charles de Gaulle.",
                 "rubric": "1 pt : de Gaulle."
@@ -1057,7 +1059,10 @@
                 "answer": [
                   "Coty",
                   "Rene Coty",
-                  "R. Coty"
+                  "R. Coty",
+                  "le president Coty",
+                  "le president Rene Coty",
+                  "president Rene Coty"
                 ],
                 "solution": "René Coty.",
                 "rubric": "1 pt : Coty."

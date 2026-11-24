@@ -1,0 +1,1128 @@
+{
+  "format": "syllig-course/1",
+  "code": "TG037",
+  "level": "troisieme-generale",
+  "subject": "Mathématiques",
+  "chapter": "Nombres et calculs (début d'année)",
+  "title": "Fractions irréductibles et problèmes de partage",
+  "skills": [
+    {
+      "id": "m3-diviseurs",
+      "label": "Trouver les diviseurs d'un entier et les diviseurs communs à deux entiers"
+    },
+    {
+      "id": "m3-premiers",
+      "label": "Décomposer un entier en produit de facteurs premiers"
+    },
+    {
+      "id": "m3-plus-grand-diviseur",
+      "label": "Déterminer le plus grand diviseur commun à deux entiers"
+    },
+    {
+      "id": "m3-irreductible",
+      "label": "Rendre une fraction irréductible"
+    },
+    {
+      "id": "m3-partage",
+      "label": "Résoudre un problème de partage en lots identiques"
+    },
+    {
+      "id": "m3-rediger",
+      "label": "Rédiger et justifier une réponse comme au brevet"
+    }
+  ],
+  "lesson": {
+    "duration_min": 35,
+    "objectives": [
+      "lister les diviseurs d'un entier et repérer les diviseurs communs à deux entiers ;",
+      "décomposer un entier en produit de facteurs premiers ;",
+      "trouver le plus grand diviseur commun à deux entiers ;",
+      "rendre une fraction irréductible, en une ou plusieurs étapes ;",
+      "résoudre un problème de partage en lots identiques et rédiger la réponse."
+    ],
+    "essential": "Une fraction est **irréductible** quand son numérateur et son dénominateur n'ont pas d'autre diviseur commun que 1 : on ne peut plus la simplifier. Pour y arriver, on divise le numérateur et le dénominateur par un même nombre, jusqu'à ce que ce ne soit plus possible. Le plus rapide est de diviser par leur **plus grand diviseur commun**, que l'on trouve grâce à la décomposition en facteurs premiers. Ce même nombre résout les problèmes de partage : « faire le plus grand nombre de lots identiques en utilisant tout » revient à chercher le plus grand diviseur commun.",
+    "parts": [
+      {
+        "title": "Diviseurs et diviseurs communs",
+        "blocks": [
+          {
+            "type": "callout",
+            "kind": "definition",
+            "text": "a et b sont des nombres entiers, avec a non nul. On dit que **a est un diviseur de b** quand la division de b par a tombe juste (le reste est 0). On dit aussi que **b est un multiple de a**, ou que b est divisible par a.\nExemple : 36 ÷ 4 = 9, donc 4 est un diviseur de 36 et 36 est un multiple de 4."
+          },
+          {
+            "type": "table",
+            "caption": "Critères de divisibilité à connaître",
+            "columns": [
+              "Un entier est divisible par…",
+              "si…",
+              "Exemple"
+            ],
+            "rows": [
+              [
+                "2",
+                "son chiffre des unités est 0, 2, 4, 6 ou 8",
+                "538"
+              ],
+              [
+                "3",
+                "la somme de ses chiffres est un multiple de 3",
+                "4 512 : 4 + 5 + 1 + 2 = 12"
+              ],
+              [
+                "5",
+                "son chiffre des unités est 0 ou 5",
+                "785"
+              ],
+              [
+                "9",
+                "la somme de ses chiffres est un multiple de 9",
+                "693 : 6 + 9 + 3 = 18"
+              ],
+              [
+                "10",
+                "son chiffre des unités est 0",
+                "1 270"
+              ]
+            ]
+          },
+          {
+            "type": "callout",
+            "kind": "methode",
+            "title": "Lister tous les diviseurs d'un entier",
+            "text": "Je cherche les divisions qui tombent juste en écrivant le nombre comme un produit de deux entiers, en partant de 1. Je m'arrête quand les produits se répètent.\nExemple avec 36 : 1 × 36 ; 2 × 18 ; 3 × 12 ; 4 × 9 ; 6 × 6.\nLes diviseurs de 36 sont : 1, 2, 3, 4, 6, 9, 12, 18, 36."
+          },
+          {
+            "type": "formula",
+            "latex": "Diviseurs de 24 : 1, 2, 3, 4, 6, 8, 12, 24\nDiviseurs de 36 : 1, 2, 3, 4, 6, 9, 12, 18, 36\nDiviseurs communs à 24 et 36 : 1, 2, 3, 4, 6, 12\nLe plus grand diviseur commun à 24 et 36 est 12."
+          },
+          {
+            "type": "callout",
+            "kind": "attention",
+            "text": "N'oublie jamais 1 et le nombre lui-même : ce sont toujours des diviseurs. Et 1 est un diviseur commun à tous les entiers."
+          }
+        ],
+        "checkpoint": {
+          "variants": [
+            {
+              "prompt": "Lequel de ces nombres n'est pas un diviseur de 45 ?",
+              "options": [
+                "3",
+                "5",
+                "6",
+                "9"
+              ],
+              "answer": 2,
+              "hint": "Essaie chaque division : laquelle ne tombe pas juste ?",
+              "explanation": "45 ÷ 3 = 15, 45 ÷ 5 = 9, 45 ÷ 9 = 5, mais 45 ÷ 6 = 7,5 : 6 n'est pas un diviseur de 45."
+            },
+            {
+              "prompt": "Quels sont tous les diviseurs communs à 12 et 18 ?",
+              "options": [
+                "1, 2, 3, 6",
+                "1, 2, 3, 4, 6",
+                "2, 3, 6",
+                "1, 2, 6, 12"
+              ],
+              "answer": 0,
+              "hint": "Liste les diviseurs de chaque nombre, puis garde ceux qui sont dans les deux listes. N'oublie pas 1.",
+              "explanation": "Diviseurs de 12 : 1, 2, 3, 4, 6, 12. Diviseurs de 18 : 1, 2, 3, 6, 9, 18. En commun : 1, 2, 3, 6."
+            },
+            {
+              "prompt": "Le nombre 4 512 est-il divisible par 3 ?",
+              "options": [
+                "Non, car il se termine par 2",
+                "Oui, car la somme de ses chiffres, 12, est un multiple de 3",
+                "Non, car 4 512 est pair",
+                "On ne peut pas savoir sans poser la division"
+              ],
+              "answer": 1,
+              "hint": "Relis le critère de divisibilité par 3 dans le tableau.",
+              "explanation": "4 + 5 + 1 + 2 = 12, et 12 est un multiple de 3 : 4 512 est divisible par 3 (4 512 = 3 × 1 504)."
+            }
+          ]
+        }
+      },
+      {
+        "title": "Facteurs premiers et plus grand diviseur commun",
+        "blocks": [
+          {
+            "type": "callout",
+            "kind": "definition",
+            "text": "Un **nombre premier** est un entier qui a exactement deux diviseurs : 1 et lui-même.\nLes nombres premiers inférieurs à 30 sont : 2, 3, 5, 7, 11, 13, 17, 19, 23, 29.\nAttention : 1 n'est pas premier (il n'a qu'un seul diviseur)."
+          },
+          {
+            "type": "callout",
+            "kind": "methode",
+            "title": "Décomposer un entier en produit de facteurs premiers",
+            "text": "1. Je divise le nombre par 2 tant que c'est possible.\n2. Puis par 3, puis par 5, puis par 7, puis par 11… (les nombres premiers dans l'ordre).\n3. Je m'arrête quand j'obtiens 1, et j'écris le produit avec des puissances."
+          },
+          {
+            "type": "formula",
+            "latex": "84 = 2 × 42 = 2 × 2 × 21 = 2 × 2 × 3 × 7\ndonc 84 = 2² × 3 × 7\n\n126 = 2 × 63 = 2 × 3 × 21 = 2 × 3 × 3 × 7\ndonc 126 = 2 × 3² × 7"
+          },
+          {
+            "type": "callout",
+            "kind": "retiens",
+            "title": "Plus grand diviseur commun",
+            "text": "Pour trouver le plus grand diviseur commun à deux entiers :\n1. je décompose chacun en produit de facteurs premiers ;\n2. je garde les facteurs premiers **communs aux deux**, chacun avec le **plus petit exposant** ;\n3. je fais le produit."
+          },
+          {
+            "type": "formula",
+            "latex": "84 = 2² × 3 × 7\n126 = 2 × 3² × 7\nFacteurs communs : 2 (une fois), 3 (une fois), 7 (une fois)\nPlus grand diviseur commun : 2 × 3 × 7 = 42"
+          },
+          {
+            "type": "callout",
+            "kind": "attention",
+            "text": "Une écriture comme 84 = 4 × 21 est juste, mais ce n'est pas une décomposition en facteurs premiers : 4 et 21 ne sont pas premiers. Continue jusqu'à n'avoir que des nombres premiers."
+          },
+          {
+            "type": "callout",
+            "kind": "plus",
+            "text": "Quand deux nombres n'ont aucun facteur premier commun, leur seul diviseur commun est 1. On dit qu'ils sont **premiers entre eux**. Exemple : 35 = 5 × 7 et 66 = 2 × 3 × 11."
+          }
+        ],
+        "checkpoint": {
+          "variants": [
+            {
+              "prompt": "Quelle est la décomposition de 60 en produit de facteurs premiers ?",
+              "options": [
+                "6 × 10",
+                "2 × 30",
+                "2² × 3 × 5",
+                "2 × 3 × 10"
+              ],
+              "answer": 2,
+              "hint": "Tous les facteurs doivent être des nombres premiers.",
+              "explanation": "60 = 2 × 30 = 2 × 2 × 15 = 2 × 2 × 3 × 5 = 2² × 3 × 5. Les autres écritures contiennent 6, 10 ou 30, qui ne sont pas premiers."
+            },
+            {
+              "prompt": "Quel est le plus grand diviseur commun à A = 2² × 3 × 5 et B = 2 × 3² × 7 ?",
+              "options": [
+                "6",
+                "2 × 3 × 5 × 7",
+                "12",
+                "1"
+              ],
+              "answer": 0,
+              "hint": "Garde seulement les facteurs présents dans les deux, avec le plus petit exposant.",
+              "explanation": "Les facteurs communs sont 2 (plus petit exposant : 1) et 3 (plus petit exposant : 1). Le plus grand diviseur commun est 2 × 3 = 6."
+            },
+            {
+              "prompt": "Lequel de ces nombres est premier ?",
+              "options": [
+                "21",
+                "27",
+                "29",
+                "33"
+              ],
+              "answer": 2,
+              "hint": "Cherche pour chaque nombre un diviseur autre que 1 et lui-même.",
+              "explanation": "21 = 3 × 7, 27 = 3 × 9, 33 = 3 × 11. 29 n'est divisible que par 1 et 29 : il est premier."
+            }
+          ]
+        }
+      },
+      {
+        "title": "Rendre une fraction irréductible",
+        "blocks": [
+          {
+            "type": "callout",
+            "kind": "definition",
+            "text": "Une fraction est **irréductible** quand le seul diviseur commun à son numérateur et à son dénominateur est 1. On ne peut plus la simplifier."
+          },
+          {
+            "type": "callout",
+            "kind": "retiens",
+            "text": "On ne change pas la valeur d'une fraction en **divisant** (ou en multipliant) son numérateur et son dénominateur **par un même nombre non nul**."
+          },
+          {
+            "type": "heading",
+            "text": "Trois méthodes pour rendre 84/126 irréductible"
+          },
+          {
+            "type": "formula",
+            "latex": "Méthode 1 · par étapes :\n84/126 = 42/63   (÷ 2)\n42/63 = 14/21    (÷ 3)\n14/21 = 2/3      (÷ 7)"
+          },
+          {
+            "type": "formula",
+            "latex": "Méthode 2 · avec les facteurs premiers :\n84/126 = (2 × 2 × 3 × 7) / (2 × 3 × 3 × 7)\nOn « barre » les facteurs communs 2, 3 et 7 :\n84/126 = 2/3"
+          },
+          {
+            "type": "formula",
+            "latex": "Méthode 3 · en une seule étape :\nLe plus grand diviseur commun à 84 et 126 est 42.\n84 ÷ 42 = 2 et 126 ÷ 42 = 3, donc 84/126 = 2/3"
+          },
+          {
+            "type": "callout",
+            "kind": "methode",
+            "title": "Vérifier que c'est fini",
+            "text": "Je regarde si le numérateur et le dénominateur ont encore un diviseur commun autre que 1. Pour 2/3 : les diviseurs de 2 sont 1 et 2, ceux de 3 sont 1 et 3. Seul 1 est commun : 2/3 est irréductible."
+          },
+          {
+            "type": "text",
+            "text": "Au brevet, on demande souvent de donner le résultat d'un calcul **sous forme irréductible**. Exemple :\n5/6 + 1/10 = 25/30 + 3/30 = 28/30 = 14/15 (on a divisé par 2 ; 14 = 2 × 7 et 15 = 3 × 5 n'ont plus de facteur commun)."
+          },
+          {
+            "type": "callout",
+            "kind": "attention",
+            "title": "Trois pièges",
+            "text": "• **S'arrêter trop tôt** : 12/18 = 6/9, mais 6 et 9 sont encore divisibles par 3. La forme irréductible est 2/3.\n• **Simplifier une somme** : (3 + 4)/(3 + 8) n'est pas égal à 4/8 ! On ne simplifie que des **facteurs** (des multiplications). Ici (3 + 4)/(3 + 8) = 7/11.\n• **Barrer des chiffres** : dans 16/64, barrer les deux 6 n'est pas une simplification, même si le résultat 1/4 tombe juste par hasard."
+          }
+        ],
+        "checkpoint": {
+          "variants": [
+            {
+              "prompt": "Quelle est la forme irréductible de 18/24 ?",
+              "options": [
+                "9/12",
+                "6/8",
+                "3/4",
+                "2/3"
+              ],
+              "answer": 2,
+              "hint": "Cherche le plus grand diviseur commun à 18 et 24.",
+              "explanation": "Le plus grand diviseur commun à 18 et 24 est 6 : 18 ÷ 6 = 3 et 24 ÷ 6 = 4. 9/12 et 6/8 sont égales mais pas irréductibles."
+            },
+            {
+              "prompt": "Laquelle de ces fractions est irréductible ?",
+              "options": [
+                "21/35",
+                "22/35",
+                "25/35",
+                "28/35"
+              ],
+              "answer": 1,
+              "hint": "Décompose 35 = 5 × 7 : quel numérateur n'est divisible ni par 5 ni par 7 ?",
+              "explanation": "35 = 5 × 7. 21 = 3 × 7, 25 = 5 × 5 et 28 = 4 × 7 ont un facteur commun avec 35. 22 = 2 × 11 n'en a aucun : 22/35 est irréductible."
+            },
+            {
+              "prompt": "Combien vaut (3 + 4)/(3 + 8) ?",
+              "options": [
+                "4/8",
+                "1/2",
+                "7/11",
+                "4/11"
+              ],
+              "answer": 2,
+              "hint": "Relis le deuxième piège : peut-on « barrer » un nombre dans une somme ?",
+              "explanation": "On calcule d'abord les sommes : 3 + 4 = 7 et 3 + 8 = 11. Le résultat est 7/11. Barrer les 3 serait une erreur, car ce ne sont pas des facteurs."
+            }
+          ]
+        }
+      },
+      {
+        "title": "Résoudre un problème de partage",
+        "blocks": [
+          {
+            "type": "callout",
+            "kind": "methode",
+            "title": "Reconnaître un problème de partage",
+            "text": "Les mots-clés : « lots (ou paquets, bouquets, équipes) **identiques** », « utiliser **tous** les objets », « le **plus grand nombre** de lots ».\n• Le nombre de lots doit être un **diviseur commun** aux deux quantités.\n• Le plus grand nombre de lots possible est leur **plus grand diviseur commun**.\n• On trouve ensuite le contenu d'un lot par division."
+          },
+          {
+            "type": "heading",
+            "text": "Exemple résolu pas à pas"
+          },
+          {
+            "type": "text",
+            "text": "Un fleuriste a 182 roses et 117 tulipes. Il veut faire des bouquets **identiques** en utilisant **toutes** ses fleurs."
+          },
+          {
+            "type": "formula",
+            "latex": "a) Peut-il faire 26 bouquets ?\n182 ÷ 26 = 7, mais 117 ÷ 26 = 4,5\n26 ne divise pas 117 : il ne peut pas faire 26 bouquets identiques."
+          },
+          {
+            "type": "formula",
+            "latex": "b) Quel est le plus grand nombre de bouquets possible ?\n182 = 2 × 7 × 13\n117 = 3² × 13\nLe seul facteur premier commun est 13 : le plus grand diviseur commun est 13.\nIl peut faire au maximum 13 bouquets."
+          },
+          {
+            "type": "formula",
+            "latex": "c) Composition d'un bouquet :\n182 ÷ 13 = 14 roses\n117 ÷ 13 = 9 tulipes\nChaque bouquet contient 14 roses et 9 tulipes."
+          },
+          {
+            "type": "heading",
+            "text": "Une variante : paver un rectangle avec des carrés"
+          },
+          {
+            "type": "text",
+            "text": "On veut couvrir un sol rectangulaire de 360 cm sur 225 cm avec des dalles carrées identiques, les plus grandes possible, sans découpe. Le côté d'une dalle doit diviser 360 et 225.\n360 = 2³ × 3² × 5 et 225 = 3² × 5², donc le plus grand diviseur commun est 3² × 5 = 45.\nLes dalles mesurent 45 cm de côté. Il en faut 360 ÷ 45 = 8 dans la longueur et 225 ÷ 45 = 5 dans la largeur, soit 8 × 5 = 40 dalles."
+          },
+          {
+            "type": "callout",
+            "kind": "attention",
+            "text": "• Ne confonds pas le **nombre de lots** (13 bouquets) et le **contenu d'un lot** (14 roses et 9 tulipes).\n• Vérifie toujours que ton résultat divise les **deux** quantités.\n• Termine par une phrase réponse : c'est noté au brevet."
+          }
+        ],
+        "checkpoint": {
+          "variants": [
+            {
+              "prompt": "Avec 24 croissants et 40 pains au chocolat, quel est le plus grand nombre de sachets identiques que l'on peut faire en utilisant tout ?",
+              "options": [
+                "4",
+                "8",
+                "12",
+                "120"
+              ],
+              "answer": 1,
+              "hint": "Cherche le plus grand nombre qui divise à la fois 24 et 40.",
+              "explanation": "24 = 2³ × 3 et 40 = 2³ × 5 : le plus grand diviseur commun est 2³ = 8. On peut faire 8 sachets."
+            },
+            {
+              "prompt": "Dans ces 8 sachets identiques (24 croissants et 40 pains au chocolat), que contient chaque sachet ?",
+              "options": [
+                "3 croissants et 5 pains au chocolat",
+                "8 croissants et 8 pains au chocolat",
+                "4 croissants et 5 pains au chocolat",
+                "3 croissants et 4 pains au chocolat"
+              ],
+              "answer": 0,
+              "hint": "Divise chaque quantité par le nombre de sachets.",
+              "explanation": "24 ÷ 8 = 3 croissants et 40 ÷ 8 = 5 pains au chocolat."
+            },
+            {
+              "prompt": "Un problème demande « le plus grand nombre de lots identiques en utilisant tous les objets ». Que cherche-t-on ?",
+              "options": [
+                "La somme des deux quantités",
+                "Le plus petit multiple commun aux deux quantités",
+                "Le plus grand diviseur commun aux deux quantités",
+                "La différence des deux quantités"
+              ],
+              "answer": 2,
+              "hint": "Le nombre de lots doit diviser chaque quantité.",
+              "explanation": "Le nombre de lots doit être un diviseur commun aux deux quantités ; le plus grand possible est donc leur plus grand diviseur commun."
+            }
+          ]
+        }
+      }
+    ],
+    "memo": [
+      {
+        "label": "Diviseur",
+        "text": "a est un diviseur de b si b ÷ a tombe juste. 1 et le nombre lui-même sont toujours des diviseurs."
+      },
+      {
+        "label": "Critères",
+        "text": "Par 2 : unités 0, 2, 4, 6, 8. Par 5 : unités 0 ou 5. Par 3 (ou 9) : somme des chiffres multiple de 3 (ou 9)."
+      },
+      {
+        "label": "Nombre premier",
+        "text": "Exactement deux diviseurs : 1 et lui-même. 2, 3, 5, 7, 11, 13, 17, 19, 23, 29… (1 n'est pas premier)."
+      },
+      {
+        "label": "Plus grand diviseur commun",
+        "text": "Décomposer les deux nombres ; garder les facteurs communs avec le plus petit exposant ; multiplier. Ex. : 84 = 2² × 3 × 7 et 126 = 2 × 3² × 7 → 2 × 3 × 7 = 42."
+      },
+      {
+        "label": "Fraction irréductible",
+        "text": "Numérateur et dénominateur n'ont que 1 comme diviseur commun. On y arrive en divisant les deux par leur plus grand diviseur commun : 84/126 = 2/3."
+      },
+      {
+        "label": "Pièges",
+        "text": "Ne pas s'arrêter trop tôt (6/9 → 2/3). On ne simplifie que des facteurs, jamais des termes d'une somme."
+      },
+      {
+        "label": "Partage",
+        "text": "Lots identiques, tout utiliser, le plus grand nombre de lots → plus grand diviseur commun. Contenu d'un lot = quantité ÷ nombre de lots. Phrase réponse !"
+      }
+    ]
+  },
+  "exercises": {
+    "duration_min": 30,
+    "instructions": "Fais les exercices dans l'ordre : les étoiles indiquent la difficulté. Pour une réponse numérique, écris seulement le nombre. Pour une fraction, écris-la sous la forme a/b (par exemple 3/4). Les corrigés s'affichent après validation.",
+    "pass_threshold": 8,
+    "texts": [],
+    "items": [
+      {
+        "id": "ex1",
+        "type": "qcm",
+        "stars": 1,
+        "lesson_part": 3,
+        "skills": [
+          "m3-irreductible"
+        ],
+        "cognitive": "connaitre",
+        "prompt": "Laquelle de ces fractions est irréductible ?",
+        "options": [
+          "14/21",
+          "15/28",
+          "18/24",
+          "25/35"
+        ],
+        "answer": 1,
+        "solution": "15 = 3 × 5 et 28 = 2² × 7 n'ont aucun facteur premier commun : 15/28 est irréductible. Les autres se simplifient : 14/21 = 2/3 (÷ 7), 18/24 = 3/4 (÷ 6), 25/35 = 5/7 (÷ 5)."
+      },
+      {
+        "id": "ex2",
+        "type": "numeric",
+        "stars": 1,
+        "lesson_part": 1,
+        "skills": [
+          "m3-diviseurs"
+        ],
+        "cognitive": "appliquer",
+        "prompt": "Quel est le plus grand diviseur commun à 18 et 24 ?",
+        "answer": 6,
+        "solution": "Diviseurs de 18 : 1, 2, 3, 6, 9, 18. Diviseurs de 24 : 1, 2, 3, 4, 6, 8, 12, 24. Diviseurs communs : 1, 2, 3, 6. Le plus grand est **6**."
+      },
+      {
+        "id": "ex3",
+        "type": "qcm",
+        "stars": 1,
+        "lesson_part": 2,
+        "skills": [
+          "m3-premiers"
+        ],
+        "cognitive": "connaitre",
+        "prompt": "Quelle est la décomposition de 90 en produit de facteurs premiers ?",
+        "options": [
+          "2 × 45",
+          "2 × 3² × 5",
+          "2 × 3 × 15",
+          "9 × 10"
+        ],
+        "answer": 1,
+        "solution": "90 = 2 × 45 = 2 × 3 × 15 = 2 × 3 × 3 × 5 = 2 × 3² × 5. Les autres écritures sont justes comme calculs, mais 45, 15, 9 et 10 ne sont pas des nombres premiers."
+      },
+      {
+        "id": "ex4",
+        "type": "short",
+        "stars": 2,
+        "lesson_part": 3,
+        "skills": [
+          "m3-irreductible"
+        ],
+        "cognitive": "appliquer",
+        "prompt": "Écris la fraction 90/126 sous forme irréductible (forme a/b).",
+        "answer": [
+          "5/7"
+        ],
+        "solution": "90 = 2 × 3² × 5 et 126 = 2 × 3² × 7. Le plus grand diviseur commun est 2 × 3² = 18. 90 ÷ 18 = 5 et 126 ÷ 18 = 7, donc 90/126 = **5/7**."
+      },
+      {
+        "id": "ex5",
+        "type": "numeric",
+        "stars": 2,
+        "lesson_part": 2,
+        "skills": [
+          "m3-premiers",
+          "m3-plus-grand-diviseur"
+        ],
+        "cognitive": "appliquer",
+        "prompt": "Sachant que 150 = 2 × 3 × 5² et 210 = 2 × 3 × 5 × 7, quel est le plus grand diviseur commun à 150 et 210 ?",
+        "answer": 30,
+        "solution": "Facteurs communs avec le plus petit exposant : 2, 3 et 5 (une fois chacun, car 210 ne contient 5 qu'une fois). Plus grand diviseur commun : 2 × 3 × 5 = **30**."
+      },
+      {
+        "id": "ex6",
+        "type": "qcm",
+        "stars": 2,
+        "lesson_part": 3,
+        "skills": [
+          "m3-irreductible"
+        ],
+        "cognitive": "analyser",
+        "prompt": "Inès écrit : « 12/18 = 6/9, et cette fraction est irréductible. » Qu'en penses-tu ?",
+        "options": [
+          "Elle a raison.",
+          "Elle a tort : 6 et 9 sont encore divisibles par 3, la forme irréductible est 2/3.",
+          "Elle a tort : la forme irréductible est 3/2.",
+          "Elle a tort : 12/18 ne peut pas être simplifiée."
+        ],
+        "answer": 1,
+        "solution": "12/18 = 6/9 est juste (division par 2), mais 6 et 9 ont encore 3 comme diviseur commun : 6/9 = 2/3. Inès s'est arrêtée trop tôt. En divisant directement par 6, le plus grand diviseur commun à 12 et 18, on obtient 2/3 en une étape."
+      },
+      {
+        "id": "ex7",
+        "type": "numeric",
+        "stars": 2,
+        "lesson_part": 4,
+        "skills": [
+          "m3-partage",
+          "m3-plus-grand-diviseur"
+        ],
+        "cognitive": "appliquer",
+        "prompt": "Une professeure a 48 stylos et 36 cahiers. Elle veut faire des lots identiques en utilisant tout. Quel est le plus grand nombre de lots qu'elle peut faire ?",
+        "answer": 12,
+        "solution": "48 = 2⁴ × 3 et 36 = 2² × 3². Plus grand diviseur commun : 2² × 3 = 12. Elle peut faire **12 lots**, contenant chacun 48 ÷ 12 = 4 stylos et 36 ÷ 12 = 3 cahiers."
+      },
+      {
+        "id": "ex8",
+        "type": "numeric",
+        "stars": 3,
+        "lesson_part": 4,
+        "skills": [
+          "m3-partage",
+          "m3-premiers"
+        ],
+        "cognitive": "analyser",
+        "prompt": "On veut recouvrir une plaque rectangulaire de 240 cm sur 156 cm avec des carreaux carrés identiques, les plus grands possible, sans découpe et sans espace. Quelle est la longueur, en cm, du côté d'un carreau ?",
+        "answer": 12,
+        "solution": "Le côté doit diviser 240 et 156. 240 = 2⁴ × 3 × 5 et 156 = 2² × 3 × 13. Plus grand diviseur commun : 2² × 3 = 12. Les carreaux mesurent **12 cm** de côté."
+      },
+      {
+        "id": "ex9",
+        "type": "numeric",
+        "stars": 3,
+        "lesson_part": 4,
+        "skills": [
+          "m3-partage"
+        ],
+        "cognitive": "analyser",
+        "prompt": "Avec ces carreaux de 12 cm de côté sur la plaque de 240 cm sur 156 cm, combien de carreaux faut-il en tout ?",
+        "answer": 260,
+        "solution": "Dans la longueur : 240 ÷ 12 = 20 carreaux. Dans la largeur : 156 ÷ 12 = 13 carreaux. En tout : 20 × 13 = **260 carreaux**. (Vérification par les aires : 240 × 156 = 37 440 cm² et 12 × 12 = 144 cm² ; 37 440 ÷ 144 = 260.)"
+      },
+      {
+        "id": "ex10",
+        "type": "short",
+        "stars": 3,
+        "lesson_part": 3,
+        "skills": [
+          "m3-irreductible",
+          "m3-premiers"
+        ],
+        "cognitive": "analyser",
+        "prompt": "Sachant que 1 155 = 3 × 5 × 7 × 11 et 1 575 = 3² × 5² × 7, écris la fraction 1155/1575 sous forme irréductible (forme a/b).",
+        "answer": [
+          "11/15"
+        ],
+        "solution": "Facteurs communs avec le plus petit exposant : 3, 5 et 7. Plus grand diviseur commun : 3 × 5 × 7 = 105. 1 155 ÷ 105 = 11 et 1 575 ÷ 105 = 15, donc 1155/1575 = **11/15**. Vérification : 11 et 15 = 3 × 5 n'ont pas de facteur commun."
+      }
+    ]
+  },
+  "evaluation": {
+    "duration_min": 40,
+    "conditions": "Sans la leçon, en 40 minutes. Calculatrice autorisée, mais détaille tes décompositions. Pour une fraction, écris-la sous la forme a/b. Barème : A = 5 points · B = 8 points · C = 7 points.",
+    "total_points": 20,
+    "variants": [
+      {
+        "texts": [],
+        "sections": [
+          {
+            "label": "A · Je connais (5 points)",
+            "questions": [
+              {
+                "id": "q1",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 3,
+                "skills": [
+                  "m3-irreductible"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Une fraction est irréductible quand…",
+                "options": [
+                  "son numérateur est un nombre premier",
+                  "son numérateur et son dénominateur n'ont que 1 comme diviseur commun",
+                  "son numérateur est plus petit que son dénominateur",
+                  "son dénominateur est un nombre pair"
+                ],
+                "answer": 1,
+                "solution": "Une fraction est irréductible quand le seul diviseur commun à son numérateur et à son dénominateur est 1 : on ne peut plus la simplifier."
+              },
+              {
+                "id": "q2",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 2,
+                "skills": [
+                  "m3-premiers"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Lequel de ces nombres est premier ?",
+                "options": [
+                  "1",
+                  "15",
+                  "23",
+                  "51"
+                ],
+                "answer": 2,
+                "solution": "23 n'a que deux diviseurs, 1 et 23 : il est premier. 1 n'a qu'un diviseur (il n'est pas premier), 15 = 3 × 5 et 51 = 3 × 17."
+              },
+              {
+                "id": "q3",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 2,
+                "skills": [
+                  "m3-premiers"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Quelle est la décomposition de 72 en produit de facteurs premiers ?",
+                "options": [
+                  "8 × 9",
+                  "2³ × 3²",
+                  "2 × 36",
+                  "2² × 3³"
+                ],
+                "answer": 1,
+                "solution": "72 = 2 × 36 = 2 × 2 × 18 = 2 × 2 × 2 × 9 = 2³ × 3². (2² × 3³ = 4 × 27 = 108.)"
+              },
+              {
+                "id": "q4",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 1,
+                "skills": [
+                  "m3-diviseurs"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Lequel de ces nombres est un diviseur commun à 45 et 60 ?",
+                "options": [
+                  "9",
+                  "15",
+                  "20",
+                  "45"
+                ],
+                "answer": 1,
+                "solution": "45 ÷ 15 = 3 et 60 ÷ 15 = 4 : 15 divise les deux. 9 et 45 ne divisent pas 60 ; 20 ne divise pas 45."
+              },
+              {
+                "id": "q5",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 3,
+                "skills": [
+                  "m3-irreductible",
+                  "m3-plus-grand-diviseur"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Pour rendre une fraction irréductible en une seule étape, on divise son numérateur et son dénominateur par…",
+                "options": [
+                  "2",
+                  "leur plus grand diviseur commun",
+                  "le plus petit des deux nombres",
+                  "leur somme"
+                ],
+                "answer": 1,
+                "solution": "En divisant par le plus grand diviseur commun, on obtient directement la forme irréductible."
+              }
+            ]
+          },
+          {
+            "label": "B · J'applique (8 points)",
+            "questions": [
+              {
+                "id": "q6",
+                "type": "numeric",
+                "points": 2,
+                "lesson_part": 2,
+                "skills": [
+                  "m3-premiers",
+                  "m3-plus-grand-diviseur"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Décompose 84 et 120 en produits de facteurs premiers, puis donne leur plus grand diviseur commun.",
+                "answer": 12,
+                "solution": "84 = 2² × 3 × 7 et 120 = 2³ × 3 × 5. Facteurs communs avec le plus petit exposant : 2² et 3. Plus grand diviseur commun : 2² × 3 = **12**."
+              },
+              {
+                "id": "q7",
+                "type": "short",
+                "points": 2,
+                "lesson_part": 3,
+                "skills": [
+                  "m3-irreductible"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Écris la fraction 84/120 sous forme irréductible (forme a/b).",
+                "answer": [
+                  "7/10"
+                ],
+                "solution": "On divise par 12, le plus grand diviseur commun : 84 ÷ 12 = 7 et 120 ÷ 12 = 10. 84/120 = **7/10**."
+              },
+              {
+                "id": "q8",
+                "type": "numeric",
+                "points": 1,
+                "lesson_part": 1,
+                "skills": [
+                  "m3-diviseurs"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Combien 18 et 30 ont-ils de diviseurs communs (en comptant 1) ?",
+                "answer": 4,
+                "solution": "Diviseurs de 18 : 1, 2, 3, 6, 9, 18. Diviseurs de 30 : 1, 2, 3, 5, 6, 10, 15, 30. Diviseurs communs : 1, 2, 3, 6, soit **4** diviseurs communs."
+              },
+              {
+                "id": "q9",
+                "type": "open",
+                "points": 2,
+                "lesson_part": 3,
+                "skills": [
+                  "m3-irreductible",
+                  "m3-rediger"
+                ],
+                "cognitive": "analyser",
+                "prompt": "Montre que la fraction 35/66 est irréductible. Rédige ta justification.",
+                "solution": "35 = 5 × 7 et 66 = 2 × 3 × 11. Ces deux décompositions n'ont aucun facteur premier commun, donc le seul diviseur commun à 35 et 66 est 1. La fraction 35/66 est irréductible.",
+                "rubric": "1 pt : décompositions exactes de 35 et de 66 (ou liste exacte des diviseurs). 1 pt : conclusion justifiée (aucun facteur commun / seul diviseur commun 1, donc irréductible), rédigée en phrase."
+              },
+              {
+                "id": "q10",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 3,
+                "skills": [
+                  "m3-irreductible"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Quel est le résultat de 3/4 + 1/6 sous forme irréductible ?",
+                "options": [
+                  "4/10",
+                  "2/5",
+                  "11/12",
+                  "22/24"
+                ],
+                "answer": 2,
+                "solution": "3/4 + 1/6 = 9/12 + 2/12 = 11/12. 11 est premier et ne divise pas 12 : 11/12 est irréductible. (22/24 est égal mais pas irréductible ; 4/10 vient de l'erreur « ajouter numérateurs et dénominateurs ».)"
+              }
+            ]
+          },
+          {
+            "label": "C · Problème type brevet (7 points)",
+            "questions": [
+              {
+                "id": "q11",
+                "type": "open",
+                "points": 2,
+                "lesson_part": 4,
+                "skills": [
+                  "m3-partage",
+                  "m3-rediger"
+                ],
+                "cognitive": "rediger",
+                "prompt": "Une association a collecté 162 boîtes de conserve et 108 paquets de pâtes. Elle veut préparer des colis identiques en utilisant tous les produits. Peut-elle préparer 12 colis ? Justifie.",
+                "solution": "108 ÷ 12 = 9, mais 162 ÷ 12 = 13,5 : ce n'est pas un nombre entier. 12 ne divise pas 162, donc l'association ne peut pas préparer 12 colis identiques en utilisant tous les produits.",
+                "rubric": "1 pt : les deux divisions (ou au moins celle de 162 par 12) correctement effectuées. 1 pt : conclusion « non » justifiée par le fait que 12 ne divise pas 162, avec une phrase réponse."
+              },
+              {
+                "id": "q12",
+                "type": "numeric",
+                "points": 2,
+                "lesson_part": 4,
+                "skills": [
+                  "m3-partage",
+                  "m3-plus-grand-diviseur"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Quel est le plus grand nombre de colis identiques que l'association peut préparer ? (Aide : 162 = 2 × 3⁴ et 108 = 2² × 3³.)",
+                "answer": 54,
+                "solution": "Facteurs communs avec le plus petit exposant : 2 et 3³. Plus grand diviseur commun : 2 × 3³ = 2 × 27 = **54**. L'association peut préparer au maximum 54 colis."
+              },
+              {
+                "id": "q13",
+                "type": "numeric",
+                "points": 1,
+                "lesson_part": 4,
+                "skills": [
+                  "m3-partage"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Dans ce cas (54 colis), combien de boîtes de conserve contient chaque colis ?",
+                "answer": 3,
+                "solution": "162 ÷ 54 = **3** boîtes de conserve par colis."
+              },
+              {
+                "id": "q14",
+                "type": "numeric",
+                "points": 1,
+                "lesson_part": 4,
+                "skills": [
+                  "m3-partage"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Et combien de paquets de pâtes contient chaque colis ?",
+                "answer": 2,
+                "solution": "108 ÷ 54 = **2** paquets de pâtes par colis."
+              },
+              {
+                "id": "q15",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 4,
+                "skills": [
+                  "m3-partage"
+                ],
+                "cognitive": "analyser",
+                "prompt": "L'association pourrait-elle aussi préparer 18 colis identiques en utilisant tout ?",
+                "options": [
+                  "Oui, car 18 divise 162 et 108",
+                  "Non, car 18 est plus petit que 54",
+                  "Non, car 18 n'est pas un nombre premier",
+                  "Oui, car 18 est pair"
+                ],
+                "answer": 0,
+                "solution": "162 ÷ 18 = 9 et 108 ÷ 18 = 6 : 18 est un diviseur commun, donc c'est possible (9 conserves et 6 paquets de pâtes par colis). 54 est seulement le nombre **maximal** de colis."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "texts": [],
+        "sections": [
+          {
+            "label": "A · Je connais (5 points)",
+            "questions": [
+              {
+                "id": "q1",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 3,
+                "skills": [
+                  "m3-irreductible"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "La fraction a/b est irréductible. Cela signifie que…",
+                "options": [
+                  "a et b sont des nombres premiers",
+                  "a est plus petit que b",
+                  "le seul diviseur commun à a et b est 1",
+                  "a et b sont impairs"
+                ],
+                "answer": 2,
+                "solution": "Irréductible signifie que le seul diviseur commun au numérateur et au dénominateur est 1 : on ne peut plus simplifier."
+              },
+              {
+                "id": "q2",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 2,
+                "skills": [
+                  "m3-premiers"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Lequel de ces nombres est premier ?",
+                "options": [
+                  "19",
+                  "21",
+                  "1",
+                  "57"
+                ],
+                "answer": 0,
+                "solution": "19 n'a que deux diviseurs, 1 et 19 : il est premier. 21 = 3 × 7, 57 = 3 × 19, et 1 n'est pas premier (un seul diviseur)."
+              },
+              {
+                "id": "q3",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 2,
+                "skills": [
+                  "m3-premiers"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Quelle est la décomposition de 120 en produit de facteurs premiers ?",
+                "options": [
+                  "2³ × 3 × 5",
+                  "2 × 3 × 4 × 5",
+                  "12 × 10",
+                  "2² × 3 × 5"
+                ],
+                "answer": 0,
+                "solution": "120 = 2 × 60 = 2 × 2 × 30 = 2 × 2 × 2 × 15 = 2³ × 3 × 5. (2² × 3 × 5 = 60.)"
+              },
+              {
+                "id": "q4",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 1,
+                "skills": [
+                  "m3-diviseurs"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Lequel de ces nombres est un diviseur commun à 42 et 56 ?",
+                "options": [
+                  "6",
+                  "8",
+                  "14",
+                  "21"
+                ],
+                "answer": 2,
+                "solution": "42 ÷ 14 = 3 et 56 ÷ 14 = 4 : 14 divise les deux. 6 et 21 ne divisent pas 56 ; 8 ne divise pas 42."
+              },
+              {
+                "id": "q5",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 3,
+                "skills": [
+                  "m3-irreductible",
+                  "m3-plus-grand-diviseur"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "On divise le numérateur et le dénominateur d'une fraction par leur plus grand diviseur commun. On obtient…",
+                "options": [
+                  "une fraction plus petite",
+                  "la forme irréductible de la fraction",
+                  "un nombre entier",
+                  "l'inverse de la fraction"
+                ],
+                "answer": 1,
+                "solution": "Diviser par le plus grand diviseur commun donne directement la forme irréductible, sans changer la valeur de la fraction."
+              }
+            ]
+          },
+          {
+            "label": "B · J'applique (8 points)",
+            "questions": [
+              {
+                "id": "q6",
+                "type": "numeric",
+                "points": 2,
+                "lesson_part": 2,
+                "skills": [
+                  "m3-premiers",
+                  "m3-plus-grand-diviseur"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Décompose 90 et 150 en produits de facteurs premiers, puis donne leur plus grand diviseur commun.",
+                "answer": 30,
+                "solution": "90 = 2 × 3² × 5 et 150 = 2 × 3 × 5². Facteurs communs avec le plus petit exposant : 2, 3 et 5. Plus grand diviseur commun : 2 × 3 × 5 = **30**."
+              },
+              {
+                "id": "q7",
+                "type": "short",
+                "points": 2,
+                "lesson_part": 3,
+                "skills": [
+                  "m3-irreductible"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Écris la fraction 90/150 sous forme irréductible (forme a/b).",
+                "answer": [
+                  "3/5"
+                ],
+                "solution": "On divise par 30, le plus grand diviseur commun : 90 ÷ 30 = 3 et 150 ÷ 30 = 5. 90/150 = **3/5**."
+              },
+              {
+                "id": "q8",
+                "type": "numeric",
+                "points": 1,
+                "lesson_part": 1,
+                "skills": [
+                  "m3-diviseurs"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Combien 20 et 30 ont-ils de diviseurs communs (en comptant 1) ?",
+                "answer": 4,
+                "solution": "Diviseurs de 20 : 1, 2, 4, 5, 10, 20. Diviseurs de 30 : 1, 2, 3, 5, 6, 10, 15, 30. Diviseurs communs : 1, 2, 5, 10, soit **4** diviseurs communs."
+              },
+              {
+                "id": "q9",
+                "type": "open",
+                "points": 2,
+                "lesson_part": 3,
+                "skills": [
+                  "m3-irreductible",
+                  "m3-rediger"
+                ],
+                "cognitive": "analyser",
+                "prompt": "Montre que la fraction 22/45 est irréductible. Rédige ta justification.",
+                "solution": "22 = 2 × 11 et 45 = 3² × 5. Ces deux décompositions n'ont aucun facteur premier commun, donc le seul diviseur commun à 22 et 45 est 1. La fraction 22/45 est irréductible.",
+                "rubric": "1 pt : décompositions exactes de 22 et de 45 (ou liste exacte des diviseurs). 1 pt : conclusion justifiée (aucun facteur commun / seul diviseur commun 1, donc irréductible), rédigée en phrase."
+              },
+              {
+                "id": "q10",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 3,
+                "skills": [
+                  "m3-irreductible"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Quel est le résultat de 2/9 + 5/6 sous forme irréductible ?",
+                "options": [
+                  "7/15",
+                  "19/18",
+                  "38/36",
+                  "7/18"
+                ],
+                "answer": 1,
+                "solution": "2/9 + 5/6 = 4/18 + 15/18 = 19/18. 19 est premier et ne divise pas 18 : 19/18 est irréductible. (38/36 est égal mais pas irréductible ; 7/15 vient de l'erreur « ajouter numérateurs et dénominateurs ».)"
+              }
+            ]
+          },
+          {
+            "label": "C · Problème type brevet (7 points)",
+            "questions": [
+              {
+                "id": "q11",
+                "type": "open",
+                "points": 2,
+                "lesson_part": 4,
+                "skills": [
+                  "m3-partage",
+                  "m3-rediger"
+                ],
+                "cognitive": "rediger",
+                "prompt": "Un jardinier a 210 bulbes de tulipes et 126 bulbes de jonquilles. Il veut garnir des jardinières identiques en utilisant tous les bulbes. Peut-il garnir 20 jardinières ? Justifie.",
+                "solution": "210 ÷ 20 = 10,5 et 126 ÷ 20 = 6,3 : ce ne sont pas des nombres entiers. 20 ne divise ni 210 ni 126, donc le jardinier ne peut pas garnir 20 jardinières identiques en utilisant tous les bulbes.",
+                "rubric": "1 pt : les divisions correctement effectuées (au moins une qui ne tombe pas juste). 1 pt : conclusion « non » justifiée par le fait que 20 ne divise pas les quantités, avec une phrase réponse."
+              },
+              {
+                "id": "q12",
+                "type": "numeric",
+                "points": 2,
+                "lesson_part": 4,
+                "skills": [
+                  "m3-partage",
+                  "m3-plus-grand-diviseur"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Quel est le plus grand nombre de jardinières identiques qu'il peut garnir ? (Aide : 210 = 2 × 3 × 5 × 7 et 126 = 2 × 3² × 7.)",
+                "answer": 42,
+                "solution": "Facteurs communs avec le plus petit exposant : 2, 3 et 7. Plus grand diviseur commun : 2 × 3 × 7 = **42**. Il peut garnir au maximum 42 jardinières."
+              },
+              {
+                "id": "q13",
+                "type": "numeric",
+                "points": 1,
+                "lesson_part": 4,
+                "skills": [
+                  "m3-partage"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Dans ce cas (42 jardinières), combien de bulbes de tulipes contient chaque jardinière ?",
+                "answer": 5,
+                "solution": "210 ÷ 42 = **5** bulbes de tulipes par jardinière."
+              },
+              {
+                "id": "q14",
+                "type": "numeric",
+                "points": 1,
+                "lesson_part": 4,
+                "skills": [
+                  "m3-partage"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Et combien de bulbes de jonquilles contient chaque jardinière ?",
+                "answer": 3,
+                "solution": "126 ÷ 42 = **3** bulbes de jonquilles par jardinière."
+              },
+              {
+                "id": "q15",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 4,
+                "skills": [
+                  "m3-partage"
+                ],
+                "cognitive": "analyser",
+                "prompt": "Le jardinier pourrait-il aussi garnir 14 jardinières identiques en utilisant tout ?",
+                "options": [
+                  "Non, car 14 est plus petit que 42",
+                  "Oui, car 14 divise 210 et 126",
+                  "Non, car 14 n'est pas un nombre premier",
+                  "Oui, car 14 est pair"
+                ],
+                "answer": 1,
+                "solution": "210 ÷ 14 = 15 et 126 ÷ 14 = 9 : 14 est un diviseur commun, donc c'est possible (15 tulipes et 9 jonquilles par jardinière). 42 est seulement le nombre **maximal** de jardinières."
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

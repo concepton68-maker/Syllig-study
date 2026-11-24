@@ -1,0 +1,1309 @@
+{
+  "format": "syllig-course/1",
+  "code": "TG102",
+  "level": "troisieme-generale",
+  "subject": "Physique-Chimie",
+  "chapter": "Organisation et transformations de la matière",
+  "title": "Les ions et la formation des ions",
+  "skills": [
+    {
+      "id": "pc-ion-definition",
+      "label": "Définir un ion, un cation et un anion"
+    },
+    {
+      "id": "pc-ion-formule",
+      "label": "Lire et écrire la formule d'un ion"
+    },
+    {
+      "id": "pc-ion-denombrer",
+      "label": "Dénombrer les protons et les électrons d'un ion"
+    },
+    {
+      "id": "pc-solution-ionique",
+      "label": "Écrire la formule d'une solution ionique électriquement neutre"
+    },
+    {
+      "id": "pc-document",
+      "label": "Extraire et exploiter des informations d'un document"
+    },
+    {
+      "id": "pc-rediger",
+      "label": "Rédiger une explication scientifique argumentée"
+    }
+  ],
+  "lesson": {
+    "duration_min": 35,
+    "objectives": [
+      "expliquer comment un atome devient un ion en gagnant ou en perdant des électrons ;",
+      "distinguer un cation (ion positif) d'un anion (ion négatif) ;",
+      "lire et écrire la formule d'un ion, monoatomique ou polyatomique ;",
+      "compter les protons et les électrons d'un ion à partir de Z et de sa charge ;",
+      "écrire la formule d'une solution ionique en respectant sa neutralité électrique."
+    ],
+    "essential": "Un atome est électriquement neutre : il a autant d'électrons que de protons. Quand il **perd** un ou plusieurs électrons, il devient un **ion positif** (cation) ; quand il en **gagne**, il devient un **ion négatif** (anion). Seuls les électrons changent : le noyau, et donc le nombre de protons Z, reste le même. La charge de l'ion s'écrit en haut à droite du symbole : Na⁺, Cu²⁺, Cl⁻. Dans une solution ionique, les charges positives et négatives se compensent exactement : la solution est neutre.",
+    "parts": [
+      {
+        "title": "De l'atome à l'ion",
+        "blocks": [
+          {
+            "type": "text",
+            "text": "Rappel : un atome est formé d'un noyau (protons chargés +, neutrons non chargés) et d'électrons chargés −. Il a autant d'électrons que de protons, donc il est **électriquement neutre**."
+          },
+          {
+            "type": "callout",
+            "kind": "definition",
+            "text": "Un **ion** est un atome (ou un groupe d'atomes) qui a **gagné** ou **perdu** un ou plusieurs électrons. Il n'est donc plus neutre : il porte une charge électrique.\n• Un atome qui **perd** des électrons devient un **ion positif**, appelé **cation**.\n• Un atome qui **gagne** des électrons devient un **ion négatif**, appelé **anion**."
+          },
+          {
+            "type": "heading",
+            "text": "Deux exemples pas à pas"
+          },
+          {
+            "type": "formula",
+            "latex": "Atome de sodium Na (Z = 11) : 11 protons, 11 électrons → charge totale 0\nIl perd 1 électron : 11 protons, 10 électrons\nIl reste une charge positive en trop → ion sodium Na⁺ (cation)"
+          },
+          {
+            "type": "formula",
+            "latex": "Atome de chlore Cl (Z = 17) : 17 protons, 17 électrons → charge totale 0\nIl gagne 1 électron : 17 protons, 18 électrons\nIl y a une charge négative en trop → ion chlorure Cl⁻ (anion)"
+          },
+          {
+            "type": "callout",
+            "kind": "retiens",
+            "text": "Lors de la formation d'un ion, **seuls les électrons** sont gagnés ou perdus. Le **noyau ne change pas** : même nombre de protons, même nombre de neutrons. L'ion et l'atome appartiennent donc au **même élément chimique**."
+          },
+          {
+            "type": "callout",
+            "kind": "attention",
+            "text": "Un ion positif n'a pas « gagné des charges + » : il a **perdu des électrons** (négatifs). C'est le manque d'électrons qui le rend positif."
+          }
+        ],
+        "checkpoint": {
+          "variants": [
+            {
+              "prompt": "Un atome devient un ion lorsqu'il…",
+              "options": [
+                "gagne ou perd un ou plusieurs protons",
+                "gagne ou perd un ou plusieurs électrons",
+                "gagne ou perd un ou plusieurs neutrons",
+                "se casse en deux"
+              ],
+              "answer": 1,
+              "hint": "Relis la définition : quelles particules peuvent quitter ou rejoindre l'atome ?",
+              "explanation": "Un ion se forme quand un atome gagne ou perd des électrons. Le noyau (protons et neutrons) ne change pas."
+            },
+            {
+              "prompt": "Un atome perd 2 électrons. Il devient…",
+              "options": [
+                "un ion négatif (anion)",
+                "un ion positif (cation)",
+                "un atome d'un autre élément",
+                "une molécule"
+              ],
+              "answer": 1,
+              "hint": "Perdre des charges négatives, c'est se retrouver avec plus de charges + que de charges −.",
+              "explanation": "En perdant 2 électrons, il a 2 charges positives en trop : c'est un cation, de charge 2+."
+            },
+            {
+              "prompt": "Quand l'atome de chlore devient l'ion chlorure Cl⁻, que devient son noyau ?",
+              "options": [
+                "Il gagne un proton",
+                "Il perd un proton",
+                "Il ne change pas",
+                "Il gagne un neutron"
+              ],
+              "answer": 2,
+              "hint": "Relis l'encadré « Retiens ».",
+              "explanation": "Seuls les électrons changent : le noyau reste le même (17 protons). L'atome de chlore a gagné 1 électron."
+            }
+          ]
+        }
+      },
+      {
+        "title": "Lire et écrire la formule d'un ion",
+        "blocks": [
+          {
+            "type": "callout",
+            "kind": "methode",
+            "title": "Écrire la formule d'un ion",
+            "text": "On écrit le **symbole** de l'élément (ou la formule du groupe d'atomes), puis la **charge en exposant**, en haut à droite : d'abord le nombre, puis le signe.\n• Atome qui a perdu 2 électrons : Cu²⁺\n• Atome qui a gagné 1 électron : Cl⁻ (quand la charge vaut 1, on n'écrit pas le 1)"
+          },
+          {
+            "type": "table",
+            "caption": "Ions à connaître",
+            "columns": [
+              "Nom de l'ion",
+              "Formule",
+              "Type",
+              "Formation"
+            ],
+            "rows": [
+              [
+                "ion hydrogène",
+                "H⁺",
+                "cation",
+                "atome H qui a perdu 1 électron"
+              ],
+              [
+                "ion sodium",
+                "Na⁺",
+                "cation",
+                "atome Na qui a perdu 1 électron"
+              ],
+              [
+                "ion potassium",
+                "K⁺",
+                "cation",
+                "atome K qui a perdu 1 électron"
+              ],
+              [
+                "ion calcium",
+                "Ca²⁺",
+                "cation",
+                "atome Ca qui a perdu 2 électrons"
+              ],
+              [
+                "ion magnésium",
+                "Mg²⁺",
+                "cation",
+                "atome Mg qui a perdu 2 électrons"
+              ],
+              [
+                "ion cuivre II",
+                "Cu²⁺",
+                "cation",
+                "atome Cu qui a perdu 2 électrons"
+              ],
+              [
+                "ion zinc",
+                "Zn²⁺",
+                "cation",
+                "atome Zn qui a perdu 2 électrons"
+              ],
+              [
+                "ion fer II",
+                "Fe²⁺",
+                "cation",
+                "atome Fe qui a perdu 2 électrons"
+              ],
+              [
+                "ion fer III",
+                "Fe³⁺",
+                "cation",
+                "atome Fe qui a perdu 3 électrons"
+              ],
+              [
+                "ion aluminium",
+                "Al³⁺",
+                "cation",
+                "atome Al qui a perdu 3 électrons"
+              ],
+              [
+                "ion chlorure",
+                "Cl⁻",
+                "anion",
+                "atome Cl qui a gagné 1 électron"
+              ],
+              [
+                "ion fluorure",
+                "F⁻",
+                "anion",
+                "atome F qui a gagné 1 électron"
+              ]
+            ]
+          },
+          {
+            "type": "callout",
+            "kind": "definition",
+            "title": "Ions polyatomiques",
+            "text": "Certains ions sont formés de **plusieurs atomes** liés : c'est le groupe entier qui porte la charge.\nExemples : ion hydroxyde HO⁻, ion nitrate NO₃⁻, ion sulfate SO₄²⁻.\nL'ion sulfate SO₄²⁻ contient 1 atome de soufre et 4 atomes d'oxygène, et le groupe a **gagné 2 électrons**."
+          },
+          {
+            "type": "callout",
+            "kind": "plus",
+            "text": "Le fer peut former deux ions : Fe²⁺ (fer II) et Fe³⁺ (fer III). Le chiffre romain du nom indique le nombre de charges positives."
+          },
+          {
+            "type": "callout",
+            "kind": "attention",
+            "title": "Indice ou exposant ?",
+            "text": "Ne confonds pas **Cu²⁺** (un seul ion cuivre, de charge 2+ : chiffre **en haut**) et **Cu₂** (deux atomes de cuivre : chiffre **en bas**). L'exposant donne la charge, l'indice compte des atomes."
+          }
+        ],
+        "checkpoint": {
+          "variants": [
+            {
+              "prompt": "Un atome d'aluminium (Al) perd 3 électrons. Quelle est la formule de l'ion formé ?",
+              "options": [
+                "Al₃",
+                "Al³⁻",
+                "Al³⁺",
+                "3Al⁺"
+              ],
+              "answer": 2,
+              "hint": "Perdre des électrons donne une charge positive ; la charge s'écrit en exposant.",
+              "explanation": "En perdant 3 électrons, l'atome a 3 charges positives en trop : c'est l'ion aluminium Al³⁺."
+            },
+            {
+              "prompt": "L'ion fluorure F⁻ est…",
+              "options": [
+                "un cation, car il a perdu 1 électron",
+                "un anion, car il a gagné 1 électron",
+                "un anion, car il a perdu 1 électron",
+                "un atome neutre"
+              ],
+              "answer": 1,
+              "hint": "Le signe − indique-t-il un gain ou une perte d'électrons ?",
+              "explanation": "F⁻ porte une charge négative : l'atome de fluor a gagné 1 électron. C'est un anion."
+            },
+            {
+              "prompt": "Que signifie l'écriture Fe³⁺ ?",
+              "options": [
+                "Trois atomes de fer",
+                "Un ion fer qui a gagné 3 électrons",
+                "Un ion fer qui a perdu 3 électrons",
+                "Un atome de fer avec 3 protons en plus"
+              ],
+              "answer": 2,
+              "hint": "Relis l'encadré « Indice ou exposant ? ».",
+              "explanation": "Fe³⁺ est un seul ion : l'atome de fer a perdu 3 électrons. Son noyau n'a pas changé."
+            }
+          ]
+        }
+      },
+      {
+        "title": "Compter les protons et les électrons d'un ion",
+        "blocks": [
+          {
+            "type": "callout",
+            "kind": "methode",
+            "title": "Dénombrer les particules d'un ion monoatomique",
+            "text": "1. **Protons** : nombre de protons = Z, exactement comme pour l'atome (le noyau ne change pas).\n2. **Électrons** :\n• pour un cation de charge n+ : électrons = Z − n ;\n• pour un anion de charge n− : électrons = Z + n."
+          },
+          {
+            "type": "table",
+            "caption": "Exemples",
+            "columns": [
+              "Ion",
+              "Z",
+              "Protons",
+              "Électrons",
+              "Calcul"
+            ],
+            "rows": [
+              [
+                "Na⁺",
+                "11",
+                "11",
+                "10",
+                "11 − 1"
+              ],
+              [
+                "Mg²⁺",
+                "12",
+                "12",
+                "10",
+                "12 − 2"
+              ],
+              [
+                "Al³⁺",
+                "13",
+                "13",
+                "10",
+                "13 − 3"
+              ],
+              [
+                "Cu²⁺",
+                "29",
+                "29",
+                "27",
+                "29 − 2"
+              ],
+              [
+                "Cl⁻",
+                "17",
+                "17",
+                "18",
+                "17 + 1"
+              ],
+              [
+                "O²⁻",
+                "8",
+                "8",
+                "10",
+                "8 + 2"
+              ]
+            ]
+          },
+          {
+            "type": "heading",
+            "text": "Exemple résolu : l'ion fer III"
+          },
+          {
+            "type": "formula",
+            "latex": "Ion Fe³⁺, avec Z = 26 pour le fer\nProtons : 26 (comme l'atome)\nC'est un cation de charge 3+ : l'atome a perdu 3 électrons\nÉlectrons : 26 − 3 = 23"
+          },
+          {
+            "type": "heading",
+            "text": "Exemple résolu : retrouver l'ion"
+          },
+          {
+            "type": "formula",
+            "latex": "Un ion possède 16 protons et 18 électrons.\n16 protons → Z = 16 → c'est l'élément soufre (S)\n18 − 16 = 2 électrons en plus → charge 2−\nC'est l'ion sulfure S²⁻ (un anion)"
+          },
+          {
+            "type": "callout",
+            "kind": "attention",
+            "text": "• Le nombre de **protons ne change jamais** : ne le modifie pas avec la charge.\n• Vérifie le sens : un ion **positif** a **moins** d'électrons que de protons ; un ion **négatif** en a **plus**.\n• Pour un ion polyatomique, on additionne d'abord les protons de tous les atomes : SO₄²⁻ a 16 + 4 × 8 = 48 protons et 48 + 2 = 50 électrons."
+          }
+        ],
+        "checkpoint": {
+          "variants": [
+            {
+              "prompt": "Combien d'électrons possède l'ion calcium Ca²⁺ (Z = 20) ?",
+              "options": [
+                "20",
+                "22",
+                "18",
+                "2"
+              ],
+              "answer": 2,
+              "hint": "C'est un cation : l'atome a perdu des électrons. Utilise la méthode.",
+              "explanation": "Cation de charge 2+ : électrons = 20 − 2 = 18. Il garde 20 protons."
+            },
+            {
+              "prompt": "Combien de protons possède l'ion chlorure Cl⁻ (Z = 17) ?",
+              "options": [
+                "16",
+                "17",
+                "18",
+                "1"
+              ],
+              "answer": 1,
+              "hint": "Le noyau change-t-il quand un ion se forme ?",
+              "explanation": "Le nombre de protons est toujours Z = 17. C'est le nombre d'électrons qui change : 18."
+            },
+            {
+              "prompt": "Un ion possède 12 protons et 10 électrons. Sa charge est…",
+              "options": [
+                "2−",
+                "2+",
+                "10+",
+                "12+"
+              ],
+              "answer": 1,
+              "hint": "Compare le nombre d'électrons à celui des protons : il en manque ou il y en a en trop ?",
+              "explanation": "Il manque 12 − 10 = 2 électrons : la charge est 2+. C'est l'ion magnésium Mg²⁺ (Z = 12)."
+            }
+          ]
+        }
+      },
+      {
+        "title": "Les solutions ioniques sont électriquement neutres",
+        "blocks": [
+          {
+            "type": "callout",
+            "kind": "definition",
+            "text": "Une **solution ionique** contient des ions dissous dans l'eau : toujours des **cations** et des **anions** ensemble. Exemple : l'eau salée contient des ions sodium Na⁺ et des ions chlorure Cl⁻."
+          },
+          {
+            "type": "callout",
+            "kind": "retiens",
+            "text": "Une solution ionique est **électriquement neutre** : la somme des charges positives est égale à la somme des charges négatives. On écrit sa formule entre parenthèses, avec les ions **dans les bonnes proportions**."
+          },
+          {
+            "type": "table",
+            "caption": "Quelques solutions ioniques",
+            "columns": [
+              "Solution",
+              "Formule",
+              "Vérification des charges"
+            ],
+            "rows": [
+              [
+                "chlorure de sodium (eau salée)",
+                "(Na⁺ + Cl⁻)",
+                "1 charge + ; 1 charge −"
+              ],
+              [
+                "sulfate de cuivre II",
+                "(Cu²⁺ + SO₄²⁻)",
+                "2 charges + ; 2 charges −"
+              ],
+              [
+                "chlorure de cuivre II",
+                "(Cu²⁺ + 2 Cl⁻)",
+                "2 charges + ; 2 × 1 = 2 charges −"
+              ],
+              [
+                "chlorure de fer III",
+                "(Fe³⁺ + 3 Cl⁻)",
+                "3 charges + ; 3 × 1 = 3 charges −"
+              ],
+              [
+                "sulfate de sodium",
+                "(2 Na⁺ + SO₄²⁻)",
+                "2 × 1 = 2 charges + ; 2 charges −"
+              ]
+            ]
+          },
+          {
+            "type": "callout",
+            "kind": "methode",
+            "title": "Trouver les proportions",
+            "text": "1. J'écris le cation et l'anion avec leurs charges.\n2. Je cherche combien il faut de chaque ion pour que les charges + et − soient égales.\nExemple : chlorure d'aluminium. Al³⁺ porte 3 charges +, Cl⁻ porte 1 charge −. Il faut 3 ions Cl⁻ pour 1 ion Al³⁺ : (Al³⁺ + 3 Cl⁻)."
+          },
+          {
+            "type": "text",
+            "text": "Les ions sont des particules chargées qui peuvent se déplacer dans la solution : c'est grâce à eux qu'une solution ionique **conduit le courant électrique**. L'eau sucrée, qui contient des molécules et pas d'ions, le conduit très mal, comme l'eau pure."
+          },
+          {
+            "type": "callout",
+            "kind": "attention",
+            "text": "Dans (Cu²⁺ + 2 Cl⁻), le 2 placé **devant** Cl⁻ compte des ions : il y a deux fois plus d'ions chlorure que d'ions cuivre II. Ne l'écris pas en exposant !"
+          }
+        ],
+        "checkpoint": {
+          "variants": [
+            {
+              "prompt": "Quelle est la formule de la solution de chlorure de fer III ?",
+              "options": [
+                "(Fe³⁺ + Cl⁻)",
+                "(Fe³⁺ + 3 Cl⁻)",
+                "(3 Fe³⁺ + Cl⁻)",
+                "(Fe⁺ + 3 Cl⁻)"
+              ],
+              "answer": 1,
+              "hint": "Combien faut-il d'ions Cl⁻ pour compenser les 3 charges + d'un ion Fe³⁺ ?",
+              "explanation": "Un ion Fe³⁺ porte 3 charges + ; chaque Cl⁻ porte 1 charge −. Il faut 3 ions chlorure : (Fe³⁺ + 3 Cl⁻)."
+            },
+            {
+              "prompt": "Pourquoi une solution ionique est-elle électriquement neutre ?",
+              "options": [
+                "Parce qu'elle ne contient pas d'ions",
+                "Parce qu'elle contient seulement des cations",
+                "Parce que les charges positives et négatives se compensent exactement",
+                "Parce que l'eau annule les charges"
+              ],
+              "answer": 2,
+              "hint": "Relis l'encadré « Retiens ».",
+              "explanation": "Une solution ionique contient des cations et des anions dans des proportions telles que la somme des charges + est égale à la somme des charges −."
+            },
+            {
+              "prompt": "Laquelle de ces solutions conduit bien le courant électrique ?",
+              "options": [
+                "L'eau sucrée",
+                "L'eau salée",
+                "L'eau pure",
+                "Aucune des trois"
+              ],
+              "answer": 1,
+              "hint": "Quelle solution contient des ions ?",
+              "explanation": "L'eau salée contient des ions Na⁺ et Cl⁻ qui se déplacent : elle conduit bien le courant. L'eau sucrée et l'eau pure le conduisent très mal."
+            }
+          ]
+        }
+      }
+    ],
+    "memo": [
+      {
+        "label": "Ion",
+        "text": "Atome (ou groupe d'atomes) qui a gagné ou perdu un ou plusieurs électrons. Le noyau ne change pas."
+      },
+      {
+        "label": "Cation / anion",
+        "text": "Perte d'électrons → ion positif = cation (Na⁺, Cu²⁺). Gain d'électrons → ion négatif = anion (Cl⁻, SO₄²⁻)."
+      },
+      {
+        "label": "Formule",
+        "text": "Charge en exposant, en haut à droite : nombre puis signe (Fe³⁺). Charge 1 : on n'écrit que le signe (K⁺, F⁻). Exposant = charge ; indice = nombre d'atomes."
+      },
+      {
+        "label": "Dénombrer",
+        "text": "Protons = Z (toujours). Électrons = Z − n pour un ion n+ ; Z + n pour un ion n−. Ex. : Fe³⁺ (Z = 26) → 26 protons, 23 électrons."
+      },
+      {
+        "label": "Solution ionique",
+        "text": "Cations + anions, électriquement neutre : charges + = charges −. Ex. : (Na⁺ + Cl⁻), (Cu²⁺ + 2 Cl⁻), (Fe³⁺ + 3 Cl⁻)."
+      },
+      {
+        "label": "Conduction",
+        "text": "Les ions, mobiles, permettent à une solution ionique de conduire le courant. Eau sucrée et eau pure : très mauvais conducteurs."
+      }
+    ]
+  },
+  "exercises": {
+    "duration_min": 25,
+    "instructions": "Fais les exercices dans l'ordre : les étoiles indiquent la difficulté. Pour les réponses numériques, écris seulement le nombre. Les numéros atomiques utiles sont donnés dans chaque énoncé. Les corrigés s'affichent après validation.",
+    "pass_threshold": 8,
+    "texts": [],
+    "items": [
+      {
+        "id": "ex1",
+        "type": "qcm",
+        "stars": 1,
+        "lesson_part": 1,
+        "skills": [
+          "pc-ion-definition"
+        ],
+        "cognitive": "connaitre",
+        "prompt": "Un anion est…",
+        "options": [
+          "un ion positif, formé par un atome qui a perdu des électrons",
+          "un ion négatif, formé par un atome qui a gagné des électrons",
+          "un atome qui a gagné des protons",
+          "une molécule neutre"
+        ],
+        "answer": 1,
+        "solution": "Un anion est un ion **négatif** : l'atome (ou le groupe d'atomes) a **gagné** un ou plusieurs électrons. Exemple : Cl⁻."
+      },
+      {
+        "id": "ex2",
+        "type": "numeric",
+        "stars": 1,
+        "lesson_part": 3,
+        "skills": [
+          "pc-ion-denombrer"
+        ],
+        "cognitive": "appliquer",
+        "prompt": "Combien d'électrons possède l'ion magnésium Mg²⁺ ? (Z = 12 pour le magnésium.)",
+        "answer": 10,
+        "solution": "Mg²⁺ est un cation de charge 2+ : l'atome a perdu 2 électrons. Électrons = 12 − 2 = **10**."
+      },
+      {
+        "id": "ex3",
+        "type": "qcm",
+        "stars": 1,
+        "lesson_part": 2,
+        "skills": [
+          "pc-ion-formule"
+        ],
+        "cognitive": "connaitre",
+        "prompt": "Un atome de potassium (symbole K) perd 1 électron. Quelle est la formule de l'ion formé ?",
+        "options": [
+          "K⁻",
+          "K₁",
+          "K⁺",
+          "P⁺"
+        ],
+        "answer": 2,
+        "solution": "En perdant 1 électron, l'atome a une charge positive en trop : ion potassium **K⁺** (on n'écrit pas le 1). P est le symbole du phosphore, pas du potassium."
+      },
+      {
+        "id": "ex4",
+        "type": "numeric",
+        "stars": 1,
+        "lesson_part": 3,
+        "skills": [
+          "pc-ion-denombrer"
+        ],
+        "cognitive": "appliquer",
+        "prompt": "Combien de protons possède l'ion chlorure Cl⁻ ? (Z = 17 pour le chlore.)",
+        "answer": 17,
+        "solution": "Le noyau ne change pas quand l'ion se forme : il y a toujours Z = **17** protons. (Ce sont les électrons qui passent de 17 à 18.)"
+      },
+      {
+        "id": "ex5",
+        "type": "numeric",
+        "stars": 2,
+        "lesson_part": 3,
+        "skills": [
+          "pc-ion-denombrer"
+        ],
+        "cognitive": "appliquer",
+        "prompt": "Combien d'électrons possède l'ion fer III Fe³⁺ ? (Z = 26 pour le fer.)",
+        "answer": 23,
+        "solution": "Fe³⁺ est un cation de charge 3+ : l'atome de fer a perdu 3 électrons. Électrons = 26 − 3 = **23**."
+      },
+      {
+        "id": "ex6",
+        "type": "qcm",
+        "stars": 2,
+        "lesson_part": 3,
+        "skills": [
+          "pc-ion-denombrer",
+          "pc-ion-formule"
+        ],
+        "cognitive": "analyser",
+        "prompt": "Un ion possède 8 protons et 10 électrons. De quel ion s'agit-il ? (Z = 8 pour l'oxygène, Z = 9 pour le fluor, Z = 10 pour le néon.)",
+        "options": [
+          "O²⁻",
+          "O²⁺",
+          "Ne",
+          "F⁻"
+        ],
+        "answer": 0,
+        "solution": "8 protons → Z = 8 → élément oxygène. Il y a 10 − 8 = 2 électrons en plus → charge 2−. C'est l'ion oxyde **O²⁻**. (Ne est un atome neutre à 10 protons ; F⁻ aurait 9 protons.)"
+      },
+      {
+        "id": "ex7",
+        "type": "qcm",
+        "stars": 2,
+        "lesson_part": 4,
+        "skills": [
+          "pc-solution-ionique"
+        ],
+        "cognitive": "appliquer",
+        "prompt": "Une solution de chlorure d'aluminium contient des ions Al³⁺ et des ions Cl⁻. Quelle est sa formule ?",
+        "options": [
+          "(Al³⁺ + Cl⁻)",
+          "(Al³⁺ + 3 Cl⁻)",
+          "(3 Al³⁺ + Cl⁻)",
+          "(Al⁺ + 3 Cl⁻)"
+        ],
+        "answer": 1,
+        "solution": "Un ion Al³⁺ porte 3 charges + et un ion Cl⁻ porte 1 charge −. Pour que la solution soit neutre, il faut 3 ions chlorure pour 1 ion aluminium : **(Al³⁺ + 3 Cl⁻)**."
+      },
+      {
+        "id": "ex8",
+        "type": "numeric",
+        "stars": 2,
+        "lesson_part": 4,
+        "skills": [
+          "pc-solution-ionique"
+        ],
+        "cognitive": "appliquer",
+        "prompt": "Un échantillon de solution de chlorure de cuivre II (Cu²⁺ + 2 Cl⁻) contient 1 000 ions cuivre II. Combien contient-il d'ions chlorure ?",
+        "answer": 2000,
+        "solution": "La formule (Cu²⁺ + 2 Cl⁻) indique 2 ions chlorure pour 1 ion cuivre II : 1 000 × 2 = **2 000** ions chlorure. Vérification : 1 000 × 2 = 2 000 charges + et 2 000 × 1 = 2 000 charges −."
+      },
+      {
+        "id": "ex9",
+        "type": "numeric",
+        "stars": 3,
+        "lesson_part": 3,
+        "skills": [
+          "pc-ion-denombrer"
+        ],
+        "cognitive": "analyser",
+        "prompt": "Combien d'électrons possède au total l'ion sulfate SO₄²⁻ ? (Z = 16 pour le soufre, Z = 8 pour l'oxygène.)",
+        "answer": 50,
+        "solution": "Protons : 1 atome S + 4 atomes O = 16 + 4 × 8 = 16 + 32 = 48 protons. L'ion porte la charge 2− : le groupe a gagné 2 électrons. Électrons = 48 + 2 = **50**."
+      },
+      {
+        "id": "ex10",
+        "type": "open",
+        "stars": 3,
+        "lesson_part": 1,
+        "skills": [
+          "pc-ion-definition",
+          "pc-ion-denombrer",
+          "pc-rediger"
+        ],
+        "cognitive": "rediger",
+        "prompt": "Explique en quelques phrases comment un atome de calcium (Z = 20) devient un ion calcium Ca²⁺. Précise le nombre de protons et d'électrons avant et après, et justifie la charge 2+.",
+        "solution": "L'atome de calcium possède 20 protons et 20 électrons : il est électriquement neutre. Il perd 2 électrons et devient l'ion Ca²⁺. Son noyau ne change pas : il a toujours 20 protons, mais seulement 20 − 2 = 18 électrons. Il y a donc 2 charges positives de plus que de charges négatives : la charge de l'ion est 2+. C'est un cation."
+      }
+    ]
+  },
+  "evaluation": {
+    "duration_min": 30,
+    "conditions": "Sans la leçon, en 30 minutes. Calculatrice autorisée. Les numéros atomiques utiles sont donnés. Barème : A = 6 points · B = 8 points · C = 6 points.",
+    "total_points": 20,
+    "variants": [
+      {
+        "texts": [
+          {
+            "id": "eau-1",
+            "label": "Document · Étiquette d'une eau minérale (eau fictive « Source des Pins »)",
+            "paragraphs": [
+              "Composition moyenne en mg/L :",
+              "Cations : calcium Ca²⁺ : 80 · magnésium Mg²⁺ : 26 · sodium Na⁺ : 6,5 · potassium K⁺ : 1,5",
+              "Anions : hydrogénocarbonate HCO₃⁻ : 360 · sulfate SO₄²⁻ : 14 · chlorure Cl⁻ : 10 · nitrate NO₃⁻ : 3,8",
+              "Contenance de la bouteille : 1,5 L.",
+              "Numéros atomiques : Mg (Z = 12), Ca (Z = 20)."
+            ],
+            "source": "Document créé pour cette évaluation."
+          }
+        ],
+        "sections": [
+          {
+            "label": "A · Je connais (6 points)",
+            "questions": [
+              {
+                "id": "q1",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 1,
+                "skills": [
+                  "pc-ion-definition"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Un cation est…",
+                "options": [
+                  "un ion négatif",
+                  "un ion positif",
+                  "un atome neutre",
+                  "un groupe de molécules"
+                ],
+                "answer": 1,
+                "solution": "Un cation est un ion positif : l'atome a perdu un ou plusieurs électrons."
+              },
+              {
+                "id": "q2",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 1,
+                "skills": [
+                  "pc-ion-definition"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Quand un atome devient un ion, son nombre de protons…",
+                "options": [
+                  "augmente",
+                  "diminue",
+                  "ne change pas",
+                  "devient nul"
+                ],
+                "answer": 2,
+                "solution": "Le noyau ne change pas : le nombre de protons (Z) reste le même. Seul le nombre d'électrons change."
+              },
+              {
+                "id": "q3",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 2,
+                "skills": [
+                  "pc-ion-formule"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "La formule de l'ion cuivre II est…",
+                "options": [
+                  "Cu₂",
+                  "Cu²⁺",
+                  "Cu²⁻",
+                  "C²⁺"
+                ],
+                "answer": 1,
+                "solution": "L'ion cuivre II est Cu²⁺ : l'atome de cuivre a perdu 2 électrons. Cu₂ désignerait deux atomes de cuivre, et C est le symbole du carbone."
+              },
+              {
+                "id": "q4",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 4,
+                "skills": [
+                  "pc-solution-ionique"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Une solution ionique est électriquement…",
+                "options": [
+                  "positive",
+                  "négative",
+                  "neutre",
+                  "positive ou négative selon les ions"
+                ],
+                "answer": 2,
+                "solution": "Une solution ionique est électriquement neutre : les charges des cations et des anions se compensent exactement."
+              },
+              {
+                "id": "q5",
+                "type": "open",
+                "points": 2,
+                "lesson_part": 1,
+                "skills": [
+                  "pc-ion-definition",
+                  "pc-rediger"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Définis ce qu'est un ion, puis explique la différence entre un cation et un anion.",
+                "solution": "Un ion est un atome (ou un groupe d'atomes) qui a gagné ou perdu un ou plusieurs électrons. Un cation est un ion positif : il a perdu des électrons. Un anion est un ion négatif : il a gagné des électrons.",
+                "rubric": "1 pt : définition de l'ion (gain ou perte d'électrons, pas de protons). 0,5 pt : cation = ion positif, formé par perte d'électrons. 0,5 pt : anion = ion négatif, formé par gain d'électrons."
+              }
+            ]
+          },
+          {
+            "label": "B · J'applique (8 points)",
+            "questions": [
+              {
+                "id": "q6",
+                "type": "numeric",
+                "points": 1,
+                "lesson_part": 3,
+                "skills": [
+                  "pc-ion-denombrer"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Combien de protons possède l'ion zinc Zn²⁺ ? (Z = 30 pour le zinc.)",
+                "answer": 30,
+                "solution": "Le nombre de protons ne change pas : Z = **30** protons."
+              },
+              {
+                "id": "q7",
+                "type": "numeric",
+                "points": 1,
+                "lesson_part": 3,
+                "skills": [
+                  "pc-ion-denombrer"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Combien d'électrons possède l'ion zinc Zn²⁺ ? (Z = 30 pour le zinc.)",
+                "answer": 28,
+                "solution": "Cation de charge 2+ : l'atome a perdu 2 électrons. Électrons = 30 − 2 = **28**."
+              },
+              {
+                "id": "q8",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 3,
+                "skills": [
+                  "pc-ion-denombrer",
+                  "pc-ion-formule"
+                ],
+                "cognitive": "analyser",
+                "prompt": "Un ion possède 9 protons et 10 électrons. De quel ion s'agit-il ? (Z = 9 pour le fluor, Z = 10 pour le néon, Z = 11 pour le sodium.)",
+                "options": [
+                  "Ne⁻",
+                  "F⁻",
+                  "F⁺",
+                  "Na⁺"
+                ],
+                "answer": 1,
+                "solution": "9 protons → Z = 9 → fluor. 1 électron en plus → charge 1−. C'est l'ion fluorure **F⁻**. (Na⁺ a 11 protons ; Ne⁻ aurait 10 protons.)"
+              },
+              {
+                "id": "q9",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 4,
+                "skills": [
+                  "pc-solution-ionique"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Quelle est la formule de la solution de chlorure de cuivre II, qui contient des ions Cu²⁺ et Cl⁻ ?",
+                "options": [
+                  "(Cu²⁺ + Cl⁻)",
+                  "(2 Cu²⁺ + Cl⁻)",
+                  "(Cu²⁺ + 2 Cl⁻)",
+                  "(Cu²⁺ + Cl²⁻)"
+                ],
+                "answer": 2,
+                "solution": "Cu²⁺ porte 2 charges +, Cl⁻ porte 1 charge − : il faut 2 ions chlorure pour 1 ion cuivre II. **(Cu²⁺ + 2 Cl⁻)**."
+              },
+              {
+                "id": "q10",
+                "type": "numeric",
+                "points": 2,
+                "lesson_part": 4,
+                "skills": [
+                  "pc-solution-ionique"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Un échantillon de solution de chlorure de fer III (Fe³⁺ + 3 Cl⁻) contient 600 ions fer III. Combien contient-il d'ions chlorure ?",
+                "answer": 1800,
+                "solution": "La formule indique 3 ions chlorure pour 1 ion fer III : 600 × 3 = **1 800** ions chlorure. Vérification : 600 × 3 = 1 800 charges + et 1 800 charges −."
+              },
+              {
+                "id": "q11",
+                "type": "open",
+                "points": 2,
+                "lesson_part": 1,
+                "skills": [
+                  "pc-ion-definition",
+                  "pc-rediger"
+                ],
+                "cognitive": "analyser",
+                "prompt": "L'atome d'aluminium Al et l'ion aluminium Al³⁺ appartiennent-ils au même élément chimique ? Justifie en comparant leurs particules (Z = 13).",
+                "solution": "Oui. L'atome Al et l'ion Al³⁺ ont le même noyau, avec 13 protons (Z = 13) : c'est le nombre de protons qui définit l'élément. Ils diffèrent seulement par leurs électrons : 13 pour l'atome, 13 − 3 = 10 pour l'ion, qui a perdu 3 électrons.",
+                "rubric": "1 pt : réponse « oui » justifiée par le même nombre de protons (Z = 13 / même noyau). 1 pt : nombres d'électrons exacts (13 et 10) et explication de la perte de 3 électrons."
+              }
+            ]
+          },
+          {
+            "label": "C · Problème type brevet : l'étiquette d'une eau minérale (6 points)",
+            "questions": [
+              {
+                "id": "q12",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 2,
+                "text_ref": "eau-1",
+                "skills": [
+                  "pc-document",
+                  "pc-ion-definition"
+                ],
+                "cognitive": "analyser",
+                "prompt": "D'après le document, quelle liste ne contient que des cations ?",
+                "options": [
+                  "Ca²⁺, Mg²⁺, Na⁺, K⁺",
+                  "Ca²⁺, Cl⁻, Na⁺",
+                  "HCO₃⁻, SO₄²⁻, Cl⁻, NO₃⁻",
+                  "Mg²⁺, SO₄²⁻, K⁺"
+                ],
+                "answer": 0,
+                "solution": "Les cations sont les ions positifs : Ca²⁺, Mg²⁺, Na⁺ et K⁺. Les autres listes contiennent au moins un anion (signe −)."
+              },
+              {
+                "id": "q13",
+                "type": "numeric",
+                "points": 1,
+                "lesson_part": 3,
+                "text_ref": "eau-1",
+                "skills": [
+                  "pc-document",
+                  "pc-ion-denombrer"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Combien d'électrons possède un ion magnésium Mg²⁺ ? (Utilise le document.)",
+                "answer": 10,
+                "solution": "Z = 12 pour le magnésium ; Mg²⁺ a perdu 2 électrons : 12 − 2 = **10** électrons."
+              },
+              {
+                "id": "q14",
+                "type": "numeric",
+                "points": 1,
+                "lesson_part": 4,
+                "text_ref": "eau-1",
+                "skills": [
+                  "pc-document"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Quelle masse d'ions calcium, en mg, contient une bouteille entière de cette eau ?",
+                "answer": 120,
+                "solution": "L'eau contient 80 mg d'ions calcium par litre, et la bouteille contient 1,5 L : 80 × 1,5 = **120 mg**."
+              },
+              {
+                "id": "q15",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 1,
+                "text_ref": "eau-1",
+                "skills": [
+                  "pc-document",
+                  "pc-ion-definition"
+                ],
+                "cognitive": "analyser",
+                "prompt": "L'ion calcium Ca²⁺ s'est formé à partir d'un atome de calcium qui a…",
+                "options": [
+                  "gagné 2 électrons",
+                  "perdu 2 électrons",
+                  "gagné 2 protons",
+                  "perdu 2 protons"
+                ],
+                "answer": 1,
+                "solution": "Ca²⁺ est un cation de charge 2+ : l'atome de calcium a **perdu 2 électrons** (il passe de 20 à 18 électrons). Les protons ne changent pas."
+              },
+              {
+                "id": "q16",
+                "type": "open",
+                "points": 2,
+                "lesson_part": 4,
+                "text_ref": "eau-1",
+                "skills": [
+                  "pc-document",
+                  "pc-solution-ionique",
+                  "pc-rediger"
+                ],
+                "cognitive": "rediger",
+                "prompt": "Hugo lit l'étiquette et affirme : « Cette eau contient plein d'ions, donc elle est chargée électriquement. » Explique-lui pourquoi il se trompe, en t'appuyant sur le document et sur la leçon.",
+                "solution": "L'étiquette montre que l'eau contient à la fois des cations (ions calcium, magnésium, sodium, potassium) et des anions (ions hydrogénocarbonate, sulfate, chlorure, nitrate). Comme toute solution ionique, cette eau est électriquement neutre : la somme des charges positives des cations est exactement égale à la somme des charges négatives des anions. Les charges se compensent, donc l'eau n'est pas chargée électriquement.",
+                "rubric": "1 pt : présence de cations ET d'anions, avec au moins un exemple de chaque tiré du document. 1 pt : idée que les charges + et − se compensent exactement (solution électriquement neutre), rédigée en phrases."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "texts": [
+          {
+            "id": "eau-2",
+            "label": "Document · Étiquette d'une eau minérale (eau fictive « Val des Roches »)",
+            "paragraphs": [
+              "Composition moyenne en mg/L :",
+              "Cations : calcium Ca²⁺ : 64 · magnésium Mg²⁺ : 20 · sodium Na⁺ : 12 · potassium K⁺ : 2",
+              "Anions : hydrogénocarbonate HCO₃⁻ : 270 · sulfate SO₄²⁻ : 25 · chlorure Cl⁻ : 15 · nitrate NO₃⁻ : 2",
+              "Contenance de la bouteille : 1,5 L.",
+              "Numéros atomiques : Cl (Z = 17), K (Z = 19)."
+            ],
+            "source": "Document créé pour cette évaluation."
+          }
+        ],
+        "sections": [
+          {
+            "label": "A · Je connais (6 points)",
+            "questions": [
+              {
+                "id": "q1",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 1,
+                "skills": [
+                  "pc-ion-definition"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Un anion est…",
+                "options": [
+                  "un ion positif",
+                  "un atome neutre",
+                  "un ion négatif",
+                  "un noyau d'atome"
+                ],
+                "answer": 2,
+                "solution": "Un anion est un ion négatif : l'atome a gagné un ou plusieurs électrons."
+              },
+              {
+                "id": "q2",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 1,
+                "skills": [
+                  "pc-ion-definition"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Pour former un ion, un atome gagne ou perd…",
+                "options": [
+                  "des électrons",
+                  "des protons",
+                  "des neutrons",
+                  "des noyaux"
+                ],
+                "answer": 0,
+                "solution": "Un ion se forme par gain ou perte d'électrons. Le noyau (protons et neutrons) ne change pas."
+              },
+              {
+                "id": "q3",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 2,
+                "skills": [
+                  "pc-ion-formule"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "La formule de l'ion fer III est…",
+                "options": [
+                  "Fe₃",
+                  "Fe³⁻",
+                  "F³⁺",
+                  "Fe³⁺"
+                ],
+                "answer": 3,
+                "solution": "L'ion fer III est Fe³⁺ : l'atome de fer a perdu 3 électrons. Fe₃ désignerait trois atomes de fer, et F est le symbole du fluor."
+              },
+              {
+                "id": "q4",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 4,
+                "skills": [
+                  "pc-solution-ionique"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Dans une solution ionique, la somme des charges positives est…",
+                "options": [
+                  "plus grande que la somme des charges négatives",
+                  "égale à la somme des charges négatives",
+                  "plus petite que la somme des charges négatives",
+                  "toujours nulle car il n'y a pas de cations"
+                ],
+                "answer": 1,
+                "solution": "La solution est électriquement neutre : la somme des charges + est égale à la somme des charges −."
+              },
+              {
+                "id": "q5",
+                "type": "open",
+                "points": 2,
+                "lesson_part": 1,
+                "skills": [
+                  "pc-ion-definition",
+                  "pc-rediger"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Explique comment un atome de chlore devient un ion chlorure Cl⁻, puis dis s'il s'agit d'un cation ou d'un anion en justifiant.",
+                "solution": "L'atome de chlore, neutre, gagne 1 électron : il a alors une charge négative en trop et devient l'ion chlorure Cl⁻. C'est un anion, car c'est un ion négatif (formé par gain d'électrons).",
+                "rubric": "1 pt : gain de 1 électron (pas de modification du noyau). 1 pt : anion, justifié par la charge négative / le gain d'électrons."
+              }
+            ]
+          },
+          {
+            "label": "B · J'applique (8 points)",
+            "questions": [
+              {
+                "id": "q6",
+                "type": "numeric",
+                "points": 1,
+                "lesson_part": 3,
+                "skills": [
+                  "pc-ion-denombrer"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Combien de protons possède l'ion fer II Fe²⁺ ? (Z = 26 pour le fer.)",
+                "answer": 26,
+                "solution": "Le nombre de protons ne change pas : Z = **26** protons."
+              },
+              {
+                "id": "q7",
+                "type": "numeric",
+                "points": 1,
+                "lesson_part": 3,
+                "skills": [
+                  "pc-ion-denombrer"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Combien d'électrons possède l'ion fer II Fe²⁺ ? (Z = 26 pour le fer.)",
+                "answer": 24,
+                "solution": "Cation de charge 2+ : l'atome a perdu 2 électrons. Électrons = 26 − 2 = **24**."
+              },
+              {
+                "id": "q8",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 3,
+                "skills": [
+                  "pc-ion-denombrer",
+                  "pc-ion-formule"
+                ],
+                "cognitive": "analyser",
+                "prompt": "Un ion possède 12 protons et 10 électrons. De quel ion s'agit-il ? (Z = 10 pour le néon, Z = 12 pour le magnésium.)",
+                "options": [
+                  "Mg²⁻",
+                  "Ne²⁺",
+                  "Mg²⁺",
+                  "Mg"
+                ],
+                "answer": 2,
+                "solution": "12 protons → Z = 12 → magnésium. Il manque 2 électrons → charge 2+. C'est l'ion magnésium **Mg²⁺**."
+              },
+              {
+                "id": "q9",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 4,
+                "skills": [
+                  "pc-solution-ionique"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Quelle est la formule de la solution de sulfate de sodium, qui contient des ions Na⁺ et SO₄²⁻ ?",
+                "options": [
+                  "(Na⁺ + SO₄²⁻)",
+                  "(2 Na⁺ + SO₄²⁻)",
+                  "(Na⁺ + 2 SO₄²⁻)",
+                  "(Na²⁺ + SO₄²⁻)"
+                ],
+                "answer": 1,
+                "solution": "SO₄²⁻ porte 2 charges −, Na⁺ porte 1 charge + : il faut 2 ions sodium pour 1 ion sulfate. **(2 Na⁺ + SO₄²⁻)**."
+              },
+              {
+                "id": "q10",
+                "type": "numeric",
+                "points": 2,
+                "lesson_part": 4,
+                "skills": [
+                  "pc-solution-ionique"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Un échantillon de solution de chlorure de cuivre II (Cu²⁺ + 2 Cl⁻) contient 750 ions cuivre II. Combien contient-il d'ions chlorure ?",
+                "answer": 1500,
+                "solution": "La formule indique 2 ions chlorure pour 1 ion cuivre II : 750 × 2 = **1 500** ions chlorure. Vérification : 750 × 2 = 1 500 charges + et 1 500 charges −."
+              },
+              {
+                "id": "q11",
+                "type": "open",
+                "points": 2,
+                "lesson_part": 1,
+                "skills": [
+                  "pc-ion-definition",
+                  "pc-rediger"
+                ],
+                "cognitive": "analyser",
+                "prompt": "L'atome de cuivre Cu et l'ion cuivre II Cu²⁺ appartiennent-ils au même élément chimique ? Justifie en comparant leurs particules (Z = 29).",
+                "solution": "Oui. L'atome Cu et l'ion Cu²⁺ ont le même noyau, avec 29 protons (Z = 29) : c'est le nombre de protons qui définit l'élément. Ils diffèrent seulement par leurs électrons : 29 pour l'atome, 29 − 2 = 27 pour l'ion, qui a perdu 2 électrons.",
+                "rubric": "1 pt : réponse « oui » justifiée par le même nombre de protons (Z = 29 / même noyau). 1 pt : nombres d'électrons exacts (29 et 27) et explication de la perte de 2 électrons."
+              }
+            ]
+          },
+          {
+            "label": "C · Problème type brevet : l'étiquette d'une eau minérale (6 points)",
+            "questions": [
+              {
+                "id": "q12",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 2,
+                "text_ref": "eau-2",
+                "skills": [
+                  "pc-document",
+                  "pc-ion-definition"
+                ],
+                "cognitive": "analyser",
+                "prompt": "D'après le document, quelle liste ne contient que des anions ?",
+                "options": [
+                  "Ca²⁺, Mg²⁺, Na⁺",
+                  "HCO₃⁻, SO₄²⁻, Cl⁻, NO₃⁻",
+                  "Cl⁻, K⁺, NO₃⁻",
+                  "SO₄²⁻, Ca²⁺"
+                ],
+                "answer": 1,
+                "solution": "Les anions sont les ions négatifs : HCO₃⁻, SO₄²⁻, Cl⁻ et NO₃⁻. Les autres listes contiennent au moins un cation (signe +)."
+              },
+              {
+                "id": "q13",
+                "type": "numeric",
+                "points": 1,
+                "lesson_part": 3,
+                "text_ref": "eau-2",
+                "skills": [
+                  "pc-document",
+                  "pc-ion-denombrer"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Combien d'électrons possède un ion potassium K⁺ ? (Utilise le document.)",
+                "answer": 18,
+                "solution": "Z = 19 pour le potassium ; K⁺ a perdu 1 électron : 19 − 1 = **18** électrons."
+              },
+              {
+                "id": "q14",
+                "type": "numeric",
+                "points": 1,
+                "lesson_part": 4,
+                "text_ref": "eau-2",
+                "skills": [
+                  "pc-document"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Quelle masse d'ions calcium, en mg, contient une bouteille entière de cette eau ?",
+                "answer": 96,
+                "solution": "L'eau contient 64 mg d'ions calcium par litre, et la bouteille contient 1,5 L : 64 × 1,5 = **96 mg**."
+              },
+              {
+                "id": "q15",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 1,
+                "text_ref": "eau-2",
+                "skills": [
+                  "pc-document",
+                  "pc-ion-definition"
+                ],
+                "cognitive": "analyser",
+                "prompt": "L'ion chlorure Cl⁻ s'est formé à partir d'un atome de chlore qui a…",
+                "options": [
+                  "perdu 1 électron",
+                  "gagné 1 proton",
+                  "gagné 1 électron",
+                  "perdu 1 proton"
+                ],
+                "answer": 2,
+                "solution": "Cl⁻ est un anion de charge 1− : l'atome de chlore a **gagné 1 électron** (il passe de 17 à 18 électrons). Les protons ne changent pas."
+              },
+              {
+                "id": "q16",
+                "type": "open",
+                "points": 2,
+                "lesson_part": 4,
+                "text_ref": "eau-2",
+                "skills": [
+                  "pc-document",
+                  "pc-solution-ionique",
+                  "pc-rediger"
+                ],
+                "cognitive": "rediger",
+                "prompt": "Inès lit l'étiquette et affirme : « Cette eau contient plein d'ions, donc elle est chargée électriquement. » Explique-lui pourquoi elle se trompe, en t'appuyant sur le document et sur la leçon.",
+                "solution": "L'étiquette montre que l'eau contient à la fois des cations (ions calcium, magnésium, sodium, potassium) et des anions (ions hydrogénocarbonate, sulfate, chlorure, nitrate). Comme toute solution ionique, cette eau est électriquement neutre : la somme des charges positives des cations est exactement égale à la somme des charges négatives des anions. Les charges se compensent, donc l'eau n'est pas chargée électriquement.",
+                "rubric": "1 pt : présence de cations ET d'anions, avec au moins un exemple de chaque tiré du document. 1 pt : idée que les charges + et − se compensent exactement (solution électriquement neutre), rédigée en phrases."
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

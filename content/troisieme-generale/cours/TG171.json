@@ -1,0 +1,1347 @@
+{
+  "format": "syllig-course/1",
+  "code": "TG171",
+  "level": "troisieme-generale",
+  "subject": "Allemand (LV2)",
+  "chapter": "Grammaire et outils de la langue",
+  "title": "Le présent et la place du verbe",
+  "skills": [
+    {
+      "id": "de-reg",
+      "label": "Conjuguer les verbes réguliers au présent"
+    },
+    {
+      "id": "de-fort-irreg",
+      "label": "Conjuguer les verbes forts (a → ä, e → i, e → ie) et sein, haben, werden, wissen"
+    },
+    {
+      "id": "de-verbe-2",
+      "label": "Placer le verbe en 2e position (phrase déclarative, inversion, question en W)"
+    },
+    {
+      "id": "de-verbe-1-sep",
+      "label": "Placer le verbe en 1re position et employer les verbes à particule séparable"
+    },
+    {
+      "id": "de-verbe-fin",
+      "label": "Placer le verbe à la fin après weil et dass"
+    },
+    {
+      "id": "de-ecrire",
+      "label": "Écrire un court texte au présent"
+    }
+  ],
+  "lesson": {
+    "duration_min": 35,
+    "objectives": [
+      "conjuguer au présent les verbes réguliers, les verbes forts et sein, haben, werden, wissen ;",
+      "placer le verbe conjugué en 2e position et faire l'inversion du sujet ;",
+      "poser une question fermée et employer les verbes à particule séparable ;",
+      "construire une subordonnée avec weil ou dass, verbe à la fin."
+    ],
+    "essential": "Au présent, on ajoute au radical les terminaisons **-e, -st, -t, -en, -t, -en** ; les verbes forts changent de voyelle avec du et er (*du fährst, er liest*). En allemand, la **place du verbe** est fixe : en **2e position** dans la phrase déclarative (*Heute spiele ich*), en **1re position** dans la question fermée (*Spielst du?*), à la **fin** après weil et dass (*…, weil ich krank bin*). Une fois ces trois places connues, tu peux construire toutes tes phrases ! Viel Erfolg! (Bonne réussite !)",
+    "parts": [
+      {
+        "title": "Le présent des verbes réguliers",
+        "blocks": [
+          {
+            "type": "text",
+            "text": "L'infinitif allemand se termine presque toujours par **-en** : *spielen* (jouer), *wohnen* (habiter). Pour conjuguer au présent, on enlève **-en** : il reste le **radical** (*spiel-*, *wohn-*), auquel on ajoute la terminaison de la personne."
+          },
+          {
+            "type": "table",
+            "caption": "Trois verbes réguliers au présent",
+            "columns": [
+              "Pronom",
+              "spielen (jouer)",
+              "wohnen (habiter)",
+              "arbeiten (travailler)"
+            ],
+            "rows": [
+              [
+                "ich",
+                "spiele",
+                "wohne",
+                "arbeite"
+              ],
+              [
+                "du",
+                "spielst",
+                "wohnst",
+                "arbeitest"
+              ],
+              [
+                "er / sie / es",
+                "spielt",
+                "wohnt",
+                "arbeitet"
+              ],
+              [
+                "wir",
+                "spielen",
+                "wohnen",
+                "arbeiten"
+              ],
+              [
+                "ihr",
+                "spielt",
+                "wohnt",
+                "arbeitet"
+              ],
+              [
+                "sie / Sie",
+                "spielen",
+                "wohnen",
+                "arbeiten"
+              ]
+            ]
+          },
+          {
+            "type": "table",
+            "caption": "Exemples",
+            "columns": [
+              "Allemand",
+              "Français"
+            ],
+            "rows": [
+              [
+                "*Ich wohne in Lyon.*",
+                "J'habite à Lyon."
+              ],
+              [
+                "*Wir lernen Deutsch.*",
+                "Nous apprenons l'allemand."
+              ],
+              [
+                "*Mein Vater arbeitet in Bremen.*",
+                "Mon père travaille à Brême."
+              ]
+            ]
+          },
+          {
+            "type": "callout",
+            "kind": "attention",
+            "title": "sie ou Sie ?",
+            "text": "**sie** + verbe en **-t** = elle : *sie spielt* (elle joue).\n**sie** + verbe en **-en** = ils / elles : *sie spielen* (ils jouent).\n**Sie** avec une majuscule = vous de politesse : *Spielen Sie Tennis?* (Vous jouez au tennis ?)"
+          },
+          {
+            "type": "callout",
+            "kind": "methode",
+            "title": "Deux petites règles d'orthographe",
+            "text": "Radical terminé par **-t** ou **-d** : on ajoute un **e** pour pouvoir prononcer → *du arbeitest, er arbeitet, ihr findet*.\nRadical terminé par **-s, -ß, -z** : avec du, on ajoute seulement **-t** → *du tanzt* (tu danses), *du heißt* (tu t'appelles)."
+          }
+        ],
+        "checkpoint": {
+          "variants": [
+            {
+              "prompt": "Complète : « Du ___ gut Gitarre. » (spielen)",
+              "options": [
+                "spielt",
+                "spielst",
+                "spiele",
+                "spielen"
+              ],
+              "answer": 1,
+              "hint": "Avec du, la terminaison est toujours la même.",
+              "explanation": "du → -st : du spielst (tu joues bien de la guitare)."
+            },
+            {
+              "prompt": "Quelle est la forme de « arbeiten » avec « er » ?",
+              "options": [
+                "arbeit",
+                "arbeitt",
+                "arbeitet",
+                "arbeiten"
+              ],
+              "answer": 2,
+              "hint": "Le radical se termine par -t : relis l'encadré sur l'orthographe.",
+              "explanation": "Radical en -t : on ajoute un e avant la terminaison → er arbeitet."
+            },
+            {
+              "prompt": "Complète : « Ihr ___ in Berlin. » (wohnen)",
+              "options": [
+                "wohnen",
+                "wohnst",
+                "wohnt",
+                "wohne"
+              ],
+              "answer": 2,
+              "hint": "Regarde la ligne de ihr dans le tableau.",
+              "explanation": "ihr → -t : ihr wohnt (vous habitez à Berlin)."
+            }
+          ]
+        }
+      },
+      {
+        "title": "Les verbes forts et les irréguliers",
+        "blocks": [
+          {
+            "type": "text",
+            "text": "Certains verbes, dits **forts**, changent la voyelle de leur radical, mais **seulement avec du et er / sie / es**. Les terminaisons restent les mêmes que pour les verbes réguliers."
+          },
+          {
+            "type": "table",
+            "caption": "Verbes forts au présent",
+            "columns": [
+              "Changement",
+              "Infinitif",
+              "du",
+              "er / sie / es"
+            ],
+            "rows": [
+              [
+                "a → ä",
+                "fahren (aller en véhicule)",
+                "fährst",
+                "fährt"
+              ],
+              [
+                "a → ä",
+                "schlafen (dormir)",
+                "schläfst",
+                "schläft"
+              ],
+              [
+                "au → äu",
+                "laufen (courir)",
+                "läufst",
+                "läuft"
+              ],
+              [
+                "e → i",
+                "sprechen (parler)",
+                "sprichst",
+                "spricht"
+              ],
+              [
+                "e → i",
+                "essen (manger)",
+                "isst",
+                "isst"
+              ],
+              [
+                "e → i",
+                "nehmen (prendre)",
+                "nimmst",
+                "nimmt"
+              ],
+              [
+                "e → i",
+                "helfen (aider)",
+                "hilfst",
+                "hilft"
+              ],
+              [
+                "e → ie",
+                "lesen (lire)",
+                "liest",
+                "liest"
+              ],
+              [
+                "e → ie",
+                "sehen (voir)",
+                "siehst",
+                "sieht"
+              ]
+            ]
+          },
+          {
+            "type": "callout",
+            "kind": "attention",
+            "title": "Wir, ihr, sie : pas de changement",
+            "text": "Avec wir, ihr et sie (pluriel), on garde la voyelle de l'infinitif : *wir fahren, ihr fahrt, sie fahren*.\nNe confonds pas **er fährt** (il va) et **ihr fahrt** (vous allez) : seul le tréma les distingue !"
+          },
+          {
+            "type": "heading",
+            "text": "Quatre verbes à connaître par cœur"
+          },
+          {
+            "type": "table",
+            "caption": "sein, haben, werden, wissen",
+            "columns": [
+              "Pronom",
+              "sein (être)",
+              "haben (avoir)",
+              "werden (devenir)",
+              "wissen (savoir)"
+            ],
+            "rows": [
+              [
+                "ich",
+                "bin",
+                "habe",
+                "werde",
+                "weiß"
+              ],
+              [
+                "du",
+                "bist",
+                "hast",
+                "wirst",
+                "weißt"
+              ],
+              [
+                "er / sie / es",
+                "ist",
+                "hat",
+                "wird",
+                "weiß"
+              ],
+              [
+                "wir",
+                "sind",
+                "haben",
+                "werden",
+                "wissen"
+              ],
+              [
+                "ihr",
+                "seid",
+                "habt",
+                "werdet",
+                "wisst"
+              ],
+              [
+                "sie / Sie",
+                "sind",
+                "haben",
+                "werden",
+                "wissen"
+              ]
+            ]
+          },
+          {
+            "type": "table",
+            "caption": "Exemples",
+            "columns": [
+              "Allemand",
+              "Français"
+            ],
+            "rows": [
+              [
+                "*Lena liest gern Comics.*",
+                "Lena aime lire des BD."
+              ],
+              [
+                "*Hast du einen Hund?*",
+                "As-tu un chien ?"
+              ],
+              [
+                "*Mein Bruder wird bald fünfzehn.*",
+                "Mon frère va bientôt avoir quinze ans."
+              ],
+              [
+                "*Ich weiß es nicht.*",
+                "Je ne le sais pas."
+              ]
+            ]
+          }
+        ],
+        "checkpoint": {
+          "variants": [
+            {
+              "prompt": "Complète : « Mein Bruder ___ jeden Tag mit dem Bus. » (fahren)",
+              "options": [
+                "fahrt",
+                "fährt",
+                "fahre",
+                "fährst"
+              ],
+              "answer": 1,
+              "hint": "Mein Bruder = er. Fahren est un verbe fort en a → ä.",
+              "explanation": "er → a devient ä : er fährt. (« fahrt » est la forme de ihr.)"
+            },
+            {
+              "prompt": "Complète : « Was ___ du zum Frühstück? » (essen)",
+              "options": [
+                "esst",
+                "isst",
+                "esse",
+                "essen"
+              ],
+              "answer": 1,
+              "hint": "Essen change sa voyelle avec du.",
+              "explanation": "essen : e → i avec du → du isst (Que manges-tu au petit-déjeuner ?)."
+            },
+            {
+              "prompt": "Complète : « Wir ___ müde. » (sein)",
+              "options": [
+                "seid",
+                "sind",
+                "sein",
+                "bist"
+              ],
+              "answer": 1,
+              "hint": "Regarde la colonne de sein, ligne wir.",
+              "explanation": "sein → wir sind (nous sommes fatigués). « seid » est la forme de ihr."
+            }
+          ]
+        }
+      },
+      {
+        "title": "Le verbe en 2e position",
+        "blocks": [
+          {
+            "type": "text",
+            "text": "Dans une phrase **déclarative** (qui affirme quelque chose), le verbe conjugué est toujours le **2e élément**. Attention : un élément peut contenir plusieurs mots (*meine kleine Schwester*, *am Samstag*).\nSi la phrase commence par un autre élément que le sujet (un moment, un lieu…), le sujet se place **juste après le verbe** : c'est l'**inversion**."
+          },
+          {
+            "type": "table",
+            "caption": "La place du verbe dans la phrase déclarative",
+            "columns": [
+              "Position 1",
+              "Position 2 : verbe",
+              "Suite",
+              "Français"
+            ],
+            "rows": [
+              [
+                "Ich",
+                "spiele",
+                "am Samstag Fußball.",
+                "Je joue au foot le samedi."
+              ],
+              [
+                "Am Samstag",
+                "spiele",
+                "ich Fußball.",
+                "Le samedi, je joue au foot."
+              ],
+              [
+                "Meine kleine Schwester",
+                "liest",
+                "ein Buch.",
+                "Ma petite sœur lit un livre."
+              ],
+              [
+                "Heute Abend",
+                "sehen",
+                "wir einen Film.",
+                "Ce soir, nous regardons un film."
+              ]
+            ]
+          },
+          {
+            "type": "callout",
+            "kind": "attention",
+            "title": "Jamais deux éléments avant le verbe",
+            "text": "*Heute ich spiele Tennis* ✘ → *Heute **spiele ich** Tennis* ✔ (Aujourd'hui, je joue au tennis.)\nEn français, on peut mettre le sujet après « aujourd'hui » ; en allemand, c'est le verbe qui vient en 2e position."
+          },
+          {
+            "type": "heading",
+            "text": "Les questions avec un mot interrogatif"
+          },
+          {
+            "type": "text",
+            "text": "Les mots interrogatifs commencent souvent par W : *wer* (qui), *was* (quoi), *wo* (où), *woher* (d'où), *wann* (quand), *wie* (comment), *warum* (pourquoi). Le mot interrogatif occupe la position 1, le verbe suit, puis le sujet :\n*Wo wohnst du?* = Où habites-tu ?\n*Wann beginnt der Film?* = Quand le film commence-t-il ?"
+          },
+          {
+            "type": "callout",
+            "kind": "plus",
+            "title": "Und, aber, oder ne comptent pas",
+            "text": "Les petits mots **und** (et), **aber** (mais), **oder** (ou) relient deux phrases sans occuper de position : *Ich bin müde, aber ich spiele weiter.* = Je suis fatigué, mais je continue à jouer.\nAvec **möchte** (je voudrais), l'infinitif part à la fin : *Ich möchte heute Pizza essen.* = J'aimerais manger une pizza aujourd'hui."
+          }
+        ],
+        "checkpoint": {
+          "variants": [
+            {
+              "prompt": "Quelle phrase est correcte ?",
+              "options": [
+                "Morgen ich gehe ins Kino.",
+                "Morgen gehe ich ins Kino.",
+                "Morgen ich ins Kino gehe.",
+                "Gehe morgen ich ins Kino."
+              ],
+              "answer": 1,
+              "hint": "Morgen occupe déjà la position 1.",
+              "explanation": "Morgen (position 1) + gehe (position 2) + ich : Morgen gehe ich ins Kino. (Demain, je vais au cinéma.)"
+            },
+            {
+              "prompt": "Comment dit-on « Où habites-tu ? »",
+              "options": [
+                "Wo du wohnst?",
+                "Wo wohnst du?",
+                "Wo wohnt du?",
+                "Wo du wohnt?"
+              ],
+              "answer": 1,
+              "hint": "Mot interrogatif en position 1, puis… ?",
+              "explanation": "Wo (position 1) + wohnst (verbe, position 2) + du : Wo wohnst du?"
+            },
+            {
+              "prompt": "Dans « Nach der Schule spielen wir Tennis. », pourquoi « wir » est-il après le verbe ?",
+              "options": [
+                "Parce que c'est une question",
+                "Parce que la phrase commence par un complément de temps : il y a inversion",
+                "Parce que wir se place toujours après le verbe",
+                "Parce que le verbe est au pluriel"
+              ],
+              "answer": 1,
+              "hint": "Quel est le premier élément de la phrase ?",
+              "explanation": "« Nach der Schule » occupe la position 1 ; le verbe reste en position 2, donc le sujet passe après : c'est l'inversion."
+            }
+          ]
+        }
+      },
+      {
+        "title": "Le verbe en 1re position et les verbes à particule séparable",
+        "blocks": [
+          {
+            "type": "text",
+            "text": "Dans une **question fermée** (on répond par *ja* ou *nein*), le verbe conjugué se place en **1re position** :\n*Spielst du Klavier?* — *Ja, ich spiele Klavier.* = Tu joues du piano ? — Oui, je joue du piano.\nC'est aussi le cas à l'**impératif** : *Komm schnell!* = Viens vite ! — *Kommen Sie bitte!* = Venez, s'il vous plaît !"
+          },
+          {
+            "type": "heading",
+            "text": "Les verbes à particule séparable"
+          },
+          {
+            "type": "text",
+            "text": "Certains verbes commencent par une petite **particule** : **auf**stehen (se lever), **fern**sehen (regarder la télé), **ein**kaufen (faire les courses), **an**rufen (téléphoner), **mit**kommen (venir avec). Au présent, la particule se **sépare** du verbe et part à la **fin** de la phrase. Le verbe conjugué, lui, garde sa place (2e position, ou 1re dans une question fermée)."
+          },
+          {
+            "type": "table",
+            "caption": "Verbes à particule séparable",
+            "columns": [
+              "Infinitif",
+              "Exemple",
+              "Français"
+            ],
+            "rows": [
+              [
+                "aufstehen",
+                "*Ich stehe um sieben Uhr auf.*",
+                "Je me lève à sept heures."
+              ],
+              [
+                "fernsehen",
+                "*Am Abend sieht Tim fern.*",
+                "Le soir, Tim regarde la télé."
+              ],
+              [
+                "einkaufen",
+                "*Wir kaufen am Samstag ein.*",
+                "Nous faisons les courses le samedi."
+              ],
+              [
+                "anrufen",
+                "*Rufst du mich heute an?*",
+                "Tu m'appelles aujourd'hui ?"
+              ]
+            ]
+          },
+          {
+            "type": "callout",
+            "kind": "methode",
+            "title": "La phrase en tenaille",
+            "text": "Le verbe conjugué (position 2) et la particule (à la fin) forment une **tenaille** qui encadre le reste de la phrase :\n*Ich **stehe** jeden Morgen um sieben Uhr **auf**.*\nAstuce : la particule est souvent une préposition (auf, an, mit, ein…). Le verbe *fernsehen* est aussi fort : *er sieht fern*."
+          }
+        ],
+        "checkpoint": {
+          "variants": [
+            {
+              "prompt": "Comment dit-on « Tu viens avec nous ? » (mitkommen)",
+              "options": [
+                "Kommst du mit?",
+                "Mitkommst du?",
+                "Du mitkommst?",
+                "Kommst mit du?"
+              ],
+              "answer": 0,
+              "hint": "Question fermée : où va le verbe ? Et la particule ?",
+              "explanation": "Question fermée : verbe en 1re position, particule à la fin → Kommst du mit?"
+            },
+            {
+              "prompt": "Quelle phrase est correcte ? (aufstehen)",
+              "options": [
+                "Ich aufstehe um halb sieben.",
+                "Ich stehe um halb sieben auf.",
+                "Ich um halb sieben aufstehe.",
+                "Ich auf stehe um halb sieben."
+              ],
+              "answer": 1,
+              "hint": "Relis l'encadré « La phrase en tenaille ».",
+              "explanation": "Verbe conjugué en position 2, particule à la fin : Ich stehe um halb sieben auf. (Je me lève à six heures et demie.)"
+            },
+            {
+              "prompt": "Quelle phrase est une question fermée (réponse ja / nein) ?",
+              "options": [
+                "Wann kommst du?",
+                "Kommst du heute?",
+                "Wo wohnst du?",
+                "Was machst du?"
+              ],
+              "answer": 1,
+              "hint": "Dans quelle question le verbe est-il en 1re position ?",
+              "explanation": "Kommst du heute? commence par le verbe : on y répond par ja ou nein. Les autres commencent par un mot interrogatif."
+            }
+          ]
+        }
+      },
+      {
+        "title": "Le verbe à la fin : weil et dass",
+        "blocks": [
+          {
+            "type": "text",
+            "text": "Après **weil** (parce que) et **dass** (que), on forme une **subordonnée** : le verbe conjugué va tout à la **fin**. Une **virgule** sépare toujours les deux parties de la phrase."
+          },
+          {
+            "type": "table",
+            "caption": "Exemples de subordonnées",
+            "columns": [
+              "Principale",
+              "Subordonnée (verbe à la fin)",
+              "Français"
+            ],
+            "rows": [
+              [
+                "Ich bleibe zu Hause,",
+                "weil ich krank **bin**.",
+                "Je reste à la maison parce que je suis malade."
+              ],
+              [
+                "Ich glaube,",
+                "dass Paul heute **kommt**.",
+                "Je crois que Paul vient aujourd'hui."
+              ],
+              [
+                "Lisa ist glücklich,",
+                "weil sie einen Hund **hat**.",
+                "Lisa est heureuse parce qu'elle a un chien."
+              ]
+            ]
+          },
+          {
+            "type": "callout",
+            "kind": "attention",
+            "title": "La particule se recolle",
+            "text": "Dans une subordonnée, un verbe à particule séparable se **recolle** à la fin : *Ich bin müde, weil ich um sechs Uhr **aufstehe**.* = Je suis fatigué parce que je me lève à six heures."
+          },
+          {
+            "type": "callout",
+            "kind": "plus",
+            "title": "Si la subordonnée vient en premier",
+            "text": "Elle occupe alors la position 1 : le verbe de la principale vient juste après la virgule. On a deux verbes côte à côte :\n*Weil ich krank bin, **bleibe** ich zu Hause.*"
+          },
+          {
+            "type": "callout",
+            "kind": "essentiel",
+            "title": "L'essentiel : trois places pour le verbe",
+            "text": "**Position 2** : phrase déclarative, question avec mot en W (*Heute spiele ich.* / *Wo wohnst du?*).\n**Position 1** : question fermée, impératif (*Spielst du?* / *Komm!*).\n**À la fin** : après weil et dass (*…, weil ich krank bin.*)."
+          }
+        ],
+        "checkpoint": {
+          "variants": [
+            {
+              "prompt": "Choisis la bonne fin : « Ich lerne Deutsch, weil … »",
+              "options": [
+                "ich mag die Sprache.",
+                "ich die Sprache mag.",
+                "mag ich die Sprache.",
+                "die Sprache ich mag."
+              ],
+              "answer": 1,
+              "hint": "Après weil, où va le verbe conjugué ?",
+              "explanation": "Après weil, le verbe va à la fin : …, weil ich die Sprache mag. (parce que j'aime la langue)"
+            },
+            {
+              "prompt": "Quelle phrase est correcte ?",
+              "options": [
+                "Ich hoffe, dass du kommst morgen.",
+                "Ich hoffe, dass du morgen kommst.",
+                "Ich hoffe, dass kommst du morgen.",
+                "Ich hoffe, du dass morgen kommst."
+              ],
+              "answer": 1,
+              "hint": "dass ouvre une subordonnée.",
+              "explanation": "Après dass, verbe à la fin : Ich hoffe, dass du morgen kommst. (J'espère que tu viens demain.)"
+            },
+            {
+              "prompt": "Choisis la suite correcte : « Weil es regnet, … »",
+              "options": [
+                "wir bleiben zu Hause.",
+                "bleiben wir zu Hause.",
+                "wir zu Hause bleiben.",
+                "zu Hause wir bleiben."
+              ],
+              "answer": 1,
+              "hint": "Relis l'encadré « Si la subordonnée vient en premier ».",
+              "explanation": "La subordonnée occupe la position 1 ; le verbe de la principale vient juste après : Weil es regnet, bleiben wir zu Hause."
+            }
+          ]
+        }
+      }
+    ],
+    "memo": [
+      {
+        "label": "Verbes réguliers",
+        "text": "spielen : ich spiele, du spielst, er/sie/es spielt, wir spielen, ihr spielt, sie/Sie spielen.\nRadical en -t/-d : du arbeitest, er arbeitet. Radical en -s/-ß/-z : du tanzt, du heißt."
+      },
+      {
+        "label": "Verbes forts (du et er seulement)",
+        "text": "a → ä : fahren → du fährst, er fährt ; schlafen → schläft ; laufen → läuft.\ne → i : sprechen → spricht ; essen → isst ; nehmen → nimmt ; helfen → hilft.\ne → ie : lesen → liest ; sehen → sieht."
+      },
+      {
+        "label": "Par cœur",
+        "text": "sein : bin, bist, ist, sind, seid, sind.\nhaben : habe, hast, hat, haben, habt, haben.\nwerden : werde, wirst, wird, werden, werdet, werden.\nwissen : weiß, weißt, weiß, wissen, wisst, wissen."
+      },
+      {
+        "label": "Place du verbe",
+        "text": "Position 2 : déclarative et question en W ; inversion si la phrase commence par autre chose que le sujet (Heute spiele ich).\nPosition 1 : question fermée, impératif (Spielst du? Komm!).\nÀ la fin : après weil et dass (…, weil ich krank bin)."
+      },
+      {
+        "label": "Particules séparables",
+        "text": "aufstehen → Ich stehe um 7 Uhr auf. fernsehen → Er sieht fern. einkaufen, anrufen, mitkommen.\nDans une subordonnée, la particule se recolle : …, weil ich früh aufstehe."
+      }
+    ]
+  },
+  "exercises": {
+    "duration_min": 25,
+    "instructions": "Fais les exercices dans l'ordre : les étoiles indiquent la difficulté. Quand il faut compléter un blanc, écris seulement le verbe conjugué. Quand il faut écrire une phrase entière, respecte bien l'ordre des mots (la ponctuation et les majuscules ne comptent pas). Les corrigés s'affichent après validation.",
+    "pass_threshold": 8,
+    "texts": [],
+    "items": [
+      {
+        "id": "ex1",
+        "type": "short",
+        "stars": 1,
+        "lesson_part": 1,
+        "skills": [
+          "de-reg"
+        ],
+        "cognitive": "appliquer",
+        "prompt": "Complète au présent : « Wir ___ in einem kleinen Dorf. » (wohnen)",
+        "answer": [
+          "wohnen"
+        ],
+        "solution": "wohnen : avec wir, la forme est identique à l'infinitif. (Nous habitons dans un petit village.)"
+      },
+      {
+        "id": "ex2",
+        "type": "short",
+        "stars": 1,
+        "lesson_part": 1,
+        "skills": [
+          "de-reg"
+        ],
+        "cognitive": "appliquer",
+        "prompt": "Complète au présent : « Du ___ am Wochenende. » (arbeiten)",
+        "answer": [
+          "arbeitest"
+        ],
+        "solution": "arbeitest : radical en -t, on ajoute un e avant -st. (Tu travailles le week-end.)"
+      },
+      {
+        "id": "ex3",
+        "type": "qcm",
+        "stars": 1,
+        "lesson_part": 2,
+        "skills": [
+          "de-fort-irreg"
+        ],
+        "cognitive": "connaitre",
+        "prompt": "Complète : « Anna ___ sehr gut Englisch. » (sprechen)",
+        "options": [
+          "sprecht",
+          "spricht",
+          "sprichst",
+          "sprechen"
+        ],
+        "answer": 1,
+        "solution": "spricht : sprechen est un verbe fort (e → i) ; Anna = sie → -t."
+      },
+      {
+        "id": "ex4",
+        "type": "short",
+        "stars": 1,
+        "lesson_part": 2,
+        "skills": [
+          "de-fort-irreg"
+        ],
+        "cognitive": "appliquer",
+        "prompt": "Complète au présent : « Ihr ___ sehr nett. » (sein)",
+        "answer": [
+          "seid"
+        ],
+        "solution": "seid : sein → ihr seid (vous êtes très gentils). Ne confonds pas avec sind (wir, sie)."
+      },
+      {
+        "id": "ex5",
+        "type": "qcm",
+        "stars": 2,
+        "lesson_part": 2,
+        "skills": [
+          "de-fort-irreg"
+        ],
+        "cognitive": "appliquer",
+        "prompt": "Complète : « Mein Opa ___ jeden Morgen im Park. » (laufen)",
+        "options": [
+          "lauft",
+          "läuft",
+          "läufst",
+          "laufen"
+        ],
+        "answer": 1,
+        "solution": "läuft : mein Opa = er ; laufen change au en äu avec du et er. (« lauft » est la forme de ihr.)"
+      },
+      {
+        "id": "ex6",
+        "type": "short",
+        "stars": 2,
+        "lesson_part": 2,
+        "skills": [
+          "de-fort-irreg"
+        ],
+        "cognitive": "appliquer",
+        "prompt": "Complète au présent : « Was ___ du da? » (lesen)",
+        "answer": [
+          "liest"
+        ],
+        "solution": "liest : lesen est un verbe fort (e → ie) ; avec du, le s du radical suffit : du liest. (Qu'est-ce que tu lis là ?)"
+      },
+      {
+        "id": "ex7",
+        "type": "short",
+        "stars": 2,
+        "lesson_part": 3,
+        "skills": [
+          "de-verbe-2"
+        ],
+        "cognitive": "appliquer",
+        "prompt": "Remets les mots dans l'ordre en commençant par « Am Sonntag » : besuche / meine Oma / ich",
+        "answer": [
+          "Am Sonntag besuche ich meine Oma."
+        ],
+        "solution": "Am Sonntag besuche ich meine Oma. — « Am Sonntag » occupe la position 1, le verbe reste en position 2, le sujet passe après (inversion). (Le dimanche, je rends visite à ma grand-mère.)"
+      },
+      {
+        "id": "ex8",
+        "type": "short",
+        "stars": 2,
+        "lesson_part": 4,
+        "skills": [
+          "de-verbe-1-sep"
+        ],
+        "cognitive": "appliquer",
+        "prompt": "Écris la phrase au présent avec ces éléments, en commençant par « Ich » : ich / einkaufen / am Samstag",
+        "answer": [
+          "Ich kaufe am Samstag ein."
+        ],
+        "solution": "Ich kaufe am Samstag ein. — Le verbe conjugué en position 2, la particule ein à la fin. (Je fais les courses le samedi.)"
+      },
+      {
+        "id": "ex9",
+        "type": "short",
+        "stars": 3,
+        "lesson_part": 5,
+        "skills": [
+          "de-verbe-fin",
+          "de-verbe-1-sep"
+        ],
+        "cognitive": "analyser",
+        "prompt": "Relie les deux phrases avec « weil », en commençant par « Tom ist müde » : « Tom ist müde. Er sieht zu viel fern. »",
+        "answer": [
+          "Tom ist müde, weil er zu viel fernsieht."
+        ],
+        "solution": "Tom ist müde, weil er zu viel fernsieht. — Après weil, le verbe va à la fin et la particule fern se recolle au verbe. (Tom est fatigué parce qu'il regarde trop la télé.)"
+      },
+      {
+        "id": "ex10",
+        "type": "open",
+        "stars": 3,
+        "lesson_part": 5,
+        "skills": [
+          "de-ecrire",
+          "de-verbe-2",
+          "de-verbe-1-sep",
+          "de-verbe-fin"
+        ],
+        "cognitive": "rediger",
+        "prompt": "Schreib fünf Sätze über deine Woche. Utilise au moins : une phrase qui commence par un moment (inversion), un verbe à particule séparable, un verbe fort à la 3e personne et une phrase avec weil.",
+        "solution": "Exemple : Am Montag habe ich Sport. Ich stehe jeden Tag um sieben Uhr auf. Meine Schwester liest am Abend Comics. Am Mittwoch spiele ich Tennis, weil ich keine Schule habe. Am Wochenende sehen wir oft fern.\nVérifie : verbe en 2e position (inversion après un moment), particule à la fin, voyelle changée pour le verbe fort, verbe à la fin après weil."
+      }
+    ]
+  },
+  "evaluation": {
+    "duration_min": 25,
+    "conditions": "Sans la leçon, en 25 minutes. Pour les blancs, écris seulement le verbe conjugué ; pour les phrases à réécrire, respecte l'ordre des mots. Barème : A = 6 points · B = 8 points · C = 6 points.",
+    "total_points": 20,
+    "variants": [
+      {
+        "texts": [],
+        "sections": [
+          {
+            "label": "A · Je conjugue (6 points)",
+            "questions": [
+              {
+                "id": "q1",
+                "type": "short",
+                "points": 1,
+                "lesson_part": 1,
+                "skills": [
+                  "de-reg"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Complète : « Ich ___ gern Pizza. » (essen)",
+                "answer": [
+                  "esse"
+                ],
+                "solution": "esse : avec ich, pas de changement de voyelle → ich esse."
+              },
+              {
+                "id": "q2",
+                "type": "short",
+                "points": 1,
+                "lesson_part": 2,
+                "skills": [
+                  "de-fort-irreg"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Complète : « Er ___ seinem Vater in der Küche. » (helfen)",
+                "answer": [
+                  "hilft"
+                ],
+                "solution": "hilft : helfen est un verbe fort (e → i) avec er."
+              },
+              {
+                "id": "q3",
+                "type": "short",
+                "points": 1,
+                "lesson_part": 1,
+                "skills": [
+                  "de-reg"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Complète : « Ihr ___ Deutsch und Englisch. » (lernen)",
+                "answer": [
+                  "lernt"
+                ],
+                "solution": "lernt : ihr → -t."
+              },
+              {
+                "id": "q4",
+                "type": "short",
+                "points": 1,
+                "lesson_part": 2,
+                "skills": [
+                  "de-fort-irreg"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Complète : « Du ___ einen Bruder, oder? » (haben)",
+                "answer": [
+                  "hast"
+                ],
+                "solution": "hast : haben → du hast."
+              },
+              {
+                "id": "q5",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 2,
+                "skills": [
+                  "de-fort-irreg"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Complète : « Sie (= elle) ___ bis neun Uhr. » (schlafen)",
+                "options": [
+                  "schlaft",
+                  "schläft",
+                  "schlafen",
+                  "schläfst"
+                ],
+                "answer": 1,
+                "solution": "schläft : sie (elle) → 3e personne du singulier ; schlafen change a en ä."
+              },
+              {
+                "id": "q6",
+                "type": "short",
+                "points": 1,
+                "lesson_part": 2,
+                "skills": [
+                  "de-fort-irreg"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Complète : « Mein Bruder ___ bald sechzehn. » (werden)",
+                "answer": [
+                  "wird"
+                ],
+                "solution": "wird : werden → er wird (mon frère va bientôt avoir seize ans)."
+              }
+            ]
+          },
+          {
+            "label": "B · Je construis et j'explique (8 points)",
+            "questions": [
+              {
+                "id": "q7",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 3,
+                "skills": [
+                  "de-verbe-2"
+                ],
+                "cognitive": "analyser",
+                "prompt": "Quelle phrase est correcte ?",
+                "options": [
+                  "Heute Abend wir sehen einen Film.",
+                  "Heute Abend sehen wir einen Film.",
+                  "Heute Abend wir einen Film sehen.",
+                  "Sehen heute Abend wir einen Film."
+                ],
+                "answer": 1,
+                "solution": "Heute Abend sehen wir einen Film : « Heute Abend » en position 1, verbe en position 2, puis le sujet."
+              },
+              {
+                "id": "q8",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 4,
+                "skills": [
+                  "de-verbe-1-sep"
+                ],
+                "cognitive": "analyser",
+                "prompt": "Comment dit-on « Tu regardes la télé ? » (fernsehen)",
+                "options": [
+                  "Siehst du fern?",
+                  "Fernsiehst du?",
+                  "Du fernsiehst?",
+                  "Siehst fern du?"
+                ],
+                "answer": 0,
+                "solution": "Siehst du fern? : question fermée → verbe en 1re position, particule à la fin."
+              },
+              {
+                "id": "q9",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 5,
+                "skills": [
+                  "de-verbe-fin"
+                ],
+                "cognitive": "analyser",
+                "prompt": "Choisis la bonne fin : « Ich bleibe zu Hause, weil … »",
+                "options": [
+                  "ich bin krank.",
+                  "ich krank bin.",
+                  "bin ich krank.",
+                  "krank ich bin."
+                ],
+                "answer": 1,
+                "solution": "…, weil ich krank bin : après weil, le verbe conjugué va à la fin."
+              },
+              {
+                "id": "q10",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 4,
+                "skills": [
+                  "de-verbe-1-sep",
+                  "de-reg"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Complète la question : « ___ ihr in Köln? » (wohnen)",
+                "options": [
+                  "Wohnt",
+                  "Wohnen",
+                  "Wohnst",
+                  "Wohne"
+                ],
+                "answer": 0,
+                "solution": "Wohnt ihr in Köln? : question fermée, verbe en 1re position ; ihr → -t."
+              },
+              {
+                "id": "q11",
+                "type": "short",
+                "points": 2,
+                "lesson_part": 4,
+                "skills": [
+                  "de-verbe-2",
+                  "de-verbe-1-sep"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Réécris la phrase en commençant par « Jeden Morgen » : « Ich stehe um sieben Uhr auf. »",
+                "answer": [
+                  "Jeden Morgen stehe ich um sieben Uhr auf."
+                ],
+                "solution": "Jeden Morgen stehe ich um sieben Uhr auf. — Inversion (verbe en position 2, sujet après) ; la particule auf reste à la fin."
+              },
+              {
+                "id": "q12",
+                "type": "open",
+                "points": 2,
+                "lesson_part": 3,
+                "skills": [
+                  "de-verbe-2"
+                ],
+                "cognitive": "analyser",
+                "prompt": "Explique en français pourquoi on écrit « Heute spiele ich Fußball. » et non « Heute ich spiele Fußball. »",
+                "solution": "Dans une phrase déclarative allemande, le verbe conjugué est toujours en 2e position. Ici, « heute » occupe déjà la position 1 : le verbe spiele vient donc juste après, et le sujet ich passe derrière le verbe (inversion). « Heute ich spiele » mettrait deux éléments avant le verbe, ce qui est impossible.",
+                "rubric": "1 pt : règle : le verbe conjugué est en 2e position dans la phrase déclarative. 1 pt : application : heute occupe la position 1, donc le sujet ich passe après le verbe (inversion) ; jamais deux éléments avant le verbe."
+              }
+            ]
+          },
+          {
+            "label": "C · J'écris (6 points)",
+            "questions": [
+              {
+                "id": "q13",
+                "type": "open",
+                "points": 6,
+                "lesson_part": 5,
+                "skills": [
+                  "de-ecrire",
+                  "de-reg",
+                  "de-fort-irreg",
+                  "de-verbe-2",
+                  "de-verbe-1-sep",
+                  "de-verbe-fin"
+                ],
+                "cognitive": "rediger",
+                "prompt": "Schreib eine E-Mail (60 bis 80 Wörter) an eine deutsche Brieffreundin: Beschreib deinen Schultag. Utilise au moins : deux phrases qui commencent par un moment (inversion), un verbe à particule séparable, deux verbes forts ou irréguliers (fahren, lesen, sein, haben…) et une phrase avec weil.",
+                "solution": "Exemple : Hallo Mia! Ich stehe jeden Tag um halb sieben auf. Um halb acht fahre ich mit dem Bus zur Schule. Mein Bruder fährt mit dem Rad. Am Montag habe ich Deutsch und Mathe. Mittags esse ich in der Kantine mit meinen Freundinnen. Nach der Schule mache ich meine Hausaufgaben. Am Abend lese ich gern, weil ich Bücher toll finde. Und du? Wie ist dein Schultag? Liebe Grüße, Léa",
+                "rubric": "2 pts : verbe en 2e position et inversion correcte (au moins deux phrases qui commencent par un moment). 1 pt : verbe à particule séparable correct (particule à la fin). 1 pt : verbes forts ou irréguliers bien conjugués et terminaisons exactes. 1 pt : phrase avec weil correcte (verbe à la fin, virgule). 1 pt : message cohérent (salutation, formule finale), 60 à 80 mots, vocabulaire varié."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "texts": [],
+        "sections": [
+          {
+            "label": "A · Je conjugue (6 points)",
+            "questions": [
+              {
+                "id": "q1",
+                "type": "short",
+                "points": 1,
+                "lesson_part": 1,
+                "skills": [
+                  "de-reg"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Complète : « Ich ___ jeden Abend ein Buch. » (lesen)",
+                "answer": [
+                  "lese"
+                ],
+                "solution": "lese : avec ich, pas de changement de voyelle → ich lese."
+              },
+              {
+                "id": "q2",
+                "type": "short",
+                "points": 1,
+                "lesson_part": 2,
+                "skills": [
+                  "de-fort-irreg"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Complète : « Er ___ immer den Bus. » (nehmen)",
+                "answer": [
+                  "nimmt"
+                ],
+                "solution": "nimmt : nehmen est un verbe fort (e → i, et deux m) avec er."
+              },
+              {
+                "id": "q3",
+                "type": "short",
+                "points": 1,
+                "lesson_part": 1,
+                "skills": [
+                  "de-reg"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Complète : « Ihr ___ sehr gut! » (tanzen)",
+                "answer": [
+                  "tanzt"
+                ],
+                "solution": "tanzt : ihr → -t."
+              },
+              {
+                "id": "q4",
+                "type": "short",
+                "points": 1,
+                "lesson_part": 2,
+                "skills": [
+                  "de-fort-irreg"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Complète : « Du ___ sehr nett. » (sein)",
+                "answer": [
+                  "bist"
+                ],
+                "solution": "bist : sein → du bist."
+              },
+              {
+                "id": "q5",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 2,
+                "skills": [
+                  "de-fort-irreg"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Complète : « Lukas ___ heute nach Hamburg. » (fahren)",
+                "options": [
+                  "fahrt",
+                  "fahren",
+                  "fährt",
+                  "fährst"
+                ],
+                "answer": 2,
+                "solution": "fährt : Lukas = er ; fahren change a en ä."
+              },
+              {
+                "id": "q6",
+                "type": "short",
+                "points": 1,
+                "lesson_part": 2,
+                "skills": [
+                  "de-fort-irreg"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Complète : « Im Winter ___ es früh dunkel. » (werden)",
+                "answer": [
+                  "wird"
+                ],
+                "solution": "wird : werden → es wird (en hiver, il fait nuit tôt)."
+              }
+            ]
+          },
+          {
+            "label": "B · Je construis et j'explique (8 points)",
+            "questions": [
+              {
+                "id": "q7",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 3,
+                "skills": [
+                  "de-verbe-2"
+                ],
+                "cognitive": "analyser",
+                "prompt": "Quelle phrase est correcte ?",
+                "options": [
+                  "Am Montag ich habe Sport.",
+                  "Am Montag habe ich Sport.",
+                  "Am Montag ich Sport habe.",
+                  "Habe am Montag ich Sport."
+                ],
+                "answer": 1,
+                "solution": "Am Montag habe ich Sport : « Am Montag » en position 1, verbe en position 2, puis le sujet."
+              },
+              {
+                "id": "q8",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 4,
+                "skills": [
+                  "de-verbe-1-sep"
+                ],
+                "cognitive": "analyser",
+                "prompt": "Comment dit-on « Tu m'appelles ce soir ? » (anrufen)",
+                "options": [
+                  "Rufst du mich heute Abend an?",
+                  "Anrufst du mich heute Abend?",
+                  "Du mich heute Abend anrufst?",
+                  "Rufst an du mich heute Abend?"
+                ],
+                "answer": 0,
+                "solution": "Rufst du mich heute Abend an? : question fermée → verbe en 1re position, particule à la fin."
+              },
+              {
+                "id": "q9",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 5,
+                "skills": [
+                  "de-verbe-fin"
+                ],
+                "cognitive": "analyser",
+                "prompt": "Choisis la bonne fin : « Ich glaube, dass … »",
+                "options": [
+                  "er heute kommt.",
+                  "er kommt heute.",
+                  "kommt er heute.",
+                  "heute er kommt."
+                ],
+                "answer": 0,
+                "solution": "…, dass er heute kommt : après dass, le verbe conjugué va à la fin."
+              },
+              {
+                "id": "q10",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 4,
+                "skills": [
+                  "de-verbe-1-sep",
+                  "de-reg"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Complète la question : « ___ du gern Musik? » (hören)",
+                "options": [
+                  "Hörst",
+                  "Hört",
+                  "Höre",
+                  "Hören"
+                ],
+                "answer": 0,
+                "solution": "Hörst du gern Musik? : question fermée, verbe en 1re position ; du → -st."
+              },
+              {
+                "id": "q11",
+                "type": "short",
+                "points": 2,
+                "lesson_part": 4,
+                "skills": [
+                  "de-verbe-2",
+                  "de-verbe-1-sep"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Réécris la phrase en commençant par « Am Abend » : « Wir sehen oft fern. »",
+                "answer": [
+                  "Am Abend sehen wir oft fern."
+                ],
+                "solution": "Am Abend sehen wir oft fern. — Inversion (verbe en position 2, sujet après) ; la particule fern reste à la fin."
+              },
+              {
+                "id": "q12",
+                "type": "open",
+                "points": 2,
+                "lesson_part": 5,
+                "skills": [
+                  "de-verbe-fin"
+                ],
+                "cognitive": "analyser",
+                "prompt": "Explique en français pourquoi le verbe « kommt » est à la fin dans « Ich glaube, dass Paul heute kommt. »",
+                "solution": "« dass » introduit une subordonnée. Dans une subordonnée introduite par dass (ou weil), le verbe conjugué se place tout à la fin. Dans une phrase simple, on dirait « Paul kommt heute » (verbe en 2e position).",
+                "rubric": "1 pt : dass introduit une subordonnée. 1 pt : règle : dans la subordonnée, le verbe conjugué va à la fin (opposé à la 2e position de la phrase simple)."
+              }
+            ]
+          },
+          {
+            "label": "C · J'écris (6 points)",
+            "questions": [
+              {
+                "id": "q13",
+                "type": "open",
+                "points": 6,
+                "lesson_part": 5,
+                "skills": [
+                  "de-ecrire",
+                  "de-reg",
+                  "de-fort-irreg",
+                  "de-verbe-2",
+                  "de-verbe-1-sep",
+                  "de-verbe-fin"
+                ],
+                "cognitive": "rediger",
+                "prompt": "Schreib eine E-Mail (60 bis 80 Wörter) an einen deutschen Brieffreund: Beschreib dein Wochenende. Utilise au moins : deux phrases qui commencent par un moment (inversion), un verbe à particule séparable, deux verbes forts ou irréguliers (fahren, lesen, sein, haben…) et une phrase avec weil.",
+                "solution": "Exemple : Hallo Jonas! Am Samstag stehe ich spät auf. Am Vormittag kaufe ich mit meiner Mutter ein. Am Nachmittag fahre ich mit dem Rad zu meiner Freundin. Sie hat einen Hund und wir laufen oft im Park. Am Sonntag sehen wir fern oder ich lese ein Buch. Ich mag das Wochenende, weil ich viel Zeit habe. Und du? Was machst du am Wochenende? Viele Grüße, Léa",
+                "rubric": "2 pts : verbe en 2e position et inversion correcte (au moins deux phrases qui commencent par un moment). 1 pt : verbe à particule séparable correct (particule à la fin). 1 pt : verbes forts ou irréguliers bien conjugués et terminaisons exactes. 1 pt : phrase avec weil correcte (verbe à la fin, virgule). 1 pt : message cohérent (salutation, formule finale), 60 à 80 mots, vocabulaire varié."
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

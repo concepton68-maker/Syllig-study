@@ -1,0 +1,1503 @@
+{
+  "format": "syllig-course/1",
+  "code": "TG161",
+  "level": "troisieme-generale",
+  "subject": "Espagnol (LV2)",
+  "chapter": "Grammaire et outils de la langue",
+  "title": "Le présent de l'indicatif (réguliers, irréguliers, diphtongues)",
+  "skills": [
+    {
+      "id": "es-reg",
+      "label": "Conjuguer les verbes réguliers en -ar, -er, -ir au présent"
+    },
+    {
+      "id": "es-diph",
+      "label": "Conjuguer les verbes à diphtongue (e → ie, o → ue, u → ue) et en e → i"
+    },
+    {
+      "id": "es-irreg1",
+      "label": "Conjuguer les verbes irréguliers à la 1re personne (hago, pongo, salgo, conozco…)"
+    },
+    {
+      "id": "es-tres-irreg",
+      "label": "Conjuguer les verbes très irréguliers (ser, estar, ir, tener, venir, decir)"
+    },
+    {
+      "id": "es-pron-emploi",
+      "label": "Conjuguer les verbes pronominaux et employer le présent avec des mots de fréquence"
+    },
+    {
+      "id": "es-ecrire",
+      "label": "Écrire un court texte au présent"
+    }
+  ],
+  "lesson": {
+    "duration_min": 35,
+    "objectives": [
+      "conjuguer au présent les verbes réguliers en -ar, -er et -ir ;",
+      "reconnaître et conjuguer les verbes à diphtongue grâce à la règle de la botte ;",
+      "connaître les verbes irréguliers à la 1re personne et les verbes très irréguliers ;",
+      "conjuguer un verbe pronominal et raconter ses habitudes avec des mots de fréquence."
+    ],
+    "essential": "Au présent, on remplace la terminaison de l'infinitif (-ar, -er, -ir) par celle de la personne. Certains verbes changent la voyelle de leur radical (e → ie, o → ue, e → i) à yo, tú, él et ellos : c'est la **botte**. D'autres sont irréguliers seulement à **yo** (*hago, salgo, conozco*), et quelques-uns s'apprennent entièrement par cœur (*ser, estar, ir, tener*). ¡Ánimo, con práctica todo es más fácil! (Courage, avec de l'entraînement, tout est plus facile !)",
+    "parts": [
+      {
+        "title": "Les verbes réguliers : -ar, -er, -ir",
+        "blocks": [
+          {
+            "type": "text",
+            "text": "En espagnol, l'infinitif se termine par **-ar**, **-er** ou **-ir**. Pour conjuguer au présent, on enlève cette terminaison et on ajoute celle de la personne voulue. Comme la terminaison indique déjà qui fait l'action, on n'écrit souvent **pas le pronom sujet** : *Hablo español* = Je parle espagnol."
+          },
+          {
+            "type": "table",
+            "caption": "Trois verbes modèles au présent",
+            "columns": [
+              "Personne",
+              "hablar (parler)",
+              "comer (manger)",
+              "vivir (vivre, habiter)"
+            ],
+            "rows": [
+              [
+                "yo",
+                "hablo",
+                "como",
+                "vivo"
+              ],
+              [
+                "tú",
+                "hablas",
+                "comes",
+                "vives"
+              ],
+              [
+                "él / ella / usted",
+                "habla",
+                "come",
+                "vive"
+              ],
+              [
+                "nosotros / nosotras",
+                "hablamos",
+                "comemos",
+                "vivimos"
+              ],
+              [
+                "vosotros / vosotras",
+                "habláis",
+                "coméis",
+                "vivís"
+              ],
+              [
+                "ellos / ellas / ustedes",
+                "hablan",
+                "comen",
+                "viven"
+              ]
+            ]
+          },
+          {
+            "type": "table",
+            "caption": "Exemples",
+            "columns": [
+              "Espagnol",
+              "Français"
+            ],
+            "rows": [
+              [
+                "*Mi hermana vive en Sevilla.*",
+                "Ma sœur habite à Séville."
+              ],
+              [
+                "*Comemos a las dos.*",
+                "Nous mangeons à deux heures."
+              ],
+              [
+                "*¿Escuchas la radio?*",
+                "Tu écoutes la radio ?"
+              ]
+            ]
+          },
+          {
+            "type": "callout",
+            "kind": "attention",
+            "title": "Usted et ustedes : le vouvoiement",
+            "text": "Pour vouvoyer quelqu'un, on emploie **usted** (une personne) ou **ustedes** (plusieurs personnes), avec le verbe à la **3e personne** :\n*¿Usted habla francés?* = Vous parlez français ?\n*¿Ustedes viven aquí?* = Vous habitez ici ?"
+          },
+          {
+            "type": "callout",
+            "kind": "methode",
+            "title": "Repère les accents écrits",
+            "text": "Seul **vosotros** porte un accent écrit : *habláis, coméis, vivís*. Les verbes en -er et en -ir ont les mêmes terminaisons, sauf à **nosotros** (-emos / -imos) et à **vosotros** (-éis / -ís)."
+          }
+        ],
+        "checkpoint": {
+          "variants": [
+            {
+              "prompt": "Complète : « Mis padres ___ en Madrid. » (vivir)",
+              "options": [
+                "vive",
+                "viven",
+                "vivís",
+                "vivimos"
+              ],
+              "answer": 1,
+              "hint": "« Mis padres » = ellos. Regarde la dernière ligne du tableau.",
+              "explanation": "Mis padres = ellos → viven."
+            },
+            {
+              "prompt": "Quelle est la forme de « comer » avec « vosotros » ?",
+              "options": [
+                "comáis",
+                "coméis",
+                "comís",
+                "comen"
+              ],
+              "answer": 1,
+              "hint": "Un verbe en -er garde le e dans sa terminaison.",
+              "explanation": "comer → vosotros coméis (avec un accent sur le é)."
+            },
+            {
+              "prompt": "Complète : « ¿Usted ___ inglés? » (hablar)",
+              "options": [
+                "hablas",
+                "hablo",
+                "habla",
+                "habláis"
+              ],
+              "answer": 2,
+              "hint": "Relis l'encadré sur le vouvoiement.",
+              "explanation": "Usted se conjugue comme él / ella : ¿Usted habla inglés?"
+            }
+          ]
+        }
+      },
+      {
+        "title": "Les verbes à diphtongue : e → ie, o → ue",
+        "blocks": [
+          {
+            "type": "text",
+            "text": "Dans certains verbes, la voyelle du radical se transforme quand elle porte l'accent tonique : **e devient ie** et **o devient ue**. Cela se produit à quatre personnes : yo, tú, él, ellos. À **nosotros** et **vosotros**, l'accent tonique tombe sur la terminaison : le radical ne change pas."
+          },
+          {
+            "type": "table",
+            "caption": "Trois verbes à diphtongue",
+            "columns": [
+              "Personne",
+              "querer (vouloir, aimer)",
+              "poder (pouvoir)",
+              "jugar (jouer)"
+            ],
+            "rows": [
+              [
+                "yo",
+                "quiero",
+                "puedo",
+                "juego"
+              ],
+              [
+                "tú",
+                "quieres",
+                "puedes",
+                "juegas"
+              ],
+              [
+                "él / ella / usted",
+                "quiere",
+                "puede",
+                "juega"
+              ],
+              [
+                "nosotros / nosotras",
+                "queremos",
+                "podemos",
+                "jugamos"
+              ],
+              [
+                "vosotros / vosotras",
+                "queréis",
+                "podéis",
+                "jugáis"
+              ],
+              [
+                "ellos / ellas / ustedes",
+                "quieren",
+                "pueden",
+                "juegan"
+              ]
+            ]
+          },
+          {
+            "type": "callout",
+            "kind": "methode",
+            "title": "La règle de la botte",
+            "text": "Si tu entoures dans le tableau les formes qui changent, tu dessines une **botte** : les trois personnes du singulier et la 3e personne du pluriel. **Nosotros** et **vosotros** restent en dehors de la botte."
+          },
+          {
+            "type": "list",
+            "items": [
+              "**e → ie** : pensar (penser), empezar (commencer), cerrar (fermer), entender (comprendre), preferir (préférer), despertarse (se réveiller).",
+              "**o → ue** : dormir (dormir), volver (revenir), encontrar (trouver), contar (raconter, compter), costar (coûter), llover (pleuvoir : *llueve*), acostarse (se coucher).",
+              "**u → ue** : un seul verbe, jugar (jouer)."
+            ]
+          },
+          {
+            "type": "table",
+            "caption": "Exemples",
+            "columns": [
+              "Espagnol",
+              "Français"
+            ],
+            "rows": [
+              [
+                "*¿Puedes venir esta tarde?*",
+                "Tu peux venir cet après-midi ?"
+              ],
+              [
+                "*La película empieza a las ocho.*",
+                "Le film commence à huit heures."
+              ],
+              [
+                "*Nunca duermo la siesta.*",
+                "Je ne fais jamais la sieste."
+              ]
+            ]
+          },
+          {
+            "type": "callout",
+            "kind": "attention",
+            "title": "Ces verbes s'apprennent",
+            "text": "Rien dans l'infinitif ne montre qu'un verbe diphtongue. Dans un dictionnaire scolaire, on trouve souvent **(ie)** ou **(ue)** après l'infinitif : note-les dans ton cahier de vocabulaire."
+          }
+        ],
+        "checkpoint": {
+          "variants": [
+            {
+              "prompt": "Complète : « Nosotros ___ al fútbol los sábados. » (jugar)",
+              "options": [
+                "juegamos",
+                "jugamos",
+                "juegan",
+                "jugáis"
+              ],
+              "answer": 1,
+              "hint": "Nosotros est-il dans la botte ?",
+              "explanation": "Nosotros est hors de la botte : pas de diphtongue → jugamos."
+            },
+            {
+              "prompt": "Quelle forme de « dormir » est correcte avec « ella » ?",
+              "options": [
+                "dorme",
+                "duerme",
+                "duermes",
+                "dormimos"
+              ],
+              "answer": 1,
+              "hint": "Ella est dans la botte ; et dormir est un verbe en -ir.",
+              "explanation": "Ella est dans la botte : o → ue, terminaison -e → duerme."
+            },
+            {
+              "prompt": "Complète : « ¿Tú ___ ir al cine? » (querer)",
+              "options": [
+                "queres",
+                "quieres",
+                "quiere",
+                "queréis"
+              ],
+              "answer": 1,
+              "hint": "Tú fait partie des personnes qui changent.",
+              "explanation": "Tú est dans la botte : e → ie → quieres."
+            }
+          ]
+        }
+      },
+      {
+        "title": "Les irréguliers à la 1re personne et les verbes en e → i",
+        "blocks": [
+          {
+            "type": "text",
+            "text": "Certains verbes ne sont irréguliers qu'à la **1re personne du singulier** (yo). Les autres personnes se conjuguent normalement."
+          },
+          {
+            "type": "table",
+            "caption": "Irréguliers à la 1re personne",
+            "columns": [
+              "Infinitif",
+              "yo",
+              "tú (régulier)",
+              "Sens"
+            ],
+            "rows": [
+              [
+                "hacer",
+                "hago",
+                "haces",
+                "faire"
+              ],
+              [
+                "poner",
+                "pongo",
+                "pones",
+                "mettre"
+              ],
+              [
+                "salir",
+                "salgo",
+                "sales",
+                "sortir"
+              ],
+              [
+                "traer",
+                "traigo",
+                "traes",
+                "apporter"
+              ],
+              [
+                "conocer",
+                "conozco",
+                "conoces",
+                "connaître"
+              ],
+              [
+                "dar",
+                "doy",
+                "das",
+                "donner"
+              ],
+              [
+                "ver",
+                "veo",
+                "ves",
+                "voir"
+              ],
+              [
+                "saber",
+                "sé",
+                "sabes",
+                "savoir"
+              ]
+            ]
+          },
+          {
+            "type": "text",
+            "text": "Remarque : *ver* fait aussi *vemos, veis, ven* (sans accent)."
+          },
+          {
+            "type": "heading",
+            "text": "Les verbes en e → i"
+          },
+          {
+            "type": "text",
+            "text": "Quelques verbes en **-ir** transforment le **e** du radical en **i**, aux mêmes personnes que les diphtongues (la botte)."
+          },
+          {
+            "type": "table",
+            "caption": "Trois verbes en e → i",
+            "columns": [
+              "Personne",
+              "pedir (demander, commander)",
+              "repetir (répéter)",
+              "seguir (suivre, continuer)"
+            ],
+            "rows": [
+              [
+                "yo",
+                "pido",
+                "repito",
+                "sigo"
+              ],
+              [
+                "tú",
+                "pides",
+                "repites",
+                "sigues"
+              ],
+              [
+                "él / ella / usted",
+                "pide",
+                "repite",
+                "sigue"
+              ],
+              [
+                "nosotros / nosotras",
+                "pedimos",
+                "repetimos",
+                "seguimos"
+              ],
+              [
+                "vosotros / vosotras",
+                "pedís",
+                "repetís",
+                "seguís"
+              ],
+              [
+                "ellos / ellas / ustedes",
+                "piden",
+                "repiten",
+                "siguen"
+              ]
+            ]
+          },
+          {
+            "type": "callout",
+            "kind": "attention",
+            "title": "Seguir : attention à l'orthographe",
+            "text": "À la 1re personne, on écrit **sigo** (sans u) : *Sigo el camino.* = Je suis le chemin. Aux autres personnes, le u revient : *sigues, sigue…*"
+          },
+          {
+            "type": "table",
+            "caption": "Exemples",
+            "columns": [
+              "Espagnol",
+              "Français"
+            ],
+            "rows": [
+              [
+                "*Siempre pido una limonada.*",
+                "Je commande toujours une limonade."
+              ],
+              [
+                "*Hago mis deberes y luego salgo con mis amigos.*",
+                "Je fais mes devoirs et ensuite je sors avec mes amis."
+              ],
+              [
+                "*No conozco a tu prima.*",
+                "Je ne connais pas ta cousine."
+              ]
+            ]
+          }
+        ],
+        "checkpoint": {
+          "variants": [
+            {
+              "prompt": "Quelle est la forme de « salir » avec « yo » ?",
+              "options": [
+                "salo",
+                "salgo",
+                "sale",
+                "salimos"
+              ],
+              "answer": 1,
+              "hint": "Salir fait partie des verbes irréguliers à la 1re personne.",
+              "explanation": "salir → yo salgo (comme hacer → hago, poner → pongo)."
+            },
+            {
+              "prompt": "Complète : « Mi hermano siempre ___ pizza. » (pedir)",
+              "options": [
+                "pede",
+                "pide",
+                "pido",
+                "pedimos"
+              ],
+              "answer": 1,
+              "hint": "Mi hermano = él, dans la botte.",
+              "explanation": "pedir : e → i dans la botte ; él → pide."
+            },
+            {
+              "prompt": "Quelle phrase est correcte ?",
+              "options": [
+                "Yo conoco a tu prima.",
+                "Yo conozco a tu prima.",
+                "Yo conozo a tu prima.",
+                "Yo conosco a tu prima."
+              ],
+              "answer": 1,
+              "hint": "Regarde la ligne de conocer dans le tableau.",
+              "explanation": "conocer → yo conozco (avec zc)."
+            }
+          ]
+        }
+      },
+      {
+        "title": "Les verbes très irréguliers : ser, estar, ir, tener, venir, decir",
+        "blocks": [
+          {
+            "type": "text",
+            "text": "Ces verbes sont très fréquents : il faut les connaître par cœur."
+          },
+          {
+            "type": "table",
+            "caption": "Quatre verbes essentiels",
+            "columns": [
+              "Personne",
+              "ser (être)",
+              "estar (être, se trouver)",
+              "ir (aller)",
+              "tener (avoir)"
+            ],
+            "rows": [
+              [
+                "yo",
+                "soy",
+                "estoy",
+                "voy",
+                "tengo"
+              ],
+              [
+                "tú",
+                "eres",
+                "estás",
+                "vas",
+                "tienes"
+              ],
+              [
+                "él / ella / usted",
+                "es",
+                "está",
+                "va",
+                "tiene"
+              ],
+              [
+                "nosotros / nosotras",
+                "somos",
+                "estamos",
+                "vamos",
+                "tenemos"
+              ],
+              [
+                "vosotros / vosotras",
+                "sois",
+                "estáis",
+                "vais",
+                "tenéis"
+              ],
+              [
+                "ellos / ellas / ustedes",
+                "son",
+                "están",
+                "van",
+                "tienen"
+              ]
+            ]
+          },
+          {
+            "type": "text",
+            "text": "**Tener** et **venir** cumulent deux irrégularités : la 1re personne en **-go** et la diphtongue **e → ie**. **Decir** a la 1re personne en -go et le changement **e → i**."
+          },
+          {
+            "type": "table",
+            "caption": "Venir et decir",
+            "columns": [
+              "Personne",
+              "venir (venir)",
+              "decir (dire)"
+            ],
+            "rows": [
+              [
+                "yo",
+                "vengo",
+                "digo"
+              ],
+              [
+                "tú",
+                "vienes",
+                "dices"
+              ],
+              [
+                "él / ella / usted",
+                "viene",
+                "dice"
+              ],
+              [
+                "nosotros / nosotras",
+                "venimos",
+                "decimos"
+              ],
+              [
+                "vosotros / vosotras",
+                "venís",
+                "decís"
+              ],
+              [
+                "ellos / ellas / ustedes",
+                "vienen",
+                "dicen"
+              ]
+            ]
+          },
+          {
+            "type": "table",
+            "caption": "Exemples",
+            "columns": [
+              "Espagnol",
+              "Français"
+            ],
+            "rows": [
+              [
+                "*Tengo quince años.*",
+                "J'ai quinze ans."
+              ],
+              [
+                "*Voy al instituto en autobús.*",
+                "Je vais au collège en bus."
+              ],
+              [
+                "*Somos de Lyon.*",
+                "Nous sommes de Lyon."
+              ],
+              [
+                "*¿Vienes conmigo?*",
+                "Tu viens avec moi ?"
+              ]
+            ]
+          },
+          {
+            "type": "callout",
+            "kind": "attention",
+            "title": "Está ou esta ?",
+            "text": "**Está** (avec accent) est le verbe estar : il est, il se trouve. **Esta** (sans accent) signifie « cette ».\n*¿Dónde está esta calle?* = Où se trouve cette rue ?"
+          },
+          {
+            "type": "callout",
+            "kind": "plus",
+            "title": "Pour aller plus loin",
+            "text": "Le choix entre **ser** et **estar** (les deux veulent dire « être ») est expliqué dans le cours « Ser, estar et hay »."
+          }
+        ],
+        "checkpoint": {
+          "variants": [
+            {
+              "prompt": "Complète : « Mis amigos y yo ___ a la playa. » (ir)",
+              "options": [
+                "vamos",
+                "van",
+                "vais",
+                "voy"
+              ],
+              "answer": 0,
+              "hint": "« Mis amigos y yo » = nosotros.",
+              "explanation": "Mis amigos y yo = nosotros → vamos."
+            },
+            {
+              "prompt": "Quelle est la forme de « tener » avec « ellos » ?",
+              "options": [
+                "tenen",
+                "tienen",
+                "tenéis",
+                "tienes"
+              ],
+              "answer": 1,
+              "hint": "Ellos est dans la botte.",
+              "explanation": "tener diphtongue (e → ie) à ellos → tienen."
+            },
+            {
+              "prompt": "Complète : « ¿De dónde ___ tú? » (ser)",
+              "options": [
+                "es",
+                "eres",
+                "sois",
+                "estás"
+              ],
+              "answer": 1,
+              "hint": "Le verbe demandé est ser, à la 2e personne du singulier.",
+              "explanation": "ser → tú eres : ¿De dónde eres? = D'où es-tu ?"
+            }
+          ]
+        }
+      },
+      {
+        "title": "Les verbes pronominaux et les emplois du présent",
+        "blocks": [
+          {
+            "type": "text",
+            "text": "Un verbe **pronominal** se reconnaît à **-se** à la fin de l'infinitif : *levantarse* (se lever). Au présent, le pronom change avec la personne et se place **devant** le verbe conjugué."
+          },
+          {
+            "type": "table",
+            "caption": "Deux verbes pronominaux",
+            "columns": [
+              "Personne",
+              "levantarse (se lever)",
+              "acostarse (se coucher, o → ue)"
+            ],
+            "rows": [
+              [
+                "yo",
+                "me levanto",
+                "me acuesto"
+              ],
+              [
+                "tú",
+                "te levantas",
+                "te acuestas"
+              ],
+              [
+                "él / ella / usted",
+                "se levanta",
+                "se acuesta"
+              ],
+              [
+                "nosotros / nosotras",
+                "nos levantamos",
+                "nos acostamos"
+              ],
+              [
+                "vosotros / vosotras",
+                "os levantáis",
+                "os acostáis"
+              ],
+              [
+                "ellos / ellas / ustedes",
+                "se levantan",
+                "se acuestan"
+              ]
+            ]
+          },
+          {
+            "type": "text",
+            "text": "Le présent sert à parler des **habitudes**, de ce qui est **vrai en général** et de ce qui se passe **en ce moment**. Les mots de fréquence aident à raconter une journée : *siempre* (toujours), *normalmente* (normalement), *a menudo* (souvent), *a veces* (parfois), *nunca* (jamais), *todos los días* (tous les jours), *los lunes* (le lundi), *por la mañana / por la tarde / por la noche* (le matin / l'après-midi / le soir)."
+          },
+          {
+            "type": "callout",
+            "kind": "attention",
+            "title": "Où placer nunca ?",
+            "text": "**Nunca** se place devant le verbe : *Nunca veo la tele.* Si on le met après le verbe, il faut **no** devant le verbe : *No veo nunca la tele.* (= Je ne regarde jamais la télé.)\nOn ne dit jamais *Nunca no veo la tele* ✘."
+          },
+          {
+            "type": "table",
+            "caption": "Un día de Lucía",
+            "columns": [
+              "Espagnol",
+              "Français"
+            ],
+            "rows": [
+              [
+                "*Lucía se despierta a las siete.*",
+                "Lucía se réveille à sept heures."
+              ],
+              [
+                "*Se ducha, desayuna y va al instituto en bicicleta.*",
+                "Elle se douche, prend son petit-déjeuner et va au collège à vélo."
+              ],
+              [
+                "*Por la tarde, juega al baloncesto con sus amigas.*",
+                "L'après-midi, elle joue au basket avec ses amies."
+              ],
+              [
+                "*Por la noche, hace los deberes y se acuesta a las diez.*",
+                "Le soir, elle fait ses devoirs et se couche à dix heures."
+              ]
+            ]
+          },
+          {
+            "type": "callout",
+            "kind": "essentiel",
+            "title": "L'essentiel",
+            "text": "Réguliers : -o, -as/-es, -a/-e, -amos/-emos/-imos, -áis/-éis/-ís, -an/-en.\nBotte (yo, tú, él, ellos) : e → ie, o → ue, e → i.\nYo irrégulier : hago, pongo, salgo, tengo, vengo, digo, conozco, doy, sé.\nPar cœur : ser, estar, ir, tener."
+          }
+        ],
+        "checkpoint": {
+          "variants": [
+            {
+              "prompt": "Complète : « Los domingos, mi padre ___ tarde. » (levantarse)",
+              "options": [
+                "se levanta",
+                "me levanto",
+                "se levantan",
+                "levanta se"
+              ],
+              "answer": 0,
+              "hint": "Mi padre = él. Quel pronom, et à quelle place ?",
+              "explanation": "Mi padre = él → se levanta (pronom se devant le verbe)."
+            },
+            {
+              "prompt": "Quelle phrase est correcte ?",
+              "options": [
+                "Nunca como pescado.",
+                "Nunca no como pescado.",
+                "No nunca como pescado.",
+                "Como no nunca pescado."
+              ],
+              "answer": 0,
+              "hint": "Relis l'encadré « Où placer nunca ? ».",
+              "explanation": "Nunca devant le verbe, sans no : Nunca como pescado. (Je ne mange jamais de poisson.)"
+            },
+            {
+              "prompt": "Complète : « Nosotras ___ a las once. » (acostarse)",
+              "options": [
+                "nos acuestamos",
+                "nos acostamos",
+                "se acuestan",
+                "os acostáis"
+              ],
+              "answer": 1,
+              "hint": "Nosotras est-il dans la botte ?",
+              "explanation": "Nosotras est hors de la botte : pas de diphtongue → nos acostamos."
+            }
+          ]
+        }
+      }
+    ],
+    "memo": [
+      {
+        "label": "Réguliers",
+        "text": "hablar : hablo, hablas, habla, hablamos, habláis, hablan.\ncomer : como, comes, come, comemos, coméis, comen.\nvivir : vivo, vives, vive, vivimos, vivís, viven."
+      },
+      {
+        "label": "La botte (diphtongues et e → i)",
+        "text": "Changement à yo, tú, él, ellos ; jamais à nosotros, vosotros.\nquerer : quiero, quieres, quiere, queremos, queréis, quieren.\npoder : puedo, puedes, puede, podemos, podéis, pueden.\njugar : juego, juegas, juega, jugamos, jugáis, juegan.\npedir : pido, pides, pide, pedimos, pedís, piden."
+      },
+      {
+        "label": "Yo irrégulier",
+        "text": "hacer → hago, poner → pongo, salir → salgo, traer → traigo, conocer → conozco, dar → doy, ver → veo, saber → sé."
+      },
+      {
+        "label": "Par cœur",
+        "text": "ser : soy, eres, es, somos, sois, son.\nestar : estoy, estás, está, estamos, estáis, están.\nir : voy, vas, va, vamos, vais, van.\ntener : tengo, tienes, tiene, tenemos, tenéis, tienen.\nvenir : vengo, vienes, viene, venimos, venís, vienen.\ndecir : digo, dices, dice, decimos, decís, dicen."
+      },
+      {
+        "label": "Pronominaux et repères",
+        "text": "me levanto, te levantas, se levanta, nos levantamos, os levantáis, se levantan.\nsiempre, a menudo, a veces, nunca (devant le verbe, ou no + verbe + nunca), todos los días, los lunes."
+      }
+    ]
+  },
+  "exercises": {
+    "duration_min": 25,
+    "instructions": "Fais les exercices dans l'ordre : les étoiles indiquent la difficulté. Quand il faut compléter un blanc, écris seulement le verbe conjugué (avec son pronom me, te, se… pour un verbe pronominal). Les corrigés s'affichent après validation.",
+    "pass_threshold": 8,
+    "texts": [],
+    "items": [
+      {
+        "id": "ex1",
+        "type": "short",
+        "stars": 1,
+        "lesson_part": 1,
+        "skills": [
+          "es-reg"
+        ],
+        "cognitive": "appliquer",
+        "prompt": "Complète au présent : « Mi hermana ___ en Barcelona. » (vivir)",
+        "answer": [
+          "vive"
+        ],
+        "solution": "vive : mi hermana = ella ; vivir est un verbe en -ir → vive."
+      },
+      {
+        "id": "ex2",
+        "type": "short",
+        "stars": 1,
+        "lesson_part": 1,
+        "skills": [
+          "es-reg"
+        ],
+        "cognitive": "appliquer",
+        "prompt": "Complète au présent : « Vosotros ___ mucho en clase. » (hablar)",
+        "answer": [
+          "habláis"
+        ],
+        "solution": "habláis : vosotros → terminaison -áis pour un verbe en -ar (avec accent sur le á)."
+      },
+      {
+        "id": "ex3",
+        "type": "qcm",
+        "stars": 1,
+        "lesson_part": 2,
+        "skills": [
+          "es-diph"
+        ],
+        "cognitive": "connaitre",
+        "prompt": "Quelle est la forme correcte de « poder » avec « nosotros » ?",
+        "options": [
+          "puedemos",
+          "podemos",
+          "pueden",
+          "podéis"
+        ],
+        "answer": 1,
+        "solution": "podemos : nosotros est hors de la botte, donc pas de diphtongue."
+      },
+      {
+        "id": "ex4",
+        "type": "short",
+        "stars": 1,
+        "lesson_part": 4,
+        "skills": [
+          "es-tres-irreg"
+        ],
+        "cognitive": "appliquer",
+        "prompt": "Complète au présent : « Yo ___ catorce años. » (tener)",
+        "answer": [
+          "tengo"
+        ],
+        "solution": "tengo : tener est irrégulier à la 1re personne (yo tengo = j'ai)."
+      },
+      {
+        "id": "ex5",
+        "type": "short",
+        "stars": 2,
+        "lesson_part": 2,
+        "skills": [
+          "es-diph"
+        ],
+        "cognitive": "appliquer",
+        "prompt": "Complète au présent : « La clase ___ a las ocho y media. » (empezar)",
+        "answer": [
+          "empieza"
+        ],
+        "solution": "empieza : la clase = ella, dans la botte → e devient ie."
+      },
+      {
+        "id": "ex6",
+        "type": "short",
+        "stars": 2,
+        "lesson_part": 3,
+        "skills": [
+          "es-irreg1"
+        ],
+        "cognitive": "appliquer",
+        "prompt": "Complète au présent : « Yo ___ la mesa antes de cenar. » (poner)",
+        "answer": [
+          "pongo"
+        ],
+        "solution": "pongo : poner est irrégulier à la 1re personne (yo pongo = je mets ; poner la mesa = mettre la table)."
+      },
+      {
+        "id": "ex7",
+        "type": "qcm",
+        "stars": 2,
+        "lesson_part": 3,
+        "skills": [
+          "es-irreg1"
+        ],
+        "cognitive": "appliquer",
+        "prompt": "Complète : « ¿Qué ___ (tú) los fines de semana? » (hacer)",
+        "options": [
+          "haces",
+          "hagas",
+          "hago",
+          "hace"
+        ],
+        "answer": 0,
+        "solution": "haces : hacer n'est irrégulier qu'à yo (hago) ; avec tú, il est régulier → haces. (Que fais-tu le week-end ?)"
+      },
+      {
+        "id": "ex8",
+        "type": "short",
+        "stars": 2,
+        "lesson_part": 5,
+        "skills": [
+          "es-pron-emploi",
+          "es-diph"
+        ],
+        "cognitive": "appliquer",
+        "prompt": "Complète au présent : « Mis hermanos ___ a las siete. » (despertarse)",
+        "answer": [
+          "se despiertan"
+        ],
+        "solution": "se despiertan : mis hermanos = ellos → pronom se, et diphtongue e → ie (dans la botte)."
+      },
+      {
+        "id": "ex9",
+        "type": "qcm",
+        "stars": 3,
+        "lesson_part": 4,
+        "skills": [
+          "es-diph",
+          "es-irreg1",
+          "es-tres-irreg"
+        ],
+        "cognitive": "analyser",
+        "prompt": "Une seule phrase ne contient aucune erreur. Laquelle ?",
+        "options": [
+          "Mi hermano juga al fútbol.",
+          "Nosotros queremos ir al cine y vosotros podéis venir.",
+          "Yo sabo nadar muy bien.",
+          "Ellas duermen y nosotros dormemos."
+        ],
+        "answer": 1,
+        "solution": "Nosotros queremos ir al cine y vosotros podéis venir : nosotros et vosotros ne diphtonguent pas. Les autres phrases devraient être : Mi hermano juega… ; Yo sé nadar… ; …nosotros dormimos."
+      },
+      {
+        "id": "ex10",
+        "type": "open",
+        "stars": 3,
+        "lesson_part": 5,
+        "skills": [
+          "es-ecrire",
+          "es-pron-emploi",
+          "es-diph",
+          "es-irreg1"
+        ],
+        "cognitive": "rediger",
+        "prompt": "Escribe cinco frases sobre tu día normal. Utilise au moins : un verbe à diphtongue, un verbe en -go à la 1re personne (hago, salgo, pongo…), un verbe pronominal et le verbe ir. Ajoute deux mots de fréquence.",
+        "solution": "Exemple : Normalmente me levanto a las siete. Siempre desayuno con mi hermano. Voy al instituto en autobús. Por la tarde, juego al tenis o hago los deberes. Los sábados salgo con mis amigos y nunca me acuesto antes de las once.\nVérifie : terminaison de chaque verbe, diphtongue seulement dans la botte, pronom (me, te, se…) devant le verbe pronominal."
+      }
+    ]
+  },
+  "evaluation": {
+    "duration_min": 25,
+    "conditions": "Sans la leçon, en 25 minutes. Pour les blancs, écris seulement le verbe conjugué (avec son pronom pour un verbe pronominal). Barème : A = 6 points · B = 8 points · C = 6 points.",
+    "total_points": 20,
+    "variants": [
+      {
+        "texts": [],
+        "sections": [
+          {
+            "label": "A · Je conjugue (6 points)",
+            "questions": [
+              {
+                "id": "q1",
+                "type": "short",
+                "points": 1,
+                "lesson_part": 1,
+                "skills": [
+                  "es-reg"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Complète : « Tú ___ en una casa muy grande. » (vivir)",
+                "answer": [
+                  "vives"
+                ],
+                "solution": "vives : verbe en -ir, tú → -es."
+              },
+              {
+                "id": "q2",
+                "type": "short",
+                "points": 1,
+                "lesson_part": 2,
+                "skills": [
+                  "es-diph"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Complète : « Ellos ___ al baloncesto. » (jugar)",
+                "answer": [
+                  "juegan"
+                ],
+                "solution": "juegan : jugar diphtongue u → ue dans la botte (ellos)."
+              },
+              {
+                "id": "q3",
+                "type": "short",
+                "points": 1,
+                "lesson_part": 3,
+                "skills": [
+                  "es-irreg1"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Complète : « Yo ___ con mis amigos el sábado. » (salir)",
+                "answer": [
+                  "salgo"
+                ],
+                "solution": "salgo : salir est irrégulier à la 1re personne."
+              },
+              {
+                "id": "q4",
+                "type": "short",
+                "points": 1,
+                "lesson_part": 2,
+                "skills": [
+                  "es-diph"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Complète : « ¿Cuánto ___ este libro? » (costar)",
+                "answer": [
+                  "cuesta"
+                ],
+                "solution": "cuesta : este libro = él, dans la botte → o devient ue."
+              },
+              {
+                "id": "q5",
+                "type": "short",
+                "points": 1,
+                "lesson_part": 4,
+                "skills": [
+                  "es-tres-irreg"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Complète : « Nosotros ___ al instituto a pie. » (ir)",
+                "answer": [
+                  "vamos"
+                ],
+                "solution": "vamos : ir → nosotros vamos."
+              },
+              {
+                "id": "q6",
+                "type": "short",
+                "points": 1,
+                "lesson_part": 5,
+                "skills": [
+                  "es-pron-emploi"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Complète : « Mi madre ___ a las seis. » (levantarse)",
+                "answer": [
+                  "se levanta"
+                ],
+                "solution": "se levanta : mi madre = ella → pronom se devant le verbe."
+              }
+            ]
+          },
+          {
+            "label": "B · Je choisis et j'explique (8 points)",
+            "questions": [
+              {
+                "id": "q7",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 2,
+                "skills": [
+                  "es-diph"
+                ],
+                "cognitive": "analyser",
+                "prompt": "Complète : « Vosotros ___ jugar conmigo. » (poder)",
+                "options": [
+                  "podéis",
+                  "puedéis",
+                  "pueden",
+                  "podemos"
+                ],
+                "answer": 0,
+                "solution": "podéis : vosotros est hors de la botte, pas de diphtongue."
+              },
+              {
+                "id": "q8",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 4,
+                "skills": [
+                  "es-tres-irreg"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Complète : « Yo siempre ___ la verdad. » (decir)",
+                "options": [
+                  "deco",
+                  "digo",
+                  "dico",
+                  "dice"
+                ],
+                "answer": 1,
+                "solution": "digo : decir → 1re personne en -go et e → i."
+              },
+              {
+                "id": "q9",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 4,
+                "skills": [
+                  "es-tres-irreg"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Complète : « Mi prima ___ un perro y dos gatos. » (tener)",
+                "options": [
+                  "tene",
+                  "tiene",
+                  "tienen",
+                  "tengo"
+                ],
+                "answer": 1,
+                "solution": "tiene : mi prima = ella, diphtongue e → ie."
+              },
+              {
+                "id": "q10",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 3,
+                "skills": [
+                  "es-irreg1"
+                ],
+                "cognitive": "analyser",
+                "prompt": "Quelle phrase est correcte ?",
+                "options": [
+                  "Yo conoco Madrid.",
+                  "Yo conozco Madrid.",
+                  "Yo conozo Madrid.",
+                  "Yo conoce Madrid."
+                ],
+                "answer": 1,
+                "solution": "Yo conozco Madrid : conocer → conozco à la 1re personne."
+              },
+              {
+                "id": "q11",
+                "type": "short",
+                "points": 2,
+                "lesson_part": 3,
+                "skills": [
+                  "es-irreg1"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Réécris la phrase à la 1re personne du singulier (yo) : « Hacemos los deberes y después vemos la tele. »",
+                "answer": [
+                  "Hago los deberes y después veo la tele.",
+                  "Yo hago los deberes y después veo la tele."
+                ],
+                "solution": "Hago los deberes y después veo la tele. — hacer → hago (1re personne en -go) ; ver → veo."
+              },
+              {
+                "id": "q12",
+                "type": "open",
+                "points": 2,
+                "lesson_part": 2,
+                "skills": [
+                  "es-diph"
+                ],
+                "cognitive": "analyser",
+                "prompt": "Explique en français pourquoi on écrit « quiero » (je veux) avec ie mais « queremos » (nous voulons) sans ie.",
+                "solution": "Querer est un verbe à diphtongue : le e du radical devient ie quand il porte l'accent tonique, c'est-à-dire à yo, tú, él et ellos (la botte). À nosotros et vosotros, l'accent tonique tombe sur la terminaison : le radical ne change pas, d'où queremos.",
+                "rubric": "1 pt : querer est un verbe à diphtongue (e → ie) quand le radical porte l'accent tonique / aux personnes de la botte (yo, tú, él, ellos). 1 pt : nosotros (et vosotros) sont hors de la botte, l'accent tombe sur la terminaison, donc pas de diphtongue."
+              }
+            ]
+          },
+          {
+            "label": "C · J'écris (6 points)",
+            "questions": [
+              {
+                "id": "q13",
+                "type": "open",
+                "points": 6,
+                "lesson_part": 5,
+                "skills": [
+                  "es-ecrire",
+                  "es-reg",
+                  "es-diph",
+                  "es-irreg1",
+                  "es-tres-irreg",
+                  "es-pron-emploi"
+                ],
+                "cognitive": "rediger",
+                "prompt": "Escribe un mensaje (60 a 80 palabras) a un amigo español para contarle tu día normal entre semana. Utilise au moins : deux verbes à diphtongue, deux verbes irréguliers à la 1re personne (hago, salgo, tengo, voy…), un verbe pronominal et trois mots de fréquence.",
+                "solution": "Exemple : ¡Hola, Pablo! Normalmente me despierto a las siete menos cuarto. Siempre desayuno cereales y voy al instituto en bicicleta. Las clases empiezan a las ocho. A mediodía como en el comedor con mis amigas. Por la tarde, a veces juego al voleibol. Después hago los deberes y salgo con mi perro. Nunca me acuesto tarde porque estoy cansada. ¿Y tú? ¿Qué haces? Un abrazo, Léa",
+                "rubric": "2 pts : verbes à diphtongue et irréguliers correctement conjugués (au moins deux de chaque). 1 pt : verbe pronominal correct (pronom devant le verbe). 1 pt : terminaisons des verbes réguliers exactes, accord avec le sujet. 1 pt : au moins trois mots de fréquence bien employés (nunca bien placé). 1 pt : message cohérent (salutation, formule finale), 60 à 80 mots, vocabulaire varié."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "texts": [],
+        "sections": [
+          {
+            "label": "A · Je conjugue (6 points)",
+            "questions": [
+              {
+                "id": "q1",
+                "type": "short",
+                "points": 1,
+                "lesson_part": 1,
+                "skills": [
+                  "es-reg"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Complète : « Ana y Pablo ___ en el comedor. » (comer)",
+                "answer": [
+                  "comen"
+                ],
+                "solution": "comen : Ana y Pablo = ellos, verbe en -er → -en."
+              },
+              {
+                "id": "q2",
+                "type": "short",
+                "points": 1,
+                "lesson_part": 2,
+                "skills": [
+                  "es-diph"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Complète : « Tú ___ mucho los fines de semana. » (dormir)",
+                "answer": [
+                  "duermes"
+                ],
+                "solution": "duermes : tú est dans la botte → o devient ue."
+              },
+              {
+                "id": "q3",
+                "type": "short",
+                "points": 1,
+                "lesson_part": 3,
+                "skills": [
+                  "es-irreg1"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Complète : « Yo ___ mi mochila al instituto. » (traer)",
+                "answer": [
+                  "traigo"
+                ],
+                "solution": "traigo : traer est irrégulier à la 1re personne."
+              },
+              {
+                "id": "q4",
+                "type": "short",
+                "points": 1,
+                "lesson_part": 2,
+                "skills": [
+                  "es-diph"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Complète : « En invierno ___ mucho en Galicia. » (llover)",
+                "answer": [
+                  "llueve"
+                ],
+                "solution": "llueve : llover diphtongue o → ue (il pleut)."
+              },
+              {
+                "id": "q5",
+                "type": "short",
+                "points": 1,
+                "lesson_part": 4,
+                "skills": [
+                  "es-tres-irreg"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Complète : « Nosotros ___ franceses. » (ser)",
+                "answer": [
+                  "somos"
+                ],
+                "solution": "somos : ser → nosotros somos."
+              },
+              {
+                "id": "q6",
+                "type": "short",
+                "points": 1,
+                "lesson_part": 5,
+                "skills": [
+                  "es-pron-emploi",
+                  "es-diph"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Complète : « Mis hermanos ___ a las diez. » (acostarse)",
+                "answer": [
+                  "se acuestan"
+                ],
+                "solution": "se acuestan : mis hermanos = ellos → pronom se, diphtongue o → ue."
+              }
+            ]
+          },
+          {
+            "label": "B · Je choisis et j'explique (8 points)",
+            "questions": [
+              {
+                "id": "q7",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 2,
+                "skills": [
+                  "es-diph"
+                ],
+                "cognitive": "analyser",
+                "prompt": "Complète : « Nosotros ___ ir al parque. » (querer)",
+                "options": [
+                  "quieremos",
+                  "queremos",
+                  "quieren",
+                  "queréis"
+                ],
+                "answer": 1,
+                "solution": "queremos : nosotros est hors de la botte, pas de diphtongue."
+              },
+              {
+                "id": "q8",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 3,
+                "skills": [
+                  "es-irreg1"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Complète : « Yo ___ de casa a las ocho. » (salir)",
+                "options": [
+                  "salo",
+                  "sale",
+                  "salgo",
+                  "salimos"
+                ],
+                "answer": 2,
+                "solution": "salgo : salir → 1re personne en -go."
+              },
+              {
+                "id": "q9",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 4,
+                "skills": [
+                  "es-tres-irreg"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Complète : « ¿___ (tú) a mi fiesta? » (venir)",
+                "options": [
+                  "Venes",
+                  "Vienes",
+                  "Viene",
+                  "Vengo"
+                ],
+                "answer": 1,
+                "solution": "Vienes : venir diphtongue e → ie à tú."
+              },
+              {
+                "id": "q10",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 3,
+                "skills": [
+                  "es-irreg1"
+                ],
+                "cognitive": "analyser",
+                "prompt": "Quelle phrase est correcte ?",
+                "options": [
+                  "Yo pedo un café.",
+                  "Yo pido un café.",
+                  "Yo pide un café.",
+                  "Yo piedo un café."
+                ],
+                "answer": 1,
+                "solution": "Yo pido un café : pedir → e devient i dans la botte ; yo → -o."
+              },
+              {
+                "id": "q11",
+                "type": "short",
+                "points": 2,
+                "lesson_part": 4,
+                "skills": [
+                  "es-tres-irreg",
+                  "es-irreg1"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Réécris la phrase à la 1re personne du singulier (yo) : « Tenemos hambre y ponemos la mesa. »",
+                "answer": [
+                  "Tengo hambre y pongo la mesa.",
+                  "Yo tengo hambre y pongo la mesa."
+                ],
+                "solution": "Tengo hambre y pongo la mesa. — tener → tengo ; poner → pongo (1re personne en -go)."
+              },
+              {
+                "id": "q12",
+                "type": "open",
+                "points": 2,
+                "lesson_part": 4,
+                "skills": [
+                  "es-tres-irreg",
+                  "es-diph"
+                ],
+                "cognitive": "analyser",
+                "prompt": "Explique en français pourquoi on dit que « tener » est doublement irrégulier, en t'appuyant sur les formes « tengo » et « tienes ».",
+                "solution": "Tener a deux irrégularités : la 1re personne du singulier se termine en -go (tengo), et le e du radical diphtongue en ie aux autres personnes de la botte (tienes, tiene, tienen). Nosotros et vosotros restent réguliers (tenemos, tenéis).",
+                "rubric": "1 pt : 1re personne irrégulière en -go (tengo). 1 pt : diphtongue e → ie aux autres personnes de la botte (tienes, tiene, tienen), pas à nosotros / vosotros."
+              }
+            ]
+          },
+          {
+            "label": "C · J'écris (6 points)",
+            "questions": [
+              {
+                "id": "q13",
+                "type": "open",
+                "points": 6,
+                "lesson_part": 5,
+                "skills": [
+                  "es-ecrire",
+                  "es-reg",
+                  "es-diph",
+                  "es-irreg1",
+                  "es-tres-irreg",
+                  "es-pron-emploi"
+                ],
+                "cognitive": "rediger",
+                "prompt": "Escribe un mensaje (60 a 80 palabras) a una amiga española para contarle tu fin de semana normal. Utilise au moins : deux verbes à diphtongue, deux verbes irréguliers à la 1re personne (hago, salgo, tengo, voy…), un verbe pronominal et trois mots de fréquence.",
+                "solution": "Exemple : ¡Hola, Marta! Los sábados me levanto tarde, a las diez. Siempre desayuno tostadas con mi familia. Por la tarde, a menudo juego al tenis con mi padre o voy a la piscina. A veces salgo con mis amigas al centro. El domingo hago los deberes y por la noche vemos una película. Nunca duermo mucho el domingo porque tengo clase el lunes. ¿Y tú? Besos, Léa",
+                "rubric": "2 pts : verbes à diphtongue et irréguliers correctement conjugués (au moins deux de chaque). 1 pt : verbe pronominal correct (pronom devant le verbe). 1 pt : terminaisons des verbes réguliers exactes, accord avec le sujet. 1 pt : au moins trois mots de fréquence bien employés (nunca bien placé). 1 pt : message cohérent (salutation, formule finale), 60 à 80 mots, vocabulaire varié."
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

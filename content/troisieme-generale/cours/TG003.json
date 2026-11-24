@@ -254,7 +254,7 @@
           { "label": "C · J'écris (5 points)", "questions": [
             { "id": "q12", "type": "open", "points": 2, "lesson_part": 3, "skills": ["fr-ecriture-subordonnees", "fr-relative"], "cognitive": "rediger",
               "prompt": "Relie chaque paire de phrases en une seule phrase grâce à un pronom relatif.\na) Nous avons visité un château. Ce château date du XIIe siècle.\nb) Je t'ai prêté un livre. Tu as beaucoup aimé ce livre.",
-              "solution": "a) « Nous avons visité un château qui date du XIIe siècle. »\nb) « Tu as beaucoup aimé le livre que je t'ai prêté. » (ou « Le livre que je t'ai prêté, tu l'as beaucoup aimé. »)",
+              "solution": "a) « Nous avons visité un château qui date du XIIe siècle. »\nb) « Tu as beaucoup aimé le livre que je t'ai prêté. » (ou « Je t'ai prêté un livre que tu as beaucoup aimé. »)",
               "rubric": "1 par phrase : 0,5 pour le bon pronom relatif (qui / que), 0,5 pour une phrase correcte qui garde le sens." },
             { "id": "q13", "type": "open", "points": 3, "lesson_part": 5, "skills": ["fr-ecriture-subordonnees", "fr-relative", "fr-completive"], "cognitive": "rediger",
               "prompt": "En deux ou trois phrases, raconte un souvenir de vacances. Tu dois employer au moins une subordonnée relative introduite par « dont » ou « où » et au moins une subordonnée conjonctive complétive. Recopie ensuite chaque subordonnée en indiquant sa nature.",
