@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { AlertTriangle, CheckCircle2, Compass, Gauge, Lightbulb, ListChecks, Sparkles } from 'lucide-react';
 import { sql } from '@/lib/db';
 import { requireParent } from '@/lib/access';
-import { aiOverview, PROVIDERS, TASKS } from '@/lib/ai';
+import { aiOverview } from '@/lib/ai';
 import { studentProfile, type CourseFacts, type Profile } from '@/lib/profile';
 import { ORIGINE_LABEL, IMPLICATION_LABEL, type ReportData } from '@/lib/report';
 import { PageTitle } from '@/components/Shell';
@@ -38,7 +38,7 @@ export default async function Bilan({ searchParams }: { searchParams: Promise<{ 
   const consent = { correction: !!student.settings.ai_correction, bilan: !!student.settings.ai_bilan };
   const sent = await sql<{ id: string; task: string; provider: string; model: string; eu: boolean; payload: string; error: string | null; created_at: Date }[]>`
     select id::text, task, provider, model, eu, payload, error, created_at from ai_requests where student_id = ${student.id} order by created_at desc limit 50`;
-  const where = (t: 'correction' | 'bilan') => { const c = ai.tasks[t]; return c ? `${PROVIDERS[c.provider].name} (${PROVIDERS[c.provider].eu ? 'Union européenne' : PROVIDERS[c.provider].where})` : 'aucune IA configurée'; };
+  const where = (t: 'correction' | 'bilan') => { const c = ai.tasks[t]; const i = c ? ai.catalog[c.provider] : null; return i ? `${i.name} (${i.eu ? 'Union européenne' : i.where})` : 'aucune IA configurée'; };
 
   return (
     <Screen top={<>
@@ -134,7 +134,7 @@ export default async function Bilan({ searchParams }: { searchParams: Promise<{ 
                 <BulkCheck formId="bulk-envois" value={r.id} label={`envoi du ${day(r.created_at)}`} />
                 <details className="flex-1 min-w-0">
                   <summary className="cursor-pointer"><strong>{r.task === 'bilan' ? 'Bilan' : 'Correction'}</strong> · {r.created_at.toLocaleString('fr-FR', { timeZone: 'Europe/Paris', day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' })}
-                    {' · '}{PROVIDERS[r.provider as keyof typeof PROVIDERS]?.name ?? r.provider} <span className={r.eu ? 'text-brand-dark' : 'text-warm-dark'}>({r.eu ? 'UE' : 'hors UE'})</span>{r.error ? <span className="text-warm-dark"> · échec</span> : ''}</summary>
+                    {' · '}{ai.catalog[r.provider]?.name ?? r.provider} <span className={r.eu ? 'text-brand-dark' : 'text-warm-dark'}>({r.eu ? 'UE' : 'hors UE'})</span>{r.error ? <span className="text-warm-dark"> · échec</span> : ''}</summary>
                   <pre className="mt-2 max-h-72 overflow-auto rounded-lg bg-surface-2 border border-line p-3 text-xs whitespace-pre-wrap break-words">{r.payload}</pre>
                 </details>
               </div>
@@ -152,7 +152,7 @@ export default async function Bilan({ searchParams }: { searchParams: Promise<{ 
           {reports.map(r => (
             <div key={r.id} className="flex flex-wrap items-center gap-3 py-2.5 border-t border-soft text-sm">
               <BulkCheck formId="bulk-bilans" value={r.id} label={`bilan du ${day(r.created_at)}`} />
-              <span className="flex-1"><strong>{day(r.created_at)}</strong> · {ORIGINE_LABEL[r.data.origine.principale]} · confiance {r.data.confiance}<span className="muted"> · {r.provider === 'claude' ? 'Claude' : 'Gemini'}</span></span>
+              <span className="flex-1"><strong>{day(r.created_at)}</strong> · {ORIGINE_LABEL[r.data.origine.principale]} · confiance {r.data.confiance}<span className="muted"> · {ai.catalog[r.provider]?.name ?? r.provider}</span></span>
               {r.id === shown?.id ? <span className="pill bg-brand-soft text-brand-dark">Affiché</span> : <Link className="font-semibold" href={`/parent/bilan?eleve=${student.id}&rapport=${r.id}`}>Voir</Link>}
             </div>
           ))}
@@ -190,7 +190,7 @@ function ReportView({ r, name }: { r: Report; name: string }) {
   const tone = d.origine.principale === 'implication' ? 'bg-warm-soft text-warm-dark' : d.origine.principale === 'indetermine' ? 'bg-soft text-ink-2' : 'bg-brand-soft text-brand-ink';
   return (
     <div className="flex flex-col gap-4">
-      <p className="m-0 muted text-xs">Bilan du {day(r.created_at)} · {r.provider === 'claude' ? 'Claude' : 'Gemini'} ({r.model}) · confiance <strong>{d.confiance}</strong> : {d.confiance_raison}</p>
+      <p className="m-0 muted text-xs">Bilan du {day(r.created_at)} · {r.provider} ({r.model}) · confiance <strong>{d.confiance}</strong> : {d.confiance_raison}</p>
       <p className="m-0 text-[15.5px] leading-relaxed">{d.synthese}</p>
       <div className="grid gap-3 md:grid-cols-2">
         <div className={`rounded-2xl px-4 py-3 ${tone}`}>

@@ -1,4 +1,4 @@
-import { aiOverview, PROVIDERS, TASKS, type Task } from '@/lib/ai';
+import { aiOverview, TASKS, type Task } from '@/lib/ai';
 import { Logo } from '@/components/Logo';
 
 export const metadata = { title: 'Confidentialité' };
@@ -37,7 +37,7 @@ export default async function Privacy() {
           <div className="rounded-xl bg-surface-2 border border-line px-4 py-3 text-sm">
             <strong>Fournisseurs utilisés actuellement</strong>
             {used.length === 0 ? <p className="m-0 mt-1">Aucun : l’IA n’est pas active.</p> : (
-              <ul className="m-0 mt-1 pl-5 list-disc">{used.map(t => { const c = ai.tasks[t]!; const p = PROVIDERS[c.provider]; return (
+              <ul className="m-0 mt-1 pl-5 list-disc">{used.map(t => { const c = ai.tasks[t]!; const p = ai.catalog[c.provider] ?? { name: c.provider, eu: false, where: 'lieu inconnu' }; return (
                 <li key={t}>{TASKS[t].label} : <strong>{p.name}</strong>, données traitées {p.eu ? 'dans l’Union européenne' : `aux ${p.where}`}.</li>); })}</ul>
             )}
           </div>

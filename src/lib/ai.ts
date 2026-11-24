@@ -10,17 +10,29 @@ import type { Attempt } from './evaluation';
 // IA de correction branchée (choix du propriétaire, 24/11/2026) : la clé est saisie dans l'espace Contenu,
 // l'IA propose les points et les commentaires, le parent valide toujours la note.
 
-export type Provider = 'mistral' | 'claude' | 'gemini';
+// Fournisseurs intégrés (mistral, claude, gemini) + fournisseurs ajoutés par l'administrateur (« x-… », API compatible OpenAI)
+export type Provider = string;
+export type ProviderKind = 'claude' | 'gemini' | 'openai';
+export type ProviderInfo = { id: string; name: string; eu: boolean; where: string; help: string; placeholder: string; kind: ProviderKind; base?: string; custom?: boolean };
 export type Task = 'correction' | 'bilan' | 'cours';
-export type AiConfig = { provider: Provider; model: string; key: string };
+export type AiConfig = { provider: Provider; model: string; key: string; kind: ProviderKind; base?: string; eu: boolean; name: string };
 export type Model = { id: string; label: string };
 
 // Où les données sont traitées : seules les IA « Europe » reçoivent des données d'élèves, sauf dérogation explicite
-export const PROVIDERS: Record<Provider, { name: string; eu: boolean; where: string; help: string; placeholder: string }> = {
-  mistral: { name: 'Mistral (France)', eu: true, where: 'Union européenne', help: 'Clé sur console.mistral.ai › API Keys (offre payante).', placeholder: 'Clé Mistral' },
-  claude: { name: 'Claude (Anthropic)', eu: false, where: 'États-Unis', help: 'Clé sur console.anthropic.com › API Keys.', placeholder: 'sk-ant-…' },
-  gemini: { name: 'Gemini (Google)', eu: false, where: 'États-Unis', help: 'Clé sur aistudio.google.com › Get API key (offre payante).', placeholder: 'AIza…' },
+export const BUILTIN: Record<'mistral' | 'claude' | 'gemini', ProviderInfo> = {
+  mistral: { id: 'mistral', kind: 'openai', name: 'Mistral (France)', eu: true, where: 'Union européenne', help: 'Clé sur console.mistral.ai › API Keys (offre payante).', placeholder: 'Clé Mistral' },
+  claude: { id: 'claude', kind: 'claude', name: 'Claude (Anthropic)', eu: false, where: 'États-Unis', help: 'Clé sur console.anthropic.com › API Keys (crédits API, distincts de l’abonnement claude.ai).', placeholder: 'sk-ant-…' },
+  gemini: { id: 'gemini', kind: 'gemini', name: 'Gemini (Google)', eu: false, where: 'États-Unis', help: 'Clé sur aistudio.google.com › Get API key (offre payante).', placeholder: 'AIza…' },
 };
+export type CustomProvider = { name: string; base_url: string; eu: boolean; where: string };
+// Fiche d'un fournisseur (intégré ou ajouté) ; inconnu → fiche neutre, jamais considéré comme européen
+export function providerInfo(id: string, s: Pick<AiSettings, 'custom'>): ProviderInfo {
+  if (id in BUILTIN) return BUILTIN[id as keyof typeof BUILTIN];
+  const c = s.custom?.[id];
+  if (!c) return { id, kind: 'openai', name: id, eu: false, where: 'lieu inconnu', help: '', placeholder: '' };
+  return { id, kind: 'openai', name: c.name, eu: c.eu, where: c.eu ? 'Union européenne' : (c.where || 'hors Union européenne'), base: c.base_url, custom: true,
+    help: `API compatible OpenAI · ${c.base_url}`, placeholder: 'Clé' };
+}
 export const TASKS: Record<Task, { label: string; desc: string; studentData: boolean }> = {
   correction: { label: 'Correction des copies', desc: 'Réponses rédigées des élèves (sans nom), énoncés et corrigés.', studentData: true },
   bilan: { label: 'Bilan pédagogique et test de positionnement', desc: 'Temps de travail, notes, questions ratées (sans nom).', studentData: true },
@@ -55,8 +67,9 @@ export type AiSettings = {
   allow_non_eu: boolean;      // dérogation : données d'élèves envoyées hors Union européenne
   retention_days: number;     // conservation des bilans et du journal des envois
   auto_cours: boolean;        // rédiger automatiquement les leçons de rattrapage proposées par les bilans
+  custom: Record<string, CustomProvider>;   // fournisseurs ajoutés par l'administrateur
 };
-const EMPTY: AiSettings = { providers: {}, tasks: {}, enabled: true, allow_non_eu: false, retention_days: 365, auto_cours: false };
+const EMPTY: AiSettings = { providers: {}, tasks: {}, enabled: true, allow_non_eu: false, retention_days: 365, auto_cours: false, custom: {} };
 
 export async function loadAiSettings(): Promise<AiSettings> {
   const [r] = await sql<{ value: AiSettings }[]>`select value from app_settings where key = 'ia'`;
@@ -78,9 +91,15 @@ export async function saveProviderKey(provider: Provider, key: string, models: M
   s.providers[provider] = { key_sealed: seal(key), key_hint: `…${key.slice(-4)}`, models, checked_at: new Date().toISOString() };
   await saveAll(s, userId);
 }
+export async function saveCustomProvider(id: string, c: CustomProvider, userId: string) {
+  const s = await loadAiSettings();
+  s.custom = { ...s.custom, [id]: c };
+  await saveAll(s, userId);
+}
 export async function removeProviderKey(provider: Provider, userId: string) {
   const s = await loadAiSettings();
   delete s.providers[provider];
+  if (s.custom?.[provider]) { const { [provider]: _gone, ...rest } = s.custom; s.custom = rest; }   // fournisseur ajouté : retiré entièrement
   for (const t of Object.keys(s.tasks) as Task[]) if (s.tasks[t]?.provider === provider) delete s.tasks[t];
   await saveAll(s, userId);
 }
@@ -97,14 +116,17 @@ export async function aiOverview() {
   const s = await loadAiSettings();
   const providers = Object.fromEntries(Object.entries(s.providers).map(([k, v]) => [k, { key_hint: v!.key_hint, models: v!.models, checked_at: v!.checked_at }])) as Partial<Record<Provider, { key_hint: string; models: Model[]; checked_at: string }>>;
   const ready = (t: Task) => taskProblem(s, t) === null;
-  return { ...s, providers, ready: { correction: ready('correction'), bilan: ready('bilan'), cours: ready('cours') } };
+  const ids = [...Object.keys(BUILTIN), ...Object.keys(s.custom ?? {})];
+  const catalog = Object.fromEntries(ids.map(id => [id, providerInfo(id, s)])) as Record<string, ProviderInfo>;
+  return { ...s, providers, catalog, ready: { correction: ready('correction'), bilan: ready('bilan'), cours: ready('cours') } };
 }
 function taskProblem(s: AiSettings, task: Task): string | null {
   if (!s.enabled) return 'L’IA est désactivée (Contenu › IA).';
   const t = s.tasks[task];
   if (!t) return `Aucune IA choisie pour « ${TASKS[task].label} » (Contenu › IA).`;
-  if (!s.providers[t.provider]?.key_sealed) return `Pas de clé ${PROVIDERS[t.provider].name} enregistrée (Contenu › IA).`;
-  if (TASKS[task].studentData && !PROVIDERS[t.provider].eu && !s.allow_non_eu) return `${PROVIDERS[t.provider].name} traite les données hors de l’Union européenne : choisissez une IA européenne pour « ${TASKS[task].label} », ou accordez la dérogation (Contenu › IA).`;
+  const info = providerInfo(t.provider, s);
+  if (!s.providers[t.provider]?.key_sealed) return `Pas de clé ${info.name} enregistrée (Contenu › IA).`;
+  if (TASKS[task].studentData && !info.eu && !s.allow_non_eu) return `${info.name} traite les données hors de l’Union européenne : choisissez une IA européenne pour « ${TASKS[task].label} », ou accordez la dérogation (Contenu › IA).`;
   return null;
 }
 // Configuration d'une tâche, après toutes les vérifications (IA active, clé, règle Europe)
@@ -113,14 +135,15 @@ export async function aiConfigFor(task: Task): Promise<{ cfg: AiConfig } | { err
   const problem = taskProblem(s, task);
   if (problem) return { error: problem };
   const t = s.tasks[task]!;
-  try { return { cfg: { provider: t.provider, model: t.model, key: open(s.providers[t.provider]!.key_sealed) } }; }
+  const info = providerInfo(t.provider, s);
+  try { return { cfg: { provider: t.provider, model: t.model, key: open(s.providers[t.provider]!.key_sealed), kind: info.kind, base: oaBase(info), eu: info.eu, name: info.name } }; }
   catch { return { error: 'La clé enregistrée ne peut plus être lue (configuration du serveur changée) : ressaisissez-la (Contenu › IA).' }; }
 }
 
 // Journal des envois à l'IA (ce qui est parti, chez qui, quand), consultable par le parent, purgé après la durée de conservation
 export async function logAiRequest(studentId: string | null, task: Task, cfg: AiConfig, payload: string, error?: string) {
   await sql`insert into ai_requests (student_id, task, provider, model, eu, payload, error)
-    values (${studentId}, ${task}, ${cfg.provider}, ${cfg.model}, ${PROVIDERS[cfg.provider].eu}, ${payload}, ${error ?? null})`;
+    values (${studentId}, ${task}, ${cfg.provider}, ${cfg.model}, ${cfg.eu}, ${payload}, ${error ?? null})`;
 }
 export async function purgeExpired() {
   const { retention_days: d } = await loadAiSettings();
@@ -133,34 +156,40 @@ export async function purgeExpired() {
 // ── Fournisseurs (adresses remplaçables uniquement pour les tests automatiques)
 const geminiBase = () => process.env.AI_GEMINI_BASE_URL ?? 'https://generativelanguage.googleapis.com';
 const mistralBase = () => process.env.AI_MISTRAL_BASE_URL ?? 'https://api.mistral.ai';
-const mistralError = async (r: Response) => {
-  const j = await r.json().catch(() => null) as { message?: string; detail?: unknown } | null;
-  return `Mistral répond ${r.status}${r.status === 429 ? ' (quota atteint, réessayez plus tard)' : ''}${j?.message ? ` : ${String(j.message).slice(0, 160)}` : ''}`;
+// adresse de base « …/v1 » d'une API compatible OpenAI
+export function oaBase(info: ProviderInfo): string | undefined {
+  if (info.kind !== 'openai') return undefined;
+  return info.id === 'mistral' ? `${mistralBase()}/v1` : (info.base ?? '').replace(/\/+$/, '');
+}
+const oaError = async (name: string, r: Response) => {
+  const j = await r.json().catch(() => null) as { message?: string; error?: { message?: string } | string; detail?: unknown } | null;
+  const m = j?.message ?? (typeof j?.error === 'string' ? j.error : j?.error?.message);
+  return `${name} répond ${r.status}${r.status === 429 ? ' (quota atteint, réessayez plus tard)' : ''}${m ? ` : ${String(m).slice(0, 160)}` : ''}`;
 };
 const claude = (key: string) => new Anthropic({ apiKey: key, baseURL: process.env.AI_ANTHROPIC_BASE_URL || undefined, maxRetries: 2, timeout: 180_000 });
 
 // Vérifie la clé et liste les modèles utilisables
-export async function checkKey(provider: Provider, key: string): Promise<{ ok: true; models: { id: string; label: string }[] } | { ok: false; error: string }> {
+export async function checkKey(info: ProviderInfo, key: string, manualModels: string[] = []): Promise<{ ok: true; models: Model[] } | { ok: false; error: string }> {
   try {
-    if (provider === 'claude') {
+    if (info.kind === 'claude') {
       await claude(key).models.retrieve('claude-haiku-5-5');
       return { ok: true, models: CLAUDE_MODELS };
     }
-    if (provider === 'mistral') {
-      const r = await fetch(`${mistralBase()}/v1/models`, { headers: { authorization: `Bearer ${key}` }, signal: AbortSignal.timeout(30_000) });
-      if (!r.ok) return { ok: false, error: r.status === 401 || r.status === 403 ? 'Clé refusée par Mistral.' : await mistralError(r) };
-      const j = await r.json() as { data?: MistralModel[] } | MistralModel[];
-      const list = (Array.isArray(j) ? j : j.data ?? []).filter(m => m.capabilities?.completion_chat && !m.deprecation
-        && !/embed|moderation|ocr|codestral|devstral|voxtral|pixtral|ministral-3b|saba|transcribe/i.test(m.id));
-      // un modèle par famille : de préférence l'alias « -latest » (toujours à jour)
-      const seen = new Set<string>(); const models: Model[] = [];
-      for (const m of [...list].sort((a, b) => Number(b.id.endsWith('-latest')) - Number(a.id.endsWith('-latest')))) {
-        const fam = m.id.replace(/-(latest|\d{4})$/, '');
-        if (seen.has(fam)) continue; seen.add(fam);
-        models.push({ id: m.id, label: mistralLabel(m.id) });
+    if (info.kind === 'openai') {
+      const base = oaBase(info)!;
+      const r = await fetch(`${base}/models`, { headers: { authorization: `Bearer ${key}` }, signal: AbortSignal.timeout(30_000) }).catch(() => null);
+      if (r && (r.status === 401 || r.status === 403)) return { ok: false, error: `Clé refusée par ${info.name}.` };
+      let listed: OaModel[] = [];
+      if (r?.ok) { const j = await r.json().catch(() => ({})) as { data?: OaModel[] } | OaModel[]; listed = Array.isArray(j) ? j : j.data ?? []; }
+      const models = info.id === 'mistral' ? mistralModels(listed) : openaiModels(listed);
+      // fournisseur qui ne publie pas sa liste : modèles indiqués à la main, vérifiés par un essai réel
+      for (const id of manualModels) if (!models.some(m => m.id === id)) {
+        const err = await pingModel(info, key, id);
+        if (err) return { ok: false, error: `Modèle « ${id} » : ${err}` };
+        models.unshift({ id, label: id });
       }
-      models.sort((a, b) => mistralRank(a.id) - mistralRank(b.id));
-      return models.length ? { ok: true, models } : { ok: false, error: 'Aucun modèle de conversation disponible pour cette clé Mistral.' };
+      if (models.length) return { ok: true, models };
+      return { ok: false, error: r && !r.ok ? `${await oaError(info.name, r)} — indiquez le nom du modèle à la main.` : `Aucun modèle de conversation trouvé chez ${info.name} : indiquez le nom du modèle à la main.` };
     }
     const r = await fetch(`${geminiBase()}/v1beta/models?pageSize=200`, { headers: { 'x-goog-api-key': key } });
     if (!r.ok) return { ok: false, error: r.status === 400 || r.status === 403 ? 'Clé refusée par Google.' : `Google répond ${r.status}.` };
@@ -176,23 +205,43 @@ export async function checkKey(provider: Provider, key: string): Promise<{ ok: t
   }
 }
 
-type MistralModel = { id: string; capabilities?: { completion_chat?: boolean }; deprecation?: string | null };
+type OaModel = { id: string; capabilities?: { completion_chat?: boolean }; deprecation?: string | null };
+function mistralModels(list: OaModel[]): Model[] {
+  const ok = list.filter(m => m.capabilities?.completion_chat && !m.deprecation
+    && !/embed|moderation|ocr|codestral|devstral|voxtral|pixtral|ministral-3b|saba|transcribe/i.test(m.id));
+  // un modèle par famille : de préférence l'alias « -latest » (toujours à jour)
+  const seen = new Set<string>(); const models: Model[] = [];
+  for (const m of [...ok].sort((a, b) => Number(b.id.endsWith('-latest')) - Number(a.id.endsWith('-latest')))) {
+    const fam = m.id.replace(/-(latest|\d{4})$/, '');
+    if (seen.has(fam)) continue; seen.add(fam);
+    models.push({ id: m.id, label: mistralLabel(m.id) });
+  }
+  return models.sort((a, b) => mistralRank(a.id) - mistralRank(b.id));
+}
+// autres API compatibles OpenAI : on écarte ce qui n'est pas un modèle de conversation
+function openaiModels(list: OaModel[]): Model[] {
+  return list.filter(m => m.id && !m.deprecation && m.capabilities?.completion_chat !== false
+    && !/embed|whisper|tts|dall-?e|moderation|transcri|image|audio|rerank|ocr|speech|vision-only/i.test(m.id))
+    .map(m => ({ id: m.id, label: m.id }));
+}
+
 const mistralRank = (id: string) => /large/i.test(id) ? 0 : /medium/i.test(id) ? 1 : /small/i.test(id) ? 2 : 3;
 const mistralLabel = (id: string) => /large/i.test(id) ? `${id} — le plus capable (bilans)` : /medium/i.test(id) ? `${id} — intermédiaire` : /small/i.test(id) ? `${id} — économique (corrections)` : id;
 // Modèle conseillé par tâche parmi ceux de la clé
-export function defaultModel(provider: Provider, models: Model[], task: Task): string | undefined {
-  if (provider === 'claude') return task === 'correction' ? 'claude-sonnet-5-5' : 'claude-opus-5-5';
-  if (provider === 'mistral') return (models.find(m => (task === 'correction' ? /small/ : /large/).test(m.id)) ?? models.find(m => /medium/.test(m.id)) ?? models[0])?.id;
+export function defaultModel(info: ProviderInfo, models: Model[], task: Task): string | undefined {
+  if (info.kind === 'claude') return task === 'correction' ? 'claude-sonnet-5-5' : 'claude-opus-5-5';
+  if (info.kind === 'openai' && info.id !== 'mistral') return models[0]?.id;
+  if (info.id === 'mistral') return (models.find(m => (task === 'correction' ? /small/ : /large/).test(m.id)) ?? models.find(m => /medium/.test(m.id)) ?? models[0])?.id;
   return geminiCandidates(models)[0];
 }
 // Vérifie qu'un modèle répond vraiment (une demande minuscule) ; renvoie l'erreur, ou null
-export async function pingModel(provider: Provider, key: string, model: string): Promise<string | null> {
-  if (provider === 'gemini') return pingGemini(key, model);
-  if (provider === 'claude') return null;   // la vérification de la clé suffit (liste de modèles fixe)
+export async function pingModel(info: ProviderInfo, key: string, model: string): Promise<string | null> {
+  if (info.kind === 'gemini') return pingGemini(key, model);
+  if (info.kind === 'claude') return null;   // la vérification de la clé suffit (liste de modèles fixe)
   try {
-    const r = await fetch(`${mistralBase()}/v1/chat/completions`, { method: 'POST', headers: { 'content-type': 'application/json', authorization: `Bearer ${key}` },
+    const r = await fetch(`${oaBase(info)}/chat/completions`, { method: 'POST', headers: { 'content-type': 'application/json', authorization: `Bearer ${key}` },
       body: JSON.stringify({ model, messages: [{ role: 'user', content: 'Réponds simplement OK.' }], max_tokens: 5 }), signal: AbortSignal.timeout(30_000) });
-    return r.ok ? null : await mistralError(r);
+    return r.ok ? null : await oaError(info.name, r);
   } catch (e) { return `Connexion impossible : ${(e as Error).message}`; }
 }
 
@@ -233,7 +282,7 @@ Réponds par un objet JSON : { "commentaire_general": "…", "questions": [ { "i
 
 // Appel générique : réponse JSON validée par un schéma (sortie structurée chez Claude, JSON + schéma décrit chez Gemini)
 export async function askJson<S extends z.ZodType>(cfg: AiConfig, schema: S, system: string, user: string, effort: 'low' | 'medium' | 'high' = 'medium'): Promise<z.infer<S>> {
-  if (cfg.provider === 'claude') {
+  if (cfg.kind === 'claude') {
     const withFallback = cfg.model !== 'claude-haiku-5-5';   // repli automatique si le modèle décline (pas proposé sur Haiku)
     const res = await claude(cfg.key).beta.messages.parse({
       model: cfg.model,
@@ -250,14 +299,16 @@ export async function askJson<S extends z.ZodType>(cfg: AiConfig, schema: S, sys
   }
   const described = `${system}\n\nFormat de réponse obligatoire (JSON Schema) :\n${JSON.stringify(z.toJSONSchema(schema))}`;
   const parse = (text: string) => schema.safeParse((() => { try { return JSON.parse(text.replace(/^```(?:json)?\s*|\s*```$/g, '')); } catch { return null; } })());
-  if (cfg.provider === 'mistral') {
-    const r = await fetch(`${mistralBase()}/v1/chat/completions`, {
+  if (cfg.kind === 'openai') {
+    const send = (format: boolean) => fetch(`${cfg.base}/chat/completions`, {
       method: 'POST', headers: { 'content-type': 'application/json', authorization: `Bearer ${cfg.key}` },
       body: JSON.stringify({ model: cfg.model, messages: [{ role: 'system', content: described }, { role: 'user', content: user }],
-        response_format: { type: 'json_object' }, max_tokens: 16000 }),
+        ...(format ? { response_format: { type: 'json_object' } } : {}), max_tokens: 16000 }),
       signal: AbortSignal.timeout(240_000),
     });
-    if (!r.ok) throw new Error(await mistralError(r));
+    let r = await send(true);
+    if (r.status === 400 || r.status === 422) { const t = await r.clone().text(); if (/response_format|json_object/i.test(t)) r = await send(false); }   // mode JSON non pris en charge
+    if (!r.ok) throw new Error(await oaError(cfg.name, r));
     const j = await r.json() as { choices?: { message?: { content?: string | { text?: string }[] }; finish_reason?: string }[] };
     const c = j.choices?.[0]?.message?.content;
     const parsed = parse(typeof c === 'string' ? c : (c ?? []).map(x => x.text ?? '').join(''));
@@ -284,7 +335,7 @@ export async function askJson<S extends z.ZodType>(cfg: AiConfig, schema: S, sys
 
 // Longue réponse en texte libre (un cours complet en JSON : jusqu'à ~30 000 jetons) ; Claude en flux pour éviter les délais
 export async function askText(cfg: AiConfig, system: string, user: string, maxTokens = 32000, onProgress?: (chars: number) => void): Promise<string> {
-  if (cfg.provider === 'claude') {
+  if (cfg.kind === 'claude') {
     const withFallback = cfg.model !== 'claude-haiku-5-5';
     const stream = claude(cfg.key).beta.messages.stream({
       model: cfg.model, max_tokens: maxTokens, system, messages: [{ role: 'user', content: user }],
@@ -299,14 +350,14 @@ export async function askText(cfg: AiConfig, system: string, user: string, maxTo
     return msg.content.map(b => b.type === 'text' ? b.text : '').join('');
   }
   // réponse reçue au fil de l'eau (SSE) : pas de coupure quand la rédaction dépasse 5 minutes, et avancement visible
-  if (cfg.provider === 'mistral') {
-    const r = await fetch(`${mistralBase()}/v1/chat/completions`, {
+  if (cfg.kind === 'openai') {
+    const r = await fetch(`${cfg.base}/chat/completions`, {
       method: 'POST', headers: { 'content-type': 'application/json', authorization: `Bearer ${cfg.key}`, accept: 'text/event-stream' },
       body: JSON.stringify({ model: cfg.model, messages: [{ role: 'system', content: system }, { role: 'user', content: user }], response_format: { type: 'json_object' }, max_tokens: maxTokens, stream: true }),
       signal: AbortSignal.timeout(1_800_000),
     });
     if (!r.ok) {
-      const err = await mistralError(r);
+      const err = await oaError(cfg.name, r);
       // limite de longueur du modèle plus basse que demandée : on réessaie avec la moitié
       if ((r.status === 400 || r.status === 422) && /max_tokens|token/i.test(err) && maxTokens > 8000) return askText(cfg, system, user, Math.floor(maxTokens / 2), onProgress);
       throw new Error(err);
@@ -363,10 +414,10 @@ const askCopy = (cfg: AiConfig, system: string, copy: string): Promise<GradedCop
 
 // Modèle Gemini retiré par Google entre-temps : on passe seul sur le plus récent qui répond (renvoie une note, ou une erreur)
 export async function ensureGeminiModel(cfg: AiConfig): Promise<{ note?: string; error?: string }> {
-  if (cfg.provider !== 'gemini') return {};
+  if (cfg.kind !== 'gemini') return {};
   const err = await pingGemini(cfg.key, cfg.model);
   if (!err?.includes(' 404')) return {};
-  const list = await checkKey('gemini', cfg.key);
+  const list = await checkKey(BUILTIN.gemini, cfg.key);
   let next = '';
   if (list.ok) for (const id of geminiCandidates(list.models).filter(id => id !== cfg.model).slice(0, 6)) if (!(await pingGemini(cfg.key, id))) { next = id; break; }
   if (!next) return { error: `Le modèle ${cfg.model} n’est plus disponible chez Google et aucun autre ne répond : vérifiez Contenu › IA de correction.` };

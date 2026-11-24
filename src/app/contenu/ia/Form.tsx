@@ -1,23 +1,32 @@
 'use client';
-import { startTransition, useActionState } from 'react';
-import { saveKey, saveTasks, runAutoNow, type KeyState, type TaskState } from './actions';
+import { startTransition, useActionState, useEffect, useState } from 'react';
+import { saveKey, saveTasks, runAutoNow, addProvider, type KeyState, type TaskState } from './actions';
 
 type Model = { id: string; label: string };
-type ProviderView = { id: 'mistral' | 'claude' | 'gemini'; name: string; eu: boolean; where: string; help: string; placeholder: string; hint?: string; models: Model[] };
+type ProviderView = { id: string; custom?: boolean; name: string; eu: boolean; where: string; help: string; placeholder: string; hint?: string; models: Model[] };
+
+// Page prête (code chargé) : avant, un clic enverrait le formulaire par le navigateur, clé comprise dans l'adresse.
+function useReady() { const [r, setR] = useState(false); useEffect(() => setR(true), []); return r; }
 
 // envoi manuel : pas de remise à zéro automatique du formulaire après l'enregistrement
 const send = (action: (fd: FormData) => void) => (e: React.FormEvent<HTMLFormElement>) => { e.preventDefault(); const fd = new FormData(e.currentTarget); startTransition(() => action(fd)); };
 
 export function KeyForm({ p }: { p: ProviderView }) {
   const [state, action, pending] = useActionState<KeyState, FormData>(saveKey, undefined);
+  const ready = useReady();
   return (
-    <form onSubmit={send(action)} className="flex flex-col gap-2" data-provider={p.id}>
+    <form method="post" onSubmit={send(action)} className="flex flex-col gap-2" data-provider={p.id}>
       <input type="hidden" name="provider" value={p.id} />
       <label className="flex flex-col gap-1.5 text-sm font-semibold">Clé {p.name} {p.hint && <span className="muted font-normal">(enregistrée : {p.hint} — collez-en une autre pour la remplacer)</span>}
         <input className="field font-mono" name="key" type="password" autoComplete="off" placeholder={p.hint ? 'Clé enregistrée' : p.placeholder} required />
       </label>
+      {p.custom && (
+        <label className="flex flex-col gap-1.5 text-sm font-semibold">Modèles à ajouter à la main <span className="muted font-normal">(facultatif, si le fournisseur ne publie pas sa liste ; séparés par des virgules)</span>
+          <input className="field font-mono" name="models" autoComplete="off" placeholder="ex. glm-4.6" />
+        </label>
+      )}
       <div className="flex flex-wrap items-center gap-3">
-        <button className="btn btn-primary" type="submit" disabled={pending}>{pending ? 'Vérification…' : 'Vérifier et enregistrer'}</button>
+        <button className="btn btn-primary" type="submit" disabled={pending || !ready}>{pending ? 'Vérification…' : 'Vérifier et enregistrer'}</button>
         <span className="muted text-xs">{p.help}</span>
       </div>
       {state?.error && <p role="alert" className="m-0 rounded-xl bg-warm-soft text-warm-dark px-4 py-2.5 text-sm">{state.error}</p>}
@@ -31,9 +40,10 @@ export function TaskForm({ providers, tasks, current, enabled, allowNonEu, reten
   current: Record<string, { provider: string; model: string } | undefined>; enabled: boolean; allowNonEu: boolean; retention: number; autoCours: boolean;
 }) {
   const [state, action, pending] = useActionState<TaskState, FormData>(saveTasks, undefined);
+  const ready = useReady();
   const usable = providers.filter(p => p.hint);
   return (
-    <form onSubmit={send(action)} className="flex flex-col gap-4">
+    <form method="post" onSubmit={send(action)} className="flex flex-col gap-4">
       {usable.length === 0 && <p className="m-0 text-sm">Enregistrez d’abord au moins une clé ci-dessus.</p>}
       {tasks.map(t => {
         const cur = current[t.id];
@@ -74,17 +84,48 @@ export function TaskForm({ providers, tasks, current, enabled, allowNonEu, reten
       </label>
       {state?.error && <p role="alert" className="m-0 rounded-xl bg-warm-soft text-warm-dark px-4 py-3 text-sm">{state.error}</p>}
       {state?.ok && <p role="status" className="m-0 rounded-xl bg-brand-soft text-brand-ink px-4 py-3 text-sm">{state.ok}{state.notes?.length ? ` ${state.notes.join(' ')}` : ''}</p>}
-      <div><button className="btn btn-primary" type="submit" disabled={pending || usable.length === 0}>{pending ? 'Vérification des modèles…' : 'Enregistrer les réglages'}</button></div>
+      <div><button className="btn btn-primary" type="submit" disabled={pending || !ready || usable.length === 0}>{pending ? 'Vérification des modèles…' : 'Enregistrer les réglages'}</button></div>
     </form>
   );
 }
 
 export function RunAutoButton() {
   const [state, action, pending] = useActionState<TaskState, FormData>(async () => runAutoNow(), undefined);
+  const ready = useReady();
   return (
-    <form onSubmit={send(action)} className="flex flex-wrap items-center gap-3">
-      <button className="btn" type="submit" disabled={pending}>{pending ? 'Vérification…' : 'Vérifier les automatismes maintenant'}</button>
+    <form method="post" onSubmit={send(action)} className="flex flex-wrap items-center gap-3">
+      <button className="btn" type="submit" disabled={pending || !ready}>{pending ? 'Vérification…' : 'Vérifier les automatismes maintenant'}</button>
       {state?.ok && <span role="status" className="text-sm">{state.ok}</span>}
     </form>
+  );
+}
+
+// Ajouter un fournisseur d'IA compatible OpenAI (GLM, OpenAI, OVHcloud, Scaleway, Infomaniak…)
+export function AddProviderForm() {
+  const [state, action, pending] = useActionState<KeyState, FormData>(addProvider, undefined);
+  const ready = useReady();
+  return (
+    <details className="rounded-2xl border border-dashed border-line-strong p-4" open={!!state}>
+      <summary className="cursor-pointer font-semibold">+ Ajouter un fournisseur d’IA</summary>
+      <form method="post" onSubmit={send(action)} className="flex flex-col gap-3 mt-3" data-provider="nouveau">
+        <p className="m-0 muted text-sm">Pour tout fournisseur dont l’API est compatible OpenAI (la plupart : GLM / Z.ai, OpenAI, DeepSeek, OVHcloud, Scaleway, Infomaniak…). L’adresse et le nom du modèle figurent dans sa documentation.</p>
+        <div className="grid gap-3 sm:grid-cols-2">
+          <label className="flex flex-col gap-1.5 text-sm font-semibold">Nom affiché<input className="field" name="name" required placeholder="ex. GLM (Z.ai)" autoComplete="off" /></label>
+          <label className="flex flex-col gap-1.5 text-sm font-semibold">Adresse de l’API<input className="field font-mono" name="base_url" required placeholder="ex. https://api.z.ai/api/paas/v4" autoComplete="off" /></label>
+          <label className="flex flex-col gap-1.5 text-sm font-semibold">Clé<input className="field font-mono" name="key" type="password" required autoComplete="off" /></label>
+          <label className="flex flex-col gap-1.5 text-sm font-semibold">Modèles <span className="muted font-normal">(facultatif si le fournisseur publie sa liste)</span><input className="field font-mono" name="models" placeholder="ex. glm-4.6" autoComplete="off" /></label>
+        </div>
+        <fieldset className="flex flex-wrap items-center gap-x-5 gap-y-2 text-sm border-0 p-0 m-0">
+          <legend className="font-semibold mb-1">Où les données sont-elles traitées ?</legend>
+          <label className="flex items-center gap-2"><input type="radio" name="eu" value="non" defaultChecked className="accent-[var(--color-brand)]" />Hors de l’Union européenne</label>
+          <label className="flex items-center gap-2"><input type="radio" name="eu" value="oui" className="accent-[var(--color-brand)]" />Dans l’Union européenne (contrat à l’appui)</label>
+          <label className="flex items-center gap-2">Pays / région <input className="field !py-1.5 !min-h-0 w-40" name="where" placeholder="ex. Chine" autoComplete="off" /></label>
+        </fieldset>
+        <p className="m-0 muted text-xs">Hors UE : utilisable librement pour la rédaction des cours (aucune donnée d’élève), et pour la correction ou le bilan seulement avec la dérogation.</p>
+        {state?.error && <p role="alert" className="m-0 rounded-xl bg-warm-soft text-warm-dark px-4 py-2.5 text-sm">{state.error}</p>}
+        {state?.ok && <p role="status" className="m-0 rounded-xl bg-brand-soft text-brand-ink px-4 py-2.5 text-sm">{state.ok}</p>}
+        <div><button className="btn btn-primary" type="submit" disabled={pending || !ready}>{pending ? 'Vérification…' : 'Vérifier et ajouter'}</button></div>
+      </form>
+    </details>
   );
 }

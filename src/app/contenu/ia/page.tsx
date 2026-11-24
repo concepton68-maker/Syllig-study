@@ -1,11 +1,11 @@
 import Link from 'next/link';
 import { ShieldCheck } from 'lucide-react';
 import { requireUser } from '@/lib/auth';
-import { aiOverview, PROVIDERS, TASKS, type Provider } from '@/lib/ai';
+import { aiOverview, TASKS } from '@/lib/ai';
 import { PageTitle } from '@/components/Shell';
 import { Screen } from '@/components/Layout';
 import { ConfirmButton } from '@/components/ConfirmButton';
-import { KeyForm, TaskForm, RunAutoButton } from './Form';
+import { KeyForm, TaskForm, RunAutoButton, AddProviderForm } from './Form';
 import { removeKey, retryJobs, deleteJobs } from './actions';
 import { sql } from '@/lib/db';
 import { BulkBar, BulkCheck } from '@/components/Bulk';
@@ -17,14 +17,13 @@ export const dynamic = 'force-dynamic';
 export default async function AiPage() {
   await requireUser('admin');
   const o = await aiOverview();
-  const order: Provider[] = ['mistral', 'claude', 'gemini'];
-  const providers = order.map(id => ({ id, ...PROVIDERS[id], hint: o.providers[id]?.key_hint, models: o.providers[id]?.models ?? [] }));
+  const providers = Object.values(o.catalog).map(info => ({ ...info, hint: o.providers[info.id]?.key_hint, models: o.providers[info.id]?.models ?? [] }));
   const jobs = await sql<{ id: string; kind: string; status: string; attempts: number; error: string | null; created_at: Date; finished_at: Date | null; started_at: Date | null; progress: string | null; label: string | null }[]>`
     select j.id::text, j.kind, j.status, j.attempts, j.error, j.created_at, j.finished_at, j.started_at, j.progress,
       coalesce(c.title, s.first_name, (select title from courses x join eval_attempts a on a.course_id = x.id where a.id::text = j.payload->>'attemptId')) as label
     from jobs j left join courses c on c.id::text = j.payload->>'courseId' left join students s on s.id::text = j.payload->>'studentId'
     order by j.id desc limit 40`;
-  const status = (t: 'correction' | 'bilan' | 'cours') => { const c = o.tasks[t]; return c ? `${PROVIDERS[c.provider].name} · ${c.model}${o.ready[t] ? '' : ' (bloqué)'}` : 'aucune IA'; };
+  const status = (t: 'correction' | 'bilan' | 'cours') => { const c = o.tasks[t]; return c ? `${o.catalog[c.provider]?.name ?? c.provider} · ${c.model}${o.ready[t] ? '' : ' (bloqué)'}` : 'aucune IA'; };
   return (
     <Screen top={<PageTitle kicker="IA" title="IA de correction et de bilan"
       sub="L’IA propose ; le parent valide toujours les notes. Les données d’élèves ne partent que chez un fournisseur européen, sauf dérogation explicite." />}>
@@ -41,13 +40,17 @@ export default async function AiPage() {
           <div key={p.id} className="rounded-2xl border border-line p-4 flex flex-col gap-3">
             <div className="flex flex-wrap items-center gap-2">
               <strong className="text-[16px]">{p.name}</strong>
-              <span className={`pill ${p.eu ? 'bg-brand-soft text-brand-dark' : 'bg-warm-soft text-warm-dark'}`}>{p.eu ? 'Données traitées dans l’Union européenne' : `Données traitées aux ${p.where}`}</span>
+              <span className={`pill ${p.eu ? 'bg-brand-soft text-brand-dark' : 'bg-warm-soft text-warm-dark'}`}>{p.eu ? 'Données traitées dans l’Union européenne' : p.where === 'États-Unis' ? 'Données traitées aux États-Unis' : `Données traitées hors UE (${p.where})`}</span>
+              {p.custom && <span className="pill bg-soft text-ink-2">Ajouté · compatible OpenAI</span>}
               {p.hint && <span className="pill bg-soft text-ink-2">Clé {p.hint} · {p.models.length} modèle{p.models.length > 1 ? 's' : ''}</span>}
-              {p.hint && <form action={removeKey.bind(null, p.id)} className="ml-auto"><ConfirmButton className="btn btn-danger" danger confirmLabel="Retirer la clé" message={`Retirer la clé ${p.name} ? Les tâches qui l’utilisent n’auront plus d’IA.`}>Retirer la clé</ConfirmButton></form>}
+              {(p.hint || p.custom) && <form action={removeKey.bind(null, p.id)} className="ml-auto"><ConfirmButton className="btn btn-danger" danger
+                confirmLabel={p.custom ? 'Retirer ce fournisseur' : 'Retirer la clé'}
+                message={p.custom ? `Retirer ${p.name} (et sa clé) ? Les tâches qui l’utilisent n’auront plus d’IA.` : `Retirer la clé ${p.name} ? Les tâches qui l’utilisent n’auront plus d’IA.`}>{p.custom ? 'Retirer ce fournisseur' : 'Retirer la clé'}</ConfirmButton></form>}
             </div>
             <KeyForm p={p} />
           </div>
         ))}
+        <AddProviderForm />
       </section>
 
       <section className="card max-w-[860px] flex flex-col gap-4" aria-labelledby="taches">

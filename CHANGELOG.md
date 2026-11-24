@@ -322,3 +322,12 @@ Recette complète de l'espace élève (un agent testeur a joué l'élève sur t�
   - plus d'exercices pour les notions prioritaires.
   Ils restent modifiables, avec « Revenir aux réglages proposés ». La rédaction par l'IA utilise les mêmes réglages.
 - Page de relecture d'un cours : carte « Paramètres du cours », avec les valeurs du fichier, qui sont celles appliquées aux élèves. Une alerte n'apparaît que si c'est pertinent pour l'élève : temps imparti différent de celui demandé (c'est son chrono), un seul sujet, barème différent de 20, moins de 5 exercices, leçon deux fois trop longue ou trop courte.
+
+## 0.31 — 24/11/2026
+- Contenu › IA : « + Ajouter un fournisseur d'IA » pour toute API compatible OpenAI (GLM / Z.ai, OpenAI, DeepSeek, OVHcloud, Scaleway, Infomaniak…).
+  - On indique : nom, adresse de l'API (complète, même sans « /v1 »), clé, lieu de traitement des données.
+  - Les modèles peuvent être saisis à la main si le fournisseur ne publie pas sa liste ; chacun est vérifié par un vrai essai.
+  - Le fournisseur se retire en un clic.
+- Règle RGPD inchangée : un fournisseur hors UE est utilisable librement pour la rédaction des cours (aucune donnée d'élève), et pour la correction ou le bilan seulement avec la dérogation. Un fournisseur ajouté n'est jamais choisi d'office pour des données d'élèves.
+- Le lieu de traitement est affiché partout : page IA, Famille › Bilan, journal des envois, page Confidentialité.
+- Sécurité : les formulaires de clés restent inactifs tant que la page n'est pas prête. Avant, un clic trop rapide pouvait mettre la clé dans l'adresse de la page.
