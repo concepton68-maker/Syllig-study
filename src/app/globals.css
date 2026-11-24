@@ -368,9 +368,12 @@ section.card > h2, section.card > div > h2, section.card h2.text-xl { font-size:
   .tabbar { position: fixed; left: 0; right: 0; bottom: 0; z-index: 5; display: flex; justify-content: space-around; gap: 4px;
             padding: 6px 8px calc(6px + env(safe-area-inset-bottom)); background: rgb(255 255 255 / .94); backdrop-filter: blur(12px);
             border-top: 1px solid var(--color-line); box-shadow: 0 -8px 24px -16px rgb(15 20 40 / .3); }
-  .tab-link { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 2px; padding: 6px 4px; border-radius: 12px;
+  .tab-link { flex: 1 1 0; min-width: 0; display: flex; flex-direction: column; align-items: center; gap: 2px; padding: 6px 4px; border-radius: 12px;
               font-size: 11px; font-weight: 600; color: var(--color-muted); text-decoration: none; }
   .tab-link[aria-current="page"] { color: var(--color-brand); background: var(--color-brand-soft); }
+  .tab-link > span:last-child { max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .tabbar:has(> .tab-link:nth-child(7)) { gap: 0; padding-left: 4px; padding-right: 4px; }
+  .tabbar:has(> .tab-link:nth-child(7)) .tab-link { font-size: 10px; padding: 6px 2px; }
   .tab-badge { position: absolute; top: -6px; right: -10px; min-width: 18px; height: 18px; padding: 0 5px; border-radius: 999px; font-size: 10.5px; font-weight: 700;
                background: var(--color-warm); color: #fff; display: inline-flex; align-items: center; justify-content: center; }
 

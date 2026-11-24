@@ -9,6 +9,7 @@ import { PageTitle } from '@/components/Shell';
 import { MasteryPill } from '@/components/Mastery';
 import { PaneScreen, Panes, Pane } from '@/components/Layout';
 import { EmptyState, PriorityPill } from '@/components/EmptyState';
+import { Compass } from 'lucide-react';
 
 export const metadata = { title: 'Aujourd’hui' };
 export const dynamic = 'force-dynamic';
@@ -28,6 +29,8 @@ export default async function Today() {
   // « Ensuite » : uniquement des cours disponibles où il reste quelque chose à faire
   const upcoming = items.filter(c => c !== next && c.published && !['done', 'soon'].includes(nextStep(c, student.settings.retry_delay_days).kind)).slice(0, 5);
   const soonCount = items.filter(c => !c.published).length;
+  const [placement] = await sql<{ id: string; status: string; total: number; duration_min: number }[]>`
+    select id, status, total, duration_min from placement_tests where student_id = ${student.id} and status <> 'termine' order by created_at desc limit 1`;
   const acquired = items.filter(c => c.mastery >= 4);
   const reviews = items.filter(c => c.next_review_at && new Date(c.next_review_at).getTime() < Date.now() + 7 * 864e5)
     .sort((a, b) => new Date(a.next_review_at!).getTime() - new Date(b.next_review_at!).getTime());
@@ -63,6 +66,14 @@ export default async function Today() {
     }>
       <Panes>
         <Pane className="flex-[999_1_600px]">
+          {placement && (
+            <section className="card p-6 flex flex-wrap items-center gap-4 border-2 border-accent">
+              <span className="kpi-icon tone-brand !w-12 !h-12" aria-hidden="true"><Compass size={24} /></span>
+              <span className="flex-[1_1_240px]"><span className="lbl">À faire en premier</span><strong className="block text-lg">Test de positionnement</strong>
+                <span className="muted text-sm">{placement.total} questions · environ {placement.duration_min} min · ne compte pas dans tes notes</span></span>
+              <Link className="btn btn-primary" href={`/eleve/positionnement/${placement.id}`}>{placement.status === 'en_cours' ? 'Reprendre le test' : 'Faire le test'}</Link>
+            </section>
+          )}
           {next && step ? (
             <section className="card p-7 flex flex-col gap-5 border-2 border-brand">
               <div className="flex flex-wrap justify-between gap-3">

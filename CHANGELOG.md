@@ -271,3 +271,12 @@ Recette complète de l'espace élève (un agent testeur a joué l'élève sur t�
 - Concerné : validation et modification d'une note, changement de niveau ou d'année, toutes les actions groupées, publication et écartement des cours, « Refaire les exercices ».
 - Bulles des formulaires : à la place de « Veuillez renseigner ce champ » du navigateur, un message en français sous le champ (« Ce champ est à remplir », « Au moins 8 caractères »…), qui disparaît dès que l'on tape.
 - Infobulles (icônes clé et déconnexion, version, « Pas maintenant »…) aux couleurs de l'application.
+
+## 0.26 — 24/11/2026
+- Famille › Bilan (nouveau) :
+  - « Ce que montrent les chiffres » : pour chaque cours, temps réel de leçon comparé à la durée prévue, points de contrôle réussis du premier coup, exercices, évaluation (note, temps utilisé, questions vides). Signaux clairs : leçon survolée, évaluation bâclée, copie vide, écart exercices / évaluation, distraction.
+  - « Bilan par l'IA » : synthèse, origine probable des difficultés (lacunes des années précédentes, notions de cette année, manque d'implication, ou pas encore possible de trancher) avec les preuves chiffrées, implication, matière par matière, bases à consolider, conseils pour les parents, limites et niveau de confiance. Aucun prénom n'est envoyé à l'IA. Historique des bilans, avec suppression groupée.
+  - « Test de positionnement » : préparé par le bilan sur les bases des années précédentes, proposé à l'élève en un clic, corrigé automatiquement. Résultats par notion et par niveau, avec une alerte si le test a été fait trop vite. Le bilan suivant en tient compte.
+- Élève : le test apparaît dans « Aujourd'hui ». Réponses enregistrées au fil de l'eau, chrono, mode concentration, puis correction expliquée.
+- Contenu › Leçons à créer (nouveau) : les leçons de rattrapage proposées par les bilans, regroupées (« proposée 2 fois »), sans nom d'élève. Actions groupées : marquer comme créées, écarter, remettre à créer.
+- Téléphone : la barre d'onglets de l'espace Contenu tient sur une ligne.

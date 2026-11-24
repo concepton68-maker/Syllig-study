@@ -47,6 +47,9 @@ export async function resetStudent(studentId: string, actorId: string, opts: { p
     const [running] = await tx`select 1 from eval_attempts where student_id = ${studentId} and status = 'in_progress'`;
     if (running) throw new ResetRefused('Une évaluation est en train d’être passée : attendez la fin avant de tout réinitialiser.');
     const counts = await wipe(tx as unknown as typeof sql, studentId, null, true);
+    // nouveau départ : les bilans et tests de positionnement de l'ancien parcours n'ont plus de sens
+    await tx`delete from placement_tests where student_id = ${studentId}`;
+    await tx`delete from student_reports where student_id = ${studentId}`;
     if (opts.purgeLog) {
       // seule voie d'effacement du journal (même mécanisme que le droit à l'effacement)
       await tx`set local syllig.allow_log_purge = 'on'`;

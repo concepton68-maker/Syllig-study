@@ -10,6 +10,8 @@ export const metadata = { title: 'Journal d’activité' };
 export const dynamic = 'force-dynamic';
 
 const EVENT: Record<string, string> = {
+  bilan_ia: 'Bilan pédagogique demandé à l’IA', positionnement_propose: 'Test de positionnement proposé',
+  positionnement_commence: 'Test de positionnement commencé', positionnement_termine: 'Test de positionnement terminé',
   seance_terminee: 'Séance terminée', lecon_terminee: 'Leçon terminée', point_controle_reussi: 'Point de contrôle réussi',
   point_controle_a_reessayer: 'Point de contrôle à réessayer', exercices_remis: 'Exercices remis', exercices_termines: 'Exercices terminés',
   evaluation_commencee: 'Évaluation commencée', evaluation_remise: 'Copie remise', evaluation_remise_automatiquement: 'Copie remise à la fin du temps',
@@ -45,7 +47,7 @@ const FILTERS: Record<string, { label: string; match: (e: string) => boolean }> 
   tout: { label: 'Tout', match: () => true },
   evaluations: { label: 'Évaluations', match: e => e.startsWith('evaluation') || e === 'note_modifiee' || e === 'niveau_atteint' },
   travail: { label: 'Leçons et exercices', match: e => /^(seance|lecon|point_controle|exercices)/.test(e) },
-  parent: { label: 'Actions du parent', match: e => /(autorisee|reportee|exportees|importees|reinitialise|niveau_corrige|annee_scolaire|note_modifiee)/.test(e) },
+  parent: { label: 'Actions du parent', match: e => /(autorisee|reportee|exportees|importees|reinitialise|niveau_corrige|annee_scolaire|note_modifiee|bilan_ia|positionnement_propose)/.test(e) },
 };
 const PAGE = 100;
 
