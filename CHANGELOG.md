@@ -199,3 +199,10 @@ Première version numérotée (déjà en ligne avant numérotation : socle, gén
   - Les questions déjà répondues ont un contour coloré.
 - Exercices : la consigne passe dans la liste des questions, ce qui laisse plus de place aux questions sur les petits écrans.
 - Le défilement compte désormais comme une activité : la fenêtre de pause n'apparaît plus pendant la lecture.
+
+## 0.18 — 24/11/2026
+- **Départ à zéro pour Kausar**, à la demande du parent. Sont effacés :
+  - l'avancement des cours, les leçons, les exercices, les évaluations et les notes ;
+  - les points, les séances et le journal d'activité.
+- Le dossier scolaire de l'année 2026-2027 en 3e générale repart d'aujourd'hui, et le nouveau journal commence par « Parcours réinitialisé ».
+- Le compte, le mot de passe, le niveau (3e générale), les réglages et le thème sont conservés.
