@@ -15,6 +15,6 @@
 ## Repères techniques
 - Next.js 15 (App Router, actions serveur), PostgreSQL 16 (postgres.js), Tailwind v4, Docker Compose derrière Caddy.
 - Migrations SQL dans `db/migrations` (numérotées, appliquées une fois) ; journal d'activité en lecture seule et chaîné.
-- Tests : `tests/reset-db.sh` puis `BASE=… node tests/e2e-parcours.mjs`, `e2e-actions-groupees.mjs`, `e2e-reinitialisation.mjs`, `e2e-dossier.mjs` ; pour les cours : `node scripts/seed.mjs` puis `COURS=TG001,TG034 node tests/e2e-cours-complet.mjs` (parcours complet, 20/20 attendu).
+- Tests : `tests/reset-db.sh` puis `BASE=… node tests/e2e-parcours.mjs`, `e2e-actions-groupees.mjs`, `e2e-reinitialisation.mjs`, `e2e-dossier.mjs` ; après `node scripts/seed.mjs` : `e2e-eleve-scenarios.mjs`, `e2e-sauvegarde.mjs` ; pour les cours : `node scripts/seed.mjs` puis `COURS=TG001,TG034 node tests/e2e-cours-complet.mjs` (parcours complet, 20/20 attendu).
 - Niveaux : un dossier `content/<niveau>/programme.json` par niveau (chargé au démarrage) ; `content/<niveau>/cours/*.json` = cours prêts, publiés automatiquement s’ils n’ont encore aucune version.
 - Dossier scolaire : table `student_years` (une année par ligne) ; `src/lib/school-years.ts`.

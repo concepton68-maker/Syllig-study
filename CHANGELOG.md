@@ -206,3 +206,27 @@ Première version numérotée (déjà en ligne avant numérotation : socle, gén
   - les points, les séances et le journal d'activité.
 - Le dossier scolaire de l'année 2026-2027 en 3e générale repart d'aujourd'hui, et le nouveau journal commence par « Parcours réinitialisé ».
 - Le compte, le mot de passe, le niveau (3e générale), les réglages et le thème sont conservés.
+
+## 0.19 — 24/11/2026
+Recette complète de l'espace élève (un agent testeur a joué l'élève sur téléphone et sur ordinateur). Corrections :
+- **Aucune réponse perdue** (exercices et évaluation) :
+  - enregistrement moins d'une seconde après la frappe, et au départ de la page (Quitter, onglet, rechargement) ;
+  - le serveur fusionne les réponses au lieu de les remplacer : une page rechargée ne peut plus effacer une réponse ;
+  - la page relit les dernières réponses enregistrées à l'ouverture.
+- « Refaire les exercices » repart d'un questionnaire vide.
+- Leçon : le bouton « Suivant » se débloque dès que le point de contrôle est réussi.
+- Dossier scolaire lisible sur téléphone, sans débordement.
+- Ordinateurs à écran peu haut : en-têtes compacts, la zone de questions gagne 50 %.
+- Détails :
+  - une leçon commencée affiche « Leçon en cours » et « Continuer » ;
+  - pendant une demande d'évaluation, l'accueil indique « en attente de l'accord » ;
+  - « +50 points » n'est annoncé qu'au moment où ils sont gagnés ;
+  - une réponse vide ne peut plus être cochée « Réussi » ;
+  - recharger la page n'est plus compté comme une sortie de fenêtre ;
+  - les tableaux des leçons sont lisibles sur téléphone ;
+  - page « introuvable » en français ;
+  - le total de la copie s'affiche dès l'ouverture côté parent ;
+  - l'onglet du bas s'appelle « Thème ».
+- Nouveaux tests :
+  - `e2e-eleve-scenarios.mjs` : accord du parent, fin du temps, export et import, révision, 2e tentative ;
+  - `e2e-sauvegarde.mjs` : aucune réponse perdue.

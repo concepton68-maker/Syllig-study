@@ -25,7 +25,7 @@ export default async function EvaluationPage({ params }: { params: Promise<{ id:
   if (attempt?.status === 'submitted') redirect(`/eleve/cours/${course.id}/bilan/${attempt.id}`);
 
   const header = (
-    <div className="card p-4 flex flex-wrap items-center justify-between gap-3">
+    <div className="card p-4 flex flex-wrap items-center justify-between gap-3 qhead">
       <div className="flex items-center gap-3 flex-wrap">
         {attempt?.status !== 'in_progress' && <Link className="btn" href={`/eleve/cours/${course.id}`}>‹ Quitter</Link>}
         <div><div className="lbl">{course.subject} · {course.chapter}</div><h1 className="font-[family-name:var(--font-display)] !text-lg font-bold m-0 leading-snug">{course.title} · ③ Évaluation{attempt ? ` · tentative ${attempt.attempt_no}` : ''}</h1></div>

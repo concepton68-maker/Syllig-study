@@ -4,7 +4,7 @@ import type { PublicQuestion, SupportText } from '@/lib/course-format';
 import { RichText } from '@/components/RichText';
 import { Stars, SupportTextView } from '@/components/CourseBlocks';
 import { AnswerProgress } from '@/components/AnswerProgress';
-import { saveExerciseDraft, submitExercises, validateExercises } from './actions';
+import { submitExercises, validateExercises } from './actions';
 
 export type Solved = { solution: string; auto: boolean | null; expected?: string };
 
@@ -43,9 +43,9 @@ export function TextsAside({ texts }: { texts: SupportText[] }) {
   );
 }
 
-export function ExercisesPlayer({ courseId, items, texts, initial, submitted, solved, checked, initialSelf, threshold, after, instructions }: {
+export function ExercisesPlayer({ courseId, items, texts, initial, submitted, solved, checked, initialSelf, threshold, after, instructions, pointsJustEarned = false }: {
   courseId: string; items: PublicQuestion[]; texts: SupportText[]; initial: Record<string, string>; submitted: boolean;
-  solved: Record<string, Solved> | null; checked: boolean; initialSelf: Record<string, boolean>; threshold: number; after?: React.ReactNode; instructions?: React.ReactNode;
+  solved: Record<string, Solved> | null; checked: boolean; initialSelf: Record<string, boolean>; threshold: number; after?: React.ReactNode; instructions?: React.ReactNode; pointsJustEarned?: boolean;
 }) {
   const [answers, setAnswers] = useState(initial);
   const [self, setSelf] = useState<Record<string, boolean>>(initialSelf);
@@ -57,13 +57,45 @@ export function ExercisesPlayer({ courseId, items, texts, initial, submitted, so
   const list = useRef<HTMLDivElement>(null);
   useEffect(() => { list.current?.scrollTo({ top: 0 }); }, [tab]);
 
-  useEffect(() => () => { if (timer.current) clearTimeout(timer.current); }, []);
+  // Sauvegarde fiable : seules les réponses modifiées sont envoyées (le serveur fusionne), moins d'une seconde
+  // après la frappe, et aussitôt qu'on quitte la page (Quitter, onglet, rechargement) grâce à keepalive.
+  const latest = useRef(answers);
+  const dirty = useRef(new Set<string>());
+  const touched = useRef(new Set<string>());
+  const flush = useRef(() => {});
+  flush.current = () => {
+    if (submitted || dirty.current.size === 0) return;
+    const part = Object.fromEntries([...dirty.current].map(k => [k, latest.current[k] ?? '']));
+    dirty.current.clear();
+    setSaved('saving');
+    fetch(`/api/exercices/${courseId}`, { method: 'POST', body: JSON.stringify({ answers: part }), keepalive: true })
+      .then(r => { setSaved(r.ok ? 'saved' : 'idle'); if (!r.ok) Object.keys(part).forEach(k => dirty.current.add(k)); })
+      .catch(() => { Object.keys(part).forEach(k => dirty.current.add(k)); setSaved('idle'); });
+  };
+  useEffect(() => {
+    const onHide = () => flush.current();
+    window.addEventListener('pagehide', onHide);
+    document.addEventListener('visibilitychange', onHide);
+    return () => { window.removeEventListener('pagehide', onHide); document.removeEventListener('visibilitychange', onHide); if (timer.current) clearTimeout(timer.current); flush.current(); };
+  }, []);
+  // à l'ouverture : on relit les réponses enregistrées (une sauvegarde a pu arriver après l'affichage de la page)
+  useEffect(() => {
+    if (submitted) return;
+    fetch(`/api/exercices/${courseId}`).then(r => r.ok ? r.json() : null).then((d: { answers?: Record<string, string> } | null) => {
+      if (!d?.answers) return;
+      const merged = { ...latest.current };
+      for (const [k, v] of Object.entries(d.answers)) if (!touched.current.has(k) && v.trim() && v !== merged[k]) merged[k] = v;
+      latest.current = merged; setAnswers(merged);
+    }).catch(() => null);
+  }, [courseId, submitted]);
+
   const set = (id: string, v: string) => {
-    const next = { ...answers, [id]: v };
-    setAnswers(next);
+    const next = { ...latest.current, [id]: v };
+    latest.current = next; setAnswers(next);
+    dirty.current.add(id); touched.current.add(id);
     setSaved('saving');
     if (timer.current) clearTimeout(timer.current);
-    timer.current = setTimeout(async () => { await saveExerciseDraft(courseId, next); setSaved('saved'); }, 1200);
+    timer.current = setTimeout(() => flush.current(), 600);
   };
   const answered = items.filter(q => (answers[q.id] ?? '').trim()).length;
   const openIds = items.filter(q => solved?.[q.id]?.auto === null).map(q => q.id);
@@ -89,7 +121,7 @@ export function ExercisesPlayer({ courseId, items, texts, initial, submitted, so
       <TextsAside texts={texts} />
       <section className="card p-0 flex-[999_1_560px] min-w-0 flex flex-col lg:h-full lg:min-h-0 lg:overflow-hidden">
         {!submitted && <AnswerProgress answered={answered} total={items.length} onJump={jump} />}
-        <div role="tablist" aria-label="Niveaux" className="shrink-0 flex flex-wrap gap-2 px-4 pt-4 pb-3 border-b border-line">
+        <div role="tablist" aria-label="Niveaux" className="shrink-0 flex flex-wrap gap-2 px-4 pt-4 pb-3 border-b border-line qtabs">
           {levels.map(l => {
             const qs = items.filter(q => (q.stars ?? 0) === l);
             const done = qs.filter(q => (answers[q.id] ?? '').trim()).length;
@@ -119,7 +151,7 @@ export function ExercisesPlayer({ courseId, items, texts, initial, submitted, so
                     ) : (
                       <div className="flex flex-wrap items-center gap-2" role="group" aria-label="Ton auto-correction">
                         <span className="text-sm font-semibold">Compare avec le corrigé :</span>
-                        <button type="button" disabled={checked} aria-pressed={self[q.id] === true} className={`btn ${self[q.id] === true ? 'btn-primary' : ''}`} onClick={() => setSelf({ ...self, [q.id]: true })}>Réussi</button>
+                        <button type="button" disabled={checked || !(answers[q.id] ?? '').trim()} title={!(answers[q.id] ?? '').trim() ? 'Pas de réponse : compte « Pas encore »' : undefined} aria-pressed={self[q.id] === true} className={`btn ${self[q.id] === true ? 'btn-primary' : ''}`} onClick={() => setSelf({ ...self, [q.id]: true })}>Réussi</button>
                         <button type="button" disabled={checked} aria-pressed={self[q.id] === false} className={`btn ${self[q.id] === false ? '!bg-warm-soft !border-warm !text-warm-dark' : ''}`} onClick={() => setSelf({ ...self, [q.id]: false })}>Pas encore</button>
                       </div>
                     )}
@@ -137,7 +169,7 @@ export function ExercisesPlayer({ courseId, items, texts, initial, submitted, so
           {!submitted && (<>
             <span className="text-sm"><strong>{answered} / {items.length}</strong> réponses · <span className="muted">{saved === 'saving' ? 'enregistrement…' : saved === 'saved' ? 'brouillon enregistré' : 'enregistrées au fur et à mesure'}</span></span>
             <button className="btn btn-primary" type="button" disabled={pending || answered === 0}
-              onClick={() => { if (answered < items.length && !confirm(`Tu as répondu à ${answered} exercice(s) sur ${items.length}. Voir les corrigés quand même ?`)) return; start(() => submitExercises(courseId, answers)); }}>
+              onClick={() => { if (answered < items.length && !confirm(`Tu as répondu à ${answered} exercice(s) sur ${items.length}. Voir les corrigés quand même ?`)) return; start(() => submitExercises(courseId, latest.current)); }}>
               Valider mes réponses et voir les corrigés
             </button>
           </>)}
@@ -147,7 +179,7 @@ export function ExercisesPlayer({ courseId, items, texts, initial, submitted, so
           </>)}
           {checked && (
             <>
-              <span className="text-sm"><strong>Score : {score}/10</strong> · {success} réussi{success > 1 ? 's' : ''} sur {items.length} · <strong className="text-brand-dark">+50 points de progrès</strong>. {score >= threshold ? 'Tu peux passer à l’évaluation.' : `Conseil : relis les parties indiquées dans les corrigés avant l’évaluation (${threshold}/10 conseillé).`}</span>
+              <span className="text-sm"><strong>Score : {score}/10</strong> · {success} réussi{success > 1 ? 's' : ''} sur {items.length} {pointsJustEarned && <> · <strong className="text-brand-dark">+50 points de progrès</strong></>}. {score >= threshold ? 'Tu peux passer à l’évaluation.' : `Conseil : relis les parties indiquées dans les corrigés avant l’évaluation (${threshold}/10 conseillé).`}</span>
               {after}
             </>
           )}

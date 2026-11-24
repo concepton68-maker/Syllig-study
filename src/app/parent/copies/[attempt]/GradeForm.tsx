@@ -1,5 +1,5 @@
 'use client';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 // Formulaire de correction : contrôle des points dans le navigateur (aucune saisie perdue),
 // total en direct et confirmation avant que la note devienne visible par l'élève.
@@ -19,8 +19,11 @@ export function GradeForm({ action, maxima, autoTotal, graded, firstName, childr
     return { sum: Math.round(sum * 100) / 100, bad };
   };
   const fmt = (n: number) => n.toLocaleString('fr-FR');
+  // total affiché dès l'ouverture (points proposés ou corrigés automatiquement)
+  const form = useRef<HTMLFormElement>(null);
+  useEffect(() => { if (form.current) { const r = read(form.current); setTotal(r.bad ? null : r.sum); } }, []); // eslint-disable-line react-hooks/exhaustive-deps
   return (
-    <form action={action} className="flex flex-col gap-4"
+    <form ref={form} action={action} className="flex flex-col gap-4"
       onInput={e => { const r = read(e.currentTarget); setTotal(r.bad ? null : r.sum); if (!r.bad) setError(null); }}
       onSubmit={e => {
         const r = read(e.currentTarget);

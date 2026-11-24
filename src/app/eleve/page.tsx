@@ -71,7 +71,7 @@ export default async function Today() {
                   <h2 className="text-[26px] font-bold">{next.title}</h2>
                   <span className="muted">{next.subject} · {next.chapter}{next.code ? ` · ${next.code}` : ''}</span>
                 </div>
-                <div className="flex gap-2 items-start">{next.priority === 'prioritaire' && <PriorityPill />}<MasteryPill level={next.mastery} /></div>
+                <div className="flex gap-2 items-start">{next.priority === 'prioritaire' && <PriorityPill />}<MasteryPill level={next.mastery} started={next.lesson_started} /></div>
               </div>
               <ol className="list-none m-0 p-0 grid grid-cols-1 min-[420px]:grid-cols-3 gap-2.5 order-2 sm:order-none" aria-label="Étapes du cours">
                 {[
@@ -87,7 +87,7 @@ export default async function Today() {
               </ol>
               <div className="flex flex-wrap items-center gap-4 order-1 sm:order-none">
                 <Link className="btn btn-primary min-h-[52px] px-7 text-base w-full sm:w-auto" href={stepHref(next.course_id, step)}>
-                  {step.kind === 'lesson' && !next.lesson_done ? 'Commencer' : 'Continuer'} : {step.label}{step.minutes ? ` · ${step.minutes} min` : ''}
+                  {step.kind === 'lesson' && !next.lesson_started ? 'Commencer' : 'Continuer'} : {step.label}{step.minutes ? ` · ${step.minutes} min` : ''}
                 </Link>
                 <span className="muted text-sm max-w-[460px]">Seul le temps où tu travailles vraiment est compté. Les corrigés s’ouvrent après ta réponse.</span>
               </div>

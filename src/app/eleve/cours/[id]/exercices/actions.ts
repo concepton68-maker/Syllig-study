@@ -21,7 +21,7 @@ export async function saveExerciseDraft(courseIdParam: string, answers: Record<s
   const a = Answers.parse(answers);
   const s = await current(student.id, course.id);
   if (!s || s.submitted_at) return { ok: false };
-  await sql`update exercise_submissions set answers = ${sql.json(a)} where id = ${s.id}`;
+  await sql`update exercise_submissions set answers = answers || ${sql.json(a)} where id = ${s.id}`;
   return { ok: true };
 }
 
@@ -32,6 +32,8 @@ export async function submitExercises(courseIdParam: string, answers: Record<str
   const s = await current(student.id, course.id);
   if (!s || s.submitted_at) return;
   const doc = (await versionById(s.version_id))!.document;
+  // réponses enregistrées + réponses de la page (une réponse vide de la page n'efface rien)
+  Object.assign(a, { ...(s.answers ?? {}), ...Object.fromEntries(Object.entries(a).filter(([, v]) => v.trim() !== '')) });
   const auto: Record<string, boolean> = {};
   for (const q of doc.exercises.items) { const r = autoCorrect(q, a[q.id]); if (r !== null) auto[q.id] = r; }
   await sql`update exercise_submissions set answers = ${sql.json(a)}, auto_results = ${sql.json(auto)}, submitted_at = now() where id = ${s.id}`;

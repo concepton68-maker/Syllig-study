@@ -27,7 +27,8 @@ export async function POST(req: Request, { params }: { params: Promise<{ attempt
   switch (body.action) {
     case 'save':
       if (expired) return NextResponse.json({ error: 'temps écoulé' }, { status: 409 });
-      await sql`update eval_attempts set answers = ${sql.json(body.answers)} where id = ${a.id} and status = 'in_progress'`;
+      // fusion : une page affichée trop tôt (après un rechargement) ne peut jamais effacer des réponses déjà enregistrées
+      await sql`update eval_attempts set answers = answers || ${sql.json(body.answers)} where id = ${a.id} and status = 'in_progress'`;
       break;
     case 'focus_lost':
       await sql`update eval_attempts set focus_losses = focus_losses + 1 where id = ${a.id}`;
@@ -43,4 +44,15 @@ export async function POST(req: Request, { params }: { params: Promise<{ attempt
       break;
   }
   return NextResponse.json({ ok: true, remaining: a.deadline_at ? Math.max(0, Math.round((a.deadline_at.getTime() - Date.now()) / 1000)) : null });
+}
+
+// Réponses enregistrées (la page les relit à l'ouverture, au cas où une sauvegarde serait arrivée après l'affichage)
+export async function GET(_: Request, { params }: { params: Promise<{ attempt: string }> }) {
+  const { attempt } = await params;
+  const u = await currentUser();
+  if (!u || !u.roles.includes('student')) return NextResponse.json({ error: 'non autorisé' }, { status: 401 });
+  const a = z.string().uuid().safeParse(attempt).success ? await getAttempt(attempt) : null;
+  const [st] = await sql<{ id: string }[]>`select id from students where user_id = ${u.id}`;
+  if (!a || !st || a.student_id !== st.id) return NextResponse.json({ error: 'introuvable' }, { status: 404 });
+  return NextResponse.json({ answers: a.answers ?? {}, status: a.status });
 }

@@ -31,9 +31,11 @@ export default async function ExercisesPage({ params }: { params: Promise<{ id: 
     ? Object.fromEntries(ex.items.map(q => [q.id, { solution: q.solution, auto: q.id in (sub.auto_results ?? {}) ? sub.auto_results![q.id] : null }]))
     : null;
 
+  const [{ fresh }] = await sql<{ fresh: boolean }[]>`select exists (select 1 from points_ledger where student_id = ${student.id} and course_id = ${course.id}
+    and reason = 'Exercices terminés' and at > now() - interval '15 minutes') as fresh`;
   return (
     <PaneScreen top={
-      <div className="card p-4 flex flex-wrap items-center justify-between gap-3">
+      <div className="card p-4 flex flex-wrap items-center justify-between gap-3 qhead">
         <div className="flex items-center gap-3 flex-wrap">
           <Link className="btn" href={`/eleve/cours/${course.id}`}>‹ Quitter</Link>
           <div><div className="lbl">{course.subject} · {course.chapter} · environ {ex.duration_min} min · {ex.pass_threshold}/10 conseillé avant l’évaluation</div>
@@ -42,7 +44,7 @@ export default async function ExercisesPage({ params }: { params: Promise<{ id: 
         {!sub.checked_at && <ActivityTracker kind="exercises" courseId={course.id} idleSeconds={student.settings.idle_seconds} />}
       </div>
     }>
-      <ExercisesPlayer courseId={id} items={ex.items.map(publicQuestion)} texts={ex.texts} initial={sub.answers} submitted={!!sub.submitted_at}
+      <ExercisesPlayer pointsJustEarned={fresh} key={sub.id} courseId={id} items={ex.items.map(publicQuestion)} texts={ex.texts} initial={sub.answers} submitted={!!sub.submitted_at}
         solved={solved} checked={!!sub.checked_at} initialSelf={sub.self_check ?? {}} threshold={ex.pass_threshold}
         instructions={<>{ex.instructions ? `${ex.instructions} ` : ''}Ici, pas de note : tu t’entraînes.</>}
         after={

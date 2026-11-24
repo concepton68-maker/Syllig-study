@@ -41,15 +41,24 @@ export function EvalRunner({ courseId, attemptId, remaining, sections, texts, in
   }, [submit]);
 
   // Sauvegarde automatique toutes les 10 s si changement
-  const dirty = useRef(false);
+  // seules les réponses modifiées sont envoyées (le serveur fusionne) : une page affichée trop tôt n'efface jamais rien
+  const dirty = useRef(new Set<string>());
+  const touched = useRef(new Set<string>());
+  const saveTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const savePart = useCallback(() => {
+    if (submitted.current || dirty.current.size === 0) return;
+    const part = Object.fromEntries([...dirty.current].map(k => [k, latest.current[k] ?? '']));
+    dirty.current.clear();
+    post({ action: 'save', answers: part });
+  }, [post]);
   useEffect(() => {
-    const t = setInterval(() => { if (dirty.current) { dirty.current = false; post({ action: 'save', answers: latest.current }); } }, 10_000);
+    const t = setInterval(savePart, 10_000);
     return () => clearInterval(t);
   }, [post]);
 
   // Départ de la page (navigation, fermeture) : dernière sauvegarde
   useEffect(() => {
-    const onHide = () => { if (!submitted.current) post({ action: 'save', answers: latest.current }); };
+    const onHide = () => savePart();
     window.addEventListener('pagehide', onHide);
     return () => { window.removeEventListener('pagehide', onHide); onHide(); };
   }, [post]);
@@ -57,8 +66,10 @@ export function EvalRunner({ courseId, attemptId, remaining, sections, texts, in
   // Sorties de fenêtre : enregistrées, présentées sans accusation
   useEffect(() => {
     const onVis = () => {
-      if (document.visibilityState === 'hidden') { hiddenSince.current = Date.now(); post({ action: 'focus_lost' }); post({ action: 'save', answers: latest.current }); }
+      // la sortie n'est comptée qu'au retour dans la fenêtre : recharger ou changer de page ne compte pas comme une sortie
+      if (document.visibilityState === 'hidden') { hiddenSince.current = Date.now(); savePart(); }
       else if (hiddenSince.current) {
+        post({ action: 'focus_lost' });
         post({ action: 'focus_back', seconds: (Date.now() - hiddenSince.current) / 1000 });
         hiddenSince.current = null;
         setNotice('Tu as quitté la fenêtre de l’évaluation. Reste sur cette page jusqu’à la fin.');
@@ -68,7 +79,21 @@ export function EvalRunner({ courseId, attemptId, remaining, sections, texts, in
     return () => document.removeEventListener('visibilitychange', onVis);
   }, [post]);
 
-  const set = (id: string, v: string) => { const n = { ...answers, [id]: v }; setAnswers(n); latest.current = n; dirty.current = true; };
+  const set = (id: string, v: string) => {
+    const n = { ...latest.current, [id]: v }; setAnswers(n); latest.current = n;
+    dirty.current.add(id); touched.current.add(id);
+    if (saveTimer.current) clearTimeout(saveTimer.current);
+    saveTimer.current = setTimeout(savePart, 700);
+  };
+  // à l'ouverture : on relit les réponses enregistrées (une sauvegarde a pu arriver après l'affichage de la page)
+  useEffect(() => {
+    fetch(`/api/eval/${attemptId}`).then(r => r.ok ? r.json() : null).then((d: { answers?: Record<string, string> } | null) => {
+      if (!d?.answers) return;
+      const merged = { ...latest.current };
+      for (const [k, v] of Object.entries(d.answers)) if (!touched.current.has(k) && v.trim() && v !== merged[k]) merged[k] = v;
+      latest.current = merged; setAnswers(merged);
+    }).catch(() => null);
+  }, [attemptId]);
   const all = sections.flatMap(s => s.questions);
   const answered = all.filter(q => (answers[q.id] ?? '').trim()).length;
   const mm = String(Math.floor(left / 60)).padStart(2, '0'), ss = String(left % 60).padStart(2, '0');
@@ -93,7 +118,7 @@ export function EvalRunner({ courseId, attemptId, remaining, sections, texts, in
       <TextsAside texts={texts} />
       <section className="card p-0 flex-[999_1_560px] min-w-0 flex flex-col lg:h-full lg:min-h-0 lg:overflow-hidden">
         <AnswerProgress answered={answered} total={all.length} onJump={jump} />
-        <div className="shrink-0 px-4 pt-3 pb-3 border-b border-line flex flex-col gap-3">
+        <div className="shrink-0 px-4 pt-3 pb-3 border-b border-line flex flex-col gap-3 qtabs">
           <div className="flex flex-wrap items-center justify-between gap-3">
             <span className={`pill text-base px-4 py-1.5 ${left <= 120 ? 'bg-warm-soft text-warm-dark' : 'bg-brand-soft text-brand-dark'}`} role="timer" aria-live="off">
               Temps restant {mm}:{ss}

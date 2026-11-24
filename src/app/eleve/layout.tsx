@@ -9,7 +9,7 @@ export default async function StudentLayout({ children }: { children: React.Reac
       { href: '/eleve/parcours', label: 'Mes cours', short: 'Cours', icon: 'courses' },
       { href: '/eleve/resultats', label: 'Mes résultats', short: 'Résultats', icon: 'results' },
       { href: '/eleve/dossier', label: 'Mon dossier scolaire', short: 'Dossier', icon: 'record' },
-      { href: '/eleve/theme', label: 'Mon espace', short: 'Mon espace', icon: 'space' },
+      { href: '/eleve/theme', label: 'Mon espace', short: 'Thème', icon: 'space' },
     ]} user={{ name: student.first_name, sub: student.level_name }}>
       {children}
     </Shell>

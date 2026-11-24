@@ -1,3 +1,4 @@
+import { sql } from '@/lib/db';
 import Link from 'next/link';
 import { loadCourse } from '../data';
 import { lessonState } from './state';
@@ -27,9 +28,12 @@ export default async function LessonPage({ params }: { params: Promise<{ id: str
   const firstVisit = st.current === 0 && !st.checkpoint?.attempt;
   const startPage = done ? pages.length - 1 : firstVisit ? 0 : st.current + 1;
 
+  // « +50 points » annoncé seulement juste après les avoir gagnés (pas à chaque retour sur la page)
+  const [{ fresh }] = await sql<{ fresh: boolean }[]>`select exists (select 1 from points_ledger where student_id = ${student.id} and course_id = ${course.id}
+    and reason = 'Leçon terminée' and at > now() - interval '15 minutes') as fresh`;
   return (
     <PaneScreen top={
-      <div className="card p-4 flex flex-wrap items-center justify-between gap-3">
+      <div className="card p-4 flex flex-wrap items-center justify-between gap-3 qhead">
         <div className="flex items-center gap-3 flex-wrap">
           <Link className="btn" href={`/eleve/cours/${course.id}`}>‹ Quitter</Link>
           <div><div className="lbl">{course.subject} · {course.chapter}{course.code ? ` · ${course.code}` : ''}</div>
@@ -39,7 +43,7 @@ export default async function LessonPage({ params }: { params: Promise<{ id: str
           <span className="pill bg-soft text-ink-2">{done ? 'Leçon terminée' : `Partie ${st.current + 1} sur ${parts.length}`}</span></div>
       </div>
     }>
-      <LessonBook courseId={id} pages={pages} startPage={startPage} current={st.current} checkpoint={st.checkpoint}
+      <LessonBook pointsJustEarned={fresh} courseId={id} pages={pages} startPage={startPage} current={st.current} checkpoint={st.checkpoint}
         totalParts={parts.length} lessonDone={!!progress.lesson_done_at} exercisesHref={`/eleve/cours/${course.id}/exercices`}
         finishAction={completeLessonWithoutCheckpoint.bind(null, id)} />
     </PaneScreen>

@@ -23,10 +23,10 @@ export function BlockView({ block }: { block: Block }) {
     case 'table':
       return (
         <div className="overflow-x-auto border border-line rounded-xl">
-          <table className="tbl min-w-[520px]">
+          <table className="tbl tbl-stack">
             {block.caption && <caption className="text-left px-3 py-2 text-sm font-semibold">{block.caption}</caption>}
             {block.columns && <thead><tr>{block.columns.map((c, i) => <th key={i}>{c}</th>)}</tr></thead>}
-            <tbody>{block.rows.map((r, i) => <tr key={i}>{r.map((c, j) => <td key={j} className={j === 0 ? 'font-semibold' : ''}><RichText text={c} /></td>)}</tr>)}</tbody>
+            <tbody>{block.rows.map((r, i) => <tr key={i}>{r.map((c, j) => <td key={j} data-label={block.columns?.[j] ?? ''} className={j === 0 ? 'font-semibold' : ''}><RichText text={c} /></td>)}</tr>)}</tbody>
           </table>
         </div>
       );

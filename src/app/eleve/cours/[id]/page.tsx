@@ -13,6 +13,7 @@ export default async function CourseOverview({ params }: { params: Promise<{ id:
   const { student, course, doc, progress } = await loadCourse(id);
   const attempts = await sql<{ id: string; attempt_no: number; status: string; final_score: string | null; submitted_at: Date | null }[]>`
     select id, attempt_no, status, final_score, submitted_at from eval_attempts where student_id = ${student.id} and course_id = ${course.id} order by attempt_no desc`;
+  const [{ started }] = await sql<{ started: boolean }[]>`select exists (select 1 from checkpoint_answers where student_id = ${student.id} and course_id = ${course.id}) as started`;
   const base = `/eleve/cours/${course.id}`;
   const steps = [
     { n: '①', name: 'Leçon', href: `${base}/lecon`, done: !!progress.lesson_done_at, meta: `${doc.lesson.duration_min} min · ${doc.lesson.parts.length} parties`, open: true },
@@ -24,7 +25,7 @@ export default async function CourseOverview({ params }: { params: Promise<{ id:
   const main = nextOpen ?? steps[0];
   return (
     <Screen top={<PageTitle kicker={`${course.subject} · ${course.chapter}${course.code ? ` · ${course.code}` : ''}`} title={course.title}
-        sub={<span className="inline-flex items-center gap-2 mt-1"><MasteryPill level={progress.mastery} /></span>}>
+        sub={<span className="inline-flex items-center gap-2 mt-1"><MasteryPill level={progress.mastery} started={started} /></span>}>
         <Link className="btn" href="/eleve/parcours">‹ Mes cours</Link>
       </PageTitle>}>
       <section className="card flex flex-col gap-4">
@@ -32,7 +33,7 @@ export default async function CourseOverview({ params }: { params: Promise<{ id:
           <ul className="mt-2 mb-0 pl-5 list-disc">{doc.lesson.objectives.map((o, i) => <li key={i}><RichText text={o} /></li>)}</ul></div>)}
         <div className="flex flex-wrap items-center gap-3">
           <Link className="btn btn-primary min-h-[52px] px-7 text-base w-full sm:w-auto" href={main.href}>
-            {nextOpen ? `${main.done ? 'Continuer' : progress.lesson_done_at ? 'Continuer' : 'Commencer'} : ${main.n} ${main.name}` : 'Revoir la leçon'}
+            {nextOpen ? `${main.done ? 'Continuer' : progress.lesson_done_at || started ? 'Continuer' : 'Commencer'} : ${main.n} ${main.name}` : 'Revoir la leçon'}
           </Link>
           {!nextOpen && <span className="muted text-sm">Toutes les étapes sont faites : tu peux revoir la leçon ou retenter l’évaluation.</span>}
         </div>

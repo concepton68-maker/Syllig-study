@@ -66,7 +66,7 @@ export function nextReviewDate(score: number) {
 export type ParcoursItem = {
   course_id: number; code: string | null; title: string; priority: string; position: number;
   subject: string; chapter: string; published: boolean; mastery: number;
-  lesson_done: boolean; exercises_done: boolean; forced: string | null; next_review_at: Date | null;
+  lesson_done: boolean; lesson_started: boolean; exercises_done: boolean; forced: string | null; next_review_at: Date | null;
   pending_attempt: string | null; graded_count: number; last_graded_at: Date | null; best: string | null;
   durations: { lesson: number; exercises: number; evaluation: number } | null;
 };
@@ -76,6 +76,7 @@ export async function parcours(studentId: string, levelCode: string): Promise<Pa
     select c.id as course_id, c.code, c.title, c.priority, c.position, s.name as subject, ch.name as chapter,
       (v.id is not null) as published, coalesce(p.mastery, 0) as mastery,
       (p.lesson_done_at is not null) as lesson_done, (p.exercises_done_at is not null) as exercises_done,
+      exists (select 1 from checkpoint_answers ca where ca.student_id = ${studentId} and ca.course_id = c.id) as lesson_started,
       p.forced, p.next_review_at, p.best_eval_score as best,
       (select a.status from eval_attempts a where a.student_id = ${studentId} and a.course_id = c.id
         and a.status in ('requested','approved','in_progress','submitted') order by a.attempt_no desc limit 1) as pending_attempt,
@@ -108,6 +109,7 @@ export function nextStep(c: ParcoursItem, retryDelayDays: number): Step {
   if (!c.lesson_done) return { kind: 'lesson', label: '① Leçon', minutes: c.durations?.lesson };
   if (!c.exercises_done) return { kind: 'exercises', label: '② Exercices', minutes: c.durations?.exercises };
   if (c.pending_attempt === 'submitted') return { kind: 'waiting', label: 'Évaluation en correction' };
+  if (c.pending_attempt === 'requested') return { kind: 'waiting', label: 'Évaluation demandée : en attente de l’accord' };
   if (c.pending_attempt) return { kind: 'evaluation', label: '③ Évaluation', minutes: c.durations?.evaluation };
   if (c.graded_count === 0) return { kind: 'evaluation', label: '③ Évaluation', minutes: c.durations?.evaluation };
   if (c.mastery >= 4) return { kind: 'done', label: 'Acquis' };

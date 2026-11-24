@@ -56,7 +56,8 @@ export async function submitEvaluation(courseIdParam: string, attemptId: string,
   if (a.status === 'in_progress') {
     const inTime = !a.deadline_at || Date.now() <= a.deadline_at.getTime() + GRACE_SECONDS * 1000;
     const clean = z.record(z.string().max(40), z.string().max(8000)).parse(answers);
-    if (inTime) await sql`update eval_attempts set answers = ${sql.json(clean)} where id = ${a.id}`;
+    const merged = { ...(a.answers ?? {}), ...Object.fromEntries(Object.entries(clean).filter(([, v]) => v.trim() !== '')) };
+    if (inTime) await sql`update eval_attempts set answers = ${sql.json(merged)} where id = ${a.id}`;
     await submitAttempt((await getAttempt(a.id))!);
   }
   redirect(`/eleve/cours/${course.id}/bilan/${a.id}`);

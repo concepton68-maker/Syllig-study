@@ -32,16 +32,16 @@ export function YearCard({ year, summary, firstName, children }: { year: SchoolY
             <Kpi icon={<Star size={18} />} tone="tone-accent" value={`+${s.points}`} label="points de progrès" />
           </div>
           <div className="flex flex-col">
-            <div className="grid grid-cols-[minmax(140px,1.4fr)_2fr_90px_80px] gap-3 px-1 pb-2 text-[12px] font-semibold uppercase tracking-wide text-muted">
-              <span>Matière</span><span>Avancement</span><span className="text-right">Acquis</span><span className="text-right">Moyenne</span>
+            <div className="grid grid-cols-[minmax(0,1fr)_64px_64px] sm:grid-cols-[minmax(140px,1.4fr)_2fr_90px_80px] gap-x-3 px-1 pb-2 text-[12px] font-semibold uppercase tracking-wide text-muted">
+              <span>Matière</span><span className="hidden sm:block">Avancement</span><span className="text-right">Acquis</span><span className="text-right">Moyenne</span>
             </div>
             {s.subjects.map(m => {
               const pct = m.total ? Math.round((m.acquired / m.total) * 100) : 0;
               const started = m.total ? Math.round((m.started / m.total) * 100) : 0;
               return (
-                <div key={m.subject_id} className={`grid grid-cols-[minmax(140px,1.4fr)_2fr_90px_80px] gap-3 items-center px-1 py-2.5 border-t border-line text-sm ${m.followed ? '' : 'opacity-55'}`}>
+                <div key={m.subject_id} className={`grid grid-cols-[minmax(0,1fr)_64px_64px] sm:grid-cols-[minmax(140px,1.4fr)_2fr_90px_80px] gap-x-3 gap-y-1.5 items-center px-1 py-2.5 border-t border-line text-sm ${m.followed ? '' : 'opacity-55'}`}>
                   <span className="font-semibold min-w-0 truncate">{m.subject}{!m.followed && <span className="pill bg-soft text-muted ml-2">non suivie</span>}</span>
-                  <span className="h-2.5 bg-track rounded-full overflow-hidden relative" aria-label={`${pct} % acquis, ${started} % commencés`}>
+                  <span className="h-2.5 bg-track rounded-full overflow-hidden relative col-span-3 sm:col-span-1 order-last sm:order-none" aria-label={`${pct} % acquis, ${started} % commencés`}>
                     <span className="absolute inset-y-0 left-0 rounded-full bg-brand-mid" style={{ width: `${started}%` }} />
                     <span className="absolute inset-y-0 left-0 rounded-full bg-brand" style={{ width: `${pct}%` }} />
                   </span>

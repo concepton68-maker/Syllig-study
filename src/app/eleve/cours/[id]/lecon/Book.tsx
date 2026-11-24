@@ -3,6 +3,7 @@ import { ConfirmButton } from '@/components/ConfirmButton';
 import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { Lock } from 'lucide-react';
+import { useRouter } from 'next/navigation';
 import type { Block } from '@/lib/course-format';
 import { BlockView } from '@/components/CourseBlocks';
 import { RichText } from '@/components/RichText';
@@ -15,11 +16,15 @@ export type BookPage =
   | { kind: 'memo'; title: string; memo: { label: string; text: string }[] | null };
 
 // Leçon présentée comme un livre : une page à la fois, plan à gauche, Précédent / Suivant en bas.
-export function LessonBook({ courseId, pages, startPage, current, checkpoint, totalParts, lessonDone, exercisesHref, finishAction }: {
+export function LessonBook({ courseId, pages, startPage, current, checkpoint, totalParts, lessonDone, exercisesHref, finishAction, pointsJustEarned = false }: {
   courseId: string; pages: BookPage[]; startPage: number; current: number; checkpoint: CheckpointPublic | null; totalParts: number;
-  lessonDone: boolean; exercisesHref: string; finishAction: () => Promise<void>;
+  lessonDone: boolean; exercisesHref: string; finishAction: () => Promise<void>; pointsJustEarned?: boolean;
 }) {
   const [page, setPage] = useState(startPage);
+  const router = useRouter();
+  // point de contrôle réussi sur cette page : la barre du bas se débloque aussitôt (la page suivante arrive du serveur)
+  const [justPassed, setJustPassed] = useState(false);
+  useEffect(() => { setJustPassed(false); }, [page]);
   const body = useRef<HTMLDivElement>(null);
   const art = useRef<HTMLElement>(null);
   const first = useRef(true);
@@ -47,7 +52,7 @@ export function LessonBook({ courseId, pages, startPage, current, checkpoint, to
     return true;
   };
   const p = pages[page];
-  const canNext = page < pages.length - 1 && unlocked(page + 1);
+  const canNext = page < pages.length - 1 && (unlocked(page + 1) || justPassed);
   const label = (x: BookPage) => x.kind === 'intro' ? 'Objectifs' : x.kind === 'memo' ? 'Fiche mémo' : `${x.index + 1}. ${x.title}`;
 
   return (
@@ -86,7 +91,7 @@ export function LessonBook({ courseId, pages, startPage, current, checkpoint, to
               <h2 className="text-[28px] font-bold">{p.title}</h2>
               {p.blocks.map((b, j) => <BlockView key={j} block={b} />)}
               {p.index === current && checkpoint && (
-                <Checkpoint key={`${p.index}-${checkpoint.attempt}`} courseId={courseId} partIndex={p.index} total={totalParts} initial={checkpoint} />
+                <Checkpoint key={`${p.index}-${checkpoint.attempt}`} courseId={courseId} partIndex={p.index} total={totalParts} initial={checkpoint} onPassed={() => setJustPassed(true)} />
               )}
               {p.passed && p.hasCheckpoint && <p className="m-0 rounded-xl bg-brand-soft text-brand-ink px-4 py-3 text-sm">✓ Point de contrôle réussi pour cette partie.</p>}
             </>
@@ -98,7 +103,7 @@ export function LessonBook({ courseId, pages, startPage, current, checkpoint, to
               <table className="tbl"><tbody>{p.memo.map((m, i) => <tr key={i}><td className="font-semibold w-48">{m.label}</td><td><RichText text={m.text} /></td></tr>)}</tbody></table>
               {lessonDone ? (
                 <div className="rounded-xl bg-brand-soft border border-brand-mid px-5 py-4 flex flex-wrap justify-between items-center gap-3">
-                  <span><strong>Leçon terminée, bravo !</strong> <strong className="text-brand-dark">+50 points de progrès.</strong> Prochaine étape : t’entraîner.</span>
+                  <span><strong>Leçon terminée, bravo !</strong> {pointsJustEarned && <strong className="text-brand-dark">+50 points de progrès. </strong>}Prochaine étape : t’entraîner.</span>
                   <Link className="btn btn-primary" href={exercisesHref}>② Faire les exercices</Link>
                 </div>
               ) : (
@@ -111,7 +116,7 @@ export function LessonBook({ courseId, pages, startPage, current, checkpoint, to
           <button className="btn" type="button" disabled={page === 0} onClick={() => setPage(page - 1)}>‹ Précédent</button>
           <span className={`text-sm text-center ${!canNext && page < pages.length - 1 ? 'text-warm-dark font-semibold' : 'muted hidden sm:inline'}`}>
             {!canNext && page < pages.length - 1 ? 'Réponds au point de contrôle pour débloquer la suite' : label(p)}</span>
-          <button className="btn btn-primary" type="button" disabled={!canNext} onClick={() => setPage(page + 1)}
+          <button className="btn btn-primary" type="button" disabled={!canNext} onClick={() => unlocked(page + 1) ? setPage(page + 1) : router.refresh()}
             title={!canNext && page < pages.length - 1 ? 'Réussis le point de contrôle pour continuer' : undefined}>
             {page === pages.length - 1 ? 'Fin' : 'Suivant ›'}
           </button>

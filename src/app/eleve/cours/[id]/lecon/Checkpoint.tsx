@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import { answerCheckpoint, type CheckpointResult } from './actions';
 import type { CheckpointPublic } from './state';
 
-export function Checkpoint({ courseId, partIndex, total, initial }: { courseId: string; partIndex: number; total: number; initial: CheckpointPublic }) {
+export function Checkpoint({ courseId, partIndex, total, initial, onPassed }: { courseId: string; partIndex: number; total: number; initial: CheckpointPublic; onPassed?: () => void }) {
   const router = useRouter();
   const [q, setQ] = useState(initial);
   const [picked, setPicked] = useState<number | null>(null);
@@ -15,7 +15,7 @@ export function Checkpoint({ courseId, partIndex, total, initial }: { courseId: 
   const choose = (i: number) => {
     if (pending || res?.correct) return;
     setPicked(i);
-    start(async () => setRes(await answerCheckpoint(courseId, partIndex, i)));
+    start(async () => { const r = await answerCheckpoint(courseId, partIndex, i); setRes(r); if (r?.correct) onPassed?.(); });
   };
   const retry = () => { if (res?.next) setQ(res.next); setPicked(null); setRes(null); };
 

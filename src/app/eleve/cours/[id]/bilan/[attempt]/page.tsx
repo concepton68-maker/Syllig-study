@@ -49,7 +49,7 @@ export default async function Bilan({ params }: { params: Promise<{ id: string; 
           <h1 className="text-[32px] font-bold leading-tight spark">{headline}</h1>
           <span className="muted text-base">
             {b.final
-              ? (ref !== null ? `Ta tentative précédente la meilleure : ${fr(ref)}/${max}. C’est toujours ta meilleure note qui compte.` : 'C’est ta meilleure note qui compte : tu pourras retenter dans quelques jours pour viser plus haut.')
+              ? (ref !== null ? `Ta meilleure note jusqu’ici : ${fr(ref)}/${max}. C’est toujours ta meilleure note qui compte.` : 'C’est ta meilleure note qui compte : tu pourras retenter dans quelques jours pour viser plus haut.')
               : `Questions corrigées automatiquement : ${fr(b.provisional)}/${fr(b.provisionalMax)}. Les réponses rédigées sont en cours de correction ; ton parent valide la note. Les corrigés sont déjà disponibles ci-dessous.`}
           </span>
         </div>
