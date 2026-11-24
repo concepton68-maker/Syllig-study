@@ -14,7 +14,7 @@ import type { Attempt } from './evaluation';
 export type Provider = string;
 export type ProviderKind = 'claude' | 'gemini' | 'openai';
 export type ProviderInfo = { id: string; name: string; eu: boolean; where: string; help: string; placeholder: string; kind: ProviderKind; base?: string; custom?: boolean };
-export type Task = 'correction' | 'bilan' | 'cours';
+export type Task = 'correction' | 'bilan' | 'cours' | 'relecture';
 export type AiConfig = { provider: Provider; model: string; key: string; kind: ProviderKind; base?: string; eu: boolean; name: string };
 export type Model = { id: string; label: string };
 
@@ -35,11 +35,14 @@ export function providerInfo(id: string, s: Pick<AiSettings, 'custom'>): Provide
 }
 // Liste centrale des fonctions attribuables à une IA. Pour en ajouter une : une ligne ici (+ son traitement) ;
 // la page Contenu › IA, la règle Europe, le consentement et la page Confidentialité la prennent en compte d'elles-mêmes.
-export const TASKS: Record<Task, { label: string; desc: string; studentData: boolean }> = {
+export const TASKS: Record<Task, { label: string; desc: string; studentData: boolean; fallback?: Task }> = {
   correction: { label: 'Correction des copies', desc: 'Réponses rédigées des élèves (sans nom), énoncés et corrigés.', studentData: true },
   bilan: { label: 'Bilan pédagogique et test de positionnement', desc: 'Temps de travail, notes, questions ratées (sans nom).', studentData: true },
   cours: { label: 'Rédaction des cours', desc: 'Fiche du cours et programme officiel seulement : aucune donnée d’élève (toute IA possible).', studentData: false },
+  relecture: { label: 'Relecture et correction des cours', desc: 'Le cours seulement : aucune donnée d’élève (toute IA possible).', studentData: false, fallback: 'cours' },
 };
+// IA effectivement utilisée pour une fonction (sans choix : celle de la fonction de repli, ex. relecture → rédaction)
+const taskConf = (s: AiSettings, t: Task) => s.tasks[t] ?? (TASKS[t].fallback ? s.tasks[TASKS[t].fallback!] : undefined);
 export const CLAUDE_MODELS: Model[] = [
   { id: 'claude-opus-5-5', label: 'Claude Opus 5.5 — le plus fiable (≈ 5 centimes par copie)' },
   { id: 'claude-sonnet-5-5', label: 'Claude Sonnet 5.5 — intermédiaire (≈ 2 centimes par copie)' },
@@ -124,7 +127,7 @@ export async function aiOverview() {
 }
 function taskProblem(s: AiSettings, task: Task): string | null {
   if (!s.enabled) return 'L’IA est désactivée (Contenu › IA).';
-  const t = s.tasks[task];
+  const t = taskConf(s, task);
   if (!t) return `Aucune IA choisie pour « ${TASKS[task].label} » (Contenu › IA).`;
   const info = providerInfo(t.provider, s);
   if (!s.providers[t.provider]?.key_sealed) return `Pas de clé ${info.name} enregistrée (Contenu › IA).`;
@@ -136,7 +139,7 @@ export async function aiConfigFor(task: Task): Promise<{ cfg: AiConfig } | { err
   const s = await loadAiSettings();
   const problem = taskProblem(s, task);
   if (problem) return { error: problem };
-  const t = s.tasks[task]!;
+  const t = taskConf(s, task)!;
   const info = providerInfo(t.provider, s);
   try { return { cfg: { provider: t.provider, model: t.model, key: open(s.providers[t.provider]!.key_sealed), kind: info.kind, base: oaBase(info), eu: info.eu, name: info.name } }; }
   catch { return { error: 'La clé enregistrée ne peut plus être lue (configuration du serveur changée) : ressaisissez-la (Contenu › IA).' }; }

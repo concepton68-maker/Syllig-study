@@ -5,7 +5,11 @@ import { validateCourse, type CourseDocument, type Question } from '@/lib/course
 import { PageTitle } from '@/components/Shell';
 import { BlockView, SupportTextView, Stars } from '@/components/CourseBlocks';
 import { RichText } from '@/components/RichText';
-import { publishAction, discardAction } from './actions';
+import { publishAction, discardAction, reviewAction, fixAction } from './actions';
+import { aiOverview } from '@/lib/ai';
+import { VERDICT_LABEL, type Review } from '@/lib/course-review';
+import { AutoRefresh } from '@/components/AutoRefresh';
+import { Bot } from 'lucide-react';
 import { ConfirmButton } from '@/components/ConfirmButton';
 import { Screen } from '@/components/Layout';
 import { promptContext } from '@/lib/prompt-context';
@@ -59,6 +63,16 @@ export default async function CoursePreview({ params, searchParams }: { params: 
       off: !!want && (doc.lesson.duration_min > want.lessonMinutes * 2 || doc.lesson.duration_min < want.lessonMinutes / 2), why: 'durée très éloignée de celle prévue' },
   ];
   const offCount = facts.filter(p => p.off).length;
+  // relecture par l'IA : dernière relecture du cours, tâches en cours
+  const reviewReady = (await aiOverview()).ready.relecture;
+  const [review] = await sql<{ id: string; created_at: Date; version: number; provider: string; model: string; data: Review; fixed: number | null }[]>`
+    select r.id, r.created_at, v.version, r.provider, r.model, r.data, (select version from course_versions f where f.id = r.fixed_version_id) as fixed
+    from course_reviews r join course_versions v on v.id = r.version_id where r.course_id = ${courseId} order by r.created_at desc limit 1`;
+  const [job] = await sql<{ kind: string; status: string; progress: string | null; error: string | null }[]>`
+    select kind, status, progress, error from jobs where kind in ('relecture', 'cours_corrige')
+      and (payload->>'courseId' = ${String(courseId)} or payload->>'reviewId' in (select id::text from course_reviews where course_id = ${courseId}))
+    order by id desc limit 1`;
+  const running = !!job && (job.status === 'en_attente' || job.status === 'en_cours');
 
   return (
     <Screen top={<>
@@ -94,6 +108,38 @@ export default async function CoursePreview({ params, searchParams }: { params: 
           ))}
         </div>
         {offCount > 0 && <p className="m-0 text-sm text-warm-dark">{offCount} point{offCount > 1 ? 's' : ''} à vérifier avant de publier (si ce n’est pas voulu : « Nouvelle consigne » et redemandez à Claude).</p>}
+      </section>
+
+      <section className="card !py-3 flex flex-col gap-3" aria-labelledby="relecture">
+        <AutoRefresh active={running} />
+        <div className="flex flex-wrap items-center justify-between gap-3">
+          <h2 id="relecture" className="text-base font-semibold m-0 flex items-center gap-2"><Bot size={18} aria-hidden="true" />Relecture par l’IA</h2>
+          {running ? <span className="pill bg-accent-soft text-ink-2">{job!.kind === 'relecture' ? 'Relecture' : 'Correction'} en cours{job!.progress ? ` · ${job!.progress}` : '…'}</span>
+            : reviewReady ? <form action={reviewAction.bind(null, courseId)}><button className="btn" type="submit">{review ? 'Relire à nouveau' : 'Relire avec l’IA'}</button></form>
+            : <span className="muted text-sm">Choisissez une IA pour « Relecture et correction des cours » (Contenu › IA).</span>}
+        </div>
+        {job?.status === 'echec' && <p role="alert" className="m-0 rounded-lg bg-warm-soft text-warm-dark px-3 py-2 text-sm">La dernière {job.kind === 'relecture' ? 'relecture' : 'correction'} a échoué : {job.error}</p>}
+        {!review ? <p className="m-0 muted text-sm">L’IA relit le cours comme un inspecteur : erreurs de fond, corrigés faux, barèmes, adéquation au niveau. Elle liste les problèmes ; vous décidez ensuite de les faire corriger.</p> : (
+          <div className="flex flex-col gap-2 text-sm">
+            <p className="m-0"><span className={`pill ${review.data.verdict === 'publiable' ? 'bg-brand-soft text-brand-dark' : 'bg-warm-soft text-warm-dark'}`}>{VERDICT_LABEL[review.data.verdict]}</span>
+              <span className="muted"> · relecture de la v{review.version} · {review.created_at.toLocaleString('fr-FR', { timeZone: 'Europe/Paris', day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' })} · {review.provider} ({review.model})</span></p>
+            <p className="m-0">{review.data.synthese}</p>
+            {(['bloquant', 'important', 'mineur'] as const).map(g => {
+              const list = review.data.problemes.filter(p => p.gravite === g);
+              return list.length > 0 && (
+                <div key={g} className="flex flex-col gap-1">
+                  <strong className={g === 'mineur' ? 'muted' : 'text-warm-dark'}>{g === 'bloquant' ? 'Bloquant' : g === 'important' ? 'Important' : 'Mineur'} ({list.length})</strong>
+                  <ul className="m-0 pl-5 list-disc flex flex-col gap-1">{list.map((p, i) => <li key={i}><strong>{p.ou}</strong> — {p.constat} <span className="muted">→ {p.correction}</span></li>)}</ul>
+                </div>
+              );
+            })}
+            {review.data.problemes.length === 0 && <p className="m-0 text-brand-dark font-semibold">Aucun problème relevé.</p>}
+            {review.fixed ? <p className="m-0">Version corrigée : <Link href={`/contenu/cours/${courseId}`} className="font-semibold">v{review.fixed}, en brouillon à relire</Link>.</p>
+              : review.data.problemes.length > 0 && !running && reviewReady && (
+                <form action={fixAction.bind(null, review.id)}><ConfirmButton className="btn btn-primary" confirmLabel="Faire corriger"
+                  message={`Faire corriger ces ${review.data.problemes.length} problème(s) par l’IA ? Une nouvelle version arrivera en brouillon, à relire avant publication.`}>Faire corriger par l’IA</ConfirmButton></form>)}
+          </div>
+        )}
       </section>
 
       {warnings.length > 0 && (

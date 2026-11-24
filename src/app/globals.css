@@ -575,3 +575,22 @@ section.card > h2, section.card > div > h2, section.card h2.text-xl { font-size:
   width: max-content; max-width: 260px; white-space: normal; text-align: center; box-shadow: 0 8px 20px -6px rgb(0 0 0 / .35); animation: dlg-fade .12s ease-out; }
 [data-tip][data-tip-pos="bottom"]:hover::after, [data-tip][data-tip-pos="bottom"]:focus-visible::after { bottom: auto; top: calc(100% + 8px); }
 @media (hover: none) { [data-tip]:hover::after { display: none; } }
+
+
+/* ── Catalogue en tableau, boutons compacts, menu « ⋯ » ── */
+.cat-grid { grid-template-columns: 22px 56px minmax(0, 1fr); }
+.cat-grid > .cat-status, .cat-grid > .cat-actions { grid-column: 3; }
+.cat-grid > .cat-actions { justify-content: flex-start; }
+@media (min-width: 1024px) {
+  .cat-grid { grid-template-columns: 22px 64px minmax(0, 1fr) 210px 250px; }
+  .cat-grid > .cat-status, .cat-grid > .cat-actions { grid-column: auto; }
+  .cat-grid > .cat-actions { justify-content: flex-end; }
+}
+.btn.btn-sm { min-height: 34px; padding: 6px 12px; font-size: 13.5px; border-radius: 10px; }
+.btn.btn-icon { width: 34px; padding: 0; justify-content: center; }
+.menu-pop { z-index: 80; min-width: 240px; background: #fff; border: 1px solid var(--color-line); border-radius: 12px; padding: 6px;
+  box-shadow: 0 16px 40px -12px rgb(15 18 40 / .28); display: flex; flex-direction: column; }
+.menu-pop form { display: contents; }
+.menu-item { display: block; width: 100%; text-align: left; padding: 9px 12px; border-radius: 8px; font-size: 14px; font-weight: 500; color: var(--color-ink, #1b1f3b);
+  background: none; border: 0; cursor: pointer; text-decoration: none; }
+.menu-item:hover, .menu-item:focus-visible { background: var(--color-surface-2, #f3f5fb); outline: none; }

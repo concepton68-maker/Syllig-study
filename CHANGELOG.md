@@ -350,3 +350,14 @@ Recette complète de l'espace élève (un agent testeur a joué l'élève sur t�
 
 ## 0.34 — 24/11/2026
 - Qui fait quoi : la liste « Fournisseur » de chaque fonction propose tous les fournisseurs, pas seulement ceux qui ont déjà une clé. Pour un fournisseur sans clé, le champ « Collez la clé » et le bouton « Vérifier » apparaissent directement dans la ligne ; le modèle se règle ensuite tout seul.
+
+## 0.35 — 24/11/2026
+- Relecture d'un cours existant par l'IA :
+  - Sur la page d'un cours, « Relire avec l'IA » : l'IA relit comme un inspecteur (erreurs de fond, corrigés faux, barèmes, adéquation au niveau). Elle rend un verdict (publiable, à corriger, à réécrire) et les problèmes classés par gravité, chacun avec l'endroit, le constat et la correction à faire.
+  - « Faire corriger par l'IA » : une version corrigée arrive en brouillon dans « À relire » ; la version publiée reste en place.
+  - Catalogue : « Relire avec l'IA » dans le menu de chaque cours et en action groupée.
+  - Nouvelle fonction « Relecture et correction des cours » dans Qui fait quoi ; sans choix, elle utilise la même IA que la rédaction.
+- Catalogue redessiné en tableau : colonnes Code, Cours, Statut, Actions alignées.
+  - Statut : publié, à relire ou sans contenu, puis l'état de l'IA ou le résultat de la relecture.
+  - Un seul bouton principal par ligne, les autres actions dans le menu « ⋯ ».
+  - « Prioritaire » est discret, dans la ligne de description.

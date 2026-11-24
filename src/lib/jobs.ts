@@ -3,14 +3,14 @@ import { sql } from './db';
 
 // File de tâches en arrière-plan, dans le serveur de l'application (pas de service en plus) :
 // deux files (rapide / cours), reprise si le serveur redémarre, deux nouveaux essais en cas d'échec.
-export type JobKind = 'correction' | 'bilan' | 'cours';
+export type JobKind = 'correction' | 'bilan' | 'cours' | 'relecture' | 'cours_corrige';
 export type Job = { id: string; kind: JobKind; payload: Record<string, unknown>; attempts: number };
 
 const TICK = Number(process.env.JOBS_TICK_MS ?? 20_000);
 const AUTO_EVERY = Number(process.env.JOBS_AUTO_MS ?? 30 * 60_000);
 const MAX_ATTEMPTS = 3;
 // deux files : les tâches rapides (corrections, bilans) ne restent jamais bloquées derrière la rédaction d'un cours
-const LANES = { rapide: ['correction', 'bilan'], cours: ['cours'] } as const;
+const LANES = { rapide: ['correction', 'bilan'], cours: ['cours', 'relecture', 'cours_corrige'] } as const;
 type Lane = keyof typeof LANES;
 const busy: Record<Lane, boolean> = { rapide: false, cours: false };
 let started = false;
@@ -50,6 +50,10 @@ async function run(j: Job): Promise<Record<string, unknown>> {
   const a = await import('./automation');
   if (j.kind === 'correction') return a.runCorrectionJob(String(j.payload.attemptId));
   if (j.kind === 'bilan') return a.runBilanJob(String(j.payload.studentId));
+  if (j.kind === 'relecture' || j.kind === 'cours_corrige') {
+    const r = await import('./course-review');
+    return j.kind === 'relecture' ? r.runReviewJob(String(j.payload.versionId), j.id) : r.runFixJob(String(j.payload.reviewId), j.payload.userId ? String(j.payload.userId) : null, j.id);
+  }
   return a.runCourseJob(Number(j.payload.courseId), j.payload.userId ? String(j.payload.userId) : null, j.id);
 }
 

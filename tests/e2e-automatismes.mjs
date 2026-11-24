@@ -50,6 +50,20 @@ const mock = http.createServer((req, res) => {
     if (!b.response_format) return json(200, { choices: [{ message: { content: 'OK' }, finish_reason: 'stop' }] });
     const sys = b.messages[0].content, user = b.messages[1].content;
     let out;
+    if (sys.includes('relecteur et inspecteur')) {
+      calls.relecture = (calls.relecture ?? 0) + 1;
+      out = JSON.stringify({ verdict: 'a_corriger', synthese: 'Deux erreurs de fond.', points_forts: ['Bonne progression'], problemes: [
+        { gravite: 'bloquant', ou: 'Partie 2', constat: 'Règle des signes énoncée à l’envers.', correction: 'Moins par moins donne plus.' },
+        { gravite: 'important', ou: 'Exercice ex3', constat: 'Corrigé faux.', correction: 'La réponse est 15.' }] });
+      return json(200, { choices: [{ message: { role: 'assistant', content: out }, finish_reason: 'stop' }] });
+    }
+    if (sys.includes('Tu corriges un cours existant')) {
+      calls.fix = user;
+      const doc = JSON.parse(user.slice(user.indexOf('Cours actuel (JSON) :') + 'Cours actuel (JSON) :'.length));
+      res.writeHead(200, { 'content-type': 'text/event-stream' });
+      res.write(`data: ${JSON.stringify({ choices: [{ delta: { content: JSON.stringify({ ...doc, lesson: { ...doc.lesson, essential: 'Corrigé : moins par moins donne plus.' } }) }, finish_reason: null }] })}\n\n`);
+      res.write(`data: ${JSON.stringify({ choices: [{ delta: { content: '' }, finish_reason: 'stop' }] })}\n\ndata: [DONE]\n\n`); return res.end();
+    }
     if (sys.includes('auteur de cours')) {
       calls.cours.push({ model: b.model, user, stream: !!b.stream, path: u.pathname });
       const text = course(user);
@@ -204,6 +218,21 @@ await ad.locator(`div:has(> span > span:text-is("${empty.title}")) >> text=À re
 ok(!!(await sql`select 1 from course_versions where course_id = ${empty.id} and status = 'draft'`)[0], 'bouton du catalogue : le cours est rédigé, et la page affiche « À relire » toute seule (sans F5)');
 await ad.goto(BASE + '/contenu/ia');
 ok((await ad.locator('section[aria-labelledby="file"]').innerText()).includes('Terminé'), 'la file d’attente montre les tâches terminées');
+
+console.log('Relecture d’un cours existant par l’IA, puis correction');
+await ad.goto(`${BASE}/contenu/cours/${rn1.id}`);
+await ad.click('button:has-text("Relire avec l’IA")');
+await ad.waitForSelector('text=Règle des signes énoncée à l’envers', { timeout: 30_000 });
+const rv = await ad.locator('section[aria-labelledby="relecture"]').innerText();
+ok(rv.includes('À corriger') && rv.includes('Bloquant (1)') && rv.includes('Important (1)'), 'relecture : verdict et problèmes classés par gravité, affichés sans recharger la page');
+await ad.click('button:has-text("Faire corriger par l’IA")'); await ad.click('[data-dialog-ok]');
+await ad.waitForSelector('text=en brouillon à relire', { timeout: 30_000 });
+const [fixed] = await sql`select version, status, document->'lesson'->>'essential' as ess from course_versions where course_id = ${rn1.id} order by version desc limit 1`;
+ok(fixed.version === 2 && fixed.status === 'draft' && fixed.ess.includes('moins par moins donne plus') && calls.fix.includes('Règle des signes énoncée à l’envers'),
+  'correction : l’IA reçoit la liste des problèmes, la version corrigée (v2) arrive en brouillon à relire, la v1 reste publiée');
+await ad.goto(BASE + '/contenu');
+await ad.fill('input[type=search]', rn1.title.slice(0, 20));
+ok((await ad.locator('main').innerText()).includes('Relu par l’IA : 2 problèmes'), 'catalogue : la colonne Statut indique le résultat de la relecture');
 
 console.log('Fournisseur ajouté (GLM) pour la rédaction des cours');
 const glmBad = await setKey('glm', 'mauvaise', { base_url: 'http://127.0.0.1:3999/api/paas/v4', models: 'glm-4.6' });

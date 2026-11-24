@@ -80,7 +80,7 @@ export function RunAutoButton() {
 }
 
 // ── « Qui fait quoi » : une ligne par fonction de la liste centrale (TASKS) ; une nouvelle fonction y apparaît d'elle-même
-export type FnTask = { id: string; label: string; desc: string; studentData: boolean };
+export type FnTask = { id: string; label: string; desc: string; studentData: boolean; fallback?: string };
 export type KeyedProvider = { id: string; name: string; eu: boolean; where: string; models: Model[]; defaults: Record<string, string | undefined> };
 
 export function AssignTable({ tasks, providers, current, allowNonEu }: {
@@ -122,7 +122,7 @@ export function AssignTable({ tasks, providers, current, allowNonEu }: {
               <span className="block muted text-xs">{t.studentData ? 'Données d’élèves (sans nom) : fournisseur européen' : 'Aucune donnée d’élève : tout fournisseur'}</span>
               {pr && lock(pr.eu) && <span className="block text-xs font-semibold text-warm-dark">⚠ bloqué : {pr.name} est hors UE et la dérogation n’est pas accordée. Choisissez une IA européenne.</span>}</span>
             <select className="field" name={`task_${t.id}`} value={cur.p} onChange={e => pick(t.id, e.target.value)} aria-label={`Fournisseur pour ${t.label}`}>
-              <option value="">— Aucune IA —</option>
+              <option value="">{t.fallback ? `— Même IA que « ${tasks.find(x => x.id === t.fallback)?.label ?? t.fallback} » —` : '— Aucune IA —'}</option>
               <optgroup label="Clé enregistrée">
                 {providers.map(p => <option key={p.id} value={p.id} disabled={lock(p.eu)}>{p.name}{lock(p.eu) ? ' — 🔒 hors UE' : p.eu ? ' · Europe' : ''}</option>)}
               </optgroup>

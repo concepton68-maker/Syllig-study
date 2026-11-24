@@ -69,3 +69,23 @@ export async function publishCoursesDraftsAction(form: FormData) {
   }
   revalidatePath('/contenu', 'layout'); revalidatePath('/eleve', 'layout');
 }
+
+// Relecture par l'IA d'un cours existant, puis correction en nouvelle version (brouillon)
+export async function reviewAction(courseId: number) {
+  await requireUser('admin');
+  const { requestReview } = await import('@/lib/course-review');
+  await requestReview(courseId);
+  revalidatePath('/contenu', 'layout');
+}
+export async function reviewBulkAction(form: FormData) {
+  await requireUser('admin');
+  const { requestReview } = await import('@/lib/course-review');
+  for (const id of form.getAll('ids').map(Number).filter(Number.isInteger)) await requestReview(id);
+  revalidatePath('/contenu', 'layout');
+}
+export async function fixAction(reviewId: string) {
+  const u = await requireUser('admin');
+  const { requestFix } = await import('@/lib/course-review');
+  await requestFix(reviewId, u.id);
+  revalidatePath('/contenu', 'layout');
+}
