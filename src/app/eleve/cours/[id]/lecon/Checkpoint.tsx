@@ -22,7 +22,7 @@ export function Checkpoint({ courseId, partIndex, total, initial }: { courseId: 
   return (
     <section aria-label="Point de contrôle" className="card p-7 border-2 border-brand flex flex-col gap-3.5">
       <div className="flex flex-wrap justify-between gap-2">
-        <span className="lbl text-brand-dark">Point de contrôle · partie {partIndex + 1} sur {total}</span>
+        <span className="lbl">Point de contrôle · partie {partIndex + 1} sur {total}</span>
         {q.attempt > 0 && <span className="muted text-sm">Nouvelle question</span>}
       </div>
       {q.quote && <p className="prose-lesson italic m-0">« <RichText text={q.quote} /> »</p>}

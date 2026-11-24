@@ -4,6 +4,7 @@ import { loadCourse } from './data';
 import { PageTitle } from '@/components/Shell';
 import { MasteryPill } from '@/components/Mastery';
 import { Screen } from '@/components/Layout';
+import { RichText } from '@/components/RichText';
 
 export const dynamic = 'force-dynamic';
 
@@ -16,15 +17,25 @@ export default async function CourseOverview({ params }: { params: Promise<{ id:
   const steps = [
     { n: '①', name: 'Leçon', href: `${base}/lecon`, done: !!progress.lesson_done_at, meta: `${doc.lesson.duration_min} min · ${doc.lesson.parts.length} parties`, open: true },
     { n: '②', name: 'Exercices', href: `${base}/exercices`, done: !!progress.exercises_done_at, meta: `${doc.exercises.duration_min} min · ${doc.exercises.items.length} exercices${progress.exercises_score !== null ? ` · ${progress.exercises_score}/10` : ''}`, open: !!progress.lesson_done_at },
-    { n: '③', name: 'Évaluation', href: `${base}/evaluation`, done: attempts.some(a => a.status === 'graded'), meta: `${doc.evaluation.duration_min} min chrono · sur ${doc.evaluation.total_points}`, open: !!progress.exercises_done_at },
+    { n: '③', name: 'Évaluation', href: `${base}/evaluation`, done: attempts.some(a => a.status === 'graded'), meta: `${doc.evaluation.duration_min} min chronométrées · sur ${doc.evaluation.total_points}`, open: !!progress.exercises_done_at },
   ];
+  // action principale : la première étape ouverte et non terminée
+  const nextOpen = steps.find(x => x.open && !x.done);
+  const main = nextOpen ?? steps[0];
   return (
-    <Screen top={<PageTitle kicker={`${course.subject} · ${course.chapter}${course.code ? ` · ${course.code}` : ''}`} title={course.title}>
-        <MasteryPill level={progress.mastery} />
+    <Screen top={<PageTitle kicker={`${course.subject} · ${course.chapter}${course.code ? ` · ${course.code}` : ''}`} title={course.title}
+        sub={<span className="inline-flex items-center gap-2 mt-1"><MasteryPill level={progress.mastery} /></span>}>
+        <Link className="btn" href="/eleve/parcours">‹ Mes cours</Link>
       </PageTitle>}>
       <section className="card flex flex-col gap-4">
         {doc.lesson.objectives.length > 0 && (<div><span className="lbl">À la fin de ce cours, je sais</span>
-          <ul className="mt-2 mb-0 pl-5 list-disc">{doc.lesson.objectives.map((o, i) => <li key={i}>{o.replace(/ ;$|\.$/, '')}</li>)}</ul></div>)}
+          <ul className="mt-2 mb-0 pl-5 list-disc">{doc.lesson.objectives.map((o, i) => <li key={i}><RichText text={o} /></li>)}</ul></div>)}
+        <div className="flex flex-wrap items-center gap-3">
+          <Link className="btn btn-primary min-h-[52px] px-7 text-base w-full sm:w-auto" href={main.href}>
+            {nextOpen ? `${main.done ? 'Continuer' : progress.lesson_done_at ? 'Continuer' : 'Commencer'} : ${main.n} ${main.name}` : 'Revoir la leçon'}
+          </Link>
+          {!nextOpen && <span className="muted text-sm">Toutes les étapes sont faites : tu peux revoir la leçon ou retenter l’évaluation.</span>}
+        </div>
         <ol className="list-none m-0 p-0 flex flex-wrap gap-3">
           {steps.map(s => (
             <li key={s.n} className="flex-[1_1_220px]">
@@ -33,7 +44,7 @@ export default async function CourseOverview({ params }: { params: Promise<{ id:
                   <div className="font-bold">{s.n} · {s.name}{s.done ? ' ✓' : ''}</div><div className="text-sm mt-1">{s.meta}</div>
                 </Link>
               ) : (
-                <div className="p-4 rounded-xl bg-soft text-muted"><div className="font-bold">{s.n} · {s.name}</div><div className="text-sm mt-1">S’ouvre après l’étape précédente</div></div>
+                <div className="p-4 rounded-xl bg-soft text-muted"><div className="font-bold">{s.n} · {s.name}</div><div className="text-sm mt-1">{s.meta.split(' · ')[0]} · s’ouvre après l’étape précédente</div></div>
               )}
             </li>
           ))}

@@ -874,7 +874,7 @@
       },
       {
         "id": "ex2",
-        "type": "short",
+        "type": "qcm",
         "stars": 1,
         "lesson_part": 1,
         "skills": [
@@ -882,10 +882,14 @@
         ],
         "cognitive": "appliquer",
         "prompt": "Complète au présent : « Vosotros ___ mucho en clase. » (hablar)",
-        "answer": [
-          "habláis"
+        "options": [
+          "hablais",
+          "habláis",
+          "hablan",
+          "hablamos"
         ],
-        "solution": "habláis : vosotros → terminaison -áis pour un verbe en -ar (avec accent sur le á)."
+        "answer": 1,
+        "solution": "habláis : vosotros → terminaison -áis pour un verbe en -ar, avec un accent écrit sur le á (« hablais » sans accent est une faute)."
       },
       {
         "id": "ex3",

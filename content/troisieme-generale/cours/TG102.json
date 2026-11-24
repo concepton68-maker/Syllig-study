@@ -697,7 +697,7 @@
   },
   "evaluation": {
     "duration_min": 30,
-    "conditions": "Sans la leçon, en 30 minutes. Calculatrice autorisée. Les numéros atomiques utiles sont donnés. Barème : A = 6 points · B = 8 points · C = 6 points.",
+    "conditions": "Sans la leçon, en 30 minutes. Calculatrice autorisée. Les numéros atomiques utiles sont donnés. Pour une réponse numérique, écris seulement le nombre, sans unité. Barème : A = 6 points · B = 8 points · C = 6 points.",
     "total_points": 20,
     "variants": [
       {

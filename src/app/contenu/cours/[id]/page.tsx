@@ -93,7 +93,7 @@ export default async function CoursePreview({ params, searchParams }: { params: 
             {p.blocks.map((b, j) => <BlockView key={j} block={b} />)}
             {p.checkpoint && (
               <div className="rounded-xl border-2 border-brand p-4 flex flex-col gap-3">
-                <span className="lbl text-brand-dark">Point de contrôle · {p.checkpoint.variants.length} variantes</span>
+                <span className="lbl">Point de contrôle · {p.checkpoint.variants.length} variantes</span>
                 {p.checkpoint.variants.map((cv, k) => (
                   <div key={k} className="text-sm">
                     <strong>{k + 1}. <RichText text={cv.prompt} /></strong>{cv.quote && <em className="block muted">« <RichText text={cv.quote} /> »</em>}

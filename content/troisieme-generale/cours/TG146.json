@@ -626,7 +626,7 @@
             {
               "prompt": "Complète : « While my sister ___ the piano, I ___ my homework. »",
               "options": [
-                "played / did",
+                "were playing / was doing",
                 "was playing / was doing",
                 "is playing / was doing",
                 "was playing / doing"
@@ -778,7 +778,8 @@
         "prompt": "Écris la question qui correspond à cette phrase : « Your parents went to Spain. »",
         "answer": [
           "Did your parents go to Spain?",
-          "Did your parents go to Spain"
+          "Did your parents go to Spain",
+          "Did they go to Spain?"
         ],
         "solution": "Did your parents go to Spain? — Did porte le passé ; went redevient go (base verbale)."
       },

@@ -1,4 +1,5 @@
 'use client';
+import { ConfirmButton } from '@/components/ConfirmButton';
 import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { Lock } from 'lucide-react';
@@ -101,7 +102,7 @@ export function LessonBook({ courseId, pages, startPage, current, checkpoint, to
                   <Link className="btn btn-primary" href={exercisesHref}>② Faire les exercices</Link>
                 </div>
               ) : (
-                <form action={finishAction} className="flex justify-end"><button className="btn btn-primary" type="submit">J’ai terminé la leçon</button></form>
+                <form action={finishAction} className="flex justify-end"><ConfirmButton className="btn btn-primary">J’ai terminé la leçon</ConfirmButton></form>
               )}
             </>
           )}

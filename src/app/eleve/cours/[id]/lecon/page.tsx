@@ -33,7 +33,7 @@ export default async function LessonPage({ params }: { params: Promise<{ id: str
         <div className="flex items-center gap-3 flex-wrap">
           <Link className="btn" href={`/eleve/cours/${course.id}`}>‹ Quitter</Link>
           <div><div className="lbl">{course.subject} · {course.chapter}{course.code ? ` · ${course.code}` : ''}</div>
-            <strong className="font-[family-name:var(--font-display)] text-lg">{course.title} · ① Leçon</strong></div>
+            <h1 className="font-[family-name:var(--font-display)] !text-lg font-bold m-0 leading-snug">{course.title} · ① Leçon</h1></div>
         </div>
         <div className="flex items-center gap-2.5"><ActivityTracker kind="lesson" courseId={course.id} idleSeconds={student.settings.idle_seconds} />
           <span className="pill bg-soft text-ink-2">{done ? 'Leçon terminée' : `Partie ${st.current + 1} sur ${parts.length}`}</span></div>

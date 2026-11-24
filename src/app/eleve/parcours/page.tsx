@@ -34,14 +34,15 @@ export default async function MyCourses({ searchParams }: { searchParams: Promis
   const row = (c: ParcoursItem) => {
     const st = nextStep(c, rd);
     return (
-      <div key={c.course_id} className="flex flex-wrap items-center gap-3 py-3 border-t border-soft">
+      <div key={c.course_id} className="flex flex-wrap items-center gap-3 py-3 border-t border-soft first:border-t-0">
         <div className="flex-[1_1_260px] min-w-0">
           <Link href={`/eleve/cours/${c.course_id}`} className="font-semibold text-[15px] text-ink">{c.title}</Link>
           <div className="muted text-xs">{c.subject} · {c.chapter}</div>
         </div>
         {c.priority === 'prioritaire' && c.mastery < 4 && <PriorityPill />}
         <MasteryPill level={c.mastery} />
-        {st.kind !== 'done' && <Link href={stepHref(c.course_id, st)} className="btn w-[220px]">{st.label}</Link>}
+        {st.kind !== 'done' && <Link href={stepHref(c.course_id, st)} className="btn w-full sm:w-[240px]">
+          {st.kind === 'lesson' ? (c.lesson_done || c.mastery > 0 ? 'Continuer : ' : 'Commencer : ') : st.kind === 'exercises' || st.kind === 'evaluation' ? 'Continuer : ' : ''}{st.label}</Link>}
         {c.best && <span className="num text-sm font-semibold w-16 text-right">{Number(c.best).toLocaleString('fr-FR')}/20</span>}
       </div>
     );

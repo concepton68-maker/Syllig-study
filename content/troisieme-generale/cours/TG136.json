@@ -460,11 +460,11 @@
           {
             "type": "list",
             "items": [
-              "**Progrès techniques et scientifiques** : nouveaux matériaux (plastiques, alliages légers), électronique, numérique, batteries plus performantes.",
-              "**Besoins et modes de vie** : mobilité, communication permanente, confort, santé.",
-              "**Réglementation et normes** : sécurité, interdiction de certains produits (ampoules à incandescence).",
-              "**Environnement** : économiser l'énergie et les matières premières, réduire les déchets, faciliter la réparation et le recyclage.",
-              "**Coût** : produire moins cher, en grande série."
+              "Cause · **Progrès techniques et scientifiques** : nouveaux matériaux (plastiques, alliages légers), électronique, numérique, batteries plus performantes.",
+              "Cause · **Besoins et modes de vie** : mobilité, communication permanente, confort, santé.",
+              "Cause · **Réglementation et normes** : sécurité, interdiction de certains produits (ampoules à incandescence).",
+              "Cause · **Environnement** : économiser l'énergie et les matières premières, réduire les déchets, faciliter la réparation et le recyclage.",
+              "Cause · **Coût** : produire moins cher, en grande série."
             ]
           },
           {
@@ -620,7 +620,10 @@
           "batterie lithium",
           "accumulateur",
           "un accumulateur",
-          "batterie Li-ion"
+          "batterie Li-ion",
+          "une batterie Li-ion",
+          "la batterie Li-ion",
+          "l'accumulateur"
         ],
         "solution": "La batterie (lithium-ion) : elle stocke l'énergie électrique."
       },
@@ -702,10 +705,9 @@
           "te-document"
         ],
         "cognitive": "analyser",
-        "prompt": "Pendant la durée de vie d'une seule lampe B (15 000 heures), combien de lampes A faut-il acheter au total ? (Réponds par un nombre.)",
-        "answer": 7.5,
-        "tolerance": 0.5,
-        "solution": "15 000 ÷ 2 000 = 7,5 : il faut donc environ 7 à 8 lampes A (en pratique 8 achats) pour éclairer aussi longtemps qu'une seule lampe B. Les réponses 7, 7,5 ou 8 sont acceptées."
+        "prompt": "Pendant la durée de vie d'une seule lampe B (15 000 heures), combien de lampes A faut-il acheter au total ? (Réponds par un nombre entier.)",
+        "answer": 8,
+        "solution": "15 000 ÷ 2 000 = 7,5. On ne peut pas acheter une demi-lampe, et 7 lampes A ne dureraient que 7 × 2 000 = 14 000 heures : il faut donc en acheter **8** pour éclairer aussi longtemps qu'une seule lampe B."
       },
       {
         "id": "ex9",
@@ -1075,7 +1077,16 @@
                   "une batterie lithium-ion",
                   "la batterie lithium-ion",
                   "batterie lithium-ion de 40 Wh",
-                  "accumulateur"
+                  "accumulateur",
+                  "un accumulateur",
+                  "l'accumulateur",
+                  "batterie Li-ion",
+                  "une batterie Li-ion",
+                  "batterie lithium",
+                  "batterie de 40 Wh",
+                  "une batterie de 40 Wh",
+                  "une batterie lithium-ion de 40 Wh",
+                  "la batterie lithium-ion de 40 Wh"
                 ],
                 "solution": "La batterie lithium-ion (de 40 Wh).",
                 "rubric": "1 pt : batterie."

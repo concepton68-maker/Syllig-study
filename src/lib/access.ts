@@ -1,3 +1,4 @@
+import { cookies } from 'next/headers';
 import 'server-only';
 import { redirect, notFound } from 'next/navigation';
 import { sql } from './db';
@@ -29,12 +30,13 @@ export async function studentsOfParent(userId: string): Promise<Student[]> {
   return rows.map(fix);
 }
 
-// Parent connecté + élève choisi (paramètre ?eleve=… sinon le premier)
+// Parent connecté + élève choisi (paramètre ?eleve=…, sinon le dernier choisi (cookie), sinon le premier)
 export async function requireParent(eleve?: string): Promise<{ user: User; students: Student[]; student: Student | null }> {
   const user = await requireUser('parent');
   const students = await studentsOfParent(user.id);
   if (eleve && !students.some(s => s.id === eleve)) notFound();
-  const student = students.find(s => s.id === eleve) ?? students[0] ?? null;
+  const remembered = (await cookies()).get('ss_eleve')?.value;
+  const student = students.find(s => s.id === eleve) ?? students.find(s => s.id === remembered) ?? students[0] ?? null;
   return { user, students, student };
 }
 

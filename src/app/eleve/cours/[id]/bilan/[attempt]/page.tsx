@@ -45,7 +45,7 @@ export default async function Bilan({ params }: { params: Promise<{ id: string; 
 
       <section className="card p-8 flex flex-wrap gap-8 items-center">
         <div className="flex-[1_1_420px] flex flex-col gap-2.5">
-          <span className="lbl text-brand-dark">Bilan de ton évaluation</span>
+          <span className="lbl">Bilan de ton évaluation</span>
           <h1 className="text-[32px] font-bold leading-tight spark">{headline}</h1>
           <span className="muted text-base">
             {b.final

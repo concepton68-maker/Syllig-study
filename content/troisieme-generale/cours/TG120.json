@@ -597,7 +597,11 @@
           "groupe B",
           "le groupe B",
           "du groupe B",
-          "elle est du groupe B"
+          "elle est du groupe B",
+          "il est du groupe B",
+          "groupe sanguin B",
+          "le groupe sanguin B",
+          "son groupe sanguin est B"
         ],
         "solution": "Groupe B : l'allèle B est dominant sur l'allèle O, qui est récessif."
       },
@@ -618,7 +622,11 @@
           "du groupe AB",
           "elle est du groupe AB",
           "A B",
-          "A et B"
+          "A et B",
+          "il est du groupe AB",
+          "groupe sanguin AB",
+          "le groupe sanguin AB",
+          "son groupe sanguin est AB"
         ],
         "solution": "Groupe AB : les allèles A et B sont codominants, ils s'expriment tous les deux."
       },
@@ -645,7 +653,7 @@
       },
       {
         "id": "ex8",
-        "type": "numeric",
+        "type": "short",
         "stars": 2,
         "lesson_part": 4,
         "skills": [
@@ -653,7 +661,13 @@
         ],
         "cognitive": "appliquer",
         "prompt": "Un père (A//O) et une mère (O//O) attendent un enfant. Quelle est la probabilité, en pourcentage, que cet enfant soit du groupe O ? (Réponds par un nombre.)",
-        "answer": 50,
+        "answer": [
+          "50",
+          "50 %",
+          "1/2",
+          "0,5",
+          "1 chance sur 2"
+        ],
         "solution": "La mère donne toujours O. Le père donne A (1 fois sur 2) ou O (1 fois sur 2). L'enfant est donc (A//O) → groupe A dans 50 % des cas, ou (O//O) → groupe O dans 50 % des cas."
       },
       {
@@ -694,7 +708,7 @@
   },
   "evaluation": {
     "duration_min": 30,
-    "conditions": "Sans la leçon, en 30 minutes. Lis bien le document avant de répondre et fais un brouillon pour les tableaux de croisement. Barème : A = 6 points · B = 9 points · C = 5 points.",
+    "conditions": "Sans la leçon, en 30 minutes. Lis bien le document avant de répondre et fais un brouillon pour les tableaux de croisement. Pour une réponse numérique, écris seulement le nombre (sans le signe %). Barème : A = 6 points · B = 9 points · C = 5 points.",
     "total_points": 20,
     "variants": [
       {
@@ -744,7 +758,7 @@
                   "svt-caracteres"
                 ],
                 "cognitive": "connaitre",
-                "prompt": "Lequel de ces caractères dépend uniquement de l'environnement ?",
+                "prompt": "Lequel de ces caractères est un caractère acquis, dû à l'environnement, qui ne se transmet pas aux enfants ?",
                 "options": [
                   "Le groupe sanguin",
                   "Le bronzage",
@@ -752,7 +766,7 @@
                   "L'albinisme"
                 ],
                 "answer": 1,
-                "solution": "Le bronzage est un caractère acquis, dû à l'exposition au soleil.",
+                "solution": "Le bronzage est un caractère acquis, dû à l'exposition au soleil : il ne modifie pas les gènes et ne se transmet pas. Le groupe sanguin, la couleur naturelle des yeux et l'albinisme sont héréditaires.",
                 "rubric": "1 pt : bonne réponse."
               },
               {
@@ -827,7 +841,9 @@
                   "O O",
                   "O et O",
                   "deux allèles O",
-                  "2 allèles O"
+                  "2 allèles O",
+                  "(0//0)",
+                  "0/0"
                 ],
                 "solution": "(O//O) : l'allèle O est récessif, Nora ne peut être du groupe O que si elle possède deux allèles O.",
                 "rubric": "1 pt : (O//O)."
@@ -872,7 +888,7 @@
               },
               {
                 "id": "q9",
-                "type": "numeric",
+                "type": "short",
                 "points": 2,
                 "text_ref": "d1",
                 "lesson_part": 4,
@@ -881,7 +897,13 @@
                 ],
                 "cognitive": "appliquer",
                 "prompt": "Karim et Claire attendent un troisième enfant. Quelle est la probabilité, en pourcentage, que cet enfant soit du groupe AB ? (Réponds par un nombre.)",
-                "answer": 25,
+                "answer": [
+                  "25",
+                  "25 %",
+                  "1/4",
+                  "0,25",
+                  "1 chance sur 4"
+                ],
                 "solution": "Tableau de croisement (A//O) × (B//O) : 4 cases équiprobables, (A//B), (A//O), (B//O), (O//O). Une seule case donne AB : 1 chance sur 4, soit 25 %.",
                 "rubric": "2 pts : 25. (1 pt si le tableau de croisement est juste mais le calcul faux.)"
               },
@@ -991,7 +1013,7 @@
                   "svt-gene-allele"
                 ],
                 "cognitive": "connaitre",
-                "prompt": "Combien d'allèles d'un même gène une cellule de muscle contient-elle ?",
+                "prompt": "Combien d'allèles d'un même gène une cellule de l'intérieur de la joue contient-elle ?",
                 "answer": 2,
                 "solution": "Deux : les chromosomes vont par paires.",
                 "rubric": "1 pt : 2."
@@ -1097,7 +1119,7 @@
               },
               {
                 "id": "q9",
-                "type": "numeric",
+                "type": "short",
                 "points": 2,
                 "text_ref": "d1",
                 "lesson_part": 4,
@@ -1106,7 +1128,13 @@
                 ],
                 "cognitive": "appliquer",
                 "prompt": "Sami et Julie attendent un troisième enfant. Quelle est la probabilité, en pourcentage, qu'il soit albinos ? (Réponds par un nombre.)",
-                "answer": 25,
+                "answer": [
+                  "25",
+                  "25 %",
+                  "1/4",
+                  "0,25",
+                  "1 chance sur 4"
+                ],
                 "solution": "Tableau de croisement (N//alb) × (N//alb) : 4 cases équiprobables, (N//N), (N//alb), (alb//N), (alb//alb). Une seule case donne un enfant albinos : 1 chance sur 4, soit 25 %.",
                 "rubric": "2 pts : 25. (1 pt si le tableau de croisement est juste mais le calcul faux.)"
               },

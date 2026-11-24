@@ -49,7 +49,7 @@ export function ActivityTracker({ kind, courseId, idleSeconds = 60 }: { kind: st
           <div className="card max-w-sm flex flex-col gap-3">
             <h2 id="away-title" className="text-xl font-semibold">Tu es là ?</h2>
             <p className="muted m-0">Le chrono est en pause depuis un moment. Il reprend dès que tu continues.</p>
-            <button className="btn btn-primary" type="button" onClick={() => { lastInput.current = Date.now(); setAway(false); setPaused(false); }}>Je reprends</button>
+            <button className="btn btn-primary" type="button" autoFocus onClick={() => { lastInput.current = Date.now(); setAway(false); setPaused(false); }}>Je reprends</button>
           </div>
         </div>
       )}

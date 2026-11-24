@@ -129,3 +129,22 @@ Première version numérotée (déjà en ligne avant numérotation : socle, gén
   - les objectifs ;
   - les bilans, les copies et l'aperçu du cours.
 - Nouveau test : chaque cours de la bibliothèque est parcouru de bout en bout (leçon, exercices, évaluation, correction du parent). Les 22 cours de 3e obtiennent 20/20 avec les réponses du corrigé.
+
+## 0.12 — 24/11/2026
+- Relecture « professeur » des 9 cours de la deuxième vague :
+  - Erreurs scientifiques corrigées (caractère acquis, cellule à plusieurs noyaux).
+  - Tolérance trop large corrigée en technologie.
+  - Une réponse espagnole qui était acceptée sans son accent, alors que l'accent change la forme, passe en QCM.
+  - Un point de contrôle d'anglais qui avait deux bonnes réponses est corrigé.
+  - Précisions historiques sur la Grande Terreur et sur la capitale de l'URSS.
+  - « donc » est classé en adverbe, selon la terminologie 2020.
+- Correction automatique : une unité ou « % » écrite après un nombre est acceptée (« 25 % », « 50 km »).
+- Parent : les questions corrigées automatiquement sont ajustables, pour accorder des points partiels prévus au barème.
+- Élève :
+  - Mode concentration pendant l'évaluation : la navigation est masquée et une sauvegarde est faite en quittant la page.
+  - Page du cours avec un bouton principal « Commencer / Continuer » et un retour à « Mes cours ».
+  - Boutons avec un état « Un instant… ».
+  - Titres de page accessibles.
+  - Minuteur annoncé seulement à 5 min, 1 min et 10 s.
+- Parent : l'enfant choisi est retenu d'une page à l'autre.
+- Démarrage du site : un fichier de cours illisible est ignoré au lieu de bloquer le démarrage.

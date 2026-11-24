@@ -39,8 +39,10 @@ export async function validateGrade(form: FormData) {
   const qs = evalQuestions((await versionById(a.version_id))!.document, a.variant);
   const scores: Record<string, number> = {}, feedback: Record<string, string> = {};
   for (const q of qs) {
-    if (a.auto_scores && q.id in a.auto_scores) { scores[q.id] = a.auto_scores[q.id]; continue; }
-    const v = Number(String(form.get(`p_${q.id}`) ?? '').replace(',', '.'));
+    const raw = form.get(`p_${q.id}`);
+    // question corrigée automatiquement : la note automatique reste, sauf si le parent l'ajuste (points partiels)
+    if (a.auto_scores && q.id in a.auto_scores && (raw === null || String(raw).trim() === '')) { scores[q.id] = a.auto_scores[q.id]; continue; }
+    const v = Number(String(raw ?? '').replace(',', '.'));
     if (!Number.isFinite(v) || v < 0 || v > (q.points ?? 0)) redirect(`/parent/copies/${a.id}?erreur=${q.id}`);
     scores[q.id] = Math.round(v * 4) / 4;
     const c = String(form.get(`c_${q.id}`) ?? '').trim();

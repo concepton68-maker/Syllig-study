@@ -1,3 +1,4 @@
+import { ConfirmButton } from '@/components/ConfirmButton';
 import Link from 'next/link';
 import { redirect } from 'next/navigation';
 import { sql } from '@/lib/db';
@@ -27,7 +28,7 @@ export default async function EvaluationPage({ params }: { params: Promise<{ id:
     <div className="card p-4 flex flex-wrap items-center justify-between gap-3">
       <div className="flex items-center gap-3 flex-wrap">
         {attempt?.status !== 'in_progress' && <Link className="btn" href={`/eleve/cours/${course.id}`}>‹ Quitter</Link>}
-        <div><div className="lbl">{course.subject} · {course.chapter}</div><strong className="font-[family-name:var(--font-display)] text-lg">{course.title} · ③ Évaluation{attempt ? ` · tentative ${attempt.attempt_no}` : ''}</strong></div>
+        <div><div className="lbl">{course.subject} · {course.chapter}</div><h1 className="font-[family-name:var(--font-display)] !text-lg font-bold m-0 leading-snug">{course.title} · ③ Évaluation{attempt ? ` · tentative ${attempt.attempt_no}` : ''}</h1></div>
       </div>
       {attempt?.status === 'in_progress' && <ActivityTracker kind="evaluation" courseId={course.id} idleSeconds={student.settings.idle_seconds} />}
     </div>
@@ -59,7 +60,7 @@ export default async function EvaluationPage({ params }: { params: Promise<{ id:
           <li>{graded ? 'C’est ta meilleure note qui compte.' : 'Tu pourras retenter plus tard : c’est ta meilleure note qui compte.'}</li>
         </ul>
         {av.ok || (('pending' in av) && av.pending?.status === 'approved') ? (
-          <form action={startEvaluation.bind(null, id)}><button className="btn btn-primary min-h-[52px] px-7" type="submit">{student.settings.eval_requires_approval && !('pending' in av) ? 'Demander à passer l’évaluation' : `Commencer · ${doc.evaluation.duration_min} min`}</button></form>
+          <form action={startEvaluation.bind(null, id)}><ConfirmButton className="btn btn-primary min-h-[52px] px-7">{student.settings.eval_requires_approval && !('pending' in av) ? 'Demander à passer l’évaluation' : `Commencer · ${doc.evaluation.duration_min} min`}</ConfirmButton></form>
         ) : 'pending' in av && av.pending?.status === 'requested' ? (
           <p className="m-0 rounded-xl bg-soft px-4 py-3">Ta demande est envoyée à ton parent. L’évaluation s’ouvrira dès son accord.</p>
         ) : 'readyAt' in av && av.readyAt ? (

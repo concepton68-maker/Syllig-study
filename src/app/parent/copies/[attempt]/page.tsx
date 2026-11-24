@@ -47,8 +47,8 @@ export default async function CopyReview({ params, searchParams }: { params: Pro
       {erreur && <p role="alert" className="m-0 rounded-xl bg-warm-soft text-warm-dark px-4 py-3 text-sm">{erreur === 'motif' ? 'Indiquez le motif de la modification.' : `Points invalides pour ${erreur.toUpperCase()}.`}</p>}
 
       <GradeForm action={validateGrade} graded={graded} firstName={student.first_name}
-        maxima={Object.fromEntries(qs.filter(q => !(a.auto_scores && q.id in a.auto_scores)).map(q => [q.id, q.points ?? 0]))}
-        autoTotal={qs.reduce((n, q) => n + (a.auto_scores && q.id in a.auto_scores ? a.auto_scores[q.id] : 0), 0)}>
+        maxima={Object.fromEntries(qs.map(q => [q.id, q.points ?? 0]))}
+        autoTotal={0}>
         <input type="hidden" name="attempt" value={a.id} />
         {variant.texts.map(t => <SupportTextView key={t.id} t={t} />)}
         {qs.map(q => {
@@ -62,7 +62,12 @@ export default async function CopyReview({ params, searchParams }: { params: Pro
                 {q.rubric && <div className="flex-[1_1_300px] rounded-lg bg-soft px-3 py-2"><strong>Barème : </strong><RichText text={q.rubric} /></div>}
               </div>
               {auto ? (
-                <span className="pill self-start bg-soft text-ink-2">Corrigée automatiquement : {a.auto_scores![q.id]} / {q.points}</span>
+                <div className="flex flex-wrap gap-3 items-end">
+                  <label className="flex flex-col gap-1 text-sm font-semibold w-36">Points (automatique)
+                    <input className="field" name={`p_${q.id}`} inputMode="decimal" required defaultValue={String(graded && a.scores ? a.scores[q.id] ?? a.auto_scores![q.id] : a.auto_scores![q.id]).replace('.', ',')} />
+                  </label>
+                  <span className="muted text-sm flex-[1_1_300px] pb-2.5">Corrigée automatiquement ({String(a.auto_scores![q.id]).replace('.', ',')} / {q.points}). Ajustez si la réponse mérite des points partiels (par exemple une petite faute).</span>
+                </div>
               ) : (
                 <div className="flex flex-wrap gap-3 items-end">
                   <label className="flex flex-col gap-1 text-sm font-semibold w-36">Points {!graded && a.proposal?.[q.id] ? '(proposés)' : ''}

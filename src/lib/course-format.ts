@@ -199,7 +199,10 @@ export function autoCorrect(q: Question, answer: string | undefined): boolean | 
   }
   if (q.type === 'numeric') {
     // signe moins typographique (claviers de téléphone) et espaces fines acceptés
-    const v = Number(a.replace(/[−–]/g, '-').replace(',', '.').replace(/[\s\u00a0\u202f]/g, ''));
+    const num = (x: string) => Number(x.replace(/[−–]/g, '-').replace(',', '.').replace(/[\s\u00a0\u202f]/g, ''));
+    let v = num(a);
+    // unité ou % écrits après le nombre (« 25 % », « 50 km », « 3,5 cm³ ») : on lit le nombre
+    if (!Number.isFinite(v)) v = num(a.replace(/\s*[%a-zA-Zµ°²³€$/.]+[a-zA-Z²³/.]*\s*$/, ''));
     return Number.isFinite(v) && Math.abs(v - Number(q.answer)) <= (q.tolerance ?? 0);
   }
   return (q.answer as string[]).some(x => normShort(x) === normShort(a));

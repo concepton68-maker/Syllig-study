@@ -1,3 +1,4 @@
+import { ConfirmButton } from '@/components/ConfirmButton';
 import Link from 'next/link';
 import { redirect } from 'next/navigation';
 import { sql } from '@/lib/db';
@@ -36,7 +37,7 @@ export default async function ExercisesPage({ params }: { params: Promise<{ id: 
         <div className="flex items-center gap-3 flex-wrap">
           <Link className="btn" href={`/eleve/cours/${course.id}`}>‹ Quitter</Link>
           <div><div className="lbl">{course.subject} · {course.chapter} · environ {ex.duration_min} min · {ex.pass_threshold}/10 conseillé avant l’évaluation</div>
-            <strong className="font-[family-name:var(--font-display)] text-lg">{course.title} · ② Exercices</strong></div>
+            <h1 className="font-[family-name:var(--font-display)] !text-lg font-bold m-0 leading-snug">{course.title} · ② Exercices</h1></div>
         </div>
         {!sub.checked_at && <ActivityTracker kind="exercises" courseId={course.id} idleSeconds={student.settings.idle_seconds} />}
         {ex.instructions && <p className="basis-full m-0 muted text-sm">{ex.instructions} Ici, pas de note : tu t’entraînes.</p>}
@@ -47,7 +48,7 @@ export default async function ExercisesPage({ params }: { params: Promise<{ id: 
         after={
           <div className="flex flex-wrap gap-3 pt-2">
             <Link className="btn btn-primary" href={`/eleve/cours/${course.id}/evaluation`}>③ Passer à l’évaluation</Link>
-            <form action={restartExercises.bind(null, id)}><button className="btn" type="submit">Refaire les exercices</button></form>
+            <form action={restartExercises.bind(null, id)}><ConfirmButton className="btn" message="Recommencer les exercices ? Ton score actuel reste dans ton historique.">Refaire les exercices</ConfirmButton></form>
           </div>
         } />
     </PaneScreen>

@@ -592,7 +592,7 @@
   },
   "evaluation": {
     "duration_min": 40,
-    "conditions": "Sans la leçon, en 40 minutes. Calculatrice autorisée, mais détaille tes décompositions. Pour une fraction, écris-la sous la forme a/b. Barème : A = 5 points · B = 8 points · C = 7 points.",
+    "conditions": "Sans la leçon, en 40 minutes. Calculatrice autorisée, mais détaille tes décompositions. Pour une réponse numérique, écris seulement le nombre, sans unité. Pour une fraction, écris-la sous la forme a/b. Barème : A = 5 points · B = 8 points · C = 7 points.",
     "total_points": 20,
     "variants": [
       {

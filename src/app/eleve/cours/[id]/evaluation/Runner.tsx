@@ -46,6 +46,13 @@ export function EvalRunner({ courseId, attemptId, remaining, sections, texts, in
     return () => clearInterval(t);
   }, [post]);
 
+  // Départ de la page (navigation, fermeture) : dernière sauvegarde
+  useEffect(() => {
+    const onHide = () => { if (!submitted.current) post({ action: 'save', answers: latest.current }); };
+    window.addEventListener('pagehide', onHide);
+    return () => { window.removeEventListener('pagehide', onHide); onHide(); };
+  }, [post]);
+
   // Sorties de fenêtre : enregistrées, présentées sans accusation
   useEffect(() => {
     const onVis = () => {
@@ -70,14 +77,15 @@ export function EvalRunner({ courseId, attemptId, remaining, sections, texts, in
   const sec = sections[tab];
 
   return (
-    <div className="flex flex-wrap gap-6 items-start lg:flex-nowrap lg:items-stretch lg:flex-1 lg:min-h-0">
+    <div data-exam-focus className="flex flex-wrap gap-6 items-start lg:flex-nowrap lg:items-stretch lg:flex-1 lg:min-h-0">
       <TextsAside texts={texts} />
       <section className="card p-0 flex-[999_1_560px] min-w-0 flex flex-col lg:h-full lg:min-h-0 overflow-hidden">
         <div className="shrink-0 px-4 pt-4 pb-3 border-b border-line flex flex-col gap-3">
           <div className="flex flex-wrap items-center justify-between gap-3">
-            <span className={`pill text-base px-4 py-1.5 ${left <= 120 ? 'bg-warm-soft text-warm-dark' : 'bg-brand-soft text-brand-dark'}`} role="timer" aria-live={left <= 60 ? 'assertive' : 'off'}>
+            <span className={`pill text-base px-4 py-1.5 ${left <= 120 ? 'bg-warm-soft text-warm-dark' : 'bg-brand-soft text-brand-dark'}`} role="timer" aria-live="off">
               Temps restant {mm}:{ss}
             </span>
+            <span className="sr-only" aria-live="assertive">{[300, 60, 10].includes(left) ? `Il reste ${left >= 60 ? `${left / 60} minute${left > 60 ? 's' : ''}` : `${left} secondes`}.` : ''}</span>
             <span className="text-sm muted">{answered} / {all.length} réponses · sauvegarde automatique</span>
           </div>
           <div role="tablist" aria-label="Sections" className="flex flex-wrap gap-2">

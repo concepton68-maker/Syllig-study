@@ -118,7 +118,7 @@
   .btn-primary:disabled { background: var(--color-brand); border-color: var(--color-brand); color: #fff; opacity: .5; }
   .field { min-height: 44px; width: 100%; border: 1px solid var(--color-line-strong); border-radius: 10px; padding: 8px 12px; font: inherit; background: #fff; color: var(--color-ink); }
   textarea.field { min-height: 110px; line-height: 1.5; }
-  .prose-lesson { font-family: var(--font-serif); font-size: 18px; line-height: 1.65; color: #1D2939; }
+  .prose-lesson { font-family: var(--font-serif); font-size: 18px; line-height: 1.65; color: var(--color-ink); }
   .tbl { width: 100%; border-collapse: collapse; }
   .tbl th { font-size: 13px; font-weight: 600; text-align: left; padding: 10px 12px; background: var(--color-soft); color: var(--color-ink-2); }
   .tbl td { font-size: 15px; line-height: 1.5; padding: 10px 12px; border-top: 1px solid var(--color-line); vertical-align: top; }
@@ -347,7 +347,7 @@ section.card > h2, section.card > div > h2, section.card h2.text-xl { font-size:
   .side-foot { margin: 8px 12px 0; padding: 12px; border-radius: 14px; background: rgb(255 255 255 / .07); display: flex; align-items: center; gap: 10px; font-size: 14px; }
   .avatar { width: 38px; height: 38px; flex: 0 0 auto; border-radius: 12px; display: inline-flex; align-items: center; justify-content: center;
             font-weight: 700; font-size: 14px; color: #fff; background: linear-gradient(135deg, var(--side-accent), var(--side-accent-2)); }
-  .side-icon-btn { width: 36px; height: 36px; border-radius: 10px; display: inline-flex; align-items: center; justify-content: center; color: var(--side-ink-2); cursor: pointer; }
+  .side-icon-btn { width: 44px; height: 44px; border-radius: 10px; display: inline-flex; align-items: center; justify-content: center; color: var(--side-ink-2); cursor: pointer; }
   .side-icon-btn:hover { background: rgb(255 255 255 / .12); color: var(--side-ink); }
   .space-switch { display: flex; padding: 4px; gap: 4px; border-radius: 12px; background: rgb(0 0 0 / .22); }
   .space-switch a { flex: 1; text-align: center; padding: 6px 10px; border-radius: 9px; font-size: 13px; font-weight: 600; color: var(--side-ink-2); text-decoration: none; }
@@ -494,4 +494,10 @@ section.card > h2, section.card > div > h2, section.card h2.text-xl { font-size:
   .btn-danger { background: var(--color-warm); border-color: var(--color-warm); color: #fff; }
   .btn-danger:hover { background: var(--color-warm-dark); border-color: var(--color-warm-dark); color: #fff; }
   .btn-danger:disabled { background: var(--color-track); border-color: var(--color-track); color: var(--color-muted); }
+}
+/* évaluation en cours : mode concentration, la navigation disparaît (on ne quitte pas l'épreuve par erreur) */
+@layer components {
+  .app:has([data-exam-focus]) .sidebar,
+  .app:has([data-exam-focus]) .tabbar,
+  .app:has([data-exam-focus]) .mobile-bar nav { display: none; }
 }

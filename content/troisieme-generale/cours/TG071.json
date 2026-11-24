@@ -83,7 +83,7 @@
             "type": "callout",
             "kind": "definition",
             "title": "Bolcheviks",
-            "text": "Militants révolutionnaires d'un parti communiste russe dirigé par Lénine. Ils veulent une révolution des ouvriers et des paysans pour construire une société sans classes sociales, sans propriété privée des grands moyens de production (usines, terres). Ils prennent ensuite le nom de Parti communiste."
+            "text": "Militants d'un parti révolutionnaire russe d'inspiration marxiste, dirigé par Lénine. Ils veulent une révolution des ouvriers et des paysans pour construire une société sans classes sociales, sans propriété privée des grands moyens de production (usines, terres). En 1918, leur parti prend le nom de Parti communiste."
           },
           {
             "type": "callout",
@@ -151,7 +151,7 @@
             "type": "list",
             "items": [
               "1921 : Lénine lance la **NEP** (nouvelle politique économique) : un peu de commerce privé est de nouveau autorisé pour relancer l'économie.",
-              "Décembre 1922 : naissance de l'**URSS** (Union des républiques socialistes soviétiques), dont la capitale devient Moscou.",
+              "Décembre 1922 : naissance de l'**URSS** (Union des républiques socialistes soviétiques), dont la capitale est Moscou (capitale depuis 1918).",
               "Janvier 1924 : mort de Lénine. Une lutte pour sa succession s'ouvre."
             ]
           },
@@ -403,7 +403,7 @@
             "items": [
               "**Le Goulag** : réseau de camps de travail forcé, souvent dans des régions au climat terrible (Sibérie, Grand Nord). Selon les historiens, environ 18 millions de personnes y passent entre 1930 et 1953 ; plus d'un million y meurent, de froid, de faim et d'épuisement.",
               "**Les procès de Moscou** (1936-1938) : d'anciens dirigeants bolcheviks, forcés d'avouer des crimes imaginaires, sont condamnés à mort.",
-              "**La Grande Terreur** (1937-1938) : environ 700 000 personnes sont exécutées en moins de deux ans et plus d'un million envoyées au Goulag."
+              "**La Grande Terreur** (1937-1938) : environ 1,5 million de personnes sont arrêtées en moins de deux ans ; environ 700 000 sont exécutées, la plupart des autres sont envoyées au Goulag."
             ]
           },
           {
@@ -602,6 +602,7 @@
           "Vladimir Lénine",
           "Vladimir Ilitch Lénine",
           "Vladimir Oulianov",
+          "Vladimir Ilitch Oulianov",
           "Oulianov"
         ],
         "solution": "Lénine (de son vrai nom Vladimir Oulianov)."
@@ -811,6 +812,8 @@
                   "un kolkhoze",
                   "le kolkhoze",
                   "kolkhoz",
+                  "les kolkhozes",
+                  "sovkhozes",
                   "sovkhoze",
                   "un sovkhoze",
                   "sovkhoz"
@@ -855,7 +858,7 @@
                   "L'invasion de l'URSS par l'Allemagne"
                 ],
                 "answer": 0,
-                "solution": "Une vague de répression de masse : environ 700 000 exécutions et plus d'un million de déportations au Goulag.",
+                "solution": "Une vague de répression de masse : environ 1,5 million d'arrestations, dont environ 700 000 exécutions ; la plupart des autres personnes arrêtées sont envoyées au Goulag.",
                 "rubric": "1 pt : bonne réponse."
               },
               {
@@ -1012,7 +1015,8 @@
                   "Gulag",
                   "le Gulag",
                   "les goulags",
-                  "goulags"
+                  "goulags",
+                  "un goulag"
                 ],
                 "solution": "Le Goulag.",
                 "rubric": "1 pt : Goulag."
@@ -1036,6 +1040,9 @@
                   "bolchevique",
                   "les bolcheviques",
                   "le parti bolchevique",
+                  "parti bolchevique",
+                  "le parti des bolcheviks",
+                  "parti des bolcheviks",
                   "parti communiste",
                   "le parti communiste"
                 ],
