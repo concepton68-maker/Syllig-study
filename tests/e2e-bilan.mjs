@@ -174,9 +174,19 @@ const tv = await pa.locator('section[aria-labelledby="positionnement"]').innerTe
 ok(tv.includes('Fait : 3/6') && tv.includes('Relatifs') && tv.includes('niveau 5e'), 'le parent voit les résultats par notion et par niveau');
 
 console.log('Second bilan (Claude), qui tient compte du test');
-await setKey('claude', 'sk-ant-test');
 await setGeneral({ allowNonEu: true });
-ok((await setFunction('claude', 'bilan', 'claude-opus-5-5')).includes('Enregistré'), 'avec la dérogation, Claude choisi pour le bilan (« Qui fait quoi »)');
+// « Qui fait quoi » : on choisit Claude pour le bilan alors qu'il n'a pas encore de clé → la clé se colle dans la ligne
+await ad.goto(BASE + '/contenu/ia');
+const row = ad.locator('form[data-assign] [data-task="bilan"]');
+await row.locator('select[name=task_bilan]').selectOption('new:claude');
+await row.locator('input[aria-label="Clé Claude (Anthropic)"]').fill('sk-ant-test');
+await row.locator('button:has-text("Vérifier")').click();
+await row.locator('select[name=model_bilan]').waitFor();
+await row.locator('select[name=model_bilan]').selectOption('claude-opus-5-5');
+await ad.locator('form[data-assign] button:has-text("Enregistrer")').click();
+await ad.locator('form[data-assign] [role=status]').waitFor();
+ok((await sql`select value->'tasks'->'bilan'->>'provider' as p from app_settings where key = 'ia'`)[0].p === 'claude',
+  '« Qui fait quoi » : Claude choisi pour le bilan, sa clé collée directement dans la ligne, puis enregistré');
 await pa.click('button:has-text("Nouveau bilan")');
 await pa.waitForSelector('text=Synthèse numéro 2');
 const in2 = JSON.parse(inputs[1].user.slice(inputs[1].user.indexOf('{')));

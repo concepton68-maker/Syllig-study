@@ -7,7 +7,7 @@ import { checkKey, saveProviderKey, removeProviderKey, saveTaskSettings, saveCus
   providerInfo, BUILTIN, TASKS, type AiSettings, type Provider, type Task, type Model } from '@/lib/ai';
 
 export type KeyState = { ok?: string; error?: string; provider?: string } | undefined;
-export type TaskState = { ok?: string; error?: string; notes?: string[] } | undefined;
+export type TaskState = { ok?: string; error?: string; notes?: string[]; tasks?: Record<string, { provider: string; model: string } | undefined> } | undefined;
 const isProvider = (p: unknown, s: AiSettings): p is Provider => typeof p === 'string' && (p in BUILTIN || p in (s.custom ?? {}));
 
 // Après une nouvelle clé : les tâches sans IA (ou bloquées par la règle Europe) reçoivent le modèle conseillé, si la règle le permet
@@ -180,5 +180,5 @@ export async function saveAssignments(_: TaskState, form: FormData): Promise<Tas
   }
   await saveTaskSettings({ tasks }, u.id);
   revalidatePath('/contenu', 'layout'); revalidatePath('/parent', 'layout');
-  return { ok: 'Enregistré.', notes };
+  return { ok: 'Enregistré.', notes, tasks };
 }

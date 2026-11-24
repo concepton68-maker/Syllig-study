@@ -347,3 +347,6 @@ Recette complète de l'espace élève (un agent testeur a joué l'élève sur t�
   2. **Mes clés** : une ligne par fournisseur (clé ✓, lieu de traitement, fonctions assurées), avec « Changer la clé », « Retirer » et « + Ajouter une clé » (fournisseur dans la liste, puis clé). L'adresse d'API et le modèle sont rangés dans « Options avancées », sauf pour « Autre », où ils sont indispensables.
   3. Réglages généraux. 4. Travail en arrière-plan.
 - La liste des fonctions reste centrale et extensible : une nouvelle fonction ajoute d'elle-même une ligne à « Qui fait quoi ».
+
+## 0.34 — 24/11/2026
+- Qui fait quoi : la liste « Fournisseur » de chaque fonction propose tous les fournisseurs, pas seulement ceux qui ont déjà une clé. Pour un fournisseur sans clé, le champ « Collez la clé » et le bouton « Vérifier » apparaissent directement dans la ligne ; le modèle se règle ensuite tout seul.

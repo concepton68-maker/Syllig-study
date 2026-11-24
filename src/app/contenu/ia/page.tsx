@@ -36,7 +36,7 @@ export default async function AiPage() {
       {/* 1. On part de ce qu'on veut faire : une ligne par fonction */}
       <section className="card max-w-[860px] flex flex-col gap-3" aria-labelledby="qui">
         <h2 id="qui" className="text-xl font-semibold m-0">1. Qui fait quoi</h2>
-        <p className="m-0 muted text-sm">Pour chaque fonction, l’IA qui s’en charge. Seules les IA dont vous avez enregistré la clé (plus bas) sont proposées.</p>
+        <p className="m-0 muted text-sm">Pour chaque fonction, choisissez l’IA qui s’en charge. Si sa clé n’est pas encore enregistrée, collez-la directement dans la ligne.</p>
         <AssignTable tasks={tasks} providers={keyed} current={o.tasks} allowNonEu={o.allow_non_eu} />
       </section>
 

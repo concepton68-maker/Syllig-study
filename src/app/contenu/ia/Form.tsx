@@ -1,5 +1,6 @@
 'use client';
 import { startTransition, useActionState, useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation';
 import { saveKey, saveTasks, runAutoNow, saveSlot, saveAssignments, type KeyState, type TaskState } from './actions';
 import { PRESETS } from '@/lib/ai-presets';
 
@@ -87,16 +88,23 @@ export function AssignTable({ tasks, providers, current, allowNonEu }: {
 }) {
   const [state, action, pending] = useActionState<TaskState, FormData>(saveAssignments, undefined);
   const ready = useReady();
-  const fromProps = () => Object.fromEntries(tasks.map(t => [t.id, { p: current[t.id]?.provider ?? '', m: current[t.id]?.model ?? '' }]));
-  const [sel, setSel] = useState<Record<string, { p: string; m: string }>>(fromProps);
-  // après l'enregistrement, on affiche ce qui a réellement été retenu (ex. modèle retiré remplacé), sans perdre le message
-  const saved = JSON.stringify(current);
-  useEffect(() => { setSel(fromProps()); }, [saved]); // eslint-disable-line react-hooks/exhaustive-deps
-  const pick = (t: string, p: string) => {
-    const pr = providers.find(x => x.id === p);
-    setSel({ ...sel, [t]: { p, m: pr ? (pr.defaults[t] ?? pr.models[0]?.id ?? '') : '' } });
-  };
-  if (!providers.length) return <p className="m-0 text-sm">Ajoutez d’abord une clé ci-dessous (« Mes clés »).</p>;
+  const router = useRouter();
+  const [sel, setSel] = useState<Record<string, { p: string; m: string }>>(() =>
+    Object.fromEntries(tasks.map(t => [t.id, { p: current[t.id]?.provider ?? '', m: current[t.id]?.model ?? '' }])));
+  // après l'enregistrement : ce qui a réellement été retenu (ex. modèle retiré remplacé)
+  useEffect(() => { if (state?.tasks) setSel(Object.fromEntries(tasks.map(t => [t.id, { p: state.tasks![t.id]?.provider ?? '', m: state.tasks![t.id]?.model ?? '' }]))); }, [state]); // eslint-disable-line react-hooks/exhaustive-deps
+  // clé ajoutée depuis une ligne : dès que ses modèles sont connus, le modèle conseillé est choisi
+  useEffect(() => {
+    let changed = false; const next = { ...sel };
+    for (const t of tasks) { const c = next[t.id]; const pr = providers.find(x => x.id === c.p);
+      if (pr && !c.m) { next[t.id] = { p: c.p, m: pr.defaults[t.id] ?? pr.models[0]?.id ?? '' }; changed = true; } }
+    if (changed) setSel(next);
+  }, [providers]); // eslint-disable-line react-hooks/exhaustive-deps
+  const pick = (t: string, p: string) => { const pr = providers.find(x => x.id === p); setSel({ ...sel, [t]: { p, m: pr ? (pr.defaults[t] ?? pr.models[0]?.id ?? '') : '' } }); };
+  // tous les fournisseurs : ceux qui ont une clé, puis ceux de la liste sans clé (la clé se colle dans la ligne)
+  const keyedIds = new Set(providers.map(p => p.id));
+  const keyedNames = new Set(providers.map(p => p.name));
+  const others = PRESETS.filter(x => x.id !== 'autre' && !keyedIds.has(x.id) && !keyedNames.has(x.name));
   return (
     <form method="post" onSubmit={send(action)} className="flex flex-col gap-3" data-assign>
       <div className="hidden md:grid grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)_minmax(0,1fr)] gap-3 px-1 text-xs font-semibold uppercase tracking-wide text-muted">
@@ -105,31 +113,62 @@ export function AssignTable({ tasks, providers, current, allowNonEu }: {
       {tasks.map(t => {
         const cur = sel[t.id];
         const pr = providers.find(x => x.id === cur.p);
+        const preset = cur.p.startsWith('new:') ? PRESETS.find(x => x.id === cur.p.slice(4)) : undefined;
         const models = pr ? (pr.models.some(m => m.id === cur.m) || !cur.m ? pr.models : [...pr.models, { id: cur.m, label: cur.m }]) : [];
+        const lock = (eu: boolean) => t.studentData && !eu && !allowNonEu;
         return (
-          <div key={t.id} className="grid gap-2 md:gap-3 md:grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)_minmax(0,1fr)] items-center rounded-xl border border-line px-3 py-2.5">
+          <div key={t.id} className="grid gap-2 md:gap-3 md:grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)_minmax(0,1fr)] items-center rounded-xl border border-line px-3 py-2.5" data-task={t.id}>
             <span className="text-sm"><strong>{t.label}</strong>
               <span className="block muted text-xs">{t.studentData ? 'Données d’élèves (sans nom) : fournisseur européen' : 'Aucune donnée d’élève : tout fournisseur'}</span>
-              {pr && t.studentData && !pr.eu && !allowNonEu && <span className="block text-xs font-semibold text-warm-dark">⚠ bloqué : {pr.name} est hors UE et la dérogation n’est pas accordée. Choisissez une IA européenne.</span>}</span>
+              {pr && lock(pr.eu) && <span className="block text-xs font-semibold text-warm-dark">⚠ bloqué : {pr.name} est hors UE et la dérogation n’est pas accordée. Choisissez une IA européenne.</span>}</span>
             <select className="field" name={`task_${t.id}`} value={cur.p} onChange={e => pick(t.id, e.target.value)} aria-label={`Fournisseur pour ${t.label}`}>
               <option value="">— Aucune IA —</option>
-              {providers.map(p => {
-                const locked = t.studentData && !p.eu && !allowNonEu;
-                return <option key={p.id} value={p.id} disabled={locked}>{p.name}{locked ? ' — 🔒 hors UE (dérogation requise)' : p.eu ? ' · Europe' : ''}</option>;
-              })}
+              <optgroup label="Clé enregistrée">
+                {providers.map(p => <option key={p.id} value={p.id} disabled={lock(p.eu)}>{p.name}{lock(p.eu) ? ' — 🔒 hors UE' : p.eu ? ' · Europe' : ''}</option>)}
+              </optgroup>
+              <optgroup label="Clé à ajouter">
+                {others.map(x => <option key={x.id} value={`new:${x.id}`} disabled={lock(x.eu)}>{x.name}{lock(x.eu) ? ' — 🔒 hors UE' : x.eu ? ' · Europe' : ''}</option>)}
+              </optgroup>
             </select>
             {pr ? (
               <select className="field" name={`model_${t.id}`} value={cur.m} onChange={e => setSel({ ...sel, [t.id]: { ...cur, m: e.target.value } })} aria-label={`Modèle pour ${t.label}`}>
                 {models.map(m => <option key={m.id} value={m.id}>{m.label}</option>)}
               </select>
+            ) : preset ? (
+              <InlineKey preset={preset.id} onSaved={id => { setSel(s0 => ({ ...s0, [t.id]: { p: id, m: '' } })); router.refresh(); }} />
             ) : <span className="muted text-sm">—</span>}
           </div>
         );
       })}
       {state?.error && <p role="alert" className="m-0 rounded-xl bg-warm-soft text-warm-dark px-4 py-2.5 text-sm">{state.error}</p>}
       {state?.ok && <p role="status" className="m-0 rounded-xl bg-brand-soft text-brand-ink px-4 py-2.5 text-sm">{state.ok}{state.notes?.length ? ` ${state.notes.join(' ')}` : ''}</p>}
-      <div><button className="btn btn-primary" type="submit" disabled={pending || !ready}>{pending ? 'Vérification…' : 'Enregistrer'}</button></div>
+      <div><button className="btn btn-primary" type="submit" disabled={pending || !ready || Object.values(sel).some(x => x.p.startsWith('new:'))}>{pending ? 'Vérification…' : 'Enregistrer'}</button></div>
     </form>
+  );
+}
+
+// Clé collée directement dans une ligne de « Qui fait quoi » (pas de formulaire imbriqué : appel direct de l'action)
+function InlineKey({ preset, onSaved }: { preset: string; onSaved: (providerId: string) => void }) {
+  const p = PRESETS.find(x => x.id === preset)!;
+  const [key, setKey] = useState('');
+  const [busy, setBusy] = useState(false);
+  const [err, setErr] = useState<string | null>(null);
+  const verify = async () => {
+    setBusy(true); setErr(null);
+    const fd = new FormData(); fd.set('preset', preset); fd.set('key', key.trim()); fd.set('models', p.modelsHint ?? ''); fd.set('base_url', p.base ?? '');
+    const r = await saveSlot(undefined, fd);
+    setBusy(false);
+    if (r?.ok && r.provider) onSaved(r.provider); else setErr(r?.error ?? 'Vérification impossible.');
+  };
+  return (
+    <span className="flex flex-col gap-1">
+      <span className="flex gap-2">
+        <input className="field font-mono flex-1 min-w-0" type="password" autoComplete="off" value={key} onChange={e => setKey(e.target.value)}
+          onKeyDown={e => { if (e.key === 'Enter') { e.preventDefault(); if (key.trim()) void verify(); } }} placeholder={`Collez la clé ${p.name}`} aria-label={`Clé ${p.name}`} />
+        <button type="button" className="btn btn-primary" disabled={busy || !key.trim()} onClick={() => void verify()}>{busy ? '…' : 'Vérifier'}</button>
+      </span>
+      {err ? <span role="alert" className="text-xs font-semibold text-warm-dark">{err}</span> : <span className="muted text-xs">{p.help}</span>}
+    </span>
   );
 }
 
