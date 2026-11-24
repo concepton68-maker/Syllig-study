@@ -10,6 +10,8 @@ import { evalQuestions } from '@/lib/course-format';
 import { versionById, gradeAttemptFinal, recomputeMastery } from '@/lib/progress';
 import { getAttempt } from '@/lib/evaluation';
 import { logEvent } from '@/lib/activity';
+import { correctWithAi } from '@/lib/ai';
+import type { Attempt } from '@/lib/evaluation';
 
 export type ImportCorrState = { errors?: string[]; warnings?: string[]; ok?: number } | undefined;
 
@@ -64,4 +66,48 @@ export async function validateGrade(form: FormData) {
   }
   revalidatePath('/parent', 'layout');
   redirect('/parent/a-faire?validee=1');
+}
+
+// Correction par l'IA branchée : les copies cochées (sinon toutes celles en attente) reçoivent des propositions
+export async function correctWithAiAction(form: FormData) {
+  const u = await requireUser('parent');
+  const ids = (await studentsOfParent(u.id)).map(s => s.id);
+  const picked = form.getAll('ids').map(String).filter(x => /^[0-9a-f-]{36}$/i.test(x));
+  const attempts = ids.length ? await sql<(Attempt & { title: string; subject: string; level: string })[]>`
+    select a.*, c.title, s.name as subject, l.name as level from eval_attempts a
+    join courses c on c.id = a.course_id join chapters ch on ch.id = c.chapter_id join subjects s on s.id = ch.subject_id join levels l on l.code = s.level_code
+    where a.student_id in ${sql(ids)} and a.status = 'submitted' ${picked.length ? sql`and a.id in ${sql(picked)}` : sql``} order by a.submitted_at` : [];
+  const r = await correctWithAi(attempts, ids, u.id);
+  for (const sid of r.studentIds ?? []) await logEvent(sid, 'corrections_importees', { actorId: u.id, data: { copies: r.ok, par: 'ia' } });
+  revalidatePath('/parent', 'layout');
+  const q = new URLSearchParams({ ia: String(r.ok) });
+  if (r.errors.length) q.set('iaerr', r.errors.join(' · ').slice(0, 600));
+  redirect(`/parent/a-faire?${q}`);
+}
+
+// Validation groupée : les copies pré-corrigées reçoivent la note proposée telle quelle
+export async function validateProposalsBulk(form: FormData) {
+  const u = await requireUser('parent');
+  const allowed = (await studentsOfParent(u.id)).map(s => s.id);
+  let n = 0;
+  for (const id of form.getAll('ids').map(String).filter(x => /^[0-9a-f-]{36}$/i.test(x))) {
+    const a = await getAttempt(id);
+    if (!a || a.status !== 'submitted' || !a.proposal || !allowed.includes(a.student_id)) continue;
+    const qs = evalQuestions((await versionById(a.version_id))!.document, a.variant);
+    const scores: Record<string, number> = {}, feedback: Record<string, string> = {};
+    let complete = true;
+    for (const q of qs) {
+      if (a.auto_scores && q.id in a.auto_scores) { scores[q.id] = a.auto_scores[q.id]; continue; }
+      const p = a.proposal[q.id];
+      if (!p) { complete = false; break; }
+      scores[q.id] = p.points;
+      if (p.comment) feedback[q.id] = p.comment;
+    }
+    if (!complete) continue;
+    if (a.proposal.general?.comment) feedback.general = a.proposal.general.comment;
+    await gradeAttemptFinal(a.id, scores, feedback, u.id);
+    n++;
+  }
+  revalidatePath('/parent', 'layout');
+  redirect(`/parent/a-faire?validees=${n}`);
 }

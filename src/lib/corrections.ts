@@ -6,7 +6,7 @@ import { versionById } from './progress';
 import type { Attempt } from './evaluation';
 
 // Échange de corrections avec Claude, hors plateforme (décision de cadrage : pas d'IA branchée en v1).
-export const CONSIGNE = `Tu es correcteur bienveillant et rigoureux pour Syllig Study (lycée, France).
+export const CONSIGNE = `Tu es correcteur bienveillant et rigoureux pour Syllig Study (collège et lycée, France).
 Pour chaque question de chaque copie ci-dessous :
 1. Compare la réponse de l'élève au corrigé, en appliquant strictement le barème (« bareme »). Les points vont de 0 à « points_max », par pas de 0,25.
 2. Accepte toute réponse juste formulée autrement que le corrigé. Ne pénalise pas l'orthographe, sauf si le barème le prévoit.

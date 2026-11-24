@@ -7,6 +7,9 @@ import { ImportCorrections } from '../copies/ImportCorrections';
 import { decideEvalRequest, approveRequestsBulk, postponeRequestsBulk, dismissPasswordRequests, answerPasswordRequest } from '../actions';
 import { KeyRound } from 'lucide-react';
 import { BulkBar, BulkCheck } from '@/components/Bulk';
+import { aiSettings } from '@/lib/ai';
+import { correctWithAiAction, validateProposalsBulk } from '../copies/actions';
+import { AiButton } from './AiButton';
 
 export const metadata = { title: 'À faire' };
 export const dynamic = 'force-dynamic';
@@ -15,9 +18,11 @@ type Row = { id: string; title: string; first_name: string; attempt_no: number; 
 const when = (d: Date | null) => d ? d.toLocaleString('fr-FR', { timeZone: 'Europe/Paris', day: 'numeric', month: 'long', hour: '2-digit', minute: '2-digit' }) : '';
 
 // Tout ce qui attend une action du parent, pour tous les enfants du foyer
-export default async function ToDo({ searchParams }: { searchParams: Promise<{ validee?: string; mdp?: string; erreur?: string }> }) {
+export default async function ToDo({ searchParams }: { searchParams: Promise<{ validee?: string; mdp?: string; erreur?: string; ia?: string; iaerr?: string; validees?: string }> }) {
   const sp = await searchParams;
-  const { students } = await requireParent();
+  const { students, user } = await requireParent();
+  const ai = await aiSettings();
+  const aiOn = !!(ai?.enabled && ai.hasKey);
   const ids = students.map(s => s.id);
   const rows = ids.length ? await sql<Row[]>`
     select a.id, c.title, s.first_name, a.attempt_no, a.status, a.submitted_at, a.requested_at, a.final_score, (a.proposal is not null) as has_proposal
@@ -27,6 +32,7 @@ export default async function ToDo({ searchParams }: { searchParams: Promise<{ v
   const requests = rows.filter(r => r.status === 'requested');
   const pending = rows.filter(r => r.status === 'submitted');
   const graded = rows.filter(r => r.status === 'graded').slice(0, 20);
+  const toAi = pending.filter(r => !r.has_proposal);
   const multi = students.length > 1;
   const pwRequests = ids.length ? await sql<{ id: string; student_id: string; first_name: string; created_at: Date }[]>`
     select r.id::text, s.id as student_id, s.first_name, r.created_at from password_requests r join students s on s.user_id = r.user_id
@@ -36,6 +42,9 @@ export default async function ToDo({ searchParams }: { searchParams: Promise<{ v
   return (
     <Screen top={<PageTitle kicker="À faire" title={total ? `${total} chose${total > 1 ? 's' : ''} attend${total > 1 ? 'ent' : ''} votre réponse` : 'Rien n’attend votre réponse'}
       sub="Demandes d’évaluation, mots de passe oubliés et copies à valider. Les questions automatiques sont déjà notées ; les réponses rédigées passent par Claude, puis par vous." />}>
+      {sp.ia !== undefined && <p role="status" className="m-0 rounded-xl bg-brand-soft text-brand-ink px-4 py-3 text-sm"><strong>{Number(sp.ia) > 0 ? `${sp.ia} copie${Number(sp.ia) > 1 ? 's' : ''} corrigée${Number(sp.ia) > 1 ? 's' : ''} par l’IA.` : 'Aucune copie corrigée par l’IA.'}</strong> {Number(sp.ia) > 0 && 'Vérifiez les propositions puis validez (une par une, ou toutes d’un coup avec la sélection).'}</p>}
+      {sp.iaerr && <p role="alert" className="m-0 rounded-xl bg-warm-soft text-warm-dark px-4 py-3 text-sm"><strong>Problème :</strong> {sp.iaerr}</p>}
+      {sp.validees !== undefined && <p role="status" className="m-0 rounded-xl bg-brand-soft text-brand-ink px-4 py-3 text-sm"><strong>{sp.validees} note{Number(sp.validees) > 1 ? 's' : ''} validée{Number(sp.validees) > 1 ? 's' : ''}.</strong> Les bilans sont visibles dans l’espace de l’élève.</p>}
       {sp.mdp && <p role="status" className="m-0 rounded-xl bg-brand-soft text-brand-ink px-4 py-3 text-sm"><strong>Mot de passe de {sp.mdp} modifié.</strong> Communiquez-le-lui : la connexion est possible tout de suite.</p>}
       {sp.erreur && <p role="alert" className="m-0 rounded-xl bg-warm-soft text-warm-dark px-4 py-3 text-sm">{sp.erreur}</p>}
       {sp.validee && <p role="status" className="m-0 rounded-xl bg-brand-soft text-brand-ink px-4 py-3 text-sm"><strong>Note validée.</strong> Le bilan est maintenant visible dans l’espace de l’élève.</p>}
@@ -77,16 +86,23 @@ export default async function ToDo({ searchParams }: { searchParams: Promise<{ v
       <section className="card flex flex-col">
         <div className="flex flex-wrap items-center justify-between gap-3 mb-2">
           <h2 className="text-xl font-semibold">Copies à valider</h2>
-          {pending.length > 0 && <a className="btn btn-primary" href="/api/parent/export">Tout exporter pour Claude ({pending.length})</a>}
+          <span className="flex flex-wrap gap-2">
+            {aiOn && toAi.length > 0 && <form action={correctWithAiAction}>{toAi.map(r => <input key={r.id} type="hidden" name="ids" value={r.id} />)}<AiButton n={toAi.length} /></form>}
+            {pending.length > 0 && <a className={`btn ${aiOn ? '' : 'btn-primary'}`} href="/api/parent/export">Tout exporter pour Claude ({pending.length})</a>}
+          </span>
         </div>
         {pending.length === 0 && <span className="muted text-sm py-2">Aucune copie en attente.</span>}
         {pending.length > 1 && <div className="mb-2"><BulkBar formId="bulk-copies" noun="copie" feminine
-          actions={[{ label: 'Exporter la sélection pour Claude', action: '/api/parent/export', tone: 'primary' }]} /></div>}
+          actions={[
+            ...(aiOn ? [{ label: 'Corriger la sélection avec l’IA', action: correctWithAiAction, tone: 'primary' as const }] : []),
+            { label: 'Valider les notes proposées', action: validateProposalsBulk, confirm: 'Valider telles quelles les notes proposées pour {n} ? (les copies sans proposition sont ignorées)' },
+            { label: 'Exporter la sélection pour Claude', action: '/api/parent/export', ...(aiOn ? {} : { tone: 'primary' as const }) }]} /></div>}
+        {!aiOn && pending.length > 0 && <p className="muted text-sm mt-0 mb-2">Astuce : avec une IA branchée, les copies se corrigent en un clic. {user.roles.includes('admin') ? <Link href="/contenu/ia" className="font-semibold">Brancher une IA de correction</Link> : 'Demandez à l’administrateur de la brancher (espace Contenu › IA de correction).'}</p>}
         {pending.map(r => (
           <div key={r.id} className="flex flex-wrap items-center gap-3 py-3 border-t border-soft text-sm">
             {pending.length > 1 && <BulkCheck formId="bulk-copies" value={r.id} label={r.title} />}
             <span className="flex-[1_1_260px]"><strong>{multi ? `${r.first_name} · ` : ''}{r.title}</strong><span className="block muted">Tentative {r.attempt_no} · remise le {when(r.submitted_at)}</span></span>
-            <span className={`pill ${r.has_proposal ? 'bg-brand-soft text-brand-dark' : 'bg-soft text-ink-2'}`}>{r.has_proposal ? 'Pré-corrigée par Claude' : 'À exporter'}</span>
+            <span className={`pill ${r.has_proposal ? 'bg-brand-soft text-brand-dark' : 'bg-soft text-ink-2'}`}>{r.has_proposal ? 'Pré-corrigée' : aiOn ? 'À corriger' : 'À exporter'}</span>
             <Link className="btn" href={`/parent/copies/${r.id}`}>{r.has_proposal ? 'Vérifier et valider' : 'Corriger moi-même'}</Link>
           </div>
         ))}

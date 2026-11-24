@@ -13,6 +13,7 @@ export default async function ContentLayout({ children }: { children: React.Reac
       { href: '/contenu/importer', label: 'Importer', icon: 'import' },
       { href: '/contenu/programmes', label: 'Programmes', icon: 'programmes' },
       { href: '/contenu/comptes', label: 'Comptes', icon: 'accounts' },
+      { href: '/contenu/ia', label: 'IA de correction', short: 'IA', icon: 'ai' },
     ]} user={{ name: u.display_name, sub: 'Contenu pédagogique' }}>
       {children}
     </Shell>

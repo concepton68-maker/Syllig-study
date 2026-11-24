@@ -254,3 +254,9 @@ Recette complète de l'espace élève (un agent testeur a joué l'élève sur t�
 - Contenu › Comptes : nouvelle vue « Familles et comptes ». L'administrateur voit toutes les familles, chaque parent et chaque élève avec son identifiant de connexion, son niveau, sa dernière connexion et le nombre d'appareils connectés.
 - Sur chaque compte (adulte ou élève) : « Lien nouveau mot de passe » (lien à usage unique, 48 h).
 - Actions groupées : « Déconnecter de tous les appareils » et « Donner l'accès Contenu » (les comptes élèves sont ignorés).
+
+## 0.23 — 24/11/2026
+- IA de correction branchée (Contenu › IA de correction) : au choix Claude (Anthropic) ou Gemini (Google). La clé est vérifiée auprès du fournisseur, puis enregistrée chiffrée. Pour Gemini, la liste des modèles vient de la clé.
+- Famille › À faire : bouton « Corriger avec l'IA » (toutes les copies en attente) et action groupée « Corriger la sélection avec l'IA ». L'IA propose les points et les commentaires des réponses rédigées ; seules les réponses partent chez le fournisseur, sans le nom de l'élève.
+- Action groupée « Valider les notes proposées » : valide d'un coup les copies pré-corrigées (on peut toujours vérifier et ajuster chaque copie avant).
+- L'export / import manuel pour Claude reste disponible.
