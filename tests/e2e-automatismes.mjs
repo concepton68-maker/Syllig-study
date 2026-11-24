@@ -85,9 +85,38 @@ const page = async (l, pw, mobile) => { const p = await (await b.newContext(mobi
 
 console.log('Réglages');
 const ad = await page('admin@test.local', 'admin-test-1234');
-await ad.goto(BASE + '/contenu/ia');
-const f = ad.locator('form[data-provider="mistral"]');
-await f.locator('input[name=key]').fill('cle'); await f.locator('button:has-text("Vérifier et enregistrer")').click(); await f.locator('[role=status]').waitFor();
+// Contenu › IA : fournisseur déjà enregistré → sa carte ; sinon « + Ajouter un fournisseur », choix dans la liste, clé
+const setKey = async (provider, key, extra = {}) => {
+  await ad.goto(BASE + '/contenu/ia');
+  let f = ad.locator(`form[data-provider="${provider}"]`);
+  if (await f.count()) await ad.locator(`details:has(form[data-provider="${provider}"]) > summary`).click();   // « Remplacer la clé »
+  else {
+    if (!(await ad.locator('form[data-slot]').count())) await ad.click('button:has-text("Ajouter un fournisseur")');
+    f = ad.locator('form[data-slot]').last();
+    await f.locator('select[name=preset]').selectOption(provider);
+    for (const [k, v] of Object.entries(extra)) await f.locator(`input[name=${k}]`).fill(v);
+  }
+  await f.locator('input[name=key]').fill(key);
+  const done = ad.waitForResponse(r => r.request().method() === 'POST');
+  await f.locator('button:has-text("Vérifier et enregistrer")').click();
+  await done; await ad.waitForTimeout(400);
+  return ad.locator('section[aria-labelledby="cles"]').innerText();
+};
+// Réglages généraux (dérogation hors UE) et fonctions d'un fournisseur (« Utilisé pour » sur sa carte)
+const setGeneral = async ({ allowNonEu }) => {
+  await ad.goto(BASE + '/contenu/ia');
+  await ad.setChecked('input[name=allow_non_eu]', allowNonEu);
+  await ad.click('button:has-text("Enregistrer les réglages")'); await ad.waitForSelector('text=Réglages enregistrés');
+};
+const setFunction = async (provider, task, model) => {
+  await ad.goto(BASE + '/contenu/ia');
+  const f = ad.locator(`form[data-functions="${provider}"]`);
+  await f.locator(`input[name=fn_${task}]`).check();
+  if (model) await f.locator(`select[name=model_${task}]`).selectOption(model);
+  await f.locator('button:has-text("Enregistrer les fonctions")').click();
+  const m = f.locator('[role=status], [role=alert]'); await m.waitFor(); return m.innerText();
+};
+ok((await setKey('mistral', 'cle')).includes('vérifiée et enregistrée'), 'Contenu › IA : « + Ajouter un fournisseur », choix « Mistral » dans la liste, clé collée et vérifiée');
 const [{ value: s0 }] = await sql`select value from app_settings where key = 'ia'`;
 ok(s0.tasks.cours?.model === 'mistral-large-latest', 'la rédaction des cours reçoit Mistral Large d’office');
 
@@ -176,33 +205,19 @@ await ad.goto(BASE + '/contenu/ia');
 ok((await ad.locator('section[aria-labelledby="file"]').innerText()).includes('Terminé'), 'la file d’attente montre les tâches terminées');
 
 console.log('Fournisseur ajouté (GLM) pour la rédaction des cours');
-await ad.goto(BASE + '/contenu/ia');
-await ad.click('summary:has-text("Ajouter un fournisseur d’IA")');
-const nf = ad.locator('form[data-provider="nouveau"]');
-await nf.locator('input[name=name]').fill('GLM (Z.ai)');
-await nf.locator('input[name=base_url]').fill('http://127.0.0.1:3999/api/paas/v4');
-await nf.locator('input[name=key]').fill('mauvaise');
-await nf.locator('input[name=models]').fill('glm-4.6');
-await nf.locator('input[name=where]').fill('Chine');
-await nf.locator('button:has-text("Vérifier et ajouter")').click();
-await nf.locator('[role=alert]').waitFor();
-ok((await nf.locator('[role=alert]').innerText()).includes('GLM (Z.ai)'), 'clé refusée par le fournisseur ajouté : rien n’est enregistré');
-await nf.locator('input[name=key]').fill('cle-glm'); await nf.locator('button:has-text("Vérifier et ajouter")').click();
+const glmBad = await setKey('glm', 'mauvaise', { base_url: 'http://127.0.0.1:3999/api/paas/v4', models: 'glm-4.6' });
+ok(glmBad.includes('GLM (Z.ai)') && glmBad.includes('refusée'), 'clé refusée par le fournisseur ajouté : rien n’est enregistré');
+await ad.locator('form[data-slot] input[name=key]').last().fill('cle-glm');
+await ad.locator('form[data-slot] button:has-text("Vérifier et enregistrer")').last().click();
 await ad.waitForSelector('text=GLM (Z.ai) ajouté');
 const [{ value: s1 }] = await sql`select value from app_settings where key = 'ia'`;
 ok(s1.custom['x-glm-z-ai']?.base_url === 'http://127.0.0.1:3999/api/paas/v4' && s1.providers['x-glm-z-ai']?.models.some(m => m.id === 'glm-4.6') && !JSON.stringify(s1).includes('cle-glm'),
   'GLM ajouté : adresse sans « /v1 », modèle indiqué à la main et vérifié par un essai, clé chiffrée');
 ok(s1.tasks.correction.provider === 'mistral', 'un fournisseur ajouté n’est jamais choisi d’office pour des données d’élèves');
 await ad.goto(BASE + '/contenu/ia');
-ok((await ad.locator('main').innerText()).includes('Données traitées hors UE (Chine)'), 'la page indique où GLM traite les données');
-await ad.selectOption('select[name=task_correction]', 'x-glm-z-ai::glm-4.6');
-await ad.click('button:has-text("Enregistrer les réglages")');
-await ad.waitForSelector('text=hors de l’Union européenne (Chine)');
-ok(true, 'règle Europe : GLM refusé pour la correction (données d’élèves) sans dérogation');
-await ad.goto(BASE + '/contenu/ia');
-await ad.selectOption('select[name=task_cours]', 'x-glm-z-ai::glm-4.6');
-await ad.click('button:has-text("Enregistrer les réglages")');
-await ad.waitForSelector('text=Réglages enregistrés');
+ok((await ad.locator('main').innerText()).includes('Données traitées hors UE (Chine / Singapour)'), 'la page indique où GLM traite les données');
+ok(await ad.locator('form[data-functions="x-glm-z-ai"] input[name=fn_correction]').isDisabled(), 'règle Europe : sur la carte GLM, « Correction » est grisée sans dérogation (données d’élèves)');
+ok((await setFunction('x-glm-z-ai', 'cours', 'glm-4.6')).includes('Fonctions enregistrées'), '« Utilisé pour : rédaction des cours » coché sur GLM');
 ok((await sql`select value->'tasks'->'cours'->>'provider' as p from app_settings where key = 'ia'`)[0].p === 'x-glm-z-ai', 'GLM choisi pour la rédaction des cours, sans dérogation (aucune donnée d’élève)');
 const [glmCourse] = await sql`select c.id, c.title from courses c where c.code = 'TG003'`;
 await sql`delete from course_versions where course_id = ${glmCourse.id}`;

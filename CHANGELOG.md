@@ -331,3 +331,12 @@ Recette complète de l'espace élève (un agent testeur a joué l'élève sur t�
 - Règle RGPD inchangée : un fournisseur hors UE est utilisable librement pour la rédaction des cours (aucune donnée d'élève), et pour la correction ou le bilan seulement avec la dérogation. Un fournisseur ajouté n'est jamais choisi d'office pour des données d'élèves.
 - Le lieu de traitement est affiché partout : page IA, Famille › Bilan, journal des envois, page Confidentialité.
 - Sécurité : les formulaires de clés restent inactifs tant que la page n'est pas prête. Avant, un clic trop rapide pouvait mettre la clé dans l'adresse de la page.
+
+## 0.32 — 24/11/2026
+- Contenu › IA, page repensée :
+  - Seuls les fournisseurs enregistrés s'affichent. « + Ajouter un fournisseur » ajoute une ligne : on choisit le fournisseur dans la liste, on colle la clé, on coche ses fonctions. Liste : Mistral, Claude, Gemini, GLM (Z.ai), OpenAI, DeepSeek, Scaleway, OVHcloud, ou « Autre » (API compatible OpenAI). L'adresse et le lieu de traitement sont préremplis.
+  - Sur chaque fournisseur, « Utilisé pour » : une case par fonction, avec le modèle choisi (le plus adapté est proposé). Une fonction n'a qu'un fournisseur, et la page indique celui qu'elle remplace.
+  - Règle RGPD visible : chez un fournisseur hors UE, les fonctions avec données d'élèves sont grisées tant que la dérogation n'est pas accordée. Retirer la dérogation retire ces fonctions des fournisseurs hors UE.
+  - « Réglages généraux » : dérogation, rédaction automatique des leçons de rattrapage, conservation, IA active.
+  - « Remplacer la clé » sur chaque fournisseur, et « Retirer ».
+- Les fonctions attribuables forment une liste centrale extensible : une nouvelle fonction apparaîtra d'elle-même sur la page, dans la règle Europe et sur la page Confidentialité.

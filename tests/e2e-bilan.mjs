@@ -89,8 +89,37 @@ await el.click('text=Remettre ma copie'); await el.click('button:has-text("Oui, 
 await sql`update eval_attempts set status = 'graded', final_score = 2, scores = coalesce(auto_scores, '{}'::jsonb), graded_at = now() where id = ${att.id}`;
 
 const ad = await page('admin@test.local', 'admin-test-1234');
-const setKey = async (provider, key) => { await ad.goto(BASE + '/contenu/ia'); const f = ad.locator(`form[data-provider="${provider}"]`);
-  await f.locator('input[name=key]').fill(key); await f.locator('button:has-text("Vérifier et enregistrer")').click(); await f.locator('[role=status]').waitFor(); };
+// Contenu › IA : fournisseur déjà enregistré → sa carte ; sinon « + Ajouter un fournisseur », choix dans la liste, clé
+const setKey = async (provider, key, extra = {}) => {
+  await ad.goto(BASE + '/contenu/ia');
+  let f = ad.locator(`form[data-provider="${provider}"]`);
+  if (await f.count()) await ad.locator(`details:has(form[data-provider="${provider}"]) > summary`).click();   // « Remplacer la clé »
+  else {
+    if (!(await ad.locator('form[data-slot]').count())) await ad.click('button:has-text("Ajouter un fournisseur")');
+    f = ad.locator('form[data-slot]').last();
+    await f.locator('select[name=preset]').selectOption(provider);
+    for (const [k, v] of Object.entries(extra)) await f.locator(`input[name=${k}]`).fill(v);
+  }
+  await f.locator('input[name=key]').fill(key);
+  const done = ad.waitForResponse(r => r.request().method() === 'POST');
+  await f.locator('button:has-text("Vérifier et enregistrer")').click();
+  await done; await ad.waitForTimeout(400);
+  return ad.locator('section[aria-labelledby="cles"]').innerText();
+};
+// Réglages généraux (dérogation hors UE) et fonctions d'un fournisseur (« Utilisé pour » sur sa carte)
+const setGeneral = async ({ allowNonEu }) => {
+  await ad.goto(BASE + '/contenu/ia');
+  await ad.setChecked('input[name=allow_non_eu]', allowNonEu);
+  await ad.click('button:has-text("Enregistrer les réglages")'); await ad.waitForSelector('text=Réglages enregistrés');
+};
+const setFunction = async (provider, task, model) => {
+  await ad.goto(BASE + '/contenu/ia');
+  const f = ad.locator(`form[data-functions="${provider}"]`);
+  await f.locator(`input[name=fn_${task}]`).check();
+  if (model) await f.locator(`select[name=model_${task}]`).selectOption(model);
+  await f.locator('button:has-text("Enregistrer les fonctions")').click();
+  const m = f.locator('[role=status], [role=alert]'); await m.waitFor(); return m.innerText();
+};
 await setKey('mistral', 'cle-mistral');
 
 console.log('Indicateurs');
@@ -145,8 +174,8 @@ ok(tv.includes('Fait : 3/6') && tv.includes('Relatifs') && tv.includes('niveau 5
 
 console.log('Second bilan (Claude), qui tient compte du test');
 await setKey('claude', 'sk-ant-test');
-await ad.goto(BASE + '/contenu/ia'); await ad.selectOption('select[name=task_bilan]', 'claude::claude-opus-5-5'); await ad.check('input[name=allow_non_eu]');
-await ad.click('button:has-text("Enregistrer les réglages")'); await ad.waitForSelector('text=Réglages enregistrés');
+await setGeneral({ allowNonEu: true });
+ok((await setFunction('claude', 'bilan', 'claude-opus-5-5')).includes('Fonctions enregistrées'), 'avec la dérogation, « Utilisé pour : bilan » coché sur Claude');
 await pa.click('button:has-text("Nouveau bilan")');
 await pa.waitForSelector('text=Synthèse numéro 2');
 const in2 = JSON.parse(inputs[1].user.slice(inputs[1].user.indexOf('{')));

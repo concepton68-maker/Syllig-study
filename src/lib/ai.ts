@@ -33,6 +33,8 @@ export function providerInfo(id: string, s: Pick<AiSettings, 'custom'>): Provide
   return { id, kind: 'openai', name: c.name, eu: c.eu, where: c.eu ? 'Union européenne' : (c.where || 'hors Union européenne'), base: c.base_url, custom: true,
     help: `API compatible OpenAI · ${c.base_url}`, placeholder: 'Clé' };
 }
+// Liste centrale des fonctions attribuables à une IA. Pour en ajouter une : une ligne ici (+ son traitement) ;
+// la page Contenu › IA, la règle Europe, le consentement et la page Confidentialité la prennent en compte d'elles-mêmes.
 export const TASKS: Record<Task, { label: string; desc: string; studentData: boolean }> = {
   correction: { label: 'Correction des copies', desc: 'Réponses rédigées des élèves (sans nom), énoncés et corrigés.', studentData: true },
   bilan: { label: 'Bilan pédagogique et test de positionnement', desc: 'Temps de travail, notes, questions ratées (sans nom).', studentData: true },
@@ -118,7 +120,7 @@ export async function aiOverview() {
   const ready = (t: Task) => taskProblem(s, t) === null;
   const ids = [...Object.keys(BUILTIN), ...Object.keys(s.custom ?? {})];
   const catalog = Object.fromEntries(ids.map(id => [id, providerInfo(id, s)])) as Record<string, ProviderInfo>;
-  return { ...s, providers, catalog, ready: { correction: ready('correction'), bilan: ready('bilan'), cours: ready('cours') } };
+  return { ...s, providers, catalog, ready: Object.fromEntries((Object.keys(TASKS) as Task[]).map(t => [t, ready(t)])) as Record<Task, boolean> };
 }
 function taskProblem(s: AiSettings, task: Task): string | null {
   if (!s.enabled) return 'L’IA est désactivée (Contenu › IA).';
@@ -185,7 +187,7 @@ export async function checkKey(info: ProviderInfo, key: string, manualModels: st
       // fournisseur qui ne publie pas sa liste : modèles indiqués à la main, vérifiés par un essai réel
       for (const id of manualModels) if (!models.some(m => m.id === id)) {
         const err = await pingModel(info, key, id);
-        if (err) return { ok: false, error: `Modèle « ${id} » : ${err}` };
+        if (err) return { ok: false, error: / 40[13]\b/.test(err) ? `Clé refusée par ${info.name}.` : `Modèle « ${id} » : ${err}` };
         models.unshift({ id, label: id });
       }
       if (models.length) return { ok: true, models };

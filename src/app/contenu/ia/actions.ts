@@ -1,11 +1,12 @@
 'use server';
 import { revalidatePath } from 'next/cache';
+import { PRESETS } from '@/lib/ai-presets';
 import { requireUser } from '@/lib/auth';
 import { sql } from '@/lib/db';
 import { checkKey, saveProviderKey, removeProviderKey, saveTaskSettings, saveCustomProvider, loadAiSettings, storedKey, pingModel, geminiCandidates, defaultModel,
   providerInfo, BUILTIN, TASKS, type AiSettings, type Provider, type Task, type Model } from '@/lib/ai';
 
-export type KeyState = { ok?: string; error?: string } | undefined;
+export type KeyState = { ok?: string; error?: string; provider?: string } | undefined;
 export type TaskState = { ok?: string; error?: string; notes?: string[] } | undefined;
 const isProvider = (p: unknown, s: AiSettings): p is Provider => typeof p === 'string' && (p in BUILTIN || p in (s.custom ?? {}));
 
@@ -40,7 +41,7 @@ export async function saveKey(_: KeyState, form: FormData): Promise<KeyState> {
   await saveProviderKey(provider, key, check.models, u.id);
   await assignDefaults(provider, key, check.models, u.id);
   revalidatePath('/contenu', 'layout'); revalidatePath('/parent', 'layout');
-  return { ok: `Clé ${info.name} vérifiée et enregistrée (${check.models.length} modèle${check.models.length > 1 ? 's' : ''} disponible${check.models.length > 1 ? 's' : ''}).` };
+  return { provider, ok: `Clé ${info.name} vérifiée et enregistrée (${check.models.length} modèle${check.models.length > 1 ? 's' : ''} disponible${check.models.length > 1 ? 's' : ''}).` };
 }
 
 // Ajouter un fournisseur (API compatible OpenAI : GLM, OpenAI, OVHcloud, Scaleway, Infomaniak…)
@@ -66,7 +67,7 @@ export async function addProvider(_: KeyState, form: FormData): Promise<KeyState
   await saveProviderKey(id, key, check.models, u.id);
   await assignDefaults(id, key, check.models, u.id);
   revalidatePath('/contenu', 'layout'); revalidatePath('/parent', 'layout');
-  return { ok: `${name} ajouté : clé vérifiée, ${check.models.length} modèle${check.models.length > 1 ? 's' : ''} disponible${check.models.length > 1 ? 's' : ''}. Choisissez-le ci-dessous pour une tâche.` };
+  return { provider: id, ok: `${name} ajouté : clé vérifiée, ${check.models.length} modèle${check.models.length > 1 ? 's' : ''} disponible${check.models.length > 1 ? 's' : ''}.` };
 }
 
 export async function removeKey(provider: Provider) {
@@ -75,35 +76,68 @@ export async function removeKey(provider: Provider) {
   revalidatePath('/contenu', 'layout'); revalidatePath('/parent', 'layout');
 }
 
-// Une IA par tâche, règle Europe, conservation des données
+// Attribution d'une fonction (tâche) à un fournisseur : règle Europe, essai réel du modèle (Google garde des modèles retirés)
+async function attach(s: AiSettings, p: Provider, t: Task, wanted: string, allowNonEu: boolean): Promise<{ model: string; note?: string } | { error: string }> {
+  const info = providerInfo(p, s);
+  if (TASKS[t].studentData && !info.eu && !allowNonEu)
+    return { error: `${TASKS[t].label} : ${info.name} traite les données ${info.where === 'États-Unis' ? 'aux États-Unis' : `hors de l’Union européenne (${info.where})`}. Choisissez un fournisseur européen, ou cochez la dérogation (Réglages généraux) en connaissance de cause.` };
+  const key = await storedKey(p);
+  if (!key) return { error: `${TASKS[t].label} : pas de clé enregistrée pour ${info.name}.` };
+  const models = s.providers[p]?.models ?? [];
+  const want = wanted || defaultModel(info, models, t) || models[0]?.id || '';
+  const candidates = info.kind === 'gemini' ? geminiCandidates(models, want).slice(0, 6) : [want];
+  let first: string | null = null;
+  for (const id of candidates) {
+    const err = await pingModel(info, key, id);
+    if (!err) return { model: id, note: id !== want ? `${TASKS[t].label} : ${want} n’est plus disponible, ${id} a été choisi à la place.` : undefined };
+    first ??= err;
+  }
+  return { error: `${TASKS[t].label} : le modèle ${want} ne répond pas (${first}).` };
+}
+
+// Fonctions cochées pour un fournisseur (cases « fn_<tâche> », modèle « model_<tâche> »). Une fonction n'a qu'un fournisseur :
+// la cocher ici la retire de l'autre ; la décocher ici la laisse sans IA.
+async function applyFunctions(p: Provider, form: FormData, userId: string): Promise<TaskState> {
+  const s = await loadAiSettings();
+  const tasks = { ...s.tasks };
+  const notes: string[] = [];
+  for (const t of Object.keys(TASKS) as Task[]) {
+    if (form.get(`fn_${t}`) === 'on') {
+      const r = await attach(s, p, t, String(form.get(`model_${t}`) ?? ''), s.allow_non_eu);
+      if ('error' in r) return { error: r.error };
+      if (r.note) notes.push(r.note);
+      tasks[t] = { provider: p, model: r.model };
+    } else if (tasks[t]?.provider === p) delete tasks[t];
+  }
+  await saveTaskSettings({ tasks }, userId);
+  revalidatePath('/contenu', 'layout'); revalidatePath('/parent', 'layout');
+  return { ok: 'Fonctions enregistrées.', notes };
+}
+
+export async function saveFunctions(_: TaskState, form: FormData): Promise<TaskState> {
+  const u = await requireUser('admin');
+  const p = String(form.get('provider') ?? '');
+  const s = await loadAiSettings();
+  if (!isProvider(p, s) || !s.providers[p]) return { error: 'Fournisseur inconnu.' };
+  return applyFunctions(p, form, u.id);
+}
+
+// Réglages généraux : dérogation hors UE, conservation, rédaction automatique, IA active
 export async function saveTasks(_: TaskState, form: FormData): Promise<TaskState> {
   const u = await requireUser('admin');
   const s = await loadAiSettings();
   const allowNonEu = form.get('allow_non_eu') === 'on';
   const enabled = form.get('enabled') === 'on';
   const retention = [180, 365, 730].includes(Number(form.get('retention'))) ? Number(form.get('retention')) : 365;
-  const tasks: typeof s.tasks = {};
   const notes: string[] = [];
-  for (const t of Object.keys(TASKS) as Task[]) {
-    const v = String(form.get(`task_${t}`) ?? '');
-    if (!v) continue;
-    const [p, wanted] = v.split('::') as [Provider, string];
-    if (!isProvider(p, s) || !s.providers[p]) return { error: `${TASKS[t].label} : pas de clé enregistrée pour ce fournisseur.` };
-    const info = providerInfo(p, s);
-    if (TASKS[t].studentData && !info.eu && !allowNonEu)
-      return { error: `${TASKS[t].label} : ${info.name} traite les données ${info.where === 'États-Unis' ? 'aux États-Unis' : `hors de l’Union européenne (${info.where})`}. Choisissez un fournisseur européen, ou cochez la dérogation en connaissance de cause.` };
-    const key = (await storedKey(p))!;
-    // essai réel du modèle (Google garde dans sa liste des modèles retirés)
-    let model = '';
-    const candidates = p === 'gemini' ? geminiCandidates(s.providers[p]!.models, wanted).slice(0, 6) : [wanted];
-    let first: string | null = null;
-    for (const id of candidates) { const err = await pingModel(info, key, id); if (!err) { model = id; break; } first ??= err; }
-    if (!model) return { error: `${TASKS[t].label} : le modèle ${wanted} ne répond pas (${first}).` };
-    if (model !== wanted) notes.push(`${TASKS[t].label} : ${wanted} n’est plus disponible, ${model} a été choisi à la place.`);
-    tasks[t] = { provider: p, model };
+  // sans dérogation, les fonctions avec données d'élèves ne peuvent plus rester chez un fournisseur hors UE
+  const tasks = { ...s.tasks };
+  if (!allowNonEu) for (const t of Object.keys(TASKS) as Task[]) {
+    const c = tasks[t];
+    if (c && TASKS[t].studentData && !providerInfo(c.provider, s).eu) { delete tasks[t]; notes.push(`${TASKS[t].label} : ${providerInfo(c.provider, s).name} retiré (hors UE, dérogation retirée).`); }
   }
   await saveTaskSettings({ tasks, enabled, allow_non_eu: allowNonEu, retention_days: retention, auto_cours: form.get('auto_cours') === 'on' }, u.id);
-  revalidatePath('/contenu/ia'); revalidatePath('/parent', 'layout');
+  revalidatePath('/contenu', 'layout'); revalidatePath('/parent', 'layout');
   return { ok: enabled ? 'Réglages enregistrés. L’IA est active.' : 'Réglages enregistrés. L’IA est désactivée.', notes };
 }
 
@@ -129,4 +163,31 @@ export async function deleteJobs(form: FormData) {
   const ids = form.getAll('ids').map(String).filter(x => /^\d+$/.test(x));
   if (ids.length) await sql`delete from jobs where id in ${sql(ids)} and status <> 'en_cours'`;
   revalidatePath('/contenu', 'layout');
+}
+
+// Une ligne « Fournisseur » de la page : on choisit le fournisseur dans la liste, on colle sa clé.
+export async function saveSlot(state: KeyState, form: FormData): Promise<KeyState> {
+  await requireUser('admin');
+  const preset = PRESETS.find(p => p.id === String(form.get('preset') ?? ''));
+  if (!preset) return { error: 'Choisissez un fournisseur dans la liste.' };
+  const f = new FormData();
+  f.set('key', String(form.get('key') ?? ''));
+  f.set('models', String(form.get('models') ?? ''));
+  let r: KeyState;
+  if (preset.builtin) { f.set('provider', preset.id); r = await saveKey(state, f); }
+  else {
+    const other = preset.id === 'autre';
+    f.set('name', other ? String(form.get('name') ?? '') : preset.name);
+    f.set('base_url', String(form.get('base_url') ?? '') || preset.base || '');
+    f.set('eu', other ? String(form.get('eu') ?? 'non') : preset.eu ? 'oui' : 'non');
+    f.set('where', other ? String(form.get('where') ?? '') : preset.where);
+    r = await addProvider(state, f);
+  }
+  if (!r?.ok || !r.provider) return r;
+  // fonctions cochées dans la ligne : elles font foi (y compris pour décocher ce qui aurait été proposé d'office)
+  const u = await requireUser('admin');
+  const fn = await applyFunctions(r.provider, form, u.id);
+  if (fn?.error) return { ...r, ok: `${r.ok} Mais : ${fn.error}` };
+  const chosen = (Object.keys(TASKS) as Task[]).filter(t => form.get(`fn_${t}`) === 'on').map(t => TASKS[t].label.toLowerCase());
+  return { ...r, ok: `${r.ok}${chosen.length ? ` Utilisé pour : ${chosen.join(', ')}.` : ' Aucune fonction attribuée pour l’instant.'}${fn?.notes?.length ? ` ${fn.notes.join(' ')}` : ''}` };
 }

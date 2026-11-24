@@ -1,11 +1,11 @@
 import Link from 'next/link';
 import { ShieldCheck } from 'lucide-react';
 import { requireUser } from '@/lib/auth';
-import { aiOverview, TASKS } from '@/lib/ai';
+import { aiOverview, TASKS, defaultModel, type Task } from '@/lib/ai';
 import { PageTitle } from '@/components/Shell';
 import { Screen } from '@/components/Layout';
 import { ConfirmButton } from '@/components/ConfirmButton';
-import { KeyForm, TaskForm, RunAutoButton, AddProviderForm } from './Form';
+import { KeyForm, TaskForm, RunAutoButton, NewProviders, FunctionsForm } from './Form';
 import { removeKey, retryJobs, deleteJobs } from './actions';
 import { sql } from '@/lib/db';
 import { BulkBar, BulkCheck } from '@/components/Bulk';
@@ -17,25 +17,28 @@ export const dynamic = 'force-dynamic';
 export default async function AiPage() {
   await requireUser('admin');
   const o = await aiOverview();
-  const providers = Object.values(o.catalog).map(info => ({ ...info, hint: o.providers[info.id]?.key_hint, models: o.providers[info.id]?.models ?? [] }));
+  const all = Object.values(o.catalog).map(info => ({ ...info, hint: o.providers[info.id]?.key_hint, models: o.providers[info.id]?.models ?? [] }));
+  const providers = all.filter(p => p.hint);   // seuls les fournisseurs enregistrés sont affichés ; « + » pour en ajouter
+  // fonctions attribuables : la liste centrale TASKS (une nouvelle fonction y apparaît d'elle-même)
+  const fnCtx = { tasks: (Object.keys(TASKS) as Task[]).map(id => ({ id, ...TASKS[id] })), current: o.tasks,
+    names: Object.fromEntries(all.map(p => [p.id, p.name])), eu: Object.fromEntries(all.map(p => [p.id, p.eu])), allowNonEu: o.allow_non_eu };
   const jobs = await sql<{ id: string; kind: string; status: string; attempts: number; error: string | null; created_at: Date; finished_at: Date | null; started_at: Date | null; progress: string | null; label: string | null }[]>`
     select j.id::text, j.kind, j.status, j.attempts, j.error, j.created_at, j.finished_at, j.started_at, j.progress,
       coalesce(c.title, s.first_name, (select title from courses x join eval_attempts a on a.course_id = x.id where a.id::text = j.payload->>'attemptId')) as label
     from jobs j left join courses c on c.id::text = j.payload->>'courseId' left join students s on s.id::text = j.payload->>'studentId'
     order by j.id desc limit 40`;
-  const status = (t: 'correction' | 'bilan' | 'cours') => { const c = o.tasks[t]; return c ? `${o.catalog[c.provider]?.name ?? c.provider} · ${c.model}${o.ready[t] ? '' : ' (bloqué)'}` : 'aucune IA'; };
+  const status = (t: Task) => { const c = o.tasks[t]; return c ? `${o.catalog[c.provider]?.name ?? c.provider} · ${c.model}${o.ready[t] ? '' : ' (bloqué)'}` : 'aucune IA'; };
   return (
     <Screen top={<PageTitle kicker="IA" title="IA de correction et de bilan"
       sub="L’IA propose ; le parent valide toujours les notes. Les données d’élèves ne partent que chez un fournisseur européen, sauf dérogation explicite." />}>
       <section className="card max-w-[860px] flex flex-col gap-1 text-sm" aria-label="État">
         <p className="m-0">État : {o.enabled ? <strong className="text-brand-dark">active</strong> : <strong>désactivée</strong>}</p>
-        <p className="m-0">Correction des copies : <strong>{status('correction')}</strong></p>
-        <p className="m-0">Bilan et test de positionnement : <strong>{status('bilan')}</strong></p>
-        <p className="m-0">Rédaction des cours : <strong>{status('cours')}</strong>{o.auto_cours ? ' · leçons de rattrapage rédigées automatiquement' : ''}</p>
+        {(Object.keys(TASKS) as Task[]).map(t => <p key={t} className="m-0">{TASKS[t].label} : <strong>{status(t)}</strong>{t === 'cours' && o.auto_cours ? ' · leçons de rattrapage rédigées automatiquement' : ''}</p>)}
       </section>
 
       <section className="card max-w-[860px] flex flex-col gap-4" aria-labelledby="cles">
-        <h2 id="cles" className="text-xl font-semibold m-0">1. Clés des fournisseurs</h2>
+        <h2 id="cles" className="text-xl font-semibold m-0">1. Fournisseurs d’IA</h2>
+        <p className="m-0 muted text-sm">Choisissez un fournisseur et collez sa clé ; « + Ajouter un fournisseur » pour en mettre un deuxième, un troisième…</p>
         {providers.map(p => (
           <div key={p.id} className="rounded-2xl border border-line p-4 flex flex-col gap-3">
             <div className="flex flex-wrap items-center gap-2">
@@ -47,16 +50,17 @@ export default async function AiPage() {
                 confirmLabel={p.custom ? 'Retirer ce fournisseur' : 'Retirer la clé'}
                 message={p.custom ? `Retirer ${p.name} (et sa clé) ? Les tâches qui l’utilisent n’auront plus d’IA.` : `Retirer la clé ${p.name} ? Les tâches qui l’utilisent n’auront plus d’IA.`}>{p.custom ? 'Retirer ce fournisseur' : 'Retirer la clé'}</ConfirmButton></form>}
             </div>
-            <KeyForm p={p} />
+            <FunctionsForm providerId={p.id} eu={p.eu} models={p.models} ctx={fnCtx}
+              defaults={Object.fromEntries((Object.keys(TASKS) as Task[]).map(t => [t, defaultModel(p, p.models, t)]))} />
+            <details className="text-sm"><summary className="cursor-pointer muted">Remplacer la clé</summary><div className="mt-2"><KeyForm p={p} /></div></details>
           </div>
         ))}
-        <AddProviderForm />
+        <NewProviders configured={providers.map(p => p.id)} startWith={providers.length ? 0 : 1} ctx={fnCtx} />
       </section>
 
       <section className="card max-w-[860px] flex flex-col gap-4" aria-labelledby="taches">
-        <h2 id="taches" className="text-xl font-semibold m-0">2. Quelle IA pour quelle tâche</h2>
-        <TaskForm providers={providers} tasks={(Object.keys(TASKS) as (keyof typeof TASKS)[]).map(id => ({ id, ...TASKS[id] }))}
-          current={o.tasks} enabled={o.enabled} allowNonEu={o.allow_non_eu} retention={o.retention_days} autoCours={o.auto_cours} />
+        <h2 id="taches" className="text-xl font-semibold m-0">2. Réglages généraux</h2>
+        <TaskForm enabled={o.enabled} allowNonEu={o.allow_non_eu} retention={o.retention_days} autoCours={o.auto_cours} />
       </section>
 
       <section className="card max-w-[860px] flex flex-col gap-3" aria-labelledby="file">

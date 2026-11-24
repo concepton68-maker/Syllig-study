@@ -104,19 +104,36 @@ ok(await pa.locator('button:has-text("Corriger avec l’IA")').count() === 0, 's
 
 // ── réglages de l'IA (espace Contenu)
 const ad = await page('admin@test.local', 'admin-test-1234');
-const setKey = async (provider, key) => {
+// Contenu › IA : fournisseur déjà enregistré → sa carte ; sinon « + Ajouter un fournisseur », choix dans la liste, clé
+const setKey = async (provider, key, extra = {}) => {
   await ad.goto(BASE + '/contenu/ia');
-  const f = ad.locator(`form[data-provider="${provider}"]`);
-  await f.locator('input[name=key]').fill(key); await f.locator('button:has-text("Vérifier et enregistrer")').click();
-  await f.locator('[role=status], [role=alert]').waitFor(); return f.locator('[role=status], [role=alert]').innerText();
+  let f = ad.locator(`form[data-provider="${provider}"]`);
+  if (await f.count()) await ad.locator(`details:has(form[data-provider="${provider}"]) > summary`).click();   // « Remplacer la clé »
+  else {
+    if (!(await ad.locator('form[data-slot]').count())) await ad.click('button:has-text("Ajouter un fournisseur")');
+    f = ad.locator('form[data-slot]').last();
+    await f.locator('select[name=preset]').selectOption(provider);
+    for (const [k, v] of Object.entries(extra)) await f.locator(`input[name=${k}]`).fill(v);
+  }
+  await f.locator('input[name=key]').fill(key);
+  const done = ad.waitForResponse(r => r.request().method() === 'POST');
+  await f.locator('button:has-text("Vérifier et enregistrer")').click();
+  await done; await ad.waitForTimeout(400);
+  return ad.locator('section[aria-labelledby="cles"]').innerText();
 };
-const setTasks = async (o) => {
+// Réglages généraux (dérogation hors UE) et fonctions d'un fournisseur (« Utilisé pour » sur sa carte)
+const setGeneral = async ({ allowNonEu }) => {
   await ad.goto(BASE + '/contenu/ia');
-  for (const [t, v] of Object.entries(o.tasks ?? {})) await ad.selectOption(`select[name=task_${t}]`, v);
-  if (o.allowNonEu !== undefined) await ad.setChecked('input[name=allow_non_eu]', o.allowNonEu);
-  await ad.click('button:has-text("Enregistrer les réglages")');
-  const m = ad.locator('section[aria-labelledby="taches"] [role=status], section[aria-labelledby="taches"] [role=alert]');
-  await m.waitFor(); return m.innerText();
+  await ad.setChecked('input[name=allow_non_eu]', allowNonEu);
+  await ad.click('button:has-text("Enregistrer les réglages")'); await ad.waitForSelector('text=Réglages enregistrés');
+};
+const setFunction = async (provider, task, model) => {
+  await ad.goto(BASE + '/contenu/ia');
+  const f = ad.locator(`form[data-functions="${provider}"]`);
+  await f.locator(`input[name=fn_${task}]`).check();
+  if (model) await f.locator(`select[name=model_${task}]`).selectOption(model);
+  await f.locator('button:has-text("Enregistrer les fonctions")').click();
+  const m = f.locator('[role=status], [role=alert]'); await m.waitFor(); return m.innerText();
 };
 const settings = async () => (await sql`select value from app_settings where key = 'ia'`)[0]?.value;
 
@@ -131,7 +148,10 @@ ok((await setKey('claude', 'sk-ant-test')).includes('vérifiée et enregistrée'
 let v = await settings();
 ok(!JSON.stringify(v).includes('sk-ant-test') && v.providers.claude.key_hint === '…test', 'clé enregistrée chiffrée (jamais en clair en base)');
 ok(v.tasks.correction?.provider === 'gemini', 'Claude (hors UE) n’est pas choisi d’office pour des données d’élèves');
-ok((await setTasks({ tasks: { correction: 'claude::claude-opus-5-5' } })).includes('traite les données aux États-Unis'), 'règle Europe : Claude refusé pour la correction sans dérogation');
+await ad.goto(BASE + '/contenu/ia');
+const claudeCard = ad.locator('form[data-functions="claude"]');
+ok(await claudeCard.locator('input[name=fn_correction]').isDisabled() && (await claudeCard.innerText()).includes('nécessite la dérogation') && !(await claudeCard.locator('input[name=fn_cours]').isDisabled()),
+  'règle Europe : sur la carte Claude, « Correction » et « Bilan » sont grisées sans dérogation ; « Rédaction des cours » reste possible');
 ok((await setKey('mistral', 'cle-mistral')).includes('2 modèles'), 'clé Mistral vérifiée : modèles de conversation seulement (ni embeddings, ni modèles retirés, un par famille)');
 v = await settings();
 ok(v.tasks.correction?.provider === 'mistral' && v.tasks.correction.model === 'mistral-small-latest' && v.tasks.bilan?.model === 'mistral-large-latest',
@@ -169,11 +189,14 @@ ok(journal.includes('Correction') && journal.includes('Mistral') && journal.incl
 console.log('Dérogation hors UE : Gemini');
 ok((await setKey('gemini', 'cle-gemini-test')).includes('vérifiée'), 'clé Gemini vérifiée');
 ok((await settings()).tasks.correction.provider === 'mistral', 'une clé hors UE ne remplace pas l’IA européenne déjà choisie');
-const msg = await setTasks({ tasks: { correction: 'gemini::gemini-1.5-flash' }, allowNonEu: true });
+await setGeneral({ allowNonEu: true });
+const msg = await setFunction('gemini', 'correction', 'gemini-1.5-flash');
 v = await settings();
 ok(v.allow_non_eu && v.tasks.correction.provider === 'gemini' && v.tasks.correction.model === 'gemini-9.1-flash' && msg.includes('n’est plus disponible'),
-  'dérogation accordée : Gemini choisi ; modèle retiré par Google (404) remplacé par un modèle qui répond, avec un message');
-ok(await ad.locator('select[name=task_correction]').inputValue() === 'gemini::gemini-9.1-flash' && await ad.isChecked('input[name=allow_non_eu]'), 'après l’enregistrement, les choix restent affichés');
+  'dérogation accordée : « Utilisé pour : correction » coché sur Gemini ; modèle retiré par Google (404) remplacé par un modèle qui répond, avec un message');
+await ad.goto(BASE + '/contenu/ia');
+ok(await ad.locator('form[data-functions="gemini"] select[name=model_correction]').inputValue() === 'gemini-9.1-flash' && await ad.locator('form[data-functions="gemini"] input[name=fn_correction]').isChecked()
+  && !(await ad.locator('form[data-functions="mistral"] input[name=fn_correction]').isChecked()), 'une fonction n’a qu’un fournisseur : la correction est passée de Mistral à Gemini');
 await sql`update app_settings set value = jsonb_set(value, '{tasks,correction,model}', '"gemini-9.9-flash"') where key = 'ia'`;   // Google retire le modèle entre-temps
 
 console.log('Correction de la copie 2 (Gemini, bouton)');
