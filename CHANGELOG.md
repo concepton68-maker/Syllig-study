@@ -230,3 +230,11 @@ Recette complète de l'espace élève (un agent testeur a joué l'élève sur t�
 - Nouveaux tests :
   - `e2e-eleve-scenarios.mjs` : accord du parent, fin du temps, export et import, révision, 2e tentative ;
   - `e2e-sauvegarde.mjs` : aucune réponse perdue.
+
+## 0.20 — 24/11/2026
+- **Fin de l'erreur « Application error: a client-side exception »** après une mise en ligne.
+  - Cause : une page restée ouverte pendant une mise à jour appelait des fonctions de l'ancienne version, inconnues du nouveau serveur.
+  - Désormais, la page le détecte et se recharge d'elle-même, une seule fois, sur la nouvelle version. Les réponses sont déjà enregistrées.
+  - Reproduit puis vérifié : une leçon ouverte sur l'ancienne version, une mise en ligne, puis un clic sur le point de contrôle. La page se recharge proprement au lieu de planter.
+- Page d'erreur générale en français (« Un instant… »), avec un bouton pour recharger la page.
+- Espace contenu : page d'erreur dédiée.
