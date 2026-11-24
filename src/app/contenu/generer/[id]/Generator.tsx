@@ -1,7 +1,7 @@
 'use client';
 import { useMemo, useState } from 'react';
 import Link from 'next/link';
-import { buildPrompt, DEFAULT_OPTIONS, type PromptContext, type PromptOptions } from '@/lib/prompt-builder';
+import { buildPrompt, type PromptContext, type PromptOptions, suggestOptions } from '@/lib/prompt-builder';
 
 function Num({ label, value, min, max, onChange }: { label: string; value: number; min: number; max: number; onChange: (n: number) => void }) {
   return (
@@ -12,7 +12,8 @@ function Num({ label, value, min, max, onChange }: { label: string; value: numbe
 }
 
 export function Generator({ ctx }: { ctx: PromptContext }) {
-  const [o, setO] = useState<PromptOptions>(DEFAULT_OPTIONS);
+  const auto = useMemo(() => suggestOptions(ctx), [ctx]);
+  const [o, setO] = useState<PromptOptions>(auto.options);
   const [copied, setCopied] = useState(false);
   const set = <K extends keyof PromptOptions>(k: K, v: PromptOptions[K]) => { setO({ ...o, [k]: v }); setCopied(false); };
   const prompt = useMemo(() => buildPrompt(ctx, o), [ctx, o]);
@@ -26,6 +27,11 @@ export function Generator({ ctx }: { ctx: PromptContext }) {
     <div className="flex flex-wrap gap-6 items-start lg:flex-nowrap lg:items-stretch lg:flex-1 lg:min-h-0">
       <section className="card flex-[1_1_340px] lg:max-w-[420px] flex flex-col gap-4 lg:h-full lg:overflow-y-auto pane [&>*]:shrink-0">
         <h2 className="text-lg font-semibold">Réglages</h2>
+        <div className="rounded-xl bg-brand-soft text-brand-ink px-3.5 py-2.5 text-sm">
+          <strong>Proposés automatiquement</strong>
+          <ul className="m-0 mt-1 pl-5 list-disc">{auto.reasons.length ? auto.reasons.map((r, i) => <li key={i}>{r}</li>) : <li>réglages standard</li>}</ul>
+          {JSON.stringify(o) !== JSON.stringify(auto.options) && <button type="button" className="font-semibold underline mt-1" onClick={() => { setO(auto.options); setCopied(false); }}>Revenir aux réglages proposés</button>}
+        </div>
         <div className="flex flex-wrap gap-3">
           <Num label="Leçon (min)" value={o.lessonMinutes} min={10} max={90} onChange={n => set('lessonMinutes', n)} />
           <Num label="Parties min." value={o.partsMin} min={2} max={8} onChange={n => set('partsMin', n)} />

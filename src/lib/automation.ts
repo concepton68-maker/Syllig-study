@@ -6,7 +6,7 @@ import { generateReport, placementQuestion, type ReportData } from './report';
 import { logEvent } from './activity';
 import { settingsOf } from './settings';
 import { promptContext } from './prompt-context';
-import { buildPrompt, DEFAULT_OPTIONS } from './prompt-builder';
+import { buildPrompt, suggestOptions } from './prompt-builder';
 import { importCourse } from './import-course';
 import type { Attempt } from './evaluation';
 
@@ -109,7 +109,8 @@ export async function runCourseJob(courseId: number, userId: string | null, jobI
   if (!ctx) throw new Error('cours introuvable dans le catalogue');
   const who = await adminId(userId);
   if (!who) throw new Error('aucun compte administrateur');
-  let prompt = buildPrompt(ctx, DEFAULT_OPTIONS);
+  const opts = suggestOptions(ctx).options;   // mêmes réglages automatiques que la page « Préparer la consigne »
+  let prompt = buildPrompt(ctx, opts);
   let lastErrors: string[] = [];
   for (let essai = 1; essai <= 2; essai++) {
     let text: string;
@@ -126,7 +127,7 @@ export async function runCourseJob(courseId: number, userId: string | null, jobI
     }
     lastErrors = r.errors;
     // second essai : on signale à l'IA ce que le validateur a refusé
-    prompt = `${buildPrompt(ctx, DEFAULT_OPTIONS)}\n\n## Important\nUne première version a été refusée par le validateur pour ces raisons ; corrige-les :\n${r.errors.slice(0, 15).map(e => `- ${e}`).join('\n')}`;
+    prompt = `${buildPrompt(ctx, opts)}\n\n## Important\nUne première version a été refusée par le validateur pour ces raisons ; corrige-les :\n${r.errors.slice(0, 15).map(e => `- ${e}`).join('\n')}`;
   }
   throw new Error(`cours refusé par le validateur : ${lastErrors.slice(0, 5).join(' ; ')}`);
 }
@@ -137,20 +138,21 @@ export async function draftCourse(courseId: number, userId: string | null) {
 
 // Leçons de rattrapage (proposées par les bilans) : rangées dans le catalogue au niveau de l'élève,
 // chapitre « Remise à niveau », puis rédigées par l'IA. Les ids d'un groupe = la même leçon proposée plusieurs fois.
-export async function draftRemedialCourses(suggestionIds: string[], userId: string | null): Promise<{ queued: number; errors: string[] }> {
+export async function draftRemedialCourses(suggestionIds: string[], userId: string | null, opts: { draft?: boolean } = {}): Promise<{ queued: number; added: number; errors: string[] }> {
+  const withAi = opts.draft !== false;
   const rows = await sql<{ id: string; title: string; subject: string; level: string; objective: string; course_id: number | null; level_code: string | null }[]>`
     select g.id::text, g.title, g.subject, g.level, g.objective, g.course_id, st.level_code
     from lesson_suggestions g left join student_reports r on r.id = g.report_id left join students st on st.id = r.student_id
     where g.id in ${sql(suggestionIds.length ? suggestionIds : ['0'])} and g.status in ('a_creer', 'en_redaction')`;
-  if (!rows.length) return { queued: 0, errors: [] };
+  if (!rows.length) return { queued: 0, added: 0, errors: [] };
   const first = rows[0];
   const errors: string[] = [];
   let courseId = rows.find(r => r.course_id)?.course_id ?? null;
   if (!courseId) {
     const level = rows.find(r => r.level_code)?.level_code;
-    if (!level) return { queued: 0, errors: [`« ${first.title} » : niveau de l’élève inconnu (bilan supprimé)`] };
+    if (!level) return { queued: 0, added: 0, errors: [`« ${first.title} » : niveau de l’élève inconnu (bilan supprimé)`] };
     const [subj] = await sql<{ id: number }[]>`select id from subjects where level_code = ${level} and lower(name) = lower(${first.subject}) limit 1`;
-    if (!subj) return { queued: 0, errors: [`« ${first.title} » : matière « ${first.subject} » absente du programme`] };
+    if (!subj) return { queued: 0, added: 0, errors: [`« ${first.title} » : matière « ${first.subject} » absente du programme`] };
     let [ch] = await sql<{ id: number }[]>`select id from chapters where subject_id = ${subj.id} and name = 'Remise à niveau'`;
     if (!ch) [ch] = await sql<{ id: number }[]>`insert into chapters (subject_id, name, position) values (${subj.id}, 'Remise à niveau', 0) returning id`;
     let [c] = await sql<{ id: number }[]>`select id from courses where chapter_id = ${ch.id} and lower(title) = lower(${first.title})`;
@@ -162,13 +164,19 @@ export async function draftRemedialCourses(suggestionIds: string[], userId: stri
     }
     courseId = c.id;
   }
+  if (!withAi) {
+    // simple ajout au catalogue : la consigne se prépare ensuite pour Claude (export / import)
+    await sql`update lesson_suggestions set course_id = ${courseId}, updated_at = now() where id in ${sql(rows.map(r => r.id))}`;
+    return { queued: 0, added: 1, errors };
+  }
   await sql`update lesson_suggestions set status = 'en_redaction', course_id = ${courseId}, updated_at = now() where id in ${sql(rows.map(r => r.id))}`;
   const q = await draftCourse(courseId, userId);
-  return { queued: q ? 1 : 0, errors };
+  return { queued: q ? 1 : 0, added: 1, errors };
 }
 
 // À la publication d'un cours de rattrapage : il passe en tête du parcours des élèves pour qui il a été proposé
 export async function assignRemedial(courseId: number) {
+  await sql`update lesson_suggestions set status = 'creee', updated_at = now() where course_id = ${courseId} and status in ('a_creer', 'en_redaction')`;
   const students = await sql<{ student_id: string }[]>`
     select distinct r.student_id from lesson_suggestions g join student_reports r on r.id = g.report_id where g.course_id = ${courseId}`;
   for (const s of students) {

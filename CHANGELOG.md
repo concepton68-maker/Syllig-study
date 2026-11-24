@@ -311,3 +311,14 @@ Recette complète de l'espace élève (un agent testeur a joué l'élève sur t�
   - Au redémarrage du serveur, une tâche interrompue repart aussitôt (avant : 20 minutes d'attente).
   - Avancement visible : « essai 1/2 · environ 40 % rédigé », temps écoulé, erreur précédente.
 - Les pages (Catalogue, Leçons à créer, À faire, IA) se mettent à jour toutes seules pendant qu'une tâche IA tourne : plus besoin de F5.
+
+## 0.30 — 24/11/2026
+- Cours par export / import avec Claude (claude.ai, sans clé d'API), vérifié de bout en bout en 9 clics. Une seule consigne couvre la leçon, les exercices corrigés et l'évaluation (2 sujets, 20 points, barèmes).
+- Leçons à créer : « Ajouter au catalogue » range la leçon dans le chapitre « Remise à niveau » sans IA. Chaque leçon a ensuite son bouton « Préparer la consigne », puis « Brouillon importé : à relire ». À la publication, la leçon passe en tête du parcours des élèves concernés et la suggestion est marquée créée.
+- Réglages de la consigne proposés automatiquement, avec l'explication :
+  - durée de la leçon et temps imparti de l'évaluation selon le niveau ;
+  - temps de rédaction en plus pour le français et l'histoire ;
+  - format court et très guidé pour les remises à niveau ;
+  - plus d'exercices pour les notions prioritaires.
+  Ils restent modifiables, avec « Revenir aux réglages proposés ». La rédaction par l'IA utilise les mêmes réglages.
+- Page de relecture d'un cours : carte « Paramètres du cours », avec les valeurs du fichier, qui sont celles appliquées aux élèves. Une alerte n'apparaît que si c'est pertinent pour l'élève : temps imparti différent de celui demandé (c'est son chrono), un seul sujet, barème différent de 20, moins de 5 exercices, leçon deux fois trop longue ou trop courte.

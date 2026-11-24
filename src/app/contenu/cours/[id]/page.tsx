@@ -8,6 +8,8 @@ import { RichText } from '@/components/RichText';
 import { publishAction, discardAction } from './actions';
 import { ConfirmButton } from '@/components/ConfirmButton';
 import { Screen } from '@/components/Layout';
+import { promptContext } from '@/lib/prompt-context';
+import { suggestOptions } from '@/lib/prompt-builder';
 
 type V = { id: string; version: number; status: string; document: CourseDocument; imported_at: Date; source_name: string | null; published_at: Date | null };
 
@@ -43,6 +45,20 @@ export default async function CoursePreview({ params, searchParams }: { params: 
   const doc = v.document;
   const check = validateCourse(doc);
   const warnings = check.warnings;
+  // paramètres portés par le fichier du cours (ce sont eux que la plateforme applique), comparés aux réglages proposés
+  const ctx = await promptContext(courseId);
+  const want = ctx ? suggestOptions(ctx).options : null;
+  // alerte seulement quand c'est pertinent pour l'élève (chrono, nouvelle tentative, note sur 20, entraînement suffisant)
+  const facts = [
+    { label: 'Évaluation : temps imparti', value: `${doc.evaluation.duration_min} min`, expected: want ? `${want.evalMinutes} min` : null, off: !!want && Math.abs(doc.evaluation.duration_min - want.evalMinutes) > 5,
+      why: 'c’est le chrono de l’élève' },
+    { label: 'Sujets d’évaluation', value: String(doc.evaluation.variants.length), expected: '2', off: doc.evaluation.variants.length < 2, why: 'une nouvelle tentative reprendrait le même sujet' },
+    { label: 'Barème', value: `${doc.evaluation.total_points} points`, expected: '20 points', off: doc.evaluation.total_points !== 20, why: 'la note ne serait pas sur 20' },
+    { label: 'Exercices', value: String(doc.exercises.items.length), expected: want ? `≈ ${want.exercises}` : null, off: doc.exercises.items.length < 5, why: 'trop peu d’entraînement avant l’évaluation' },
+    { label: 'Leçon', value: `${doc.lesson.duration_min} min · ${doc.lesson.parts.length} parties`, expected: want ? `${want.lessonMinutes} min` : null,
+      off: !!want && (doc.lesson.duration_min > want.lessonMinutes * 2 || doc.lesson.duration_min < want.lessonMinutes / 2), why: 'durée très éloignée de celle prévue' },
+  ];
+  const offCount = facts.filter(p => p.off).length;
 
   return (
     <Screen top={<>
@@ -67,6 +83,19 @@ export default async function CoursePreview({ params, searchParams }: { params: 
 
       {sp.publie && <p role="status" className="rounded-xl bg-brand-soft text-brand-ink px-4 py-3 m-0 text-sm"><strong>Publié.</strong> Cette version est maintenant celle que voient les élèves.</p>}
       {sp.importe && <p role="status" className="rounded-xl bg-brand-soft text-brand-ink px-4 py-3 m-0 text-sm"><strong>Import réussi.</strong> Relisez le cours ci-dessous (vue complète avec corrigés), puis publiez-le.</p>}
+      <section className="card !py-3 flex flex-col gap-2" aria-labelledby="parametres">
+        <h2 id="parametres" className="text-base font-semibold m-0">Paramètres du cours <span className="muted font-normal text-sm">— ceux du fichier, appliqués aux élèves (dont le temps imparti de l’évaluation)</span></h2>
+        <div className="grid gap-2 grid-cols-[repeat(auto-fit,minmax(170px,1fr))]">
+          {facts.map(p => (
+            <span key={p.label} className={`rounded-xl px-3 py-2 text-sm ${p.off ? 'bg-warm-soft text-warm-dark' : 'bg-surface-2 border border-line'}`}>
+              <span className="block text-xs font-semibold uppercase tracking-wide opacity-80">{p.label}</span>
+              <strong className="num">{p.value}</strong>{p.expected && <span className="block text-xs">{p.off ? `⚠ demandé : ${p.expected} — ${p.why}` : `demandé : ${p.expected}`}</span>}
+            </span>
+          ))}
+        </div>
+        {offCount > 0 && <p className="m-0 text-sm text-warm-dark">{offCount} point{offCount > 1 ? 's' : ''} à vérifier avant de publier (si ce n’est pas voulu : « Nouvelle consigne » et redemandez à Claude).</p>}
+      </section>
+
       {warnings.length > 0 && (
         <div className="rounded-xl bg-soft px-4 py-3"><strong className="text-sm">Remarques du contrôle automatique</strong>
           <ul className="text-sm mt-2 mb-0 pl-5 list-disc">{warnings.map((w, i) => <li key={i}>{w}</li>)}</ul></div>

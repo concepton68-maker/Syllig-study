@@ -36,6 +36,30 @@ export const DEFAULT_OPTIONS: PromptOptions = {
   lessonMinutes: 30, partsMin: 3, partsMax: 6, exercises: 10, evalVariants: 2, evalMinutes: 25, remarks: '', includeExample: true,
 };
 
+// Réglages proposés automatiquement selon le niveau, la matière et le type de cours (modifiables avant de copier la consigne)
+const LEVEL_TIMES: [RegExp, { lesson: number; evalMin: number; label: string }][] = [
+  [/^(sixieme|cinquieme)/, { lesson: 20, evalMin: 20, label: 'début de collège : leçons courtes' }],
+  [/^quatrieme/, { lesson: 25, evalMin: 25, label: '4e' }],
+  [/^troisieme/, { lesson: 30, evalMin: 25, label: '3e : format proche du brevet' }],
+  [/^seconde/, { lesson: 35, evalMin: 30, label: 'lycée (Seconde)' }],
+  [/^(premiere|terminale)/, { lesson: 40, evalMin: 40, label: 'cycle terminal : épreuves plus longues' }],
+];
+export function suggestOptions(c: PromptContext): { options: PromptOptions; reasons: string[] } {
+  const o: PromptOptions = { ...DEFAULT_OPTIONS };
+  const reasons: string[] = [];
+  const lv = LEVEL_TIMES.find(([re]) => re.test(c.level.code))?.[1];
+  if (lv) { o.lessonMinutes = lv.lesson; o.evalMinutes = lv.evalMin; reasons.push(`niveau ${c.level.name} (${lv.label}) : leçon ${lv.lesson} min, évaluation ${lv.evalMin} min`); }
+  if (/fran[cç]ais|histoire|philo|lettres/i.test(c.subject)) { o.evalMinutes += 5; reasons.push(`${c.subject} : +5 min d’évaluation pour la rédaction`); }
+  if (c.chapter === 'Remise à niveau') {
+    o.lessonMinutes = Math.min(o.lessonMinutes, 20); o.partsMin = 2; o.partsMax = 4; o.exercises = 8; o.evalMinutes = 20;
+    o.remarks = 'Leçon de remise à niveau : partir des bases, exemples très guidés et progressifs, vocabulaire simple, une seule difficulté à la fois. Exercices surtout « je repère » et « j’analyse ».';
+    reasons.push('remise à niveau : leçon courte (20 min), 2 à 4 parties, 8 exercices très guidés, évaluation de 20 min');
+  } else if (c.priority === 'prioritaire') {
+    o.exercises = 12; reasons.push('notion prioritaire : 12 exercices pour bien l’ancrer');
+  }
+  return { options: o, reasons };
+}
+
 const PRIORITY: Record<string, string> = { prioritaire: 'prioritaire (notion de base à maîtriser tôt)', ensuite: 'standard', mis_de_cote: 'secondaire' };
 
 export function buildPrompt(c: PromptContext, o: PromptOptions): string {
