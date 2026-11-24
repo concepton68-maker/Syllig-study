@@ -30,11 +30,16 @@ const mock = http.createServer((req, res) => {
     }
     if (u.pathname === '/v1beta/models' && req.method === 'GET') {     // Gemini : liste des modèles
       if (req.headers['x-goog-api-key'] !== 'cle-gemini-test') return json(400, { error: { message: 'API key not valid' } });
-      return json(200, { models: [{ name: 'models/gemini-test-flash', displayName: 'Gemini Test Flash', supportedGenerationMethods: ['generateContent'] },
+      return json(200, { models: [{ name: 'models/gemini-1.5-flash', displayName: 'Gemini 1.5 Flash', supportedGenerationMethods: ['generateContent'] },
+        { name: 'models/gemini-9.9-flash', displayName: 'Gemini 9.9 Flash (retiré)', supportedGenerationMethods: ['generateContent'] },
+        { name: 'models/gemini-9.1-flash', displayName: 'Gemini 9.1 Flash', supportedGenerationMethods: ['generateContent'] },
         { name: 'models/text-embedding-test', supportedGenerationMethods: ['embedContent'] }] });
     }
     if (/^\/v1beta\/models\/.+:generateContent$/.test(u.pathname)) {    // Gemini : correction
-      const b = JSON.parse(body); calls.push({ provider: 'gemini', body: b, path: u.pathname });
+      if (/gemini-9\.9-flash|gemini-1\.5-flash/.test(u.pathname)) return json(404, { error: { message: 'models/x is not found for API version v1beta' } });
+      const b = JSON.parse(body);
+      if (!b.systemInstruction) return json(200, { candidates: [{ content: { parts: [{ text: 'OK' }] } }] });   // essai du modèle
+      calls.push({ provider: 'gemini', body: b, path: u.pathname });
       return json(200, { candidates: [{ content: { parts: [{ text: JSON.stringify(grade(b.contents[0].parts[0].text)) }] }, finishReason: 'STOP' }] });
     }
     json(404, { error: 'inconnu' });
@@ -113,14 +118,21 @@ await ad.check('input[name=provider][value=gemini]');
 await ad.fill('input[name=key]', 'cle-gemini-test'); await ad.click('button:has-text("Vérifier et enregistrer")');
 await ad.waitForSelector('text=La correction par IA est active');
 const [{ value: v2 }] = await sql`select value from app_settings where key = 'ia_correction'`;
-ok(v2.provider === 'gemini' && v2.model === 'gemini-test-flash', 'Gemini : clé vérifiée, modèle choisi dans la liste fournie par Google');
-ok(await ad.locator('select[name=model] option').count() === 1, 'les modèles non adaptés (embeddings…) sont écartés');
+ok(v2.provider === 'gemini' && v2.model === 'gemini-9.1-flash', 'Gemini : le plus récent « Flash » qui répond vraiment est choisi (le modèle retiré, qui répond 404, est écarté)');
+ok(await ad.isChecked('input[name=provider][value=gemini]') && !(await ad.isChecked('input[name=provider][value=claude]')), 'après l’enregistrement, le choix « Gemini » reste coché');
+ok(await ad.locator('select[name=model] option').count() === 3, 'les modèles non adaptés (embeddings…) sont écartés de la liste');
+await ad.selectOption('select[name=model]', 'gemini-1.5-flash'); await ad.click('button:has-text("Vérifier et enregistrer")');
+await ad.waitForSelector('text=n’est plus disponible chez Google');
+ok((await sql`select value->>'model' as m from app_settings`)[0].m === 'gemini-9.1-flash', 'modèle choisi à la main mais retiré par Google : un modèle qui marche le remplace, avec un message');
+await ad.reload(); ok(await ad.isChecked('input[name=provider][value=gemini]'), 'au rechargement de la page, « Gemini » est coché');
 
+await sql`update app_settings set value = jsonb_set(value, '{model}', '"gemini-9.9-flash"') where key = 'ia_correction'`;   // Google retire le modèle entre-temps
 console.log('Correction de la copie 2 (Gemini, bouton)');
 await pa.goto(BASE + '/parent/a-faire');
 await pa.click('button:has-text("Corriger avec l’IA (1)")');
 await pa.waitForSelector('text=1 copie corrigée par l’IA');
-ok(calls.some(c => c.provider === 'gemini' && c.path.includes('gemini-test-flash')), 'appel Gemini avec le modèle enregistré');
+ok(calls.some(c => c.provider === 'gemini' && c.body.systemInstruction && c.path.includes('gemini-9.1-flash')), 'modèle retiré entre-temps : la correction passe seule sur un modèle qui répond');
+ok((await sql`select value->>'model' as m from app_settings`)[0].m === 'gemini-9.1-flash' && await pa.locator('text=passage automatique à gemini-9.1-flash').count() === 1, 'le nouveau modèle est enregistré et le parent en est informé');
 
 console.log('Validation groupée');
 await pa.locator('label:has-text("Tout sélectionner") input').first().check();

@@ -260,3 +260,8 @@ Recette complète de l'espace élève (un agent testeur a joué l'élève sur t�
 - Famille › À faire : bouton « Corriger avec l'IA » (toutes les copies en attente) et action groupée « Corriger la sélection avec l'IA ». L'IA propose les points et les commentaires des réponses rédigées ; seules les réponses partent chez le fournisseur, sans le nom de l'élève.
 - Action groupée « Valider les notes proposées » : valide d'un coup les copies pré-corrigées (on peut toujours vérifier et ajuster chaque copie avant).
 - L'export / import manuel pour Claude reste disponible.
+
+## 0.24 — 24/11/2026
+- IA de correction : après « Vérifier et enregistrer », le fournisseur choisi (Gemini) reste coché. Avant, le formulaire se remettait sur « Claude » alors que Gemini était bien enregistré.
+- Gemini : Google laisse dans sa liste des modèles retirés, qui répondent « 404 » (ex. gemini-2.5-flash). La plateforme essaie désormais vraiment le modèle avant de l'enregistrer et choisit le « Flash » le plus récent qui répond. Si Google retire un modèle plus tard, la correction passe seule sur un autre et le signale.
+- Les messages d'erreur de Google sont affichés en clair.

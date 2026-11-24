@@ -1,5 +1,5 @@
 'use client';
-import { useActionState, useState } from 'react';
+import { startTransition, useActionState, useState } from 'react';
 import { saveAi, type AiFormState } from './actions';
 
 type Current = { provider: 'claude' | 'gemini'; model: string; key_hint: string; enabled: boolean; hasKey: boolean } | null;
@@ -13,7 +13,9 @@ export function AiForm({ current, claudeModels }: { current: Current; claudeMode
   const model = state?.provider === provider && state.model ? state.model : current?.provider === provider ? current.model : models[0]?.id;
   const hint = current?.provider === provider && current.hasKey ? current.key_hint : '';
   return (
-    <form action={action} className="flex flex-col gap-5">
+    // envoi manuel : pas de remise à zéro automatique du formulaire après l'enregistrement
+    // (sinon le bouton radio revenait sur « Claude » alors que Gemini était enregistré)
+    <form className="flex flex-col gap-5" onSubmit={e => { e.preventDefault(); const fd = new FormData(e.currentTarget); startTransition(() => action(fd)); }}>
       <fieldset className="flex flex-col gap-2">
         <legend className="text-sm font-semibold mb-2">Fournisseur</legend>
         {([['claude', 'Claude (Anthropic)', 'Clé sur console.anthropic.com › API Keys. Le plus fiable pour corriger des réponses rédigées.'],

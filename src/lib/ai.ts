@@ -77,13 +77,37 @@ export async function checkKey(provider: Provider, key: string): Promise<{ ok: t
     if (!r.ok) return { ok: false, error: r.status === 400 || r.status === 403 ? 'Clé refusée par Google.' : `Google répond ${r.status}.` };
     const j = await r.json() as { models?: { name: string; displayName?: string; supportedGenerationMethods?: string[] }[] };
     const models = (j.models ?? []).filter(m => m.supportedGenerationMethods?.includes('generateContent') && /gemini/i.test(m.name) && !/embedding|vision|tts|image|audio/i.test(m.name))
-      .map(m => ({ id: m.name.replace(/^models\//, ''), label: m.displayName ?? m.name }));
+      .map(m => ({ id: m.name.replace(/^models\//, ''), label: m.displayName ?? m.name }))
+      .sort((a, b) => geminiVersion(b.id) - geminiVersion(a.id));   // les plus récents d'abord
     return models.length ? { ok: true, models } : { ok: false, error: 'Aucun modèle Gemini disponible pour cette clé.' };
   } catch (e) {
     if (e instanceof Anthropic.AuthenticationError || e instanceof Anthropic.PermissionDeniedError) return { ok: false, error: 'Clé refusée par Anthropic.' };
     if (e instanceof Anthropic.APIError) return { ok: false, error: `Anthropic répond ${e.status ?? ''} : ${e.message}`.slice(0, 200) };
     return { ok: false, error: `Connexion impossible : ${(e as Error).message}`.slice(0, 200) };
   }
+}
+
+const geminiVersion = (id: string) => Number(id.match(/gemini-(\d+(?:\.\d+)?)/)?.[1] ?? 0);
+const googleError = async (r: Response) => {
+  const j = await r.json().catch(() => null) as { error?: { message?: string } } | null;
+  return `Google répond ${r.status}${r.status === 429 ? ' (quota atteint, réessayez plus tard)' : ''}${j?.error?.message ? ` : ${j.error.message.slice(0, 160)}` : ''}`;
+};
+// Ordre d'essai des modèles Gemini : celui demandé, puis les « Flash » stables les plus récents
+export function geminiCandidates(models: { id: string }[], wanted?: string) {
+  const stable = models.map(m => m.id).filter(id => /flash/i.test(id) && !/preview|exp|tts|live/i.test(id));
+  const order = [...stable.filter(id => !/lite/i.test(id)), ...stable.filter(id => /lite/i.test(id))];
+  return [...new Set([...(wanted ? [wanted] : []), ...order, ...models.map(m => m.id)])];
+}
+// Vérifie qu'un modèle Gemini répond vraiment (Google laisse dans la liste des modèles retirés, qui répondent 404)
+export async function pingGemini(key: string, model: string): Promise<string | null> {
+  try {
+    const r = await fetch(`${geminiBase()}/v1beta/models/${encodeURIComponent(model)}:generateContent`, {
+      method: 'POST', headers: { 'content-type': 'application/json', 'x-goog-api-key': key },
+      body: JSON.stringify({ contents: [{ role: 'user', parts: [{ text: 'Réponds simplement OK.' }] }], generationConfig: { maxOutputTokens: 5 } }),
+      signal: AbortSignal.timeout(30_000),
+    });
+    return r.ok ? null : await googleError(r);
+  } catch (e) { return `Connexion impossible : ${(e as Error).message}`; }
 }
 
 // ── Correction d'une copie
@@ -126,7 +150,7 @@ async function askGemini(cfg: AiConfig, system: string, copy: string): Promise<G
     }),
     signal: AbortSignal.timeout(180_000),
   });
-  if (!r.ok) throw new Error(`Google répond ${r.status}${r.status === 429 ? ' (quota atteint, réessayez plus tard)' : ''}`);
+  if (!r.ok) throw new Error(`${await googleError(r)}${r.status === 404 ? ' — modèle indisponible : choisissez-en un autre dans Contenu › IA de correction' : ''}`);
   const j = await r.json() as { candidates?: { content?: { parts?: { text?: string }[] }; finishReason?: string }[] };
   const text = (j.candidates?.[0]?.content?.parts ?? []).map(p => p.text ?? '').join('');
   const parsed = Graded.safeParse((() => { try { return JSON.parse(text.replace(/^```(?:json)?\s*|\s*```$/g, '')); } catch { return null; } })());
@@ -140,9 +164,22 @@ type ExportedCopy = { ref: string; questions: { id: string; points_max: number |
 export async function correctWithAi(attempts: (Attempt & { title: string; subject: string; level: string })[], allowedStudentIds: string[], actorId: string) {
   const cfg = await aiConfig();
   if (!cfg) return { ok: 0, errors: ['L’IA de correction n’est pas configurée (espace Contenu › IA de correction).'] };
+  const errors: string[] = [];
+  // modèle Gemini retiré par Google entre-temps : on passe seul sur le plus récent qui répond
+  if (cfg.provider === 'gemini' && attempts.length) {
+    const err = await pingGemini(cfg.key, cfg.model);
+    if (err?.includes(' 404')) {
+      const list = await checkKey('gemini', cfg.key);
+      let next = '';
+      if (list.ok) for (const id of geminiCandidates(list.models).filter(id => id !== cfg.model).slice(0, 6)) if (!(await pingGemini(cfg.key, id))) { next = id; break; }
+      if (!next) return { ok: 0, errors: [`Le modèle ${cfg.model} n’est plus disponible chez Google et aucun autre ne répond : vérifiez Contenu › IA de correction.`] };
+      await sql`update app_settings set value = jsonb_set(value, '{model}', ${sql.json(next)}), updated_at = now() where key = 'ia_correction'`;
+      errors.push(`Le modèle ${cfg.model} n’est plus disponible chez Google : passage automatique à ${next}`);
+      cfg.model = next;
+    }
+  }
   const file = await buildExport(attempts);
   const system = SYSTEM(file.consigne);
-  const errors: string[] = [];
   const results: { ref: string; commentaire_general: string; questions: { id: string; points: number; commentaire: string }[] }[] = [];
   // au plus 3 copies en même temps
   const queue = [...(file.copies as ExportedCopy[])];
