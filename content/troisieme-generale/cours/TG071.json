@@ -1,0 +1,1169 @@
+{
+  "format": "syllig-course/1",
+  "code": "TG071",
+  "level": "troisieme-generale",
+  "subject": "Histoire-Géographie",
+  "chapter": "Histoire 1 – L'Europe, un théâtre majeur des guerres totales (1914-1945)",
+  "title": "La révolution russe et l'URSS de Staline",
+  "skills": [
+    {
+      "id": "hg-reperes-urss",
+      "label": "Situer dans le temps la révolution russe et l'URSS de Staline"
+    },
+    {
+      "id": "hg-revolution-1917",
+      "label": "Raconter et expliquer les révolutions de 1917 et la prise du pouvoir par les bolcheviks"
+    },
+    {
+      "id": "hg-totalitarisme",
+      "label": "Définir le totalitarisme et en montrer les caractéristiques en URSS"
+    },
+    {
+      "id": "hg-terreur-economie",
+      "label": "Expliquer la collectivisation, l'industrialisation forcée et la terreur de masse"
+    },
+    {
+      "id": "hg-analyse-doc",
+      "label": "Analyser un document historique (nature, auteur, date, idées, critique)"
+    },
+    {
+      "id": "hg-redaction",
+      "label": "Rédiger un développement construit"
+    }
+  ],
+  "lesson": {
+    "duration_min": 35,
+    "objectives": [
+      "raconter les deux révolutions russes de 1917 ;",
+      "expliquer comment Lénine puis Staline installent un pouvoir communiste ;",
+      "montrer que l'URSS de Staline est un régime totalitaire ;",
+      "connaître les repères et le vocabulaire attendus au brevet."
+    ],
+    "essential": "En **1917**, en pleine Première Guerre mondiale, la Russie connaît deux révolutions : en février, le tsar abdique ; en octobre, les **bolcheviks** de **Lénine** prennent le pouvoir. Ils installent par la force un régime communiste à parti unique, l'**URSS** (1922). À partir de la fin des années 1920, **Staline** en fait un **régime totalitaire** : culte de la personnalité, propagande, collectivisation forcée des campagnes, industrialisation à marche forcée et terreur de masse (Goulag, Grande Terreur). Il dirige l'URSS jusqu'à sa mort en **1953**.",
+    "parts": [
+      {
+        "title": "1917 : deux révolutions en Russie",
+        "blocks": [
+          {
+            "type": "text",
+            "text": "En 1914, la Russie est un immense **empire** dirigé par un souverain aux pouvoirs presque absolus, le **tsar Nicolas II**. La majorité de la population est formée de **paysans** pauvres ; les ouvriers, peu nombreux, travaillent dans des conditions très dures. Les opposants au tsar sont surveillés, emprisonnés ou exilés."
+          },
+          {
+            "type": "text",
+            "text": "La Première Guerre mondiale aggrave tout : défaites, millions de soldats tués, blessés ou prisonniers, pénuries de pain dans les villes. Le mécontentement explose."
+          },
+          {
+            "type": "table",
+            "caption": "Les deux révolutions de 1917",
+            "columns": [
+              "Révolution",
+              "Ce qui se passe",
+              "Résultat"
+            ],
+            "rows": [
+              [
+                "**Février 1917**",
+                "Grèves et manifestations contre la faim à Petrograd (la capitale) ; les soldats refusent de tirer sur la foule et rejoignent les manifestants.",
+                "Le tsar **abdique**. Un **gouvernement provisoire** proclame les libertés mais **continue la guerre**. Partout se forment des **soviets** (conseils d'ouvriers, de soldats et de paysans)."
+              ],
+              [
+                "**Octobre 1917**",
+                "Les **bolcheviks**, révolutionnaires communistes dirigés par **Lénine**, prennent le pouvoir par la force à Petrograd (prise du palais d'Hiver, nuit du 25 au 26 octobre).",
+                "Lénine prend la tête d'un nouveau gouvernement. Premiers **décrets** : sur la **paix** (sortir de la guerre) et sur la **terre** (les grands domaines sont confisqués et laissés aux paysans)."
+              ]
+            ]
+          },
+          {
+            "type": "callout",
+            "kind": "attention",
+            "title": "Deux calendriers",
+            "text": "La Russie utilise alors un calendrier en retard de 13 jours sur le nôtre. La révolution de « février » a lieu en mars selon notre calendrier, et celle d'« octobre » le 7 novembre 1917. Au brevet, on garde les noms « révolution de Février » et « révolution d'Octobre »."
+          },
+          {
+            "type": "callout",
+            "kind": "definition",
+            "title": "Bolcheviks",
+            "text": "Militants révolutionnaires d'un parti communiste russe dirigé par Lénine. Ils veulent une révolution des ouvriers et des paysans pour construire une société sans classes sociales, sans propriété privée des grands moyens de production (usines, terres). Ils prennent ensuite le nom de Parti communiste."
+          },
+          {
+            "type": "callout",
+            "kind": "retiens",
+            "text": "Février 1917 : la chute du tsar. Octobre 1917 : la prise du pouvoir par Lénine et les bolcheviks. Le 3 mars 1918, la Russie signe la paix avec l'Allemagne (traité de **Brest-Litovsk**) : elle sort de la guerre."
+          }
+        ],
+        "checkpoint": {
+          "variants": [
+            {
+              "prompt": "Que se passe-t-il lors de la révolution de Février 1917 ?",
+              "options": [
+                "Lénine prend le pouvoir",
+                "Le tsar Nicolas II abdique",
+                "Staline devient chef du pays",
+                "La Russie signe la paix avec l'Allemagne"
+              ],
+              "answer": 1,
+              "hint": "Regarde la première ligne du tableau des deux révolutions.",
+              "explanation": "En février 1917, grèves et mutineries forcent le tsar à abdiquer ; un gouvernement provisoire le remplace."
+            },
+            {
+              "prompt": "Qui dirige les bolcheviks lors de la révolution d'Octobre 1917 ?",
+              "options": [
+                "Nicolas II",
+                "Staline",
+                "Lénine",
+                "Trotski"
+              ],
+              "answer": 2,
+              "hint": "Relis la définition du mot « bolcheviks ».",
+              "explanation": "Lénine dirige le parti bolchevik et prend la tête du gouvernement en octobre 1917. Trotski joue un rôle important, mais il n'est pas le chef du parti."
+            },
+            {
+              "prompt": "Qu'est-ce qu'un soviet ?",
+              "options": [
+                "Un conseil élu d'ouvriers, de soldats et de paysans",
+                "Un soldat du tsar",
+                "Un traité de paix",
+                "Un grand propriétaire terrien"
+              ],
+              "answer": 0,
+              "hint": "Le mot apparaît dans la colonne « Résultat » de Février 1917.",
+              "explanation": "Les soviets sont des conseils d'ouvriers, de soldats et de paysans formés en 1917 ; ils donneront leur nom à l'Union soviétique."
+            }
+          ]
+        }
+      },
+      {
+        "title": "Lénine installe un pouvoir communiste par la force (1917-1924)",
+        "blocks": [
+          {
+            "type": "text",
+            "text": "Les bolcheviks ne gagnent pas les élections de l'**Assemblée constituante** (fin 1917). Lénine la fait dissoudre dès sa première réunion, en **janvier 1918**. Les autres partis sont peu à peu interdits : le Parti communiste devient **parti unique**. Une police politique, la **Tchéka**, créée en décembre 1917, traque les opposants : c'est la « Terreur rouge »."
+          },
+          {
+            "type": "heading",
+            "text": "Une guerre civile terrible (1918-1921)"
+          },
+          {
+            "type": "text",
+            "text": "Les **Rouges** (bolcheviks, avec l'Armée rouge organisée par **Trotski**) affrontent les **Blancs** (partisans du tsar, libéraux, officiers), aidés par plusieurs pays étrangers. Les violences frappent toute la population ; la famille impériale est exécutée en juillet 1918. Les Rouges l'emportent, mais le pays est ruiné et une grave **famine** fait plusieurs millions de morts en 1921-1922."
+          },
+          {
+            "type": "list",
+            "items": [
+              "1921 : Lénine lance la **NEP** (nouvelle politique économique) : un peu de commerce privé est de nouveau autorisé pour relancer l'économie.",
+              "Décembre 1922 : naissance de l'**URSS** (Union des républiques socialistes soviétiques), dont la capitale devient Moscou.",
+              "Janvier 1924 : mort de Lénine. Une lutte pour sa succession s'ouvre."
+            ]
+          },
+          {
+            "type": "callout",
+            "kind": "definition",
+            "title": "Communisme",
+            "text": "Idéologie qui veut une société égalitaire, sans classes sociales, où les moyens de production (terres, usines) appartiennent à la collectivité. En URSS, c'est en réalité l'**État**, contrôlé par le **Parti communiste**, qui possède et dirige tout."
+          },
+          {
+            "type": "callout",
+            "kind": "retiens",
+            "text": "Dès Lénine, le pouvoir communiste repose sur le **parti unique**, la **police politique** et la **violence** contre les opposants. Staline héritera de ces outils."
+          }
+        ],
+        "checkpoint": {
+          "variants": [
+            {
+              "prompt": "Que fait Lénine de l'Assemblée constituante en janvier 1918 ?",
+              "options": [
+                "Il lui confie le pouvoir",
+                "Il la fait dissoudre",
+                "Il en devient le président élu",
+                "Il la transforme en soviet"
+              ],
+              "answer": 1,
+              "hint": "Relis le premier paragraphe de cette partie.",
+              "explanation": "Les bolcheviks n'ayant pas la majorité, Lénine fait dissoudre l'Assemblée constituante : la démocratie est écartée."
+            },
+            {
+              "prompt": "Qui s'affronte pendant la guerre civile russe (1918-1921) ?",
+              "options": [
+                "Les Russes et les Allemands",
+                "Les Rouges (bolcheviks) et les Blancs (leurs adversaires)",
+                "Les soviets et les ouvriers",
+                "Staline et Hitler"
+              ],
+              "answer": 1,
+              "hint": "Cherche le paragraphe sous le titre « Une guerre civile terrible ».",
+              "explanation": "La guerre civile oppose les Rouges, menés par les bolcheviks, aux Blancs, qui veulent les renverser. Les Rouges gagnent."
+            },
+            {
+              "prompt": "En quelle année naît l'URSS ?",
+              "options": [
+                "1917",
+                "1918",
+                "1922",
+                "1924"
+              ],
+              "answer": 2,
+              "hint": "Regarde la liste qui suit la guerre civile.",
+              "explanation": "L'URSS naît en décembre 1922. En 1917, c'est la révolution ; en 1924, Lénine meurt."
+            }
+          ]
+        }
+      },
+      {
+        "title": "Staline au pouvoir : un régime totalitaire",
+        "blocks": [
+          {
+            "type": "text",
+            "text": "**Joseph Staline** est secrétaire général du Parti communiste depuis 1922 : il contrôle les nominations de ses membres. Après la mort de Lénine, il élimine un à un ses rivaux. **Trotski** est chassé du pays en 1929 (il sera assassiné au Mexique en 1940 par un agent soviétique). À la fin des années 1920, Staline a tout le pouvoir ; il le garde jusqu'à sa mort en **1953**."
+          },
+          {
+            "type": "callout",
+            "kind": "definition",
+            "title": "Totalitarisme",
+            "text": "Régime politique dans lequel un **parti unique**, dirigé par un chef tout-puissant, contrôle **tous les aspects de la vie** des individus (politique, économie, culture, vie privée) et cherche à créer un « **homme nouveau** ». Il s'appuie sur la **propagande** et sur la **terreur**."
+          },
+          {
+            "type": "table",
+            "caption": "Les caractéristiques du totalitarisme stalinien",
+            "columns": [
+              "Caractéristique",
+              "En URSS"
+            ],
+            "rows": [
+              [
+                "Un parti unique",
+                "Le Parti communiste dirige l'État ; toute opposition est interdite. Les élections n'offrent pas de choix."
+              ],
+              [
+                "Le culte de la personnalité",
+                "Staline est présenté comme le « petit père des peuples », génial et infaillible : portraits, statues, villes à son nom (Stalingrad)."
+              ],
+              [
+                "La propagande et la censure",
+                "Journaux (la *Pravda*), radio, affiches, cinéma glorifient le régime. Les artistes doivent suivre le « réalisme socialiste ». Tout ce qui critique le pouvoir est interdit."
+              ],
+              [
+                "L'encadrement de la société",
+                "Les enfants et les jeunes sont embrigadés dans des organisations communistes (Pionniers, Komsomol). Les religions sont persécutées : églises fermées, prêtres arrêtés."
+              ],
+              [
+                "La terreur",
+                "Une police politique (le NKVD dans les années 1930) arrête, déporte et exécute (voir la partie 5)."
+              ]
+            ]
+          },
+          {
+            "type": "callout",
+            "kind": "definition",
+            "title": "Culte de la personnalité",
+            "text": "Vénération organisée par la propagande autour d'un chef, présenté comme un être exceptionnel à qui l'on doit tout."
+          },
+          {
+            "type": "callout",
+            "kind": "retiens",
+            "text": "Parti unique + chef adoré (culte de la personnalité) + propagande et censure + encadrement de la société + terreur = **régime totalitaire**."
+          }
+        ],
+        "checkpoint": {
+          "variants": [
+            {
+              "prompt": "Qu'est-ce que le culte de la personnalité ?",
+              "options": [
+                "Le droit de choisir librement son dirigeant",
+                "La vénération d'un chef organisée par la propagande",
+                "Une religion officielle de l'URSS",
+                "Le respect de la vie privée"
+              ],
+              "answer": 1,
+              "hint": "Relis la définition juste avant l'encadré « Retiens ».",
+              "explanation": "La propagande présente Staline comme un être exceptionnel : c'est le culte de la personnalité."
+            },
+            {
+              "prompt": "Parmi ces éléments, lequel N'existe PAS dans l'URSS de Staline ?",
+              "options": [
+                "Un parti unique",
+                "La censure",
+                "Des élections libres avec plusieurs partis",
+                "Une police politique"
+              ],
+              "answer": 2,
+              "hint": "Regarde la ligne « Un parti unique » du tableau.",
+              "explanation": "Toute opposition est interdite : il n'y a pas d'élections libres en URSS."
+            },
+            {
+              "prompt": "Quel rival de Staline est chassé d'URSS en 1929 ?",
+              "options": [
+                "Lénine",
+                "Nicolas II",
+                "Trotski",
+                "Stakhanov"
+              ],
+              "answer": 2,
+              "hint": "Relis le premier paragraphe de la partie.",
+              "explanation": "Trotski, organisateur de l'Armée rouge, est exilé en 1929, puis assassiné au Mexique en 1940."
+            }
+          ]
+        }
+      },
+      {
+        "title": "Transformer l'économie par la force",
+        "blocks": [
+          {
+            "type": "text",
+            "text": "À partir de 1928-1929, Staline met fin à la NEP. Il veut faire de l'URSS, très rurale, une grande **puissance industrielle**, très vite et par la contrainte. L'économie est **planifiée** : l'État fixe les objectifs de production."
+          },
+          {
+            "type": "table",
+            "caption": "Deux politiques imposées par la force",
+            "columns": [
+              "Politique",
+              "Ce que c'est",
+              "Conséquences"
+            ],
+            "rows": [
+              [
+                "La **collectivisation** des terres (à partir de 1929)",
+                "Les paysans sont obligés de donner leurs terres, leurs outils et leurs animaux à des fermes collectives (**kolkhozes**) ou d'État (**sovkhozes**).",
+                "Les paysans qui résistent, accusés d'être des « **koulaks** » (paysans riches), sont déportés ou tués. La production s'effondre. La **famine de 1932-1933** fait plusieurs millions de morts (environ 6 millions selon de nombreux historiens), surtout en **Ukraine** (où on l'appelle *Holodomor*) et au Kazakhstan."
+              ],
+              [
+                "L'**industrialisation** à marche forcée (plans quinquennaux, à partir de 1928)",
+                "Des **plans de cinq ans** fixent des objectifs très élevés, surtout pour l'industrie lourde : charbon, acier, électricité, machines, armement.",
+                "Barrages, mines, villes nouvelles (Magnitogorsk). La production industrielle augmente fortement, mais les ouvriers vivent mal ; une partie du travail est faite par les prisonniers du Goulag."
+              ]
+            ]
+          },
+          {
+            "type": "callout",
+            "kind": "plus",
+            "title": "Le « stakhanovisme »",
+            "text": "En 1935, le mineur **Alexeï Stakhanov** aurait extrait 14 fois la quantité de charbon demandée en une nuit. La propagande en fait un héros pour pousser tous les ouvriers à produire plus. On sait aujourd'hui que cet exploit avait été préparé (d'autres mineurs l'aidaient)."
+          },
+          {
+            "type": "callout",
+            "kind": "definition",
+            "title": "Kolkhoze",
+            "text": "Ferme collective où les paysans travaillent ensemble des terres qui ne leur appartiennent plus ; ils doivent livrer à l'État une grande partie de la récolte."
+          },
+          {
+            "type": "callout",
+            "kind": "retiens",
+            "text": "Collectivisation forcée des campagnes + industrialisation par les plans quinquennaux : l'URSS devient une puissance industrielle, mais au prix de millions de morts et de souffrances immenses."
+          }
+        ],
+        "checkpoint": {
+          "variants": [
+            {
+              "prompt": "Qu'est-ce que la collectivisation des terres ?",
+              "options": [
+                "Le partage des terres entre les paysans",
+                "L'obligation pour les paysans de mettre leurs terres et leurs animaux dans des fermes collectives",
+                "La vente des terres à des entreprises étrangères",
+                "Le retour des terres aux grands propriétaires"
+              ],
+              "answer": 1,
+              "hint": "Regarde la première ligne du tableau, colonne « Ce que c'est ».",
+              "explanation": "Les paysans doivent céder terres, outils et bétail aux kolkhozes et sovkhozes."
+            },
+            {
+              "prompt": "Quelle région est particulièrement touchée par la famine de 1932-1933 ?",
+              "options": [
+                "La Sibérie",
+                "L'Ukraine",
+                "Moscou",
+                "La Pologne"
+              ],
+              "answer": 1,
+              "hint": "Cherche le mot Holodomor dans le tableau.",
+              "explanation": "L'Ukraine (et aussi le Kazakhstan) est durement frappée : les Ukrainiens appellent cette famine Holodomor."
+            },
+            {
+              "prompt": "Que sont les plans quinquennaux ?",
+              "options": [
+                "Des plans de cinq ans qui fixent des objectifs de production",
+                "Des plans de bataille de l'Armée rouge",
+                "Des plans de ville dessinés par Staline",
+                "Des élections tous les cinq ans"
+              ],
+              "answer": 0,
+              "hint": "« Quinquennal » veut dire « qui dure cinq ans ».",
+              "explanation": "Les plans quinquennaux fixent pour cinq ans des objectifs de production, surtout dans l'industrie lourde."
+            }
+          ]
+        }
+      },
+      {
+        "title": "La terreur de masse et les repères à retenir",
+        "blocks": [
+          {
+            "type": "text",
+            "text": "La terreur touche toute la société : paysans, ouvriers, intellectuels, croyants, minorités nationales, et même les membres du Parti et les officiers de l'Armée rouge. Chacun peut être dénoncé et accusé d'être un « ennemi du peuple »."
+          },
+          {
+            "type": "list",
+            "items": [
+              "**Le Goulag** : réseau de camps de travail forcé, souvent dans des régions au climat terrible (Sibérie, Grand Nord). Selon les historiens, environ 18 millions de personnes y passent entre 1930 et 1953 ; plus d'un million y meurent, de froid, de faim et d'épuisement.",
+              "**Les procès de Moscou** (1936-1938) : d'anciens dirigeants bolcheviks, forcés d'avouer des crimes imaginaires, sont condamnés à mort.",
+              "**La Grande Terreur** (1937-1938) : environ 700 000 personnes sont exécutées en moins de deux ans et plus d'un million envoyées au Goulag."
+            ]
+          },
+          {
+            "type": "callout",
+            "kind": "definition",
+            "title": "Goulag",
+            "text": "Administration des camps de travail forcé de l'URSS ; par extension, l'ensemble de ces camps."
+          },
+          {
+            "type": "table",
+            "caption": "Repères chronologiques",
+            "columns": [
+              "Date",
+              "Événement"
+            ],
+            "rows": [
+              [
+                "Février 1917",
+                "Abdication du tsar Nicolas II"
+              ],
+              [
+                "**Octobre 1917**",
+                "**Révolution bolchevique** : Lénine prend le pouvoir"
+              ],
+              [
+                "1918-1921",
+                "Guerre civile entre Rouges et Blancs"
+              ],
+              [
+                "1922",
+                "Naissance de l'URSS"
+              ],
+              [
+                "1924",
+                "Mort de Lénine ; début de la lutte pour sa succession"
+              ],
+              [
+                "1929",
+                "Staline seul maître du pouvoir ; début de la collectivisation forcée"
+              ],
+              [
+                "1932-1933",
+                "Grande famine (Ukraine, Kazakhstan)"
+              ],
+              [
+                "1937-1938",
+                "Grande Terreur"
+              ],
+              [
+                "**1953**",
+                "**Mort de Staline**"
+              ]
+            ]
+          },
+          {
+            "type": "callout",
+            "kind": "essentiel",
+            "title": "Repères du brevet",
+            "text": "**1917** : révolution russe (révolution bolchevique d'Octobre) · **1924-1953** : Staline dirige l'URSS (il élimine ses rivaux jusqu'en 1929) · **1937-1938** : Grande Terreur."
+          },
+          {
+            "type": "callout",
+            "kind": "methode",
+            "title": "Pour réussir le développement construit",
+            "text": "Pour « montrer que l'URSS de Staline est un régime totalitaire », fais une partie par moyen de contrôle : 1) un pouvoir concentré (parti unique, culte de Staline) ; 2) une société encadrée (propagande, jeunesse, économie dirigée) ; 3) la terreur (Goulag, Grande Terreur). Donne au moins un exemple précis et daté par partie."
+          }
+        ],
+        "checkpoint": {
+          "variants": [
+            {
+              "prompt": "Qu'est-ce que le Goulag ?",
+              "options": [
+                "Une ferme collective",
+                "Le parlement soviétique",
+                "Le système des camps de travail forcé",
+                "Le journal du Parti communiste"
+              ],
+              "answer": 2,
+              "hint": "Relis la définition dans cette partie.",
+              "explanation": "Le Goulag est l'administration des camps de travail forcé, où des millions de personnes sont envoyées."
+            },
+            {
+              "prompt": "Quand a lieu la Grande Terreur ?",
+              "options": [
+                "1917-1918",
+                "1929-1930",
+                "1937-1938",
+                "1953"
+              ],
+              "answer": 2,
+              "hint": "Regarde la liste à puces et le tableau des repères.",
+              "explanation": "La Grande Terreur a lieu en 1937-1938 : environ 700 000 personnes sont exécutées."
+            },
+            {
+              "prompt": "En quelle année meurt Staline ?",
+              "options": [
+                "1924",
+                "1939",
+                "1945",
+                "1953"
+              ],
+              "answer": 3,
+              "hint": "C'est la dernière ligne du tableau des repères.",
+              "explanation": "Staline meurt en 1953. En 1924, c'est Lénine qui meurt."
+            }
+          ]
+        }
+      }
+    ],
+    "memo": [
+      {
+        "label": "Dates du brevet",
+        "text": "1917 : révolution russe (Octobre : les bolcheviks de Lénine prennent le pouvoir) · 1922 : naissance de l'URSS · 1924-1953 : Staline au pouvoir · 1937-1938 : Grande Terreur."
+      },
+      {
+        "label": "1917",
+        "text": "Février : le tsar Nicolas II abdique, gouvernement provisoire. Octobre : prise du pouvoir par Lénine ; décrets sur la paix et sur la terre ; sortie de la guerre (Brest-Litovsk, mars 1918)."
+      },
+      {
+        "label": "Lénine (1917-1924)",
+        "text": "Assemblée constituante dissoute, parti unique, police politique (Tchéka), guerre civile Rouges contre Blancs (1918-1921), NEP (1921)."
+      },
+      {
+        "label": "Totalitarisme",
+        "text": "Parti unique, chef tout-puissant (culte de la personnalité), propagande et censure, encadrement de la jeunesse et de la société, terreur, volonté de créer un homme nouveau."
+      },
+      {
+        "label": "Économie",
+        "text": "Collectivisation forcée (kolkhozes, sovkhozes, « dékoulakisation »), famine de 1932-1933 (Ukraine), plans quinquennaux, industrie lourde, Stakhanov (propagande)."
+      },
+      {
+        "label": "Terreur",
+        "text": "Police politique (NKVD), procès de Moscou, Grande Terreur (environ 700 000 exécutions), Goulag (environ 18 millions de détenus entre 1930 et 1953)."
+      }
+    ]
+  },
+  "exercises": {
+    "duration_min": 30,
+    "instructions": "Commence par les exercices ★ (je repère), puis ★★ (j'analyse un document) et ★★★ (je rédige). Prends le temps de lire les deux documents. Les corrigés s'affichent après tes réponses : sers-t'en pour progresser, c'est fait pour ça !",
+    "pass_threshold": 8,
+    "texts": [
+      {
+        "id": "t1",
+        "label": "Document 1 · Staline fixe le rythme de l'industrialisation",
+        "source": "D'après Joseph Staline, discours prononcé devant les responsables de l'industrie soviétique, Moscou, 4 février 1931 (traduction adaptée).",
+        "paragraphs": [
+          "Freiner l'allure, c'est retarder. Et les retardataires se font battre. Mais nous, nous ne voulons pas être battus.",
+          "Nous retardons de cinquante à cent ans sur les pays avancés. Nous devons parcourir cette distance en dix ans. Ou bien nous le ferons, ou bien nous serons broyés."
+        ]
+      },
+      {
+        "id": "t2",
+        "label": "Document 2 · Un village pendant la collectivisation",
+        "source": "Texte original écrit pour ce cours, inspiré de témoignages de paysans ukrainiens recueillis après la chute de l'URSS (ce n'est pas un témoignage authentique).",
+        "paragraphs": [
+          "Au printemps 1930, des hommes du Parti sont arrivés au village. Ils ont réuni tout le monde dans l'école et ont dit : « Celui qui ne signe pas pour entrer au kolkhoze est un ennemi du pouvoir soviétique. »",
+          "Mon père ne voulait pas donner notre cheval et nos deux vaches. Une nuit, on est venu le chercher. On nous a dit qu'il était un koulak. Nous ne l'avons jamais revu.",
+          "Deux ans plus tard, les brigades ont pris tout le grain, même celui gardé pour semer. À l'école, il y avait le portrait de Staline au mur, mais plus aucun enfant n'avait la force d'écouter le maître."
+        ]
+      }
+    ],
+    "items": [
+      {
+        "id": "ex1",
+        "type": "qcm",
+        "stars": 1,
+        "lesson_part": 1,
+        "skills": [
+          "hg-reperes-urss",
+          "hg-revolution-1917"
+        ],
+        "cognitive": "connaitre",
+        "prompt": "Lors de quelle révolution les bolcheviks prennent-ils le pouvoir ?",
+        "options": [
+          "La révolution de Février 1917",
+          "La révolution d'Octobre 1917",
+          "La révolution de 1905",
+          "La révolution de 1922"
+        ],
+        "answer": 1,
+        "solution": "La révolution d'Octobre 1917 (le 7 novembre selon notre calendrier). En février 1917, c'est le tsar qui abdique."
+      },
+      {
+        "id": "ex2",
+        "type": "short",
+        "stars": 1,
+        "lesson_part": 1,
+        "skills": [
+          "hg-revolution-1917"
+        ],
+        "cognitive": "connaitre",
+        "prompt": "Quel est le nom du chef des bolcheviks qui prend le pouvoir en octobre 1917 ?",
+        "answer": [
+          "Lénine",
+          "Lenine",
+          "Vladimir Lénine",
+          "Vladimir Ilitch Lénine",
+          "Vladimir Oulianov",
+          "Oulianov"
+        ],
+        "solution": "Lénine (de son vrai nom Vladimir Oulianov)."
+      },
+      {
+        "id": "ex3",
+        "type": "qcm",
+        "stars": 1,
+        "lesson_part": 5,
+        "skills": [
+          "hg-terreur-economie"
+        ],
+        "cognitive": "connaitre",
+        "prompt": "Qu'est-ce que le Goulag ?",
+        "options": [
+          "Le système des camps de travail forcé de l'URSS",
+          "Une ferme collective",
+          "Un plan de cinq ans",
+          "La police du tsar"
+        ],
+        "answer": 0,
+        "solution": "Le Goulag désigne l'administration et l'ensemble des camps de travail forcé de l'URSS."
+      },
+      {
+        "id": "ex4",
+        "type": "short",
+        "stars": 1,
+        "lesson_part": 5,
+        "skills": [
+          "hg-reperes-urss"
+        ],
+        "cognitive": "connaitre",
+        "prompt": "En quelle année Staline meurt-il ? (réponds par une année)",
+        "answer": [
+          "1953",
+          "en 1953",
+          "annee 1953",
+          "l'annee 1953",
+          "mars 1953",
+          "en mars 1953",
+          "5 mars 1953",
+          "le 5 mars 1953"
+        ],
+        "solution": "En 1953 (le 5 mars)."
+      },
+      {
+        "id": "ex5",
+        "type": "qcm",
+        "stars": 2,
+        "text_ref": "t1",
+        "lesson_part": 4,
+        "skills": [
+          "hg-analyse-doc",
+          "hg-terreur-economie"
+        ],
+        "cognitive": "analyser",
+        "prompt": "D'après le document 1, quel objectif Staline fixe-t-il à l'URSS ?",
+        "options": [
+          "Revenir à l'agriculture traditionnelle",
+          "Rattraper en dix ans le retard industriel sur les pays avancés",
+          "Faire la paix avec tous les pays voisins",
+          "Ralentir la production pour mieux nourrir les ouvriers"
+        ],
+        "answer": 1,
+        "solution": "Staline veut rattraper « en dix ans » un retard de « cinquante à cent ans » : c'est l'industrialisation à marche forcée des plans quinquennaux."
+      },
+      {
+        "id": "ex6",
+        "type": "qcm",
+        "stars": 2,
+        "text_ref": "t2",
+        "lesson_part": 4,
+        "skills": [
+          "hg-analyse-doc",
+          "hg-terreur-economie"
+        ],
+        "cognitive": "analyser",
+        "prompt": "Dans le document 2, pourquoi le père du narrateur est-il arrêté ?",
+        "options": [
+          "Parce qu'il a volé du grain",
+          "Parce qu'il refuse de donner son cheval et ses vaches au kolkhoze",
+          "Parce qu'il est membre du Parti",
+          "Parce qu'il a quitté le village"
+        ],
+        "answer": 1,
+        "solution": "Il refuse la collectivisation : il est alors accusé d'être un « koulak » et disparaît (déporté ou exécuté)."
+      },
+      {
+        "id": "ex7",
+        "type": "open",
+        "stars": 2,
+        "text_ref": "t1",
+        "lesson_part": 4,
+        "skills": [
+          "hg-analyse-doc"
+        ],
+        "cognitive": "analyser",
+        "prompt": "Présente le document 1 : nature, auteur (et sa fonction), date, destinataires.",
+        "solution": "C'est un extrait de discours de Joseph Staline, chef de l'URSS (secrétaire général du Parti communiste), prononcé le 4 février 1931 à Moscou, pendant le premier plan quinquennal. Il s'adresse aux responsables de l'industrie soviétique pour les pousser à produire toujours plus vite."
+      },
+      {
+        "id": "ex8",
+        "type": "qcm",
+        "stars": 2,
+        "text_ref": "t2",
+        "lesson_part": 3,
+        "skills": [
+          "hg-totalitarisme",
+          "hg-analyse-doc"
+        ],
+        "cognitive": "analyser",
+        "prompt": "Dans le document 2, quel détail illustre le culte de la personnalité ?",
+        "options": [
+          "Le cheval et les deux vaches",
+          "La réunion dans l'école",
+          "Le portrait de Staline au mur de l'école",
+          "Le grain gardé pour semer"
+        ],
+        "answer": 2,
+        "solution": "Le portrait de Staline affiché à l'école montre que le chef est partout, même dans les villages, et présenté aux enfants comme un modèle : c'est le culte de la personnalité."
+      },
+      {
+        "id": "ex9",
+        "type": "open",
+        "stars": 3,
+        "text_ref": "t2",
+        "lesson_part": 4,
+        "skills": [
+          "hg-terreur-economie",
+          "hg-redaction"
+        ],
+        "cognitive": "rediger",
+        "prompt": "Rédige un paragraphe argumenté (8 à 10 lignes) : montre que la collectivisation est imposée par la force et qu'elle a des conséquences dramatiques. Utilise le document 2 et tes connaissances.",
+        "solution": "Exemple : À partir de 1929, Staline impose la collectivisation des terres. Les paysans doivent donner leurs terres, leurs outils et leurs bêtes aux kolkhozes. Ceux qui refusent sont menacés (« ennemi du pouvoir soviétique ») et accusés d'être des koulaks : ils sont déportés ou exécutés, comme le père du narrateur, qu'on « n'a jamais revu ». Ensuite, l'État prend une grande partie des récoltes, même les semences. La production s'effondre et la famine de 1932-1933 fait plusieurs millions de morts, surtout en Ukraine. La collectivisation est donc une politique de violence contre les paysans."
+      },
+      {
+        "id": "ex10",
+        "type": "open",
+        "stars": 3,
+        "lesson_part": 3,
+        "skills": [
+          "hg-totalitarisme",
+          "hg-terreur-economie",
+          "hg-reperes-urss",
+          "hg-redaction"
+        ],
+        "cognitive": "rediger",
+        "prompt": "Rédige un développement construit (une quinzaine de lignes) : « Montrez que l'URSS de Staline est un régime totalitaire. » Fais une introduction, deux ou trois parties et une conclusion.",
+        "solution": "Introduction : après la révolution d'Octobre 1917 et la mort de Lénine (1924), Staline prend le contrôle de l'URSS ; il la dirige jusqu'en 1953. Partie 1 – Un pouvoir concentré : parti unique (Parti communiste), aucune élection libre, Staline élimine ses rivaux (Trotski exilé en 1929) ; culte de la personnalité (« petit père des peuples », portraits, Stalingrad). Partie 2 – Une société et une économie contrôlées : propagande (Pravda, affiches), censure, jeunesse embrigadée (Pionniers, Komsomol), religions persécutées ; collectivisation forcée des terres (kolkhozes) et plans quinquennaux. Partie 3 – La terreur : police politique (NKVD), Grande Terreur de 1937-1938 (environ 700 000 exécutions), Goulag. Conclusion : Staline contrôle tous les aspects de la vie des Soviétiques par la propagande et la terreur : c'est un régime totalitaire, au bilan humain de plusieurs millions de morts."
+      }
+    ]
+  },
+  "evaluation": {
+    "duration_min": 35,
+    "conditions": "Comme au brevet : sans la leçon ni les corrigés, en 35 minutes. Barème : A = 6 points · B = 6 points · C = 8 points. Soigne la rédaction et cite des repères précis (dates, acteurs, notions).",
+    "total_points": 20,
+    "variants": [
+      {
+        "texts": [
+          {
+            "id": "d1",
+            "label": "Document · Lénine juge Staline",
+            "source": "D'après Lénine, « Lettre au congrès » (dite « Testament de Lénine »), notes dictées le 24 décembre 1922 et le 4 janvier 1923 (traduction adaptée). Cette lettre est restée cachée au public soviétique jusqu'en 1956.",
+            "paragraphs": [
+              "Le camarade Staline, devenu secrétaire général, a concentré entre ses mains un pouvoir immense, et je ne suis pas sûr qu'il sache toujours s'en servir avec assez de prudence.",
+              "Staline est trop brutal, et ce défaut, tout à fait supportable entre nous, communistes, devient insupportable dans la fonction de secrétaire général. C'est pourquoi je propose aux camarades de réfléchir à un moyen de retirer Staline de ce poste et de nommer à sa place quelqu'un de plus patient, plus loyal, plus poli et plus attentif envers les camarades, moins capricieux."
+            ]
+          }
+        ],
+        "sections": [
+          {
+            "label": "A · Je connais mes repères (6 points)",
+            "questions": [
+              {
+                "id": "q1",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 1,
+                "skills": [
+                  "hg-reperes-urss"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "En quelle année les bolcheviks prennent-ils le pouvoir en Russie ?",
+                "options": [
+                  "1905",
+                  "1914",
+                  "1917",
+                  "1922"
+                ],
+                "answer": 2,
+                "solution": "En 1917, lors de la révolution d'Octobre.",
+                "rubric": "1 pt : bonne réponse (1917)."
+              },
+              {
+                "id": "q2",
+                "type": "short",
+                "points": 1,
+                "lesson_part": 4,
+                "skills": [
+                  "hg-terreur-economie"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Comment appelle-t-on une ferme collective en URSS ? (un seul mot)",
+                "answer": [
+                  "kolkhoze",
+                  "kolkhozes",
+                  "un kolkhoze",
+                  "le kolkhoze",
+                  "kolkhoz",
+                  "sovkhoze",
+                  "un sovkhoze",
+                  "sovkhoz"
+                ],
+                "solution": "Un kolkhoze (ferme collective). Le sovkhoze, ferme d'État, est aussi accepté.",
+                "rubric": "1 pt : kolkhoze (ou sovkhoze)."
+              },
+              {
+                "id": "q3",
+                "type": "short",
+                "points": 1,
+                "lesson_part": 3,
+                "skills": [
+                  "hg-reperes-urss"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Quel dirigeant gouverne l'URSS de la fin des années 1920 jusqu'en 1953 ?",
+                "answer": [
+                  "Staline",
+                  "Joseph Staline",
+                  "Iossif Staline",
+                  "J. Staline"
+                ],
+                "solution": "Joseph Staline.",
+                "rubric": "1 pt : Staline."
+              },
+              {
+                "id": "q4",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 5,
+                "skills": [
+                  "hg-reperes-urss",
+                  "hg-terreur-economie"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Que désigne la « Grande Terreur » de 1937-1938 ?",
+                "options": [
+                  "Une vague massive d'arrestations et d'exécutions ordonnée par Staline",
+                  "La guerre civile entre Rouges et Blancs",
+                  "La famine en Ukraine",
+                  "L'invasion de l'URSS par l'Allemagne"
+                ],
+                "answer": 0,
+                "solution": "Une vague de répression de masse : environ 700 000 exécutions et plus d'un million de déportations au Goulag.",
+                "rubric": "1 pt : bonne réponse."
+              },
+              {
+                "id": "q5",
+                "type": "open",
+                "points": 2,
+                "lesson_part": 3,
+                "skills": [
+                  "hg-totalitarisme"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Définis le mot « totalitarisme ».",
+                "solution": "Régime politique où un parti unique, dirigé par un chef tout-puissant, contrôle tous les aspects de la vie des individus (politique, économie, culture, vie privée), grâce à la propagande et à la terreur, pour créer un « homme nouveau ».",
+                "rubric": "1 pt : parti unique / chef tout-puissant. 1 pt : contrôle de tous les aspects de la vie, par la propagande et/ou la terreur."
+              }
+            ]
+          },
+          {
+            "label": "B · J'analyse un document (6 points)",
+            "questions": [
+              {
+                "id": "q6",
+                "type": "open",
+                "points": 1,
+                "text_ref": "d1",
+                "lesson_part": 2,
+                "skills": [
+                  "hg-analyse-doc"
+                ],
+                "cognitive": "analyser",
+                "prompt": "Présente le document : nature, auteur, date.",
+                "solution": "Une lettre (des notes dictées) de Lénine, chef du pouvoir soviétique, malade, écrite fin 1922 – début 1923, peu avant sa mort (janvier 1924). Elle est destinée au congrès du Parti communiste.",
+                "rubric": "0,5 pt : nature (lettre / notes) et auteur (Lénine). 0,5 pt : date (fin 1922 – début 1923) et/ou destinataire (congrès du Parti)."
+              },
+              {
+                "id": "q7",
+                "type": "open",
+                "points": 2,
+                "text_ref": "d1",
+                "lesson_part": 3,
+                "skills": [
+                  "hg-analyse-doc",
+                  "hg-totalitarisme"
+                ],
+                "cognitive": "analyser",
+                "prompt": "Quels reproches Lénine fait-il à Staline ? Appuie-toi sur deux citations.",
+                "solution": "Lénine reproche à Staline d'avoir « concentré entre ses mains un pouvoir immense » sans savoir s'en servir « avec assez de prudence ». Il juge aussi son caractère : il est « trop brutal », pas assez « patient », « loyal », « poli », et trop « capricieux ».",
+                "rubric": "1 pt : le pouvoir trop important concentré par Staline, avec citation. 1 pt : son caractère brutal / capricieux, avec citation."
+              },
+              {
+                "id": "q8",
+                "type": "open",
+                "points": 2,
+                "text_ref": "d1",
+                "lesson_part": 3,
+                "skills": [
+                  "hg-analyse-doc",
+                  "hg-totalitarisme"
+                ],
+                "cognitive": "analyser",
+                "prompt": "Que propose Lénine ? Explique, avec tes connaissances, pourquoi ce conseil n'a pas été suivi.",
+                "solution": "Lénine propose de retirer à Staline son poste de secrétaire général. Ce conseil n'est pas suivi : la lettre est cachée, et Staline, qui contrôle les nominations dans le Parti, élimine un à un ses rivaux après 1924 (Trotski exilé en 1929). À la fin des années 1920, il a tout le pouvoir.",
+                "rubric": "1 pt : proposition de retirer Staline du poste de secrétaire général. 1 pt : explication avec des connaissances (lettre cachée, contrôle du Parti, élimination des rivaux, Trotski)."
+              },
+              {
+                "id": "q9",
+                "type": "open",
+                "points": 1,
+                "text_ref": "d1",
+                "lesson_part": 5,
+                "skills": [
+                  "hg-analyse-doc",
+                  "hg-terreur-economie"
+                ],
+                "cognitive": "analyser",
+                "prompt": "Les craintes de Lénine se sont-elles réalisées ? Justifie par un exemple précis.",
+                "solution": "Oui : Staline utilise son pouvoir de façon brutale, par exemple lors de la Grande Terreur (1937-1938, environ 700 000 exécutions), de la collectivisation forcée ou avec le Goulag.",
+                "rubric": "0,5 pt : oui. 0,5 pt : un exemple précis de violence (Grande Terreur, Goulag, collectivisation, famine de 1932-1933, procès de Moscou)."
+              }
+            ]
+          },
+          {
+            "label": "C · Je rédige un développement construit (8 points)",
+            "questions": [
+              {
+                "id": "q10",
+                "type": "open",
+                "points": 8,
+                "lesson_part": 3,
+                "skills": [
+                  "hg-totalitarisme",
+                  "hg-terreur-economie",
+                  "hg-reperes-urss",
+                  "hg-redaction"
+                ],
+                "cognitive": "rediger",
+                "prompt": "Développement construit (une vingtaine de lignes) : « Montrez que l'URSS de Staline est un régime totalitaire. » Utilise des repères précis (dates, acteurs, exemples).",
+                "solution": "Introduction : après la révolution bolchevique d'Octobre 1917 et la mort de Lénine (1924), Staline prend le contrôle de l'URSS, qu'il dirige jusqu'à sa mort en 1953. Partie 1 – Un pouvoir concentré entre les mains d'un chef : parti unique, pas d'élections libres ; élimination des rivaux (Trotski exilé en 1929) ; culte de la personnalité (« petit père des peuples », portraits, statues, Stalingrad). Partie 2 – Une société encadrée : propagande et censure (Pravda, affiches, réalisme socialiste) ; jeunesse embrigadée (Pionniers, Komsomol) ; religions persécutées ; économie dirigée par l'État : collectivisation forcée (kolkhozes) et plans quinquennaux. Partie 3 – La terreur : police politique (NKVD), « dékoulakisation », procès de Moscou, Grande Terreur (1937-1938, environ 700 000 exécutions), Goulag (environ 18 millions de détenus entre 1930 et 1953). Conclusion : Staline contrôle tous les aspects de la vie des Soviétiques par la propagande et la terreur ; c'est un régime totalitaire, au bilan de plusieurs millions de morts.",
+                "rubric": "1 pt : introduction (contexte : 1917 et/ou 1924, Staline au pouvoir jusqu'en 1953, sujet posé). 2 pts : un pouvoir concentré (parti unique, culte de la personnalité, élimination des rivaux). 2 pts : une société et une économie encadrées (au moins trois éléments : propagande, censure, jeunesse, religions, collectivisation, plans quinquennaux). 2 pts : la terreur (au moins deux éléments précis : Goulag, Grande Terreur 1937-1938, NKVD, koulaks, procès de Moscou). 1 pt : conclusion et expression (phrases construites, connecteurs, vocabulaire historique). Pénalité : -0,5 pt par erreur de repère importante (ex. confondre Lénine et Staline)."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "texts": [
+          {
+            "id": "d1",
+            "label": "Document · Ce que promet la Constitution soviétique de 1936",
+            "source": "D'après la Constitution de l'URSS adoptée le 5 décembre 1936, dite « Constitution stalinienne », articles 125 et 126 (traduction adaptée).",
+            "paragraphs": [
+              "Article 125. Conformément aux intérêts des travailleurs et afin d'affermir le régime socialiste, la loi garantit aux citoyens de l'URSS : la liberté de parole ; la liberté de la presse ; la liberté de réunion et de meeting ; la liberté des cortèges et manifestations de rue.",
+              "Article 126. Les citoyens les plus actifs et les plus conscients de la classe ouvrière et des autres couches de travailleurs s'unissent dans le Parti communiste de l'URSS, qui est l'avant-garde des travailleurs et le noyau dirigeant de toutes les organisations de travailleurs, tant sociales que d'État."
+            ]
+          }
+        ],
+        "sections": [
+          {
+            "label": "A · Je connais mes repères (6 points)",
+            "questions": [
+              {
+                "id": "q1",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 5,
+                "skills": [
+                  "hg-reperes-urss"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "En quelle année meurt Staline ?",
+                "options": [
+                  "1924",
+                  "1937",
+                  "1945",
+                  "1953"
+                ],
+                "answer": 3,
+                "solution": "En 1953.",
+                "rubric": "1 pt : bonne réponse (1953)."
+              },
+              {
+                "id": "q2",
+                "type": "short",
+                "points": 1,
+                "lesson_part": 5,
+                "skills": [
+                  "hg-terreur-economie"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Comment appelle-t-on le système des camps de travail forcé en URSS ? (un seul mot)",
+                "answer": [
+                  "Goulag",
+                  "le Goulag",
+                  "Gulag",
+                  "le Gulag",
+                  "les goulags",
+                  "goulags"
+                ],
+                "solution": "Le Goulag.",
+                "rubric": "1 pt : Goulag."
+              },
+              {
+                "id": "q3",
+                "type": "short",
+                "points": 1,
+                "lesson_part": 1,
+                "skills": [
+                  "hg-revolution-1917"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Quel est le nom du parti révolutionnaire qui prend le pouvoir en octobre 1917 ?",
+                "answer": [
+                  "bolchevik",
+                  "bolcheviks",
+                  "les bolcheviks",
+                  "le parti bolchevik",
+                  "parti bolchevik",
+                  "bolchevique",
+                  "les bolcheviques",
+                  "le parti bolchevique",
+                  "parti communiste",
+                  "le parti communiste"
+                ],
+                "solution": "Le parti bolchevik (les bolcheviks), qui devient le Parti communiste.",
+                "rubric": "1 pt : bolcheviks (ou Parti communiste)."
+              },
+              {
+                "id": "q4",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 4,
+                "skills": [
+                  "hg-terreur-economie"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Que sont les plans quinquennaux lancés à partir de 1928 ?",
+                "options": [
+                  "Des plans de cinq ans fixant des objectifs de production",
+                  "Des élections organisées tous les cinq ans",
+                  "Des traités de paix",
+                  "Des plans de défense contre l'Allemagne"
+                ],
+                "answer": 0,
+                "solution": "Des plans de cinq ans qui fixent des objectifs de production très élevés, surtout pour l'industrie lourde.",
+                "rubric": "1 pt : bonne réponse."
+              },
+              {
+                "id": "q5",
+                "type": "open",
+                "points": 2,
+                "lesson_part": 4,
+                "skills": [
+                  "hg-terreur-economie"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Définis la « collectivisation des terres » et donne une de ses conséquences.",
+                "solution": "À partir de 1929, Staline oblige les paysans à donner leurs terres, leurs outils et leurs animaux à des fermes collectives (kolkhozes) ou d'État (sovkhozes). Conséquences : déportation ou exécution des paysans qui résistent (« koulaks ») ; effondrement de la production ; famine de 1932-1933 (plusieurs millions de morts, surtout en Ukraine).",
+                "rubric": "1 pt : définition (mise en commun forcée des terres, outils, animaux dans des kolkhozes/sovkhozes). 1 pt : une conséquence (répression des koulaks, famine de 1932-1933, baisse de la production)."
+              }
+            ]
+          },
+          {
+            "label": "B · J'analyse un document (6 points)",
+            "questions": [
+              {
+                "id": "q6",
+                "type": "open",
+                "points": 1,
+                "text_ref": "d1",
+                "lesson_part": 3,
+                "skills": [
+                  "hg-analyse-doc"
+                ],
+                "cognitive": "analyser",
+                "prompt": "Présente le document : nature, auteur, date.",
+                "solution": "Un texte officiel : deux articles de la Constitution de l'URSS, adoptée le 5 décembre 1936, sous le pouvoir de Staline (on parle de « Constitution stalinienne »).",
+                "rubric": "0,5 pt : nature (Constitution, texte officiel / de loi). 0,5 pt : date (1936) et contexte (URSS de Staline)."
+              },
+              {
+                "id": "q7",
+                "type": "open",
+                "points": 2,
+                "text_ref": "d1",
+                "lesson_part": 3,
+                "skills": [
+                  "hg-analyse-doc"
+                ],
+                "cognitive": "analyser",
+                "prompt": "Relève deux libertés promises par l'article 125. Selon l'article 126, quel est le rôle du Parti communiste ?",
+                "solution": "L'article 125 promet par exemple la liberté de parole, la liberté de la presse, la liberté de réunion ou de manifester. Selon l'article 126, le Parti communiste est « l'avant-garde des travailleurs » et le « noyau dirigeant » de toutes les organisations, y compris l'État : il dirige tout.",
+                "rubric": "1 pt : deux libertés relevées (0,5 pt chacune). 1 pt : le Parti dirige toutes les organisations et l'État (citation « noyau dirigeant »)."
+              },
+              {
+                "id": "q8",
+                "type": "open",
+                "points": 2,
+                "text_ref": "d1",
+                "lesson_part": 5,
+                "skills": [
+                  "hg-analyse-doc",
+                  "hg-totalitarisme",
+                  "hg-terreur-economie"
+                ],
+                "cognitive": "analyser",
+                "prompt": "Avec tes connaissances, montre que ces libertés ne sont pas respectées dans la réalité.",
+                "solution": "En réalité, la presse est censurée et sert la propagande (Pravda) ; aucune opposition n'est tolérée ; toute critique peut mener à l'arrestation par la police politique (NKVD). En 1937-1938, au moment même où cette Constitution s'applique, la Grande Terreur fait environ 700 000 morts et le Goulag se remplit.",
+                "rubric": "1 pt : au moins un exemple de liberté non respectée (censure, propagande, parti unique, pas d'opposition). 1 pt : la terreur comme preuve (NKVD, Grande Terreur 1937-1938, Goulag)."
+              },
+              {
+                "id": "q9",
+                "type": "open",
+                "points": 1,
+                "text_ref": "d1",
+                "lesson_part": 3,
+                "skills": [
+                  "hg-analyse-doc",
+                  "hg-totalitarisme"
+                ],
+                "cognitive": "analyser",
+                "prompt": "Pourquoi le pouvoir soviétique a-t-il intérêt à publier un texte aussi généreux ? Formule une hypothèse.",
+                "solution": "C'est un outil de propagande : il donne de l'URSS l'image d'un pays démocratique et moderne, à l'intérieur comme à l'étranger, et cache la réalité de la dictature et de la terreur.",
+                "rubric": "0,5 pt : idée de propagande / donner une bonne image. 0,5 pt : cacher la réalité (dictature, terreur), à l'intérieur ou à l'étranger."
+              }
+            ]
+          },
+          {
+            "label": "C · Je rédige un développement construit (8 points)",
+            "questions": [
+              {
+                "id": "q10",
+                "type": "open",
+                "points": 8,
+                "lesson_part": 4,
+                "skills": [
+                  "hg-terreur-economie",
+                  "hg-totalitarisme",
+                  "hg-reperes-urss",
+                  "hg-redaction"
+                ],
+                "cognitive": "rediger",
+                "prompt": "Développement construit (une vingtaine de lignes) : « Racontez et expliquez comment Staline transforme l'URSS par la force entre 1929 et 1953. » Parle de l'économie, de la société et de la terreur, avec des repères précis.",
+                "solution": "Introduction : après la mort de Lénine (1924), Staline élimine ses rivaux ; à partir de 1929, il est seul maître de l'URSS et veut en faire une grande puissance industrielle communiste. Partie 1 – Transformer l'économie par la force : fin de la NEP ; collectivisation forcée des terres (kolkhozes, sovkhozes) ; répression des « koulaks » ; famine de 1932-1933 (plusieurs millions de morts, surtout en Ukraine) ; plans quinquennaux à partir de 1928 (industrie lourde, Magnitogorsk, propagande autour de Stakhanov). Partie 2 – Encadrer la société : parti unique, culte de la personnalité, propagande et censure, jeunesse embrigadée, religions persécutées. Partie 3 – Terroriser : police politique (NKVD), procès de Moscou, Grande Terreur (1937-1938, environ 700 000 exécutions), Goulag (environ 18 millions de détenus, travail forcé utile à l'économie). Conclusion : l'URSS devient une puissance industrielle, mais au prix de millions de morts ; jusqu'en 1953, Staline impose un régime totalitaire.",
+                "rubric": "1 pt : introduction (Staline au pouvoir, dates, sujet posé). 2,5 pts : l'économie transformée par la force (collectivisation, koulaks, famine 1932-1933, plans quinquennaux ; au moins trois éléments). 1,5 pt : la société encadrée (au moins deux éléments : parti unique, culte, propagande, jeunesse, religions). 2 pts : la terreur (au moins deux éléments précis : NKVD, Grande Terreur 1937-1938, Goulag, procès de Moscou). 1 pt : conclusion et expression (bilan, phrases construites, vocabulaire historique). Pénalité : -0,5 pt par erreur de repère importante."
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

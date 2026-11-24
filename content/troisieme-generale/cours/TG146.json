@@ -1,0 +1,1362 @@
+{
+  "format": "syllig-course/1",
+  "code": "TG146",
+  "level": "troisieme-generale",
+  "subject": "Anglais (LV1)",
+  "chapter": "Grammaire et outils de la langue",
+  "title": "Prétérit simple et prétérit en be + -ing",
+  "skills": [
+    {
+      "id": "en-pret-forme",
+      "label": "Former le prétérit simple des verbes réguliers (orthographe en -ed)"
+    },
+    {
+      "id": "en-pret-irreg",
+      "label": "Connaître le prétérit des verbes irréguliers fréquents"
+    },
+    {
+      "id": "en-pret-neg-int",
+      "label": "Construire la négation et la question au prétérit (did, was / were)"
+    },
+    {
+      "id": "en-pret-emploi",
+      "label": "Employer le prétérit simple (action terminée, datée, récit)"
+    },
+    {
+      "id": "en-pretbing-forme",
+      "label": "Conjuguer au prétérit en be + -ing (was / were + -ing)"
+    },
+    {
+      "id": "en-pretbing-emploi",
+      "label": "Employer be + -ing au passé (action en cours, décor)"
+    },
+    {
+      "id": "en-choisir",
+      "label": "Choisir entre les deux prétérits (when, while)"
+    },
+    {
+      "id": "en-ecrire",
+      "label": "Raconter un événement passé dans un court texte"
+    }
+  ],
+  "lesson": {
+    "duration_min": 40,
+    "objectives": [
+      "conjuguer un verbe au prétérit simple, régulier ou irrégulier, à toutes les formes ;",
+      "conjuguer un verbe au prétérit en be + -ing (was / were + -ing) ;",
+      "savoir quand employer l'un ou l'autre pour raconter au passé ;",
+      "combiner les deux prétérits avec when et while ;",
+      "éviter les pièges : did + base verbale, was / were, verbes d'état."
+    ],
+    "essential": "Pour parler du passé, l'anglais a deux prétérits. Le **prétérit simple** (*I played, I went*) présente une action **terminée**, souvent datée : c'est le temps du récit. Le **prétérit en be + -ing** (*I was playing*) présente une action **en cours** à un moment du passé, souvent comme un décor ou une action interrompue. Pour choisir, demande-toi : « L'action est-elle vue comme un tout, terminée ? » ou « Était-elle en train de se dérouler à ce moment-là ? »",
+    "parts": [
+      {
+        "title": "Le prétérit simple : verbes réguliers et irréguliers",
+        "blocks": [
+          {
+            "type": "text",
+            "text": "Bonne nouvelle : au prétérit simple, le verbe a **la même forme à toutes les personnes** (pas de -s à la 3e personne !).\n*I played — she played — they played.*"
+          },
+          {
+            "type": "text",
+            "text": "Les **verbes réguliers** ajoutent **-ed** à la base verbale. Attention à l'orthographe :"
+          },
+          {
+            "type": "table",
+            "caption": "Orthographe du -ed",
+            "columns": [
+              "Verbe terminé par…",
+              "Règle",
+              "Exemples"
+            ],
+            "rows": [
+              [
+                "la plupart des verbes",
+                "+ ed",
+                "work → worked, play → played"
+              ],
+              [
+                "-e",
+                "+ d",
+                "live → lived, dance → danced"
+              ],
+              [
+                "consonne + y",
+                "y → ied",
+                "study → studied, try → tried"
+              ],
+              [
+                "voyelle + y",
+                "+ ed",
+                "enjoy → enjoyed, stay → stayed"
+              ],
+              [
+                "une syllabe : consonne + voyelle + consonne",
+                "on double la consonne finale",
+                "stop → stopped, plan → planned"
+              ]
+            ]
+          },
+          {
+            "type": "callout",
+            "kind": "methode",
+            "title": "Bien prononcer -ed",
+            "text": "Trois prononciations : [t] dans *worked, watched, stopped* ; [d] dans *played, lived, opened* ; [id] (une syllabe en plus) seulement après les sons t et d : *wanted, needed, visited*.\n*Worked* se prononce en une seule syllabe : ne dis pas « work-ed » !"
+          },
+          {
+            "type": "text",
+            "text": "Les **verbes irréguliers** ont une forme de prétérit à apprendre par cœur. Voici les plus fréquents :"
+          },
+          {
+            "type": "table",
+            "caption": "Verbes irréguliers fréquents",
+            "columns": [
+              "Base verbale",
+              "Prétérit",
+              "Sens"
+            ],
+            "rows": [
+              [
+                "be",
+                "was / were",
+                "être"
+              ],
+              [
+                "have",
+                "had",
+                "avoir"
+              ],
+              [
+                "do",
+                "did",
+                "faire"
+              ],
+              [
+                "go",
+                "went",
+                "aller"
+              ],
+              [
+                "come",
+                "came",
+                "venir"
+              ],
+              [
+                "see",
+                "saw",
+                "voir"
+              ],
+              [
+                "get",
+                "got",
+                "obtenir, devenir"
+              ],
+              [
+                "make",
+                "made",
+                "fabriquer, faire"
+              ],
+              [
+                "take",
+                "took",
+                "prendre"
+              ],
+              [
+                "give",
+                "gave",
+                "donner"
+              ],
+              [
+                "buy",
+                "bought",
+                "acheter"
+              ],
+              [
+                "think",
+                "thought",
+                "penser"
+              ],
+              [
+                "eat",
+                "ate",
+                "manger"
+              ],
+              [
+                "drink",
+                "drank",
+                "boire"
+              ],
+              [
+                "write",
+                "wrote",
+                "écrire"
+              ],
+              [
+                "find",
+                "found",
+                "trouver"
+              ],
+              [
+                "leave",
+                "left",
+                "partir, quitter"
+              ],
+              [
+                "lose",
+                "lost",
+                "perdre"
+              ],
+              [
+                "meet",
+                "met",
+                "rencontrer"
+              ],
+              [
+                "say / tell",
+                "said / told",
+                "dire / raconter"
+              ]
+            ]
+          },
+          {
+            "type": "callout",
+            "kind": "attention",
+            "title": "Be : deux formes",
+            "text": "*I / he / she / it* → **was** ; *you / we / they* → **were**.\n*I was tired. — They were at home.*"
+          }
+        ],
+        "checkpoint": {
+          "variants": [
+            {
+              "prompt": "Quel est le prétérit de « study » ?",
+              "options": [
+                "studyed",
+                "studied",
+                "studdied",
+                "studed"
+              ],
+              "answer": 1,
+              "hint": "Regarde la lettre placée avant le y.",
+              "explanation": "Consonne (d) + y : le y devient ied → studied."
+            },
+            {
+              "prompt": "Quel est le prétérit de « go » ?",
+              "options": [
+                "goed",
+                "gone",
+                "went",
+                "was"
+              ],
+              "answer": 2,
+              "hint": "« go » est un verbe irrégulier : cherche-le dans le tableau.",
+              "explanation": "go → went (et « gone » est le participe passé, pas le prétérit)."
+            },
+            {
+              "prompt": "Complète : « Last year, my cousins ___ in Canada. » (be)",
+              "options": [
+                "was",
+                "were",
+                "are",
+                "been"
+              ],
+              "answer": 1,
+              "hint": "« my cousins » = they. Relis l'encadré sur be.",
+              "explanation": "Avec they (my cousins), le prétérit de be est were."
+            }
+          ]
+        }
+      },
+      {
+        "title": "Le prétérit simple : négation et question",
+        "blocks": [
+          {
+            "type": "text",
+            "text": "À la forme négative et interrogative, on utilise l'auxiliaire **did** (prétérit de *do*) à toutes les personnes. Le verbe reprend alors sa **base verbale**."
+          },
+          {
+            "type": "table",
+            "caption": "Le prétérit simple à toutes les formes",
+            "columns": [
+              "Forme",
+              "Verbe régulier (watch)",
+              "Verbe irrégulier (go)"
+            ],
+            "rows": [
+              [
+                "Affirmative",
+                "She watched a film.",
+                "She went out."
+              ],
+              [
+                "Négative",
+                "She didn't watch (did not watch) a film.",
+                "She didn't go (did not go) out."
+              ],
+              [
+                "Interrogative",
+                "Did she watch a film?",
+                "Did she go out?"
+              ],
+              [
+                "Réponse courte",
+                "Yes, she did. / No, she didn't.",
+                "Yes, she did. / No, she didn't."
+              ],
+              [
+                "Question avec mot interrogatif",
+                "What did she watch?",
+                "Where did she go?"
+              ]
+            ]
+          },
+          {
+            "type": "callout",
+            "kind": "attention",
+            "title": "Le passé, une seule fois !",
+            "text": "C'est **did** qui porte la marque du passé : le verbe reste à la base verbale.\n*He didn't go* ✔ — *He didn't went* ✘\n*Did you see it?* ✔ — *Did you saw it?* ✘"
+          },
+          {
+            "type": "callout",
+            "kind": "attention",
+            "title": "Be se débrouille tout seul",
+            "text": "Avec **be**, pas de *did* : on ajoute *not* ou on inverse.\n*I wasn't (was not) tired. — They weren't (were not) at home.*\n*Was she happy? — Were you at school?* — *Did you were…* ✘"
+          }
+        ],
+        "checkpoint": {
+          "variants": [
+            {
+              "prompt": "Quelle phrase est correcte ?",
+              "options": [
+                "We didn't went to school yesterday.",
+                "We didn't go to school yesterday.",
+                "We don't went to school yesterday.",
+                "We not went to school yesterday."
+              ],
+              "answer": 1,
+              "hint": "Relis l'encadré « Le passé, une seule fois ! ».",
+              "explanation": "didn't + base verbale : We didn't go to school yesterday."
+            },
+            {
+              "prompt": "Quelle question est correcte ?",
+              "options": [
+                "Did he called you?",
+                "Does he called you?",
+                "Did he call you?",
+                "He did call you?"
+              ],
+              "answer": 2,
+              "hint": "Quel auxiliaire au passé ? Quelle forme du verbe après ?",
+              "explanation": "Did + sujet + base verbale : Did he call you?"
+            },
+            {
+              "prompt": "Complète : « Where ___ you last night? »",
+              "options": [
+                "was",
+                "were",
+                "did",
+                "did be"
+              ],
+              "answer": 1,
+              "hint": "Il n'y a pas d'autre verbe dans la phrase : c'est be qui est conjugué.",
+              "explanation": "Le verbe est be, sans did. Avec you : Where were you last night?"
+            }
+          ]
+        }
+      },
+      {
+        "title": "Le prétérit simple : quand l'employer ?",
+        "blocks": [
+          {
+            "type": "text",
+            "text": "Le prétérit simple présente une action **terminée**, dans un passé **coupé du présent**. On l'emploie très souvent avec un repère de temps précis."
+          },
+          {
+            "type": "table",
+            "columns": [
+              "Emploi",
+              "Exemple"
+            ],
+            "rows": [
+              [
+                "Action terminée, datée",
+                "*I met Sarah in 2023.*"
+              ],
+              [
+                "Suite d'actions dans un récit",
+                "*She opened the door, looked outside and screamed.*"
+              ],
+              [
+                "Habitude passée",
+                "*When I was little, I went to the beach every summer.*"
+              ],
+              [
+                "État ou situation passés",
+                "*My grandmother had a big garden.*"
+              ]
+            ]
+          },
+          {
+            "type": "callout",
+            "kind": "methode",
+            "title": "Les mots repères du prétérit",
+            "text": "*yesterday, last night, last week, last year, two days ago, in 2019, when I was ten, the day before, then, after that…*"
+          },
+          {
+            "type": "callout",
+            "kind": "attention",
+            "title": "Ago se place après la durée",
+            "text": "*il y a trois jours* → *three days **ago*** ✔ — *ago three days* ✘"
+          },
+          {
+            "type": "callout",
+            "kind": "attention",
+            "title": "Le passé composé français",
+            "text": "Un passé composé se traduit très souvent par un prétérit simple, surtout avec un repère daté :\n« Hier, j'ai vu un film. » → *Yesterday, I saw a film.* ✔ — *Yesterday, I have seen a film* ✘\nTu verras dans un autre cours quand employer le present perfect."
+          }
+        ],
+        "checkpoint": {
+          "variants": [
+            {
+              "prompt": "Quel mot repère s'emploie avec le prétérit simple ?",
+              "options": [
+                "now",
+                "every day",
+                "last Monday",
+                "at the moment"
+              ],
+              "answer": 2,
+              "hint": "Lequel situe l'action dans un passé terminé ?",
+              "explanation": "« last Monday » (lundi dernier) date une action terminée : prétérit simple."
+            },
+            {
+              "prompt": "Comment traduire « Il y a trois jours, nous sommes allés au musée » ?",
+              "options": [
+                "Three days ago, we went to the museum.",
+                "Ago three days, we went to the museum.",
+                "Three days ago, we have gone to the museum.",
+                "There are three days, we went to the museum."
+              ],
+              "answer": 0,
+              "hint": "Relis les encadrés sur ago et sur le passé composé.",
+              "explanation": "ago se place après la durée, et l'action datée se met au prétérit simple : Three days ago, we went to the museum."
+            },
+            {
+              "prompt": "« She opened the door, looked outside and screamed. » Pourquoi ces verbes sont-ils au prétérit simple ?",
+              "options": [
+                "Ce sont des actions terminées qui se suivent",
+                "Ce sont des actions en cours",
+                "C'est une vérité générale",
+                "Ce sont des habitudes présentes"
+              ],
+              "answer": 0,
+              "hint": "Les actions se passent-elles en même temps ou l'une après l'autre ?",
+              "explanation": "Ce sont trois actions terminées, l'une après l'autre : c'est le prétérit simple du récit."
+            }
+          ]
+        }
+      },
+      {
+        "title": "Le prétérit en be + -ing : forme et emplois",
+        "blocks": [
+          {
+            "type": "text",
+            "text": "On le forme avec **was / were** (be au prétérit) suivi du **verbe + -ing**. L'orthographe du -ing est la même qu'au présent : *make → making, swim → swimming, lie → lying*."
+          },
+          {
+            "type": "table",
+            "caption": "Le verbe to read au prétérit en be + -ing",
+            "columns": [
+              "Forme",
+              "I / he / she / it",
+              "you / we / they"
+            ],
+            "rows": [
+              [
+                "Affirmative",
+                "I was reading",
+                "they were reading"
+              ],
+              [
+                "Négative",
+                "I wasn't reading (was not)",
+                "they weren't reading (were not)"
+              ],
+              [
+                "Interrogative",
+                "Was she reading?",
+                "Were you reading?"
+              ],
+              [
+                "Réponse courte",
+                "Yes, she was. / No, she wasn't.",
+                "Yes, we were. / No, we weren't."
+              ]
+            ]
+          },
+          {
+            "type": "table",
+            "columns": [
+              "Emploi",
+              "Exemple"
+            ],
+            "rows": [
+              [
+                "Action en cours à un moment précis du passé",
+                "*At 8 o'clock last night, I was doing my homework.*"
+              ],
+              [
+                "Décor, arrière-plan d'un récit",
+                "*It was raining and the wind was blowing.*"
+              ]
+            ]
+          },
+          {
+            "type": "callout",
+            "kind": "methode",
+            "title": "Comment le traduire ?",
+            "text": "Il correspond souvent à l'**imparfait** français ou à « était en train de… » : *I was reading* = je lisais, j'étais en train de lire.\nMais attention : une **habitude** passée (« je lisais tous les soirs ») se dit au prétérit simple : *I read every evening.*"
+          },
+          {
+            "type": "callout",
+            "kind": "attention",
+            "title": "Les verbes d'état",
+            "text": "Comme au présent, les verbes d'état (*like, love, want, know, understand, believe…*) restent au prétérit simple :\n*I knew the answer* ✔ — *I was knowing the answer* ✘"
+          }
+        ],
+        "checkpoint": {
+          "variants": [
+            {
+              "prompt": "Complète : « At 10 pm yesterday, we ___ a film. » (watch)",
+              "options": [
+                "was watching",
+                "were watching",
+                "are watching",
+                "watch"
+              ],
+              "answer": 1,
+              "hint": "Avec « we », quelle forme de be au prétérit ?",
+              "explanation": "we + were + watching : action en cours à un moment précis du passé."
+            },
+            {
+              "prompt": "Quelle est la forme négative correcte de « They were sleeping » ?",
+              "options": [
+                "They didn't sleeping.",
+                "They weren't sleeping.",
+                "They wasn't sleeping.",
+                "They didn't were sleeping."
+              ],
+              "answer": 1,
+              "hint": "C'est be qui porte la négation.",
+              "explanation": "On ajoute not après were : They weren't (were not) sleeping."
+            },
+            {
+              "prompt": "Complète : « Yesterday, I ___ the answer. » (know)",
+              "options": [
+                "was knowing",
+                "knew",
+                "were knowing",
+                "knowed"
+              ],
+              "answer": 1,
+              "hint": "« know » fait partie d'une liste particulière de verbes.",
+              "explanation": "« know » est un verbe d'état et un verbe irrégulier : I knew."
+            }
+          ]
+        }
+      },
+      {
+        "title": "Combiner les deux prétérits : when et while",
+        "blocks": [
+          {
+            "type": "text",
+            "text": "Dans un récit, les deux prétérits travaillent ensemble : le prétérit en be + -ing plante le décor, le prétérit simple fait avancer l'histoire."
+          },
+          {
+            "type": "table",
+            "columns": [
+              "Situation",
+              "Exemple",
+              "Sens"
+            ],
+            "rows": [
+              [
+                "Une action longue est interrompue par une action brève",
+                "*I was having a shower when the phone rang.*",
+                "J'étais sous la douche ; le téléphone a sonné pendant ce temps."
+              ],
+              [
+                "Deux actions en cours en même temps",
+                "*While Dad was cooking, we were setting the table.*",
+                "Les deux actions se déroulaient en parallèle."
+              ],
+              [
+                "Deux actions brèves qui se suivent",
+                "*When the phone rang, I answered it.*",
+                "Le téléphone a sonné, puis j'ai répondu."
+              ]
+            ]
+          },
+          {
+            "type": "callout",
+            "kind": "methode",
+            "title": "Ma méthode",
+            "text": "1. Repère l'action **longue**, le décor → **was / were + -ing**, souvent après *while*.\n2. Repère l'action **brève**, qui fait avancer l'histoire → **prétérit simple**, souvent après *when*.\n3. Vérifie les verbes d'état et les verbes irréguliers."
+          },
+          {
+            "type": "callout",
+            "kind": "essentiel",
+            "title": "L'essentiel",
+            "text": "Prétérit simple = action terminée, datée, suite d'actions. *She played.* / *She didn't play.* / *Did she play?*\nPrétérit en be + -ing = action en cours à un moment du passé, décor. *She was playing.* / *She wasn't playing.* / *Was she playing?*"
+          }
+        ],
+        "checkpoint": {
+          "variants": [
+            {
+              "prompt": "Complète : « I ___ TV when the lights ___ off. »",
+              "options": [
+                "watched / were going",
+                "was watching / went",
+                "was watching / was going",
+                "watch / went"
+              ],
+              "answer": 1,
+              "hint": "Quelle action est longue ? Laquelle l'interrompt ?",
+              "explanation": "Action longue → was watching ; action brève qui l'interrompt → went."
+            },
+            {
+              "prompt": "Complète : « While my sister ___ the piano, I ___ my homework. »",
+              "options": [
+                "played / did",
+                "was playing / was doing",
+                "is playing / was doing",
+                "was playing / doing"
+              ],
+              "answer": 1,
+              "hint": "« While » : les deux actions se déroulaient-elles en même temps ?",
+              "explanation": "Deux actions en cours en même temps : was playing / was doing."
+            },
+            {
+              "prompt": "« When the teacher came in, the pupils stood up. » Que comprend-on ?",
+              "options": [
+                "Les élèves étaient déjà debout quand le professeur est entré.",
+                "Les élèves se sont levés après l'entrée du professeur.",
+                "Les élèves se levaient tous les jours.",
+                "Le professeur entrait pendant que les élèves se levaient."
+              ],
+              "answer": 1,
+              "hint": "Les deux verbes sont au prétérit simple : actions simultanées ou successives ?",
+              "explanation": "Deux prétérits simples = deux actions brèves qui se suivent : le professeur est entré, puis les élèves se sont levés."
+            }
+          ]
+        }
+      }
+    ],
+    "memo": [
+      {
+        "label": "Prétérit simple",
+        "text": "Même forme à toutes les personnes. Réguliers : + ed (lived, studied, stopped). Irréguliers à apprendre (went, saw, bought…)."
+      },
+      {
+        "label": "Négation / question",
+        "text": "didn't + base verbale ; Did + sujet + base verbale ? Avec be : wasn't / weren't, Was / Were + sujet ?"
+      },
+      {
+        "label": "Emplois du prétérit simple",
+        "text": "Action terminée, datée, suite d'actions d'un récit. Repères : yesterday, last…, … ago, in 2019, when I was…"
+      },
+      {
+        "label": "Prétérit en be + -ing",
+        "text": "was / were + verbe-ing. Action en cours à un moment du passé, décor d'un récit."
+      },
+      {
+        "label": "When / while",
+        "text": "Action longue (was / were + -ing) interrompue par une action brève (prétérit simple). While + deux actions en cours."
+      },
+      {
+        "label": "Pièges",
+        "text": "Pas de verbe au passé après did. Ago après la durée. Verbes d'état (know, like, want) au prétérit simple."
+      }
+    ]
+  },
+  "exercises": {
+    "duration_min": 25,
+    "instructions": "Fais les exercices dans l'ordre : les étoiles indiquent la difficulté. Quand il faut compléter un blanc, écris seulement la forme verbale qui manque (formes contractées ou non, toutes acceptées). Les corrigés s'affichent après validation.",
+    "pass_threshold": 8,
+    "texts": [],
+    "items": [
+      {
+        "id": "ex1",
+        "type": "short",
+        "stars": 1,
+        "lesson_part": 1,
+        "skills": [
+          "en-pret-forme"
+        ],
+        "cognitive": "appliquer",
+        "prompt": "Complète au prétérit simple : « Last summer, we ___ (visit) Edinburgh. »",
+        "answer": [
+          "visited"
+        ],
+        "solution": "visited : verbe régulier, on ajoute -ed. Repère : last summer."
+      },
+      {
+        "id": "ex2",
+        "type": "short",
+        "stars": 1,
+        "lesson_part": 1,
+        "skills": [
+          "en-pret-irreg"
+        ],
+        "cognitive": "appliquer",
+        "prompt": "Complète au prétérit simple : « Yesterday, I ___ (buy) a present for my brother. »",
+        "answer": [
+          "bought"
+        ],
+        "solution": "bought : buy est irrégulier (buy → bought)."
+      },
+      {
+        "id": "ex3",
+        "type": "qcm",
+        "stars": 1,
+        "lesson_part": 3,
+        "skills": [
+          "en-pret-emploi"
+        ],
+        "cognitive": "connaitre",
+        "prompt": "Quel repère de temps annonce un prétérit simple ?",
+        "options": [
+          "right now",
+          "two weeks ago",
+          "every morning",
+          "at the moment"
+        ],
+        "answer": 1,
+        "solution": "« two weeks ago » (il y a deux semaines) situe une action terminée dans le passé. Les autres repères annoncent un présent."
+      },
+      {
+        "id": "ex4",
+        "type": "short",
+        "stars": 1,
+        "lesson_part": 1,
+        "skills": [
+          "en-pret-forme"
+        ],
+        "cognitive": "appliquer",
+        "prompt": "Complète au prétérit simple : « The bus ___ (stop) in front of the museum. »",
+        "answer": [
+          "stopped"
+        ],
+        "solution": "stopped : verbe d'une syllabe terminé par consonne + voyelle + consonne → on double le p."
+      },
+      {
+        "id": "ex5",
+        "type": "short",
+        "stars": 2,
+        "lesson_part": 2,
+        "skills": [
+          "en-pret-neg-int"
+        ],
+        "cognitive": "appliquer",
+        "prompt": "Complète à la forme négative du prétérit simple : « We ___ (not / see) the end of the match. »",
+        "answer": [
+          "didn't see",
+          "didn’t see",
+          "did not see",
+          "didnt see"
+        ],
+        "solution": "didn't see (did not see) : didn't + base verbale, et non « didn't saw »."
+      },
+      {
+        "id": "ex6",
+        "type": "short",
+        "stars": 2,
+        "lesson_part": 2,
+        "skills": [
+          "en-pret-neg-int"
+        ],
+        "cognitive": "appliquer",
+        "prompt": "Écris la question qui correspond à cette phrase : « Your parents went to Spain. »",
+        "answer": [
+          "Did your parents go to Spain?",
+          "Did your parents go to Spain"
+        ],
+        "solution": "Did your parents go to Spain? — Did porte le passé ; went redevient go (base verbale)."
+      },
+      {
+        "id": "ex7",
+        "type": "short",
+        "stars": 2,
+        "lesson_part": 4,
+        "skills": [
+          "en-pretbing-forme"
+        ],
+        "cognitive": "appliquer",
+        "prompt": "Complète au prétérit en be + -ing : « At 7 o'clock this morning, my parents ___ (sleep). »",
+        "answer": [
+          "were sleeping"
+        ],
+        "solution": "were sleeping : sujet pluriel (my parents = they) → were + sleeping. Action en cours à un moment précis du passé."
+      },
+      {
+        "id": "ex8",
+        "type": "qcm",
+        "stars": 2,
+        "lesson_part": 5,
+        "skills": [
+          "en-choisir"
+        ],
+        "cognitive": "analyser",
+        "prompt": "Choisis la bonne forme : « I ___ a shower when the phone ___ . »",
+        "options": [
+          "had / was ringing",
+          "was having / rang",
+          "was having / was ringing",
+          "have / rang"
+        ],
+        "answer": 1,
+        "solution": "was having / rang : l'action longue (la douche) est au prétérit en be + -ing ; l'action brève qui l'interrompt (la sonnerie) est au prétérit simple."
+      },
+      {
+        "id": "ex9",
+        "type": "open",
+        "stars": 3,
+        "lesson_part": 5,
+        "skills": [
+          "en-choisir",
+          "en-pretbing-emploi"
+        ],
+        "cognitive": "analyser",
+        "prompt": "Explique en français la différence de sens entre ces deux phrases :\na) « When Mum arrived, we had dinner. »\nb) « When Mum arrived, we were having dinner. »",
+        "solution": "a) Deux prétérits simples : deux actions qui se suivent. Maman est arrivée, puis nous avons dîné (nous l'avons peut-être attendue).\nb) Prétérit en be + -ing : le dîner était déjà en cours quand maman est arrivée ; son arrivée a interrompu (ou surpris) le repas.",
+        "rubric": "a) actions successives (on dîne après l'arrivée). b) action déjà en cours au moment de l'arrivée. Bonus : nommer les deux temps (prétérit simple / prétérit en be + -ing)."
+      },
+      {
+        "id": "ex10",
+        "type": "open",
+        "stars": 3,
+        "lesson_part": 5,
+        "skills": [
+          "en-ecrire",
+          "en-choisir",
+          "en-pret-irreg",
+          "en-pretbing-forme"
+        ],
+        "cognitive": "rediger",
+        "prompt": "Write a short story (50 to 70 words): « A day when something unexpected happened ». Use at least four verbs in the prétérit simple (including two irregular verbs) and at least two verbs in the prétérit en be + -ing, with when or while.",
+        "solution": "Example: Last Saturday, I was walking in the park with my dog. The sun was shining and birds were singing. Suddenly, my dog saw a squirrel and ran after it! I followed him, but I fell into a puddle. While I was trying to stand up, a girl came and helped me. She laughed, I laughed too, and now she is my best friend!",
+        "rubric": "Au moins 4 verbes au prétérit simple corrects, dont 2 irréguliers. Au moins 2 verbes en was / were + -ing corrects et bien employés (décor, action interrompue), avec when ou while. Récit cohérent, longueur respectée."
+      }
+    ]
+  },
+  "evaluation": {
+    "duration_min": 30,
+    "conditions": "Sans la leçon ni les corrigés, en 30 minutes. Barème : A = 6 points · B = 8 points · C = 6 points. Pour compléter un blanc, écris seulement la forme verbale (formes contractées ou non acceptées).",
+    "total_points": 20,
+    "variants": [
+      {
+        "texts": [],
+        "sections": [
+          {
+            "label": "A · Je conjugue (6 points)",
+            "questions": [
+              {
+                "id": "q1",
+                "type": "short",
+                "points": 1,
+                "lesson_part": 1,
+                "skills": [
+                  "en-pret-forme"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Prétérit simple : « My friends ___ (enjoy) the concert last night. »",
+                "answer": [
+                  "enjoyed"
+                ],
+                "solution": "enjoyed : voyelle + y → on ajoute simplement -ed.",
+                "rubric": "1 point pour « enjoyed »."
+              },
+              {
+                "id": "q2",
+                "type": "short",
+                "points": 1,
+                "lesson_part": 1,
+                "skills": [
+                  "en-pret-irreg"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Prétérit simple : « She ___ (write) a long letter to her grandmother. »",
+                "answer": [
+                  "wrote"
+                ],
+                "solution": "wrote : write est irrégulier (write → wrote).",
+                "rubric": "1 point pour « wrote »."
+              },
+              {
+                "id": "q3",
+                "type": "short",
+                "points": 1,
+                "lesson_part": 1,
+                "skills": [
+                  "en-pret-irreg"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Prétérit simple : « I ___ (lose) my keys yesterday. »",
+                "answer": [
+                  "lost"
+                ],
+                "solution": "lost : lose est irrégulier (lose → lost).",
+                "rubric": "1 point pour « lost »."
+              },
+              {
+                "id": "q4",
+                "type": "short",
+                "points": 1,
+                "lesson_part": 2,
+                "skills": [
+                  "en-pret-neg-int"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Prétérit simple, forme négative : « He ___ (not / come) to the party. »",
+                "answer": [
+                  "didn't come",
+                  "didn’t come",
+                  "did not come",
+                  "didnt come"
+                ],
+                "solution": "didn't come (did not come) : didn't + base verbale.",
+                "rubric": "1 point pour « didn't come » ou « did not come »."
+              },
+              {
+                "id": "q5",
+                "type": "short",
+                "points": 1,
+                "lesson_part": 4,
+                "skills": [
+                  "en-pretbing-forme"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Prétérit en be + -ing : « At midnight, the children ___ (dance) in the garden. »",
+                "answer": [
+                  "were dancing"
+                ],
+                "solution": "were dancing : sujet pluriel → were ; dance perd son e muet → dancing.",
+                "rubric": "1 point pour « were dancing »."
+              },
+              {
+                "id": "q6",
+                "type": "short",
+                "points": 1,
+                "lesson_part": 4,
+                "skills": [
+                  "en-pretbing-forme"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Prétérit en be + -ing, forme négative : « I ___ (not / listen) when the teacher explained the rule. »",
+                "answer": [
+                  "wasn't listening",
+                  "wasn’t listening",
+                  "was not listening",
+                  "wasnt listening"
+                ],
+                "solution": "wasn't listening (was not listening) : I → was ; not après was.",
+                "rubric": "1 point pour « wasn't listening » ou « was not listening »."
+              }
+            ]
+          },
+          {
+            "label": "B · Je choisis et j'explique (8 points)",
+            "questions": [
+              {
+                "id": "q7",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 3,
+                "skills": [
+                  "en-pret-emploi",
+                  "en-choisir"
+                ],
+                "cognitive": "analyser",
+                "prompt": "« We ___ to Rome three years ago. »",
+                "options": [
+                  "go",
+                  "went",
+                  "have gone",
+                  "are going"
+                ],
+                "answer": 1,
+                "solution": "went : « three years ago » date une action terminée → prétérit simple (go → went).",
+                "rubric": "1 point pour la bonne réponse, 0 sinon."
+              },
+              {
+                "id": "q8",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 2,
+                "skills": [
+                  "en-pret-neg-int"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "« Where ___ you last Saturday? »",
+                "options": [
+                  "was",
+                  "were",
+                  "did",
+                  "are"
+                ],
+                "answer": 1,
+                "solution": "were : le seul verbe est be ; avec you au prétérit → were. Pas de did avec be.",
+                "rubric": "1 point pour la bonne réponse, 0 sinon."
+              },
+              {
+                "id": "q9",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 5,
+                "skills": [
+                  "en-pretbing-emploi",
+                  "en-choisir"
+                ],
+                "cognitive": "analyser",
+                "prompt": "« When you called me, I ___ my homework, so I didn't answer. »",
+                "options": [
+                  "did",
+                  "was doing",
+                  "were doing",
+                  "am doing"
+                ],
+                "answer": 1,
+                "solution": "was doing : l'action était en cours au moment de l'appel (et elle explique pourquoi je n'ai pas répondu) → prétérit en be + -ing, avec I → was.",
+                "rubric": "1 point pour la bonne réponse, 0 sinon."
+              },
+              {
+                "id": "q10",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 5,
+                "skills": [
+                  "en-choisir"
+                ],
+                "cognitive": "analyser",
+                "prompt": "« While Tom ___ to school, he ___ an old friend. »",
+                "options": [
+                  "was walking / met",
+                  "walked / was meeting",
+                  "was walking / was meeting",
+                  "walks / met"
+                ],
+                "answer": 0,
+                "solution": "was walking / met : action longue en cours (while) → be + -ing ; action brève → prétérit simple (meet → met).",
+                "rubric": "1 point pour la bonne réponse, 0 sinon."
+              },
+              {
+                "id": "q11",
+                "type": "short",
+                "points": 2,
+                "lesson_part": 2,
+                "skills": [
+                  "en-pret-neg-int"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Écris la question qui correspond à cette phrase : « They arrived late. »",
+                "answer": [
+                  "Did they arrive late?",
+                  "Did they arrive late"
+                ],
+                "solution": "Did they arrive late? — Did porte le passé ; arrive reste à la base verbale.",
+                "rubric": "2 points pour la question correcte ; 1 point si did est présent mais le verbe est resté au prétérit (« Did they arrived »)."
+              },
+              {
+                "id": "q12",
+                "type": "open",
+                "points": 2,
+                "lesson_part": 5,
+                "skills": [
+                  "en-pretbing-emploi",
+                  "en-choisir"
+                ],
+                "cognitive": "analyser",
+                "prompt": "Explique en français pourquoi on écrit « I was reading when the lights went out. » avec deux temps différents.",
+                "solution": "« was reading » (prétérit en be + -ing) présente une action longue, en cours à ce moment-là : je lisais. « went out » (prétérit simple) présente une action brève qui vient l'interrompre : la lumière s'est éteinte pendant ma lecture.",
+                "rubric": "1 pt : was reading = action en cours, longue, le décor. 1 pt : went out = action brève, terminée, qui interrompt la première."
+              }
+            ]
+          },
+          {
+            "label": "C · J'écris (6 points)",
+            "questions": [
+              {
+                "id": "q13",
+                "type": "open",
+                "points": 6,
+                "lesson_part": 5,
+                "skills": [
+                  "en-ecrire",
+                  "en-choisir",
+                  "en-pret-irreg",
+                  "en-pretbing-forme"
+                ],
+                "cognitive": "rediger",
+                "prompt": "Write a short story (60 to 80 words): « A memorable trip or day out ». Use at least four verbs in the prétérit simple (including two irregular verbs) and at least two verbs in the prétérit en be + -ing, with when or while.",
+                "solution": "Example: Last spring, my class went to London. On the first day, we visited the British Museum and saw a real mummy. In the afternoon, while we were walking near Big Ben, it started to rain. Everybody ran to a café. We were drinking hot chocolate when our teacher took a funny photo of us. I still keep it in my room. It was the best trip of my life!",
+                "rubric": "2 pts : au moins 4 verbes au prétérit simple corrects et bien employés (actions terminées, suite d'actions), dont au moins 2 verbes irréguliers. 2 pts : au moins 2 verbes au prétérit en be + -ing corrects et bien employés (décor, action en cours interrompue), dont au moins une phrase avec when ou while. 1 pt : formes exactes (verbes irréguliers, was / were, did + base verbale, orthographe en -ed et -ing, verbes d'état au prétérit simple). 1 pt : récit cohérent, longueur respectée (60 à 80 mots), vocabulaire varié."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "texts": [],
+        "sections": [
+          {
+            "label": "A · Je conjugue (6 points)",
+            "questions": [
+              {
+                "id": "q1",
+                "type": "short",
+                "points": 1,
+                "lesson_part": 1,
+                "skills": [
+                  "en-pret-forme"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Prétérit simple : « We ___ (try) a new recipe last weekend. »",
+                "answer": [
+                  "tried"
+                ],
+                "solution": "tried : consonne + y → ied.",
+                "rubric": "1 point pour « tried »."
+              },
+              {
+                "id": "q2",
+                "type": "short",
+                "points": 1,
+                "lesson_part": 1,
+                "skills": [
+                  "en-pret-irreg"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Prétérit simple : « My uncle ___ (make) a chocolate cake for my birthday. »",
+                "answer": [
+                  "made"
+                ],
+                "solution": "made : make est irrégulier (make → made).",
+                "rubric": "1 point pour « made »."
+              },
+              {
+                "id": "q3",
+                "type": "short",
+                "points": 1,
+                "lesson_part": 1,
+                "skills": [
+                  "en-pret-irreg"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Prétérit simple : « They ___ (leave) the party at eleven. »",
+                "answer": [
+                  "left"
+                ],
+                "solution": "left : leave est irrégulier (leave → left).",
+                "rubric": "1 point pour « left »."
+              },
+              {
+                "id": "q4",
+                "type": "short",
+                "points": 1,
+                "lesson_part": 2,
+                "skills": [
+                  "en-pret-neg-int"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Prétérit simple, forme négative : « She ___ (not / take) the bus this morning. »",
+                "answer": [
+                  "didn't take",
+                  "didn’t take",
+                  "did not take",
+                  "didnt take"
+                ],
+                "solution": "didn't take (did not take) : didn't + base verbale, et non « didn't took ».",
+                "rubric": "1 point pour « didn't take » ou « did not take »."
+              },
+              {
+                "id": "q5",
+                "type": "short",
+                "points": 1,
+                "lesson_part": 4,
+                "skills": [
+                  "en-pretbing-forme"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Prétérit en be + -ing : « At 6 pm yesterday, my brother ___ (play) video games. »",
+                "answer": [
+                  "was playing"
+                ],
+                "solution": "was playing : my brother = he → was + playing.",
+                "rubric": "1 point pour « was playing »."
+              },
+              {
+                "id": "q6",
+                "type": "short",
+                "points": 1,
+                "lesson_part": 4,
+                "skills": [
+                  "en-pretbing-forme"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Prétérit en be + -ing, forme négative : « They ___ (not / work) at 3 o'clock yesterday: they were having a break. »",
+                "answer": [
+                  "weren't working",
+                  "weren’t working",
+                  "were not working",
+                  "werent working"
+                ],
+                "solution": "weren't working (were not working) : they → were ; not après were.",
+                "rubric": "1 point pour « weren't working » ou « were not working »."
+              }
+            ]
+          },
+          {
+            "label": "B · Je choisis et j'explique (8 points)",
+            "questions": [
+              {
+                "id": "q7",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 3,
+                "skills": [
+                  "en-pret-emploi",
+                  "en-choisir"
+                ],
+                "cognitive": "analyser",
+                "prompt": "« Shakespeare ___ in 1616. »",
+                "options": [
+                  "died",
+                  "dies",
+                  "has died",
+                  "was dying"
+                ],
+                "answer": 0,
+                "solution": "died : « in 1616 » date une action terminée → prétérit simple (verbe régulier die → died).",
+                "rubric": "1 point pour la bonne réponse, 0 sinon."
+              },
+              {
+                "id": "q8",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 2,
+                "skills": [
+                  "en-pret-neg-int"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "« ___ your brother at school yesterday? »",
+                "options": [
+                  "Was",
+                  "Were",
+                  "Did",
+                  "Is"
+                ],
+                "answer": 0,
+                "solution": "Was : le seul verbe est be ; your brother = he → was. Pas de did avec be.",
+                "rubric": "1 point pour la bonne réponse, 0 sinon."
+              },
+              {
+                "id": "q9",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 5,
+                "skills": [
+                  "en-pretbing-emploi",
+                  "en-choisir"
+                ],
+                "cognitive": "analyser",
+                "prompt": "« Sorry, I didn't hear you: I ___ to music. »",
+                "options": [
+                  "listened",
+                  "was listening",
+                  "were listening",
+                  "listen"
+                ],
+                "answer": 1,
+                "solution": "was listening : l'action était en cours au moment où tu m'as parlé (et elle explique pourquoi je n'ai pas entendu) → prétérit en be + -ing, avec I → was.",
+                "rubric": "1 point pour la bonne réponse, 0 sinon."
+              },
+              {
+                "id": "q10",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 5,
+                "skills": [
+                  "en-choisir"
+                ],
+                "cognitive": "analyser",
+                "prompt": "« My mum ___ dinner when I ___ home. »",
+                "options": [
+                  "was cooking / got",
+                  "cooked / was getting",
+                  "was cooking / was getting",
+                  "cooks / got"
+                ],
+                "answer": 0,
+                "solution": "was cooking / got : action longue en cours → be + -ing ; action brève qui survient (when) → prétérit simple (get → got).",
+                "rubric": "1 point pour la bonne réponse, 0 sinon."
+              },
+              {
+                "id": "q11",
+                "type": "short",
+                "points": 2,
+                "lesson_part": 2,
+                "skills": [
+                  "en-pret-neg-int"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Écris la question qui correspond à cette phrase : « Emma found a wallet in the street. »",
+                "answer": [
+                  "Did Emma find a wallet in the street?",
+                  "Did Emma find a wallet in the street",
+                  "Did she find a wallet in the street?",
+                  "Did she find a wallet in the street"
+                ],
+                "solution": "Did Emma find a wallet in the street? — Did porte le passé ; found redevient find (base verbale).",
+                "rubric": "2 points pour la question correcte ; 1 point si did est présent mais le verbe est resté au prétérit (« Did Emma found »)."
+              },
+              {
+                "id": "q12",
+                "type": "open",
+                "points": 2,
+                "lesson_part": 5,
+                "skills": [
+                  "en-pretbing-emploi",
+                  "en-choisir"
+                ],
+                "cognitive": "analyser",
+                "prompt": "Explique en français pourquoi on écrit « While I was doing my homework, my brother was playing the guitar. » avec deux verbes en be + -ing.",
+                "solution": "Les deux actions étaient en cours en même temps, dans le passé : elles se déroulaient en parallèle, sans que l'une interrompe l'autre. On emploie donc le prétérit en be + -ing pour les deux, et while (pendant que) souligne cette simultanéité.",
+                "rubric": "1 pt : deux actions en cours, de durée longue, au même moment du passé. 1 pt : aucune n'interrompt l'autre (pas d'action brève) / rôle de while = pendant que."
+              }
+            ]
+          },
+          {
+            "label": "C · J'écris (6 points)",
+            "questions": [
+              {
+                "id": "q13",
+                "type": "open",
+                "points": 6,
+                "lesson_part": 5,
+                "skills": [
+                  "en-ecrire",
+                  "en-choisir",
+                  "en-pret-irreg",
+                  "en-pretbing-forme"
+                ],
+                "cognitive": "rediger",
+                "prompt": "Write a short story (60 to 80 words): « A day when something went wrong ». Use at least four verbs in the prétérit simple (including two irregular verbs) and at least two verbs in the prétérit en be + -ing, with when or while.",
+                "solution": "Example: Last Sunday, I wanted to make a cake for my mum's birthday. While I was mixing the eggs and the flour, my little brother was watching cartoons. Suddenly, the cat jumped on the table and knocked the bowl over! I was cleaning the floor when Mum came into the kitchen. She saw the mess, but she didn't get angry. We made the cake together and it was delicious.",
+                "rubric": "2 pts : au moins 4 verbes au prétérit simple corrects et bien employés (actions terminées, suite d'actions), dont au moins 2 verbes irréguliers. 2 pts : au moins 2 verbes au prétérit en be + -ing corrects et bien employés (décor, action en cours interrompue), dont au moins une phrase avec when ou while. 1 pt : formes exactes (verbes irréguliers, was / were, did + base verbale, orthographe en -ed et -ing, verbes d'état au prétérit simple). 1 pt : récit cohérent, longueur respectée (60 à 80 mots), vocabulaire varié."
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

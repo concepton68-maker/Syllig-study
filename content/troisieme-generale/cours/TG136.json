@@ -1,0 +1,1178 @@
+{
+  "format": "syllig-course/1",
+  "code": "TG136",
+  "level": "troisieme-generale",
+  "subject": "Technologie",
+  "chapter": "Objets techniques et société",
+  "title": "Fonctions, solutions techniques et évolution des objets",
+  "skills": [
+    {
+      "id": "te-fonction-technique",
+      "label": "Distinguer fonction de service, fonction technique et solution technique"
+    },
+    {
+      "id": "te-fast",
+      "label": "Lire et compléter un diagramme FAST"
+    },
+    {
+      "id": "te-comparer",
+      "label": "Comparer des solutions techniques à l'aide de critères et de calculs simples (énergie, autonomie)"
+    },
+    {
+      "id": "te-evolution",
+      "label": "Expliquer l'évolution d'un objet technique (lignée, innovation, rupture) et ses causes"
+    },
+    {
+      "id": "te-document",
+      "label": "Exploiter un document technique (fiche, tableau, diagramme)"
+    },
+    {
+      "id": "te-rediger",
+      "label": "Argumenter un choix technique par écrit"
+    }
+  ],
+  "lesson": {
+    "duration_min": 35,
+    "objectives": [
+      "passer d'une fonction de service à des fonctions techniques ;",
+      "associer à chaque fonction technique une ou plusieurs solutions techniques ;",
+      "lire et compléter un diagramme FAST ;",
+      "comparer des solutions avec des critères et des calculs simples ;",
+      "expliquer comment et pourquoi les objets évoluent."
+    ],
+    "essential": "Un objet répond à un besoin grâce à ses **fonctions de service**. Pour les réaliser, le concepteur définit des **fonctions techniques** (ce que l'objet doit faire à l'intérieur) puis choisit pour chacune une **solution technique** (le composant, le matériau ou le procédé qui la réalise). Le **diagramme FAST** organise ce passage, en répondant aux questions « Comment ? » et « Pourquoi ? ». Les solutions changent avec les progrès techniques, les besoins de la société, les règles et les contraintes environnementales : c'est ainsi que les objets **évoluent**.",
+    "parts": [
+      {
+        "title": "De la fonction de service à la fonction technique",
+        "blocks": [
+          {
+            "type": "text",
+            "text": "Dans le cours précédent, tu as appris à exprimer un **besoin** et à rédiger les **fonctions de service** d'un objet : ce qu'il doit faire **pour l'utilisateur**, sans dire comment. Exemple pour une **trottinette électrique** : « Permettre à l'utilisateur de se déplacer en ville sans effort »."
+          },
+          {
+            "type": "text",
+            "text": "Le concepteur doit ensuite se demander : **comment** l'objet va-t-il réaliser ce service ? Il découpe la fonction de service en actions plus précises, internes à l'objet : les **fonctions techniques**."
+          },
+          {
+            "type": "callout",
+            "kind": "definition",
+            "title": "Fonction technique",
+            "text": "Action qu'un élément de l'objet doit réaliser pour assurer une fonction de service. Elle s'écrit avec un **verbe à l'infinitif** : « stocker l'énergie », « freiner », « guider la roue avant », « informer l'utilisateur »."
+          },
+          {
+            "type": "table",
+            "caption": "Trois niveaux à ne pas confondre (exemple : la trottinette électrique)",
+            "columns": [
+              "Niveau",
+              "Point de vue",
+              "Exemple"
+            ],
+            "rows": [
+              [
+                "Fonction de service",
+                "Celui de l'**utilisateur** : à quoi sert l'objet ?",
+                "Permettre à l'utilisateur de se déplacer en ville"
+              ],
+              [
+                "Fonction technique",
+                "Celui du **concepteur** : que doit faire l'objet à l'intérieur ?",
+                "Stocker l'énergie électrique"
+              ],
+              [
+                "Solution technique",
+                "Le **moyen concret** choisi",
+                "Une batterie lithium-ion"
+              ]
+            ]
+          },
+          {
+            "type": "callout",
+            "kind": "retiens",
+            "text": "Fonction de service (pour l'utilisateur) → fonctions techniques (actions internes, verbe à l'infinitif) → solutions techniques (moyens concrets)."
+          }
+        ],
+        "checkpoint": {
+          "variants": [
+            {
+              "prompt": "Laquelle de ces phrases est une fonction technique ?",
+              "options": [
+                "Une batterie lithium-ion",
+                "Stocker l'énergie électrique",
+                "Un frein à disque",
+                "Un plateau en aluminium"
+              ],
+              "answer": 1,
+              "hint": "Une fonction technique commence par un verbe à l'infinitif.",
+              "explanation": "« Stocker l'énergie électrique » est une action interne : c'est une fonction technique. Les autres sont des solutions techniques."
+            },
+            {
+              "prompt": "Une fonction de service est exprimée du point de vue…",
+              "options": [
+                "du fabricant de batteries",
+                "de l'utilisateur",
+                "du vendeur",
+                "du matériau"
+              ],
+              "answer": 1,
+              "hint": "Regarde la colonne « Point de vue » du tableau.",
+              "explanation": "La fonction de service dit à quoi sert l'objet pour l'utilisateur."
+            },
+            {
+              "prompt": "Comment s'écrit une fonction technique ?",
+              "options": [
+                "Avec un nom de composant",
+                "Avec un verbe à l'infinitif",
+                "Avec un prix",
+                "Avec une marque"
+              ],
+              "answer": 1,
+              "hint": "Relis la définition de la fonction technique.",
+              "explanation": "Une fonction technique décrit une action : elle commence par un verbe à l'infinitif (stocker, freiner, guider…)."
+            }
+          ]
+        }
+      },
+      {
+        "title": "Les solutions techniques : plusieurs réponses possibles",
+        "blocks": [
+          {
+            "type": "callout",
+            "kind": "definition",
+            "title": "Solution technique",
+            "text": "Moyen concret (composant, matériau, mécanisme, programme, procédé de fabrication) choisi pour réaliser une fonction technique."
+          },
+          {
+            "type": "text",
+            "text": "Une même fonction technique peut être réalisée par **plusieurs solutions techniques**. Le concepteur les compare grâce aux **critères du cahier des charges** : coût, masse, efficacité, sécurité, durée de vie, facilité de réparation, impact sur l'environnement."
+          },
+          {
+            "type": "table",
+            "caption": "Fonction technique « Ralentir et arrêter la trottinette » : trois solutions",
+            "columns": [
+              "Solution technique",
+              "Points forts",
+              "Points faibles"
+            ],
+            "rows": [
+              [
+                "Frein à disque (mécanique)",
+                "Freinage puissant et précis",
+                "Plus cher, plaquettes qui s'usent"
+              ],
+              [
+                "Frein à tambour",
+                "Protégé de la pluie et de la boue, peu d'entretien",
+                "Un peu plus lourd, freinage moins puissant"
+              ],
+              [
+                "Frein électrique (le moteur freine)",
+                "Pas d'usure, récupère une partie de l'énergie pour recharger la batterie",
+                "Insuffisant seul : si la batterie est vide ou en cas de panne électrique, il ne freine plus. On l'associe donc toujours à un frein mécanique"
+              ]
+            ]
+          },
+          {
+            "type": "callout",
+            "kind": "attention",
+            "text": "Il n'existe pas de « meilleure solution » dans l'absolu : la bonne solution est celle qui respecte le mieux le **cahier des charges**, pour un usage et un prix donnés."
+          },
+          {
+            "type": "callout",
+            "kind": "retiens",
+            "text": "Une fonction technique → plusieurs solutions possibles → on choisit avec les **critères** du cahier des charges (coût, masse, sécurité, durée de vie, environnement…)."
+          }
+        ],
+        "checkpoint": {
+          "variants": [
+            {
+              "prompt": "Lequel de ces éléments est une solution technique ?",
+              "options": [
+                "Freiner",
+                "Permettre de se déplacer",
+                "Un frein à tambour",
+                "Être sûr pour l'utilisateur"
+              ],
+              "answer": 2,
+              "hint": "Une solution technique est un moyen concret.",
+              "explanation": "Le frein à tambour est un composant concret : c'est une solution technique."
+            },
+            {
+              "prompt": "Comment le concepteur choisit-il entre plusieurs solutions techniques ?",
+              "options": [
+                "Il prend toujours la moins chère",
+                "Il tire au sort",
+                "Il les compare avec les critères du cahier des charges",
+                "Il prend toujours la plus récente"
+              ],
+              "answer": 2,
+              "hint": "Relis le paragraphe juste après la définition.",
+              "explanation": "Le choix se fait selon les critères du cahier des charges : coût, masse, sécurité, durée de vie, environnement…"
+            },
+            {
+              "prompt": "Pourquoi le frein électrique ne suffit-il pas seul sur une trottinette ?",
+              "options": [
+                "Parce qu'il est trop cher",
+                "Parce qu'il ne freine plus si la batterie est vide ou en cas de panne électrique",
+                "Parce qu'il s'use très vite",
+                "Parce qu'il est trop bruyant"
+              ],
+              "answer": 1,
+              "hint": "Regarde la dernière ligne du tableau.",
+              "explanation": "Pour la sécurité, un frein qui dépend de l'électricité doit être complété par un frein mécanique, qui fonctionne même batterie vide."
+            }
+          ]
+        }
+      },
+      {
+        "title": "Le diagramme FAST",
+        "blocks": [
+          {
+            "type": "text",
+            "text": "Le **diagramme FAST** (de l'anglais *Function Analysis System Technique*) présente, de gauche à droite, une fonction de service, les fonctions techniques qui la réalisent, puis les solutions techniques choisies."
+          },
+          {
+            "type": "callout",
+            "kind": "methode",
+            "title": "Lire un FAST",
+            "text": "De **gauche à droite**, on répond à la question **« Comment ? »** : comment réaliser cette fonction ?\nDe **droite à gauche**, on répond à la question **« Pourquoi ? »** : pourquoi cette solution est-elle là ?"
+          },
+          {
+            "type": "table",
+            "caption": "FAST simplifié de la trottinette électrique — FS : « Permettre à l'utilisateur de se déplacer en ville »",
+            "columns": [
+              "Fonction technique",
+              "Fonction technique détaillée",
+              "Solution technique"
+            ],
+            "rows": [
+              [
+                "FT1 : Fournir l'énergie de déplacement",
+                "FT11 : Stocker l'énergie électrique",
+                "Batterie lithium-ion"
+              ],
+              [
+                "FT1 : Fournir l'énergie de déplacement",
+                "FT12 : Convertir l'énergie électrique en énergie mécanique",
+                "Moteur électrique intégré à la roue arrière"
+              ],
+              [
+                "FT2 : Diriger la trottinette",
+                "FT21 : Orienter la roue avant",
+                "Guidon et colonne de direction"
+              ],
+              [
+                "FT3 : Ralentir et arrêter",
+                "FT31 : Freiner",
+                "Frein à disque + frein électrique"
+              ],
+              [
+                "FT4 : Supporter l'utilisateur",
+                "FT41 : Résister au poids de l'utilisateur",
+                "Plateau en alliage d'aluminium"
+              ],
+              [
+                "FT5 : Informer l'utilisateur",
+                "FT51 : Afficher la vitesse et la charge de la batterie",
+                "Écran LCD commandé par une carte électronique"
+              ]
+            ]
+          },
+          {
+            "type": "callout",
+            "kind": "plus",
+            "text": "Sur une vraie feuille, le FAST se dessine avec des cases reliées par des traits. Ici, chaque ligne du tableau se lit comme une branche du diagramme, de gauche à droite."
+          },
+          {
+            "type": "callout",
+            "kind": "retiens",
+            "text": "FAST : fonction de service → fonctions techniques → solutions techniques. « Comment ? » vers la droite, « Pourquoi ? » vers la gauche."
+          }
+        ],
+        "checkpoint": {
+          "variants": [
+            {
+              "prompt": "Dans un FAST, quand on lit de gauche à droite, on répond à la question…",
+              "options": [
+                "Pourquoi ?",
+                "Comment ?",
+                "Combien ?",
+                "Quand ?"
+              ],
+              "answer": 1,
+              "hint": "Relis l'encadré « Lire un FAST ».",
+              "explanation": "De gauche à droite : comment réaliser cette fonction ? De droite à gauche : pourquoi ?"
+            },
+            {
+              "prompt": "D'après le FAST, quelle solution technique réalise la fonction « Stocker l'énergie électrique » ?",
+              "options": [
+                "Le moteur dans la roue",
+                "La batterie lithium-ion",
+                "Le plateau en aluminium",
+                "L'écran LCD"
+              ],
+              "answer": 1,
+              "hint": "Cherche la ligne FT11 dans le tableau.",
+              "explanation": "La batterie lithium-ion stocke l'énergie électrique (FT11)."
+            },
+            {
+              "prompt": "Pourquoi la trottinette possède-t-elle un plateau en alliage d'aluminium ?",
+              "options": [
+                "Pour afficher la vitesse",
+                "Pour supporter l'utilisateur",
+                "Pour stocker l'énergie",
+                "Pour freiner"
+              ],
+              "answer": 1,
+              "hint": "Lis la ligne de droite à gauche : c'est la question « Pourquoi ? ».",
+              "explanation": "Le plateau sert à résister au poids de l'utilisateur : fonction « Supporter l'utilisateur »."
+            }
+          ]
+        }
+      },
+      {
+        "title": "Comparer des solutions : critères et calculs simples",
+        "blocks": [
+          {
+            "type": "text",
+            "text": "Pour comparer des solutions, on utilise souvent des **calculs simples**. Le plus utile : l'**énergie** consommée par un appareil."
+          },
+          {
+            "type": "callout",
+            "kind": "definition",
+            "title": "Énergie et puissance",
+            "text": "**E = P × t**\nE : énergie consommée, en wattheures (Wh) ; P : puissance de l'appareil, en watts (W) ; t : durée de fonctionnement, en heures (h).\n1 kWh (kilowattheure) = 1 000 Wh."
+          },
+          {
+            "type": "table",
+            "caption": "Exemple : deux solutions pour la fonction « Éclairer une pièce » (même quantité de lumière)",
+            "columns": [
+              "Critère",
+              "Lampe halogène",
+              "Lampe LED"
+            ],
+            "rows": [
+              [
+                "Puissance",
+                "42 W",
+                "6 W"
+              ],
+              [
+                "Durée de vie",
+                "environ 2 000 h",
+                "environ 15 000 h"
+              ],
+              [
+                "Prix d'achat",
+                "environ 3 €",
+                "environ 5 €"
+              ],
+              [
+                "Énergie pour 1 000 h d'éclairage",
+                "42 × 1 000 = 42 000 Wh = 42 kWh",
+                "6 × 1 000 = 6 000 Wh = 6 kWh"
+              ]
+            ]
+          },
+          {
+            "type": "callout",
+            "kind": "methode",
+            "title": "Calculer une autonomie",
+            "text": "Autonomie = énergie stockée ÷ consommation.\nExemple : une batterie de trottinette stocke 360 Wh ; la trottinette consomme environ 12 Wh par kilomètre. Autonomie = 360 ÷ 12 = 30 km."
+          },
+          {
+            "type": "callout",
+            "kind": "retiens",
+            "text": "E = P × t (Wh = W × h). Une solution plus chère à l'achat peut être plus intéressante sur toute sa durée de vie (moins d'énergie, moins de remplacements)."
+          }
+        ],
+        "checkpoint": {
+          "variants": [
+            {
+              "prompt": "Une lampe de 10 W fonctionne pendant 3 h. Quelle énergie consomme-t-elle ?",
+              "options": [
+                "13 Wh",
+                "30 Wh",
+                "3,3 Wh",
+                "300 Wh"
+              ],
+              "answer": 1,
+              "hint": "Utilise E = P × t.",
+              "explanation": "E = 10 W × 3 h = 30 Wh."
+            },
+            {
+              "prompt": "Une batterie stocke 400 Wh et le vélo consomme 10 Wh par km. Quelle est son autonomie ?",
+              "options": [
+                "4 km",
+                "40 km",
+                "410 km",
+                "4 000 km"
+              ],
+              "answer": 1,
+              "hint": "Autonomie = énergie stockée ÷ consommation.",
+              "explanation": "400 ÷ 10 = 40 km."
+            },
+            {
+              "prompt": "D'après le tableau, pourquoi la lampe LED est-elle souvent préférée malgré un prix d'achat plus élevé ?",
+              "options": [
+                "Elle éclaire beaucoup plus fort",
+                "Elle consomme beaucoup moins d'énergie et dure bien plus longtemps",
+                "Elle est plus lourde",
+                "Elle chauffe davantage"
+              ],
+              "answer": 1,
+              "hint": "Compare les lignes « Puissance » et « Durée de vie ».",
+              "explanation": "6 W au lieu de 42 W pour la même lumière, et environ 15 000 h de durée de vie au lieu de 2 000 h."
+            }
+          ]
+        }
+      },
+      {
+        "title": "Comment et pourquoi les objets évoluent",
+        "blocks": [
+          {
+            "type": "text",
+            "text": "Un même besoin (s'éclairer, communiquer, se déplacer) est satisfait au fil du temps par des objets différents. L'ensemble des objets qui répondent au même besoin forme une **lignée** (ou famille) d'objets."
+          },
+          {
+            "type": "table",
+            "caption": "Deux lignées d'objets",
+            "columns": [
+              "Besoin",
+              "Évolution des solutions"
+            ],
+            "rows": [
+              [
+                "S'éclairer",
+                "Bougie et lampe à huile → lampe à pétrole (XIXe siècle) → lampe à incandescence à filament (fin des années 1870, Joseph Swan et Thomas Edison) → lampe fluocompacte (années 1980) → lampe LED (largement diffusée depuis les années 2010). Dans l'Union européenne, les lampes à incandescence classiques sont retirées de la vente à partir de 2009."
+              ],
+              [
+                "Communiquer à distance",
+                "Télégraphe (XIXe siècle) → téléphone fixe (brevet d'Alexander Graham Bell, 1876) → téléphone fixe à cadran puis à touches → téléphone mobile (premiers modèles commercialisés en 1983) → smartphone à écran tactile (fin des années 2000)."
+              ]
+            ]
+          },
+          {
+            "type": "callout",
+            "kind": "definition",
+            "title": "Innovation et rupture",
+            "text": "Une **innovation** est une nouveauté (produit, solution, usage) qui est réellement adoptée par la société. Une **évolution progressive** améliore l'objet sans changer son principe (une ampoule à incandescence plus solide). Une **rupture technologique** remplace le principe de fonctionnement par un nouveau (passer du filament chauffé à la diode électroluminescente)."
+          },
+          {
+            "type": "list",
+            "items": [
+              "**Progrès techniques et scientifiques** : nouveaux matériaux (plastiques, alliages légers), électronique, numérique, batteries plus performantes.",
+              "**Besoins et modes de vie** : mobilité, communication permanente, confort, santé.",
+              "**Réglementation et normes** : sécurité, interdiction de certains produits (ampoules à incandescence).",
+              "**Environnement** : économiser l'énergie et les matières premières, réduire les déchets, faciliter la réparation et le recyclage.",
+              "**Coût** : produire moins cher, en grande série."
+            ]
+          },
+          {
+            "type": "callout",
+            "kind": "attention",
+            "text": "L'évolution des objets a aussi des **effets sur la société** : nouveaux usages (photos et vidéos partagées), nouveaux métiers, mais aussi dépendance aux écrans, déchets électroniques, extraction de métaux rares."
+          },
+          {
+            "type": "callout",
+            "kind": "retiens",
+            "text": "Les objets d'une même lignée répondent au même besoin avec des solutions techniques qui changent. Causes : progrès techniques, besoins de la société, réglementation, environnement, coût."
+          }
+        ],
+        "checkpoint": {
+          "variants": [
+            {
+              "prompt": "Qu'est-ce qu'une lignée d'objets ?",
+              "options": [
+                "Des objets de la même marque",
+                "Des objets qui répondent au même besoin au fil du temps",
+                "Des objets de la même couleur",
+                "Des objets fabriqués dans la même usine"
+              ],
+              "answer": 1,
+              "hint": "Relis le premier paragraphe de la partie.",
+              "explanation": "Une lignée regroupe les objets qui répondent au même besoin (par exemple s'éclairer) à différentes époques."
+            },
+            {
+              "prompt": "Le passage de la lampe à incandescence à la lampe LED est…",
+              "options": [
+                "une rupture technologique, car le principe de fonctionnement change",
+                "une simple évolution de couleur",
+                "un retour en arrière",
+                "une évolution sans aucun changement de principe"
+              ],
+              "answer": 0,
+              "hint": "Relis la définition « Innovation et rupture ».",
+              "explanation": "Le filament chauffé est remplacé par une diode électroluminescente : le principe change, c'est une rupture technologique."
+            },
+            {
+              "prompt": "Laquelle de ces causes explique l'abandon des lampes à incandescence dans l'Union européenne ?",
+              "options": [
+                "Une mode passagère",
+                "Une réglementation pour économiser l'énergie",
+                "Le manque de verre",
+                "L'interdiction de l'électricité"
+              ],
+              "answer": 1,
+              "hint": "Regarde la liste des causes de l'évolution et la ligne « S'éclairer ».",
+              "explanation": "Une réglementation européenne, à partir de 2009, retire progressivement de la vente ces lampes qui gaspillent beaucoup d'énergie."
+            }
+          ]
+        }
+      }
+    ],
+    "memo": [
+      {
+        "label": "Trois niveaux",
+        "text": "Fonction de service (pour l'utilisateur) → fonction technique (action interne, verbe à l'infinitif) → solution technique (moyen concret : composant, matériau, procédé)."
+      },
+      {
+        "label": "FAST",
+        "text": "De gauche à droite : « Comment ? ». De droite à gauche : « Pourquoi ? ». FS → FT → ST."
+      },
+      {
+        "label": "Choisir",
+        "text": "Plusieurs solutions pour une même fonction ; on compare avec les critères du cahier des charges (coût, masse, sécurité, durée de vie, environnement)."
+      },
+      {
+        "label": "Calculs",
+        "text": "E = P × t (Wh = W × h) ; 1 kWh = 1 000 Wh. Autonomie = énergie stockée ÷ consommation."
+      },
+      {
+        "label": "Évolution",
+        "text": "Lignée = objets qui répondent au même besoin. Évolution progressive ou rupture technologique (incandescence → LED). Causes : progrès techniques, besoins, réglementation, environnement, coût."
+      }
+    ]
+  },
+  "exercises": {
+    "duration_min": 30,
+    "instructions": "Commence par les exercices ★ (je repère), puis ★★ (j'applique et j'analyse) et ★★★ (je rédige). Pour les calculs, écris la formule, remplace par les valeurs, puis donne le résultat avec son unité. Tu peux utiliser la calculatrice. Bon travail !",
+    "pass_threshold": 8,
+    "texts": [
+      {
+        "id": "t1",
+        "label": "Document · Deux lampes de bureau comparées",
+        "source": "Document original écrit pour ce cours (valeurs arrondies, proches de produits courants).",
+        "paragraphs": [
+          "Fonction technique à réaliser : « Produire de la lumière ». Les deux lampes éclairent autant l'une que l'autre.",
+          "Lampe A (halogène) : puissance 42 W ; durée de vie environ 2 000 heures ; prix d'achat 3 €.",
+          "Lampe B (LED) : puissance 9 W ; durée de vie environ 15 000 heures ; prix d'achat 6 €.",
+          "Le collège allume ses lampes de bureau environ 1 000 heures par an."
+        ]
+      }
+    ],
+    "items": [
+      {
+        "id": "ex1",
+        "type": "qcm",
+        "stars": 1,
+        "lesson_part": 1,
+        "skills": [
+          "te-fonction-technique"
+        ],
+        "cognitive": "connaitre",
+        "prompt": "Qu'est-ce qu'une fonction technique ?",
+        "options": [
+          "Le prix de l'objet",
+          "Une action qu'un élément de l'objet doit réaliser pour assurer une fonction de service",
+          "Le nom du fabricant",
+          "Le besoin de l'utilisateur"
+        ],
+        "answer": 1,
+        "solution": "Une fonction technique est une action interne à l'objet, écrite avec un verbe à l'infinitif (stocker, freiner, guider…), qui permet d'assurer une fonction de service."
+      },
+      {
+        "id": "ex2",
+        "type": "qcm",
+        "stars": 1,
+        "lesson_part": 3,
+        "skills": [
+          "te-fast"
+        ],
+        "cognitive": "connaitre",
+        "prompt": "Dans un diagramme FAST, quand on lit de droite à gauche, on répond à la question…",
+        "options": [
+          "Comment ?",
+          "Combien ?",
+          "Pourquoi ?",
+          "Où ?"
+        ],
+        "answer": 2,
+        "solution": "De droite à gauche : « Pourquoi ? » (pourquoi cette solution est-elle là ?). De gauche à droite : « Comment ? »."
+      },
+      {
+        "id": "ex3",
+        "type": "short",
+        "stars": 1,
+        "lesson_part": 3,
+        "skills": [
+          "te-fast",
+          "te-fonction-technique"
+        ],
+        "cognitive": "connaitre",
+        "prompt": "Sur la trottinette électrique, quel composant réalise la fonction « Stocker l'énergie électrique » ? (un ou deux mots)",
+        "answer": [
+          "batterie",
+          "une batterie",
+          "la batterie",
+          "batterie lithium-ion",
+          "une batterie lithium-ion",
+          "la batterie lithium-ion",
+          "batterie lithium",
+          "accumulateur",
+          "un accumulateur",
+          "batterie Li-ion"
+        ],
+        "solution": "La batterie (lithium-ion) : elle stocke l'énergie électrique."
+      },
+      {
+        "id": "ex4",
+        "type": "qcm",
+        "stars": 1,
+        "lesson_part": 2,
+        "skills": [
+          "te-fonction-technique"
+        ],
+        "cognitive": "connaitre",
+        "prompt": "Dans cette liste, quelle est la seule solution technique ?",
+        "options": [
+          "Guider la roue avant",
+          "Permettre de se déplacer",
+          "Un guidon",
+          "Informer l'utilisateur"
+        ],
+        "answer": 2,
+        "solution": "Le guidon est un moyen concret : c'est une solution technique. « Guider la roue avant » et « Informer l'utilisateur » sont des fonctions techniques ; « Permettre de se déplacer » est une fonction de service."
+      },
+      {
+        "id": "ex5",
+        "type": "numeric",
+        "stars": 2,
+        "text_ref": "t1",
+        "lesson_part": 4,
+        "skills": [
+          "te-comparer"
+        ],
+        "cognitive": "appliquer",
+        "prompt": "Quelle énergie, en kWh, la lampe A consomme-t-elle en 1 000 heures ? (Réponds par un nombre.)",
+        "answer": 42,
+        "solution": "E = P × t = 42 W × 1 000 h = 42 000 Wh = 42 kWh."
+      },
+      {
+        "id": "ex6",
+        "type": "numeric",
+        "stars": 2,
+        "text_ref": "t1",
+        "lesson_part": 4,
+        "skills": [
+          "te-comparer",
+          "te-document"
+        ],
+        "cognitive": "appliquer",
+        "prompt": "Combien de kWh le collège économise-t-il en un an (1 000 heures) pour une lampe, en remplaçant la lampe A par la lampe B ? (Réponds par un nombre.)",
+        "answer": 33,
+        "solution": "Lampe A : 42 × 1 000 = 42 000 Wh = 42 kWh. Lampe B : 9 × 1 000 = 9 000 Wh = 9 kWh. Économie : 42 − 9 = 33 kWh par an et par lampe."
+      },
+      {
+        "id": "ex7",
+        "type": "qcm",
+        "stars": 2,
+        "lesson_part": 5,
+        "skills": [
+          "te-evolution"
+        ],
+        "cognitive": "analyser",
+        "prompt": "Parmi ces changements, lequel est une rupture technologique ?",
+        "options": [
+          "Changer la couleur du boîtier d'un téléphone",
+          "Remplacer le filament chauffé d'une lampe par une diode électroluminescente",
+          "Baisser le prix d'une lampe de 10 %",
+          "Ajouter une poignée à une lampe de poche"
+        ],
+        "answer": 1,
+        "solution": "Le principe de fonctionnement change (le filament chauffé est remplacé par une LED) : c'est une rupture technologique. Les autres changements ne modifient pas le principe."
+      },
+      {
+        "id": "ex8",
+        "type": "numeric",
+        "stars": 2,
+        "text_ref": "t1",
+        "lesson_part": 4,
+        "skills": [
+          "te-comparer",
+          "te-document"
+        ],
+        "cognitive": "analyser",
+        "prompt": "Pendant la durée de vie d'une seule lampe B (15 000 heures), combien de lampes A faut-il acheter au total ? (Réponds par un nombre.)",
+        "answer": 7.5,
+        "tolerance": 0.5,
+        "solution": "15 000 ÷ 2 000 = 7,5 : il faut donc environ 7 à 8 lampes A (en pratique 8 achats) pour éclairer aussi longtemps qu'une seule lampe B. Les réponses 7, 7,5 ou 8 sont acceptées."
+      },
+      {
+        "id": "ex9",
+        "type": "open",
+        "stars": 3,
+        "lesson_part": 3,
+        "skills": [
+          "te-fast",
+          "te-fonction-technique"
+        ],
+        "cognitive": "appliquer",
+        "prompt": "Une lampe de poche rechargeable a pour fonction de service « Permettre à l'utilisateur de s'éclairer dans l'obscurité ». Propose un petit FAST : trois fonctions techniques, chacune avec une solution technique. Présente-les sous la forme « fonction technique → solution technique ».",
+        "solution": "Exemples : Stocker l'énergie électrique → batterie rechargeable (lithium-ion) ; Produire de la lumière → LED ; Allumer et éteindre → interrupteur (bouton-poussoir) ; Concentrer le faisceau lumineux → réflecteur et lentille ; Protéger les composants → boîtier en aluminium ou en plastique ; Recharger la batterie → prise USB et circuit de charge."
+      },
+      {
+        "id": "ex10",
+        "type": "open",
+        "stars": 3,
+        "text_ref": "t1",
+        "lesson_part": 4,
+        "skills": [
+          "te-comparer",
+          "te-rediger",
+          "te-document"
+        ],
+        "cognitive": "rediger",
+        "prompt": "Le principal du collège hésite : « La lampe A coûte deux fois moins cher, je la choisis. » En quelques phrases, argumente pour l'aider à choisir, en utilisant au moins deux critères du document et un calcul.",
+        "solution": "Exemple : La lampe A est moins chère à l'achat (3 € contre 6 €), mais ce n'est pas le seul critère. D'abord, elle consomme beaucoup plus : 42 kWh par an contre 9 kWh pour la lampe B, soit 33 kWh de plus chaque année, ce qui coûte de l'argent. Ensuite, elle dure beaucoup moins longtemps : 2 000 h contre 15 000 h, il faudrait donc racheter environ 8 lampes A pendant la vie d'une seule lampe B, soit environ 24 € au lieu de 6 €. Enfin, moins de lampes jetées, c'est moins de déchets. La lampe B (LED) est donc le meilleur choix sur la durée."
+      }
+    ]
+  },
+  "evaluation": {
+    "duration_min": 30,
+    "conditions": "Sans la leçon, en 30 minutes. Calculatrice autorisée. Lis le document avant de répondre et donne tes résultats avec leur unité sur ton brouillon. Barème : A = 5 points · B = 10 points · C = 5 points.",
+    "total_points": 20,
+    "variants": [
+      {
+        "texts": [
+          {
+            "id": "d1",
+            "label": "Document · Le vélo à assistance électrique (VAE)",
+            "source": "Document original écrit pour ce cours (valeurs arrondies, proches des modèles courants).",
+            "paragraphs": [
+              "Fonction de service : « Permettre à l'utilisateur de se déplacer en pédalant avec moins d'effort ». En Europe, l'assistance du moteur doit s'arrêter au-delà de 25 km/h et ne fonctionne que si l'on pédale.",
+              "Extrait du FAST : FT1 « Stocker l'énergie électrique » → batterie lithium-ion de 500 Wh. FT2 « Aider l'utilisateur à pédaler » → moteur électrique de 250 W placé au pédalier. FT3 « Détecter le pédalage » → capteur de pédalage. FT4 « Ralentir et arrêter le vélo » → freins à disque hydrauliques.",
+              "Consommation moyenne en ville : 10 Wh par kilomètre. Le chargeur recharge entièrement la batterie vide en 5 heures.",
+              "Deux solutions pour le cadre (FT5 « Supporter l'utilisateur ») : cadre en acier (environ 4 kg, 80 €, très réparable) ou cadre en aluminium (environ 2 kg, 150 €, ne rouille pas)."
+            ]
+          }
+        ],
+        "sections": [
+          {
+            "label": "A · Je connais (5 points)",
+            "questions": [
+              {
+                "id": "q1",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 1,
+                "skills": [
+                  "te-fonction-technique"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Laquelle de ces propositions est une fonction technique ?",
+                "options": [
+                  "Une batterie lithium-ion",
+                  "Détecter le pédalage",
+                  "Un capteur",
+                  "Un cadre en acier"
+                ],
+                "answer": 1,
+                "solution": "« Détecter le pédalage » est une action interne, écrite avec un verbe à l'infinitif : c'est une fonction technique.",
+                "rubric": "1 pt : bonne réponse."
+              },
+              {
+                "id": "q2",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 3,
+                "skills": [
+                  "te-fast"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Dans un FAST, quelle question pose-t-on en allant de gauche à droite ?",
+                "options": [
+                  "Pourquoi ?",
+                  "Comment ?",
+                  "Qui ?",
+                  "Combien ça coûte ?"
+                ],
+                "answer": 1,
+                "solution": "« Comment ? » : comment réaliser cette fonction ?",
+                "rubric": "1 pt : bonne réponse."
+              },
+              {
+                "id": "q3",
+                "type": "short",
+                "points": 1,
+                "lesson_part": 5,
+                "skills": [
+                  "te-evolution"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Comment appelle-t-on l'ensemble des objets qui répondent au même besoin au fil du temps ? (un mot)",
+                "answer": [
+                  "lignée",
+                  "une lignée",
+                  "la lignée",
+                  "lignée d'objets",
+                  "une lignée d'objets",
+                  "famille",
+                  "famille d'objets",
+                  "une famille d'objets"
+                ],
+                "solution": "Une lignée (ou famille) d'objets.",
+                "rubric": "1 pt : lignée (ou famille d'objets)."
+              },
+              {
+                "id": "q4",
+                "type": "open",
+                "points": 2,
+                "lesson_part": 2,
+                "skills": [
+                  "te-fonction-technique"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Explique la différence entre une fonction technique et une solution technique, en donnant un exemple de chaque pris sur le vélo à assistance électrique.",
+                "solution": "Une fonction technique est une action que l'objet doit réaliser (verbe à l'infinitif), par exemple « Ralentir et arrêter le vélo ». Une solution technique est le moyen concret choisi pour la réaliser, par exemple « freins à disque hydrauliques ».",
+                "rubric": "1 pt : deux définitions justes (action / moyen concret). 1 pt : deux exemples corrects et cohérents tirés du VAE (0,5 pt chacun)."
+              }
+            ]
+          },
+          {
+            "label": "B · J'exploite un document technique (10 points)",
+            "questions": [
+              {
+                "id": "q5",
+                "type": "short",
+                "points": 1,
+                "text_ref": "d1",
+                "lesson_part": 3,
+                "skills": [
+                  "te-fast",
+                  "te-document"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Quelle solution technique réalise la fonction « Détecter le pédalage » ?",
+                "answer": [
+                  "capteur de pédalage",
+                  "un capteur de pédalage",
+                  "le capteur de pédalage",
+                  "capteur",
+                  "un capteur",
+                  "le capteur"
+                ],
+                "solution": "Le capteur de pédalage.",
+                "rubric": "1 pt : capteur de pédalage."
+              },
+              {
+                "id": "q6",
+                "type": "qcm",
+                "points": 1,
+                "text_ref": "d1",
+                "lesson_part": 3,
+                "skills": [
+                  "te-fast",
+                  "te-document"
+                ],
+                "cognitive": "analyser",
+                "prompt": "Pourquoi le VAE possède-t-il un moteur de 250 W au pédalier ?",
+                "options": [
+                  "Pour stocker l'énergie électrique",
+                  "Pour aider l'utilisateur à pédaler",
+                  "Pour détecter le pédalage",
+                  "Pour supporter l'utilisateur"
+                ],
+                "answer": 1,
+                "solution": "En lisant le FAST de droite à gauche (« Pourquoi ? »), le moteur réalise la FT2 « Aider l'utilisateur à pédaler ».",
+                "rubric": "1 pt : bonne réponse."
+              },
+              {
+                "id": "q7",
+                "type": "numeric",
+                "points": 2,
+                "text_ref": "d1",
+                "lesson_part": 4,
+                "skills": [
+                  "te-comparer",
+                  "te-document"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Quelle est l'autonomie du VAE en ville, en kilomètres, avec la batterie pleine ? (Réponds par un nombre.)",
+                "answer": 50,
+                "solution": "Autonomie = énergie stockée ÷ consommation = 500 Wh ÷ 10 Wh/km = 50 km.",
+                "rubric": "2 pts : 50 km. (1 pt si la méthode est juste mais le calcul faux.)"
+              },
+              {
+                "id": "q8",
+                "type": "numeric",
+                "points": 2,
+                "text_ref": "d1",
+                "lesson_part": 4,
+                "skills": [
+                  "te-comparer",
+                  "te-document"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Le chargeur fournit 500 Wh en 5 heures. Quelle est sa puissance moyenne, en watts ? (Réponds par un nombre.)",
+                "answer": 100,
+                "solution": "E = P × t, donc P = E ÷ t = 500 Wh ÷ 5 h = 100 W.",
+                "rubric": "2 pts : 100 W. (1 pt si la formule est juste mais le calcul faux.)"
+              },
+              {
+                "id": "q9",
+                "type": "open",
+                "points": 4,
+                "text_ref": "d1",
+                "lesson_part": 2,
+                "skills": [
+                  "te-comparer",
+                  "te-rediger",
+                  "te-document"
+                ],
+                "cognitive": "analyser",
+                "prompt": "Pour la fonction « Supporter l'utilisateur », compare les deux solutions de cadre à l'aide de trois critères du document. Puis choisis une solution pour un VAE destiné à un service de location en ville, et justifie ton choix.",
+                "solution": "Critères : masse (acier environ 4 kg, aluminium environ 2 kg : l'aluminium est plus léger) ; prix (acier 80 €, aluminium 150 € : l'acier est moins cher) ; entretien et durabilité (acier très réparable ; aluminium qui ne rouille pas). Choix possible pour une location en ville : le cadre en acier, car il est moins cher pour une flotte de nombreux vélos et facile à réparer, et les vélos de location sont souvent abîmés. Un choix de l'aluminium est accepté s'il est bien justifié (légèreté pour des usagers variés, pas de rouille pour des vélos stationnés dehors).",
+                "rubric": "2 pts : comparaison sur trois critères du document (masse, prix, réparabilité / rouille), avec les valeurs. 1 pt : choix clair. 1 pt : justification cohérente avec l'usage (location en ville). Tout choix bien argumenté est accepté."
+              }
+            ]
+          },
+          {
+            "label": "C · J'explique l'évolution d'un objet (5 points)",
+            "questions": [
+              {
+                "id": "q10",
+                "type": "open",
+                "points": 5,
+                "lesson_part": 5,
+                "skills": [
+                  "te-evolution",
+                  "te-rediger"
+                ],
+                "cognitive": "rediger",
+                "prompt": "Explique comment et pourquoi les objets qui servent à s'éclairer ont évolué depuis le XIXe siècle. Cite au moins trois objets de cette lignée, indique une rupture technologique et donne au moins deux causes de cette évolution.",
+                "solution": "Pour répondre au besoin de s'éclairer, on a d'abord utilisé des bougies et des lampes à huile ou à pétrole. À la fin des années 1870, la lampe à incandescence à filament (Swan, Edison) permet un éclairage électrique. Puis viennent les lampes fluocompactes (années 1980) et les lampes LED (années 2010). Le passage du filament chauffé à la LED est une rupture technologique, car le principe de fonctionnement change. Causes : le progrès technique (électricité, électronique, LED), la volonté d'économiser l'énergie (une LED consomme beaucoup moins pour la même lumière), la réglementation (retrait des lampes à incandescence dans l'Union européenne à partir de 2009) et l'environnement (durée de vie plus longue, moins de déchets).",
+                "rubric": "1,5 pt : au moins trois objets de la lignée dans le bon ordre. 1 pt : une rupture technologique identifiée et expliquée (changement de principe). 2 pts : au moins deux causes justes (progrès technique, économie d'énergie, réglementation, environnement, coût), 1 pt chacune. 0,5 pt : expression claire et vocabulaire technique."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "texts": [
+          {
+            "id": "d1",
+            "label": "Document · Le robot aspirateur",
+            "source": "Document original écrit pour ce cours (valeurs arrondies, proches des modèles courants).",
+            "paragraphs": [
+              "Fonction de service : « Permettre à l'utilisateur de nettoyer le sol de son logement sans effort ».",
+              "Extrait du FAST : FT1 « Stocker l'énergie électrique » → batterie lithium-ion de 40 Wh. FT2 « Aspirer la poussière » → moteur et turbine d'aspiration. FT3 « Détecter les obstacles » → capteurs infrarouges et pare-chocs à contact. FT4 « Se déplacer dans la pièce » → deux roues motrices commandées par une carte électronique.",
+              "En fonctionnement, le robot consomme en moyenne une puissance de 30 W.",
+              "Deux solutions pour la fonction FT5 « Retourner à la base de recharge » : un guidage par signal infrarouge émis par la base (simple, peu coûteux) ou un guidage par télémètre laser qui dessine une carte du logement (plus cher, trajets plus efficaces)."
+            ]
+          }
+        ],
+        "sections": [
+          {
+            "label": "A · Je connais (5 points)",
+            "questions": [
+              {
+                "id": "q1",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 1,
+                "skills": [
+                  "te-fonction-technique"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Laquelle de ces propositions est une fonction technique ?",
+                "options": [
+                  "Une turbine",
+                  "Des capteurs infrarouges",
+                  "Aspirer la poussière",
+                  "Une carte électronique"
+                ],
+                "answer": 2,
+                "solution": "« Aspirer la poussière » est une action interne, écrite avec un verbe à l'infinitif : c'est une fonction technique.",
+                "rubric": "1 pt : bonne réponse."
+              },
+              {
+                "id": "q2",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 3,
+                "skills": [
+                  "te-fast"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Dans un FAST, quelle question pose-t-on en allant de droite à gauche ?",
+                "options": [
+                  "Comment ?",
+                  "Pourquoi ?",
+                  "Quand ?",
+                  "Avec qui ?"
+                ],
+                "answer": 1,
+                "solution": "« Pourquoi ? » : pourquoi cette solution est-elle là ?",
+                "rubric": "1 pt : bonne réponse."
+              },
+              {
+                "id": "q3",
+                "type": "short",
+                "points": 1,
+                "lesson_part": 5,
+                "skills": [
+                  "te-evolution"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Comment appelle-t-on le remplacement du principe de fonctionnement d'un objet par un principe nouveau ? (deux mots)",
+                "answer": [
+                  "rupture technologique",
+                  "une rupture technologique",
+                  "la rupture technologique",
+                  "rupture",
+                  "une rupture",
+                  "rupture technique",
+                  "une rupture technique"
+                ],
+                "solution": "Une rupture technologique.",
+                "rubric": "1 pt : rupture technologique."
+              },
+              {
+                "id": "q4",
+                "type": "open",
+                "points": 2,
+                "lesson_part": 2,
+                "skills": [
+                  "te-fonction-technique"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Explique la différence entre une fonction de service et une fonction technique, en donnant un exemple de chaque pris sur le robot aspirateur.",
+                "solution": "Une fonction de service exprime ce que l'objet apporte à l'utilisateur, par exemple « Permettre à l'utilisateur de nettoyer le sol sans effort ». Une fonction technique est une action interne que l'objet doit réaliser pour assurer ce service, par exemple « Détecter les obstacles » ou « Aspirer la poussière ».",
+                "rubric": "1 pt : deux définitions justes (point de vue de l'utilisateur / action interne). 1 pt : deux exemples corrects tirés du robot (0,5 pt chacun)."
+              }
+            ]
+          },
+          {
+            "label": "B · J'exploite un document technique (10 points)",
+            "questions": [
+              {
+                "id": "q5",
+                "type": "short",
+                "points": 1,
+                "text_ref": "d1",
+                "lesson_part": 3,
+                "skills": [
+                  "te-fast",
+                  "te-document"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Quelle solution technique réalise la fonction « Stocker l'énergie électrique » ?",
+                "answer": [
+                  "batterie",
+                  "une batterie",
+                  "la batterie",
+                  "batterie lithium-ion",
+                  "une batterie lithium-ion",
+                  "la batterie lithium-ion",
+                  "batterie lithium-ion de 40 Wh",
+                  "accumulateur"
+                ],
+                "solution": "La batterie lithium-ion (de 40 Wh).",
+                "rubric": "1 pt : batterie."
+              },
+              {
+                "id": "q6",
+                "type": "qcm",
+                "points": 1,
+                "text_ref": "d1",
+                "lesson_part": 3,
+                "skills": [
+                  "te-fast",
+                  "te-document"
+                ],
+                "cognitive": "analyser",
+                "prompt": "Pourquoi le robot possède-t-il un pare-chocs à contact ?",
+                "options": [
+                  "Pour aspirer la poussière",
+                  "Pour stocker l'énergie",
+                  "Pour détecter les obstacles",
+                  "Pour retourner à la base"
+                ],
+                "answer": 2,
+                "solution": "En lisant le FAST de droite à gauche (« Pourquoi ? »), le pare-chocs réalise la FT3 « Détecter les obstacles ».",
+                "rubric": "1 pt : bonne réponse."
+              },
+              {
+                "id": "q7",
+                "type": "numeric",
+                "points": 2,
+                "text_ref": "d1",
+                "lesson_part": 4,
+                "skills": [
+                  "te-comparer",
+                  "te-document"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Quelle est l'autonomie du robot, en minutes, avec la batterie pleine ? (Réponds par un nombre.)",
+                "answer": 80,
+                "solution": "Autonomie = énergie stockée ÷ puissance = 40 Wh ÷ 30 W ≈ 1,33 h. 1,33 h × 60 = 80 minutes.",
+                "rubric": "2 pts : 80 minutes. (1 pt si le résultat est donné en heures, environ 1,33 h, sans conversion, ou si la méthode est juste mais le calcul faux.)"
+              },
+              {
+                "id": "q8",
+                "type": "numeric",
+                "points": 2,
+                "text_ref": "d1",
+                "lesson_part": 4,
+                "skills": [
+                  "te-comparer",
+                  "te-document"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Le robot fonctionne 2 heures par jour. Quelle énergie consomme-t-il chaque jour, en Wh ? (Réponds par un nombre.)",
+                "answer": 60,
+                "solution": "E = P × t = 30 W × 2 h = 60 Wh.",
+                "rubric": "2 pts : 60 Wh. (1 pt si la formule est juste mais le calcul faux.)"
+              },
+              {
+                "id": "q9",
+                "type": "open",
+                "points": 4,
+                "text_ref": "d1",
+                "lesson_part": 2,
+                "skills": [
+                  "te-comparer",
+                  "te-rediger",
+                  "te-document"
+                ],
+                "cognitive": "analyser",
+                "prompt": "Pour la fonction « Retourner à la base de recharge », compare les deux solutions du document à l'aide de trois critères. Puis choisis une solution pour un petit modèle d'entrée de gamme destiné à un studio, et justifie ton choix.",
+                "solution": "Critères : coût (infrarouge peu coûteux ; laser plus cher) ; efficacité des trajets (laser : carte du logement et trajets plus efficaces ; infrarouge : trajets moins optimisés) ; simplicité (infrarouge simple ; laser plus complexe, donc plus de composants). Choix pour un modèle d'entrée de gamme dans un studio : le guidage infrarouge, car le logement est petit (la base est vite retrouvée) et le prix doit rester bas. Un choix du laser est accepté s'il est bien justifié.",
+                "rubric": "2 pts : comparaison sur trois critères (coût, efficacité, simplicité/complexité), appuyée sur le document. 1 pt : choix clair. 1 pt : justification cohérente avec l'usage (entrée de gamme, petit logement). Tout choix bien argumenté est accepté."
+              }
+            ]
+          },
+          {
+            "label": "C · J'explique l'évolution d'un objet (5 points)",
+            "questions": [
+              {
+                "id": "q10",
+                "type": "open",
+                "points": 5,
+                "lesson_part": 5,
+                "skills": [
+                  "te-evolution",
+                  "te-rediger"
+                ],
+                "cognitive": "rediger",
+                "prompt": "Explique comment et pourquoi les objets qui servent à communiquer à distance ont évolué depuis le XIXe siècle. Cite au moins trois objets de cette lignée, indique une rupture technologique et donne au moins deux causes de cette évolution.",
+                "solution": "Pour répondre au besoin de communiquer à distance, on a utilisé le télégraphe (XIXe siècle), puis le téléphone fixe (brevet de Bell en 1876), d'abord à cadran puis à touches. En 1983 sont commercialisés les premiers téléphones mobiles, puis, à la fin des années 2000, les smartphones à écran tactile. Le passage du téléphone fixe relié par un fil au téléphone mobile qui communique par ondes radio est une rupture technologique (le principe change) ; le smartphone, qui est un véritable ordinateur de poche, en est une autre. Causes : le progrès technique (électronique, miniaturisation, batteries, réseaux numériques), les nouveaux besoins de la société (être joignable partout, envoyer des photos, accéder à Internet), le coût (production en grande série). Cette évolution a aussi des effets : nouveaux usages, mais déchets électroniques et extraction de métaux rares.",
+                "rubric": "1,5 pt : au moins trois objets de la lignée dans le bon ordre. 1 pt : une rupture technologique identifiée et expliquée (changement de principe). 2 pts : au moins deux causes justes (progrès technique, besoins de la société, coût, réglementation, environnement), 1 pt chacune. 0,5 pt : expression claire et vocabulaire technique."
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

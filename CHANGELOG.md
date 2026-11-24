@@ -112,3 +112,12 @@ Première version numérotée (déjà en ligne avant numérotation : socle, gén
   - Précision sur l'article 11 (référendum).
   - Nuance sur le « premier génocide du XXe siècle ».
   - Beaucoup plus de formulations acceptées dans les réponses courtes.
+
+## 0.10 — 24/11/2026
+- 5 nouveaux cours de 3e :
+  - Français : les subordonnées circonstancielles.
+  - Anglais : le prétérit simple et le prétérit en be + -ing.
+  - Histoire : la révolution russe et l'URSS de Staline.
+  - SVT : gènes, allèles et caractères.
+  - Technologie : fonctions, solutions techniques et évolution des objets.
+- Soit **22 cours de 3e générale** disponibles, couvrant toutes les matières principales et les deux LV2.

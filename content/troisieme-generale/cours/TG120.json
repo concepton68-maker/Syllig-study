@@ -1,0 +1,1155 @@
+{
+  "format": "syllig-course/1",
+  "code": "TG120",
+  "level": "troisieme-generale",
+  "subject": "SVT",
+  "chapter": "Le vivant et son évolution : génétique",
+  "title": "Gènes, allèles et caractères",
+  "skills": [
+    {
+      "id": "svt-caracteres",
+      "label": "Distinguer caractères de l'espèce et caractères individuels, héréditaires ou influencés par l'environnement"
+    },
+    {
+      "id": "svt-gene-allele",
+      "label": "Définir gène et allèle et expliquer l'origine des allèles"
+    },
+    {
+      "id": "svt-dominance",
+      "label": "Relier les deux allèles d'un individu à son caractère (dominant, récessif, codominant)"
+    },
+    {
+      "id": "svt-transmission",
+      "label": "Expliquer la transmission des allèles des parents aux enfants et calculer une probabilité simple"
+    },
+    {
+      "id": "svt-document",
+      "label": "Exploiter un document (arbre familial, tableau, expérience)"
+    },
+    {
+      "id": "svt-rediger",
+      "label": "Rédiger une explication scientifique"
+    }
+  ],
+  "lesson": {
+    "duration_min": 35,
+    "objectives": [
+      "distinguer les caractères héréditaires de ceux qui dépendent de l'environnement ;",
+      "définir un gène et un allèle ;",
+      "expliquer pourquoi chacun possède deux allèles de chaque gène et lequel « s'exprime » ;",
+      "comprendre comment les allèles sont transmis des parents aux enfants."
+    ],
+    "essential": "Un **gène** est une portion d'ADN qui gouverne un caractère héréditaire. Un même gène peut exister en plusieurs versions : les **allèles**, nés de **mutations**. Dans nos cellules, les chromosomes vont par paires : chaque gène y est donc présent en **deux exemplaires**, l'un venu du père, l'autre de la mère. Selon les allèles présents (**dominant**, **récessif** ou **codominants**), le caractère n'est pas le même. Enfin, beaucoup de caractères dépendent à la fois des gènes et de l'**environnement**.",
+    "parts": [
+      {
+        "title": "Des caractères héréditaires… ou pas",
+        "blocks": [
+          {
+            "type": "text",
+            "text": "Un **caractère** est un trait observable d'un être vivant : la couleur des yeux, le groupe sanguin, la forme du lobe de l'oreille, la taille… Certains caractères sont communs à tous les membres d'une **espèce** (chez l'être humain : marcher sur deux jambes, avoir cinq doigts à chaque main). D'autres varient d'un individu à l'autre : ce sont les **caractères individuels**."
+          },
+          {
+            "type": "table",
+            "caption": "D'où viennent nos caractères ?",
+            "columns": [
+              "Type de caractère",
+              "Exemples",
+              "Ce qui le détermine"
+            ],
+            "rows": [
+              [
+                "Héréditaire",
+                "Groupe sanguin, couleur naturelle des yeux, lobe de l'oreille attaché ou libre",
+                "Les **gènes** reçus des parents ; il peut être transmis aux enfants."
+              ],
+              [
+                "Acquis (dû à l'environnement)",
+                "Bronzage, cicatrice, muscles développés par le sport, langue parlée",
+                "Le mode de vie et le milieu ; il **n'est pas transmis** aux enfants."
+              ],
+              [
+                "Les deux à la fois",
+                "Taille adulte, masse, couleur de la peau",
+                "Les gènes **et** l'environnement (alimentation, soleil, activité…)."
+              ]
+            ]
+          },
+          {
+            "type": "callout",
+            "kind": "plus",
+            "title": "L'hortensia qui change de couleur",
+            "text": "Des boutures d'un même pied d'hortensia ont exactement la même information génétique. Pourtant, plantées dans un sol acide (où l'aluminium est disponible), elles donnent souvent des fleurs **bleues** ; dans un sol neutre ou calcaire, des fleurs **roses**. Même information génétique, environnement différent → caractère différent."
+          },
+          {
+            "type": "callout",
+            "kind": "retiens",
+            "text": "Les caractères d'un individu dépendent de ses **gènes**, mais aussi souvent de son **environnement**. Seuls les caractères héréditaires peuvent être transmis aux enfants : un bronzage ou des muscles ne se transmettent pas."
+          }
+        ],
+        "checkpoint": {
+          "variants": [
+            {
+              "prompt": "Lequel de ces caractères est héréditaire ?",
+              "options": [
+                "Un bronzage",
+                "Le groupe sanguin",
+                "Une cicatrice",
+                "La langue parlée"
+              ],
+              "answer": 1,
+              "hint": "Regarde la première ligne du tableau.",
+              "explanation": "Le groupe sanguin est déterminé par les gènes reçus des parents ; les trois autres dépendent du mode de vie."
+            },
+            {
+              "prompt": "Deux boutures d'un même hortensia donnent des fleurs de couleurs différentes. Pourquoi ?",
+              "options": [
+                "Elles n'ont pas les mêmes gènes",
+                "Elles sont plantées dans des sols différents",
+                "L'une des deux est malade",
+                "Elles n'ont pas le même âge"
+              ],
+              "answer": 1,
+              "hint": "Les boutures ont la même information génétique : qu'est-ce qui change ?",
+              "explanation": "Même information génétique, mais sols différents : la couleur des fleurs dépend ici de l'environnement."
+            },
+            {
+              "prompt": "Un sportif a développé ses muscles. Ses enfants naîtront-ils plus musclés grâce à cet entraînement ?",
+              "options": [
+                "Oui, car tous les caractères se transmettent",
+                "Oui, mais seulement les garçons",
+                "Non, car c'est un caractère acquis, qui ne se transmet pas",
+                "Non, car les muscles ne dépendent pas du corps"
+              ],
+              "answer": 2,
+              "hint": "Cherche « muscles » dans le tableau.",
+              "explanation": "Les muscles développés par le sport sont un caractère acquis : ils ne modifient pas les gènes et ne se transmettent pas."
+            }
+          ]
+        }
+      },
+      {
+        "title": "Un gène, plusieurs versions : les allèles",
+        "blocks": [
+          {
+            "type": "text",
+            "text": "Tu as vu dans le cours précédent qu'un **gène** est une portion d'ADN, située à un endroit précis d'un chromosome, qui porte l'information d'un caractère héréditaire. Tous les êtres humains possèdent les mêmes gènes, aux mêmes endroits des chromosomes. Alors pourquoi ne sommes-nous pas tous identiques ?"
+          },
+          {
+            "type": "callout",
+            "kind": "definition",
+            "title": "Allèle",
+            "text": "Un **allèle** est une **version** d'un gène. Les allèles d'un même gène occupent le même endroit sur le chromosome, mais leur séquence d'ADN est un peu différente. Ils donnent donc des versions différentes du caractère."
+          },
+          {
+            "type": "table",
+            "caption": "Exemple : le gène du groupe sanguin (système ABO), situé sur la paire de chromosomes n° 9",
+            "columns": [
+              "Allèle",
+              "Ce qu'il permet"
+            ],
+            "rows": [
+              [
+                "Allèle **A**",
+                "Fabriquer un marqueur A à la surface des globules rouges"
+              ],
+              [
+                "Allèle **B**",
+                "Fabriquer un marqueur B à la surface des globules rouges"
+              ],
+              [
+                "Allèle **O**",
+                "Ne fabriquer ni marqueur A ni marqueur B"
+              ]
+            ]
+          },
+          {
+            "type": "callout",
+            "kind": "definition",
+            "title": "Mutation",
+            "text": "Modification rare et le plus souvent accidentelle de la séquence de l'ADN. Une mutation peut créer un **nouvel allèle**. C'est l'origine de la diversité des allèles."
+          },
+          {
+            "type": "callout",
+            "kind": "retiens",
+            "text": "**Gène** = portion d'ADN qui gouverne un caractère (ex. : le gène du groupe sanguin). **Allèle** = une version de ce gène (ex. : A, B ou O). Les allèles apparaissent par **mutation**."
+          }
+        ],
+        "checkpoint": {
+          "variants": [
+            {
+              "prompt": "Qu'est-ce qu'un allèle ?",
+              "options": [
+                "Un chromosome entier",
+                "Une version d'un gène",
+                "Une cellule reproductrice",
+                "Un caractère acquis"
+              ],
+              "answer": 1,
+              "hint": "Relis l'encadré « Allèle ».",
+              "explanation": "Un allèle est une version d'un gène : par exemple A, B ou O pour le gène du groupe sanguin."
+            },
+            {
+              "prompt": "Comment apparaît un nouvel allèle ?",
+              "options": [
+                "Par une mutation de l'ADN",
+                "Par l'entraînement sportif",
+                "Par le bronzage",
+                "Par l'alimentation"
+              ],
+              "answer": 0,
+              "hint": "Cherche l'encadré qui parle de l'origine de la diversité des allèles.",
+              "explanation": "Une mutation modifie la séquence de l'ADN et peut créer un nouvel allèle."
+            },
+            {
+              "prompt": "Combien d'allèles différents existe-t-il pour le gène du groupe sanguin ABO, dans ce cours ?",
+              "options": [
+                "1",
+                "2",
+                "3",
+                "46"
+              ],
+              "answer": 2,
+              "hint": "Compte les lignes du tableau.",
+              "explanation": "Trois allèles : A, B et O."
+            }
+          ]
+        }
+      },
+      {
+        "title": "Deux allèles pour chaque gène : lequel s'exprime ?",
+        "blocks": [
+          {
+            "type": "text",
+            "text": "Nos chromosomes vont **par paires** : un chromosome de chaque paire vient du père, l'autre de la mère. Chaque gène est donc présent en **deux exemplaires** dans chaque cellule (sauf dans les gamètes). Ces deux exemplaires peuvent être deux allèles **identiques** ou deux allèles **différents**. On les note entre parenthèses, séparés par deux barres : par exemple (A//O)."
+          },
+          {
+            "type": "callout",
+            "kind": "definition",
+            "title": "Dominant, récessif, codominants",
+            "text": "Un allèle est **dominant** s'il s'exprime même quand il est présent en un seul exemplaire. Un allèle est **récessif** s'il ne s'exprime que s'il est présent en **deux exemplaires**. Deux allèles sont **codominants** s'ils s'expriment tous les deux en même temps."
+          },
+          {
+            "type": "table",
+            "caption": "Allèles et groupe sanguin (A et B sont dominants sur O ; A et B sont codominants)",
+            "columns": [
+              "Allèles de la personne",
+              "Marqueurs sur les globules rouges",
+              "Groupe sanguin"
+            ],
+            "rows": [
+              [
+                "(A//A) ou (A//O)",
+                "A",
+                "**A**"
+              ],
+              [
+                "(B//B) ou (B//O)",
+                "B",
+                "**B**"
+              ],
+              [
+                "(A//B)",
+                "A et B",
+                "**AB**"
+              ],
+              [
+                "(O//O)",
+                "aucun",
+                "**O**"
+              ]
+            ]
+          },
+          {
+            "type": "callout",
+            "kind": "methode",
+            "title": "Trouver le groupe sanguin à partir des allèles",
+            "text": "1. Je regarde s'il y a un allèle A et/ou un allèle B : ils s'expriment toujours.\n2. S'il y a A et B → groupe AB.\n3. S'il n'y a ni A ni B, c'est (O//O) → groupe O.\nAttention : une personne du groupe A peut cacher un allèle O !"
+          },
+          {
+            "type": "callout",
+            "kind": "retiens",
+            "text": "Chaque individu possède **deux allèles** de chaque gène. Le caractère dépend des deux allèles : un allèle **récessif** (comme O) ne s'exprime que s'il est présent en double."
+          }
+        ],
+        "checkpoint": {
+          "variants": [
+            {
+              "prompt": "Une personne possède les allèles (A//O). Quel est son groupe sanguin ?",
+              "options": [
+                "A",
+                "O",
+                "AB",
+                "On ne peut pas savoir"
+              ],
+              "answer": 0,
+              "hint": "L'allèle O est récessif : s'exprime-t-il ici ?",
+              "explanation": "A est dominant sur O : la personne est du groupe A, mais elle porte un allèle O caché."
+            },
+            {
+              "prompt": "Une personne est du groupe O. Quels sont ses allèles ?",
+              "options": [
+                "(A//O)",
+                "(O//O)",
+                "(B//O)",
+                "(A//B)"
+              ],
+              "answer": 1,
+              "hint": "Un allèle récessif ne s'exprime que s'il est présent en deux exemplaires.",
+              "explanation": "L'allèle O est récessif : pour être du groupe O, il faut deux allèles O."
+            },
+            {
+              "prompt": "Pourquoi possède-t-on deux allèles de chaque gène ?",
+              "options": [
+                "Parce que chaque gène est copié deux fois par erreur",
+                "Parce que les chromosomes vont par paires, l'un venant du père, l'autre de la mère",
+                "Parce que nous avons deux noyaux par cellule",
+                "Parce que l'environnement crée un deuxième allèle"
+              ],
+              "answer": 1,
+              "hint": "Relis le premier paragraphe de la partie.",
+              "explanation": "Les chromosomes vont par paires (un paternel, un maternel) : chaque gène est donc présent en deux exemplaires."
+            }
+          ]
+        }
+      },
+      {
+        "title": "Comment les allèles passent des parents aux enfants",
+        "blocks": [
+          {
+            "type": "text",
+            "text": "Les **gamètes** (spermatozoïdes et ovules) ne contiennent qu'**un chromosome de chaque paire** (23 chez l'être humain). Ils ne portent donc qu'**un seul allèle** de chaque gène. Lequel ? C'est le **hasard** : un parent (A//O) fabrique pour moitié des gamètes portant A et pour moitié des gamètes portant O."
+          },
+          {
+            "type": "text",
+            "text": "Lors de la **fécondation**, un spermatozoïde et un ovule s'unissent : l'enfant reçoit **un allèle de son père et un allèle de sa mère** pour chaque gène. On peut prévoir toutes les possibilités avec un **tableau de croisement**."
+          },
+          {
+            "type": "table",
+            "caption": "Tableau de croisement : père (A//O) × mère (B//O)",
+            "columns": [
+              "Gamètes",
+              "Ovule portant B (1/2)",
+              "Ovule portant O (1/2)"
+            ],
+            "rows": [
+              [
+                "Spermatozoïde portant A (1/2)",
+                "(A//B) → groupe AB",
+                "(A//O) → groupe A"
+              ],
+              [
+                "Spermatozoïde portant O (1/2)",
+                "(B//O) → groupe B",
+                "(O//O) → groupe O"
+              ]
+            ]
+          },
+          {
+            "type": "callout",
+            "kind": "methode",
+            "title": "Lire le tableau",
+            "text": "Les 4 cases ont la même chance de se produire : chacune correspond à **1 chance sur 4**, soit **25 %**. Ici, chaque enfant de ce couple a 25 % de chances d'être du groupe AB, 25 % A, 25 % B et 25 % O. Une probabilité ne prédit pas l'avenir : même avec 25 % de chances, deux frères peuvent avoir le même groupe."
+          },
+          {
+            "type": "callout",
+            "kind": "attention",
+            "text": "Deux parents du groupe A peuvent avoir un enfant du groupe O : c'est possible si les deux sont (A//O) et transmettent chacun leur allèle O."
+          },
+          {
+            "type": "callout",
+            "kind": "retiens",
+            "text": "Chaque parent transmet, **au hasard**, un seul de ses deux allèles. L'enfant a ainsi une combinaison d'allèles **nouvelle** : la moitié vient de son père, la moitié de sa mère."
+          }
+        ],
+        "checkpoint": {
+          "variants": [
+            {
+              "prompt": "Combien d'allèles d'un même gène un spermatozoïde contient-il ?",
+              "options": [
+                "Aucun",
+                "Un seul",
+                "Deux",
+                "Quatre"
+              ],
+              "answer": 1,
+              "hint": "Un gamète ne contient qu'un chromosome de chaque paire.",
+              "explanation": "Un gamète porte un seul chromosome de chaque paire, donc un seul allèle de chaque gène."
+            },
+            {
+              "prompt": "Dans le tableau de croisement (A//O) × (B//O), quelle est la probabilité qu'un enfant soit du groupe O ?",
+              "options": [
+                "0 %",
+                "25 %",
+                "50 %",
+                "100 %"
+              ],
+              "answer": 1,
+              "hint": "Compte les cases qui donnent le groupe O sur les 4 cases.",
+              "explanation": "Une case sur quatre donne (O//O) : 1 chance sur 4, soit 25 %."
+            },
+            {
+              "prompt": "Deux parents du groupe A ont un enfant du groupe O. Que peut-on en déduire ?",
+              "options": [
+                "C'est impossible",
+                "Les deux parents sont (A//A)",
+                "Les deux parents portent chacun un allèle O caché : ils sont (A//O)",
+                "L'enfant a subi une mutation au soleil"
+              ],
+              "answer": 2,
+              "hint": "Relis l'encadré « Attention ».",
+              "explanation": "Pour être (O//O), l'enfant a reçu un allèle O de chaque parent : les deux parents sont (A//O)."
+            }
+          ]
+        }
+      },
+      {
+        "title": "Du gène au caractère : l'exemple de l'albinisme",
+        "blocks": [
+          {
+            "type": "text",
+            "text": "Comment un gène agit-il ? L'information portée par un gène permet à la cellule de fabriquer une **protéine** précise. Ce sont les protéines qui « font » le caractère."
+          },
+          {
+            "type": "list",
+            "ordered": true,
+            "items": [
+              "Un gène porte l'information pour fabriquer une protéine qui permet de produire la **mélanine**, le pigment qui colore la peau, les cheveux et les yeux.",
+              "L'allèle habituel (noté **N**) permet de fabriquer une protéine qui fonctionne : il y a de la mélanine.",
+              "Une mutation a créé un autre allèle (noté **alb**) qui donne une protéine qui ne fonctionne pas.",
+              "L'allèle alb est **récessif** : une personne (N//alb) a une pigmentation normale. Seule une personne (alb//alb) ne fabrique pas de mélanine : elle est **albinos** (peau et cheveux très clairs, yeux très sensibles à la lumière)."
+            ]
+          },
+          {
+            "type": "callout",
+            "kind": "plus",
+            "text": "Il existe plusieurs formes d'albinisme, liées à différents gènes. Ici, on simplifie en ne considérant qu'un seul gène."
+          },
+          {
+            "type": "callout",
+            "kind": "essentiel",
+            "title": "Gènes + environnement = individu unique",
+            "text": "À part les vrais jumeaux, chaque être humain possède une combinaison d'allèles **unique**. Et même les vrais jumeaux, qui ont les mêmes allèles, ne sont pas parfaitement identiques : leur environnement (alimentation, sport, soleil, maladies…) modifie certains caractères."
+          },
+          {
+            "type": "callout",
+            "kind": "retiens",
+            "text": "Gène → protéine → caractère. Un allèle muté peut donner une protéine qui ne fonctionne pas et un caractère différent (ex. : albinisme)."
+          }
+        ],
+        "checkpoint": {
+          "variants": [
+            {
+              "prompt": "Une personne possède les allèles (N//alb). Est-elle albinos ?",
+              "options": [
+                "Oui, car elle a un allèle alb",
+                "Non, car l'allèle alb est récessif",
+                "Oui, à moitié",
+                "On ne peut pas savoir"
+              ],
+              "answer": 1,
+              "hint": "Un allèle récessif s'exprime seulement s'il est présent en…",
+              "explanation": "L'allèle alb est récessif : avec un seul exemplaire, la pigmentation est normale."
+            },
+            {
+              "prompt": "Quel est le bon enchaînement ?",
+              "options": [
+                "Caractère → gène → protéine",
+                "Protéine → caractère → gène",
+                "Gène → protéine → caractère",
+                "Gène → caractère → protéine"
+              ],
+              "answer": 2,
+              "hint": "Relis l'encadré « Retiens » de cette partie.",
+              "explanation": "Le gène permet de fabriquer une protéine, et la protéine détermine le caractère."
+            },
+            {
+              "prompt": "Pourquoi deux vrais jumeaux ne sont-ils pas parfaitement identiques ?",
+              "options": [
+                "Parce qu'ils n'ont pas les mêmes allèles",
+                "Parce que leur environnement et leur mode de vie modifient certains caractères",
+                "Parce qu'ils n'ont pas le même nombre de chromosomes",
+                "Parce qu'ils n'ont pas les mêmes parents"
+              ],
+              "answer": 1,
+              "hint": "Relis l'encadré « Gènes + environnement ».",
+              "explanation": "Les vrais jumeaux ont les mêmes allèles ; leurs différences viennent de l'environnement."
+            }
+          ]
+        }
+      }
+    ],
+    "memo": [
+      {
+        "label": "Caractères",
+        "text": "Caractères de l'espèce / caractères individuels. Héréditaires (gènes) ou acquis (environnement, non transmis) ; souvent les deux (taille). Exemple : l'hortensia bleu ou rose selon le sol."
+      },
+      {
+        "label": "Gène et allèle",
+        "text": "Gène = portion d'ADN qui gouverne un caractère. Allèle = version d'un gène (A, B, O pour le groupe sanguin). Les allèles naissent par mutation."
+      },
+      {
+        "label": "Deux allèles",
+        "text": "Chromosomes par paires → deux allèles de chaque gène, notés (A//O). Dominant : s'exprime seul. Récessif : s'exprime seulement en double. Codominants : s'expriment ensemble (A et B → AB)."
+      },
+      {
+        "label": "Transmission",
+        "text": "Un gamète = un seul allèle de chaque gène, choisi au hasard. L'enfant reçoit un allèle du père + un de la mère. Tableau de croisement : chaque case = 1 chance sur 4 (25 %)."
+      },
+      {
+        "label": "Gène → caractère",
+        "text": "Gène → protéine → caractère. Albinisme : allèle récessif alb, protéine non fonctionnelle, pas de mélanine si (alb//alb)."
+      }
+    ]
+  },
+  "exercises": {
+    "duration_min": 30,
+    "instructions": "Commence par les exercices ★ (je repère), puis ★★ (j'applique et j'analyse) et ★★★ (je raisonne et je rédige). Pour les tableaux de croisement, fais un brouillon : c'est la meilleure méthode. Courage, tu vas y arriver !",
+    "pass_threshold": 8,
+    "texts": [
+      {
+        "id": "t1",
+        "label": "Document · Des hortensias venus d'un même pied",
+        "source": "Document original écrit pour ce cours, à partir d'observations classiques de jardinage.",
+        "paragraphs": [
+          "Un jardinier prélève six boutures sur un même pied d'hortensia à fleurs roses. Toutes ont donc la même information génétique.",
+          "Il plante trois boutures dans un sol acide riche en aluminium (bac 1) et trois boutures dans un sol calcaire (bac 2). Les autres conditions (lumière, arrosage, température) sont identiques.",
+          "Résultat l'été suivant : les trois plants du bac 1 ont des fleurs bleues ; les trois plants du bac 2 ont des fleurs roses."
+        ]
+      }
+    ],
+    "items": [
+      {
+        "id": "ex1",
+        "type": "qcm",
+        "stars": 1,
+        "lesson_part": 2,
+        "skills": [
+          "svt-gene-allele"
+        ],
+        "cognitive": "connaitre",
+        "prompt": "Les allèles A, B et O sont…",
+        "options": [
+          "trois gènes différents",
+          "trois versions d'un même gène",
+          "trois chromosomes",
+          "trois caractères acquis"
+        ],
+        "answer": 1,
+        "solution": "A, B et O sont trois allèles, c'est-à-dire trois versions du gène du groupe sanguin."
+      },
+      {
+        "id": "ex2",
+        "type": "qcm",
+        "stars": 1,
+        "lesson_part": 1,
+        "skills": [
+          "svt-caracteres"
+        ],
+        "cognitive": "connaitre",
+        "prompt": "Lequel de ces caractères n'est PAS transmis aux enfants ?",
+        "options": [
+          "La couleur naturelle des yeux",
+          "Le groupe sanguin",
+          "Une cicatrice au genou",
+          "Le lobe de l'oreille attaché"
+        ],
+        "answer": 2,
+        "solution": "Une cicatrice est un caractère acquis : elle ne modifie pas les gènes et ne se transmet pas."
+      },
+      {
+        "id": "ex3",
+        "type": "numeric",
+        "stars": 1,
+        "lesson_part": 3,
+        "skills": [
+          "svt-gene-allele"
+        ],
+        "cognitive": "connaitre",
+        "prompt": "Combien d'exemplaires (allèles) du gène du groupe sanguin une cellule de peau contient-elle ?",
+        "answer": 2,
+        "solution": "2 : les chromosomes vont par paires, donc chaque gène est présent en deux exemplaires (identiques ou différents)."
+      },
+      {
+        "id": "ex4",
+        "type": "numeric",
+        "stars": 1,
+        "lesson_part": 4,
+        "skills": [
+          "svt-transmission"
+        ],
+        "cognitive": "connaitre",
+        "prompt": "Combien d'allèles du gène du groupe sanguin un ovule contient-il ?",
+        "answer": 1,
+        "solution": "1 seul : un gamète ne contient qu'un chromosome de chaque paire, donc un seul allèle de chaque gène."
+      },
+      {
+        "id": "ex5",
+        "type": "short",
+        "stars": 2,
+        "lesson_part": 3,
+        "skills": [
+          "svt-dominance"
+        ],
+        "cognitive": "appliquer",
+        "prompt": "Une personne possède les allèles (B//O). Quel est son groupe sanguin ?",
+        "answer": [
+          "B",
+          "groupe B",
+          "le groupe B",
+          "du groupe B",
+          "elle est du groupe B"
+        ],
+        "solution": "Groupe B : l'allèle B est dominant sur l'allèle O, qui est récessif."
+      },
+      {
+        "id": "ex6",
+        "type": "short",
+        "stars": 2,
+        "lesson_part": 3,
+        "skills": [
+          "svt-dominance"
+        ],
+        "cognitive": "appliquer",
+        "prompt": "Une personne possède les allèles (A//B). Quel est son groupe sanguin ?",
+        "answer": [
+          "AB",
+          "groupe AB",
+          "le groupe AB",
+          "du groupe AB",
+          "elle est du groupe AB",
+          "A B",
+          "A et B"
+        ],
+        "solution": "Groupe AB : les allèles A et B sont codominants, ils s'expriment tous les deux."
+      },
+      {
+        "id": "ex7",
+        "type": "qcm",
+        "stars": 2,
+        "text_ref": "t1",
+        "lesson_part": 1,
+        "skills": [
+          "svt-caracteres",
+          "svt-document"
+        ],
+        "cognitive": "analyser",
+        "prompt": "Que montre l'expérience du document ?",
+        "options": [
+          "La couleur des fleurs d'hortensia dépend seulement des gènes",
+          "La couleur des fleurs d'hortensia peut dépendre de l'environnement (le sol)",
+          "Les boutures du bac 1 ont subi une mutation",
+          "La lumière détermine la couleur des fleurs"
+        ],
+        "answer": 1,
+        "solution": "Les boutures ont la même information génétique et les mêmes conditions, sauf le sol. Seul le sol change, et la couleur change : ce caractère est influencé par l'environnement."
+      },
+      {
+        "id": "ex8",
+        "type": "numeric",
+        "stars": 2,
+        "lesson_part": 4,
+        "skills": [
+          "svt-transmission"
+        ],
+        "cognitive": "appliquer",
+        "prompt": "Un père (A//O) et une mère (O//O) attendent un enfant. Quelle est la probabilité, en pourcentage, que cet enfant soit du groupe O ? (Réponds par un nombre.)",
+        "answer": 50,
+        "solution": "La mère donne toujours O. Le père donne A (1 fois sur 2) ou O (1 fois sur 2). L'enfant est donc (A//O) → groupe A dans 50 % des cas, ou (O//O) → groupe O dans 50 % des cas."
+      },
+      {
+        "id": "ex9",
+        "type": "qcm",
+        "stars": 3,
+        "lesson_part": 4,
+        "skills": [
+          "svt-transmission",
+          "svt-dominance"
+        ],
+        "cognitive": "analyser",
+        "prompt": "Une mère est du groupe AB et un père du groupe O. Quel groupe sanguin leur enfant NE peut-il PAS avoir ?",
+        "options": [
+          "A",
+          "B",
+          "O",
+          "Il peut avoir n'importe quel groupe"
+        ],
+        "answer": 2,
+        "solution": "La mère (A//B) donne A ou B ; le père (O//O) donne O. L'enfant est (A//O) → groupe A, ou (B//O) → groupe B. Il ne peut pas être (O//O), donc pas du groupe O."
+      },
+      {
+        "id": "ex10",
+        "type": "open",
+        "stars": 3,
+        "lesson_part": 3,
+        "skills": [
+          "svt-gene-allele",
+          "svt-dominance",
+          "svt-rediger"
+        ],
+        "cognitive": "rediger",
+        "prompt": "En quatre ou cinq phrases, explique à un camarade la différence entre un gène et un allèle, puis pourquoi une personne du groupe A peut « cacher » un allèle O. Utilise les mots : gène, allèle, chromosome, dominant, récessif.",
+        "solution": "Un gène est une portion d'ADN, à un endroit précis d'un chromosome, qui gouverne un caractère, par exemple le groupe sanguin. Un allèle est une version de ce gène : pour le groupe sanguin, il existe les allèles A, B et O. Comme les chromosomes vont par paires, chacun possède deux allèles du gène. Une personne (A//O) est du groupe A, car l'allèle A est dominant : il s'exprime même en un seul exemplaire. L'allèle O est récessif : il est présent mais ne s'exprime pas, et cette personne peut le transmettre à ses enfants."
+      }
+    ]
+  },
+  "evaluation": {
+    "duration_min": 30,
+    "conditions": "Sans la leçon, en 30 minutes. Lis bien le document avant de répondre et fais un brouillon pour les tableaux de croisement. Barème : A = 6 points · B = 9 points · C = 5 points.",
+    "total_points": 20,
+    "variants": [
+      {
+        "texts": [
+          {
+            "id": "d1",
+            "label": "Document · Les groupes sanguins dans la famille de Nora",
+            "source": "Document original écrit pour ce cours (famille imaginaire).",
+            "paragraphs": [
+              "Le père de Nora, Karim, est du groupe A. Une analyse montre qu'il possède les allèles (A//O).",
+              "La mère de Nora, Claire, est du groupe B. Elle possède les allèles (B//O).",
+              "Nora est du groupe O. Son grand frère, Hugo, est du groupe AB.",
+              "Rappel : les allèles A et B sont dominants sur l'allèle O ; A et B sont codominants."
+            ]
+          }
+        ],
+        "sections": [
+          {
+            "label": "A · Je connais (6 points)",
+            "questions": [
+              {
+                "id": "q1",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 2,
+                "skills": [
+                  "svt-gene-allele"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Un allèle est…",
+                "options": [
+                  "une version d'un gène",
+                  "une paire de chromosomes",
+                  "une cellule reproductrice",
+                  "un caractère acquis"
+                ],
+                "answer": 0,
+                "solution": "Un allèle est une version d'un gène.",
+                "rubric": "1 pt : bonne réponse."
+              },
+              {
+                "id": "q2",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 1,
+                "skills": [
+                  "svt-caracteres"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Lequel de ces caractères dépend uniquement de l'environnement ?",
+                "options": [
+                  "Le groupe sanguin",
+                  "Le bronzage",
+                  "La couleur naturelle des yeux",
+                  "L'albinisme"
+                ],
+                "answer": 1,
+                "solution": "Le bronzage est un caractère acquis, dû à l'exposition au soleil.",
+                "rubric": "1 pt : bonne réponse."
+              },
+              {
+                "id": "q3",
+                "type": "numeric",
+                "points": 1,
+                "lesson_part": 4,
+                "skills": [
+                  "svt-transmission"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Combien d'allèles d'un même gène un spermatozoïde contient-il ?",
+                "answer": 1,
+                "solution": "Un seul : un gamète ne contient qu'un chromosome de chaque paire.",
+                "rubric": "1 pt : 1."
+              },
+              {
+                "id": "q4",
+                "type": "short",
+                "points": 1,
+                "lesson_part": 2,
+                "skills": [
+                  "svt-gene-allele"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Comment appelle-t-on la modification de la séquence de l'ADN qui peut créer un nouvel allèle ? (un mot)",
+                "answer": [
+                  "mutation",
+                  "une mutation",
+                  "mutations",
+                  "des mutations",
+                  "la mutation"
+                ],
+                "solution": "Une mutation.",
+                "rubric": "1 pt : mutation."
+              },
+              {
+                "id": "q5",
+                "type": "open",
+                "points": 2,
+                "lesson_part": 3,
+                "skills": [
+                  "svt-dominance"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Explique la différence entre un allèle dominant et un allèle récessif.",
+                "solution": "Un allèle dominant s'exprime même s'il est présent en un seul exemplaire (avec un autre allèle). Un allèle récessif ne s'exprime que s'il est présent en deux exemplaires.",
+                "rubric": "1 pt : dominant = s'exprime même en un seul exemplaire. 1 pt : récessif = ne s'exprime qu'en deux exemplaires."
+              }
+            ]
+          },
+          {
+            "label": "B · J'exploite un document et je raisonne (9 points)",
+            "questions": [
+              {
+                "id": "q6",
+                "type": "short",
+                "points": 1,
+                "text_ref": "d1",
+                "lesson_part": 3,
+                "skills": [
+                  "svt-dominance",
+                  "svt-document"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Quels sont les deux allèles de Nora ? (écris-les sous la forme (X//Y))",
+                "answer": [
+                  "(O//O)",
+                  "O//O",
+                  "O/O",
+                  "OO",
+                  "O O",
+                  "O et O",
+                  "deux allèles O",
+                  "2 allèles O"
+                ],
+                "solution": "(O//O) : l'allèle O est récessif, Nora ne peut être du groupe O que si elle possède deux allèles O.",
+                "rubric": "1 pt : (O//O)."
+              },
+              {
+                "id": "q7",
+                "type": "qcm",
+                "points": 1,
+                "text_ref": "d1",
+                "lesson_part": 4,
+                "skills": [
+                  "svt-transmission",
+                  "svt-document"
+                ],
+                "cognitive": "analyser",
+                "prompt": "Quel allèle Nora a-t-elle reçu de son père ?",
+                "options": [
+                  "A",
+                  "B",
+                  "O",
+                  "A et O"
+                ],
+                "answer": 2,
+                "solution": "Nora est (O//O) : elle a reçu un allèle O de chaque parent. Son père lui a donc transmis son allèle O.",
+                "rubric": "1 pt : bonne réponse."
+              },
+              {
+                "id": "q8",
+                "type": "open",
+                "points": 3,
+                "text_ref": "d1",
+                "lesson_part": 4,
+                "skills": [
+                  "svt-transmission",
+                  "svt-document",
+                  "svt-rediger"
+                ],
+                "cognitive": "analyser",
+                "prompt": "Explique comment des parents des groupes A et B peuvent avoir une fille du groupe O.",
+                "solution": "Chaque parent possède deux allèles mais n'en transmet qu'un seul, au hasard, par son gamète. Karim est (A//O) : il peut fabriquer des spermatozoïdes portant O. Claire est (B//O) : elle peut fabriquer des ovules portant O. Lors de la fécondation, si un spermatozoïde portant O rencontre un ovule portant O, l'enfant est (O//O). Comme O est récessif, et qu'il n'y a ni A ni B, Nora est du groupe O.",
+                "rubric": "1 pt : chaque parent porte un allèle O « caché » (A et B dominants sur O). 1 pt : chaque parent transmet un seul allèle au hasard par ses gamètes (spermatozoïde portant O, ovule portant O). 1 pt : conclusion (O//O) → groupe O, car O ne s'exprime qu'en double."
+              },
+              {
+                "id": "q9",
+                "type": "numeric",
+                "points": 2,
+                "text_ref": "d1",
+                "lesson_part": 4,
+                "skills": [
+                  "svt-transmission"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Karim et Claire attendent un troisième enfant. Quelle est la probabilité, en pourcentage, que cet enfant soit du groupe AB ? (Réponds par un nombre.)",
+                "answer": 25,
+                "solution": "Tableau de croisement (A//O) × (B//O) : 4 cases équiprobables, (A//B), (A//O), (B//O), (O//O). Une seule case donne AB : 1 chance sur 4, soit 25 %.",
+                "rubric": "2 pts : 25. (1 pt si le tableau de croisement est juste mais le calcul faux.)"
+              },
+              {
+                "id": "q10",
+                "type": "numeric",
+                "points": 2,
+                "text_ref": "d1",
+                "lesson_part": 4,
+                "skills": [
+                  "svt-transmission",
+                  "svt-dominance"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Combien de groupes sanguins différents les enfants de Karim et Claire peuvent-ils avoir ? (Réponds par un nombre.)",
+                "answer": 4,
+                "solution": "4 groupes : AB (A//B), A (A//O), B (B//O) et O (O//O).",
+                "rubric": "2 pts : 4."
+              }
+            ]
+          },
+          {
+            "label": "C · J'explique (5 points)",
+            "questions": [
+              {
+                "id": "q11",
+                "type": "open",
+                "points": 5,
+                "lesson_part": 5,
+                "skills": [
+                  "svt-caracteres",
+                  "svt-gene-allele",
+                  "svt-rediger"
+                ],
+                "cognitive": "rediger",
+                "prompt": "Un camarade affirme : « Les vrais jumeaux ont exactement les mêmes allèles, donc ils seront toujours parfaitement identiques, en tout. » Explique ce qui est juste et ce qui est faux dans cette phrase, en t'appuyant sur des exemples.",
+                "solution": "Ce qui est juste : les vrais jumeaux viennent du même œuf ; ils ont les mêmes chromosomes et donc les mêmes allèles. Leurs caractères héréditaires sont identiques : même groupe sanguin, même couleur naturelle des yeux. Ce qui est faux : beaucoup de caractères dépendent aussi de l'environnement. Si l'un fait beaucoup de sport, il sera plus musclé ; si l'un s'expose au soleil, il sera plus bronzé ; leur alimentation peut modifier leur masse. Une cicatrice ne touche que l'un des deux. Les caractères d'un individu résultent donc de ses gènes ET de son environnement : les vrais jumeaux ne sont pas parfaitement identiques.",
+                "rubric": "1,5 pt : partie juste expliquée (mêmes allèles → mêmes caractères héréditaires, avec un exemple). 2 pts : partie fausse expliquée (rôle de l'environnement) avec au moins deux exemples (sport, soleil, alimentation, cicatrice…). 1 pt : conclusion « gènes + environnement ». 0,5 pt : vocabulaire scientifique juste et phrases claires."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "texts": [
+          {
+            "id": "d1",
+            "label": "Document · L'albinisme dans la famille de Tom",
+            "source": "Document original écrit pour ce cours (famille imaginaire, modèle simplifié à un seul gène).",
+            "paragraphs": [
+              "Un gène gouverne la fabrication d'une protéine nécessaire à la production de mélanine, le pigment de la peau, des cheveux et des yeux.",
+              "Il existe deux allèles de ce gène : l'allèle N, qui donne une protéine qui fonctionne, et l'allèle alb, qui donne une protéine qui ne fonctionne pas. L'allèle alb est récessif.",
+              "Sami et Julie ont une pigmentation normale. Leur fils Tom est albinos. Leur fille Inès a une pigmentation normale."
+            ]
+          }
+        ],
+        "sections": [
+          {
+            "label": "A · Je connais (6 points)",
+            "questions": [
+              {
+                "id": "q1",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 2,
+                "skills": [
+                  "svt-gene-allele"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Un gène est…",
+                "options": [
+                  "une cellule du noyau",
+                  "une portion d'ADN qui gouverne un caractère héréditaire",
+                  "un caractère acquis",
+                  "une protéine de la peau"
+                ],
+                "answer": 1,
+                "solution": "Un gène est une portion d'ADN, à un endroit précis d'un chromosome, qui gouverne un caractère héréditaire.",
+                "rubric": "1 pt : bonne réponse."
+              },
+              {
+                "id": "q2",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 1,
+                "skills": [
+                  "svt-caracteres"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Lequel de ces caractères dépend à la fois des gènes et de l'environnement ?",
+                "options": [
+                  "Le groupe sanguin",
+                  "La taille adulte",
+                  "Une cicatrice",
+                  "La langue parlée"
+                ],
+                "answer": 1,
+                "solution": "La taille adulte dépend des gènes et de l'environnement (alimentation, santé…).",
+                "rubric": "1 pt : bonne réponse."
+              },
+              {
+                "id": "q3",
+                "type": "numeric",
+                "points": 1,
+                "lesson_part": 3,
+                "skills": [
+                  "svt-gene-allele"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Combien d'allèles d'un même gène une cellule de muscle contient-elle ?",
+                "answer": 2,
+                "solution": "Deux : les chromosomes vont par paires.",
+                "rubric": "1 pt : 2."
+              },
+              {
+                "id": "q4",
+                "type": "short",
+                "points": 1,
+                "lesson_part": 4,
+                "skills": [
+                  "svt-transmission"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Comment appelle-t-on la rencontre d'un spermatozoïde et d'un ovule ? (un mot)",
+                "answer": [
+                  "fécondation",
+                  "la fécondation",
+                  "une fécondation",
+                  "fecondation"
+                ],
+                "solution": "La fécondation.",
+                "rubric": "1 pt : fécondation."
+              },
+              {
+                "id": "q5",
+                "type": "open",
+                "points": 2,
+                "lesson_part": 4,
+                "skills": [
+                  "svt-transmission"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Explique pourquoi un enfant possède, pour chaque gène, un allèle venant de son père et un allèle venant de sa mère.",
+                "solution": "Chaque gamète ne contient qu'un chromosome de chaque paire, donc un seul allèle de chaque gène. Lors de la fécondation, le spermatozoïde du père et l'ovule de la mère s'unissent : l'enfant reçoit un allèle de chacun.",
+                "rubric": "1 pt : un gamète ne porte qu'un allèle de chaque gène. 1 pt : la fécondation réunit un allèle paternel et un allèle maternel."
+              }
+            ]
+          },
+          {
+            "label": "B · J'exploite un document et je raisonne (9 points)",
+            "questions": [
+              {
+                "id": "q6",
+                "type": "short",
+                "points": 1,
+                "text_ref": "d1",
+                "lesson_part": 5,
+                "skills": [
+                  "svt-dominance",
+                  "svt-document"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Quels sont les deux allèles de Tom ? (écris-les sous la forme (X//Y))",
+                "answer": [
+                  "(alb//alb)",
+                  "alb//alb",
+                  "alb/alb",
+                  "alb alb",
+                  "alb et alb",
+                  "deux allèles alb",
+                  "2 allèles alb"
+                ],
+                "solution": "(alb//alb) : l'allèle alb est récessif, Tom n'est albinos que s'il en possède deux.",
+                "rubric": "1 pt : (alb//alb)."
+              },
+              {
+                "id": "q7",
+                "type": "qcm",
+                "points": 1,
+                "text_ref": "d1",
+                "lesson_part": 4,
+                "skills": [
+                  "svt-transmission",
+                  "svt-document"
+                ],
+                "cognitive": "analyser",
+                "prompt": "Quels sont les allèles de Sami, le père ?",
+                "options": [
+                  "(N//N)",
+                  "(N//alb)",
+                  "(alb//alb)",
+                  "On ne peut pas savoir"
+                ],
+                "answer": 1,
+                "solution": "Sami a une pigmentation normale, il possède donc au moins un allèle N. Il a transmis un allèle alb à Tom : il est (N//alb).",
+                "rubric": "1 pt : bonne réponse."
+              },
+              {
+                "id": "q8",
+                "type": "open",
+                "points": 3,
+                "text_ref": "d1",
+                "lesson_part": 5,
+                "skills": [
+                  "svt-transmission",
+                  "svt-document",
+                  "svt-rediger"
+                ],
+                "cognitive": "analyser",
+                "prompt": "Explique comment deux parents à la pigmentation normale peuvent avoir un fils albinos.",
+                "solution": "Sami et Julie ont une pigmentation normale mais portent chacun un allèle alb « caché », car cet allèle est récessif : ils sont (N//alb). Chaque parent transmet un seul allèle, au hasard, par ses gamètes. Si un spermatozoïde portant alb rencontre un ovule portant alb lors de la fécondation, l'enfant est (alb//alb). Il ne fabrique alors pas de protéine fonctionnelle, donc pas de mélanine : Tom est albinos.",
+                "rubric": "1 pt : chaque parent porte un allèle alb caché (récessif) : (N//alb). 1 pt : chaque parent transmet un seul allèle au hasard par ses gamètes. 1 pt : conclusion (alb//alb) → pas de mélanine → albinisme."
+              },
+              {
+                "id": "q9",
+                "type": "numeric",
+                "points": 2,
+                "text_ref": "d1",
+                "lesson_part": 4,
+                "skills": [
+                  "svt-transmission"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Sami et Julie attendent un troisième enfant. Quelle est la probabilité, en pourcentage, qu'il soit albinos ? (Réponds par un nombre.)",
+                "answer": 25,
+                "solution": "Tableau de croisement (N//alb) × (N//alb) : 4 cases équiprobables, (N//N), (N//alb), (alb//N), (alb//alb). Une seule case donne un enfant albinos : 1 chance sur 4, soit 25 %.",
+                "rubric": "2 pts : 25. (1 pt si le tableau de croisement est juste mais le calcul faux.)"
+              },
+              {
+                "id": "q10",
+                "type": "numeric",
+                "points": 2,
+                "text_ref": "d1",
+                "lesson_part": 4,
+                "skills": [
+                  "svt-transmission",
+                  "svt-dominance"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Sur 100 enfants nés de couples (N//alb) × (N//alb), combien auraient en moyenne une pigmentation normale ? (Réponds par un nombre.)",
+                "answer": 75,
+                "solution": "Trois cases sur quatre contiennent au moins un allèle N : 3 chances sur 4, soit 75 % → environ 75 enfants sur 100.",
+                "rubric": "2 pts : 75."
+              }
+            ]
+          },
+          {
+            "label": "C · J'explique (5 points)",
+            "questions": [
+              {
+                "id": "q11",
+                "type": "open",
+                "points": 5,
+                "lesson_part": 4,
+                "skills": [
+                  "svt-caracteres",
+                  "svt-transmission",
+                  "svt-rediger"
+                ],
+                "cognitive": "rediger",
+                "prompt": "Une amie affirme : « Si je bronze beaucoup cet été, mes futurs enfants auront la peau plus foncée. Et deux parents du groupe O peuvent avoir un enfant du groupe A. » Explique-lui ses deux erreurs.",
+                "solution": "Première erreur : le bronzage est un caractère acquis, dû à l'environnement (le soleil). Il ne modifie pas les allèles contenus dans les gamètes, donc il n'est pas transmis aux enfants. Seuls les caractères héréditaires, portés par les gènes, se transmettent. Seconde erreur : deux parents du groupe O sont (O//O), car O est récessif. Leurs gamètes portent tous l'allèle O. Leurs enfants reçoivent donc un allèle O de chaque parent : ils sont tous (O//O), du groupe O. Un enfant du groupe A est impossible, car aucun parent ne possède d'allèle A.",
+                "rubric": "2 pts : bronzage = caractère acquis, non transmis car les gènes (allèles des gamètes) ne changent pas. 2 pts : parents (O//O) → gamètes O → enfants (O//O), groupe A impossible (pas d'allèle A). 1 pt : vocabulaire juste (allèle, récessif, gamète, héréditaire / acquis) et phrases claires."
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

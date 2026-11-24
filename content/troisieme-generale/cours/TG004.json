@@ -1,0 +1,1287 @@
+{
+  "format": "syllig-course/1",
+  "code": "TG004",
+  "level": "troisieme-generale",
+  "subject": "Français",
+  "chapter": "Bases de la langue (début d'année)",
+  "title": "Les subordonnées circonstancielles (temps, cause, conséquence, but, opposition, condition)",
+  "skills": [
+    {
+      "id": "fr-sub-reconnaitre",
+      "label": "Reconnaître et délimiter une subordonnée circonstancielle (la distinguer d'une relative ou d'une complétive)"
+    },
+    {
+      "id": "fr-sub-rapports",
+      "label": "Identifier le rapport logique : temps, cause, conséquence, but, opposition, condition"
+    },
+    {
+      "id": "fr-sub-modes",
+      "label": "Employer le bon mode après chaque conjonction de subordination"
+    },
+    {
+      "id": "fr-sub-analyser",
+      "label": "Analyser une subordonnée : mot subordonnant, rapport logique, fonction"
+    },
+    {
+      "id": "fr-sub-manipuler",
+      "label": "Transformer un groupe nominal en subordonnée de même sens"
+    },
+    {
+      "id": "fr-sub-rediger",
+      "label": "Employer des subordonnées circonstancielles variées dans un texte"
+    }
+  ],
+  "lesson": {
+    "duration_min": 40,
+    "objectives": [
+      "reconnaître une proposition subordonnée circonstancielle et la délimiter ;",
+      "identifier le rapport logique qu'elle exprime : temps, cause, conséquence, but, opposition, condition ;",
+      "employer le bon mode (indicatif, subjonctif, conditionnel) après chaque conjonction ;",
+      "analyser une subordonnée comme on l'attend au brevet : nature, mot subordonnant, rapport, fonction ;",
+      "utiliser des subordonnées variées pour enrichir ses rédactions."
+    ],
+    "essential": "Une **subordonnée circonstancielle** est une proposition introduite par une **conjonction de subordination** (*quand, parce que, pour que, bien que, si…*). Elle joue le rôle d'un **complément circonstanciel** du verbe de la principale : comme lui, on peut souvent la déplacer ou la supprimer. Elle précise une circonstance : le **temps**, la **cause**, la **conséquence**, le **but**, l'**opposition** ou la **condition**. Pour l'identifier, demande-toi toujours : « Quel lien logique y a-t-il entre les deux actions ? »",
+    "parts": [
+      {
+        "title": "Reconnaître une subordonnée circonstancielle",
+        "blocks": [
+          {
+            "type": "text",
+            "text": "Une **phrase complexe** contient plusieurs verbes conjugués, donc plusieurs **propositions**. Quand une proposition dépend d'une autre, on l'appelle **subordonnée** ; celle dont elle dépend est la **principale**."
+          },
+          {
+            "type": "text",
+            "text": "La subordonnée **circonstancielle** est introduite par une **conjonction de subordination** (*quand, si, comme, puisque…*) ou une **locution conjonctive** (*parce que, pour que, bien que, dès que…*). Elle a la fonction de **complément circonstanciel** (on dit aussi **complément de phrase**) du verbe de la principale.\n[**Quand la cloche sonna**], les élèves rangèrent leurs affaires.\n→ principale : *les élèves rangèrent leurs affaires* ; subordonnée : *Quand la cloche sonna*."
+          },
+          {
+            "type": "table",
+            "caption": "Même fonction, deux constructions",
+            "columns": [
+              "Groupe nominal complément circonstanciel",
+              "Subordonnée circonstancielle"
+            ],
+            "rows": [
+              [
+                "*Avant le dîner*, Léo prend sa douche.",
+                "*Avant que le dîner soit prêt*, Léo prend sa douche."
+              ],
+              [
+                "Le match est reporté *à cause de la pluie*.",
+                "Le match est reporté *parce qu'il pleut*."
+              ],
+              [
+                "*Malgré sa peur*, Nora est montée sur scène.",
+                "*Bien qu'elle ait peur*, Nora est montée sur scène."
+              ]
+            ]
+          },
+          {
+            "type": "callout",
+            "kind": "methode",
+            "title": "Le test du déplacement",
+            "text": "Comme un complément circonstanciel, la subordonnée circonstancielle se **déplace** et, le plus souvent, se **supprime** sans rendre la phrase incorrecte :\n*Les élèves rangèrent leurs affaires quand la cloche sonna.* ✔\n*Les élèves rangèrent leurs affaires.* ✔ (la phrase garde un sens)"
+          },
+          {
+            "type": "callout",
+            "kind": "attention",
+            "title": "Ne la confonds pas avec les autres subordonnées",
+            "text": "**Relative** : introduite par un pronom relatif (*qui, que, dont, où…*), elle complète un nom. *Le livre [que tu m'as prêté] est passionnant.*\n**Complétive** : introduite par *que*, elle est souvent COD du verbe ; on ne peut ni la déplacer ni la supprimer. *Je pense [que tu as raison].*\n**Circonstancielle** : introduite par une conjonction de subordination, elle est complément circonstanciel. *Je t'appelle [dès que j'arrive].*"
+          }
+        ],
+        "checkpoint": {
+          "variants": [
+            {
+              "prompt": "Dans quelle phrase y a-t-il une subordonnée circonstancielle ?",
+              "options": [
+                "Je crois que le train est en retard.",
+                "Le train que nous attendons est en retard.",
+                "Nous patientons sur le quai parce que le train est en retard.",
+                "Le train est en retard et nous patientons."
+              ],
+              "answer": 2,
+              "hint": "Cherche une conjonction de subordination qui exprime une circonstance (pourquoi ? quand ?).",
+              "explanation": "« parce que le train est en retard » est introduite par la locution conjonctive « parce que » et exprime la cause. La 1re phrase contient une complétive, la 2e une relative, la 4e deux propositions coordonnées par « et »."
+            },
+            {
+              "prompt": "« Lorsque la nuit tomba, les promeneurs rentrèrent. » Quelle est la fonction de « Lorsque la nuit tomba » ?",
+              "options": [
+                "COD du verbe « rentrèrent »",
+                "Complément circonstanciel de temps du verbe « rentrèrent »",
+                "Sujet du verbe « rentrèrent »",
+                "Complément du nom « promeneurs »"
+              ],
+              "answer": 1,
+              "hint": "Essaie de déplacer ou de supprimer la subordonnée. À quelle question répond-elle ?",
+              "explanation": "Elle répond à la question « quand ? », se déplace et se supprime : c'est un complément circonstanciel de temps du verbe « rentrèrent »."
+            },
+            {
+              "prompt": "Quel mot peut introduire une subordonnée circonstancielle ?",
+              "options": [
+                "qui",
+                "dont",
+                "puisque",
+                "mais"
+              ],
+              "answer": 2,
+              "hint": "Relis la différence entre pronom relatif, conjonction de coordination et conjonction de subordination.",
+              "explanation": "« puisque » est une conjonction de subordination (cause). « qui » et « dont » sont des pronoms relatifs ; « mais » est une conjonction de coordination."
+            }
+          ]
+        }
+      },
+      {
+        "title": "Le temps et la cause",
+        "blocks": [
+          {
+            "type": "heading",
+            "text": "Le temps : quand l'action se passe-t-elle ?"
+          },
+          {
+            "type": "text",
+            "text": "La subordonnée de temps situe l'action de la principale **par rapport** à celle de la subordonnée : en même temps, après ou avant."
+          },
+          {
+            "type": "table",
+            "columns": [
+              "Conjonctions",
+              "Sens",
+              "Exemple",
+              "Mode"
+            ],
+            "rows": [
+              [
+                "quand, lorsque, pendant que, tandis que, alors que, chaque fois que",
+                "les deux actions ont lieu **en même temps**",
+                "*Pendant que Hugo cuisinait, sa sœur mettait la table.*",
+                "indicatif"
+              ],
+              [
+                "après que, dès que, aussitôt que, une fois que, depuis que",
+                "l'action de la subordonnée a lieu **avant** celle de la principale",
+                "*Dès que le soleil se leva, ils reprirent la route.*",
+                "indicatif"
+              ],
+              [
+                "avant que, jusqu'à ce que, en attendant que",
+                "l'action de la subordonnée a lieu **après** celle de la principale",
+                "*Rentre avant qu'il fasse nuit.*",
+                "**subjonctif**"
+              ]
+            ]
+          },
+          {
+            "type": "callout",
+            "kind": "attention",
+            "title": "Après que + indicatif, avant que + subjonctif",
+            "text": "Après *après que*, l'action est réelle, accomplie : on emploie l'**indicatif**.\n*Après qu'il a terminé ses devoirs, Tom sort jouer.* ✔ — *Après qu'il ait terminé* ✘ (faute fréquente)\nAprès *avant que*, l'action n'a pas encore eu lieu : on emploie le **subjonctif**, parfois avec un *ne* qui n'a pas de sens négatif (*ne* explétif).\n*Range ta chambre avant que tes amis (n')arrivent.*"
+          },
+          {
+            "type": "heading",
+            "text": "La cause : pourquoi ?"
+          },
+          {
+            "type": "table",
+            "columns": [
+              "Conjonctions",
+              "Nuance",
+              "Exemple"
+            ],
+            "rows": [
+              [
+                "parce que",
+                "explique la cause, répond à « pourquoi ? »",
+                "*Le match est annulé parce que le terrain est inondé.*"
+              ],
+              [
+                "puisque",
+                "cause connue de tous, évidente",
+                "*Puisque tu as fini, tu peux sortir.*"
+              ],
+              [
+                "comme",
+                "cause placée en tête de phrase",
+                "*Comme il faisait beau, nous avons déjeuné dehors.*"
+              ],
+              [
+                "étant donné que, vu que",
+                "cause présentée comme un fait",
+                "*Vu que la route est coupée, nous ferons un détour.*"
+              ],
+              [
+                "sous prétexte que",
+                "cause contestée, peut-être fausse",
+                "*Il refuse de venir sous prétexte qu'il est fatigué.*"
+              ]
+            ]
+          },
+          {
+            "type": "callout",
+            "kind": "retiens",
+            "title": "Le mode",
+            "text": "Les subordonnées de cause sont à l'**indicatif** : la cause est présentée comme un fait réel."
+          },
+          {
+            "type": "callout",
+            "kind": "plus",
+            "title": "Un mot, plusieurs sens",
+            "text": "*Comme* n'exprime pas toujours la cause : *Comme j'arrivais, il partait* (temps) ; *Il chante comme son père* (comparaison). C'est **le sens** qui décide, pas seulement le mot."
+          }
+        ],
+        "checkpoint": {
+          "variants": [
+            {
+              "prompt": "« Puisque tu connais la réponse, explique-la à ton voisin. » Quel rapport exprime la subordonnée ?",
+              "options": [
+                "La cause",
+                "Le temps",
+                "Le but",
+                "La condition"
+              ],
+              "answer": 0,
+              "hint": "Relis le tableau de la cause : quelle nuance a « puisque » ?",
+              "explanation": "« Puisque » introduit une cause connue, évidente : c'est parce que tu connais la réponse que tu peux l'expliquer."
+            },
+            {
+              "prompt": "Quelle phrase est correcte selon la norme ?",
+              "options": [
+                "Après qu'il est parti, la maison est devenue silencieuse.",
+                "Après qu'il soit parti, la maison est devenue silencieuse.",
+                "Avant qu'il part, il nous a salués.",
+                "Avant qu'il est parti, il nous a salués."
+              ],
+              "answer": 0,
+              "hint": "Relis l'encadré « Après que + indicatif, avant que + subjonctif ».",
+              "explanation": "« après que » est suivi de l'indicatif (il est parti) ; « avant que » demanderait le subjonctif (avant qu'il parte)."
+            },
+            {
+              "prompt": "« Dès que la pluie cessa, les enfants sortirent dans la cour. » Quel rapport exprime la subordonnée ?",
+              "options": [
+                "Le temps",
+                "La cause",
+                "L'opposition",
+                "La conséquence"
+              ],
+              "answer": 0,
+              "hint": "« Dès que » répond à quelle question : quand ? pourquoi ?",
+              "explanation": "« Dès que » situe l'action dans le temps : les enfants sortent juste après la fin de la pluie."
+            }
+          ]
+        }
+      },
+      {
+        "title": "La conséquence et le but",
+        "blocks": [
+          {
+            "type": "text",
+            "text": "Ces deux rapports se ressemblent, car ils regardent tous les deux vers « la suite ». Mais la **conséquence** est un **résultat réel**, qui s'est produit ou se produira ; le **but** est une **intention**, un résultat voulu, pas forcément atteint."
+          },
+          {
+            "type": "table",
+            "columns": [
+              "Rapport",
+              "Conjonctions",
+              "Exemple",
+              "Mode"
+            ],
+            "rows": [
+              [
+                "Conséquence (résultat)",
+                "si bien que, de sorte que, au point que ; si… que, tellement… que, tant… que",
+                "*Il a plu toute la nuit, si bien que la rivière a débordé.*\n*Le film était si drôle que nous avons ri aux larmes.*",
+                "indicatif"
+              ],
+              [
+                "But (intention)",
+                "pour que, afin que ; de peur que, de crainte que (but à éviter)",
+                "*Je parle lentement pour que tout le monde comprenne.*\n*Elle ferme la fenêtre de peur que le chat (ne) s'échappe.*",
+                "**subjonctif**"
+              ]
+            ]
+          },
+          {
+            "type": "callout",
+            "kind": "methode",
+            "title": "Conséquence ou but ? Deux tests",
+            "text": "1. **Le sens** : peux-tu dire « avec l'intention que… » ? Si oui, c'est un but.\n2. **Le mode** : indicatif → plutôt une conséquence ; subjonctif → plutôt un but.\n*Il crie, si bien que le bébé se réveille.* (résultat réel, indicatif → conséquence)\n*Il chuchote pour que le bébé ne se réveille pas.* (intention, subjonctif → but)"
+          },
+          {
+            "type": "callout",
+            "kind": "attention",
+            "title": "Les tournures en deux morceaux",
+            "text": "Avec *si… que, tellement… que, tant… que*, le premier mot (*si, tellement, tant*) se trouve dans la principale ; la subordonnée commence à **que**.\n*Le vent soufflait **si** fort [**que** les arbres pliaient].*"
+          },
+          {
+            "type": "callout",
+            "kind": "plus",
+            "title": "De sorte que : deux rapports possibles",
+            "text": "+ indicatif = conséquence : *Il a crié de sorte que tout le monde l'a entendu.*\n+ subjonctif = but : *Parle de sorte que tout le monde t'entende.*"
+          }
+        ],
+        "checkpoint": {
+          "variants": [
+            {
+              "prompt": "« Je t'écris pour que tu ne m'oublies pas. » Quel rapport exprime la subordonnée ?",
+              "options": [
+                "La conséquence",
+                "Le but",
+                "La cause",
+                "Le temps"
+              ],
+              "answer": 1,
+              "hint": "Y a-t-il une intention ? Regarde aussi le mode du verbe « oublies ».",
+              "explanation": "« pour que » exprime le but, c'est-à-dire une intention ; le verbe est au subjonctif."
+            },
+            {
+              "prompt": "« Il était si fatigué qu'il s'endormit en classe. » Quel rapport exprime la subordonnée ?",
+              "options": [
+                "Le but",
+                "La conséquence",
+                "La condition",
+                "L'opposition"
+              ],
+              "answer": 1,
+              "hint": "Relis l'encadré sur les tournures en deux morceaux.",
+              "explanation": "« si… que » exprime la conséquence : s'endormir est le résultat réel de sa fatigue (indicatif)."
+            },
+            {
+              "prompt": "Quel mode suit la locution « afin que » ?",
+              "options": [
+                "L'indicatif",
+                "Le subjonctif",
+                "Le conditionnel",
+                "L'impératif"
+              ],
+              "answer": 1,
+              "hint": "« afin que » exprime-t-il un résultat réel ou une intention ?",
+              "explanation": "« afin que » exprime le but, une intention : il est suivi du subjonctif (afin que tu comprennes)."
+            }
+          ]
+        }
+      },
+      {
+        "title": "L'opposition et la condition",
+        "blocks": [
+          {
+            "type": "heading",
+            "text": "L'opposition (ou concession)"
+          },
+          {
+            "type": "text",
+            "text": "L'**opposition** met deux faits en contraste. La **concession** est une forme d'opposition : un fait aurait dû en empêcher un autre… mais ne l'a pas empêché. Au brevet, on parle souvent d'« opposition » pour les deux."
+          },
+          {
+            "type": "table",
+            "columns": [
+              "Conjonctions",
+              "Exemple",
+              "Mode"
+            ],
+            "rows": [
+              [
+                "bien que, quoique (concession)",
+                "*Bien qu'il soit enrhumé, Malik est venu au match.*",
+                "**subjonctif**"
+              ],
+              [
+                "alors que, tandis que (opposition)",
+                "*Mon frère adore la mer, alors que je préfère la montagne.*",
+                "indicatif"
+              ],
+              [
+                "même si",
+                "*Même s'il pleut, nous irons marcher.*",
+                "indicatif"
+              ]
+            ]
+          },
+          {
+            "type": "heading",
+            "text": "La condition : à quelle condition ?"
+          },
+          {
+            "type": "table",
+            "columns": [
+              "Conjonctions",
+              "Exemple",
+              "Mode"
+            ],
+            "rows": [
+              [
+                "si",
+                "*Si tu viens samedi, nous ferons un gâteau.*",
+                "indicatif"
+              ],
+              [
+                "à condition que, pourvu que, à moins que",
+                "*Tu pourras sortir à condition que tu sois rentré à 19 h.*",
+                "**subjonctif**"
+              ],
+              [
+                "au cas où",
+                "*Prends un parapluie au cas où il pleuvrait.*",
+                "conditionnel"
+              ]
+            ]
+          },
+          {
+            "type": "callout",
+            "kind": "attention",
+            "title": "Jamais de conditionnel après « si »",
+            "text": "Le conditionnel se met dans la **principale**, pas après *si*.\n*si* + présent → futur : *Si tu révises, tu réussiras.*\n*si* + imparfait → conditionnel présent : *Si tu révisais, tu réussirais.*\n*si* + plus-que-parfait → conditionnel passé : *Si tu avais révisé, tu aurais réussi.*\n*Si j'aurais su* ✘ → *Si j'avais su* ✔"
+          },
+          {
+            "type": "callout",
+            "kind": "attention",
+            "title": "Tous les « si » ne sont pas des conditions",
+            "text": "*Je me demande si elle viendra* : la subordonnée est COD de « me demande » (interrogative indirecte), ce n'est pas une circonstancielle.\n*Il est si gentil que tout le monde l'aime* : « si… que » exprime la conséquence."
+          }
+        ],
+        "checkpoint": {
+          "variants": [
+            {
+              "prompt": "« Bien que la route soit longue, nous arriverons à l'heure. » Quel rapport exprime la subordonnée ?",
+              "options": [
+                "La cause",
+                "L'opposition (concession)",
+                "Le but",
+                "Le temps"
+              ],
+              "answer": 1,
+              "hint": "La longueur de la route aurait-elle dû nous retarder ?",
+              "explanation": "« bien que » exprime la concession : la route est longue, et pourtant nous arriverons à l'heure. Le verbe est au subjonctif."
+            },
+            {
+              "prompt": "Complète : « Si j'avais un chien, je le ___ tous les soirs. »",
+              "options": [
+                "promènerai",
+                "promènerais",
+                "promène",
+                "promenais"
+              ],
+              "answer": 1,
+              "hint": "Relis l'encadré : si + imparfait → … ?",
+              "explanation": "si + imparfait → conditionnel présent dans la principale : je le promènerais."
+            },
+            {
+              "prompt": "Quel mode suit la locution « à moins que » ?",
+              "options": [
+                "L'indicatif",
+                "Le conditionnel",
+                "Le subjonctif",
+                "L'infinitif"
+              ],
+              "answer": 2,
+              "hint": "Regarde le tableau de la condition : « à moins que » est dans la même ligne que « à condition que ».",
+              "explanation": "« à moins que » est suivi du subjonctif : Nous irons à la plage, à moins qu'il (ne) pleuve."
+            }
+          ]
+        }
+      },
+      {
+        "title": "Méthode : analyser une subordonnée au brevet",
+        "blocks": [
+          {
+            "type": "text",
+            "text": "Au brevet, on te demande souvent d'**identifier** et d'**analyser** une proposition. Voici la démarche, étape par étape."
+          },
+          {
+            "type": "list",
+            "ordered": true,
+            "items": [
+              "Repère les **verbes conjugués** : chaque verbe conjugué correspond à une proposition.",
+              "Trouve le **mot subordonnant** (conjonction ou locution conjonctive de subordination).",
+              "**Délimite** la subordonnée : du mot subordonnant jusqu'à la fin des mots qui dépendent de son verbe.",
+              "Identifie le **rapport logique** grâce au **sens** (attention à *comme, si, tandis que, alors que*, qui ont plusieurs sens).",
+              "Donne la **fonction** : complément circonstanciel de [temps, cause…] du verbe de la principale.",
+              "Si on te le demande, justifie le **mode** du verbe."
+            ]
+          },
+          {
+            "type": "callout",
+            "kind": "methode",
+            "title": "Modèle de réponse",
+            "text": "« Comme il faisait beau, nous avons déjeuné dans le jardin. »\n→ *Comme il faisait beau* est une **proposition subordonnée conjonctive circonstancielle de cause**, introduite par la conjonction de subordination *comme*. Elle est **complément circonstanciel de cause** du verbe *avons déjeuné*. Son verbe est à l'indicatif, car la cause est un fait réel."
+          },
+          {
+            "type": "table",
+            "caption": "Récapitulatif des modes",
+            "columns": [
+              "Mode",
+              "Conjonctions"
+            ],
+            "rows": [
+              [
+                "Indicatif",
+                "quand, lorsque, pendant que, dès que, après que… ; parce que, puisque, comme, vu que… ; si bien que, si… que, tellement… que… ; alors que, tandis que, même si ; si"
+              ],
+              [
+                "Subjonctif",
+                "avant que, jusqu'à ce que, en attendant que ; pour que, afin que, de peur que ; bien que, quoique ; à condition que, pourvu que, à moins que"
+              ],
+              [
+                "Conditionnel",
+                "au cas où"
+              ]
+            ]
+          },
+          {
+            "type": "callout",
+            "kind": "plus",
+            "title": "Varier son style en rédaction",
+            "text": "On peut aussi exprimer ces rapports sans subordonnée : un groupe nominal (*à cause de la pluie, malgré la fatigue*), un infinitif (*pour réussir*), un gérondif (*en travaillant*), une conjonction de coordination (*car, donc, mais*) ou un adverbe (*pourtant, ensuite*). Alterner ces tournures rend un texte plus vivant."
+          }
+        ],
+        "checkpoint": {
+          "variants": [
+            {
+              "prompt": "« Tandis que le gâteau cuisait, nous rangions la cuisine. » Quel rapport exprime ici « tandis que » ?",
+              "options": [
+                "Le temps (simultanéité)",
+                "L'opposition",
+                "La cause",
+                "Le but"
+              ],
+              "answer": 0,
+              "hint": "Les deux actions s'opposent-elles, ou se déroulent-elles en même temps ?",
+              "explanation": "Les deux actions se déroulent en même temps, sans contraste entre elles : « tandis que » exprime ici le temps."
+            },
+            {
+              "prompt": "« Lou a mangé une pomme parce qu'elle avait faim. » Quelle analyse de « parce qu'elle avait faim » est correcte ?",
+              "options": [
+                "Subordonnée relative, complément du nom « pomme »",
+                "Subordonnée circonstancielle de cause, complément circonstanciel de cause de « a mangé »",
+                "Subordonnée complétive, COD de « a mangé »",
+                "Proposition indépendante coordonnée"
+              ],
+              "answer": 1,
+              "hint": "Quel est le mot subordonnant ? À quelle question la subordonnée répond-elle ?",
+              "explanation": "Elle est introduite par la locution conjonctive « parce que » et répond à « pourquoi ? » : subordonnée circonstancielle de cause, complément circonstanciel de cause du verbe « a mangé »."
+            },
+            {
+              "prompt": "Combien y a-t-il de propositions dans « Si tu veux, je t'aiderai dès que j'aurai fini » ?",
+              "options": [
+                "Une",
+                "Deux",
+                "Trois",
+                "Quatre"
+              ],
+              "answer": 2,
+              "hint": "Compte les verbes conjugués.",
+              "explanation": "Trois verbes conjugués (veux, aiderai, aurai fini) : une principale (je t'aiderai) et deux subordonnées circonstancielles (condition et temps)."
+            }
+          ]
+        }
+      }
+    ],
+    "memo": [
+      {
+        "label": "Définition",
+        "text": "Proposition introduite par une conjonction de subordination, complément circonstanciel du verbe de la principale. On peut la déplacer et souvent la supprimer."
+      },
+      {
+        "label": "Temps",
+        "text": "quand, lorsque, pendant que, dès que, après que (+ indicatif) ; avant que, jusqu'à ce que (+ subjonctif)."
+      },
+      {
+        "label": "Cause",
+        "text": "parce que, puisque, comme, vu que, étant donné que, sous prétexte que (+ indicatif)."
+      },
+      {
+        "label": "Conséquence / but",
+        "text": "Conséquence = résultat réel : si bien que, si… que, tellement… que (+ indicatif). But = intention : pour que, afin que, de peur que (+ subjonctif)."
+      },
+      {
+        "label": "Opposition",
+        "text": "bien que, quoique (+ subjonctif) ; alors que, tandis que, même si (+ indicatif)."
+      },
+      {
+        "label": "Condition",
+        "text": "si (+ indicatif, jamais de conditionnel après si) ; à condition que, à moins que, pourvu que (+ subjonctif) ; au cas où (+ conditionnel)."
+      },
+      {
+        "label": "Analyser",
+        "text": "Mot subordonnant → délimitation → rapport logique (par le sens) → fonction : complément circonstanciel de … du verbe « … »."
+      }
+    ]
+  },
+  "exercises": {
+    "duration_min": 25,
+    "instructions": "Fais les exercices dans l'ordre : les étoiles indiquent la difficulté. Quand on te demande un rapport logique, un seul mot suffit (temps, cause, conséquence, but, opposition, condition). Quand il faut conjuguer, écris seulement la forme verbale. Les corrigés s'affichent après ta réponse.",
+    "pass_threshold": 8,
+    "texts": [],
+    "items": [
+      {
+        "id": "ex1",
+        "type": "qcm",
+        "stars": 1,
+        "lesson_part": 1,
+        "skills": [
+          "fr-sub-reconnaitre"
+        ],
+        "cognitive": "connaitre",
+        "prompt": "Quelle phrase contient une proposition subordonnée circonstancielle ?",
+        "options": [
+          "Le gâteau que tu as préparé est délicieux.",
+          "J'espère que tu viendras.",
+          "Quand tu viendras, apporte ta guitare.",
+          "Viens et apporte ta guitare."
+        ],
+        "answer": 2,
+        "solution": "« Quand tu viendras » est introduite par la conjonction de subordination « quand » et exprime le temps. La 1re phrase contient une relative (« que tu as préparé »), la 2e une complétive (« que tu viendras »), la 4e deux propositions coordonnées par « et »."
+      },
+      {
+        "id": "ex2",
+        "type": "short",
+        "stars": 1,
+        "lesson_part": 1,
+        "skills": [
+          "fr-sub-reconnaitre"
+        ],
+        "cognitive": "connaitre",
+        "prompt": "« Les spectateurs se levèrent dès que le rideau tomba. » Recopie la locution conjonctive de subordination.",
+        "answer": [
+          "dès que",
+          "des que"
+        ],
+        "solution": "dès que : cette locution introduit la subordonnée « dès que le rideau tomba » (rapport de temps)."
+      },
+      {
+        "id": "ex3",
+        "type": "qcm",
+        "stars": 1,
+        "lesson_part": 2,
+        "skills": [
+          "fr-sub-rapports"
+        ],
+        "cognitive": "analyser",
+        "prompt": "« Comme le bus était en retard, nous sommes arrivés après la sonnerie. » Quel rapport exprime la subordonnée ?",
+        "options": [
+          "Le temps",
+          "La cause",
+          "La comparaison",
+          "Le but"
+        ],
+        "answer": 1,
+        "solution": "La cause : le retard du bus explique pourquoi nous sommes arrivés après la sonnerie. « Comme » placé en tête de phrase exprime souvent la cause."
+      },
+      {
+        "id": "ex4",
+        "type": "qcm",
+        "stars": 1,
+        "lesson_part": 4,
+        "skills": [
+          "fr-sub-modes"
+        ],
+        "cognitive": "connaitre",
+        "prompt": "Quel mode suit la locution « bien que » ?",
+        "options": [
+          "L'indicatif",
+          "Le conditionnel",
+          "Le subjonctif",
+          "L'impératif"
+        ],
+        "answer": 2,
+        "solution": "Le subjonctif : « Bien qu'il soit tard, je continue à lire. »"
+      },
+      {
+        "id": "ex5",
+        "type": "short",
+        "stars": 2,
+        "lesson_part": 3,
+        "skills": [
+          "fr-sub-rapports"
+        ],
+        "cognitive": "analyser",
+        "prompt": "« Le vent soufflait si fort que les arbres pliaient. » Quel rapport logique exprime la subordonnée ? (un mot)",
+        "answer": [
+          "conséquence",
+          "la conséquence",
+          "une conséquence",
+          "rapport de conséquence",
+          "subordonnée de conséquence",
+          "subordonnée circonstancielle de conséquence",
+          "proposition subordonnée circonstancielle de conséquence",
+          "complément circonstanciel de conséquence",
+          "consecutive",
+          "consécutive"
+        ],
+        "solution": "La conséquence : les arbres pliaient, c'est le résultat réel de la force du vent. On reconnaît la tournure « si… que », avec un verbe à l'indicatif."
+      },
+      {
+        "id": "ex6",
+        "type": "qcm",
+        "stars": 2,
+        "lesson_part": 3,
+        "skills": [
+          "fr-sub-rapports"
+        ],
+        "cognitive": "analyser",
+        "prompt": "« Mia baisse le volume afin que son petit frère puisse dormir. » Quel rapport exprime la subordonnée ?",
+        "options": [
+          "La conséquence",
+          "Le but",
+          "La cause",
+          "La condition"
+        ],
+        "answer": 1,
+        "solution": "Le but : Mia agit avec une intention (que son frère dorme). « afin que » est suivi du subjonctif (puisse)."
+      },
+      {
+        "id": "ex7",
+        "type": "short",
+        "stars": 2,
+        "lesson_part": 2,
+        "skills": [
+          "fr-sub-modes"
+        ],
+        "cognitive": "appliquer",
+        "prompt": "Écris le verbe entre parenthèses au mode et au temps qui conviennent (seulement le verbe) : « Range ta chambre avant que tes grands-parents (arriver). »",
+        "answer": [
+          "arrivent",
+          "n'arrivent",
+          "n’arrivent",
+          "ne arrivent"
+        ],
+        "solution": "arrivent (subjonctif présent) : « avant que » est suivi du subjonctif, car l'arrivée n'a pas encore eu lieu. On accepte aussi « n'arrivent », avec le ne explétif."
+      },
+      {
+        "id": "ex8",
+        "type": "qcm",
+        "stars": 2,
+        "lesson_part": 4,
+        "skills": [
+          "fr-sub-modes"
+        ],
+        "cognitive": "appliquer",
+        "prompt": "Complète : « Si j'avais plus de temps, je ___ ce roman en entier. »",
+        "options": [
+          "lirai",
+          "lirais",
+          "lise",
+          "lisais"
+        ],
+        "answer": 1,
+        "solution": "lirais : si + imparfait (avais) → conditionnel présent dans la principale."
+      },
+      {
+        "id": "ex9",
+        "type": "open",
+        "stars": 3,
+        "lesson_part": 5,
+        "skills": [
+          "fr-sub-analyser",
+          "fr-sub-rapports",
+          "fr-sub-modes"
+        ],
+        "cognitive": "analyser",
+        "prompt": "« Bien que le chemin soit glissant, les randonneurs avancent vite parce qu'ils veulent arriver au refuge avant la nuit. »\nRelève les deux propositions subordonnées circonstancielles, puis analyse chacune : mot subordonnant, rapport logique, fonction, mode du verbe.",
+        "solution": "1. « Bien que le chemin soit glissant » : introduite par la locution conjonctive « bien que » ; rapport d'opposition (concession) ; complément circonstanciel d'opposition (de concession) du verbe « avancent » ; verbe au subjonctif (soit), comme toujours après « bien que ».\n2. « parce qu'ils veulent arriver au refuge avant la nuit » : introduite par « parce que » ; rapport de cause ; complément circonstanciel de cause du verbe « avancent » ; verbe à l'indicatif (veulent).\nAttention : « avant la nuit » n'est pas une subordonnée (pas de verbe conjugué) : c'est un groupe nominal complément circonstanciel de temps.",
+        "rubric": "Pour chaque subordonnée (2 × 2 pts) : 0,5 délimitation exacte ; 0,5 mot subordonnant ; 0,5 rapport logique ; 0,5 fonction avec le verbe complété (« avancent »). Bonus si l'élève signale que « avant la nuit » n'est pas une subordonnée."
+      },
+      {
+        "id": "ex10",
+        "type": "open",
+        "stars": 3,
+        "lesson_part": 5,
+        "skills": [
+          "fr-sub-rediger",
+          "fr-sub-modes",
+          "fr-sub-rapports"
+        ],
+        "cognitive": "rediger",
+        "prompt": "Rédige un court récit (6 à 8 lignes) : raconte une sortie scolaire réelle ou imaginaire. Ton texte doit contenir au moins quatre subordonnées circonstancielles exprimant des rapports différents, dont au moins une au subjonctif. Place chaque subordonnée entre crochets et indique entre parenthèses le rapport qu'elle exprime.",
+        "solution": "Exemple : [Comme le car était en panne] (cause), nous sommes partis avec une heure de retard. [Pendant que nous attendions] (temps), notre professeur nous a raconté l'histoire du château. [Bien qu'il fasse un peu froid] (opposition), la visite a été passionnante. Le guide parlait fort [pour que tout le monde l'entende] (but). Nous avons tellement marché [que nous nous sommes endormis dans le car au retour] (conséquence). [Si nous y retournons au printemps] (condition), nous verrons les jardins en fleurs.",
+        "rubric": "Au moins 4 subordonnées circonstancielles correctement construites (conjonction + verbe conjugué). Au moins 4 rapports différents, correctement nommés. Au moins un subjonctif correct (après bien que, pour que, avant que…). Pas de conditionnel après « si ». Récit cohérent, temps du passé maîtrisés, orthographe soignée."
+      }
+    ]
+  },
+  "evaluation": {
+    "duration_min": 30,
+    "conditions": "Sans la leçon ni les corrigés, en 30 minutes. Barème : A = 5 points · B = 9 points · C = 6 points. Pour un rapport logique, un mot suffit ; pour conjuguer, écris seulement le verbe. Relis-toi, surtout les modes après les conjonctions.",
+    "total_points": 20,
+    "variants": [
+      {
+        "texts": [],
+        "sections": [
+          {
+            "label": "A · Je reconnais (5 points)",
+            "questions": [
+              {
+                "id": "q1",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 1,
+                "skills": [
+                  "fr-sub-reconnaitre"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Quelle phrase contient une proposition subordonnée circonstancielle ?",
+                "options": [
+                  "La maison où j'ai grandi a été vendue.",
+                  "Je sais que tu dis la vérité.",
+                  "Il est parti tôt pour qu'on ne le voie pas.",
+                  "Il est parti tôt pour ne pas être vu."
+                ],
+                "answer": 2,
+                "solution": "« pour qu'on ne le voie pas » est une subordonnée circonstancielle de but. Attention : « pour ne pas être vu » exprime aussi le but, mais avec un infinitif, sans verbe conjugué : ce n'est pas une proposition subordonnée. Les deux autres phrases contiennent une relative et une complétive.",
+                "rubric": "1 point pour la bonne réponse, 0 sinon."
+              },
+              {
+                "id": "q2",
+                "type": "short",
+                "points": 1,
+                "lesson_part": 1,
+                "skills": [
+                  "fr-sub-reconnaitre"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "« Prends ton manteau au cas où il ferait froid ce soir. » Recopie la locution conjonctive de subordination.",
+                "answer": [
+                  "au cas où",
+                  "au cas ou"
+                ],
+                "solution": "au cas où : elle introduit une subordonnée de condition, avec un verbe au conditionnel (ferait).",
+                "rubric": "1 point pour « au cas où »."
+              },
+              {
+                "id": "q3",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 3,
+                "skills": [
+                  "fr-sub-rapports"
+                ],
+                "cognitive": "analyser",
+                "prompt": "« Elle a réussi son examen, si bien que ses parents l'ont félicitée. » Quel rapport exprime la subordonnée ?",
+                "options": [
+                  "Le but",
+                  "La conséquence",
+                  "La cause",
+                  "Le temps"
+                ],
+                "answer": 1,
+                "solution": "La conséquence : les félicitations sont le résultat réel de la réussite. « si bien que » est suivi de l'indicatif.",
+                "rubric": "1 point pour la bonne réponse, 0 sinon."
+              },
+              {
+                "id": "q4",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 4,
+                "skills": [
+                  "fr-sub-rapports"
+                ],
+                "cognitive": "analyser",
+                "prompt": "« Tu peux emprunter mon vélo à condition que tu le ranges au garage. » Quel rapport exprime la subordonnée ?",
+                "options": [
+                  "L'opposition",
+                  "Le but",
+                  "La condition",
+                  "La cause"
+                ],
+                "answer": 2,
+                "solution": "La condition : l'emprunt du vélo dépend du rangement. « à condition que » est suivi du subjonctif (ranges).",
+                "rubric": "1 point pour la bonne réponse, 0 sinon."
+              },
+              {
+                "id": "q5",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 5,
+                "skills": [
+                  "fr-sub-modes"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Laquelle de ces locutions est suivie de l'indicatif ?",
+                "options": [
+                  "bien que",
+                  "pour que",
+                  "parce que",
+                  "avant que"
+                ],
+                "answer": 2,
+                "solution": "« parce que » : la cause est présentée comme un fait réel (indicatif). « bien que », « pour que » et « avant que » sont suivies du subjonctif.",
+                "rubric": "1 point pour la bonne réponse, 0 sinon."
+              }
+            ]
+          },
+          {
+            "label": "B · J'analyse et je manipule (9 points)",
+            "questions": [
+              {
+                "id": "q6",
+                "type": "short",
+                "points": 1,
+                "lesson_part": 2,
+                "skills": [
+                  "fr-sub-rapports"
+                ],
+                "cognitive": "analyser",
+                "prompt": "« Puisque tu connais le chemin, guide-nous. » Quel rapport logique exprime la subordonnée ? (un mot)",
+                "answer": [
+                  "cause",
+                  "la cause",
+                  "une cause",
+                  "rapport de cause",
+                  "subordonnée de cause",
+                  "subordonnée circonstancielle de cause",
+                  "proposition subordonnée circonstancielle de cause",
+                  "complément circonstanciel de cause",
+                  "causale"
+                ],
+                "solution": "La cause : « puisque » introduit une cause connue, évidente.",
+                "rubric": "1 point pour « cause »."
+              },
+              {
+                "id": "q7",
+                "type": "short",
+                "points": 1,
+                "lesson_part": 2,
+                "skills": [
+                  "fr-sub-modes"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Écris le verbe entre parenthèses au mode et au temps qui conviennent (seulement le verbe) : « Nous attendrons devant la porte jusqu'à ce que le magasin (ouvrir). »",
+                "answer": [
+                  "ouvre"
+                ],
+                "solution": "ouvre (subjonctif présent) : « jusqu'à ce que » est suivi du subjonctif.",
+                "rubric": "1 point pour « ouvre » (subjonctif présent)."
+              },
+              {
+                "id": "q8",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 4,
+                "skills": [
+                  "fr-sub-modes"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Complète : « Si tu m'avais prévenu, je ___ venu te chercher à la gare. »",
+                "options": [
+                  "serais",
+                  "serai",
+                  "suis",
+                  "sois"
+                ],
+                "answer": 0,
+                "solution": "serais : si + plus-que-parfait (avais prévenu) → conditionnel passé (je serais venu).",
+                "rubric": "1 point pour la bonne réponse, 0 sinon."
+              },
+              {
+                "id": "q9",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 3,
+                "skills": [
+                  "fr-sub-rapports"
+                ],
+                "cognitive": "analyser",
+                "prompt": "« Il s'entraîne chaque jour pour qu'on le sélectionne dans l'équipe. » Quel rapport exprime la subordonnée ?",
+                "options": [
+                  "La conséquence",
+                  "Le but",
+                  "La cause",
+                  "Le temps"
+                ],
+                "answer": 1,
+                "solution": "Le but : il s'entraîne avec une intention (être sélectionné), qui n'est pas encore réalisée ; le verbe est au subjonctif.",
+                "rubric": "1 point pour la bonne réponse, 0 sinon."
+              },
+              {
+                "id": "q10",
+                "type": "open",
+                "points": 3,
+                "lesson_part": 5,
+                "skills": [
+                  "fr-sub-analyser"
+                ],
+                "cognitive": "analyser",
+                "prompt": "« Lorsque le train entra en gare, les voyageurs se précipitèrent vers les portes. »\nAnalyse la proposition subordonnée : délimite-la, donne son mot subordonnant, le rapport logique qu'elle exprime et sa fonction.",
+                "solution": "« Lorsque le train entra en gare » est une proposition subordonnée conjonctive circonstancielle de temps, introduite par la conjonction de subordination « lorsque ». Elle est complément circonstanciel de temps du verbe « se précipitèrent ».",
+                "rubric": "0,5 : délimitation exacte (« Lorsque le train entra en gare »). 0,5 : mot subordonnant « lorsque » (conjonction de subordination). 1 : rapport de temps. 1 : fonction complément circonstanciel de temps (ou complément de phrase) du verbe « se précipitèrent » (0,5 si le verbe complété n'est pas précisé)."
+              },
+              {
+                "id": "q11",
+                "type": "open",
+                "points": 2,
+                "lesson_part": 5,
+                "skills": [
+                  "fr-sub-manipuler",
+                  "fr-sub-modes"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Remplace chaque groupe en gras par une subordonnée circonstancielle qui garde le même sens. Récris les phrases entières.\na) « **Malgré sa fatigue**, Inès a terminé la course. »\nb) « **À cause de la grève**, le collège a fermé ses portes. »",
+                "solution": "a) Bien qu'elle soit fatiguée (Bien qu'elle fût fatiguée / Même si elle était fatiguée), Inès a terminé la course.\nb) Parce qu'il y avait une grève (Comme il y avait une grève / Puisqu'il y avait grève), le collège a fermé ses portes.",
+                "rubric": "Pour chaque phrase (1 pt) : 0,5 pour une conjonction exprimant le bon rapport (a : opposition/concession ; b : cause) ; 0,5 pour une subordonnée correcte avec un verbe conjugué au bon mode (subjonctif après bien que, indicatif après même si, parce que, comme)."
+              }
+            ]
+          },
+          {
+            "label": "C · Je rédige (6 points)",
+            "questions": [
+              {
+                "id": "q12",
+                "type": "open",
+                "points": 6,
+                "lesson_part": 5,
+                "skills": [
+                  "fr-sub-rediger",
+                  "fr-sub-rapports",
+                  "fr-sub-modes"
+                ],
+                "cognitive": "rediger",
+                "prompt": "En 8 à 10 lignes, raconte un moment où tu as dû surmonter une difficulté (le trac avant un exposé, une épreuve sportive, un déménagement…). Ton texte doit contenir au moins cinq subordonnées circonstancielles exprimant au moins quatre rapports différents. Place chaque subordonnée entre crochets et indique entre parenthèses le rapport qu'elle exprime.",
+                "solution": "Exemple : [Quand le professeur a prononcé mon nom] (temps), mes mains se sont mises à trembler. J'avais si peur [que je n'arrivais plus à respirer] (conséquence). [Bien que j'aie répété mon exposé dix fois] (opposition), j'avais l'impression d'avoir tout oublié. Je me suis levée lentement [pour que personne ne remarque mon trouble] (but). [Comme mon amie me souriait au premier rang] (cause), j'ai pris une grande inspiration et je me suis lancée. À la fin, toute la classe a applaudi. Désormais, [si je dois parler devant la classe] (condition), je repenserai à ce jour-là.",
+                "rubric": "2 pts : au moins cinq subordonnées circonstancielles correctement construites et placées entre crochets (retirer 0,5 par subordonnée manquante ou mal construite). 1,5 pt : au moins quatre rapports logiques différents, correctement nommés (0,5 par rapport manquant ou mal nommé). 1 pt : modes corrects (subjonctif après bien que, pour que, avant que, à condition que… ; indicatif après après que ; pas de conditionnel après si). 1,5 pt : récit cohérent qui respecte le sujet et la longueur, temps du récit maîtrisés, orthographe et ponctuation soignées."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "texts": [],
+        "sections": [
+          {
+            "label": "A · Je reconnais (5 points)",
+            "questions": [
+              {
+                "id": "q1",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 1,
+                "skills": [
+                  "fr-sub-reconnaitre"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Quelle phrase contient une proposition subordonnée circonstancielle ?",
+                "options": [
+                  "Le jardin dont je t'ai parlé est très fleuri.",
+                  "Elle dit qu'elle est fatiguée.",
+                  "Il a pris un pull parce qu'il faisait frais.",
+                  "Il a pris un pull à cause du froid."
+                ],
+                "answer": 2,
+                "solution": "« parce qu'il faisait frais » est une subordonnée circonstancielle de cause. « à cause du froid » exprime aussi la cause, mais c'est un groupe nominal, sans verbe conjugué. Les deux autres phrases contiennent une relative et une complétive.",
+                "rubric": "1 point pour la bonne réponse, 0 sinon."
+              },
+              {
+                "id": "q2",
+                "type": "short",
+                "points": 1,
+                "lesson_part": 1,
+                "skills": [
+                  "fr-sub-reconnaitre"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "« Les élèves se turent aussitôt que la directrice entra. » Recopie la locution conjonctive de subordination.",
+                "answer": [
+                  "aussitôt que",
+                  "aussitot que"
+                ],
+                "solution": "aussitôt que : elle introduit une subordonnée de temps (aussitôt que la directrice entra).",
+                "rubric": "1 point pour « aussitôt que »."
+              },
+              {
+                "id": "q3",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 3,
+                "skills": [
+                  "fr-sub-rapports"
+                ],
+                "cognitive": "analyser",
+                "prompt": "« Le chanteur était tellement ému qu'il ne put finir sa chanson. » Quel rapport exprime la subordonnée ?",
+                "options": [
+                  "La cause",
+                  "Le but",
+                  "La conséquence",
+                  "La condition"
+                ],
+                "answer": 2,
+                "solution": "La conséquence : ne pas pouvoir finir est le résultat réel de son émotion. On reconnaît « tellement… que », avec l'indicatif.",
+                "rubric": "1 point pour la bonne réponse, 0 sinon."
+              },
+              {
+                "id": "q4",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 4,
+                "skills": [
+                  "fr-sub-rapports"
+                ],
+                "cognitive": "analyser",
+                "prompt": "« Bien qu'il ait peu dormi, Yanis est en pleine forme. » Quel rapport exprime la subordonnée ?",
+                "options": [
+                  "L'opposition (concession)",
+                  "La cause",
+                  "Le temps",
+                  "Le but"
+                ],
+                "answer": 0,
+                "solution": "L'opposition (concession) : le manque de sommeil aurait dû le fatiguer, et pourtant il est en forme. « bien que » est suivi du subjonctif (ait dormi).",
+                "rubric": "1 point pour la bonne réponse, 0 sinon."
+              },
+              {
+                "id": "q5",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 5,
+                "skills": [
+                  "fr-sub-modes"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Laquelle de ces locutions est suivie du subjonctif ?",
+                "options": [
+                  "puisque",
+                  "afin que",
+                  "dès que",
+                  "si bien que"
+                ],
+                "answer": 1,
+                "solution": "« afin que » exprime le but : elle est suivie du subjonctif. « puisque », « dès que » et « si bien que » sont suivies de l'indicatif.",
+                "rubric": "1 point pour la bonne réponse, 0 sinon."
+              }
+            ]
+          },
+          {
+            "label": "B · J'analyse et je manipule (9 points)",
+            "questions": [
+              {
+                "id": "q6",
+                "type": "short",
+                "points": 1,
+                "lesson_part": 4,
+                "skills": [
+                  "fr-sub-rapports"
+                ],
+                "cognitive": "analyser",
+                "prompt": "« Si tu pars maintenant, tu attraperas le bus de 8 heures. » Quel rapport logique exprime la subordonnée ? (un mot)",
+                "answer": [
+                  "condition",
+                  "la condition",
+                  "une condition",
+                  "rapport de condition",
+                  "subordonnée de condition",
+                  "subordonnée circonstancielle de condition",
+                  "proposition subordonnée circonstancielle de condition",
+                  "complément circonstanciel de condition",
+                  "hypothèse",
+                  "condition hypothèse",
+                  "condition ou hypothèse",
+                  "condition (hypothèse)",
+                  "hypothèse condition"
+                ],
+                "solution": "La condition (on dit aussi l'hypothèse) : attraper le bus dépend du départ immédiat. si + présent → futur dans la principale.",
+                "rubric": "1 point pour « condition » (ou « hypothèse »)."
+              },
+              {
+                "id": "q7",
+                "type": "short",
+                "points": 1,
+                "lesson_part": 3,
+                "skills": [
+                  "fr-sub-modes"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Écris le verbe entre parenthèses au mode et au temps qui conviennent (seulement le verbe) : « Le professeur répète la consigne pour que chacun la (comprendre). »",
+                "answer": [
+                  "comprenne"
+                ],
+                "solution": "comprenne (subjonctif présent) : « pour que » exprime le but et est suivi du subjonctif.",
+                "rubric": "1 point pour « comprenne » (subjonctif présent)."
+              },
+              {
+                "id": "q8",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 4,
+                "skills": [
+                  "fr-sub-modes"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Complète : « Si nous partions plus tôt, nous ___ moins de monde sur la route. »",
+                "options": [
+                  "trouverons",
+                  "trouverions",
+                  "trouvions",
+                  "trouvons"
+                ],
+                "answer": 1,
+                "solution": "trouverions : si + imparfait (partions) → conditionnel présent dans la principale.",
+                "rubric": "1 point pour la bonne réponse, 0 sinon."
+              },
+              {
+                "id": "q9",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 3,
+                "skills": [
+                  "fr-sub-rapports"
+                ],
+                "cognitive": "analyser",
+                "prompt": "« Il a tant neigé cette nuit que les routes sont bloquées. » Quel rapport exprime la subordonnée ?",
+                "options": [
+                  "La conséquence",
+                  "Le but",
+                  "La cause",
+                  "La condition"
+                ],
+                "answer": 0,
+                "solution": "La conséquence : les routes bloquées sont le résultat réel de la neige. On reconnaît « tant… que », avec l'indicatif (sont).",
+                "rubric": "1 point pour la bonne réponse, 0 sinon."
+              },
+              {
+                "id": "q10",
+                "type": "open",
+                "points": 3,
+                "lesson_part": 5,
+                "skills": [
+                  "fr-sub-analyser"
+                ],
+                "cognitive": "analyser",
+                "prompt": "« Pendant que la pluie tombait, les élèves terminaient leur exposé au CDI. »\nAnalyse la proposition subordonnée : délimite-la, donne son mot subordonnant, le rapport logique qu'elle exprime et sa fonction.",
+                "solution": "« Pendant que la pluie tombait » est une proposition subordonnée conjonctive circonstancielle de temps, introduite par la locution conjonctive de subordination « pendant que ». Elle est complément circonstanciel de temps du verbe « terminaient ».",
+                "rubric": "0,5 : délimitation exacte (« Pendant que la pluie tombait »). 0,5 : mot subordonnant « pendant que » (locution conjonctive de subordination). 1 : rapport de temps (simultanéité). 1 : fonction complément circonstanciel de temps (ou complément de phrase) du verbe « terminaient » (0,5 si le verbe complété n'est pas précisé)."
+              },
+              {
+                "id": "q11",
+                "type": "open",
+                "points": 2,
+                "lesson_part": 5,
+                "skills": [
+                  "fr-sub-manipuler",
+                  "fr-sub-modes"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Remplace chaque groupe en gras par une subordonnée circonstancielle qui garde le même sens. Récris les phrases entières.\na) « **Avec un peu de travail**, tu progresseras vite. »\nb) « **Malgré son grand âge**, mon grand-père fait du vélo chaque jour. »",
+                "solution": "a) Si tu travailles un peu (À condition que tu travailles un peu), tu progresseras vite.\nb) Bien qu'il soit très âgé (Même s'il est très âgé / Quoiqu'il soit très âgé), mon grand-père fait du vélo chaque jour.",
+                "rubric": "Pour chaque phrase (1 pt) : 0,5 pour une conjonction exprimant le bon rapport (a : condition ; b : opposition/concession) ; 0,5 pour une subordonnée correcte avec un verbe conjugué au bon mode (indicatif après si et même si, subjonctif après à condition que, bien que, quoique)."
+              }
+            ]
+          },
+          {
+            "label": "C · Je rédige (6 points)",
+            "questions": [
+              {
+                "id": "q12",
+                "type": "open",
+                "points": 6,
+                "lesson_part": 5,
+                "skills": [
+                  "fr-sub-rediger",
+                  "fr-sub-rapports",
+                  "fr-sub-modes"
+                ],
+                "cognitive": "rediger",
+                "prompt": "En 8 à 10 lignes, raconte une sortie ou un voyage qui ne s'est pas passé comme prévu. Ton texte doit contenir au moins cinq subordonnées circonstancielles exprimant au moins quatre rapports différents. Place chaque subordonnée entre crochets et indique entre parenthèses le rapport qu'elle exprime.",
+                "solution": "Exemple : Nous devions pique-niquer au bord du lac, mais [dès que nous sommes arrivés] (temps), le ciel s'est couvert. [Comme nous n'avions pas de parapluie] (cause), nous nous sommes abrités sous un vieux kiosque. Il pleuvait tellement [que le sentier s'est transformé en ruisseau] (conséquence). [Bien que nous soyons trempés] (opposition), nous avons ri comme jamais. Papa a raconté des histoires [pour que ma petite sœur n'ait pas peur de l'orage] (but). [Si le soleil revient samedi] (condition), nous retenterons l'aventure !",
+                "rubric": "2 pts : au moins cinq subordonnées circonstancielles correctement construites et placées entre crochets (retirer 0,5 par subordonnée manquante ou mal construite). 1,5 pt : au moins quatre rapports logiques différents, correctement nommés (0,5 par rapport manquant ou mal nommé). 1 pt : modes corrects (subjonctif après bien que, pour que, avant que, à condition que… ; indicatif après après que ; pas de conditionnel après si). 1,5 pt : récit cohérent qui respecte le sujet et la longueur, temps du récit maîtrisés, orthographe et ponctuation soignées."
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
