@@ -51,6 +51,7 @@ export function ExercisesPlayer({ courseId, items, texts, initial, submitted, so
   const [self, setSelf] = useState<Record<string, boolean>>(initialSelf);
   const [saved, setSaved] = useState<'idle' | 'saving' | 'saved'>('idle');
   const [pending, start] = useTransition();
+  const [confirming, setConfirming] = useState(false);
   const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const levels = [...new Set(items.map(q => q.stars ?? 0))].sort();
   const [tab, setTab] = useState(levels[0]);
@@ -168,10 +169,18 @@ export function ExercisesPlayer({ courseId, items, texts, initial, submitted, so
         <div className="shrink-0 border-t border-line px-4 sm:px-6 py-3 bg-surface-2 flex flex-wrap items-center justify-between gap-3">
           {!submitted && (<>
             <span className="text-sm"><strong>{answered} / {items.length}</strong> réponses · <span className="muted">{saved === 'saving' ? 'enregistrement…' : saved === 'saved' ? 'brouillon enregistré' : 'enregistrées au fur et à mesure'}</span></span>
-            <button className="btn btn-primary" type="button" disabled={pending || answered === 0}
-              onClick={() => { if (answered < items.length && !confirm(`Tu as répondu à ${answered} exercice(s) sur ${items.length}. Voir les corrigés quand même ?`)) return; start(() => submitExercises(courseId, latest.current)); }}>
-              Valider mes réponses et voir les corrigés
-            </button>
+{confirming && !pending ? (
+              <span role="alertdialog" aria-label="Confirmer" className="flex flex-wrap items-center gap-2">
+                <span className="text-sm font-semibold">Tu as répondu à {answered} exercice{answered > 1 ? 's' : ''} sur {items.length}. Voir les corrigés quand même ?</span>
+                <button className="btn btn-primary" type="button" autoFocus onClick={() => start(() => submitExercises(courseId, latest.current))}>Oui, voir les corrigés</button>
+                <button className="btn" type="button" onClick={() => setConfirming(false)}>Continuer</button>
+              </span>
+            ) : (
+              <button className="btn btn-primary" type="button" disabled={pending || answered === 0}
+                onClick={() => { if (answered < items.length) setConfirming(true); else start(() => submitExercises(courseId, latest.current)); }}>
+                Valider mes réponses et voir les corrigés
+              </button>
+            )}
           </>)}
           {submitted && !checked && (<>
             <span className="text-sm">{allJudged ? <>Score : <strong>{score}/10</strong> · {success} exercice{success > 1 ? 's' : ''} réussi{success > 1 ? 's' : ''} sur {items.length}.</> : `Compare tes réponses rédigées avec le corrigé : encore ${openIds.filter(id => !(id in self)).length} à vérifier (voir les onglets marqués).`}</span>

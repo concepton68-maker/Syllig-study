@@ -238,3 +238,14 @@ Recette complète de l'espace élève (un agent testeur a joué l'élève sur t�
   - Reproduit puis vérifié : une leçon ouverte sur l'ancienne version, une mise en ligne, puis un clic sur le point de contrôle. La page se recharge proprement au lieu de planter.
 - Page d'erreur générale en français (« Un instant… »), avec un bouton pour recharger la page.
 - Espace contenu : page d'erreur dédiée.
+
+## 0.21 — 24/11/2026
+- Évaluation : « Remettre ma copie » remet la copie tout de suite. La confirmation s'affiche dans la page (« Oui, remettre » / « Continuer ») au lieu d'une fenêtre du navigateur : Firefox pouvait bloquer cette fenêtre sans rien dire, et la copie restait coincée jusqu'à la fin du chrono. Si la remise échoue (connexion coupée), un message invite à réessayer, sans rien perdre.
+- Même confirmation dans la page pour « Voir les corrigés » (exercices incomplets), « Refaire les exercices » et la publication ou l'écartement d'un cours.
+- Mot de passe oublié :
+  - lien « Mot de passe oublié ? » sur la page de connexion ;
+  - compte élève : la demande arrive chez le parent, dans « À faire » (avec la pastille), où il choisit le nouveau mot de passe ; actions groupées pour marquer des demandes comme réglées ;
+  - compte parent : la demande arrive dans Contenu › Comptes ; l'administrateur crée un lien à usage unique (48 h) à envoyer par SMS ou messagerie, et le parent choisit lui-même son nouveau mot de passe ;
+  - même réponse que l'identifiant existe ou non, demandes limitées ; un changement de mot de passe ferme les sessions ouvertes ailleurs.
+- « Mon mot de passe » (icône clé dans la barre) : chaque compte peut changer son mot de passe.
+- Petits téléphones : la barre du haut ne déborde plus pour un compte à deux espaces (Famille + Contenu).

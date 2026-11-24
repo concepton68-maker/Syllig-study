@@ -4,7 +4,8 @@ import { requireParent } from '@/lib/access';
 import { PageTitle } from '@/components/Shell';
 import { Screen } from '@/components/Layout';
 import { ImportCorrections } from '../copies/ImportCorrections';
-import { decideEvalRequest, approveRequestsBulk, postponeRequestsBulk } from '../actions';
+import { decideEvalRequest, approveRequestsBulk, postponeRequestsBulk, dismissPasswordRequests, answerPasswordRequest } from '../actions';
+import { KeyRound } from 'lucide-react';
 import { BulkBar, BulkCheck } from '@/components/Bulk';
 
 export const metadata = { title: 'À faire' };
@@ -14,7 +15,7 @@ type Row = { id: string; title: string; first_name: string; attempt_no: number; 
 const when = (d: Date | null) => d ? d.toLocaleString('fr-FR', { timeZone: 'Europe/Paris', day: 'numeric', month: 'long', hour: '2-digit', minute: '2-digit' }) : '';
 
 // Tout ce qui attend une action du parent, pour tous les enfants du foyer
-export default async function ToDo({ searchParams }: { searchParams: Promise<{ validee?: string }> }) {
+export default async function ToDo({ searchParams }: { searchParams: Promise<{ validee?: string; mdp?: string; erreur?: string }> }) {
   const sp = await searchParams;
   const { students } = await requireParent();
   const ids = students.map(s => s.id);
@@ -27,12 +28,35 @@ export default async function ToDo({ searchParams }: { searchParams: Promise<{ v
   const pending = rows.filter(r => r.status === 'submitted');
   const graded = rows.filter(r => r.status === 'graded').slice(0, 20);
   const multi = students.length > 1;
-  const total = requests.length + pending.length;
+  const pwRequests = ids.length ? await sql<{ id: string; student_id: string; first_name: string; created_at: Date }[]>`
+    select r.id::text, s.id as student_id, s.first_name, r.created_at from password_requests r join students s on s.user_id = r.user_id
+    where s.id in ${sql(ids)} and r.done_at is null order by r.created_at` : [];
+  const total = requests.length + pending.length + pwRequests.length;
 
   return (
     <Screen top={<PageTitle kicker="À faire" title={total ? `${total} chose${total > 1 ? 's' : ''} attend${total > 1 ? 'ent' : ''} votre réponse` : 'Rien n’attend votre réponse'}
-      sub="Demandes d’évaluation et copies à valider. Les questions automatiques sont déjà notées ; les réponses rédigées passent par Claude, puis par vous." />}>
+      sub="Demandes d’évaluation, mots de passe oubliés et copies à valider. Les questions automatiques sont déjà notées ; les réponses rédigées passent par Claude, puis par vous." />}>
+      {sp.mdp && <p role="status" className="m-0 rounded-xl bg-brand-soft text-brand-ink px-4 py-3 text-sm"><strong>Mot de passe de {sp.mdp} modifié.</strong> Communiquez-le-lui : la connexion est possible tout de suite.</p>}
+      {sp.erreur && <p role="alert" className="m-0 rounded-xl bg-warm-soft text-warm-dark px-4 py-3 text-sm">{sp.erreur}</p>}
       {sp.validee && <p role="status" className="m-0 rounded-xl bg-brand-soft text-brand-ink px-4 py-3 text-sm"><strong>Note validée.</strong> Le bilan est maintenant visible dans l’espace de l’élève.</p>}
+
+      {pwRequests.length > 0 && (
+        <section className="card flex flex-col">
+          <h2 className="text-xl font-semibold mb-2 flex items-center gap-2"><KeyRound size={20} aria-hidden="true" />Mot de passe oublié</h2>
+          <div className="mb-2"><BulkBar formId="bulk-mdp" noun="demande" feminine
+            actions={[{ label: 'Marquer comme réglée', action: dismissPasswordRequests }]} /></div>
+          {pwRequests.map(r => (
+            <div key={r.id} className="flex flex-wrap items-center gap-3 py-3 border-t border-soft text-sm">
+              <BulkCheck formId="bulk-mdp" value={r.id} label={r.first_name} />
+              <span className="flex-[1_1_220px]"><strong>{r.first_name} a oublié son mot de passe</strong><span className="block muted">Demandé le {when(r.created_at)} · choisissez-en un nouveau et donnez-le-lui</span></span>
+              <form action={answerPasswordRequest.bind(null, r.student_id)} className="flex flex-wrap items-end gap-2">
+                <label className="flex flex-col gap-1 text-sm font-semibold">Nouveau mot de passe<input className="field" name="password" type="text" required minLength={8} autoComplete="off" placeholder="8 caractères min." /></label>
+                <button className="btn btn-primary" type="submit">Enregistrer</button>
+              </form>
+            </div>
+          ))}
+        </section>
+      )}
 
       {requests.length > 0 && (
         <section className="card flex flex-col">

@@ -3,6 +3,7 @@ import { revalidatePath } from 'next/cache';
 import { z } from 'zod';
 import { sql } from '@/lib/db';
 import { requireUser, hashPassword } from '@/lib/auth';
+import { setPassword } from '@/lib/password';
 import { assertParentOf } from '@/lib/access';
 import { isTheme } from '@/lib/settings';
 
@@ -42,7 +43,7 @@ export async function resetChildPassword(_: ChildState, form: FormData): Promise
   const pw = String(form.get('password') ?? '');
   if (pw.length < 8) return { error: 'Mot de passe : 8 caractères minimum' };
   if (!s.user_id) return { error: 'Pas de compte de connexion pour cet élève.' };
-  await sql`update users set password_hash = ${await hashPassword(pw)} where id = ${s.user_id}`;
-  await sql`delete from auth_sessions where user_id = ${s.user_id}`;
+  await setPassword(s.user_id, pw);   // ferme aussi ses sessions et sa demande « mot de passe oublié »
+  revalidatePath('/parent/a-faire');
   return { ok: `Mot de passe de ${s.first_name} modifié.` };
 }

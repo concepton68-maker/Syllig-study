@@ -20,7 +20,7 @@ const course = async code => (await sql`select c.id, v.id as version_id, v.docum
 
 const b = await chromium.launch();
 const page = async (l, pw, mobile) => { const p = await (await b.newContext(mobile ? { viewport: { width: 390, height: 844 }, isMobile: true, hasTouch: true, acceptDownloads: true } : { viewport: { width: 1366, height: 768 }, acceptDownloads: true })).newPage();
-  p.on('dialog', d => d.accept()); const errs = []; p.on('pageerror', e => errs.push(e.message)); p.errs = errs;
+  p.on('dialog', d => d.accept()); const errs = []; p.on('pageerror', e => errs.push(`${p.url()} : ${e.message.slice(0, 80)}`)); p.errs = errs;
   await p.route('**/api/activity', r => r.fulfill({ status: 200, body: '{}' }));
   await p.goto(BASE + '/connexion'); await p.fill('input[name=login]', l); await p.fill('input[name=password]', pw);
   await p.click('button[type=submit]'); await p.waitForURL(u => !u.pathname.startsWith('/connexion')); return p; };

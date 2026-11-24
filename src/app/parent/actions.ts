@@ -1,5 +1,7 @@
 'use server';
 import { revalidatePath } from 'next/cache';
+import { redirect } from 'next/navigation';
+import { checkNewPassword, setPassword } from '@/lib/password';
 import { sql } from '@/lib/db';
 import { requireUser } from '@/lib/auth';
 import { assertParentOf } from '@/lib/access';
@@ -21,3 +23,25 @@ async function decideMany(form: FormData, approve: boolean) {
 }
 export async function approveRequestsBulk(form: FormData) { await decideMany(form, true); }
 export async function postponeRequestsBulk(form: FormData) { await decideMany(form, false); }
+
+// « Mot de passe oublié » : le parent écarte des demandes (déjà réglées autrement), en groupe
+export async function dismissPasswordRequests(form: FormData) {
+  const u = await requireUser('parent');
+  const ids = form.getAll('ids').map(String).filter(x => /^\d+$/.test(x));
+  if (ids.length) await sql`update password_requests r set done_at = now() from students s
+    where r.id in ${sql(ids)} and r.done_at is null and s.user_id = r.user_id
+      and s.household_id in (select household_id from household_members where user_id = ${u.id} and role = 'parent')`;
+  revalidatePath('/parent/a-faire');
+}
+
+// « Mot de passe oublié » : le parent choisit le nouveau mot de passe depuis « À faire »
+export async function answerPasswordRequest(studentId: string, form: FormData) {
+  const u = await requireUser('parent');
+  const s = await assertParentOf(u.id, studentId);
+  const pw = String(form.get('password') ?? '');
+  const err = checkNewPassword(pw);
+  if (err || !s.user_id) redirect(`/parent/a-faire?erreur=${encodeURIComponent(err ?? 'Pas de compte de connexion pour cet élève.')}`);
+  await setPassword(s.user_id!, pw);
+  revalidatePath('/parent', 'layout');
+  redirect(`/parent/a-faire?mdp=${encodeURIComponent(s.first_name)}`);
+}

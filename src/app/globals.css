@@ -357,6 +357,14 @@ section.card > h2, section.card > div > h2, section.card h2.text-xl { font-size:
   /* téléphone : barre du haut sombre + onglets en bas */
   .mobile-bar { display: flex; align-items: center; gap: 10px; padding: 10px 16px; background: var(--side-bg); color: var(--side-ink); }
   .mobile-bar .version-pill, .sidebar .version-pill { background: rgb(255 255 255 / .14); color: var(--side-ink-2); }
+  /* petits téléphones : la barre du haut tient toujours sur une ligne (compte à deux espaces, clé, déconnexion) */
+  @media (max-width: 479px) {
+    .mobile-bar { gap: 6px; padding: 10px 12px; }
+    .mobile-bar .side-icon-btn { width: 36px; height: 36px; }
+    .mobile-bar:has(.space-switch) > span:first-child > span:last-child,
+    .mobile-bar:has(.space-switch) > .avatar { display: none !important; }
+    .mobile-bar .space-switch a { padding: 6px 8px; font-size: 12px; }
+  }
   .tabbar { position: fixed; left: 0; right: 0; bottom: 0; z-index: 5; display: flex; justify-content: space-around; gap: 4px;
             padding: 6px 8px calc(6px + env(safe-area-inset-bottom)); background: rgb(255 255 255 / .94); backdrop-filter: blur(12px);
             border-top: 1px solid var(--color-line); box-shadow: 0 -8px 24px -16px rgb(15 20 40 / .3); }

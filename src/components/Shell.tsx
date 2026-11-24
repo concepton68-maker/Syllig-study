@@ -1,4 +1,4 @@
-import { LogOut } from 'lucide-react';
+import { LogOut, KeyRound } from 'lucide-react';
 import { Logo } from './Logo';
 import { NavLinks, TabBar, type NavItem } from './NavLinks';
 import { logoutAction } from '@/app/actions';
@@ -19,7 +19,8 @@ export function Shell({ role, nav, theme, spaces, user, children }: {
     </nav>
   );
   const logout = (
-    <form action={logoutAction}>
+    <form action={logoutAction} className="flex items-center gap-1">
+      <a href="/compte" className="side-icon-btn" title="Mon mot de passe" aria-label="Mon mot de passe"><KeyRound size={18} aria-hidden="true" /></a>
       <button type="submit" className="side-icon-btn" title="Se déconnecter" aria-label="Se déconnecter"><LogOut size={18} aria-hidden="true" /></button>
     </form>
   );

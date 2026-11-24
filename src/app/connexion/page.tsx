@@ -41,7 +41,7 @@ export default async function LoginPage() {
             <p className="muted text-[15px] mt-1.5 mb-0">Connecte-toi pour retrouver ton parcours.</p>
           </div>
           <div className="card !p-7"><LoginForm /></div>
-          <p className="muted text-sm m-0">Mot de passe oublié ? Demande à ton parent de le réinitialiser depuis son espace.</p>
+          <a href="/connexion/oubli" className="font-semibold text-sm self-start">Mot de passe oublié ?</a>
           <p className="text-xs text-muted-2 m-0">Version {process.env.APP_RELEASE ?? 'dev'} · {process.env.APP_VERSION ?? 'dev'}</p>
         </div>
       </section>

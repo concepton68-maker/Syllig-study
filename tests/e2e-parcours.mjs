@@ -27,7 +27,7 @@ try {
   await admin.waitForURL(/\/contenu\/cours\/\d+/);
   ok(await admin.isVisible('text=Import réussi'), 'import de C001 en brouillon');
   await shot(admin, '01-apercu-contenu');
-  await admin.click('text=Publier cette version');
+  await admin.click('text=Publier cette version'); await admin.click('button:has-text("Oui, confirmer")');
   await admin.waitForSelector('text=publiée');
   ok(true, 'publication');
   // fichier invalide refusé
@@ -92,7 +92,7 @@ try {
     }
   }
   await st.waitForTimeout(1500);
-  await st.click('text=Valider mes réponses et voir les corrigés');
+  await st.click('text=Valider mes réponses et voir les corrigés'); if (await st.locator('button:has-text("Oui, voir les corrigés")').isVisible()) await st.click('button:has-text("Oui, voir les corrigés")');
   await st.waitForSelector('text=Compare avec le corrigé');
   for (const [i, l] of levels.entries()) {
     await st.click(`[role=tab]:has-text("${LEVELS[l]}")`);
@@ -127,7 +127,7 @@ try {
   ok(true, 'collage bloqué pendant l’évaluation');
   ok(await st.locator('[role=timer]').isVisible(), 'chrono toujours visible');
   await st.screenshot({ path: `${SHOTS}/07-evaluation-en-cours.png` });
-  await st.click('text=Remettre ma copie');
+  await st.click('text=Remettre ma copie'); await st.click('button:has-text("Oui, remettre")');
   await st.waitForURL(/bilan/);
   ok(await st.isVisible('text=Copie remise'), 'copie remise, bilan provisoire (q3 corrigée automatiquement)');
   await shot(st, '08-bilan-provisoire');

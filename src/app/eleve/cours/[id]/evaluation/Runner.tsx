@@ -6,6 +6,7 @@ import { AnswerProgress } from '@/components/AnswerProgress';
 
 import { AnswerInput, TextsAside } from '../exercices/Player';
 import { submitEvaluation } from './actions';
+import { isStaleBuildError, reloadOnceForNewVersion } from '@/lib/stale-build';
 
 type Section = { label: string; questions: PublicQuestion[] };
 
@@ -24,10 +25,20 @@ export function EvalRunner({ courseId, attemptId, remaining, sections, texts, in
   const post = useCallback((body: object) =>
     fetch(`/api/eval/${attemptId}`, { method: 'POST', body: JSON.stringify(body), keepalive: true }).catch(() => null), [attemptId]);
 
+  const [confirming, setConfirming] = useState(false);
+  const [failed, setFailed] = useState(false);
   const submit = useCallback(() => {
     if (submitted.current) return;
     submitted.current = true;
-    start(() => submitEvaluation(courseId, attemptId, latest.current));
+    setFailed(false);
+    start(async () => {
+      try { await submitEvaluation(courseId, attemptId, latest.current); }
+      catch (e) {
+        if (String((e as { digest?: string })?.digest ?? '').startsWith('NEXT_REDIRECT')) throw e;   // redirection vers le bilan
+        if (isStaleBuildError((e as Error)?.message) && reloadOnceForNewVersion()) return;          // nouvelle version en ligne : les réponses sont déjà enregistrées
+        submitted.current = false; setFailed(true);                                                 // réseau coupé… : l'élève peut réessayer
+      }
+    });
   }, [courseId, attemptId]);
 
   // Chrono : l'échéance vient du serveur ; à zéro, la copie est remise automatiquement
@@ -153,10 +164,18 @@ export function EvalRunner({ courseId, attemptId, remaining, sections, texts, in
         </div>
         <div className="shrink-0 border-t border-line px-4 sm:px-6 py-3 bg-surface-2 flex flex-wrap items-center justify-between gap-3">
           <span className="text-sm">Notée sur {total}. Les corrigés s’ouvrent juste après la remise.</span>
-          <button className="btn btn-primary" type="button" disabled={pending}
-            onClick={() => { if (confirm(answered < all.length ? `Il reste ${all.length - answered} question(s) sans réponse. Remettre ta copie ?` : 'Remettre ta copie ?')) submit(); }}>
-            {pending ? 'Remise…' : 'Remettre ma copie'}
-          </button>
+{failed && <span role="alert" className="text-sm font-semibold text-warm-dark">La remise n’a pas abouti (connexion ?). Réessaie : tes réponses sont gardées.</span>}
+          {confirming && !pending ? (
+            <span role="alertdialog" aria-label="Confirmer la remise" className="flex flex-wrap items-center gap-2">
+              <span className="text-sm font-semibold">{answered < all.length ? `Il reste ${all.length - answered} question${all.length - answered > 1 ? 's' : ''} sans réponse. Remettre ta copie ?` : 'Remettre ta copie ?'}</span>
+              <button className="btn btn-primary" type="button" autoFocus onClick={submit}>Oui, remettre</button>
+              <button className="btn" type="button" onClick={() => setConfirming(false)}>Continuer</button>
+            </span>
+          ) : (
+            <button className="btn btn-primary" type="button" disabled={pending} onClick={() => setConfirming(true)}>
+              {pending ? 'Remise…' : 'Remettre ma copie'}
+            </button>
+          )}
         </div>
       </section>
     </div>

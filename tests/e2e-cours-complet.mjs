@@ -62,7 +62,7 @@ for (const code of CODES) {
     for (const q of doc.exercises.items) if (await el.locator(`[aria-label="Ta réponse à ${q.id}"], input[name="${q.id}"]`).first().isVisible().catch(() => false)) await fillAnswer(el, q);
   }
   await el.waitForTimeout(1200);
-  await el.click('text=Valider mes réponses et voir les corrigés');
+  await el.click('text=Valider mes réponses et voir les corrigés'); if (await el.locator('button:has-text("Oui, voir les corrigés")').isVisible()) await el.click('button:has-text("Oui, voir les corrigés")');
   await el.waitForSelector('text=/Compare avec le corrigé|Score :/');
   for (const tab of await el.locator('[role=tab]').all()) {
     await tab.click();
@@ -84,7 +84,7 @@ for (const code of CODES) {
     await el.click(`[role=tab]:has-text("${s.label.split(' (')[0].slice(0, 30)}")`);
     for (const q of s.questions) await fillAnswer(el, q);
   }
-  await el.click('text=Remettre ma copie');
+  await el.click('text=Remettre ma copie'); await el.click('button:has-text("Oui, remettre")');
   await el.waitForURL(/bilan/);
   ok(true, `évaluation remise (sujet ${att.variant + 1})`);
 

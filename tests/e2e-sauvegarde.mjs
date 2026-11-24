@@ -55,7 +55,7 @@ await p.waitForSelector('text=/Compare|Score :/', { state: 'attached' });
 for (const tab of await p.locator('[role=tab]').all()) { await tab.click(); const r = p.locator('button:text-is("Réussi"):not([disabled])'); for (let k = 0; k < await r.count(); k++) await r.nth(k).click(); }
 if (await p.locator('text=Enregistrer mon résultat').isVisible()) await p.click('text=Enregistrer mon résultat');
 await p.waitForSelector('text=Refaire les exercices', { state: 'attached' });
-await p.click('text=Refaire les exercices');
+await p.click('text=Refaire les exercices'); await p.click('button:has-text("Oui, confirmer")');
 await p.waitForSelector('text=0 / 10', { state: 'attached' });
 ok(true, '« Refaire les exercices » : questionnaire vide (0 / 10), plus d’anciennes réponses affichées');
 

@@ -5,6 +5,8 @@ import { sql } from '@/lib/db';
 import { requireUser } from '@/lib/auth';
 import { PageTitle } from '@/components/Shell';
 import { Screen } from '@/components/Layout';
+import { ResetLink } from './ResetLink';
+import { dismissAdultRequests } from './reset-actions';
 
 export const metadata = { title: 'Comptes' };
 export const dynamic = 'force-dynamic';
@@ -43,10 +45,26 @@ export default async function Accounts({ searchParams }: { searchParams: Promise
     select u.id, u.login, u.display_name, array_agg(r2.role order by r2.role) as roles
     from users u join user_roles r on r.user_id = u.id and r.role = 'admin' join user_roles r2 on r2.user_id = u.id
     group by u.id order by u.login`;
+  const requests = await sql<{ id: string; login: string; display_name: string; created_at: Date }[]>`
+    select r.id::text, u.login, u.display_name, r.created_at from password_requests r join users u on u.id = r.user_id
+    where r.done_at is null and u.role <> 'student' order by r.created_at`;
   return (
     <Screen top={<PageTitle kicker="Comptes" title="Accès à l’espace Contenu" sub="Un parent qui gère aussi les cours n’a besoin que d’un compte : donnez-lui l’accès Contenu, il bascule ensuite d’un espace à l’autre depuis la barre du haut." />}>
       {sp.ok && <p role="status" className="m-0 rounded-xl bg-brand-soft text-brand-ink px-4 py-3 text-sm max-w-[900px]">{sp.ok}</p>}
       {sp.erreur && <p role="alert" className="m-0 rounded-xl bg-warm-soft text-warm-dark px-4 py-3 text-sm max-w-[900px]">{sp.erreur}</p>}
+      {requests.length > 0 && (
+        <section className="card flex flex-col max-w-[900px]">
+          <h2 className="text-xl font-semibold mb-2">Mots de passe oubliés</h2>
+          <div className="mb-2"><BulkBar formId="bulk-mdp" noun="demande" feminine actions={[{ label: 'Marquer comme réglée', action: dismissAdultRequests }]} /></div>
+          {requests.map(r => (
+            <div key={r.id} className="flex flex-wrap items-center gap-3 py-3 border-t border-soft text-sm">
+              <BulkCheck formId="bulk-mdp" value={r.id} label={r.display_name} />
+              <span className="flex-[1_1_220px]"><strong>{r.display_name}</strong><span className="block muted">{r.login} · demandé le {r.created_at.toLocaleString('fr-FR', { timeZone: 'Europe/Paris', day: 'numeric', month: 'long', hour: '2-digit', minute: '2-digit' })}</span></span>
+              <div className="flex-[1_1_100%]"><ResetLink login={r.login} label="Créer un lien de nouveau mot de passe" /></div>
+            </div>
+          ))}
+        </section>
+      )}
       <section className="card flex flex-col max-w-[900px]">
         <h2 className="text-xl font-semibold mb-2">Comptes avec l’accès Contenu</h2>
         {admins.filter(a => a.id !== me.id && a.roles.includes('parent')).length > 0 && <div className="mb-2"><BulkBar formId="bulk-comptes" noun="compte"
@@ -68,6 +86,11 @@ export default async function Accounts({ searchParams }: { searchParams: Promise
           <button className="btn btn-primary" type="submit">Donner l’accès</button>
         </form>
         <p className="muted text-sm m-0">Le parent garde son espace Famille. Les comptes élèves ne peuvent pas recevoir cet accès.</p>
+      </section>
+      <section className="card flex flex-col gap-3 max-w-[900px]">
+        <h2 className="text-xl font-semibold">Lien de nouveau mot de passe</h2>
+        <p className="muted text-sm m-0">Pour un parent qui ne peut plus se connecter : le lien lui permet de choisir lui-même un nouveau mot de passe (valable 48 h, une seule fois).</p>
+        <ResetLink />
       </section>
     </Screen>
   );
