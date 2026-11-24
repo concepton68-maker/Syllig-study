@@ -22,7 +22,7 @@ async function choose(form: FormData) {
 export default async function ThemePage() {
   const { student } = await requireStudent();
   return (
-    <Screen top={<PageTitle spark title="Mon espace" sub="Choisis les couleurs de ton espace (tu peux changer quand tu veux), et vois ce que tes parents suivent." />}>
+    <Screen top={<PageTitle spark title="Mon espace" sub="Choisis les couleurs de ton espace. Tu peux en changer quand tu veux." />}>
       {THEME_KINDS.map(k => (
         <section key={k.id} className="flex flex-col gap-3">
           <h2 className="text-lg font-semibold m-0">{k.label}</h2>
@@ -61,14 +61,6 @@ export default async function ThemePage() {
           </div>
         </section>
       ))}
-      <section className="card flex flex-col gap-2 max-w-[760px]">
-        <h2 className="text-lg font-semibold">Ce que tes parents voient</h2>
-        <ul className="m-0 pl-5 text-sm text-ink-2 flex flex-col gap-1.5 list-disc">
-          <li>Ton temps de travail actif et tes séances</li><li>Tes notes et tes niveaux par cours</li><li>Les sorties de fenêtre pendant une évaluation</li>
-        </ul>
-        <span className="lbl mt-1.5">Ce qu’ils ne voient pas</span>
-        <ul className="m-0 pl-5 text-sm text-ink-2 flex flex-col gap-1.5 list-disc"><li>Ton écran, ta caméra ou ton micro</li><li>Les autres sites que tu visites</li></ul>
-      </section>
     </Screen>
   );
 }

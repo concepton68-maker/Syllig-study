@@ -178,3 +178,10 @@ Première version numérotée (déjà en ligne avant numérotation : socle, gén
   - Ordre croissant rétabli dans les QCM numériques.
 - Correction automatique : comparaison des décimaux fiabilisée (7,07 et 7,071 sont bien distingués).
 - Les **30 cours de 3e** passent tous le test de bout en bout (20/20 avec le corrigé).
+
+## 0.16 — 24/11/2026
+- Espace élève : les textes qui expliquaient ce que les parents voient ou ne voient pas sont supprimés. Cela concerne :
+  - la page « Mon espace » ;
+  - les consignes de l'évaluation ;
+  - le message affiché en quittant la fenêtre ;
+  - le bilan.

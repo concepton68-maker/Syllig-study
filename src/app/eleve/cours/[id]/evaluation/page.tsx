@@ -56,7 +56,7 @@ export default async function EvaluationPage({ params }: { params: Promise<{ id:
         <ul className="m-0 pl-5 list-disc flex flex-col gap-1.5 text-[15px]">
           <li><strong>{doc.evaluation.duration_min} minutes</strong>, chrono tenu par le serveur. À la fin du temps, ta copie est remise automatiquement.</li>
           <li>Sans la leçon ni les corrigés. Le collage de texte est désactivé.</li>
-          <li>Les sorties de la fenêtre sont enregistrées et visibles par tes parents. Astuce : active « Ne pas déranger » avant de commencer.</li>
+          <li>Reste sur cette page jusqu’à la fin. Astuce : active « Ne pas déranger » avant de commencer.</li>
           <li>{graded ? 'C’est ta meilleure note qui compte.' : 'Tu pourras retenter plus tard : c’est ta meilleure note qui compte.'}</li>
         </ul>
         {av.ok || (('pending' in av) && av.pending?.status === 'approved') ? (

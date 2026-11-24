@@ -126,7 +126,7 @@ export default async function Bilan({ params }: { params: Promise<{ id: string; 
           <h2 className="text-base font-semibold">Conditions de l’évaluation</h2>
           <span className="text-sm text-ink-2">
             {mins !== null ? `Remise en ${mins} min sur ${doc.evaluation.duration_min}` : 'Remise'}{a.late ? ' (après la fin du temps)' : ''} · horodatée par le serveur.
-            {a.focus_losses > 0 ? ` ${a.focus_losses} sortie${a.focus_losses > 1 ? 's' : ''} de la fenêtre (${a.focus_lost_seconds} s au total) enregistrée${a.focus_losses > 1 ? 's' : ''}, en toute transparence avec tes parents.` : ' Aucune sortie de la fenêtre.'}
+            {a.focus_losses > 0 ? ` ${a.focus_losses} sortie${a.focus_losses > 1 ? 's' : ''} de la fenêtre (${a.focus_lost_seconds} s au total).` : ' Aucune sortie de la fenêtre.'}
           </span>
         </div>
         <span className="pill bg-white border border-line text-ink-2">Session enregistrée</span>

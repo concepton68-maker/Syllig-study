@@ -60,7 +60,7 @@ export function EvalRunner({ courseId, attemptId, remaining, sections, texts, in
       else if (hiddenSince.current) {
         post({ action: 'focus_back', seconds: (Date.now() - hiddenSince.current) / 1000 });
         hiddenSince.current = null;
-        setNotice('Tu as quitté la fenêtre de l’évaluation. C’est noté dans ton journal, comme prévu dans les règles.');
+        setNotice('Tu as quitté la fenêtre de l’évaluation. Reste sur cette page jusqu’à la fin.');
       }
     };
     document.addEventListener('visibilitychange', onVis);
