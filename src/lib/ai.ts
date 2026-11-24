@@ -11,7 +11,7 @@ import type { Attempt } from './evaluation';
 // l'IA propose les points et les commentaires, le parent valide toujours la note.
 
 export type Provider = 'mistral' | 'claude' | 'gemini';
-export type Task = 'correction' | 'bilan';
+export type Task = 'correction' | 'bilan' | 'cours';
 export type AiConfig = { provider: Provider; model: string; key: string };
 export type Model = { id: string; label: string };
 
@@ -21,9 +21,10 @@ export const PROVIDERS: Record<Provider, { name: string; eu: boolean; where: str
   claude: { name: 'Claude (Anthropic)', eu: false, where: 'États-Unis', help: 'Clé sur console.anthropic.com › API Keys.', placeholder: 'sk-ant-…' },
   gemini: { name: 'Gemini (Google)', eu: false, where: 'États-Unis', help: 'Clé sur aistudio.google.com › Get API key (offre payante).', placeholder: 'AIza…' },
 };
-export const TASKS: Record<Task, { label: string; desc: string }> = {
-  correction: { label: 'Correction des copies', desc: 'Réponses rédigées des élèves (sans nom), énoncés et corrigés.' },
-  bilan: { label: 'Bilan pédagogique et test de positionnement', desc: 'Temps de travail, notes, questions ratées (sans nom).' },
+export const TASKS: Record<Task, { label: string; desc: string; studentData: boolean }> = {
+  correction: { label: 'Correction des copies', desc: 'Réponses rédigées des élèves (sans nom), énoncés et corrigés.', studentData: true },
+  bilan: { label: 'Bilan pédagogique et test de positionnement', desc: 'Temps de travail, notes, questions ratées (sans nom).', studentData: true },
+  cours: { label: 'Rédaction des cours', desc: 'Fiche du cours et programme officiel seulement : aucune donnée d’élève (toute IA possible).', studentData: false },
 };
 export const CLAUDE_MODELS: Model[] = [
   { id: 'claude-opus-5-5', label: 'Claude Opus 5.5 — le plus fiable (≈ 5 centimes par copie)' },
@@ -53,8 +54,9 @@ export type AiSettings = {
   enabled: boolean;
   allow_non_eu: boolean;      // dérogation : données d'élèves envoyées hors Union européenne
   retention_days: number;     // conservation des bilans et du journal des envois
+  auto_cours: boolean;        // rédiger automatiquement les leçons de rattrapage proposées par les bilans
 };
-const EMPTY: AiSettings = { providers: {}, tasks: {}, enabled: true, allow_non_eu: false, retention_days: 365 };
+const EMPTY: AiSettings = { providers: {}, tasks: {}, enabled: true, allow_non_eu: false, retention_days: 365, auto_cours: false };
 
 export async function loadAiSettings(): Promise<AiSettings> {
   const [r] = await sql<{ value: AiSettings }[]>`select value from app_settings where key = 'ia'`;
@@ -82,7 +84,7 @@ export async function removeProviderKey(provider: Provider, userId: string) {
   for (const t of Object.keys(s.tasks) as Task[]) if (s.tasks[t]?.provider === provider) delete s.tasks[t];
   await saveAll(s, userId);
 }
-export async function saveTaskSettings(v: Pick<AiSettings, 'tasks' | 'enabled' | 'allow_non_eu' | 'retention_days'>, userId: string) {
+export async function saveTaskSettings(v: Partial<Pick<AiSettings, 'tasks' | 'enabled' | 'allow_non_eu' | 'retention_days' | 'auto_cours'>>, userId: string) {
   const s = await loadAiSettings();
   await saveAll({ ...s, ...v }, userId);
 }
@@ -95,14 +97,14 @@ export async function aiOverview() {
   const s = await loadAiSettings();
   const providers = Object.fromEntries(Object.entries(s.providers).map(([k, v]) => [k, { key_hint: v!.key_hint, models: v!.models, checked_at: v!.checked_at }])) as Partial<Record<Provider, { key_hint: string; models: Model[]; checked_at: string }>>;
   const ready = (t: Task) => taskProblem(s, t) === null;
-  return { ...s, providers, ready: { correction: ready('correction'), bilan: ready('bilan') } };
+  return { ...s, providers, ready: { correction: ready('correction'), bilan: ready('bilan'), cours: ready('cours') } };
 }
 function taskProblem(s: AiSettings, task: Task): string | null {
   if (!s.enabled) return 'L’IA est désactivée (Contenu › IA).';
   const t = s.tasks[task];
   if (!t) return `Aucune IA choisie pour « ${TASKS[task].label} » (Contenu › IA).`;
   if (!s.providers[t.provider]?.key_sealed) return `Pas de clé ${PROVIDERS[t.provider].name} enregistrée (Contenu › IA).`;
-  if (!PROVIDERS[t.provider].eu && !s.allow_non_eu) return `${PROVIDERS[t.provider].name} traite les données hors de l’Union européenne : choisissez une IA européenne pour « ${TASKS[task].label} », ou accordez la dérogation (Contenu › IA).`;
+  if (TASKS[task].studentData && !PROVIDERS[t.provider].eu && !s.allow_non_eu) return `${PROVIDERS[t.provider].name} traite les données hors de l’Union européenne : choisissez une IA européenne pour « ${TASKS[task].label} », ou accordez la dérogation (Contenu › IA).`;
   return null;
 }
 // Configuration d'une tâche, après toutes les vérifications (IA active, clé, règle Europe)
@@ -179,8 +181,8 @@ const mistralRank = (id: string) => /large/i.test(id) ? 0 : /medium/i.test(id) ?
 const mistralLabel = (id: string) => /large/i.test(id) ? `${id} — le plus capable (bilans)` : /medium/i.test(id) ? `${id} — intermédiaire` : /small/i.test(id) ? `${id} — économique (corrections)` : id;
 // Modèle conseillé par tâche parmi ceux de la clé
 export function defaultModel(provider: Provider, models: Model[], task: Task): string | undefined {
-  if (provider === 'claude') return task === 'bilan' ? 'claude-opus-5-5' : 'claude-sonnet-5-5';
-  if (provider === 'mistral') return (models.find(m => (task === 'bilan' ? /large/ : /small/).test(m.id)) ?? models.find(m => /medium/.test(m.id)) ?? models[0])?.id;
+  if (provider === 'claude') return task === 'correction' ? 'claude-sonnet-5-5' : 'claude-opus-5-5';
+  if (provider === 'mistral') return (models.find(m => (task === 'correction' ? /small/ : /large/).test(m.id)) ?? models.find(m => /medium/.test(m.id)) ?? models[0])?.id;
   return geminiCandidates(models)[0];
 }
 // Vérifie qu'un modèle répond vraiment (une demande minuscule) ; renvoie l'erreur, ou null
@@ -280,6 +282,49 @@ export async function askJson<S extends z.ZodType>(cfg: AiConfig, schema: S, sys
   return parsed.data as z.infer<S>;
 }
 
+// Longue réponse en texte libre (un cours complet en JSON : jusqu'à ~30 000 jetons) ; Claude en flux pour éviter les délais
+export async function askText(cfg: AiConfig, system: string, user: string, maxTokens = 32000): Promise<string> {
+  if (cfg.provider === 'claude') {
+    const withFallback = cfg.model !== 'claude-haiku-5-5';
+    const stream = claude(cfg.key).beta.messages.stream({
+      model: cfg.model, max_tokens: maxTokens, system, messages: [{ role: 'user', content: user }],
+      output_config: { effort: 'high' },
+      ...(withFallback ? { betas: ['server-side-fallback-2026-07-01'], fallbacks: 'default' as const } : {}),
+    });
+    const msg = await stream.finalMessage();
+    if (msg.stop_reason === 'refusal') throw new Error('le modèle a refusé la demande');
+    if (msg.stop_reason === 'max_tokens') throw new Error('réponse trop longue, interrompue');
+    return msg.content.map(b => b.type === 'text' ? b.text : '').join('');
+  }
+  if (cfg.provider === 'mistral') {
+    const r = await fetch(`${mistralBase()}/v1/chat/completions`, {
+      method: 'POST', headers: { 'content-type': 'application/json', authorization: `Bearer ${cfg.key}` },
+      body: JSON.stringify({ model: cfg.model, messages: [{ role: 'system', content: system }, { role: 'user', content: user }], response_format: { type: 'json_object' }, max_tokens: maxTokens }),
+      signal: AbortSignal.timeout(900_000),
+    });
+    if (!r.ok) {
+      const err = await mistralError(r);
+      // limite de longueur du modèle plus basse que demandée : on réessaie avec la moitié
+      if ((r.status === 400 || r.status === 422) && /max_tokens|token/i.test(err) && maxTokens > 8000) return askText(cfg, system, user, Math.floor(maxTokens / 2));
+      throw new Error(err);
+    }
+    const j = await r.json() as { choices?: { message?: { content?: string | { text?: string }[] }; finish_reason?: string }[] };
+    if (j.choices?.[0]?.finish_reason === 'length') throw new Error('réponse trop longue, interrompue');
+    const c = j.choices?.[0]?.message?.content;
+    return typeof c === 'string' ? c : (c ?? []).map(x => x.text ?? '').join('');
+  }
+  const r = await fetch(`${geminiBase()}/v1beta/models/${encodeURIComponent(cfg.model)}:generateContent`, {
+    method: 'POST', headers: { 'content-type': 'application/json', 'x-goog-api-key': cfg.key },
+    body: JSON.stringify({ systemInstruction: { parts: [{ text: system }] }, contents: [{ role: 'user', parts: [{ text: user }] }],
+      generationConfig: { responseMimeType: 'application/json', maxOutputTokens: maxTokens } }),
+    signal: AbortSignal.timeout(900_000),
+  });
+  if (!r.ok) throw new Error(await googleError(r));
+  const j = await r.json() as { candidates?: { content?: { parts?: { text?: string }[] }; finishReason?: string }[] };
+  if (j.candidates?.[0]?.finishReason === 'MAX_TOKENS') throw new Error('réponse trop longue, interrompue');
+  return (j.candidates?.[0]?.content?.parts ?? []).map(p => p.text ?? '').join('');
+}
+
 const askCopy = (cfg: AiConfig, system: string, copy: string): Promise<GradedCopy> =>
   askJson(cfg, Graded, system, `Voici la copie à corriger (JSON) :\n${copy}`);
 
@@ -303,7 +348,7 @@ export async function ensureGeminiModel(cfg: AiConfig): Promise<{ note?: string;
 type ExportedCopy = { ref: string; questions: { id: string; points_max: number | undefined }[] };
 
 // Corrige les copies demandées et enregistre les propositions (le parent valide ensuite).
-export async function correctWithAi(attempts: (Attempt & { title: string; subject: string; level: string })[], allowedStudentIds: string[], actorId: string) {
+export async function correctWithAi(attempts: (Attempt & { title: string; subject: string; level: string })[], allowedStudentIds: string[], actorId: string | null) {
   const conf = await aiConfigFor('correction');
   if ('error' in conf) return { ok: 0, errors: [conf.error] };
   const cfg = conf.cfg;

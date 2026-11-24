@@ -105,10 +105,23 @@ export default async function Bilan({ searchParams }: { searchParams: Promise<{ 
             <input type="checkbox" name="ai_correction" defaultChecked={consent.correction} className="w-5 h-5 mt-0.5 accent-[var(--color-brand)]" />
             <span><strong>Correction des copies par l’IA</strong><span className="block muted">Envoyé : les énoncés, corrigés et réponses rédigées. Chez : {where('correction')}.</span></span>
           </label>
+          <label className="flex items-start gap-2.5 text-sm ml-8">
+            <input type="checkbox" name="auto_correction" defaultChecked={student.settings.auto_correction} className="w-5 h-5 mt-0.5 accent-[var(--color-brand)]" />
+            <span><strong>Automatique</strong> : chaque copie est corrigée dès sa remise. Vous validez toujours la note.</span>
+          </label>
           <label className="flex items-start gap-2.5 text-sm">
             <input type="checkbox" name="ai_bilan" defaultChecked={consent.bilan} className="w-5 h-5 mt-0.5 accent-[var(--color-brand)]" />
             <span><strong>Bilan pédagogique et test de positionnement par l’IA</strong><span className="block muted">Envoyé : temps de travail, notes, questions ratées et réponses. Chez : {where('bilan')}.</span></span>
           </label>
+          <div className="ml-8 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm">
+            <label className="flex items-center gap-2"><strong>Bilan automatique</strong>
+              <select className="field !py-1.5 !min-h-0" name="auto_bilan" defaultValue={student.settings.auto_bilan}>
+                <option value="off">Non, je le demande moi-même</option><option value="3_evals">Toutes les 3 évaluations notées</option><option value="hebdo">Chaque semaine (s’il y a eu du travail)</option>
+              </select></label>
+            <label className="flex items-center gap-2"><input type="checkbox" name="auto_test" defaultChecked={student.settings.auto_test} className="w-5 h-5 accent-[var(--color-brand)]" />
+              Proposer automatiquement le test de positionnement</label>
+          </div>
+          <p className="m-0 muted text-xs">Les automatismes ne fonctionnent qu’avec l’accord correspondant ci-dessus. Les résultats arrivent dans « À faire » et sur cette page.</p>
           <div className="flex flex-wrap items-center gap-3"><button className="btn btn-primary" type="submit">Enregistrer mes choix</button>
             <Link href="/confidentialite" className="font-semibold text-sm">Comment sont protégées les données ?</Link></div>
         </form>

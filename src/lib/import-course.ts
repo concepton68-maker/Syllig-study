@@ -47,10 +47,13 @@ export async function importCourse(raw: string, sourceName: string, userId: stri
 }
 
 export async function publishVersion(versionId: string) {
-  await sql.begin(async tx => {
+  const courseId = await sql.begin(async tx => {
     const [v] = await tx<{ course_id: number }[]>`select course_id from course_versions where id = ${versionId} and status = 'draft' for update`;
     if (!v) throw new Error('Version introuvable ou déjà publiée');
     await tx`update course_versions set status = 'archived' where course_id = ${v.course_id} and status = 'published'`;
     await tx`update course_versions set status = 'published', published_at = now() where id = ${versionId}`;
+    return v.course_id;
   });
+  // leçon de rattrapage : elle passe en tête du parcours des élèves pour qui le bilan l'a proposée
+  await (await import('./automation')).assignRemedial(courseId).catch(() => 0);
 }

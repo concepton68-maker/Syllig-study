@@ -14,7 +14,7 @@ import { AiButton } from './AiButton';
 export const metadata = { title: 'À faire' };
 export const dynamic = 'force-dynamic';
 
-type Row = { id: string; title: string; first_name: string; attempt_no: number; status: string; submitted_at: Date | null; requested_at: Date | null; final_score: string | null; has_proposal: boolean };
+type Row = { id: string; title: string; first_name: string; attempt_no: number; status: string; submitted_at: Date | null; requested_at: Date | null; final_score: string | null; has_proposal: boolean; ai_running: boolean };
 const when = (d: Date | null) => d ? d.toLocaleString('fr-FR', { timeZone: 'Europe/Paris', day: 'numeric', month: 'long', hour: '2-digit', minute: '2-digit' }) : '';
 
 // Tout ce qui attend une action du parent, pour tous les enfants du foyer
@@ -24,14 +24,15 @@ export default async function ToDo({ searchParams }: { searchParams: Promise<{ v
   const aiOn = (await aiOverview()).ready.correction;
   const ids = students.map(s => s.id);
   const rows = ids.length ? await sql<Row[]>`
-    select a.id, c.title, s.first_name, a.attempt_no, a.status, a.submitted_at, a.requested_at, a.final_score, (a.proposal is not null) as has_proposal
+    select a.id, c.title, s.first_name, a.attempt_no, a.status, a.submitted_at, a.requested_at, a.final_score, (a.proposal is not null) as has_proposal,
+      exists (select 1 from jobs j where j.kind = 'correction' and j.payload->>'attemptId' = a.id::text and j.status in ('en_attente', 'en_cours')) as ai_running
     from eval_attempts a join courses c on c.id = a.course_id join students s on s.id = a.student_id
     where a.student_id in ${sql(ids)} and a.status in ('requested', 'submitted', 'graded')
     order by a.status = 'graded', coalesce(a.submitted_at, a.requested_at) desc limit 80` : [];
   const requests = rows.filter(r => r.status === 'requested');
   const pending = rows.filter(r => r.status === 'submitted');
   const graded = rows.filter(r => r.status === 'graded').slice(0, 20);
-  const toAi = pending.filter(r => !r.has_proposal);
+  const toAi = pending.filter(r => !r.has_proposal && !r.ai_running);
   const multi = students.length > 1;
   const pwRequests = ids.length ? await sql<{ id: string; student_id: string; first_name: string; created_at: Date }[]>`
     select r.id::text, s.id as student_id, s.first_name, r.created_at from password_requests r join students s on s.user_id = r.user_id
@@ -91,7 +92,7 @@ export default async function ToDo({ searchParams }: { searchParams: Promise<{ v
           </span>
         </div>
         {pending.length === 0 && <span className="muted text-sm py-2">Aucune copie en attente.</span>}
-        {pending.length > 1 && <div className="mb-2"><BulkBar formId="bulk-copies" noun="copie" feminine
+        {pending.length > 0 && <div className="mb-2"><BulkBar formId="bulk-copies" noun="copie" feminine
           actions={[
             ...(aiOn ? [{ label: 'Corriger la sélection avec l’IA', action: correctWithAiAction, tone: 'primary' as const }] : []),
             { label: 'Valider les notes proposées', action: validateProposalsBulk, confirm: 'Valider telles quelles les notes proposées pour {n} ? (les copies sans proposition sont ignorées)' },
@@ -99,9 +100,9 @@ export default async function ToDo({ searchParams }: { searchParams: Promise<{ v
         {!aiOn && pending.length > 0 && <p className="muted text-sm mt-0 mb-2">Astuce : avec une IA branchée, les copies se corrigent en un clic. {user.roles.includes('admin') ? <Link href="/contenu/ia" className="font-semibold">Brancher une IA de correction</Link> : 'Demandez à l’administrateur de la brancher (espace Contenu › IA de correction).'}</p>}
         {pending.map(r => (
           <div key={r.id} className="flex flex-wrap items-center gap-3 py-3 border-t border-soft text-sm">
-            {pending.length > 1 && <BulkCheck formId="bulk-copies" value={r.id} label={r.title} />}
+            {pending.length > 0 && <BulkCheck formId="bulk-copies" value={r.id} label={r.title} />}
             <span className="flex-[1_1_260px]"><strong>{multi ? `${r.first_name} · ` : ''}{r.title}</strong><span className="block muted">Tentative {r.attempt_no} · remise le {when(r.submitted_at)}</span></span>
-            <span className={`pill ${r.has_proposal ? 'bg-brand-soft text-brand-dark' : 'bg-soft text-ink-2'}`}>{r.has_proposal ? 'Pré-corrigée' : aiOn ? 'À corriger' : 'À exporter'}</span>
+            <span className={`pill ${r.has_proposal ? 'bg-brand-soft text-brand-dark' : 'bg-soft text-ink-2'}`}>{r.has_proposal ? 'Pré-corrigée' : r.ai_running ? 'Correction IA en cours…' : aiOn ? 'À corriger' : 'À exporter'}</span>
             <Link className="btn" href={`/parent/copies/${r.id}`}>{r.has_proposal ? 'Vérifier et valider' : 'Corriger moi-même'}</Link>
           </div>
         ))}

@@ -5,7 +5,9 @@ import { sql } from '@/lib/db';
 import { requireUser } from '@/lib/auth';
 import { assertParentOf, studentsOfParent } from '@/lib/access';
 import { logEvent } from '@/lib/activity';
-import { generateReport, placementQuestion, ReportData } from '@/lib/report';
+import { generateReport } from '@/lib/report';
+import { assignPlacementFromReport } from '@/lib/automation';
+import { enqueue } from '@/lib/jobs';
 
 const back = (studentId: string, q: Record<string, string>) => `/parent/bilan?${new URLSearchParams({ eleve: studentId, ...q })}`;
 
@@ -23,17 +25,11 @@ export async function requestReport(studentId: string) {
 // Proposer à l'élève le test de positionnement d'un bilan
 export async function assignPlacement(reportId: string) {
   const u = await requireUser('parent');
-  const [r] = await sql<{ student_id: string; data: ReportData }[]>`select student_id, data from student_reports where id = ${reportId}`;
+  const [r] = await sql<{ student_id: string }[]>`select student_id from student_reports where id = ${reportId}`;
   if (!r) redirect('/parent/bilan');
   await assertParentOf(u.id, r.student_id);
-  const [open] = await sql`select 1 from placement_tests where student_id = ${r.student_id} and status <> 'termine'`;
-  if (open) redirect(back(r.student_id, { rapport: reportId, erreur: 'Un test de positionnement est déjà proposé : attendez qu’il soit fait (ou retirez-le).' }));
-  const questions = r.data.test_positionnement.questions.map(placementQuestion).filter(q => q !== null);
-  if (questions.length < 5) redirect(back(r.student_id, { rapport: reportId, erreur: 'Le test proposé par l’IA n’est pas utilisable : demandez un nouveau bilan.' }));
-  const duration = Math.min(40, Math.max(10, Math.round(questions.length * 1.5)));
-  await sql`insert into placement_tests (student_id, report_id, created_by, questions, duration_min, total)
-    values (${r.student_id}, ${reportId}, ${u.id}, ${sql.json({ consigne: r.data.test_positionnement.consigne_eleve, items: questions })}, ${duration}, ${questions.length})`;
-  await logEvent(r.student_id, 'positionnement_propose', { actorId: u.id, data: { questions: questions.length } });
+  const res = await assignPlacementFromReport(reportId, u.id);
+  if ('error' in res) redirect(back(r.student_id, { rapport: reportId, erreur: res.error }));
   revalidatePath('/parent', 'layout'); revalidatePath('/eleve', 'layout');
   redirect(back(r.student_id, { rapport: reportId, test: 'propose' }));
 }
@@ -60,9 +56,16 @@ export async function deletePlacementTests(form: FormData) {
 export async function saveAiConsent(studentId: string, form: FormData) {
   const u = await requireUser('parent');
   await assertParentOf(u.id, studentId);
-  const v = { ai_correction: form.get('ai_correction') === 'on', ai_bilan: form.get('ai_bilan') === 'on' };
+  const ai_correction = form.get('ai_correction') === 'on', ai_bilan = form.get('ai_bilan') === 'on';
+  const bilan = String(form.get('auto_bilan') ?? 'off');
+  // un automatisme n'est possible qu'avec l'accord correspondant
+  const v = { ai_correction, ai_bilan, auto_correction: ai_correction && form.get('auto_correction') === 'on',
+    auto_bilan: ai_bilan && (bilan === '3_evals' || bilan === 'hebdo') ? bilan : 'off', auto_test: ai_bilan && form.get('auto_test') === 'on' };
   await sql`update students set settings = settings || ${sql.json(v)} where id = ${studentId}`;
-  await logEvent(studentId, 'consentement_ia', { actorId: u.id, data: { correction: v.ai_correction, bilan: v.ai_bilan } });
+  await logEvent(studentId, 'consentement_ia', { actorId: u.id, data: { correction: v.ai_correction, bilan: v.ai_bilan, auto_correction: v.auto_correction, auto_bilan: v.auto_bilan, auto_test: v.auto_test } });
+  // correction automatique activée : les copies déjà en attente partent aussi
+  if (v.auto_correction) for (const a of await sql<{ id: string }[]>`select id from eval_attempts where student_id = ${studentId} and status = 'submitted' and proposal is null`)
+    await enqueue('correction', { attemptId: a.id }, `correction:${a.id}`);
   revalidatePath('/parent', 'layout');
   redirect(back(studentId, { consentement: '1' }));
 }

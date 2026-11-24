@@ -291,3 +291,15 @@ Recette complète de l'espace élève (un agent testeur a joué l'élève sur t�
   - Journal des envois : le parent voit exactement ce qui est parti, chez qui (UE ou hors UE) et quand. Il peut effacer des lignes en groupe.
   - Conservation : les bilans, les tests terminés et le journal sont effacés automatiquement après 6 mois, 1 an ou 2 ans (réglable).
   - Page publique « Confidentialité » (lien sur la page de connexion) : données, finalités, fournisseurs en service, durées, droits, CNIL.
+
+## 0.28 — 24/11/2026
+- Automatismes, réglés par le parent pour chaque enfant (Famille › Bilan › Confidentialité et IA), uniquement avec son accord :
+  - correction par l'IA dès la remise d'une copie (le parent valide toujours la note) ;
+  - bilan automatique, toutes les 3 évaluations notées ou chaque semaine s'il y a eu du travail ;
+  - test de positionnement proposé automatiquement à l'élève après un bilan.
+- Rédaction des cours par l'IA (nouvelle tâche « Rédaction des cours », aucune donnée d'élève envoyée) :
+  - Catalogue : bouton « Rédiger avec l'IA » sur chaque cours et action groupée. Le cours est rédigé en arrière-plan, contrôlé par le validateur (second essai automatique s'il est refusé), puis placé en brouillon dans « À relire ». Rien n'est publié sans validation.
+  - Leçons à créer : « Rédiger avec l'IA » range chaque leçon dans un chapitre « Remise à niveau » au niveau de l'élève, puis la fait rédiger. À la publication, la leçon passe en tête du parcours des élèves concernés.
+  - Option administrateur : rédiger automatiquement les leçons de rattrapage proposées par les bilans.
+- Contenu › IA : section « Travail en arrière-plan » (tâches en attente, en cours, terminées, en échec ; relancer ou retirer en groupe ; « Vérifier les automatismes maintenant »).
+- À faire : « Correction IA en cours… » sur les copies en traitement ; actions groupées disponibles dès la première copie.

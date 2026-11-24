@@ -7,6 +7,9 @@ export type StudentSettings = {
   theme: ThemeId;                // thème d'affichage de l'espace élève
   ai_correction: boolean;        // consentement du parent (RGPD) : copies corrigées par l'IA
   ai_bilan: boolean;             // consentement du parent (RGPD) : bilan pédagogique et test de positionnement par l'IA
+  auto_correction: boolean;      // automatisme : copie corrigée par l'IA dès sa remise
+  auto_bilan: 'off' | '3_evals' | 'hebdo';   // automatisme : bilan toutes les 3 évaluations notées, ou chaque semaine
+  auto_test: boolean;            // automatisme : test de positionnement proposé dès qu'un bilan en prépare un
 };
 export const THEMES = [
   { id: 'glacier', kind: 'girly', name: 'Girly ✦ Ice blue', desc: 'Bleu nuit, bleu glacier et rose poudré, titres arrondis' },
@@ -32,6 +35,9 @@ export const DEFAULT_SETTINGS: StudentSettings = {
   theme: 'classique',
   ai_correction: false,
   ai_bilan: false,
+  auto_correction: false,
+  auto_bilan: 'off',
+  auto_test: false,
 };
 export const settingsOf = (raw: unknown): StudentSettings => {
   const s = { ...DEFAULT_SETTINGS, ...((raw as object) ?? {}) } as StudentSettings;

@@ -48,7 +48,7 @@ const ResultFile = z.object({
 });
 
 // Vérifie le fichier renvoyé par Claude et enregistre des propositions (rien n'est définitif avant validation du parent)
-export async function importResults(raw: string, allowedStudentIds: string[], actorId: string) {
+export async function importResults(raw: string, allowedStudentIds: string[], actorId: string | null) {
   let parsed;
   try { parsed = ResultFile.safeParse(JSON.parse(raw)); } catch (e) { return { ok: false as const, errors: [`Fichier illisible : ${(e as Error).message}`] }; }
   if (!parsed.success) return { ok: false as const, errors: parsed.error.issues.map(i => `${i.path.join(' › ')} : ${i.message}`) };

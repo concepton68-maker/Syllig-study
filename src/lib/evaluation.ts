@@ -38,6 +38,8 @@ export async function submitAttempt(a: Attempt, opts: { auto?: boolean } = {}) {
     courseId: a.course_id, data: { tentative: a.attempt_no, duree_min: mins, sorties_fenetre: a.focus_losses, sorties_s: a.focus_lost_seconds, coller_bloque: a.paste_blocked },
   });
   if (qs.every(q => q.id in auto)) await gradeAttemptFinal(a.id, auto, {}, a.student_id ? (await studentUser(a.student_id)) : '');
+  // automatisme du parent : réponses rédigées corrigées par l'IA dès la remise (en arrière-plan)
+  else await (await import('./automation')).maybeAutoCorrect(a).catch(() => null);
 }
 
 async function studentUser(studentId: string) {

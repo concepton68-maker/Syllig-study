@@ -43,3 +43,29 @@ export async function publishBulkAction(form: FormData) {
   revalidatePath('/contenu', 'layout');
   revalidatePath('/eleve', 'layout');
 }
+
+// Rédaction par l'IA (en arrière-plan) : un cours, ou une sélection du catalogue (ids = identifiants de cours)
+export async function draftWithAiAction(courseId: number) {
+  const u = await requireUser('admin');
+  const { draftCourse } = await import('@/lib/automation');
+  await draftCourse(courseId, u.id);
+  revalidatePath('/contenu', 'layout');
+}
+export async function draftWithAiBulkAction(form: FormData) {
+  const u = await requireUser('admin');
+  const { draftCourse } = await import('@/lib/automation');
+  for (const id of form.getAll('ids').map(Number).filter(Number.isInteger)) await draftCourse(id, u.id);
+  revalidatePath('/contenu', 'layout');
+}
+// Publier les brouillons des cours sélectionnés dans le catalogue (ids = identifiants de cours)
+export async function publishCoursesDraftsAction(form: FormData) {
+  await requireUser('admin');
+  const ids = form.getAll('ids').map(Number).filter(Number.isInteger);
+  if (ids.length) for (const v of await sql<{ id: string }[]>`
+    select distinct on (course_id) id from course_versions where course_id in ${sql(ids)} and status = 'draft'
+      and version > coalesce((select max(version) from course_versions p where p.course_id = course_versions.course_id and p.status = 'published'), 0)
+    order by course_id, version desc`) {
+    try { await publishVersion(v.id); } catch { /* déjà publiée */ }
+  }
+  revalidatePath('/contenu', 'layout'); revalidatePath('/eleve', 'layout');
+}

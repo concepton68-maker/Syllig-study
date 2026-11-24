@@ -74,7 +74,7 @@ export function placementQuestion(q: ReportData['test_positionnement']['question
   return acc.length ? { ...base, type: 'short', answer: acc } : null;
 }
 
-export async function generateReport(studentId: string, actorId: string): Promise<{ id?: string; error?: string; note?: string }> {
+export async function generateReport(studentId: string, actorId: string | null): Promise<{ id?: string; error?: string; note?: string }> {
   const [st] = await sql<{ settings: { ai_bilan?: boolean } }[]>`select settings from students where id = ${studentId}`;
   if (!st?.settings?.ai_bilan) return { error: 'Le bilan par l’IA n’est pas autorisé pour cet enfant : cochez-le dans « Confidentialité et IA », en bas de cette page.' };
   const conf = await aiConfigFor('bilan');

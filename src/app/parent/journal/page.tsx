@@ -10,7 +10,7 @@ export const metadata = { title: 'Journal d’activité' };
 export const dynamic = 'force-dynamic';
 
 const EVENT: Record<string, string> = {
-  bilan_ia: 'Bilan pédagogique demandé à l’IA', consentement_ia: 'Accord pour l’IA modifié', positionnement_propose: 'Test de positionnement proposé',
+  bilan_ia: 'Bilan pédagogique demandé à l’IA', consentement_ia: 'Accord pour l’IA modifié', remise_a_niveau_ajoutee: 'Leçon de remise à niveau ajoutée au parcours', positionnement_propose: 'Test de positionnement proposé',
   positionnement_commence: 'Test de positionnement commencé', positionnement_termine: 'Test de positionnement terminé',
   seance_terminee: 'Séance terminée', lecon_terminee: 'Leçon terminée', point_controle_reussi: 'Point de contrôle réussi',
   point_controle_a_reessayer: 'Point de contrôle à réessayer', exercices_remis: 'Exercices remis', exercices_termines: 'Exercices terminés',
