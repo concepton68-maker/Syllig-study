@@ -1,6 +1,6 @@
 import 'server-only';
 import { sql } from './db';
-import { enqueue } from './jobs';
+import { enqueue, progressReporter } from './jobs';
 import { aiConfigFor, askText, loadAiSettings, logAiRequest, correctWithAi } from './ai';
 import { generateReport, placementQuestion, type ReportData } from './report';
 import { logEvent } from './activity';
@@ -100,7 +100,8 @@ async function adminId(userId: string | null) {
   return a?.user_id ?? null;
 }
 
-export async function runCourseJob(courseId: number, userId: string | null) {
+export async function runCourseJob(courseId: number, userId: string | null, jobId: string | null = null) {
+  const report = progressReporter(jobId);
   const conf = await aiConfigFor('cours');
   if ('error' in conf) throw new Error(conf.error);
   const cfg = conf.cfg;
@@ -112,9 +113,11 @@ export async function runCourseJob(courseId: number, userId: string | null) {
   let lastErrors: string[] = [];
   for (let essai = 1; essai <= 2; essai++) {
     let text: string;
-    try { text = await askText(cfg, SYSTEM_COURS, prompt); }
+    report(`essai ${essai}/2 · l’IA commence à écrire…`);
+    try { text = await askText(cfg, SYSTEM_COURS, prompt, 32000, n => report(`essai ${essai}/2 · environ ${Math.min(99, Math.round(n / 450))} % rédigé`)); }
     catch (e) { await logAiRequest(null, 'cours', cfg, `Cours ${ctx.code} · ${ctx.title}`, (e as Error).message.slice(0, 300)); throw e; }
     await logAiRequest(null, 'cours', cfg, `Cours ${ctx.code} · ${ctx.title} (essai ${essai})`);
+    report(`essai ${essai}/2 · vérification par le validateur`);
     const raw = text.slice(text.indexOf('{'), text.lastIndexOf('}') + 1);
     const r = await importCourse(raw, `Rédigé par l’IA (${cfg.provider} · ${cfg.model})`, who);
     if (r.ok) {

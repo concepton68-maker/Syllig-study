@@ -9,6 +9,7 @@ import { KeyForm, TaskForm, RunAutoButton } from './Form';
 import { removeKey, retryJobs, deleteJobs } from './actions';
 import { sql } from '@/lib/db';
 import { BulkBar, BulkCheck } from '@/components/Bulk';
+import { AutoRefresh } from '@/components/AutoRefresh';
 
 export const metadata = { title: 'IA' };
 export const dynamic = 'force-dynamic';
@@ -18,8 +19,8 @@ export default async function AiPage() {
   const o = await aiOverview();
   const order: Provider[] = ['mistral', 'claude', 'gemini'];
   const providers = order.map(id => ({ id, ...PROVIDERS[id], hint: o.providers[id]?.key_hint, models: o.providers[id]?.models ?? [] }));
-  const jobs = await sql<{ id: string; kind: string; status: string; attempts: number; error: string | null; created_at: Date; finished_at: Date | null; label: string | null }[]>`
-    select j.id::text, j.kind, j.status, j.attempts, j.error, j.created_at, j.finished_at,
+  const jobs = await sql<{ id: string; kind: string; status: string; attempts: number; error: string | null; created_at: Date; finished_at: Date | null; started_at: Date | null; progress: string | null; label: string | null }[]>`
+    select j.id::text, j.kind, j.status, j.attempts, j.error, j.created_at, j.finished_at, j.started_at, j.progress,
       coalesce(c.title, s.first_name, (select title from courses x join eval_attempts a on a.course_id = x.id where a.id::text = j.payload->>'attemptId')) as label
     from jobs j left join courses c on c.id::text = j.payload->>'courseId' left join students s on s.id::text = j.payload->>'studentId'
     order by j.id desc limit 40`;
@@ -58,6 +59,7 @@ export default async function AiPage() {
       <section className="card max-w-[860px] flex flex-col gap-3" aria-labelledby="file">
         <h2 id="file" className="text-xl font-semibold m-0">3. Travail en arrière-plan</h2>
         <p className="m-0 text-sm muted">Corrections et bilans automatiques, rédaction de cours. Les automatismes sont vérifiés toutes les 30 minutes.</p>
+        <AutoRefresh active={jobs.some(j => j.status === 'en_attente' || j.status === 'en_cours')} />
         <RunAutoButton />
         {jobs.length === 0 ? <p className="m-0 text-sm">Aucune tâche pour l’instant.</p> : (
           <>
@@ -66,7 +68,7 @@ export default async function AiPage() {
               <div key={j.id} className="flex flex-wrap items-center gap-3 py-2 border-t border-soft text-sm">
                 <BulkCheck formId="bulk-jobs" value={j.id} label={`tâche ${j.id}`} />
                 <span className="flex-1 min-w-0"><strong>{({ correction: 'Correction', bilan: 'Bilan', cours: 'Rédaction du cours' } as Record<string, string>)[j.kind]}</strong>{j.label ? ` · ${j.label}` : ''}
-                  <span className="block muted text-xs">{j.created_at.toLocaleString('fr-FR', { timeZone: 'Europe/Paris', day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' })}{j.attempts > 1 ? ` · essai ${j.attempts}` : ''}{j.error ? ` · ${j.error}` : ''}</span></span>
+                  <span className="block muted text-xs">{j.created_at.toLocaleString('fr-FR', { timeZone: 'Europe/Paris', day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' })}{j.status === 'en_cours' && j.started_at ? ` · en cours depuis ${Math.max(1, Math.round((Date.now() - j.started_at.getTime()) / 60000))} min${j.progress ? ` · ${j.progress}` : ''}` : ''}{j.attempts > 1 ? ` · tentative ${j.attempts}/3` : ''}{j.error ? ` · erreur précédente : ${j.error}` : ''}</span></span>
                 <span className={`pill ${j.status === 'fait' ? 'bg-brand-soft text-brand-dark' : j.status === 'echec' ? 'bg-warm-soft text-warm-dark' : 'bg-soft text-ink-2'}`}>{({ en_attente: 'En attente', en_cours: 'En cours', fait: 'Terminé', echec: 'Échec' } as Record<string, string>)[j.status]}</span>
               </div>
             ))}

@@ -283,7 +283,7 @@ export async function askJson<S extends z.ZodType>(cfg: AiConfig, schema: S, sys
 }
 
 // Longue réponse en texte libre (un cours complet en JSON : jusqu'à ~30 000 jetons) ; Claude en flux pour éviter les délais
-export async function askText(cfg: AiConfig, system: string, user: string, maxTokens = 32000): Promise<string> {
+export async function askText(cfg: AiConfig, system: string, user: string, maxTokens = 32000, onProgress?: (chars: number) => void): Promise<string> {
   if (cfg.provider === 'claude') {
     const withFallback = cfg.model !== 'claude-haiku-5-5';
     const stream = claude(cfg.key).beta.messages.stream({
@@ -291,38 +291,71 @@ export async function askText(cfg: AiConfig, system: string, user: string, maxTo
       output_config: { effort: 'high' },
       ...(withFallback ? { betas: ['server-side-fallback-2026-07-01'], fallbacks: 'default' as const } : {}),
     });
+    let chars = 0;
+    stream.on('text', t => { chars += t.length; onProgress?.(chars); });
     const msg = await stream.finalMessage();
     if (msg.stop_reason === 'refusal') throw new Error('le modèle a refusé la demande');
     if (msg.stop_reason === 'max_tokens') throw new Error('réponse trop longue, interrompue');
     return msg.content.map(b => b.type === 'text' ? b.text : '').join('');
   }
+  // réponse reçue au fil de l'eau (SSE) : pas de coupure quand la rédaction dépasse 5 minutes, et avancement visible
   if (cfg.provider === 'mistral') {
     const r = await fetch(`${mistralBase()}/v1/chat/completions`, {
-      method: 'POST', headers: { 'content-type': 'application/json', authorization: `Bearer ${cfg.key}` },
-      body: JSON.stringify({ model: cfg.model, messages: [{ role: 'system', content: system }, { role: 'user', content: user }], response_format: { type: 'json_object' }, max_tokens: maxTokens }),
-      signal: AbortSignal.timeout(900_000),
+      method: 'POST', headers: { 'content-type': 'application/json', authorization: `Bearer ${cfg.key}`, accept: 'text/event-stream' },
+      body: JSON.stringify({ model: cfg.model, messages: [{ role: 'system', content: system }, { role: 'user', content: user }], response_format: { type: 'json_object' }, max_tokens: maxTokens, stream: true }),
+      signal: AbortSignal.timeout(1_800_000),
     });
     if (!r.ok) {
       const err = await mistralError(r);
       // limite de longueur du modèle plus basse que demandée : on réessaie avec la moitié
-      if ((r.status === 400 || r.status === 422) && /max_tokens|token/i.test(err) && maxTokens > 8000) return askText(cfg, system, user, Math.floor(maxTokens / 2));
+      if ((r.status === 400 || r.status === 422) && /max_tokens|token/i.test(err) && maxTokens > 8000) return askText(cfg, system, user, Math.floor(maxTokens / 2), onProgress);
       throw new Error(err);
     }
-    const j = await r.json() as { choices?: { message?: { content?: string | { text?: string }[] }; finish_reason?: string }[] };
-    if (j.choices?.[0]?.finish_reason === 'length') throw new Error('réponse trop longue, interrompue');
-    const c = j.choices?.[0]?.message?.content;
-    return typeof c === 'string' ? c : (c ?? []).map(x => x.text ?? '').join('');
+    let text = '', finish = '';
+    await readSSE(r, (d: { choices?: { delta?: { content?: string | { text?: string }[] }; finish_reason?: string | null }[] }) => {
+      const c = d.choices?.[0];
+      const part = typeof c?.delta?.content === 'string' ? c.delta.content : (c?.delta?.content ?? []).map(x => x.text ?? '').join('');
+      if (part) { text += part; onProgress?.(text.length); }
+      if (c?.finish_reason) finish = c.finish_reason;
+    });
+    if (finish === 'length') throw new Error('réponse trop longue, interrompue');
+    return text;
   }
-  const r = await fetch(`${geminiBase()}/v1beta/models/${encodeURIComponent(cfg.model)}:generateContent`, {
+  const r = await fetch(`${geminiBase()}/v1beta/models/${encodeURIComponent(cfg.model)}:streamGenerateContent?alt=sse`, {
     method: 'POST', headers: { 'content-type': 'application/json', 'x-goog-api-key': cfg.key },
     body: JSON.stringify({ systemInstruction: { parts: [{ text: system }] }, contents: [{ role: 'user', parts: [{ text: user }] }],
       generationConfig: { responseMimeType: 'application/json', maxOutputTokens: maxTokens } }),
-    signal: AbortSignal.timeout(900_000),
+    signal: AbortSignal.timeout(1_800_000),
   });
   if (!r.ok) throw new Error(await googleError(r));
-  const j = await r.json() as { candidates?: { content?: { parts?: { text?: string }[] }; finishReason?: string }[] };
-  if (j.candidates?.[0]?.finishReason === 'MAX_TOKENS') throw new Error('réponse trop longue, interrompue');
-  return (j.candidates?.[0]?.content?.parts ?? []).map(p => p.text ?? '').join('');
+  let text = '', finish = '';
+  await readSSE(r, (d: { candidates?: { content?: { parts?: { text?: string }[] }; finishReason?: string }[] }) => {
+    const part = (d.candidates?.[0]?.content?.parts ?? []).map(p => p.text ?? '').join('');
+    if (part) { text += part; onProgress?.(text.length); }
+    if (d.candidates?.[0]?.finishReason) finish = d.candidates[0].finishReason;
+  });
+  if (finish === 'MAX_TOKENS') throw new Error('réponse trop longue, interrompue');
+  return text;
+}
+
+// Lecture d'un flux « server-sent events » : chaque ligne « data: {json} » est transmise
+async function readSSE<T>(r: Response, onData: (d: T) => void) {
+  if (!r.body) return;
+  const reader = r.body.getReader(); const dec = new TextDecoder();
+  let buf = '';
+  for (;;) {
+    const { done, value } = await reader.read();
+    if (done) break;
+    buf += dec.decode(value, { stream: true });
+    let i;
+    while ((i = buf.indexOf('\n')) >= 0) {
+      const line = buf.slice(0, i).trim(); buf = buf.slice(i + 1);
+      if (!line.startsWith('data:')) continue;
+      const data = line.slice(5).trim();
+      if (!data || data === '[DONE]') continue;
+      try { onData(JSON.parse(data) as T); } catch { /* ligne incomplète ou de service : ignorée */ }
+    }
+  }
 }
 
 const askCopy = (cfg: AiConfig, system: string, copy: string): Promise<GradedCopy> =>

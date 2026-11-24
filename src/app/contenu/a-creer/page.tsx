@@ -8,6 +8,7 @@ import { BulkBar, BulkCheck } from '@/components/Bulk';
 import Link from 'next/link';
 import { redirect } from 'next/navigation';
 import { aiOverview } from '@/lib/ai';
+import { AutoRefresh } from '@/components/AutoRefresh';
 
 export const metadata = { title: 'Leçons à créer' };
 export const dynamic = 'force-dynamic';
@@ -61,6 +62,7 @@ export default async function ToCreate({ searchParams }: { searchParams: Promise
   return (
     <Screen top={<PageTitle kicker="À créer" title={open.length ? `${open.length} leçon${open.length > 1 ? 's' : ''} de rattrapage à créer` : 'Aucune leçon à créer'}
       sub="Proposées par les bilans pédagogiques de l’IA pour combler les lacunes repérées (souvent des notions des années précédentes). Aucun nom d’élève ici." />}>
+      <AutoRefresh active={open.some(r => r.status === 'en_redaction' && r.job !== 'echec')} />
       {sp.lancees && <p role="status" className="m-0 rounded-xl bg-brand-soft text-brand-ink px-4 py-3 text-sm"><strong>{sp.lancees} leçon{Number(sp.lancees) > 1 ? 's' : ''} en cours de rédaction par l’IA.</strong> Elles arriveront en brouillon dans « À relire » (quelques minutes chacune). Une fois publiées, elles passent en tête du parcours des élèves concernés.</p>}
       {sp.erreur && <p role="alert" className="m-0 rounded-xl bg-warm-soft text-warm-dark px-4 py-3 text-sm">{sp.erreur}</p>}
       {open.length === 0 ? <EmptyState title="Rien à créer pour l’instant" text="Quand un parent demande un bilan à l’IA, les leçons de rattrapage utiles apparaissent ici." /> : (

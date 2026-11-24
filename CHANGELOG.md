@@ -303,3 +303,11 @@ Recette complète de l'espace élève (un agent testeur a joué l'élève sur t�
   - Option administrateur : rédiger automatiquement les leçons de rattrapage proposées par les bilans.
 - Contenu › IA : section « Travail en arrière-plan » (tâches en attente, en cours, terminées, en échec ; relancer ou retirer en groupe ; « Vérifier les automatismes maintenant »).
 - À faire : « Correction IA en cours… » sur les copies en traitement ; actions groupées disponibles dès la première copie.
+
+## 0.29 — 24/11/2026
+- Rédaction des cours par l'IA, beaucoup plus fiable :
+  - Réponse reçue au fil de l'eau (Mistral et Gemini, comme déjà pour Claude). Avant, une rédaction de plus de 5 minutes était coupée en silence puis recommencée, jusqu'à 3 fois.
+  - Deux files séparées : les corrections et bilans ne restent plus bloqués derrière la rédaction d'un cours.
+  - Au redémarrage du serveur, une tâche interrompue repart aussitôt (avant : 20 minutes d'attente).
+  - Avancement visible : « essai 1/2 · environ 40 % rédigé », temps écoulé, erreur précédente.
+- Les pages (Catalogue, Leçons à créer, À faire, IA) se mettent à jour toutes seules pendant qu'une tâche IA tourne : plus besoin de F5.

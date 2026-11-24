@@ -48,7 +48,19 @@ const mock = http.createServer((req, res) => {
     if (!b.response_format) return json(200, { choices: [{ message: { content: 'OK' }, finish_reason: 'stop' }] });
     const sys = b.messages[0].content, user = b.messages[1].content;
     let out;
-    if (sys.includes('auteur de cours')) { calls.cours.push({ model: b.model, user }); out = course(user); }
+    if (sys.includes('auteur de cours')) {
+      calls.cours.push({ model: b.model, user, stream: !!b.stream });
+      const text = course(user);
+      // réponse au fil de l'eau (SSE), en morceaux espacés, comme Mistral
+      res.writeHead(200, { 'content-type': 'text/event-stream' });
+      const parts = text.match(/[\s\S]{1,3000}/g) ?? [];
+      let i = 0;
+      const next = () => {
+        if (i < parts.length) { res.write(`data: ${JSON.stringify({ choices: [{ index: 0, delta: { content: parts[i++] }, finish_reason: null }] })}\n\n`); setTimeout(next, 500); }
+        else { res.write(`data: ${JSON.stringify({ choices: [{ index: 0, delta: { content: '' }, finish_reason: 'stop' }] })}\n\ndata: [DONE]\n\n`); res.end(); }
+      };
+      return next();
+    }
     else if (sys.includes('conseiller pédagogique')) { calls.bilan++; out = JSON.stringify(report); }
     else { calls.correction++; const copy = JSON.parse(user.slice(user.indexOf('{')));
       out = JSON.stringify({ commentaire_general: 'Correction automatique.', questions: copy.questions.map(q => ({ id: q.id, points: q.points_max / 2, commentaire: 'Bien.' })) }); }
@@ -122,10 +134,15 @@ await ad.goto(BASE + '/contenu/a-creer');
 await ad.locator('label:has-text("Tout sélectionner") input').first().check();
 await ad.click('button:has-text("Rédiger avec l’IA (2)")'); await ad.click('[data-dialog-ok]');
 await ad.waitForSelector('text=2 leçons en cours de rédaction');
+let seenProgress = false;
+const watcher = setInterval(async () => { const [r] = await sql`select 1 from jobs where kind = 'cours' and progress like '%rédigé%'`; if (r) seenProgress = true; }, 200);
 const drafts = await until(async () => { const r = await sql`select c.code, c.title, ch.name as chapter from course_versions v join courses c on c.id = v.course_id join chapters ch on ch.id = c.chapter_id where c.code like 'RN%' and v.status = 'draft'`; return r.length === 2 ? r : null; }, 45_000);
+clearInterval(watcher);
 ok(drafts && drafts.every(d => d.chapter === 'Remise à niveau'), 'deux cours « Remise à niveau » rédigés et placés en brouillon (À relire)');
 const rn2 = calls.cours.filter(c => field(c.user, 'code') === 'RN002');
 ok(rn2.length === 2 && rn2[1].user.includes('refusée par le validateur') && calls.cours.every(c => c.model === 'mistral-large-latest'), 'un premier essai refusé par le validateur est corrigé au second essai');
+ok(calls.cours.every(c => c.stream), 'la rédaction est reçue au fil de l’eau (pas de coupure au bout de 5 minutes)');
+ok(seenProgress, 'l’avancement de la rédaction est visible pendant le travail (« … % rédigé »)');
 // (« Léa » existe comme personnage fictif dans les cours d'exemple : on vérifie l'absence de ce qui identifie l'élève réel)
 ok(!calls.cours.some(c => c.user.includes(st.id) || c.user.includes('parent@test.local') || c.user.includes('Erreur de signe') || c.user.includes('4 − (−11) = −7')),
   'aucune donnée d’élève dans la demande de rédaction (ni identifiant, ni contenu du bilan)');
@@ -149,8 +166,10 @@ await sql`delete from course_versions where course_id = ${empty.id}`;
 await ad.goto(BASE + '/contenu');
 await ad.fill('input[type=search]', empty.title.slice(0, 25));
 await ad.locator(`div:has(> span > span:text-is("${empty.title}")) button:has-text("Rédiger avec l’IA")`).click();
-const d2 = await until(async () => (await sql`select 1 from course_versions where course_id = ${empty.id} and status = 'draft'`)[0], 45_000);
-ok(!!d2, 'bouton du catalogue : le cours est rédigé et arrive en brouillon');
+await ad.waitForSelector('text=/Rédaction IA/');
+ok(true, 'catalogue : « Rédaction IA… » affiché pendant le travail');
+await ad.locator(`div:has(> span > span:text-is("${empty.title}")) >> text=À relire · v1`).waitFor({ timeout: 60_000 });
+ok(!!(await sql`select 1 from course_versions where course_id = ${empty.id} and status = 'draft'`)[0], 'bouton du catalogue : le cours est rédigé, et la page affiche « À relire » toute seule (sans F5)');
 await ad.goto(BASE + '/contenu/ia');
 ok((await ad.locator('section[aria-labelledby="file"]').innerText()).includes('Terminé'), 'la file d’attente montre les tâches terminées');
 

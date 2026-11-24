@@ -10,6 +10,7 @@ import { BulkBar, BulkCheck } from '@/components/Bulk';
 import { aiOverview } from '@/lib/ai';
 import { correctWithAiAction, validateProposalsBulk } from '../copies/actions';
 import { AiButton } from './AiButton';
+import { AutoRefresh } from '@/components/AutoRefresh';
 
 export const metadata = { title: 'À faire' };
 export const dynamic = 'force-dynamic';
@@ -42,6 +43,7 @@ export default async function ToDo({ searchParams }: { searchParams: Promise<{ v
   return (
     <Screen top={<PageTitle kicker="À faire" title={total ? `${total} chose${total > 1 ? 's' : ''} attend${total > 1 ? 'ent' : ''} votre réponse` : 'Rien n’attend votre réponse'}
       sub="Demandes d’évaluation, mots de passe oubliés et copies à valider. Les questions automatiques sont déjà notées ; les réponses rédigées passent par Claude, puis par vous." />}>
+      <AutoRefresh active={pending.some(r => r.ai_running)} />
       {sp.ia !== undefined && <p role="status" className="m-0 rounded-xl bg-brand-soft text-brand-ink px-4 py-3 text-sm"><strong>{Number(sp.ia) > 0 ? `${sp.ia} copie${Number(sp.ia) > 1 ? 's' : ''} corrigée${Number(sp.ia) > 1 ? 's' : ''} par l’IA.` : 'Aucune copie corrigée par l’IA.'}</strong> {Number(sp.ia) > 0 && 'Vérifiez les propositions puis validez (une par une, ou toutes d’un coup avec la sélection).'}</p>}
       {sp.iaerr && <p role="alert" className="m-0 rounded-xl bg-warm-soft text-warm-dark px-4 py-3 text-sm"><strong>Problème :</strong> {sp.iaerr}</p>}
       {sp.validees !== undefined && <p role="status" className="m-0 rounded-xl bg-brand-soft text-brand-ink px-4 py-3 text-sm"><strong>{sp.validees} note{Number(sp.validees) > 1 ? 's' : ''} validée{Number(sp.validees) > 1 ? 's' : ''}.</strong> Les bilans sont visibles dans l’espace de l’élève.</p>}

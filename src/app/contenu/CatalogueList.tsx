@@ -5,7 +5,7 @@ import { BulkBar, BulkCheck } from '@/components/Bulk';
 import { publishCoursesDraftsAction, draftWithAiAction, draftWithAiBulkAction } from './cours/[id]/actions';
 import { Bot } from 'lucide-react';
 
-export type CatRow = { id: number; code: string | null; title: string; level: string; level_name: string; subject: string; chapter: string; priority: string; published: number | null; draft: number | null; draft_id: string | null; ai_job: string | null; ai_error: string | null };
+export type CatRow = { id: number; code: string | null; title: string; level: string; level_name: string; subject: string; chapter: string; priority: string; published: number | null; draft: number | null; draft_id: string | null; ai_job: string | null; ai_error: string | null; ai_progress: string | null };
 
 // Catalogue filtrable : recherche, matière, statut
 export function CatalogueList({ rows, aiReady }: { rows: CatRow[]; aiReady: boolean }) {
@@ -53,7 +53,7 @@ export function CatalogueList({ rows, aiReady }: { rows: CatRow[]; aiReady: bool
             {c.draft && (!c.published || c.draft > c.published) ? <span className="pill bg-warm-soft text-warm-dark">À relire · v{c.draft}</span> : null}
             {(c.published || c.draft) && <Link href={`/contenu/cours/${c.id}`} className="btn">Ouvrir</Link>}
             {c.ai_job === 'en_attente' || c.ai_job === 'en_cours'
-              ? <span className="pill bg-accent-soft text-ink-2 inline-flex items-center gap-1.5"><Bot size={14} aria-hidden="true" />Rédaction IA en cours…</span>
+              ? <span className="pill bg-accent-soft text-ink-2 inline-flex items-center gap-1.5"><Bot size={14} aria-hidden="true" />Rédaction IA{c.ai_progress ? ` : ${c.ai_progress}` : ' en cours…'}</span>
               : aiReady && <form action={draftWithAiAction.bind(null, c.id)}><button className="btn inline-flex items-center gap-1.5" type="submit"><Bot size={15} aria-hidden="true" />{c.published || c.draft ? 'Nouvelle version IA' : 'Rédiger avec l’IA'}</button></form>}
             {c.ai_job === 'echec' && <span className="pill bg-warm-soft text-warm-dark" data-tip={c.ai_error ?? undefined}>Échec de la rédaction IA</span>}
             <Link href={`/contenu/generer/${c.id}`} className="btn">{c.published ? 'Nouvelle consigne' : 'Préparer la consigne'}</Link>
