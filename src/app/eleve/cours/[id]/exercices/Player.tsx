@@ -80,10 +80,11 @@ export function ExercisesPlayer({ courseId, items, texts, initial, submitted, so
           {levels.map(l => {
             const qs = items.filter(q => (q.stars ?? 0) === l);
             const done = qs.filter(q => (answers[q.id] ?? '').trim()).length;
+            const toCheck = submitted && !checked ? qs.filter(q => openIds.includes(q.id) && !(q.id in self)).length : 0;
             return (
               <button key={l} role="tab" type="button" aria-selected={tab === l} onClick={() => setTab(l)}
                 className={`navlink gap-1.5 border ${tab === l ? 'bg-brand text-white border-brand hover:bg-brand-dark hover:text-white' : 'border-line'}`}>
-                {l ? <span className={tab === l ? '' : 'text-warm'}>{'★'.repeat(l)}</span> : null}<span>{LEVEL_NAME[l]}</span><span className="opacity-80 font-normal">· {done}/{qs.length}</span>
+                {l ? <span className={tab === l ? '' : 'text-warm'}>{'★'.repeat(l)}</span> : null}<span>{LEVEL_NAME[l]}</span>{toCheck > 0 ? <span className="pill bg-warm-soft text-warm-dark ml-1">{toCheck} à vérifier</span> : <span className="opacity-80 font-normal">· {done}/{qs.length}</span>}
               </button>
             );
           })}
@@ -104,8 +105,8 @@ export function ExercisesPlayer({ courseId, items, texts, initial, submitted, so
                     ) : (
                       <div className="flex flex-wrap items-center gap-2" role="group" aria-label="Ton auto-correction">
                         <span className="text-sm font-semibold">Compare avec le corrigé :</span>
-                        <button type="button" disabled={checked} className={`btn ${self[q.id] === true ? 'btn-primary' : ''}`} onClick={() => setSelf({ ...self, [q.id]: true })}>Réussi</button>
-                        <button type="button" disabled={checked} className={`btn ${self[q.id] === false ? 'bg-soft border-ink-2' : ''}`} onClick={() => setSelf({ ...self, [q.id]: false })}>Pas encore</button>
+                        <button type="button" disabled={checked} aria-pressed={self[q.id] === true} className={`btn ${self[q.id] === true ? 'btn-primary' : ''}`} onClick={() => setSelf({ ...self, [q.id]: true })}>Réussi</button>
+                        <button type="button" disabled={checked} aria-pressed={self[q.id] === false} className={`btn ${self[q.id] === false ? '!bg-warm-soft !border-warm !text-warm-dark' : ''}`} onClick={() => setSelf({ ...self, [q.id]: false })}>Pas encore</button>
                       </div>
                     )}
                   </div>
@@ -127,7 +128,7 @@ export function ExercisesPlayer({ courseId, items, texts, initial, submitted, so
             </button>
           </>)}
           {submitted && !checked && (<>
-            <span className="text-sm">{allJudged ? <>Score : <strong>{score}/10</strong> · {success} exercice{success > 1 ? 's' : ''} réussi{success > 1 ? 's' : ''} sur {items.length}.</> : 'Pour chaque réponse rédigée, indique si elle est réussie en la comparant au corrigé (tous les onglets).'}</span>
+            <span className="text-sm">{allJudged ? <>Score : <strong>{score}/10</strong> · {success} exercice{success > 1 ? 's' : ''} réussi{success > 1 ? 's' : ''} sur {items.length}.</> : `Compare tes réponses rédigées avec le corrigé : encore ${openIds.filter(id => !(id in self)).length} à vérifier (voir les onglets marqués).`}</span>
             <button className="btn btn-primary" type="button" disabled={!allJudged || pending} onClick={() => start(() => validateExercises(courseId, self))}>Enregistrer mon résultat</button>
           </>)}
           {checked && (

@@ -160,3 +160,9 @@ Première version numérotée (déjà en ligne avant numérotation : socle, gén
   - Anglais : present perfect (since, for, already, yet).
   - Technologie : impact environnemental et cycle de vie d'un objet.
 - Chaque nouveau cours a été parcouru de bout en bout par le test automatique (20/20 avec le corrigé).
+
+## 0.14 — 24/11/2026
+- Espace contenu : nouvelle page **Programmes**. Pour chaque niveau, elle affiche les matières, les cours publiés sur le programme et le nombre d'élèves inscrits.
+- Journal d'activité du parent : filtres (évaluations, leçons et exercices, actions du parent) et navigation vers les événements plus anciens.
+- Exercices : les onglets indiquent les réponses rédigées qui restent à vérifier, et « Pas encore » a un style bien distinct.
+- Niveaux : la 3e générale est bien rangée au collège, avant la Seconde.

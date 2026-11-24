@@ -14,11 +14,12 @@ const sql = postgres(url, { max: 1, onnotice: () => {} });
 try {
   for (const dir of levels) {
     const prog = JSON.parse(fs.readFileSync(path.join(root, dir, 'programme.json'), 'utf8'));
-    const { code, name, cycle = null, position = 0 } = prog.level;
+    const { code, name, cycle = null, position = null } = prog.level;
     let count = 0;
     await sql.begin(async tx => {
-      await tx`insert into levels (code, name, general_sources, cycle, position) values (${code}, ${name}, ${tx.json(prog.general_sources ?? [])}, ${cycle}, ${position})
-        on conflict (code) do update set name = excluded.name, general_sources = excluded.general_sources, cycle = excluded.cycle, position = excluded.position`;
+      await tx`insert into levels (code, name, general_sources, cycle, position) values (${code}, ${name}, ${tx.json(prog.general_sources ?? [])}, ${cycle}, ${position ?? 0})
+        on conflict (code) do update set name = excluded.name, general_sources = excluded.general_sources,
+          cycle = coalesce(excluded.cycle, levels.cycle), position = coalesce(${position}, levels.position)`;
       let sPos = 0, cPos = 0;
       for (const s of prog.subjects) {
         if (EXCLUDED_SUBJECTS.has(s.name)) continue;

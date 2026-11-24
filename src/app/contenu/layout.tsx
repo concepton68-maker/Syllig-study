@@ -11,6 +11,7 @@ export default async function ContentLayout({ children }: { children: React.Reac
       { href: '/contenu/a-relire', label: 'À relire', icon: 'review', badge: n },
       { href: '/contenu', label: 'Catalogue', icon: 'catalogue', exact: true },
       { href: '/contenu/importer', label: 'Importer', icon: 'import' },
+      { href: '/contenu/programmes', label: 'Programmes', icon: 'programmes' },
       { href: '/contenu/comptes', label: 'Comptes', icon: 'accounts' },
     ]} user={{ name: u.display_name, sub: 'Contenu pédagogique' }}>
       {children}

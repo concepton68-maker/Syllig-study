@@ -40,15 +40,29 @@ function describe(e: string, d: Record<string, unknown>) {
   return p.join(' · ');
 }
 
-export default async function Journal({ searchParams }: { searchParams: Promise<{ eleve?: string }> }) {
-  const { eleve } = await searchParams;
+// filtres du journal : familles d'événements
+const FILTERS: Record<string, { label: string; match: (e: string) => boolean }> = {
+  tout: { label: 'Tout', match: () => true },
+  evaluations: { label: 'Évaluations', match: e => e.startsWith('evaluation') || e === 'note_modifiee' || e === 'niveau_atteint' },
+  travail: { label: 'Leçons et exercices', match: e => /^(seance|lecon|point_controle|exercices)/.test(e) },
+  parent: { label: 'Actions du parent', match: e => /(autorisee|reportee|exportees|importees|reinitialise|niveau_corrige|annee_scolaire|note_modifiee)/.test(e) },
+};
+const PAGE = 100;
+
+export default async function Journal({ searchParams }: { searchParams: Promise<{ eleve?: string; filtre?: string; avant?: string }> }) {
+  const { eleve, filtre: f, avant } = await searchParams;
+  const filtre = f && f in FILTERS ? f : 'tout';
+  const before = avant && /^\d+$/.test(avant) ? avant : null;
   const { students, student } = await requireParent(eleve);
   if (!student) return null;
   LEVEL_NAMES = Object.fromEntries((await sql<{ code: string; name: string }[]>`select code, name from levels`).map(l => [l.code, l.name]));
   const [chk] = await sql<{ broken_ids: string[]; total: string }[]>`select * from verify_activity_chain(${student.id})`;
-  const events = await sql<{ id: string; at: Date; event: string; title: string | null; data: Record<string, unknown>; hash: string }[]>`
+  const raw = await sql<{ id: string; at: Date; event: string; title: string | null; data: Record<string, unknown>; hash: string }[]>`
     select l.id, l.at, l.event, c.title, l.data, l.hash from activity_log l left join courses c on c.id = l.course_id
-    where l.student_id = ${student.id} order by l.id desc limit 200`;
+    where l.student_id = ${student.id} ${before ? sql`and l.id < ${before}` : sql``} order by l.id desc limit ${filtre === 'tout' ? PAGE : 1000}`;
+  const events = raw.filter(e => FILTERS[filtre].match(e.event)).slice(0, PAGE);
+  const oldest = raw.length ? raw[raw.length - 1].id : null;
+  const q = (extra: Record<string, string>) => '?' + new URLSearchParams({ ...(eleve ? { eleve } : {}), ...(filtre !== 'tout' ? { filtre } : {}), ...extra }).toString();
   const sessions = await recentSessions(student.id, 40);
   const intact = chk.broken_ids.length === 0;
 
@@ -82,7 +96,15 @@ export default async function Journal({ searchParams }: { searchParams: Promise<
         </section></Pane>
         <Pane className="flex-[1_1_380px]">
           <section className="card flex flex-col gap-1">
-            <h2 className="text-lg font-semibold mb-2">Derniers événements</h2>
+            <h2 className="text-lg font-semibold mb-1">{before ? 'Événements plus anciens' : 'Derniers événements'}</h2>
+            <nav aria-label="Filtrer le journal" className="flex flex-wrap gap-1.5 mb-2">
+              {Object.entries(FILTERS).map(([id, x]) => (
+                <a key={id} href={'?' + new URLSearchParams({ ...(eleve ? { eleve } : {}), ...(id !== 'tout' ? { filtre: id } : {}) }).toString()}
+                  aria-current={filtre === id ? 'true' : undefined}
+                  className={`pill no-underline ${filtre === id ? 'bg-brand text-white' : 'bg-soft text-ink-2'}`}>{x.label}</a>
+              ))}
+            </nav>
+            {events.length === 0 && <span className="muted text-sm py-2">Aucun événement de ce type.</span>}
             <ol className="list-none m-0 p-0">
               {events.map(e => (
                 <li key={e.id} className="flex gap-3 py-2 border-t border-soft text-sm">
@@ -91,6 +113,10 @@ export default async function Journal({ searchParams }: { searchParams: Promise<
                 </li>
               ))}
             </ol>
+            <div className="flex gap-2 pt-2">
+              {before && <a className="btn" href={q({})}>‹ Les plus récents</a>}
+              {raw.length >= (filtre === 'tout' ? PAGE : 1000) && oldest && <a className="btn" href={q({ avant: oldest })}>Plus anciens ›</a>}
+            </div>
           </section>
           <section className="card flex flex-col gap-2">
             <h2 className="text-base font-semibold">Pourquoi ce journal est fiable</h2>

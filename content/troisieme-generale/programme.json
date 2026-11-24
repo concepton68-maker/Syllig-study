@@ -1,7 +1,9 @@
 {
  "level": {
   "code": "troisieme-generale",
-  "name": "3e générale"
+  "name": "3e générale",
+  "cycle": "Collège",
+  "position": 4
  },
  "source": "Analyse du programme de 3e (programmes officiels du cycle 4 en vigueur, consultés le 24-11-2026)",
  "subjects": [
