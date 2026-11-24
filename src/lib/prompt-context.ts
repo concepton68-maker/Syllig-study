@@ -29,13 +29,38 @@ export async function promptContext(courseId: number): Promise<PromptContext | n
     from course_versions v join courses c on c.id = v.course_id join chapters ch on ch.id = c.chapter_id,
       jsonb_array_elements(v.document->'skills') sk
     where ch.subject_id = ${c.subject_id} and v.status = 'published' order by sk->>'id'`;
-  // exemple de référence : le fichier C001 d'origine (champs dans l'ordre lisible)
-  const example = fs.readFileSync(path.join(process.cwd(), 'content/seconde-generale/cours/C001.json'), 'utf8').trim();
+  // exemple de référence : un cours du même niveau (de préférence de la même matière), sinon C001 (Seconde)
+  const ex = pickExample(c.level_code, c.subject);
+  const example = ex.text;
+  const sourcesChecked = programmeCheckedDate(c.level_code);
 
   return {
     code, isNewVersion: c.published, level: { code: c.level_code, name: c.level_name }, subject: c.subject, chapter: c.chapter, title: c.title,
-    priority: c.priority, officialNote: c.official_note, sources: [...(c.sources ?? []), ...(c.general ?? [])].slice(0, 6), sourcesChecked: '21/11/2026',
+    priority: c.priority, officialNote: c.official_note, sources: [...(c.sources ?? []), ...(c.general ?? [])].slice(0, 6), sourcesChecked,
     siblings: siblings.map(s => ({ title: s.title, code: s.code, hasContent: s.has_content })),
-    knownSkills: skillRows, skillPrefix: SKILL_PREFIX[c.subject] ?? 'cours', example, exampleCode: 'C001',
+    knownSkills: skillRows, skillPrefix: SKILL_PREFIX[c.subject] ?? 'cours', example, exampleCode: ex.code,
   };
+}
+
+const CONTENT = () => path.join(process.cwd(), 'content');
+
+export function pickExample(levelCode: string, subject: string): { code: string; text: string } {
+  const dir = path.join(CONTENT(), levelCode, 'cours');
+  if (fs.existsSync(dir)) {
+    const files = fs.readdirSync(dir).filter(f => f.endsWith('.json')).sort();
+    const docs = files.map(f => ({ f, text: fs.readFileSync(path.join(dir, f), 'utf8').trim() }))
+      .map(d => { try { return { ...d, doc: JSON.parse(d.text) as { subject?: string; code?: string } }; } catch { return null; } })
+      .filter((d): d is NonNullable<typeof d> => !!d);
+    const best = docs.find(d => d.doc.subject === subject) ?? docs[0];
+    if (best) return { code: best.doc.code ?? best.f.replace('.json', ''), text: best.text };
+  }
+  return { code: 'C001', text: fs.readFileSync(path.join(CONTENT(), 'seconde-generale/cours/C001.json'), 'utf8').trim() };
+}
+
+function programmeCheckedDate(levelCode: string): string | null {
+  try {
+    const prog = JSON.parse(fs.readFileSync(path.join(CONTENT(), levelCode, 'programme.json'), 'utf8')) as { sources_checked?: string };
+    const m = prog.sources_checked?.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+    return m ? `${m[3]}/${m[2]}/${m[1]}` : prog.sources_checked ?? null;
+  } catch { return null; }
 }

@@ -1,4 +1,6 @@
 import Link from 'next/link';
+import { Star, Sparkles, Award } from 'lucide-react';
+import { EmptyState } from '@/components/EmptyState';
 import { sql } from '@/lib/db';
 import { requireStudent } from '@/lib/access';
 import { PageTitle } from '@/components/Shell';
@@ -25,7 +27,7 @@ export default async function Results() {
         <Pane className="flex-[999_1_560px]">
           <section className="card flex flex-col">
             <h2 className="text-xl font-semibold mb-2">Mes cours</h2>
-            {courses.length === 0 && <span className="muted text-sm">Commence ton premier cours pour voir tes niveaux ici.</span>}
+            {courses.length === 0 && <EmptyState icon={<Sparkles size={20} />} title="Tes niveaux apparaîtront ici" text="Commence ton premier cours : chaque étape réussie fait monter ton niveau." action={<Link className="btn btn-primary" href="/eleve">Commencer</Link>} />}
             {courses.map(c => (
               <div key={c.course_id} className="flex flex-wrap items-center gap-3 py-2.5 border-t border-soft text-sm">
                 <Link href={`/eleve/cours/${c.course_id}`} className="flex-[1_1_240px] font-semibold text-ink">{c.title}<span className="block muted font-normal">{c.subject}</span></Link>
@@ -36,7 +38,7 @@ export default async function Results() {
           </section>
           <section className="card flex flex-col">
             <h2 className="text-xl font-semibold mb-2">Mes évaluations</h2>
-            {attempts.length === 0 && <span className="muted text-sm">Pas encore d’évaluation.</span>}
+            {attempts.length === 0 && <EmptyState icon={<Award size={20} />} title="Pas encore d’évaluation" text="Après la leçon et les exercices, l’évaluation te donne ta note sur 20. C’est toujours ta meilleure note qui compte." />}
             {attempts.map(a => (
               <div key={a.id} className="flex flex-wrap items-center gap-3 py-2.5 border-t border-soft text-sm">
                 <span className="flex-[1_1_240px]"><strong>{a.title}</strong> · tentative {a.attempt_no}</span>
@@ -48,6 +50,8 @@ export default async function Results() {
         </Pane>
         <Pane className="flex-[1_1_340px]"><section className="card flex flex-col">
           <h2 className="text-xl font-semibold mb-2">Mes points de progrès</h2>
+          {points.length === 0 && <EmptyState icon={<Star size={20} />} title="Tes premiers points arrivent vite"
+            text={<>+10 par point de contrôle réussi, +50 par leçon terminée, +50 par série d’exercices, +50 à ta première évaluation notée, puis des points chaque fois que tu améliores ta note.</>} />}
           {points.map((p, i) => (
             <div key={i} className="flex justify-between gap-3 py-2 border-t border-soft text-sm"><span>{p.reason}{p.title ? <span className="block muted">{p.title}</span> : null}</span><strong className="text-brand-dark">+{p.amount}</strong></div>
           ))}

@@ -11,7 +11,7 @@ export default function FormatPage() {
     <Screen top={<>
       <PageTitle kicker="Format syllig-course/1" title="Générer un cours avec Claude"
         sub={<>Le plus simple : dans le <a href="/contenu">catalogue</a>, cliquez sur « Préparer la consigne » à côté du cours voulu. Cette page garde la consigne générique et l’exemple, pour référence.</>}>
-        <a className="btn" href="/api/contenu/exemple" download>Télécharger l’exemple C001.json</a>
+        <a className="btn" href="/api/contenu/exemple" download>Télécharger un cours d’exemple</a>
       </PageTitle>
     </>}>
       <section className="card">

@@ -6,7 +6,7 @@ import { THEMES, THEME_KINDS, isTheme } from '@/lib/settings';
 import { PageTitle } from '@/components/Shell';
 import { Screen } from '@/components/Layout';
 
-export const metadata = { title: 'Mon thème' };
+export const metadata = { title: 'Mon espace' };
 export const dynamic = 'force-dynamic';
 
 async function choose(form: FormData) {
@@ -16,7 +16,7 @@ async function choose(form: FormData) {
   if (!isTheme(t)) return;
   await sql`update students set settings = settings || ${sql.json({ theme: t })} where id = ${student.id}`;
   revalidatePath('/eleve', 'layout');
-  redirect('/eleve');
+  redirect('/eleve/theme?choisi=1');
 }
 
 export default async function ThemePage() {

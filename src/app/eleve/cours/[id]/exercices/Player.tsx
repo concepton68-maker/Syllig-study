@@ -116,7 +116,7 @@ export function ExercisesPlayer({ courseId, items, texts, initial, submitted, so
           {tabIdx < levels.length - 1 && (
             <button type="button" className="btn self-end" onClick={() => setTab(levels[tabIdx + 1])}>Niveau suivant : {LEVEL_NAME[levels[tabIdx + 1]]} ›</button>
           )}
-          {checked && after}
+
         </div>
         <div className="shrink-0 border-t border-line px-4 sm:px-6 py-3 bg-surface-2 flex flex-wrap items-center justify-between gap-3">
           {!submitted && (<>
@@ -127,11 +127,14 @@ export function ExercisesPlayer({ courseId, items, texts, initial, submitted, so
             </button>
           </>)}
           {submitted && !checked && (<>
-            <span className="text-sm">{allJudged ? <>Résultat : <strong>{score} / 10</strong> exercices réussis.</> : 'Pour chaque réponse rédigée, indique si elle est réussie en la comparant au corrigé (tous les onglets).'}</span>
+            <span className="text-sm">{allJudged ? <>Score : <strong>{score}/10</strong> · {success} exercice{success > 1 ? 's' : ''} réussi{success > 1 ? 's' : ''} sur {items.length}.</> : 'Pour chaque réponse rédigée, indique si elle est réussie en la comparant au corrigé (tous les onglets).'}</span>
             <button className="btn btn-primary" type="button" disabled={!allJudged || pending} onClick={() => start(() => validateExercises(courseId, self))}>Enregistrer mon résultat</button>
           </>)}
           {checked && (
-            <span className="text-sm"><strong>{score} / 10 exercices réussis.</strong> {score >= threshold ? 'Tu es prête pour l’évaluation.' : `Conseil : relis les parties indiquées dans les corrigés avant l’évaluation (${threshold}/10 recommandé).`}</span>
+            <>
+              <span className="text-sm"><strong>Score : {score}/10</strong> · {success} réussi{success > 1 ? 's' : ''} sur {items.length} · <strong className="text-brand-dark">+50 points de progrès</strong>. {score >= threshold ? 'Tu peux passer à l’évaluation.' : `Conseil : relis les parties indiquées dans les corrigés avant l’évaluation (${threshold}/10 conseillé).`}</span>
+              {after}
+            </>
           )}
         </div>
       </section>

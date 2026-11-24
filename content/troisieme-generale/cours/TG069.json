@@ -1,0 +1,1228 @@
+{
+  "format": "syllig-course/1",
+  "code": "TG069",
+  "level": "troisieme-generale",
+  "subject": "Histoire-Géographie",
+  "chapter": "Histoire 1 – L'Europe, un théâtre majeur des guerres totales (1914-1945)",
+  "title": "La Première Guerre mondiale : une guerre totale",
+  "skills": [
+    {
+      "id": "hg-reperes-1gm",
+      "label": "Situer dans le temps les grandes étapes de la Première Guerre mondiale"
+    },
+    {
+      "id": "hg-guerre-totale",
+      "label": "Expliquer la notion de guerre totale"
+    },
+    {
+      "id": "hg-civils-militaires",
+      "label": "Décrire l'expérience des combattants et des civils"
+    },
+    {
+      "id": "hg-acteurs-1gm",
+      "label": "Identifier les principaux acteurs et leur rôle"
+    },
+    {
+      "id": "hg-analyse-doc",
+      "label": "Analyser un document historique (nature, auteur, date, idées)"
+    },
+    {
+      "id": "hg-redaction",
+      "label": "Rédiger un développement construit"
+    }
+  ],
+  "lesson": {
+    "duration_min": 35,
+    "objectives": [
+      "expliquer comment la guerre éclate en 1914 ;",
+      "raconter les grandes phases de la guerre (1914-1918) ;",
+      "définir la guerre totale et montrer que civils et militaires sont mobilisés ;",
+      "connaître les repères et les acteurs à savoir pour le brevet."
+    ],
+    "essential": "De 1914 à 1918, la Première Guerre mondiale oppose les Alliés aux Empires centraux. C'est une **guerre totale** : les soldats vivent l'enfer des tranchées (Verdun, 1916) tandis que les civils sont mobilisés à l'arrière (usines, champs, emprunts, propagande). L'armistice du 11 novembre 1918 laisse un bilan humain immense.",
+    "parts": [
+      {
+        "title": "Contexte : l'Europe bascule dans la guerre (été 1914)",
+        "blocks": [
+          {
+            "type": "text",
+            "text": "En 1914, l'Europe domine le monde, mais ses grandes puissances sont **rivales** : rivalités coloniales, économiques et nationalistes. La France, par exemple, n'a pas oublié l'**Alsace-Moselle**, annexée par l'Allemagne en 1871. Pour se protéger, les États ont formé deux systèmes d'alliances."
+          },
+          {
+            "type": "table",
+            "caption": "Deux blocs d'alliances face à face",
+            "columns": [
+              "Alliance",
+              "Pays membres en 1914",
+              "Évolution pendant la guerre"
+            ],
+            "rows": [
+              [
+                "Triple-Entente → les **Alliés**",
+                "France, Royaume-Uni, Russie",
+                "Rejoints par l'Italie (1915) et les États-Unis (1917) ; la Russie se retire en 1917-1918."
+              ],
+              [
+                "Triple-Alliance → les **Empires centraux**",
+                "Allemagne, Autriche-Hongrie (l'Italie reste neutre en 1914)",
+                "Rejoints par l'Empire ottoman (fin 1914) et la Bulgarie (1915)."
+              ]
+            ]
+          },
+          {
+            "type": "text",
+            "text": "Le **28 juin 1914**, l'archiduc **François-Ferdinand**, héritier du trône d'Autriche-Hongrie, est assassiné à **Sarajevo** (Bosnie) par **Gavrilo Princip**, un jeune nationaliste serbe de Bosnie. C'est l'étincelle. Par le jeu des alliances, un engrenage se déclenche en quelques jours :"
+          },
+          {
+            "type": "list",
+            "ordered": true,
+            "items": [
+              "28 juillet : l'Autriche-Hongrie déclare la guerre à la Serbie ; la Russie, protectrice de la Serbie, mobilise.",
+              "1er août : l'Allemagne déclare la guerre à la Russie ; la France décrète la **mobilisation générale**.",
+              "3 août : l'Allemagne déclare la guerre à la France.",
+              "4 août : le Royaume-Uni entre en guerre, car l'armée allemande a envahi la Belgique, pays neutre."
+            ]
+          },
+          {
+            "type": "callout",
+            "kind": "definition",
+            "title": "Mobilisation",
+            "text": "Appel sous les drapeaux de tous les hommes en âge de combattre. En France, environ 8 millions d'hommes sont mobilisés pendant toute la guerre."
+          },
+          {
+            "type": "callout",
+            "kind": "attention",
+            "text": "Les soldats ne partent pas tous « la fleur au fusil » ! Les historiens ont montré qu'en août 1914, les Français ressentent surtout de la surprise et de la résignation, puis de la détermination à défendre le pays attaqué."
+          },
+          {
+            "type": "callout",
+            "kind": "retiens",
+            "text": "Un assassinat (Sarajevo, 28 juin 1914) + le jeu des alliances = une guerre européenne qui devient mondiale, car les empires coloniaux et d'autres pays (Empire ottoman, Japon, États-Unis…) y entrent."
+          }
+        ],
+        "checkpoint": {
+          "variants": [
+            {
+              "prompt": "Quel événement déclenche la crise de l'été 1914 ?",
+              "options": [
+                "L'invasion de la Belgique",
+                "L'assassinat de l'archiduc François-Ferdinand à Sarajevo",
+                "L'entrée en guerre des États-Unis",
+                "La bataille de la Marne"
+              ],
+              "answer": 1,
+              "hint": "Relis le paragraphe qui parle de « l'étincelle ».",
+              "explanation": "Le 28 juin 1914, l'assassinat de l'héritier d'Autriche-Hongrie à Sarajevo déclenche l'engrenage des alliances."
+            },
+            {
+              "prompt": "En 1914, quels pays forment la Triple-Entente ?",
+              "options": [
+                "Allemagne, Autriche-Hongrie, Italie",
+                "France, Royaume-Uni, Russie",
+                "France, États-Unis, Italie",
+                "Royaume-Uni, Allemagne, Russie"
+              ],
+              "answer": 1,
+              "hint": "Regarde la première ligne du tableau des alliances.",
+              "explanation": "La Triple-Entente réunit la France, le Royaume-Uni et la Russie : ce sont les Alliés."
+            },
+            {
+              "prompt": "Pourquoi le Royaume-Uni entre-t-il en guerre le 4 août 1914 ?",
+              "options": [
+                "Parce que la Serbie l'a attaqué",
+                "Parce que l'Allemagne a envahi la Belgique, pays neutre",
+                "Parce que la Russie lui a déclaré la guerre",
+                "Parce que l'archiduc était britannique"
+              ],
+              "answer": 1,
+              "hint": "Relis la dernière étape de la liste numérotée.",
+              "explanation": "L'invasion de la Belgique neutre par l'armée allemande pousse le Royaume-Uni à entrer en guerre."
+            }
+          ]
+        }
+      },
+      {
+        "title": "Déroulement : de la guerre de mouvement à l'armistice (1914-1918)",
+        "blocks": [
+          {
+            "type": "heading",
+            "text": "1914 : une guerre de mouvement"
+          },
+          {
+            "type": "text",
+            "text": "L'armée allemande traverse la Belgique et fonce vers Paris. Elle est arrêtée par les armées française et britannique lors de la **bataille de la Marne** (septembre 1914), commandées côté français par le général **Joffre**. À la fin de 1914, le front se fige sur environ 700 km, de la mer du Nord à la Suisse."
+          },
+          {
+            "type": "heading",
+            "text": "1915-1917 : une guerre de position dans les tranchées"
+          },
+          {
+            "type": "text",
+            "text": "Les soldats s'enterrent dans des **tranchées**. Ils y vivent dans la boue, le froid, au milieu des rats et des poux, sous les bombardements. Les attaques pour percer le front ennemi sont très meurtrières et font peu avancer les lignes."
+          },
+          {
+            "type": "table",
+            "caption": "Deux batailles symboles de 1916",
+            "columns": [
+              "Bataille",
+              "Dates",
+              "Ce qu'il faut savoir"
+            ],
+            "rows": [
+              [
+                "**Verdun**",
+                "21 février – 18 décembre 1916",
+                "Offensive allemande pour « saigner » l'armée française. Plus de 300 000 morts français et allemands. Grâce à la rotation des troupes, la majorité des soldats français y combattent : Verdun devient le symbole de la résistance française. Le général **Pétain** y organise la défense."
+              ],
+              [
+                "**La Somme**",
+                "1er juillet – 18 novembre 1916",
+                "Offensive franco-britannique. Plus d'un million de soldats tués, blessés ou disparus ; les Britanniques y utilisent les premiers chars."
+              ]
+            ]
+          },
+          {
+            "type": "heading",
+            "text": "1917 : l'année des crises"
+          },
+          {
+            "type": "list",
+            "items": [
+              "Avril : l'offensive française du **Chemin des Dames** est un échec sanglant. En mai-juin éclatent des **mutineries** : des soldats refusent de monter à l'assaut. Pétain améliore les conditions de vie (permissions, repos) ; quelques dizaines de mutins sont fusillés.",
+              "6 avril : les **États-Unis** entrent en guerre aux côtés des Alliés, notamment à cause de la guerre sous-marine allemande.",
+              "La **Russie**, en pleine révolution, se retire du conflit (traité de Brest-Litovsk, mars 1918)."
+            ]
+          },
+          {
+            "type": "heading",
+            "text": "1918 : la victoire des Alliés"
+          },
+          {
+            "type": "text",
+            "text": "Au printemps 1918, l'Allemagne lance de grandes offensives à l'ouest. Le général **Foch** devient commandant en chef des armées alliées. Grâce aux renforts américains et aux chars, les Alliés contre-attaquent à partir de l'été. L'empereur Guillaume II abdique et l'**armistice** est signé le **11 novembre 1918** à **Rethondes** (forêt de Compiègne)."
+          },
+          {
+            "type": "callout",
+            "kind": "definition",
+            "title": "Armistice",
+            "text": "Accord qui met fin aux combats. Ce n'est pas encore la paix : celle-ci est fixée par un traité (le traité de Versailles, signé le 28 juin 1919)."
+          },
+          {
+            "type": "callout",
+            "kind": "retiens",
+            "text": "Mouvement (1914) → position et tranchées (1915-1917) → reprise du mouvement et victoire alliée (1918)."
+          }
+        ],
+        "checkpoint": {
+          "variants": [
+            {
+              "prompt": "Quelle bataille de 1916 est devenue le symbole de la résistance française ?",
+              "options": [
+                "La Marne",
+                "Verdun",
+                "Le Chemin des Dames",
+                "Rethondes"
+              ],
+              "answer": 1,
+              "hint": "Regarde le tableau des deux batailles de 1916.",
+              "explanation": "Verdun (21 février – 18 décembre 1916) : la plupart des soldats français y passent, d'où son statut de symbole."
+            },
+            {
+              "prompt": "Qu'appelle-t-on la « guerre de position » ?",
+              "options": [
+                "Une guerre où les armées avancent très vite",
+                "Une guerre où le front est figé et les soldats vivent dans des tranchées",
+                "Une guerre uniquement navale",
+                "Une guerre sans aucune bataille"
+              ],
+              "answer": 1,
+              "hint": "Relis le paragraphe « 1915-1917 ».",
+              "explanation": "De 1915 à 1917, le front ne bouge presque plus : les soldats s'enterrent dans les tranchées."
+            },
+            {
+              "prompt": "Quand et où l'armistice est-il signé ?",
+              "options": [
+                "Le 11 novembre 1918 à Rethondes",
+                "Le 28 juin 1919 à Versailles",
+                "Le 11 novembre 1916 à Verdun",
+                "Le 3 mars 1918 à Brest-Litovsk"
+              ],
+              "answer": 0,
+              "hint": "Relis le paragraphe « 1918 » et la définition d'armistice.",
+              "explanation": "L'armistice met fin aux combats le 11 novembre 1918 à Rethondes ; le traité de Versailles vient plus tard (1919)."
+            },
+            {
+              "prompt": "Pourquoi l'année 1917 est-elle appelée « l'année des crises » ?",
+              "options": [
+                "Parce que la guerre s'arrête",
+                "À cause des mutineries, de la révolution russe et de l'entrée en guerre des États-Unis",
+                "Parce que l'Allemagne capitule",
+                "Parce que la bataille de la Marne a lieu"
+              ],
+              "answer": 1,
+              "hint": "Relis la liste « 1917 ».",
+              "explanation": "1917 : mutineries françaises, retrait de la Russie en révolution, entrée en guerre des États-Unis."
+            }
+          ]
+        }
+      },
+      {
+        "title": "Notions clés : une guerre totale, pour les civils comme pour les militaires",
+        "blocks": [
+          {
+            "type": "callout",
+            "kind": "definition",
+            "title": "Guerre totale",
+            "text": "Guerre qui mobilise **toutes les ressources** d'un pays : les hommes, l'économie, les finances, la science et les esprits. La frontière entre le front (les militaires) et l'arrière (les civils) s'efface : toute la société participe à la guerre et peut en être victime."
+          },
+          {
+            "type": "table",
+            "caption": "Comment toute la société est mobilisée",
+            "columns": [
+              "Ce qui est mobilisé",
+              "Exemples"
+            ],
+            "rows": [
+              [
+                "Les hommes",
+                "Près de 70 millions de soldats dans le monde. La France fait aussi appel à son empire colonial : environ 600 000 soldats (dont les « tirailleurs sénégalais ») et des travailleurs coloniaux."
+              ],
+              [
+                "L'économie",
+                "« Économie de guerre » : l'État dirige la production ; les usines (Renault, Citroën…) fabriquent obus, canons, avions."
+              ],
+              [
+                "Les femmes",
+                "Elles remplacent les hommes aux champs et dans les usines : plus de 400 000 « **munitionnettes** » fabriquent des obus en France."
+              ],
+              [
+                "La science et l'industrie",
+                "Armes nouvelles : gaz de combat (Ypres, 22 avril 1915), chars, avions, sous-marins, artillerie lourde."
+              ],
+              [
+                "L'argent",
+                "Les États lancent des emprunts : les civils sont invités à « verser leur or » pour la victoire."
+              ],
+              [
+                "Les esprits",
+                "**Propagande** (affiches, presse) et **censure** du courrier et des journaux. Les soldats parlent de « bourrage de crâne »."
+              ]
+            ]
+          },
+          {
+            "type": "callout",
+            "kind": "definition",
+            "title": "Union sacrée",
+            "text": "Rassemblement de tous les partis politiques et de toute la nation pour défendre la France, demandé par le président de la République **Raymond Poincaré** le 4 août 1914."
+          },
+          {
+            "type": "quote",
+            "text": "Debout, femmes françaises, jeunes enfants, filles et fils de la patrie ! Remplacez sur le champ du travail ceux qui sont sur le champ de bataille.",
+            "source": "René Viviani, président du Conseil, « Appel aux femmes françaises », août 1914 (extrait, domaine public)."
+          },
+          {
+            "type": "callout",
+            "kind": "definition",
+            "title": "Poilu",
+            "text": "Surnom donné aux soldats français de la Grande Guerre."
+          },
+          {
+            "type": "callout",
+            "kind": "retiens",
+            "text": "Au **front**, les soldats subissent une violence de masse (artillerie, gaz, mitrailleuses). À l'**arrière**, les civils travaillent, financent la guerre, subissent les privations et la propagande. Tous sont mobilisés : c'est une **guerre totale**."
+          }
+        ],
+        "checkpoint": {
+          "variants": [
+            {
+              "prompt": "Qu'est-ce qu'une guerre totale ?",
+              "options": [
+                "Une guerre qui dure très longtemps",
+                "Une guerre qui mobilise toutes les ressources d'un pays, civils compris",
+                "Une guerre qui se déroule sur tous les continents",
+                "Une guerre sans aucune règle"
+              ],
+              "answer": 1,
+              "hint": "Relis l'encadré « Guerre totale ».",
+              "explanation": "Une guerre totale mobilise les hommes, l'économie, les finances, la science et les esprits : les civils y participent."
+            },
+            {
+              "prompt": "Qui étaient les « munitionnettes » ?",
+              "options": [
+                "Des infirmières au front",
+                "Des ouvrières qui fabriquaient des obus",
+                "Des espionnes",
+                "Des soldates"
+              ],
+              "answer": 1,
+              "hint": "Cherche la ligne « Les femmes » dans le tableau.",
+              "explanation": "Les munitionnettes travaillaient dans les usines d'armement pour fabriquer des obus."
+            },
+            {
+              "prompt": "Qu'est-ce que l'Union sacrée ?",
+              "options": [
+                "Une alliance entre la France et le Royaume-Uni",
+                "Le rassemblement de tous les Français et de tous les partis pour défendre le pays",
+                "Un traité de paix",
+                "Une association d'anciens combattants"
+              ],
+              "answer": 1,
+              "hint": "Relis la définition qui cite Raymond Poincaré.",
+              "explanation": "L'Union sacrée, c'est l'union de toute la nation, au-delà des divisions politiques, pour défendre la France."
+            }
+          ]
+        }
+      },
+      {
+        "title": "Repères chronologiques",
+        "blocks": [
+          {
+            "type": "table",
+            "caption": "Les dates de la Grande Guerre",
+            "columns": [
+              "Date",
+              "Événement"
+            ],
+            "rows": [
+              [
+                "28 juin 1914",
+                "Assassinat de l'archiduc François-Ferdinand à Sarajevo"
+              ],
+              [
+                "1er – 4 août 1914",
+                "Mobilisation générale en France (1er août) ; entrées en guerre de l'Allemagne, de la France et du Royaume-Uni"
+              ],
+              [
+                "Septembre 1914",
+                "Bataille de la Marne : l'avancée allemande est stoppée"
+              ],
+              [
+                "22 avril 1915",
+                "Première grande attaque au gaz, à Ypres (Belgique)"
+              ],
+              [
+                "1915",
+                "Génocide des Arméniens dans l'Empire ottoman (voir le cours suivant)"
+              ],
+              [
+                "21 février – 18 décembre 1916",
+                "**Bataille de Verdun**"
+              ],
+              [
+                "1er juillet – 18 novembre 1916",
+                "Bataille de la Somme"
+              ],
+              [
+                "Avril 1917",
+                "Entrée en guerre des États-Unis ; échec de l'offensive du Chemin des Dames"
+              ],
+              [
+                "Mai – juin 1917",
+                "Mutineries dans l'armée française"
+              ],
+              [
+                "Octobre – novembre 1917",
+                "Révolution bolchevique en Russie ; Clemenceau devient président du Conseil"
+              ],
+              [
+                "3 mars 1918",
+                "Traité de Brest-Litovsk : la Russie sort de la guerre"
+              ],
+              [
+                "**11 novembre 1918**",
+                "**Armistice** signé à Rethondes"
+              ],
+              [
+                "28 juin 1919",
+                "Traité de Versailles"
+              ]
+            ]
+          },
+          {
+            "type": "callout",
+            "kind": "essentiel",
+            "title": "Repères du brevet",
+            "text": "**1914-1918** : Première Guerre mondiale · **1916** : bataille de Verdun · **1917** : révolution russe · **11 novembre 1918** : armistice."
+          },
+          {
+            "type": "callout",
+            "kind": "methode",
+            "title": "Pour mémoriser",
+            "text": "Dessine une frise de 1914 à 1919 en trois couleurs : mouvement (1914), position (1915-1917), victoire (1918). Place Verdun au milieu : c'est l'année 1916, au cœur de la guerre."
+          }
+        ],
+        "checkpoint": {
+          "variants": [
+            {
+              "prompt": "En quelle année a lieu la bataille de Verdun ?",
+              "options": [
+                "1914",
+                "1915",
+                "1916",
+                "1918"
+              ],
+              "answer": 2,
+              "hint": "Cherche Verdun dans le tableau.",
+              "explanation": "Verdun dure du 21 février au 18 décembre 1916."
+            },
+            {
+              "prompt": "Quelle date marque la fin des combats ?",
+              "options": [
+                "28 juin 1914",
+                "11 novembre 1918",
+                "28 juin 1919",
+                "3 mars 1918"
+              ],
+              "answer": 1,
+              "hint": "C'est l'un des quatre repères du brevet.",
+              "explanation": "L'armistice est signé le 11 novembre 1918."
+            },
+            {
+              "prompt": "Que se passe-t-il le 28 juin 1919 ?",
+              "options": [
+                "L'armistice",
+                "La signature du traité de Versailles",
+                "L'assassinat de François-Ferdinand",
+                "L'entrée en guerre des États-Unis"
+              ],
+              "answer": 1,
+              "hint": "Regarde la dernière ligne du tableau.",
+              "explanation": "Le traité de Versailles est signé le 28 juin 1919, cinq ans jour pour jour après l'attentat de Sarajevo."
+            }
+          ]
+        }
+      },
+      {
+        "title": "Acteurs et bilan d'une guerre de masse",
+        "blocks": [
+          {
+            "type": "table",
+            "caption": "Les acteurs à connaître",
+            "columns": [
+              "Acteur",
+              "Rôle"
+            ],
+            "rows": [
+              [
+                "Raymond Poincaré",
+                "Président de la République (1913-1920) ; appelle à l'Union sacrée le 4 août 1914."
+              ],
+              [
+                "Georges Clemenceau",
+                "Président du Conseil à partir de novembre 1917, surnommé « le Tigre » puis « le Père la Victoire »."
+              ],
+              [
+                "Joseph Joffre",
+                "Commandant en chef de l'armée française en 1914, vainqueur de la Marne."
+              ],
+              [
+                "Philippe Pétain",
+                "Général qui organise la défense de Verdun (1916), puis commandant en chef après les mutineries (1917). Il dirigera plus tard le régime de Vichy (1940-1944)."
+              ],
+              [
+                "Ferdinand Foch",
+                "Commandant en chef des armées alliées en 1918."
+              ],
+              [
+                "Guillaume II",
+                "Empereur d'Allemagne ; il abdique le 9 novembre 1918."
+              ],
+              [
+                "Woodrow Wilson",
+                "Président des États-Unis ; il propose ses « Quatorze points » pour la paix (janvier 1918)."
+              ],
+              [
+                "Les poilus, les femmes, les soldats coloniaux",
+                "Les millions d'anonymes qui font la guerre, au front comme à l'arrière."
+              ]
+            ]
+          },
+          {
+            "type": "heading",
+            "text": "Un bilan terrible"
+          },
+          {
+            "type": "list",
+            "items": [
+              "Environ **10 millions de soldats tués**, et des millions de civils victimes.",
+              "En France : environ **1,4 million de morts** et plus de 4 millions de blessés, dont les « **gueules cassées** », défigurés.",
+              "Des veuves et des orphelins (les « pupilles de la Nation »), des régions du nord-est détruites.",
+              "Presque chaque commune française élève un **monument aux morts**.",
+              "Le **traité de Versailles** (1919) rend l'Alsace-Moselle à la France et fait de l'Allemagne la responsable de la guerre : elle doit payer des réparations. Les Allemands le vivent comme une humiliation (un « diktat »)."
+            ]
+          },
+          {
+            "type": "callout",
+            "kind": "plus",
+            "text": "L'historien George Mosse parle de « **brutalisation** » : la violence de masse s'est banalisée et va marquer la vie politique de l'entre-deux-guerres (voir les chapitres suivants)."
+          },
+          {
+            "type": "callout",
+            "kind": "retiens",
+            "text": "La Grande Guerre est une guerre de masse : des acteurs politiques (Poincaré, Clemenceau), militaires (Joffre, Pétain, Foch) et des millions d'anonymes. Son bilan humain et moral est immense."
+          }
+        ],
+        "checkpoint": {
+          "variants": [
+            {
+              "prompt": "Qui est surnommé « le Père la Victoire » ?",
+              "options": [
+                "Raymond Poincaré",
+                "Georges Clemenceau",
+                "Ferdinand Foch",
+                "Woodrow Wilson"
+              ],
+              "answer": 1,
+              "hint": "Regarde le tableau des acteurs : qui est président du Conseil en 1917 ?",
+              "explanation": "Georges Clemenceau, président du Conseil à partir de novembre 1917, mène la France à la victoire."
+            },
+            {
+              "prompt": "Combien de soldats français sont morts environ pendant la guerre ?",
+              "options": [
+                "140 000",
+                "1,4 million",
+                "14 millions",
+                "400 000"
+              ],
+              "answer": 1,
+              "hint": "Relis le bilan pour la France.",
+              "explanation": "Environ 1,4 million de soldats français sont morts."
+            },
+            {
+              "prompt": "Que sont les « gueules cassées » ?",
+              "options": [
+                "Des soldats défigurés par leurs blessures",
+                "Des mutins de 1917",
+                "Des espions allemands",
+                "Des monuments aux morts"
+              ],
+              "answer": 0,
+              "hint": "Cherche l'expression dans la liste du bilan.",
+              "explanation": "Ce sont les soldats grièvement blessés au visage."
+            }
+          ]
+        }
+      }
+    ],
+    "memo": [
+      {
+        "label": "Dates du brevet",
+        "text": "1914-1918 : Première Guerre mondiale · 1916 : Verdun · 1917 : révolution russe · 11 novembre 1918 : armistice."
+      },
+      {
+        "label": "Déclenchement",
+        "text": "28 juin 1914 : assassinat de François-Ferdinand à Sarajevo → jeu des alliances (Alliés contre Empires centraux)."
+      },
+      {
+        "label": "Trois phases",
+        "text": "Guerre de mouvement (1914, Marne) → guerre de position dans les tranchées (1915-1917, Verdun, Somme) → victoire alliée (1918)."
+      },
+      {
+        "label": "Guerre totale",
+        "text": "Mobilisation de toutes les ressources : hommes, économie, femmes (munitionnettes), colonies, science, argent, propagande et censure. Union sacrée."
+      },
+      {
+        "label": "Acteurs",
+        "text": "Poincaré (Union sacrée), Clemenceau (« Père la Victoire »), Joffre (Marne), Pétain (Verdun), Foch (1918), Guillaume II, Wilson."
+      },
+      {
+        "label": "Bilan",
+        "text": "Environ 10 millions de soldats morts, dont 1,4 million de Français ; gueules cassées ; monuments aux morts ; traité de Versailles (28 juin 1919)."
+      }
+    ]
+  },
+  "exercises": {
+    "duration_min": 30,
+    "instructions": "Commence par les exercices ★ (je repère), puis ★★ (j'analyse un document) et ★★★ (je rédige). Lis les deux documents attentivement. Les corrigés s'affichent seulement après tes réponses : tu peux t'en servir pour progresser !",
+    "pass_threshold": 8,
+    "texts": [
+      {
+        "id": "t1",
+        "label": "Document 1 · L'appel à l'Union sacrée",
+        "source": "Raymond Poincaré, président de la République, message lu au Parlement le 4 août 1914 (extrait, domaine public).",
+        "paragraphs": [
+          "Dans la guerre qui s'engage, la France aura pour elle le droit, dont aucun peuple, non plus que les individus, ne saurait impunément méconnaître l'éternelle puissance morale.",
+          "Elle sera héroïquement défendue par tous ses fils, dont rien ne brisera devant l'ennemi l'union sacrée, et qui sont aujourd'hui fraternellement assemblés dans une même indignation contre l'agresseur et dans une même foi patriotique."
+        ]
+      },
+      {
+        "id": "t2",
+        "label": "Document 2 · Lettre d'un soldat à Verdun",
+        "source": "Texte original écrit pour ce cours, inspiré des lettres de soldats de 1916 (ce n'est pas une lettre authentique).",
+        "paragraphs": [
+          "Le 14 mars 1916. Ma chère Louise, je profite d'un moment de calme pour t'écrire. Je ne peux pas te dire où nous sommes, la lettre serait arrêtée par la censure, mais tu devines sûrement.",
+          "Depuis cinq jours, nous tenons un trou d'obus en première ligne. Les obus tombent jour et nuit, la terre tremble sans arrêt. Nous avons de la boue jusqu'aux genoux et nous buvons l'eau des trous quand la soupe n'arrive pas. Hier, mon camarade Émile a été tué à côté de moi.",
+          "Merci pour le colis : le chocolat et les chaussettes de laine m'ont fait un bien fou. Embrasse les petits et dis à ta sœur qu'elle tienne bon à l'usine. J'espère une permission avant l'été."
+        ]
+      }
+    ],
+    "items": [
+      {
+        "id": "ex1",
+        "type": "qcm",
+        "stars": 1,
+        "lesson_part": 1,
+        "skills": [
+          "hg-reperes-1gm"
+        ],
+        "cognitive": "connaitre",
+        "prompt": "À quelle date l'archiduc François-Ferdinand est-il assassiné à Sarajevo ?",
+        "options": [
+          "28 juin 1914",
+          "1er août 1914",
+          "11 novembre 1918",
+          "21 février 1916"
+        ],
+        "answer": 0,
+        "solution": "Le 28 juin 1914 : c'est l'événement qui déclenche la crise de l'été 1914."
+      },
+      {
+        "id": "ex2",
+        "type": "short",
+        "stars": 1,
+        "lesson_part": 4,
+        "skills": [
+          "hg-reperes-1gm"
+        ],
+        "cognitive": "connaitre",
+        "prompt": "En quelle année a lieu la bataille de Verdun ? (réponds par une année)",
+        "answer": [
+          "1916",
+          "en 1916",
+          "annee 1916",
+          "l'annee 1916"
+        ],
+        "solution": "1916 (du 21 février au 18 décembre)."
+      },
+      {
+        "id": "ex3",
+        "type": "short",
+        "stars": 1,
+        "lesson_part": 5,
+        "skills": [
+          "hg-acteurs-1gm"
+        ],
+        "cognitive": "connaitre",
+        "prompt": "Quel homme politique, président du Conseil à partir de novembre 1917, est surnommé « le Père la Victoire » ?",
+        "answer": [
+          "Clemenceau",
+          "Georges Clemenceau",
+          "G. Clemenceau"
+        ],
+        "solution": "Georges Clemenceau."
+      },
+      {
+        "id": "ex4",
+        "type": "qcm",
+        "stars": 1,
+        "lesson_part": 2,
+        "skills": [
+          "hg-reperes-1gm",
+          "hg-acteurs-1gm"
+        ],
+        "cognitive": "connaitre",
+        "prompt": "Quel pays entre en guerre aux côtés des Alliés en avril 1917 ?",
+        "options": [
+          "La Russie",
+          "Les États-Unis",
+          "L'Empire ottoman",
+          "La Bulgarie"
+        ],
+        "answer": 1,
+        "solution": "Les États-Unis, le 6 avril 1917, en réaction notamment à la guerre sous-marine allemande."
+      },
+      {
+        "id": "ex5",
+        "type": "open",
+        "stars": 2,
+        "text_ref": "t1",
+        "lesson_part": 3,
+        "skills": [
+          "hg-analyse-doc"
+        ],
+        "cognitive": "analyser",
+        "prompt": "Présente le document 1 : nature, auteur (et sa fonction), date et destinataires.",
+        "solution": "C'est un discours officiel (un message) de Raymond Poincaré, président de la République, lu au Parlement le 4 août 1914, au début de la guerre. Il s'adresse aux députés et aux sénateurs, et à travers eux à tous les Français."
+      },
+      {
+        "id": "ex6",
+        "type": "qcm",
+        "stars": 2,
+        "text_ref": "t1",
+        "lesson_part": 3,
+        "skills": [
+          "hg-analyse-doc",
+          "hg-guerre-totale"
+        ],
+        "cognitive": "analyser",
+        "prompt": "Dans le document 1, que demande Poincaré en parlant d'« union sacrée » ?",
+        "options": [
+          "Que la France s'allie avec l'Allemagne",
+          "Que tous les Français oublient leurs divisions pour défendre le pays",
+          "Que l'Église dirige le pays pendant la guerre",
+          "Que les soldats refusent de combattre"
+        ],
+        "answer": 1,
+        "solution": "Il demande que tous les Français, quelles que soient leurs opinions politiques, s'unissent pour défendre le pays agressé."
+      },
+      {
+        "id": "ex7",
+        "type": "open",
+        "stars": 2,
+        "text_ref": "t2",
+        "lesson_part": 2,
+        "skills": [
+          "hg-civils-militaires",
+          "hg-analyse-doc"
+        ],
+        "cognitive": "analyser",
+        "prompt": "Relève dans le document 2 trois éléments qui montrent la dureté des conditions de vie et de combat des soldats à Verdun.",
+        "solution": "Exemples : les bombardements incessants (« les obus tombent jour et nuit ») ; la boue (« de la boue jusqu'aux genoux ») ; la soif et le ravitaillement difficile (« nous buvons l'eau des trous ») ; la mort des camarades (« Émile a été tué à côté de moi ») ; le manque de repos (cinq jours en première ligne)."
+      },
+      {
+        "id": "ex8",
+        "type": "open",
+        "stars": 2,
+        "text_ref": "t2",
+        "lesson_part": 3,
+        "skills": [
+          "hg-guerre-totale",
+          "hg-analyse-doc"
+        ],
+        "cognitive": "analyser",
+        "prompt": "Dans le document 2, relève deux indices qui montrent que la guerre concerne aussi l'arrière (les civils).",
+        "solution": "La censure du courrier (« la lettre serait arrêtée par la censure ») ; le colis envoyé par la famille (chocolat, chaussettes) ; la belle-sœur qui travaille « à l'usine », sans doute pour l'armement. Les civils soutiennent les soldats et participent à l'effort de guerre."
+      },
+      {
+        "id": "ex9",
+        "type": "open",
+        "stars": 3,
+        "lesson_part": 3,
+        "skills": [
+          "hg-guerre-totale",
+          "hg-civils-militaires",
+          "hg-redaction"
+        ],
+        "cognitive": "rediger",
+        "prompt": "Rédige un paragraphe argumenté (8 à 10 lignes) : montre que les civils participent à la guerre en France entre 1914 et 1918. Utilise au moins deux exemples précis.",
+        "solution": "Exemple : Pendant la Première Guerre mondiale, les civils sont mobilisés à l'arrière. D'abord, les femmes remplacent les hommes partis au front : elles font les moissons, et plus de 400 000 munitionnettes fabriquent des obus dans les usines. Ensuite, l'économie devient une économie de guerre dirigée par l'État. Les Français financent aussi la guerre en souscrivant aux emprunts. Enfin, les esprits sont mobilisés par la propagande et contrôlés par la censure. Les civils participent donc pleinement à cette guerre totale."
+      },
+      {
+        "id": "ex10",
+        "type": "open",
+        "stars": 3,
+        "lesson_part": 3,
+        "skills": [
+          "hg-guerre-totale",
+          "hg-civils-militaires",
+          "hg-redaction"
+        ],
+        "cognitive": "rediger",
+        "prompt": "Rédige un développement construit (une quinzaine de lignes) : « Pourquoi la Première Guerre mondiale est-elle une guerre totale ? » Fais une introduction, deux parties (le front, l'arrière) et une conclusion.",
+        "solution": "Introduction : de 1914 à 1918, la Première Guerre mondiale oppose les Alliés (France, Royaume-Uni, Russie, puis États-Unis) aux Empires centraux. On peut la qualifier de guerre totale. Partie 1 (le front) : des millions de soldats mobilisés (environ 8 millions de Français, des soldats coloniaux) ; une violence de masse avec des armes industrielles (artillerie, gaz, chars) ; l'enfer des tranchées, comme à Verdun en 1916 (plus de 300 000 morts). Partie 2 (l'arrière) : économie de guerre, femmes au travail (munitionnettes), emprunts, propagande et censure, Union sacrée. Conclusion : toute la société est mobilisée ; le bilan est terrible (environ 10 millions de soldats morts, dont 1,4 million de Français) ; l'armistice est signé le 11 novembre 1918."
+      }
+    ]
+  },
+  "evaluation": {
+    "duration_min": 30,
+    "conditions": "Comme au brevet : sans la leçon ni les corrigés, en 30 minutes. Barème : A = 6 points · B = 6 points · C = 8 points. Soigne la rédaction et cite des repères précis.",
+    "total_points": 20,
+    "variants": [
+      {
+        "texts": [
+          {
+            "id": "d1",
+            "label": "Document · Appel aux femmes françaises",
+            "source": "René Viviani, président du Conseil, « Appel aux femmes françaises », publié au début d'août 1914 (extrait, domaine public).",
+            "paragraphs": [
+              "Le départ pour l'armée de tous ceux qui peuvent porter les armes laisse les travaux des champs interrompus : la moisson est inachevée, le temps des vendanges est proche. Au nom du gouvernement de la République, au nom de la nation tout entière groupée derrière lui, je fais appel à votre vaillance, à celle des enfants que leur âge seul, et non leur courage, dérobe au combat.",
+              "Debout, femmes françaises, jeunes enfants, filles et fils de la patrie ! Remplacez sur le champ du travail ceux qui sont sur le champ de bataille. Préparez-vous à leur montrer, demain, la terre cultivée, les récoltes rentrées, les champs ensemencés !",
+              "Il n'y a pas, dans ces heures graves, de labeur infime. Tout est grand qui sert le pays. Debout ! À l'action ! À l'œuvre ! Il y aura demain de la gloire pour tout le monde."
+            ]
+          }
+        ],
+        "sections": [
+          {
+            "label": "A · Je connais mes repères (6 points)",
+            "questions": [
+              {
+                "id": "q1",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 4,
+                "skills": [
+                  "hg-reperes-1gm"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "À quelle date l'armistice qui met fin aux combats est-il signé ?",
+                "options": [
+                  "28 juin 1914",
+                  "11 novembre 1918",
+                  "28 juin 1919",
+                  "21 février 1916"
+                ],
+                "answer": 1,
+                "solution": "Le 11 novembre 1918, à Rethondes.",
+                "rubric": "1 pt : bonne réponse."
+              },
+              {
+                "id": "q2",
+                "type": "short",
+                "points": 1,
+                "lesson_part": 4,
+                "skills": [
+                  "hg-reperes-1gm"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "En quelle année a lieu la bataille de Verdun ?",
+                "answer": [
+                  "1916",
+                  "en 1916",
+                  "annee 1916",
+                  "l'annee 1916"
+                ],
+                "solution": "1916.",
+                "rubric": "1 pt : 1916."
+              },
+              {
+                "id": "q3",
+                "type": "short",
+                "points": 1,
+                "lesson_part": 5,
+                "skills": [
+                  "hg-acteurs-1gm"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Quel général devient commandant en chef des armées alliées en 1918 ?",
+                "answer": [
+                  "Foch",
+                  "Ferdinand Foch",
+                  "le general Foch",
+                  "general Foch",
+                  "marechal Foch",
+                  "le marechal Foch"
+                ],
+                "solution": "Ferdinand Foch.",
+                "rubric": "1 pt : Foch."
+              },
+              {
+                "id": "q4",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 1,
+                "skills": [
+                  "hg-reperes-1gm"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Quels pays font partie des Empires centraux en 1914 ?",
+                "options": [
+                  "La France et le Royaume-Uni",
+                  "L'Allemagne et l'Autriche-Hongrie",
+                  "La Russie et la Serbie",
+                  "Les États-Unis et l'Italie"
+                ],
+                "answer": 1,
+                "solution": "L'Allemagne et l'Autriche-Hongrie (rejointes ensuite par l'Empire ottoman et la Bulgarie).",
+                "rubric": "1 pt : bonne réponse."
+              },
+              {
+                "id": "q5",
+                "type": "open",
+                "points": 2,
+                "lesson_part": 3,
+                "skills": [
+                  "hg-guerre-totale"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Définis l'expression « guerre totale ».",
+                "solution": "Une guerre qui mobilise toutes les ressources d'un pays (hommes, économie, finances, science, esprits) et dans laquelle les civils participent à l'effort de guerre et peuvent être victimes.",
+                "rubric": "1 pt : idée de mobilisation de toutes les ressources (au moins deux exemples : hommes, économie, finances, propagande…). 1 pt : implication des civils / effacement de la frontière front-arrière."
+              }
+            ]
+          },
+          {
+            "label": "B · J'analyse un document (6 points)",
+            "questions": [
+              {
+                "id": "q6",
+                "type": "open",
+                "points": 1,
+                "text_ref": "d1",
+                "lesson_part": 3,
+                "skills": [
+                  "hg-analyse-doc"
+                ],
+                "cognitive": "analyser",
+                "prompt": "Présente le document : nature, auteur (et sa fonction), date.",
+                "solution": "Un appel officiel (texte de propagande gouvernementale) de René Viviani, président du Conseil (chef du gouvernement), publié au début d'août 1914, quelques jours après la mobilisation générale.",
+                "rubric": "0,5 pt : nature (appel / discours officiel). 0,5 pt : auteur et fonction + date (août 1914)."
+              },
+              {
+                "id": "q7",
+                "type": "open",
+                "points": 2,
+                "text_ref": "d1",
+                "lesson_part": 3,
+                "skills": [
+                  "hg-analyse-doc",
+                  "hg-civils-militaires"
+                ],
+                "cognitive": "analyser",
+                "prompt": "À qui s'adresse cet appel et que leur demande-t-on ? Appuie-toi sur deux citations.",
+                "solution": "Il s'adresse aux femmes et aux enfants (« Debout, femmes françaises, jeunes enfants »). On leur demande de remplacer les hommes mobilisés dans les travaux agricoles : terminer la moisson, faire les vendanges (« Remplacez sur le champ du travail ceux qui sont sur le champ de bataille »).",
+                "rubric": "1 pt : destinataires (femmes et enfants) avec citation. 1 pt : ce qui est demandé (remplacer les hommes aux champs : moisson, vendanges) avec citation."
+              },
+              {
+                "id": "q8",
+                "type": "open",
+                "points": 2,
+                "text_ref": "d1",
+                "lesson_part": 3,
+                "skills": [
+                  "hg-guerre-totale",
+                  "hg-analyse-doc"
+                ],
+                "cognitive": "analyser",
+                "prompt": "Explique en quoi ce document montre que la Première Guerre mondiale est une guerre totale.",
+                "solution": "Les civils sont mobilisés au même titre que les soldats : les femmes et les enfants doivent faire tourner l'économie pour nourrir le pays et l'armée. Le texte oppose « le champ du travail » et « le champ de bataille » mais les met sur le même plan : « Tout est grand qui sert le pays ». La frontière entre front et arrière s'efface.",
+                "rubric": "1 pt : mobilisation des civils / de l'économie. 1 pt : lien explicite avec la définition de guerre totale (front et arrière tous deux au service de la guerre), appuyé sur le texte."
+              },
+              {
+                "id": "q9",
+                "type": "open",
+                "points": 1,
+                "text_ref": "d1",
+                "lesson_part": 3,
+                "skills": [
+                  "hg-analyse-doc"
+                ],
+                "cognitive": "analyser",
+                "prompt": "Ce document est-il un témoignage neutre sur la vie des femmes pendant la guerre ? Justifie.",
+                "solution": "Non : c'est un texte de propagande officielle qui cherche à mobiliser et à encourager (ton exalté, exclamations, promesse de « gloire »). Il ne montre pas les difficultés réelles des femmes (fatigue, salaires plus faibles, angoisse pour les proches).",
+                "rubric": "0,5 pt : non, c'est un texte officiel / de propagande. 0,5 pt : justification (ton, but de mobiliser, ce qu'il ne dit pas)."
+              }
+            ]
+          },
+          {
+            "label": "C · Je rédige un développement construit (8 points)",
+            "questions": [
+              {
+                "id": "q10",
+                "type": "open",
+                "points": 8,
+                "lesson_part": 2,
+                "skills": [
+                  "hg-guerre-totale",
+                  "hg-civils-militaires",
+                  "hg-reperes-1gm",
+                  "hg-redaction"
+                ],
+                "cognitive": "rediger",
+                "prompt": "Développement construit (une vingtaine de lignes) : « Montrez que la Première Guerre mondiale est une guerre totale. » Tu dois parler du front et de l'arrière et utiliser des repères précis (dates, lieux, acteurs).",
+                "solution": "Introduction : de 1914 à 1918, la Première Guerre mondiale oppose les Alliés (France, Royaume-Uni, Russie, puis États-Unis) aux Empires centraux (Allemagne, Autriche-Hongrie). Partie 1 – Au front : mobilisation de millions d'hommes (environ 8 millions de Français, soldats coloniaux) ; guerre de position dans les tranchées ; armes industrielles (artillerie, gaz à Ypres en 1915, chars) ; Verdun (1916), plus de 300 000 morts. Partie 2 – À l'arrière : Union sacrée (Poincaré, 1914) ; économie de guerre ; femmes au travail (munitionnettes) ; emprunts ; propagande et censure ; Clemenceau « fait la guerre » (1917-1918). Conclusion : toute la société est mobilisée ; armistice du 11 novembre 1918 ; bilan d'environ 10 millions de soldats morts, dont 1,4 million de Français.",
+                "rubric": "1 pt : introduction (dates 1914-1918, camps, sujet posé). 2,5 pts : le front (mobilisation, tranchées, armes industrielles, au moins un exemple précis comme Verdun 1916). 2,5 pts : l'arrière (au moins trois éléments : femmes, économie de guerre, emprunts, propagande/censure, Union sacrée, colonies). 1 pt : conclusion (bilan et/ou armistice du 11 novembre 1918). 1 pt : expression (phrases construites, connecteurs, vocabulaire historique). Pénalité : -0,5 pt par erreur de repère importante."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "texts": [
+          {
+            "id": "d1",
+            "label": "Document · « Je fais la guerre »",
+            "source": "Georges Clemenceau, président du Conseil, discours à la Chambre des députés, 8 mars 1918 (extrait, domaine public).",
+            "paragraphs": [
+              "Ma formule est la même partout. Politique intérieure ? Je fais la guerre. Politique extérieure ? Je fais la guerre. Je fais toujours la guerre.",
+              "La Russie nous trahit, je continue de faire la guerre. La malheureuse Roumanie est obligée de capituler, je continue de faire la guerre, et je continuerai jusqu'au dernier quart d'heure."
+            ]
+          }
+        ],
+        "sections": [
+          {
+            "label": "A · Je connais mes repères (6 points)",
+            "questions": [
+              {
+                "id": "q1",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 1,
+                "skills": [
+                  "hg-reperes-1gm"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "À quelle date l'archiduc François-Ferdinand est-il assassiné ?",
+                "options": [
+                  "28 juin 1914",
+                  "3 août 1914",
+                  "11 novembre 1918",
+                  "6 avril 1917"
+                ],
+                "answer": 0,
+                "solution": "Le 28 juin 1914, à Sarajevo.",
+                "rubric": "1 pt : bonne réponse."
+              },
+              {
+                "id": "q2",
+                "type": "short",
+                "points": 1,
+                "lesson_part": 2,
+                "skills": [
+                  "hg-reperes-1gm"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "En quelle année les États-Unis entrent-ils en guerre ?",
+                "answer": [
+                  "1917",
+                  "en 1917",
+                  "avril 1917",
+                  "en avril 1917",
+                  "6 avril 1917",
+                  "le 6 avril 1917"
+                ],
+                "solution": "1917 (le 6 avril).",
+                "rubric": "1 pt : 1917."
+              },
+              {
+                "id": "q3",
+                "type": "short",
+                "points": 1,
+                "lesson_part": 5,
+                "skills": [
+                  "hg-acteurs-1gm"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Quel général organise la défense de Verdun en 1916 ?",
+                "answer": [
+                  "Petain",
+                  "Philippe Petain",
+                  "le general Petain",
+                  "general Petain"
+                ],
+                "solution": "Philippe Pétain.",
+                "rubric": "1 pt : Pétain."
+              },
+              {
+                "id": "q4",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 1,
+                "skills": [
+                  "hg-reperes-1gm"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Quels pays forment la Triple-Entente en 1914 ?",
+                "options": [
+                  "Allemagne, Autriche-Hongrie, Italie",
+                  "France, Royaume-Uni, Russie",
+                  "France, États-Unis, Japon",
+                  "Russie, Serbie, Empire ottoman"
+                ],
+                "answer": 1,
+                "solution": "La France, le Royaume-Uni et la Russie.",
+                "rubric": "1 pt : bonne réponse."
+              },
+              {
+                "id": "q5",
+                "type": "open",
+                "points": 2,
+                "lesson_part": 3,
+                "skills": [
+                  "hg-guerre-totale"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Définis l'expression « Union sacrée ».",
+                "solution": "Le rassemblement de toute la nation et de tous les partis politiques, au-delà de leurs divisions, pour défendre la France, demandé par le président Poincaré le 4 août 1914.",
+                "rubric": "1 pt : rassemblement de tous les Français / de tous les partis malgré leurs divisions. 1 pt : pour défendre le pays en guerre (avec Poincaré ou 1914 en bonus de précision)."
+              }
+            ]
+          },
+          {
+            "label": "B · J'analyse un document (6 points)",
+            "questions": [
+              {
+                "id": "q6",
+                "type": "open",
+                "points": 1,
+                "text_ref": "d1",
+                "lesson_part": 5,
+                "skills": [
+                  "hg-analyse-doc"
+                ],
+                "cognitive": "analyser",
+                "prompt": "Présente le document : nature, auteur (et sa fonction), date.",
+                "solution": "Un discours politique de Georges Clemenceau, président du Conseil (chef du gouvernement), prononcé devant la Chambre des députés le 8 mars 1918, dans la dernière année de la guerre.",
+                "rubric": "0,5 pt : nature (discours). 0,5 pt : auteur et fonction + date (8 mars 1918)."
+              },
+              {
+                "id": "q7",
+                "type": "open",
+                "points": 2,
+                "text_ref": "d1",
+                "lesson_part": 2,
+                "skills": [
+                  "hg-analyse-doc",
+                  "hg-reperes-1gm"
+                ],
+                "cognitive": "analyser",
+                "prompt": "Relève deux difficultés des Alliés évoquées par Clemenceau, et explique-les grâce au cours.",
+                "solution": "« La Russie nous trahit » : la Russie, en révolution, sort de la guerre (traité de Brest-Litovsk, 3 mars 1918) ; l'Allemagne peut ramener ses troupes à l'ouest. « La malheureuse Roumanie est obligée de capituler » : un autre allié est vaincu.",
+                "rubric": "1 pt : la sortie de la Russie, avec explication (révolution / Brest-Litovsk). 1 pt : la capitulation de la Roumanie (ou idée d'alliés qui faiblissent)."
+              },
+              {
+                "id": "q8",
+                "type": "open",
+                "points": 2,
+                "text_ref": "d1",
+                "lesson_part": 3,
+                "skills": [
+                  "hg-guerre-totale",
+                  "hg-analyse-doc"
+                ],
+                "cognitive": "analyser",
+                "prompt": "Explique en quoi ce discours montre que la Première Guerre mondiale est une guerre totale.",
+                "solution": "Pour Clemenceau, toute la politique, intérieure comme extérieure, est tournée vers la guerre : « Je fais toujours la guerre ». L'État mobilise toutes les forces du pays (économie, finances, opinion) dans un seul but, la victoire, jusqu'au « dernier quart d'heure ».",
+                "rubric": "1 pt : toute l'action de l'État est consacrée à la guerre (citation). 1 pt : lien explicite avec la définition de guerre totale (mobilisation de toutes les ressources, jusqu'à la victoire)."
+              },
+              {
+                "id": "q9",
+                "type": "open",
+                "points": 1,
+                "text_ref": "d1",
+                "lesson_part": 5,
+                "skills": [
+                  "hg-analyse-doc"
+                ],
+                "cognitive": "analyser",
+                "prompt": "Pourquoi Clemenceau prononce-t-il un discours aussi déterminé en mars 1918 ? Justifie.",
+                "solution": "Il veut redonner confiance aux députés et à l'opinion à un moment difficile (retrait russe, offensives allemandes qui se préparent) et montrer sa volonté de mener la guerre jusqu'à la victoire. C'est un discours destiné à convaincre et à mobiliser.",
+                "rubric": "0,5 pt : contexte difficile de 1918. 0,5 pt : but de mobiliser / redonner confiance."
+              }
+            ]
+          },
+          {
+            "label": "C · Je rédige un développement construit (8 points)",
+            "questions": [
+              {
+                "id": "q10",
+                "type": "open",
+                "points": 8,
+                "lesson_part": 2,
+                "skills": [
+                  "hg-civils-militaires",
+                  "hg-reperes-1gm",
+                  "hg-acteurs-1gm",
+                  "hg-redaction"
+                ],
+                "cognitive": "rediger",
+                "prompt": "Développement construit (une vingtaine de lignes) : « Décrivez les conditions de vie et de combat des soldats pendant la Première Guerre mondiale, en vous appuyant sur l'exemple de Verdun, et expliquez pourquoi cette bataille est devenue un symbole. »",
+                "solution": "Introduction : de 1914 à 1918, des millions de soldats sont mobilisés. En 1916, la bataille de Verdun (21 février – 18 décembre) devient le symbole de la guerre. Partie 1 – Les conditions de vie et de combat : guerre de position dans les tranchées (boue, froid, rats, poux, soif) ; bombardements permanents, armes industrielles (artillerie, gaz, mitrailleuses) ; assauts meurtriers ; liens avec l'arrière (lettres, colis, censure, permissions). Partie 2 – Verdun, un symbole : offensive allemande pour « saigner » l'armée française ; défense organisée par Pétain ; rotation des troupes : la majorité des soldats français y passent ; plus de 300 000 morts français et allemands pour un front qui revient presque à son point de départ. Conclusion : Verdun symbolise la résistance française et la violence de masse de la guerre ; la guerre s'achève par l'armistice du 11 novembre 1918.",
+                "rubric": "1 pt : introduction (contexte, Verdun 1916 situé). 2,5 pts : conditions de vie et de combat (au moins trois éléments précis : tranchées, boue, bombardements, armes nouvelles, assauts, ravitaillement, courrier). 2,5 pts : Verdun comme symbole (dates, offensive allemande, Pétain, rotation des troupes, bilan humain). 1 pt : conclusion. 1 pt : expression (phrases construites, connecteurs, vocabulaire historique). Pénalité : -0,5 pt par erreur de repère importante."
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

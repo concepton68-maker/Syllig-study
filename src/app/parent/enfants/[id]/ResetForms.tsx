@@ -14,7 +14,7 @@ export function ResetCourse({ studentId, courseId, title }: { studentId: string;
       <span className="text-sm text-ink-2">Effacés : leçon validée, réponses aux exercices, toutes les tentatives d’évaluation et leurs notes, points de progrès gagnés sur ce cours. Le cours redevient « Pas encore commencé ». Le journal garde une trace de la réinitialisation.</span>
       <label className="flex items-center gap-2 text-sm"><input type="checkbox" name="sessions" defaultChecked className="w-4 h-4" /> Effacer aussi le temps de travail passé sur ce cours</label>
       <div className="flex gap-2">
-        <button className="btn btn-primary" type="submit" disabled={pending}>{pending ? 'Réinitialisation…' : 'Oui, réinitialiser ce cours'}</button>
+        <button className="btn btn-danger" type="submit" disabled={pending}>{pending ? 'Réinitialisation…' : 'Oui, réinitialiser ce cours'}</button>
         <button className="btn" type="button" onClick={() => setOpen(false)}>Annuler</button>
       </div>
       {state?.error && <span role="alert" className="text-sm text-warm-dark">{state.error}</span>}
@@ -38,7 +38,7 @@ export function ResetStudent({ studentId, firstName }: { studentId: string; firs
       <label className="flex flex-col gap-1 text-sm font-semibold max-w-sm">Pour confirmer, tapez le prénom « {firstName} »
         <input className="field" name="confirm" autoComplete="off" required value={confirmName} onChange={e => setConfirmName(e.target.value)} />
       </label>
-      <div><button className="btn bg-warm text-white border-warm hover:bg-warm-dark hover:text-white" type="submit" disabled={pending}>{pending ? 'Réinitialisation…' : 'Réinitialiser tout le parcours'}</button></div>
+      <div><button className="btn btn-danger" type="submit" disabled={pending}>{pending ? 'Réinitialisation…' : 'Réinitialiser tout le parcours'}</button></div>
       {state?.error && <span role="alert" className="text-sm text-warm-dark">{state.error}</span>}
       {state?.ok && <span role="status" className="text-sm text-brand-ink">{state.ok}</span>}
     </form>

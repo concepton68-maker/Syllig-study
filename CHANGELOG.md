@@ -38,3 +38,30 @@ Première version numérotée (déjà en ligne avant numérotation : socle, gén
   - « Syllig » en lettres à empattements, « STUDY » en capitales espacées.
   - Présent dans la barre latérale, la barre mobile et la page de connexion, ainsi que dans l'icône d'onglet du navigateur.
   - Couleurs adaptées à chaque thème.
+
+## 0.06 — 24/11/2026
+- Niveaux scolaires multiples et dossier scolaire :
+  - Nouveau niveau **3e générale** (collège, cycle 4), avec le programme officiel : 191 cours dans 12 matières, les priorités tenant compte du brevet. La Seconde générale est conservée.
+  - Kausar passe en 3e générale. Il s'agit d'une correction de niveau : son compte ne change pas.
+  - **Dossier scolaire** de chaque élève, année après année :
+    - côté parent, onglet « Dossier scolaire » de la fiche enfant ;
+    - côté élève, page « Mon dossier scolaire ».
+  - Changement de niveau, de deux façons :
+    - passage dans une nouvelle année : l'année en cours est clôturée et son bilan archivé ;
+    - correction du niveau de l'année en cours.
+  - Matières suivies au choix pour chaque élève (par exemple une seule LV2).
+  - Parcours qui fait alterner les matières, au lieu d'enchaîner tous les cours de français.
+  - Catalogue de l'espace contenu filtrable par niveau. Le générateur de consignes prend un exemple du même niveau.
+- Corrections issues des audits :
+  - Espace élève :
+    - Sur téléphone, le bas des pages n'est plus caché.
+    - La leçon s'ouvre en haut de chaque page, et le lien « revoir la partie » mène à la bonne partie.
+    - Le score des exercices est corrigé.
+    - Points de progrès cumulés, avec des paliers.
+    - Niveaux de maîtrise en couleurs progressives, et non plus en couleur d'alerte.
+    - Textes neutres (élève fille ou garçon).
+    - Pages « introuvable » et « erreur » en français.
+  - Espace parent et contenu :
+    - Comptes : messages de confirmation et retrait groupé avec confirmation.
+    - Un seul style « danger » pour toutes les actions destructrices.
+    - Libellés clarifiés : « Pas maintenant » au lieu de « Plus tard ».

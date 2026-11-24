@@ -14,11 +14,11 @@ const sql = postgres(url, { max: 1, onnotice: () => {} });
 try {
   for (const dir of levels) {
     const prog = JSON.parse(fs.readFileSync(path.join(root, dir, 'programme.json'), 'utf8'));
-    const { code, name } = prog.level;
+    const { code, name, cycle = null, position = 0 } = prog.level;
     let count = 0;
     await sql.begin(async tx => {
-      await tx`insert into levels (code, name, general_sources) values (${code}, ${name}, ${tx.json(prog.general_sources ?? [])})
-        on conflict (code) do update set name = excluded.name, general_sources = excluded.general_sources`;
+      await tx`insert into levels (code, name, general_sources, cycle, position) values (${code}, ${name}, ${tx.json(prog.general_sources ?? [])}, ${cycle}, ${position})
+        on conflict (code) do update set name = excluded.name, general_sources = excluded.general_sources, cycle = excluded.cycle, position = excluded.position`;
       let sPos = 0, cPos = 0;
       for (const s of prog.subjects) {
         if (EXCLUDED_SUBJECTS.has(s.name)) continue;
@@ -39,6 +39,31 @@ try {
       }
     });
     console.log(`${name} : ${count} cours chargés.`);
+
+    // Bibliothèque de cours prêts (content/<niveau>/cours/*.json, validés par `npm run validate`) :
+    // publiés automatiquement UNIQUEMENT pour les cours qui n'ont encore aucune version
+    // (jamais d'écrasement du travail fait dans l'espace contenu).
+    const dirCours = path.join(root, dir, 'cours');
+    if (fs.existsSync(dirCours) && process.env.SEED_SANS_BIBLIOTHEQUE !== '1') {
+      let published = 0;
+      for (const f of fs.readdirSync(dirCours).filter(x => x.endsWith('.json')).sort()) {
+        const doc = JSON.parse(fs.readFileSync(path.join(dirCours, f), 'utf8'));
+        const [course] = await sql`
+          select c.id from courses c join chapters ch on ch.id = c.chapter_id join subjects s on s.id = ch.subject_id
+          where s.level_code = ${code} and (c.code = ${doc.code} or (s.name = ${doc.subject} and ch.name = ${doc.chapter} and c.title = ${doc.title}))
+          order by (c.code = ${doc.code}) desc limit 1`;
+        if (!course) { console.warn(`  ${f} : cours introuvable dans le programme (${doc.subject} › ${doc.chapter} › ${doc.title})`); continue; }
+        await sql.begin(async tx => {
+          const [{ n }] = await tx`select count(*)::int as n from course_versions where course_id = ${course.id}`;
+          if (n > 0) return;
+          await tx`update courses set code = coalesce(code, ${doc.code}) where id = ${course.id}`;
+          await tx`insert into course_versions (course_id, version, status, document, source_name, published_at)
+            values (${course.id}, 1, 'published', ${tx.json(doc)}, ${'Bibliothèque Syllig · ' + f}, now())`;
+          published++;
+        });
+      }
+      if (published) console.log(`  ${published} cours de la bibliothèque publiés.`);
+    }
   }
 } finally {
   await sql.end();

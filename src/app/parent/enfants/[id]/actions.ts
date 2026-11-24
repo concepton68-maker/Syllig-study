@@ -8,6 +8,7 @@ import { resetCourse, resetStudent, ResetRefused } from '@/lib/reset';
 import { verifyLogin } from '@/lib/auth';
 import { sql } from '@/lib/db';
 import { isTheme } from '@/lib/settings';
+import { startNewYear, correctLevel, setFollowedSubjects, LevelChangeRefused } from '@/lib/school-years';
 
 export type ResetState = { ok?: string; error?: string } | undefined;
 
@@ -102,4 +103,30 @@ export async function setForcedBulkAction(form: FormData) {
     on conflict (student_id, course_id) do update set forced = excluded.forced, updated_at = now()`;
   revalidatePath(`/parent/enfants/${s.id}`);
   revalidatePath('/eleve', 'layout');
+}
+
+// ───────── Scolarité : niveau, année scolaire, matières suivies ─────────
+export async function changeLevelAction(_: ResetState, form: FormData): Promise<ResetState> {
+  const u = await requireUser('parent');
+  const s = await assertParentOf(u.id, z.string().uuid().parse(form.get('student')));
+  const level = String(form.get('level') ?? '');
+  const mode = form.get('mode') === 'correction' ? 'correction' : 'annee';
+  try {
+    if (mode === 'correction') await correctLevel(s.id, level, u.id);
+    else await startNewYear(s.id, level, u.id, { schoolYear: String(form.get('school_year') ?? ''), note: String(form.get('note') ?? '') });
+  } catch (e) { if (e instanceof LevelChangeRefused) return { error: e.message }; throw e; }
+  revalidatePath('/parent', 'layout');
+  revalidatePath('/eleve', 'layout');
+  redirect(`/parent/enfants/${s.id}?onglet=dossier&niveau=${mode}`);
+}
+
+export async function followedSubjectsAction(_: ResetState, form: FormData): Promise<ResetState> {
+  const u = await requireUser('parent');
+  const s = await assertParentOf(u.id, z.string().uuid().parse(form.get('student')));
+  const followed = form.getAll('subjects').map(Number).filter(Number.isInteger);
+  if (!followed.length) return { error: 'Gardez au moins une matière.' };
+  await setFollowedSubjects(s.id, s.level_code, followed);
+  revalidatePath('/parent', 'layout');
+  revalidatePath('/eleve', 'layout');
+  return { ok: 'Matières enregistrées : le parcours de l’élève est mis à jour.' };
 }

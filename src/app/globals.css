@@ -488,3 +488,9 @@ section.card > h2, section.card > div > h2, section.card h2.text-xl { font-size:
 [data-theme="barbe"] { --logo-sun: #FF9BC9; --logo-page: #8EE8DF; }
 [data-theme="etoile"] { --logo-sun: #E9C96A; --logo-page: #CFC4F8; }
 .login-hero { --logo-sun: #F4B6C8; --logo-page: #9ED3F0; }
+@layer components {
+  /* action destructrice : un seul style partout */
+  .btn-danger { background: var(--color-warm); border-color: var(--color-warm); color: #fff; }
+  .btn-danger:hover { background: var(--color-warm-dark); border-color: var(--color-warm-dark); color: #fff; }
+  .btn-danger:disabled { background: var(--color-track); border-color: var(--color-track); color: var(--color-muted); }
+}

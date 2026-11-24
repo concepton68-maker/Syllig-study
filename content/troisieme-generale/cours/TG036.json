@@ -1,0 +1,1088 @@
+{
+  "format": "syllig-course/1",
+  "code": "TG036",
+  "level": "troisieme-generale",
+  "subject": "Mathématiques",
+  "chapter": "Nombres et calculs (début d'année)",
+  "title": "Nombres premiers et décomposition en facteurs premiers",
+  "skills": [
+    {
+      "id": "m3-diviseurs-multiples",
+      "label": "Trouver des diviseurs et des multiples, utiliser les critères de divisibilité"
+    },
+    {
+      "id": "m3-nombres-premiers",
+      "label": "Reconnaître un nombre premier"
+    },
+    {
+      "id": "m3-decomposition",
+      "label": "Décomposer un nombre entier en produit de facteurs premiers"
+    },
+    {
+      "id": "m3-fraction-irreductible",
+      "label": "Rendre une fraction irréductible à l'aide des décompositions"
+    },
+    {
+      "id": "m3-probleme-arithmetique",
+      "label": "Résoudre un problème de partage ou de multiples communs"
+    }
+  ],
+  "lesson": {
+    "duration_min": 40,
+    "objectives": [
+      "trouver les diviseurs d'un nombre et utiliser les critères de divisibilité par 2, 3, 5, 9 et 10 ;",
+      "reconnaître un nombre premier et justifier qu'un nombre ne l'est pas ;",
+      "décomposer un nombre entier en produit de facteurs premiers ;",
+      "rendre une fraction irréductible grâce aux décompositions ;",
+      "résoudre un problème de partage en parts identiques (type brevet)."
+    ],
+    "essential": "Les nombres premiers sont les « briques » des nombres entiers : tout entier supérieur ou égal à 2 s'écrit comme un produit de nombres premiers, et d'une seule façon (à l'ordre près). Cette décomposition est un outil très puissant : elle permet de trouver les diviseurs communs de deux nombres, de rendre une fraction irréductible et de résoudre les problèmes de partage qui tombent souvent au brevet.",
+    "parts": [
+      {
+        "title": "Multiples, diviseurs et critères de divisibilité",
+        "blocks": [
+          {
+            "type": "callout",
+            "kind": "definition",
+            "text": "a et b sont deux nombres entiers, avec b ≠ 0. Si la division de a par b tombe juste (reste nul), c'est-à-dire s'il existe un entier k tel que a = b × k, on dit que :\n• b est un **diviseur** de a ;\n• a est un **multiple** de b ;\n• a est **divisible** par b.\nExemple : 36 = 4 × 9, donc 4 est un diviseur de 36 et 36 est un multiple de 4."
+          },
+          {
+            "type": "table",
+            "caption": "Critères de divisibilité",
+            "columns": [
+              "Un nombre entier est divisible par…",
+              "si…",
+              "Exemple"
+            ],
+            "rows": [
+              [
+                "2",
+                "son chiffre des unités est 0, 2, 4, 6 ou 8 (il est pair).",
+                "1 358"
+              ],
+              [
+                "3",
+                "la somme de ses chiffres est divisible par 3.",
+                "471 : 4 + 7 + 1 = 12"
+              ],
+              [
+                "5",
+                "son chiffre des unités est 0 ou 5.",
+                "2 035"
+              ],
+              [
+                "9",
+                "la somme de ses chiffres est divisible par 9.",
+                "3 456 : 3 + 4 + 5 + 6 = 18"
+              ],
+              [
+                "10",
+                "son chiffre des unités est 0.",
+                "7 290"
+              ]
+            ]
+          },
+          {
+            "type": "callout",
+            "kind": "methode",
+            "title": "Trouver tous les diviseurs d'un nombre",
+            "text": "On cherche les diviseurs **par paires** : on teste 1, 2, 3… et on s'arrête dès que les paires se répètent.\n36 = 1 × 36 = 2 × 18 = 3 × 12 = 4 × 9 = 6 × 6.\nLes diviseurs de 36 sont : 1, 2, 3, 4, 6, 9, 12, 18, 36 (il y en a 9)."
+          },
+          {
+            "type": "callout",
+            "kind": "attention",
+            "text": "Un nombre divisible par 9 est toujours divisible par 3, mais l'inverse est faux : 12 est divisible par 3 mais pas par 9."
+          }
+        ],
+        "checkpoint": {
+          "variants": [
+            {
+              "prompt": "Lequel de ces nombres est divisible par 3 ?",
+              "options": [
+                "382",
+                "471",
+                "505",
+                "1 001"
+              ],
+              "answer": 1,
+              "hint": "Calcule la somme des chiffres de chaque nombre.",
+              "explanation": "4 + 7 + 1 = 12, divisible par 3. Les autres sommes : 13, 10 et 2."
+            },
+            {
+              "prompt": "7 est-il un diviseur de 91 ?",
+              "options": [
+                "Oui, car 91 = 7 × 13",
+                "Non, car 91 est impair",
+                "Non, car 9 + 1 = 10"
+              ],
+              "answer": 0,
+              "hint": "Pose la division de 91 par 7.",
+              "explanation": "91 ÷ 7 = 13 exactement : 7 est un diviseur de 91. Être impair n'empêche pas d'avoir des diviseurs !"
+            },
+            {
+              "prompt": "Combien le nombre 20 a-t-il de diviseurs ?",
+              "options": [
+                "4",
+                "5",
+                "6",
+                "8"
+              ],
+              "answer": 2,
+              "hint": "Cherche les paires : 1 × 20, 2 × …",
+              "explanation": "20 = 1 × 20 = 2 × 10 = 4 × 5. Les diviseurs sont 1, 2, 4, 5, 10 et 20 : il y en a 6."
+            }
+          ]
+        }
+      },
+      {
+        "title": "Les nombres premiers",
+        "blocks": [
+          {
+            "type": "callout",
+            "kind": "definition",
+            "text": "Un **nombre premier** est un nombre entier qui a **exactement deux diviseurs** distincts : 1 et lui-même."
+          },
+          {
+            "type": "list",
+            "items": [
+              "1 n'est **pas** premier : il n'a qu'un seul diviseur (lui-même).",
+              "2 est le seul nombre premier pair : tous les autres nombres pairs sont divisibles par 2.",
+              "Les nombres premiers inférieurs à 50 sont : 2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47."
+            ]
+          },
+          {
+            "type": "callout",
+            "kind": "methode",
+            "title": "Savoir si un nombre est premier",
+            "text": "On teste la division de n par les nombres premiers 2, 3, 5, 7, 11… dans l'ordre.\n• Si une division tombe juste, n n'est pas premier.\n• On peut s'arrêter dès que le carré du nombre premier testé dépasse n : si aucune division n'est tombée juste, n est premier."
+          },
+          {
+            "type": "formula",
+            "latex": "97 est-il premier ?\n97 n'est divisible ni par 2, ni par 3 (9 + 7 = 16), ni par 5, ni par 7 (7 × 13 = 91 et 7 × 14 = 98).\nLe nombre premier suivant est 11, et 11² = 121 > 97 : on s'arrête.\nDonc 97 est premier."
+          },
+          {
+            "type": "callout",
+            "kind": "attention",
+            "text": "Certains nombres « ont l'air » premiers mais ne le sont pas :\n51 = 3 × 17 ; 57 = 3 × 19 ; 87 = 3 × 29 ; 91 = 7 × 13.\nPour justifier qu'un nombre n'est **pas** premier, il suffit de donner un diviseur autre que 1 et lui-même."
+          }
+        ],
+        "checkpoint": {
+          "variants": [
+            {
+              "prompt": "Lequel de ces nombres est premier ?",
+              "options": [
+                "51",
+                "53",
+                "57",
+                "91"
+              ],
+              "answer": 1,
+              "hint": "Teste la divisibilité par 3 et par 7.",
+              "explanation": "51 = 3 × 17, 57 = 3 × 19 et 91 = 7 × 13. 53 n'est divisible ni par 2, ni par 3, ni par 5, ni par 7 (et 11² = 121 > 53) : il est premier."
+            },
+            {
+              "prompt": "Le nombre 1 est-il premier ?",
+              "options": [
+                "Oui, car il n'est divisible que par 1 et par lui-même",
+                "Non, car il n'a qu'un seul diviseur",
+                "Oui, c'est le plus petit nombre premier"
+              ],
+              "answer": 1,
+              "hint": "Relis la définition : combien de diviseurs distincts faut-il ?",
+              "explanation": "Un nombre premier a exactement deux diviseurs distincts. 1 n'en a qu'un : il n'est pas premier. Le plus petit nombre premier est 2."
+            },
+            {
+              "prompt": "Le nombre 87 est-il premier ?",
+              "options": [
+                "Oui",
+                "Non, car 87 = 3 × 29",
+                "Non, car 87 = 7 × 13"
+              ],
+              "answer": 1,
+              "hint": "Calcule la somme des chiffres de 87.",
+              "explanation": "8 + 7 = 15, divisible par 3 : 87 = 3 × 29, donc 87 n'est pas premier. (7 × 13 = 91, pas 87.)"
+            }
+          ]
+        }
+      },
+      {
+        "title": "Décomposer un nombre en produit de facteurs premiers",
+        "blocks": [
+          {
+            "type": "callout",
+            "kind": "retiens",
+            "title": "Propriété",
+            "text": "Tout nombre entier supérieur ou égal à 2 peut s'écrire comme un **produit de nombres premiers**. Cette écriture est **unique**, à l'ordre des facteurs près. On l'appelle la **décomposition en produit de facteurs premiers**."
+          },
+          {
+            "type": "callout",
+            "kind": "methode",
+            "title": "Décomposer par divisions successives",
+            "text": "1. Je divise le nombre par le plus petit nombre premier possible (2, puis 3, puis 5, puis 7…).\n2. Je recommence avec le quotient obtenu, tant que c'est possible.\n3. Je m'arrête quand le quotient vaut 1.\n4. J'écris le produit des diviseurs utilisés, avec des puissances, puis je vérifie en recalculant."
+          },
+          {
+            "type": "table",
+            "caption": "Décomposition de 360",
+            "columns": [
+              "Nombre",
+              "Divisé par",
+              "Quotient"
+            ],
+            "rows": [
+              [
+                "360",
+                "2",
+                "180"
+              ],
+              [
+                "180",
+                "2",
+                "90"
+              ],
+              [
+                "90",
+                "2",
+                "45"
+              ],
+              [
+                "45",
+                "3",
+                "15"
+              ],
+              [
+                "15",
+                "3",
+                "5"
+              ],
+              [
+                "5",
+                "5",
+                "1"
+              ]
+            ]
+          },
+          {
+            "type": "formula",
+            "latex": "360 = 2 × 2 × 2 × 3 × 3 × 5 = 2³ × 3² × 5\nVérification : 8 × 9 × 5 = 72 × 5 = 360"
+          },
+          {
+            "type": "formula",
+            "latex": "1 386 = 2 × 693 = 2 × 3 × 231 = 2 × 3 × 3 × 77 = 2 × 3 × 3 × 7 × 11\n1 386 = 2 × 3² × 7 × 11"
+          },
+          {
+            "type": "callout",
+            "kind": "attention",
+            "text": "Chaque facteur doit être **premier** ! 360 = 8 × 45 ou 360 = 2³ × 45 ne sont pas des décompositions en facteurs premiers, car 8 et 45 ne sont pas premiers."
+          }
+        ],
+        "checkpoint": {
+          "variants": [
+            {
+              "prompt": "Quelle est la décomposition en produit de facteurs premiers de 84 ?",
+              "options": [
+                "4 × 21",
+                "2² × 3 × 7",
+                "2 × 42",
+                "2² × 21"
+              ],
+              "answer": 1,
+              "hint": "Divise 84 par 2 autant de fois que possible, puis par 3, puis par 7.",
+              "explanation": "84 = 2 × 42 = 2 × 2 × 21 = 2 × 2 × 3 × 7 = 2² × 3 × 7. Les autres écritures contiennent des facteurs non premiers (4, 21, 42)."
+            },
+            {
+              "prompt": "Quelle est la décomposition en produit de facteurs premiers de 150 ?",
+              "options": [
+                "2 × 3 × 5²",
+                "2 × 75",
+                "6 × 25",
+                "2 × 3² × 5"
+              ],
+              "answer": 0,
+              "hint": "Commence par diviser 150 par 2, puis par 3, puis par 5.",
+              "explanation": "150 = 2 × 75 = 2 × 3 × 25 = 2 × 3 × 5². Vérification : 2 × 3 × 25 = 150. (2 × 3² × 5 = 90.)"
+            },
+            {
+              "prompt": "Laquelle de ces écritures est une décomposition en produit de facteurs premiers ?",
+              "options": [
+                "4 × 6",
+                "2³ × 3",
+                "2 × 15",
+                "3² × 10"
+              ],
+              "answer": 1,
+              "hint": "Vérifie que chaque facteur est un nombre premier.",
+              "explanation": "Dans 2³ × 3, les facteurs 2 et 3 sont premiers. 4, 6, 15 et 10 ne sont pas premiers."
+            }
+          ]
+        }
+      },
+      {
+        "title": "Rendre une fraction irréductible",
+        "blocks": [
+          {
+            "type": "text",
+            "text": "Pour simplifier une fraction, on cherche les facteurs communs au numérateur et au dénominateur. Les décompositions en facteurs premiers les font apparaître clairement."
+          },
+          {
+            "type": "callout",
+            "kind": "methode",
+            "title": "Fraction irréductible",
+            "text": "1. Je décompose le numérateur et le dénominateur en produits de facteurs premiers.\n2. Je repère les facteurs premiers communs.\n3. Je simplifie par ces facteurs communs : la fraction obtenue est irréductible."
+          },
+          {
+            "type": "formula",
+            "latex": "84 = 2² × 3 × 7      et      126 = 2 × 3² × 7\n84/126 = (2 × 2 × 3 × 7)/(2 × 3 × 3 × 7)\nFacteurs communs : 2 × 3 × 7 = 42\n84/126 = 2/3"
+          },
+          {
+            "type": "callout",
+            "kind": "definition",
+            "text": "Le produit des facteurs premiers communs (42 dans l'exemple) est le **plus grand diviseur commun** des deux nombres : c'est le plus grand nombre qui divise à la fois 84 et 126."
+          },
+          {
+            "type": "callout",
+            "kind": "retiens",
+            "title": "Reconnaître une fraction irréductible",
+            "text": "Une fraction est irréductible quand son numérateur et son dénominateur n'ont **aucun facteur premier commun**."
+          },
+          {
+            "type": "callout",
+            "kind": "attention",
+            "text": "Simplifier par 2, puis encore par 2… marche aussi, mais on risque de s'arrêter trop tôt. Avec les décompositions, on est sûr d'avoir enlevé **tous** les facteurs communs."
+          }
+        ],
+        "checkpoint": {
+          "variants": [
+            {
+              "prompt": "Sachant que 60 = 2² × 3 × 5 et 90 = 2 × 3² × 5, la forme irréductible de 60/90 est :",
+              "options": [
+                "6/9",
+                "2/3",
+                "4/6",
+                "20/30"
+              ],
+              "answer": 1,
+              "hint": "Repère les facteurs premiers communs aux deux décompositions.",
+              "explanation": "Facteurs communs : 2 × 3 × 5 = 30. 60/90 = (30 × 2)/(30 × 3) = 2/3."
+            },
+            {
+              "prompt": "Laquelle de ces fractions est irréductible ?",
+              "options": [
+                "14/21",
+                "9/15",
+                "8/27",
+                "10/25"
+              ],
+              "answer": 2,
+              "hint": "Pour chaque fraction, cherche un facteur premier commun au numérateur et au dénominateur.",
+              "explanation": "8 = 2³ et 27 = 3³ n'ont aucun facteur premier commun. 14/21 se simplifie par 7, 9/15 par 3 et 10/25 par 5."
+            },
+            {
+              "prompt": "Quel est le plus grand diviseur commun de 84 = 2² × 3 × 7 et de 126 = 2 × 3² × 7 ?",
+              "options": [
+                "6",
+                "14",
+                "21",
+                "42"
+              ],
+              "answer": 3,
+              "hint": "Multiplie les facteurs premiers communs, avec le plus petit exposant de chacun.",
+              "explanation": "Facteurs communs : 2 (une fois), 3 (une fois) et 7. 2 × 3 × 7 = 42."
+            }
+          ]
+        }
+      },
+      {
+        "title": "Problèmes de partage et de multiples communs",
+        "blocks": [
+          {
+            "type": "callout",
+            "kind": "methode",
+            "title": "Problème résolu : partage en parts identiques",
+            "text": "Une fleuriste a 168 roses et 120 tulipes. Elle veut faire le **plus grand nombre** de bouquets **identiques** en utilisant toutes les fleurs.\n1. Le nombre de bouquets doit diviser 168 **et** 120 : c'est un diviseur commun.\n2. On décompose : 168 = 2³ × 3 × 7 et 120 = 2³ × 3 × 5.\n3. Le plus grand diviseur commun est 2³ × 3 = 24.\n4. Elle peut faire 24 bouquets, chacun avec 168 ÷ 24 = 7 roses et 120 ÷ 24 = 5 tulipes."
+          },
+          {
+            "type": "text",
+            "text": "Vérification : 24 × 7 = 168 et 24 × 5 = 120. Toutes les fleurs sont utilisées."
+          },
+          {
+            "type": "callout",
+            "kind": "retiens",
+            "title": "Reconnaître le type de problème",
+            "text": "« Partager en parts identiques sans reste », « faire le plus grand nombre de lots » : on cherche le **plus grand diviseur commun**.\n« Quand les deux événements se reproduiront-ils en même temps ? » : on cherche le **plus petit multiple commun**."
+          },
+          {
+            "type": "callout",
+            "kind": "methode",
+            "title": "Problème résolu : multiples communs",
+            "text": "Deux bus partent ensemble à 8 h. Le bus A repasse toutes les 12 min, le bus B toutes les 18 min. Quand repartent-ils ensemble ?\n• Multiples de 12 : 12, 24, 36, 48…\n• Multiples de 18 : 18, 36, 54…\nLe plus petit multiple commun est 36. Avec les décompositions : 12 = 2² × 3 et 18 = 2 × 3² ; on prend chaque facteur premier avec son **plus grand** exposant : 2² × 3² = 36.\nLes bus repartent ensemble à 8 h 36."
+          },
+          {
+            "type": "callout",
+            "kind": "attention",
+            "text": "Lis bien la question ! « Combien de bouquets ? » (24) et « combien de roses par bouquet ? » (7) sont deux réponses différentes."
+          }
+        ],
+        "checkpoint": {
+          "variants": [
+            {
+              "prompt": "On veut répartir 48 filles et 36 garçons en groupes identiques (même nombre de filles et même nombre de garçons dans chaque groupe), avec le plus grand nombre de groupes possible. Combien de groupes ?",
+              "options": [
+                "6",
+                "12",
+                "4",
+                "84"
+              ],
+              "answer": 1,
+              "hint": "Cherche le plus grand diviseur commun de 48 et 36 à l'aide des décompositions.",
+              "explanation": "48 = 2⁴ × 3 et 36 = 2² × 3². Plus grand diviseur commun : 2² × 3 = 12 groupes (4 filles et 3 garçons par groupe)."
+            },
+            {
+              "prompt": "Quels sont tous les diviseurs communs de 12 et 18 ?",
+              "options": [
+                "1, 2, 3, 6",
+                "2, 3, 6",
+                "1, 2, 3, 4, 6",
+                "6 et 36"
+              ],
+              "answer": 0,
+              "hint": "Écris la liste des diviseurs de 12, puis celle de 18.",
+              "explanation": "Diviseurs de 12 : 1, 2, 3, 4, 6, 12. Diviseurs de 18 : 1, 2, 3, 6, 9, 18. Communs : 1, 2, 3 et 6."
+            },
+            {
+              "prompt": "Deux phares s'allument ensemble. L'un clignote toutes les 6 secondes, l'autre toutes les 10 secondes. Au bout de combien de secondes clignoteront-ils de nouveau ensemble ?",
+              "options": [
+                "16",
+                "60",
+                "30",
+                "2"
+              ],
+              "answer": 2,
+              "hint": "Cherche le plus petit multiple commun de 6 et 10.",
+              "explanation": "Multiples de 6 : 6, 12, 18, 24, 30… Multiples de 10 : 10, 20, 30… Le premier commun est 30 secondes."
+            }
+          ]
+        }
+      }
+    ],
+    "memo": [
+      {
+        "label": "Diviseur",
+        "text": "b divise a si a = b × k avec k entier. Critères : 2 (pair), 3 (somme des chiffres divisible par 3), 5 (finit par 0 ou 5), 9 (somme divisible par 9), 10 (finit par 0)."
+      },
+      {
+        "label": "Nombre premier",
+        "text": "Exactement deux diviseurs : 1 et lui-même. 1 n'est pas premier ; 2 est le seul premier pair."
+      },
+      {
+        "label": "Premiers < 50",
+        "text": "2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47."
+      },
+      {
+        "label": "Tester",
+        "text": "On divise par 2, 3, 5, 7, 11… jusqu'à ce que le carré du diviseur testé dépasse le nombre."
+      },
+      {
+        "label": "Décomposer",
+        "text": "Divisions successives par les plus petits premiers. Ex. : 360 = 2³ × 3² × 5. Tous les facteurs doivent être premiers."
+      },
+      {
+        "label": "Irréductible",
+        "text": "On décompose numérateur et dénominateur, puis on simplifie par tous les facteurs premiers communs."
+      },
+      {
+        "label": "Problèmes",
+        "text": "Parts identiques, plus grand nombre de lots : plus grand diviseur commun. Événements qui se répètent : plus petit multiple commun."
+      }
+    ]
+  },
+  "exercises": {
+    "duration_min": 35,
+    "instructions": "Fais les exercices dans l'ordre, au brouillon d'abord, sans calculatrice. Les corrigés s'affichent après tes réponses.",
+    "pass_threshold": 8,
+    "texts": [],
+    "items": [
+      {
+        "id": "ex1",
+        "type": "qcm",
+        "stars": 1,
+        "lesson_part": 1,
+        "skills": [
+          "m3-diviseurs-multiples"
+        ],
+        "cognitive": "appliquer",
+        "prompt": "Lequel de ces nombres est divisible par 9 ?",
+        "options": [
+          "3 456",
+          "2 345",
+          "4 132",
+          "5 551"
+        ],
+        "answer": 0,
+        "solution": "On calcule la somme des chiffres : 3 + 4 + 5 + 6 = 18, divisible par 9. Pour les autres : 2 + 3 + 4 + 5 = 14, 4 + 1 + 3 + 2 = 10, 5 + 5 + 5 + 1 = 16 : aucune n'est divisible par 9."
+      },
+      {
+        "id": "ex2",
+        "type": "qcm",
+        "stars": 1,
+        "lesson_part": 2,
+        "skills": [
+          "m3-nombres-premiers"
+        ],
+        "cognitive": "appliquer",
+        "prompt": "Lequel de ces nombres est premier ?",
+        "options": [
+          "49",
+          "57",
+          "59",
+          "87"
+        ],
+        "answer": 2,
+        "solution": "49 = 7 × 7, 57 = 3 × 19 et 87 = 3 × 29 ne sont pas premiers. 59 n'est divisible ni par 2, ni par 3, ni par 5, ni par 7, et 11² = 121 > 59 : 59 est premier."
+      },
+      {
+        "id": "ex3",
+        "type": "numeric",
+        "stars": 1,
+        "lesson_part": 2,
+        "skills": [
+          "m3-nombres-premiers"
+        ],
+        "cognitive": "connaitre",
+        "prompt": "Combien y a-t-il de nombres premiers compris entre 20 et 40 ?",
+        "answer": 4,
+        "solution": "Les nombres premiers entre 20 et 40 sont 23, 29, 31 et 37 : il y en a 4.\n(21 = 3 × 7, 25 = 5², 27 = 3³, 33 = 3 × 11, 35 = 5 × 7, 39 = 3 × 13, et les nombres pairs ne sont pas premiers.)"
+      },
+      {
+        "id": "ex4",
+        "type": "numeric",
+        "stars": 1,
+        "lesson_part": 1,
+        "skills": [
+          "m3-diviseurs-multiples"
+        ],
+        "cognitive": "appliquer",
+        "prompt": "Combien le nombre 30 a-t-il de diviseurs ?",
+        "answer": 8,
+        "solution": "30 = 1 × 30 = 2 × 15 = 3 × 10 = 5 × 6.\nLes diviseurs de 30 sont 1, 2, 3, 5, 6, 10, 15 et 30 : il y en a 8."
+      },
+      {
+        "id": "ex5",
+        "type": "qcm",
+        "stars": 2,
+        "lesson_part": 3,
+        "skills": [
+          "m3-decomposition"
+        ],
+        "cognitive": "appliquer",
+        "prompt": "Quelle est la décomposition en produit de facteurs premiers de 180 ?",
+        "options": [
+          "2 × 9 × 10",
+          "2² × 3² × 5",
+          "2³ × 3 × 5",
+          "4 × 45"
+        ],
+        "answer": 1,
+        "solution": "180 = 2 × 90 = 2 × 2 × 45 = 2 × 2 × 3 × 15 = 2 × 2 × 3 × 3 × 5 = 2² × 3² × 5.\nVérification : 4 × 9 × 5 = 180. (2³ × 3 × 5 = 120 ; 2 × 9 × 10 et 4 × 45 contiennent des facteurs non premiers.)"
+      },
+      {
+        "id": "ex6",
+        "type": "numeric",
+        "stars": 2,
+        "lesson_part": 3,
+        "skills": [
+          "m3-decomposition"
+        ],
+        "cognitive": "appliquer",
+        "prompt": "Quel nombre a pour décomposition en produit de facteurs premiers 2³ × 3 × 7² ?",
+        "answer": 1176,
+        "solution": "2³ = 8 et 7² = 49.\n8 × 3 = 24, puis 24 × 49 = 24 × 50 − 24 = 1 200 − 24 = 1 176."
+      },
+      {
+        "id": "ex7",
+        "type": "numeric",
+        "stars": 2,
+        "lesson_part": 3,
+        "skills": [
+          "m3-decomposition"
+        ],
+        "cognitive": "appliquer",
+        "prompt": "On décompose 1 050 en produit de facteurs premiers. Quel est l'exposant du facteur 5 ?",
+        "answer": 2,
+        "solution": "1 050 = 2 × 525 = 2 × 3 × 175 = 2 × 3 × 5 × 35 = 2 × 3 × 5 × 5 × 7.\nDonc 1 050 = 2 × 3 × 5² × 7 : l'exposant de 5 est 2.\nVérification : 2 × 3 × 25 × 7 = 6 × 175 = 1 050."
+      },
+      {
+        "id": "ex8",
+        "type": "short",
+        "stars": 2,
+        "lesson_part": 4,
+        "skills": [
+          "m3-fraction-irreductible",
+          "m3-decomposition"
+        ],
+        "cognitive": "appliquer",
+        "prompt": "Rends la fraction 132/198 irréductible à l'aide des décompositions en facteurs premiers. Écris le résultat sous la forme d'une fraction, par exemple 4/7.",
+        "answer": [
+          "2/3"
+        ],
+        "solution": "132 = 2² × 3 × 11 et 198 = 2 × 3² × 11.\nFacteurs communs : 2 × 3 × 11 = 66.\n132/198 = (66 × 2)/(66 × 3) = 2/3."
+      },
+      {
+        "id": "ex9",
+        "type": "numeric",
+        "stars": 3,
+        "lesson_part": 5,
+        "skills": [
+          "m3-probleme-arithmetique",
+          "m3-decomposition"
+        ],
+        "cognitive": "analyser",
+        "prompt": "Un magasin a 252 billes rouges et 180 billes bleues. Il veut les répartir dans des sachets identiques (même nombre de billes rouges et même nombre de billes bleues dans chaque sachet), en utilisant toutes les billes. Quel est le plus grand nombre de sachets possible ?",
+        "answer": 36,
+        "solution": "Le nombre de sachets doit diviser 252 et 180.\n252 = 2² × 3² × 7 et 180 = 2² × 3² × 5.\nPlus grand diviseur commun : 2² × 3² = 36.\nOn peut faire 36 sachets, chacun avec 252 ÷ 36 = 7 billes rouges et 180 ÷ 36 = 5 billes bleues."
+      },
+      {
+        "id": "ex10",
+        "type": "numeric",
+        "stars": 3,
+        "lesson_part": 5,
+        "skills": [
+          "m3-probleme-arithmetique",
+          "m3-decomposition"
+        ],
+        "cognitive": "analyser",
+        "prompt": "Sur un manège, Inès fait un tour complet en 15 secondes et Hugo, sur un autre manège, en 20 secondes. Ils partent ensemble de la ligne de départ. Au bout de combien de secondes repasseront-ils ensemble pour la première fois sur leur ligne de départ ?",
+        "answer": 60,
+        "solution": "On cherche le plus petit multiple commun de 15 et 20.\n15 = 3 × 5 et 20 = 2² × 5. On prend chaque facteur premier avec son plus grand exposant : 2² × 3 × 5 = 60.\nVérification : 60 = 4 × 15 = 3 × 20. Ils repassent ensemble au bout de 60 secondes (Inès a fait 4 tours, Hugo 3)."
+      }
+    ]
+  },
+  "evaluation": {
+    "duration_min": 30,
+    "conditions": "Sans calculatrice, sans la leçon, en 30 minutes. Barème : A = 6 points · B = 7 points · C = 7 points. Dans les questions rédigées, justifie chaque réponse.",
+    "total_points": 20,
+    "variants": [
+      {
+        "texts": [],
+        "sections": [
+          {
+            "label": "A · Divisibilité et nombres premiers (6 points)",
+            "questions": [
+              {
+                "id": "q1",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 1,
+                "skills": [
+                  "m3-diviseurs-multiples"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Lequel de ces nombres est divisible par 3 mais pas par 9 ?",
+                "options": [
+                  "231",
+                  "324",
+                  "412",
+                  "505"
+                ],
+                "answer": 0,
+                "solution": "231 : 2 + 3 + 1 = 6, divisible par 3 mais pas par 9. 324 : 3 + 2 + 4 = 9, divisible par 9 (donc aussi par 3). 412 : somme 7 et 505 : somme 10, non divisibles par 3."
+              },
+              {
+                "id": "q2",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 2,
+                "skills": [
+                  "m3-nombres-premiers"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Lequel de ces nombres est premier ?",
+                "options": [
+                  "69",
+                  "71",
+                  "77",
+                  "81"
+                ],
+                "answer": 1,
+                "solution": "69 = 3 × 23, 77 = 7 × 11 et 81 = 9 × 9 ne sont pas premiers. 71 n'est divisible ni par 2, ni par 3, ni par 5, ni par 7, et 11² = 121 > 71 : 71 est premier."
+              },
+              {
+                "id": "q3",
+                "type": "numeric",
+                "points": 1,
+                "lesson_part": 1,
+                "skills": [
+                  "m3-diviseurs-multiples"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Combien le nombre 18 a-t-il de diviseurs ?",
+                "answer": 6,
+                "solution": "18 = 1 × 18 = 2 × 9 = 3 × 6. Les diviseurs de 18 sont 1, 2, 3, 6, 9 et 18 : il y en a 6."
+              },
+              {
+                "id": "q4",
+                "type": "open",
+                "points": 1.5,
+                "lesson_part": 2,
+                "skills": [
+                  "m3-nombres-premiers"
+                ],
+                "cognitive": "rediger",
+                "prompt": "Le nombre 143 est-il premier ? Justifie.",
+                "solution": "143 = 11 × 13. Le nombre 143 a donc un diviseur, 11, autre que 1 et lui-même : 143 n'est pas premier.",
+                "rubric": "0,5 pt : réponse « non ». 1 pt : justification par un diviseur exact (11 ou 13), avec le produit 11 × 13 = 143. Une réponse « non » sans justification : 0,5 pt au total."
+              },
+              {
+                "id": "q5",
+                "type": "open",
+                "points": 1.5,
+                "lesson_part": 2,
+                "skills": [
+                  "m3-nombres-premiers",
+                  "m3-diviseurs-multiples"
+                ],
+                "cognitive": "rediger",
+                "prompt": "Sans calculatrice, justifie que 4 035 n'est pas un nombre premier.",
+                "solution": "Le chiffre des unités de 4 035 est 5, donc 4 035 est divisible par 5 (4 035 = 5 × 807). Il a un diviseur autre que 1 et lui-même : il n'est pas premier.",
+                "rubric": "1 pt : utilisation d'un critère de divisibilité correct (par 5 : chiffre des unités 5 ; ou par 3 : 4 + 0 + 3 + 5 = 12). 0,5 pt : conclusion rédigée « il a un autre diviseur que 1 et lui-même, donc il n'est pas premier »."
+              }
+            ]
+          },
+          {
+            "label": "B · Décomposition et fractions (7 points)",
+            "questions": [
+              {
+                "id": "q6",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 3,
+                "skills": [
+                  "m3-decomposition"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Quelle est la décomposition en produit de facteurs premiers de 72 ?",
+                "options": [
+                  "8 × 9",
+                  "2³ × 3²",
+                  "2² × 3³",
+                  "2 × 6²"
+                ],
+                "answer": 1,
+                "solution": "72 = 2 × 36 = 2 × 2 × 18 = 2 × 2 × 2 × 9 = 2³ × 3². Vérification : 8 × 9 = 72. (2² × 3³ = 108 ; 8 × 9 et 2 × 6² contiennent des facteurs non premiers.)"
+              },
+              {
+                "id": "q7",
+                "type": "numeric",
+                "points": 1,
+                "lesson_part": 3,
+                "skills": [
+                  "m3-decomposition"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Quel nombre a pour décomposition en produit de facteurs premiers 2² × 3 × 5² ?",
+                "answer": 300,
+                "solution": "2² = 4 et 5² = 25. 4 × 3 × 25 = 12 × 25 = 300."
+              },
+              {
+                "id": "q8",
+                "type": "open",
+                "points": 2,
+                "lesson_part": 3,
+                "skills": [
+                  "m3-decomposition"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Décompose 630 en produit de facteurs premiers. Écris les étapes.",
+                "solution": "630 = 2 × 315 = 2 × 3 × 105 = 2 × 3 × 3 × 35 = 2 × 3 × 3 × 5 × 7.\nDonc 630 = 2 × 3² × 5 × 7.\nVérification : 2 × 9 × 5 × 7 = 90 × 7 = 630.",
+                "rubric": "1 pt : étapes de divisions successives correctes. 0,5 pt : tous les facteurs sont premiers. 0,5 pt : écriture finale 2 × 3² × 5 × 7 (avec ou sans puissance)."
+              },
+              {
+                "id": "q9",
+                "type": "open",
+                "points": 3,
+                "lesson_part": 4,
+                "skills": [
+                  "m3-fraction-irreductible",
+                  "m3-decomposition"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "On donne 840 = 2³ × 3 × 5 × 7. En utilisant aussi la décomposition de 630 trouvée à la question précédente, rends la fraction 630/840 irréductible. Justifie.",
+                "solution": "630 = 2 × 3² × 5 × 7 et 840 = 2³ × 3 × 5 × 7.\nFacteurs premiers communs : 2 × 3 × 5 × 7 = 210.\n630/840 = (210 × 3)/(210 × 4) = 3/4.\n3 et 4 n'ont aucun facteur premier commun : 3/4 est irréductible.",
+                "rubric": "1 pt : écriture des deux décompositions sous forme de fraction ou repérage des facteurs communs. 1 pt : facteur commun 210 (ou simplification par 2, 3, 5 et 7). 0,5 pt : résultat 3/4. 0,5 pt : justification que 3/4 est irréductible. Pas de double pénalité si la décomposition de 630 était fausse à la question précédente et que la méthode est juste."
+              }
+            ]
+          },
+          {
+            "label": "C · Problème type brevet (7 points)",
+            "questions": [
+              {
+                "id": "q10",
+                "type": "open",
+                "points": 2,
+                "lesson_part": 5,
+                "skills": [
+                  "m3-probleme-arithmetique",
+                  "m3-diviseurs-multiples"
+                ],
+                "cognitive": "analyser",
+                "prompt": "Une association a reçu 105 cahiers et 140 stylos. Elle veut préparer des kits scolaires **identiques** (même nombre de cahiers et même nombre de stylos dans chaque kit), en utilisant **tous** les cahiers et **tous** les stylos.\n\nPeut-elle préparer 10 kits ? Et 35 kits ? Justifie.",
+                "solution": "10 kits : non, car 105 n'est pas divisible par 10 (son chiffre des unités n'est pas 0).\n35 kits : oui, car 105 = 35 × 3 et 140 = 35 × 4 : chaque kit contiendrait 3 cahiers et 4 stylos.",
+                "rubric": "1 pt : 10 kits impossible, justifié (105 non divisible par 10). 1 pt : 35 kits possible, justifié par 105 ÷ 35 = 3 et 140 ÷ 35 = 4."
+              },
+              {
+                "id": "q11",
+                "type": "open",
+                "points": 3,
+                "lesson_part": 5,
+                "skills": [
+                  "m3-probleme-arithmetique",
+                  "m3-decomposition"
+                ],
+                "cognitive": "rediger",
+                "prompt": "Décompose 105 et 140 en produits de facteurs premiers, puis détermine le plus grand nombre de kits que l'association peut préparer. Justifie.",
+                "solution": "105 = 3 × 5 × 7 et 140 = 2² × 5 × 7.\nLe nombre de kits doit être un diviseur commun de 105 et 140. Le plus grand diviseur commun est le produit des facteurs premiers communs : 5 × 7 = 35.\nL'association peut préparer au maximum 35 kits.",
+                "rubric": "1 pt : décomposition de 105 (0,5) et de 140 (0,5). 1 pt : idée de diviseur commun / facteurs communs. 0,5 pt : résultat 35. 0,5 pt : phrase de conclusion."
+              },
+              {
+                "id": "q12",
+                "type": "numeric",
+                "points": 1,
+                "lesson_part": 5,
+                "skills": [
+                  "m3-probleme-arithmetique"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Dans ce cas (nombre maximal de kits), combien de cahiers contient chaque kit ?",
+                "answer": 3,
+                "solution": "105 ÷ 35 = 3 cahiers par kit."
+              },
+              {
+                "id": "q13",
+                "type": "numeric",
+                "points": 1,
+                "lesson_part": 5,
+                "skills": [
+                  "m3-probleme-arithmetique"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Dans ce cas (nombre maximal de kits), combien de stylos contient chaque kit ?",
+                "answer": 4,
+                "solution": "140 ÷ 35 = 4 stylos par kit."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "texts": [],
+        "sections": [
+          {
+            "label": "A · Divisibilité et nombres premiers (6 points)",
+            "questions": [
+              {
+                "id": "q1",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 1,
+                "skills": [
+                  "m3-diviseurs-multiples"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Lequel de ces nombres est divisible par 3 mais pas par 9 ?",
+                "options": [
+                  "567",
+                  "703",
+                  "438",
+                  "814"
+                ],
+                "answer": 2,
+                "solution": "438 : 4 + 3 + 8 = 15, divisible par 3 mais pas par 9. 567 : 5 + 6 + 7 = 18, divisible par 9 (donc aussi par 3). 703 : somme 10 et 814 : somme 13, non divisibles par 3."
+              },
+              {
+                "id": "q2",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 2,
+                "skills": [
+                  "m3-nombres-premiers"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Lequel de ces nombres est premier ?",
+                "options": [
+                  "91",
+                  "87",
+                  "93",
+                  "89"
+                ],
+                "answer": 3,
+                "solution": "91 = 7 × 13, 87 = 3 × 29 et 93 = 3 × 31 ne sont pas premiers. 89 n'est divisible ni par 2, ni par 3, ni par 5, ni par 7, et 11² = 121 > 89 : 89 est premier."
+              },
+              {
+                "id": "q3",
+                "type": "numeric",
+                "points": 1,
+                "lesson_part": 1,
+                "skills": [
+                  "m3-diviseurs-multiples"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Combien le nombre 28 a-t-il de diviseurs ?",
+                "answer": 6,
+                "solution": "28 = 1 × 28 = 2 × 14 = 4 × 7. Les diviseurs de 28 sont 1, 2, 4, 7, 14 et 28 : il y en a 6."
+              },
+              {
+                "id": "q4",
+                "type": "open",
+                "points": 1.5,
+                "lesson_part": 2,
+                "skills": [
+                  "m3-nombres-premiers"
+                ],
+                "cognitive": "rediger",
+                "prompt": "Le nombre 187 est-il premier ? Justifie.",
+                "solution": "187 = 11 × 17. Le nombre 187 a donc un diviseur, 11, autre que 1 et lui-même : 187 n'est pas premier.",
+                "rubric": "0,5 pt : réponse « non ». 1 pt : justification par un diviseur exact (11 ou 17), avec le produit 11 × 17 = 187. Une réponse « non » sans justification : 0,5 pt au total."
+              },
+              {
+                "id": "q5",
+                "type": "open",
+                "points": 1.5,
+                "lesson_part": 2,
+                "skills": [
+                  "m3-nombres-premiers",
+                  "m3-diviseurs-multiples"
+                ],
+                "cognitive": "rediger",
+                "prompt": "Sans calculatrice, justifie que 2 019 n'est pas un nombre premier.",
+                "solution": "La somme des chiffres de 2 019 est 2 + 0 + 1 + 9 = 12, divisible par 3. Donc 2 019 est divisible par 3 (2 019 = 3 × 673). Il a un diviseur autre que 1 et lui-même : il n'est pas premier.",
+                "rubric": "1 pt : utilisation correcte du critère de divisibilité par 3 (somme des chiffres 12). 0,5 pt : conclusion rédigée « il a un autre diviseur que 1 et lui-même, donc il n'est pas premier »."
+              }
+            ]
+          },
+          {
+            "label": "B · Décomposition et fractions (7 points)",
+            "questions": [
+              {
+                "id": "q6",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 3,
+                "skills": [
+                  "m3-decomposition"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Quelle est la décomposition en produit de facteurs premiers de 108 ?",
+                "options": [
+                  "4 × 27",
+                  "2³ × 3²",
+                  "2² × 3³",
+                  "2 × 54"
+                ],
+                "answer": 2,
+                "solution": "108 = 2 × 54 = 2 × 2 × 27 = 2 × 2 × 3 × 3 × 3 = 2² × 3³. Vérification : 4 × 27 = 108. (2³ × 3² = 72 ; 4 × 27 et 2 × 54 contiennent des facteurs non premiers.)"
+              },
+              {
+                "id": "q7",
+                "type": "numeric",
+                "points": 1,
+                "lesson_part": 3,
+                "skills": [
+                  "m3-decomposition"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Quel nombre a pour décomposition en produit de facteurs premiers 2³ × 5 × 7 ?",
+                "answer": 280,
+                "solution": "2³ = 8. 8 × 5 × 7 = 40 × 7 = 280."
+              },
+              {
+                "id": "q8",
+                "type": "open",
+                "points": 2,
+                "lesson_part": 3,
+                "skills": [
+                  "m3-decomposition"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Décompose 990 en produit de facteurs premiers. Écris les étapes.",
+                "solution": "990 = 2 × 495 = 2 × 3 × 165 = 2 × 3 × 3 × 55 = 2 × 3 × 3 × 5 × 11.\nDonc 990 = 2 × 3² × 5 × 11.\nVérification : 2 × 9 × 5 × 11 = 90 × 11 = 990.",
+                "rubric": "1 pt : étapes de divisions successives correctes. 0,5 pt : tous les facteurs sont premiers. 0,5 pt : écriture finale 2 × 3² × 5 × 11 (avec ou sans puissance)."
+              },
+              {
+                "id": "q9",
+                "type": "open",
+                "points": 3,
+                "lesson_part": 4,
+                "skills": [
+                  "m3-fraction-irreductible",
+                  "m3-decomposition"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "On donne 1 155 = 3 × 5 × 7 × 11. En utilisant aussi la décomposition de 990 trouvée à la question précédente, rends la fraction 990/1 155 irréductible. Justifie.",
+                "solution": "990 = 2 × 3² × 5 × 11 et 1 155 = 3 × 5 × 7 × 11.\nFacteurs premiers communs : 3 × 5 × 11 = 165.\n990/1 155 = (165 × 6)/(165 × 7) = 6/7.\n6 = 2 × 3 et 7 n'ont aucun facteur premier commun : 6/7 est irréductible.",
+                "rubric": "1 pt : écriture des deux décompositions sous forme de fraction ou repérage des facteurs communs. 1 pt : facteur commun 165 (ou simplification par 3, 5 et 11). 0,5 pt : résultat 6/7. 0,5 pt : justification que 6/7 est irréductible. Pas de double pénalité si la décomposition de 990 était fausse à la question précédente et que la méthode est juste."
+              }
+            ]
+          },
+          {
+            "label": "C · Problème type brevet (7 points)",
+            "questions": [
+              {
+                "id": "q10",
+                "type": "open",
+                "points": 2,
+                "lesson_part": 5,
+                "skills": [
+                  "m3-probleme-arithmetique",
+                  "m3-diviseurs-multiples"
+                ],
+                "cognitive": "analyser",
+                "prompt": "Une fleuriste dispose de 126 roses et de 90 tulipes. Elle veut composer des bouquets **identiques** (même nombre de roses et même nombre de tulipes dans chaque bouquet), en utilisant **toutes** les fleurs.\n\nPeut-elle composer 12 bouquets ? Et 9 bouquets ? Justifie.",
+                "solution": "12 bouquets : non, car 126 n'est pas divisible par 12 (126 = 12 × 10 + 6).\n9 bouquets : oui, car 126 = 9 × 14 et 90 = 9 × 10 : chaque bouquet contiendrait 14 roses et 10 tulipes.",
+                "rubric": "1 pt : 12 bouquets impossible, justifié (126 non divisible par 12). 1 pt : 9 bouquets possible, justifié par 126 ÷ 9 = 14 et 90 ÷ 9 = 10."
+              },
+              {
+                "id": "q11",
+                "type": "open",
+                "points": 3,
+                "lesson_part": 5,
+                "skills": [
+                  "m3-probleme-arithmetique",
+                  "m3-decomposition"
+                ],
+                "cognitive": "rediger",
+                "prompt": "Décompose 126 et 90 en produits de facteurs premiers, puis détermine le plus grand nombre de bouquets que la fleuriste peut composer. Justifie.",
+                "solution": "126 = 2 × 3² × 7 et 90 = 2 × 3² × 5.\nLe nombre de bouquets doit être un diviseur commun de 126 et 90. Le plus grand diviseur commun est le produit des facteurs premiers communs : 2 × 3² = 18.\nLa fleuriste peut composer au maximum 18 bouquets.",
+                "rubric": "1 pt : décomposition de 126 (0,5) et de 90 (0,5). 1 pt : idée de diviseur commun / facteurs communs. 0,5 pt : résultat 18. 0,5 pt : phrase de conclusion."
+              },
+              {
+                "id": "q12",
+                "type": "numeric",
+                "points": 1,
+                "lesson_part": 5,
+                "skills": [
+                  "m3-probleme-arithmetique"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Dans ce cas (nombre maximal de bouquets), combien de roses contient chaque bouquet ?",
+                "answer": 7,
+                "solution": "126 ÷ 18 = 7 roses par bouquet."
+              },
+              {
+                "id": "q13",
+                "type": "numeric",
+                "points": 1,
+                "lesson_part": 5,
+                "skills": [
+                  "m3-probleme-arithmetique"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Dans ce cas (nombre maximal de bouquets), combien de tulipes contient chaque bouquet ?",
+                "answer": 5,
+                "solution": "90 ÷ 18 = 5 tulipes par bouquet."
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

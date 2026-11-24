@@ -1,4 +1,6 @@
 import { revalidatePath } from 'next/cache';
+import { redirect } from 'next/navigation';
+import { BulkBar, BulkCheck } from '@/components/Bulk';
 import { sql } from '@/lib/db';
 import { requireUser } from '@/lib/auth';
 import { PageTitle } from '@/components/Shell';
@@ -12,23 +14,30 @@ async function grant(form: FormData) {
   'use server';
   await requireUser('admin');
   const login = String(form.get('login') ?? '').trim().toLowerCase();
-  const [u] = await sql<{ id: string; role: string }[]>`select id, role from users where login = ${login}`;
-  if (!u || u.role === 'student') return;
+  const [u] = await sql<{ id: string; role: string; display_name: string }[]>`select id, role, display_name from users where login = ${login}`;
+  if (!u) redirect(`/contenu/comptes?erreur=${encodeURIComponent(`Aucun compte avec l’e-mail ${login}.`)}`);
+  if (u.role === 'student') redirect(`/contenu/comptes?erreur=${encodeURIComponent('Un compte élève ne peut pas recevoir l’accès Contenu.')}`);
   await sql`insert into user_roles (user_id, role) values (${u.id}, 'admin') on conflict do nothing`;
   revalidatePath('/contenu/comptes');
+  redirect(`/contenu/comptes?ok=${encodeURIComponent(`Accès Contenu donné à ${u.display_name}.`)}`);
 }
+// retrait groupé (on ne se retire jamais son propre accès ; il reste toujours au moins un administrateur)
 async function revoke(form: FormData) {
   'use server';
   const me = await requireUser('admin');
-  const id = String(form.get('user'));
-  if (id === me.id) return;                                   // on ne se retire pas son propre accès
-  const [{ n }] = await sql<{ n: number }[]>`select count(*)::int as n from user_roles where role = 'admin'`;
-  if (n <= 1) return;                                         // jamais zéro administrateur
-  await sql`delete from user_roles r using users u where r.user_id = ${id} and r.role = 'admin' and u.id = r.user_id and u.role <> 'admin'`;
+  let removed = 0;
+  for (const id of form.getAll('ids').map(String)) {
+    if (id === me.id || !/^[0-9a-f-]{36}$/i.test(id)) continue;
+    const [{ n }] = await sql<{ n: number }[]>`select count(*)::int as n from user_roles where role = 'admin'`;
+    if (n <= 1) break;
+    removed += (await sql`delete from user_roles r using users u where r.user_id = ${id} and r.role = 'admin' and u.id = r.user_id and u.role <> 'admin' returning 1`).length;
+  }
   revalidatePath('/contenu/comptes');
+  redirect(`/contenu/comptes?ok=${encodeURIComponent(`Accès Contenu retiré à ${removed} compte${removed > 1 ? 's' : ''}.`)}`);
 }
 
-export default async function Accounts() {
+export default async function Accounts({ searchParams }: { searchParams: Promise<{ ok?: string; erreur?: string }> }) {
+  const sp = await searchParams;
   const me = await requireUser('admin');
   const admins = await sql<{ id: string; login: string; display_name: string; roles: string[] }[]>`
     select u.id, u.login, u.display_name, array_agg(r2.role order by r2.role) as roles
@@ -36,15 +45,18 @@ export default async function Accounts() {
     group by u.id order by u.login`;
   return (
     <Screen top={<PageTitle kicker="Comptes" title="Accès à l’espace Contenu" sub="Un parent qui gère aussi les cours n’a besoin que d’un compte : donnez-lui l’accès Contenu, il bascule ensuite d’un espace à l’autre depuis la barre du haut." />}>
+      {sp.ok && <p role="status" className="m-0 rounded-xl bg-brand-soft text-brand-ink px-4 py-3 text-sm max-w-[900px]">{sp.ok}</p>}
+      {sp.erreur && <p role="alert" className="m-0 rounded-xl bg-warm-soft text-warm-dark px-4 py-3 text-sm max-w-[900px]">{sp.erreur}</p>}
       <section className="card flex flex-col max-w-[900px]">
         <h2 className="text-xl font-semibold mb-2">Comptes avec l’accès Contenu</h2>
+        {admins.filter(a => a.id !== me.id && a.roles.includes('parent')).length > 0 && <div className="mb-2"><BulkBar formId="bulk-comptes" noun="compte"
+          actions={[{ label: 'Retirer l’accès Contenu', action: revoke, tone: 'danger', confirm: 'Retirer l’accès Contenu à {n} ? Ils gardent leur espace Famille.' }]} /></div>}
         {admins.map(a => (
           <div key={a.id} className="flex flex-wrap items-center gap-3 py-3 border-t border-soft">
+            {a.id !== me.id && a.roles.includes('parent') ? <BulkCheck formId="bulk-comptes" value={a.id} label={a.display_name} /> : <span className="w-5 shrink-0" />}
             <span className="flex-[1_1_260px]"><strong>{a.display_name}</strong><span className="block muted text-sm">{a.login}</span></span>
             <span className="text-sm">{a.roles.map(r => ({ admin: 'Contenu', parent: 'Famille', student: 'Élève' } as Record<string, string>)[r]).join(' + ')}</span>
-            {a.id !== me.id && a.roles.includes('parent') && (
-              <form action={revoke}><input type="hidden" name="user" value={a.id} /><button className="btn" type="submit">Retirer l’accès Contenu</button></form>
-            )}
+            {a.id === me.id && <span className="pill bg-soft text-ink-2">Vous</span>}
           </div>
         ))}
       </section>

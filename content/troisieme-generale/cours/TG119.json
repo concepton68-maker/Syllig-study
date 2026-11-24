@@ -1,0 +1,663 @@
+{
+  "format": "syllig-course/1",
+  "code": "TG119",
+  "level": "troisieme-generale",
+  "subject": "SVT",
+  "chapter": "Le vivant et son évolution : génétique",
+  "title": "Cellules, noyau, chromosomes et ADN",
+  "skills": [
+    { "id": "svt-cellule", "label": "Décrire l'organisation d'une cellule" },
+    { "id": "svt-echelles", "label": "Utiliser les échelles du vivant (µm, grossissement)" },
+    { "id": "svt-noyau", "label": "Montrer que le noyau contient l'information génétique" },
+    { "id": "svt-chromosomes", "label": "Décrire les chromosomes et lire un caryotype" },
+    { "id": "svt-adn", "label": "Relier chromosome, ADN et gène" },
+    { "id": "svt-document", "label": "Exploiter une expérience ou un document" },
+    { "id": "svt-rediger", "label": "Rédiger une explication scientifique" }
+  ],
+  "lesson": {
+    "duration_min": 35,
+    "objectives": [
+      "décrire une cellule et situer son noyau ;",
+      "comprendre, grâce à une expérience, que le noyau contient l'information génétique ;",
+      "décrire les chromosomes et lire un caryotype humain ;",
+      "relier chromosome, ADN et gène."
+    ],
+    "essential": "Tous les êtres vivants sont faits de cellules. Dans la plupart des cellules, un noyau contient l'information génétique, qui détermine les caractères héréditaires. Cette information est portée par les chromosomes : 46 chez l'être humain, rangés par paires. Chaque chromosome est formé d'une très longue molécule d'ADN ; un gène est une portion d'ADN qui porte l'information pour un caractère.",
+    "parts": [
+      {
+        "title": "Tous les êtres vivants sont faits de cellules",
+        "blocks": [
+          { "type": "text", "text": "La **cellule** est l'unité de base du vivant. Certains êtres vivants ne sont formés que d'une seule cellule (**unicellulaires** : bactéries, levures, paramécies) ; d'autres en comptent un très grand nombre (**pluricellulaires** : plantes, animaux, champignons). Le corps humain en contient environ 30 000 milliards." },
+          { "type": "table", "caption": "Ce que l'on observe au microscope", "columns": ["Constituant", "Rôle", "Où le trouve-t-on ?"], "rows": [
+            ["Membrane", "limite la cellule et contrôle les échanges", "toutes les cellules"],
+            ["Cytoplasme", "lieu de nombreuses réactions chimiques", "toutes les cellules"],
+            ["Noyau", "contient l'information génétique", "cellules animales, végétales, de champignons (pas chez les bactéries)"],
+            ["Paroi", "rigidifie et protège la cellule", "cellules végétales (et bactéries, champignons)"],
+            ["Chloroplastes", "réalisent la photosynthèse", "cellules végétales chlorophylliennes"]
+          ] },
+          { "type": "callout", "kind": "attention", "title": "Des exceptions intéressantes", "text": "Les **bactéries** n'ont pas de noyau : leur information génétique est libre dans le cytoplasme. Chez l'être humain, les **globules rouges** perdent leur noyau en se formant." },
+          { "type": "text", "text": "Les cellules sont minuscules : on les mesure en **micromètres** (µm). 1 µm = 0,001 mm, donc 1 mm = 1 000 µm. Une bactérie mesure environ 2 µm, un globule rouge environ 7 µm, une cellule de la joue environ 50 µm." },
+          { "type": "callout", "kind": "methode", "title": "Calculer la taille réelle d'une cellule", "text": "Taille réelle = taille mesurée sur l'image ÷ grossissement.\nExemple : une cellule mesure 2 cm sur une photo grossie 400 fois. 2 cm = 20 mm = 20 000 µm. Taille réelle = 20 000 ÷ 400 = **50 µm**." }
+        ],
+        "checkpoint": {
+          "variants": [
+            {
+              "prompt": "Quel constituant est présent dans une cellule végétale mais absent d'une cellule animale ?",
+              "options": ["Le noyau", "La membrane", "La paroi", "Le cytoplasme"],
+              "answer": 2,
+              "hint": "Regarde la dernière colonne du tableau.",
+              "explanation": "La paroi (et les chloroplastes) n'existent pas dans les cellules animales."
+            },
+            {
+              "prompt": "Combien de micromètres y a-t-il dans 1 mm ?",
+              "options": ["10", "100", "1 000", "1 000 000"],
+              "answer": 2,
+              "hint": "Relis le paragraphe sur les micromètres.",
+              "explanation": "1 µm = 0,001 mm, donc 1 mm = 1 000 µm."
+            },
+            {
+              "prompt": "Quel être vivant ne possède pas de noyau dans sa cellule ?",
+              "options": ["Une bactérie", "Une levure", "Une paramécie", "Un champignon"],
+              "answer": 0,
+              "hint": "Relis l'encadré « Des exceptions intéressantes ».",
+              "explanation": "Les bactéries n'ont pas de noyau : leur information génétique est dans le cytoplasme."
+            }
+          ]
+        }
+      },
+      {
+        "title": "Le noyau contient l'information génétique",
+        "blocks": [
+          { "type": "text", "text": "Comment savoir où se trouve, dans la cellule, l'information qui détermine les caractères héréditaires (couleur du pelage, groupe sanguin…) ? Une expérience célèbre répond à cette question : le **clonage de la brebis Dolly**, réalisé en Écosse et née en 1996." },
+          { "type": "list", "ordered": true, "items": [
+            "On prélève une cellule de mamelle d'une brebis A, de race à **tête blanche**, et on garde son noyau.",
+            "On prélève un ovule d'une brebis B, de race à **tête noire**, et on lui retire son noyau (on dit qu'il est énucléé).",
+            "On place le noyau de la brebis A dans l'ovule énucléé de la brebis B. Cette cellule se divise et forme un embryon.",
+            "L'embryon est placé dans l'utérus d'une brebis C (mère porteuse) à tête noire.",
+            "Résultat : l'agnelle Dolly naît avec une **tête blanche**, comme la brebis A qui a donné le noyau."
+          ] },
+          { "type": "callout", "kind": "methode", "title": "Raisonner sur une expérience", "text": "Je compare : Dolly ressemble à la brebis A. Or la brebis A n'a donné que le **noyau** ; le reste de la cellule vient de B, et la gestation de C.\nJe conclus : l'information génétique qui détermine les caractères héréditaires se trouve dans le noyau." },
+          { "type": "callout", "kind": "retiens", "title": "Retiens", "text": "Le **noyau** contient l'**information génétique** : c'est elle qui détermine les caractères héréditaires d'un individu." }
+        ],
+        "checkpoint": {
+          "variants": [
+            {
+              "prompt": "Dans l'expérience de Dolly, à quelle brebis Dolly ressemble-t-elle ?",
+              "options": ["À la brebis qui a donné l'ovule", "À la brebis qui a donné le noyau", "À la mère porteuse", "À aucune des trois"],
+              "answer": 1,
+              "hint": "Regarde la couleur de la tête de Dolly et celle de chaque brebis.",
+              "explanation": "Dolly a la tête blanche comme la brebis A, qui a fourni le noyau."
+            },
+            {
+              "prompt": "Que conclut-on de cette expérience ?",
+              "options": ["L'information génétique est dans le cytoplasme", "L'information génétique vient de la mère porteuse", "L'information génétique est dans le noyau", "Les caractères ne sont pas héréditaires"],
+              "answer": 2,
+              "hint": "La seule chose que la brebis A a donnée, c'est…",
+              "explanation": "Seul le noyau vient de la brebis A, et Dolly lui ressemble : l'information génétique est dans le noyau."
+            },
+            {
+              "prompt": "Que veut dire « ovule énucléé » ?",
+              "options": ["Ovule auquel on a retiré le noyau", "Ovule fécondé", "Ovule sans membrane", "Ovule qui contient deux noyaux"],
+              "answer": 0,
+              "hint": "Le mot vient de « nucleus », qui signifie noyau en latin.",
+              "explanation": "Énucléer, c'est retirer le noyau."
+            }
+          ]
+        }
+      },
+      {
+        "title": "Les chromosomes, rangés par paires",
+        "blocks": [
+          { "type": "text", "text": "Quand une cellule se prépare à se diviser, on voit apparaître dans son noyau de petits bâtonnets colorables : les **chromosomes**. Ce sont eux qui portent l'information génétique." },
+          { "type": "callout", "kind": "definition", "title": "Caryotype", "text": "Un **caryotype** est la photographie des chromosomes d'une cellule, classés par paires, de la plus grande à la plus petite." },
+          { "type": "list", "items": [
+            "Chaque cellule humaine (sauf les gamètes et les globules rouges) contient **46 chromosomes**, soit **23 paires**.",
+            "Dans chaque paire, un chromosome vient du père et l'autre de la mère.",
+            "Les 22 premières paires sont identiques chez la fille et le garçon.",
+            "La 23e paire est celle des **chromosomes sexuels** : **XX** chez une fille, **XY** chez un garçon.",
+            "Les **gamètes** (spermatozoïdes et ovules) n'ont que **23 chromosomes**, un de chaque paire."
+          ] },
+          { "type": "table", "caption": "Nombre de chromosomes par cellule selon l'espèce", "columns": ["Espèce", "Nombre de chromosomes", "Nombre de paires"], "rows": [
+            ["Être humain", "46", "23"],
+            ["Chimpanzé", "48", "24"],
+            ["Pomme de terre", "48", "24"],
+            ["Chat", "38", "19"],
+            ["Chien", "78", "39"],
+            ["Mouche du vinaigre (drosophile)", "8", "4"]
+          ] },
+          { "type": "callout", "kind": "attention", "title": "Le nombre ne dit pas tout", "text": "Le nombre de chromosomes est fixe pour une espèce, mais il n'indique pas si un être vivant est « plus évolué » : le chien en a 78 et l'être humain 46. Une anomalie du nombre peut avoir des conséquences : la trisomie 21 correspond à trois chromosomes 21 au lieu de deux (47 chromosomes)." }
+        ],
+        "checkpoint": {
+          "variants": [
+            {
+              "prompt": "Combien de chromosomes contient une cellule de muscle humaine ?",
+              "options": ["23", "44", "46", "48"],
+              "answer": 2,
+              "hint": "Les 23 chromosomes concernent seulement les gamètes.",
+              "explanation": "Une cellule humaine (hors gamètes) contient 46 chromosomes, soit 23 paires."
+            },
+            {
+              "prompt": "Un caryotype présente une 23e paire XY. Il s'agit…",
+              "options": ["d'une fille", "d'un garçon", "d'un gamète", "d'une cellule de chat"],
+              "answer": 1,
+              "hint": "Relis la liste : chromosomes sexuels.",
+              "explanation": "XY correspond à un garçon, XX à une fille."
+            },
+            {
+              "prompt": "Combien de chromosomes contient un ovule humain ?",
+              "options": ["23", "46", "22", "92"],
+              "answer": 0,
+              "hint": "Un gamète reçoit un seul chromosome de chaque paire.",
+              "explanation": "Les gamètes n'ont qu'un chromosome de chaque paire : 23 chromosomes."
+            }
+          ]
+        }
+      },
+      {
+        "title": "L'ADN et les gènes",
+        "blocks": [
+          { "type": "text", "text": "Chaque chromosome est formé d'une **très longue molécule d'ADN** (acide désoxyribonucléique), enroulée et repliée sur elle-même. Mis bout à bout, l'ADN contenu dans le noyau d'une seule de nos cellules mesurerait environ 2 mètres !" },
+          { "type": "callout", "kind": "definition", "title": "ADN et gène", "text": "L'**ADN** est la molécule qui porte l'information génétique. Elle a la forme d'une **double hélice** (comme une échelle torsadée).\nUn **gène** est une **portion d'ADN**, située à un endroit précis d'un chromosome, qui porte l'information pour un caractère héréditaire. L'être humain possède environ 20 000 gènes." },
+          { "type": "text", "text": "Du plus grand au plus petit, on peut ranger les niveaux d'organisation ainsi :" },
+          { "type": "list", "ordered": true, "items": [
+            "l'**organisme** (ton corps) ;",
+            "la **cellule** (environ 30 000 milliards dans ton corps) ;",
+            "le **noyau** de la cellule ;",
+            "les **chromosomes** (46 dans le noyau) ;",
+            "la **molécule d'ADN** qui forme chaque chromosome ;",
+            "les **gènes**, portions de cette molécule d'ADN."
+          ] },
+          { "type": "callout", "kind": "plus", "title": "Une molécule universelle", "text": "Tous les êtres vivants, de la bactérie à la baleine, ont de l'ADN de même nature. C'est pourquoi on peut transférer un gène d'une espèce à une autre : par exemple, le gène d'une protéine fluorescente de méduse a été introduit dans des bactéries, qui deviennent alors fluorescentes. La structure en double hélice a été décrite en 1953 par James Watson et Francis Crick, grâce notamment aux images obtenues par Rosalind Franklin." },
+          { "type": "callout", "kind": "retiens", "title": "Retiens", "text": "Noyau → chromosomes → ADN → gènes. L'information génétique est écrite dans l'ADN des chromosomes ; un gène est une portion d'ADN qui gouverne un caractère." }
+        ],
+        "checkpoint": {
+          "variants": [
+            {
+              "prompt": "Un gène est…",
+              "options": ["une cellule", "une portion d'ADN", "un chromosome entier", "un noyau"],
+              "answer": 1,
+              "hint": "Relis l'encadré « ADN et gène ».",
+              "explanation": "Un gène est une portion d'une molécule d'ADN, située à un endroit précis d'un chromosome."
+            },
+            {
+              "prompt": "De quoi est formé un chromosome ?",
+              "options": ["D'une très longue molécule d'ADN", "De plusieurs cellules", "De plusieurs noyaux", "D'eau uniquement"],
+              "answer": 0,
+              "hint": "Lis la première phrase de la partie.",
+              "explanation": "Chaque chromosome est une très longue molécule d'ADN, enroulée et repliée."
+            },
+            {
+              "prompt": "Quel ordre va du plus grand au plus petit ?",
+              "options": ["Gène → ADN → chromosome → noyau", "Noyau → chromosome → gène → ADN", "Noyau → chromosome → ADN → gène", "Chromosome → noyau → ADN → gène"],
+              "answer": 2,
+              "hint": "Le noyau contient les chromosomes, qui sont faits d'ADN…",
+              "explanation": "Le noyau contient les chromosomes ; chaque chromosome est une molécule d'ADN ; un gène est une portion de cet ADN."
+            }
+          ]
+        }
+      }
+    ],
+    "memo": [
+      { "label": "Cellule", "text": "Unité du vivant : membrane, cytoplasme, noyau (+ paroi et chloroplastes chez les végétaux). Les bactéries n'ont pas de noyau." },
+      { "label": "Échelle", "text": "1 mm = 1 000 µm. Taille réelle = taille mesurée ÷ grossissement." },
+      { "label": "Noyau", "text": "Il contient l'information génétique (preuve : clonage de Dolly, qui ressemble à la donneuse du noyau)." },
+      { "label": "Chromosomes", "text": "46 chez l'être humain = 23 paires (22 paires + XX ou XY). Gamètes : 23. Nombre fixe pour une espèce." },
+      { "label": "ADN et gène", "text": "Un chromosome = une longue molécule d'ADN en double hélice. Un gène = portion d'ADN qui porte l'information d'un caractère." }
+    ]
+  },
+  "exercises": {
+    "duration_min": 25,
+    "instructions": "Fais les exercices dans l'ordre : les étoiles indiquent la difficulté. Pour les calculs, écris seulement le nombre. Les corrigés s'affichent après validation.",
+    "pass_threshold": 8,
+    "texts": [],
+    "items": [
+      {
+        "id": "ex1",
+        "type": "qcm",
+        "stars": 1,
+        "lesson_part": 2,
+        "skills": ["svt-noyau"],
+        "cognitive": "connaitre",
+        "prompt": "Dans une cellule animale, où se trouve l'information génétique ?",
+        "options": ["Dans la membrane", "Dans le noyau", "Dans la paroi", "Dans les chloroplastes"],
+        "answer": 1,
+        "solution": "L'information génétique se trouve dans le noyau. (Une cellule animale n'a ni paroi ni chloroplastes.)"
+      },
+      {
+        "id": "ex2",
+        "type": "numeric",
+        "stars": 1,
+        "lesson_part": 3,
+        "skills": ["svt-chromosomes"],
+        "cognitive": "connaitre",
+        "prompt": "Combien de chromosomes contient une cellule de peau humaine ?",
+        "answer": 46,
+        "solution": "46 chromosomes, soit 23 paires, comme toutes les cellules du corps sauf les gamètes (et les globules rouges, qui n'ont pas de noyau)."
+      },
+      {
+        "id": "ex3",
+        "type": "qcm",
+        "stars": 1,
+        "lesson_part": 1,
+        "skills": ["svt-cellule"],
+        "cognitive": "connaitre",
+        "prompt": "Quel constituant ne se trouve que dans les cellules végétales chlorophylliennes ?",
+        "options": ["Le noyau", "Les chloroplastes", "La membrane", "Le cytoplasme"],
+        "answer": 1,
+        "solution": "Les chloroplastes, qui réalisent la photosynthèse, n'existent que dans les cellules végétales chlorophylliennes."
+      },
+      {
+        "id": "ex4",
+        "type": "short",
+        "stars": 1,
+        "lesson_part": 4,
+        "skills": ["svt-adn"],
+        "cognitive": "connaitre",
+        "prompt": "Quelle molécule forme les chromosomes ? (Réponds par son sigle.)",
+        "answer": ["ADN", "l'ADN", "acide désoxyribonucléique", "DNA"],
+        "solution": "L'ADN (acide désoxyribonucléique)."
+      },
+      {
+        "id": "ex5",
+        "type": "numeric",
+        "stars": 2,
+        "lesson_part": 1,
+        "skills": ["svt-echelles"],
+        "cognitive": "appliquer",
+        "prompt": "Sur une photo grossie 800 fois, une cellule mesure 4 cm. Quelle est sa taille réelle, en micromètres (µm) ? (1 cm = 10 000 µm.)",
+        "answer": 50,
+        "solution": "4 cm = 40 000 µm. Taille réelle = 40 000 ÷ 800 = 50 µm."
+      },
+      {
+        "id": "ex6",
+        "type": "qcm",
+        "stars": 2,
+        "lesson_part": 3,
+        "skills": ["svt-chromosomes", "svt-document"],
+        "cognitive": "analyser",
+        "prompt": "Un caryotype humain montre 22 paires de chromosomes non sexuels et une paire XX. Que peut-on en déduire ?",
+        "options": ["C'est le caryotype d'un garçon", "C'est le caryotype d'une fille", "C'est le caryotype d'un gamète", "Il manque des chromosomes"],
+        "answer": 1,
+        "solution": "La paire de chromosomes sexuels est XX : c'est le caryotype d'une fille. Le nombre total (46) est normal."
+      },
+      {
+        "id": "ex7",
+        "type": "numeric",
+        "stars": 2,
+        "lesson_part": 3,
+        "skills": ["svt-chromosomes"],
+        "cognitive": "appliquer",
+        "prompt": "Les cellules du cheval contiennent 64 chromosomes. Combien de paires de chromosomes cela représente-t-il ?",
+        "answer": 32,
+        "solution": "Les chromosomes vont par paires : 64 ÷ 2 = 32 paires."
+      },
+      {
+        "id": "ex8",
+        "type": "numeric",
+        "stars": 2,
+        "lesson_part": 3,
+        "skills": ["svt-chromosomes"],
+        "cognitive": "appliquer",
+        "prompt": "Combien de chromosomes contient un spermatozoïde humain ?",
+        "answer": 23,
+        "solution": "Un gamète ne contient qu'un chromosome de chaque paire : 23 chromosomes."
+      },
+      {
+        "id": "ex9",
+        "type": "qcm",
+        "stars": 3,
+        "lesson_part": 2,
+        "skills": ["svt-noyau", "svt-document"],
+        "cognitive": "analyser",
+        "prompt": "On réalise un clonage chez la souris. Le noyau d'une cellule d'une souris à pelage noir est placé dans un ovule énucléé d'une souris à pelage blanc. L'embryon obtenu se développe dans l'utérus d'une souris à pelage gris. Quelle sera la couleur du pelage du souriceau ?",
+        "options": ["Blanc", "Gris", "Noir", "Un mélange des trois couleurs"],
+        "answer": 2,
+        "solution": "Noir : le souriceau possède l'information génétique contenue dans le noyau, qui vient de la souris à pelage noir. L'ovule (blanc) a perdu son noyau, et la mère porteuse (grise) ne transmet pas son information génétique."
+      },
+      {
+        "id": "ex10",
+        "type": "open",
+        "stars": 3,
+        "lesson_part": 4,
+        "skills": ["svt-adn", "svt-rediger"],
+        "cognitive": "rediger",
+        "prompt": "En trois ou quatre phrases, explique le lien entre les mots suivants : noyau, chromosome, ADN, gène.",
+        "solution": "Le noyau de la cellule contient l'information génétique. Cette information est portée par les chromosomes (46 chez l'être humain). Chaque chromosome est formé d'une très longue molécule d'ADN, enroulée sur elle-même. Un gène est une portion de cette molécule d'ADN, située à un endroit précis d'un chromosome, qui porte l'information pour un caractère héréditaire."
+      }
+    ]
+  },
+  "evaluation": {
+    "duration_min": 25,
+    "conditions": "Sans la leçon, en 25 minutes. Calculatrice autorisée. Lis bien le document avant de répondre. Barème : A = 6 points · B = 9 points · C = 5 points.",
+    "total_points": 20,
+    "variants": [
+      {
+        "texts": [
+          {
+            "id": "t1",
+            "label": "Document : une expérience chez la grenouille",
+            "source": "Document original écrit pour ce cours, inspiré des travaux de transfert de noyau réalisés dans les années 1950-1960.",
+            "paragraphs": [
+              "Il existe des grenouilles à peau sombre et des grenouilles albinos, à peau très claire. Ce caractère est héréditaire.",
+              "Étape 1 : on prélève un ovule d'une grenouille à peau sombre et on détruit son noyau.",
+              "Étape 2 : on prélève le noyau d'une cellule d'intestin d'un têtard albinos.",
+              "Étape 3 : on injecte ce noyau dans l'ovule de l'étape 1. La cellule obtenue se divise et donne un têtard, puis une grenouille.",
+              "Résultat : la grenouille obtenue est albinos."
+            ]
+          }
+        ],
+        "sections": [
+          {
+            "label": "A · Je connais (6 points)",
+            "questions": [
+              {
+                "id": "q1",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 1,
+                "skills": ["svt-cellule"],
+                "cognitive": "connaitre",
+                "prompt": "L'unité de base de tous les êtres vivants est…",
+                "options": ["le gène", "la cellule", "le chromosome", "l'organe"],
+                "answer": 1,
+                "solution": "La cellule est l'unité de base du vivant."
+              },
+              {
+                "id": "q2",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 3,
+                "skills": ["svt-chromosomes"],
+                "cognitive": "connaitre",
+                "prompt": "Chez une fille, la paire de chromosomes sexuels est…",
+                "options": ["XY", "XX", "YY", "il n'y en a pas"],
+                "answer": 1,
+                "solution": "XX chez une fille, XY chez un garçon."
+              },
+              {
+                "id": "q3",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 4,
+                "skills": ["svt-adn"],
+                "cognitive": "connaitre",
+                "prompt": "Un gène est…",
+                "options": ["une portion d'ADN", "un ensemble de chromosomes", "une cellule sexuelle", "un constituant de la membrane"],
+                "answer": 0,
+                "solution": "Un gène est une portion d'ADN qui porte l'information d'un caractère héréditaire."
+              },
+              {
+                "id": "q4",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 1,
+                "skills": ["svt-cellule"],
+                "cognitive": "connaitre",
+                "prompt": "Quel être vivant est formé d'une cellule sans noyau ?",
+                "options": ["Une levure", "Une bactérie", "Une paramécie", "Une cellule de chêne"],
+                "answer": 1,
+                "solution": "Les bactéries n'ont pas de noyau."
+              },
+              {
+                "id": "q5",
+                "type": "open",
+                "points": 2,
+                "lesson_part": 1,
+                "skills": ["svt-cellule"],
+                "cognitive": "connaitre",
+                "prompt": "Nomme les trois constituants que l'on observe dans une cellule animale, et donne le rôle de l'un d'entre eux.",
+                "solution": "Membrane, cytoplasme, noyau. Par exemple, le noyau contient l'information génétique (ou : la membrane limite la cellule et contrôle les échanges ; le cytoplasme est le lieu de nombreuses réactions).",
+                "rubric": "1,5 pt : les trois constituants (0,5 pt chacun). 0,5 pt : rôle exact de l'un d'eux."
+              }
+            ]
+          },
+          {
+            "label": "B · J'exploite un document et je calcule (9 points)",
+            "questions": [
+              {
+                "id": "q6",
+                "type": "qcm",
+                "points": 1,
+                "text_ref": "t1",
+                "lesson_part": 2,
+                "skills": ["svt-document"],
+                "cognitive": "analyser",
+                "prompt": "Dans l'expérience du document, que vient de la grenouille albinos ?",
+                "options": ["L'ovule entier", "Seulement le noyau", "Le cytoplasme de l'ovule", "Rien"],
+                "answer": 1,
+                "solution": "Seul le noyau provient du têtard albinos (étape 2)."
+              },
+              {
+                "id": "q7",
+                "type": "qcm",
+                "points": 1,
+                "text_ref": "t1",
+                "lesson_part": 2,
+                "skills": ["svt-document"],
+                "cognitive": "analyser",
+                "prompt": "Pourquoi détruit-on le noyau de l'ovule à l'étape 1 ?",
+                "options": ["Pour que l'ovule grossisse", "Pour que seule l'information génétique du noyau injecté soit présente", "Pour tuer l'ovule", "Pour que la grenouille soit sombre"],
+                "answer": 1,
+                "solution": "On détruit le noyau de l'ovule pour que la cellule ne contienne que l'information génétique du noyau injecté : on peut alors savoir d'où vient le caractère observé."
+              },
+              {
+                "id": "q8",
+                "type": "open",
+                "points": 3,
+                "text_ref": "t1",
+                "lesson_part": 2,
+                "skills": ["svt-noyau", "svt-document"],
+                "cognitive": "analyser",
+                "prompt": "Quelle conclusion peut-on tirer de cette expérience ? Justifie en comparant la grenouille obtenue aux deux grenouilles de départ.",
+                "solution": "La grenouille obtenue est albinos, comme le têtard qui a donné le noyau, et non sombre comme la grenouille qui a donné l'ovule. Or l'ovule ne contenait plus son propre noyau : seul le noyau venait du têtard albinos. On en conclut que l'information génétique qui détermine la couleur de la peau (un caractère héréditaire) se trouve dans le noyau.",
+                "rubric": "1 pt : observation (grenouille albinos comme le donneur du noyau, et pas sombre comme la donneuse de l'ovule). 1 pt : rappel que seul le noyau vient de l'albinos. 1 pt : conclusion « l'information génétique est dans le noyau »."
+              },
+              {
+                "id": "q9",
+                "type": "numeric",
+                "points": 2,
+                "lesson_part": 1,
+                "skills": ["svt-echelles"],
+                "cognitive": "appliquer",
+                "prompt": "Sur une photo grossie 600 fois, une cellule d'intestin mesure 3 cm. Quelle est sa taille réelle, en micromètres ? (1 cm = 10 000 µm.)",
+                "answer": 50,
+                "solution": "3 cm = 30 000 µm. Taille réelle = 30 000 ÷ 600 = 50 µm."
+              },
+              {
+                "id": "q10",
+                "type": "numeric",
+                "points": 2,
+                "lesson_part": 3,
+                "skills": ["svt-chromosomes"],
+                "cognitive": "appliquer",
+                "prompt": "Le caryotype du chimpanzé compte 24 paires de chromosomes. Combien de chromosomes contient un ovule de chimpanzé ?",
+                "answer": 24,
+                "solution": "Une cellule de chimpanzé contient 24 paires, soit 48 chromosomes. Un gamète ne reçoit qu'un chromosome de chaque paire : 24 chromosomes."
+              }
+            ]
+          },
+          {
+            "label": "C · J'explique (5 points)",
+            "questions": [
+              {
+                "id": "q11",
+                "type": "open",
+                "points": 5,
+                "lesson_part": 4,
+                "skills": ["svt-adn", "svt-rediger", "svt-chromosomes"],
+                "cognitive": "rediger",
+                "prompt": "Explique à un élève de 6e où se trouve l'information génétique dans son corps, en allant du plus grand au plus petit : organisme, cellule, noyau, chromosome, ADN, gène. Donne au moins deux nombres de la leçon.",
+                "solution": "Notre corps (l'organisme) est formé d'environ 30 000 milliards de cellules. Dans presque chaque cellule se trouve un noyau, qui contient l'information génétique. Cette information est portée par 46 chromosomes, rangés en 23 paires. Chaque chromosome est une très longue molécule d'ADN, enroulée sur elle-même. Un gène est une portion de cette molécule d'ADN : il porte l'information pour un caractère héréditaire. Nous avons environ 20 000 gènes.",
+                "rubric": "1 pt : cellules et noyau correctement situés. 1 pt : chromosomes dans le noyau. 1 pt : chromosome = molécule d'ADN. 1 pt : gène = portion d'ADN qui porte l'information d'un caractère. 1 pt : au moins deux nombres exacts (46, 23 paires, environ 30 000 milliards de cellules, environ 20 000 gènes) et texte clair, adapté à un élève plus jeune."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "texts": [
+          {
+            "id": "t1",
+            "label": "Document : une expérience chez la souris",
+            "source": "Document original écrit pour ce cours, inspiré des expériences de clonage de mammifères réalisées depuis la fin des années 1990.",
+            "paragraphs": [
+              "La couleur du pelage est un caractère héréditaire chez la souris.",
+              "Étape 1 : on prélève un ovule d'une souris à pelage blanc et on lui retire son noyau.",
+              "Étape 2 : on prélève le noyau d'une cellule de peau d'une souris à pelage brun.",
+              "Étape 3 : on introduit ce noyau dans l'ovule de l'étape 1. La cellule se divise et forme un embryon.",
+              "Étape 4 : l'embryon est placé dans l'utérus d'une souris à pelage gris, qui le porte jusqu'à la naissance.",
+              "Résultat : le souriceau qui naît a un pelage brun."
+            ]
+          }
+        ],
+        "sections": [
+          {
+            "label": "A · Je connais (6 points)",
+            "questions": [
+              {
+                "id": "q1",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 1,
+                "skills": ["svt-cellule"],
+                "cognitive": "connaitre",
+                "prompt": "Un être vivant unicellulaire est formé…",
+                "options": ["d'une seule cellule", "de deux cellules", "de cellules sans membrane", "d'un seul chromosome"],
+                "answer": 0,
+                "solution": "Unicellulaire signifie formé d'une seule cellule (bactérie, levure, paramécie…)."
+              },
+              {
+                "id": "q2",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 3,
+                "skills": ["svt-chromosomes"],
+                "cognitive": "connaitre",
+                "prompt": "Chez un garçon, la paire de chromosomes sexuels est…",
+                "options": ["XX", "XY", "YY", "il n'y en a pas"],
+                "answer": 1,
+                "solution": "XY chez un garçon, XX chez une fille."
+              },
+              {
+                "id": "q3",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 4,
+                "skills": ["svt-adn"],
+                "cognitive": "connaitre",
+                "prompt": "La molécule d'ADN a la forme…",
+                "options": ["d'une sphère", "d'une double hélice", "d'un cube", "d'un simple trait droit"],
+                "answer": 1,
+                "solution": "L'ADN a la forme d'une double hélice, comme une échelle torsadée."
+              },
+              {
+                "id": "q4",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 1,
+                "skills": ["svt-cellule"],
+                "cognitive": "connaitre",
+                "prompt": "Quelle cellule humaine ne possède pas de noyau ?",
+                "options": ["Une cellule de peau", "Un globule rouge", "Une cellule de muscle", "Un ovule"],
+                "answer": 1,
+                "solution": "Le globule rouge humain perd son noyau en se formant."
+              },
+              {
+                "id": "q5",
+                "type": "open",
+                "points": 2,
+                "lesson_part": 1,
+                "skills": ["svt-cellule"],
+                "cognitive": "connaitre",
+                "prompt": "Cite deux constituants présents dans une cellule végétale chlorophyllienne mais absents d'une cellule animale, et donne le rôle de chacun.",
+                "solution": "La paroi, qui rigidifie et protège la cellule ; les chloroplastes, qui réalisent la photosynthèse.",
+                "rubric": "1 pt : les deux constituants (paroi, chloroplastes ; 0,5 pt chacun). 1 pt : le rôle de chacun (0,5 pt chacun)."
+              }
+            ]
+          },
+          {
+            "label": "B · J'exploite un document et je calcule (9 points)",
+            "questions": [
+              {
+                "id": "q6",
+                "type": "qcm",
+                "points": 1,
+                "text_ref": "t1",
+                "lesson_part": 2,
+                "skills": ["svt-document"],
+                "cognitive": "analyser",
+                "prompt": "Dans l'expérience du document, que vient de la souris à pelage brun ?",
+                "options": ["L'ovule entier", "Seulement le noyau", "L'utérus", "Le cytoplasme de l'ovule"],
+                "answer": 1,
+                "solution": "Seul le noyau provient de la souris à pelage brun (étape 2)."
+              },
+              {
+                "id": "q7",
+                "type": "qcm",
+                "points": 1,
+                "text_ref": "t1",
+                "lesson_part": 2,
+                "skills": ["svt-document"],
+                "cognitive": "analyser",
+                "prompt": "Quel est le rôle de la souris à pelage gris dans cette expérience ?",
+                "options": ["Elle donne le noyau", "Elle donne l'ovule", "Elle porte l'embryon jusqu'à la naissance", "Elle transmet la couleur de son pelage"],
+                "answer": 2,
+                "solution": "La souris grise est la mère porteuse : elle porte l'embryon, mais ne lui transmet pas d'information génétique."
+              },
+              {
+                "id": "q8",
+                "type": "open",
+                "points": 3,
+                "text_ref": "t1",
+                "lesson_part": 2,
+                "skills": ["svt-noyau", "svt-document"],
+                "cognitive": "analyser",
+                "prompt": "Quelle conclusion peut-on tirer de cette expérience ? Justifie en comparant le souriceau aux trois souris utilisées.",
+                "solution": "Le souriceau a un pelage brun, comme la souris qui a donné le noyau. Il ne ressemble ni à la souris blanche, qui a donné l'ovule sans son noyau, ni à la souris grise, qui l'a seulement porté. Comme seul le noyau vient de la souris brune, on conclut que l'information génétique qui détermine la couleur du pelage se trouve dans le noyau.",
+                "rubric": "1 pt : observation (souriceau brun comme le donneur du noyau, différent de la souris blanche et de la grise). 1 pt : rappel que seul le noyau vient de la souris brune. 1 pt : conclusion « l'information génétique est dans le noyau »."
+              },
+              {
+                "id": "q9",
+                "type": "numeric",
+                "points": 2,
+                "lesson_part": 1,
+                "skills": ["svt-echelles"],
+                "cognitive": "appliquer",
+                "prompt": "Sur une photo grossie 1 500 fois, une cellule de peau mesure 6 cm. Quelle est sa taille réelle, en micromètres ? (1 cm = 10 000 µm.)",
+                "answer": 40,
+                "solution": "6 cm = 60 000 µm. Taille réelle = 60 000 ÷ 1 500 = 40 µm."
+              },
+              {
+                "id": "q10",
+                "type": "numeric",
+                "points": 2,
+                "lesson_part": 3,
+                "skills": ["svt-chromosomes"],
+                "cognitive": "appliquer",
+                "prompt": "Le caryotype du chat compte 19 paires de chromosomes. Combien de chromosomes contient une cellule de peau de chat ?",
+                "answer": 38,
+                "solution": "19 paires × 2 = 38 chromosomes."
+              }
+            ]
+          },
+          {
+            "label": "C · J'explique (5 points)",
+            "questions": [
+              {
+                "id": "q11",
+                "type": "open",
+                "points": 5,
+                "lesson_part": 4,
+                "skills": ["svt-adn", "svt-rediger", "svt-chromosomes"],
+                "cognitive": "rediger",
+                "prompt": "Un camarade affirme : « Plus une espèce a de chromosomes, plus elle est évoluée. Et de toute façon, chromosome, ADN et gène, c'est la même chose. » Explique-lui ses deux erreurs, en utilisant des exemples chiffrés de la leçon.",
+                "solution": "Première erreur : le nombre de chromosomes ne mesure pas le degré d'évolution. Par exemple, le chien a 78 chromosomes, la pomme de terre 48, et l'être humain 46. Ce nombre est simplement fixe pour chaque espèce. Seconde erreur : ces trois mots ne désignent pas la même chose. Un chromosome est formé d'une très longue molécule d'ADN ; l'ADN est la molécule qui porte l'information génétique ; un gène est seulement une portion de cette molécule d'ADN, qui porte l'information pour un caractère. Un chromosome contient donc de nombreux gènes.",
+                "rubric": "1 pt : le nombre de chromosomes ne dépend pas de la complexité / il est propre à chaque espèce. 1 pt : au moins un exemple chiffré exact (chien 78, être humain 46, pomme de terre 48…). 1 pt : chromosome = molécule d'ADN. 1 pt : gène = portion d'ADN (un chromosome porte de nombreux gènes). 1 pt : réponse rédigée clairement, en phrases, avec le vocabulaire de la leçon."
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -10,6 +10,9 @@ import { RulesForm } from './RulesForm';
 import { ResetForm } from '../Forms';
 import { setForcedAction, resetCoursesBulkAction, setForcedBulkAction } from './actions';
 import { BulkBar, BulkCheck } from '@/components/Bulk';
+import { YearCard } from '@/components/Dossier';
+import { LevelForm, SubjectsForm } from './LevelForms';
+import { levels as allLevels, yearsOf, yearSummary } from '@/lib/school-years';
 
 export const metadata = { title: 'Fiche enfant' };
 export const dynamic = 'force-dynamic';
@@ -18,13 +21,14 @@ type Row = { course_id: number; title: string; subject: string; mastery: number;
 type Pub = { course_id: number; title: string; subject: string; mastery: number; forced: string | null };
 const TABS = [
   { id: 'cours', label: 'Cours' },
+  { id: 'dossier', label: 'Dossier scolaire' },
   { id: 'regles', label: 'Règles et thème' },
   { id: 'compte', label: 'Compte' },
   { id: 'zero', label: 'Repartir de zéro' },
 ] as const;
 
 // Fiche d'un enfant : tout ce que le parent règle pour lui, au même endroit
-export default async function ChildSheet({ params, searchParams }: { params: Promise<{ id: string }>; searchParams: Promise<{ onglet?: string; reinitialise?: string; t?: string; p?: string; groupe?: string; refus?: string }> }) {
+export default async function ChildSheet({ params, searchParams }: { params: Promise<{ id: string }>; searchParams: Promise<{ onglet?: string; reinitialise?: string; t?: string; p?: string; groupe?: string; refus?: string; niveau?: string }> }) {
   const { id } = await params;
   const sp = await searchParams;
   const { onglet } = sp;
@@ -103,6 +107,30 @@ export default async function ChildSheet({ params, searchParams }: { params: Pro
         </section>
       </>
     );
+  } else if (tab === 'dossier') {
+    const [years, lv] = await Promise.all([yearsOf(s.id), allLevels()]);
+    const current = years.find(y => y.status === 'en_cours');
+    const live = current ? await yearSummary(s.id, current.level_code, current.started_at, null) : null;
+    body = (
+      <>
+        {sp.niveau && <p role="status" className="m-0 rounded-xl bg-brand-soft text-brand-ink px-4 py-3 text-sm"><strong>{sp.niveau === 'correction' ? 'Niveau corrigé.' : 'Nouvelle année scolaire commencée.'}</strong> {s.first_name} est maintenant en {s.level_name} : son parcours est à jour.</p>}
+        {current && (
+          <YearCard year={current} summary={live} firstName={s.first_name}>
+            <details className="rounded-2xl border border-line bg-surface-2 px-4 py-3" open={!!sp.niveau}>
+              <summary className="cursor-pointer font-semibold">Matières suivies cette année</summary>
+              <p className="muted text-sm mt-2 mb-3">Décochez les matières que {s.first_name} ne suit pas (par exemple l’autre langue vivante 2) : elles disparaissent de son parcours et du bilan.</p>
+              <SubjectsForm studentId={s.id} subjects={(live?.subjects ?? []).map(m => ({ id: m.subject_id, name: m.subject, followed: m.followed }))} />
+            </details>
+            <details className="rounded-2xl border border-line bg-surface-2 px-4 py-3">
+              <summary className="cursor-pointer font-semibold">Changer de niveau ou passer dans l’année suivante</summary>
+              <div className="mt-3"><LevelForm studentId={s.id} firstName={s.first_name} current={s.level_code} currentYear={current.school_year} levels={lv} /></div>
+            </details>
+          </YearCard>
+        )}
+        {years.filter(y => y.status === 'terminee').length > 0 && <h2 className="text-lg font-semibold m-0 mt-2">Années précédentes</h2>}
+        {years.filter(y => y.status === 'terminee').map(y => <YearCard key={y.id} year={y} summary={y.summary} firstName={s.first_name} />)}
+      </>
+    );
   } else if (tab === 'regles') {
     body = (
       <>
@@ -117,7 +145,7 @@ export default async function ChildSheet({ params, searchParams }: { params: Pro
     body = (
       <section className="card max-w-[900px] flex flex-col gap-4">
         <div><span className="lbl">Identifiant de connexion</span><p className="m-0 mt-1 text-lg font-semibold">{acc?.login}</p>
-          <span className="muted text-sm">{acc?.last_login_at ? `Dernière connexion le ${acc.last_login_at.toLocaleString('fr-FR', { timeZone: 'Europe/Paris', day: 'numeric', month: 'long', hour: '2-digit', minute: '2-digit' })}` : 'Jamais connecté'}</span></div>
+          <span className="muted text-sm">{acc?.last_login_at ? `Dernière connexion le ${acc.last_login_at.toLocaleString('fr-FR', { timeZone: 'Europe/Paris', day: 'numeric', month: 'long', hour: '2-digit', minute: '2-digit' })}` : 'Aucune connexion pour l’instant'}</span></div>
         <div><span className="lbl">Changer son mot de passe</span><div className="mt-2"><ResetForm studentId={s.id} /></div></div>
       </section>
     );

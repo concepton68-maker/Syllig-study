@@ -1,0 +1,1524 @@
+{
+ "level": {
+  "code": "troisieme-generale",
+  "name": "3e générale"
+ },
+ "source": "Analyse du programme de 3e (programmes officiels du cycle 4 en vigueur, consultés le 24-11-2026)",
+ "subjects": [
+  {
+   "name": "Français",
+   "chapters": [
+    {
+     "name": "Bases de la langue (début d'année)",
+     "courses": [
+      {
+       "title": "Classes de mots et fonctions dans la phrase",
+       "priority": "prioritaire",
+       "code": "TG001",
+       "official_note": "Étude de la langue : identifier les classes de mots et les fonctions syntaxiques."
+      },
+      {
+       "title": "Phrase simple, phrase complexe : juxtaposition, coordination, subordination",
+       "priority": "prioritaire",
+       "code": "TG002"
+      },
+      {
+       "title": "Les propositions subordonnées relatives et conjonctives",
+       "priority": "prioritaire",
+       "code": "TG003"
+      },
+      {
+       "title": "Les subordonnées circonstancielles (temps, cause, conséquence, but, opposition, condition)",
+       "priority": "prioritaire",
+       "code": "TG004"
+      },
+      {
+       "title": "Les temps de l'indicatif et leurs valeurs",
+       "priority": "prioritaire",
+       "code": "TG005"
+      },
+      {
+       "title": "Subjonctif, conditionnel et impératif",
+       "priority": "prioritaire",
+       "code": "TG006"
+      },
+      {
+       "title": "Accords dans le groupe nominal et accord sujet-verbe",
+       "priority": "prioritaire",
+       "code": "TG007"
+      },
+      {
+       "title": "L'accord du participe passé",
+       "priority": "prioritaire",
+       "code": "TG008"
+      },
+      {
+       "title": "Préparer la dictée du brevet",
+       "priority": "prioritaire",
+       "code": "TG009"
+      }
+     ]
+    },
+    {
+     "name": "Se raconter, se représenter",
+     "courses": [
+      {
+       "title": "L'autobiographie : définition et pacte autobiographique",
+       "priority": "prioritaire",
+       "code": "TG010",
+       "official_note": "Entrée officielle : « Se raconter, se représenter »."
+      },
+      {
+       "title": "Les souvenirs d'enfance : passé simple, imparfait et présent d'énonciation",
+       "priority": "prioritaire",
+       "code": "TG011"
+      },
+      {
+       "title": "L'autoportrait en littérature et en peinture",
+       "priority": "ensuite",
+       "code": "TG012"
+      },
+      {
+       "title": "Écrire un récit autobiographique",
+       "priority": "prioritaire",
+       "code": "TG013"
+      }
+     ]
+    },
+    {
+     "name": "Dénoncer les travers de la société",
+     "courses": [
+      {
+       "title": "Satire et ironie : se moquer pour dénoncer",
+       "priority": "prioritaire",
+       "code": "TG014",
+       "official_note": "Entrée officielle : « Dénoncer les travers de la société »."
+      },
+      {
+       "title": "Le registre polémique et la caricature",
+       "priority": "ensuite",
+       "code": "TG015"
+      },
+      {
+       "title": "Thèse, arguments et exemples : construire un raisonnement",
+       "priority": "prioritaire",
+       "code": "TG016"
+      },
+      {
+       "title": "Les connecteurs logiques",
+       "priority": "prioritaire",
+       "code": "TG017"
+      },
+      {
+       "title": "Rédiger un texte argumentatif (sujet de réflexion)",
+       "priority": "prioritaire",
+       "code": "TG018"
+      }
+     ]
+    },
+    {
+     "name": "Agir dans la cité : individu et pouvoir",
+     "courses": [
+      {
+       "title": "Témoigner des guerres du XXe siècle en littérature",
+       "priority": "prioritaire",
+       "code": "TG019",
+       "official_note": "Entrée officielle : « Agir dans la cité : individu et pouvoir » (œuvres en lien avec l'histoire du XXe siècle)."
+      },
+      {
+       "title": "La poésie engagée et la poésie de la Résistance",
+       "priority": "prioritaire",
+       "code": "TG020"
+      },
+      {
+       "title": "Le discours rapporté : direct, indirect, indirect libre",
+       "priority": "prioritaire",
+       "code": "TG021"
+      },
+      {
+       "title": "Voix active et voix passive",
+       "priority": "prioritaire",
+       "code": "TG022"
+      }
+     ]
+    },
+    {
+     "name": "Visions poétiques du monde",
+     "courses": [
+      {
+       "title": "Versification : vers, rimes, strophes et formes fixes",
+       "priority": "prioritaire",
+       "code": "TG023",
+       "official_note": "Entrée officielle : « Visions poétiques du monde »."
+      },
+      {
+       "title": "Images poétiques : comparaison, métaphore, personnification",
+       "priority": "prioritaire",
+       "code": "TG024"
+      },
+      {
+       "title": "Poésie moderne : vers libre et poème en prose",
+       "priority": "ensuite",
+       "code": "TG025"
+      },
+      {
+       "title": "Analyser un poème (méthode)",
+       "priority": "prioritaire",
+       "code": "TG026"
+      }
+     ]
+    },
+    {
+     "name": "Progrès et rêves scientifiques",
+     "courses": [
+      {
+       "title": "Science-fiction, anticipation et utopie",
+       "priority": "ensuite",
+       "code": "TG027",
+       "official_note": "Entrée officielle : « Progrès et rêves scientifiques »."
+      },
+      {
+       "title": "Le progrès en débat : espoirs et inquiétudes",
+       "priority": "ensuite",
+       "code": "TG028"
+      },
+      {
+       "title": "Écrire un récit d'anticipation (sujet d'imagination)",
+       "priority": "prioritaire",
+       "code": "TG029"
+      }
+     ]
+    },
+    {
+     "name": "Lexique et méthode du brevet",
+     "courses": [
+      {
+       "title": "Formation des mots : préfixes, suffixes, familles de mots",
+       "priority": "prioritaire",
+       "code": "TG030"
+      },
+      {
+       "title": "Sens propre, sens figuré, synonymes et champs lexicaux",
+       "priority": "prioritaire",
+       "code": "TG031"
+      },
+      {
+       "title": "Répondre aux questions de compréhension et d'analyse",
+       "priority": "prioritaire",
+       "code": "TG032"
+      },
+      {
+       "title": "Réécriture : transformer un passage",
+       "priority": "prioritaire",
+       "code": "TG033"
+      }
+     ]
+    }
+   ],
+   "official_sources": [
+    {
+     "texte": "Programmes du cycle 4 (cycle des approfondissements), version consolidée",
+     "reference": "Arrêté du 17-7-2020, BO n°31 du 30 juillet 2020 (NOR MENE2018714A)",
+     "application": "En vigueur en 3e en 2026-2027 (les nouveaux programmes de 2026 n'arrivent en 3e qu'à la rentrée 2028)",
+     "lien": "https://www.education.gouv.fr/bo/20/Hebdo31/MENE2018714A.htm",
+     "contenu": "Programme de français du cycle 4 (ajusté en 2018, consolidé en 2020). Entrées de 3e : Se raconter, se représenter ; Dénoncer les travers de la société ; Visions poétiques du monde ; Agir dans la cité : individu et pouvoir ; Progrès et rêves scientifiques. Étude de la langue, écriture, oral."
+    },
+    {
+     "texte": "Repères annuels de progression et attendus de fin d'année du CP à la troisième",
+     "reference": "Éduscol, documents publiés au BO n°22 du 29 mai 2019 (français, mathématiques)",
+     "application": "Classe de 3e",
+     "lien": "https://eduscol.education.gouv.fr/6910/reperes-annuels-de-progression-et-attendus-de-fin-d-annee-du-cp-la-troisieme",
+     "contenu": "Attendus de fin de 3e et repères annuels en français : grammaire de la phrase complexe, modes et temps, accords, lexique, écriture longue et argumentée."
+    },
+    {
+     "texte": "Épreuve de français du diplôme national du brevet",
+     "reference": "Ministère de l'Éducation nationale, page DNB consultée le 24-11-2026",
+     "application": "Session 2027 du DNB",
+     "lien": "https://www.education.gouv.fr/reussir-au-college/le-diplome-national-du-brevet-dnb-9900",
+     "contenu": "Compréhension et analyse d'un texte, grammaire, dictée, rédaction (sujet d'imagination ou de réflexion)."
+    }
+   ]
+  },
+  {
+   "name": "Mathématiques",
+   "chapters": [
+    {
+     "name": "Nombres et calculs (début d'année)",
+     "courses": [
+      {
+       "title": "Calcul avec les nombres relatifs et les fractions",
+       "priority": "prioritaire",
+       "code": "TG034",
+       "official_note": "Repères de 3e : consolider le calcul fractionnaire."
+      },
+      {
+       "title": "Puissances et notation scientifique",
+       "priority": "prioritaire",
+       "code": "TG035"
+      },
+      {
+       "title": "Nombres premiers et décomposition en facteurs premiers",
+       "priority": "prioritaire",
+       "code": "TG036"
+      },
+      {
+       "title": "Fractions irréductibles et problèmes de partage",
+       "priority": "prioritaire",
+       "code": "TG037"
+      },
+      {
+       "title": "Racines carrées",
+       "priority": "ensuite",
+       "code": "TG038"
+      }
+     ]
+    },
+    {
+     "name": "Calcul littéral et équations",
+     "courses": [
+      {
+       "title": "Développer et réduire une expression",
+       "priority": "prioritaire",
+       "code": "TG039"
+      },
+      {
+       "title": "Factoriser une expression",
+       "priority": "prioritaire",
+       "code": "TG040"
+      },
+      {
+       "title": "Les identités remarquables",
+       "priority": "prioritaire",
+       "code": "TG041"
+      },
+      {
+       "title": "Démontrer avec le calcul littéral",
+       "priority": "prioritaire",
+       "code": "TG042"
+      },
+      {
+       "title": "Résoudre une équation du premier degré",
+       "priority": "prioritaire",
+       "code": "TG043"
+      },
+      {
+       "title": "Équations produit nul",
+       "priority": "prioritaire",
+       "code": "TG044"
+      },
+      {
+       "title": "Résoudre une inéquation du premier degré",
+       "priority": "ensuite",
+       "code": "TG045"
+      },
+      {
+       "title": "Mettre un problème en équation",
+       "priority": "prioritaire",
+       "code": "TG046"
+      }
+     ]
+    },
+    {
+     "name": "Géométrie plane",
+     "courses": [
+      {
+       "title": "Théorème de Pythagore et sa réciproque",
+       "priority": "prioritaire",
+       "code": "TG047"
+      },
+      {
+       "title": "Théorème de Thalès",
+       "priority": "prioritaire",
+       "code": "TG048"
+      },
+      {
+       "title": "Réciproque du théorème de Thalès",
+       "priority": "prioritaire",
+       "code": "TG049"
+      },
+      {
+       "title": "Triangles semblables",
+       "priority": "ensuite",
+       "code": "TG050"
+      },
+      {
+       "title": "Trigonométrie : cosinus, sinus et tangente",
+       "priority": "prioritaire",
+       "code": "TG051"
+      },
+      {
+       "title": "Transformations : symétries, translations, rotations",
+       "priority": "ensuite",
+       "code": "TG052"
+      },
+      {
+       "title": "Homothéties",
+       "priority": "ensuite",
+       "code": "TG053"
+      }
+     ]
+    },
+    {
+     "name": "Fonctions",
+     "courses": [
+      {
+       "title": "La notion de fonction : image, antécédent, notations",
+       "priority": "prioritaire",
+       "code": "TG054"
+      },
+      {
+       "title": "Tableaux de valeurs et représentations graphiques",
+       "priority": "prioritaire",
+       "code": "TG055"
+      },
+      {
+       "title": "Fonctions linéaires et proportionnalité",
+       "priority": "prioritaire",
+       "code": "TG056"
+      },
+      {
+       "title": "Fonctions affines",
+       "priority": "prioritaire",
+       "code": "TG057"
+      }
+     ]
+    },
+    {
+     "name": "Proportionnalité et grandeurs",
+     "courses": [
+      {
+       "title": "Pourcentages, augmentations et diminutions",
+       "priority": "prioritaire",
+       "code": "TG058"
+      },
+      {
+       "title": "Grandeurs composées : vitesse, débit, conversions",
+       "priority": "prioritaire",
+       "code": "TG059"
+      },
+      {
+       "title": "Agrandissement, réduction et effet sur les aires et volumes",
+       "priority": "ensuite",
+       "code": "TG060"
+      }
+     ]
+    },
+    {
+     "name": "Statistiques et probabilités",
+     "courses": [
+      {
+       "title": "Moyenne, médiane et étendue",
+       "priority": "prioritaire",
+       "code": "TG061"
+      },
+      {
+       "title": "Calculer des probabilités",
+       "priority": "prioritaire",
+       "code": "TG062"
+      },
+      {
+       "title": "Expériences aléatoires à deux épreuves",
+       "priority": "ensuite",
+       "code": "TG063"
+      }
+     ]
+    },
+    {
+     "name": "Espace",
+     "courses": [
+      {
+       "title": "Volumes : prismes, cylindres, pyramides, cônes et boules",
+       "priority": "prioritaire",
+       "code": "TG064"
+      },
+      {
+       "title": "Sections de solides par un plan",
+       "priority": "ensuite",
+       "code": "TG065"
+      },
+      {
+       "title": "Se repérer sur une sphère et dans un pavé",
+       "priority": "ensuite",
+       "code": "TG066"
+      }
+     ]
+    },
+    {
+     "name": "Algorithmique et programmation",
+     "courses": [
+      {
+       "title": "Programmer avec Scratch : boucles, conditions et variables",
+       "priority": "prioritaire",
+       "code": "TG067",
+       "official_note": "Thème officiel « Algorithmique et programmation »."
+      },
+      {
+       "title": "Lire et compléter un programme de calcul",
+       "priority": "prioritaire",
+       "code": "TG068"
+      }
+     ]
+    }
+   ],
+   "official_sources": [
+    {
+     "texte": "Programmes du cycle 4 (cycle des approfondissements), version consolidée",
+     "reference": "Arrêté du 17-7-2020, BO n°31 du 30 juillet 2020 (NOR MENE2018714A)",
+     "application": "En vigueur en 3e en 2026-2027 (les nouveaux programmes de 2026 n'arrivent en 3e qu'à la rentrée 2028)",
+     "lien": "https://www.education.gouv.fr/bo/20/Hebdo31/MENE2018714A.htm",
+     "contenu": "Programme de mathématiques du cycle 4 (ajusté en 2018, consolidé en 2020). Thèmes : nombres et calculs, organisation et gestion de données – fonctions, grandeurs et mesures, espace et géométrie, algorithmique et programmation."
+    },
+    {
+     "texte": "Repères annuels de progression et attendus de fin d'année du CP à la troisième",
+     "reference": "Éduscol, documents publiés au BO n°22 du 29 mai 2019 (français, mathématiques)",
+     "application": "Classe de 3e",
+     "lien": "https://eduscol.education.gouv.fr/6910/reperes-annuels-de-progression-et-attendus-de-fin-d-annee-du-cp-la-troisieme",
+     "contenu": "Attendus de fin de 3e et repères annuels de progression du cycle 4 en mathématiques."
+    },
+    {
+     "texte": "Épreuve de mathématiques du diplôme national du brevet",
+     "reference": "Ministère de l'Éducation nationale, page DNB consultée le 24-11-2026",
+     "application": "Session 2027 du DNB",
+     "lien": "https://www.education.gouv.fr/reussir-au-college/le-diplome-national-du-brevet-dnb-9900",
+     "contenu": "L'épreuve évalue le programme du cycle 4 ; une partie automatismes sans calculatrice."
+    }
+   ]
+  },
+  {
+   "name": "Histoire-Géographie",
+   "chapters": [
+    {
+     "name": "Histoire 1 – L'Europe, un théâtre majeur des guerres totales (1914-1945)",
+     "courses": [
+      {
+       "title": "La Première Guerre mondiale : une guerre totale",
+       "priority": "prioritaire",
+       "code": "TG069",
+       "official_note": "Officiel : « Civils et militaires dans la Première Guerre mondiale »."
+      },
+      {
+       "title": "Violences de guerre et génocide des Arméniens",
+       "priority": "prioritaire",
+       "code": "TG070"
+      },
+      {
+       "title": "La révolution russe et l'URSS de Staline",
+       "priority": "prioritaire",
+       "code": "TG071",
+       "official_note": "Officiel : « Démocraties fragilisées et expériences totalitaires dans l'Europe de l'entre-deux-guerres »."
+      },
+      {
+       "title": "L'Allemagne nazie et les démocraties fragilisées",
+       "priority": "prioritaire",
+       "code": "TG072"
+      },
+      {
+       "title": "La Seconde Guerre mondiale, une guerre d'anéantissement",
+       "priority": "prioritaire",
+       "code": "TG073"
+      },
+      {
+       "title": "Le génocide des Juifs et des Tziganes",
+       "priority": "prioritaire",
+       "code": "TG074"
+      },
+      {
+       "title": "La France défaite et occupée : Vichy, collaboration, Résistance",
+       "priority": "prioritaire",
+       "code": "TG075"
+      }
+     ]
+    },
+    {
+     "name": "Géographie 1 – Dynamiques territoriales de la France contemporaine",
+     "courses": [
+      {
+       "title": "Les aires urbaines dans une France mondialisée",
+       "priority": "prioritaire",
+       "code": "TG076",
+       "official_note": "Officiel : « Les aires urbaines, une nouvelle géographie d'une France mondialisée »."
+      },
+      {
+       "title": "Les espaces productifs et leurs évolutions",
+       "priority": "prioritaire",
+       "code": "TG077"
+      },
+      {
+       "title": "Les espaces de faible densité et leurs atouts",
+       "priority": "prioritaire",
+       "code": "TG078"
+      }
+     ]
+    },
+    {
+     "name": "Histoire 2 – Le monde depuis 1945",
+     "courses": [
+      {
+       "title": "Indépendances et construction de nouveaux États",
+       "priority": "prioritaire",
+       "code": "TG079"
+      },
+      {
+       "title": "Un monde bipolaire au temps de la guerre froide",
+       "priority": "prioritaire",
+       "code": "TG080"
+      },
+      {
+       "title": "Le projet européen : construction et élargissements",
+       "priority": "prioritaire",
+       "code": "TG081",
+       "official_note": "Officiel : « Affirmation et mise en œuvre du projet européen »."
+      },
+      {
+       "title": "Enjeux et conflits dans le monde après 1989",
+       "priority": "prioritaire",
+       "code": "TG082"
+      }
+     ]
+    },
+    {
+     "name": "Géographie 2 – Pourquoi et comment aménager le territoire ?",
+     "courses": [
+      {
+       "title": "Aménager pour réduire les inégalités entre territoires",
+       "priority": "prioritaire",
+       "code": "TG083",
+       "official_note": "Officiel : « Aménager pour répondre aux inégalités croissantes entre territoires français, à toutes les échelles »."
+      },
+      {
+       "title": "Les territoires ultramarins français",
+       "priority": "prioritaire",
+       "code": "TG084"
+      }
+     ]
+    },
+    {
+     "name": "Histoire 3 – Françaises et Français dans une République repensée",
+     "courses": [
+      {
+       "title": "1944-1947 : refonder la République",
+       "priority": "prioritaire",
+       "code": "TG085",
+       "official_note": "Officiel : « 1944-1947, refonder la République, redéfinir la démocratie »."
+      },
+      {
+       "title": "La Ve République : de de Gaulle à l'alternance et à la cohabitation",
+       "priority": "prioritaire",
+       "code": "TG086"
+      },
+      {
+       "title": "Femmes et hommes dans la société des années 1950 aux années 1980",
+       "priority": "prioritaire",
+       "code": "TG087"
+      }
+     ]
+    },
+    {
+     "name": "Géographie 3 – La France et l'Union européenne",
+     "courses": [
+      {
+       "title": "L'Union européenne, un territoire de référence et d'appartenance",
+       "priority": "prioritaire",
+       "code": "TG088"
+      },
+      {
+       "title": "La France et l'Europe dans le monde",
+       "priority": "prioritaire",
+       "code": "TG089"
+      }
+     ]
+    },
+    {
+     "name": "Méthodes du brevet",
+     "courses": [
+      {
+       "title": "Analyser un document en histoire-géographie",
+       "priority": "prioritaire",
+       "code": "TG090"
+      },
+      {
+       "title": "Rédiger un développement construit",
+       "priority": "prioritaire",
+       "code": "TG091"
+      },
+      {
+       "title": "Repères chronologiques et spatiaux à connaître",
+       "priority": "prioritaire",
+       "code": "TG092"
+      }
+     ]
+    }
+   ],
+   "official_sources": [
+    {
+     "texte": "Programmes du cycle 4 (cycle des approfondissements), version consolidée",
+     "reference": "Arrêté du 17-7-2020, BO n°31 du 30 juillet 2020 (NOR MENE2018714A)",
+     "application": "En vigueur en 3e en 2026-2027 (les nouveaux programmes de 2026 n'arrivent en 3e qu'à la rentrée 2028)",
+     "lien": "https://www.education.gouv.fr/bo/20/Hebdo31/MENE2018714A.htm",
+     "contenu": "Programme d'histoire-géographie de 3e. Histoire : L'Europe, un théâtre majeur des guerres totales (1914-1945) ; Le monde depuis 1945 ; Françaises et Français dans une République repensée. Géographie : Dynamiques territoriales de la France contemporaine ; Pourquoi et comment aménager le territoire ? ; La France et l'Union européenne."
+    },
+    {
+     "texte": "Épreuve d'histoire-géographie et EMC du diplôme national du brevet",
+     "reference": "Ministère de l'Éducation nationale, page DNB consultée le 24-11-2026",
+     "application": "Session 2027 du DNB",
+     "lien": "https://www.education.gouv.fr/reussir-au-college/le-diplome-national-du-brevet-dnb-9900",
+     "contenu": "Épreuve écrite commune histoire, géographie et EMC (analyse de documents, développement construit, repères)."
+    }
+   ]
+  },
+  {
+   "name": "Enseignement moral et civique",
+   "chapters": [
+    {
+     "name": "Les règles du jeu démocratique",
+     "courses": [
+      {
+       "title": "La Constitution de la Ve République",
+       "priority": "prioritaire",
+       "code": "TG093",
+       "official_note": "Thème de 3e (programme 2024) : « Les règles du jeu démocratique »."
+      },
+      {
+       "title": "Séparation des pouvoirs et laïcité de l'État",
+       "priority": "prioritaire",
+       "code": "TG094"
+      },
+      {
+       "title": "Les institutions européennes et la citoyenneté européenne",
+       "priority": "prioritaire",
+       "code": "TG095"
+      }
+     ]
+    },
+    {
+     "name": "Les acteurs du jeu démocratique : l'opinion",
+     "courses": [
+      {
+       "title": "Opinion publique, médias et sondages",
+       "priority": "ensuite",
+       "code": "TG096"
+      },
+      {
+       "title": "S'informer : information et désinformation",
+       "priority": "prioritaire",
+       "code": "TG097"
+      },
+      {
+       "title": "Complotisme et lanceurs d'alerte",
+       "priority": "ensuite",
+       "code": "TG098"
+      }
+     ]
+    },
+    {
+     "name": "Les acteurs du jeu démocratique : l'engagement collectif",
+     "courses": [
+      {
+       "title": "Élections et référendum",
+       "priority": "prioritaire",
+       "code": "TG099"
+      },
+      {
+       "title": "S'engager : partis, syndicats, associations",
+       "priority": "ensuite",
+       "code": "TG100"
+      }
+     ]
+    }
+   ],
+   "official_sources": [
+    {
+     "texte": "Programme d'enseignement moral et civique (du CP à la terminale)",
+     "reference": "Arrêté du 29-5-2024, BO n°24 du 13 juin 2024 (NOR MENE2413934A)",
+     "application": "En vigueur en 3e à la rentrée 2026 (5e en 2024, 4e en 2025)",
+     "lien": "https://www.education.gouv.fr/bo/2024/Hebdo24/MENE2413934A",
+     "contenu": "3e : « Faire vivre la démocratie » — les règles du jeu démocratique ; les acteurs du jeu démocratique et leur engagement (l'opinion ; l'engagement collectif)."
+    },
+    {
+     "texte": "Ressources d'accompagnement pour l'EMC au collège",
+     "reference": "Éduscol",
+     "application": "Collège",
+     "lien": "https://eduscol.education.gouv.fr/4752/ressources-d-accompagnement-pour-l-enseignement-moral-et-civique-au-college",
+     "contenu": "Ressources et repères de mise en œuvre du programme 2024."
+    }
+   ]
+  },
+  {
+   "name": "Physique-Chimie",
+   "chapters": [
+    {
+     "name": "Organisation et transformations de la matière",
+     "courses": [
+      {
+       "title": "Atomes, molécules et structure de l'atome",
+       "priority": "prioritaire",
+       "code": "TG101",
+       "official_note": "Thème officiel « Organisation et transformations de la matière »."
+      },
+      {
+       "title": "Les ions et la formation des ions",
+       "priority": "prioritaire",
+       "code": "TG102"
+      },
+      {
+       "title": "Tests d'identification des ions",
+       "priority": "prioritaire",
+       "code": "TG103"
+      },
+      {
+       "title": "Solutions acides et basiques : le pH",
+       "priority": "prioritaire",
+       "code": "TG104"
+      },
+      {
+       "title": "Réaction entre un acide et un métal",
+       "priority": "ensuite",
+       "code": "TG105"
+      },
+      {
+       "title": "Transformation chimique : équation de réaction et conservation de la masse",
+       "priority": "prioritaire",
+       "code": "TG106"
+      },
+      {
+       "title": "Masse volumique et changements d'état (révision)",
+       "priority": "ensuite",
+       "code": "TG107"
+      }
+     ]
+    },
+    {
+     "name": "Mouvement et interactions",
+     "courses": [
+      {
+       "title": "Décrire un mouvement : trajectoire et vitesse",
+       "priority": "prioritaire",
+       "code": "TG108",
+       "official_note": "Thème officiel « Mouvement et interactions »."
+      },
+      {
+       "title": "Actions mécaniques et forces",
+       "priority": "prioritaire",
+       "code": "TG109"
+      },
+      {
+       "title": "La gravitation universelle",
+       "priority": "prioritaire",
+       "code": "TG110"
+      },
+      {
+       "title": "Poids et masse",
+       "priority": "prioritaire",
+       "code": "TG111"
+      },
+      {
+       "title": "L'Univers et le système solaire",
+       "priority": "ensuite",
+       "code": "TG112"
+      }
+     ]
+    },
+    {
+     "name": "L'énergie et ses conversions",
+     "courses": [
+      {
+       "title": "Formes et conversions d'énergie",
+       "priority": "prioritaire",
+       "code": "TG113",
+       "official_note": "Thème officiel « L'énergie et ses conversions »."
+      },
+      {
+       "title": "L'énergie cinétique et la sécurité routière",
+       "priority": "prioritaire",
+       "code": "TG114"
+      },
+      {
+       "title": "Puissance et énergie électriques",
+       "priority": "prioritaire",
+       "code": "TG115"
+      },
+      {
+       "title": "Lois de l'électricité : intensité, tension, loi d'Ohm",
+       "priority": "ensuite",
+       "code": "TG116"
+      }
+     ]
+    },
+    {
+     "name": "Des signaux pour observer et communiquer",
+     "courses": [
+      {
+       "title": "Signaux sonores : propagation et fréquence",
+       "priority": "ensuite",
+       "code": "TG117",
+       "official_note": "Thème officiel « Des signaux pour observer et communiquer »."
+      },
+      {
+       "title": "Signaux lumineux : propagation et vitesse de la lumière",
+       "priority": "ensuite",
+       "code": "TG118"
+      }
+     ]
+    }
+   ],
+   "official_sources": [
+    {
+     "texte": "Programmes du cycle 4 (cycle des approfondissements), version consolidée",
+     "reference": "Arrêté du 17-7-2020, BO n°31 du 30 juillet 2020 (NOR MENE2018714A)",
+     "application": "En vigueur en 3e en 2026-2027 (les nouveaux programmes de 2026 n'arrivent en 3e qu'à la rentrée 2028)",
+     "lien": "https://www.education.gouv.fr/bo/20/Hebdo31/MENE2018714A.htm",
+     "contenu": "Programme de physique-chimie du cycle 4. Thèmes : Organisation et transformations de la matière ; Mouvement et interactions ; L'énergie et ses conversions ; Des signaux pour observer et communiquer."
+    },
+    {
+     "texte": "Épreuve de sciences du diplôme national du brevet",
+     "reference": "Ministère de l'Éducation nationale, page DNB consultée le 24-11-2026",
+     "application": "Session 2027 du DNB",
+     "lien": "https://www.education.gouv.fr/reussir-au-college/le-diplome-national-du-brevet-dnb-9900",
+     "contenu": "Deux disciplines parmi physique-chimie, SVT et technologie."
+    }
+   ]
+  },
+  {
+   "name": "SVT",
+   "chapters": [
+    {
+     "name": "Le vivant et son évolution : génétique",
+     "courses": [
+      {
+       "title": "Cellules, noyau, chromosomes et ADN",
+       "priority": "prioritaire",
+       "code": "TG119",
+       "official_note": "Thème officiel « Le vivant et son évolution »."
+      },
+      {
+       "title": "Gènes, allèles et caractères",
+       "priority": "prioritaire",
+       "code": "TG120"
+      },
+      {
+       "title": "La division cellulaire (mitose)",
+       "priority": "prioritaire",
+       "code": "TG121"
+      },
+      {
+       "title": "Méiose, fécondation et diversité génétique",
+       "priority": "prioritaire",
+       "code": "TG122"
+      },
+      {
+       "title": "Mutations et origine de la diversité",
+       "priority": "ensuite",
+       "code": "TG123"
+      }
+     ]
+    },
+    {
+     "name": "Le vivant et son évolution : biodiversité et évolution",
+     "courses": [
+      {
+       "title": "Parenté entre les êtres vivants et classification",
+       "priority": "ensuite",
+       "code": "TG124"
+      },
+      {
+       "title": "Sélection naturelle et évolution des espèces",
+       "priority": "prioritaire",
+       "code": "TG125"
+      }
+     ]
+    },
+    {
+     "name": "Le corps humain et la santé",
+     "courses": [
+      {
+       "title": "Le monde microbien et la contamination",
+       "priority": "prioritaire",
+       "code": "TG126",
+       "official_note": "Thème officiel « Le corps humain et la santé »."
+      },
+      {
+       "title": "Les défenses de l'organisme : le système immunitaire",
+       "priority": "prioritaire",
+       "code": "TG127"
+      },
+      {
+       "title": "Vaccination, antiseptiques et antibiotiques",
+       "priority": "prioritaire",
+       "code": "TG128"
+      },
+      {
+       "title": "Système nerveux et comportements responsables",
+       "priority": "ensuite",
+       "code": "TG129"
+      },
+      {
+       "title": "Alimentation, digestion et santé",
+       "priority": "ensuite",
+       "code": "TG130"
+      }
+     ]
+    },
+    {
+     "name": "La planète Terre, l'environnement et l'action humaine",
+     "courses": [
+      {
+       "title": "Météorologie et climat",
+       "priority": "ensuite",
+       "code": "TG131",
+       "official_note": "Thème officiel « La planète Terre, l'environnement et l'action humaine »."
+      },
+      {
+       "title": "Le changement climatique et ses conséquences",
+       "priority": "prioritaire",
+       "code": "TG132"
+      },
+      {
+       "title": "Risques naturels et prévention",
+       "priority": "ensuite",
+       "code": "TG133"
+      },
+      {
+       "title": "Ressources naturelles et activités humaines",
+       "priority": "ensuite",
+       "code": "TG134"
+      }
+     ]
+    }
+   ],
+   "official_sources": [
+    {
+     "texte": "Programmes du cycle 4 (cycle des approfondissements), version consolidée",
+     "reference": "Arrêté du 17-7-2020, BO n°31 du 30 juillet 2020 (NOR MENE2018714A)",
+     "application": "En vigueur en 3e en 2026-2027 (les nouveaux programmes de 2026 n'arrivent en 3e qu'à la rentrée 2028)",
+     "lien": "https://www.education.gouv.fr/bo/20/Hebdo31/MENE2018714A.htm",
+     "contenu": "Programme de SVT du cycle 4. Thèmes : La planète Terre, l'environnement et l'action humaine ; Le vivant et son évolution ; Le corps humain et la santé."
+    },
+    {
+     "texte": "Épreuve de sciences du diplôme national du brevet",
+     "reference": "Ministère de l'Éducation nationale, page DNB consultée le 24-11-2026",
+     "application": "Session 2027 du DNB",
+     "lien": "https://www.education.gouv.fr/reussir-au-college/le-diplome-national-du-brevet-dnb-9900",
+     "contenu": "Deux disciplines parmi physique-chimie, SVT et technologie."
+    }
+   ]
+  },
+  {
+   "name": "Technologie",
+   "chapters": [
+    {
+     "name": "Objets techniques et société",
+     "courses": [
+      {
+       "title": "Analyser le besoin et le cahier des charges",
+       "priority": "prioritaire",
+       "code": "TG135",
+       "official_note": "Thème officiel « Les objets techniques, les services et les changements induits dans la société »."
+      },
+      {
+       "title": "Fonctions, solutions techniques et évolution des objets",
+       "priority": "prioritaire",
+       "code": "TG136"
+      },
+      {
+       "title": "Impact environnemental et cycle de vie d'un objet",
+       "priority": "ensuite",
+       "code": "TG137"
+      }
+     ]
+    },
+    {
+     "name": "Modélisation et simulation",
+     "courses": [
+      {
+       "title": "Chaîne d'information et chaîne d'énergie",
+       "priority": "prioritaire",
+       "code": "TG138",
+       "official_note": "Thème officiel « La modélisation et la simulation des objets et systèmes techniques »."
+      },
+      {
+       "title": "Capteurs, actionneurs et interfaces",
+       "priority": "prioritaire",
+       "code": "TG139"
+      },
+      {
+       "title": "Lire et utiliser un modèle numérique (CAO, simulation)",
+       "priority": "ensuite",
+       "code": "TG140"
+      }
+     ]
+    },
+    {
+     "name": "Informatique et programmation",
+     "courses": [
+      {
+       "title": "Algorithmes et programmation par blocs",
+       "priority": "prioritaire",
+       "code": "TG141",
+       "official_note": "Thème officiel « L'informatique et la programmation »."
+      },
+      {
+       "title": "Programmer un objet : événements et conditions",
+       "priority": "prioritaire",
+       "code": "TG142"
+      },
+      {
+       "title": "Réseaux informatiques et transmission de l'information",
+       "priority": "ensuite",
+       "code": "TG143"
+      }
+     ]
+    },
+    {
+     "name": "Design, innovation et créativité",
+     "courses": [
+      {
+       "title": "Imaginer et concevoir une solution en projet",
+       "priority": "ensuite",
+       "code": "TG144",
+       "official_note": "Thème officiel « Design, innovation et créativité »."
+      }
+     ]
+    }
+   ],
+   "official_sources": [
+    {
+     "texte": "Programmes du cycle 4 (cycle des approfondissements), version consolidée",
+     "reference": "Arrêté du 17-7-2020, BO n°31 du 30 juillet 2020 (NOR MENE2018714A)",
+     "application": "En vigueur en 3e en 2026-2027 (les nouveaux programmes de 2026 n'arrivent en 3e qu'à la rentrée 2028)",
+     "lien": "https://www.education.gouv.fr/bo/20/Hebdo31/MENE2018714A.htm",
+     "contenu": "Programme de technologie du cycle 4. Thèmes : Design, innovation et créativité ; Les objets techniques, les services et les changements induits dans la société ; La modélisation et la simulation des objets et systèmes techniques ; L'informatique et la programmation."
+    },
+    {
+     "texte": "Épreuve de sciences du diplôme national du brevet",
+     "reference": "Ministère de l'Éducation nationale, page DNB consultée le 24-11-2026",
+     "application": "Session 2027 du DNB",
+     "lien": "https://www.education.gouv.fr/reussir-au-college/le-diplome-national-du-brevet-dnb-9900",
+     "contenu": "Deux disciplines parmi physique-chimie, SVT et technologie."
+    }
+   ]
+  },
+  {
+   "name": "Anglais (LV1)",
+   "chapters": [
+    {
+     "name": "Grammaire et outils de la langue",
+     "courses": [
+      {
+       "title": "Présent simple et présent en be + -ing",
+       "priority": "prioritaire",
+       "code": "TG145"
+      },
+      {
+       "title": "Prétérit simple et prétérit en be + -ing",
+       "priority": "prioritaire",
+       "code": "TG146"
+      },
+      {
+       "title": "Present perfect : since, for, already, yet",
+       "priority": "prioritaire",
+       "code": "TG147"
+      },
+      {
+       "title": "Le futur : will, be going to, présent en -ing",
+       "priority": "prioritaire",
+       "code": "TG148"
+      },
+      {
+       "title": "Les modaux : can, must, should, may, might",
+       "priority": "prioritaire",
+       "code": "TG149"
+      },
+      {
+       "title": "Comparatifs et superlatifs",
+       "priority": "ensuite",
+       "code": "TG150"
+      },
+      {
+       "title": "Le conditionnel et les phrases en if",
+       "priority": "ensuite",
+       "code": "TG151"
+      },
+      {
+       "title": "La voix passive",
+       "priority": "ensuite",
+       "code": "TG152"
+      }
+     ]
+    },
+    {
+     "name": "Activités langagières (niveau A2-B1)",
+     "courses": [
+      {
+       "title": "Comprendre un document audio ou vidéo",
+       "priority": "prioritaire",
+       "code": "TG153",
+       "official_note": "Activité langagière officielle : écouter et comprendre."
+      },
+      {
+       "title": "Lire et comprendre un texte",
+       "priority": "prioritaire",
+       "code": "TG154"
+      },
+      {
+       "title": "S'exprimer à l'oral en continu : se présenter, raconter",
+       "priority": "ensuite",
+       "code": "TG155"
+      },
+      {
+       "title": "Écrire un texte court : récit, lettre, opinion",
+       "priority": "ensuite",
+       "code": "TG156"
+      }
+     ]
+    },
+    {
+     "name": "Culture du monde anglophone",
+     "courses": [
+      {
+       "title": "Langages : arts, médias et réseaux",
+       "priority": "ensuite",
+       "code": "TG157",
+       "official_note": "Axe culturel « Langages »."
+      },
+      {
+       "title": "École et société dans les pays anglophones",
+       "priority": "ensuite",
+       "code": "TG158"
+      },
+      {
+       "title": "Voyages et migrations",
+       "priority": "ensuite",
+       "code": "TG159"
+      },
+      {
+       "title": "Rencontres avec d'autres cultures : l'Amérique, le Royaume-Uni, le Commonwealth",
+       "priority": "ensuite",
+       "code": "TG160"
+      }
+     ]
+    }
+   ],
+   "official_sources": [
+    {
+     "texte": "Programmes du cycle 4 (cycle des approfondissements), version consolidée",
+     "reference": "Arrêté du 17-7-2020, BO n°31 du 30 juillet 2020 (NOR MENE2018714A)",
+     "application": "En vigueur en 3e en 2026-2027 (les nouveaux programmes de 2026 n'arrivent en 3e qu'à la rentrée 2028)",
+     "lien": "https://www.education.gouv.fr/bo/20/Hebdo31/MENE2018714A.htm",
+     "contenu": "Programme de langues vivantes étrangères et régionales du cycle 4 (anglais LV1). Niveau visé en fin de cycle : A2 pour toutes les activités langagières en LV2, B1 dans plusieurs activités pour la LV1. Axes culturels : langages ; école et société ; voyages et migrations ; rencontres avec d'autres cultures."
+    },
+    {
+     "texte": "Nouveaux programmes de langues vivantes du cycle 4",
+     "reference": "Nouveau programme publié en 2025 (référence BO non vérifiée)",
+     "application": "Arrivée en 3e à la rentrée 2028 seulement (non applicable en 2026-2027)",
+     "lien": "https://eduscol.education.gouv.fr/4362/enseigner-au-cycle-4",
+     "contenu": "Signalé pour information : la 3e de 2026-2027 reste sur le programme de 2015/2020."
+    }
+   ]
+  },
+  {
+   "name": "Espagnol (LV2)",
+   "chapters": [
+    {
+     "name": "Grammaire et outils de la langue",
+     "courses": [
+      {
+       "title": "Le présent de l'indicatif (réguliers, irréguliers, diphtongues)",
+       "priority": "prioritaire",
+       "code": "TG161"
+      },
+      {
+       "title": "Ser, estar et hay",
+       "priority": "prioritaire",
+       "code": "TG162"
+      },
+      {
+       "title": "Le passé : prétérit et passé composé",
+       "priority": "ensuite",
+       "code": "TG163"
+      },
+      {
+       "title": "Le futur et l'obligation (tener que, hay que)",
+       "priority": "ensuite",
+       "code": "TG164"
+      },
+      {
+       "title": "Gustar et l'expression des goûts",
+       "priority": "ensuite",
+       "code": "TG165"
+      }
+     ]
+    },
+    {
+     "name": "Activités langagières (niveau A2)",
+     "courses": [
+      {
+       "title": "Comprendre un document audio",
+       "priority": "ensuite",
+       "code": "TG166"
+      },
+      {
+       "title": "Lire un texte court",
+       "priority": "ensuite",
+       "code": "TG167"
+      },
+      {
+       "title": "Parler de soi et de son quotidien",
+       "priority": "ensuite",
+       "code": "TG168"
+      }
+     ]
+    },
+    {
+     "name": "Culture du monde hispanophone",
+     "courses": [
+      {
+       "title": "École et société en Espagne et en Amérique latine",
+       "priority": "ensuite",
+       "code": "TG169",
+       "official_note": "Axe culturel « École et société »."
+      },
+      {
+       "title": "Voyages, fêtes et traditions",
+       "priority": "ensuite",
+       "code": "TG170"
+      }
+     ]
+    }
+   ],
+   "official_sources": [
+    {
+     "texte": "Programmes du cycle 4 (cycle des approfondissements), version consolidée",
+     "reference": "Arrêté du 17-7-2020, BO n°31 du 30 juillet 2020 (NOR MENE2018714A)",
+     "application": "En vigueur en 3e en 2026-2027 (les nouveaux programmes de 2026 n'arrivent en 3e qu'à la rentrée 2028)",
+     "lien": "https://www.education.gouv.fr/bo/20/Hebdo31/MENE2018714A.htm",
+     "contenu": "Programme de langues vivantes étrangères et régionales du cycle 4 (espagnol LV2). Niveau visé en fin de cycle : A2 pour toutes les activités langagières en LV2, B1 dans plusieurs activités pour la LV1. Axes culturels : langages ; école et société ; voyages et migrations ; rencontres avec d'autres cultures."
+    },
+    {
+     "texte": "Nouveaux programmes de langues vivantes du cycle 4",
+     "reference": "Nouveau programme publié en 2025 (référence BO non vérifiée)",
+     "application": "Arrivée en 3e à la rentrée 2028 seulement (non applicable en 2026-2027)",
+     "lien": "https://eduscol.education.gouv.fr/4362/enseigner-au-cycle-4",
+     "contenu": "Signalé pour information : la 3e de 2026-2027 reste sur le programme de 2015/2020."
+    }
+   ]
+  },
+  {
+   "name": "Allemand (LV2)",
+   "chapters": [
+    {
+     "name": "Grammaire et outils de la langue",
+     "courses": [
+      {
+       "title": "Le présent et la place du verbe",
+       "priority": "prioritaire",
+       "code": "TG171"
+      },
+      {
+       "title": "Les cas : nominatif, accusatif, datif",
+       "priority": "prioritaire",
+       "code": "TG172"
+      },
+      {
+       "title": "Le parfait",
+       "priority": "ensuite",
+       "code": "TG173"
+      },
+      {
+       "title": "Les verbes de modalité",
+       "priority": "ensuite",
+       "code": "TG174"
+      },
+      {
+       "title": "Les subordonnées : weil, dass, wenn",
+       "priority": "ensuite",
+       "code": "TG175"
+      }
+     ]
+    },
+    {
+     "name": "Activités langagières (niveau A2)",
+     "courses": [
+      {
+       "title": "Comprendre un document audio",
+       "priority": "ensuite",
+       "code": "TG176"
+      },
+      {
+       "title": "Lire un texte court",
+       "priority": "ensuite",
+       "code": "TG177"
+      },
+      {
+       "title": "Parler de soi et de son quotidien",
+       "priority": "ensuite",
+       "code": "TG178"
+      }
+     ]
+    },
+    {
+     "name": "Culture des pays germanophones",
+     "courses": [
+      {
+       "title": "École et société en Allemagne, Autriche et Suisse",
+       "priority": "ensuite",
+       "code": "TG179",
+       "official_note": "Axe culturel « École et société »."
+      },
+      {
+       "title": "Voyages et rencontres : villes et régions",
+       "priority": "ensuite",
+       "code": "TG180"
+      }
+     ]
+    }
+   ],
+   "official_sources": [
+    {
+     "texte": "Programmes du cycle 4 (cycle des approfondissements), version consolidée",
+     "reference": "Arrêté du 17-7-2020, BO n°31 du 30 juillet 2020 (NOR MENE2018714A)",
+     "application": "En vigueur en 3e en 2026-2027 (les nouveaux programmes de 2026 n'arrivent en 3e qu'à la rentrée 2028)",
+     "lien": "https://www.education.gouv.fr/bo/20/Hebdo31/MENE2018714A.htm",
+     "contenu": "Programme de langues vivantes étrangères et régionales du cycle 4 (allemand LV2). Niveau visé en fin de cycle : A2 pour toutes les activités langagières en LV2, B1 dans plusieurs activités pour la LV1. Axes culturels : langages ; école et société ; voyages et migrations ; rencontres avec d'autres cultures."
+    },
+    {
+     "texte": "Nouveaux programmes de langues vivantes du cycle 4",
+     "reference": "Nouveau programme publié en 2025 (référence BO non vérifiée)",
+     "application": "Arrivée en 3e à la rentrée 2028 seulement (non applicable en 2026-2027)",
+     "lien": "https://eduscol.education.gouv.fr/4362/enseigner-au-cycle-4",
+     "contenu": "Signalé pour information : la 3e de 2026-2027 reste sur le programme de 2015/2020."
+    }
+   ]
+  },
+  {
+   "name": "Arts plastiques",
+   "chapters": [
+    {
+     "name": "Questionnements du cycle 4",
+     "courses": [
+      {
+       "title": "La représentation : images, réalité et fiction",
+       "priority": "ensuite",
+       "code": "TG181",
+       "official_note": "Questionnement officiel du cycle 4."
+      },
+      {
+       "title": "La matérialité de l'œuvre : l'objet et l'œuvre",
+       "priority": "ensuite",
+       "code": "TG182"
+      },
+      {
+       "title": "L'œuvre, l'espace, l'auteur, le spectateur",
+       "priority": "ensuite",
+       "code": "TG183"
+      },
+      {
+       "title": "Le numérique dans la création artistique",
+       "priority": "ensuite",
+       "code": "TG184"
+      }
+     ]
+    },
+    {
+     "name": "Histoire des arts",
+     "courses": [
+      {
+       "title": "Analyser une œuvre d'art (méthode)",
+       "priority": "ensuite",
+       "code": "TG185"
+      },
+      {
+       "title": "Préparer l'oral du brevet en histoire des arts",
+       "priority": "ensuite",
+       "code": "TG186"
+      }
+     ]
+    }
+   ],
+   "official_sources": [
+    {
+     "texte": "Programmes du cycle 4 (cycle des approfondissements), version consolidée",
+     "reference": "Arrêté du 17-7-2020, BO n°31 du 30 juillet 2020 (NOR MENE2018714A)",
+     "application": "En vigueur en 3e en 2026-2027 (les nouveaux programmes de 2026 n'arrivent en 3e qu'à la rentrée 2028)",
+     "lien": "https://www.education.gouv.fr/bo/20/Hebdo31/MENE2018714A.htm",
+     "contenu": "Programme d'arts plastiques du cycle 4 : la représentation, images, réalité et fiction ; la matérialité de l'œuvre, l'objet et l'œuvre ; l'œuvre, l'espace, l'auteur, le spectateur. Histoire des arts (oral du DNB)."
+    }
+   ]
+  },
+  {
+   "name": "Éducation musicale",
+   "chapters": [
+    {
+     "name": "Compétences du cycle 4",
+     "courses": [
+      {
+       "title": "Écouter et comparer des œuvres musicales",
+       "priority": "ensuite",
+       "code": "TG187",
+       "official_note": "Compétence officielle : « Écouter, comparer, construire une culture musicale et artistique »."
+      },
+      {
+       "title": "Le vocabulaire musical : timbre, rythme, mélodie, forme",
+       "priority": "ensuite",
+       "code": "TG188"
+      },
+      {
+       "title": "Musique et engagement : la musique dans l'histoire du XXe siècle",
+       "priority": "ensuite",
+       "code": "TG189"
+      },
+      {
+       "title": "Interpréter et créer un projet musical",
+       "priority": "ensuite",
+       "code": "TG190"
+      },
+      {
+       "title": "Argumenter un jugement sur la musique",
+       "priority": "ensuite",
+       "code": "TG191"
+      }
+     ]
+    }
+   ],
+   "official_sources": [
+    {
+     "texte": "Programmes du cycle 4 (cycle des approfondissements), version consolidée",
+     "reference": "Arrêté du 17-7-2020, BO n°31 du 30 juillet 2020 (NOR MENE2018714A)",
+     "application": "En vigueur en 3e en 2026-2027 (les nouveaux programmes de 2026 n'arrivent en 3e qu'à la rentrée 2028)",
+     "lien": "https://www.education.gouv.fr/bo/20/Hebdo31/MENE2018714A.htm",
+     "contenu": "Programme d'éducation musicale du cycle 4 : réaliser des projets musicaux d'interprétation ou de création ; écouter, comparer, construire une culture musicale commune ; explorer, imaginer et créer ; échanger, partager, argumenter."
+    }
+   ]
+  }
+ ],
+ "general_sources": [
+  {
+   "texte": "Enseigner au cycle 4 : programmes en vigueur par classe",
+   "reference": "Éduscol, page consultée le 24-11-2026",
+   "application": "Année scolaire 2026-2027",
+   "lien": "https://eduscol.education.gouv.fr/4362/enseigner-au-cycle-4",
+   "contenu": "En 2026-2027, la 3e suit le programme du cycle 4 publié au BO du 30 juillet 2020 ; les nouveaux programmes de français et de mathématiques (BO n°10 du 5 mars 2026) n'arrivent en 3e qu'à la rentrée 2028."
+  },
+  {
+   "texte": "Nouveaux programmes de français et de mathématiques du cycle 4",
+   "reference": "Arrêté du 18-2-2026, BO n°10 du 5 mars 2026 (NOR MENE2602912A)",
+   "application": "5e en 2026, 4e en 2027, 3e en 2028 (non applicable en 3e en 2026-2027)",
+   "lien": "https://www.education.gouv.fr/bo/2026/Hebdo10/MENE2602912A",
+   "contenu": "Cité pour mémoire : non retenu pour ce fichier."
+  },
+  {
+   "texte": "Repères annuels de progression et attendus de fin d'année du CP à la troisième",
+   "reference": "Éduscol, documents publiés au BO n°22 du 29 mai 2019 (français, mathématiques)",
+   "application": "Classe de 3e",
+   "lien": "https://eduscol.education.gouv.fr/6910/reperes-annuels-de-progression-et-attendus-de-fin-d-annee-du-cp-la-troisieme",
+   "contenu": "Repères annuels et attendus de fin de 3e (français, mathématiques, sciences)."
+  },
+  {
+   "texte": "Le diplôme national du brevet",
+   "reference": "Ministère de l'Éducation nationale",
+   "application": "Session 2027",
+   "lien": "https://www.education.gouv.fr/reussir-au-college/le-diplome-national-du-brevet-dnb-9900",
+   "contenu": "Épreuves écrites : français, mathématiques, histoire-géographie-EMC, sciences ; oral de soutenance."
+  }
+ ],
+ "sources_checked": "2026-11-24"
+}

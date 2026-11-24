@@ -1,0 +1,1129 @@
+{
+  "format": "syllig-course/1",
+  "code": "TG035",
+  "level": "troisieme-generale",
+  "subject": "Mathématiques",
+  "chapter": "Nombres et calculs (début d'année)",
+  "title": "Puissances et notation scientifique",
+  "skills": [
+    {
+      "id": "m3-puissance-definition",
+      "label": "Calculer une puissance d'un nombre relatif"
+    },
+    {
+      "id": "m3-puissance-regles",
+      "label": "Utiliser les règles de calcul sur les puissances"
+    },
+    {
+      "id": "m3-puissances-de-10",
+      "label": "Calculer avec les puissances de 10 et les préfixes (nano à giga)"
+    },
+    {
+      "id": "m3-notation-scientifique",
+      "label": "Écrire un nombre en notation scientifique"
+    },
+    {
+      "id": "m3-ordres-de-grandeur",
+      "label": "Calculer et comparer des grandeurs en notation scientifique"
+    }
+  ],
+  "lesson": {
+    "duration_min": 40,
+    "objectives": [
+      "calculer une puissance d'un nombre relatif sans erreur de signe ;",
+      "utiliser les règles de calcul sur les puissances d'un même nombre ;",
+      "calculer avec les puissances de 10, y compris d'exposant négatif ;",
+      "écrire un nombre en notation scientifique ;",
+      "calculer et comparer des grandeurs très grandes ou très petites."
+    ],
+    "essential": "Une puissance est une écriture courte pour une multiplication répétée : 2⁵ = 2 × 2 × 2 × 2 × 2. Les puissances de 10 permettent d'écrire facilement les très grands nombres (distances dans l'espace) et les très petits (taille d'une cellule). La notation scientifique a × 10ⁿ, avec 1 ≤ a < 10, est l'écriture qu'utilisent les scientifiques et la calculatrice : elle donne d'un coup d'œil l'ordre de grandeur d'un nombre.",
+    "parts": [
+      {
+        "title": "Puissance d'un nombre : définition et signe",
+        "blocks": [
+          {
+            "type": "callout",
+            "kind": "definition",
+            "text": "Pour un nombre a et un entier n ≥ 1, la **puissance n-ième de a** est le produit de n facteurs tous égaux à a :\naⁿ = a × a × … × a (n facteurs).\nOn lit « a puissance n » ou « a exposant n ». Le nombre n s'appelle l'**exposant**.\nPar convention, a¹ = a et, pour a ≠ 0, a⁰ = 1."
+          },
+          {
+            "type": "formula",
+            "latex": "2⁵ = 2 × 2 × 2 × 2 × 2 = 32\n(−3)⁴ = (−3) × (−3) × (−3) × (−3) = 81\n(−2)³ = (−2) × (−2) × (−2) = −8"
+          },
+          {
+            "type": "callout",
+            "kind": "retiens",
+            "title": "Signe d'une puissance",
+            "text": "Une puissance d'un nombre négatif est :\n• **positive** si l'exposant est **pair** ;\n• **négative** si l'exposant est **impair**.\nC'est la règle des signes : on compte les facteurs négatifs."
+          },
+          {
+            "type": "callout",
+            "kind": "attention",
+            "text": "Les parenthèses changent tout !\n(−3)² = (−3) × (−3) = 9 : le carré porte sur −3.\n−3² = −(3 × 3) = −9 : le carré porte seulement sur 3, le signe − reste devant.\nDe même, 2³ ≠ 2 × 3 : 2³ = 8 alors que 2 × 3 = 6."
+          },
+          {
+            "type": "heading",
+            "text": "Puissances et priorités"
+          },
+          {
+            "type": "text",
+            "text": "Les puissances se calculent **avant** les multiplications et les additions (mais après les parenthèses)."
+          },
+          {
+            "type": "formula",
+            "latex": "2 × 3² = 2 × 9 = 18\n(2 × 3)² = 6² = 36"
+          },
+          {
+            "type": "callout",
+            "kind": "plus",
+            "text": "Pour a ≠ 0, on définit aussi a⁻ⁿ = 1/aⁿ. Par exemple 2⁻³ = 1/2³ = 1/8. Tu utiliseras surtout cette écriture avec les puissances de 10 (partie 3)."
+          }
+        ],
+        "checkpoint": {
+          "variants": [
+            {
+              "prompt": "Combien vaut 3⁴ ?",
+              "options": [
+                "12",
+                "81",
+                "64",
+                "7"
+              ],
+              "answer": 1,
+              "hint": "Écris le produit de 4 facteurs égaux à 3.",
+              "explanation": "3⁴ = 3 × 3 × 3 × 3 = 9 × 9 = 81."
+            },
+            {
+              "prompt": "Combien vaut (−2)⁴ ?",
+              "options": [
+                "−16",
+                "−8",
+                "16",
+                "8"
+              ],
+              "answer": 2,
+              "hint": "L'exposant est-il pair ou impair ?",
+              "explanation": "4 est pair, donc le résultat est positif : (−2)⁴ = 2⁴ = 16."
+            },
+            {
+              "prompt": "Combien vaut −5² ?",
+              "options": [
+                "25",
+                "−25",
+                "−10",
+                "10"
+              ],
+              "answer": 1,
+              "hint": "Le carré porte-t-il sur −5 ou seulement sur 5 ? Regarde s'il y a des parenthèses.",
+              "explanation": "Sans parenthèses, le carré porte seulement sur 5 : −5² = −(5 × 5) = −25."
+            }
+          ]
+        }
+      },
+      {
+        "title": "Règles de calcul sur les puissances",
+        "blocks": [
+          {
+            "type": "text",
+            "text": "Ces règles se retrouvent en comptant les facteurs. Exemple : 2³ × 2⁴ = (2 × 2 × 2) × (2 × 2 × 2 × 2) : il y a 3 + 4 = 7 facteurs, donc 2³ × 2⁴ = 2⁷."
+          },
+          {
+            "type": "table",
+            "columns": [
+              "Règle (a ≠ 0, m et n entiers)",
+              "Ce qu'on fait",
+              "Exemple"
+            ],
+            "rows": [
+              [
+                "aᵐ × aⁿ = aᵐ⁺ⁿ",
+                "Même nombre a : on additionne les exposants.",
+                "5³ × 5⁴ = 5⁷"
+              ],
+              [
+                "aᵐ ÷ aⁿ = aᵐ⁻ⁿ",
+                "Même nombre a : on soustrait les exposants.",
+                "2⁸ ÷ 2³ = 2⁵"
+              ],
+              [
+                "(aᵐ)ⁿ = aᵐˣⁿ",
+                "Puissance d'une puissance : on multiplie les exposants.",
+                "(7²)³ = 7⁶"
+              ],
+              [
+                "(a × b)ⁿ = aⁿ × bⁿ",
+                "Puissance d'un produit : chaque facteur reçoit l'exposant.",
+                "(2 × 5)³ = 2³ × 5³ = 1 000"
+              ]
+            ]
+          },
+          {
+            "type": "callout",
+            "kind": "methode",
+            "title": "Retrouver une règle si tu l'as oubliée",
+            "text": "Pour 2⁸ ÷ 2³ : 2⁸ ÷ 2³ = (2 × 2 × 2 × 2 × 2 × 2 × 2 × 2)/(2 × 2 × 2). On simplifie 3 facteurs 2 : il en reste 8 − 3 = 5, donc 2⁵ = 32."
+          },
+          {
+            "type": "callout",
+            "kind": "attention",
+            "text": "Il n'y a **pas** de règle pour une somme : 2³ + 2² = 8 + 4 = 12, alors que 2⁵ = 32.\nEt on ne regroupe pas des nombres différents : 2³ × 3² = 8 × 9 = 72, ce n'est ni 6⁵ ni 5⁶."
+          }
+        ],
+        "checkpoint": {
+          "variants": [
+            {
+              "prompt": "5³ × 5⁴ est égal à :",
+              "options": [
+                "5¹²",
+                "5⁷",
+                "25⁷",
+                "10⁷"
+              ],
+              "answer": 1,
+              "hint": "Même nombre 5 : que fait-on des exposants dans un produit ?",
+              "explanation": "On additionne les exposants : 5³ × 5⁴ = 5³⁺⁴ = 5⁷."
+            },
+            {
+              "prompt": "(7²)³ est égal à :",
+              "options": [
+                "7⁵",
+                "7⁸",
+                "7⁶",
+                "49⁶"
+              ],
+              "answer": 2,
+              "hint": "C'est une puissance d'une puissance : relis la 3e ligne du tableau.",
+              "explanation": "(7²)³ = 7² × 7² × 7² = 7²ˣ³ = 7⁶."
+            },
+            {
+              "prompt": "2⁸ ÷ 2³ est égal à :",
+              "options": [
+                "2⁵",
+                "2¹¹",
+                "1⁵",
+                "2²⁴"
+              ],
+              "answer": 0,
+              "hint": "Combien reste-t-il de facteurs 2 après simplification ?",
+              "explanation": "On soustrait les exposants : 2⁸ ÷ 2³ = 2⁸⁻³ = 2⁵."
+            },
+            {
+              "prompt": "2³ + 2² est égal à :",
+              "options": [
+                "2⁵",
+                "4⁵",
+                "12",
+                "32"
+              ],
+              "answer": 2,
+              "hint": "Relis l'encadré « Attention » : y a-t-il une règle pour une somme ?",
+              "explanation": "Pas de règle pour une somme : on calcule chaque puissance. 2³ + 2² = 8 + 4 = 12."
+            }
+          ]
+        }
+      },
+      {
+        "title": "Les puissances de 10",
+        "blocks": [
+          {
+            "type": "callout",
+            "kind": "retiens",
+            "title": "Écriture décimale",
+            "text": "Pour n entier positif :\n10ⁿ = 1 suivi de n zéros. Exemple : 10⁵ = 100 000.\n10⁻ⁿ = 1/10ⁿ = 0,0…01, avec le chiffre 1 en n-ième position après la virgule. Exemple : 10⁻³ = 0,001.\n10⁰ = 1."
+          },
+          {
+            "type": "text",
+            "text": "Les règles de la partie 2 s'appliquent aussi avec des exposants négatifs :"
+          },
+          {
+            "type": "formula",
+            "latex": "10⁵ × 10⁻⁸ = 10⁵⁺⁽⁻⁸⁾ = 10⁻³\n10⁴ ÷ 10⁻² = 10⁴⁻⁽⁻²⁾ = 10⁶\n(10⁻²)³ = 10⁻⁶"
+          },
+          {
+            "type": "callout",
+            "kind": "methode",
+            "title": "Multiplier un nombre par une puissance de 10",
+            "text": "Multiplier par 10ⁿ (n positif) : la virgule se déplace de n rangs vers la **droite**.\nMultiplier par 10⁻ⁿ : la virgule se déplace de n rangs vers la **gauche**.\n3,7 × 10⁴ = 37 000\n52 × 10⁻³ = 0,052"
+          },
+          {
+            "type": "table",
+            "caption": "Préfixes à connaître",
+            "columns": [
+              "Préfixe",
+              "Symbole",
+              "Puissance de 10",
+              "Exemple"
+            ],
+            "rows": [
+              [
+                "giga",
+                "G",
+                "10⁹",
+                "1 Go = 10⁹ octets"
+              ],
+              [
+                "méga",
+                "M",
+                "10⁶",
+                "1 MW = 10⁶ watts"
+              ],
+              [
+                "kilo",
+                "k",
+                "10³",
+                "1 km = 10³ m"
+              ],
+              [
+                "milli",
+                "m",
+                "10⁻³",
+                "1 mm = 10⁻³ m"
+              ],
+              [
+                "micro",
+                "µ",
+                "10⁻⁶",
+                "1 µm = 10⁻⁶ m"
+              ],
+              [
+                "nano",
+                "n",
+                "10⁻⁹",
+                "1 nm = 10⁻⁹ m"
+              ]
+            ]
+          },
+          {
+            "type": "callout",
+            "kind": "attention",
+            "text": "10⁻³ n'est pas un nombre négatif ! 10⁻³ = 0,001 est un petit nombre positif. Le signe − dans l'exposant indique qu'on divise par 10 plusieurs fois."
+          }
+        ],
+        "checkpoint": {
+          "variants": [
+            {
+              "prompt": "Quelle est l'écriture décimale de 10⁻⁴ ?",
+              "options": [
+                "−10 000",
+                "0,000 1",
+                "0,001",
+                "−0,000 1"
+              ],
+              "answer": 1,
+              "hint": "Le chiffre 1 se trouve à la 4e position après la virgule.",
+              "explanation": "10⁻⁴ = 1/10 000 = 0,000 1."
+            },
+            {
+              "prompt": "10⁷ × 10⁻³ est égal à :",
+              "options": [
+                "10⁴",
+                "10¹⁰",
+                "10⁻²¹",
+                "10⁻⁴"
+              ],
+              "answer": 0,
+              "hint": "Même nombre 10 : on additionne les exposants (attention au signe).",
+              "explanation": "7 + (−3) = 4, donc 10⁷ × 10⁻³ = 10⁴."
+            },
+            {
+              "prompt": "10² ÷ 10⁵ est égal à :",
+              "options": [
+                "10³",
+                "10⁷",
+                "10⁻³",
+                "10⁻⁷"
+              ],
+              "answer": 2,
+              "hint": "On soustrait les exposants : 2 − 5 = ?",
+              "explanation": "2 − 5 = −3, donc 10² ÷ 10⁵ = 10⁻³."
+            },
+            {
+              "prompt": "Un nanomètre (1 nm) est égal à :",
+              "options": [
+                "10⁹ m",
+                "10⁻⁶ m",
+                "10⁻⁹ m",
+                "10⁻³ m"
+              ],
+              "answer": 2,
+              "hint": "Regarde le tableau des préfixes.",
+              "explanation": "Le préfixe nano correspond à 10⁻⁹ : 1 nm = 10⁻⁹ m."
+            }
+          ]
+        }
+      },
+      {
+        "title": "La notation scientifique",
+        "blocks": [
+          {
+            "type": "callout",
+            "kind": "definition",
+            "text": "Un nombre décimal positif est écrit en **notation scientifique** quand il est sous la forme\na × 10ⁿ\noù a est un nombre décimal tel que **1 ≤ a < 10** (un seul chiffre non nul avant la virgule) et n est un entier relatif."
+          },
+          {
+            "type": "callout",
+            "kind": "methode",
+            "title": "Écrire un nombre en notation scientifique",
+            "text": "1. Je place la virgule juste après le premier chiffre non nul : j'obtiens a.\n2. Je compte de combien de rangs la virgule s'est déplacée : c'est la valeur de n.\n3. Si le nombre de départ est grand (≥ 10), n est positif ; s'il est petit (< 1), n est négatif.\n4. Je vérifie en revenant à l'écriture décimale."
+          },
+          {
+            "type": "formula",
+            "latex": "45 300 = 4,53 × 10⁴      (la virgule a reculé de 4 rangs)\n0,000 72 = 7,2 × 10⁻⁴     (la virgule a avancé de 4 rangs)"
+          },
+          {
+            "type": "heading",
+            "text": "Si le nombre est déjà écrit avec une puissance de 10"
+          },
+          {
+            "type": "text",
+            "text": "On écrit le premier facteur en notation scientifique, puis on regroupe les puissances de 10."
+          },
+          {
+            "type": "formula",
+            "latex": "38 × 10⁵ = 3,8 × 10¹ × 10⁵ = 3,8 × 10⁶\n0,25 × 10⁻³ = 2,5 × 10⁻¹ × 10⁻³ = 2,5 × 10⁻⁴"
+          },
+          {
+            "type": "callout",
+            "kind": "attention",
+            "text": "12 × 10³ et 0,5 × 10⁴ ne sont **pas** des notations scientifiques : le premier facteur doit être au moins égal à 1 et strictement inférieur à 10. Et 10 × 10⁴ non plus : on écrit 1 × 10⁵ (ou simplement 10⁵)."
+          }
+        ],
+        "checkpoint": {
+          "variants": [
+            {
+              "prompt": "Quelle est la notation scientifique de 607 000 ?",
+              "options": [
+                "60,7 × 10⁴",
+                "6,07 × 10⁵",
+                "6,07 × 10⁴",
+                "0,607 × 10⁶"
+              ],
+              "answer": 1,
+              "hint": "Place la virgule après le premier chiffre non nul, puis compte les rangs.",
+              "explanation": "607 000 = 6,07 × 10⁵ : la virgule a reculé de 5 rangs et 1 ≤ 6,07 < 10."
+            },
+            {
+              "prompt": "Lequel de ces nombres est écrit en notation scientifique ?",
+              "options": [
+                "0,5 × 10³",
+                "12 × 10⁴",
+                "9,9 × 10⁻²",
+                "10 × 10²"
+              ],
+              "answer": 2,
+              "hint": "Le premier facteur doit être au moins égal à 1 et strictement inférieur à 10.",
+              "explanation": "Seul 9,9 vérifie 1 ≤ a < 10. L'exposant −2 est bien un entier relatif."
+            },
+            {
+              "prompt": "Quelle est la notation scientifique de 0,003 1 ?",
+              "options": [
+                "3,1 × 10³",
+                "3,1 × 10⁻³",
+                "31 × 10⁻⁴",
+                "3,1 × 10⁻²"
+              ],
+              "answer": 1,
+              "hint": "Le nombre est plus petit que 1 : l'exposant sera négatif. De combien de rangs avance la virgule ?",
+              "explanation": "La virgule avance de 3 rangs : 0,003 1 = 3,1 × 10⁻³."
+            }
+          ]
+        }
+      },
+      {
+        "title": "Calculer et comparer en notation scientifique",
+        "blocks": [
+          {
+            "type": "callout",
+            "kind": "methode",
+            "title": "Calculer un produit ou un quotient",
+            "text": "1. Je regroupe les nombres décimaux d'un côté et les puissances de 10 de l'autre.\n2. Je calcule chaque groupe (règles des puissances pour les 10).\n3. Je remets le résultat en notation scientifique si nécessaire."
+          },
+          {
+            "type": "formula",
+            "latex": "(3 × 10⁵) × (4 × 10⁻²) = (3 × 4) × 10⁵⁻² = 12 × 10³ = 1,2 × 10⁴"
+          },
+          {
+            "type": "formula",
+            "latex": "(6 × 10⁸) ÷ (2 × 10³) = (6 ÷ 2) × 10⁸⁻³ = 3 × 10⁵"
+          },
+          {
+            "type": "callout",
+            "kind": "retiens",
+            "title": "Comparer",
+            "text": "Pour comparer deux nombres positifs écrits en notation scientifique, on compare d'abord les **exposants** : le plus grand exposant donne le plus grand nombre. Si les exposants sont égaux, on compare les nombres a.\nExemple : 2 × 10⁵ > 9 × 10⁴, car 5 > 4 (200 000 > 90 000)."
+          },
+          {
+            "type": "callout",
+            "kind": "methode",
+            "title": "Problème résolu : la lumière du Soleil",
+            "text": "La lumière parcourt environ 3 × 10⁵ km par seconde. La distance Terre–Soleil est d'environ 1,5 × 10⁸ km. Combien de temps met la lumière du Soleil pour nous parvenir ?\nTemps = distance ÷ vitesse = (1,5 × 10⁸) ÷ (3 × 10⁵) = (1,5 ÷ 3) × 10⁸⁻⁵ = 0,5 × 10³ = 500 s.\n500 s = 8 × 60 s + 20 s, soit 8 min 20 s."
+          },
+          {
+            "type": "callout",
+            "kind": "plus",
+            "text": "L'**ordre de grandeur** d'un nombre est une valeur approchée simple, souvent une puissance de 10. Avec la notation scientifique, l'exposant donne immédiatement la « taille » du nombre."
+          }
+        ],
+        "checkpoint": {
+          "variants": [
+            {
+              "prompt": "(2 × 10³) × (4 × 10⁵) est égal à :",
+              "options": [
+                "8 × 10¹⁵",
+                "8 × 10⁸",
+                "6 × 10⁸",
+                "8 × 10²"
+              ],
+              "answer": 1,
+              "hint": "Multiplie 2 par 4, puis additionne les exposants de 10.",
+              "explanation": "2 × 4 = 8 et 10³ × 10⁵ = 10⁸ : le résultat est 8 × 10⁸."
+            },
+            {
+              "prompt": "Quel est le plus grand de ces nombres ?",
+              "options": [
+                "9 × 10⁻³",
+                "3 × 10⁻²",
+                "2 × 10⁻⁴",
+                "9,9 × 10⁻⁴"
+              ],
+              "answer": 1,
+              "hint": "Compare d'abord les exposants : le plus grand est celui qui est le plus proche de 0 ici.",
+              "explanation": "−2 est le plus grand exposant : 3 × 10⁻² = 0,03, alors que 9 × 10⁻³ = 0,009."
+            },
+            {
+              "prompt": "Quelle est la notation scientifique de (5 × 10⁶) × (4 × 10²) ?",
+              "options": [
+                "20 × 10⁸",
+                "2 × 10⁹",
+                "2 × 10⁸",
+                "9 × 10⁸"
+              ],
+              "answer": 1,
+              "hint": "Calcule, puis vérifie que le premier facteur est entre 1 et 10.",
+              "explanation": "5 × 4 = 20 et 10⁶ × 10² = 10⁸, donc 20 × 10⁸ = 2 × 10¹ × 10⁸ = 2 × 10⁹."
+            }
+          ]
+        }
+      }
+    ],
+    "memo": [
+      {
+        "label": "Définition",
+        "text": "aⁿ = a × a × … × a (n facteurs) ; a¹ = a ; a⁰ = 1 (a ≠ 0)."
+      },
+      {
+        "label": "Signe",
+        "text": "(−a)ⁿ est positif si n est pair, négatif si n est impair. Attention : −3² = −9 mais (−3)² = 9."
+      },
+      {
+        "label": "Règles",
+        "text": "aᵐ × aⁿ = aᵐ⁺ⁿ ; aᵐ ÷ aⁿ = aᵐ⁻ⁿ ; (aᵐ)ⁿ = aᵐˣⁿ ; (ab)ⁿ = aⁿbⁿ. Pas de règle pour une somme."
+      },
+      {
+        "label": "Puissances de 10",
+        "text": "10ⁿ = 1 suivi de n zéros ; 10⁻ⁿ = 0,0…01 (1 à la n-ième décimale). 10⁻³ est positif !"
+      },
+      {
+        "label": "Préfixes",
+        "text": "giga 10⁹, méga 10⁶, kilo 10³, milli 10⁻³, micro 10⁻⁶, nano 10⁻⁹."
+      },
+      {
+        "label": "Notation scientifique",
+        "text": "a × 10ⁿ avec 1 ≤ a < 10 et n entier relatif. Ex. : 45 300 = 4,53 × 10⁴ ; 0,000 72 = 7,2 × 10⁻⁴."
+      },
+      {
+        "label": "Calculer",
+        "text": "On regroupe les décimaux d'un côté, les puissances de 10 de l'autre, puis on remet en notation scientifique."
+      }
+    ]
+  },
+  "exercises": {
+    "duration_min": 35,
+    "instructions": "Fais les exercices dans l'ordre, au brouillon d'abord, sans calculatrice. Pour un nombre négatif, tape le signe moins du clavier (-), par exemple -8. Les nombres décimaux s'écrivent avec une virgule ou un point. Les corrigés s'affichent après tes réponses.",
+    "pass_threshold": 8,
+    "texts": [],
+    "items": [
+      {
+        "id": "ex1",
+        "type": "numeric",
+        "stars": 1,
+        "lesson_part": 1,
+        "skills": [
+          "m3-puissance-definition"
+        ],
+        "cognitive": "appliquer",
+        "prompt": "Calcule (−2)⁵.",
+        "answer": -32,
+        "solution": "(−2)⁵ = (−2) × (−2) × (−2) × (−2) × (−2). L'exposant 5 est impair : le résultat est négatif. 2⁵ = 32, donc (−2)⁵ = −32."
+      },
+      {
+        "id": "ex2",
+        "type": "qcm",
+        "stars": 1,
+        "lesson_part": 2,
+        "skills": [
+          "m3-puissance-regles"
+        ],
+        "cognitive": "connaitre",
+        "prompt": "3⁴ × 3² est égal à :",
+        "options": [
+          "3⁸",
+          "3⁶",
+          "9⁶",
+          "6⁶"
+        ],
+        "answer": 1,
+        "solution": "Même nombre 3 : on additionne les exposants. 3⁴ × 3² = 3⁴⁺² = 3⁶ (= 729)."
+      },
+      {
+        "id": "ex3",
+        "type": "numeric",
+        "stars": 1,
+        "lesson_part": 3,
+        "skills": [
+          "m3-puissances-de-10"
+        ],
+        "cognitive": "connaitre",
+        "prompt": "Donne l'écriture décimale de 10⁻³.",
+        "answer": 0.001,
+        "solution": "10⁻³ = 1/10³ = 1/1 000 = 0,001 (le 1 est à la 3e position après la virgule)."
+      },
+      {
+        "id": "ex4",
+        "type": "qcm",
+        "stars": 1,
+        "lesson_part": 4,
+        "skills": [
+          "m3-notation-scientifique"
+        ],
+        "cognitive": "appliquer",
+        "prompt": "Quelle est la notation scientifique de 82 000 000 ?",
+        "options": [
+          "8,2 × 10⁷",
+          "82 × 10⁶",
+          "8,2 × 10⁶",
+          "0,82 × 10⁸"
+        ],
+        "answer": 0,
+        "solution": "On place la virgule après le 8 : 8,2. La virgule a reculé de 7 rangs, donc 82 000 000 = 8,2 × 10⁷.\n82 × 10⁶ et 0,82 × 10⁸ sont égaux à ce nombre, mais ce ne sont pas des notations scientifiques (82 ≥ 10 et 0,82 < 1)."
+      },
+      {
+        "id": "ex5",
+        "type": "numeric",
+        "stars": 2,
+        "lesson_part": 1,
+        "skills": [
+          "m3-puissance-definition"
+        ],
+        "cognitive": "appliquer",
+        "prompt": "Calcule A = 2 × (−5)² − 3².",
+        "answer": 41,
+        "solution": "Les puissances d'abord : (−5)² = 25 (exposant pair) et 3² = 9.\nPuis la multiplication : 2 × 25 = 50.\nEnfin : A = 50 − 9 = 41."
+      },
+      {
+        "id": "ex6",
+        "type": "numeric",
+        "stars": 2,
+        "lesson_part": 3,
+        "skills": [
+          "m3-puissances-de-10",
+          "m3-puissance-regles"
+        ],
+        "cognitive": "appliquer",
+        "prompt": "On a B = 10⁵ × 10⁻² ÷ 10⁴. Écris B sous la forme 10ⁿ et donne la valeur de l'exposant n.",
+        "answer": -1,
+        "solution": "10⁵ × 10⁻² = 10⁵⁺⁽⁻²⁾ = 10³, puis 10³ ÷ 10⁴ = 10³⁻⁴ = 10⁻¹.\nDonc B = 10⁻¹ = 0,1 et n = −1."
+      },
+      {
+        "id": "ex7",
+        "type": "numeric",
+        "stars": 2,
+        "lesson_part": 4,
+        "skills": [
+          "m3-notation-scientifique"
+        ],
+        "cognitive": "appliquer",
+        "prompt": "On écrit 0,000 045 6 en notation scientifique a × 10ⁿ. Quelle est la valeur de l'exposant n ?",
+        "answer": -5,
+        "solution": "On place la virgule après le 4 : a = 4,56. La virgule a avancé de 5 rangs vers la droite, donc 0,000 045 6 = 4,56 × 10⁻⁵ et n = −5.\nVérification : 4,56 × 10⁻⁵ = 0,000 045 6."
+      },
+      {
+        "id": "ex8",
+        "type": "qcm",
+        "stars": 2,
+        "lesson_part": 5,
+        "skills": [
+          "m3-notation-scientifique",
+          "m3-puissances-de-10"
+        ],
+        "cognitive": "appliquer",
+        "prompt": "Quelle est la notation scientifique de C = (3 × 10⁴) × (5 × 10⁻⁷) ?",
+        "options": [
+          "1,5 × 10⁻²",
+          "15 × 10⁻³",
+          "1,5 × 10⁻³",
+          "1,5 × 10⁻¹¹"
+        ],
+        "answer": 0,
+        "solution": "C = (3 × 5) × 10⁴⁺⁽⁻⁷⁾ = 15 × 10⁻³ = 1,5 × 10¹ × 10⁻³ = 1,5 × 10⁻².\n15 × 10⁻³ est égal à C mais n'est pas une notation scientifique (15 ≥ 10)."
+      },
+      {
+        "id": "ex9",
+        "type": "numeric",
+        "stars": 3,
+        "lesson_part": 5,
+        "skills": [
+          "m3-ordres-de-grandeur",
+          "m3-puissances-de-10"
+        ],
+        "cognitive": "analyser",
+        "prompt": "Un disque dur a une capacité de 2 To, soit 2 × 10¹² octets. Une photo occupe 4 Mo, soit 4 × 10⁶ octets. Combien de photos peut-on enregistrer au maximum sur ce disque ?",
+        "answer": 500000,
+        "solution": "Nombre de photos = (2 × 10¹²) ÷ (4 × 10⁶) = (2 ÷ 4) × 10¹²⁻⁶ = 0,5 × 10⁶ = 500 000 photos."
+      },
+      {
+        "id": "ex10",
+        "type": "numeric",
+        "stars": 3,
+        "lesson_part": 5,
+        "skills": [
+          "m3-ordres-de-grandeur",
+          "m3-puissances-de-10"
+        ],
+        "cognitive": "analyser",
+        "prompt": "Une cellule mesure 8 µm (8 micromètres) de diamètre. Combien de ces cellules faudrait-il aligner, côte à côte, pour former une ligne de 2 cm ?",
+        "answer": 2500,
+        "solution": "On convertit en mètres : 8 µm = 8 × 10⁻⁶ m et 2 cm = 2 × 10⁻² m.\nNombre de cellules = (2 × 10⁻²) ÷ (8 × 10⁻⁶) = (2 ÷ 8) × 10⁻²⁻⁽⁻⁶⁾ = 0,25 × 10⁴ = 2 500 cellules."
+      }
+    ]
+  },
+  "evaluation": {
+    "duration_min": 30,
+    "conditions": "Sans calculatrice, sans la leçon, en 30 minutes. Pour un nombre négatif, tape le signe moins du clavier (-), par exemple -8. Les nombres décimaux s'écrivent avec une virgule ou un point. Barème : A = 6 points · B = 7 points · C = 7 points. Dans les questions rédigées, écris toutes les étapes de calcul.",
+    "total_points": 20,
+    "variants": [
+      {
+        "texts": [],
+        "sections": [
+          {
+            "label": "A · Puissances (6 points)",
+            "questions": [
+              {
+                "id": "q1",
+                "type": "numeric",
+                "points": 1,
+                "lesson_part": 1,
+                "skills": [
+                  "m3-puissance-definition"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Calcule 2⁶.",
+                "answer": 64,
+                "solution": "2⁶ = 2 × 2 × 2 × 2 × 2 × 2 = 64."
+              },
+              {
+                "id": "q2",
+                "type": "numeric",
+                "points": 1,
+                "lesson_part": 1,
+                "skills": [
+                  "m3-puissance-definition"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Calcule (−3)³.",
+                "answer": -27,
+                "solution": "L'exposant 3 est impair : le résultat est négatif. 3³ = 27, donc (−3)³ = −27."
+              },
+              {
+                "id": "q3",
+                "type": "numeric",
+                "points": 1,
+                "lesson_part": 1,
+                "skills": [
+                  "m3-puissance-definition"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Calcule −4².",
+                "answer": -16,
+                "solution": "Sans parenthèses, le carré porte seulement sur 4 : −4² = −(4 × 4) = −16."
+              },
+              {
+                "id": "q4",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 2,
+                "skills": [
+                  "m3-puissance-regles"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "7³ × 7⁵ est égal à :",
+                "options": [
+                  "7¹⁵",
+                  "7⁸",
+                  "49⁸",
+                  "14⁸"
+                ],
+                "answer": 1,
+                "solution": "Même nombre 7 : on additionne les exposants. 7³ × 7⁵ = 7³⁺⁵ = 7⁸."
+              },
+              {
+                "id": "q5",
+                "type": "numeric",
+                "points": 2,
+                "lesson_part": 1,
+                "skills": [
+                  "m3-puissance-definition"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Calcule D = 3 × 2³ − (−2)².",
+                "answer": 20,
+                "solution": "Les puissances d'abord : 2³ = 8 et (−2)² = 4.\nPuis : 3 × 8 = 24.\nEnfin : D = 24 − 4 = 20."
+              }
+            ]
+          },
+          {
+            "label": "B · Puissances de 10 et notation scientifique (7 points)",
+            "questions": [
+              {
+                "id": "q6",
+                "type": "numeric",
+                "points": 1,
+                "lesson_part": 3,
+                "skills": [
+                  "m3-puissances-de-10"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Donne l'écriture décimale de 10⁻².",
+                "answer": 0.01,
+                "solution": "10⁻² = 1/10² = 1/100 = 0,01."
+              },
+              {
+                "id": "q7",
+                "type": "numeric",
+                "points": 1,
+                "lesson_part": 3,
+                "skills": [
+                  "m3-puissances-de-10",
+                  "m3-puissance-regles"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "On a 10⁶ × 10⁻⁹ = 10ⁿ. Quelle est la valeur de l'exposant n ?",
+                "answer": -3,
+                "solution": "On additionne les exposants : 6 + (−9) = −3. Donc n = −3."
+              },
+              {
+                "id": "q8",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 4,
+                "skills": [
+                  "m3-notation-scientifique"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Quelle est la notation scientifique de 0,000 38 ?",
+                "options": [
+                  "38 × 10⁻⁵",
+                  "3,8 × 10⁻⁴",
+                  "3,8 × 10⁴",
+                  "0,38 × 10⁻³"
+                ],
+                "answer": 1,
+                "solution": "La virgule se place après le 3 : elle avance de 4 rangs, donc 0,000 38 = 3,8 × 10⁻⁴. Les écritures 38 × 10⁻⁵ et 0,38 × 10⁻³ sont égales mais ne sont pas des notations scientifiques."
+              },
+              {
+                "id": "q9",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 4,
+                "skills": [
+                  "m3-notation-scientifique"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Quelle est la notation scientifique de 520 000 000 ?",
+                "options": [
+                  "5,2 × 10⁷",
+                  "52 × 10⁷",
+                  "5,2 × 10⁸",
+                  "5,2 × 10⁹"
+                ],
+                "answer": 2,
+                "solution": "La virgule se place après le 5 : elle recule de 8 rangs, donc 520 000 000 = 5,2 × 10⁸."
+              },
+              {
+                "id": "q10",
+                "type": "open",
+                "points": 3,
+                "lesson_part": 5,
+                "skills": [
+                  "m3-notation-scientifique",
+                  "m3-puissances-de-10",
+                  "m3-puissance-regles"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Calcule E = (6 × 10⁵) × (4 × 10⁻²) ÷ (8 × 10⁻³) en détaillant les étapes. Donne le résultat en notation scientifique.",
+                "solution": "Décimaux : 6 × 4 ÷ 8 = 24 ÷ 8 = 3.\nPuissances de 10 : 10⁵ × 10⁻² = 10³, puis 10³ ÷ 10⁻³ = 10³⁻⁽⁻³⁾ = 10⁶.\nE = 3 × 10⁶ (déjà en notation scientifique, car 1 ≤ 3 < 10).",
+                "rubric": "1 pt : regroupement des décimaux et calcul 6 × 4 ÷ 8 = 3. 1,5 pt : calcul des puissances de 10 (0,5 pt pour 10⁵ × 10⁻² = 10³ ; 1 pt pour 10³ ÷ 10⁻³ = 10⁶, l'erreur de signe 10⁰ est fréquente). 0,5 pt : résultat final 3 × 10⁶ en notation scientifique."
+              }
+            ]
+          },
+          {
+            "label": "C · Problème type brevet (7 points)",
+            "questions": [
+              {
+                "id": "q11",
+                "type": "numeric",
+                "points": 2,
+                "lesson_part": 5,
+                "skills": [
+                  "m3-ordres-de-grandeur"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "La lumière se déplace à une vitesse d'environ 3 × 10⁵ km par seconde. La distance entre la Terre et le Soleil est d'environ 1,5 × 10⁸ km.\n\nCombien de secondes la lumière du Soleil met-elle pour arriver sur Terre ?",
+                "answer": 500,
+                "solution": "Temps = distance ÷ vitesse = (1,5 × 10⁸) ÷ (3 × 10⁵) = (1,5 ÷ 3) × 10⁸⁻⁵ = 0,5 × 10³ = 500 s (soit 8 min 20 s)."
+              },
+              {
+                "id": "q12",
+                "type": "open",
+                "points": 3,
+                "lesson_part": 5,
+                "skills": [
+                  "m3-ordres-de-grandeur",
+                  "m3-notation-scientifique"
+                ],
+                "cognitive": "analyser",
+                "prompt": "Une **année-lumière** est la distance parcourue par la lumière en un an. Une année dure environ 3,15 × 10⁷ secondes. Calcule une année-lumière en kilomètres, en notation scientifique. Détaille ton calcul.",
+                "solution": "Distance = vitesse × temps = (3 × 10⁵) × (3,15 × 10⁷) = (3 × 3,15) × 10⁵⁺⁷ = 9,45 × 10¹² km.",
+                "rubric": "1 pt : formule distance = vitesse × temps (ou produit posé correctement). 1 pt : 3 × 3,15 = 9,45. 0,5 pt : 10⁵ × 10⁷ = 10¹². 0,5 pt : résultat 9,45 × 10¹² km en notation scientifique, avec l'unité."
+              },
+              {
+                "id": "q13",
+                "type": "open",
+                "points": 2,
+                "lesson_part": 5,
+                "skills": [
+                  "m3-ordres-de-grandeur"
+                ],
+                "cognitive": "rediger",
+                "prompt": "L'étoile Proxima du Centaure est située à environ 4 × 10¹³ km de la Terre. Est-elle à plus ou à moins de 4 années-lumière ? Justifie.",
+                "solution": "4 années-lumière = 4 × 9,45 × 10¹² = 37,8 × 10¹² = 3,78 × 10¹³ km.\nOr 4 × 10¹³ > 3,78 × 10¹³ (même exposant, et 4 > 3,78).\nProxima du Centaure est donc à plus de 4 années-lumière.",
+                "rubric": "1 pt : calcul de 4 années-lumière (3,78 × 10¹³ km ou 37,8 × 10¹² km), en réutilisant le résultat précédent (même faux : pas de double pénalité). 0,5 pt : comparaison correcte justifiée. 0,5 pt : phrase de conclusion « plus de 4 années-lumière »."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "texts": [],
+        "sections": [
+          {
+            "label": "A · Puissances (6 points)",
+            "questions": [
+              {
+                "id": "q1",
+                "type": "numeric",
+                "points": 1,
+                "lesson_part": 1,
+                "skills": [
+                  "m3-puissance-definition"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Calcule 3⁴.",
+                "answer": 81,
+                "solution": "3⁴ = 3 × 3 × 3 × 3 = 9 × 9 = 81."
+              },
+              {
+                "id": "q2",
+                "type": "numeric",
+                "points": 1,
+                "lesson_part": 1,
+                "skills": [
+                  "m3-puissance-definition"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Calcule (−4)³.",
+                "answer": -64,
+                "solution": "L'exposant 3 est impair : le résultat est négatif. 4³ = 64, donc (−4)³ = −64."
+              },
+              {
+                "id": "q3",
+                "type": "numeric",
+                "points": 1,
+                "lesson_part": 1,
+                "skills": [
+                  "m3-puissance-definition"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Calcule −6².",
+                "answer": -36,
+                "solution": "Sans parenthèses, le carré porte seulement sur 6 : −6² = −(6 × 6) = −36."
+              },
+              {
+                "id": "q4",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 2,
+                "skills": [
+                  "m3-puissance-regles"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "5⁴ × 5⁶ est égal à :",
+                "options": [
+                  "5²⁴",
+                  "25¹⁰",
+                  "5¹⁰",
+                  "10¹⁰"
+                ],
+                "answer": 2,
+                "solution": "Même nombre 5 : on additionne les exposants. 5⁴ × 5⁶ = 5⁴⁺⁶ = 5¹⁰."
+              },
+              {
+                "id": "q5",
+                "type": "numeric",
+                "points": 2,
+                "lesson_part": 1,
+                "skills": [
+                  "m3-puissance-definition"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Calcule F = 5 × 2³ − (−3)².",
+                "answer": 31,
+                "solution": "Les puissances d'abord : 2³ = 8 et (−3)² = 9.\nPuis : 5 × 8 = 40.\nEnfin : F = 40 − 9 = 31."
+              }
+            ]
+          },
+          {
+            "label": "B · Puissances de 10 et notation scientifique (7 points)",
+            "questions": [
+              {
+                "id": "q6",
+                "type": "numeric",
+                "points": 1,
+                "lesson_part": 3,
+                "skills": [
+                  "m3-puissances-de-10"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Donne l'écriture décimale de 10⁻⁴.",
+                "answer": 0.0001,
+                "solution": "10⁻⁴ = 1/10⁴ = 1/10 000 = 0,000 1."
+              },
+              {
+                "id": "q7",
+                "type": "numeric",
+                "points": 1,
+                "lesson_part": 3,
+                "skills": [
+                  "m3-puissances-de-10",
+                  "m3-puissance-regles"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "On a 10⁴ × 10⁻⁹ = 10ⁿ. Quelle est la valeur de l'exposant n ?",
+                "answer": -5,
+                "solution": "On additionne les exposants : 4 + (−9) = −5. Donc n = −5."
+              },
+              {
+                "id": "q8",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 4,
+                "skills": [
+                  "m3-notation-scientifique"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Quelle est la notation scientifique de 0,000 072 ?",
+                "options": [
+                  "72 × 10⁻⁶",
+                  "7,2 × 10⁵",
+                  "7,2 × 10⁻⁵",
+                  "0,72 × 10⁻⁴"
+                ],
+                "answer": 2,
+                "solution": "La virgule se place après le 7 : elle avance de 5 rangs, donc 0,000 072 = 7,2 × 10⁻⁵. Les écritures 72 × 10⁻⁶ et 0,72 × 10⁻⁴ sont égales mais ne sont pas des notations scientifiques."
+              },
+              {
+                "id": "q9",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 4,
+                "skills": [
+                  "m3-notation-scientifique"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Quelle est la notation scientifique de 3 400 000 ?",
+                "options": [
+                  "34 × 10⁵",
+                  "3,4 × 10⁶",
+                  "3,4 × 10⁵",
+                  "3,4 × 10⁷"
+                ],
+                "answer": 1,
+                "solution": "La virgule se place après le 3 : elle recule de 6 rangs, donc 3 400 000 = 3,4 × 10⁶."
+              },
+              {
+                "id": "q10",
+                "type": "open",
+                "points": 3,
+                "lesson_part": 5,
+                "skills": [
+                  "m3-notation-scientifique",
+                  "m3-puissances-de-10",
+                  "m3-puissance-regles"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Calcule G = (9 × 10⁴) × (2 × 10⁻⁷) ÷ (6 × 10⁻⁵) en détaillant les étapes. Donne le résultat en notation scientifique.",
+                "solution": "Décimaux : 9 × 2 ÷ 6 = 18 ÷ 6 = 3.\nPuissances de 10 : 10⁴ × 10⁻⁷ = 10⁻³, puis 10⁻³ ÷ 10⁻⁵ = 10⁻³⁻⁽⁻⁵⁾ = 10².\nG = 3 × 10² (déjà en notation scientifique, car 1 ≤ 3 < 10), soit 300.",
+                "rubric": "1 pt : regroupement des décimaux et calcul 9 × 2 ÷ 6 = 3. 1,5 pt : calcul des puissances de 10 (0,5 pt pour 10⁴ × 10⁻⁷ = 10⁻³ ; 1 pt pour 10⁻³ ÷ 10⁻⁵ = 10², l'erreur de signe 10⁻⁸ est fréquente). 0,5 pt : résultat final 3 × 10² en notation scientifique."
+              }
+            ]
+          },
+          {
+            "label": "C · Problème type brevet (7 points)",
+            "questions": [
+              {
+                "id": "q11",
+                "type": "numeric",
+                "points": 2,
+                "lesson_part": 5,
+                "skills": [
+                  "m3-ordres-de-grandeur"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "La lumière se déplace à une vitesse d'environ 3 × 10⁵ km par seconde. Au moment de l'observation, la distance entre la planète Mars et le Soleil est d'environ 2,25 × 10⁸ km.\n\nCombien de secondes la lumière du Soleil met-elle pour arriver sur Mars ?",
+                "answer": 750,
+                "solution": "Temps = distance ÷ vitesse = (2,25 × 10⁸) ÷ (3 × 10⁵) = (2,25 ÷ 3) × 10⁸⁻⁵ = 0,75 × 10³ = 750 s (soit 12 min 30 s)."
+              },
+              {
+                "id": "q12",
+                "type": "open",
+                "points": 3,
+                "lesson_part": 5,
+                "skills": [
+                  "m3-ordres-de-grandeur",
+                  "m3-notation-scientifique"
+                ],
+                "cognitive": "analyser",
+                "prompt": "Un **jour-lumière** est la distance parcourue par la lumière en un jour. Un jour dure 86 400 secondes, soit 8,64 × 10⁴ s. Calcule un jour-lumière en kilomètres, en notation scientifique. Détaille ton calcul.",
+                "solution": "Distance = vitesse × temps = (3 × 10⁵) × (8,64 × 10⁴) = (3 × 8,64) × 10⁵⁺⁴ = 25,92 × 10⁹ = 2,592 × 10¹⁰ km.",
+                "rubric": "1 pt : formule distance = vitesse × temps (ou produit posé correctement). 1 pt : 3 × 8,64 = 25,92. 0,5 pt : 10⁵ × 10⁴ = 10⁹. 0,5 pt : résultat remis en notation scientifique 2,592 × 10¹⁰ km, avec l'unité (25,92 × 10⁹ seul : pas ce 0,5 pt)."
+              },
+              {
+                "id": "q13",
+                "type": "open",
+                "points": 2,
+                "lesson_part": 5,
+                "skills": [
+                  "m3-ordres-de-grandeur"
+                ],
+                "cognitive": "rediger",
+                "prompt": "Une sonde spatiale se trouve à environ 2,4 × 10¹⁰ km de la Terre. Est-elle à plus ou à moins d'un jour-lumière de la Terre ? Justifie.",
+                "solution": "Un jour-lumière vaut 2,592 × 10¹⁰ km.\nOr 2,4 × 10¹⁰ < 2,592 × 10¹⁰ (même exposant, et 2,4 < 2,592).\nLa sonde est donc à moins d'un jour-lumière de la Terre.",
+                "rubric": "1 pt : comparaison avec la valeur trouvée à la question précédente (même fausse : pas de double pénalité), en utilisant des écritures comparables (même exposant). 0,5 pt : comparaison correcte justifiée. 0,5 pt : phrase de conclusion « moins d'un jour-lumière »."
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

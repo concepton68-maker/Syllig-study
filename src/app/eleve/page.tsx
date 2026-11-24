@@ -17,7 +17,12 @@ export default async function Today() {
   const { student } = await requireStudent();
   const items = await parcours(student.id, student.level_code);
   const goal = student.settings.weekly_goal_minutes * 60;
-  const [w, s] = await Promise.all([weekStats(student.id), streak(student.id)]);
+  const [w, s, [{ total }]] = await Promise.all([weekStats(student.id), streak(student.id),
+    sql<{ total: number }[]>`select coalesce(sum(amount), 0)::int as total from points_ledger where student_id = ${student.id}`]);
+  // paliers de progression : un nouveau palier tous les 250 points, jamais de retour en arrière
+  const TIER = 250;
+  const tier = Math.floor(total / TIER) + 1;
+  const tierPct = Math.round(((total % TIER) / TIER) * 100);
   const next = pickNext(items, student.settings.retry_delay_days);
   const step = next ? nextStep(next, student.settings.retry_delay_days) : null;
   // « Ensuite » : uniquement des cours disponibles où il reste quelque chose à faire
@@ -36,7 +41,7 @@ export default async function Today() {
   return (
     <PaneScreen top={
       <div className="flex flex-wrap justify-between items-center gap-x-6 gap-y-4">
-        <PageTitle spark title={`Salut ${student.first_name}${step?.minutes ? `, prête pour ${step.minutes} minutes ?` : ' !'}`}
+        <PageTitle spark title={`Salut ${student.first_name}${step?.minutes ? `, on y va pour ${step.minutes} minutes ?` : ' !'}`}
           sub="Ton parcours est calculé pour toi : les priorités d’abord, puis les révisions." />
         <div className="grid grid-cols-3 gap-3 w-full sm:w-auto">
           <div className="card !p-3 flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3">
@@ -47,9 +52,12 @@ export default async function Today() {
             <div><strong className="num text-base">{hm(w.active)}</strong><div className="muted text-xs">sur {hm(goal)} cette semaine</div></div>
           </div>
           <div className="card !p-3 flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3 sm:min-w-[170px]"><span className="kpi-icon tone-warm"><Flame size={20} aria-hidden="true" /></span>
-            <div><strong className="num text-base">{s} jour{s > 1 ? 's' : ''}</strong><div className="muted text-xs">de suite</div></div></div>
-          <div className="card !p-3 flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3 sm:min-w-[170px]"><span className="kpi-icon tone-brand"><Star size={20} aria-hidden="true" /></span>
-            <div><strong className="num text-base text-brand-dark">+{w.week_points}</strong><div className="muted text-xs">points cette semaine</div></div></div>
+            <div>{s > 0 ? <><strong className="num text-base">{s} jour{s > 1 ? 's' : ''}</strong><div className="muted text-xs">de suite</div></>
+              : <><strong className="text-[15px]">Lance ta série</strong><div className="muted text-xs">un peu de travail chaque jour</div></>}</div></div>
+          <div className="card !p-3 flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3 sm:min-w-[200px]"><span className="kpi-icon tone-brand"><Star size={20} aria-hidden="true" /></span>
+            <div className="min-w-0 flex-1"><strong className="num text-base text-brand-dark">Palier {tier}</strong>
+              <div className="muted text-xs">{total} points{w.week_points ? ` · +${w.week_points} cette semaine` : ''}</div>
+              <div className="h-1.5 mt-1.5 bg-track rounded-full overflow-hidden" role="img" aria-label={`${tierPct} % du palier ${tier + 1}`}><div className="h-full bg-brand rounded-full" style={{ width: `${Math.max(4, tierPct)}%` }} /></div></div></div>
         </div>
       </div>
     }>
@@ -59,37 +67,36 @@ export default async function Today() {
             <section className="card p-7 flex flex-col gap-5 border-2 border-brand">
               <div className="flex flex-wrap justify-between gap-3">
                 <div className="flex flex-col gap-1.5">
-                  <span className="lbl text-brand-dark">Ta prochaine étape</span>
+                  <span className="lbl">Ta prochaine étape</span>
                   <h2 className="text-[26px] font-bold">{next.title}</h2>
                   <span className="muted">{next.subject} · {next.chapter}{next.code ? ` · ${next.code}` : ''}</span>
                 </div>
                 <div className="flex gap-2 items-start">{next.priority === 'prioritaire' && <PriorityPill />}<MasteryPill level={next.mastery} /></div>
               </div>
-              <ol className="list-none m-0 p-0 flex flex-wrap gap-2.5" aria-label="Étapes du cours">
+              <ol className="list-none m-0 p-0 grid grid-cols-1 min-[420px]:grid-cols-3 gap-2.5 order-2 sm:order-none" aria-label="Étapes du cours">
                 {[
                   { n: '①', name: 'Leçon', done: next.lesson_done, cur: step.kind === 'lesson', meta: `${next.durations?.lesson} min · points de contrôle` },
                   { n: '②', name: 'Exercices', done: next.exercises_done, cur: step.kind === 'exercises', meta: `${next.durations?.exercises} min · ★ ★★ ★★★` },
-                  { n: '③', name: 'Évaluation', done: next.graded_count > 0, cur: step.kind === 'evaluation' || step.kind === 'retry', meta: `${next.durations?.evaluation} min chrono · sur 20` },
-                  { n: '④', name: 'Corrigés', done: next.graded_count > 0, cur: false, meta: 'S’ouvrent après ta réponse' },
+                  { n: '③', name: 'Évaluation', done: next.graded_count > 0, cur: step.kind === 'evaluation' || step.kind === 'retry', meta: `${next.durations?.evaluation} min chronométrées · sur 20` },
                 ].map(x => (
-                  <li key={x.n} className={`flex-[1_1_170px] p-3.5 rounded-xl ${x.cur ? 'bg-brand text-white' : x.done ? 'bg-brand-soft text-brand-ink' : 'bg-soft text-muted'}`}>
+                  <li key={x.n} className={`p-3.5 rounded-xl ${x.cur ? 'bg-brand text-white' : x.done ? 'bg-brand-soft text-brand-ink' : 'bg-soft text-muted'}`}>
                     <div className="text-sm font-bold">{x.n} · {x.name}{x.done && !x.cur ? ' ✓' : ''}</div>
                     <div className="text-sm mt-1">{x.meta}</div>
                   </li>
                 ))}
               </ol>
-              <div className="flex flex-wrap items-center gap-4">
-                <Link className="btn btn-primary min-h-[52px] px-7 text-base" href={stepHref(next.course_id, step)}>
+              <div className="flex flex-wrap items-center gap-4 order-1 sm:order-none">
+                <Link className="btn btn-primary min-h-[52px] px-7 text-base w-full sm:w-auto" href={stepHref(next.course_id, step)}>
                   {step.kind === 'lesson' && !next.lesson_done ? 'Commencer' : 'Continuer'} : {step.label}{step.minutes ? ` · ${step.minutes} min` : ''}
                 </Link>
-                <span className="muted text-sm max-w-[460px]">Le chrono ne compte que le temps où tu travailles vraiment. Les corrigés s’ouvrent après ta réponse.</span>
+                <span className="muted text-sm max-w-[460px]">Seul le temps où tu travailles vraiment est compté. Les corrigés s’ouvrent après ta réponse.</span>
               </div>
             </section>
           ) : (
             <section className="card p-7">
               <EmptyState title={acquired.length ? 'Tout est fait pour l’instant, bravo !' : 'Ton premier cours arrive bientôt'}
-                text={acquired.length ? `Tu as acquis ${acquired.length} cours. De nouveaux cours arrivent ; en attendant, revois tes résultats ou tes révisions.` : 'Dès qu’un cours est publié, il apparaît ici.'}
-                action={<Link className="btn" href="/eleve/resultats">Voir mes résultats</Link>} />
+                text={acquired.length ? `Tu as acquis ${acquired.length} cours. De nouveaux cours arrivent ; en attendant, revois tes résultats ou tes révisions.` : 'Dès qu’un cours est publié, il apparaît ici. En attendant, choisis les couleurs de ton espace.'}
+                action={acquired.length ? <Link className="btn" href="/eleve/resultats">Voir mes résultats</Link> : <Link className="btn" href="/eleve/theme">Choisir mon thème</Link>} />
             </section>
           )}
 

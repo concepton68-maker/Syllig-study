@@ -103,7 +103,7 @@ try {
   }
   ok((await st.content()).includes(doc.exercises.items.at(-1).solution.slice(0, 40)), 'corrigés visibles après la remise');
   await st.click('text=Enregistrer mon résultat');
-  await st.waitForSelector('text=9 / 10 exercices réussis');
+  await st.waitForSelector('text=Score : 9/10');
   ok(true, 'exercices en onglets : 9/10 (QCM corrigé automatiquement + auto-correction guidée)');
   await shot(st, '05-exercices-corriges');
 

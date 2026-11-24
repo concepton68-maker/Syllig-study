@@ -53,8 +53,9 @@ export function Shell({ role, nav, theme, spaces, user, children }: {
           <span className="avatar !w-8 !h-8 !text-xs" title={user.name}>{initials}</span>
           {logout}
         </header>
-        <main className="flex-1 min-h-0 overflow-y-auto pane px-4 sm:px-6 lg:px-10 pt-6 lg:pt-8 pb-24 lg:pb-8">
-          <div className="max-w-[1320px] mx-auto h-full flex flex-col gap-6">{children}</div>
+        <main className="flex-1 min-h-0 overflow-y-auto pane px-4 sm:px-6 lg:px-10 pt-6 lg:pt-8 lg:pb-8">
+          {/* sur téléphone, réserve la hauteur de la barre d'onglets sous le contenu */}
+          <div className="max-w-[1320px] mx-auto lg:h-full flex flex-col gap-6 pb-[calc(96px+env(safe-area-inset-bottom))] lg:pb-0">{children}</div>
         </main>
         <TabBar items={nav} />
       </div>

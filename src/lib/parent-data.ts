@@ -45,7 +45,9 @@ export async function subjectProgress(studentId: string, level: string) {
     from subjects s join chapters ch on ch.subject_id = s.id join courses c on c.chapter_id = ch.id
     left join course_versions v on v.course_id = c.id and v.status = 'published'
     left join course_progress p on p.course_id = c.id and p.student_id = ${studentId}
-    where s.level_code = ${level} group by s.id, s.name, s.position order by s.position`;
+    where s.level_code = ${level}
+      and not (s.id::text in (select jsonb_array_elements_text(coalesce(st.settings->'excluded_subjects', '[]'::jsonb)) from students st where st.id = ${studentId}))
+    group by s.id, s.name, s.position order by s.position`;
 }
 
 export const KIND: Record<string, string> = { lesson: '① Leçon', exercises: '② Exercices', evaluation: '③ Évaluation', review: 'Révision', other: 'Autre' };

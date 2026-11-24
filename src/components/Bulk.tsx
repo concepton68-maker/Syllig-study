@@ -18,8 +18,8 @@ export function BulkCheck({ formId, value, label, name = 'ids' }: { formId: stri
   return <input type="checkbox" name={name} value={value} form={formId} data-bulk={formId} aria-label={`Sélectionner ${label}`} className="w-5 h-5 shrink-0 accent-[var(--color-brand)] cursor-pointer" />;
 }
 
-export function BulkBar({ formId, actions, hidden, children, noun = 'élément' }: {
-  formId: string; actions: BulkAction[]; hidden?: Record<string, string>; children?: React.ReactNode; noun?: string;
+export function BulkBar({ formId, actions, hidden, children, noun = 'élément', feminine }: {
+  formId: string; actions: BulkAction[]; hidden?: Record<string, string>; children?: React.ReactNode; noun?: string; feminine?: boolean;
 }) {
   const [n, setN] = useState(0);
   const [total, setTotal] = useState(0);
@@ -43,14 +43,14 @@ export function BulkBar({ formId, actions, hidden, children, noun = 'élément' 
         <input type="checkbox" checked={all} onChange={toggleAll} disabled={!total} className="w-5 h-5 accent-[var(--color-brand)]" />
         Tout sélectionner
       </label>
-      <span className="muted">{n ? `${plural(n)} sélectionné${noun === 'copie' || noun === 'demande' ? 'e' : ''}${n > 1 ? 's' : ''}` : 'Cochez des lignes pour agir sur plusieurs à la fois'}</span>
+      <span className="muted">{n ? `${plural(n)} sélectionné${feminine ? 'e' : ''}${n > 1 ? 's' : ''}` : 'Cochez des lignes pour agir sur plusieurs à la fois'}</span>
       {children}
       <span className="flex flex-wrap gap-2 ml-auto">
         {actions.map(a => (
           <button key={a.label} type="submit" disabled={!n}
             {...(typeof a.action === 'string' ? { formAction: a.action, formMethod: 'get' } : { formAction: a.action })}
             onClick={e => { if (a.confirm && !window.confirm(a.confirm.replace('{n}', plural(n)))) e.preventDefault(); }}
-            className={`btn ${a.tone === 'primary' ? 'btn-primary' : a.tone === 'danger' ? 'bg-warm text-white border-warm hover:bg-warm-dark hover:text-white' : ''} disabled:opacity-50`}>
+            className={`btn ${a.tone === 'primary' ? 'btn-primary' : a.tone === 'danger' ? 'btn-danger' : ''} disabled:opacity-50`}>
             {a.label}{n ? ` (${n})` : ''}
           </button>
         ))}

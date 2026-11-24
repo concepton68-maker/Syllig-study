@@ -35,7 +35,7 @@ export default async function ExercisesPage({ params }: { params: Promise<{ id: 
       <div className="card p-4 flex flex-wrap items-center justify-between gap-3">
         <div className="flex items-center gap-3 flex-wrap">
           <Link className="btn" href={`/eleve/cours/${course.id}`}>‹ Quitter</Link>
-          <div><div className="lbl">{course.subject} · {course.chapter} · environ {ex.duration_min} min · {ex.pass_threshold}/10 pour être prête</div>
+          <div><div className="lbl">{course.subject} · {course.chapter} · environ {ex.duration_min} min · {ex.pass_threshold}/10 conseillé avant l’évaluation</div>
             <strong className="font-[family-name:var(--font-display)] text-lg">{course.title} · ② Exercices</strong></div>
         </div>
         {!sub.checked_at && <ActivityTracker kind="exercises" courseId={course.id} idleSeconds={student.settings.idle_seconds} />}

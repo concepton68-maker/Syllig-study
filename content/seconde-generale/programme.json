@@ -1,7 +1,9 @@
 {
  "level": {
   "code": "seconde-generale",
-  "name": "Seconde générale"
+  "name": "Seconde générale",
+  "cycle": "Lycée",
+  "position": 5
  },
  "source": "Analyse du programme de Seconde (programmes officiels consultés le 21-11-2026)",
  "subjects": [

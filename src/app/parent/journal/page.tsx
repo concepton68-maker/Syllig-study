@@ -18,7 +18,9 @@ const EVENT: Record<string, string> = {
   evaluation_reportee: 'Évaluation reportée', niveau_atteint: 'Niveau atteint', copies_exportees: 'Copies exportées pour correction',
   corrections_importees: 'Corrections importées', note_modifiee: 'Note modifiée',
   cours_reinitialise: 'Cours réinitialisé', parcours_reinitialise: 'Parcours réinitialisé',
+  niveau_corrige: 'Niveau corrigé', annee_scolaire_commencee: 'Nouvelle année scolaire',
 };
+let LEVEL_NAMES: Record<string, string> = {};
 const fmt = (d: Date) => d.toLocaleString('fr-FR', { timeZone: 'Europe/Paris', weekday: 'short', day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' });
 
 function describe(e: string, d: Record<string, unknown>) {
@@ -28,9 +30,11 @@ function describe(e: string, d: Record<string, unknown>) {
   if (d.note !== undefined) p.push(`${String(d.note).replace('.', ',')}/20`);
   if (d.score_sur_10 !== undefined) p.push(`${d.score_sur_10}/10`);
   if (d.duree_min !== undefined && d.duree_min !== null) p.push(`${String(d.duree_min).replace('.', ',')} min`);
-  if (d.absence_s !== undefined) p.push(`absente ${d.absence_s} s`);
+  if (d.absence_s !== undefined) p.push(`hors de la page ${d.absence_s} s`);
   if (d.actif_s !== undefined) p.push(`${Math.round(Number(d.actif_s) / 60)} min actives sur ${Math.round(Number(d.ouvert_s) / 60)} ouvertes`);
   if (d.libelle) p.push(String(d.libelle));
+  if (e === 'niveau_corrige') p.push(`${LEVEL_NAMES[String(d.avant)] ?? d.avant} → ${LEVEL_NAMES[String(d.apres)] ?? d.apres}`);
+  if (e === 'annee_scolaire_commencee') p.push(`${d.annee ?? ''} · ${LEVEL_NAMES[String(d.niveau)] ?? d.niveau}`);
   if (d.motif) p.push(`motif : ${d.motif}`);
   if (e === 'evaluation_remise' || e === 'evaluation_remise_automatiquement') { if (Number(d.sorties_fenetre) > 0) p.push(`${d.sorties_fenetre} sortie(s) de fenêtre`); }
   return p.join(' · ');
@@ -40,6 +44,7 @@ export default async function Journal({ searchParams }: { searchParams: Promise<
   const { eleve } = await searchParams;
   const { students, student } = await requireParent(eleve);
   if (!student) return null;
+  LEVEL_NAMES = Object.fromEntries((await sql<{ code: string; name: string }[]>`select code, name from levels`).map(l => [l.code, l.name]));
   const [chk] = await sql<{ broken_ids: string[]; total: string }[]>`select * from verify_activity_chain(${student.id})`;
   const events = await sql<{ id: string; at: Date; event: string; title: string | null; data: Record<string, unknown>; hash: string }[]>`
     select l.id, l.at, l.event, c.title, l.data, l.hash from activity_log l left join courses c on c.id = l.course_id

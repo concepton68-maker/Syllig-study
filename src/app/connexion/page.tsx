@@ -30,7 +30,7 @@ export default async function LoginPage() {
             ))}
           </ul>
         </div>
-        <p className="text-xs text-white/55 m-0">Seconde générale · programme officiel · version {process.env.APP_RELEASE ?? 'dev'}</p>
+        <p className="text-xs text-white/55 m-0">Programmes officiels du collège et du lycée · version {process.env.APP_RELEASE ?? 'dev'}</p>
       </section>
 
       <section className="flex-1 flex items-center justify-center p-6">

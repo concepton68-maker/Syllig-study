@@ -37,14 +37,14 @@ export default async function ToDo({ searchParams }: { searchParams: Promise<{ v
       {requests.length > 0 && (
         <section className="card flex flex-col">
           <h2 className="text-xl font-semibold mb-2">Demandes d’évaluation</h2>
-          {requests.length > 1 && <div className="mb-2"><BulkBar formId="bulk-demandes" noun="demande"
-            actions={[{ label: 'Autoriser', action: approveRequestsBulk, tone: 'primary' }, { label: 'Plus tard', action: postponeRequestsBulk }]} /></div>}
+          {requests.length > 1 && <div className="mb-2"><BulkBar formId="bulk-demandes" noun="demande" feminine
+            actions={[{ label: 'Autoriser', action: approveRequestsBulk, tone: 'primary' }, { label: 'Pas maintenant', action: postponeRequestsBulk, confirm: 'Refuser pour l’instant {n} ? L’élève pourra refaire sa demande plus tard.' }]} /></div>}
           {requests.map(r => (
             <div key={r.id} className="flex flex-wrap items-center gap-3 py-3 border-t border-soft text-sm">
               {requests.length > 1 && <BulkCheck formId="bulk-demandes" value={r.id} label={r.title} />}
               <span className="flex-[1_1_260px]"><strong>{multi ? `${r.first_name} · ` : ''}{r.title}</strong><span className="block muted">Demandée le {when(r.requested_at)}</span></span>
               <form action={decideEvalRequest.bind(null, r.id, true)}><button className="btn btn-primary" type="submit">Autoriser</button></form>
-              <form action={decideEvalRequest.bind(null, r.id, false)}><button className="btn" type="submit">Plus tard</button></form>
+              <form action={decideEvalRequest.bind(null, r.id, false)}><button className="btn" type="submit" title="La demande est refusée pour l’instant ; l’élève pourra la refaire.">Pas maintenant</button></form>
             </div>
           ))}
         </section>
@@ -56,7 +56,7 @@ export default async function ToDo({ searchParams }: { searchParams: Promise<{ v
           {pending.length > 0 && <a className="btn btn-primary" href="/api/parent/export">Tout exporter pour Claude ({pending.length})</a>}
         </div>
         {pending.length === 0 && <span className="muted text-sm py-2">Aucune copie en attente.</span>}
-        {pending.length > 1 && <div className="mb-2"><BulkBar formId="bulk-copies" noun="copie"
+        {pending.length > 1 && <div className="mb-2"><BulkBar formId="bulk-copies" noun="copie" feminine
           actions={[{ label: 'Exporter la sélection pour Claude', action: '/api/parent/export', tone: 'primary' }]} /></div>}
         {pending.map(r => (
           <div key={r.id} className="flex flex-wrap items-center gap-3 py-3 border-t border-soft text-sm">

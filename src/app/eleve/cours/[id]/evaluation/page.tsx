@@ -50,7 +50,7 @@ export default async function EvaluationPage({ params }: { params: Promise<{ id:
   return (
     <Screen top={header}>
       <section className="card p-7 max-w-[760px] w-full mx-auto flex flex-col gap-4">
-        <h1 className="text-2xl font-bold">{graded ? 'Nouvelle tentative' : 'Prête pour l’évaluation ?'}</h1>
+        <h1 className="text-2xl font-bold">{graded ? 'Nouvelle tentative' : 'Avant de commencer l’évaluation'}</h1>
         {doc.evaluation.conditions && <p className="m-0">{doc.evaluation.conditions}</p>}
         <ul className="m-0 pl-5 list-disc flex flex-col gap-1.5 text-[15px]">
           <li><strong>{doc.evaluation.duration_min} minutes</strong>, chrono tenu par le serveur. À la fin du temps, ta copie est remise automatiquement.</li>

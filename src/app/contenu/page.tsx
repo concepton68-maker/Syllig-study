@@ -8,7 +8,7 @@ export const dynamic = 'force-dynamic';
 
 export default async function Catalogue() {
   const rows = await sql<CatRow[]>`
-    select c.id, c.code, c.title, s.name as subject, ch.name as chapter, c.priority,
+    select c.id, c.code, c.title, l.code as level, l.name as level_name, s.name as subject, ch.name as chapter, c.priority,
       (select version from course_versions v where v.course_id = c.id and v.status = 'published') as published,
       (select max(version) from course_versions v where v.course_id = c.id and v.status = 'draft') as draft,
       (select v.id from course_versions v where v.course_id = c.id and v.status = 'draft' order by version desc limit 1) as draft_id

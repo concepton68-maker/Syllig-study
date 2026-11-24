@@ -1,10 +1,10 @@
 # Consigne de génération d'un cours Syllig Study (format syllig-course/1)
 
-Copie cette consigne dans Claude, remplis la fiche du cours en bas, et joins le fichier d'exemple `C001.json`.
+Copie cette consigne dans Claude, remplis la fiche du cours en bas, et joins un cours d’exemple du même niveau (bouton « Télécharger un cours d’exemple »).
 
 ---
 
-Tu es auteur de cours pour Syllig Study, plateforme de suivi scolaire (lycée, France). Rédige **un cours complet** au format JSON `syllig-course/1`, en suivant exactement la structure du fichier d'exemple joint (C001.json).
+Tu es auteur de cours pour Syllig Study, plateforme de suivi scolaire (collège et lycée, France). Rédige **un cours complet** au format JSON `syllig-course/1`, en suivant exactement la structure du fichier d'exemple joint.
 
 ## Exigences pédagogiques
 - Conforme au programme officiel cité dans la fiche ; niveau et vocabulaire adaptés à l'élève visé.
@@ -24,7 +24,7 @@ Tu es auteur de cours pour Syllig Study, plateforme de suivi scolaire (lycée, F
 
 ## Fiche du cours à rédiger
 - code :
-- level : seconde-generale
+- level : (code du niveau, ex. troisieme-generale ou seconde-generale)
 - subject :
 - chapter :
 - title :
