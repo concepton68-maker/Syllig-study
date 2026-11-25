@@ -29,13 +29,15 @@ export default async function Bilan({ params }: { params: Promise<{ id: string; 
   const gain = b.final && ref !== null ? b.total! - ref : null;
   const mins = a.started_at && a.submitted_at ? Math.round((a.submitted_at.getTime() - a.started_at.getTime()) / 60000) : null;
 
+  // durée réellement accordée (tiers-temps compris)
+  const allowed = a.deadline_at && a.started_at ? Math.round((a.deadline_at.getTime() - a.started_at.getTime()) / 60000) : doc.evaluation.duration_min;
   // l'effort est souligné autant que la note (on progresse en essayant, pas seulement en réussissant)
   const qids = variant.sections.flatMap(x => x.questions.map(q => q.id));
   const blank = qids.filter(id => !(a.answers?.[id] ?? '').trim()).length / Math.max(1, qids.length);
-  const effort = mins !== null && mins >= doc.evaluation.duration_min * 0.5 && blank < 0.2
+  const effort = mins !== null && mins >= allowed * 0.5 && blank < 0.2
     ? { tone: 'ok', text: 'Tu as pris le temps et tout tenté : c’est exactement comme ça qu’on progresse.' }
     : blank >= 0.4 ? { tone: 'tip', text: 'Beaucoup de questions laissées vides : la prochaine fois, tente même sans être sûr(e). C’est en essayant qu’on apprend, et une réponse tentée peut rapporter des points.' }
-    : mins !== null && mins < doc.evaluation.duration_min * 0.3 ? { tone: 'tip', text: `Copie rendue en ${mins} min sur ${doc.evaluation.duration_min} : prends le temps de relire, c’est souvent là qu’on gagne des points.` }
+    : mins !== null && mins < allowed * 0.3 ? { tone: 'tip', text: `Copie rendue en ${mins} min sur ${allowed} : prends le temps de relire, c’est souvent là qu’on gagne des points.` }
     : null;
   let headline: string;
   if (!b.final) headline = 'Copie remise, bravo pour l’effort';
@@ -90,7 +92,7 @@ export default async function Bilan({ params }: { params: Promise<{ id: string; 
       {b.final && (
         <div className="flex flex-wrap gap-6 items-start">
           <section className="card flex-[1_1_420px] flex flex-col gap-3">
-            <h2 className="text-xl font-semibold">Ce que tu sais faire maintenant</h2>
+            <h2 className="text-xl font-semibold">Ce que tu as réussi dans cette évaluation</h2>
             {b.wins.length === 0 && <span className="text-sm muted">Chaque tentative t’en apprend un peu plus : regarde les corrigés, ils te prépareront à la prochaine.</span>}
             {b.wins.map(w => (
               <div key={w.id} className="flex gap-3 items-start p-3 rounded-xl bg-brand-soft">
@@ -134,7 +136,7 @@ export default async function Bilan({ params }: { params: Promise<{ id: string; 
         <div className="flex flex-col gap-1 flex-[1_1_420px]">
           <h2 className="text-base font-semibold">Conditions de l’évaluation</h2>
           <span className="text-sm text-ink-2">
-            {mins !== null ? `Remise en ${mins} min sur ${doc.evaluation.duration_min}` : 'Remise'}{a.late ? ' (après la fin du temps)' : ''} · horodatée par le serveur.
+            {mins !== null ? `Remise en ${mins} min sur ${allowed}` : 'Remise'}{a.late ? ' (après la fin du temps)' : ''} · horodatée par le serveur.
             {a.focus_losses > 0 ? ` ${a.focus_losses} sortie${a.focus_losses > 1 ? 's' : ''} de la fenêtre (${a.focus_lost_seconds} s au total).` : ' Aucune sortie de la fenêtre.'}
           </span>
         </div>

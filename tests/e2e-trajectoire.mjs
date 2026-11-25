@@ -1,5 +1,6 @@
-// Trajectoire (Bilan parent) : 8 semaines fabriquées où l'élève s'investit de plus en plus et comprend de mieux en mieux.
-// Le parent doit voir les deux courbes monter, les tendances « en hausse », la progression par matière et le ressenti qui évolue.
+// Évolution sur 12 semaines (Bilan parent) : 8 semaines fabriquées où l'élève travaille de plus en plus et réussit de mieux en mieux.
+// Vérifie des valeurs exactes : comparaison 4 semaines / 4 semaines, total des minutes = somme des séances (aucune heure perdue
+// aux changements d'heure), résultats par matière, réponses du questionnaire qui ont changé.
 // Prérequis : tests/reset-db.sh puis `node scripts/seed.mjs`. Usage : BASE=… DATABASE_URL=… node tests/e2e-trajectoire.mjs
 import { createRequire } from 'node:module';
 const require = createRequire(import.meta.url);
@@ -10,24 +11,28 @@ const sql = postgres(process.env.DATABASE_URL, { max: 1, onnotice: () => {} });
 const ok = (c, m) => { if (!c) { console.error('ÉCHEC :', m); process.exit(1); } console.log('  ✓', m); };
 
 const [st] = await sql`select id from students limit 1`;
-await sql`update students set level_code = 'troisieme-generale', created_at = now() - interval '70 days' where id = ${st.id}`;
+await sql`update students set level_code = 'troisieme-generale' where id = ${st.id}`;
 const cs = await sql`select c.id, v.id as version_id, v.document as doc from courses c join course_versions v on v.course_id = c.id and v.status = 'published' where c.code in ('TG001', 'TG034') order by c.code`;
-for (let w = 8; w >= 1; w--) {
-  const k = 9 - w;                         // 1 → 8 : de plus en plus investi
-  for (let d = 0; d < Math.min(5, Math.ceil(k / 1.6)); d++)
+// semaine k (k = 1 il y a 8 semaines … k = 8 la semaine dernière) : k séances de 20 min ; exercices : k réussies sur 10
+for (let k = 1; k <= 8; k++) {
+  const w = 9 - k;
+  for (let d = 0; d < k; d++)
     await sql`insert into work_sessions (student_id, course_id, kind, started_at, last_beat_at, ended_at, open_seconds, active_seconds)
-      values (${st.id}, ${cs[1].id}, 'exercises', now() - make_interval(days => ${w * 7 - d}), now() - make_interval(days => ${w * 7 - d}), now() - make_interval(days => ${w * 7 - d}), ${1800}, ${Math.round(1800 * (0.45 + k * 0.06))})`;
-  for (const c of cs) {                     // une série d'exercices par matière et par semaine, de mieux en mieux réussie
-    const items = c.doc.exercises.items;
-    const good = Math.min(items.length, Math.round(items.length * (0.2 + k * 0.09)));
-    const auto = Object.fromEntries(items.map((q, i) => [q.id, i < good]));
-    await sql`insert into exercise_submissions (student_id, course_id, version_id, answers, auto_results, self_check, submitted_at, checked_at, created_at)
-      values (${st.id}, ${c.id}, ${c.version_id}, '{}'::jsonb, ${sql.json(auto)}, '{}'::jsonb, now() - make_interval(days => ${w * 7 - 2}), now() - make_interval(days => ${w * 7 - 2}), now() - make_interval(days => ${w * 7 - 2}))`;
+      values (${st.id}, ${cs[1].id}, 'exercises', date_trunc('week', now() at time zone 'Europe/Paris') at time zone 'Europe/Paris' - make_interval(weeks => ${w}) + make_interval(hours => ${10 + d * 12}),
+        now(), now(), 1500, 1200)`;
+  for (const c of cs) {
+    const auto = Object.fromEntries(Array.from({ length: 10 }, (_, i) => [`x${i}`, i < k + 2]));
+    await sql`insert into exercise_submissions (student_id, course_id, version_id, answers, auto_results, submitted_at, checked_at)
+      values (${st.id}, ${c.id}, ${c.version_id}, '{}', ${sql.json(auto)}, date_trunc('week', now() at time zone 'Europe/Paris') at time zone 'Europe/Paris' - make_interval(weeks => ${w}) + interval '2 days',
+        date_trunc('week', now() at time zone 'Europe/Paris') at time zone 'Europe/Paris' - make_interval(weeks => ${w}) + interval '2 days')`;
   }
 }
 await sql`insert into student_checkins (student_id, created_at, answers, scores) values
-  (${st.id}, now() - interval '50 days', '{}', '{"envie": 30, "confiance": 25, "stress": 80, "organisation": 40}'),
-  (${st.id}, now() - interval '5 days', '{}', '{"envie": 70, "confiance": 65, "stress": 45, "organisation": 70}')`;
+  (${st.id}, now() - interval '50 days', '{"q6": 1, "q8": 3, "q1": 2}', '{}'), (${st.id}, now() - interval '5 days', '{"q6": 3, "q8": 1, "q1": 2}', '{}')`;
+// valeurs attendues, calculées à la main
+const minutesBefore = (1 + 2 + 3 + 4) * 20, minutesAfter = (5 + 6 + 7 + 8) * 20;     // 200 → 520
+const exBefore = Math.round(((3 + 4 + 5 + 6) * 2) / 80 * 100), exAfter = Math.round(((7 + 8 + 9 + 10) * 2) / 80 * 100);   // 45 % → 85 %
+const [tot] = await sql`select (sum(active_seconds) / 60)::int as m from work_sessions where student_id = ${st.id}`;
 
 const b = await chromium.launch();
 const pa = await (await b.newContext({ viewport: { width: 1366, height: 900 } })).newPage();
@@ -36,21 +41,23 @@ await pa.goto(BASE + '/connexion'); await pa.fill('input[name=login]', 'parent@t
 await pa.click('button[type=submit]'); await pa.waitForURL(u => !u.pathname.startsWith('/connexion'));
 await pa.goto(BASE + '/parent/bilan');
 const card = pa.locator('[data-trajectory]');
-ok(await card.getAttribute('data-trajectory') !== null, 'carte « Où va-t-il ? » dans le Bilan');
-ok(await card.locator('[data-trend-serieux="hausse"]').count() === 1, `investissement en hausse (${await card.locator('[data-trend-serieux]').innerText()})`);
-ok(await card.locator('[data-trend-comprehension="hausse"]').count() === 1, `compréhension en hausse (${await card.locator('[data-trend-comprehension]').innerText()})`);
-ok((await card.locator('[data-reading]').innerText()).includes('l’effort paie'), 'lecture en clair pour le parent');
-ok(await card.locator('[data-week]').count() === 12 && await card.locator('[data-point="comprehension"]').count() >= 6, '12 semaines, courbes tracées');
-ok(await card.locator('[data-subject-trend]').count() === 2, 'progression par matière (2 matières)');
-ok((await card.locator('[data-subject-trend="Mathématiques"]').innerText()).includes('hausse'), 'mathématiques en hausse');
-ok((await card.locator('[data-feeling="confiance"]').innerText()).includes('25 % → 65 %'), 'ressenti : confiance 25 % → 65 %');
-await card.locator('[data-week]').nth(10).hover();
-ok((await card.innerText()).includes('Semaine du'), 'bulle au survol d’une semaine');
+const row = async label => (await card.locator(`[data-compare-row="${label}"]`).innerText()).replace(/\s+/g, ' ');
+ok((await row('Temps de travail effectif')).includes(`${minutesBefore} min → ${minutesAfter} min`), `temps : ${await row('Temps de travail effectif')} (attendu ${minutesBefore} → ${minutesAfter})`);
+ok((await row('Exercices réussis (corrigés par la plateforme)')).includes(`${exBefore} % → ${exAfter} %`), `exercices : ${await row('Exercices réussis (corrigés par la plateforme)')} (attendu ${exBefore} % → ${exAfter} %)`);
+ok((await row('Moyenne des copies complètes')).includes('— → —'), 'pas de copie : « — », pas de valeur inventée');
 await card.locator('details summary').first().click();
-ok(await card.locator('table tbody tr').count() === 12, 'tableau des chiffres');
+const mins = (await card.locator('table tbody tr td:nth-child(2)').allInnerTexts()).map(t => parseInt(t, 10));
+ok(mins.length === 12 && mins.reduce((a, x) => a + x, 0) === tot.m, `12 semaines ; total ${mins.reduce((a, x) => a + x, 0)} min = somme des séances ${tot.m} min (aucune heure perdue)`);
+ok(await card.locator('[data-bar-week]').count() === 12 && await card.locator('[data-point="ex"]').count() === 8, 'barres et points tracés (8 semaines mesurées)');
+ok(await card.locator('[data-subject-trend]').count() === 2, 'résultats par matière');
+ok((await card.locator('[data-subject-trend="Mathématiques"]').innerText()).includes('40 % → 90 %'), `maths : moyenne des 3 premiers et des 3 derniers (${(await card.locator('[data-subject-trend="Mathématiques"]').innerText()).replace(/\s+/g, ' ')})`);
+ok((await card.locator('[data-feeling="q6"]').innerText()).includes('Plutôt pas → Tout à fait') && await card.locator('[data-feeling="q1"]').count() === 0, 'questionnaire : seulement les réponses qui ont changé, en toutes lettres');
+ok(!/hausse|baisse|lassitude|effort paie|découragement/i.test(await card.innerText()), 'aucune tendance extrapolée ni cause supposée');
+await card.locator('[data-bar-week]').nth(10).hover();
+ok((await card.innerText()).includes('min de travail effectif'), 'bulle au survol');
 const ph = await (await b.newContext({ viewport: { width: 375, height: 667 }, storageState: await pa.context().storageState() })).newPage();
 await ph.goto(BASE + '/parent/bilan');
 ok(await ph.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth), 'aucun débordement sur téléphone');
 ok(errs.length === 0, `aucune erreur JS (${errs.join(' | ')})`);
 await b.close(); await sql.end();
-console.log('\nTrajectoire : OK');
+console.log('\nÉvolution sur 12 semaines : OK');

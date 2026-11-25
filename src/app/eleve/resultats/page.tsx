@@ -26,12 +26,12 @@ export default async function Results() {
     select
       (select coalesce(sum(active_seconds), 0)::int from work_sessions where student_id = ${student.id} and started_at > now() - interval '7 days') as this_w,
       (select coalesce(sum(active_seconds), 0)::int from work_sessions where student_id = ${student.id} and started_at between now() - interval '14 days' and now() - interval '7 days') as last_w,
-      (select count(*)::int from activity_log where student_id = ${student.id} and event = 'niveau_atteint' and at > now() - interval '30 days') as levels,
+      (select coalesce(sum((data->>'niveau')::int - coalesce((data->>'avant')::int, (data->>'niveau')::int - 1)), 0)::int from activity_log where student_id = ${student.id} and event = 'niveau_atteint' and at > now() - interval '30 days') as levels,
       g.gain, g.title as gain_title
     from (select 1) x left join lateral (
       select max(a.final_score) - (array_agg(a.final_score order by a.attempt_no))[1] as gain, c.title
       from eval_attempts a join courses c on c.id = a.course_id where a.student_id = ${student.id} and a.status = 'graded'
-      group by c.title having count(*) > 1 order by 1 desc limit 1) g on true`;
+      group by a.course_id, c.title having count(*) > 1 order by 1 desc limit 1) g on true`;
   const m = (s: number) => Math.round(s / 60);
   return (
     <PaneScreen top={<PageTitle title="Mes résultats" sub="Tes niveaux montent avec tes progrès. C’est toujours ta meilleure note qui compte." />}>
@@ -63,7 +63,7 @@ export default async function Results() {
         <Pane className="flex-[1_1_340px]"><section className="card flex flex-col gap-2" data-my-progress>
           <h2 className="text-xl font-semibold">Mes progrès</h2>
           <span className="muted text-sm">Toi par rapport à toi : personne d’autre.</span>
-          <div className="flex justify-between gap-3 py-2 border-t border-soft text-sm"><span>Temps de travail cette semaine<span className="block muted">la semaine d’avant : {m(pr.last_w)} min</span></span>
+          <div className="flex justify-between gap-3 py-2 border-t border-soft text-sm"><span>Temps de travail ces 7 derniers jours<span className="block muted">les 7 jours d’avant : {m(pr.last_w)} min</span></span>
             <strong className={pr.this_w >= pr.last_w && pr.this_w > 0 ? 'text-brand-dark' : ''}>{m(pr.this_w)} min{pr.this_w > pr.last_w && pr.last_w > 0 ? ' ▲' : ''}</strong></div>
           <div className="flex justify-between gap-3 py-2 border-t border-soft text-sm"><span>Niveaux gagnés ce mois-ci<span className="block muted">un niveau monte à chaque étape réussie</span></span><strong>{pr.levels}</strong></div>
           {pr.gain && Number(pr.gain) > 0 && <div className="flex justify-between gap-3 py-2 border-t border-soft text-sm"><span>Ta plus belle remontée<span className="block muted">{pr.gain_title}</span></span><strong className="text-brand-dark">+{Number(pr.gain).toLocaleString('fr-FR')} pts</strong></div>}

@@ -71,10 +71,14 @@ export async function breakdown(studentId: string) {
     select coalesce(sj.name, 'Autre') as subject, sum(w.active_seconds)::int as s from work_sessions w
     left join courses c on c.id = w.course_id left join chapters ch on ch.id = c.chapter_id left join subjects sj on sj.id = ch.subject_id
     where w.student_id = ${studentId} and w.started_at > now() - interval '30 days' group by 1 having sum(w.active_seconds) > 0 order by 2 desc limit 6`;
+  // 7 derniers jours civils (heure de Paris, aujourd'hui compris) : la même fenêtre que le graphique des 7 jours
   const [k] = await sql<{ active: number; open: number; sessions: number; days: number; pauses: number; focus: number }[]>`
-    select coalesce(sum(active_seconds), 0)::int as active, coalesce(sum(open_seconds), 0)::int as open, count(*)::int as sessions,
-      count(distinct (started_at at time zone 'Europe/Paris')::date) filter (where active_seconds >= 60)::int as days, coalesce(sum(idle_pauses), 0)::int as pauses,
-      (select coalesce(sum(focus_losses), 0)::int from eval_attempts where student_id = ${studentId} and started_at > now() - interval '7 days') as focus
-    from work_sessions where student_id = ${studentId} and started_at > now() - interval '7 days'`;
+    with b as (select (((now() at time zone 'Europe/Paris')::date - 6)::timestamp at time zone 'Europe/Paris') as start),
+    s as (select * from work_sessions where student_id = ${studentId} and started_at >= (select start from b)),
+    d as (select (started_at at time zone 'Europe/Paris')::date as day, sum(active_seconds) as a from s group by 1)
+    select coalesce((select sum(active_seconds) from s), 0)::int as active, coalesce((select sum(open_seconds) from s), 0)::int as open,
+      (select count(*) from s where open_seconds > 0)::int as sessions,
+      (select count(*) from d where a >= 60)::int as days, coalesce((select sum(idle_pauses) from s), 0)::int as pauses,
+      (select coalesce(sum(focus_losses), 0)::int from eval_attempts where student_id = ${studentId} and started_at >= (select start from b)) as focus`;
   return { byKind, bySubject, week: k };
 }

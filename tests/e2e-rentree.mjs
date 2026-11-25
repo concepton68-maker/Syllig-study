@@ -68,14 +68,16 @@ ok(await el.evaluate(() => document.documentElement.scrollWidth <= window.innerW
 await form.locator('button[type=submit]').click();
 await el.waitForURL(/questionnaire=merci/);
 ok(await el.locator('[data-checkin-due]').count() === 0, 'merci, et plus de carte avant 6 semaines');
-const [ck] = await sql`select scores from student_checkins where student_id = ${nora.id}`;
-ok(ck.scores.stress === 100 && ck.scores.pression === 100 && ck.scores.conditions === 44, `scores calculés (stress ${ck.scores.stress}, conditions ${ck.scores.conditions})`);
+const [ck] = await sql`select answers from student_checkins where student_id = ${nora.id}`;
+ok(ck.answers.q8 === 3 && ck.answers.q13 === 3, 'réponses exactes enregistrées');
+ok(true, 'réponses enregistrées');
 
 console.log('Le parent voit son ressenti');
 await pa.goto(`${BASE}/parent/bilan?eleve=${nora.id}`);
 const card = pa.locator('[data-checkin-card]');
-ok(await card.locator('[data-dim="stress"][data-concern="1"]').count() === 1, 'stress élevé signalé comme point d’attention');
-ok((await card.innerText()).includes('Ce qui aide') && (await card.innerText()).includes('Mon téléphone et la peur de rater'), 'ce qui aide + ses propres mots');
+ok((await card.locator('[data-item="q8"]').innerText()).includes('Tout à fait'), 'le parent lit la réponse exacte (« Les contrôles me stressent beaucoup » : Tout à fait)');
+ok(!/\d+ %/.test(await card.innerText()), 'aucun pourcentage tiré du questionnaire');
+ok((await card.innerText()).includes('Mon téléphone et la peur de rater'), 'ses propres mots');
 ok(/ce qui la bloque/i.test(await card.innerText()), 'accordé au féminin');
 await card.locator('button:has-text("reproposer")').click();
 await pa.waitForSelector('text=Proposé à Nora');

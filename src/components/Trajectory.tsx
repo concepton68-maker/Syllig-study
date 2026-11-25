@@ -1,76 +1,83 @@
 import { TrendingUp } from 'lucide-react';
-import type { Trajectory, Trend } from '@/lib/trajectory';
-import { TrajectoryChart, Sparkline } from './TrajectoryChart';
+import type { Trajectory } from '@/lib/trajectory';
+import { WeeklyBars, RateLines, Sparkline } from './TrajectoryChart';
 
-// « Où va-t-il ? » : trajectoire de l'investissement, de la compréhension, par matière, et du ressenti.
-const arrow = (t: Trend) => t.dir === 'hausse' ? '▲' : t.dir === 'baisse' ? '▼' : t.dir === 'stable' ? '▬' : '';
-const tone = (t: Trend, bad = false) => t.dir === 'inconnue' || t.dir === 'stable' ? 'bg-soft text-ink-2' : (t.dir === 'hausse') !== bad ? 'bg-brand-soft text-brand-dark' : 'bg-warm-soft text-warm-dark';
+// Trajectoire sur 12 semaines : les mesures semaine après semaine et une comparaison chiffrée. Aucune extrapolation, aucune cause supposée.
+const C_CP = '#2F4FD8', C_EX = '#00b894';
+const ratio = (ok: number, t: number) => t ? `${Math.round((ok / t) * 100)} % (${ok} sur ${t})` : null;
 
-function reading(tr: Trajectory, name: string) {
-  const s = tr.serieux.dir, c = tr.comprehension.dir;
-  if (s === 'inconnue' && c === 'inconnue') return `Il faut encore quelques semaines de travail pour dessiner la trajectoire de ${name}.`;
-  if (s === 'hausse' && c === 'hausse') return 'Il s’investit davantage et comprend mieux : l’effort paie, dites-le-lui.';
-  if (s === 'hausse' && c !== 'hausse') return 'Il s’investit davantage ; la compréhension suit souvent avec quelques semaines de décalage. Encouragez la régularité.';
-  if (s === 'baisse' && c === 'baisse') return 'Moins d’investissement et une compréhension en baisse : à aborder vite, avec bienveillance (fatigue, découragement, difficulté ?).';
-  if (s === 'baisse') return 'Son investissement baisse alors que la compréhension tient : signe de lassitude plutôt que de difficulté. Un objectif court et atteignable peut relancer.';
-  if (c === 'hausse') return 'La compréhension progresse à effort constant : il gagne en efficacité.';
-  if (c === 'baisse') return 'La compréhension baisse à effort constant : les notions deviennent plus difficiles, il faut sans doute reprendre une base (voir le test de positionnement).';
-  return 'Trajectoire stable pour l’instant.';
-}
-
-export function TrajectoryCard({ tr, name }: { tr: Trajectory; name: string }) {
-  const hasData = tr.weeks.some(w => w.serieux !== null);
+export function TrajectoryCard({ tr, name, goalMin }: { tr: Trajectory; name: string; goalMin: number }) {
+  const any = tr.weeks.some(w => w.minutes > 0 || w.cp_total || w.ex_total);
+  const labels = tr.weeks.map(w => w.label);
   return (
     <section className="card flex flex-col gap-4" aria-labelledby="trajectoire" data-trajectory>
-      <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
-        <h2 id="trajectoire" className="text-xl font-semibold m-0 flex items-center gap-2 mr-auto"><TrendingUp size={20} aria-hidden="true" />Où va-t-il ? La trajectoire sur 12 semaines</h2>
-        <span className={`pill ${tone(tr.serieux)}`} data-trend-serieux={tr.serieux.dir}>Investissement {arrow(tr.serieux)} {tr.serieux.text}</span>
-        <span className={`pill ${tone(tr.comprehension)}`} data-trend-comprehension={tr.comprehension.dir}>Compréhension {arrow(tr.comprehension)} {tr.comprehension.text}</span>
-      </div>
-      <p className="m-0 text-sm" data-reading>{reading(tr, name)}</p>
-      {hasData && <>
-        <div className="flex flex-wrap gap-x-5 gap-y-1 text-sm">
-          <span className="flex items-center gap-1.5"><i className="inline-block w-4 h-[3px] rounded" style={{ background: '#2F4FD8' }} />Investissement de la semaine</span>
-          <span className="flex items-center gap-1.5"><i className="inline-block w-4 h-[3px] rounded" style={{ background: '#00b894' }} />Compréhension (3 semaines glissantes, travail sérieux seulement)</span>
+      <h2 id="trajectoire" className="text-xl font-semibold m-0 flex items-center gap-2"><TrendingUp size={20} aria-hidden="true" />Évolution sur 12 semaines</h2>
+      {!any ? <p className="m-0 text-sm muted">Pas encore de travail mesuré pour {name} sur cette période.</p> : <>
+        <div className="flex flex-col gap-2">
+          <h3 className="text-base font-semibold m-0">Les 4 dernières semaines terminées, comparées aux 4 précédentes</h3>
+          <ul className="list-none m-0 p-0 grid gap-x-6 sm:grid-cols-2" data-compare>
+            {tr.compare.map(c => (
+              <li key={c.label} className="flex items-baseline justify-between gap-3 py-1.5 border-t border-soft text-sm" data-compare-row={c.label} data-dir={c.dir}>
+                <span>{c.label}</span>
+                <span className="tabular-nums whitespace-nowrap">{c.before} → <strong>{c.after}</strong> <span aria-hidden="true" className={c.dir === 'none' || c.dir === 'same' ? 'muted' : c.dir === c.better ? 'text-brand-dark' : 'text-warm-dark'}>{c.dir === 'up' ? '▲' : c.dir === 'down' ? '▼' : c.dir === 'same' ? '=' : ''}</span></span>
+              </li>
+            ))}
+          </ul>
         </div>
-        <TrajectoryChart points={tr.weeks} />
+        <div className="flex flex-col gap-1">
+          <h3 className="text-base font-semibold m-0">Temps de travail effectif par semaine</h3>
+          <span className="muted text-xs">Ligne pointillée : l’objectif que vous avez fixé ({goalMin} min). Semaine en cours en pointillés : elle n’est pas finie.</span>
+          <WeeklyBars goal={goalMin} bars={tr.weeks.map(w => ({ key: w.week, label: w.label, value: w.minutes, current: w.current,
+            tip: [`Semaine du ${w.label}${w.current ? ' (en cours)' : ''}`, `${w.minutes} min de travail effectif`, `${w.days} jour${w.days > 1 ? 's' : ''} avec 10 min ou plus`] }))} />
+        </div>
+        <div className="flex flex-col gap-1">
+          <h3 className="text-base font-semibold m-0">Réussite par semaine</h3>
+          <div className="flex flex-wrap gap-x-5 gap-y-1 text-sm">
+            <span className="flex items-center gap-1.5"><i className="inline-block w-4 h-[3px] rounded" style={{ background: C_CP }} />Contrôles de leçon réussis du premier coup</span>
+            <span className="flex items-center gap-1.5"><i className="inline-block w-4 h-[3px] rounded" style={{ background: C_EX }} />Exercices réussis (corrigés par la plateforme)</span>
+          </div>
+          <RateLines labels={labels} lines={[
+            { key: 'cp', label: 'Contrôles', color: C_CP, values: tr.weeks.map(w => w.cp_total ? { v: Math.round((w.cp_ok / w.cp_total) * 100), tip: ratio(w.cp_ok, w.cp_total)! } : null) },
+            { key: 'ex', label: 'Exercices', color: C_EX, values: tr.weeks.map(w => w.ex_total ? { v: Math.round((w.ex_ok / w.ex_total) * 100), tip: ratio(w.ex_ok, w.ex_total)! } : null) },
+          ]} />
+          <span className="muted text-xs">Un point n’apparaît que les semaines où il y a eu des contrôles ou des exercices ; le nombre de questions est indiqué au survol et dans le tableau.</span>
+        </div>
         <details className="text-sm">
           <summary className="cursor-pointer muted">Voir les chiffres semaine par semaine</summary>
-          <table className="w-full mt-2 text-sm">
-            <thead><tr className="text-left muted"><th className="py-1 font-medium">Semaine du</th><th className="font-medium">Investissement</th><th className="font-medium">Compréhension</th><th className="font-medium">Travail effectif</th></tr></thead>
-            <tbody>{tr.weeks.map(w => <tr key={w.week} className="border-t border-soft"><td className="py-1">{w.label}</td><td>{w.serieux ?? '—'}{w.serieux !== null ? ' %' : ''}</td><td>{w.comprehension ?? '—'}{w.comprehension !== null ? ' %' : ''}</td><td>{w.minutes} min</td></tr>)}</tbody>
-          </table>
+          <div className="overflow-x-auto">
+            <table className="w-full mt-2 text-sm min-w-[560px]">
+              <thead><tr className="text-left muted"><th className="py-1 font-medium">Semaine du</th><th className="font-medium">Travail</th><th className="font-medium">Jours</th><th className="font-medium">Contrôles 1er coup</th><th className="font-medium">Exercices</th><th className="font-medium">Copies complètes</th></tr></thead>
+              <tbody>{tr.weeks.map(w => <tr key={w.week} className="border-t border-soft"><td className="py-1">{w.label}{w.current ? ' (en cours)' : ''}</td><td>{w.minutes} min</td><td>{w.days}</td>
+                <td>{w.cp_total ? `${w.cp_ok}/${w.cp_total}` : '—'}</td><td>{w.ex_total ? `${w.ex_ok}/${w.ex_total}` : '—'}</td><td>{w.notes.length ? w.notes.map(x => `${x.toLocaleString('fr-FR')}/20`).join(', ') : '—'}</td></tr>)}</tbody>
+            </table>
+          </div>
         </details>
       </>}
       {tr.subjects.length > 0 && (
         <div className="flex flex-col gap-2 border-t border-line pt-3">
-          <h3 className="text-base font-semibold m-0">Dans quoi il progresse</h3>
+          <h3 className="text-base font-semibold m-0">Par matière : chaque résultat, dans l’ordre</h3>
           <ul className="list-none m-0 p-0 flex flex-col">
             {tr.subjects.map(s => (
               <li key={s.subject} className="grid grid-cols-[minmax(110px,160px)_1fr_auto] max-sm:grid-cols-[1fr_auto] items-center gap-x-4 gap-y-1 py-2 border-t border-soft first:border-t-0" data-subject-trend={s.subject}>
-                <span className="text-sm font-semibold">{s.subject}<span className="block muted font-normal text-xs">{s.points.length} mesures</span></span>
+                <span className="text-sm font-semibold">{s.subject}<span className="block muted font-normal text-xs">{s.n} résultat{s.n > 1 ? 's' : ''}</span></span>
                 <span className="max-sm:col-span-2 max-sm:order-3"><Sparkline values={s.points.map(p => p.v)} /></span>
-                <span className="text-right"><strong className="tabular-nums">{s.last} %</strong><span className={`block pill text-xs mt-0.5 ${tone(s.trend)}`}>{arrow(s.trend)} {s.trend.dir === 'inconnue' ? 'à suivre' : s.trend.text}</span></span>
+                <span className="text-right text-sm tabular-nums">{s.first !== null && s.last !== null ? <>{s.first} % → <strong>{s.last} %</strong><span className="block muted text-xs">moyenne des {Math.min(3, Math.floor(s.n / 2))} premiers et des {Math.min(3, Math.floor(s.n / 2))} derniers</span></> : <span className="muted">{s.points.map(p => `${p.v} %`).join(', ')}</span>}</span>
               </li>
             ))}
           </ul>
-          <span className="muted text-xs">Chaque point : une série d’exercices ou une évaluation faite sérieusement (en % de réussite).</span>
+          <span className="muted text-xs">Chaque résultat : une série d’exercices (part des questions corrigées par la plateforme réussies) ou une copie complète (note ramenée en %).</span>
         </div>
       )}
-      {tr.feelings.some(f => f.values.length >= 2) && (
-        <div className="flex flex-col gap-2 border-t border-line pt-3">
-          <h3 className="text-base font-semibold m-0">Son ressenti, d’un questionnaire à l’autre</h3>
-          <ul className="list-none m-0 p-0 grid gap-2 sm:grid-cols-2">
-            {tr.feelings.filter(f => f.values.length >= 2).map(f => {
-              const a = f.values[0].v, b = f.values.at(-1)!.v, d = b - a;
-              const good = f.bad ? d < 0 : d > 0;
-              return (
-                <li key={f.dim} className="flex items-center justify-between gap-3 rounded-xl bg-surface-2 px-3 py-2 text-sm" data-feeling={f.dim}>
-                  <span>{f.label}</span>
-                  <span className="tabular-nums">{a} % → <strong>{b} %</strong> <span className={Math.abs(d) < 10 ? 'muted' : good ? 'text-brand-dark' : 'text-warm-dark'}>{Math.abs(d) < 10 ? '▬' : d > 0 ? '▲' : '▼'}</span></span>
-                </li>
-              );
-            })}
+      {tr.feelings.length > 0 && (
+        <div className="flex flex-col gap-2 border-t border-line pt-3" data-feelings>
+          <h3 className="text-base font-semibold m-0">Ce qui a changé dans ses réponses au questionnaire</h3>
+          <ul className="list-none m-0 p-0 flex flex-col">
+            {tr.feelings.map(f => (
+              <li key={f.id} className="flex flex-wrap justify-between gap-x-4 gap-y-0.5 py-1.5 border-t border-soft first:border-t-0 text-sm" data-feeling={f.id}>
+                <span>« {f.text} »</span>
+                <span className="muted">{f.answers.map(a => a.label).join(' → ')}</span>
+              </li>
+            ))}
           </ul>
         </div>
       )}

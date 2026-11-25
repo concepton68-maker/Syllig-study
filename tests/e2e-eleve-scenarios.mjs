@@ -107,7 +107,7 @@ ok(a3.status === 'graded' && Math.abs(Number(a3.final_score) - expected) < 0.01,
 // ── 5. Bilan et révision programmée côté élève ──
 console.log('Bilan et révision');
 await el.goto(`${BASE}/eleve/cours/${f.id}/bilan/${att.id}`);
-await el.waitForSelector('text=Ce que tu sais faire maintenant');
+await el.waitForSelector('text=Ce que tu as réussi dans cette évaluation');
 ok(true, 'bilan final visible par l’élève');
 const [pr] = await sql`select next_review_at, best_eval_score, mastery from course_progress where student_id = ${st.id} and course_id = ${f.id}`;
 ok(!!pr.next_review_at && pr.mastery >= 1, `révision programmée le ${pr.next_review_at.toLocaleDateString('fr-FR')} (niveau ${pr.mastery})`);

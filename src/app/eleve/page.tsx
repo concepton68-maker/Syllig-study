@@ -148,20 +148,20 @@ export default async function Today({ searchParams }: { searchParams: Promise<{ 
             <Link href={`/eleve/cours/${lastGraded.course_id}/bilan/${lastGraded.id}`} className="card no-underline text-ink bg-brand-soft border-brand-mid flex flex-col gap-2">
               <span className="lbl">Ton bilan est prêt</span>
               <strong>{lastGraded.title}</strong>
-              <span className="flex items-center justify-between gap-2"><span className="muted text-sm">Ce que tu sais faire maintenant</span><span className="pill bg-brand text-white num">{Number(lastGraded.final_score).toLocaleString('fr-FR')}/20</span></span>
+              <span className="flex items-center justify-between gap-2"><span className="muted text-sm">Ce que tu as réussi dans cette évaluation</span><span className="pill bg-brand text-white num">{Number(lastGraded.final_score).toLocaleString('fr-FR')}/20</span></span>
             </Link>
           )}
           <section className="card flex flex-col gap-3">
             <h2 className="text-xl font-semibold">Révisions</h2>
-            {reviews.length === 0 && <EmptyState title="Aucune révision cette semaine" text="Après chaque évaluation, une révision courte est programmée (J+3 à J+30 selon ta note)." />}
+            {reviews.length === 0 && <EmptyState title="Aucune révision cette semaine" text="Après chaque évaluation, une révision est programmée (de 3 à 30 jours plus tard selon ta note) : tu refais les exercices du cours." />}
             {reviews.map(r => {
               const due = new Date(r.next_review_at!);
               const late = due.getTime() < Date.now();
               return (
-                <div key={r.course_id} className={`p-3 rounded-xl ${late ? 'bg-warm-soft' : 'bg-soft'}`}>
+                <Link key={r.course_id} href={`/eleve/cours/${r.course_id}/exercices`} data-review className={`p-3 rounded-xl no-underline text-ink ${late ? 'bg-warm-soft' : 'bg-soft'}`}>
                   <strong className="text-sm">{r.title}</strong>
-                  <div className={`text-sm ${late ? 'text-warm-dark' : 'muted'}`}>{r.subject} · {late ? 'à faire dès que possible' : `prévue le ${due.toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', timeZone: 'Europe/Paris' })}`}</div>
-                </div>
+                  <div className={`text-sm ${late ? 'text-warm-dark' : 'muted'}`}>{r.subject} · {late ? 'à faire dès que possible' : `prévue le ${due.toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', timeZone: 'Europe/Paris' })}`} · refaire les exercices ›</div>
+                </Link>
               );
             })}
           </section>

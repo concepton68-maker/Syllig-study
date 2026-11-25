@@ -176,7 +176,7 @@ try {
 
   await st.goto(BASE + '/eleve/resultats');
   await st.click('text=Bilan');
-  await st.waitForSelector('text=Ce que tu sais faire maintenant');
+  await st.waitForSelector('text=Ce que tu as réussi dans cette évaluation');
   const txt = await st.locator('h1').innerText();
   ok(/15,25\/20|15,25/.test(txt), 'bilan final côté élève : ' + txt);
   await shot(st, '13-bilan-final');

@@ -16,7 +16,7 @@ const EVENT: Record<string, string> = {
   point_controle_a_reessayer: 'Point de contrôle à réessayer', exercices_remis: 'Exercices remis', exercices_termines: 'Exercices terminés',
   evaluation_commencee: 'Évaluation commencée', evaluation_remise: 'Copie remise', evaluation_remise_automatiquement: 'Copie remise à la fin du temps',
   evaluation_sortie_fenetre: 'Sortie de la fenêtre', evaluation_retour_fenetre: 'Retour dans la fenêtre', evaluation_coller_bloque: 'Collage bloqué',
-  questionnaire_rempli: 'Questionnaire « Comment je travaille » rempli', evaluation_notee: 'Évaluation notée', evaluation_demandee: 'Évaluation demandée', evaluation_autorisee: 'Évaluation autorisée',
+  revision_faite: 'Révision faite (exercices refaits)', questionnaire_rempli: 'Questionnaire « Comment je travaille » rempli', evaluation_notee: 'Évaluation notée', evaluation_demandee: 'Évaluation demandée', evaluation_autorisee: 'Évaluation autorisée',
   evaluation_reportee: 'Évaluation reportée', niveau_atteint: 'Niveau atteint', copies_exportees: 'Copies exportées pour correction',
   corrections_importees: 'Corrections importées', note_modifiee: 'Note modifiée',
   cours_reinitialise: 'Cours réinitialisé', parcours_reinitialise: 'Parcours réinitialisé',
@@ -46,7 +46,7 @@ function describe(e: string, d: Record<string, unknown>) {
 const FILTERS: Record<string, { label: string; match: (e: string) => boolean }> = {
   tout: { label: 'Tout', match: () => true },
   evaluations: { label: 'Évaluations', match: e => e.startsWith('evaluation') || e === 'note_modifiee' || e === 'niveau_atteint' },
-  travail: { label: 'Leçons et exercices', match: e => /^(seance|lecon|point_controle|exercices)/.test(e) },
+  travail: { label: 'Leçons et exercices', match: e => /^(seance|lecon|point_controle|exercices|revision)/.test(e) },
   parent: { label: 'Actions du parent', match: e => /(autorisee|reportee|exportees|importees|reinitialise|niveau_corrige|annee_scolaire|note_modifiee|bilan_ia|positionnement_propose|consentement_ia)/.test(e) },
 };
 const DAYS = 7;
@@ -71,7 +71,7 @@ function summary(b: Block) {
   else if (b.sessions.some(x => x.kind === 'lesson')) chips.push({ text: '① Leçon en cours' });
   const ok = b.events.filter(x => x.event === 'point_controle_reussi').length, ko = b.events.filter(x => x.event === 'point_controle_a_reessayer').length;
   if (ok + ko) chips.push({ text: `Contrôles : ${ok} réussi${ok > 1 ? 's' : ''}${ko ? `, ${ko} à refaire` : ''}`, tone: ko > ok ? 'warn' : undefined });
-  const ex = [...b.events].reverse().find(x => x.event === 'exercices_termines');
+  const ex = [...b.events].reverse().find(x => x.event === 'exercices_termines' || x.event === 'revision_faite');
   if (ex) chips.push({ text: `② Exercices ${ex.data.score_sur_10}/10`, tone: Number(ex.data.score_sur_10) >= 8 ? 'ok' : undefined });
   else if (has('exercices_remis')) chips.push({ text: '② Exercices remis' });
   else if (b.sessions.some(x => x.kind === 'exercises')) chips.push({ text: '② Exercices en cours' });

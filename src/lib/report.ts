@@ -4,7 +4,8 @@ import { sql } from './db';
 import { aiConfigFor, askJson, ensureGeminiModel, logAiRequest, purgeExpired } from './ai';
 import { redact, namesFor } from './redact';
 import { studentProfile, type Profile } from './profile';
-import { engagement } from './engagement';
+import { workFacts } from './engagement';
+import { ITEMS, SCALE } from './checkin';
 import type { Question } from './course-format';
 
 // Bilan pédagogique rédigé par l'IA à partir des faits mesurés (profil) : origine probable des difficultés,
@@ -46,8 +47,8 @@ Ta mission : expliquer d'où viennent les difficultés, en distinguant :
 - « lacunes_anterieures » : des notions des années précédentes ne sont pas acquises (ex. règles des signes, fractions, classes de mots), alors que le travail est fait sérieusement ;
 - « apprentissage_syllig » : les notions de cette année, travaillées sur Syllig, ne sont pas encore acquises (temps correct, bases présentes) ;
 - « implication » : le travail est survolé (leçon lue bien plus vite que prévu, points de contrôle ratés, évaluation rendue très vite ou laissée vide) ;
-- « investissement_et_comprehension » sépare deux mesures calculées par la plateforme (0–100) : l'investissement (régularité, concentration, lecture, effort en évaluation) et la compréhension mesurée seulement sur le travail fait sérieusement. Appuie-toi dessus pour distinguer l'élève qui ne veut pas de celui qui n'arrive pas, et signale un possible découragement si la tendance le montre ;
-- « ressenti_eleve » : réponses de l'élève à un questionnaire (envie, sens, pression, confiance, stress, organisation, soutien, conditions ; 0–100 ; pour « pression » et « stress », un score élevé est un signal d'alerte). C'est son ressenti, pas un diagnostic : croise-le avec les mesures, et adapte les conseils aux parents (ex. stress élevé → dédramatiser ; confiance basse → réussites faciles d'abord) ;
+- « travail_et_resultats_28_jours » : faits mesurés sur 28 jours, le travail fourni (jours travaillés, temps effectif, copies complètes ou non) séparé des résultats (moyenne des copies complètes, contrôles, exercices corrigés automatiquement). Appuie-toi sur ces faits ; ne conclus jamais à un trait psychologique, décris ce que les faits montrent ;
+- « ressenti_eleve » : les réponses exactes de l'élève à un questionnaire sur sa façon de travailler. C'est son avis sur lui-même, pas une mesure : cite-le comme tel, sans en tirer de diagnostic ;
 - « mixte » ou « indetermine » si les faits ne permettent pas de trancher. Une copie rendue vite et vide sans autre donnée ne permet PAS de distinguer lacune et manque d'implication : dis-le et compte sur le test de positionnement.
 
 Règles :
@@ -63,6 +64,7 @@ Règles :
 
 // Convertit une question du test en question corrigeable par la plateforme (rejette les questions mal formées)
 export function placementQuestion(q: ReportData['test_positionnement']['questions'][number], i: number): (Question & { matiere: string; notion: string; niveau_origine: string; explication: string }) | null {
+  if (!q.reponse?.trim() || !q.prompt?.trim()) return null;   // réponse vide : question inutilisable (sinon « » vaudrait 0)
   const base = { id: `p${i + 1}`, prompt: q.prompt, solution: q.explication, points: 1, matiere: q.matiere, notion: q.notion, niveau_origine: q.niveau_origine, explication: q.explication };
   if (q.type === 'qcm') {
     const k = Number(q.reponse);
@@ -99,11 +101,9 @@ export async function generateReport(studentId: string, actorId: string | null):
     indicateurs_globaux: profile.global,
     cours: profile.courses.map(({ course_id: _c, code: _k, ...c }) => c),
     tests_de_positionnement: profile.placement,
-    ressenti_eleve: (await sql<{ created_at: Date; scores: unknown }[]>`select created_at, scores from student_checkins where student_id = ${studentId} order by created_at desc limit 2`)
-      .map(r => ({ date: r.created_at.toISOString().slice(0, 10), scores_0_100: r.scores })),
-    investissement_et_comprehension: await (async () => { const e = await engagement(studentId); return {
-      investissement: e.serieux, comprehension: e.comprehension, profil: e.quadrant, fiabilite: e.confidence, par_matiere: e.subjects,
-      evaluations_baclees_ecartees: e.excluded_evals, tendance: e.trend }; })(),
+    ressenti_eleve: (await sql<{ created_at: Date; answers: Record<string, number> }[]>`select created_at, answers from student_checkins where student_id = ${studentId} order by created_at desc limit 2`)
+      .map(r => ({ date: r.created_at.toISOString().slice(0, 10), reponses: ITEMS.filter(it => typeof r.answers?.[it.id] === 'number').map(it => `${it.text} → ${SCALE[r.answers[it.id]]}`) })),
+    travail_et_resultats_28_jours: await workFacts(studentId),
     programme_syllig: programme.map(p => `${p.subject} · ${p.title}`),
   };
   let data: ReportData;

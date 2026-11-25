@@ -71,7 +71,8 @@ export async function studentProfile(studentId: string): Promise<Profile> {
       const qs: Question[] = evalQuestions(doc, a.variant);
       const pts = a.scores ?? a.auto_scores ?? {};
       const blank = qs.filter(q => !(a.answers?.[q.id] ?? '').trim()).length;
-      const allowed = doc.evaluation.duration_min;
+      // durée réellement accordée (tiers-temps compris) : échéance du serveur − début ; à défaut, durée prévue
+      const allowed = a.deadline_at && a.started_at ? Math.round((a.deadline_at.getTime() - a.started_at.getTime()) / 60000) : doc.evaluation.duration_min;
       const used = a.started_at && a.submitted_at ? Math.max(1, Math.round((a.submitted_at.getTime() - a.started_at.getTime()) / 60000)) : null;
       evals.push({
         attempt_no: a.attempt_no, status: a.status, score: a.final_score === null ? null : Number(a.final_score),

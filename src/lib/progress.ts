@@ -52,7 +52,7 @@ export async function recomputeMastery(studentId: string, courseId: number) {
     Number(a.final_score) >= MASTERY.evalMastered &&
     a.started_at.getTime() - p.lesson_done_at!.getTime() >= MASTERY.masteredDelayDays * 864e5)) m = 5;
   const mastery = Math.max(m, p.mastery);
-  if (mastery > p.mastery) await logEvent(studentId, 'niveau_atteint', { courseId, data: { niveau: mastery, libelle: MASTERY.labels[mastery] } });
+  if (mastery > p.mastery) await logEvent(studentId, 'niveau_atteint', { courseId, data: { niveau: mastery, avant: p.mastery, libelle: MASTERY.labels[mastery] } });
   await sql`update course_progress set mastery = greatest(mastery, ${mastery}), best_eval_score = ${best}, updated_at = now()
     where student_id = ${studentId} and course_id = ${courseId}`;
   return mastery;

@@ -218,7 +218,7 @@ const graded = await sql`select id, status, final_score, feedback from eval_atte
 ok(graded.every(g => g.status === 'graded' && Math.abs(Number(g.final_score) - expected[g.id]) < 0.01 && g.feedback.general === 'Bon travail, continue.'),
   `notes validées : ${graded.map(g => `${Number(g.final_score)}/20`).join(', ')} (attendu ${ids.map(i => `${expected[i]}/20`).join(', ')})`);
 await el.goto(`${BASE}/eleve/cours/${(await course('TG001')).id}/bilan/${ids[0]}`);
-await el.waitForSelector('text=Ce que tu sais faire maintenant');
+await el.waitForSelector('text=Ce que tu as réussi dans cette évaluation');
 ok((await el.textContent('main')).includes('Bon travail, continue.'), 'l’élève voit sa note et le commentaire');
 
 // React #418 (écart d'hydratation, intermittent, sans effet visible) : avertissement connu, non bloquant ; toute autre erreur bloque.

@@ -426,3 +426,20 @@ Recette complète de l'espace élève (un agent testeur a joué l'élève sur t�
   - son ressenti d'un questionnaire à l'autre (envie, confiance, stress, organisation) ;
   - la semaine en cours est comptée au prorata des jours écoulés et tracée en pointillés.
 - Site d'essai (préparé) : une copie séparée de l'application sur le même serveur (« essai.study.syllig.com »), avec sa propre base recopiée chaque nuit depuis les vraies données, IA désactivée et bandeau « Site d'essai ». Les nouveautés y passent d'abord, sans jamais toucher au travail des élèves. Il s'active dès que l'adresse existe dans le DNS.
+
+## 0.42 — 25/11/2026
+Principe du propriétaire : on ne montre que ce qui est mesuré de façon sûre, jamais d'estimation ni d'interprétation. Corrections issues de l'audit de conformité.
+- Valeurs fausses corrigées :
+  - jours travaillés comptés par jour (temps cumulé de la journée), et non plus par séance ;
+  - « En direct » : les indicateurs portent sur les 7 derniers jours civils (plus de « 8/7 ») ;
+  - tiers-temps : la durée réellement accordée (échéance du serveur) sert partout, y compris dans le bilan de l'élève (« remise en 40 min sur 40 ») ;
+  - « Mes progrès » : la plus belle remontée ne mélange plus deux cours de même titre ; les niveaux gagnés comptent tous les niveaux franchis ;
+  - semaines calculées à l'heure de Paris, sans heure perdue ni comptée deux fois aux changements d'heure ;
+  - correction automatique : une réponse sans chiffre n'est jamais acceptée pour un nombre ; « 3² » n'est plus confondu avec « 32 » ; une question générée sans réponse est écartée.
+- Bilan, « Travail et résultats » (remplace « Ne veut pas, ou n'arrive pas ? ») : uniquement des faits sur 28 jours, chacun avec sa définition — jours travaillés, temps effectif, part du temps où il agit sur la page, leçons terminées, copies complètes ou non, moyenne des copies complètes et des incomplètes séparément, contrôles réussis du premier coup, exercices corrigés par la plateforme (l'auto-évaluation de l'élève comptée à part), le tout par matière. Plus de score composite, de profil ni de « fiabilité ».
+- Bilan, « Évolution sur 12 semaines » : temps et jours travaillés par semaine, réussite aux contrôles et aux exercices par semaine (avec le nombre de questions), comparaison chiffrée des 4 dernières semaines terminées avec les 4 précédentes, chaque résultat par matière dans l'ordre. Plus de tendance extrapolée ni de cause supposée.
+- Questionnaire : le parent lit les réponses exactes de l'élève (et ce qui a changé depuis la fois précédente), sans pourcentage ni interprétation.
+- « Concentration » renommée « Temps où il agit sur la page », avec sa définition.
+- Révisions : chaque révision mène aux exercices du cours ; refaire les exercices la marque comme faite (« Révision faite » dans le journal).
+- Bilan de l'élève : « Ce que tu as réussi dans cette évaluation » (au lieu de « Ce que tu sais faire maintenant »).
+- Le bilan IA reçoit ces faits et les réponses exactes du questionnaire, avec la consigne de ne jamais conclure à un trait psychologique.

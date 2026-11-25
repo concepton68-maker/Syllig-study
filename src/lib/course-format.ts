@@ -199,7 +199,9 @@ export function autoCorrect(q: Question, answer: string | undefined): boolean | 
   }
   if (q.type === 'numeric') {
     // signe moins typographique (claviers de téléphone) et espaces fines acceptés
-    const num = (x: string) => Number(x.replace(/[−–]/g, '-').replace(',', '.').replace(/[\s\u00a0\u202f]/g, ''));
+    // une chaîne vide n'est pas « 0 » ; une réponse sans aucun chiffre est fausse
+    const num = (x: string) => { const t = x.replace(/[−–]/g, '-').replace(',', '.').replace(/[\s\u00a0\u202f]/g, ''); return t === '' ? NaN : Number(t); };
+    if (!/\d/.test(a)) return false;
     let v = num(a);
     // unité ou % écrits après le nombre (« 25 % », « 50 km », « 3,5 cm³ ») : on lit le nombre
     if (!Number.isFinite(v)) v = num(a.replace(/\s*[%a-zA-Zµ°²³€$/.]+[a-zA-Z²³/.]*\s*$/, ''));
@@ -217,10 +219,10 @@ export function normShort(s: string) {
   return s.normalize('NFC').replace(/²/g, '^2').replace(/³/g, '^3')
     .normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase()
     .replace(/[−–]/g, '-')
-    .replace(/\^\s*(\d)/g, '$1')
+    .replace(/\^\s*(\d+)/g, 'w$1')                                       // exposant : « 3² » ≠ « 32 », « x² » = « x^2 »
     .replace(/(\d)\s*([\/.,])\s*(?=\d)/g, (_m, d: string, op: string) => d + (op === '/' ? 'q' : 'd'))
     .replace(/\s*\+\s*/g, ' p ')
-    .replace(/(\d)\s+(?=[a-z](?![a-z]))/g, '$1')                                // « 3 x » = « 3x »
+    .replace(/(\d)\s+(?=[a-z](?:w\d|[^a-z]|$))/g, '$1')                                // « 3 x » = « 3x »
     .replace(/(?<=[0-9)])\s*-\s*(?=[0-9a-z(])/g, ' m ')                  // moins d'une expression : 3-x, (x+1)-2, 5x-9
     .replace(/(?<=(?<![a-z])[a-z])\s*-\s*(?=[0-9(]|[a-z](?![a-z]))/g, ' m ')   // x-5, x-y (mais pas « c'est-à-dire »)
     .replace(/(^|[^a-z0-9])-\s*(?=\d)/g, '$1m')                           // nombre négatif : -5

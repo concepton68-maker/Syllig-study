@@ -1,11 +1,11 @@
-// « Ne veut pas » ou « n'arrive pas » : deux profils d'élèves fabriqués en base, le parent voit la bonne lecture
-// (carte investissement × compréhension, détail des mesures, évaluation bâclée écartée de la compréhension).
+// « Travail et résultats » (Bilan parent) : uniquement des faits, sur 28 jours, avec des valeurs attendues calculées à la main.
+// Couvre aussi les erreurs relevées par l'audit de conformité : jours travaillés comptés par jour (et non par séance),
+// tiers-temps pris en compte pour décider qu'une copie est complète, copies incomplètes séparées des complètes.
 // Prérequis : tests/reset-db.sh puis `node scripts/seed.mjs`. Usage : BASE=… DATABASE_URL=… node tests/e2e-serieux.mjs
 import { createRequire } from 'node:module';
 const require = createRequire(import.meta.url);
 const { chromium } = require('playwright');
 const postgres = require('postgres');
-
 const BASE = process.env.BASE ?? 'http://127.0.0.1:3100';
 const sql = postgres(process.env.DATABASE_URL, { max: 1, onnotice: () => {} });
 const ok = (c, m) => { if (!c) { console.error('ÉCHEC :', m); process.exit(1); } console.log('  ✓', m); };
@@ -13,83 +13,66 @@ const ok = (c, m) => { if (!c) { console.error('ÉCHEC :', m); process.exit(1); 
 const [st] = await sql`select id from students limit 1`;
 await sql`update students set level_code = 'troisieme-generale', settings = settings || '{"weekly_goal_minutes": 300}'::jsonb where id = ${st.id}`;
 await sql`update student_years set level_code = 'troisieme-generale' where student_id = ${st.id}`;
-const cs = await sql`select c.id, v.id as version_id, v.document as doc from courses c join course_versions v on v.course_id = c.id and v.status = 'published'
-  where c.code in ('TG001', 'TG034') order by c.code`;
-const qids = (doc, variant = 0) => { const v = doc.evaluation.variants[variant % doc.evaluation.variants.length]; return v.sections.flatMap(s => s.questions.map(q => q.id)); };
+const cs = await sql`select c.id, v.id as version_id, v.document as doc from courses c join course_versions v on v.course_id = c.id and v.status = 'published' where c.code in ('TG001', 'TG034') order by c.code`;
+const qids = doc => doc.evaluation.variants[0].sections.flatMap(s => s.questions.map(q => q.id));
+const session = (daysAgo, hour, min, openMin, courseId = cs[0].id) => sql`insert into work_sessions (student_id, course_id, kind, started_at, last_beat_at, ended_at, open_seconds, active_seconds)
+  values (${st.id}, ${courseId}, 'lesson', date_trunc('day', now() at time zone 'Europe/Paris') at time zone 'Europe/Paris' - make_interval(days => ${daysAgo}) + make_interval(hours => ${hour}),
+    now(), now(), ${openMin * 60}, ${min * 60})`;
+let n = 1;
+const copy = (c, { allowed, used, filled, note, daysAgo = 2 }) => {
+  const ids = qids(c.doc);
+  const answers = Object.fromEntries(ids.slice(0, Math.round(ids.length * filled)).map(id => [id, 'réponse']));
+  return sql`insert into eval_attempts (student_id, course_id, version_id, attempt_no, status, started_at, deadline_at, submitted_at, answers, final_score, scores)
+    values (${st.id}, ${c.id}, ${c.version_id}, ${n++}, 'graded', now() - make_interval(days => ${daysAgo}), now() - make_interval(days => ${daysAgo}) + make_interval(mins => ${allowed}),
+      now() - make_interval(days => ${daysAgo}) + make_interval(mins => ${used}), ${sql.json(answers)}, ${note}, '{}'::jsonb)`;
+};
 
-async function wipe() {
-  for (const t of ['activity_beats', 'work_sessions', 'checkpoint_answers', 'exercise_submissions', 'eval_attempts', 'course_progress', 'placement_tests'])
-    await sql`delete from ${sql(t)} where student_id = ${st.id}`;
+// jour 1 : deux séances de 7 min (14 min au total : 1 jour travaillé) ; jour 3 : trois de 5 min (15 min : 1 jour) ;
+// jour 5 : une séance de 8 min (pas un jour travaillé) ; une séance d'il y a 40 jours (hors fenêtre)
+await session(1, 9, 7, 10); await session(1, 18, 7, 8);
+await session(3, 9, 5, 5); await session(3, 12, 5, 6); await session(3, 20, 5, 9);
+await session(5, 10, 8, 16);
+await session(40, 10, 60, 60);
+// copies : une complète avec tiers-temps (40 min accordées, 13 utilisées ≥ 30 %, tout rempli) → 12/20 ;
+// une complète (30/30 min) → 16/20 ; une bâclée (2 min, 30 % rempli) → 3/20 ; une hors fenêtre
+await copy(cs[0], { allowed: 40, used: 13, filled: 1, note: 12 });
+await copy(cs[1], { allowed: 30, used: 30, filled: 1, note: 16 });
+await copy(cs[1], { allowed: 30, used: 2, filled: 0.3, note: 3 });
+await copy(cs[0], { allowed: 30, used: 30, filled: 1, note: 20, daysAgo: 45 });
+// contrôles : 2 parties réussies du premier coup sur 3 (la 3e réussie seulement au 2e essai)
+for (const [p, first] of [[0, true], [1, true], [2, false]]) {
+  await sql`insert into checkpoint_answers (student_id, course_id, version_id, part_index, variant, choice, correct, answered_at) values (${st.id}, ${cs[0].id}, ${cs[0].version_id}, ${p}, 0, 0, ${first}, now() - interval '3 days')`;
+  if (!first) await sql`insert into checkpoint_answers (student_id, course_id, version_id, part_index, variant, choice, correct, answered_at) values (${st.id}, ${cs[0].id}, ${cs[0].version_id}, ${p}, 0, 1, true, now() - interval '3 days' + interval '1 minute')`;
 }
-// séances : n séances réparties sur des jours différents, ratio actif/ouvert
-async function sessions(n, activeMin, ratio, kind = 'lesson') {
-  for (let i = 0; i < n; i++) await sql`insert into work_sessions (student_id, course_id, kind, started_at, last_beat_at, ended_at, open_seconds, active_seconds)
-    values (${st.id}, ${cs[0].id}, ${kind}, now() - make_interval(days => ${i * 2 + 1}), now() - make_interval(days => ${i * 2 + 1}), now() - make_interval(days => ${i * 2 + 1}),
-      ${Math.round(activeMin * 60 / ratio)}, ${activeMin * 60})`;
-}
-async function course(c, { lessonMin, cpOk, cpTotal, exo, evals }) {
-  const expected = c.doc.lesson.duration_min;
-  await sql`insert into work_sessions (student_id, course_id, kind, started_at, last_beat_at, ended_at, open_seconds, active_seconds)
-    values (${st.id}, ${c.id}, 'lesson', now() - interval '3 days', now() - interval '3 days', now() - interval '3 days', ${Math.round(lessonMin * 60 * 1.1)}, ${Math.round(lessonMin * 60)})`;
-  await sql`insert into course_progress (student_id, course_id, lesson_done_at, exercises_done_at, exercises_score) values (${st.id}, ${c.id}, now(), now(), ${exo})`;
-  for (let p = 0; p < cpTotal; p++) await sql`insert into checkpoint_answers (student_id, course_id, version_id, part_index, variant, choice, correct)
-    values (${st.id}, ${c.id}, ${c.version_id}, ${p}, 0, 0, ${p < cpOk})`;
-  let n = 1;
-  for (const e of evals) {
-    const ids = qids(c.doc);
-    const answers = Object.fromEntries(ids.slice(0, Math.round(ids.length * e.filled)).map(id => [id, 'réponse']));
-    await sql`insert into eval_attempts (student_id, course_id, version_id, attempt_no, status, started_at, submitted_at, deadline_at, answers, final_score, scores)
-      values (${st.id}, ${c.id}, ${c.version_id}, ${n++}, 'graded', now() - interval '2 days', now() - interval '2 days' + make_interval(mins => ${e.min}),
-        now() - interval '2 days' + make_interval(mins => ${c.doc.evaluation.duration_min}), ${sql.json(answers)}, ${e.score}, '{}'::jsonb)`;
-  }
-  return expected;
-}
+// exercices : 3 questions automatiques réussies sur 4, + 1 réponse rédigée jugée réussie par l'élève
+await sql`insert into exercise_submissions (student_id, course_id, version_id, answers, auto_results, self_check, submitted_at, checked_at)
+  values (${st.id}, ${cs[1].id}, ${cs[1].version_id}, '{}', '{"a":true,"b":true,"c":true,"d":false}', '{"e":true}', now() - interval '2 days', now() - interval '2 days')`;
 
 const b = await chromium.launch();
 const pa = await (await b.newContext({ viewport: { width: 1366, height: 900 } })).newPage();
 const errs = []; pa.on('pageerror', e => { if (!/#418/.test(e.message)) errs.push(e.message.slice(0, 80)); });
 await pa.goto(BASE + '/connexion'); await pa.fill('input[name=login]', 'parent@test.local'); await pa.fill('input[name=password]', 'parent-test-1234');
 await pa.click('button[type=submit]'); await pa.waitForURL(u => !u.pathname.startsWith('/connexion'));
-const look = async () => { await pa.goto(BASE + '/parent/bilan'); return pa.locator('[data-engagement]'); };
-
-console.log('Pas assez de données');
-await wipe();
-await sessions(2, 20, 0.9);
-let card = await look();
-ok(await card.getAttribute('data-engagement') === 'aucun', 'pas de profil tant qu’il y a trop peu de travail');
-ok((await card.innerText()).includes('Pas encore de profil'), 'le parent sait pourquoi');
-
-console.log('Élève qui n’arrive pas');
-await wipe();
-await sessions(10, 35, 0.9);
-for (const c of cs) { const exp = c.doc.lesson.duration_min; await course(c, { lessonMin: exp, cpOk: 1, cpTotal: 5, exo: 3, evals: [{ min: c.doc.evaluation.duration_min - 2, filled: 1, score: 6 }] }); }
-card = await look();
-ok(await card.getAttribute('data-engagement') === 'difficulte', `profil « il travaille mais bloque » (${await card.getAttribute('data-engagement')})`);
-const s1 = Number((await card.locator('[data-axis="serieux"] [data-axis-score]').innerText()).replace(/\D/g, ''));
-const c1 = Number((await card.locator('[data-axis="comprehension"] [data-axis-score]').innerText()).replace(/\D/g, ''));
-ok(s1 >= 60 && c1 < 60, `investissement ${s1} %, compréhension ${c1} %`);
-ok(await card.locator('[data-overall]').count() === 1 && await card.locator('[data-subject]').count() >= 1, 'carte : point de l’élève et points par matière');
-ok((await card.innerText()).includes('test de positionnement'), 'conseil adapté : chercher les bases qui manquent');
-
-console.log('Élève qui ne veut pas');
-await wipe();
-await sessions(5, 12, 0.45);
-for (const c of cs) { const exp = c.doc.lesson.duration_min; await course(c, { lessonMin: Math.round(exp * 0.5), cpOk: 4, cpTotal: 5, exo: 9,
-  evals: [{ min: 2, filled: 0.3, score: 3 }, { min: c.doc.evaluation.duration_min - 5, filled: 1, score: 16 }] }); }
-card = await look();
-ok(await card.getAttribute('data-engagement') === 'investissement', `profil « comprend mais s’investit peu » (${await card.getAttribute('data-engagement')})`);
-ok((await card.innerText()).includes('2 évaluations rendues trop vite'), 'les copies bâclées sont écartées de la compréhension, et c’est dit');
-ok((await card.innerText()).includes('créneau fixe'), 'conseil adapté : cadre et régularité');
-
-console.log('Écran En direct');
-await pa.goto(BASE + '/parent/suivi');
-ok((await pa.locator('[data-suivi-engagement]').innerText()).includes('Compréhension'), 'résumé investissement / compréhension, lien vers le bilan');
-
-console.log('Téléphone');
-const ph = await (await b.newContext({ viewport: { width: 375, height: 667 }, isMobile: true, hasTouch: true, storageState: await pa.context().storageState() })).newPage();
+await pa.goto(BASE + '/parent/bilan');
+const card = pa.locator('[data-facts]');
+const val = async k => (await card.locator(`[data-fact="${k}"] strong`).innerText()).trim();
+console.log('Faits mesurés (valeurs calculées à la main)');
+ok(await val('jours') === '2 sur 28', `jours travaillés comptés par jour, pas par séance : ${await val('jours')} (attendu 2 sur 28)`);
+ok(await val('temps') === '37 min', `temps effectif sur 28 jours : ${await val('temps')} (attendu 14 + 15 + 8 = 37 min)`);
+ok(await val('actif') === `${Math.round((37 / 54) * 100)} %`, `part du temps où il agit : ${await val('actif')} (37 sur 54 min)`);
+ok(await val('copies') === '2 sur 3', `copies complètes : ${await val('copies')} (le tiers-temps compte : 13 min sur 40 accordées)`);
+ok(await val('moy-completes') === '14/20', `moyenne des copies complètes : ${await val('moy-completes')} (12 et 16)`);
+ok(await val('moy-incompletes') === '3/20', `copies incomplètes à part : ${await val('moy-incompletes')}`);
+ok(await val('controles') === '2 sur 3', `contrôles du premier coup : ${await val('controles')}`);
+ok(await val('exercices') === '3 sur 4', `exercices corrigés par la plateforme : ${await val('exercices')}`);
+ok((await card.locator('[data-fact="exercices"]').innerText()).includes('1 sur 1 réponses rédigées'), 'auto-évaluation de l’élève comptée à part');
+console.log('Aucune interprétation');
+const txt = await card.innerText();
+ok(!/ne veut pas|n’arrive pas|capacités|diagnostic|fiable|investissement \d/i.test(txt), 'pas de profil, pas de note composite, pas de verdict');
+ok((await card.innerText()).includes('au moins 30 % du temps accordé'), 'chaque chiffre porte sa définition');
+const ph = await (await b.newContext({ viewport: { width: 375, height: 667 }, storageState: await pa.context().storageState() })).newPage();
 await ph.goto(BASE + '/parent/bilan');
-ok(await ph.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth), 'aucun débordement horizontal sur téléphone');
-
+ok(await ph.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth), 'aucun débordement sur téléphone');
 ok(errs.length === 0, `aucune erreur JS (${errs.join(' | ')})`);
 await b.close(); await sql.end();
-console.log('\nSérieux / compréhension : OK');
+console.log('\nTravail et résultats : OK');

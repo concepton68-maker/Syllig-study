@@ -54,7 +54,10 @@ export async function validateExercises(courseIdParam: string, selfCheck: Record
   await sql`update course_progress set exercises_done_at = coalesce(exercises_done_at, now()),
     exercises_score = greatest(coalesce(exercises_score, 0), ${score}), updated_at = now()
     where student_id = ${student.id} and course_id = ${course.id}`;
-  await logEvent(student.id, 'exercices_termines', { courseId: course.id, data: { score_sur_10: score } });
+  // révision faite : des exercices refaits à partir de la veille de la date prévue la marquent comme faite
+  const [rev] = await sql<{ id: number }[]>`update course_progress set next_review_at = null where student_id = ${student.id} and course_id = ${course.id}
+    and next_review_at is not null and next_review_at <= now() + interval '1 day' returning course_id as id`;
+  await logEvent(student.id, rev ? 'revision_faite' : 'exercices_termines', { courseId: course.id, data: { score_sur_10: score } });
   await awardOnce(student.id, course.id, 'exercises', 50, 'Exercices terminés');
   await recomputeMastery(student.id, course.id);
   revalidatePath(`/eleve/cours/${course.id}/exercices`);
