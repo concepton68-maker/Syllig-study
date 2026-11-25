@@ -8,8 +8,8 @@ LOG=/var/log/syllig-study-deploy.log
 exec 9>/var/lock/syllig-study-deploy.lock
 flock -n 9 || exit 0                      # une seule mise à jour à la fois
 cd "$DIR"
-# site d'essai (branche « essai ») : en arrière-plan, sans jamais retarder ni toucher le site des élèves
-[ -x "$DIR/deploy/staging.sh" ] && { setsid "$DIR/deploy/staging.sh" "essai.${DOMAIN}" >/dev/null 2>&1 < /dev/null & }
+# site d'essai retiré (25/11/2026) : nettoyage de ce qui reste, en arrière-plan, sans toucher le site des élèves
+[ -x "$DIR/deploy/staging.sh" ] && { setsid "$DIR/deploy/staging.sh" >/dev/null 2>&1 < /dev/null & }
 git fetch -q origin main || { echo "$(date -Is) fetch impossible" >> "$LOG"; exit 0; }
 NEW=$(git rev-parse origin/main); CUR=$(git rev-parse HEAD)
 [ "$NEW" = "$CUR" ] && exit 0

@@ -17,7 +17,7 @@ services:
       retries: 10
   app:
     build: .
-    image: ${APP_IMAGE:-syllig-study:latest}
+    image: syllig-study:latest
     restart: unless-stopped
     depends_on:
       db:
@@ -27,7 +27,6 @@ services:
       APP_VERSION: ${APP_VERSION:-inconnue}
       APP_RELEASE: ${APP_RELEASE:-0.00}
       APP_STARTED: ${APP_STARTED:-}
-      SITE_ESSAI: ${SITE_ESSAI:-0}
     ports:
       - "127.0.0.1:${APP_PORT:-8820}:3000"   # accessible uniquement depuis le serveur (Caddy)
 volumes:

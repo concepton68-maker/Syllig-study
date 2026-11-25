@@ -16,15 +16,10 @@ export const metadata: Metadata = {
 };
 export const viewport: Viewport = { width: 'device-width', initialScale: 1 };
 
-// site d'essai : un bandeau toujours visible, pour ne jamais confondre avec le site des élèves
-function EssaiBanner() {
-  return <div role="note" data-site-essai className="fixed top-0 inset-x-0 z-[100] bg-[#f47230] text-white text-center text-xs font-semibold py-0.5 pointer-events-none">SITE D’ESSAI · copie des données, rien n’est visible par les élèves · IA désactivée</div>;
-}
-
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="fr" className="h-full">
-      <body className="h-full">{process.env.SITE_ESSAI === '1' && <EssaiBanner />}<DeployGuard /><FieldHints />{children}<DialogHost /></body>
+      <body className="h-full"><DeployGuard /><FieldHints />{children}<DialogHost /></body>
     </html>
   );
 }

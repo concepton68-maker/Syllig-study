@@ -136,7 +136,6 @@ function taskProblem(s: AiSettings, task: Task): string | null {
 }
 // Configuration d'une tâche, après toutes les vérifications (IA active, clé, règle Europe)
 export async function aiConfigFor(task: Task): Promise<{ cfg: AiConfig } | { error: string }> {
-  if (process.env.SITE_ESSAI === '1') return { error: 'IA désactivée sur le site d’essai (aucun envoi, aucun coût).' };
   const s = await loadAiSettings();
   const problem = taskProblem(s, task);
   if (problem) return { error: problem };

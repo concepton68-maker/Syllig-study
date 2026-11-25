@@ -456,3 +456,6 @@ Contre-audit de conformité de la 0.42 : corrections, et application de la règl
 - « En direct » : « Actif sur une page de travail », « Page ouverte, sans geste », « Aucune page de travail ouverte » ; plus d'objectif quotidien inventé ni de « séance moyenne ».
 - Correction automatique : nombres lus strictement (décimal, fraction a/b, unité ou % après ; refus de « 0x10 », « 1e3 », des réponses sans chiffre) ; 67 cas vérifiés.
 - Textes : plus de « travaille vraiment » ; chaque mesure de temps rappelle sa définition (geste dans les 60 s).
+
+## 0.44 — 25/11/2026
+- Site d'essai retiré (décision du propriétaire) : à la première mise à jour, le serveur supprime ce qui avait été installé à côté du site des élèves (conteneurs et base de l'essai, copie de travail, bloc Caddy), sans toucher au site des élèves. Plus de bandeau ni de réglage « essai » dans l'application.

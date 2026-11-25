@@ -10,7 +10,6 @@
 - **Versions** : fichier `VERSION` (0.01, 0.02…), à incrémenter à chaque mise en ligne, avec une entrée dans `CHANGELOG.md`.
   Le numéro s'affiche en haut de chaque écran et sur la page de connexion.
 - **Mesurer ce qui est sûr** (décision du propriétaire, 25/11/2026) : n'afficher que des faits mesurés, chacun avec sa définition et sa période ; aucun score composite, profil psychologique, tendance extrapolée ni cause supposée. Tout nouvel indicateur passe par l'agent de conformité (vérification des calculs et de la base scientifique).
-- **Site d'essai** (installation en attente de décision du propriétaire : ne pas pousser sur `essai`) : pousser sur la branche `essai` met en ligne `essai.study.syllig.com` (`deploy/staging.sh`, lancé par `auto-update.sh` : conteneurs et base séparés, copie des vraies données chaque nuit, IA désactivée, bandeau). Ne fusionner dans `main` qu'après les tests ; jamais de changement de données des élèves en direct.
 - **Pas de commande à faire taper** au propriétaire pour mettre à jour : pousser sur `main` déploie seul (cron sur le VPS,
   `deploy/auto-update.sh`). Donc ne pousser sur `main` que du code testé (build + `tests/e2e-*.mjs`).
 
