@@ -25,4 +25,5 @@
 - Profil de l'enfant (`settings.birth` « AAAA-MM », `gender`, `extra_time` = tiers-temps) : classe attendue `src/lib/school-class.ts` (année de naissance + 6 = CP), durée d'évaluation `evalMinutes` ; jamais envoyés à l'IA. Test `e2e-enfants.mjs` (après `node scripts/seed.mjs`).
 - Test de rentrée : `content/<niveau>/positionnement.json` (sans IA), `src/lib/entry-test.ts`. Questionnaire élève « Comment je travaille » : `src/lib/checkin.ts`, table `student_checkins`, carte parent `src/components/Checkin.tsx` (phrases libres jamais envoyées à l'IA). Test `e2e-rentree.mjs` (après `node scripts/seed.mjs`).
 - Trajectoire (Bilan) : `src/lib/trajectory.ts`, `src/components/Trajectory.tsx` ; test `e2e-trajectoire.mjs`. Exercices jamais bloquants : test `e2e-exercices.mjs` (tous deux après `node scripts/seed.mjs`).
+- Activité de la semaine (parent, maquette validée le 25/11/2026) : `src/lib/week.ts`, page `src/app/parent/journal/page.tsx` ; détail minute par minute `src/app/parent/journal/detail/page.tsx`. Test `e2e-activite.mjs` (après `node scripts/seed.mjs`).
 - Dossier scolaire : table `student_years` (une année par ligne) ; `src/lib/school-years.ts`.

@@ -66,7 +66,7 @@ export default async function ParentDashboard({ searchParams }: { searchParams: 
       <PageTitle kicker="Cette semaine" title={`${student.first_name} a travaillé ${hm(w.active)}, ${pct} % de son objectif`}
         sub={w.open > w.active ? `Temps actif mesuré. Les ${hm(w.open - w.active)} de pages ouvertes sans activité ne sont pas comptées.` : 'Temps actif mesuré par le serveur, minute par minute.'}>
         <Link className={`pill min-h-9 no-underline ${LIVE[1]}`} href={`/parent/suivi${q}`} data-home-live={live.state}><span aria-hidden className={`inline-block size-2 rounded-full mr-1.5 ${live.state === 'hors_ligne' ? 'bg-muted-2' : live.state === 'pause' ? 'bg-[#f47230]' : 'bg-brand'}`} />{LIVE[0]} · suivi en direct</Link>
-        <Link className="btn" href={`/parent/journal${q}`}>Voir le journal détaillé</Link>
+        <Link className="btn" href={`/parent/journal${q}`}>Voir l’activité de la semaine</Link>
       </PageTitle>
 
     </>}>

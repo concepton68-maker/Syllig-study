@@ -459,3 +459,12 @@ Contre-audit de conformité de la 0.42 : corrections, et application de la règl
 
 ## 0.44 — 25/11/2026
 - Site d'essai retiré (décision du propriétaire) : à la première mise à jour, le serveur supprime ce qui avait été installé à côté du site des élèves (conteneurs et base de l'essai, copie de travail, bloc Caddy), sans toucher au site des élèves. Plus de bandeau ni de réglage « essai » dans l'application.
+
+## 0.45 — 25/11/2026
+- Parent, « Activité » refaite d'après la maquette validée : la semaine (lundi → dimanche), avec navigation semaine par semaine.
+  - « La semaine en 3 lignes » : ce qui a été fait (jours travaillés, temps actif, objectif), un point précis (copie incomplète, révision en retard, semaine sans travail ou questions ratées), une idée concrète liée à ce point ;
+  - temps actif jour par jour, calendrier des 4 dernières semaines, anneau de l'objectif, temps par matière et par activité ;
+  - « Ce qui a été travaillé » : un cours par ligne (leçon, exercices, évaluation, temps actif), en fiches sur téléphone ;
+  - « Questions ratées cette semaine » : la question, la réponse de l'enfant et la bonne réponse ;
+  - « À venir » (révisions, prochain cours) et « À regarder ensemble » (faits seulement).
+- L'ancien journal reste accessible : « Voir le détail minute par minute ».
