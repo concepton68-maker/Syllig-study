@@ -1,0 +1,1385 @@
+{
+ "level": {
+  "code": "cinquieme",
+  "name": "5e",
+  "cycle": "Collège",
+  "position": 2
+ },
+ "source": "Analyse du programme de 5e pour 2026-2027 : nouveaux programmes de français et de mathématiques (BO n°10 du 5 mars 2026), langues vivantes (BO n°22 du 29 mai 2025), EMC (BO n°24 du 13 juin 2024), programme du cycle 4 de 2020 pour les autres disciplines (consultés le 25-11-2026)",
+ "subjects": [
+  {
+   "name": "Français",
+   "chapters": [
+    {
+     "name": "Bases de la langue (début d'année)",
+     "courses": [
+      {
+       "title": "Les classes de mots : nom, verbe, adjectif, déterminant, pronom, adverbe, préposition",
+       "priority": "prioritaire",
+       "code": "CQ001",
+       "official_note": "Programme 2026 : identification des classes de mots exercée toutes les semaines."
+      },
+      {
+       "title": "Types et formes de phrases : déclarative, interrogative, injonctive, exclamative, négative",
+       "priority": "prioritaire",
+       "code": "CQ002"
+      },
+      {
+       "title": "Phrase simple, phrase complexe et phrase non verbale",
+       "priority": "prioritaire",
+       "code": "CQ003"
+      },
+      {
+       "title": "Juxtaposition et coordination",
+       "priority": "prioritaire",
+       "code": "CQ004"
+      },
+      {
+       "title": "Le sujet et l'accord sujet-verbe (y compris les cas difficiles)",
+       "priority": "prioritaire",
+       "code": "CQ005"
+      },
+      {
+       "title": "Les compléments du verbe : COD et COI",
+       "priority": "prioritaire",
+       "code": "CQ006"
+      },
+      {
+       "title": "L'attribut du sujet et son accord",
+       "priority": "prioritaire",
+       "code": "CQ007"
+      },
+      {
+       "title": "Les compléments circonstanciels de lieu, de temps, de cause et de manière",
+       "priority": "prioritaire",
+       "code": "CQ008"
+      },
+      {
+       "title": "Le groupe nominal : déterminants, expansions et accords",
+       "priority": "prioritaire",
+       "code": "CQ009"
+      }
+     ]
+    },
+    {
+     "name": "Conjugaison",
+     "courses": [
+      {
+       "title": "Radical et terminaisons : le présent de l'indicatif",
+       "priority": "prioritaire",
+       "code": "CQ010",
+       "official_note": "Programme 2026 : morphologie verbale (radical, marques de temps et de personne)."
+      },
+      {
+       "title": "L'imparfait et le passé simple",
+       "priority": "prioritaire",
+       "code": "CQ011"
+      },
+      {
+       "title": "Le futur simple et le conditionnel présent",
+       "priority": "prioritaire",
+       "code": "CQ012"
+      },
+      {
+       "title": "L'impératif présent",
+       "priority": "prioritaire",
+       "code": "CQ013"
+      },
+      {
+       "title": "Le passé composé et le plus-que-parfait",
+       "priority": "prioritaire",
+       "code": "CQ014"
+      },
+      {
+       "title": "Les valeurs des temps dans le récit : premier plan et arrière-plan",
+       "priority": "prioritaire",
+       "code": "CQ015"
+      },
+      {
+       "title": "L'accord du participe passé avec être et avec avoir",
+       "priority": "prioritaire",
+       "code": "CQ016",
+       "official_note": "Programme 2026 : y compris avec un COD placé avant le verbe."
+      }
+     ]
+    },
+    {
+     "name": "Devenir héroïne ou héros : destins romanesques",
+     "courses": [
+      {
+       "title": "Le héros de roman : portrait et évolution d'un personnage",
+       "priority": "prioritaire",
+       "code": "CQ017",
+       "official_note": "Entrée officielle de 5e : « Devenir héroïne ou héros : destins romanesques »."
+      },
+      {
+       "title": "Le narrateur et le point de vue",
+       "priority": "ensuite",
+       "code": "CQ018"
+      },
+      {
+       "title": "Écrire un épisode de récit d'aventures",
+       "priority": "ensuite",
+       "code": "CQ019"
+      }
+     ]
+    },
+    {
+     "name": "Imaginer, sentir, raisonner : des histoires pour plaire et instruire",
+     "courses": [
+      {
+       "title": "La fable : un récit et une morale",
+       "priority": "ensuite",
+       "code": "CQ020",
+       "official_note": "Entrée officielle de 5e : « Imaginer, sentir, raisonner : des histoires pour plaire et instruire »."
+      },
+      {
+       "title": "Contes et récits pour instruire",
+       "priority": "ensuite",
+       "code": "CQ021"
+      },
+      {
+       "title": "Donner son avis et le justifier : argumenter simplement",
+       "priority": "ensuite",
+       "code": "CQ022"
+      }
+     ]
+    },
+    {
+     "name": "Expérimenter et jouer au théâtre : la société sens dessus dessous",
+     "courses": [
+      {
+       "title": "Le texte de théâtre : répliques, tirades et didascalies",
+       "priority": "ensuite",
+       "code": "CQ023",
+       "official_note": "Entrée officielle de 5e : « Expérimenter et jouer au théâtre : la société sens dessus dessous »."
+      },
+      {
+       "title": "Les formes du comique au théâtre",
+       "priority": "ensuite",
+       "code": "CQ024"
+      },
+      {
+       "title": "Lire et jouer une scène",
+       "priority": "mis_de_cote",
+       "code": "CQ025"
+      }
+     ]
+    },
+    {
+     "name": "Voyager en poésie : du monde entier au cœur du monde",
+     "courses": [
+      {
+       "title": "Vers, rimes et strophes",
+       "priority": "ensuite",
+       "code": "CQ026",
+       "official_note": "Entrée officielle de 5e : « Voyager en poésie : du monde entier au cœur du monde »."
+      },
+      {
+       "title": "Les images poétiques : comparaison et métaphore",
+       "priority": "ensuite",
+       "code": "CQ027"
+      },
+      {
+       "title": "Lire un poème à voix haute et le réciter",
+       "priority": "mis_de_cote",
+       "code": "CQ028"
+      }
+     ]
+    },
+    {
+     "name": "Lexique, orthographe et discours",
+     "courses": [
+      {
+       "title": "Les homophones grammaticaux : a/à, et/est, son/sont, ces/ses, on/ont",
+       "priority": "prioritaire",
+       "code": "CQ029"
+      },
+      {
+       "title": "Formation des mots : préfixes, radicaux, suffixes, mots d'origine latine et grecque",
+       "priority": "ensuite",
+       "code": "CQ030"
+      },
+      {
+       "title": "Le sens des mots : synonymes, antonymes, registres de langue",
+       "priority": "ensuite",
+       "code": "CQ031"
+      },
+      {
+       "title": "Discours direct et discours indirect",
+       "priority": "ensuite",
+       "code": "CQ032"
+      },
+      {
+       "title": "Se relire et corriger son texte ; réussir une dictée",
+       "priority": "ensuite",
+       "code": "CQ033",
+       "official_note": "Programme 2026 : dictées régulières ; graphies ancienne et rectifiée (1990) acceptées de manière égale."
+      }
+     ]
+    }
+   ],
+   "official_sources": [
+    {
+     "texte": "Programmes de français et de mathématiques du cycle 4 (cycle des approfondissements)",
+     "reference": "Arrêté du 18-2-2026, BO n°10 du 5 mars 2026 (NOR MENE2602912A)",
+     "application": "Classe de 5e à la rentrée 2026 (4e en 2027, 3e en 2028) : programme retenu pour ce fichier",
+     "lien": "https://www.education.gouv.fr/bo/2026/Hebdo10/MENE2602912A",
+     "contenu": "Annexe 1 (français). Perspective annuelle de 5e : « Éprouver, expérimenter : la découverte de soi, d'autrui et du monde ». Entrées : Devenir héroïne ou héros : destins romanesques ; Voyager en poésie : du monde entier au cœur du monde ; Expérimenter et jouer au théâtre : la société sens dessus dessous ; Imaginer, sentir, raisonner : des histoires pour plaire et instruire. Étude de la langue (phrase, constituants, accords dont participe passé, conjugaison des temps de l'indicatif et de l'impératif), lexique, écriture (texte long d'environ 30 lignes), oral. La page du BO a refusé la consultation automatique (403) le 25-11-2026 : intitulés recoupés via les synthèses d'éditeurs et de sites pédagogiques (digischool, evaldiff, eliott) citant ce BO ; à relire sur le texte officiel."
+    },
+    {
+     "texte": "Programmes du cycle 4 (cycle des approfondissements), version consolidée",
+     "reference": "Arrêté du 17-7-2020, BO n°31 du 30 juillet 2020 (NOR MENE2018714A)",
+     "application": "Ne s'applique plus en 5e en 2026-2027 (reste en vigueur en 4e et en 3e)",
+     "lien": "https://www.education.gouv.fr/bo/20/Hebdo31/MENE2018714A.htm",
+     "contenu": "Cité pour mémoire : Remplacé en 5e : le programme de 2015/2020 ne s'applique plus en 5e en 2026-2027 pour cette discipline (il reste en vigueur en 4e et en 3e)."
+    }
+   ]
+  },
+  {
+   "name": "Mathématiques",
+   "chapters": [
+    {
+     "name": "Nombres et calculs (début d'année)",
+     "courses": [
+      {
+       "title": "Priorités opératoires et calculs avec parenthèses",
+       "priority": "prioritaire",
+       "code": "CQ034",
+       "official_note": "Programme 2026 : automatismes de calcul mental entretenus toute l'année."
+      },
+      {
+       "title": "La distributivité pour calculer mentalement",
+       "priority": "prioritaire",
+       "code": "CQ035"
+      },
+      {
+       "title": "Multiples, diviseurs et critères de divisibilité",
+       "priority": "prioritaire",
+       "code": "CQ036"
+      },
+      {
+       "title": "Division euclidienne : quotient et reste",
+       "priority": "ensuite",
+       "code": "CQ037"
+      },
+      {
+       "title": "Les nombres premiers",
+       "priority": "mis_de_cote",
+       "code": "CQ038",
+       "official_note": "Programme 2026 : seulement en prolongement possible en 5e (non attendu)."
+      }
+     ]
+    },
+    {
+     "name": "Nombres relatifs",
+     "courses": [
+      {
+       "title": "Découvrir les nombres relatifs : signe, distance à zéro, opposé",
+       "priority": "prioritaire",
+       "code": "CQ039"
+      },
+      {
+       "title": "Repérer et comparer des nombres relatifs sur une droite graduée",
+       "priority": "prioritaire",
+       "code": "CQ040"
+      },
+      {
+       "title": "Additionner des nombres relatifs",
+       "priority": "prioritaire",
+       "code": "CQ041"
+      },
+      {
+       "title": "Soustraire des nombres relatifs",
+       "priority": "prioritaire",
+       "code": "CQ042",
+       "official_note": "Multiplication et division des relatifs : en 4e."
+      },
+      {
+       "title": "Se repérer dans le plan : abscisse et ordonnée",
+       "priority": "prioritaire",
+       "code": "CQ043"
+      }
+     ]
+    },
+    {
+     "name": "Fractions",
+     "courses": [
+      {
+       "title": "Fractions égales et simplification",
+       "priority": "prioritaire",
+       "code": "CQ044"
+      },
+      {
+       "title": "Comparer des fractions",
+       "priority": "prioritaire",
+       "code": "CQ045"
+      },
+      {
+       "title": "Additionner et soustraire des fractions",
+       "priority": "prioritaire",
+       "code": "CQ046",
+       "official_note": "À vérifier dans l'annexe 2 : les sources consultées divergent (dénominateurs multiples l'un de l'autre ou quelconques)."
+      },
+      {
+       "title": "Prendre une fraction d'une quantité",
+       "priority": "prioritaire",
+       "code": "CQ047"
+      }
+     ]
+    },
+    {
+     "name": "Calcul littéral et puissances",
+     "courses": [
+      {
+       "title": "Carrés et cubes d'un nombre",
+       "priority": "ensuite",
+       "code": "CQ048",
+       "official_note": "Nouveauté du programme 2026 en 5e."
+      },
+      {
+       "title": "Produire et utiliser une expression littérale",
+       "priority": "prioritaire",
+       "code": "CQ049"
+      },
+      {
+       "title": "Tester une égalité et résoudre une équation simple (x + b = c, ax = c)",
+       "priority": "ensuite",
+       "code": "CQ050"
+      }
+     ]
+    },
+    {
+     "name": "Proportionnalité et fonctions",
+     "courses": [
+      {
+       "title": "Reconnaître une situation de proportionnalité",
+       "priority": "prioritaire",
+       "code": "CQ051"
+      },
+      {
+       "title": "Coefficient de proportionnalité et quatrième proportionnelle",
+       "priority": "prioritaire",
+       "code": "CQ052"
+      },
+      {
+       "title": "Appliquer un pourcentage",
+       "priority": "prioritaire",
+       "code": "CQ053"
+      },
+      {
+       "title": "Échelles et plans",
+       "priority": "ensuite",
+       "code": "CQ054"
+      },
+      {
+       "title": "Découvrir les fonctions : une grandeur « en fonction de » une autre",
+       "priority": "ensuite",
+       "code": "CQ055"
+      }
+     ]
+    },
+    {
+     "name": "Géométrie plane",
+     "courses": [
+      {
+       "title": "Angles et parallélisme : angles alternes-internes et correspondants",
+       "priority": "ensuite",
+       "code": "CQ056"
+      },
+      {
+       "title": "Triangles : somme des angles, inégalité triangulaire, constructions",
+       "priority": "ensuite",
+       "code": "CQ057"
+      },
+      {
+       "title": "Hauteurs et médiatrices d'un triangle",
+       "priority": "ensuite",
+       "code": "CQ058"
+      },
+      {
+       "title": "La symétrie centrale (le demi-tour)",
+       "priority": "ensuite",
+       "code": "CQ059"
+      },
+      {
+       "title": "Le parallélogramme et ses propriétés",
+       "priority": "ensuite",
+       "code": "CQ060"
+      }
+     ]
+    },
+    {
+     "name": "Grandeurs et mesures, espace",
+     "courses": [
+      {
+       "title": "Périmètres et aires : triangle, parallélogramme, disque",
+       "priority": "ensuite",
+       "code": "CQ061"
+      },
+      {
+       "title": "Conversions de longueurs, d'aires et de volumes",
+       "priority": "ensuite",
+       "code": "CQ062"
+      },
+      {
+       "title": "Solides : perspective cavalière et patrons",
+       "priority": "ensuite",
+       "code": "CQ063"
+      },
+      {
+       "title": "Volumes du cube, du pavé, du prisme et du cylindre",
+       "priority": "ensuite",
+       "code": "CQ064"
+      }
+     ]
+    },
+    {
+     "name": "Statistiques et probabilités",
+     "courses": [
+      {
+       "title": "Effectifs, fréquences et diagrammes",
+       "priority": "ensuite",
+       "code": "CQ065"
+      },
+      {
+       "title": "Calculer une moyenne",
+       "priority": "ensuite",
+       "code": "CQ066"
+      },
+      {
+       "title": "Vocabulaire des probabilités et situations d'équiprobabilité",
+       "priority": "ensuite",
+       "code": "CQ067"
+      }
+     ]
+    },
+    {
+     "name": "Pensée informatique",
+     "courses": [
+      {
+       "title": "Programmer par blocs : instructions, entrées et sorties",
+       "priority": "ensuite",
+       "code": "CQ068",
+       "official_note": "Domaine « pensée informatique » du programme 2026 ; la notion de variable arrive en 4e."
+      },
+      {
+       "title": "Répéter une séquence d'instructions : les boucles",
+       "priority": "ensuite",
+       "code": "CQ069"
+      }
+     ]
+    }
+   ],
+   "official_sources": [
+    {
+     "texte": "Programmes de français et de mathématiques du cycle 4 (cycle des approfondissements)",
+     "reference": "Arrêté du 18-2-2026, BO n°10 du 5 mars 2026 (NOR MENE2602912A)",
+     "application": "Classe de 5e à la rentrée 2026 (4e en 2027, 3e en 2028) : programme retenu pour ce fichier",
+     "lien": "https://www.education.gouv.fr/bo/2026/Hebdo10/MENE2602912A",
+     "contenu": "Annexe 2 (mathématiques), programme découpé par année, avec automatismes et objectifs d'apprentissage. En 5e : nombres relatifs (comparaison, addition, soustraction), fractions, carrés et cubes, priorités et distributivité, premières expressions littérales et équations simples ; proportionnalité, pourcentages, « en fonction de » ; symétrie centrale, angles, triangles, parallélogrammes, solides et volumes, aire du disque ; statistiques et probabilités ; pensée informatique (programmation par blocs). Reportés : multiplication/division des relatifs, Pythagore, racines carrées (4e). La page du BO a refusé la consultation automatique (403) le 25-11-2026 : contenu recoupé via l'académie de Bordeaux (programme de 5e applicable à la rentrée 2026), l'académie de Montpellier (tableau synoptique) et des sites pédagogiques citant ce BO ; à relire sur le texte officiel."
+    },
+    {
+     "texte": "Programmes du cycle 4 (cycle des approfondissements), version consolidée",
+     "reference": "Arrêté du 17-7-2020, BO n°31 du 30 juillet 2020 (NOR MENE2018714A)",
+     "application": "Ne s'applique plus en 5e en 2026-2027 (reste en vigueur en 4e et en 3e)",
+     "lien": "https://www.education.gouv.fr/bo/20/Hebdo31/MENE2018714A.htm",
+     "contenu": "Cité pour mémoire : Remplacé en 5e : le programme de 2015/2020 ne s'applique plus en 5e en 2026-2027 pour cette discipline (il reste en vigueur en 4e et en 3e)."
+    }
+   ]
+  },
+  {
+   "name": "Histoire-Géographie",
+   "chapters": [
+    {
+     "name": "Histoire 1 – Chrétientés et islam (VIe-XIIIe siècles), des mondes en contact (début d'année)",
+     "courses": [
+      {
+       "title": "Byzance et l'Europe carolingienne",
+       "priority": "prioritaire",
+       "code": "CQ070",
+       "official_note": "Officiel : « Byzance et l'Europe carolingienne »."
+      },
+      {
+       "title": "La naissance de l'islam et l'expansion du monde musulman",
+       "priority": "prioritaire",
+       "code": "CQ071",
+       "official_note": "Officiel : « De la naissance de l'islam à la prise de Bagdad par les Mongols : pouvoirs, sociétés, cultures »."
+      },
+      {
+       "title": "Des mondes en contact : échanges, croisades et conflits",
+       "priority": "ensuite",
+       "code": "CQ072"
+      }
+     ]
+    },
+    {
+     "name": "Géographie 1 – La question démographique et l'inégal développement",
+     "courses": [
+      {
+       "title": "La croissance démographique et ses effets",
+       "priority": "prioritaire",
+       "code": "CQ073",
+       "official_note": "Officiel : « La croissance démographique et ses effets »."
+      },
+      {
+       "title": "Répartition de la richesse et de la pauvreté dans le monde",
+       "priority": "prioritaire",
+       "code": "CQ074"
+      }
+     ]
+    },
+    {
+     "name": "Histoire 2 – Société, Église et pouvoir politique dans l'Occident féodal (XIe-XVe siècles)",
+     "courses": [
+      {
+       "title": "L'ordre seigneurial : seigneurs et paysans",
+       "priority": "prioritaire",
+       "code": "CQ075"
+      },
+      {
+       "title": "La place de l'Église dans la société médiévale",
+       "priority": "ensuite",
+       "code": "CQ076"
+      },
+      {
+       "title": "L'émergence d'une nouvelle société urbaine",
+       "priority": "prioritaire",
+       "code": "CQ077"
+      },
+      {
+       "title": "L'affirmation de l'État monarchique : Capétiens et Valois",
+       "priority": "prioritaire",
+       "code": "CQ078"
+      }
+     ]
+    },
+    {
+     "name": "Géographie 2 – Des ressources limitées, à gérer et à renouveler",
+     "courses": [
+      {
+       "title": "L'énergie, l'eau : des ressources à ménager",
+       "priority": "prioritaire",
+       "code": "CQ079"
+      },
+      {
+       "title": "L'alimentation : comment nourrir l'humanité ?",
+       "priority": "prioritaire",
+       "code": "CQ080"
+      }
+     ]
+    },
+    {
+     "name": "Histoire 3 – Transformations de l'Europe et ouverture sur le monde aux XVIe et XVIIe siècles",
+     "courses": [
+      {
+       "title": "Le monde au temps de Charles Quint et Soliman le Magnifique",
+       "priority": "prioritaire",
+       "code": "CQ081"
+      },
+      {
+       "title": "Humanisme, réformes et conflits religieux",
+       "priority": "prioritaire",
+       "code": "CQ082"
+      },
+      {
+       "title": "Du prince de la Renaissance au roi absolu (François Ier, Henri IV, Louis XIV)",
+       "priority": "prioritaire",
+       "code": "CQ083"
+      }
+     ]
+    },
+    {
+     "name": "Géographie 3 – Prévenir les risques, s'adapter au changement global",
+     "courses": [
+      {
+       "title": "Le changement global et ses effets géographiques",
+       "priority": "prioritaire",
+       "code": "CQ084"
+      },
+      {
+       "title": "Prévenir les risques industriels et technologiques",
+       "priority": "ensuite",
+       "code": "CQ085"
+      }
+     ]
+    },
+    {
+     "name": "Méthodes",
+     "courses": [
+      {
+       "title": "Analyser un document en histoire-géographie",
+       "priority": "prioritaire",
+       "code": "CQ086"
+      },
+      {
+       "title": "Rédiger un paragraphe pour raconter ou expliquer",
+       "priority": "prioritaire",
+       "code": "CQ087"
+      },
+      {
+       "title": "Repères chronologiques et spatiaux de 5e",
+       "priority": "prioritaire",
+       "code": "CQ088"
+      }
+     ]
+    }
+   ],
+   "official_sources": [
+    {
+     "texte": "Programmes du cycle 4 (cycle des approfondissements), version consolidée",
+     "reference": "Arrêté du 17-7-2020, BO n°31 du 30 juillet 2020 (NOR MENE2018714A)",
+     "application": "En vigueur en 5e en 2026-2027 pour cette discipline (aucun nouveau programme annoncé pour la 5e à la rentrée 2026)",
+     "lien": "https://www.education.gouv.fr/bo/20/Hebdo31/MENE2018714A.htm",
+     "contenu": "Programme d'histoire-géographie de 5e. Histoire : Chrétientés et islam (VIe-XIIIe siècles), des mondes en contact ; Société, Église et pouvoir politique dans l'Occident féodal (XIe-XVe siècles) ; Transformations de l'Europe et ouverture sur le monde aux XVIe et XVIIe siècles. Géographie : La question démographique et l'inégal développement ; Des ressources limitées, à gérer et à renouveler ; Prévenir les risques, s'adapter au changement global."
+    }
+   ]
+  },
+  {
+   "name": "Enseignement moral et civique",
+   "chapters": [
+    {
+     "name": "Agir pour l'égalité entre les femmes et les hommes et lutter contre les discriminations (début d'année)",
+     "courses": [
+      {
+       "title": "L'égalité entre les femmes et les hommes : principe et parité",
+       "priority": "prioritaire",
+       "code": "CQ089",
+       "official_note": "Thème de 5e (programme 2024) : « Égalité, fraternité et solidarité »."
+      },
+      {
+       "title": "Les discriminations : un délit puni par la loi",
+       "priority": "prioritaire",
+       "code": "CQ090"
+      },
+      {
+       "title": "Racisme, antisémitisme, haine anti-LGBT et harcèlement, y compris en ligne",
+       "priority": "prioritaire",
+       "code": "CQ091"
+      }
+     ]
+    },
+    {
+     "name": "La solidarité et ses échelles",
+     "courses": [
+      {
+       "title": "La solidarité, principe de la République : protection sociale et impôt",
+       "priority": "prioritaire",
+       "code": "CQ092"
+      },
+      {
+       "title": "Être solidaire face aux risques : santé et environnement",
+       "priority": "ensuite",
+       "code": "CQ093"
+      }
+     ]
+    }
+   ],
+   "official_sources": [
+    {
+     "texte": "Programme d'enseignement moral et civique (du CP à la terminale)",
+     "reference": "Arrêté du 29-5-2024, BO n°24 du 13 juin 2024 (NOR MENE2413934A)",
+     "application": "En vigueur en 5e depuis la rentrée 2024 (4e en 2025, 6e et 3e en 2026)",
+     "lien": "https://www.education.gouv.fr/bo/2024/Hebdo24/MENE2413934A",
+     "contenu": "5e : « Égalité, fraternité et solidarité » — Agir pour l'égalité entre les femmes et les hommes et lutter contre les discriminations (9-11 h) ; La solidarité et ses échelles (7-9 h). Calendrier et contenus recoupés avec la présentation de l'inspection d'histoire-géographie de l'académie de Besançon (octobre 2024)."
+    },
+    {
+     "texte": "Ressources d'accompagnement pour l'EMC au collège",
+     "reference": "Éduscol",
+     "application": "Collège",
+     "lien": "https://eduscol.education.gouv.fr/4752/ressources-d-accompagnement-pour-l-enseignement-moral-et-civique-au-college",
+     "contenu": "Ressources et repères de mise en œuvre du programme 2024."
+    }
+   ]
+  },
+  {
+   "name": "Physique-Chimie",
+   "chapters": [
+    {
+     "name": "Organisation et transformations de la matière (début d'année)",
+     "courses": [
+      {
+       "title": "Les états de la matière : solide, liquide, gaz",
+       "priority": "prioritaire",
+       "code": "CQ094",
+       "official_note": "Thème officiel « Organisation et transformations de la matière »."
+      },
+      {
+       "title": "Les changements d'état et la température",
+       "priority": "prioritaire",
+       "code": "CQ095"
+      },
+      {
+       "title": "Mélanges et corps purs : homogène, hétérogène, solubilité",
+       "priority": "prioritaire",
+       "code": "CQ096"
+      },
+      {
+       "title": "Séparer les constituants d'un mélange : décantation, filtration, distillation",
+       "priority": "ensuite",
+       "code": "CQ097"
+      },
+      {
+       "title": "Masse et volume : mesurer et convertir",
+       "priority": "prioritaire",
+       "code": "CQ098"
+      }
+     ]
+    },
+    {
+     "name": "L'énergie et ses conversions",
+     "courses": [
+      {
+       "title": "Le circuit électrique simple : générateur, récepteurs, schéma normalisé",
+       "priority": "prioritaire",
+       "code": "CQ099",
+       "official_note": "Thème officiel « L'énergie et ses conversions »."
+      },
+      {
+       "title": "Circuits en série et en dérivation",
+       "priority": "prioritaire",
+       "code": "CQ100"
+      },
+      {
+       "title": "Sources et formes d'énergie",
+       "priority": "ensuite",
+       "code": "CQ101"
+      }
+     ]
+    },
+    {
+     "name": "Mouvement et interactions",
+     "courses": [
+      {
+       "title": "Décrire un mouvement : trajectoire et vitesse",
+       "priority": "ensuite",
+       "code": "CQ102",
+       "official_note": "Thème officiel « Mouvement et interactions »."
+      }
+     ]
+    },
+    {
+     "name": "Des signaux pour observer et communiquer",
+     "courses": [
+      {
+       "title": "La lumière : sources, propagation rectiligne, ombres",
+       "priority": "ensuite",
+       "code": "CQ103",
+       "official_note": "Thème officiel « Des signaux pour observer et communiquer »."
+      },
+      {
+       "title": "Le son : sources et propagation",
+       "priority": "ensuite",
+       "code": "CQ104"
+      }
+     ]
+    }
+   ],
+   "official_sources": [
+    {
+     "texte": "Programmes du cycle 4 (cycle des approfondissements), version consolidée",
+     "reference": "Arrêté du 17-7-2020, BO n°31 du 30 juillet 2020 (NOR MENE2018714A)",
+     "application": "En vigueur en 5e en 2026-2027 pour cette discipline (aucun nouveau programme annoncé pour la 5e à la rentrée 2026)",
+     "lien": "https://www.education.gouv.fr/bo/20/Hebdo31/MENE2018714A.htm",
+     "contenu": "Programme de physique-chimie du cycle 4 (thèmes pour les trois années, répartition laissée à l'équipe). Thèmes : Organisation et transformations de la matière ; Mouvement et interactions ; L'énergie et ses conversions ; Des signaux pour observer et communiquer. Choix des notions de 5e ci-dessus : progression usuelle, non imposée par le texte."
+    }
+   ]
+  },
+  {
+   "name": "SVT",
+   "chapters": [
+    {
+     "name": "Le corps humain et la santé (début d'année)",
+     "courses": [
+      {
+       "title": "Les besoins des cellules et des organes",
+       "priority": "prioritaire",
+       "code": "CQ105",
+       "official_note": "Thème officiel « Le corps humain et la santé »."
+      },
+      {
+       "title": "L'activité physique : muscles, cœur et respiration",
+       "priority": "prioritaire",
+       "code": "CQ106"
+      },
+      {
+       "title": "La digestion et l'absorption des nutriments",
+       "priority": "prioritaire",
+       "code": "CQ107"
+      },
+      {
+       "title": "Alimentation équilibrée et santé",
+       "priority": "ensuite",
+       "code": "CQ108"
+      }
+     ]
+    },
+    {
+     "name": "Le vivant et son évolution",
+     "courses": [
+      {
+       "title": "Respiration et milieux de vie",
+       "priority": "prioritaire",
+       "code": "CQ109",
+       "official_note": "Thème officiel « Le vivant et son évolution »."
+      },
+      {
+       "title": "Les besoins des végétaux et la production de matière",
+       "priority": "ensuite",
+       "code": "CQ110"
+      },
+      {
+       "title": "Le peuplement des milieux et la classification",
+       "priority": "ensuite",
+       "code": "CQ111"
+      }
+     ]
+    },
+    {
+     "name": "La planète Terre, l'environnement et l'action humaine",
+     "courses": [
+      {
+       "title": "Roches, érosion et formation des paysages",
+       "priority": "ensuite",
+       "code": "CQ112",
+       "official_note": "Thème officiel « La planète Terre, l'environnement et l'action humaine »."
+      },
+      {
+       "title": "Météorologie et climat",
+       "priority": "ensuite",
+       "code": "CQ113"
+      },
+      {
+       "title": "L'être humain et son environnement : agir pour la biodiversité",
+       "priority": "mis_de_cote",
+       "code": "CQ114"
+      }
+     ]
+    }
+   ],
+   "official_sources": [
+    {
+     "texte": "Programmes du cycle 4 (cycle des approfondissements), version consolidée",
+     "reference": "Arrêté du 17-7-2020, BO n°31 du 30 juillet 2020 (NOR MENE2018714A)",
+     "application": "En vigueur en 5e en 2026-2027 pour cette discipline (aucun nouveau programme annoncé pour la 5e à la rentrée 2026)",
+     "lien": "https://www.education.gouv.fr/bo/20/Hebdo31/MENE2018714A.htm",
+     "contenu": "Programme de SVT du cycle 4 (thèmes pour les trois années, répartition laissée à l'équipe). Thèmes : La planète Terre, l'environnement et l'action humaine ; Le vivant et son évolution ; Le corps humain et la santé. Choix des notions de 5e ci-dessus : progression usuelle, non imposée par le texte."
+    }
+   ]
+  },
+  {
+   "name": "Technologie",
+   "chapters": [
+    {
+     "name": "Objets techniques et société (début d'année)",
+     "courses": [
+      {
+       "title": "Besoin, fonction d'usage et cahier des charges",
+       "priority": "prioritaire",
+       "code": "CQ115",
+       "official_note": "Thème officiel « Les objets techniques, les services et les changements induits dans la société »."
+      },
+      {
+       "title": "L'évolution des objets techniques",
+       "priority": "ensuite",
+       "code": "CQ116"
+      },
+      {
+       "title": "Matériaux : familles, propriétés et recyclage",
+       "priority": "ensuite",
+       "code": "CQ117"
+      }
+     ]
+    },
+    {
+     "name": "Modélisation et simulation",
+     "courses": [
+      {
+       "title": "Représenter un objet : croquis, schéma, modèle 3D",
+       "priority": "ensuite",
+       "code": "CQ118",
+       "official_note": "Thème officiel « La modélisation et la simulation des objets et systèmes techniques »."
+      },
+      {
+       "title": "Chaîne d'énergie et chaîne d'information : première approche",
+       "priority": "prioritaire",
+       "code": "CQ119"
+      }
+     ]
+    },
+    {
+     "name": "Informatique et programmation",
+     "courses": [
+      {
+       "title": "Algorithmes et programmation par blocs",
+       "priority": "prioritaire",
+       "code": "CQ120",
+       "official_note": "Thème officiel « L'informatique et la programmation »."
+      },
+      {
+       "title": "Le réseau informatique du collège",
+       "priority": "ensuite",
+       "code": "CQ121"
+      }
+     ]
+    },
+    {
+     "name": "Design, innovation et créativité",
+     "courses": [
+      {
+       "title": "Imaginer une solution en mode projet",
+       "priority": "mis_de_cote",
+       "code": "CQ122",
+       "official_note": "Thème officiel « Design, innovation et créativité »."
+      }
+     ]
+    }
+   ],
+   "official_sources": [
+    {
+     "texte": "Programmes du cycle 4 (cycle des approfondissements), version consolidée",
+     "reference": "Arrêté du 17-7-2020, BO n°31 du 30 juillet 2020 (NOR MENE2018714A)",
+     "application": "En vigueur en 5e en 2026-2027 pour cette discipline (aucun nouveau programme annoncé pour la 5e à la rentrée 2026)",
+     "lien": "https://www.education.gouv.fr/bo/20/Hebdo31/MENE2018714A.htm",
+     "contenu": "Programme de technologie du cycle 4. Thèmes : Design, innovation et créativité ; Les objets techniques, les services et les changements induits dans la société ; La modélisation et la simulation des objets et systèmes techniques ; L'informatique et la programmation. Choix des notions de 5e : progression usuelle, non imposée par le texte."
+    }
+   ]
+  },
+  {
+   "name": "Anglais (LV1)",
+   "chapters": [
+    {
+     "name": "Grammaire et outils de la langue (début d'année)",
+     "courses": [
+      {
+       "title": "Be, have got et there is / there are",
+       "priority": "prioritaire",
+       "code": "CQ123"
+      },
+      {
+       "title": "Le présent simple",
+       "priority": "prioritaire",
+       "code": "CQ124"
+      },
+      {
+       "title": "Le présent en be + -ing",
+       "priority": "prioritaire",
+       "code": "CQ125"
+      },
+      {
+       "title": "Le prétérit simple : verbes réguliers et irréguliers",
+       "priority": "prioritaire",
+       "code": "CQ126"
+      },
+      {
+       "title": "Exprimer le futur : will et be going to",
+       "priority": "ensuite",
+       "code": "CQ127"
+      },
+      {
+       "title": "Les modaux can et must",
+       "priority": "ensuite",
+       "code": "CQ128"
+      },
+      {
+       "title": "Comparatifs et superlatifs",
+       "priority": "ensuite",
+       "code": "CQ129"
+      },
+      {
+       "title": "Les quantifieurs : some, any, much, many",
+       "priority": "ensuite",
+       "code": "CQ130"
+      }
+     ]
+    },
+    {
+     "name": "Activités langagières (vers le niveau A2)",
+     "courses": [
+      {
+       "title": "Comprendre un document audio ou vidéo",
+       "priority": "prioritaire",
+       "code": "CQ131",
+       "official_note": "Activité langagière : réception."
+      },
+      {
+       "title": "Lire et comprendre un texte court",
+       "priority": "prioritaire",
+       "code": "CQ132"
+      },
+      {
+       "title": "Se présenter et raconter sa journée à l'oral",
+       "priority": "ensuite",
+       "code": "CQ133"
+      },
+      {
+       "title": "Écrire un message, un portrait, une carte postale",
+       "priority": "ensuite",
+       "code": "CQ134"
+      }
+     ]
+    },
+    {
+     "name": "Culture du monde anglophone",
+     "courses": [
+      {
+       "title": "Portrait, autoportrait : personnages du monde anglophone",
+       "priority": "ensuite",
+       "code": "CQ135",
+       "official_note": "Axe 1 de 5e : « Portrait, autoportrait »."
+      },
+      {
+       "title": "École et loisirs au Royaume-Uni et aux États-Unis",
+       "priority": "ensuite",
+       "code": "CQ136",
+       "official_note": "Axe 3 de 5e : « École et loisirs »."
+      },
+      {
+       "title": "Le réel et l'imaginaire : légendes et récits anglophones",
+       "priority": "mis_de_cote",
+       "code": "CQ137",
+       "official_note": "Axe 4 de 5e : « Le réel et l'imaginaire »."
+      }
+     ]
+    }
+   ],
+   "official_sources": [
+    {
+     "texte": "Programmes de langues vivantes étrangères et régionales des cycles 3 et 4",
+     "reference": "BO n°22 du 29 mai 2025 (NOR MENE2504621A)",
+     "application": "6e à la rentrée 2025, 5e à la rentrée 2026, 4e en 2027, 3e en 2028 : programme retenu pour ce fichier",
+     "lien": "https://ent2d.ac-bordeaux.fr/disciplines/langues/2025/06/02/nouveaux-programmes/",
+     "contenu": "Programme de langues vivantes 2025, appliqué en 5e à la rentrée 2026. Activités langagières regroupées en réception, production, interaction/médiation. Axes culturels de 5e : 1 Portrait, autoportrait ; 2 Le quotidien : lieux, rythmes et saisons ; 3 École et loisirs ; 4 Le réel et l'imaginaire ; 5 Des langues, des lieux, des histoires ; 6 propre à chaque langue (obligatoire ; intitulé pour l'anglais non vérifié). Cinq axes sur six à traiter, dont l'axe 6. Axes relevés dans la présentation de l'académie de Bordeaux (octobre 2025) ; niveau CECRL visé en fin de 5e : A2 pour la LV1 (selon des documents académiques, non vérifié sur le BO)."
+    },
+    {
+     "texte": "Programmes du cycle 4 (cycle des approfondissements), version consolidée",
+     "reference": "Arrêté du 17-7-2020, BO n°31 du 30 juillet 2020 (NOR MENE2018714A)",
+     "application": "Ne s'applique plus en 5e en 2026-2027 (reste en vigueur en 4e et en 3e)",
+     "lien": "https://www.education.gouv.fr/bo/20/Hebdo31/MENE2018714A.htm",
+     "contenu": "Cité pour mémoire : ancien programme de langues vivantes du cycle 4, remplacé en 5e."
+    }
+   ]
+  },
+  {
+   "name": "Espagnol (LV2)",
+   "chapters": [
+    {
+     "name": "Premiers pas en espagnol (début d'année)",
+     "courses": [
+      {
+       "title": "Se présenter, saluer, épeler et compter",
+       "priority": "prioritaire",
+       "code": "CQ138",
+       "official_note": "LV2 débutée en 5e."
+      },
+      {
+       "title": "Articles, genre et pluriel des noms",
+       "priority": "prioritaire",
+       "code": "CQ139"
+      },
+      {
+       "title": "Le présent des verbes réguliers (-ar, -er, -ir)",
+       "priority": "prioritaire",
+       "code": "CQ140"
+      },
+      {
+       "title": "Ser, estar et hay",
+       "priority": "prioritaire",
+       "code": "CQ141"
+      },
+      {
+       "title": "Gustar et l'expression des goûts",
+       "priority": "prioritaire",
+       "code": "CQ142"
+      },
+      {
+       "title": "Les verbes à diphtongue (e > ie, o > ue) au présent",
+       "priority": "ensuite",
+       "code": "CQ143"
+      }
+     ]
+    },
+    {
+     "name": "Activités langagières (niveau A1)",
+     "courses": [
+      {
+       "title": "Comprendre un document audio simple",
+       "priority": "ensuite",
+       "code": "CQ144"
+      },
+      {
+       "title": "Lire un texte court",
+       "priority": "ensuite",
+       "code": "CQ145"
+      },
+      {
+       "title": "Parler de soi, de sa famille et de son quotidien",
+       "priority": "ensuite",
+       "code": "CQ146"
+      }
+     ]
+    },
+    {
+     "name": "Culture du monde hispanophone",
+     "courses": [
+      {
+       "title": "École et loisirs en Espagne et en Amérique latine",
+       "priority": "ensuite",
+       "code": "CQ147",
+       "official_note": "Axe 3 de 5e : « École et loisirs »."
+      },
+      {
+       "title": "Fêtes, saisons et rythmes de vie",
+       "priority": "mis_de_cote",
+       "code": "CQ148",
+       "official_note": "Axe 2 de 5e : « Le quotidien : lieux, rythmes et saisons »."
+      }
+     ]
+    }
+   ],
+   "official_sources": [
+    {
+     "texte": "Programmes de langues vivantes étrangères et régionales des cycles 3 et 4",
+     "reference": "BO n°22 du 29 mai 2025 (NOR MENE2504621A)",
+     "application": "6e à la rentrée 2025, 5e à la rentrée 2026, 4e en 2027, 3e en 2028 : programme retenu pour ce fichier",
+     "lien": "https://ent2d.ac-bordeaux.fr/disciplines/langues/2025/06/02/nouveaux-programmes/",
+     "contenu": "Programme de langues vivantes 2025, appliqué en 5e à la rentrée 2026. Activités langagières regroupées en réception, production, interaction/médiation. Axes culturels de 5e : 1 Portrait, autoportrait ; 2 Le quotidien : lieux, rythmes et saisons ; 3 École et loisirs ; 4 Le réel et l'imaginaire ; 5 Des langues, des lieux, des histoires ; 6 propre à chaque langue (obligatoire ; intitulé pour l'espagnol non vérifié). Cinq axes sur six à traiter, dont l'axe 6. Axes relevés dans la présentation de l'académie de Bordeaux (octobre 2025) ; niveau CECRL visé en fin de 5e : A1+ pour la LV2 (selon des documents académiques, non vérifié sur le BO)."
+    },
+    {
+     "texte": "Programmes du cycle 4 (cycle des approfondissements), version consolidée",
+     "reference": "Arrêté du 17-7-2020, BO n°31 du 30 juillet 2020 (NOR MENE2018714A)",
+     "application": "Ne s'applique plus en 5e en 2026-2027 (reste en vigueur en 4e et en 3e)",
+     "lien": "https://www.education.gouv.fr/bo/20/Hebdo31/MENE2018714A.htm",
+     "contenu": "Cité pour mémoire : ancien programme de langues vivantes du cycle 4, remplacé en 5e."
+    }
+   ]
+  },
+  {
+   "name": "Allemand (LV2)",
+   "chapters": [
+    {
+     "name": "Premiers pas en allemand (début d'année)",
+     "courses": [
+      {
+       "title": "Se présenter, saluer, épeler et compter",
+       "priority": "prioritaire",
+       "code": "CQ149",
+       "official_note": "LV2 débutée en 5e."
+      },
+      {
+       "title": "Les articles, le genre et le pluriel des noms",
+       "priority": "prioritaire",
+       "code": "CQ150"
+      },
+      {
+       "title": "Le présent des verbes et le verbe en deuxième position",
+       "priority": "prioritaire",
+       "code": "CQ151"
+      },
+      {
+       "title": "Sein et haben",
+       "priority": "prioritaire",
+       "code": "CQ152"
+      },
+      {
+       "title": "L'accusatif",
+       "priority": "ensuite",
+       "code": "CQ153"
+      },
+      {
+       "title": "La négation : nicht et kein",
+       "priority": "ensuite",
+       "code": "CQ154"
+      },
+      {
+       "title": "Exprimer ses goûts : gern, mögen",
+       "priority": "ensuite",
+       "code": "CQ155"
+      }
+     ]
+    },
+    {
+     "name": "Activités langagières (niveau A1)",
+     "courses": [
+      {
+       "title": "Comprendre un document audio simple",
+       "priority": "ensuite",
+       "code": "CQ156"
+      },
+      {
+       "title": "Lire un texte court",
+       "priority": "ensuite",
+       "code": "CQ157"
+      },
+      {
+       "title": "Parler de soi, de sa famille et de son quotidien",
+       "priority": "ensuite",
+       "code": "CQ158"
+      }
+     ]
+    },
+    {
+     "name": "Culture des pays germanophones",
+     "courses": [
+      {
+       "title": "École et loisirs en Allemagne, en Autriche et en Suisse",
+       "priority": "ensuite",
+       "code": "CQ159",
+       "official_note": "Axe 3 de 5e : « École et loisirs »."
+      },
+      {
+       "title": "Fêtes, saisons et rythmes de vie",
+       "priority": "mis_de_cote",
+       "code": "CQ160",
+       "official_note": "Axe 2 de 5e : « Le quotidien : lieux, rythmes et saisons »."
+      }
+     ]
+    }
+   ],
+   "official_sources": [
+    {
+     "texte": "Programmes de langues vivantes étrangères et régionales des cycles 3 et 4",
+     "reference": "BO n°22 du 29 mai 2025 (NOR MENE2504621A)",
+     "application": "6e à la rentrée 2025, 5e à la rentrée 2026, 4e en 2027, 3e en 2028 : programme retenu pour ce fichier",
+     "lien": "https://ent2d.ac-bordeaux.fr/disciplines/langues/2025/06/02/nouveaux-programmes/",
+     "contenu": "Programme de langues vivantes 2025, appliqué en 5e à la rentrée 2026. Activités langagières regroupées en réception, production, interaction/médiation. Axes culturels de 5e : 1 Portrait, autoportrait ; 2 Le quotidien : lieux, rythmes et saisons ; 3 École et loisirs ; 4 Le réel et l'imaginaire ; 5 Des langues, des lieux, des histoires ; 6 propre à chaque langue (obligatoire ; intitulé pour l'allemand non vérifié). Cinq axes sur six à traiter, dont l'axe 6. Axes relevés dans la présentation de l'académie de Bordeaux (octobre 2025) ; niveau CECRL visé en fin de 5e : A1+ pour la LV2 (selon des documents académiques, non vérifié sur le BO)."
+    },
+    {
+     "texte": "Programmes du cycle 4 (cycle des approfondissements), version consolidée",
+     "reference": "Arrêté du 17-7-2020, BO n°31 du 30 juillet 2020 (NOR MENE2018714A)",
+     "application": "Ne s'applique plus en 5e en 2026-2027 (reste en vigueur en 4e et en 3e)",
+     "lien": "https://www.education.gouv.fr/bo/20/Hebdo31/MENE2018714A.htm",
+     "contenu": "Cité pour mémoire : ancien programme de langues vivantes du cycle 4, remplacé en 5e."
+    }
+   ]
+  },
+  {
+   "name": "Arts plastiques",
+   "chapters": [
+    {
+     "name": "Questionnements du cycle 4",
+     "courses": [
+      {
+       "title": "La représentation : ressemblance et écart",
+       "priority": "ensuite",
+       "code": "CQ161",
+       "official_note": "Questionnement officiel : « La représentation ; images, réalité et fiction »."
+      },
+      {
+       "title": "La matérialité de l'œuvre : matériaux, supports et outils",
+       "priority": "ensuite",
+       "code": "CQ162"
+      },
+      {
+       "title": "L'œuvre, l'espace et le spectateur",
+       "priority": "ensuite",
+       "code": "CQ163"
+      },
+      {
+       "title": "Le numérique dans la création artistique",
+       "priority": "mis_de_cote",
+       "code": "CQ164"
+      }
+     ]
+    },
+    {
+     "name": "Histoire des arts",
+     "courses": [
+      {
+       "title": "Analyser une œuvre d'art (méthode)",
+       "priority": "ensuite",
+       "code": "CQ165"
+      }
+     ]
+    }
+   ],
+   "official_sources": [
+    {
+     "texte": "Programmes du cycle 4 (cycle des approfondissements), version consolidée",
+     "reference": "Arrêté du 17-7-2020, BO n°31 du 30 juillet 2020 (NOR MENE2018714A)",
+     "application": "En vigueur en 5e en 2026-2027 pour cette discipline (aucun nouveau programme annoncé pour la 5e à la rentrée 2026)",
+     "lien": "https://www.education.gouv.fr/bo/20/Hebdo31/MENE2018714A.htm",
+     "contenu": "Programme d'arts plastiques du cycle 4 : la représentation, images, réalité et fiction ; la matérialité de l'œuvre, l'objet et l'œuvre ; l'œuvre, l'espace, l'auteur, le spectateur. Histoire des arts."
+    }
+   ]
+  },
+  {
+   "name": "Éducation musicale",
+   "chapters": [
+    {
+     "name": "Compétences du cycle 4",
+     "courses": [
+      {
+       "title": "Écouter et décrire une œuvre musicale",
+       "priority": "ensuite",
+       "code": "CQ166",
+       "official_note": "Compétence officielle : « Écouter, comparer, construire une culture musicale et artistique »."
+      },
+      {
+       "title": "Le vocabulaire musical : timbre, rythme, mélodie, forme",
+       "priority": "ensuite",
+       "code": "CQ167"
+      },
+      {
+       "title": "Chanter et interpréter un projet musical",
+       "priority": "ensuite",
+       "code": "CQ168"
+      },
+      {
+       "title": "Argumenter un avis sur la musique",
+       "priority": "mis_de_cote",
+       "code": "CQ169"
+      }
+     ]
+    }
+   ],
+   "official_sources": [
+    {
+     "texte": "Programmes du cycle 4 (cycle des approfondissements), version consolidée",
+     "reference": "Arrêté du 17-7-2020, BO n°31 du 30 juillet 2020 (NOR MENE2018714A)",
+     "application": "En vigueur en 5e en 2026-2027 pour cette discipline (aucun nouveau programme annoncé pour la 5e à la rentrée 2026)",
+     "lien": "https://www.education.gouv.fr/bo/20/Hebdo31/MENE2018714A.htm",
+     "contenu": "Programme d'éducation musicale du cycle 4 : réaliser des projets musicaux d'interprétation ou de création ; écouter, comparer, construire une culture musicale commune ; explorer, imaginer et créer ; échanger, partager, argumenter."
+    }
+   ]
+  }
+ ],
+ "general_sources": [
+  {
+   "texte": "Enseigner au cycle 4 : programmes en vigueur par classe",
+   "reference": "Éduscol, page consultée le 25-11-2026",
+   "application": "Année scolaire 2026-2027",
+   "lien": "https://eduscol.education.gouv.fr/4362/enseigner-au-cycle-4",
+   "contenu": "En 2026-2027, la 5e suit les nouveaux programmes de français et de mathématiques (BO n°10 du 5 mars 2026) et de langues vivantes (BO n°22 du 29 mai 2025) ; les autres disciplines restent sur le programme du cycle 4 publié au BO du 30 juillet 2020, l'EMC sur le programme de 2024. La page a refusé la consultation automatique (403) : calendrier recoupé via les résultats de recherche Éduscol, l'académie de Bordeaux et digischool."
+  },
+  {
+   "texte": "Programmes de français et de mathématiques du cycle 4 (cycle des approfondissements)",
+   "reference": "Arrêté du 18-2-2026, BO n°10 du 5 mars 2026 (NOR MENE2602912A)",
+   "application": "Classe de 5e à la rentrée 2026 (4e en 2027, 3e en 2028) : programme retenu pour ce fichier",
+   "lien": "https://www.education.gouv.fr/bo/2026/Hebdo10/MENE2602912A",
+   "contenu": "Retenu pour le français et les mathématiques en 5e. Remplace, pour ces deux disciplines, le programme de 2015 (consolidé en 2020)."
+  },
+  {
+   "texte": "Programmes de langues vivantes étrangères et régionales des cycles 3 et 4",
+   "reference": "BO n°22 du 29 mai 2025 (NOR MENE2504621A)",
+   "application": "6e à la rentrée 2025, 5e à la rentrée 2026, 4e en 2027, 3e en 2028 : programme retenu pour ce fichier",
+   "lien": "https://ent2d.ac-bordeaux.fr/disciplines/langues/2025/06/02/nouveaux-programmes/",
+   "contenu": "Retenu pour l'anglais, l'espagnol et l'allemand en 5e (6 axes culturels par année ; 5 à traiter dont l'axe 6)."
+  },
+  {
+   "texte": "Programme d'enseignement moral et civique (du CP à la terminale)",
+   "reference": "Arrêté du 29-5-2024, BO n°24 du 13 juin 2024 (NOR MENE2413934A)",
+   "application": "5e depuis la rentrée 2024",
+   "lien": "https://www.education.gouv.fr/bo/2024/Hebdo24/MENE2413934A",
+   "contenu": "Retenu pour l'EMC : thème de 5e « Égalité, fraternité et solidarité »."
+  },
+  {
+   "texte": "Programmes du cycle 4 (cycle des approfondissements), version consolidée",
+   "reference": "Arrêté du 17-7-2020, BO n°31 du 30 juillet 2020 (NOR MENE2018714A)",
+   "application": "En vigueur en 5e en 2026-2027 pour cette discipline (aucun nouveau programme annoncé pour la 5e à la rentrée 2026)",
+   "lien": "https://www.education.gouv.fr/bo/20/Hebdo31/MENE2018714A.htm",
+   "contenu": "Retenu pour histoire-géographie, physique-chimie, SVT, technologie, arts plastiques et éducation musicale."
+  }
+ ],
+ "sources_checked": "2026-11-25"
+}
