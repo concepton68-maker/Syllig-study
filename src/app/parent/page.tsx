@@ -55,9 +55,8 @@ export default async function ParentDashboard({ searchParams }: { searchParams: 
   const kpis = [
     { label: 'Temps actif mesuré', value: hm(w.active), unit: `/ ${hm(goal)}`, sub: 'Objectif hebdomadaire fixé par vous', bar: Math.min(100, pct) },
     { label: 'Jours travaillés', value: String(w.activeDays), unit: 'jours / 7', sub: `10 min ou plus dans la journée · série en cours : ${s} jour${s > 1 ? 's' : ''}`, bar: (w.activeDays / 7) * 100 },
-    { label: 'Moyenne des évaluations', value: ev.avg ? Number(ev.avg).toLocaleString('fr-FR') : '—', unit: '/ 20', sub: ev.n ? `Meilleure note retenue, ${ev.n} cours évalué${ev.n > 1 ? 's' : ''}` : 'Pas encore d’évaluation', bar: ev.avg ? (Number(ev.avg) / 20) * 100 : 0 },
+    { label: 'Moyenne des évaluations', value: ev.avg ? Number(ev.avg).toLocaleString('fr-FR') : '—', unit: '/ 20', sub: ev.n ? `Depuis l’inscription : meilleure note de chaque cours, ${ev.n} cours évalué${ev.n > 1 ? 's' : ''}` : 'Pas encore d’évaluation', bar: ev.avg ? (Number(ev.avg) / 20) * 100 : 0 },
     { label: 'Cours acquis', value: String(acquired), unit: `/ ${published}`, sub: `« acquis » : une évaluation à 14/20 ou plus · ${published} cours disponibles, ${total} au programme`, bar: published ? (acquired / published) * 100 : 0 },
-    { label: 'Points de progrès', value: `+${w.week_points}`, unit: 'cette semaine', sub: `${w.total_points} au total`, bar: Math.min(100, w.week_points / 5) },
   ];
 
   return (

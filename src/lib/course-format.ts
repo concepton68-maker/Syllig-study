@@ -223,8 +223,9 @@ function parseNumericAnswer(raw: string): number | null {
     if (!Number.isFinite(num) || !Number.isFinite(den) || den === 0) return null;
     return (m[1] === '-' ? -1 : 1) * num / den;
   };
-  // unité ou % écrits après le nombre : on lit le nombre (l'unité ne contient pas de chiffre)
-  return read(t) ?? read(t.replace(/[%a-zA-Zµ°²³€$/.]+[a-zA-Z²³/.]*$/, ''));
+  // unité ou % écrits après le nombre : on lit le nombre
+  // un exposant seul n'est pas une unité (« 2² » n'est pas « 2 ») ; « cm² », « m.s-1 », « km/h » le sont
+  return read(t) ?? read(t.replace(/[%a-zA-Zµ°€$/.][a-zA-Z²³/.·]*(?:-1)?$/, ''));
 }
 
 // Normalisation des réponses courtes : accents, majuscules et ponctuation ignorés,

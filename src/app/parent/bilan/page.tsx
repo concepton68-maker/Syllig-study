@@ -36,7 +36,9 @@ export default async function Bilan({ searchParams }: { searchParams: Promise<{ 
   const aiOn = ai.ready.bilan;
   const [profile, eng, traj] = await Promise.all([studentProfile(student.id), workFacts(student.id), trajectory(student.id)]);
   const reports = await sql<Report[]>`select id, created_at, provider, model, data, indicators from student_reports where student_id = ${student.id} order by created_at desc limit 30`;
-  const shown = reports.find(r => r.id === sp.rapport) ?? reports[0];
+  // ancienne consigne (avant le 25/11/2026) : le bilan attribuait une « origine » et une « implication » ; jamais affiché par défaut
+  const oldStyle = (r: Report) => 'origine' in (r.data as object) || 'implication' in (r.data as object);
+  const shown = reports.find(r => r.id === sp.rapport) ?? reports.find(r => !oldStyle(r));
   const tests = await sql<Test[]>`select id, report_id, created_at, status, score, total, duration_min, started_at, submitted_at, results
     from placement_tests where student_id = ${student.id} order by created_at desc limit 20`;
   const openTest = tests.find(t => t.status !== 'termine');
@@ -52,14 +54,14 @@ export default async function Bilan({ searchParams }: { searchParams: Promise<{ 
     <Screen top={<>
       <ChildPicker students={students} current={student} path="/parent/bilan" />
       <PageTitle kicker="Bilan pédagogique" title={`Où en est ${name} ?`}
-        sub="Les chiffres mesurés par la plateforme, puis le bilan rédigé par l’IA : d’où viennent les difficultés, quoi reprendre, et un test de positionnement pour en avoir le cœur net." />
+        sub="Les chiffres mesurés par la plateforme, puis le bilan rédigé par l’IA à partir de ces seuls chiffres, et un test de positionnement pour vérifier les bases des années précédentes." />
     </>}>
       {sp.erreur && <p role="alert" className="m-0 rounded-xl bg-warm-soft text-warm-dark px-4 py-3 text-sm">{sp.erreur}</p>}
       {sp.note && <p role="status" className="m-0 rounded-xl bg-soft px-4 py-3 text-sm">{sp.note}</p>}
       {sp.consentement && <p role="status" className="m-0 rounded-xl bg-brand-soft text-brand-ink px-4 py-3 text-sm"><strong>Choix enregistrés pour {name}.</strong> Vous pouvez les changer à tout moment.</p>}
       {sp.test === 'propose' && <p role="status" className="m-0 rounded-xl bg-brand-soft text-brand-ink px-4 py-3 text-sm"><strong>Test proposé à {name}.</strong> Il apparaît dans son espace, rubrique « Aujourd’hui ». Les résultats s’afficheront ici.</p>}
 
-      {/* 0. Ne veut pas ou n'arrive pas */}
+      {/* 0. Travail et résultats (faits sur 28 jours) */}
       <EngagementCard f={eng} name={name} />
       <TrajectoryCard tr={traj} name={name} goalMin={student.settings.weekly_goal_minutes} />
       <CheckinCard rows={checkins} name={name} requestAction={requestCheckin.bind(null, student.id)} requested={!!(student.settings as { checkin_requested?: boolean }).checkin_requested} fille={student.settings.gender === 'fille'} />
@@ -171,7 +173,7 @@ export default async function Bilan({ searchParams }: { searchParams: Promise<{ 
           {reports.map(r => (
             <div key={r.id} className="flex flex-wrap items-center gap-3 py-2.5 border-t border-soft text-sm">
               <BulkCheck formId="bulk-bilans" value={r.id} label={`bilan du ${day(r.created_at)}`} />
-              <span className="flex-1"><strong>{day(r.created_at)}</strong><span className="muted"> · {ai.catalog[r.provider]?.name ?? r.provider}</span></span>
+              <span className="flex-1"><strong>{day(r.created_at)}</strong><span className="muted"> · {ai.catalog[r.provider]?.name ?? r.provider}</span>{oldStyle(r) && <span className="block text-[13px] text-warm-dark">Ancienne consigne : ce bilan supposait des causes. Demandez un nouveau bilan.</span>}</span>
               {r.id === shown?.id ? <span className="pill bg-brand-soft text-brand-dark">Affiché</span> : <Link className="font-semibold" href={`/parent/bilan?eleve=${student.id}&rapport=${r.id}`}>Voir</Link>}
             </div>
           ))}
@@ -183,18 +185,17 @@ export default async function Bilan({ searchParams }: { searchParams: Promise<{ 
 
 function CourseRow({ c }: { c: CourseFacts }) {
   const e = c.evaluations.at(-1);
-  const warn = c.flags.filter(f => f.code !== 'temps_correct');
+  const warn = c.flags.filter(f => f.code !== 'temps_correct');   // « temps correct » est un jugement : pas affiché
   return (
     <div className="grid gap-x-4 gap-y-1.5 py-3 border-t border-soft text-sm md:grid-cols-[minmax(0,1.3fr)_repeat(4,minmax(0,1fr))]">
       <span className="min-w-0"><strong>{c.title}</strong><span className="block muted">{c.subject}</span></span>
       <Fact label="Leçon" value={c.lesson.active_min || c.lesson.done ? `${c.lesson.active_min} min / ${c.lesson.expected_min} prévues` : '—'} />
       <Fact label="Contrôles 1er coup" value={c.checkpoints.parts ? `${c.checkpoints.first_try_ok} / ${c.checkpoints.parts}` : '—'} />
-      <Fact label="Exercices (corrigés auto.)" value={c.exercises.score !== null ? `${c.exercises.score}/10` : '—'} />
+      <Fact label="Exercices, meilleure série (corrigés par la plateforme)" value={c.exercises.score !== null ? `${c.exercises.score}/10` : '—'} />
       <Fact label="Évaluation" value={e ? `${e.score === null ? 'en correction' : `${fr(e.score)}/20`}${e.used_min ? ` · ${e.used_min} min / ${e.allowed_min}` : ''}` : '—'} />
-      {c.flags.length > 0 && (
+      {warn.length > 0 && (
         <span className="md:col-span-5 flex flex-wrap gap-1.5">
-          {warn.map(f => <span key={f.code} className="pill bg-warm-soft text-warm-dark inline-flex items-center gap-1"><AlertTriangle size={13} aria-hidden="true" />{f.label}</span>)}
-          {c.flags.filter(f => f.code === 'temps_correct').map(f => <span key={f.code} className="pill bg-brand-soft text-brand-dark inline-flex items-center gap-1"><CheckCircle2 size={13} aria-hidden="true" />{f.label}</span>)}
+          {warn.map(f => <span key={f.code} className="pill bg-soft text-ink-2 inline-flex items-center gap-1"><AlertTriangle size={13} aria-hidden="true" />{f.label}</span>)}
         </span>
       )}
     </div>
@@ -217,8 +218,8 @@ function ReportView({ r, name }: { r: Report; name: string }) {
             <div key={i} className="rounded-xl border border-line px-4 py-3 text-sm">
               <strong>{m.matiere}</strong> — {m.constat}
               <div className="grid gap-2 sm:grid-cols-2 mt-2">
-                {m.points_forts.length > 0 && <div><span className="lbl text-brand-dark">Acquis</span><ul className="m-0 pl-5 list-disc">{m.points_forts.map((x, j) => <li key={j}>{x}</li>)}</ul></div>}
-                {m.points_faibles.length > 0 && <div><span className="lbl text-warm-dark">À reprendre</span><ul className="m-0 pl-5 list-disc">{m.points_faibles.map((x, j) => <li key={j}>{x}</li>)}</ul></div>}
+                {m.points_forts.length > 0 && <div><span className="lbl text-brand-dark">Réussi dans les copies</span><ul className="m-0 pl-5 list-disc">{m.points_forts.map((x, j) => <li key={j}>{x}</li>)}</ul></div>}
+                {m.points_faibles.length > 0 && <div><span className="lbl text-warm-dark">Raté dans les copies</span><ul className="m-0 pl-5 list-disc">{m.points_faibles.map((x, j) => <li key={j}>{x}</li>)}</ul></div>}
               </div>
             </div>
           ))}

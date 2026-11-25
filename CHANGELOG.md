@@ -469,3 +469,16 @@ Contre-audit de conformité de la 0.42 : corrections, et application de la règl
   - « À venir » (révisions, prochain cours) et « À regarder ensemble » (faits seulement).
 - L'ancien journal reste accessible : « Voir le détail minute par minute ».
 - Audit de conformité de la page appliqué avant la mise en ligne : une copie n'est signalée que pour ses questions sans réponse (plus de « copie incomplète » sur une copie remplie) ; une question ratée n'apparaît qu'une fois (dernière copie et dernière série d'exercices de chaque cours) et seulement à 0 point ; minutes affichées cohérentes avec le seuil de 10 min ; répartitions dont la somme fait le total (et 100 %) ; points et révisions en retard datés de la semaine affichée ; jours comptés sur les jours écoulés ; libellés exacts (« 8 justes sur 10 (corrigées par la plateforme) », « page de l'évaluation masquée ») ; sources citées précisément.
+
+## 0.46 — 25/11/2026
+Contre-audit de conformité des versions 0.43 à 0.45 : tout ce qui a été relevé est corrigé.
+- Exercices : les notes enregistrées avant la 0.43 (qui comptaient l'auto-évaluation) sont recalculées à partir des seules questions corrigées par la plateforme ; libellé « Exercices, meilleure série (corrigés par la plateforme) ».
+- Copies : une seule définition partout, sans seuil caché — « copies sans question vide » et, à part, « temps utilisé sur temps accordé » (tiers-temps compris) ; moyennes séparées des copies sans question vide et avec questions vides ; copies en attente comptées par matière.
+- Temps de leçon : le même partout (tout le temps actif passé sur la leçon) ; plus de « Temps de leçon correct ».
+- Bilan : sous-titre sans « d'où viennent les difficultés » ; les anciens bilans IA (ancienne consigne qui supposait des causes) ne s'affichent plus par défaut et sont signalés ; l'IA ne reçoit plus de codes interprétatifs ; « Réussi / Raté dans les copies » au lieu d'« Acquis / À reprendre ».
+- Activité : « Un point précis » porte sur la dernière copie de chaque cours (comme la ligne du cours) ; le total affiché est la somme des barres, et les minutes par cours et par matière en sont une répartition exacte ; la source n'apparaît que sous l'idée qu'elle concerne ; le lien vers le détail garde la semaine ; « réponse attendue » précise les autres formes acceptées et la tolérance ; une adresse de semaine invalide n'affiche plus d'erreur.
+- Évolution sur 12 semaines : pas de flèche sur moins de 3 copies de chaque côté ; une semaine où l'activité commence en cours de route n'entre pas dans la comparaison.
+- Accueil parent : plus de « points de progrès » (score composite) ; la moyenne des évaluations indique sa période.
+- En direct : minutes arrondies vers le bas comme ailleurs ; 30 derniers jours civils ; libellés sans « séance ».
+- Correction automatique : « 2² » n'est plus accepté pour 2 ; « 5 m.s-1 » est accepté pour 5.
+- Mise à jour du serveur : le nettoyage de l'ancien site d'essai ne garde plus le verrou de mise à jour, et ne recharge Caddy que si le bloc du site des élèves est toujours présent.

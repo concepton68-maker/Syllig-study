@@ -30,8 +30,8 @@ HAS_IMG=$(docker image ls -q syllig-study:essai 2>/dev/null | head -1)
   if grep -qF "$MARK" "$CADDYFILE" 2>/dev/null; then
     cp -a "$CADDYFILE" /etc/caddy/Caddyfile.avant-retrait-essai
     awk -v m="$MARK" 'index($0, m) == 1 { skip = 1; next } skip && /^}/ { skip = 0; next } !skip' /etc/caddy/Caddyfile.avant-retrait-essai > "$CADDYFILE"
-    if caddy validate --config "$CADDYFILE" --adapter caddyfile >/dev/null 2>&1; then systemctl reload caddy; echo "Caddy : bloc de l'essai retiré"
-    else cp -a /etc/caddy/Caddyfile.avant-retrait-essai "$CADDYFILE"; echo "Caddy : retrait refusé par la validation, fichier d'origine remis"; fi
+    if grep -qF "# syllig-study — ajouté par deploy/install.sh" "$CADDYFILE" && caddy validate --config "$CADDYFILE" --adapter caddyfile >/dev/null 2>&1; then systemctl reload caddy; echo "Caddy : bloc de l'essai retiré"
+    else cp -a /etc/caddy/Caddyfile.avant-retrait-essai "$CADDYFILE"; echo "Caddy : retrait refusé (validation ou bloc des élèves absent), fichier d'origine remis"; fi
   fi
   echo "=== $(date -Is) site d'essai retiré"
 } >> "$LOG" 2>&1

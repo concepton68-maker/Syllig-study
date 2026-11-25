@@ -26,12 +26,12 @@ export async function recentSessions(studentId: string, limit = 50) {
 export function lookTogether(s: SessionRow): string | null {
   if (s.kind === 'evaluation' && ((s.focus_losses ?? 0) > 0 || (s.paste_blocked ?? 0) > 0)) {
     const parts = [];
-    if (s.focus_losses) parts.push(`${s.focus_losses} sortie${s.focus_losses > 1 ? 's' : ''} de fenêtre (${s.focus_lost_seconds} s)`);
+    if (s.focus_losses) parts.push(`page de l’évaluation masquée ${s.focus_losses} fois (${s.focus_lost_seconds} s)`);
     if (s.paste_blocked) parts.push(`${s.paste_blocked} collage${s.paste_blocked > 1 ? 's' : ''} bloqué${s.paste_blocked > 1 ? 's' : ''}`);
     return parts.join(', ');
   }
   if (s.kind === 'lesson' && s.planned_min && s.active_seconds < 0.3 * s.planned_min * 60 && s.open_seconds >= 120)
-    return `séance courte : ${Math.round(s.active_seconds / 60)} min actives pour ${s.planned_min} prévues`;
+    return `leçon : ${Math.floor(s.active_seconds / 60)} min actives pour ${s.planned_min} prévues`;
   return null;
 }
 

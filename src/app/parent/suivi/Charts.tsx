@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import { C_WORK, C_PAUSE } from './LiveBoard';
 
-const dur = (s: number) => { const m = Math.round(s / 60); return m < 60 ? `${m} min` : `${Math.floor(m / 60)} h ${String(m % 60).padStart(2, '0')}`; };
+const dur = (s: number) => { const m = Math.floor(s / 60); return m < 60 ? `${m} min` : `${Math.floor(m / 60)} h ${String(m % 60).padStart(2, '0')}`; };
 
 // 7 derniers jours : barres empilées temps actif / temps sans geste (page ouverte).
 // En HTML (pas en SVG mis à l'échelle) pour que les textes restent lisibles sur téléphone.

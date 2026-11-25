@@ -66,11 +66,11 @@ export async function lastDays(studentId: string, n = 7): Promise<DaySeries[]> {
 // Répartition du travail effectif (30 derniers jours) par activité et par matière ; indicateurs de la semaine
 export async function breakdown(studentId: string) {
   const byKind = await sql<{ kind: string; s: number }[]>`
-    select kind, sum(active_seconds)::int as s from work_sessions where student_id = ${studentId} and started_at > now() - interval '30 days' group by kind order by 2 desc`;
+    select kind, sum(active_seconds)::int as s from work_sessions where student_id = ${studentId} and started_at >= (((now() at time zone 'Europe/Paris')::date - 29)::timestamp at time zone 'Europe/Paris') group by kind order by 2 desc`;
   const bySubject = await sql<{ subject: string; s: number }[]>`
     select coalesce(sj.name, 'Autre') as subject, sum(w.active_seconds)::int as s from work_sessions w
     left join courses c on c.id = w.course_id left join chapters ch on ch.id = c.chapter_id left join subjects sj on sj.id = ch.subject_id
-    where w.student_id = ${studentId} and w.started_at > now() - interval '30 days' group by 1 having sum(w.active_seconds) > 0 order by 2 desc limit 6`;
+    where w.student_id = ${studentId} and w.started_at >= (((now() at time zone 'Europe/Paris')::date - 29)::timestamp at time zone 'Europe/Paris') group by 1 having sum(w.active_seconds) > 0 order by 2 desc limit 6`;
   // 7 derniers jours civils (heure de Paris, aujourd'hui compris) : la même fenêtre que le graphique des 7 jours
   const [k] = await sql<{ active: number; open: number; sessions: number; days: number; pauses: number; focus: number }[]>`
     with b as (select (((now() at time zone 'Europe/Paris')::date - 6)::timestamp at time zone 'Europe/Paris') as start),

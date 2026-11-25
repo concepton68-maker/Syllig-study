@@ -9,7 +9,7 @@ type Data = { live: Live; today: { day: string; segments: Segment[]; active: num
 export const C_WORK = '#2F4FD8', C_PAUSE = '#f47230';
 const KIND: Record<string, string> = { lesson: 'Leçon', exercises: 'Exercices', evaluation: 'Évaluation', review: 'Révision', other: 'Travail' };
 const hhmm = (d: Date) => d.toLocaleTimeString('fr-FR', { timeZone: 'Europe/Paris', hour: '2-digit', minute: '2-digit' });
-const dur = (s: number) => { const m = Math.round(s / 60); return m < 60 ? `${m} min` : `${Math.floor(m / 60)} h ${String(m % 60).padStart(2, '0')}`; };
+const dur = (s: number) => { const m = Math.floor(s / 60); return m < 60 ? `${m} min` : `${Math.floor(m / 60)} h ${String(m % 60).padStart(2, '0')}`; };
 const ago = (iso: string, now: Date) => {
   const m = Math.max(0, Math.round((now.getTime() - new Date(iso).getTime()) / 60000));
   if (m < 1) return 'à l’instant'; if (m < 60) return `depuis ${m} min`; if (m < 24 * 60) return `depuis ${Math.floor(m / 60)} h ${String(m % 60).padStart(2, '0')}`;
@@ -57,7 +57,7 @@ export function LiveBoard({ studentId, name, initial }: { studentId: string; nam
           </span>
         </span>
         {live.state !== 'hors_ligne' && (
-          <span className="text-sm"><strong className="text-lg">{live.sessionActiveMin} min</strong> de travail effectif<span className="block muted">sur {live.sessionMin} min de séance</span></span>
+          <span className="text-sm"><strong className="text-lg">{live.sessionActiveMin} min</strong> actives sur cette page<span className="block muted">sur {live.sessionMin} min depuis son ouverture</span></span>
         )}
         <span className="muted text-xs basis-full">Mise à jour toutes les 10 secondes. « Actif » : un geste (clic, défilement, saisie) dans les 60 dernières secondes. « Sans geste » : aucun geste depuis 60 s, ou fenêtre cachée.</span>
       </section>

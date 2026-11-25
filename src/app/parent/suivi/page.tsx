@@ -14,7 +14,7 @@ export const dynamic = 'force-dynamic';
 const KIND_COLOR: Record<string, { label: string; color: string }> = {
   lesson: { label: 'Leçons', color: '#257de0' }, exercises: { label: 'Exercices', color: '#00b894' }, evaluation: { label: 'Évaluations', color: '#6a4ce2' },
 };
-const dur = (s: number) => { const m = Math.round(s / 60); return m < 60 ? `${m} min` : `${Math.floor(m / 60)} h ${String(m % 60).padStart(2, '0')}`; };
+const dur = (s: number) => { const m = Math.floor(s / 60); return m < 60 ? `${m} min` : `${Math.floor(m / 60)} h ${String(m % 60).padStart(2, '0')}`; };
 
 function Tile({ label, value, sub, testid }: { label: string; value: string; sub: string; testid?: string }) {
   return (
@@ -77,11 +77,11 @@ export default async function Suivi({ searchParams }: { searchParams: Promise<{ 
             </div>
           </section>
           <section className="card flex flex-col gap-3">
-            <h2 className="text-lg font-semibold">À quoi sert le temps de travail <span className="muted font-normal text-sm">· 30 jours</span></h2>
+            <h2 className="text-lg font-semibold">À quoi sert le temps de travail <span className="muted font-normal text-sm">· 30 derniers jours, aujourd’hui compris</span></h2>
             <SplitBar parts={kinds} />
           </section>
           <section className="card flex flex-col gap-3">
-            <h2 className="text-lg font-semibold">Par matière <span className="muted font-normal text-sm">· 30 jours</span></h2>
+            <h2 className="text-lg font-semibold">Par matière <span className="muted font-normal text-sm">· 30 derniers jours, aujourd’hui compris</span></h2>
             <BarList rows={b.bySubject.map(r => ({ label: r.subject, value: r.s }))} />
           </section>
         </Pane>

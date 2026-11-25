@@ -7,16 +7,15 @@ import { versionById } from './progress';
 // Aucune note composite, aucun seuil caché, aucune interprétation psychologique : chaque chiffre a une définition affichée.
 //  - jours travaillés : jours (heure de Paris) où le temps effectif cumulé atteint 10 minutes ;
 //  - temps effectif : minutes où l'élève agit sur une page de travail (signal toutes les 15 s, pause après 60 s sans geste) ;
-//  - copie complète : au moins 30 % du temps accordé utilisé ET au moins 60 % des questions répondues ;
+//  - copies : deux faits séparés, sans seuil — copies sans question vide, et temps utilisé sur temps accordé ;
 //  - exercices : seulement les questions corrigées par la plateforme (les auto-évaluations de l'élève sont comptées à part).
 
 export const WINDOW_DAYS = 28;
-export const COMPLETE_RULE = 'au moins 30 % du temps accordé utilisé et au moins 60 % des questions répondues';
-export type SubjectFacts = { subject: string; active_min: number; cp_ok: number; cp_total: number; ex_ok: number; ex_total: number; complete: number[]; incomplete: number };
+export type SubjectFacts = { subject: string; active_min: number; cp_ok: number; cp_total: number; ex_ok: number; ex_total: number; full: number[]; withBlank: number; pending: number };
 export type Facts = {
   from: string; to: string;
   work: { days: number; active_min: number; open_min: number; goal_min: number; lessons_done: number; lesson_min: number; lesson_expected_min: number };
-  evals: { submitted: number; complete_all: number; complete: { n: number; avg: number | null }; incomplete: { n: number; avg: number | null }; focus_losses: number; pending: number };
+  evals: { submitted: number; no_blank: number; used_min: number; allowed_min: number; full: { n: number; avg: number | null }; withBlank: { n: number; avg: number | null }; focus_losses: number; pending: number };
   learning: { cp_ok: number; cp_total: number; ex_ok: number; ex_total: number; self_ok: number; self_total: number };
   subjects: SubjectFacts[];
 };
@@ -36,10 +35,10 @@ export async function workFacts(studentId: string): Promise<Facts> {
       from work_sessions where student_id = ${studentId} and started_at >= ${win.start} group by 1)
     select coalesce(sum(a), 0)::int as active, coalesce(sum(o), 0)::int as open, count(*) filter (where a >= 600)::int as days from d`;
 
-  // leçons terminées dans la fenêtre : temps effectif passé sur la leçon / durée prévue
+  // leçons terminées dans la fenêtre : tout le temps effectif passé sur chacune (depuis son début) / durée prévue
   const lessons = await sql<{ course_id: number; doc: { lesson: { duration_min: number } } | null; active: number }[]>`
     select p.course_id, (select v.document from course_versions v where v.course_id = p.course_id and v.status = 'published' order by v.version desc limit 1) as doc,
-      coalesce((select sum(active_seconds) from work_sessions s where s.student_id = p.student_id and s.course_id = p.course_id and s.kind = 'lesson' and s.started_at >= ${win.start}), 0)::int as active
+      coalesce((select sum(active_seconds) from work_sessions s where s.student_id = p.student_id and s.course_id = p.course_id and s.kind = 'lesson'), 0)::int as active
     from course_progress p where p.student_id = ${studentId} and p.lesson_done_at >= ${win.start}`;
 
   // évaluations remises dans la fenêtre
@@ -63,24 +62,24 @@ export async function workFacts(studentId: string): Promise<Facts> {
     where w.student_id = ${studentId} and w.started_at >= ${win.start} group by 1`;
 
   const subj = new Map<string, SubjectFacts>();
-  const S = (name: string) => { if (!subj.has(name)) subj.set(name, { subject: name, active_min: 0, cp_ok: 0, cp_total: 0, ex_ok: 0, ex_total: 0, complete: [], incomplete: 0 }); return subj.get(name)!; };
-  for (const r of sessionsBySubject) S(r.subject).active_min = Math.round(r.active / 60);
+  const S = (name: string) => { if (!subj.has(name)) subj.set(name, { subject: name, active_min: 0, cp_ok: 0, cp_total: 0, ex_ok: 0, ex_total: 0, full: [], withBlank: 0, pending: 0 }); return subj.get(name)!; };
+  for (const r of sessionsBySubject) S(r.subject).active_min = Math.floor(r.active / 60);
 
-  const complete: number[] = [], incomplete: number[] = [];
-  let pending = 0, focus = 0, completeAll = 0;
+  const full: number[] = [], withBlank: number[] = [];
+  let pending = 0, focus = 0, noBlank = 0, usedMin = 0, allowedMin = 0;
   for (const a of atts) {
     focus += a.focus_losses ?? 0;
     const doc = (await versionById(a.version_id))?.document;
     if (!doc) continue;
     const qs = evalQuestions(doc, a.variant);
-    const answered = qs.filter(q => (a.answers?.[q.id] ?? '').trim()).length / Math.max(1, qs.length);
+    const blank = qs.filter(q => !(a.answers?.[q.id] ?? '').trim()).length;
     const allowed = a.deadline_at && a.started_at ? (a.deadline_at.getTime() - a.started_at.getTime()) / 60000 : doc.evaluation.duration_min;
-    const used = a.started_at ? (a.submitted_at.getTime() - a.started_at.getTime()) / 60000 : null;
-    const isComplete = (used === null || used >= allowed * 0.3) && answered >= 0.6;
-    if (isComplete) completeAll++;      // mesurable dès la remise, notée ou non
-    if (a.status !== 'graded' || a.final_score === null) { pending++; if (!isComplete) S(a.subject).incomplete++; continue; }
+    const used = a.started_at ? Math.min(allowed, (a.submitted_at.getTime() - a.started_at.getTime()) / 60000) : allowed;
+    usedMin += used; allowedMin += allowed;
+    if (blank === 0) noBlank++;                          // mesurable dès la remise, notée ou non
+    if (a.status !== 'graded' || a.final_score === null) { pending++; S(a.subject).pending++; if (blank) S(a.subject).withBlank++; continue; }
     const note = Number(a.final_score);
-    if (isComplete) { complete.push(note); S(a.subject).complete.push(note); } else { incomplete.push(note); S(a.subject).incomplete++; }
+    if (blank === 0) { full.push(note); S(a.subject).full.push(note); } else { withBlank.push(note); S(a.subject).withBlank++; }
   }
   let exOk = 0, exTotal = 0, selfOk = 0, selfTotal = 0;
   for (const e of exs) {
@@ -95,11 +94,11 @@ export async function workFacts(studentId: string): Promise<Facts> {
   return {
     from: win.from, to: win.to,
     work: {
-      days: w.days, active_min: Math.round(w.active / 60), open_min: Math.round(w.open / 60), goal_min: st.goal * 4,
+      days: w.days, active_min: Math.floor(w.active / 60), open_min: Math.floor(w.open / 60), goal_min: st.goal * 4,
       lessons_done: lessons.length, lesson_min: Math.round(lessons.reduce((n, l) => n + l.active, 0) / 60),
       lesson_expected_min: lessons.reduce((n, l) => n + (l.doc?.lesson.duration_min ?? 0), 0),
     },
-    evals: { submitted: atts.length, complete_all: completeAll, complete: { n: complete.length, avg: avg(complete) }, incomplete: { n: incomplete.length, avg: avg(incomplete) }, focus_losses: focus, pending },
+    evals: { submitted: atts.length, no_blank: noBlank, used_min: Math.round(usedMin), allowed_min: Math.round(allowedMin), full: { n: full.length, avg: avg(full) }, withBlank: { n: withBlank.length, avg: avg(withBlank) }, focus_losses: focus, pending },
     learning: { cp_ok: cps.filter(c => c.ok).length, cp_total: cps.length, ex_ok: exOk, ex_total: exTotal, self_ok: selfOk, self_total: selfTotal },
     subjects: [...subj.values()].sort((a, b) => b.active_min - a.active_min),
   };

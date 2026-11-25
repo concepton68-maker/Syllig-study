@@ -146,7 +146,7 @@ export default async function Journal({ searchParams }: { searchParams: Promise<
     <PaneScreen top={<>
       <ChildPicker students={students} current={student} path="/parent/journal/detail" />
       <PageTitle kicker="Détail minute par minute" title={`Ce que ${student.first_name} a fait, jour par jour`}
-        sub="Un bloc par cours et par jour : où il en est arrivé, son temps de travail réel, ce qui mérite d’en parler. Le détail minute par minute se déplie.">
+        sub="Un bloc par cours et par jour : les étapes atteintes, le temps actif, les faits à regarder ensemble. Le détail minute par minute se déplie.">
         <a className="btn" href={`/parent/journal${eleve ? `?eleve=${eleve}` : ''}`}>‹ La semaine</a>
         <span className={`pill min-h-8 ${intact ? 'bg-brand-soft text-brand-dark' : 'bg-warm-soft text-warm-dark'}`}>
           {intact ? `Journal intact · ${chk.total} événements vérifiés` : `Journal altéré : ${chk.broken_ids.length} ligne(s)`}
@@ -221,7 +221,7 @@ export default async function Journal({ searchParams }: { searchParams: Promise<
             <ul className="m-0 pl-5 text-[13px] text-ink-2 flex flex-col gap-1">
               <li>Un bloc par cours et par jour, du plus récent au plus ancien.</li>
               <li>Le temps « effectif » compte les minutes où l’élève fait un geste sur la page de travail (clic, défilement, saisie) ; après 60 s sans geste, le temps n’est plus compté.</li>
-              <li><span className="text-warm-dark font-semibold">À regarder ensemble</span> : sorties de fenêtre pendant une évaluation, leçon survolée.</li>
+              <li><span className="text-warm-dark font-semibold">À regarder ensemble</span> : page de l’évaluation masquée pendant l’évaluation, collage bloqué, leçon ouverte avec un temps actif inférieur à 30 % de la durée prévue.</li>
             </ul>
           </section>
           <section className="card flex flex-col gap-2">

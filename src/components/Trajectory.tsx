@@ -40,13 +40,13 @@ export function TrajectoryCard({ tr, name, goalMin }: { tr: Trajectory; name: st
             { key: 'cp', label: 'Contrôles', color: C_CP, values: tr.weeks.map(w => w.cp_total >= MIN_ITEMS ? { v: Math.round((w.cp_ok / w.cp_total) * 100), tip: ratio(w.cp_ok, w.cp_total)! } : null) },
             { key: 'ex', label: 'Exercices', color: C_EX, values: tr.weeks.map(w => w.ex_total >= MIN_ITEMS ? { v: Math.round((w.ex_ok / w.ex_total) * 100), tip: ratio(w.ex_ok, w.ex_total)! } : null) },
           ]} />
-          <span className="muted text-xs">Un point n’apparaît que les semaines avec au moins 5 questions (en dessous, un pourcentage ne veut rien dire) ; le nombre de questions est indiqué au survol et dans le tableau.</span>
+          <span className="muted text-xs">Un point n’apparaît que les semaines avec au moins 5 questions (en dessous, trop peu de questions pour un pourcentage) ; le nombre de questions est indiqué au survol et dans le tableau.</span>
         </div>
         <details className="text-sm">
           <summary className="cursor-pointer muted">Voir les chiffres semaine par semaine</summary>
           <div className="overflow-x-auto">
             <table className="w-full mt-2 text-sm min-w-[560px]">
-              <thead><tr className="text-left muted"><th className="py-1 font-medium">Semaine du</th><th className="font-medium">Travail</th><th className="font-medium">Jours</th><th className="font-medium">Contrôles 1er coup</th><th className="font-medium">Exercices</th><th className="font-medium">Copies complètes</th></tr></thead>
+              <thead><tr className="text-left muted"><th className="py-1 font-medium">Semaine du</th><th className="font-medium">Travail</th><th className="font-medium">Jours</th><th className="font-medium">Contrôles 1er coup</th><th className="font-medium">Exercices</th><th className="font-medium">Copies sans question vide</th></tr></thead>
               <tbody>{tr.weeks.map(w => <tr key={w.week} className="border-t border-soft"><td className="py-1">{w.label}{w.current ? ' (en cours)' : ''}</td><td>{w.started ? `${w.minutes} min` : '—'}</td><td>{w.started ? w.days : '—'}</td>
                 <td>{w.cp_total ? `${w.cp_ok}/${w.cp_total}` : '—'}</td><td>{w.ex_total ? `${w.ex_ok}/${w.ex_total}` : '—'}</td><td>{w.notes.length ? w.notes.map(x => `${x.toLocaleString('fr-FR')}/20`).join(', ') : '—'}</td></tr>)}</tbody>
             </table>
@@ -64,12 +64,12 @@ export function TrajectoryCard({ tr, name, goalMin }: { tr: Trajectory; name: st
                   <span className="muted">Exercices ({s.exercices.length})</span>
                   <span className="flex flex-wrap gap-1">{s.exercices.slice(-8).map((e, i) => <span key={i} className="pill bg-soft text-ink-2 tabular-nums">{e.ok}/{e.total}</span>)}</span></span>}
                 {s.copies.length > 0 && <span className="grid grid-cols-[110px_1fr] max-sm:grid-cols-1 gap-x-3 items-center">
-                  <span className="muted">Copies complètes ({s.copies.length})</span>
+                  <span className="muted">Copies sans question vide ({s.copies.length})</span>
                   <span className="flex flex-wrap gap-1">{s.copies.slice(-8).map((c, i) => <span key={i} className="pill bg-soft text-ink-2 tabular-nums">{c.note.toLocaleString('fr-FR')}/20</span>)}</span></span>}
               </li>
             ))}
           </ul>
-          <span className="muted text-xs">Exercices : questions corrigées par la plateforme réussies sur le total de la série (8 dernières séries). Copies : notes des évaluations complètes (8 dernières).</span>
+          <span className="muted text-xs">Exercices : questions corrigées par la plateforme réussies sur le total de la série (8 dernières séries). Copies : notes des évaluations sans question vide (8 dernières).</span>
         </div>
       )}
       {tr.feelings.length > 0 && (

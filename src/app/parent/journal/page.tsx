@@ -31,7 +31,7 @@ function Ring({ value, max, label }: { value: number; max: number; label: string
     <svg width="140" height="140" viewBox="0 0 150 150" role="img" aria-label={label} className="shrink-0">
       <circle cx="75" cy="75" r={r} fill="none" stroke="#EEF0F3" strokeWidth="16" />
       {f > 0 && <circle cx="75" cy="75" r={r} fill="none" stroke={C.brand} strokeWidth="16" strokeLinecap="round" strokeDasharray={`${f * c} ${c}`} transform="rotate(-90 75 75)" />}
-      <text x="75" y="72" textAnchor="middle" fontSize="26" fontWeight="700" fill="var(--color-ink)">{Math.round(f * 100)} %</text>
+      <text x="75" y="72" textAnchor="middle" fontSize="26" fontWeight="700" fill="var(--color-ink)">{Math.floor(f * 100)} %</text>
       <text x="75" y="94" textAnchor="middle" fontSize="12" fill="var(--color-muted)">de l’objectif</text>
     </svg>
   );
@@ -102,7 +102,7 @@ export default async function Activite({ searchParams }: { searchParams: Promise
           <div className="rounded-2xl bg-soft px-4 py-3.5 flex flex-col gap-1.5" data-idea>
             <span className="lbl">Une idée pour vous</span>
             <span className="text-[15.5px] leading-snug">{w.idea}</span>
-            <span className="text-[13px] muted">Piste tirée des études sur l’aide des parents : faire expliquer plutôt que faire à sa place (Hill &amp; Tyson 2009 ; guide EEF 2018).</span>
+            {w.ideaExplain && <span className="text-[13px] muted">Piste tirée des études sur l’aide des parents : faire expliquer plutôt que faire à sa place (Hill &amp; Tyson 2009 ; guide EEF 2018).</span>}
           </div>
         </div>
       </Card>
@@ -185,7 +185,7 @@ export default async function Activite({ searchParams }: { searchParams: Promise
           </div>
           </>
         )}
-        <Link className="text-sm font-semibold self-start" href={`/parent/journal/detail${eleve ? `?eleve=${eleve}` : ''}`}>Voir le détail minute par minute</Link>
+        <Link className="text-sm font-semibold self-start" href={`/parent/journal/detail?${new URLSearchParams({ ...(eleve ? { eleve } : {}), avant: w.next ?? '' }).toString().replace(/&?avant=$/, '')}`}>Voir le détail minute par minute</Link>
       </Card>
 
       <div className="flex flex-wrap gap-6 items-stretch">

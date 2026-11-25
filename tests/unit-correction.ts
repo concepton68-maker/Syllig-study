@@ -31,6 +31,7 @@ const more: [boolean, boolean][] = [
   [n('3 ^2') === n('3^2'), true], [n('x ²') === n('x²'), true], [n('3 x²') === n('3x²'), true],
   [autoCorrect({ id: 's', type: 'short', prompt: '', points: 1, answer: ['w2'] } as never, 'W2')!, true],
   [autoCorrect({ id: 's', type: 'short', prompt: '', points: 1, answer: ['x²'] } as never, 'xw2')!, false],
+  [autoCorrect(N(2), '2²')!, false], [autoCorrect(N(5), '5 m.s-1')!, true], [autoCorrect(N(12), '12 cm²')!, true], [autoCorrect(N(90), '90 km/h')!, true],
 ];
 const badMore = more.filter(([g, w]) => g !== w).length;
 console.log(badMore ? `${badMore} échec(s) numériques/exposants : ${JSON.stringify(more.map(([g]) => g))}` : `${more.length} cas numériques/exposants OK`);

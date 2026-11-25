@@ -25,7 +25,7 @@ export type Week = {
   days: DayBar[]; calendar: { label: string; cells: CalCell[] }[]; cal_days_worked: number; cal_days_elapsed: number;
   bySubject: Part[]; byKind: Part[];
   courses: CourseLine[]; missed: Missed[];
-  point: { text: string; href?: string } | null; idea: string;
+  point: { text: string; href?: string } | null; idea: string; ideaExplain: boolean;
   upcoming: Upcoming[]; look: string[];
 };
 
@@ -45,14 +45,15 @@ function readable(q: Question, a: string | undefined) {
 }
 function expected(q: Question) {
   if (q.type === 'qcm' && q.options) return (Array.isArray(q.answer) ? q.answer : [q.answer]).map(i => q.options![Number(i)]).join(' ; ');
-  if (q.type === 'numeric') return String(q.answer).replace('.', ',').replace(/^-/, '−');
-  if (q.type === 'short' && Array.isArray(q.answer)) return String(q.answer[0]);
+  if (q.type === 'numeric') return String(q.answer).replace('.', ',').replace(/^-/, '−') + (q.tolerance ? ` (à ${String(q.tolerance).replace('.', ',')} près)` : '');
+  if (q.type === 'short' && Array.isArray(q.answer)) return String(q.answer[0]) + (q.answer.length > 1 ? ' (ou une autre forme acceptée)' : '');
   return clip(q.solution, 160);
 }
 
 /** Lundi (heure de Paris) de la semaine qui contient `ref` (AAAA-MM-JJ), ou de la semaine en cours. */
 export async function mondayOf(ref?: string) {
-  const valid = !!ref && /^\d{4}-\d{2}-\d{2}$/.test(ref) && new Date(`${ref}T12:00:00Z`).toISOString().slice(0, 10) === ref;
+  const t = ref && /^\d{4}-\d{2}-\d{2}$/.test(ref) ? new Date(`${ref}T12:00:00Z`) : null;
+  const valid = !!t && !Number.isNaN(t.getTime()) && t.getUTCFullYear() >= 2000 && t.getUTCFullYear() <= 2100 && t.toISOString().slice(0, 10) === ref;
   const [r] = await sql<{ d: string; cur: string }[]>`
     select to_char(date_trunc('week', ${valid ? sql`${ref!}::date` : sql`(now() at time zone ${PARIS})::date`}), 'YYYY-MM-DD') as d,
       to_char(date_trunc('week', (now() at time zone ${PARIS})::date), 'YYYY-MM-DD') as cur`;
@@ -83,6 +84,7 @@ export async function weekReport(student: Student, ref?: string): Promise<Week> 
     cells: calDays.slice(w * 7, w * 7 + 7).map(d => ({ day: d, minutes: Math.floor((secOf.get(d) ?? 0) / 60), inWeek: w === 3, future: d > b.today })),
   }));
   const active = weekDays.reduce((n, d) => n + (secOf.get(d) ?? 0), 0);
+  const dayMinutes = weekDays.reduce((n, d) => n + Math.floor((secOf.get(d) ?? 0) / 60), 0);   // le total affiché = la somme des barres
 
   // séances de la semaine, par cours
   const sessions = await sql<{ course_id: number | null; kind: string; started_at: Date; active: number; title: string | null; subject: string | null; doc_parts: number | null }[]>`
@@ -96,7 +98,7 @@ export async function weekReport(student: Student, ref?: string): Promise<Week> 
     const k = KIND[s.kind] ?? 'Autre'; kinds.set(k, (kinds.get(k) ?? 0) + s.active);
   }
   // répartition en minutes entières dont la somme vaut exactement le total de la semaine (méthode du plus grand reste)
-  const totalMin = Math.floor(active / 60);
+  const totalMin = dayMinutes;
   const parts = (m: Map<string, number>) => {
     const sum = [...m.values()].reduce((a, b) => a + b, 0);
     if (!sum || !totalMin) return [];
@@ -131,7 +133,7 @@ export async function weekReport(student: Student, ref?: string): Promise<Week> 
   // et seulement les questions à 0 point (une réponse à points partiels n'est pas « ratée »)
   const missedEval = new Map<number, Missed[]>(), missedEx = new Map<number, Missed[]>();
   const evalInfo = new Map<number, { text: string; tone: Tone }>();
-  let blankCopy: { title: string; used: number; allowed: number; blank: number; total: number } | null = null;
+  const lastCopy = new Map<number, { title: string; used: number; allowed: number; blank: number; total: number; at: number }>();
   const look: string[] = [];
   for (const a of atts) {
     const doc = (await versionById(a.version_id))?.document;
@@ -144,7 +146,7 @@ export async function weekReport(student: Student, ref?: string): Promise<Week> 
     const blanks = blank ? ` · ${blank} sans réponse sur ${qs.length}` : '';
     evalInfo.set(a.course_id, a.status !== 'graded' ? { text: `Remise · en correction${blanks}`, tone: blank ? 'warn' : 'neutral' }
       : { text: `${note}/20${blanks}`, tone: blank ? 'warn' : Number(a.final_score) >= 10 ? 'ok' : 'neutral' });
-    if (blank && !blankCopy) blankCopy = { title: a.title, used, allowed, blank, total: qs.length };
+    lastCopy.set(a.course_id, { title: a.title, used, allowed, blank, total: qs.length, at: a.submitted_at.getTime() });
     if (a.focus_losses > 0) {
       const day = a.submitted_at.toLocaleDateString('fr-FR', { timeZone: PARIS, weekday: 'long', day: 'numeric' });
       look.push(`${day.charAt(0).toUpperCase() + day.slice(1)} · pendant l’évaluation « ${a.title} », la page de l’évaluation a été masquée ${a.focus_losses} fois (autre onglet, autre application ou écran verrouillé), ${Math.round(a.focus_lost_seconds / 60) || 'moins de 1'} min au total.`);
@@ -166,7 +168,11 @@ export async function weekReport(student: Student, ref?: string): Promise<Week> 
       .map(q => ({ at: 0, course: e.title, where: 'exercices' as const, question: clip(q.prompt, 220), answer: readable(q, e.answers?.[q.id]), correct: expected(q), correctLabel: 'Bonne réponse' })));
   }
   const missed: Missed[] = [...missedEval.values(), ...missedEx.values()].flat();
+  const blankCopy = [...lastCopy.values()].filter(c => c.blank > 0).sort((a, b) => b.at - a.at)[0] ?? null;
 
+  const courseSec = new Map<string, number>();
+  for (const x of sessions) courseSec.set(String(x.course_id ?? 'aucun'), (courseSec.get(String(x.course_id ?? 'aucun')) ?? 0) + x.active);
+  const courseMin = new Map(parts(courseSec).map(p => [p.label, p.minutes]));
   // une ligne par cours travaillé dans la semaine
   const ids = [...new Set([...sessions.map(s => s.course_id), ...exs.map(e => e.course_id), ...atts.map(a => a.course_id)].filter((x): x is number => x !== null))];
   const courses: CourseLine[] = ids.map(id => {
@@ -182,11 +188,11 @@ export async function weekReport(student: Student, ref?: string): Promise<Week> 
       : maxPart ? { text: `Partie ${maxPart}${total ? ` sur ${total}` : ''}`, tone: 'neutral' } : ss.some(s => s.kind === 'lesson') ? { text: 'Commencée', tone: 'neutral' } : { text: '—', tone: 'none' };
     const dates = [...new Set(ss.map(s => s.started_at.toLocaleDateString('fr-FR', { timeZone: PARIS, weekday: 'short' })))];
     return {
-      course_id: id, title, subject, minutes: Math.round(ss.reduce((n, s) => n + s.active, 0) / 60),
+      course_id: id, title, subject, minutes: courseMin.get(String(id)) ?? 0,
       when: dates.length > 1 ? `${dates[0]} → ${dates.at(-1)}` : dates[0] ?? '',
       lesson, exercises: exInfo.get(id) ?? { text: '—', tone: 'none' }, evaluation: evalInfo.get(id) ?? { text: '—', tone: 'none' },
     };
-  }).sort((a, b) => b.minutes - a.minutes);
+  }).filter(c => c.minutes > 0 || exs.some(e => e.course_id === c.course_id) || atts.some(a => a.course_id === c.course_id)).sort((a, b) => b.minutes - a.minutes);
 
   // à venir : révisions (en retard ou prévues dans les 7 jours) et prochain cours du parcours
   const upcoming: Upcoming[] = [];
@@ -208,16 +214,17 @@ export async function weekReport(student: Student, ref?: string): Promise<Week> 
   const worked = weekDays.filter(d => (secOf.get(d) ?? 0) >= WORK_DAY_S).length;
   const late = isCurrent ? reviews.find(r => r.late_days > 3) : undefined;  // un retard est un fait d'aujourd'hui : semaine en cours seulement
   const elle = student.settings.gender === 'fille' ? 'elle' : student.settings.gender === 'garcon' ? 'il' : 'il ou elle';
+  let ideaExplain = true;
   let point: Week['point'] = null, idea = `Demandez-lui de vous montrer ce qu’${elle} a fait cette semaine et de vous expliquer une notion en 2 minutes.`;
   if (blankCopy) {
-    point = { text: `L’évaluation « ${blankCopy.title} » : ${blankCopy.blank} question${blankCopy.blank > 1 ? 's' : ''} sans réponse sur ${blankCopy.total} (rendue en ${blankCopy.used} min, ${blankCopy.allowed} min accordées).`, href: '#questions' };
+    point = { text: `Dernière évaluation « ${blankCopy.title} » : ${blankCopy.blank} question${blankCopy.blank > 1 ? 's' : ''} sans réponse sur ${blankCopy.total} (rendue en ${blankCopy.used} min, ${blankCopy.allowed} min accordées).`, href: '#questions' };
     idea = 'Regardez ensemble les questions laissées sans réponse, et demandez-lui comment ' + elle + ' s’y prendrait pour l’une d’elles.';
   } else if (late) {
     point = { text: `La révision « ${late.title} » est en retard de ${late.late_days} jours.` };
-    idea = 'Proposez un créneau précis (jour et heure) pour faire cette révision.';
+    idea = 'Proposez un créneau précis (jour et heure) pour faire cette révision.'; ideaExplain = false;
   } else if (worked === 0 && weekOver) {
     point = { text: 'Aucun jour travaillé (10 min ou plus) sur cette semaine.' };
-    idea = 'Proposez un créneau fixe et court, à la même heure chaque jour.';
+    idea = 'Proposez un créneau fixe et court, à la même heure chaque jour.'; ideaExplain = false;
   } else if (missed[0]) {
     const first = missed[0];
     point = { text: `${missed.length} question${missed.length > 1 ? 's' : ''} ratée${missed.length > 1 ? 's' : ''} cette semaine, dont une dans « ${first.course} ».`, href: '#questions' };
@@ -230,7 +237,7 @@ export async function weekReport(student: Student, ref?: string): Promise<Week> 
     goal_min: goal, active_min: totalMin, days_worked: worked, days_elapsed: isCurrent ? elapsed : 7, week_over: weekOver,
     courses_count: courses.length, evals_count: atts.length,
     days, calendar, cal_days_worked: calDays.filter(d => (secOf.get(d) ?? 0) >= WORK_DAY_S).length, cal_days_elapsed: calDays.filter(d => d <= b.today).length,
-    bySubject, byKind, courses, missed, point, idea, upcoming, look,
+    bySubject, byKind, courses, missed, point, idea, ideaExplain, upcoming, look,
   };
 }
 export { hm };
