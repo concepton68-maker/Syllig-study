@@ -381,3 +381,14 @@ Recette complète de l'espace élève (un agent testeur a joué l'élève sur t�
   - répartition du travail sur 30 jours par activité (leçons, exercices, évaluations) et par matière.
 - Accueil parent : pastille d'état en direct qui mène à cet écran.
 - Les signaux d'activité (toutes les 15 s) sont conservés 90 jours puis effacés.
+
+## 0.38 — 25/11/2026
+- Bilan parent : nouvelle carte « Ne veut pas, ou n'arrive pas ? » :
+  - deux mesures séparées sur 4 semaines : l'investissement (régularité, temps de travail, concentration, lecture des leçons, effort pendant les évaluations) et la compréhension (points de contrôle, exercices, évaluations, test de positionnement) ;
+  - la compréhension n'est calculée que sur le travail fait sérieusement : une évaluation rendue trop vite ou à moitié vide compte dans l'investissement, pas dans la compréhension, et c'est signalé ;
+  - carte à quatre zones (sur de bons rails, n'arrive pas, ne veut pas, à relancer), un point par matière, le profil actuel et ce qui aide le plus pour ce profil ;
+  - niveau de fiabilité affiché ; pas de profil tant qu'il y a trop peu de travail ;
+  - alerte « activité en baisse », et « possible découragement » quand la baisse suit une note faible.
+- Le bilan rédigé par l'IA reçoit ces deux mesures pour distinguer l'élève qui ne veut pas de celui qui n'arrive pas.
+- Écran « En direct » : résumé investissement / compréhension qui mène au bilan.
+- Téléphones et tablettes : en-tête des leçons, exercices et évaluations plus compact ; barre « question sans réponse » sur une ligne ; onglets de parties sur une ligne qui glisse au doigt ; en paysage, le minimum au-dessus des questions.

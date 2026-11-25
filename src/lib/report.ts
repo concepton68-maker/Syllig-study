@@ -4,6 +4,7 @@ import { sql } from './db';
 import { aiConfigFor, askJson, ensureGeminiModel, logAiRequest, purgeExpired } from './ai';
 import { redact, namesFor } from './redact';
 import { studentProfile, type Profile } from './profile';
+import { engagement } from './engagement';
 import type { Question } from './course-format';
 
 // Bilan pédagogique rédigé par l'IA à partir des faits mesurés (profil) : origine probable des difficultés,
@@ -45,6 +46,7 @@ Ta mission : expliquer d'où viennent les difficultés, en distinguant :
 - « lacunes_anterieures » : des notions des années précédentes ne sont pas acquises (ex. règles des signes, fractions, classes de mots), alors que le travail est fait sérieusement ;
 - « apprentissage_syllig » : les notions de cette année, travaillées sur Syllig, ne sont pas encore acquises (temps correct, bases présentes) ;
 - « implication » : le travail est survolé (leçon lue bien plus vite que prévu, points de contrôle ratés, évaluation rendue très vite ou laissée vide) ;
+- « investissement_et_comprehension » sépare deux mesures calculées par la plateforme (0–100) : l'investissement (régularité, concentration, lecture, effort en évaluation) et la compréhension mesurée seulement sur le travail fait sérieusement. Appuie-toi dessus pour distinguer l'élève qui ne veut pas de celui qui n'arrive pas, et signale un possible découragement si la tendance le montre ;
 - « mixte » ou « indetermine » si les faits ne permettent pas de trancher. Une copie rendue vite et vide sans autre donnée ne permet PAS de distinguer lacune et manque d'implication : dis-le et compte sur le test de positionnement.
 
 Règles :
@@ -96,6 +98,9 @@ export async function generateReport(studentId: string, actorId: string | null):
     indicateurs_globaux: profile.global,
     cours: profile.courses.map(({ course_id: _c, code: _k, ...c }) => c),
     tests_de_positionnement: profile.placement,
+    investissement_et_comprehension: await (async () => { const e = await engagement(studentId); return {
+      investissement: e.serieux, comprehension: e.comprehension, profil: e.quadrant, fiabilite: e.confidence, par_matiere: e.subjects,
+      evaluations_baclees_ecartees: e.excluded_evals, tendance: e.trend }; })(),
     programme_syllig: programme.map(p => `${p.subject} · ${p.title}`),
   };
   let data: ReportData;

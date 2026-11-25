@@ -1,4 +1,6 @@
 import { requireParent } from '@/lib/access';
+import { engagement, QUADRANT } from '@/lib/engagement';
+import Link from 'next/link';
 import { liveStatus, dayTimeline, lastDays, breakdown } from '@/lib/live';
 import { PageTitle } from '@/components/Shell';
 import { ChildPicker } from '@/components/ChildPicker';
@@ -29,7 +31,7 @@ export default async function Suivi({ searchParams }: { searchParams: Promise<{ 
   const { eleve } = await searchParams;
   const { students, student } = await requireParent(eleve);
   if (!student) return null;
-  const [live, today, days, b] = await Promise.all([liveStatus(student.id), dayTimeline(student.id), lastDays(student.id), breakdown(student.id)]);
+  const [live, today, days, b, eng] = await Promise.all([liveStatus(student.id), dayTimeline(student.id), lastDays(student.id), breakdown(student.id), engagement(student.id)]);
   const goalMin = Math.round(student.settings.weekly_goal_minutes / 7);
   const w = b.week;
   const focus = w.open ? Math.round((w.active / w.open) * 100) : null;
@@ -67,6 +69,15 @@ export default async function Suivi({ searchParams }: { searchParams: Promise<{ 
           </section>
         </Pane>
         <Pane className="flex-[1_1_380px]">
+          <Link href={`/parent/bilan?eleve=${student.id}`} className="card no-underline text-ink flex flex-col gap-2 hover:border-brand-mid" data-suivi-engagement>
+            <span className="lbl">Ne veut pas, ou n’arrive pas ?</span>
+            <span className="flex flex-wrap gap-x-5 gap-y-1 text-sm">
+              <span>Investissement <strong className="text-lg tabular-nums">{eng.serieux.score ?? '—'}{eng.serieux.score !== null ? ' %' : ''}</strong></span>
+              <span>Compréhension <strong className="text-lg tabular-nums">{eng.comprehension.score ?? '—'}{eng.comprehension.score !== null ? ' %' : ''}</strong></span>
+            </span>
+            <span className="text-sm">{eng.quadrant ? <strong>{QUADRANT[eng.quadrant].title}</strong> : <span className="muted">{eng.confidence_why}</span>}</span>
+            <span className="text-sm font-semibold text-brand-dark">Voir le détail et quoi faire ›</span>
+          </Link>
           <section className="card flex flex-col gap-3">
             <h2 className="text-lg font-semibold">Cette semaine en un coup d’œil</h2>
             <div className="flex flex-wrap gap-3">

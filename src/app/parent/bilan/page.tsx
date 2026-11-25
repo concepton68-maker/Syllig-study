@@ -12,6 +12,8 @@ import { BulkBar, BulkCheck } from '@/components/Bulk';
 import { AiButton } from '../a-faire/AiButton';
 import { requestReport, assignPlacement, deleteReports, deletePlacementTests, saveAiConsent, deleteAiRequests } from './actions';
 import { ShieldCheck } from 'lucide-react';
+import { engagement } from '@/lib/engagement';
+import { EngagementCard } from '@/components/Engagement';
 
 export const metadata = { title: 'Bilan' };
 export const dynamic = 'force-dynamic';
@@ -28,7 +30,7 @@ export default async function Bilan({ searchParams }: { searchParams: Promise<{ 
   if (!student) return <Screen top={<PageTitle kicker="Bilan" title="Aucun enfant" />}><p className="muted">Ajoutez d’abord un enfant.</p></Screen>;
   const ai = await aiOverview();
   const aiOn = ai.ready.bilan;
-  const profile = await studentProfile(student.id);
+  const [profile, eng] = await Promise.all([studentProfile(student.id), engagement(student.id)]);
   const reports = await sql<Report[]>`select id, created_at, provider, model, data, indicators from student_reports where student_id = ${student.id} order by created_at desc limit 30`;
   const shown = reports.find(r => r.id === sp.rapport) ?? reports[0];
   const tests = await sql<Test[]>`select id, report_id, created_at, status, score, total, duration_min, started_at, submitted_at, results
@@ -50,6 +52,9 @@ export default async function Bilan({ searchParams }: { searchParams: Promise<{ 
       {sp.note && <p role="status" className="m-0 rounded-xl bg-soft px-4 py-3 text-sm">{sp.note}</p>}
       {sp.consentement && <p role="status" className="m-0 rounded-xl bg-brand-soft text-brand-ink px-4 py-3 text-sm"><strong>Choix enregistrés pour {name}.</strong> Vous pouvez les changer à tout moment.</p>}
       {sp.test === 'propose' && <p role="status" className="m-0 rounded-xl bg-brand-soft text-brand-ink px-4 py-3 text-sm"><strong>Test proposé à {name}.</strong> Il apparaît dans son espace, rubrique « Aujourd’hui ». Les résultats s’afficheront ici.</p>}
+
+      {/* 0. Ne veut pas ou n'arrive pas */}
+      <EngagementCard e={eng} name={name} />
 
       {/* 1. Les faits */}
       <section className="card flex flex-col gap-3" aria-labelledby="faits">

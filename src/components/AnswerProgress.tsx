@@ -12,11 +12,11 @@ export function AnswerProgress({ answered, total, onJump }: { answered: number; 
         aria-label={`${answered} questions répondues sur ${total}`}>
         <div className="h-full bg-brand transition-all duration-300" style={{ width: `${pct}%` }} />
       </div>
-      <div className="flex flex-wrap items-center justify-between gap-2 px-4 py-2 text-sm aprow">
+      <div className="flex flex-wrap items-center justify-between gap-x-3 gap-y-1 px-4 py-2 text-sm aprow">
         <span><strong className="num">{answered} / {total}</strong> question{total > 1 ? 's' : ''} répondue{total > 1 ? 's' : ''} · <span className="muted">{pct} %</span></span>
         {left > 0
           ? onJump && <button type="button" onClick={onJump} className="inline-flex items-center gap-1.5 font-semibold text-brand-dark hover:underline">
-              <ArrowDown size={15} aria-hidden="true" />Prochaine question sans réponse{left > 1 ? ` (${left} restantes)` : ''}</button>
+              <ArrowDown size={15} aria-hidden="true" /><span className="sm:hidden">Question sans réponse{left > 1 ? ` (${left})` : ''}</span><span className="max-sm:hidden">Prochaine question sans réponse{left > 1 ? ` (${left} restantes)` : ''}</span></button>
           : <span className="inline-flex items-center gap-1.5 font-semibold text-brand-dark"><Check size={15} aria-hidden="true" />Tout est rempli</span>}
       </div>
     </div>

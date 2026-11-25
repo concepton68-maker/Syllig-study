@@ -20,4 +20,5 @@
 - Niveaux : un dossier `content/<niveau>/programme.json` par niveau (chargé au démarrage) ; `content/<niveau>/cours/*.json` = cours prêts, publiés automatiquement s’ils n’ont encore aucune version.
 - Bilan pédagogique : faits mesurés `src/lib/profile.ts`, bilan IA `src/lib/report.ts` (aucun prénom envoyé), test de positionnement `src/lib/placement.ts`, leçons à créer (`lesson_suggestions`).
 - Suivi en direct (parent) : `/parent/suivi`, données `src/lib/live.ts`, signaux `activity_beats` (90 jours), API `/api/parent/live` interrogée toutes les 10 s ; test `e2e-suivi.mjs` (après `node scripts/seed.mjs`).
+- Investissement / compréhension (« ne veut pas ou n'arrive pas ») : `src/lib/engagement.ts` (compréhension mesurée seulement sur le travail sérieux), carte `src/components/Engagement.tsx` dans le Bilan ; test `e2e-serieux.mjs` (après `node scripts/seed.mjs`). Granularité volontairement grossière : pas de frappes, captures ni sites visités.
 - Dossier scolaire : table `student_years` (une année par ligne) ; `src/lib/school-years.ts`.

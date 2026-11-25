@@ -137,7 +137,7 @@ export function EvalRunner({ courseId, attemptId, remaining, sections, texts, in
             <span className="sr-only" aria-live="assertive">{[300, 60, 10].includes(left) ? `Il reste ${left >= 60 ? `${left / 60} minute${left > 60 ? 's' : ''}` : `${left} secondes`}.` : ''}</span>
             <span className="text-sm muted">Sauvegarde automatique</span>
           </div>
-          <div role="tablist" aria-label="Sections" className="flex flex-wrap gap-2">
+          <div role="tablist" aria-label="Sections" className="flex flex-wrap gap-2 qtabs">
             {sections.map((s, i) => {
               const done = s.questions.filter(q => (answers[q.id] ?? '').trim()).length;
               return (

@@ -535,6 +535,23 @@ section.card > h2, section.card > div > h2, section.card h2.text-xl { font-size:
   .qtabs .navlink { min-height: 34px; padding: 0 10px; font-size: 13px; }
   .aprow { padding-top: 3px; padding-bottom: 3px; }
 }
+/* téléphones et tablettes : en-tête de leçon / exercices / évaluation compact, onglets sur une ligne qui glisse */
+@media (max-width: 1023px) {
+  .qhead { padding: 10px 12px !important; gap: 8px !important; }
+  .qhead > div:first-child { flex-wrap: nowrap !important; align-items: flex-start; min-width: 0; }
+  .qhead .btn { min-height: 36px; padding: 0 10px; font-size: 14px; flex-shrink: 0; }
+  .qhead .lbl { display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; overflow: hidden; }
+  .qhead h1 { font-size: 16px !important; }
+  .qtabs { flex-wrap: nowrap !important; overflow-x: auto; scrollbar-width: none; padding-top: 10px !important; padding-bottom: 10px !important; }
+  .qtabs::-webkit-scrollbar { display: none; }
+  .qtabs > * { white-space: nowrap; flex-shrink: 0; }
+}
+/* téléphone tenu à l'horizontale (écran très bas) : le minimum au-dessus des questions */
+@media (max-height: 500px) and (orientation: landscape) {
+  .qhead .lbl { display: none; }
+  .qhead { padding: 6px 12px !important; }
+  main { padding-top: 8px !important; }
+}
 /* tableaux de leçon sur téléphone : chaque ligne devient une fiche lisible (plus de défilement horizontal caché) */
 @media (max-width: 640px) {
   .tbl-stack thead { display: none; }
