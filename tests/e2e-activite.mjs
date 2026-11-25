@@ -36,6 +36,12 @@ await sql`insert into eval_attempts (student_id, course_id, version_id, attempt_
   values (${st.id}, ${ma.id}, ${ma.version_id}, 1, 0, 'graded', ${mon} + interval '18 hours', ${mon} + interval '18 hours 30 minutes', ${mon} + interval '18 hours 2 minutes',
     ${sql.json({ [q1.id]: wrong })}, ${sql.json({ [q1.id]: 0 })}, 3, 2, 130)`;
 
+// exercices de français remis DEUX fois avec la même erreur : la question ne doit apparaître qu'une fois (dernière série)
+const exq = fr.doc.exercises.items.find(q => q.type === 'qcm');
+const exWrong = String((Number(Array.isArray(exq.answer) ? exq.answer[0] : exq.answer) + 1) % exq.options.length);
+for (const h of [11, 12]) await sql`insert into exercise_submissions (student_id, course_id, version_id, answers, auto_results, submitted_at, checked_at)
+  values (${st.id}, ${fr.id}, ${fr.version_id}, ${sql.json({ [exq.id]: exWrong })}, ${sql.json({ [exq.id]: false })}, ${mon} + make_interval(hours => ${h}), ${mon} + make_interval(hours => ${h}))`;
+
 const b = await chromium.launch();
 const pa = await (await b.newContext({ viewport: { width: 1366, height: 900 } })).newPage();
 const errs = []; pa.on('pageerror', e => { if (!/#418/.test(e.message)) errs.push(e.message.slice(0, 80)); });
@@ -46,25 +52,28 @@ const txt = async sel => (await pa.locator(sel).innerText()).replace(/\s+/g, ' '
 
 console.log('La semaine en 3 lignes');
 const three = await txt('[data-three-lines]');
-ok(three.includes('1 jour travaillé') && three.includes('1 h 15') && three.includes('5 h'), `fait : 1 jour travaillé, 1 h 15 sur 5 h (« ${three.slice(0, 120)} »)`);
-ok((await txt('[data-point]')).includes(`« ${ma.title} » a été rendue en 2 min sur 30`), 'point précis : la copie incomplète, avec ses chiffres');
-ok((await txt('[data-idea]')).includes('question ratée'), 'idée liée au point : regarder la question ratée ensemble');
+ok(three.includes('1 jour travaillé sur') && three.includes('1 h 15') && three.includes('5 h'), `fait : 1 jour travaillé, 1 h 15 sur 5 h (« ${three.slice(0, 120)} »)`);
+ok((await txt('[data-point]')).includes(`« ${ma.title} » : ${qs.length - 1} questions sans réponse sur ${qs.length} (rendue en 2 min, 30 min accordées)`), 'point précis : questions sans réponse, temps utilisé, en faits');
+ok((await txt('[data-idea]')).includes('sans réponse'), 'idée liée au point : regarder ensemble les questions sans réponse');
 console.log('Graphiques');
 ok((await pa.locator('[data-day-bars]').getAttribute('aria-label')).includes(': 75 min'), 'barre du lundi : 75 min');
 ok((await txt('[data-goal]')).includes('25 %'), 'anneau : 75 min sur 300 = 25 %');
 ok((await txt('#matieres ~ *, section[aria-labelledby="matieres"]')).includes('Mathématiques 35 min') && (await txt('section[aria-labelledby="matieres"]')).includes('Français 40 min'), 'temps par matière : français 40 min, maths 35 min');
 ok((await txt('section[aria-labelledby="activites"]')).includes('Leçons 40 min') && (await txt('section[aria-labelledby="activites"]')).includes('Évaluations 15 min'), 'temps par activité');
-ok(await pa.locator('[data-cal-row]').count() === 4 && (await txt('section[aria-labelledby="cal"]')).includes('2 jours travaillés sur 28'), 'calendrier : 4 semaines, 2 jours travaillés sur 28');
+ok(await pa.locator('[data-cal-row]').count() === 4 && /2 jours travaillés sur (28|2[0-9] écoulés)/.test(await txt('section[aria-labelledby="cal"]')), 'calendrier : 4 semaines, 2 jours travaillés sur les jours écoulés');
 console.log('Un cours par ligne');
 const rows = await txt('[data-course-rows]');
 ok(await pa.locator('[data-course]').count() === 2, 'deux cours, une ligne chacun');
-ok((await txt(`[data-course="${ma.id}"]`)).includes('Copie incomplète · 3/20'), 'maths : copie incomplète 3/20');
+ok((await txt(`[data-course="${ma.id}"]`)).includes(`3/20 · ${qs.length - 1} sans réponse sur ${qs.length}`), 'maths : 3/20 et le nombre de questions sans réponse');
 ok((await txt(`[data-course="${fr.id}"]`)).includes('Terminée cette semaine'), 'français : leçon terminée cette semaine');
 console.log('Questions ratées, à venir, à regarder');
-const miss = await txt('[data-missed]');
+const miss = (await pa.locator('[data-missed]').allInnerTexts()).join(' ').replace(/\s+/g, ' ');
 ok(/réponse de/i.test(miss) && /bonne réponse/i.test(miss) && miss.includes('−15') && (q1.type !== 'qcm' || miss.includes(q1.options[Number(wrong)].slice(0, 15))), 'question ratée : réponse de l’élève (texte de l’option) et bonne réponse');
+const exCards = (await pa.locator('[data-missed]').allInnerTexts()).filter(t => t.includes('exercices'));
+ok(exCards.length === 1, `exercices refaits : la question ratée n’apparaît qu’une fois (${exCards.length})`);
+ok((await txt(`[data-course="${fr.id}"]`)).includes('0 justes sur 1 (corrigées par la plateforme)'), 'exercices : « justes sur … (corrigées par la plateforme) »');
 ok((await txt('[data-upcoming]')).includes('Révision en retard') && (await txt('[data-upcoming]')).includes('en retard de 5 jours'), 'révision en retard de 5 jours');
-ok((await txt('section[aria-labelledby="regarder"]')).includes('quittée 2 fois'), 'à regarder : 2 sorties de fenêtre');
+ok((await txt('section[aria-labelledby="regarder"]')).includes('masquée 2 fois'), 'à regarder : page de l’évaluation masquée 2 fois');
 ok(!/hausse|baisse|motivation|implication|concentration/i.test(await pa.locator('main').innerText()), 'aucune interprétation');
 console.log('Navigation');
 await pa.click('a[aria-label="Semaine précédente"]');

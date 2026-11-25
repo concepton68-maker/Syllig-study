@@ -36,8 +36,17 @@ function Ring({ value, max, label }: { value: number; max: number; label: string
     </svg>
   );
 }
+// pourcentages entiers dont la somme fait 100 (méthode du plus grand reste)
+function percents(parts: Part[], total: number) {
+  if (!total) return parts.map(() => 0);
+  const raw = parts.map(p => (p.minutes / total) * 100), out = raw.map(Math.floor);
+  let left = 100 - out.reduce((a, b) => a + b, 0);
+  raw.map((x, i) => ({ i, r: x - Math.floor(x) })).sort((a, b) => b.r - a.r).forEach(({ i }) => { if (left > 0) { out[i]++; left--; } });
+  return out;
+}
 function Donut({ parts, colors, total }: { parts: Part[]; colors: (p: Part, i: number) => string; total: number }) {
   const r = 60, c = 2 * Math.PI * r, gap = parts.length > 1 ? 2 : 0;
+  const pct = percents(parts, total);
   let acc = 0;
   return (
     <div className="flex items-center gap-5 flex-wrap">
@@ -51,7 +60,7 @@ function Donut({ parts, colors, total }: { parts: Part[]; colors: (p: Part, i: n
       <ul className="list-none m-0 p-0 flex flex-col gap-2 text-sm">
         {parts.length === 0 && <li className="muted">Pas de temps actif cette semaine.</li>}
         {parts.map((p, i) => (
-          <li key={p.label} className="flex items-center gap-2"><i className="inline-block size-3 rounded-sm" style={{ background: colors(p, i) }} />{p.label} <strong>{hm(p.minutes)}</strong><span className="muted">({Math.round((p.minutes / Math.max(1, total)) * 100)} %)</span></li>
+          <li key={p.label} className="flex items-center gap-2"><i className="inline-block size-3 rounded-sm" style={{ background: colors(p, i) }} />{p.label} <strong>{hm(p.minutes)}</strong><span className="muted">({pct[i]} %)</span></li>
         ))}
       </ul>
     </div>
@@ -66,7 +75,6 @@ export default async function Activite({ searchParams }: { searchParams: Promise
   const q = (s?: string | null) => `?${new URLSearchParams({ ...(eleve ? { eleve } : {}), ...(s ? { semaine: s } : {}) })}`;
   const name = student.first_name;
   const maxDay = Math.max(60, ...w.days.map(d => d.minutes));
-  const totalSubj = w.bySubject.reduce((n, p) => n + p.minutes, 0);
 
   return (
     <Screen top={<>
@@ -83,7 +91,7 @@ export default async function Activite({ searchParams }: { searchParams: Promise
         <div className="grid gap-4 md:grid-cols-3" data-three-lines>
           <div className="rounded-2xl bg-brand-soft px-4 py-3.5 flex flex-col gap-1.5">
             <span className="lbl text-brand-dark">Ce qui a été fait</span>
-            <span className="text-[15.5px] leading-snug"><strong>{w.days_worked} jour{w.days_worked > 1 ? 's' : ''} travaillé{w.days_worked > 1 ? 's' : ''}</strong> sur 7 et <strong>{hm(w.active_min)}</strong> de temps actif, pour un objectif de {hm(w.goal_min)}.</span>
+            <span className="text-[15.5px] leading-snug"><strong>{w.days_worked} jour{w.days_worked > 1 ? 's' : ''} travaillé{w.days_worked > 1 ? 's' : ''}</strong> sur {w.days_elapsed}{w.days_elapsed < 7 ? ' écoulés' : ''} et <strong>{hm(w.active_min)}</strong> de temps actif, pour un objectif de {hm(w.goal_min)}.</span>
             <span className="text-[13px] muted">{w.courses_count} cours travaillé{w.courses_count > 1 ? 's' : ''} · {w.evals_count} évaluation{w.evals_count > 1 ? 's' : ''} remise{w.evals_count > 1 ? 's' : ''}</span>
           </div>
           <div className={`rounded-2xl px-4 py-3.5 flex flex-col gap-1.5 ${w.point ? 'bg-warm-soft' : 'bg-soft'}`} data-point>
@@ -94,7 +102,7 @@ export default async function Activite({ searchParams }: { searchParams: Promise
           <div className="rounded-2xl bg-soft px-4 py-3.5 flex flex-col gap-1.5" data-idea>
             <span className="lbl">Une idée pour vous</span>
             <span className="text-[15.5px] leading-snug">{w.idea}</span>
-            <span className="text-[13px] muted">Lui faire expliquer aide plus que l’aider à faire.</span>
+            <span className="text-[13px] muted">Piste tirée des études sur l’aide des parents : faire expliquer plutôt que faire à sa place (Hill &amp; Tyson 2009 ; guide EEF 2018).</span>
           </div>
         </div>
       </Card>
@@ -128,7 +136,7 @@ export default async function Activite({ searchParams }: { searchParams: Promise
           <div className="flex flex-wrap gap-3 text-xs muted items-center">
             {[['#EEF0F3', 'rien'], ['#C7D2FE', 'moins de 10 min'], ['#7D93EC', '10 à 30 min'], [C.brand, 'plus de 30 min']].map(([c, l]) => <span key={l} className="inline-flex items-center gap-1"><i className="inline-block size-3 rounded-[3px]" style={{ background: c }} />{l}</span>)}
           </div>
-          <span className="text-[13px] text-ink-2">Semaine affichée encadrée · {w.cal_days_worked} jour{w.cal_days_worked > 1 ? 's' : ''} travaillé{w.cal_days_worked > 1 ? 's' : ''} sur 28</span>
+          <span className="text-[13px] text-ink-2">Semaine affichée encadrée · {w.cal_days_worked} jour{w.cal_days_worked > 1 ? 's' : ''} travaillé{w.cal_days_worked > 1 ? 's' : ''} sur {w.cal_days_elapsed}{w.cal_days_elapsed < 28 ? ' écoulés' : ''}</span>
         </Card>
       </div>
 
@@ -139,12 +147,12 @@ export default async function Activite({ searchParams }: { searchParams: Promise
             <div className="flex flex-col gap-1 text-[15px]">
               <span><strong>{hm(w.active_min)}</strong> de temps actif</span>
               <span className="muted">sur {hm(w.goal_min)} fixées par vous</span>
-              <span className="muted">{w.active_min >= w.goal_min ? 'objectif atteint' : `reste ${hm(w.goal_min - w.active_min)}`}</span>
+              <span className="muted">{w.active_min >= w.goal_min ? 'objectif atteint' : w.week_over ? `il a manqué ${hm(w.goal_min - w.active_min)}` : `reste ${hm(w.goal_min - w.active_min)}`}</span>
             </div>
           </div>
         </Card>
-        <Card id="matieres" title="Temps par matière"><Donut parts={w.bySubject} total={totalSubj} colors={(_, i) => SUBJ_COLORS[i] ?? C.grey} /></Card>
-        <Card id="activites" title="Temps par activité"><Donut parts={w.byKind} total={w.byKind.reduce((n, p) => n + p.minutes, 0)} colors={p => KIND_COLORS[p.label] ?? C.grey} /></Card>
+        <Card id="matieres" title="Temps par matière"><Donut parts={w.bySubject} total={w.active_min} colors={(_, i) => SUBJ_COLORS[i] ?? C.grey} /></Card>
+        <Card id="activites" title="Temps par activité"><Donut parts={w.byKind} total={w.active_min} colors={p => KIND_COLORS[p.label] ?? C.grey} /></Card>
       </div>
 
       <Card id="travaille" title="Ce qui a été travaillé" aside={<span className="text-sm muted">un cours par ligne, toute la semaine regroupée</span>}>
@@ -183,7 +191,8 @@ export default async function Activite({ searchParams }: { searchParams: Promise
       <div className="flex flex-wrap gap-6 items-stretch">
         <section id="questions" aria-labelledby="ratees" className="card flex-[3_1_520px] min-w-0 flex flex-col gap-3 scroll-mt-4">
           <div><h2 id="ratees" className="text-lg font-semibold m-0">Questions ratées cette semaine</h2><span className="text-sm muted">Sa réponse et la bonne réponse : de quoi en parler ensemble.</span></div>
-          {w.missed.length === 0 && <p className="m-0 text-sm muted">Aucune question ratée cette semaine (exercices corrigés par la plateforme et évaluations notées).</p>}
+          {w.missed.length === 0 && <p className="m-0 text-sm muted">Aucune question ratée cette semaine.</p>}
+          <span className="text-xs muted">Questions à 0 point dans la dernière évaluation notée et la dernière série d’exercices de chaque cours (questions corrigées par la plateforme).</span>
           {w.missed.slice(0, 3).map((m, i) => <MissedCard key={i} m={m} name={name} />)}
           {w.missed.length > 3 && (
             <details>
@@ -194,7 +203,7 @@ export default async function Activite({ searchParams }: { searchParams: Promise
         </section>
         <aside aria-label="À venir et à regarder" className="flex-[2_1_320px] min-w-0 flex flex-col gap-6">
           <Card id="avenir" title="À venir">
-            {w.upcoming.length === 0 && <p className="m-0 text-sm muted">Rien de prévu pour l’instant.</p>}
+            {w.upcoming.length === 0 && <p className="m-0 text-sm muted">{w.isCurrent ? 'Rien de prévu pour l’instant.' : 'Les révisions et le prochain cours sont dans la semaine en cours.'}</p>}
             <ul className="list-none m-0 p-0 flex flex-col" data-upcoming>
               {w.upcoming.map((u, i) => (
                 <li key={i} className="flex justify-between gap-3 py-2.5 border-t border-soft first:border-t-0 text-sm">
@@ -210,19 +219,19 @@ export default async function Activite({ searchParams }: { searchParams: Promise
           </Card>
         </aside>
       </div>
-      <p className="m-0 text-xs muted pb-2">Inspiré de pratiques évaluées : résumé hebdomadaire en 3 lignes (Bergman &amp; Chan 2021 ; Kraft &amp; Rogers 2015), rapports d’usage et questions ratées (IXL, Khan Academy), calendrier d’assiduité. Aucune comparaison avec d’autres élèves.</p>
+      <p className="m-0 text-xs muted pb-2">Formats inspirés de : messages hebdomadaires aux parents évalués par des essais contrôlés (Bergman &amp; Chan 2021 ; Kraft &amp; Rogers 2015) ; rapports de questions ratées de logiciels éducatifs (IXL, Khan Academy). Aucune comparaison avec d’autres élèves. Une séance compte pour le jour où elle commence.</p>
     </Screen>
   );
 }
 
-function MissedCard({ m, name }: { m: { course: string; where: string; question: string; answer: string; correct: string }; name: string }) {
+function MissedCard({ m, name }: { m: { course: string; where: string; question: string; answer: string; correct: string; correctLabel: string }; name: string }) {
   return (
     <div className="rounded-2xl border border-line px-4 py-3 flex flex-col gap-2" data-missed>
       <span className="text-[13px] muted">{m.course} · {m.where}</span>
       <strong className="text-[15px] leading-snug">{m.question}</strong>
       <div className="grid gap-2.5 sm:grid-cols-2 text-sm">
         <span className="rounded-xl bg-warm-soft px-3 py-2"><span className="lbl block text-warm-dark">Réponse de {name}</span>{m.answer}</span>
-        <span className="rounded-xl bg-brand-soft px-3 py-2"><span className="lbl block text-brand-dark">Bonne réponse</span>{m.correct}</span>
+        <span className="rounded-xl bg-brand-soft px-3 py-2"><span className="lbl block text-brand-dark">{m.correctLabel}</span>{m.correct}</span>
       </div>
     </div>
   );
