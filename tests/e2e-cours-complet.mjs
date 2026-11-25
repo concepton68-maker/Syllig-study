@@ -13,8 +13,10 @@ const sql = postgres(process.env.DATABASE_URL, { max: 1, onnotice: () => {} });
 const ok = (c, m) => { if (!c) { console.error('ÉCHEC :', m); process.exit(1); } console.log('  ✓', m); };
 
 const [st] = await sql`select s.id, s.level_code from students s limit 1`;
-await sql`update students set level_code = 'troisieme-generale', settings = settings || '{"eval_requires_approval": false}'::jsonb where id = ${st.id}`;
-await sql`update student_years set level_code = 'troisieme-generale' where student_id = ${st.id} and status = 'en_cours'`;
+// l'élève est placé dans la classe des cours testés (3e, 4e…)
+const [{ level }] = await sql`select s.level_code as level from courses c join chapters ch on ch.id = c.chapter_id join subjects s on s.id = ch.subject_id where c.code = ${CODES[0]}`;
+await sql`update students set level_code = ${level}, settings = settings || '{"eval_requires_approval": false}'::jsonb where id = ${st.id}`;
+await sql`update student_years set level_code = ${level} where student_id = ${st.id} and status = 'en_cours'`;
 
 const b = await chromium.launch();
 const page = async (l, pw) => { const p = await (await b.newContext({ viewport: { width: 1360, height: 900 } })).newPage(); p.on('dialog', d => d.accept());

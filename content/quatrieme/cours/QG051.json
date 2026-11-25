@@ -615,10 +615,10 @@
           "m4-pyth-racine"
         ],
         "cognitive": "appliquer",
-        "prompt": "À l'aide de la calculatrice, donne l'arrondi au dixième de √40.",
-        "answer": 6.3,
+        "prompt": "À l'aide de la calculatrice, donne l'arrondi au dixième de √20.",
+        "answer": 4.5,
         "tolerance": 0.0001,
-        "solution": "La calculatrice affiche √40 ≈ 6,324555…\nLe chiffre des centièmes est 2 (inférieur à 5) : on garde le chiffre des dixièmes.\n√40 ≈ 6,3."
+        "solution": "La calculatrice affiche √20 ≈ 4,472135…\nLe chiffre des centièmes est 7 (5 ou plus) : on augmente de 1 le chiffre des dixièmes.\n√20 ≈ 4,5."
       },
       {
         "id": "ex5",

@@ -414,3 +414,5 @@ Recette complète de l'espace élève (un agent testeur a joué l'élève sur t�
   - l'élève peut choisir lui-même son prochain cours (« Ou choisis toi-même ») ;
   - après une évaluation, l'effort est souligné autant que la note (temps pris, tout tenté), avec un conseil quand la copie est rendue trop vite ou laissée vide ;
   - « Mes progrès » dans ses résultats : lui par rapport à lui-même (temps de travail, niveaux gagnés, plus belle remontée), jamais de comparaison avec d'autres.
+- 6 premiers cours de 4e publiés (leçon, exercices, évaluation) : classes de mots et fonctions, accord du participe passé, multiplier et diviser des relatifs, additionner et soustraire des fractions, réduire une expression littérale, Pythagore (calculer une longueur).
+- Correction automatique plus juste pour les réponses courtes : les signes + et − d'une expression et les exposants comptent désormais (« 5x+9 » n'est plus accepté pour « 5x−9 », ni « 3x » pour « 3x² ») ; « 3 x » = « 3x », et les mots composés (« peut-être ») restent tolérants.

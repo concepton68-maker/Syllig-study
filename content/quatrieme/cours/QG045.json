@@ -691,15 +691,15 @@
           "m4-litt-reduire-somme"
         ],
         "cognitive": "appliquer",
-        "prompt": "Réduis l'expression A = 7x + 4 − 2x + 5.",
+        "prompt": "Réduis l'expression A = 8x + 3 − 5x + 6.",
         "options": [
-          "A = 14x",
-          "A = 5x − 1",
-          "A = 5x + 9",
-          "A = 9x + 9"
+          "A = 12x",
+          "A = 3x − 3",
+          "A = 3x + 9",
+          "A = 13x + 9"
         ],
         "answer": 2,
-        "solution": "Les x : 7x − 2x = 5x.\nLes constantes : 4 + 5 = 9.\nA = 5x + 9 (on ne peut pas réduire davantage : 5x et 9 ne sont pas semblables)."
+        "solution": "Les x : 8x − 5x = 3x.\nLes constantes : 3 + 6 = 9.\nA = 3x + 9 (on ne peut pas réduire davantage : 3x et 9 ne sont pas semblables)."
       },
       {
         "id": "ex4",
@@ -711,9 +711,9 @@
           "m4-litt-conventions"
         ],
         "cognitive": "appliquer",
-        "prompt": "Calcule la valeur de B = 4x − 3 pour x = 5.",
-        "answer": 17,
-        "solution": "On remet le signe × : B = 4 × x − 3.\nPour x = 5 : B = 4 × 5 − 3 = 20 − 3 = 17."
+        "prompt": "Calcule la valeur de B = 5x − 7 pour x = 4.",
+        "answer": 13,
+        "solution": "On remet le signe × : B = 5 × x − 7.\nPour x = 4 : B = 5 × 4 − 7 = 20 − 7 = 13.\n(Attention : 5x ne veut pas dire « 54 » !)"
       },
       {
         "id": "ex5",
@@ -771,15 +771,15 @@
           "m4-litt-reduire-somme"
         ],
         "cognitive": "appliquer",
-        "prompt": "Réduis l'expression F = 6x − (4x − 5).",
+        "prompt": "Réduis l'expression F = 8x − (3x − 4).",
         "options": [
-          "F = 2x − 5",
-          "F = 2x + 5",
-          "F = 10x − 5",
-          "F = 10x + 5"
+          "F = 5x − 4",
+          "F = 5x + 4",
+          "F = 11x − 4",
+          "F = 11x + 4"
         ],
         "answer": 1,
-        "solution": "La parenthèse est précédée d'un signe − : on change le signe de chaque terme à l'intérieur.\nF = 6x − 4x + 5\nF = 2x + 5.\nTest avec x = 2 : 12 − (8 − 5) = 12 − 3 = 9 et 2 × 2 + 5 = 9. ✓"
+        "solution": "La parenthèse est précédée d'un signe − : on change le signe de chaque terme à l'intérieur.\nF = 8x − 3x + 4\nF = 5x + 4.\nTest avec x = 2 : 16 − (6 − 4) = 16 − 2 = 14 et 5 × 2 + 4 = 14. ✓"
       },
       {
         "id": "ex9",
@@ -871,15 +871,15 @@
                   "m4-litt-termes"
                 ],
                 "cognitive": "connaitre",
-                "prompt": "Dans l'expression 6x² − x + 4 + 2x, quel terme est semblable à −x ?",
+                "prompt": "Dans l'expression 7x² − 3x + 1 + 5x, quel terme est semblable à −3x ?",
                 "options": [
-                  "6x²",
-                  "4",
-                  "2x",
+                  "7x²",
+                  "1",
+                  "5x",
                   "Aucun"
                 ],
                 "answer": 2,
-                "solution": "−x et 2x ont la même partie littérale x : ils sont semblables. 6x² a la partie littérale x², et 4 est une constante."
+                "solution": "−3x et 5x ont la même partie littérale x : ils sont semblables. 7x² a la partie littérale x², et 1 est une constante."
               },
               {
                 "id": "q4",

@@ -210,11 +210,19 @@ export function autoCorrect(q: Question, answer: string | undefined): boolean | 
 }
 
 // Normalisation des réponses courtes : accents, majuscules et ponctuation ignorés,
-// mais le signe moins, la barre de fraction et la virgule décimale comptent (« -1/3 » ≠ « 1/3 » ≠ « 1,3 »).
+// mais le signe moins, la barre de fraction et la virgule décimale comptent (« -1/3 » ≠ « 1/3 » ≠ « 1,3 »),
+// ainsi que les signes + et − d'une expression et les exposants (« 5x+9 » ≠ « 5x−9 », « 3x² » ≠ « 3x »).
+// Un trait d'union entre deux mots (« peut-être ») reste sans importance.
 export function normShort(s: string) {
-  return s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase()
+  return s.normalize('NFC').replace(/²/g, '^2').replace(/³/g, '^3')
+    .normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase()
     .replace(/[−–]/g, '-')
+    .replace(/\^\s*(\d)/g, '$1')
     .replace(/(\d)\s*([\/.,])\s*(?=\d)/g, (_m, d: string, op: string) => d + (op === '/' ? 'q' : 'd'))
-    .replace(/(^|[^a-z0-9])-\s*(?=\d)/g, '$1m')
+    .replace(/\s*\+\s*/g, ' p ')
+    .replace(/(\d)\s+(?=[a-z](?![a-z]))/g, '$1')                                // « 3 x » = « 3x »
+    .replace(/(?<=[0-9)])\s*-\s*(?=[0-9a-z(])/g, ' m ')                  // moins d'une expression : 3-x, (x+1)-2, 5x-9
+    .replace(/(?<=(?<![a-z])[a-z])\s*-\s*(?=[0-9(]|[a-z](?![a-z]))/g, ' m ')   // x-5, x-y (mais pas « c'est-à-dire »)
+    .replace(/(^|[^a-z0-9])-\s*(?=\d)/g, '$1m')                           // nombre négatif : -5
     .replace(/[^a-z0-9]+/g, ' ').trim();
 }
