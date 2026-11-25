@@ -1,0 +1,1075 @@
+{
+  "format": "syllig-course/1",
+  "code": "QG038",
+  "level": "quatrieme",
+  "subject": "Mathématiques",
+  "chapter": "Nombres et calculs (début d'année)",
+  "title": "Additionner et soustraire des fractions",
+  "skills": [
+    {
+      "id": "m4-fractions-egales",
+      "label": "Écrire des fractions égales et simplifier une fraction (rappels)"
+    },
+    {
+      "id": "m4-fractions-meme-deno",
+      "label": "Additionner et soustraire des fractions de même dénominateur"
+    },
+    {
+      "id": "m4-fractions-deno-multiple",
+      "label": "Additionner et soustraire des fractions quand un dénominateur est multiple de l'autre"
+    },
+    {
+      "id": "m4-fractions-deno-commun",
+      "label": "Trouver un dénominateur commun et additionner des fractions quelconques"
+    },
+    {
+      "id": "m4-fractions-relatifs",
+      "label": "Additionner et soustraire des fractions positives ou négatives"
+    },
+    {
+      "id": "m4-fractions-probleme",
+      "label": "Résoudre un problème de partage avec des fractions"
+    }
+  ],
+  "lesson": {
+    "duration_min": 40,
+    "objectives": [
+      "revoir les fractions égales et la simplification ;",
+      "additionner et soustraire des fractions de même dénominateur ;",
+      "réécrire des fractions avec un dénominateur commun, même quand aucun dénominateur n'est multiple de l'autre ;",
+      "calculer avec des fractions négatives ;",
+      "résoudre un problème de partage où l'on cherche « la part qui reste »."
+    ],
+    "essential": "On ne peut additionner ou soustraire des fractions que si elles ont le **même dénominateur** : on additionne alors les numérateurs et on garde le dénominateur. Si les dénominateurs sont différents, on commence par écrire chaque fraction avec un dénominateur commun, c'est-à-dire un multiple commun aux deux dénominateurs (le plus petit possible, pour garder des calculs simples). En 5e, l'un des dénominateurs était un multiple de l'autre ; en 4e, tu apprends à traiter tous les cas, y compris avec des fractions négatives. Dernier réflexe : on simplifie le résultat quand c'est possible.",
+    "parts": [
+      {
+        "title": "Rappels : fractions égales et simplification",
+        "blocks": [
+          {
+            "type": "callout",
+            "kind": "definition",
+            "text": "Dans la fraction a/b (avec b ≠ 0), a est le **numérateur** et b est le **dénominateur**. La fraction a/b est le nombre qui, multiplié par b, donne a : c'est aussi le quotient a ÷ b."
+          },
+          {
+            "type": "callout",
+            "kind": "retiens",
+            "title": "Fractions égales",
+            "text": "On ne change pas la valeur d'une fraction quand on **multiplie** (ou qu'on **divise**) son numérateur **et** son dénominateur par un même nombre non nul :\na/b = (a × k)/(b × k)"
+          },
+          {
+            "type": "formula",
+            "latex": "3/5 = (3 × 4)/(5 × 4) = 12/20\n18/24 = (18 ÷ 6)/(24 ÷ 6) = 3/4"
+          },
+          {
+            "type": "text",
+            "text": "**Simplifier** une fraction, c'est diviser son numérateur et son dénominateur par un même diviseur commun. Une fraction est **irréductible** quand on ne peut plus la simplifier. Par exemple, 3/4 est irréductible."
+          },
+          {
+            "type": "callout",
+            "kind": "retiens",
+            "title": "Un nombre entier est aussi une fraction",
+            "text": "Tout nombre entier peut s'écrire avec le dénominateur de ton choix :\n2 = 2/1 = 6/3 = 10/5 et 1 = 4/4 = 7/7."
+          },
+          {
+            "type": "callout",
+            "kind": "retiens",
+            "title": "Fractions et signe −",
+            "text": "Une fraction peut être négative. Le signe peut se placer devant, au numérateur ou au dénominateur : −3/4 = (−3)/4 = 3/(−4). Dans les calculs, on le met de préférence **au numérateur**."
+          }
+        ],
+        "checkpoint": {
+          "variants": [
+            {
+              "prompt": "Quelle est la forme irréductible de 24/36 ?",
+              "options": [
+                "12/18",
+                "2/3",
+                "4/6",
+                "3/4"
+              ],
+              "answer": 1,
+              "hint": "Cherche le plus grand nombre qui divise à la fois 24 et 36.",
+              "explanation": "24 = 12 × 2 et 36 = 12 × 3, donc 24/36 = 2/3. Les fractions 12/18 et 4/6 sont égales à 2/3 mais on peut encore les simplifier."
+            },
+            {
+              "prompt": "Quelle fraction est égale à 3/5 ?",
+              "options": [
+                "6/15",
+                "5/7",
+                "12/20",
+                "8/10"
+              ],
+              "answer": 2,
+              "hint": "Multiplie le numérateur et le dénominateur par le même nombre.",
+              "explanation": "3/5 = (3 × 4)/(5 × 4) = 12/20. Pour 6/15, on a multiplié 3 par 2 mais 5 par 3 : ce n'est pas le même nombre."
+            },
+            {
+              "prompt": "Comment s'écrit le nombre 4 sous forme de fraction de dénominateur 3 ?",
+              "options": [
+                "4/3",
+                "7/3",
+                "12/3",
+                "3/12"
+              ],
+              "answer": 2,
+              "hint": "Écris 4 = 4/1, puis multiplie le numérateur et le dénominateur par 3.",
+              "explanation": "4 = 4/1 = (4 × 3)/(1 × 3) = 12/3. Vérification : 12 ÷ 3 = 4."
+            }
+          ]
+        }
+      },
+      {
+        "title": "Fractions de même dénominateur",
+        "blocks": [
+          {
+            "type": "text",
+            "text": "Imagine une tarte coupée en 7 parts égales. Tu en manges 2 parts, ton frère en mange 3. Ensemble, vous avez mangé 5 parts sur 7 : 2/7 + 3/7 = 5/7. Les parts ont la même taille (des septièmes) : on compte simplement les parts."
+          },
+          {
+            "type": "callout",
+            "kind": "retiens",
+            "title": "Même dénominateur",
+            "text": "Pour additionner (ou soustraire) deux fractions de **même dénominateur**, on additionne (ou on soustrait) les **numérateurs** et on **garde** le dénominateur :\na/d + b/d = (a + b)/d\na/d − b/d = (a − b)/d"
+          },
+          {
+            "type": "formula",
+            "latex": "2/7 + 3/7 = (2 + 3)/7 = 5/7\n11/9 − 5/9 = (11 − 5)/9 = 6/9 = 2/3"
+          },
+          {
+            "type": "callout",
+            "kind": "methode",
+            "title": "Toujours finir par simplifier",
+            "text": "Dans le deuxième exemple, le résultat 6/9 n'est pas irréductible : 6 et 9 sont divisibles par 3. On écrit donc 6/9 = 2/3."
+          },
+          {
+            "type": "callout",
+            "kind": "attention",
+            "text": "On n'additionne **jamais** les dénominateurs : 2/7 + 3/7 n'est pas égal à 5/14 ! Les dénominateurs indiquent la taille des parts (des septièmes), et cette taille ne change pas quand on ajoute des parts."
+          }
+        ],
+        "checkpoint": {
+          "variants": [
+            {
+              "prompt": "Combien vaut 3/11 + 5/11 ?",
+              "options": [
+                "8/22",
+                "8/11",
+                "15/11",
+                "2/11"
+              ],
+              "answer": 1,
+              "hint": "Même dénominateur : que fait-on des numérateurs ? et du dénominateur ?",
+              "explanation": "On additionne les numérateurs et on garde le dénominateur : (3 + 5)/11 = 8/11."
+            },
+            {
+              "prompt": "Combien vaut 9/10 − 3/10, sous forme irréductible ?",
+              "options": [
+                "6/10",
+                "6/0",
+                "3/5",
+                "12/10"
+              ],
+              "answer": 2,
+              "hint": "Soustrais les numérateurs, garde le dénominateur, puis simplifie.",
+              "explanation": "9/10 − 3/10 = 6/10, puis on simplifie par 2 : 6/10 = 3/5. 6/10 est juste mais pas irréductible."
+            },
+            {
+              "prompt": "Combien vaut 2/9 + 5/9 ?",
+              "options": [
+                "7/18",
+                "10/9",
+                "7/9",
+                "3/9"
+              ],
+              "answer": 2,
+              "hint": "Relis l'encadré « Attention » : que fait-on du dénominateur ?",
+              "explanation": "2/9 + 5/9 = (2 + 5)/9 = 7/9. Le dénominateur 9 ne change pas."
+            }
+          ]
+        }
+      },
+      {
+        "title": "Quand un dénominateur est multiple de l'autre",
+        "blocks": [
+          {
+            "type": "text",
+            "text": "Pour calculer 3/4 + 5/8, les parts n'ont pas la même taille : des quarts et des huitièmes. Mais un quart, c'est deux huitièmes ! On peut donc tout écrire en huitièmes. C'est possible car 8 est un **multiple** de 4 (8 = 4 × 2)."
+          },
+          {
+            "type": "callout",
+            "kind": "methode",
+            "title": "Méthode (déjà vue en 5e)",
+            "text": "1. Je repère le plus grand dénominateur et je vérifie que c'est un multiple de l'autre.\n2. Je transforme l'autre fraction pour qu'elle ait ce dénominateur.\n3. J'additionne ou je soustrais les numérateurs.\n4. Je simplifie si c'est possible."
+          },
+          {
+            "type": "formula",
+            "latex": "3/4 + 5/8 = (3 × 2)/(4 × 2) + 5/8 = 6/8 + 5/8 = 11/8"
+          },
+          {
+            "type": "formula",
+            "latex": "7/12 − 1/3 = 7/12 − (1 × 4)/(3 × 4) = 7/12 − 4/12 = 3/12 = 1/4"
+          },
+          {
+            "type": "heading",
+            "text": "Avec un nombre entier"
+          },
+          {
+            "type": "text",
+            "text": "Un nombre entier s'écrit avec n'importe quel dénominateur : on choisit celui de l'autre fraction."
+          },
+          {
+            "type": "formula",
+            "latex": "2 + 3/5 = 10/5 + 3/5 = 13/5\n1 − 3/8 = 8/8 − 3/8 = 5/8"
+          },
+          {
+            "type": "callout",
+            "kind": "attention",
+            "text": "Quand tu changes le dénominateur, multiplie **aussi** le numérateur par le même nombre ! 1/3 = 4/12, et pas 1/12."
+          }
+        ],
+        "checkpoint": {
+          "variants": [
+            {
+              "prompt": "Combien vaut 1/6 + 5/12 ?",
+              "options": [
+                "6/18",
+                "6/12",
+                "7/12",
+                "1/2"
+              ],
+              "answer": 2,
+              "hint": "12 est un multiple de 6 : écris 1/6 avec le dénominateur 12.",
+              "explanation": "1/6 = 2/12, donc 1/6 + 5/12 = 2/12 + 5/12 = 7/12."
+            },
+            {
+              "prompt": "Combien vaut 3/5 − 1/10, sous forme irréductible ?",
+              "options": [
+                "2/5",
+                "1/2",
+                "5/10",
+                "2/10"
+              ],
+              "answer": 1,
+              "hint": "Écris 3/5 avec le dénominateur 10, soustrais, puis simplifie.",
+              "explanation": "3/5 = 6/10, donc 6/10 − 1/10 = 5/10 = 1/2."
+            },
+            {
+              "prompt": "Combien vaut 1 + 2/7 ?",
+              "options": [
+                "3/7",
+                "3/8",
+                "9/7",
+                "2/7"
+              ],
+              "answer": 2,
+              "hint": "Écris 1 sous la forme d'une fraction de dénominateur 7.",
+              "explanation": "1 = 7/7, donc 1 + 2/7 = 7/7 + 2/7 = 9/7."
+            }
+          ]
+        }
+      },
+      {
+        "title": "Dénominateurs quelconques : trouver un dénominateur commun",
+        "blocks": [
+          {
+            "type": "text",
+            "text": "C'est la nouveauté de la 4e. Pour calculer 2/3 + 1/4, ni 3 ni 4 n'est multiple de l'autre. On cherche alors un nombre qui est **à la fois** un multiple de 3 et un multiple de 4 : c'est un **dénominateur commun**."
+          },
+          {
+            "type": "table",
+            "caption": "Chercher un multiple commun à 3 et 4",
+            "columns": [
+              "Multiples de 4",
+              "4",
+              "8",
+              "12",
+              "16",
+              "20",
+              "24"
+            ],
+            "rows": [
+              [
+                "Est-ce un multiple de 3 ?",
+                "non",
+                "non",
+                "oui",
+                "non",
+                "non",
+                "oui"
+              ]
+            ]
+          },
+          {
+            "type": "callout",
+            "kind": "methode",
+            "title": "Trouver le plus petit dénominateur commun",
+            "text": "1. J'écris les multiples du **plus grand** dénominateur, un par un.\n2. Je m'arrête au premier qui est aussi un multiple de l'autre dénominateur.\n3. Astuce : le **produit** des deux dénominateurs est toujours un dénominateur commun, mais ce n'est pas toujours le plus petit."
+          },
+          {
+            "type": "formula",
+            "latex": "2/3 + 1/4 = (2 × 4)/(3 × 4) + (1 × 3)/(4 × 3) = 8/12 + 3/12 = 11/12"
+          },
+          {
+            "type": "formula",
+            "latex": "5/6 − 3/4 = (5 × 2)/(6 × 2) − (3 × 3)/(4 × 3) = 10/12 − 9/12 = 1/12"
+          },
+          {
+            "type": "formula",
+            "latex": "3/10 + 4/15 = (3 × 3)/(10 × 3) + (4 × 2)/(15 × 2) = 9/30 + 8/30 = 17/30"
+          },
+          {
+            "type": "callout",
+            "kind": "plus",
+            "title": "Pourquoi chercher le plus petit ?",
+            "text": "Pour 5/6 − 3/4, le produit 6 × 4 = 24 marche aussi : 20/24 − 18/24 = 2/24, puis il faut simplifier : 2/24 = 1/12. On trouve le même résultat, mais avec de plus grands nombres. Avec le plus petit dénominateur commun (12), les calculs sont plus courts."
+          },
+          {
+            "type": "callout",
+            "kind": "attention",
+            "text": "1/2 + 1/3 n'est pas égal à 2/5 ! Le bon calcul : 1/2 + 1/3 = 3/6 + 2/6 = 5/6.\nVérification avec un ordre de grandeur : 1/2 + 1/3 est plus grand que 1/2, alors que 2/5 est plus petit que 1/2. Le résultat 2/5 était donc impossible."
+          }
+        ],
+        "checkpoint": {
+          "variants": [
+            {
+              "prompt": "Combien vaut 2/5 + 1/3 ?",
+              "options": [
+                "3/8",
+                "3/15",
+                "11/15",
+                "7/15"
+              ],
+              "answer": 2,
+              "hint": "Cherche un multiple commun à 5 et 3, puis réécris les deux fractions.",
+              "explanation": "Dénominateur commun 15 : 2/5 = 6/15 et 1/3 = 5/15. Donc 6/15 + 5/15 = 11/15."
+            },
+            {
+              "prompt": "Quel est le plus petit dénominateur commun à 6 et 8 ?",
+              "options": [
+                "48",
+                "14",
+                "24",
+                "16"
+              ],
+              "answer": 2,
+              "hint": "Écris les multiples de 8 (8, 16, 24…) et arrête-toi au premier qui est aussi un multiple de 6.",
+              "explanation": "8 et 16 ne sont pas des multiples de 6, mais 24 = 6 × 4 l'est. Le plus petit dénominateur commun est 24. (48 marche aussi, mais il est plus grand.)"
+            },
+            {
+              "prompt": "Combien vaut 3/4 − 2/3 ?",
+              "options": [
+                "1/1",
+                "1/12",
+                "1/7",
+                "17/12"
+              ],
+              "answer": 1,
+              "hint": "Dénominateur commun 12 : écris chaque fraction en douzièmes.",
+              "explanation": "3/4 = 9/12 et 2/3 = 8/12, donc 3/4 − 2/3 = 9/12 − 8/12 = 1/12."
+            }
+          ]
+        }
+      },
+      {
+        "title": "Fractions négatives et problèmes",
+        "blocks": [
+          {
+            "type": "text",
+            "text": "Les fractions négatives se calculent avec les **mêmes règles** que les nombres relatifs : on met le signe − au numérateur, on réduit au même dénominateur, puis on calcule les numérateurs comme des nombres relatifs."
+          },
+          {
+            "type": "formula",
+            "latex": "−2/3 + 1/2 = −4/6 + 3/6 = (−4 + 3)/6 = −1/6"
+          },
+          {
+            "type": "formula",
+            "latex": "1/4 − 5/6 = 3/12 − 10/12 = (3 − 10)/12 = −7/12"
+          },
+          {
+            "type": "formula",
+            "latex": "−3/5 − (−1/2) = −3/5 + 1/2 = −6/10 + 5/10 = −1/10"
+          },
+          {
+            "type": "callout",
+            "kind": "attention",
+            "text": "Soustraire une fraction, c'est ajouter son opposé, comme pour les relatifs : − (−1/2) devient + 1/2. Et quand le résultat est négatif, n'oublie pas le signe − devant la fraction."
+          },
+          {
+            "type": "heading",
+            "text": "Problème résolu : la part qui reste"
+          },
+          {
+            "type": "callout",
+            "kind": "methode",
+            "title": "Le temps libre de Léa",
+            "text": "Léa a 12 heures de temps libre par semaine. Elle en passe 1/3 à lire et 1/4 au sport. Le reste est consacré à la musique.\n• Part lecture et sport : 1/3 + 1/4 = 4/12 + 3/12 = 7/12.\n• Part musique : 1 − 7/12 = 12/12 − 7/12 = 5/12. (Le tout, c'est 1.)\n• Temps de musique : les 5/12 de 12 h, soit 12 ÷ 12 × 5 = 5 heures.\nVérification : lecture 12 ÷ 3 = 4 h, sport 12 ÷ 4 = 3 h, et 4 + 3 + 5 = 12 h."
+          },
+          {
+            "type": "callout",
+            "kind": "retiens",
+            "text": "Dans un problème de partage, **le tout vaut 1**. La part qui reste s'obtient en calculant 1 moins la somme des autres parts."
+          }
+        ],
+        "checkpoint": {
+          "variants": [
+            {
+              "prompt": "Combien vaut −1/2 + 1/5 ?",
+              "options": [
+                "−3/10",
+                "3/10",
+                "0/7",
+                "−7/10"
+              ],
+              "answer": 0,
+              "hint": "Dénominateur commun 10, puis calcule le numérateur comme une somme de relatifs.",
+              "explanation": "−1/2 = −5/10 et 1/5 = 2/10, donc −5/10 + 2/10 = (−5 + 2)/10 = −3/10."
+            },
+            {
+              "prompt": "Combien vaut 1/3 − 3/4 ?",
+              "options": [
+                "5/12",
+                "−5/7",
+                "−5/12",
+                "−13/12"
+              ],
+              "answer": 2,
+              "hint": "Écris les deux fractions en douzièmes, puis calcule 4 − 9.",
+              "explanation": "1/3 = 4/12 et 3/4 = 9/12, donc 4/12 − 9/12 = (4 − 9)/12 = −5/12."
+            },
+            {
+              "prompt": "Dans une classe, 2/5 des élèves sont demi-pensionnaires et 1/4 sont externes. Les autres sont internes. Quelle fraction des élèves est interne ?",
+              "options": [
+                "13/20",
+                "7/20",
+                "3/9",
+                "1/3"
+              ],
+              "answer": 1,
+              "hint": "Le tout vaut 1 : calcule d'abord 2/5 + 1/4, puis 1 moins ce résultat.",
+              "explanation": "2/5 + 1/4 = 8/20 + 5/20 = 13/20. Internes : 1 − 13/20 = 20/20 − 13/20 = 7/20."
+            }
+          ]
+        }
+      }
+    ],
+    "memo": [
+      {
+        "label": "Fractions égales",
+        "text": "a/b = (a × k)/(b × k) : on multiplie (ou on divise) le numérateur ET le dénominateur par le même nombre."
+      },
+      {
+        "label": "Même dénominateur",
+        "text": "a/d + b/d = (a + b)/d. On garde le dénominateur, on n'additionne jamais les dénominateurs."
+      },
+      {
+        "label": "Dénominateur multiple",
+        "text": "On écrit la fraction qui a le plus petit dénominateur avec le dénominateur de l'autre : 3/4 + 5/8 = 6/8 + 5/8."
+      },
+      {
+        "label": "Dénominateurs quelconques",
+        "text": "On cherche un multiple commun aux deux dénominateurs (le plus petit possible) : 2/3 + 1/4 = 8/12 + 3/12 = 11/12."
+      },
+      {
+        "label": "Nombre entier",
+        "text": "2 = 10/5 ; 1 = 8/8 : on choisit le dénominateur de l'autre fraction."
+      },
+      {
+        "label": "Fractions négatives",
+        "text": "Signe − au numérateur, puis règles des relatifs : 1/4 − 5/6 = 3/12 − 10/12 = −7/12."
+      },
+      {
+        "label": "Part restante",
+        "text": "Le tout vaut 1 : part restante = 1 − (somme des autres parts). Toujours simplifier le résultat."
+      }
+    ]
+  },
+  "exercises": {
+    "duration_min": 35,
+    "instructions": "Fais les exercices dans l'ordre, au brouillon d'abord, sans calculatrice. Quand on te demande une fraction, écris-la avec le signe /, par exemple 5/12, et donne-la sous forme irréductible. Pour une fraction négative, tape le signe moins du clavier devant : -5/12. Les corrigés s'affichent après tes réponses.",
+    "pass_threshold": 8,
+    "texts": [],
+    "items": [
+      {
+        "id": "ex1",
+        "type": "short",
+        "stars": 1,
+        "lesson_part": 2,
+        "skills": [
+          "m4-fractions-meme-deno",
+          "m4-fractions-egales"
+        ],
+        "cognitive": "appliquer",
+        "prompt": "Calcule 5/12 + 1/12. Donne le résultat sous forme de fraction irréductible (par exemple 2/7).",
+        "answer": [
+          "1/2"
+        ],
+        "solution": "Même dénominateur : 5/12 + 1/12 = (5 + 1)/12 = 6/12.\nOn simplifie par 6 : 6/12 = 1/2."
+      },
+      {
+        "id": "ex2",
+        "type": "qcm",
+        "stars": 1,
+        "lesson_part": 3,
+        "skills": [
+          "m4-fractions-deno-multiple"
+        ],
+        "cognitive": "appliquer",
+        "prompt": "Combien vaut 5/6 + 1/3 ?",
+        "options": [
+          "6/9",
+          "7/6",
+          "6/6",
+          "7/9"
+        ],
+        "answer": 1,
+        "solution": "6 est un multiple de 3 : 1/3 = 2/6.\n5/6 + 1/3 = 5/6 + 2/6 = 7/6.\n6/9 est le piège classique : on a additionné les numérateurs ET les dénominateurs, c'est interdit."
+      },
+      {
+        "id": "ex3",
+        "type": "short",
+        "stars": 1,
+        "lesson_part": 3,
+        "skills": [
+          "m4-fractions-deno-multiple",
+          "m4-fractions-egales"
+        ],
+        "cognitive": "appliquer",
+        "prompt": "Calcule 3 − 5/4. Donne le résultat sous forme de fraction irréductible.",
+        "answer": [
+          "7/4"
+        ],
+        "solution": "On écrit 3 avec le dénominateur 4 : 3 = 12/4.\n3 − 5/4 = 12/4 − 5/4 = 7/4."
+      },
+      {
+        "id": "ex4",
+        "type": "short",
+        "stars": 2,
+        "lesson_part": 4,
+        "skills": [
+          "m4-fractions-deno-commun"
+        ],
+        "cognitive": "appliquer",
+        "prompt": "Calcule 3/4 + 2/5. Donne le résultat sous forme de fraction irréductible.",
+        "answer": [
+          "23/20"
+        ],
+        "solution": "Multiples de 5 : 5, 10, 15, 20… 20 est aussi un multiple de 4. Dénominateur commun : 20.\n3/4 = 15/20 et 2/5 = 8/20.\n3/4 + 2/5 = 15/20 + 8/20 = 23/20 (irréductible, car 23 n'est divisible que par 1 et 23)."
+      },
+      {
+        "id": "ex5",
+        "type": "short",
+        "stars": 2,
+        "lesson_part": 4,
+        "skills": [
+          "m4-fractions-deno-commun"
+        ],
+        "cognitive": "appliquer",
+        "prompt": "Calcule 7/6 − 4/9. Donne le résultat sous forme de fraction irréductible.",
+        "answer": [
+          "13/18"
+        ],
+        "solution": "Multiples de 9 : 9, 18… 18 est aussi un multiple de 6. Dénominateur commun : 18.\n7/6 = 21/18 et 4/9 = 8/18.\n7/6 − 4/9 = 21/18 − 8/18 = 13/18 (irréductible)."
+      },
+      {
+        "id": "ex6",
+        "type": "qcm",
+        "stars": 2,
+        "lesson_part": 4,
+        "skills": [
+          "m4-fractions-deno-commun"
+        ],
+        "cognitive": "connaitre",
+        "prompt": "Quel est le plus petit dénominateur commun à 8 et 12 ?",
+        "options": [
+          "96",
+          "20",
+          "24",
+          "48"
+        ],
+        "answer": 2,
+        "solution": "Multiples de 12 : 12, 24, 36… 12 n'est pas un multiple de 8, mais 24 = 8 × 3 l'est.\nLe plus petit dénominateur commun est 24.\n96 (le produit 8 × 12) et 48 sont aussi des dénominateurs communs, mais pas les plus petits. 20 = 8 + 12 n'est un multiple ni de 8 ni de 12."
+      },
+      {
+        "id": "ex7",
+        "type": "short",
+        "stars": 2,
+        "lesson_part": 5,
+        "skills": [
+          "m4-fractions-relatifs",
+          "m4-fractions-deno-commun"
+        ],
+        "cognitive": "appliquer",
+        "prompt": "Calcule −3/4 + 5/6. Donne le résultat sous forme de fraction irréductible (si le résultat est négatif, tape le signe - devant).",
+        "answer": [
+          "1/12"
+        ],
+        "solution": "Dénominateur commun : 12.\n−3/4 = −9/12 et 5/6 = 10/12.\n−9/12 + 10/12 = (−9 + 10)/12 = 1/12. Le résultat est positif."
+      },
+      {
+        "id": "ex8",
+        "type": "short",
+        "stars": 2,
+        "lesson_part": 5,
+        "skills": [
+          "m4-fractions-relatifs",
+          "m4-fractions-deno-commun"
+        ],
+        "cognitive": "appliquer",
+        "prompt": "Calcule 1/6 − 3/4. Donne le résultat sous forme de fraction irréductible (si le résultat est négatif, tape le signe - devant, par exemple -2/7).",
+        "answer": [
+          "-7/12"
+        ],
+        "solution": "Dénominateur commun : 12.\n1/6 = 2/12 et 3/4 = 9/12.\n2/12 − 9/12 = (2 − 9)/12 = −7/12."
+      },
+      {
+        "id": "ex9",
+        "type": "numeric",
+        "stars": 3,
+        "lesson_part": 5,
+        "skills": [
+          "m4-fractions-probleme",
+          "m4-fractions-deno-commun"
+        ],
+        "cognitive": "analyser",
+        "prompt": "Dans une classe de 28 élèves, 1/4 des élèves viennent en bus, 3/7 viennent à pied et les autres viennent à vélo.\nCombien d'élèves viennent à vélo ?",
+        "answer": 9,
+        "solution": "Bus et marche : 1/4 + 3/7 = 7/28 + 12/28 = 19/28.\nVélo : 1 − 19/28 = 28/28 − 19/28 = 9/28.\nNombre d'élèves à vélo : les 9/28 de 28, soit 9 élèves.\nVérification : bus 28 ÷ 4 = 7 élèves, à pied 28 ÷ 7 × 3 = 12 élèves, et 28 − 7 − 12 = 9."
+      },
+      {
+        "id": "ex10",
+        "type": "short",
+        "stars": 3,
+        "lesson_part": 4,
+        "skills": [
+          "m4-fractions-deno-commun",
+          "m4-fractions-deno-multiple"
+        ],
+        "cognitive": "analyser",
+        "prompt": "Calcule K = 7/4 − (1/3 + 5/6). Commence par la parenthèse. Donne le résultat sous forme de fraction irréductible.",
+        "answer": [
+          "7/12"
+        ],
+        "solution": "Parenthèse : 1/3 + 5/6 = 2/6 + 5/6 = 7/6.\nK = 7/4 − 7/6. Dénominateur commun : 12.\nK = 21/12 − 14/12 = 7/12 (irréductible).\nRemarque : on pouvait aussi enlever la parenthèse en changeant les signes : 7/4 − 1/3 − 5/6 = 21/12 − 4/12 − 10/12 = 7/12."
+      }
+    ]
+  },
+  "evaluation": {
+    "duration_min": 30,
+    "conditions": "Sans calculatrice, sans la leçon, en 30 minutes. Écris les fractions avec le signe /, par exemple 5/12, sous forme irréductible ; pour une fraction négative, tape le signe moins devant : -5/12. Barème : A = 6 points · B = 8 points · C = 6 points. Dans les questions rédigées, écris toutes les étapes de calcul.",
+    "total_points": 20,
+    "variants": [
+      {
+        "texts": [],
+        "sections": [
+          {
+            "label": "A · Automatismes (6 points)",
+            "questions": [
+              {
+                "id": "q1",
+                "type": "short",
+                "points": 1,
+                "lesson_part": 2,
+                "skills": [
+                  "m4-fractions-meme-deno",
+                  "m4-fractions-egales"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Calcule 3/14 + 9/14. Donne le résultat sous forme de fraction irréductible.",
+                "answer": [
+                  "6/7"
+                ],
+                "solution": "3/14 + 9/14 = 12/14, puis on simplifie par 2 : 12/14 = 6/7."
+              },
+              {
+                "id": "q2",
+                "type": "short",
+                "points": 1,
+                "lesson_part": 3,
+                "skills": [
+                  "m4-fractions-deno-multiple"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Calcule 2 − 3/7. Donne le résultat sous forme de fraction irréductible.",
+                "answer": [
+                  "11/7"
+                ],
+                "solution": "2 = 14/7, donc 2 − 3/7 = 14/7 − 3/7 = 11/7."
+              },
+              {
+                "id": "q3",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 4,
+                "skills": [
+                  "m4-fractions-deno-commun"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Quel est le plus petit dénominateur commun à 6 et 9 ?",
+                "options": [
+                  "54",
+                  "15",
+                  "18",
+                  "3"
+                ],
+                "answer": 2,
+                "solution": "Multiples de 9 : 9, 18… 9 n'est pas un multiple de 6, mais 18 = 6 × 3 l'est. Réponse : 18."
+              },
+              {
+                "id": "q4",
+                "type": "short",
+                "points": 1.5,
+                "lesson_part": 3,
+                "skills": [
+                  "m4-fractions-deno-multiple"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Calcule 5/12 + 2/3. Donne le résultat sous forme de fraction irréductible.",
+                "answer": [
+                  "13/12"
+                ],
+                "solution": "12 est un multiple de 3 : 2/3 = 8/12.\n5/12 + 8/12 = 13/12 (irréductible)."
+              },
+              {
+                "id": "q5",
+                "type": "qcm",
+                "points": 1.5,
+                "lesson_part": 4,
+                "skills": [
+                  "m4-fractions-deno-commun"
+                ],
+                "cognitive": "analyser",
+                "prompt": "Quelle égalité est juste ?",
+                "options": [
+                  "1/3 + 1/5 = 2/8",
+                  "1/3 + 1/5 = 8/15",
+                  "1/3 + 1/5 = 2/15",
+                  "1/3 + 1/5 = 1/8"
+                ],
+                "answer": 1,
+                "solution": "Dénominateur commun 15 : 1/3 = 5/15 et 1/5 = 3/15, donc 1/3 + 1/5 = 8/15.\n2/8 est faux : on n'additionne pas les dénominateurs."
+              }
+            ]
+          },
+          {
+            "label": "B · Calculs (8 points)",
+            "questions": [
+              {
+                "id": "q6",
+                "type": "short",
+                "points": 1.5,
+                "lesson_part": 4,
+                "skills": [
+                  "m4-fractions-deno-commun"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Calcule 2/3 + 3/5. Donne le résultat sous forme de fraction irréductible.",
+                "answer": [
+                  "19/15"
+                ],
+                "solution": "Dénominateur commun 15 : 2/3 = 10/15 et 3/5 = 9/15.\n10/15 + 9/15 = 19/15."
+              },
+              {
+                "id": "q7",
+                "type": "short",
+                "points": 1.5,
+                "lesson_part": 4,
+                "skills": [
+                  "m4-fractions-deno-commun",
+                  "m4-fractions-egales"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Calcule 5/6 − 7/10. Donne le résultat sous forme de fraction irréductible.",
+                "answer": [
+                  "2/15"
+                ],
+                "solution": "Dénominateur commun 30 : 5/6 = 25/30 et 7/10 = 21/30.\n25/30 − 21/30 = 4/30 = 2/15 (on simplifie par 2)."
+              },
+              {
+                "id": "q8",
+                "type": "short",
+                "points": 2,
+                "lesson_part": 5,
+                "skills": [
+                  "m4-fractions-relatifs",
+                  "m4-fractions-deno-commun"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Calcule −5/6 + 3/8. Donne le résultat sous forme de fraction irréductible (avec le signe - devant si elle est négative).",
+                "answer": [
+                  "-11/24"
+                ],
+                "solution": "Dénominateur commun 24 : −5/6 = −20/24 et 3/8 = 9/24.\n−20/24 + 9/24 = (−20 + 9)/24 = −11/24."
+              },
+              {
+                "id": "q9",
+                "type": "open",
+                "points": 3,
+                "lesson_part": 5,
+                "skills": [
+                  "m4-fractions-deno-commun",
+                  "m4-fractions-relatifs"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Calcule B = 3/4 − 5/6 + 1/3 en écrivant toutes les étapes. Donne le résultat sous forme de fraction irréductible.",
+                "solution": "Dénominateur commun à 4, 6 et 3 : 12.\nB = 9/12 − 10/12 + 4/12\nB = (9 − 10 + 4)/12\nB = 3/12\nB = 1/4.",
+                "rubric": "1 pt : dénominateur commun correct (12, ou un autre multiple commun comme 24). 1 pt : les trois fractions correctement réécrites (9/12, 10/12, 4/12). 0,5 pt : calcul juste du numérateur (3, avec le bon signe). 0,5 pt : simplification 3/12 = 1/4. Si l'élève additionne les dénominateurs : 0 pt sur les deux derniers critères."
+              }
+            ]
+          },
+          {
+            "label": "C · Problème : le jardin (6 points)",
+            "questions": [
+              {
+                "id": "q10",
+                "type": "open",
+                "points": 2.5,
+                "lesson_part": 5,
+                "skills": [
+                  "m4-fractions-probleme",
+                  "m4-fractions-deno-commun"
+                ],
+                "cognitive": "analyser",
+                "prompt": "Un jardin a une aire de 160 m². Les 2/5 du jardin sont occupés par un potager, 1/4 par une pelouse, et le reste par des fleurs.\n\nMontre que les fleurs occupent les 7/20 du jardin.",
+                "solution": "Potager et pelouse : 2/5 + 1/4 = 8/20 + 5/20 = 13/20.\nFleurs : 1 − 13/20 = 20/20 − 13/20 = 7/20.\nLes fleurs occupent bien les 7/20 du jardin.",
+                "rubric": "1 pt : somme 2/5 + 1/4 = 13/20 avec un dénominateur commun correct. 1 pt : idée que le tout vaut 1 et calcul 1 − 13/20 = 7/20. 0,5 pt : phrase de conclusion. Accepter aussi un calcul par les aires (64 m² + 40 m² = 104 m², 160 − 104 = 56 m², 56/160 = 7/20) s'il est complet et justifié."
+              },
+              {
+                "id": "q11",
+                "type": "numeric",
+                "points": 1.5,
+                "lesson_part": 5,
+                "skills": [
+                  "m4-fractions-probleme"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Calcule l'aire occupée par les fleurs, en m².",
+                "answer": 56,
+                "solution": "Les 7/20 de 160 m² : 160 ÷ 20 = 8, puis 8 × 7 = 56 m²."
+              },
+              {
+                "id": "q12",
+                "type": "open",
+                "points": 2,
+                "lesson_part": 5,
+                "skills": [
+                  "m4-fractions-probleme",
+                  "m4-fractions-deno-multiple"
+                ],
+                "cognitive": "rediger",
+                "prompt": "Les fleurs occupent-elles une plus grande partie du jardin que la pelouse ? De quelle fraction du jardin ? Justifie.",
+                "solution": "Pelouse : 1/4 = 5/20 ; fleurs : 7/20. Comme 7/20 > 5/20, les fleurs occupent une plus grande partie.\nDifférence : 7/20 − 5/20 = 2/20 = 1/10 du jardin.\n(Vérification par les aires : pelouse 40 m², fleurs 56 m², différence 16 m², et 16/160 = 1/10.)",
+                "rubric": "0,5 pt : comparaison juste (oui, les fleurs occupent plus). 0,5 pt : 1/4 réécrit en 5/20 (ou comparaison justifiée autrement, par exemple par les aires). 0,5 pt : différence 7/20 − 5/20 = 2/20. 0,5 pt : simplification en 1/10 et phrase de réponse."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "texts": [],
+        "sections": [
+          {
+            "label": "A · Automatismes (6 points)",
+            "questions": [
+              {
+                "id": "q1",
+                "type": "short",
+                "points": 1,
+                "lesson_part": 2,
+                "skills": [
+                  "m4-fractions-meme-deno",
+                  "m4-fractions-egales"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Calcule 13/15 − 4/15. Donne le résultat sous forme de fraction irréductible.",
+                "answer": [
+                  "3/5"
+                ],
+                "solution": "13/15 − 4/15 = 9/15, puis on simplifie par 3 : 9/15 = 3/5."
+              },
+              {
+                "id": "q2",
+                "type": "short",
+                "points": 1,
+                "lesson_part": 3,
+                "skills": [
+                  "m4-fractions-deno-multiple"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Calcule 3 − 5/8. Donne le résultat sous forme de fraction irréductible.",
+                "answer": [
+                  "19/8"
+                ],
+                "solution": "3 = 24/8, donc 3 − 5/8 = 24/8 − 5/8 = 19/8."
+              },
+              {
+                "id": "q3",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 4,
+                "skills": [
+                  "m4-fractions-deno-commun"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Quel est le plus petit dénominateur commun à 10 et 4 ?",
+                "options": [
+                  "40",
+                  "14",
+                  "20",
+                  "2"
+                ],
+                "answer": 2,
+                "solution": "Multiples de 10 : 10, 20… 10 n'est pas un multiple de 4, mais 20 = 4 × 5 l'est. Réponse : 20."
+              },
+              {
+                "id": "q4",
+                "type": "short",
+                "points": 1.5,
+                "lesson_part": 3,
+                "skills": [
+                  "m4-fractions-deno-multiple"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Calcule 11/15 + 2/5. Donne le résultat sous forme de fraction irréductible.",
+                "answer": [
+                  "17/15"
+                ],
+                "solution": "15 est un multiple de 5 : 2/5 = 6/15.\n11/15 + 6/15 = 17/15 (irréductible)."
+              },
+              {
+                "id": "q5",
+                "type": "qcm",
+                "points": 1.5,
+                "lesson_part": 4,
+                "skills": [
+                  "m4-fractions-deno-commun"
+                ],
+                "cognitive": "analyser",
+                "prompt": "Quelle égalité est juste ?",
+                "options": [
+                  "1/4 + 1/6 = 2/10",
+                  "1/4 + 1/6 = 5/12",
+                  "1/4 + 1/6 = 1/10",
+                  "1/4 + 1/6 = 2/24"
+                ],
+                "answer": 1,
+                "solution": "Dénominateur commun 12 : 1/4 = 3/12 et 1/6 = 2/12, donc 1/4 + 1/6 = 5/12.\n2/10 est faux : on n'additionne pas les dénominateurs."
+              }
+            ]
+          },
+          {
+            "label": "B · Calculs (8 points)",
+            "questions": [
+              {
+                "id": "q6",
+                "type": "short",
+                "points": 1.5,
+                "lesson_part": 4,
+                "skills": [
+                  "m4-fractions-deno-commun"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Calcule 3/4 + 2/7. Donne le résultat sous forme de fraction irréductible.",
+                "answer": [
+                  "29/28"
+                ],
+                "solution": "Dénominateur commun 28 : 3/4 = 21/28 et 2/7 = 8/28.\n21/28 + 8/28 = 29/28."
+              },
+              {
+                "id": "q7",
+                "type": "short",
+                "points": 1.5,
+                "lesson_part": 4,
+                "skills": [
+                  "m4-fractions-deno-commun",
+                  "m4-fractions-egales"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Calcule 9/10 − 1/6. Donne le résultat sous forme de fraction irréductible.",
+                "answer": [
+                  "11/15"
+                ],
+                "solution": "Dénominateur commun 30 : 9/10 = 27/30 et 1/6 = 5/30.\n27/30 − 5/30 = 22/30 = 11/15 (on simplifie par 2)."
+              },
+              {
+                "id": "q8",
+                "type": "short",
+                "points": 2,
+                "lesson_part": 5,
+                "skills": [
+                  "m4-fractions-relatifs",
+                  "m4-fractions-deno-commun"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Calcule −3/5 + 1/4. Donne le résultat sous forme de fraction irréductible (avec le signe - devant si elle est négative).",
+                "answer": [
+                  "-7/20"
+                ],
+                "solution": "Dénominateur commun 20 : −3/5 = −12/20 et 1/4 = 5/20.\n−12/20 + 5/20 = (−12 + 5)/20 = −7/20."
+              },
+              {
+                "id": "q9",
+                "type": "open",
+                "points": 3,
+                "lesson_part": 5,
+                "skills": [
+                  "m4-fractions-deno-commun",
+                  "m4-fractions-relatifs"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Calcule C = 5/6 − 3/4 + 2/3 en écrivant toutes les étapes. Donne le résultat sous forme de fraction irréductible.",
+                "solution": "Dénominateur commun à 6, 4 et 3 : 12.\nC = 10/12 − 9/12 + 8/12\nC = (10 − 9 + 8)/12\nC = 9/12\nC = 3/4.",
+                "rubric": "1 pt : dénominateur commun correct (12, ou un autre multiple commun comme 24). 1 pt : les trois fractions correctement réécrites (10/12, 9/12, 8/12). 0,5 pt : calcul juste du numérateur (9). 0,5 pt : simplification 9/12 = 3/4. Si l'élève additionne les dénominateurs : 0 pt sur les deux derniers critères."
+              }
+            ]
+          },
+          {
+            "label": "C · Problème : le budget du club (6 points)",
+            "questions": [
+              {
+                "id": "q10",
+                "type": "open",
+                "points": 2.5,
+                "lesson_part": 5,
+                "skills": [
+                  "m4-fractions-probleme",
+                  "m4-fractions-deno-commun"
+                ],
+                "cognitive": "analyser",
+                "prompt": "Le club de théâtre du collège dispose d'un budget de 480 €. Il en consacre 1/6 aux sorties, 3/8 au matériel, et le reste aux déplacements.\n\nMontre que les déplacements représentent les 11/24 du budget.",
+                "solution": "Sorties et matériel : 1/6 + 3/8 = 4/24 + 9/24 = 13/24.\nDéplacements : 1 − 13/24 = 24/24 − 13/24 = 11/24.\nLes déplacements représentent bien les 11/24 du budget.",
+                "rubric": "1 pt : somme 1/6 + 3/8 = 13/24 avec un dénominateur commun correct. 1 pt : idée que le tout vaut 1 et calcul 1 − 13/24 = 11/24. 0,5 pt : phrase de conclusion. Accepter aussi un calcul par les montants (80 € + 180 € = 260 €, 480 − 260 = 220 €, 220/480 = 11/24) s'il est complet et justifié."
+              },
+              {
+                "id": "q11",
+                "type": "numeric",
+                "points": 1.5,
+                "lesson_part": 5,
+                "skills": [
+                  "m4-fractions-probleme"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Calcule le montant consacré aux déplacements, en euros.",
+                "answer": 220,
+                "solution": "Les 11/24 de 480 € : 480 ÷ 24 = 20, puis 20 × 11 = 220 €."
+              },
+              {
+                "id": "q12",
+                "type": "open",
+                "points": 2,
+                "lesson_part": 5,
+                "skills": [
+                  "m4-fractions-probleme",
+                  "m4-fractions-deno-multiple"
+                ],
+                "cognitive": "rediger",
+                "prompt": "Le club dépense-t-il plus pour les déplacements que pour le matériel ? De quelle fraction du budget ? Justifie.",
+                "solution": "Matériel : 3/8 = 9/24 ; déplacements : 11/24. Comme 11/24 > 9/24, le club dépense plus pour les déplacements.\nDifférence : 11/24 − 9/24 = 2/24 = 1/12 du budget.\n(Vérification par les montants : matériel 180 €, déplacements 220 €, différence 40 €, et 40/480 = 1/12.)",
+                "rubric": "0,5 pt : comparaison juste (oui, plus pour les déplacements). 0,5 pt : 3/8 réécrit en 9/24 (ou comparaison justifiée autrement, par exemple par les montants). 0,5 pt : différence 11/24 − 9/24 = 2/24. 0,5 pt : simplification en 1/12 et phrase de réponse."
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

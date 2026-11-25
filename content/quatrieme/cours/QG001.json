@@ -1,0 +1,367 @@
+{
+  "format": "syllig-course/1",
+  "code": "QG001",
+  "level": "quatrieme",
+  "subject": "Français",
+  "chapter": "Bases de la langue (début d'année)",
+  "title": "Classes de mots et fonctions dans la phrase",
+  "skills": [
+    { "id": "fr-nature-fonction", "label": "Distinguer la classe grammaticale (nature) et la fonction" },
+    { "id": "fr-classes-variables", "label": "Identifier les classes de mots variables (nom, déterminant, adjectif, pronom, verbe)" },
+    { "id": "fr-classes-invariables", "label": "Identifier les classes de mots invariables (adverbe, préposition, conjonctions, interjection)" },
+    { "id": "fr-fonctions-verbe", "label": "Identifier le sujet, l'attribut du sujet, le COD et le COI" },
+    { "id": "fr-fonctions-phrase", "label": "Identifier les compléments circonstanciels (compléments de phrase)" },
+    { "id": "fr-fonctions-nom", "label": "Identifier les expansions du nom (épithète, complément du nom, apposition)" },
+    { "id": "fr-manipulations", "label": "Justifier une analyse par des manipulations (supprimer, déplacer, remplacer)" }
+  ],
+  "lesson": {
+    "duration_min": 35,
+    "objectives": [
+      "distinguer la classe grammaticale d'un mot (sa nature) et sa fonction dans la phrase ;",
+      "reconnaître les classes de mots variables et invariables, en particulier le déterminant et le pronom ;",
+      "distinguer la conjonction de coordination et la conjonction de subordination ;",
+      "identifier les fonctions liées au verbe : sujet, attribut du sujet, COD, COI ;",
+      "identifier les compléments circonstanciels et les expansions du nom, et le prouver par des manipulations."
+    ],
+    "essential": "Pour analyser un mot ou un groupe de mots, pose-toi toujours deux questions. Première question : qu'est-ce que c'est ? C'est sa classe grammaticale (ou nature) : nom, verbe, adjectif… Elle ne change pas, on la trouve dans le dictionnaire. Seconde question : à quoi sert-il dans cette phrase ? C'est sa fonction : sujet, COD, épithète… Elle change d'une phrase à l'autre. Cette année, tu vas t'entraîner à donner les deux et à prouver ta réponse par une manipulation (supprimer, déplacer, remplacer par un pronom).",
+    "parts": [
+      {
+        "title": "Classe grammaticale et fonction : deux questions différentes",
+        "blocks": [
+          { "type": "callout", "kind": "definition", "title": "Deux notions à ne pas confondre", "text": "La **classe grammaticale** (ou **nature**) dit ce qu'est un mot : nom, verbe, adjectif… Elle est fixe : c'est la carte d'identité du mot.\nLa **fonction** dit le rôle que joue un mot ou un groupe de mots dans une phrase précise : sujet, complément d'objet direct, épithète… Elle dépend de la phrase." },
+          { "type": "text", "text": "Compare ces quatre phrases. Les mots en gras gardent la même classe grammaticale, mais leur fonction change." },
+          { "type": "table", "columns": ["Phrase", "Groupe étudié", "Classe grammaticale", "Fonction"], "rows": [
+            ["Le **ballon** roule sous la table.", "le ballon", "groupe nominal (noyau : le nom « ballon »)", "sujet du verbe « roule »"],
+            ["Nathan lance le **ballon**.", "le ballon", "groupe nominal (noyau : le nom « ballon »)", "complément d'objet direct (COD) du verbe « lance »"],
+            ["Une chanson **joyeuse** s'élève.", "joyeuse", "adjectif qualificatif", "épithète du nom « chanson »"],
+            ["Cette chanson est **joyeuse**.", "joyeuse", "adjectif qualificatif", "attribut du sujet « cette chanson »"]
+          ] },
+          { "type": "text", "text": "« Ballon » reste un nom et « joyeuse » reste un adjectif : leur classe ne bouge pas. En revanche, leur fonction change selon la place qu'ils occupent dans la phrase." },
+          { "type": "heading", "text": "Mots variables, mots invariables" },
+          { "type": "text", "text": "On range les classes de mots en deux familles : celles qui changent de forme (genre, nombre, conjugaison) et celles qui ne changent jamais." },
+          { "type": "table", "columns": ["Mots variables (ils changent de forme)", "Mots invariables (ils ne changent jamais)"], "rows": [
+            ["nom, déterminant, adjectif, pronom, verbe", "adverbe, préposition, conjonction de coordination, conjonction de subordination, interjection"]
+          ] },
+          { "type": "callout", "kind": "methode", "title": "Répondre à une question de grammaire", "text": "Lis bien la consigne : demande-t-on la classe, la fonction, ou les deux ?\nUne réponse complète sur la fonction nomme aussi le mot dont le groupe dépend.\nExemple : « le ballon » est un groupe nominal ; il est **COD du verbe** « lance »." }
+        ],
+        "checkpoint": { "variants": [
+          { "prompt": "La fonction d'un mot…", "options": ["ne change jamais, on la trouve dans le dictionnaire", "dépend du rôle qu'il joue dans la phrase", "est toujours « nom » ou « verbe »"], "answer": 1, "hint": "Relis l'encadré « Deux notions à ne pas confondre ».", "explanation": "La fonction dépend de la phrase ; c'est la classe grammaticale (nature) qui est fixe." },
+          { "prompt": "Dans « Ce gâteau est **délicieux** », quelle est la fonction de « délicieux » ?", "options": ["Adjectif qualificatif", "Épithète du nom « gâteau »", "Attribut du sujet « ce gâteau »"], "answer": 2, "hint": "« Adjectif qualificatif » est une classe, pas une fonction. Quel verbe relie « délicieux » au sujet ?", "explanation": "« Délicieux » est relié au sujet par le verbe d'état « est » : c'est un attribut du sujet." },
+          { "prompt": "Quelle liste ne contient que des classes de mots variables ?", "options": ["Nom, verbe, préposition", "Déterminant, adjectif, pronom", "Adverbe, nom, interjection"], "answer": 1, "hint": "La préposition, l'adverbe et l'interjection ne changent jamais de forme.", "explanation": "Le déterminant, l'adjectif et le pronom varient en genre et en nombre : ce sont des mots variables." }
+        ] }
+      },
+      {
+        "title": "Les classes de mots variables",
+        "blocks": [
+          { "type": "table", "columns": ["Classe", "Rôle", "Exemples"], "rows": [
+            ["Nom", "Désigne un être, une chose, un lieu ou une idée. Nom commun (une rivière, la joie) ou nom propre (Lyon, Samia). C'est le noyau du groupe nominal.", "un chêne, la liberté, Bordeaux, Mehdi"],
+            ["Déterminant", "Se place devant le nom ; il indique son genre et son nombre.", "Articles : le, la, les, un, une, des, du. Possessifs : mon, sa, nos, leur. Démonstratifs : ce, cet, cette, ces. Indéfinis : chaque, plusieurs, aucun. Numéraux : trois, vingt. Interrogatifs et exclamatifs : quel, quelle."],
+            ["Adjectif qualificatif", "Précise une qualité ou une caractéristique du nom ; il s'accorde en genre et en nombre avec lui.", "un chemin **étroit**, des pommes **mûres**"],
+            ["Pronom", "Remplace un nom ou un groupe nominal (ou désigne directement une personne : je, tu, nous).", "Personnels : je, tu, il, elle, le, la, les, lui, leur, en, y. Possessifs : le mien, la tienne. Démonstratifs : celui-ci, cela, ça. Indéfinis : quelqu'un, personne, chacun. Relatifs : qui, que, dont, où. Interrogatifs : qui ? que ? lequel ?"],
+            ["Verbe", "Exprime une action ou un état ; il se conjugue (personne, temps, mode). C'est le noyau de la phrase verbale.", "Nous **partirons** à l'aube. Le ciel **devient** gris."]
+          ] },
+          { "type": "callout", "kind": "attention", "title": "Le même mot, deux classes", "text": "**le, la, les, leur** peuvent être déterminants ou pronoms. Regarde le mot qui suit :\n– devant un nom, c'est un **déterminant** : « **Les** élèves arrivent. » ; « **Leur** voiture est en panne. »\n– devant un verbe, c'est un **pronom personnel** : « Je **les** attends. » ; « Je **leur** prête mon stylo. »" },
+          { "type": "callout", "kind": "retiens", "text": "Le déterminant **accompagne** le nom ; le pronom **remplace** le nom." },
+          { "type": "callout", "kind": "methode", "title": "Astuce pour reconnaître un adjectif", "text": "Essaie de placer « très » devant le mot ou de le mettre au féminin : « un chemin **très** étroit », « une rue étroite ». Si cela fonctionne, c'est probablement un adjectif qualificatif." }
+        ],
+        "checkpoint": { "variants": [
+          { "prompt": "Dans « Le professeur **leur** explique la consigne », quelle est la classe de « leur » ?", "options": ["Déterminant possessif", "Pronom personnel", "Nom commun"], "answer": 1, "hint": "Quel mot suit « leur » : un nom ou un verbe ?", "explanation": "« Leur » est placé devant le verbe « explique » et remplace un groupe (aux élèves, par exemple) : c'est un pronom personnel." },
+          { "prompt": "Dans « **Ces** nuages annoncent l'orage », « ces » est…", "options": ["un pronom démonstratif", "un adjectif qualificatif", "un déterminant démonstratif"], "answer": 2, "hint": "« Ces » accompagne-t-il un nom ou le remplace-t-il ?", "explanation": "« Ces » est placé devant le nom « nuages » et l'accompagne : c'est un déterminant démonstratif." },
+          { "prompt": "Quel mot est un adjectif qualificatif dans « Une lumière dorée éclairait la pièce » ?", "options": ["lumière", "dorée", "éclairait", "pièce"], "answer": 1, "hint": "Cherche le mot qui précise une qualité d'un nom. Peux-tu mettre « très » devant ?", "explanation": "« Dorée » précise une qualité du nom « lumière » et s'accorde avec lui : c'est un adjectif qualificatif." }
+        ] }
+      },
+      {
+        "title": "Les classes de mots invariables",
+        "blocks": [
+          { "type": "table", "columns": ["Classe", "Rôle", "Exemples"], "rows": [
+            ["Adverbe", "Modifie le sens d'un verbe, d'un adjectif, d'un autre adverbe ou de toute la phrase. Beaucoup se terminent par « -ment ».", "doucement, très, trop, souvent, hier, ici, bien, ne… pas"],
+            ["Préposition", "Introduit un complément (souvent un groupe nominal ou un infinitif).", "à, de, par, pour, sans, avec, dans, sur, sous, en, vers, chez, entre, contre, pendant, après"],
+            ["Conjonction de coordination", "Relie deux mots, deux groupes ou deux propositions **de même niveau** (de même fonction).", "mais, ou, et, donc, or, ni, car"],
+            ["Conjonction de subordination", "Introduit une proposition subordonnée, qui **dépend** d'une autre proposition (la principale).", "que, quand, si, comme, lorsque, puisque, quoique ; locutions : parce que, pour que, afin que, avant que, dès que"],
+            ["Interjection", "Exprime une émotion ou imite un bruit ; elle forme souvent une phrase à elle seule.", "Oh ! Aïe ! Bravo ! Chut ! Boum !"]
+          ] },
+          { "type": "callout", "kind": "methode", "title": "Astuce mémoire", "text": "Pour retenir les sept conjonctions de coordination, pense à la question : « Mais où est donc Ornicar ? » → mais, ou, et, donc, or, ni, car." },
+          { "type": "heading", "text": "Coordination ou subordination ?" },
+          { "type": "table", "columns": ["", "Conjonction de coordination", "Conjonction de subordination"], "rows": [
+            ["Ce qu'elle fait", "Elle met deux éléments **côte à côte**, au même niveau.", "Elle rattache une proposition à une autre, dont elle **dépend**."],
+            ["Exemple", "Il pleut, **mais** nous sortons.", "Nous sortons **quand** la pluie s'arrête."],
+            ["Test", "Les deux propositions peuvent exister seules : « Il pleut. » / « Nous sortons. »", "La subordonnée ne peut pas exister seule : « Quand la pluie s'arrête. » est incomplète."]
+          ] },
+          { "type": "callout", "kind": "attention", "title": "Attention aux faux amis", "text": "« **en** » est une préposition devant un nom (« **en** été », « un pull **en** laine ») mais un pronom devant un verbe (« J'**en** voudrais encore. »).\n« **si** » est une conjonction de subordination quand il introduit une condition (« **Si** tu as le temps, aide-moi. ») mais un adverbe devant un adjectif ou un adverbe (« Ce film est **si** long ! »)." }
+        ],
+        "checkpoint": { "variants": [
+          { "prompt": "Dans « La tortue avançait **doucement** », quelle est la classe de « doucement » ?", "options": ["Adjectif qualificatif", "Adverbe", "Préposition"], "answer": 1, "hint": "Ce mot modifie-t-il un nom ou un verbe ? Peut-il changer de forme ?", "explanation": "« Doucement » modifie le verbe « avançait » et ne varie pas : c'est un adverbe." },
+          { "prompt": "« Je reste à la maison **parce que** je suis malade. » Quelle est la classe de « parce que » ?", "options": ["Conjonction de coordination", "Préposition", "Locution conjonctive de subordination"], "answer": 2, "hint": "« Parce que je suis malade » peut-il exister seul comme une phrase complète ?", "explanation": "« Parce que » introduit une proposition subordonnée, qui dépend de « Je reste à la maison » : c'est une (locution) conjonction de subordination." },
+          { "prompt": "Quel mot est une préposition dans « Le chat dort sur le canapé » ?", "options": ["chat", "dort", "sur", "canapé"], "answer": 2, "hint": "Cherche le petit mot invariable qui introduit un groupe nominal.", "explanation": "« Sur » introduit le groupe nominal « le canapé » : c'est une préposition." },
+          { "prompt": "« Il était fatigué, **donc** il s'est couché tôt. » Quelle est la classe de « donc » ?", "options": ["Conjonction de coordination", "Conjonction de subordination", "Interjection"], "answer": 0, "hint": "Pense à « Mais où est donc Ornicar ? ».", "explanation": "« Donc » fait partie des sept conjonctions de coordination : il relie deux propositions de même niveau." }
+        ] }
+      },
+      {
+        "title": "Les fonctions liées au verbe : sujet, attribut, COD, COI",
+        "blocks": [
+          { "type": "table", "columns": ["Fonction", "Comment la reconnaître", "Exemple"], "rows": [
+            ["Sujet", "Le verbe s'accorde avec lui. On l'encadre par « C'est… qui » (ou « Ce sont… qui »). Il peut être placé après le verbe : on parle alors de sujet inversé.", "**Les oiseaux** chantent. → Ce sont les oiseaux qui chantent.\nSur la colline se dressait **un vieux moulin**."],
+            ["Attribut du sujet", "Placé après un verbe d'état, il donne une caractéristique du sujet. On peut souvent le remplacer par « le » (l').", "Mon chien semble **inquiet**.\nMa cousine est devenue **pharmacienne**. → Elle l'est devenue."],
+            ["Complément d'objet direct (COD)", "Complète le verbe **sans préposition**. On ne peut ni le supprimer ni le déplacer sans changer la phrase. On le remplace par le, la, l', les (ou en).", "Samia prépare **une tarte aux pommes**. → Samia **la** prépare."],
+            ["Complément d'objet indirect (COI)", "Complète le verbe et est introduit par une **préposition** (à, de). On le remplace par lui, leur, en, y.", "Hugo obéit **à son entraîneur**. → Hugo **lui** obéit.\nElle se souvient **de ce voyage**. → Elle **s'en** souvient."]
+          ] },
+          { "type": "callout", "kind": "retiens", "title": "Les principaux verbes d'état", "text": "être, paraître, sembler, devenir, demeurer, rester, avoir l'air, passer pour.\nAstuce : on peut souvent remplacer un verbe d'état par « être » sans changer le sens : « Mon chien semble inquiet » → « Mon chien est inquiet »." },
+          { "type": "callout", "kind": "attention", "title": "Piège fréquent : COD ou attribut ?", "text": "Regarde toujours le verbe.\n« Mon voisin est **un pilote d'avion**. » → verbe d'état : le groupe est **attribut du sujet** (le voisin et le pilote sont la même personne).\n« Mon voisin connaît **un pilote d'avion**. » → verbe d'action : le groupe est **COD** (ce sont deux personnes différentes)." },
+          { "type": "callout", "kind": "plus", "title": "Pour aller plus loin", "text": "Quand un verbe a deux compléments d'objet, le second (souvent introduit par « à ») est parfois appelé **complément d'objet second (COS)** : « Je prête **ma règle** (COD) **à Inès** (COI ou COS). »\nÀ la voix passive, le groupe introduit par « par » qui fait l'action est le **complément d'agent** : « Le match a été gagné **par notre équipe**. »" }
+        ],
+        "checkpoint": { "variants": [
+          { "prompt": "Dans « Hugo obéit **à son entraîneur** », quelle est la fonction du groupe en gras ?", "options": ["COD", "COI", "Attribut du sujet", "Sujet"], "answer": 1, "hint": "Le complément est-il introduit par une préposition ? Par quel pronom peux-tu le remplacer ?", "explanation": "Le groupe est introduit par la préposition « à » et se remplace par « lui » (Hugo lui obéit) : c'est un COI." },
+          { "prompt": "Dans « Le ciel restait **gris** », quelle est la fonction de « gris » ?", "options": ["Épithète du nom « ciel »", "COD du verbe « restait »", "Attribut du sujet « le ciel »"], "answer": 2, "hint": "« Rester » est-il un verbe d'action ou un verbe d'état ?", "explanation": "« Rester » est un verbe d'état : « gris » est attribut du sujet « le ciel »." },
+          { "prompt": "Dans « Au bord de l'eau attendait **une barque** », quel est le sujet du verbe « attendait » ?", "options": ["Au bord de l'eau", "l'eau", "une barque"], "answer": 2, "hint": "Encadre avec « C'est… qui attendait ».", "explanation": "« C'est une barque qui attendait » : le sujet est inversé, placé après le verbe." },
+          { "prompt": "Dans « Samia prépare **une tarte aux pommes** », quelle est la fonction du groupe en gras ?", "options": ["COD du verbe « prépare »", "COI du verbe « prépare »", "Complément circonstanciel"], "answer": 0, "hint": "Y a-t-il une préposition juste avant le groupe ? Peux-tu dire « Samia la prépare » ?", "explanation": "Sans préposition, impossible à déplacer, remplaçable par « la » : c'est le COD du verbe « prépare »." }
+        ] }
+      },
+      {
+        "title": "Les compléments circonstanciels et les expansions du nom",
+        "blocks": [
+          { "type": "heading", "text": "Le complément circonstanciel (ou complément de phrase)" },
+          { "type": "text", "text": "Il indique dans quelles circonstances se passe l'action : le temps, le lieu, la manière, la cause, le but, le moyen… En général, on peut le **supprimer** et le **déplacer** sans rendre la phrase incorrecte. Les programmes l'appellent aussi **complément de phrase**." },
+          { "type": "table", "columns": ["Circonstance", "Question utile", "Exemple"], "rows": [
+            ["Temps", "Quand ?", "**Le mercredi**, Lina va à la piscine."],
+            ["Lieu", "Où ?", "Les chèvres broutent **dans le pré**."],
+            ["Manière", "Comment ?", "Le pompier grimpa **avec agilité**."],
+            ["Cause", "Pourquoi ?", "La sortie est annulée **à cause de la tempête**."],
+            ["But", "Dans quel but ?", "Elle révise **pour réussir son contrôle**."],
+            ["Moyen", "Avec quoi ?", "Il a ouvert le colis **avec des ciseaux**."]
+          ] },
+          { "type": "text", "text": "Un complément circonstanciel peut être un groupe nominal (« le mercredi »), un groupe prépositionnel (« dans le pré »), un adverbe (« demain »), un gérondif (« en chantant ») ou une proposition subordonnée (« quand la nuit tombe »)." },
+          { "type": "heading", "text": "Les expansions du nom" },
+          { "type": "text", "text": "Dans un groupe nominal, on peut ajouter des éléments autour du nom noyau pour le préciser. Ce sont les **expansions du nom**." },
+          { "type": "table", "columns": ["Fonction", "Définition", "Exemple"], "rows": [
+            ["Épithète", "Adjectif placé directement à côté du nom qu'il qualifie, sans verbe entre les deux.", "un **long** voyage, une nuit **étoilée**"],
+            ["Complément du nom", "Groupe qui complète un nom, introduit le plus souvent par une préposition (de, à, en, pour, sans…).", "un pull **en laine**, la trousse **de mon voisin**, une machine **à laver**"],
+            ["Apposition", "Groupe détaché par des virgules, qui apporte une information sur un nom ou un pronom.", "Mon grand-père, **un ancien marin**, raconte des histoires."],
+            ["Proposition subordonnée relative", "Proposition introduite par un pronom relatif (qui, que, dont, où…), qui complète un nom.", "le roman **que tu m'as conseillé**"]
+          ] },
+          { "type": "callout", "kind": "plus", "text": "Un adjectif détaché par des virgules (« **Fatiguée**, Inès s'endormit. ») est appelé **épithète détachée** ; beaucoup de manuels parlent aussi d'**apposition**. Les deux réponses sont acceptées." },
+          { "type": "heading", "text": "Méthode · Les manipulations qui prouvent" },
+          { "type": "table", "columns": ["Manipulation", "Ce qu'elle montre", "Exemple"], "rows": [
+            ["Supprimer", "Les compléments circonstanciels et les expansions du nom peuvent souvent être supprimés ; le sujet et le COD des verbes qui en ont besoin, non.", "Le mercredi, Lina va à la piscine. → Lina va à la piscine."],
+            ["Déplacer", "Seul le complément circonstanciel se déplace facilement.", "Lina va à la piscine le mercredi. → Le mercredi, Lina va à la piscine."],
+            ["Remplacer par un pronom", "le, la, les → COD ; lui, leur, en, y → COI ; « le » qui ne s'accorde pas → attribut.", "Je pense à mon anniversaire. → J'y pense (COI)."],
+            ["Encadrer par « C'est… qui »", "Permet de repérer le sujet.", "C'est la pluie qui tombe."]
+          ] },
+          { "type": "callout", "kind": "attention", "title": "Pièges à éviter", "text": "✗ Répondre « adjectif » quand on demande une fonction, ou « COD » quand on demande une classe.\n✗ Confondre « de mon voisin » (complément du **nom** trousse) et « à son entraîneur » (complément du **verbe** obéir).\n✗ Oublier de dire de quel mot le groupe dépend : « COD **du verbe** prépare »." }
+        ],
+        "checkpoint": { "variants": [
+          { "prompt": "Dans « J'ai emprunté le vélo **de ma voisine** », quelle est la fonction du groupe en gras ?", "options": ["Complément circonstanciel de lieu", "COI du verbe « ai emprunté »", "Complément du nom « vélo »"], "answer": 2, "hint": "Ce groupe complète-t-il le verbe ou le nom placé juste avant ?", "explanation": "« De ma voisine » précise le nom « vélo » (quel vélo ?) : c'est un complément du nom." },
+          { "prompt": "Quelle manipulation prouve le mieux qu'un groupe est complément circonstanciel ?", "options": ["Le remplacer par « la »", "L'encadrer par « C'est… qui »", "Le déplacer en tête de phrase"], "answer": 2, "hint": "Relis le tableau « Les manipulations qui prouvent ».", "explanation": "Le complément circonstanciel se déplace facilement (et peut souvent être supprimé)." },
+          { "prompt": "Dans « Mon grand-père, **un ancien marin**, raconte des histoires », quelle est la fonction du groupe en gras ?", "options": ["Sujet", "Apposition au nom « grand-père »", "COD"], "answer": 1, "hint": "Le groupe est-il détaché par des virgules ? Apporte-t-il une information sur un nom ?", "explanation": "Détaché par des virgules, il donne une information sur « mon grand-père » : c'est une apposition." },
+          { "prompt": "Dans « La sortie est annulée **à cause de la tempête** », quelle circonstance le groupe en gras exprime-t-il ?", "options": ["Le temps", "La cause", "Le but"], "answer": 1, "hint": "Ce groupe répond-il à la question « quand ? », « pourquoi ? » ou « dans quel but ? » ?", "explanation": "Il répond à la question « pourquoi ? » : c'est un complément circonstanciel de cause." }
+        ] }
+      }
+    ],
+    "memo": [
+      { "label": "Nature ≠ fonction", "text": "La classe grammaticale dit ce qu'est le mot (fixe) ; la fonction dit son rôle dans la phrase (variable)." },
+      { "label": "Mots variables", "text": "Nom, déterminant, adjectif, pronom, verbe. Le déterminant accompagne le nom ; le pronom le remplace." },
+      { "label": "Mots invariables", "text": "Adverbe, préposition, conjonction de coordination (mais, ou, et, donc, or, ni, car), conjonction de subordination (que, quand, si, parce que…), interjection." },
+      { "label": "Coordination / subordination", "text": "La coordination relie deux éléments de même niveau ; la subordination rattache une proposition qui dépend d'une autre." },
+      { "label": "Autour du verbe", "text": "Sujet (C'est… qui) ; attribut du sujet (après un verbe d'état) ; COD (sans préposition, → le, la, les) ; COI (avec préposition, → lui, leur, en, y)." },
+      { "label": "Compléments circonstanciels", "text": "Temps, lieu, manière, cause, but, moyen… On peut en général les supprimer et les déplacer." },
+      { "label": "Autour du nom", "text": "Épithète (collée au nom), complément du nom (avec préposition), apposition (entre virgules), subordonnée relative (qui, que, dont, où)." },
+      { "label": "Réponse complète", "text": "Classe grammaticale + fonction + mot complété : « le ballon », groupe nominal, COD du verbe « lance »." }
+    ]
+  },
+  "exercises": {
+    "duration_min": 25,
+    "instructions": "Lis chaque phrase attentivement. Les mots à analyser sont en gras. Pour les réponses à écrire, un ou quelques mots suffisent, sauf pour les exercices ★★★. Le corrigé s'affiche après ta réponse : lis-le même quand tu as juste.",
+    "pass_threshold": 8,
+    "texts": [],
+    "items": [
+      { "id": "ex1", "type": "qcm", "stars": 1, "lesson_part": 2, "skills": ["fr-classes-variables"], "cognitive": "connaitre",
+        "prompt": "« Mes amis ? Je **les** retrouve après les cours. » Quelle est la classe grammaticale du mot en gras ?",
+        "options": ["Déterminant (article défini)", "Pronom personnel", "Nom commun", "Préposition"], "answer": 1,
+        "solution": "Pronom personnel : « les » est placé devant le verbe « retrouve » et remplace « mes amis ». Le second « les » de la phrase (« les cours »), placé devant un nom, est un déterminant (article défini)." },
+      { "id": "ex2", "type": "short", "stars": 1, "lesson_part": 3, "skills": ["fr-classes-invariables"], "cognitive": "connaitre",
+        "prompt": "« Le chat dormait **paisiblement** près du radiateur. » Quelle est la classe grammaticale de « paisiblement » ? (un mot)",
+        "answer": ["adverbe", "un adverbe", "l'adverbe", "c'est un adverbe", "adverbe de manière", "un adverbe de manière", "adverbe invariable"],
+        "solution": "Adverbe (de manière) : il modifie le verbe « dormait », il est invariable et il se termine par « -ment »." },
+      { "id": "ex3", "type": "qcm", "stars": 1, "lesson_part": 3, "skills": ["fr-classes-invariables"], "cognitive": "connaitre",
+        "prompt": "« Je prendrai mon parapluie **si** le ciel se couvre. » Quelle est la classe grammaticale de « si » ?",
+        "options": ["Adverbe", "Préposition", "Conjonction de coordination", "Conjonction de subordination"], "answer": 3,
+        "solution": "Conjonction de subordination : « si » introduit une condition, « si le ciel se couvre », proposition qui ne peut pas exister seule et qui dépend de « Je prendrai mon parapluie ». (Devant un adjectif, comme dans « si beau », « si » serait un adverbe.)" },
+      { "id": "ex4", "type": "qcm", "stars": 2, "lesson_part": 4, "skills": ["fr-fonctions-verbe"], "cognitive": "appliquer",
+        "prompt": "« Après la course, Yanis restait **essoufflé**. » Quelle est la fonction de « essoufflé » ?",
+        "options": ["Épithète du nom « Yanis »", "COD du verbe « restait »", "Attribut du sujet « Yanis »", "Complément circonstanciel de manière"], "answer": 2,
+        "solution": "Attribut du sujet « Yanis » : « rester » est un verbe d'état (on peut dire « Yanis était essoufflé »), et « essoufflé » donne une caractéristique du sujet." },
+      { "id": "ex5", "type": "qcm", "stars": 2, "lesson_part": 4, "skills": ["fr-fonctions-verbe", "fr-manipulations"], "cognitive": "appliquer",
+        "prompt": "« Mes parents ont offert **un vélo** à mon petit frère. » Quelle est la fonction du groupe en gras ?",
+        "options": ["COD du verbe « ont offert »", "COI du verbe « ont offert »", "Attribut du sujet « mes parents »", "Complément circonstanciel de moyen"], "answer": 0,
+        "solution": "COD du verbe « ont offert » : le groupe n'est pas introduit par une préposition, il répond à la question « ont offert quoi ? » et se remplace par « le » (« Mes parents l'ont offert à mon petit frère »). « À mon petit frère », lui, est COI (ou COS)." },
+      { "id": "ex6", "type": "short", "stars": 2, "lesson_part": 5, "skills": ["fr-fonctions-phrase"], "cognitive": "appliquer",
+        "prompt": "« **À cause du brouillard**, l'avion a décollé avec une heure de retard. » Quelle est la fonction du groupe « À cause du brouillard » ? (précise la circonstance)",
+        "answer": ["complément circonstanciel de cause", "un complément circonstanciel de cause", "CC de cause", "C.C. de cause", "CCC", "C.C.C.", "CC cause", "CC de cause du verbe", "complément circonstanciel cause", "complément de phrase de cause", "complément de phrase indiquant la cause", "complément circonstanciel de cause du verbe a décollé", "CC de cause du verbe a décollé", "complément circonstanciel de cause du verbe décoller"],
+        "solution": "Complément circonstanciel de cause (ou complément de phrase de cause) : il répond à la question « pourquoi ? ». On peut le supprimer (« L'avion a décollé avec une heure de retard ») ou le déplacer (« L'avion a décollé avec une heure de retard à cause du brouillard »)." },
+      { "id": "ex7", "type": "qcm", "stars": 2, "lesson_part": 5, "skills": ["fr-fonctions-nom"], "cognitive": "appliquer",
+        "prompt": "« J'ai perdu la clé **du garage** ce matin. » Quelle est la fonction du groupe en gras ?",
+        "options": ["COI du verbe « ai perdu »", "Complément circonstanciel de lieu", "Complément du nom « clé »", "Épithète du nom « clé »"], "answer": 2,
+        "solution": "Complément du nom « clé » : introduit par « du » (préposition « de » + article « le »), il précise de quelle clé il s'agit. Il ne complète pas le verbe : il répond à la question « la clé de quoi ? » et il fait partie du groupe nominal « la clé du garage », COD du verbe « ai perdu »." },
+      { "id": "ex8", "type": "qcm", "stars": 2, "lesson_part": 5, "skills": ["fr-fonctions-nom"], "cognitive": "analyser",
+        "prompt": "« Ma tante, **une infirmière passionnée**, travaille souvent la nuit. » Quelle est la fonction du groupe en gras ?",
+        "options": ["Sujet du verbe « travaille »", "COD du verbe « travaille »", "Apposition au nom « tante »", "Attribut du sujet"], "answer": 2,
+        "solution": "Apposition : le groupe nominal est détaché par des virgules et donne une information sur « ma tante ». Le sujet du verbe « travaille » est « Ma tante » (C'est ma tante qui travaille)." },
+      { "id": "ex9", "type": "open", "stars": 3, "lesson_part": 5, "skills": ["fr-nature-fonction", "fr-fonctions-verbe", "fr-fonctions-phrase", "fr-fonctions-nom"], "cognitive": "analyser",
+        "prompt": "« Pendant les vacances, mon cousin a construit une cabane solide dans le jardin. »\nDonne la classe grammaticale et la fonction de : a) « Pendant les vacances » ; b) « une cabane solide » ; c) « solide » ; d) « dans le jardin ».",
+        "solution": "a) « Pendant les vacances » : groupe prépositionnel (préposition « pendant » + groupe nominal), complément circonstanciel de temps.\nb) « une cabane solide » : groupe nominal, COD du verbe « a construit ».\nc) « solide » : adjectif qualificatif, épithète du nom « cabane ».\nd) « dans le jardin » : groupe prépositionnel (préposition « dans » + groupe nominal), complément circonstanciel de lieu.",
+        "rubric": "Pour chaque groupe : 0,5 pour la classe grammaticale, 0,5 pour la fonction (avec le mot complété pour b et c)." },
+      { "id": "ex10", "type": "open", "stars": 3, "lesson_part": 5, "skills": ["fr-fonctions-verbe", "fr-fonctions-phrase", "fr-fonctions-nom", "fr-manipulations"], "cognitive": "rediger",
+        "prompt": "Écris une phrase de ton choix sur le thème d'un match de sport qui contienne : un sujet, un COD, un adjectif épithète et un complément circonstanciel de temps. Recopie ensuite chacun de ces éléments en indiquant sa fonction, puis prouve par une manipulation que ton complément circonstanciel en est bien un.",
+        "solution": "Exemple : « Samedi dernier, notre équipe a gagné un match difficile. »\nSujet : « notre équipe » (C'est notre équipe qui a gagné). COD : « un match difficile » (→ notre équipe l'a gagné). Épithète : « difficile », épithète du nom « match ». CC de temps : « Samedi dernier ».\nManipulation : on peut le déplacer (« Notre équipe a gagné un match difficile samedi dernier ») ou le supprimer (« Notre équipe a gagné un match difficile »).",
+        "rubric": "Phrase correcte et sur le thème : 1. Chaque élément présent et bien identifié : 0,5 × 4. Manipulation pertinente et expliquée : 1." }
+    ]
+  },
+  "evaluation": {
+    "duration_min": 25,
+    "conditions": "Sans la leçon ni les corrigés, en 25 minutes. Barème : A = 4 points · B = 11 points · C = 5 points. Quand on te demande une fonction, précise toujours le mot complété (par exemple : « COD du verbe… »).",
+    "total_points": 20,
+    "variants": [
+      {
+        "texts": [],
+        "sections": [
+          { "label": "A · Je connais mon cours (4 points)", "questions": [
+            { "id": "q1", "type": "qcm", "points": 1, "lesson_part": 1, "skills": ["fr-classes-invariables"], "cognitive": "connaitre",
+              "prompt": "Quelle liste ne contient que des classes de mots invariables ?",
+              "options": ["Nom, adverbe, préposition", "Adverbe, préposition, interjection", "Pronom, déterminant, conjonction de coordination", "Verbe, adjectif, conjonction de subordination"], "answer": 1,
+              "solution": "Adverbe, préposition, interjection : ces trois classes ne changent jamais de forme. Le nom, le pronom, le déterminant, le verbe et l'adjectif sont variables.",
+              "rubric": "1 point pour la bonne réponse, 0 sinon." },
+            { "id": "q2", "type": "qcm", "points": 1, "lesson_part": 4, "skills": ["fr-fonctions-verbe", "fr-manipulations"], "cognitive": "connaitre",
+              "prompt": "Par quel pronom peut-on remplacer un COD ?",
+              "options": ["lui ou leur", "le, la ou les", "y", "qui"], "answer": 1,
+              "solution": "Le COD se remplace par le, la, l' ou les (parfois « en ») : « Je lis ce livre » → « Je le lis ». « Lui », « leur » et « y » remplacent un COI.",
+              "rubric": "1 point pour la bonne réponse, 0 sinon." },
+            { "id": "q3", "type": "open", "points": 2, "lesson_part": 1, "skills": ["fr-nature-fonction"], "cognitive": "connaitre",
+              "prompt": "Explique la différence entre la classe grammaticale (nature) d'un mot et sa fonction. Appuie-toi sur un exemple de ton choix.",
+              "solution": "La classe grammaticale dit ce qu'est le mot (nom, verbe, adjectif…) : elle ne change pas. La fonction dit le rôle du mot ou du groupe dans une phrase précise (sujet, COD…) : elle change selon la phrase. Exemple : « ballon » est toujours un nom, mais « le ballon » est sujet dans « Le ballon roule » et COD dans « Nathan lance le ballon ».",
+              "rubric": "0,5 : la classe grammaticale = ce qu'est le mot, fixe. 0,5 : la fonction = le rôle dans la phrase, variable. 1 : exemple correct montrant un même mot (ou groupe) avec deux fonctions différentes, ou un mot analysé correctement en classe et en fonction (0,5 si l'exemple est partiellement juste)." }
+          ] },
+          { "label": "B · J'analyse des phrases (11 points)", "questions": [
+            { "id": "q4", "type": "short", "points": 1, "lesson_part": 3, "skills": ["fr-classes-invariables"], "cognitive": "appliquer",
+              "prompt": "« Il fait **très** froid ce matin. » Quelle est la classe grammaticale de « très » ?",
+              "answer": ["adverbe", "un adverbe", "l'adverbe", "c'est un adverbe", "adverbe d'intensité", "un adverbe d'intensité", "adverbe de degré", "un adverbe de degré", "adverbe de quantité", "un adverbe de quantité"],
+              "solution": "Adverbe (d'intensité) : « très » modifie l'adjectif « froid » et il est invariable.",
+              "rubric": "1 point pour « adverbe »." },
+            { "id": "q5", "type": "qcm", "points": 1, "lesson_part": 2, "skills": ["fr-classes-variables"], "cognitive": "appliquer",
+              "prompt": "« Ces fleurs, ma grand-mère **les** arrose chaque soir. » Quelle est la classe grammaticale de « les » ?",
+              "options": ["Déterminant (article défini)", "Pronom personnel", "Nom", "Préposition"], "answer": 1,
+              "solution": "Pronom personnel : « les » est placé devant le verbe « arrose » et remplace « ces fleurs ».",
+              "rubric": "1 point pour la bonne réponse, 0 sinon." },
+            { "id": "q6", "type": "qcm", "points": 1, "lesson_part": 3, "skills": ["fr-classes-invariables"], "cognitive": "appliquer",
+              "prompt": "« Il a couru jusqu'à l'arrêt, **mais** il a raté son bus. » Quelle est la classe grammaticale de « mais » ?",
+              "options": ["Adverbe", "Préposition", "Conjonction de coordination", "Conjonction de subordination"], "answer": 2,
+              "solution": "Conjonction de coordination (mais, ou, et, donc, or, ni, car) : elle relie ici deux propositions de même niveau, qui pourraient chacune former une phrase seule.",
+              "rubric": "1 point pour la bonne réponse, 0 sinon." },
+            { "id": "q7", "type": "qcm", "points": 1, "lesson_part": 4, "skills": ["fr-fonctions-verbe"], "cognitive": "appliquer",
+              "prompt": "« Le jardinier taille **les rosiers**. » Quelle est la fonction du groupe en gras ?",
+              "options": ["Sujet du verbe « taille »", "COD du verbe « taille »", "COI du verbe « taille »", "Attribut du sujet"], "answer": 1,
+              "solution": "COD du verbe « taille » : pas de préposition, groupe impossible à déplacer, remplaçable par « les » (« Le jardinier les taille »).",
+              "rubric": "1 point pour la bonne réponse, 0 sinon." },
+            { "id": "q8", "type": "qcm", "points": 1, "lesson_part": 4, "skills": ["fr-fonctions-verbe"], "cognitive": "appliquer",
+              "prompt": "« Le ciel devenait **sombre**. » Quelle est la fonction de « sombre » ?",
+              "options": ["Épithète du nom « ciel »", "COD du verbe « devenait »", "Attribut du sujet « le ciel »", "Complément du nom « ciel »"], "answer": 2,
+              "solution": "Attribut du sujet « le ciel » : « devenir » est un verbe d'état.",
+              "rubric": "1 point pour la bonne réponse, 0 sinon." },
+            { "id": "q9", "type": "short", "points": 1, "lesson_part": 5, "skills": ["fr-fonctions-phrase"], "cognitive": "appliquer",
+              "prompt": "« Les randonneurs marchaient **en silence**. » Quelle est la fonction du groupe en gras ? (précise la circonstance)",
+              "answer": ["complément circonstanciel de manière", "un complément circonstanciel de manière", "CC de manière", "C.C. de manière", "CCM", "C.C.M.", "CC manière", "CC de manière du verbe", "CC de manière du verbe marchaient", "complément circonstanciel de manière du verbe marcher", "complément circonstanciel manière", "complément de phrase de manière", "complément de phrase indiquant la manière", "complément circonstanciel de manière du verbe marchaient"],
+              "solution": "Complément circonstanciel de manière : il répond à la question « comment ? » et peut être supprimé (« Les randonneurs marchaient ») ou déplacé (« En silence, les randonneurs marchaient »).",
+              "rubric": "1 point pour « complément circonstanciel (ou de phrase) de manière » ; 0,5 si la circonstance manque (correction manuelle)." },
+            { "id": "q10", "type": "open", "points": 3, "lesson_part": 5, "skills": ["fr-nature-fonction", "fr-fonctions-phrase", "fr-fonctions-nom", "fr-fonctions-verbe"], "cognitive": "analyser",
+              "prompt": "« Au fond de la classe, une élève de quatrième dessinait un dragon. »\nDonne la classe grammaticale et la fonction de : a) « Au fond de la classe » ; b) « de quatrième » ; c) « un dragon ».",
+              "solution": "a) « Au fond de la classe » : groupe prépositionnel (« au » = préposition « à » + article « le », suivi d'un groupe nominal), complément circonstanciel de lieu.\nb) « de quatrième » : groupe prépositionnel (préposition « de » + nom), complément du nom « élève ».\nc) « un dragon » : groupe nominal, COD du verbe « dessinait ».",
+              "rubric": "Pour chaque groupe : 0,5 pour la classe grammaticale (« groupe prépositionnel » ou « préposition + groupe nominal » acceptés), 0,5 pour la fonction complète (avec le mot complété)." },
+            { "id": "q11", "type": "open", "points": 2, "lesson_part": 4, "skills": ["fr-fonctions-verbe", "fr-manipulations"], "cognitive": "analyser",
+              "prompt": "« Le professeur a rendu les copies aux élèves. » Remplace le groupe « aux élèves » par un pronom, puis donne la fonction de ce groupe.",
+              "solution": "« Le professeur leur a rendu les copies. » Le groupe « aux élèves », introduit par la préposition « à » (contractée avec « les » en « aux ») et remplacé par « leur », est COI (ou COS) du verbe « a rendu ».",
+              "rubric": "1 : phrase correctement réécrite avec « leur » bien placé (sans -s). 1 : fonction COI (ou COS) du verbe « a rendu »." }
+          ] },
+          { "label": "C · Je manipule et je rédige (5 points)", "questions": [
+            { "id": "q12", "type": "open", "points": 2, "lesson_part": 5, "skills": ["fr-manipulations", "fr-fonctions-phrase"], "cognitive": "analyser",
+              "prompt": "« Tous les samedis, ma sœur prend des cours de guitare. » Prouve, à l'aide de deux manipulations, que « Tous les samedis » est un complément circonstanciel.",
+              "solution": "Suppression : « Ma sœur prend des cours de guitare. » La phrase reste correcte. Déplacement : « Ma sœur prend des cours de guitare tous les samedis. » Le groupe se déplace facilement : c'est un complément circonstanciel (de temps).",
+              "rubric": "1 par manipulation correctement réalisée et nommée (suppression, déplacement). 0,5 si la manipulation est faite sans être nommée ou expliquée." },
+            { "id": "q13", "type": "open", "points": 3, "lesson_part": 5, "skills": ["fr-fonctions-verbe", "fr-fonctions-phrase", "fr-fonctions-nom"], "cognitive": "rediger",
+              "prompt": "Écris une phrase sur le thème « une journée à la mer » qui contienne : un sujet, un COD, un adjectif épithète et un complément circonstanciel de lieu. Recopie ensuite chaque élément et indique sa fonction.",
+              "solution": "Exemple : « Sur la plage, mon petit frère a ramassé des coquillages colorés. » Sujet : « mon petit frère ». COD : « des coquillages colorés » (COD du verbe « a ramassé »). Épithète : « colorés » (épithète de « coquillages ») ou « petit » (épithète de « frère »). CC de lieu : « Sur la plage ».",
+              "rubric": "0,5 : phrase correcte (syntaxe, orthographe) et sur le thème. 0,5 par élément présent et bien identifié (× 4 = 2). 0,5 : fonctions précisées avec le mot complété." }
+          ] }
+        ]
+      },
+      {
+        "texts": [],
+        "sections": [
+          { "label": "A · Je connais mon cours (4 points)", "questions": [
+            { "id": "q1", "type": "qcm", "points": 1, "lesson_part": 1, "skills": ["fr-classes-variables"], "cognitive": "connaitre",
+              "prompt": "Quelle liste ne contient que des classes de mots variables ?",
+              "options": ["Nom, déterminant, adjectif", "Adverbe, nom, verbe", "Préposition, pronom, adjectif", "Conjonction de coordination, verbe, interjection"], "answer": 0,
+              "solution": "Nom, déterminant, adjectif : ces trois classes changent de forme (genre, nombre). L'adverbe, la préposition, la conjonction et l'interjection sont invariables.",
+              "rubric": "1 point pour la bonne réponse, 0 sinon." },
+            { "id": "q2", "type": "qcm", "points": 1, "lesson_part": 4, "skills": ["fr-fonctions-verbe"], "cognitive": "connaitre",
+              "prompt": "Après quel type de verbe trouve-t-on un attribut du sujet ?",
+              "options": ["Un verbe d'action", "Un verbe d'état (être, sembler, devenir…)", "Un verbe à l'infinitif", "N'importe quel verbe"], "answer": 1,
+              "solution": "L'attribut du sujet suit un verbe d'état : être, paraître, sembler, devenir, demeurer, rester, avoir l'air…",
+              "rubric": "1 point pour la bonne réponse, 0 sinon." },
+            { "id": "q3", "type": "open", "points": 2, "lesson_part": 3, "skills": ["fr-classes-invariables"], "cognitive": "connaitre",
+              "prompt": "Explique la différence entre une conjonction de coordination et une conjonction de subordination. Donne un exemple de phrase pour chacune.",
+              "solution": "La conjonction de coordination (mais, ou, et, donc, or, ni, car) relie deux éléments de même niveau : « Il pleut, mais nous sortons. » Les deux propositions peuvent exister seules. La conjonction de subordination (que, quand, si, parce que…) introduit une proposition subordonnée qui dépend d'une autre : « Nous sortirons quand la pluie s'arrêtera. » La subordonnée ne peut pas exister seule.",
+              "rubric": "0,5 : la coordination relie des éléments de même niveau. 0,5 : la subordination introduit une proposition qui dépend d'une autre. 0,5 : exemple correct avec une conjonction de coordination. 0,5 : exemple correct avec une conjonction de subordination." }
+          ] },
+          { "label": "B · J'analyse des phrases (11 points)", "questions": [
+            { "id": "q4", "type": "short", "points": 1, "lesson_part": 3, "skills": ["fr-classes-invariables"], "cognitive": "appliquer",
+              "prompt": "« Elle répond **toujours** avec le sourire. » Quelle est la classe grammaticale de « toujours » ?",
+              "answer": ["adverbe", "un adverbe", "l'adverbe", "c'est un adverbe", "adverbe de temps", "un adverbe de temps", "adverbe de fréquence", "un adverbe de fréquence"],
+              "solution": "Adverbe (de temps, ou de fréquence) : il modifie le verbe « répond » et il est invariable.",
+              "rubric": "1 point pour « adverbe »." },
+            { "id": "q5", "type": "qcm", "points": 1, "lesson_part": 2, "skills": ["fr-classes-variables"], "cognitive": "appliquer",
+              "prompt": "« **Leur** chien aboie toute la nuit. » Quelle est la classe grammaticale de « Leur » ?",
+              "options": ["Déterminant possessif", "Pronom personnel", "Adjectif qualificatif", "Nom"], "answer": 0,
+              "solution": "Déterminant possessif : « leur » est placé devant le nom « chien » et l'accompagne.",
+              "rubric": "1 point pour la bonne réponse, 0 sinon." },
+            { "id": "q6", "type": "qcm", "points": 1, "lesson_part": 3, "skills": ["fr-classes-invariables"], "cognitive": "appliquer",
+              "prompt": "« Je t'appellerai **quand** j'arriverai à la gare. » Quelle est la classe grammaticale de « quand » ?",
+              "options": ["Conjonction de coordination", "Conjonction de subordination", "Préposition", "Interjection"], "answer": 1,
+              "solution": "Conjonction de subordination : « quand » introduit la proposition subordonnée « quand j'arriverai à la gare », qui dépend de « Je t'appellerai » et ne peut pas exister seule.",
+              "rubric": "1 point pour la bonne réponse, 0 sinon." },
+            { "id": "q7", "type": "qcm", "points": 1, "lesson_part": 4, "skills": ["fr-fonctions-verbe"], "cognitive": "appliquer",
+              "prompt": "« Inès pense souvent **à ses amies d'enfance**. » Quelle est la fonction du groupe en gras ?",
+              "options": ["COD du verbe « pense »", "COI du verbe « pense »", "Complément circonstanciel de lieu", "Complément du nom"], "answer": 1,
+              "solution": "COI du verbe « pense » : le groupe est introduit par la préposition « à » et on ne peut pas le supprimer sans changer le sens du verbe. Avec un nom de personne, on dit « Inès pense souvent à elles ».",
+              "rubric": "1 point pour la bonne réponse, 0 sinon." },
+            { "id": "q8", "type": "qcm", "points": 1, "lesson_part": 4, "skills": ["fr-fonctions-verbe"], "cognitive": "appliquer",
+              "prompt": "« Ma cousine est devenue **une excellente nageuse**. » Quelle est la fonction du groupe en gras ?",
+              "options": ["COD du verbe « est devenue »", "Attribut du sujet « ma cousine »", "Sujet", "Apposition"], "answer": 1,
+              "solution": "Attribut du sujet « ma cousine » : « devenir » est un verbe d'état ; le groupe dit ce qu'est devenu le sujet (la cousine et la nageuse sont la même personne).",
+              "rubric": "1 point pour la bonne réponse, 0 sinon." },
+            { "id": "q9", "type": "short", "points": 1, "lesson_part": 5, "skills": ["fr-fonctions-phrase"], "cognitive": "appliquer",
+              "prompt": "« Lucas s'entraîne chaque jour **pour devenir pompier**. » Quelle est la fonction du groupe en gras ? (précise la circonstance)",
+              "answer": ["complément circonstanciel de but", "un complément circonstanciel de but", "CC de but", "C.C. de but", "CCB", "C.C.B.", "CC but", "CC de but du verbe", "complément circonstanciel but", "complément de phrase de but", "complément de phrase indiquant le but", "complément circonstanciel de but du verbe s'entraîne", "CC de but du verbe s'entraîne", "complément circonstanciel de but du verbe s'entraîner"],
+              "solution": "Complément circonstanciel de but : il répond à la question « dans quel but ? » et peut être supprimé (« Lucas s'entraîne chaque jour ») ou déplacé (« Pour devenir pompier, Lucas s'entraîne chaque jour »).",
+              "rubric": "1 point pour « complément circonstanciel (ou de phrase) de but » ; 0,5 si la circonstance manque (correction manuelle)." },
+            { "id": "q10", "type": "open", "points": 3, "lesson_part": 5, "skills": ["fr-nature-fonction", "fr-fonctions-phrase", "fr-fonctions-nom", "fr-fonctions-verbe"], "cognitive": "analyser",
+              "prompt": "« Dans la forêt, un renard roux guettait les poules du fermier. »\nDonne la classe grammaticale et la fonction de : a) « Dans la forêt » ; b) « roux » ; c) « les poules du fermier ».",
+              "solution": "a) « Dans la forêt » : groupe prépositionnel (préposition « dans » + groupe nominal), complément circonstanciel de lieu.\nb) « roux » : adjectif qualificatif, épithète du nom « renard ».\nc) « les poules du fermier » : groupe nominal, COD du verbe « guettait » (dans ce groupe, « du fermier » est complément du nom « poules »).",
+              "rubric": "Pour chaque élément : 0,5 pour la classe grammaticale, 0,5 pour la fonction complète (avec le mot complété)." },
+            { "id": "q11", "type": "open", "points": 2, "lesson_part": 4, "skills": ["fr-fonctions-verbe", "fr-manipulations"], "cognitive": "analyser",
+              "prompt": "« Mon frère parle de ses jeux vidéo toute la journée. » Remplace le groupe « de ses jeux vidéo » par un pronom, puis donne la fonction de ce groupe.",
+              "solution": "« Mon frère en parle toute la journée. » Le groupe « de ses jeux vidéo », introduit par la préposition « de » et remplacé par « en », est COI du verbe « parle ».",
+              "rubric": "1 : phrase correctement réécrite avec « en » bien placé. 1 : fonction COI du verbe « parle »." }
+          ] },
+          { "label": "C · Je manipule et je rédige (5 points)", "questions": [
+            { "id": "q12", "type": "open", "points": 2, "lesson_part": 5, "skills": ["fr-manipulations", "fr-fonctions-phrase"], "cognitive": "analyser",
+              "prompt": "« Les hirondelles reviennent au printemps. » Prouve, à l'aide de deux manipulations, que « au printemps » est un complément circonstanciel.",
+              "solution": "Suppression : « Les hirondelles reviennent. » La phrase reste correcte. Déplacement : « Au printemps, les hirondelles reviennent. » Le groupe se déplace facilement : c'est un complément circonstanciel (de temps).",
+              "rubric": "1 par manipulation correctement réalisée et nommée (suppression, déplacement). 0,5 si la manipulation est faite sans être nommée ou expliquée." },
+            { "id": "q13", "type": "open", "points": 3, "lesson_part": 5, "skills": ["fr-fonctions-verbe", "fr-fonctions-phrase", "fr-fonctions-nom"], "cognitive": "rediger",
+              "prompt": "Écris une phrase sur le thème « un anniversaire » qui contienne : un sujet, un COD, un adjectif épithète et un complément circonstanciel de temps. Recopie ensuite chaque élément et indique sa fonction.",
+              "solution": "Exemple : « Dimanche dernier, mes amis m'ont offert un énorme gâteau. » Sujet : « mes amis ». COD : « un énorme gâteau » (COD du verbe « ont offert »). Épithète : « énorme » (épithète de « gâteau »). CC de temps : « Dimanche dernier ».",
+              "rubric": "0,5 : phrase correcte (syntaxe, orthographe) et sur le thème. 0,5 par élément présent et bien identifié (× 4 = 2). 0,5 : fonctions précisées avec le mot complété." }
+          ] }
+        ]
+      }
+    ]
+  }
+}

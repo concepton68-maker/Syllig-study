@@ -1,0 +1,1123 @@
+{
+  "format": "syllig-course/1",
+  "code": "QG035",
+  "level": "quatrieme",
+  "subject": "Mathématiques",
+  "chapter": "Nombres et calculs (début d'année)",
+  "title": "Multiplier et diviser des nombres relatifs",
+  "skills": [
+    {
+      "id": "m4-relatifs-somme",
+      "label": "Additionner et soustraire des nombres relatifs (rappels de 5e)"
+    },
+    {
+      "id": "m4-relatifs-produit",
+      "label": "Multiplier deux nombres relatifs"
+    },
+    {
+      "id": "m4-relatifs-produit-plusieurs",
+      "label": "Trouver le signe et la valeur d'un produit de plusieurs facteurs"
+    },
+    {
+      "id": "m4-relatifs-quotient",
+      "label": "Diviser des nombres relatifs et écrire un quotient en écriture fractionnaire"
+    },
+    {
+      "id": "m4-relatifs-priorites",
+      "label": "Enchaîner des calculs avec des relatifs en respectant les priorités"
+    },
+    {
+      "id": "m4-relatifs-probleme",
+      "label": "Résoudre un problème avec des nombres relatifs"
+    }
+  ],
+  "lesson": {
+    "duration_min": 40,
+    "objectives": [
+      "revoir l'addition et la soustraction des nombres relatifs (5e) ;",
+      "multiplier deux nombres relatifs grâce à la règle des signes ;",
+      "trouver le signe d'un produit de plusieurs facteurs sans tout calculer ;",
+      "diviser deux nombres relatifs et écrire le quotient sous forme de fraction ;",
+      "utiliser ces règles dans un calcul enchaîné ou un petit problème."
+    ],
+    "essential": "En 5e, tu as appris à additionner et soustraire des nombres relatifs. En 4e, tu apprends à les multiplier et à les diviser. Tout repose sur une seule règle : deux nombres de même signe donnent un produit (ou un quotient) positif, deux nombres de signes contraires donnent un produit (ou un quotient) négatif. Pour un produit de plusieurs facteurs, il suffit de compter les facteurs négatifs : un nombre pair donne un résultat positif, un nombre impair un résultat négatif. Méthode gagnante : je trouve d'abord le signe, ensuite je calcule avec les distances à zéro.",
+    "parts": [
+      {
+        "title": "Rappels de 5e : additionner et soustraire des relatifs",
+        "blocks": [
+          {
+            "type": "callout",
+            "kind": "definition",
+            "text": "Un **nombre relatif** est un nombre positif ou négatif, comme +5, −3 ou −2,5. Sa **distance à zéro** est le nombre écrit sans son signe : la distance à zéro de −3 est 3. Deux nombres **opposés** ont la même distance à zéro et des signes contraires : 4 et −4 sont opposés."
+          },
+          {
+            "type": "table",
+            "caption": "Les règles de 5e à connaître par cœur",
+            "columns": [
+              "Situation",
+              "Règle",
+              "Exemple"
+            ],
+            "rows": [
+              [
+                "Addition de deux nombres de même signe",
+                "On garde le signe commun et on additionne les distances à zéro.",
+                "(−4) + (−7) = −11"
+              ],
+              [
+                "Addition de deux nombres de signes contraires",
+                "On prend le signe du nombre qui a la plus grande distance à zéro, puis on soustrait les distances à zéro.",
+                "(−9) + 5 = −4"
+              ],
+              [
+                "Soustraction",
+                "Soustraire un nombre, c'est ajouter son opposé.",
+                "3 − (−6) = 3 + 6 = 9"
+              ]
+            ]
+          },
+          {
+            "type": "callout",
+            "kind": "methode",
+            "title": "Calculer une suite d'additions et de soustractions",
+            "text": "1. Je transforme chaque soustraction en addition de l'opposé.\n2. Je regroupe les nombres positifs ensemble et les nombres négatifs ensemble.\n3. Je termine par une seule addition."
+          },
+          {
+            "type": "formula",
+            "latex": "A = −8 + 3 − (−6) − 4\nA = −8 + 3 + 6 − 4\nA = (3 + 6) + (−8 − 4)\nA = 9 + (−12)\nA = −3"
+          },
+          {
+            "type": "callout",
+            "kind": "plus",
+            "title": "Et maintenant ?",
+            "text": "Cette année, tu vas apprendre à **multiplier** et à **diviser** des nombres relatifs. Attention : les règles ne sont pas les mêmes que pour l'addition. Garde bien les deux séparées dans ta tête."
+          }
+        ],
+        "checkpoint": {
+          "variants": [
+            {
+              "prompt": "Combien vaut (−7) + (−5) ?",
+              "options": [
+                "2",
+                "−2",
+                "12",
+                "−12"
+              ],
+              "answer": 3,
+              "hint": "Les deux nombres ont le même signe : relis la première ligne du tableau.",
+              "explanation": "Même signe : on garde le signe − et on additionne 7 + 5 = 12. Résultat : −12."
+            },
+            {
+              "prompt": "Combien vaut 4 − (−9) ?",
+              "options": [
+                "−5",
+                "13",
+                "5",
+                "−13"
+              ],
+              "answer": 1,
+              "hint": "Soustraire un nombre, c'est ajouter son opposé.",
+              "explanation": "4 − (−9) = 4 + 9 = 13."
+            },
+            {
+              "prompt": "Quel est l'opposé de −2,5 ?",
+              "options": [
+                "2,5",
+                "−2,5",
+                "0,4",
+                "−0,4"
+              ],
+              "answer": 0,
+              "hint": "Deux nombres opposés ont la même distance à zéro mais des signes contraires.",
+              "explanation": "L'opposé de −2,5 est 2,5 : même distance à zéro, signe contraire. (0,4 serait l'inverse de 2,5, c'est une autre notion.)"
+            }
+          ]
+        }
+      },
+      {
+        "title": "Multiplier deux nombres relatifs",
+        "blocks": [
+          {
+            "type": "text",
+            "text": "Une multiplication par un nombre entier positif est une addition répétée. Par exemple :\n3 × (−4) = (−4) + (−4) + (−4) = −12.\nMais que vaut (−4) × (−2) ? Pour le deviner, observons une régularité."
+          },
+          {
+            "type": "table",
+            "caption": "On multiplie −4 par des nombres de plus en plus petits",
+            "columns": [
+              "Calcul",
+              "Résultat",
+              "Ce qu'on remarque"
+            ],
+            "rows": [
+              [
+                "(−4) × 3",
+                "−12",
+                "C'est (−4) + (−4) + (−4)."
+              ],
+              [
+                "(−4) × 2",
+                "−8",
+                "Le résultat augmente de 4."
+              ],
+              [
+                "(−4) × 1",
+                "−4",
+                "Il augmente encore de 4."
+              ],
+              [
+                "(−4) × 0",
+                "0",
+                "Il augmente encore de 4."
+              ],
+              [
+                "(−4) × (−1)",
+                "4",
+                "On continue la régularité : + 4."
+              ],
+              [
+                "(−4) × (−2)",
+                "8",
+                "Le produit de deux négatifs est positif !"
+              ]
+            ]
+          },
+          {
+            "type": "callout",
+            "kind": "retiens",
+            "title": "Règle des signes pour un produit",
+            "text": "Pour multiplier deux nombres relatifs :\n1. on trouve le **signe** : le produit de deux nombres de **même signe** est **positif** ; le produit de deux nombres de **signes contraires** est **négatif** ;\n2. on multiplie les **distances à zéro**."
+          },
+          {
+            "type": "table",
+            "caption": "La règle des signes en résumé",
+            "columns": [
+              "Signes des deux facteurs",
+              "Signe du produit",
+              "Exemple"
+            ],
+            "rows": [
+              [
+                "positif × positif",
+                "positif",
+                "6 × 7 = 42"
+              ],
+              [
+                "négatif × négatif",
+                "positif",
+                "(−5) × (−7) = 35"
+              ],
+              [
+                "positif × négatif",
+                "négatif",
+                "6 × (−9) = −54"
+              ],
+              [
+                "négatif × positif",
+                "négatif",
+                "(−2,5) × 4 = −10"
+              ]
+            ]
+          },
+          {
+            "type": "callout",
+            "kind": "retiens",
+            "title": "Deux cas particuliers",
+            "text": "• Multiplier un nombre par **−1**, c'est prendre son **opposé** : (−1) × 8 = −8 et (−1) × (−3) = 3.\n• Multiplier un nombre par **0** donne toujours **0** : (−15) × 0 = 0."
+          },
+          {
+            "type": "callout",
+            "kind": "attention",
+            "text": "Ne mélange pas l'addition et la multiplication !\n(−3) + (−5) = −8 (même signe : on garde le signe −).\n(−3) × (−5) = 15 (même signe : le produit est positif).\nLa règle « moins par moins donne plus » ne concerne que la multiplication et la division."
+          }
+        ],
+        "checkpoint": {
+          "variants": [
+            {
+              "prompt": "Combien vaut (−6) × (−7) ?",
+              "options": [
+                "−42",
+                "42",
+                "−13",
+                "13"
+              ],
+              "answer": 1,
+              "hint": "Les deux facteurs ont-ils le même signe ? Relis l'encadré « Règle des signes ».",
+              "explanation": "Deux facteurs négatifs : même signe, donc le produit est positif. 6 × 7 = 42."
+            },
+            {
+              "prompt": "Combien vaut 9 × (−3) ?",
+              "options": [
+                "27",
+                "6",
+                "−27",
+                "−12"
+              ],
+              "answer": 2,
+              "hint": "Un facteur positif et un facteur négatif : quel est le signe du produit ?",
+              "explanation": "Signes contraires : le produit est négatif. 9 × 3 = 27, donc 9 × (−3) = −27."
+            },
+            {
+              "prompt": "Combien vaut (−0,5) × 8 ?",
+              "options": [
+                "4",
+                "−4",
+                "−40",
+                "7,5"
+              ],
+              "answer": 1,
+              "hint": "Trouve d'abord le signe, puis calcule 0,5 × 8.",
+              "explanation": "Signes contraires : le produit est négatif. 0,5 × 8 = 4, donc (−0,5) × 8 = −4."
+            }
+          ]
+        }
+      },
+      {
+        "title": "Produit de plusieurs facteurs",
+        "blocks": [
+          {
+            "type": "text",
+            "text": "Comme avec les nombres positifs, on peut **changer l'ordre** des facteurs d'un produit et les **regrouper** comme on veut : le résultat ne change pas. On peut donc s'occuper du signe d'un côté et des distances à zéro de l'autre."
+          },
+          {
+            "type": "callout",
+            "kind": "retiens",
+            "title": "Signe d'un produit de plusieurs facteurs",
+            "text": "Un produit de facteurs **non nuls** est :\n• **positif** s'il contient un nombre **pair** de facteurs négatifs (0, 2, 4, 6…) ;\n• **négatif** s'il contient un nombre **impair** de facteurs négatifs (1, 3, 5…)."
+          },
+          {
+            "type": "text",
+            "text": "Pourquoi ? Les facteurs négatifs « s'annulent » deux par deux : (−) × (−) donne (+). S'il en reste un tout seul à la fin, le résultat est négatif."
+          },
+          {
+            "type": "callout",
+            "kind": "methode",
+            "title": "Calculer un produit de plusieurs relatifs",
+            "text": "1. Je compte les facteurs négatifs et j'en déduis le signe du résultat.\n2. Je multiplie les distances à zéro, en regroupant les facteurs qui vont bien ensemble (2 × 5 = 10, 4 × 25 = 100…).\n3. J'écris le résultat avec son signe."
+          },
+          {
+            "type": "formula",
+            "latex": "B = (−2) × (−5) × 3 × (−1)\nFacteurs négatifs : −2, −5 et −1, soit 3 facteurs (nombre impair) : B est négatif.\nDistances à zéro : 2 × 5 × 3 × 1 = 30\nB = −30"
+          },
+          {
+            "type": "formula",
+            "latex": "C = (−4) × 25 × (−3) × (−1) × (−2)\nFacteurs négatifs : −4, −3, −1 et −2, soit 4 facteurs (nombre pair) : C est positif.\nDistances à zéro : (4 × 25) × (3 × 1 × 2) = 100 × 6 = 600\nC = 600"
+          },
+          {
+            "type": "heading",
+            "text": "Le carré d'un nombre relatif"
+          },
+          {
+            "type": "text",
+            "text": "Le produit d'un nombre par lui-même s'appelle son **carré**. Les deux facteurs ont toujours le même signe, donc un carré n'est **jamais négatif** :\n(−5) × (−5) = 25 et 5 × 5 = 25."
+          },
+          {
+            "type": "callout",
+            "kind": "attention",
+            "text": "Si l'un des facteurs vaut **0**, le produit vaut **0**, quel que soit le nombre de facteurs négatifs : (−3) × 0 × (−7) × (−2) = 0. La règle « pair / impair » ne sert que pour des facteurs non nuls."
+          }
+        ],
+        "checkpoint": {
+          "variants": [
+            {
+              "prompt": "Sans calculer, quel est le signe de (−1) × (−2) × (−3) × (−4) × (−5) ?",
+              "options": [
+                "Positif",
+                "Négatif",
+                "On ne peut pas savoir sans calculer"
+              ],
+              "answer": 1,
+              "hint": "Compte le nombre de facteurs négatifs : est-il pair ou impair ?",
+              "explanation": "Il y a 5 facteurs négatifs, un nombre impair : le produit est négatif (il vaut −120)."
+            },
+            {
+              "prompt": "Combien vaut (−2) × (−3) × (−5) ?",
+              "options": [
+                "30",
+                "−30",
+                "−10",
+                "10"
+              ],
+              "answer": 1,
+              "hint": "Trouve d'abord le signe en comptant les facteurs négatifs, puis multiplie les distances à zéro.",
+              "explanation": "3 facteurs négatifs (impair) : le produit est négatif. 2 × 3 × 5 = 30, donc le résultat est −30."
+            },
+            {
+              "prompt": "Combien vaut (−5) × (−5) ?",
+              "options": [
+                "−25",
+                "−10",
+                "25",
+                "10"
+              ],
+              "answer": 2,
+              "hint": "C'est un carré : les deux facteurs ont le même signe.",
+              "explanation": "Deux facteurs négatifs : le produit est positif. 5 × 5 = 25. Un carré n'est jamais négatif."
+            }
+          ]
+        }
+      },
+      {
+        "title": "Diviser deux nombres relatifs",
+        "blocks": [
+          {
+            "type": "callout",
+            "kind": "definition",
+            "text": "Si b n'est pas nul, le **quotient** a ÷ b est le nombre qui, multiplié par b, donne a.\nExemple : (−4) × 3 = −12, donc (−12) ÷ 3 = −4."
+          },
+          {
+            "type": "callout",
+            "kind": "retiens",
+            "title": "Règle des signes pour un quotient",
+            "text": "C'est la **même règle** que pour le produit :\n• deux nombres de **même signe** : le quotient est **positif** ;\n• deux nombres de **signes contraires** : le quotient est **négatif**.\nEnsuite, on divise les distances à zéro."
+          },
+          {
+            "type": "formula",
+            "latex": "(−36) ÷ (−4) = 9\n42 ÷ (−6) = −7\n(−3) ÷ 4 = −0,75\n(−7) ÷ (−2) = 3,5"
+          },
+          {
+            "type": "callout",
+            "kind": "methode",
+            "title": "Vérifier une division",
+            "text": "On vérifie un quotient avec une multiplication. (−36) ÷ (−4) = 9 est juste car 9 × (−4) = −36."
+          },
+          {
+            "type": "heading",
+            "text": "L'écriture fractionnaire"
+          },
+          {
+            "type": "text",
+            "text": "Un quotient peut s'écrire avec une barre de fraction : (−15) ÷ 5 s'écrit (−15)/5 et vaut −3. Le signe d'une fraction suit la règle des signes du quotient. On place en général le signe − devant la fraction :"
+          },
+          {
+            "type": "formula",
+            "latex": "(−3)/4 = 3/(−4) = −3/4\n(−3)/(−4) = 3/4\n(−8)/(−2) = 4"
+          },
+          {
+            "type": "callout",
+            "kind": "attention",
+            "text": "On ne divise **jamais** par 0 : (−5) ÷ 0 n'existe pas. En revanche, 0 divisé par un nombre non nul vaut 0 : 0 ÷ (−5) = 0."
+          }
+        ],
+        "checkpoint": {
+          "variants": [
+            {
+              "prompt": "Combien vaut (−48) ÷ 6 ?",
+              "options": [
+                "8",
+                "−8",
+                "−42",
+                "−54"
+              ],
+              "answer": 1,
+              "hint": "Signes contraires : quel est le signe du quotient ?",
+              "explanation": "Signes contraires : le quotient est négatif. 48 ÷ 6 = 8, donc (−48) ÷ 6 = −8."
+            },
+            {
+              "prompt": "Combien vaut (−35) ÷ (−7) ?",
+              "options": [
+                "−5",
+                "5",
+                "−28",
+                "42"
+              ],
+              "answer": 1,
+              "hint": "Même signe : le quotient est positif. Vérifie avec une multiplication.",
+              "explanation": "Même signe : le quotient est positif. 35 ÷ 7 = 5. Vérification : 5 × (−7) = −35."
+            },
+            {
+              "prompt": "Quelle fraction est égale à (−6)/(−7) ?",
+              "options": [
+                "−6/7",
+                "6/(−7)",
+                "6/7",
+                "−7/6"
+              ],
+              "answer": 2,
+              "hint": "Le numérateur et le dénominateur ont le même signe…",
+              "explanation": "Même signe : le quotient est positif. (−6)/(−7) = 6/7. Les deux premières propositions valent −6/7, un nombre négatif."
+            }
+          ]
+        }
+      },
+      {
+        "title": "Calculs enchaînés et problèmes",
+        "blocks": [
+          {
+            "type": "callout",
+            "kind": "retiens",
+            "title": "Priorités opératoires (elles ne changent pas avec les relatifs)",
+            "text": "1. On calcule d'abord ce qui est **entre parenthèses**.\n2. Puis les **multiplications et divisions**, de gauche à droite.\n3. Enfin les **additions et soustractions**, de gauche à droite."
+          },
+          {
+            "type": "formula",
+            "latex": "D = 7 + (−3) × 5\nD = 7 + (−15)      (la multiplication d'abord)\nD = −8"
+          },
+          {
+            "type": "formula",
+            "latex": "E = (−20) ÷ (4 − 9)\nE = (−20) ÷ (−5)   (la parenthèse d'abord)\nE = 4"
+          },
+          {
+            "type": "formula",
+            "latex": "F = (−2) × (−6) − 18 ÷ (−3)\nF = 12 − (−6)      (la multiplication et la division d'abord)\nF = 12 + 6\nF = 18"
+          },
+          {
+            "type": "callout",
+            "kind": "attention",
+            "text": "Dans D = 7 + (−3) × 5, on ne calcule pas 7 + (−3) en premier ! Écris une ligne par étape et souligne l'opération que tu fais : tu éviteras les erreurs de signe."
+          },
+          {
+            "type": "heading",
+            "text": "Problèmes résolus"
+          },
+          {
+            "type": "callout",
+            "kind": "methode",
+            "title": "Une température qui baisse",
+            "text": "Il fait 4 °C. La température baisse de 2 °C par heure pendant 5 heures.\n• Variation totale : 5 × (−2) = −10 °C.\n• Température finale : 4 + (−10) = −6 °C."
+          },
+          {
+            "type": "callout",
+            "kind": "methode",
+            "title": "Une moyenne de températures",
+            "text": "Relevés à 7 h pendant 6 jours : −5 ; 2 ; −3 ; −6 ; 1 ; −7 (en °C).\n• Somme : (2 + 1) + (−5 − 3 − 6 − 7) = 3 + (−21) = −18.\n• Moyenne : (−18) ÷ 6 = −3.\nLa température moyenne à 7 h est de −3 °C."
+          }
+        ],
+        "checkpoint": {
+          "variants": [
+            {
+              "prompt": "Combien vaut 5 − 2 × (−4) ?",
+              "options": [
+                "12",
+                "−3",
+                "13",
+                "−13"
+              ],
+              "answer": 2,
+              "hint": "Quelle opération est prioritaire : la soustraction ou la multiplication ?",
+              "explanation": "On calcule d'abord 2 × (−4) = −8, puis 5 − (−8) = 5 + 8 = 13."
+            },
+            {
+              "prompt": "Combien vaut (−12) ÷ (2 − 6) ?",
+              "options": [
+                "3",
+                "−3",
+                "−12",
+                "−8"
+              ],
+              "answer": 0,
+              "hint": "Commence par la parenthèse.",
+              "explanation": "2 − 6 = −4, puis (−12) ÷ (−4) = 3 (même signe : positif)."
+            },
+            {
+              "prompt": "Quelle est la moyenne des températures −4 °C ; 2 °C ; −7 °C ; 1 °C ?",
+              "options": [
+                "−2 °C",
+                "2 °C",
+                "−8 °C",
+                "−3,5 °C"
+              ],
+              "answer": 0,
+              "hint": "Additionne les quatre températures, puis divise la somme par 4.",
+              "explanation": "Somme : −4 + 2 − 7 + 1 = −8. Moyenne : (−8) ÷ 4 = −2 °C."
+            }
+          ]
+        }
+      }
+    ],
+    "memo": [
+      {
+        "label": "Additionner (5e)",
+        "text": "Même signe : on garde le signe et on additionne les distances à zéro. Signes contraires : signe du plus « grand » en distance à zéro, on soustrait."
+      },
+      {
+        "label": "Soustraire (5e)",
+        "text": "Soustraire un nombre, c'est ajouter son opposé : a − (−b) = a + b."
+      },
+      {
+        "label": "Produit de deux relatifs",
+        "text": "Même signe : positif. Signes contraires : négatif. Puis on multiplie les distances à zéro."
+      },
+      {
+        "label": "Plusieurs facteurs",
+        "text": "Nombre pair de facteurs négatifs : positif. Nombre impair : négatif. Un facteur nul : le produit vaut 0."
+      },
+      {
+        "label": "Quotient",
+        "text": "Même règle des signes que le produit. On ne divise jamais par 0. (−a)/b = a/(−b) = −a/b."
+      },
+      {
+        "label": "Priorités",
+        "text": "Parenthèses, puis × et ÷, enfin + et − (de gauche à droite)."
+      },
+      {
+        "label": "Attention",
+        "text": "(−3) + (−5) = −8 mais (−3) × (−5) = 15 : « moins par moins donne plus » ne vaut que pour × et ÷."
+      }
+    ]
+  },
+  "exercises": {
+    "duration_min": 35,
+    "instructions": "Fais les exercices dans l'ordre, au brouillon d'abord, sans calculatrice. Pour un nombre négatif, tape le signe moins du clavier (-), par exemple -7. Les nombres décimaux s'écrivent avec une virgule ou un point. Les corrigés s'affichent après tes réponses.",
+    "pass_threshold": 8,
+    "texts": [],
+    "items": [
+      {
+        "id": "ex1",
+        "type": "numeric",
+        "stars": 1,
+        "lesson_part": 2,
+        "skills": [
+          "m4-relatifs-produit"
+        ],
+        "cognitive": "appliquer",
+        "prompt": "Calcule (−6) × 8.",
+        "answer": -48,
+        "solution": "Signes contraires : le produit est négatif.\n6 × 8 = 48, donc (−6) × 8 = −48."
+      },
+      {
+        "id": "ex2",
+        "type": "qcm",
+        "stars": 1,
+        "lesson_part": 4,
+        "skills": [
+          "m4-relatifs-quotient"
+        ],
+        "cognitive": "appliquer",
+        "prompt": "Combien vaut (−54) ÷ (−6) ?",
+        "options": [
+          "−9",
+          "9",
+          "−48",
+          "48"
+        ],
+        "answer": 1,
+        "solution": "Même signe : le quotient est positif. 54 ÷ 6 = 9, donc (−54) ÷ (−6) = 9.\nVérification : 9 × (−6) = −54.\n−48 et 48 sont des pièges : ce sont des résultats de soustraction, pas de division."
+      },
+      {
+        "id": "ex3",
+        "type": "numeric",
+        "stars": 1,
+        "lesson_part": 2,
+        "skills": [
+          "m4-relatifs-produit"
+        ],
+        "cognitive": "appliquer",
+        "prompt": "Calcule 0,5 × (−14).",
+        "answer": -7,
+        "solution": "Signes contraires : le produit est négatif.\n0,5 × 14 = 7 (prendre la moitié de 14), donc 0,5 × (−14) = −7."
+      },
+      {
+        "id": "ex4",
+        "type": "numeric",
+        "stars": 2,
+        "lesson_part": 3,
+        "skills": [
+          "m4-relatifs-produit-plusieurs"
+        ],
+        "cognitive": "appliquer",
+        "prompt": "Calcule G = (−2) × (−5) × 7 × (−1) × (−3).",
+        "answer": 210,
+        "solution": "Facteurs négatifs : −2, −5, −1 et −3, soit 4 facteurs (nombre pair) : G est positif.\nDistances à zéro : (2 × 5) × 7 × (1 × 3) = 10 × 7 × 3 = 210.\nG = 210."
+      },
+      {
+        "id": "ex5",
+        "type": "qcm",
+        "stars": 2,
+        "lesson_part": 3,
+        "skills": [
+          "m4-relatifs-produit-plusieurs"
+        ],
+        "cognitive": "analyser",
+        "prompt": "Sans faire les calculs, trouve le seul produit **négatif**.",
+        "options": [
+          "(−3) × (−4) × (−5) × (−6)",
+          "(−1) × 2 × (−3) × 4 × (−5)",
+          "(−8) × (−8)",
+          "(−7) × 0 × (−2)"
+        ],
+        "answer": 1,
+        "solution": "On compte les facteurs négatifs :\n• (−3) × (−4) × (−5) × (−6) : 4 facteurs négatifs (pair), positif (il vaut 360) ;\n• (−1) × 2 × (−3) × 4 × (−5) : 3 facteurs négatifs (impair), **négatif** (il vaut −120) ;\n• (−8) × (−8) : c'est un carré, positif (64) ;\n• (−7) × 0 × (−2) : un facteur est nul, le produit vaut 0, il n'est ni positif ni négatif."
+      },
+      {
+        "id": "ex6",
+        "type": "numeric",
+        "stars": 2,
+        "lesson_part": 5,
+        "skills": [
+          "m4-relatifs-priorites",
+          "m4-relatifs-quotient",
+          "m4-relatifs-produit"
+        ],
+        "cognitive": "appliquer",
+        "prompt": "Calcule H = (−63) ÷ 9 + (−4) × (−5).",
+        "answer": 13,
+        "solution": "La division et la multiplication sont prioritaires sur l'addition.\n(−63) ÷ 9 = −7 (signes contraires) et (−4) × (−5) = 20 (même signe).\nH = −7 + 20 = 13."
+      },
+      {
+        "id": "ex7",
+        "type": "numeric",
+        "stars": 2,
+        "lesson_part": 4,
+        "skills": [
+          "m4-relatifs-quotient"
+        ],
+        "cognitive": "appliquer",
+        "prompt": "Calcule (−45) ÷ (−6). Donne le résultat sous forme décimale.",
+        "answer": 7.5,
+        "solution": "Même signe : le quotient est positif.\n45 ÷ 6 = 7,5 (car 6 × 7 = 42 et il reste 3, soit 3 ÷ 6 = 0,5).\nDonc (−45) ÷ (−6) = 7,5. Vérification : 7,5 × (−6) = −45."
+      },
+      {
+        "id": "ex8",
+        "type": "numeric",
+        "stars": 2,
+        "lesson_part": 4,
+        "skills": [
+          "m4-relatifs-quotient",
+          "m4-relatifs-produit"
+        ],
+        "cognitive": "analyser",
+        "prompt": "Quel nombre faut-il écrire à la place des pointillés pour que l'égalité soit juste ?\n(−6) × … = 42",
+        "answer": -7,
+        "solution": "Le nombre cherché est 42 ÷ (−6).\nSignes contraires : le quotient est négatif. 42 ÷ 6 = 7, donc le nombre est −7.\nVérification : (−6) × (−7) = 42 (même signe, produit positif)."
+      },
+      {
+        "id": "ex9",
+        "type": "numeric",
+        "stars": 3,
+        "lesson_part": 5,
+        "skills": [
+          "m4-relatifs-probleme",
+          "m4-relatifs-produit"
+        ],
+        "cognitive": "analyser",
+        "prompt": "À 18 h, un thermomètre indique 5 °C. Ensuite, la température baisse de 2,5 °C par heure jusqu'à minuit.\nQuelle température indique le thermomètre à minuit (en °C) ?",
+        "answer": -10,
+        "solution": "De 18 h à minuit, il s'écoule 6 heures.\nVariation totale : 6 × (−2,5) = −15 °C.\nTempérature à minuit : 5 + (−15) = −10 °C."
+      },
+      {
+        "id": "ex10",
+        "type": "numeric",
+        "stars": 3,
+        "lesson_part": 5,
+        "skills": [
+          "m4-relatifs-probleme",
+          "m4-relatifs-priorites"
+        ],
+        "cognitive": "analyser",
+        "prompt": "Dans un jeu de 20 questions, une bonne réponse rapporte 5 points, une mauvaise réponse fait perdre 3 points (elle compte −3) et une question sans réponse compte 0.\nLéa a donné 12 bonnes réponses, 6 mauvaises réponses et n'a pas répondu à 2 questions. Quel est son score ?",
+        "answer": 42,
+        "solution": "Score = 12 × 5 + 6 × (−3) + 2 × 0\n= 60 + (−18) + 0\n= 42 points.\nVérification : 12 + 6 + 2 = 20 questions, c'est bien le nombre total."
+      }
+    ]
+  },
+  "evaluation": {
+    "duration_min": 30,
+    "conditions": "Sans calculatrice, sans la leçon, en 30 minutes. Pour un nombre négatif, tape le signe moins du clavier (-), par exemple -7. Les nombres décimaux s'écrivent avec une virgule ou un point. Barème : A = 6 points · B = 7 points · C = 7 points. Dans les questions rédigées, écris toutes les étapes de calcul.",
+    "total_points": 20,
+    "variants": [
+      {
+        "texts": [],
+        "sections": [
+          {
+            "label": "A · Règle des signes (6 points)",
+            "questions": [
+              {
+                "id": "q1",
+                "type": "numeric",
+                "points": 1,
+                "lesson_part": 2,
+                "skills": [
+                  "m4-relatifs-produit"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Calcule (−9) × 7.",
+                "answer": -63,
+                "solution": "Signes contraires : le produit est négatif. 9 × 7 = 63, donc (−9) × 7 = −63."
+              },
+              {
+                "id": "q2",
+                "type": "numeric",
+                "points": 1,
+                "lesson_part": 2,
+                "skills": [
+                  "m4-relatifs-produit"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Calcule (−8) × (−6).",
+                "answer": 48,
+                "solution": "Même signe : le produit est positif. 8 × 6 = 48."
+              },
+              {
+                "id": "q3",
+                "type": "numeric",
+                "points": 1,
+                "lesson_part": 4,
+                "skills": [
+                  "m4-relatifs-quotient"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Calcule (−56) ÷ (−8).",
+                "answer": 7,
+                "solution": "Même signe : le quotient est positif. 56 ÷ 8 = 7. Vérification : 7 × (−8) = −56."
+              },
+              {
+                "id": "q4",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 3,
+                "skills": [
+                  "m4-relatifs-produit-plusieurs"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Sans le calculer, donne le signe du produit (−3) × 2 × (−1) × (−5) × (−4) × (−2).",
+                "options": [
+                  "positif",
+                  "négatif",
+                  "nul"
+                ],
+                "answer": 1,
+                "solution": "Facteurs négatifs : −3, −1, −5, −4 et −2, soit 5 facteurs (nombre impair) : le produit est négatif (il vaut −240)."
+              },
+              {
+                "id": "q5",
+                "type": "numeric",
+                "points": 1,
+                "lesson_part": 2,
+                "skills": [
+                  "m4-relatifs-produit"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Calcule (−0,4) × 25.",
+                "answer": -10,
+                "solution": "Signes contraires : le produit est négatif. 0,4 × 25 = 10 (car 4 × 25 = 100), donc (−0,4) × 25 = −10."
+              },
+              {
+                "id": "q6",
+                "type": "numeric",
+                "points": 1,
+                "lesson_part": 4,
+                "skills": [
+                  "m4-relatifs-quotient"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Calcule 18 ÷ (−4). Donne le résultat sous forme décimale.",
+                "answer": -4.5,
+                "solution": "Signes contraires : le quotient est négatif. 18 ÷ 4 = 4,5, donc 18 ÷ (−4) = −4,5."
+              }
+            ]
+          },
+          {
+            "label": "B · Calculs (7 points)",
+            "questions": [
+              {
+                "id": "q7",
+                "type": "numeric",
+                "points": 1.5,
+                "lesson_part": 3,
+                "skills": [
+                  "m4-relatifs-produit-plusieurs"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Calcule (−5) × 4 × (−2) × (−3).",
+                "answer": -120,
+                "solution": "Facteurs négatifs : −5, −2 et −3, soit 3 facteurs (impair) : le produit est négatif.\nDistances à zéro : (5 × 4) × (2 × 3) = 20 × 6 = 120.\nRésultat : −120."
+              },
+              {
+                "id": "q8",
+                "type": "numeric",
+                "points": 1.5,
+                "lesson_part": 4,
+                "skills": [
+                  "m4-relatifs-quotient",
+                  "m4-relatifs-produit"
+                ],
+                "cognitive": "analyser",
+                "prompt": "Quel nombre faut-il écrire à la place des pointillés pour que l'égalité soit juste ?\n(−9) × … = −72",
+                "answer": 8,
+                "solution": "Le nombre cherché est (−72) ÷ (−9) = 8 (même signe : positif).\nVérification : (−9) × 8 = −72."
+              },
+              {
+                "id": "q9",
+                "type": "open",
+                "points": 2,
+                "lesson_part": 5,
+                "skills": [
+                  "m4-relatifs-priorites",
+                  "m4-relatifs-produit",
+                  "m4-relatifs-quotient"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Calcule D = (−5) × 4 − (−24) ÷ (−3) en écrivant toutes les étapes.",
+                "solution": "La multiplication et la division sont prioritaires.\n(−5) × 4 = −20 (signes contraires).\n(−24) ÷ (−3) = 8 (même signe).\nD = −20 − 8\nD = −28.",
+                "rubric": "0,5 pt : priorités respectées (multiplication et division avant la soustraction). 0,5 pt : (−5) × 4 = −20. 0,5 pt : (−24) ÷ (−3) = 8. 0,5 pt : D = −20 − 8 = −28. Si une seule erreur de signe dans un calcul intermédiaire mais suite cohérente : retirer seulement 0,5 pt."
+              },
+              {
+                "id": "q10",
+                "type": "open",
+                "points": 2,
+                "lesson_part": 3,
+                "skills": [
+                  "m4-relatifs-produit-plusieurs",
+                  "m4-relatifs-quotient"
+                ],
+                "cognitive": "rediger",
+                "prompt": "Vrai ou faux ? Justifie chaque réponse par une phrase.\na) Le produit (−2) × (−3) × (−4) est positif.\nb) Le quotient de deux nombres négatifs est toujours positif.",
+                "solution": "a) Faux : il y a 3 facteurs négatifs, un nombre impair, donc le produit est négatif. Il vaut −24.\nb) Vrai : deux nombres de même signe ont un quotient positif. Par exemple (−10) ÷ (−2) = 5.",
+                "rubric": "Pour chaque affirmation : 0,5 pt pour « vrai » ou « faux » correct, 0,5 pt pour une justification qui cite la règle (nombre impair de facteurs négatifs ; même signe) ou un calcul juste. Une réponse sans justification : 0,5 pt au plus."
+              }
+            ]
+          },
+          {
+            "label": "C · Problème : températures en hiver (7 points)",
+            "questions": [
+              {
+                "id": "q11",
+                "type": "numeric",
+                "points": 2,
+                "lesson_part": 5,
+                "skills": [
+                  "m4-relatifs-probleme",
+                  "m4-relatifs-quotient"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Dans une station de montagne, on a relevé la température à 6 h pendant cinq jours :\nlundi −6 °C ; mardi −3 °C ; mercredi 2 °C ; jeudi −8 °C ; vendredi 0 °C.\n\nCalcule la température moyenne de ces cinq relevés (en °C).",
+                "answer": -3,
+                "solution": "Somme : −6 + (−3) + 2 + (−8) + 0 = 2 + (−17) = −15.\nMoyenne : (−15) ÷ 5 = −3 °C."
+              },
+              {
+                "id": "q12",
+                "type": "numeric",
+                "points": 2,
+                "lesson_part": 5,
+                "skills": [
+                  "m4-relatifs-probleme",
+                  "m4-relatifs-produit"
+                ],
+                "cognitive": "analyser",
+                "prompt": "Le vendredi à 22 h, il fait 3 °C. La température baisse ensuite de 1,5 °C par heure jusqu'au samedi 6 h.\nQuelle est la température le samedi à 6 h (en °C) ?",
+                "answer": -9,
+                "solution": "De 22 h à 6 h le lendemain, il s'écoule 8 heures.\nVariation : 8 × (−1,5) = −12 °C.\nTempérature à 6 h : 3 + (−12) = −9 °C."
+              },
+              {
+                "id": "q13",
+                "type": "open",
+                "points": 3,
+                "lesson_part": 5,
+                "skills": [
+                  "m4-relatifs-probleme",
+                  "m4-relatifs-quotient"
+                ],
+                "cognitive": "rediger",
+                "prompt": "On ajoute le relevé du samedi (trouvé à la question précédente) aux cinq autres. Montre que la température moyenne des six relevés est −4 °C. Rédige ta réponse.",
+                "solution": "Somme des cinq premiers relevés : −15 (question 11).\nSomme des six relevés : −15 + (−9) = −24.\nMoyenne : (−24) ÷ 6 = −4.\nLa température moyenne des six relevés est bien −4 °C.",
+                "rubric": "1 pt : somme des six relevés −24 (en réutilisant −15 ou en refaisant l'addition). 1 pt : division par 6 (et non par 5). 0,5 pt : (−24) ÷ 6 = −4 avec le bon signe. 0,5 pt : phrase de conclusion. Si l'élève a trouvé une autre valeur pour samedi à la question 12, accepter un raisonnement juste avec sa valeur (au plus 2 pts)."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "texts": [],
+        "sections": [
+          {
+            "label": "A · Règle des signes (6 points)",
+            "questions": [
+              {
+                "id": "q1",
+                "type": "numeric",
+                "points": 1,
+                "lesson_part": 2,
+                "skills": [
+                  "m4-relatifs-produit"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Calcule 8 × (−7).",
+                "answer": -56,
+                "solution": "Signes contraires : le produit est négatif. 8 × 7 = 56, donc 8 × (−7) = −56."
+              },
+              {
+                "id": "q2",
+                "type": "numeric",
+                "points": 1,
+                "lesson_part": 2,
+                "skills": [
+                  "m4-relatifs-produit"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Calcule (−9) × (−5).",
+                "answer": 45,
+                "solution": "Même signe : le produit est positif. 9 × 5 = 45."
+              },
+              {
+                "id": "q3",
+                "type": "numeric",
+                "points": 1,
+                "lesson_part": 4,
+                "skills": [
+                  "m4-relatifs-quotient"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Calcule (−63) ÷ 7.",
+                "answer": -9,
+                "solution": "Signes contraires : le quotient est négatif. 63 ÷ 7 = 9, donc (−63) ÷ 7 = −9. Vérification : (−9) × 7 = −63."
+              },
+              {
+                "id": "q4",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 3,
+                "skills": [
+                  "m4-relatifs-produit-plusieurs"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Sans le calculer, donne le signe du produit (−2) × (−1) × 3 × (−4) × (−6).",
+                "options": [
+                  "positif",
+                  "négatif",
+                  "nul"
+                ],
+                "answer": 0,
+                "solution": "Facteurs négatifs : −2, −1, −4 et −6, soit 4 facteurs (nombre pair) : le produit est positif (il vaut 144)."
+              },
+              {
+                "id": "q5",
+                "type": "numeric",
+                "points": 1,
+                "lesson_part": 2,
+                "skills": [
+                  "m4-relatifs-produit"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Calcule (−0,5) × (−18).",
+                "answer": 9,
+                "solution": "Même signe : le produit est positif. 0,5 × 18 = 9 (la moitié de 18)."
+              },
+              {
+                "id": "q6",
+                "type": "numeric",
+                "points": 1,
+                "lesson_part": 4,
+                "skills": [
+                  "m4-relatifs-quotient"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Calcule (−21) ÷ (−6). Donne le résultat sous forme décimale.",
+                "answer": 3.5,
+                "solution": "Même signe : le quotient est positif. 21 ÷ 6 = 3,5, donc (−21) ÷ (−6) = 3,5."
+              }
+            ]
+          },
+          {
+            "label": "B · Calculs (7 points)",
+            "questions": [
+              {
+                "id": "q7",
+                "type": "numeric",
+                "points": 1.5,
+                "lesson_part": 3,
+                "skills": [
+                  "m4-relatifs-produit-plusieurs"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Calcule (−2) × 3 × (−5) × (−4) × (−1).",
+                "answer": 120,
+                "solution": "Facteurs négatifs : −2, −5, −4 et −1, soit 4 facteurs (pair) : le produit est positif.\nDistances à zéro : (2 × 5) × (3 × 4) × 1 = 10 × 12 = 120.\nRésultat : 120."
+              },
+              {
+                "id": "q8",
+                "type": "numeric",
+                "points": 1.5,
+                "lesson_part": 4,
+                "skills": [
+                  "m4-relatifs-quotient",
+                  "m4-relatifs-produit"
+                ],
+                "cognitive": "analyser",
+                "prompt": "Quel nombre faut-il écrire à la place des pointillés pour que l'égalité soit juste ?\n… × (−7) = 63",
+                "answer": -9,
+                "solution": "Le nombre cherché est 63 ÷ (−7) = −9 (signes contraires : négatif).\nVérification : (−9) × (−7) = 63."
+              },
+              {
+                "id": "q9",
+                "type": "open",
+                "points": 2,
+                "lesson_part": 5,
+                "skills": [
+                  "m4-relatifs-priorites",
+                  "m4-relatifs-produit",
+                  "m4-relatifs-quotient"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Calcule E = (−6) × (−3) + 35 ÷ (−7) en écrivant toutes les étapes.",
+                "solution": "La multiplication et la division sont prioritaires.\n(−6) × (−3) = 18 (même signe).\n35 ÷ (−7) = −5 (signes contraires).\nE = 18 + (−5)\nE = 13.",
+                "rubric": "0,5 pt : priorités respectées (multiplication et division avant l'addition). 0,5 pt : (−6) × (−3) = 18. 0,5 pt : 35 ÷ (−7) = −5. 0,5 pt : E = 18 + (−5) = 13. Si une seule erreur de signe dans un calcul intermédiaire mais suite cohérente : retirer seulement 0,5 pt."
+              },
+              {
+                "id": "q10",
+                "type": "open",
+                "points": 2,
+                "lesson_part": 3,
+                "skills": [
+                  "m4-relatifs-produit-plusieurs",
+                  "m4-relatifs-quotient"
+                ],
+                "cognitive": "rediger",
+                "prompt": "Vrai ou faux ? Justifie chaque réponse par une phrase.\na) Le produit (−1) × (−1) × (−1) × (−1) est négatif.\nb) Le quotient d'un nombre positif par un nombre négatif est toujours négatif.",
+                "solution": "a) Faux : il y a 4 facteurs négatifs, un nombre pair, donc le produit est positif. Il vaut 1.\nb) Vrai : les deux nombres ont des signes contraires, donc le quotient est négatif. Par exemple 12 ÷ (−3) = −4.",
+                "rubric": "Pour chaque affirmation : 0,5 pt pour « vrai » ou « faux » correct, 0,5 pt pour une justification qui cite la règle (nombre pair de facteurs négatifs ; signes contraires) ou un calcul juste. Une réponse sans justification : 0,5 pt au plus."
+              }
+            ]
+          },
+          {
+            "label": "C · Problème : un jeu de questions (7 points)",
+            "questions": [
+              {
+                "id": "q11",
+                "type": "numeric",
+                "points": 2,
+                "lesson_part": 5,
+                "skills": [
+                  "m4-relatifs-probleme",
+                  "m4-relatifs-quotient"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Dans un jeu en ligne, Léa a obtenu les scores suivants sur cinq manches :\n−4 ; 7 ; −9 ; −2 ; 3.\n\nCalcule son score moyen sur ces cinq manches.",
+                "answer": -1,
+                "solution": "Somme : (7 + 3) + (−4 − 9 − 2) = 10 + (−15) = −5.\nMoyenne : (−5) ÷ 5 = −1."
+              },
+              {
+                "id": "q12",
+                "type": "numeric",
+                "points": 2,
+                "lesson_part": 5,
+                "skills": [
+                  "m4-relatifs-probleme",
+                  "m4-relatifs-produit"
+                ],
+                "cognitive": "analyser",
+                "prompt": "Pendant la sixième manche, une bonne réponse rapporte 4 points et une mauvaise réponse fait perdre 3 points (elle compte −3). Léa donne 2 bonnes réponses et 5 mauvaises réponses.\nQuel est son score à cette sixième manche ?",
+                "answer": -7,
+                "solution": "Score = 2 × 4 + 5 × (−3)\n= 8 + (−15)\n= −7."
+              },
+              {
+                "id": "q13",
+                "type": "open",
+                "points": 3,
+                "lesson_part": 5,
+                "skills": [
+                  "m4-relatifs-probleme",
+                  "m4-relatifs-quotient"
+                ],
+                "cognitive": "rediger",
+                "prompt": "On ajoute le score de la sixième manche (trouvé à la question précédente) aux cinq autres. Montre que le score moyen de Léa sur les six manches est −2. Rédige ta réponse.",
+                "solution": "Somme des cinq premières manches : −5 (question 11).\nSomme des six manches : −5 + (−7) = −12.\nMoyenne : (−12) ÷ 6 = −2.\nLe score moyen de Léa sur les six manches est bien −2.",
+                "rubric": "1 pt : somme des six scores −12 (en réutilisant −5 ou en refaisant l'addition). 1 pt : division par 6 (et non par 5). 0,5 pt : (−12) ÷ 6 = −2 avec le bon signe. 0,5 pt : phrase de conclusion. Si l'élève a trouvé un autre score à la question 12, accepter un raisonnement juste avec sa valeur (au plus 2 pts)."
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

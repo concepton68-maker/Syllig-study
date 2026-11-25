@@ -1,0 +1,1271 @@
+{
+  "format": "syllig-course/1",
+  "code": "QG045",
+  "level": "quatrieme",
+  "subject": "Mathématiques",
+  "chapter": "Calcul littéral et équations",
+  "title": "Réduire une expression littérale",
+  "skills": [
+    {
+      "id": "m4-litt-conventions",
+      "label": "Appliquer les conventions d'écriture (signe × sous-entendu, x², 1x = x)"
+    },
+    {
+      "id": "m4-litt-termes",
+      "label": "Repérer les termes d'une expression et les termes semblables"
+    },
+    {
+      "id": "m4-litt-reduire-somme",
+      "label": "Réduire une somme algébrique en regroupant les termes semblables"
+    },
+    {
+      "id": "m4-litt-reduire-produit",
+      "label": "Réduire un produit (nombres entre eux, lettres entre elles)"
+    },
+    {
+      "id": "m4-litt-parentheses",
+      "label": "Supprimer des parenthèses précédées d'un signe + ou d'un signe −"
+    },
+    {
+      "id": "m4-litt-valeur",
+      "label": "Calculer la valeur d'une expression littérale pour une valeur donnée"
+    },
+    {
+      "id": "m4-litt-probleme",
+      "label": "Exprimer et réduire une longueur ou un périmètre en fonction de x"
+    }
+  ],
+  "lesson": {
+    "duration_min": 40,
+    "objectives": [
+      "écrire une expression littérale en respectant les conventions (3x, x², 1x = x) ;",
+      "repérer les termes d'une expression et reconnaître les termes semblables ;",
+      "réduire une somme en regroupant les termes semblables ;",
+      "réduire un produit et supprimer des parenthèses précédées de + ou de − ;",
+      "calculer la valeur d'une expression en remplaçant la lettre par un nombre, et s'en servir pour vérifier une réduction."
+    ],
+    "essential": "Une expression littérale est un calcul qui contient une ou plusieurs lettres ; chaque lettre remplace un nombre. **Réduire** une expression, c'est l'écrire avec le moins de termes possible, en regroupant les **termes semblables** (ceux qui ont exactement la même partie littérale : les x avec les x, les x² avec les x², les nombres avec les nombres). Pour une somme, on additionne les coefficients : 3x + 5x = 8x. Pour un produit, on multiplie les nombres entre eux et les lettres entre elles : 3x × 5x = 15x². Ne confonds jamais x + x = 2x et x × x = x². Enfin, en remplaçant x par un nombre, tu peux toujours **tester** ton résultat : si les deux expressions ne donnent pas la même valeur, il y a une erreur.",
+    "parts": [
+      {
+        "title": "Les conventions d'écriture",
+        "blocks": [
+          {
+            "type": "callout",
+            "kind": "definition",
+            "text": "Une **expression littérale** est une expression mathématique qui contient une ou plusieurs lettres. Chaque lettre désigne un nombre qu'on ne connaît pas encore ou qui peut changer : on l'appelle une **variable**.\nExemples : 3x + 5 ; 2a − 7b ; x² − 4x + 1."
+          },
+          {
+            "type": "text",
+            "text": "Pour alléger l'écriture, les mathématiciens ont adopté quelques règles. Elles ne changent pas la valeur de l'expression : elles changent seulement la façon de l'écrire."
+          },
+          {
+            "type": "table",
+            "columns": [
+              "Règle",
+              "Écriture complète",
+              "Écriture simplifiée"
+            ],
+            "rows": [
+              [
+                "On peut supprimer le signe × devant une lettre",
+                "3 × x",
+                "3x"
+              ],
+              [
+                "… ou devant une parenthèse",
+                "4 × (x + 2)",
+                "4(x + 2)"
+              ],
+              [
+                "… entre deux lettres",
+                "a × b",
+                "ab"
+              ],
+              [
+                "Le nombre s'écrit devant la lettre",
+                "x × 5",
+                "5x"
+              ],
+              [
+                "Un produit d'un nombre par lui-même : le carré",
+                "x × x",
+                "x² (« x au carré »)"
+              ],
+              [
+                "Trois fois le même facteur : le cube",
+                "x × x × x",
+                "x³ (« x au cube »)"
+              ],
+              [
+                "On n'écrit pas le facteur 1",
+                "1 × x",
+                "x"
+              ],
+              [
+                "Le facteur −1 devient un simple signe −",
+                "−1 × x",
+                "−x"
+              ],
+              [
+                "Multiplier par 0 donne 0",
+                "0 × x",
+                "0"
+              ]
+            ]
+          },
+          {
+            "type": "formula",
+            "latex": "5 × a × a = 5a²\n2 × x + 1 × y = 2x + y\ny × 7 − 3 × y × y = 7y − 3y²"
+          },
+          {
+            "type": "callout",
+            "kind": "attention",
+            "title": "Deux pièges fréquents",
+            "text": "• On ne supprime **jamais** le signe × entre deux nombres : 3 × 5 = 15, alors que « 35 » est un autre nombre !\n• 2x² signifie 2 × x × x : seul x est au carré. Ce n'est pas (2x)², qui vaut 2x × 2x = 4x². Par exemple, pour x = 3 : 2x² = 2 × 9 = 18, alors que (2x)² = 6² = 36."
+          },
+          {
+            "type": "callout",
+            "kind": "plus",
+            "text": "Le petit nombre en haut à droite s'appelle l'**exposant**. Tu retrouveras cette notation dans le cours sur les puissances : x² = x × x, x³ = x × x × x, et ainsi de suite."
+          }
+        ],
+        "checkpoint": {
+          "variants": [
+            {
+              "prompt": "Comment s'écrit simplement 4 × y × y ?",
+              "options": [
+                "4y",
+                "8y",
+                "4y²",
+                "(4y)²"
+              ],
+              "answer": 2,
+              "hint": "Relis la ligne du tableau sur le produit d'un nombre par lui-même.",
+              "explanation": "y × y = y², donc 4 × y × y = 4y². Attention : (4y)² vaudrait 16y²."
+            },
+            {
+              "prompt": "Comment s'écrit simplement x × 7 ?",
+              "options": [
+                "x7",
+                "7x",
+                "7 + x",
+                "x⁷"
+              ],
+              "answer": 1,
+              "hint": "Dans l'écriture simplifiée, où place-t-on le nombre ?",
+              "explanation": "On supprime le signe × et on écrit le nombre devant la lettre : x × 7 = 7x."
+            },
+            {
+              "prompt": "Quelle écriture est égale à 1 × a + 3 × b ?",
+              "options": [
+                "1a3b",
+                "4ab",
+                "a + 3b",
+                "3ab"
+              ],
+              "answer": 2,
+              "hint": "On n'écrit pas le facteur 1, et on supprime le signe × devant une lettre.",
+              "explanation": "1 × a = a et 3 × b = 3b, donc 1 × a + 3 × b = a + 3b. Le signe + reste : ce n'est pas un produit."
+            },
+            {
+              "prompt": "Que vaut 2x² lorsque x = 3 ?",
+              "options": [
+                "36",
+                "12",
+                "18",
+                "9"
+              ],
+              "answer": 2,
+              "hint": "2x² signifie 2 × x × x : seul x est au carré.",
+              "explanation": "2x² = 2 × 3 × 3 = 2 × 9 = 18. La réponse 36 correspond à (2x)², ce qui est une autre expression."
+            }
+          ]
+        }
+      },
+      {
+        "title": "Termes, coefficients et termes semblables",
+        "blocks": [
+          {
+            "type": "text",
+            "text": "Une somme algébrique est formée de **termes** séparés par des signes + ou −. Chaque terme emporte avec lui le signe qui le précède."
+          },
+          {
+            "type": "formula",
+            "latex": "A = 5x² − 3x + 7 − 2x² + x\nLes termes de A sont : 5x² ; −3x ; 7 ; −2x² ; x"
+          },
+          {
+            "type": "callout",
+            "kind": "definition",
+            "text": "Dans un terme comme −3x, le nombre −3 est le **coefficient** et x est la **partie littérale** (la partie avec les lettres).\nDeux termes sont **semblables** lorsqu'ils ont **exactement la même partie littérale**. Un nombre seul (sans lettre) est un **terme constant** : les constantes sont semblables entre elles."
+          },
+          {
+            "type": "table",
+            "caption": "Les termes de A = 5x² − 3x + 7 − 2x² + x",
+            "columns": [
+              "Terme",
+              "Coefficient",
+              "Partie littérale",
+              "Famille"
+            ],
+            "rows": [
+              [
+                "5x²",
+                "5",
+                "x²",
+                "les x²"
+              ],
+              [
+                "−3x",
+                "−3",
+                "x",
+                "les x"
+              ],
+              [
+                "7",
+                "7",
+                "aucune",
+                "les constantes"
+              ],
+              [
+                "−2x²",
+                "−2",
+                "x²",
+                "les x²"
+              ],
+              [
+                "x",
+                "1",
+                "x",
+                "les x"
+              ]
+            ]
+          },
+          {
+            "type": "text",
+            "text": "Dans A, les termes semblables sont donc : 5x² et −2x² (famille des x²) ; −3x et x (famille des x). Le terme 7 est seul dans sa famille."
+          },
+          {
+            "type": "callout",
+            "kind": "attention",
+            "text": "• x et x² ne sont **pas** semblables : x² = x × x n'est pas la même partie littérale que x.\n• 4 et 4x ne sont pas semblables : l'un a une lettre, l'autre non.\n• Le coefficient de x est 1 (car x = 1x), et celui de −x est −1."
+          },
+          {
+            "type": "callout",
+            "kind": "methode",
+            "title": "Repérer les familles",
+            "text": "Souligne d'une même couleur les termes d'une même famille (par exemple : x² en bleu, x en vert, constantes en rouge), sans oublier de souligner aussi le signe placé devant chaque terme."
+          }
+        ],
+        "checkpoint": {
+          "variants": [
+            {
+              "prompt": "Dans l'expression 6x² − x + 4 + 2x, quel terme est semblable à −x ?",
+              "options": [
+                "6x²",
+                "4",
+                "2x",
+                "Aucun"
+              ],
+              "answer": 2,
+              "hint": "Cherche un terme qui a exactement la même partie littérale que −x.",
+              "explanation": "−x et 2x ont la même partie littérale x : ils sont semblables. 6x² a la partie littérale x², ce n'est pas la même."
+            },
+            {
+              "prompt": "Quel est le coefficient du terme −x dans 3x² − x + 5 ?",
+              "options": [
+                "0",
+                "1",
+                "−1",
+                "3"
+              ],
+              "answer": 2,
+              "hint": "Relis l'encadré « Attention » : −x s'écrit aussi −1 × x.",
+              "explanation": "−x = −1 × x : son coefficient est −1."
+            },
+            {
+              "prompt": "Les termes 3x et 3x² sont-ils semblables ?",
+              "options": [
+                "Oui, car ils ont le même coefficient 3",
+                "Non, car leurs parties littérales x et x² sont différentes",
+                "Oui, car ils contiennent tous les deux la lettre x"
+              ],
+              "answer": 1,
+              "hint": "Ce qui compte, c'est la partie littérale, pas le coefficient.",
+              "explanation": "La partie littérale de 3x est x, celle de 3x² est x² : ils ne sont pas semblables."
+            }
+          ]
+        }
+      },
+      {
+        "title": "Réduire une somme",
+        "blocks": [
+          {
+            "type": "callout",
+            "kind": "definition",
+            "text": "**Réduire** une expression, c'est l'écrire avec **le moins de termes possible**, en regroupant les termes semblables."
+          },
+          {
+            "type": "callout",
+            "kind": "retiens",
+            "title": "Additionner des termes semblables",
+            "text": "Pour additionner des termes semblables, on **additionne leurs coefficients** et on **garde la partie littérale** :\n3x + 5x = 8x (3 fois x plus 5 fois x, c'est 8 fois x)\n7x² − 2x² = 5x²"
+          },
+          {
+            "type": "text",
+            "text": "Imagine que x désigne le prix d'un cahier : 3 cahiers plus 5 cahiers, cela fait 8 cahiers. Mais 3 cahiers plus 5 stylos, cela ne fait pas « 8 cahiers-stylos » : on ne peut pas regrouper des objets différents."
+          },
+          {
+            "type": "callout",
+            "kind": "methode",
+            "title": "Réduire une somme en 3 étapes",
+            "text": "1. Je repère les familles de termes semblables (avec leur signe).\n2. Je regroupe chaque famille : les x², puis les x, puis les constantes.\n3. Je calcule les coefficients de chaque famille et j'écris le résultat dans l'ordre : x², puis x, puis la constante."
+          },
+          {
+            "type": "formula",
+            "latex": "A = 5x² − 3x + 7 − 2x² + x\nA = (5x² − 2x²) + (−3x + x) + 7\nA = 3x² − 2x + 7"
+          },
+          {
+            "type": "formula",
+            "latex": "B = 4a + 3 − 9a − 8\nB = (4a − 9a) + (3 − 8)\nB = −5a − 5"
+          },
+          {
+            "type": "formula",
+            "latex": "C = x + x = 2x\nD = 6x − 6x + 2 = 0x + 2 = 2\nE = 2x + 3x² − 1   (déjà réduite : trois familles différentes)"
+          },
+          {
+            "type": "callout",
+            "kind": "attention",
+            "title": "Ce qu'on ne peut pas réduire",
+            "text": "• 3x + 4 ne fait **pas** 7x : x et 4 ne sont pas semblables. 3x + 4 est déjà réduite.\n• 2x + 3x² ne fait pas 5x³, ni 5x² : x et x² ne sont pas semblables.\n• x + x = 2x, et **pas** x²."
+          }
+        ],
+        "checkpoint": {
+          "variants": [
+            {
+              "prompt": "Quelle est la forme réduite de 7x + 4 − 2x + 5 ?",
+              "options": [
+                "14x",
+                "5x + 9",
+                "9x + 9",
+                "5x − 1"
+              ],
+              "answer": 1,
+              "hint": "Regroupe les x ensemble, puis les nombres ensemble.",
+              "explanation": "Les x : 7x − 2x = 5x. Les nombres : 4 + 5 = 9. Donc 5x + 9 (on ne peut pas aller plus loin)."
+            },
+            {
+              "prompt": "Quelle est la forme réduite de 3a − 8 − 5a + 2 ?",
+              "options": [
+                "−2a − 6",
+                "2a − 6",
+                "−2a + 10",
+                "−8a"
+              ],
+              "answer": 0,
+              "hint": "Attention aux signes : chaque terme garde le signe qui le précède.",
+              "explanation": "Les a : 3a − 5a = −2a. Les nombres : −8 + 2 = −6. Donc −2a − 6."
+            },
+            {
+              "prompt": "Combien vaut x + x ?",
+              "options": [
+                "x²",
+                "2x",
+                "2x²",
+                "x"
+              ],
+              "answer": 1,
+              "hint": "x + x, c'est « une fois x plus une fois x ».",
+              "explanation": "On additionne les coefficients : 1x + 1x = 2x. Le carré x² correspond à x × x, pas à x + x."
+            },
+            {
+              "prompt": "L'expression 4x² + x − 9 peut-elle encore être réduite ?",
+              "options": [
+                "Oui : elle vaut 5x² − 9",
+                "Oui : elle vaut 5x³ − 9",
+                "Non : ses trois termes sont de familles différentes",
+                "Oui : elle vaut −4x"
+              ],
+              "answer": 2,
+              "hint": "Repère les familles : x², x, constantes.",
+              "explanation": "4x² est un terme en x², x est un terme en x, −9 est une constante : aucun terme n'est semblable à un autre, l'expression est déjà réduite."
+            }
+          ]
+        }
+      },
+      {
+        "title": "Réduire un produit et supprimer des parenthèses",
+        "blocks": [
+          {
+            "type": "callout",
+            "kind": "retiens",
+            "title": "Réduire un produit",
+            "text": "Dans un produit, on peut changer l'ordre des facteurs. On multiplie donc **les nombres entre eux** et **les lettres entre elles** :\n3x × 4 = 3 × 4 × x = 12x\n2x × 5x = 2 × 5 × x × x = 10x²"
+          },
+          {
+            "type": "formula",
+            "latex": "−3a × 2a = −6a²     (règle des signes : − par + donne −)\n4x × (−x) = −4x²\n−2y × (−5) = 10y\nx × x² = x × x × x = x³"
+          },
+          {
+            "type": "table",
+            "caption": "Ne pas confondre somme et produit",
+            "columns": [
+              "Somme",
+              "Produit"
+            ],
+            "rows": [
+              [
+                "x + x = 2x",
+                "x × x = x²"
+              ],
+              [
+                "3x + 2x = 5x",
+                "3x × 2x = 6x²"
+              ],
+              [
+                "3x + 2 ne se réduit pas",
+                "3x × 2 = 6x"
+              ]
+            ]
+          },
+          {
+            "type": "heading",
+            "text": "Parenthèses précédées d'un signe + ou d'un signe −"
+          },
+          {
+            "type": "callout",
+            "kind": "retiens",
+            "title": "Deux règles",
+            "text": "• Des parenthèses précédées d'un signe **+** : on les supprime **sans rien changer** à l'intérieur.\n• Des parenthèses précédées d'un signe **−** : on les supprime en **changeant le signe de chaque terme** qui était à l'intérieur.\nC'est la règle des nombres relatifs : soustraire un nombre, c'est ajouter son opposé."
+          },
+          {
+            "type": "formula",
+            "latex": "F = 5x + (2x − 3)\nF = 5x + 2x − 3\nF = 7x − 3"
+          },
+          {
+            "type": "formula",
+            "latex": "G = 5x − (2x − 3)\nG = 5x − 2x + 3       (2x devient −2x ; −3 devient +3)\nG = 3x + 3"
+          },
+          {
+            "type": "callout",
+            "kind": "attention",
+            "text": "Avec un signe − devant la parenthèse, il faut changer le signe de **tous** les termes de la parenthèse, pas seulement du premier. Erreur fréquente : 5x − (2x − 3) = 5x − 2x − 3. C'est faux : le −3 devient +3.\nVérification avec x = 1 : 5 − (2 − 3) = 5 − (−1) = 6, et 3 × 1 + 3 = 6. ✓"
+          }
+        ],
+        "checkpoint": {
+          "variants": [
+            {
+              "prompt": "Quelle est la forme réduite de 2x × 5x ?",
+              "options": [
+                "7x",
+                "10x",
+                "10x²",
+                "7x²"
+              ],
+              "answer": 2,
+              "hint": "Multiplie les nombres entre eux, puis les lettres entre elles.",
+              "explanation": "2 × 5 = 10 et x × x = x², donc 2x × 5x = 10x²."
+            },
+            {
+              "prompt": "Quelle est la forme réduite de −3a × 4 ?",
+              "options": [
+                "−12a",
+                "12a",
+                "a",
+                "−12a²"
+              ],
+              "answer": 0,
+              "hint": "Il n'y a qu'une seule lettre a dans ce produit.",
+              "explanation": "−3 × 4 = −12 et il reste la lettre a : −3a × 4 = −12a. Il n'y a pas de a², car a n'apparaît qu'une fois."
+            },
+            {
+              "prompt": "Quelle est la forme réduite de 6x − (4x − 5) ?",
+              "options": [
+                "2x − 5",
+                "2x + 5",
+                "10x − 5",
+                "10x + 5"
+              ],
+              "answer": 1,
+              "hint": "Signe − devant la parenthèse : change le signe de chaque terme à l'intérieur.",
+              "explanation": "6x − (4x − 5) = 6x − 4x + 5 = 2x + 5."
+            },
+            {
+              "prompt": "Quelle est la forme réduite de 3x + (x − 7) ?",
+              "options": [
+                "4x − 7",
+                "2x + 7",
+                "4x + 7",
+                "3x² − 7"
+              ],
+              "answer": 0,
+              "hint": "Signe + devant la parenthèse : on la supprime sans rien changer.",
+              "explanation": "3x + (x − 7) = 3x + x − 7 = 4x − 7."
+            }
+          ]
+        }
+      },
+      {
+        "title": "Calculer la valeur d'une expression et vérifier",
+        "blocks": [
+          {
+            "type": "callout",
+            "kind": "methode",
+            "title": "Remplacer la lettre par un nombre",
+            "text": "1. Je réécris l'expression en **remettant les signes ×** qui étaient sous-entendus.\n2. Je remplace la lettre par le nombre, **entre parenthèses** s'il est négatif.\n3. Je calcule en respectant les priorités : d'abord les carrés, puis les multiplications, enfin les additions et soustractions."
+          },
+          {
+            "type": "formula",
+            "latex": "A = 3x² − 2x + 7   pour x = 2 :\nA = 3 × 2² − 2 × 2 + 7\nA = 3 × 4 − 4 + 7\nA = 12 − 4 + 7\nA = 15"
+          },
+          {
+            "type": "formula",
+            "latex": "A = 3x² − 2x + 7   pour x = −1 :\nA = 3 × (−1)² − 2 × (−1) + 7\nA = 3 × 1 + 2 + 7\nA = 12"
+          },
+          {
+            "type": "callout",
+            "kind": "attention",
+            "text": "• 3x² pour x = 2 : c'est 3 × 2² = 3 × 4 = 12, et pas 6² = 36 ! Le carré passe avant la multiplication.\n• (−1)² = (−1) × (−1) = 1 : le carré d'un nombre négatif est positif. Sans parenthèses, on risque d'écrire −1² et de se tromper."
+          },
+          {
+            "type": "heading",
+            "text": "Tester une réduction"
+          },
+          {
+            "type": "text",
+            "text": "Une expression et sa forme réduite doivent donner **la même valeur pour tous les nombres x**. On peut donc tester son travail en choisissant une valeur. Pour A = 5x² − 3x + 7 − 2x² + x, réduite en 3x² − 2x + 7 :"
+          },
+          {
+            "type": "formula",
+            "latex": "Pour x = 2 :\nexpression de départ : 5 × 4 − 3 × 2 + 7 − 2 × 4 + 2 = 20 − 6 + 7 − 8 + 2 = 15\nforme réduite :        3 × 4 − 2 × 2 + 7 = 12 − 4 + 7 = 15     ✓"
+          },
+          {
+            "type": "callout",
+            "kind": "retiens",
+            "text": "• Si les deux valeurs sont **différentes**, la réduction est **fausse** à coup sûr.\n• Si elles sont **égales**, c'est bon signe… mais un seul test ne **prouve** pas que la réduction est juste (certaines erreurs donnent par hasard le même résultat pour x = 0 ou x = 1). Évite ces valeurs pour tester, choisis plutôt 2 ou 3."
+          },
+          {
+            "type": "heading",
+            "text": "Une application : le périmètre"
+          },
+          {
+            "type": "callout",
+            "kind": "methode",
+            "title": "Problème résolu",
+            "text": "Un rectangle a pour longueur 2x + 3 et pour largeur x (en cm, avec x positif).\n• Son périmètre est la somme de ses quatre côtés : P = (2x + 3) + x + (2x + 3) + x.\n• On réduit : les x donnent 2x + x + 2x + x = 6x ; les nombres donnent 3 + 3 = 6. Donc **P = 6x + 6**.\n• Pour x = 4 : P = 6 × 4 + 6 = 30 cm. Vérification : la longueur vaut 11 cm, la largeur 4 cm, et 11 + 4 + 11 + 4 = 30 cm. ✓"
+          }
+        ],
+        "checkpoint": {
+          "variants": [
+            {
+              "prompt": "Que vaut 4x − 3 pour x = 5 ?",
+              "options": [
+                "17",
+                "42",
+                "20",
+                "2"
+              ],
+              "answer": 0,
+              "hint": "Remets le signe × : 4x = 4 × x.",
+              "explanation": "4 × 5 − 3 = 20 − 3 = 17. (42 correspond à l'erreur « 45 − 3 », comme si 4x voulait dire 45.)"
+            },
+            {
+              "prompt": "Que vaut x² + 1 pour x = −3 ?",
+              "options": [
+                "−8",
+                "10",
+                "7",
+                "−5"
+              ],
+              "answer": 1,
+              "hint": "Remplace x par (−3) entre parenthèses.",
+              "explanation": "(−3)² + 1 = 9 + 1 = 10 : le carré d'un nombre négatif est positif."
+            },
+            {
+              "prompt": "Que vaut 2x² pour x = 5 ?",
+              "options": [
+                "100",
+                "20",
+                "50",
+                "25"
+              ],
+              "answer": 2,
+              "hint": "Le carré passe avant la multiplication.",
+              "explanation": "2 × 5² = 2 × 25 = 50. La réponse 100 correspond à (2 × 5)², ce qui est une autre expression."
+            },
+            {
+              "prompt": "Léa a réduit une expression. Pour x = 2, l'expression de départ vaut 11 et sa réduction vaut 13. Que peut-on conclure ?",
+              "options": [
+                "La réduction est juste",
+                "La réduction est fausse",
+                "On ne peut rien conclure"
+              ],
+              "answer": 1,
+              "hint": "Une expression et sa forme réduite doivent donner la même valeur pour tout x.",
+              "explanation": "Les deux valeurs sont différentes pour x = 2 : la réduction contient forcément une erreur."
+            }
+          ]
+        }
+      }
+    ],
+    "memo": [
+      {
+        "label": "Conventions",
+        "text": "3 × x = 3x ; x × x = x² ; x × x × x = x³ ; 1x = x ; −1x = −x. Jamais de × supprimé entre deux nombres."
+      },
+      {
+        "label": "Termes semblables",
+        "text": "Même partie littérale : les x avec les x, les x² avec les x², les nombres avec les nombres. x et x² ne sont pas semblables."
+      },
+      {
+        "label": "Réduire une somme",
+        "text": "On additionne les coefficients des termes semblables : 7x − 2x = 5x. On ordonne : x², puis x, puis la constante."
+      },
+      {
+        "label": "Réduire un produit",
+        "text": "Nombres entre eux, lettres entre elles : 3x × 4x = 12x². Ne pas confondre x + x = 2x et x × x = x²."
+      },
+      {
+        "label": "Parenthèses",
+        "text": "+( … ) : on supprime sans rien changer. −( … ) : on change le signe de chaque terme : 5x − (2x − 3) = 3x + 3."
+      },
+      {
+        "label": "Calculer une valeur",
+        "text": "Remettre les ×, remplacer la lettre (entre parenthèses si négative), carré d'abord : pour x = −1, 3x² = 3 × (−1)² = 3."
+      },
+      {
+        "label": "Vérifier",
+        "text": "Tester avec x = 2 ou 3 : valeurs différentes = erreur sûre ; valeurs égales = bon signe, mais pas une preuve."
+      }
+    ]
+  },
+  "exercises": {
+    "duration_min": 35,
+    "instructions": "Fais les exercices dans l'ordre, au brouillon d'abord, sans calculatrice. Pour un nombre négatif, tape le signe moins du clavier (-), par exemple -7. Quand on te demande une réduction, choisis la bonne réponse parmi celles proposées, mais fais toujours le calcul au brouillon avant de regarder les propositions. Les corrigés s'affichent après tes réponses.",
+    "pass_threshold": 8,
+    "texts": [],
+    "items": [
+      {
+        "id": "ex1",
+        "type": "qcm",
+        "stars": 1,
+        "lesson_part": 1,
+        "skills": [
+          "m4-litt-conventions"
+        ],
+        "cognitive": "connaitre",
+        "prompt": "Quelle est l'écriture simplifiée de 5 × a × a ?",
+        "options": [
+          "10a",
+          "5a²",
+          "25a²",
+          "5 + a²"
+        ],
+        "answer": 1,
+        "solution": "a × a = a², donc 5 × a × a = 5a².\n10a correspondrait à 5 × a + 5 × a ; 25a² correspondrait à (5a)² = 5a × 5a."
+      },
+      {
+        "id": "ex2",
+        "type": "qcm",
+        "stars": 1,
+        "lesson_part": 2,
+        "skills": [
+          "m4-litt-termes"
+        ],
+        "cognitive": "connaitre",
+        "prompt": "Dans l'expression 4x² + 3x − 7 + x², quel(s) terme(s) est (sont) semblable(s) à 4x² ?",
+        "options": [
+          "3x",
+          "x²",
+          "−7",
+          "3x et x²"
+        ],
+        "answer": 1,
+        "solution": "Un terme semblable à 4x² doit avoir la partie littérale x². Le seul est x² (de coefficient 1).\n3x a pour partie littérale x : il n'est pas semblable à 4x². −7 est une constante."
+      },
+      {
+        "id": "ex3",
+        "type": "qcm",
+        "stars": 1,
+        "lesson_part": 3,
+        "skills": [
+          "m4-litt-reduire-somme"
+        ],
+        "cognitive": "appliquer",
+        "prompt": "Réduis l'expression A = 7x + 4 − 2x + 5.",
+        "options": [
+          "A = 14x",
+          "A = 5x − 1",
+          "A = 5x + 9",
+          "A = 9x + 9"
+        ],
+        "answer": 2,
+        "solution": "Les x : 7x − 2x = 5x.\nLes constantes : 4 + 5 = 9.\nA = 5x + 9 (on ne peut pas réduire davantage : 5x et 9 ne sont pas semblables)."
+      },
+      {
+        "id": "ex4",
+        "type": "numeric",
+        "stars": 1,
+        "lesson_part": 5,
+        "skills": [
+          "m4-litt-valeur",
+          "m4-litt-conventions"
+        ],
+        "cognitive": "appliquer",
+        "prompt": "Calcule la valeur de B = 4x − 3 pour x = 5.",
+        "answer": 17,
+        "solution": "On remet le signe × : B = 4 × x − 3.\nPour x = 5 : B = 4 × 5 − 3 = 20 − 3 = 17."
+      },
+      {
+        "id": "ex5",
+        "type": "numeric",
+        "stars": 2,
+        "lesson_part": 3,
+        "skills": [
+          "m4-litt-reduire-somme",
+          "m4-litt-termes"
+        ],
+        "cognitive": "appliquer",
+        "prompt": "Réduis l'expression C = 3x² + 5x − 8 − x² − 7x + 2, puis donne le **coefficient de x** dans la forme réduite (attention au signe).",
+        "answer": -2,
+        "solution": "Les x² : 3x² − x² = 2x².\nLes x : 5x − 7x = −2x.\nLes constantes : −8 + 2 = −6.\nC = 2x² − 2x − 6. Le coefficient de x est −2."
+      },
+      {
+        "id": "ex6",
+        "type": "qcm",
+        "stars": 2,
+        "lesson_part": 4,
+        "skills": [
+          "m4-litt-reduire-produit"
+        ],
+        "cognitive": "appliquer",
+        "prompt": "Réduis le produit D = 4a × (−3a).",
+        "options": [
+          "D = a",
+          "D = −12a",
+          "D = 12a²",
+          "D = −12a²"
+        ],
+        "answer": 3,
+        "solution": "Les nombres : 4 × (−3) = −12 (signes contraires : résultat négatif).\nLes lettres : a × a = a².\nD = −12a²."
+      },
+      {
+        "id": "ex7",
+        "type": "numeric",
+        "stars": 2,
+        "lesson_part": 5,
+        "skills": [
+          "m4-litt-valeur"
+        ],
+        "cognitive": "appliquer",
+        "prompt": "Calcule la valeur de E = 2x² − 3x + 1 pour x = −2.",
+        "answer": 15,
+        "solution": "On remplace x par (−2), entre parenthèses :\nE = 2 × (−2)² − 3 × (−2) + 1\nE = 2 × 4 + 6 + 1\nE = 8 + 6 + 1 = 15.\nPièges : (−2)² = 4 (et non −4), et −3 × (−2) = +6."
+      },
+      {
+        "id": "ex8",
+        "type": "qcm",
+        "stars": 2,
+        "lesson_part": 4,
+        "skills": [
+          "m4-litt-parentheses",
+          "m4-litt-reduire-somme"
+        ],
+        "cognitive": "appliquer",
+        "prompt": "Réduis l'expression F = 6x − (4x − 5).",
+        "options": [
+          "F = 2x − 5",
+          "F = 2x + 5",
+          "F = 10x − 5",
+          "F = 10x + 5"
+        ],
+        "answer": 1,
+        "solution": "La parenthèse est précédée d'un signe − : on change le signe de chaque terme à l'intérieur.\nF = 6x − 4x + 5\nF = 2x + 5.\nTest avec x = 2 : 12 − (8 − 5) = 12 − 3 = 9 et 2 × 2 + 5 = 9. ✓"
+      },
+      {
+        "id": "ex9",
+        "type": "open",
+        "stars": 3,
+        "lesson_part": 5,
+        "skills": [
+          "m4-litt-termes",
+          "m4-litt-valeur",
+          "m4-litt-reduire-somme"
+        ],
+        "cognitive": "rediger",
+        "prompt": "Léa a écrit : « H = 2x + 3x² = 5x³ ».\n1) Calcule 2x + 3x² et 5x³ pour x = 1, puis pour x = 2.\n2) Que peux-tu conclure ? Explique son erreur et écris la forme réduite de H.",
+        "solution": "1) Pour x = 1 : 2 × 1 + 3 × 1² = 2 + 3 = 5 et 5 × 1³ = 5. Les deux valeurs sont égales… par hasard.\nPour x = 2 : 2 × 2 + 3 × 2² = 4 + 12 = 16 et 5 × 2³ = 5 × 8 = 40. Les valeurs sont différentes.\n2) Puisque les valeurs diffèrent pour x = 2, l'égalité de Léa est fausse. Son erreur : 2x et 3x² ne sont pas des termes semblables (parties littérales x et x² différentes), on ne peut pas additionner leurs coefficients. H = 3x² + 2x est déjà réduite (on peut aussi l'écrire 2x + 3x²).",
+        "rubric": "1 pt : les quatre calculs justes (5 ; 5 ; 16 ; 40). 1 pt : conclusion « l'égalité est fausse car les valeurs diffèrent pour x = 2 » (et remarque que le test x = 1 ne suffisait pas). 1 pt : explication « 2x et 3x² ne sont pas semblables » et forme réduite H = 3x² + 2x."
+      },
+      {
+        "id": "ex10",
+        "type": "numeric",
+        "stars": 3,
+        "lesson_part": 5,
+        "skills": [
+          "m4-litt-probleme",
+          "m4-litt-reduire-somme",
+          "m4-litt-valeur"
+        ],
+        "cognitive": "analyser",
+        "prompt": "Les côtés d'un triangle mesurent, en cm : x + 4 ; 2x − 1 ; 3x + 2.\nExprime le périmètre P de ce triangle en fonction de x sous forme réduite, puis calcule P pour x = 3,5. Donne le résultat en cm.",
+        "answer": 26,
+        "solution": "P = (x + 4) + (2x − 1) + (3x + 2)\nLes x : x + 2x + 3x = 6x. Les constantes : 4 − 1 + 2 = 5.\nP = 6x + 5.\nPour x = 3,5 : P = 6 × 3,5 + 5 = 21 + 5 = 26 cm.\nVérification : les côtés valent 7,5 cm ; 6 cm et 12,5 cm, et 7,5 + 6 + 12,5 = 26 cm. ✓"
+      }
+    ]
+  },
+  "evaluation": {
+    "duration_min": 30,
+    "conditions": "Sans calculatrice, sans la leçon, en 30 minutes. Pour un nombre négatif, tape le signe moins du clavier (-), par exemple -7. Barème : A = 4 points · B = 9 points · C = 7 points. Dans les questions rédigées, écris toutes les étapes, une par ligne.",
+    "total_points": 20,
+    "variants": [
+      {
+        "texts": [],
+        "sections": [
+          {
+            "label": "A · Conventions et vocabulaire (4 points)",
+            "questions": [
+              {
+                "id": "q1",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 1,
+                "skills": [
+                  "m4-litt-conventions"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Quelle est l'écriture simplifiée de 7 × x × x ?",
+                "options": [
+                  "14x",
+                  "7x²",
+                  "49x²",
+                  "7 + x²"
+                ],
+                "answer": 1,
+                "solution": "x × x = x², donc 7 × x × x = 7x²."
+              },
+              {
+                "id": "q2",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 1,
+                "skills": [
+                  "m4-litt-conventions"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Quelle écriture est égale à 3 × a + 1 × b ?",
+                "options": [
+                  "3ab",
+                  "4ab",
+                  "3a + b",
+                  "3a1b"
+                ],
+                "answer": 2,
+                "solution": "3 × a = 3a et 1 × b = b : 3 × a + 1 × b = 3a + b. Le signe + n'est pas un produit, il reste."
+              },
+              {
+                "id": "q3",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 2,
+                "skills": [
+                  "m4-litt-termes"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Dans l'expression 6x² − x + 4 + 2x, quel terme est semblable à −x ?",
+                "options": [
+                  "6x²",
+                  "4",
+                  "2x",
+                  "Aucun"
+                ],
+                "answer": 2,
+                "solution": "−x et 2x ont la même partie littérale x : ils sont semblables. 6x² a la partie littérale x², et 4 est une constante."
+              },
+              {
+                "id": "q4",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 4,
+                "skills": [
+                  "m4-litt-reduire-produit",
+                  "m4-litt-reduire-somme"
+                ],
+                "cognitive": "analyser",
+                "prompt": "Laquelle de ces égalités est vraie pour tous les nombres x ?",
+                "options": [
+                  "x + x = x²",
+                  "x × x = 2x",
+                  "3x × 2 = 6x",
+                  "2x + 3 = 5x"
+                ],
+                "answer": 2,
+                "solution": "3x × 2 = 3 × 2 × x = 6x : c'est vrai.\nx + x = 2x (et non x²) ; x × x = x² (et non 2x) ; 2x + 3 ne se réduit pas (2x et 3 ne sont pas semblables)."
+              }
+            ]
+          },
+          {
+            "label": "B · Réduire des expressions (9 points)",
+            "questions": [
+              {
+                "id": "q5",
+                "type": "qcm",
+                "points": 1.5,
+                "lesson_part": 3,
+                "skills": [
+                  "m4-litt-reduire-somme"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Réduis l'expression A = 9x − 4 + 2x + 10.",
+                "options": [
+                  "A = 17x",
+                  "A = 11x + 6",
+                  "A = 11x − 14",
+                  "A = 7x + 6"
+                ],
+                "answer": 1,
+                "solution": "Les x : 9x + 2x = 11x. Les constantes : −4 + 10 = 6.\nA = 11x + 6."
+              },
+              {
+                "id": "q6",
+                "type": "numeric",
+                "points": 1.5,
+                "lesson_part": 3,
+                "skills": [
+                  "m4-litt-reduire-somme",
+                  "m4-litt-termes"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Réduis l'expression B = 5x² − 2x + 3 − 8x² + 6x, puis donne le **coefficient de x²** dans la forme réduite (attention au signe).",
+                "answer": -3,
+                "solution": "Les x² : 5x² − 8x² = −3x².\nLes x : −2x + 6x = 4x.\nLa constante : 3.\nB = −3x² + 4x + 3. Le coefficient de x² est −3."
+              },
+              {
+                "id": "q7",
+                "type": "qcm",
+                "points": 1.5,
+                "lesson_part": 4,
+                "skills": [
+                  "m4-litt-reduire-produit"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Réduis le produit C = 5y × 3y.",
+                "options": [
+                  "C = 8y",
+                  "C = 15y",
+                  "C = 15y²",
+                  "C = 8y²"
+                ],
+                "answer": 2,
+                "solution": "Les nombres : 5 × 3 = 15. Les lettres : y × y = y².\nC = 15y²."
+              },
+              {
+                "id": "q8",
+                "type": "qcm",
+                "points": 1.5,
+                "lesson_part": 4,
+                "skills": [
+                  "m4-litt-parentheses",
+                  "m4-litt-reduire-somme"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Réduis l'expression D = 7x − (3x − 2).",
+                "options": [
+                  "D = 4x − 2",
+                  "D = 10x − 2",
+                  "D = 4x + 2",
+                  "D = 10x + 2"
+                ],
+                "answer": 2,
+                "solution": "Signe − devant la parenthèse : on change le signe de chaque terme.\nD = 7x − 3x + 2 = 4x + 2."
+              },
+              {
+                "id": "q9",
+                "type": "open",
+                "points": 3,
+                "lesson_part": 4,
+                "skills": [
+                  "m4-litt-reduire-produit",
+                  "m4-litt-reduire-somme"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Réduis l'expression E = 2x × 3x + 4x − x² − 7x + 6 en écrivant toutes les étapes.",
+                "solution": "Le produit d'abord : 2x × 3x = 6x².\nE = 6x² + 4x − x² − 7x + 6\nLes x² : 6x² − x² = 5x².\nLes x : 4x − 7x = −3x.\nLa constante : 6.\nE = 5x² − 3x + 6.\nTest avec x = 2 : (2 × 2) × (3 × 2) + 8 − 4 − 14 + 6 = 24 + 8 − 4 − 14 + 6 = 20, et 5 × 4 − 6 + 6 = 20. ✓",
+                "rubric": "1 pt : produit 2x × 3x = 6x². 0,5 pt : termes en x² regroupés : 6x² − x² = 5x². 0,5 pt : termes en x regroupés : 4x − 7x = −3x. 0,5 pt : résultat final 5x² − 3x + 6. 0,5 pt : étapes écrites une par ligne, lisibles. Si l'élève écrit 2x × 3x = 6x (oubli du carré) mais réduit correctement la suite : 1,5 pt."
+              }
+            ]
+          },
+          {
+            "label": "C · Calculer une valeur et résoudre un problème (7 points)",
+            "questions": [
+              {
+                "id": "q10",
+                "type": "numeric",
+                "points": 2,
+                "lesson_part": 5,
+                "skills": [
+                  "m4-litt-valeur"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Calcule la valeur de F = 3x² − 5x + 2 pour x = 4.",
+                "answer": 30,
+                "solution": "F = 3 × 4² − 5 × 4 + 2\nF = 3 × 16 − 20 + 2\nF = 48 − 20 + 2 = 30."
+              },
+              {
+                "id": "q11",
+                "type": "numeric",
+                "points": 2,
+                "lesson_part": 5,
+                "skills": [
+                  "m4-litt-valeur"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Calcule la valeur de F = 3x² − 5x + 2 pour x = −1.",
+                "answer": 10,
+                "solution": "F = 3 × (−1)² − 5 × (−1) + 2\nF = 3 × 1 + 5 + 2\nF = 10."
+              },
+              {
+                "id": "q12",
+                "type": "open",
+                "points": 3,
+                "lesson_part": 5,
+                "skills": [
+                  "m4-litt-probleme",
+                  "m4-litt-reduire-somme",
+                  "m4-litt-valeur"
+                ],
+                "cognitive": "rediger",
+                "prompt": "Un rectangle a pour longueur 3x + 2 et pour largeur x + 1 (en cm, x est un nombre positif).\n1) Montre que son périmètre P peut s'écrire P = 8x + 6.\n2) Calcule le périmètre pour x = 2,5.",
+                "solution": "1) Le périmètre est la somme des quatre côtés :\nP = (3x + 2) + (x + 1) + (3x + 2) + (x + 1)\nLes x : 3x + x + 3x + x = 8x. Les constantes : 2 + 1 + 2 + 1 = 6.\nP = 8x + 6.\n2) Pour x = 2,5 : P = 8 × 2,5 + 6 = 20 + 6 = 26 cm.\nVérification : longueur 3 × 2,5 + 2 = 9,5 cm, largeur 3,5 cm ; 9,5 + 3,5 + 9,5 + 3,5 = 26 cm. ✓",
+                "rubric": "1 pt : périmètre écrit comme somme des quatre côtés (ou 2 × longueur + 2 × largeur correctement utilisé). 1 pt : réduction justifiée jusqu'à 8x + 6. 0,5 pt : calcul 8 × 2,5 + 6 = 26. 0,5 pt : unité (cm) et phrase de réponse. Si la question 1 est fausse mais que l'élève calcule correctement le périmètre pour x = 2,5 avec les longueurs : 1 pt pour la question 2."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "texts": [],
+        "sections": [
+          {
+            "label": "A · Conventions et vocabulaire (4 points)",
+            "questions": [
+              {
+                "id": "q1",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 1,
+                "skills": [
+                  "m4-litt-conventions"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Quelle est l'écriture simplifiée de 9 × b × b ?",
+                "options": [
+                  "9b²",
+                  "18b",
+                  "81b²",
+                  "9 + b²"
+                ],
+                "answer": 0,
+                "solution": "b × b = b², donc 9 × b × b = 9b²."
+              },
+              {
+                "id": "q2",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 1,
+                "skills": [
+                  "m4-litt-conventions"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Quelle écriture est égale à 1 × x + 4 × y ?",
+                "options": [
+                  "5xy",
+                  "x + 4y",
+                  "4xy",
+                  "1x4y"
+                ],
+                "answer": 1,
+                "solution": "1 × x = x et 4 × y = 4y : 1 × x + 4 × y = x + 4y."
+              },
+              {
+                "id": "q3",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 2,
+                "skills": [
+                  "m4-litt-termes"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Dans l'expression 5a − 3a² + 8 − a², quel terme est semblable à −3a² ?",
+                "options": [
+                  "5a",
+                  "8",
+                  "Aucun",
+                  "−a²"
+                ],
+                "answer": 3,
+                "solution": "−3a² et −a² ont la même partie littérale a² : ils sont semblables. 5a a la partie littérale a, et 8 est une constante."
+              },
+              {
+                "id": "q4",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 4,
+                "skills": [
+                  "m4-litt-reduire-produit",
+                  "m4-litt-reduire-somme"
+                ],
+                "cognitive": "analyser",
+                "prompt": "Laquelle de ces égalités est vraie pour tous les nombres a ?",
+                "options": [
+                  "a × a = 2a",
+                  "4a + 1 = 5a",
+                  "a + a = 2a",
+                  "2a × 3 = 5a"
+                ],
+                "answer": 2,
+                "solution": "a + a = 2a : c'est vrai.\na × a = a² (et non 2a) ; 4a + 1 ne se réduit pas ; 2a × 3 = 6a (et non 5a)."
+              }
+            ]
+          },
+          {
+            "label": "B · Réduire des expressions (9 points)",
+            "questions": [
+              {
+                "id": "q5",
+                "type": "qcm",
+                "points": 1.5,
+                "lesson_part": 3,
+                "skills": [
+                  "m4-litt-reduire-somme"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Réduis l'expression A = 8x + 7 − 3x − 9.",
+                "options": [
+                  "A = 11x − 2",
+                  "A = 5x + 16",
+                  "A = 3x",
+                  "A = 5x − 2"
+                ],
+                "answer": 3,
+                "solution": "Les x : 8x − 3x = 5x. Les constantes : 7 − 9 = −2.\nA = 5x − 2."
+              },
+              {
+                "id": "q6",
+                "type": "numeric",
+                "points": 1.5,
+                "lesson_part": 3,
+                "skills": [
+                  "m4-litt-reduire-somme",
+                  "m4-litt-termes"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Réduis l'expression B = −4x² + 7x − 1 + 6x² − 9x, puis donne le **coefficient de x²** dans la forme réduite.",
+                "answer": 2,
+                "solution": "Les x² : −4x² + 6x² = 2x².\nLes x : 7x − 9x = −2x.\nLa constante : −1.\nB = 2x² − 2x − 1. Le coefficient de x² est 2."
+              },
+              {
+                "id": "q7",
+                "type": "qcm",
+                "points": 1.5,
+                "lesson_part": 4,
+                "skills": [
+                  "m4-litt-reduire-produit"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Réduis le produit C = −2a × 4a.",
+                "options": [
+                  "C = −8a²",
+                  "C = 2a",
+                  "C = −8a",
+                  "C = 8a²"
+                ],
+                "answer": 0,
+                "solution": "Les nombres : −2 × 4 = −8. Les lettres : a × a = a².\nC = −8a²."
+              },
+              {
+                "id": "q8",
+                "type": "qcm",
+                "points": 1.5,
+                "lesson_part": 4,
+                "skills": [
+                  "m4-litt-parentheses",
+                  "m4-litt-reduire-somme"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Réduis l'expression D = 9x − (5x + 4).",
+                "options": [
+                  "D = 4x + 4",
+                  "D = 4x − 4",
+                  "D = 14x + 4",
+                  "D = 14x − 4"
+                ],
+                "answer": 1,
+                "solution": "Signe − devant la parenthèse : on change le signe de chaque terme.\nD = 9x − 5x − 4 = 4x − 4."
+              },
+              {
+                "id": "q9",
+                "type": "open",
+                "points": 3,
+                "lesson_part": 4,
+                "skills": [
+                  "m4-litt-reduire-produit",
+                  "m4-litt-reduire-somme"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Réduis l'expression E = 3x × 2x − 5x + x² + 9x − 4 en écrivant toutes les étapes.",
+                "solution": "Le produit d'abord : 3x × 2x = 6x².\nE = 6x² − 5x + x² + 9x − 4\nLes x² : 6x² + x² = 7x².\nLes x : −5x + 9x = 4x.\nLa constante : −4.\nE = 7x² + 4x − 4.\nTest avec x = 2 : (3 × 2) × (2 × 2) − 10 + 4 + 18 − 4 = 24 − 10 + 4 + 18 − 4 = 32, et 7 × 4 + 8 − 4 = 32. ✓",
+                "rubric": "1 pt : produit 3x × 2x = 6x². 0,5 pt : termes en x² regroupés : 6x² + x² = 7x². 0,5 pt : termes en x regroupés : −5x + 9x = 4x. 0,5 pt : résultat final 7x² + 4x − 4. 0,5 pt : étapes écrites une par ligne, lisibles. Si l'élève écrit 3x × 2x = 6x (oubli du carré) mais réduit correctement la suite : 1,5 pt."
+              }
+            ]
+          },
+          {
+            "label": "C · Calculer une valeur et résoudre un problème (7 points)",
+            "questions": [
+              {
+                "id": "q10",
+                "type": "numeric",
+                "points": 2,
+                "lesson_part": 5,
+                "skills": [
+                  "m4-litt-valeur"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Calcule la valeur de F = 2x² + 3x − 4 pour x = 3.",
+                "answer": 23,
+                "solution": "F = 2 × 3² + 3 × 3 − 4\nF = 2 × 9 + 9 − 4\nF = 18 + 9 − 4 = 23."
+              },
+              {
+                "id": "q11",
+                "type": "numeric",
+                "points": 2,
+                "lesson_part": 5,
+                "skills": [
+                  "m4-litt-valeur"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Calcule la valeur de F = 2x² + 3x − 4 pour x = −2.",
+                "answer": -2,
+                "solution": "F = 2 × (−2)² + 3 × (−2) − 4\nF = 2 × 4 − 6 − 4\nF = 8 − 6 − 4 = −2."
+              },
+              {
+                "id": "q12",
+                "type": "open",
+                "points": 3,
+                "lesson_part": 5,
+                "skills": [
+                  "m4-litt-probleme",
+                  "m4-litt-reduire-somme",
+                  "m4-litt-valeur"
+                ],
+                "cognitive": "rediger",
+                "prompt": "Un rectangle a pour longueur 2x + 5 et pour largeur x + 3 (en cm, x est un nombre positif).\n1) Montre que son périmètre P peut s'écrire P = 6x + 16.\n2) Calcule le périmètre pour x = 1,5.",
+                "solution": "1) Le périmètre est la somme des quatre côtés :\nP = (2x + 5) + (x + 3) + (2x + 5) + (x + 3)\nLes x : 2x + x + 2x + x = 6x. Les constantes : 5 + 3 + 5 + 3 = 16.\nP = 6x + 16.\n2) Pour x = 1,5 : P = 6 × 1,5 + 16 = 9 + 16 = 25 cm.\nVérification : longueur 2 × 1,5 + 5 = 8 cm, largeur 4,5 cm ; 8 + 4,5 + 8 + 4,5 = 25 cm. ✓",
+                "rubric": "1 pt : périmètre écrit comme somme des quatre côtés (ou 2 × longueur + 2 × largeur correctement utilisé). 1 pt : réduction justifiée jusqu'à 6x + 16. 0,5 pt : calcul 6 × 1,5 + 16 = 25. 0,5 pt : unité (cm) et phrase de réponse. Si la question 1 est fausse mais que l'élève calcule correctement le périmètre pour x = 1,5 avec les longueurs : 1 pt pour la question 2."
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
