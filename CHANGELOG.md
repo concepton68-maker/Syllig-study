@@ -371,3 +371,13 @@ Recette complète de l'espace élève (un agent testeur a joué l'élève sur t�
 - Mes clés :
   - bouton « Tester » sur chaque clé : temps de réponse, réponse structurée, réception au fil de l'eau, ou l'erreur exacte avec une piste (crédit épuisé, clé « Coding Plan » qui demande une autre adresse, modèle introuvable…) ;
   - pour un fournisseur ajouté, « Changer la clé ou l'adresse » permet aussi de corriger l'adresse de l'API.
+
+## 0.37 — 25/11/2026
+- Parent : nouvel écran « En direct » (menu) pour suivre l'activité de l'élève :
+  - état à l'instant, rafraîchi toutes les 10 secondes sans recharger : « En train de travailler », « En pause » ou « Hors ligne », depuis quand, sur quel cours, minutes effectives de la séance ;
+  - frise de la journée heure par heure : blocs de travail effectif et de pause, détail au survol, repère « maintenant » ;
+  - 7 derniers jours : travail effectif et pauses par jour, ligne d'objectif quotidien, tableau des chiffres ;
+  - indicateurs de la semaine : travail effectif, concentration (part du temps réellement actif), régularité, séance moyenne, sorties de fenêtre pendant les évaluations ;
+  - répartition du travail sur 30 jours par activité (leçons, exercices, évaluations) et par matière.
+- Accueil parent : pastille d'état en direct qui mène à cet écran.
+- Les signaux d'activité (toutes les 15 s) sont conservés 90 jours puis effacés.

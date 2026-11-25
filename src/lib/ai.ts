@@ -154,6 +154,7 @@ export async function purgeExpired() {
   const { retention_days: d } = await loadAiSettings();
   const days = Math.max(30, Math.min(3650, d || 365));
   await sql`delete from ai_requests where created_at < now() - make_interval(days => ${days})`;
+  await sql`delete from activity_beats where at < now() - interval '90 days'`;
   await sql`delete from student_reports where created_at < now() - make_interval(days => ${days})`;
   await sql`delete from placement_tests where status = 'termine' and submitted_at < now() - make_interval(days => ${days})`;
 }

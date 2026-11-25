@@ -2,7 +2,7 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import {
-  Sun, BookOpen, Trophy, Sparkles, LayoutDashboard, Inbox, Activity, Users, FileCheck2, Library, Upload, UserCog, Circle, FolderOpen, GraduationCap, Bot, Compass, ClipboardList,
+  Sun, BookOpen, Trophy, Sparkles, LayoutDashboard, Inbox, Activity, Users, FileCheck2, Library, Upload, UserCog, Circle, FolderOpen, GraduationCap, Bot, Compass, ClipboardList, Radio,
   type LucideIcon,
 } from 'lucide-react';
 
@@ -10,7 +10,7 @@ import {
 const ICONS: Record<string, LucideIcon> = {
   today: Sun, courses: BookOpen, results: Trophy, space: Sparkles,
   home: LayoutDashboard, todo: Inbox, activity: Activity, children: Users,
-  review: FileCheck2, catalogue: Library, import: Upload, accounts: UserCog, record: FolderOpen, programmes: GraduationCap, ai: Bot, report: Compass, tocreate: ClipboardList,
+  review: FileCheck2, catalogue: Library, import: Upload, accounts: UserCog, record: FolderOpen, programmes: GraduationCap, ai: Bot, report: Compass, tocreate: ClipboardList, live: Radio,
 };
 export type NavItem = { href: string; label: string; short?: string; icon?: string; badge?: number; exact?: boolean };
 

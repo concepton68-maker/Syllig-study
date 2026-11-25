@@ -8,6 +8,7 @@ import { MASTERY } from '@/lib/settings';
 import { PageTitle } from '@/components/Shell';
 import { ChildPicker } from '@/components/ChildPicker';
 import { Screen } from '@/components/Layout';
+import { liveStatus } from '@/lib/live';
 
 export const metadata = { title: 'Tableau de bord' };
 export const dynamic = 'force-dynamic';
@@ -32,6 +33,8 @@ export default async function ParentDashboard({ searchParams }: { searchParams: 
     );
   }
   const q = `?eleve=${student.id}`;
+  const live = await liveStatus(student.id);
+  const LIVE = { travaille: ['En train de travailler', 'bg-brand-soft text-brand-dark'], pause: ['En pause', 'bg-warm-soft text-warm-dark'], hors_ligne: ['Hors ligne', 'bg-soft text-ink-2'] }[live.state];
   const goal = student.settings.weekly_goal_minutes * 60;
   const [w, s, sessions, subjects] = await Promise.all([weekStats(student.id), streak(student.id), recentSessions(student.id, 30), subjectProgress(student.id, student.level_code)]);
   const toGrade = await sql<{ id: string; title: string; attempt_no: number; submitted_at: Date }[]>`
@@ -62,6 +65,7 @@ export default async function ParentDashboard({ searchParams }: { searchParams: 
       <ChildPicker students={students} current={student} path="/parent" />
       <PageTitle kicker="Cette semaine" title={`${student.first_name} a travaillé ${hm(w.active)}, ${pct} % de son objectif`}
         sub={w.open > w.active ? `Temps actif mesuré. Les ${hm(w.open - w.active)} de pages ouvertes sans activité ne sont pas comptées.` : 'Temps actif mesuré par le serveur, minute par minute.'}>
+        <Link className={`pill min-h-9 no-underline ${LIVE[1]}`} href={`/parent/suivi${q}`} data-home-live={live.state}><span aria-hidden className={`inline-block size-2 rounded-full mr-1.5 ${live.state === 'hors_ligne' ? 'bg-muted-2' : live.state === 'pause' ? 'bg-[#f47230]' : 'bg-brand'}`} />{LIVE[0]} · suivi en direct</Link>
         <Link className="btn" href={`/parent/journal${q}`}>Voir le journal détaillé</Link>
       </PageTitle>
 

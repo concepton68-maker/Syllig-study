@@ -13,6 +13,7 @@ export default async function ParentLayout({ children }: { children: React.React
     <Shell role="Parent" spaces={spacesFor(u, 'parent')} nav={[
       { href: '/parent', label: 'Accueil', icon: 'home', exact: true },
       { href: '/parent/a-faire', label: 'À faire', icon: 'todo', badge: n },
+      { href: '/parent/suivi', label: 'En direct', icon: 'live' },
       { href: '/parent/journal', label: 'Activité', icon: 'activity' },
       { href: '/parent/bilan', label: 'Bilan', icon: 'report' },
       { href: '/parent/enfants', label: 'Enfants', icon: 'children' },

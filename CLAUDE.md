@@ -19,4 +19,5 @@
 - Confirmations : jamais `window.confirm`, `alert` ni bulles `title` du navigateur. Utiliser `askConfirm` / `confirmSubmit` de `src/components/Dialog.tsx` (fenêtre de l'application, bouton `[data-dialog-ok]` dans les tests), `ConfirmButton`, `data-tip` pour les infobulles ; les bulles de champs sont gérées par `FieldHints`.
 - Niveaux : un dossier `content/<niveau>/programme.json` par niveau (chargé au démarrage) ; `content/<niveau>/cours/*.json` = cours prêts, publiés automatiquement s’ils n’ont encore aucune version.
 - Bilan pédagogique : faits mesurés `src/lib/profile.ts`, bilan IA `src/lib/report.ts` (aucun prénom envoyé), test de positionnement `src/lib/placement.ts`, leçons à créer (`lesson_suggestions`).
+- Suivi en direct (parent) : `/parent/suivi`, données `src/lib/live.ts`, signaux `activity_beats` (90 jours), API `/api/parent/live` interrogée toutes les 10 s ; test `e2e-suivi.mjs` (après `node scripts/seed.mjs`).
 - Dossier scolaire : table `student_years` (une année par ligne) ; `src/lib/school-years.ts`.

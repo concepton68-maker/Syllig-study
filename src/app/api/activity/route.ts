@@ -38,6 +38,9 @@ export async function POST(req: Request) {
 
   const delta = sql`least(greatest(extract(epoch from now() - last_beat_at), 0), ${MAX_GAP})::int`;
   const active = body.active ?? false;
+  // signal conservé (frise de la journée et suivi en direct du parent), avant la mise à jour des totaux
+  await sql`insert into activity_beats (session_id, student_id, active, seconds)
+    select id, student_id, ${active}, ${delta} from work_sessions where id = ${body.session} and student_id = ${st.id} and ended_at is null`;
   const [s] = await sql<{ id: string }[]>`
     update work_sessions set
       open_seconds = open_seconds + ${delta},

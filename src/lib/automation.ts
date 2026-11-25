@@ -65,6 +65,7 @@ export async function runBilanJob(studentId: string) {
 
 // ── Vérification périodique des automatismes (toutes les 30 minutes, ou à la demande depuis Contenu › IA)
 export async function scheduleAuto() {
+  await sql`delete from activity_beats where at < now() - interval '90 days'`;   // signaux d'activité : 90 jours
   const ai = await loadAiSettings();
   if (!ai.enabled) return { bilans: 0, cours: 0 };
   let bilans = 0, cours = 0;
