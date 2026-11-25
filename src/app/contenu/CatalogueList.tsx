@@ -10,14 +10,19 @@ export type CatRow = { id: number; code: string | null; title: string; level: st
 // Catalogue filtrable : recherche, matière, statut
 export function CatalogueList({ rows, aiReady, reviewReady }: { rows: CatRow[]; aiReady: boolean; reviewReady: boolean }) {
   const levelList = useMemo(() => [...new Map(rows.map(r => [r.level, r.level_name])).entries()], [rows]);
-  const [level, setLevel] = useState(() => levelList[0]?.[0] ?? '');
+  // niveau ouvert par défaut : celui où il y a le plus de cours publiés (là où l'on travaille)
+  const [level, setLevel] = useState(() => {
+    const n = new Map<string, number>();
+    for (const r of rows) if (r.published) n.set(r.level, (n.get(r.level) ?? 0) + 1);
+    return [...n.entries()].sort((a, b) => b[1] - a[1])[0]?.[0] ?? levelList[0]?.[0] ?? '';
+  });
   const [q, setQ] = useState('');
   const [subject, setSubject] = useState('');
   const [status, setStatus] = useState('');
   const subjects = useMemo(() => [...new Set(rows.filter(r => !level || r.level === level).map(r => r.subject))], [rows, level]);
   const norm = (s: string) => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
   const shown = rows.filter(r =>
-    (!level || r.level === level) &&
+    (!level || !!q || r.level === level) &&   // une recherche porte sur tous les niveaux
     (!subject || r.subject === subject) &&
     (!status || (status === 'publie' ? !!r.published : status === 'brouillon' ? !!r.draft && (!r.published || r.draft > r.published) : !r.published && !r.draft)) &&
     (!q || norm(`${r.code ?? ''} ${r.title} ${r.chapter}`).includes(norm(q))));
@@ -48,7 +53,7 @@ export function CatalogueList({ rows, aiReady, reviewReady }: { rows: CatRow[]; 
         </div>
         <div className="flex flex-col lg:flex-1 lg:min-h-0 lg:overflow-y-auto pane">
           {shown.length === 0 && <span className="muted text-sm p-4">Aucun cours ne correspond.</span>}
-          {shown.map(c => <Row key={c.id} c={c} showLevel={!level} aiReady={aiReady} reviewReady={reviewReady} />)}
+          {shown.map(c => <Row key={c.id} c={c} showLevel={!level || !!q} aiReady={aiReady} reviewReady={reviewReady} />)}
         </div>
       </section>
     </div>

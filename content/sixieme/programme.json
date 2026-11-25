@@ -1,0 +1,1191 @@
+{
+ "level": {
+  "code": "sixieme",
+  "name": "6e",
+  "cycle": "Collège",
+  "position": 1
+ },
+ "source": "Analyse du programme de 6e pour 2026-2027 : programmes de français et de mathématiques du cycle 3 (BO n°16 du 17 avril 2025), langues vivantes (BO n°22 du 29 mai 2025), EMC (BO n°24 du 13 juin 2024), sciences et technologie (version du BO n°25 du 22 juin 2023), programme du cycle 3 de 2020 pour les autres disciplines (consultés le 25-11-2026)",
+ "subjects": [
+  {
+   "name": "Français",
+   "chapters": [
+    {
+     "name": "Bases de la langue (début d'année)",
+     "courses": [
+      {
+       "title": "Les classes de mots : nom, déterminant, adjectif, verbe, pronom, adverbe, préposition, conjonction",
+       "priority": "prioritaire",
+       "code": "SX001",
+       "official_note": "Étude de la langue : identifier les mots selon leur nature (programme 2025)."
+      },
+      {
+       "title": "Le verbe et son sujet : trouver le sujet et accorder le verbe",
+       "priority": "prioritaire",
+       "code": "SX002",
+       "official_note": "Officiel 6e : « Identifier le groupe sujet et raisonner sur l'accord sujet/verbe »."
+      },
+      {
+       "title": "Le groupe nominal : déterminant, nom, adjectif épithète, complément du nom",
+       "priority": "prioritaire",
+       "code": "SX003",
+       "official_note": "Officiel 6e : distinguer adjectif épithète et groupe nominal prépositionnel complément du nom."
+      },
+      {
+       "title": "Les accords dans le groupe nominal (genre et nombre)",
+       "priority": "prioritaire",
+       "code": "SX004",
+       "official_note": "Officiel 6e : « Maîtriser la chaîne d'accords dans le groupe nominal »."
+      },
+      {
+       "title": "Le présent de l'indicatif : les trois groupes et les verbes irréguliers",
+       "priority": "prioritaire",
+       "code": "SX005"
+      },
+      {
+       "title": "L'imparfait et le passé simple de l'indicatif",
+       "priority": "prioritaire",
+       "code": "SX006"
+      },
+      {
+       "title": "Le futur simple de l'indicatif",
+       "priority": "prioritaire",
+       "code": "SX007"
+      },
+      {
+       "title": "Lire et comprendre un texte : repérer, déduire, reformuler",
+       "priority": "prioritaire",
+       "code": "SX008",
+       "official_note": "Lecture : « Lire et comprendre seul des textes, des documents et des images »."
+      }
+     ]
+    },
+    {
+     "name": "Créer, recréer le monde : récits des origines",
+     "courses": [
+      {
+       "title": "Récits de création du monde : textes fondateurs et mythes",
+       "priority": "prioritaire",
+       "code": "SX009",
+       "official_note": "Entrée officielle de 6e : « Créer, recréer le monde : récits des origines » (au moins un texte fondateur, mythes et contes étiologiques)."
+      },
+      {
+       "title": "Dieux et héros de la mythologie grecque",
+       "priority": "ensuite",
+       "code": "SX010"
+      },
+      {
+       "title": "Types et formes de phrases (déclarative, interrogative, exclamative, impérative)",
+       "priority": "ensuite",
+       "code": "SX011"
+      },
+      {
+       "title": "Écrire un récit étiologique : expliquer l'origine d'une chose",
+       "priority": "ensuite",
+       "code": "SX012"
+      }
+     ]
+    },
+    {
+     "name": "Partir à l'aventure !",
+     "courses": [
+      {
+       "title": "Le récit d'aventure : personnages, étapes du récit, schéma narratif",
+       "priority": "prioritaire",
+       "code": "SX013",
+       "official_note": "Entrée officielle de 6e : « Partir à l'aventure ! (récit, fiction) »."
+      },
+      {
+       "title": "Les compléments du verbe : COD et COI",
+       "priority": "prioritaire",
+       "code": "SX014"
+      },
+      {
+       "title": "Attribut du sujet ou COD ?",
+       "priority": "prioritaire",
+       "code": "SX015",
+       "official_note": "Officiel 6e : « Opposer et distinguer attribut du sujet et complément d'objet direct (COD) »."
+      },
+      {
+       "title": "Les compléments circonstanciels (temps, lieu, manière)",
+       "priority": "ensuite",
+       "code": "SX016"
+      },
+      {
+       "title": "Écrire la suite d'un récit d'aventure en respectant les temps du récit",
+       "priority": "ensuite",
+       "code": "SX017"
+      }
+     ]
+    },
+    {
+     "name": "Rencontrer des monstres : expérience de l'autre, expérience de soi",
+     "courses": [
+      {
+       "title": "Monstres et créatures : Ulysse et le Cyclope, contes et légendes",
+       "priority": "ensuite",
+       "code": "SX018",
+       "official_note": "Entrée officielle de 6e : « Rencontrer des monstres : expérience de l'autre, expérience de soi (récit, fiction) »."
+      },
+      {
+       "title": "Les pronoms personnels et leur antécédent",
+       "priority": "prioritaire",
+       "code": "SX019",
+       "official_note": "Officiel 6e : identifier les pronoms personnels, préciser leur fonction et leur antécédent."
+      },
+      {
+       "title": "Le passé composé et le plus-que-parfait : auxiliaire + participe passé",
+       "priority": "prioritaire",
+       "code": "SX020",
+       "official_note": "Officiel 6e : consolider les temps composés (passé composé, plus-que-parfait)."
+      },
+      {
+       "title": "L'accord du participe passé avec être (et avec avoir quand le COD est placé avant)",
+       "priority": "prioritaire",
+       "code": "SX021",
+       "official_note": "Officiel 6e : accord avec être ; avec avoir, seulement le cas du pronom personnel COD antéposé."
+      },
+      {
+       "title": "Décrire un monstre : expansions du nom et vocabulaire de la description",
+       "priority": "ensuite",
+       "code": "SX022"
+      }
+     ]
+    },
+    {
+     "name": "Se masquer, jouer, déjouer : ruses en action (théâtre)",
+     "courses": [
+      {
+       "title": "Le texte de théâtre : dialogues, didascalies, actes et scènes",
+       "priority": "ensuite",
+       "code": "SX023",
+       "official_note": "Entrée officielle de 6e : « Se masquer, jouer, déjouer : ruses en action (théâtre) »."
+      },
+      {
+       "title": "La ruse et le comique au théâtre : farce et comédie",
+       "priority": "ensuite",
+       "code": "SX024"
+      },
+      {
+       "title": "L'impératif présent et le conditionnel présent",
+       "priority": "prioritaire",
+       "code": "SX025",
+       "official_note": "Officiel 6e : impératif présent, conditionnel présent de être, avoir, 1er et 2e groupes, faire, aller, dire, venir, pouvoir, voir, vouloir, prendre."
+      },
+      {
+       "title": "Lire une scène à voix haute avec expressivité",
+       "priority": "ensuite",
+       "code": "SX026"
+      }
+     ]
+    },
+    {
+     "name": "Chanter et enchanter le monde : mots et merveilles (poésie)",
+     "courses": [
+      {
+       "title": "Le poème : vers, strophes, rimes",
+       "priority": "ensuite",
+       "code": "SX027",
+       "official_note": "Entrée officielle de 6e : « Chanter et enchanter le monde : mots et merveilles (poésie) »."
+      },
+      {
+       "title": "Les images poétiques : comparaison et personnification",
+       "priority": "ensuite",
+       "code": "SX028"
+      },
+      {
+       "title": "Phrase simple et phrase complexe : juxtaposition, coordination, subordination",
+       "priority": "ensuite",
+       "code": "SX029",
+       "official_note": "Officiel 6e : notion de proposition ; conjonction de coordination et conjonction de subordination."
+      },
+      {
+       "title": "Écrire un poème à la manière d'un auteur",
+       "priority": "mis_de_cote",
+       "code": "SX030"
+      }
+     ]
+    },
+    {
+     "name": "Vocabulaire et orthographe",
+     "courses": [
+      {
+       "title": "Formation des mots : radical, préfixe, suffixe, familles de mots",
+       "priority": "ensuite",
+       "code": "SX031",
+       "official_note": "Officiel 6e : mots simples, dérivés et composés."
+      },
+      {
+       "title": "Synonymes, antonymes et mots polysémiques",
+       "priority": "ensuite",
+       "code": "SX032"
+      },
+      {
+       "title": "Les homophones grammaticaux (a/à, et/est, son/sont, on/ont, ou/où, ce/se)",
+       "priority": "prioritaire",
+       "code": "SX033"
+      },
+      {
+       "title": "Étymologie : mots venus du latin et du grec",
+       "priority": "mis_de_cote",
+       "code": "SX034",
+       "official_note": "Officiel 6e : « Se sensibiliser à l'étymologie et à l'évolution du sens des mots »."
+      }
+     ]
+    }
+   ],
+   "official_sources": [
+    {
+     "texte": "Programmes de français et de mathématiques du cycle 3 (CM1, CM2, 6e)",
+     "reference": "Arrêté du 10-4-2025, BO n°16 du 17 avril 2025 (NOR MENE2504620A)",
+     "application": "En vigueur en 6e depuis la rentrée 2025 (CM1 et 6e en 2025-2026, CM2 en 2026-2027) : applicable en 6e en 2026-2027",
+     "lien": "https://www.education.gouv.fr/bo/2025/Hebdo16/MENE2504620A",
+     "contenu": "Programme de français du cycle 3 (annexe 1), défini année par année. 6e : lecture (fluidité, compréhension, œuvres intégrales : au moins six œuvres lues), écriture, oral, vocabulaire, grammaire et orthographe grammaticale. Entrées littéraires de 6e : Créer, recréer le monde : récits des origines ; Chanter et enchanter le monde : mots et merveilles ; Se masquer, jouer, déjouer : ruses en action ; Partir à l'aventure ! ; Rencontrer des monstres : expérience de l'autre, expérience de soi. Annexe lue le 25-11-2026 ; la date d'application est celle de l'article 3 de l'arrêté (page du BO non accessible directement, relevée par recherche)."
+    },
+    {
+     "texte": "Annexe 1 — Programme de français pour le cycle 3",
+     "reference": "Annexe de l'arrêté du 10-4-2025 (BO n°16 du 17 avril 2025)",
+     "application": "Classe de 6e",
+     "lien": "https://www.education.gouv.fr/sites/default/files/ensel620_annexe1.pdf",
+     "contenu": "Grammaire de 6e : constituants de la phrase simple, attribut du sujet / COD, pronoms personnels et antécédent, groupe nominal (épithète / complément du nom), phrase complexe, chaîne d'accords, accord sujet-verbe, temps composés, impératif et conditionnel présent, accord du participe passé (être ; avoir avec COD pronom antéposé)."
+    }
+   ]
+  },
+  {
+   "name": "Mathématiques",
+   "chapters": [
+    {
+     "name": "Nombres entiers et décimaux (début d'année)",
+     "courses": [
+      {
+       "title": "Numération décimale : valeur des chiffres selon leur rang",
+       "priority": "prioritaire",
+       "code": "SX035",
+       "official_note": "Officiel 6e : « Connaître et utiliser la valeur des chiffres selon leur rang dans l'écriture d'un nombre »."
+      },
+      {
+       "title": "Les grands nombres entiers jusqu'au milliard",
+       "priority": "prioritaire",
+       "code": "SX036",
+       "official_note": "Le milliard est introduit en 6e."
+      },
+      {
+       "title": "Fractions décimales et différentes écritures d'un nombre décimal",
+       "priority": "prioritaire",
+       "code": "SX037"
+      },
+      {
+       "title": "Repérer et placer des nombres décimaux sur une demi-droite graduée",
+       "priority": "prioritaire",
+       "code": "SX038"
+      },
+      {
+       "title": "Comparer, ranger, encadrer et intercaler des nombres décimaux",
+       "priority": "prioritaire",
+       "code": "SX039"
+      },
+      {
+       "title": "Arrondir un nombre décimal à l'unité, au dixième, au centième",
+       "priority": "ensuite",
+       "code": "SX040"
+      }
+     ]
+    },
+    {
+     "name": "Calculer avec les quatre opérations",
+     "courses": [
+      {
+       "title": "Calcul mental et automatismes : ×10, ×100, ×0,1, ÷10…",
+       "priority": "prioritaire",
+       "code": "SX041",
+       "official_note": "Automatismes officiels de 6e : multiplier et diviser par 10, 100, 1 000 et par 0,1, 0,01, 0,001."
+      },
+      {
+       "title": "Additionner et soustraire des nombres décimaux",
+       "priority": "prioritaire",
+       "code": "SX042"
+      },
+      {
+       "title": "Multiplier deux nombres décimaux et contrôler avec un ordre de grandeur",
+       "priority": "prioritaire",
+       "code": "SX043",
+       "official_note": "Nouveauté de 6e : sens et calcul du produit de deux décimaux."
+      },
+      {
+       "title": "La division euclidienne (diviseur inférieur à 100)",
+       "priority": "prioritaire",
+       "code": "SX044"
+      },
+      {
+       "title": "La division décimale d'un nombre décimal par un entier inférieur à 10",
+       "priority": "prioritaire",
+       "code": "SX045"
+      },
+      {
+       "title": "Multiples, diviseurs et critères de divisibilité",
+       "priority": "ensuite",
+       "code": "SX046"
+      },
+      {
+       "title": "Résoudre des problèmes à plusieurs étapes avec les quatre opérations",
+       "priority": "prioritaire",
+       "code": "SX047"
+      }
+     ]
+    },
+    {
+     "name": "Les fractions",
+     "courses": [
+      {
+       "title": "La fraction comme quotient : a/b = a ÷ b",
+       "priority": "prioritaire",
+       "code": "SX048",
+       "official_note": "Officiel 6e : la fraction acquiert le sens de quotient."
+      },
+      {
+       "title": "Placer une fraction sur une demi-droite graduée",
+       "priority": "prioritaire",
+       "code": "SX049"
+      },
+      {
+       "title": "Égalités de fractions et simplification",
+       "priority": "prioritaire",
+       "code": "SX050"
+      },
+      {
+       "title": "Comparer, encadrer et ranger des fractions",
+       "priority": "ensuite",
+       "code": "SX051"
+      },
+      {
+       "title": "Additionner et soustraire des fractions",
+       "priority": "ensuite",
+       "code": "SX052"
+      },
+      {
+       "title": "Fraction d'une quantité : appliquer une fraction à un nombre",
+       "priority": "prioritaire",
+       "code": "SX053",
+       "official_note": "Officiel 6e : « Utiliser une multiplication pour appliquer une fraction à un nombre entier »."
+      },
+      {
+       "title": "Résoudre des problèmes avec des fractions",
+       "priority": "prioritaire",
+       "code": "SX054"
+      }
+     ]
+    },
+    {
+     "name": "Proportionnalité et pourcentages",
+     "courses": [
+      {
+       "title": "Reconnaître une situation de proportionnalité",
+       "priority": "prioritaire",
+       "code": "SX055"
+      },
+      {
+       "title": "Résoudre un problème de proportionnalité : linéarité, coefficient, passage par l'unité",
+       "priority": "prioritaire",
+       "code": "SX056"
+      },
+      {
+       "title": "Les pourcentages : sens, proportion, appliquer un pourcentage",
+       "priority": "ensuite",
+       "code": "SX057",
+       "official_note": "Officiel 6e : définition d'un pourcentage, calcul d'une proportion, application à une grandeur."
+      }
+     ]
+    },
+    {
+     "name": "Géométrie plane",
+     "courses": [
+      {
+       "title": "Distance, milieu d'un segment, cercle et disque",
+       "priority": "ensuite",
+       "code": "SX058"
+      },
+      {
+       "title": "Les angles : vocabulaire, mesure et construction au rapporteur",
+       "priority": "ensuite",
+       "code": "SX059"
+      },
+      {
+       "title": "La médiatrice d'un segment",
+       "priority": "ensuite",
+       "code": "SX060",
+       "official_note": "Officiel 6e : définition et propriété caractéristique de la médiatrice."
+      },
+      {
+       "title": "La bissectrice d'un angle",
+       "priority": "ensuite",
+       "code": "SX061"
+      },
+      {
+       "title": "Les triangles : constructions, triangles particuliers, somme des angles",
+       "priority": "ensuite",
+       "code": "SX062",
+       "official_note": "Officiel 6e : somme des angles d'un triangle, médiatrices concourantes et cercle circonscrit."
+      },
+      {
+       "title": "La symétrie axiale",
+       "priority": "ensuite",
+       "code": "SX063"
+      }
+     ]
+    },
+    {
+     "name": "Grandeurs et mesures",
+     "courses": [
+      {
+       "title": "Périmètres et périmètre du cercle",
+       "priority": "ensuite",
+       "code": "SX064"
+      },
+      {
+       "title": "Aires du carré et du rectangle, conversions d'aires",
+       "priority": "ensuite",
+       "code": "SX065"
+      },
+      {
+       "title": "Volumes : le centimètre cube, comparer et déterminer un volume",
+       "priority": "ensuite",
+       "code": "SX066"
+      },
+      {
+       "title": "Horaires et durées : calculs et conversions",
+       "priority": "ensuite",
+       "code": "SX067"
+      }
+     ]
+    },
+    {
+     "name": "Données, probabilités, pensée algébrique et programmation",
+     "courses": [
+      {
+       "title": "Lire et construire des tableaux et des graphiques (enquête statistique)",
+       "priority": "ensuite",
+       "code": "SX068"
+      },
+      {
+       "title": "Les probabilités : situations d'équiprobabilité",
+       "priority": "ensuite",
+       "code": "SX069",
+       "official_note": "Nouveauté du programme 2025 : probabilité comprise entre 0 et 1, calcul dans des cas simples."
+      },
+      {
+       "title": "Pensée algébrique : schémas en barres, motifs évolutifs et nombres inconnus",
+       "priority": "ensuite",
+       "code": "SX070",
+       "official_note": "Nouveauté du programme 2025 : initiation à la pensée algébrique (sans lettres obligatoires)."
+      },
+      {
+       "title": "Vision dans l'espace : solides et assemblages de cubes",
+       "priority": "mis_de_cote",
+       "code": "SX071"
+      },
+      {
+       "title": "Programmer un déplacement avec des instructions (Scratch)",
+       "priority": "mis_de_cote",
+       "code": "SX072"
+      }
+     ]
+    }
+   ],
+   "official_sources": [
+    {
+     "texte": "Programmes de français et de mathématiques du cycle 3 (CM1, CM2, 6e)",
+     "reference": "Arrêté du 10-4-2025, BO n°16 du 17 avril 2025 (NOR MENE2504620A)",
+     "application": "En vigueur en 6e depuis la rentrée 2025 (CM1 et 6e en 2025-2026, CM2 en 2026-2027) : applicable en 6e en 2026-2027",
+     "lien": "https://www.education.gouv.fr/bo/2025/Hebdo16/MENE2504620A",
+     "contenu": "Programme de mathématiques du cycle 3 (annexe 2), défini année par année. 6e : nombres entiers et décimaux, fractions (sens quotient, opérateur, opérations simples), pourcentages, algèbre (pensée algébrique), grandeurs et mesures (longueurs, aires, volumes, durées), espace et géométrie (configurations planes, vision dans l'espace), données et probabilités, proportionnalité, initiation à la pensée informatique. Annexe lue le 25-11-2026 ; la date d'application est celle de l'article 3 de l'arrêté (page du BO non accessible directement, relevée par recherche)."
+    },
+    {
+     "texte": "Annexe 2 — Programme de mathématiques pour le cycle 3",
+     "reference": "Annexe de l'arrêté du 10-4-2025 (BO n°16 du 17 avril 2025)",
+     "application": "Classe de 6e",
+     "lien": "https://www.education.gouv.fr/sites/default/files/ensel620_annexe2-v2.pdf",
+     "contenu": "Automatismes et objectifs d'apprentissage de 6e : multiplication de deux décimaux, division euclidienne (diviseur < 100), division décimale par un entier < 10, fractions comme quotient, égalités et comparaisons de fractions, médiatrice, bissectrice, somme des angles du triangle, symétrie axiale, périmètre du disque, volumes, probabilités, proportionnalité."
+    }
+   ]
+  },
+  {
+   "name": "Histoire-Géographie",
+   "chapters": [
+    {
+     "name": "Histoire 1 – La longue histoire de l'humanité et des migrations (début d'année)",
+     "courses": [
+      {
+       "title": "Les débuts de l'humanité",
+       "priority": "prioritaire",
+       "code": "SX073",
+       "official_note": "Officiel 6e (programme 2020) : thème 1 d'histoire."
+      },
+      {
+       "title": "La « révolution » néolithique",
+       "priority": "prioritaire",
+       "code": "SX074"
+      },
+      {
+       "title": "Premiers États, premières écritures",
+       "priority": "prioritaire",
+       "code": "SX075"
+      }
+     ]
+    },
+    {
+     "name": "Géographie 1 – Habiter une métropole",
+     "courses": [
+      {
+       "title": "Les métropoles et leurs habitants",
+       "priority": "prioritaire",
+       "code": "SX076",
+       "official_note": "Officiel 6e : thème 1 de géographie."
+      },
+      {
+       "title": "La ville de demain",
+       "priority": "ensuite",
+       "code": "SX077"
+      }
+     ]
+    },
+    {
+     "name": "Histoire 2 – Récits fondateurs, croyances et citoyenneté dans la Méditerranée antique au Ier millénaire av. J.-C.",
+     "courses": [
+      {
+       "title": "Le monde des cités grecques",
+       "priority": "prioritaire",
+       "code": "SX078"
+      },
+      {
+       "title": "Rome du mythe à l'histoire",
+       "priority": "prioritaire",
+       "code": "SX079"
+      },
+      {
+       "title": "La naissance du monothéisme juif dans un monde polythéiste",
+       "priority": "prioritaire",
+       "code": "SX080"
+      }
+     ]
+    },
+    {
+     "name": "Géographie 2 – Habiter un espace de faible densité",
+     "courses": [
+      {
+       "title": "Habiter un espace à fortes contraintes naturelles ou de grande biodiversité",
+       "priority": "ensuite",
+       "code": "SX081"
+      },
+      {
+       "title": "Habiter un espace de faible densité à vocation agricole",
+       "priority": "ensuite",
+       "code": "SX082"
+      }
+     ]
+    },
+    {
+     "name": "Histoire 3 – L'empire romain dans le monde antique",
+     "courses": [
+      {
+       "title": "Conquêtes, paix romaine et romanisation",
+       "priority": "prioritaire",
+       "code": "SX083"
+      },
+      {
+       "title": "Des chrétiens dans l'Empire",
+       "priority": "prioritaire",
+       "code": "SX084"
+      },
+      {
+       "title": "Les relations de l'Empire romain avec les autres mondes anciens : la route de la soie et la Chine des Han",
+       "priority": "ensuite",
+       "code": "SX085"
+      }
+     ]
+    },
+    {
+     "name": "Géographie 3 – Habiter les littoraux",
+     "courses": [
+      {
+       "title": "Un littoral industrialo-portuaire",
+       "priority": "ensuite",
+       "code": "SX086"
+      },
+      {
+       "title": "Un littoral touristique",
+       "priority": "ensuite",
+       "code": "SX087"
+      }
+     ]
+    },
+    {
+     "name": "Géographie 4 – Le monde habité",
+     "courses": [
+      {
+       "title": "La répartition de la population mondiale et ses dynamiques",
+       "priority": "prioritaire",
+       "code": "SX088"
+      },
+      {
+       "title": "La variété des formes d'occupation de l'espace dans le monde",
+       "priority": "ensuite",
+       "code": "SX089"
+      }
+     ]
+    },
+    {
+     "name": "Méthodes",
+     "courses": [
+      {
+       "title": "Lire et compléter une frise chronologique",
+       "priority": "prioritaire",
+       "code": "SX090"
+      },
+      {
+       "title": "Lire une carte : légende, échelle, orientation",
+       "priority": "prioritaire",
+       "code": "SX091"
+      },
+      {
+       "title": "Décrire et expliquer un document en histoire-géographie",
+       "priority": "ensuite",
+       "code": "SX092"
+      }
+     ]
+    }
+   ],
+   "official_sources": [
+    {
+     "texte": "Programmes d'enseignement des cycles 2, 3 et 4, version consolidée",
+     "reference": "Arrêté du 17-7-2020, BO n°31 du 30 juillet 2020 (NOR MENE2018714A)",
+     "application": "En vigueur en 6e en 2026-2027 pour les disciplines non encore renouvelées",
+     "lien": "https://www.education.gouv.fr/bo/20/Hebdo31/MENE2018714A.htm",
+     "contenu": "Programme d'histoire et géographie du cycle 3, classe de 6e. Histoire : La longue histoire de l'humanité et des migrations ; Récits fondateurs, croyances et citoyenneté dans la Méditerranée antique au Ier millénaire av. J.-C. ; L'empire romain dans le monde antique. Géographie : Habiter une métropole ; Habiter un espace de faible densité ; Habiter les littoraux ; Le monde habité. Intitulés repris du programme 2020 (texte du BO non accessible directement le 25-11-2026, à relire sur la page du BO)."
+    },
+    {
+     "texte": "Nouveaux programmes d'histoire-géographie (et d'EPS) des cycles 2 et 3",
+     "reference": "Arrêté du 22-4-2026, BO n°22 du 28 mai 2026 (NOR MENE2608631A)",
+     "application": "CP et CM1 en 2026-2027 ; CE1, CE2, CM2 et 6e à la rentrée 2027 (non applicable en 6e en 2026-2027)",
+     "lien": "https://www.education.gouv.fr/bo/2026/Hebdo22/MENE2608631A",
+     "contenu": "Cité pour mémoire : article 3 lu dans le BO (PDF) le 25-11-2026. En 2026-2027, la 6e reste sur le programme de 2020."
+    }
+   ]
+  },
+  {
+   "name": "Enseignement moral et civique",
+   "chapters": [
+    {
+     "name": "Représenter les autres et servir l'intérêt général (début d'année)",
+     "courses": [
+      {
+       "title": "Élire et être élu : le délégué de classe et les instances du collège",
+       "priority": "prioritaire",
+       "code": "SX093",
+       "official_note": "Thème de 6e (programme 2024) : « Apprendre à vivre dans une société démocratique »."
+      },
+      {
+       "title": "Les représentants à toutes les échelles : de la commune à l'Union européenne",
+       "priority": "ensuite",
+       "code": "SX094"
+      },
+      {
+       "title": "L'intérêt général et le développement durable",
+       "priority": "ensuite",
+       "code": "SX095"
+      }
+     ]
+    },
+    {
+     "name": "Respecter des règles : l'exemple de la laïcité à l'École",
+     "courses": [
+      {
+       "title": "La laïcité : liberté de conscience et neutralité de l'État",
+       "priority": "prioritaire",
+       "code": "SX096",
+       "official_note": "Officiel 6e : loi de 1905, loi du 15 mars 2004, Charte de la laïcité."
+      },
+      {
+       "title": "La laïcité à l'école : règles communes et protection des élèves",
+       "priority": "prioritaire",
+       "code": "SX097"
+      }
+     ]
+    },
+    {
+     "name": "Avoir des droits et respecter ceux des autres : le droit à la vie privée",
+     "courses": [
+      {
+       "title": "Le droit à la vie privée et à l'intimité",
+       "priority": "ensuite",
+       "code": "SX098"
+      },
+      {
+       "title": "Vie privée et vie publique en ligne : réseaux sociaux et droit à l'image",
+       "priority": "prioritaire",
+       "code": "SX099"
+      }
+     ]
+    }
+   ],
+   "official_sources": [
+    {
+     "texte": "Programme d'enseignement moral et civique (du CP à la terminale)",
+     "reference": "Arrêté du 29-5-2024, BO n°24 du 13 juin 2024 (NOR MENE2413934A)",
+     "application": "En vigueur en 6e à la rentrée 2026 (article 3 : CP, CM1, 5e en 2024 ; CE1, CM2, 4e en 2025 ; CE2, 6e, 3e en 2026)",
+     "lien": "https://www.education.gouv.fr/bo/2024/Hebdo24/MENE2413934A",
+     "contenu": "6e : « Apprendre à vivre dans une société démocratique » — Représenter les autres et servir l'intérêt général ; Respecter des règles et en comprendre la finalité : l'exemple de la laïcité à l'École ; Avoir des droits en tant que personne et respecter ceux des autres : l'exemple du droit à la vie privée. Texte lu dans le BO (PDF) le 25-11-2026."
+    }
+   ]
+  },
+  {
+   "name": "Sciences et technologie",
+   "chapters": [
+    {
+     "name": "La matière (début d'année)",
+     "courses": [
+      {
+       "title": "Les propriétés des matériaux : conduction, aimantation, décomposition",
+       "priority": "ensuite",
+       "code": "SX100",
+       "official_note": "Attendu de fin de 6e : comparer et trier des matériaux selon leurs propriétés physiques."
+      },
+      {
+       "title": "Les changements d'état de l'eau et les paliers de température",
+       "priority": "prioritaire",
+       "code": "SX101"
+      },
+      {
+       "title": "Masse et volume : mesurer, convertir, relier par la proportionnalité",
+       "priority": "prioritaire",
+       "code": "SX102"
+      },
+      {
+       "title": "Les mélanges : séparer, dissoudre, la composition de l'air",
+       "priority": "ensuite",
+       "code": "SX103"
+      },
+      {
+       "title": "La transformation chimique et la sécurité au laboratoire",
+       "priority": "ensuite",
+       "code": "SX104"
+      }
+     ]
+    },
+    {
+     "name": "Mouvement, énergie et signaux",
+     "courses": [
+      {
+       "title": "Décrire un mouvement et calculer une vitesse",
+       "priority": "prioritaire",
+       "code": "SX105",
+       "official_note": "Officiel 6e : seul le calcul de la vitesse (mouvement uniforme) est attendu ; la relation générale relève du cycle 4."
+      },
+      {
+       "title": "La Terre tourne : jour, nuit et année",
+       "priority": "prioritaire",
+       "code": "SX106"
+      },
+      {
+       "title": "Les formes d'énergie et la chaîne énergétique",
+       "priority": "ensuite",
+       "code": "SX107"
+      },
+      {
+       "title": "Les ressources en énergie : renouvelables ou non",
+       "priority": "ensuite",
+       "code": "SX108"
+      },
+      {
+       "title": "Le circuit électrique à une boucle et son schéma normalisé",
+       "priority": "prioritaire",
+       "code": "SX109"
+      },
+      {
+       "title": "Les signaux pour transmettre une information",
+       "priority": "mis_de_cote",
+       "code": "SX110"
+      }
+     ]
+    },
+    {
+     "name": "Le vivant, sa diversité et ses fonctions",
+     "courses": [
+      {
+       "title": "La cellule, unité commune à tous les êtres vivants",
+       "priority": "prioritaire",
+       "code": "SX111"
+      },
+      {
+       "title": "Classer les êtres vivants et lire un arbre de parenté",
+       "priority": "prioritaire",
+       "code": "SX112"
+      },
+      {
+       "title": "La biodiversité actuelle et passée",
+       "priority": "ensuite",
+       "code": "SX113"
+      },
+      {
+       "title": "Alimentation humaine : besoins, production et conservation des aliments",
+       "priority": "ensuite",
+       "code": "SX114",
+       "official_note": "Officiel 6e : rôle des micro-organismes (fermentation) dans la production et la conservation des aliments."
+      },
+      {
+       "title": "La pollinisation et la reproduction des plantes à fleurs",
+       "priority": "ensuite",
+       "code": "SX115"
+      },
+      {
+       "title": "La puberté et la reproduction humaine",
+       "priority": "ensuite",
+       "code": "SX116"
+      }
+     ]
+    },
+    {
+     "name": "La Terre, une planète peuplée par des êtres vivants",
+     "courses": [
+      {
+       "title": "Les conditions de la vie sur Terre",
+       "priority": "ensuite",
+       "code": "SX117"
+      },
+      {
+       "title": "Le réchauffement climatique : constats, causes et solutions",
+       "priority": "prioritaire",
+       "code": "SX118"
+      },
+      {
+       "title": "Les écosystèmes et l'action humaine",
+       "priority": "ensuite",
+       "code": "SX119"
+      }
+     ]
+    },
+    {
+     "name": "Les objets techniques",
+     "courses": [
+      {
+       "title": "Objets techniques : besoins, fonctions et choix des matériaux",
+       "priority": "mis_de_cote",
+       "code": "SX120",
+       "official_note": "Depuis 2023, ce thème est surtout travaillé au cours moyen ; la 6e le réinvestit dans les autres thèmes."
+      },
+      {
+       "title": "Programmer un objet : algorithme et capteurs",
+       "priority": "mis_de_cote",
+       "code": "SX121"
+      }
+     ]
+    }
+   ],
+   "official_sources": [
+    {
+     "texte": "Programme de sciences et technologie du cycle 3 (version 2023)",
+     "reference": "Annexe publiée au BO n°25 du 22 juin 2023 (NOR MENE2314101A)",
+     "application": "En vigueur en 6e depuis la rentrée 2023 ; toujours en vigueur en 6e en 2026-2027",
+     "lien": "https://www.education.gouv.fr/bo/2023/Hebdo25/MENE2314101A",
+     "contenu": "Une seule matière en 6e, avec des « connaissances et compétences attendues en fin de sixième » : Matière, mouvement, énergie, information ; Le vivant, sa diversité et les fonctions qui le caractérisent ; Les objets techniques au cœur de la société (surtout au cours moyen) ; La Terre, une planète peuplée par des êtres vivants. Annexe lue le 25-11-2026 ; la date de l'arrêté n'a pas été lue dans le texte officiel."
+    },
+    {
+     "texte": "Nouveaux programmes de sciences et technologie des cycles 2 et 3",
+     "reference": "Arrêté du 5-6-2026, BO n°24 du 11 juin 2026 (NOR MENE2611650A)",
+     "application": "CP et CM1 en 2026-2027 ; CE1, CE2, CM2 et 6e à la rentrée 2027 (non applicable en 6e en 2026-2027)",
+     "lien": "https://www.education.gouv.fr/bo/2026/Hebdo24/MENE2611650A",
+     "contenu": "Cité pour mémoire : article 3 lu dans le BO (PDF) le 25-11-2026. Il remplace la partie sciences et technologie de 2015/2023 à partir de 2027 en 6e."
+    }
+   ]
+  },
+  {
+   "name": "Anglais (LV1)",
+   "chapters": [
+    {
+     "name": "Les bases (début d'année)",
+     "courses": [
+      {
+       "title": "Se présenter, saluer, épeler : alphabet et nombres",
+       "priority": "prioritaire",
+       "code": "SX122",
+       "official_note": "Niveau visé en fin de 6e pour la langue A : A1+ (programme 2025)."
+      },
+      {
+       "title": "Les verbes be et have au présent",
+       "priority": "prioritaire",
+       "code": "SX123"
+      },
+      {
+       "title": "Les pronoms personnels sujets et compléments",
+       "priority": "prioritaire",
+       "code": "SX124"
+      },
+      {
+       "title": "Poser des questions : what, where, who, how old…",
+       "priority": "prioritaire",
+       "code": "SX125"
+      }
+     ]
+    },
+    {
+     "name": "Personnes et personnages",
+     "courses": [
+      {
+       "title": "Décrire quelqu'un : apparence et caractère (place de l'adjectif)",
+       "priority": "ensuite",
+       "code": "SX126",
+       "official_note": "Axe culturel 1 de 6e : « Personnes et personnages »."
+      },
+      {
+       "title": "La famille et le génitif ('s)",
+       "priority": "ensuite",
+       "code": "SX127"
+      }
+     ]
+    },
+    {
+     "name": "Le quotidien : vivre, jouer, apprendre",
+     "courses": [
+      {
+       "title": "Le présent simple : habitudes et -s de la 3e personne",
+       "priority": "prioritaire",
+       "code": "SX128",
+       "official_note": "Axe culturel 2 de 6e : « Le quotidien : vivre, jouer, apprendre »."
+      },
+      {
+       "title": "Dire l'heure et raconter sa journée",
+       "priority": "ensuite",
+       "code": "SX129"
+      },
+      {
+       "title": "Exprimer ses goûts : like, love, hate + -ing",
+       "priority": "ensuite",
+       "code": "SX130"
+      },
+      {
+       "title": "Can / can't et must / mustn't",
+       "priority": "ensuite",
+       "code": "SX131"
+      }
+     ]
+    },
+    {
+     "name": "Pays et paysages",
+     "courses": [
+      {
+       "title": "Les pays anglophones et les nationalités",
+       "priority": "ensuite",
+       "code": "SX132",
+       "official_note": "Axe culturel 3 de 6e : « Pays et paysages »."
+      },
+      {
+       "title": "Décrire un lieu : there is / there are et prépositions de lieu",
+       "priority": "ensuite",
+       "code": "SX133"
+      }
+     ]
+    },
+    {
+     "name": "Imaginaire, contes et légendes",
+     "courses": [
+      {
+       "title": "Contes et légendes du monde anglophone",
+       "priority": "ensuite",
+       "code": "SX134",
+       "official_note": "Axe culturel 4 de 6e : « Imaginaire, contes et légendes »."
+      },
+      {
+       "title": "Le présent be + -ing",
+       "priority": "ensuite",
+       "code": "SX135"
+      },
+      {
+       "title": "Reconnaître le prétérit : was / were et verbes courants",
+       "priority": "mis_de_cote",
+       "code": "SX136"
+      }
+     ]
+    },
+    {
+     "name": "Arts et expression des sentiments",
+     "courses": [
+      {
+       "title": "Exprimer ses émotions et donner son avis",
+       "priority": "ensuite",
+       "code": "SX137",
+       "official_note": "Axe culturel 5 de 6e : « Arts et expression des sentiments »."
+      },
+      {
+       "title": "Prononciation : sons, accent des mots et intonation",
+       "priority": "mis_de_cote",
+       "code": "SX138"
+      }
+     ]
+    }
+   ],
+   "official_sources": [
+    {
+     "texte": "Programmes de langues vivantes étrangères et régionales du collège et du lycée",
+     "reference": "Arrêté du 5-5-2025, BO n°22 du 29 mai 2025 (NOR MENE2504621A)",
+     "application": "En vigueur en 6e depuis la rentrée 2025 (5e en 2026, 4e en 2027, 3e en 2028)",
+     "lien": "https://www.education.gouv.fr/bo/2025/Hebdo22/MENE2504621A",
+     "contenu": "Programme défini par année. Calendrier relevé par recherche (page du BO non accessible directement le 25-11-2026), à confirmer sur le BO."
+    },
+    {
+     "texte": "Programme d'anglais pour les classes de collège",
+     "reference": "Annexe de l'arrêté du 5-5-2025 (BO n°22 du 29 mai 2025)",
+     "application": "Classe de 6e",
+     "lien": "https://www.education.gouv.fr/sites/default/files/ensel621_annexe3.pdf",
+     "contenu": "6e : niveau A1 / A1+ (langue A). Cinq axes, tous étudiés dans l'année : Personnes et personnages ; Le quotidien : vivre, jouer, apprendre ; Pays et paysages ; Imaginaire, contes et légendes ; Arts et expression des sentiments. Grammaire : présent simple, be et have, can/must, be + -ing, premiers prétérits, génitif, pronoms. Annexe lue le 25-11-2026."
+    }
+   ]
+  },
+  {
+   "name": "Arts plastiques",
+   "chapters": [
+    {
+     "name": "Questionnements du cycle 3",
+     "courses": [
+      {
+       "title": "La représentation plastique et les dispositifs de présentation",
+       "priority": "ensuite",
+       "code": "SX139",
+       "official_note": "Questionnement officiel du cycle 3 (programme 2020)."
+      },
+      {
+       "title": "Les fabrications et la relation entre l'objet et l'espace",
+       "priority": "ensuite",
+       "code": "SX140"
+      },
+      {
+       "title": "La matérialité de la production plastique et la sensibilité aux constituants de l'œuvre",
+       "priority": "ensuite",
+       "code": "SX141"
+      }
+     ]
+    },
+    {
+     "name": "Histoire des arts",
+     "courses": [
+      {
+       "title": "Décrire une œuvre d'art : vocabulaire et méthode",
+       "priority": "ensuite",
+       "code": "SX142"
+      },
+      {
+       "title": "Situer une œuvre dans le temps et dans l'espace",
+       "priority": "mis_de_cote",
+       "code": "SX143"
+      }
+     ]
+    }
+   ],
+   "official_sources": [
+    {
+     "texte": "Programmes d'enseignement des cycles 2, 3 et 4, version consolidée",
+     "reference": "Arrêté du 17-7-2020, BO n°31 du 30 juillet 2020 (NOR MENE2018714A)",
+     "application": "En vigueur en 6e en 2026-2027 pour les disciplines non encore renouvelées",
+     "lien": "https://www.education.gouv.fr/bo/20/Hebdo31/MENE2018714A.htm",
+     "contenu": "Programme d'arts plastiques du cycle 3 : la représentation plastique et les dispositifs de présentation ; les fabrications et la relation entre l'objet et l'espace ; la matérialité de la production plastique et la sensibilité aux constituants de l'œuvre. Intitulés repris du programme 2020 (texte du BO non accessible directement le 25-11-2026)."
+    },
+    {
+     "texte": "Projet de programmes des enseignements artistiques pour le cycle 3",
+     "reference": "Conseil supérieur des programmes, projet (2025), consultation nationale close le 20 mars 2026",
+     "application": "Non applicable en 2026-2027 : aucun arrêté publié au BO trouvé au 25-11-2026 (non vérifié)",
+     "lien": "https://www.education.gouv.fr/le-conseil-superieur-des-programmes/projet-de-programmes-des-enseignements-artistiques-pour-le-cycle-3-469916",
+     "contenu": "Cité pour information : aucune publication au BO n'a pu être vérifiée ; la 6e reste sur le programme de 2020."
+    }
+   ]
+  },
+  {
+   "name": "Éducation musicale",
+   "chapters": [
+    {
+     "name": "Compétences du cycle 3",
+     "courses": [
+      {
+       "title": "Chanter et interpréter : voix, justesse, chant à plusieurs voix",
+       "priority": "ensuite",
+       "code": "SX144",
+       "official_note": "Compétence officielle du cycle 3 : « Chanter et interpréter »."
+      },
+      {
+       "title": "Écouter et comparer des œuvres musicales",
+       "priority": "ensuite",
+       "code": "SX145",
+       "official_note": "Compétence officielle : « Écouter, comparer et commenter »."
+      },
+      {
+       "title": "Le vocabulaire musical : timbre, hauteur, rythme, tempo, nuances",
+       "priority": "ensuite",
+       "code": "SX146"
+      },
+      {
+       "title": "Explorer, imaginer et créer : inventer une courte pièce",
+       "priority": "mis_de_cote",
+       "code": "SX147"
+      },
+      {
+       "title": "Échanger et argumenter : exprimer un avis sur une musique",
+       "priority": "mis_de_cote",
+       "code": "SX148"
+      }
+     ]
+    }
+   ],
+   "official_sources": [
+    {
+     "texte": "Programmes d'enseignement des cycles 2, 3 et 4, version consolidée",
+     "reference": "Arrêté du 17-7-2020, BO n°31 du 30 juillet 2020 (NOR MENE2018714A)",
+     "application": "En vigueur en 6e en 2026-2027 pour les disciplines non encore renouvelées",
+     "lien": "https://www.education.gouv.fr/bo/20/Hebdo31/MENE2018714A.htm",
+     "contenu": "Programme d'éducation musicale du cycle 3 : chanter et interpréter ; écouter, comparer et commenter ; explorer, imaginer et créer ; échanger, partager et argumenter. Intitulés repris du programme 2020 (texte du BO non accessible directement le 25-11-2026)."
+    },
+    {
+     "texte": "Projet de programmes des enseignements artistiques pour le cycle 3",
+     "reference": "Conseil supérieur des programmes, projet (2025), consultation nationale close le 20 mars 2026",
+     "application": "Non applicable en 2026-2027 : aucun arrêté publié au BO trouvé au 25-11-2026 (non vérifié)",
+     "lien": "https://www.education.gouv.fr/le-conseil-superieur-des-programmes/projet-de-programmes-des-enseignements-artistiques-pour-le-cycle-3-469916",
+     "contenu": "Cité pour information : la 6e reste sur le programme de 2020."
+    }
+   ]
+  }
+ ],
+ "general_sources": [
+  {
+   "texte": "Enseigner au cycle 3 : programmes en vigueur par classe",
+   "reference": "Éduscol, page consultée le 25-11-2026 (accès direct refusé, contenu relevé par moteur de recherche)",
+   "application": "Année scolaire 2026-2027",
+   "lien": "https://eduscol.education.gouv.fr/4356/enseigner-au-cycle-3",
+   "contenu": "En 2026-2027, la 6e suit les programmes de français et de mathématiques de 2025, le programme de langues vivantes de 2025, le programme d'EMC de 2024, et, en sciences et technologie et en histoire-géographie, l'ancien programme du cycle 3 (les nouveaux programmes de 2026 n'arrivent en 6e qu'à la rentrée 2027)."
+  },
+  {
+   "texte": "Programmes de français et de mathématiques du cycle 3 (CM1, CM2, 6e)",
+   "reference": "Arrêté du 10-4-2025, BO n°16 du 17 avril 2025 (NOR MENE2504620A)",
+   "application": "En vigueur en 6e depuis la rentrée 2025 (CM1 et 6e en 2025-2026, CM2 en 2026-2027) : applicable en 6e en 2026-2027",
+   "lien": "https://www.education.gouv.fr/bo/2025/Hebdo16/MENE2504620A",
+   "contenu": "Texte de référence en français et en mathématiques pour la 6e ; il supprime les parties correspondantes du programme du cycle 3 de 2015."
+  },
+  {
+   "texte": "Programmes d'enseignement des cycles 2, 3 et 4, version consolidée",
+   "reference": "Arrêté du 17-7-2020, BO n°31 du 30 juillet 2020 (NOR MENE2018714A)",
+   "application": "En vigueur en 6e en 2026-2027 pour les disciplines non encore renouvelées",
+   "lien": "https://www.education.gouv.fr/bo/20/Hebdo31/MENE2018714A.htm",
+   "contenu": "Programme du cycle 3 consolidé, retenu pour l'histoire-géographie, les arts plastiques et l'éducation musicale en 6e."
+  },
+  {
+   "texte": "Programmes de sciences et technologie des cycles 2 et 3",
+   "reference": "Arrêté du 5-6-2026, BO n°24 du 11 juin 2026 (NOR MENE2611650A)",
+   "application": "6e à la rentrée 2027 (non applicable en 2026-2027)",
+   "lien": "https://www.education.gouv.fr/bo/2026/Hebdo24/MENE2611650A",
+   "contenu": "Cité pour mémoire : non retenu pour ce fichier."
+  },
+  {
+   "texte": "Programmes d'EPS et d'histoire-géographie des cycles 2 et 3",
+   "reference": "Arrêté du 22-4-2026, BO n°22 du 28 mai 2026 (NOR MENE2608631A)",
+   "application": "6e à la rentrée 2027 (non applicable en 2026-2027)",
+   "lien": "https://www.education.gouv.fr/bo/2026/Hebdo22/MENE2608631A",
+   "contenu": "Cité pour mémoire : non retenu pour ce fichier."
+  }
+ ],
+ "sources_checked": "2026-11-25"
+}

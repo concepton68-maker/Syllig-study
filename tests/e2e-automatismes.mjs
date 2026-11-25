@@ -220,7 +220,7 @@ console.log('Catalogue : « Rédiger avec l’IA »');
 const [empty] = await sql`select c.id, c.title from courses c where c.code = 'TG002'`;
 await sql`delete from course_versions where course_id = ${empty.id}`;
 await ad.goto(BASE + '/contenu');
-await ad.fill('input[type=search]', empty.title.slice(0, 25));
+await ad.fill('input[type=search]', 'TG002');
 await ad.locator(`div:has(> span > span:text-is("${empty.title}")) button:has-text("Rédiger avec l’IA")`).click();
 await ad.waitForSelector('text=/Rédaction IA/');
 ok(true, 'catalogue : « Rédaction IA… » affiché pendant le travail');

@@ -392,3 +392,13 @@ Recette complète de l'espace élève (un agent testeur a joué l'élève sur t�
 - Le bilan rédigé par l'IA reçoit ces deux mesures pour distinguer l'élève qui ne veut pas de celui qui n'arrive pas.
 - Écran « En direct » : résumé investissement / compréhension qui mène au bilan.
 - Téléphones et tablettes : en-tête des leçons, exercices et évaluations plus compact ; barre « question sans réponse » sur une ligne ; onglets de parties sur une ligne qui glisse au doigt ; en paysage, le minimum au-dessus des questions.
+
+## 0.39 — 25/11/2026
+- Collège complet : programmes de 6e (148 cours), 5e (169 cours) et 4e (178 cours), d'après les textes officiels en vigueur en 2026-2027 (nouveaux programmes de français et de mathématiques en 6e et en 5e ; programme du cycle 4 de 2020 en 4e), avec les cours prioritaires du début d'année.
+- Parent, « Enfants » : ajout d'un enfant plus complet :
+  - fille ou garçon (thème proposé en conséquence), mois et année de naissance ;
+  - classe proposée automatiquement selon l'âge, toujours modifiable ; un écart (redoublement, avance) est signalé sans bloquer ;
+  - tiers-temps aux évaluations pour un enfant avec aménagement (PAP, PPS) : durée majorée d'un tiers, chrono du serveur compris.
+- Fiche de l'enfant, « Règles et thème » : profil scolaire modifiable (naissance, fille ou garçon, tiers-temps).
+- Liste des enfants : âge et aménagement visibles.
+- Contenu, catalogue : s'ouvre sur le niveau où il y a le plus de cours publiés ; la recherche porte sur tous les niveaux (le niveau est indiqué sur chaque ligne).

@@ -12,7 +12,10 @@ const ok = (c, m) => { if (!c) { console.error('ÉCHEC :', m); process.exit(1); 
 
 // deux brouillons de plus (C002, C003), copiés de C001
 const [src] = await sql`select v.document, v.imported_by from course_versions v join courses c on c.id = v.course_id where c.code = 'C001' and v.status = 'published'`;
-const others = await sql`select id, 'C00' || (id) as code, title from courses where id in (2, 3) order by id`;
+const others = await sql`select c.id, 'C00' || (row_number() over (order by c.position) + 1) as code, c.title from courses c
+  join chapters ch on ch.id = c.chapter_id join subjects s on s.id = ch.subject_id
+  where s.level_code = (select s2.level_code from courses c2 join chapters ch2 on ch2.id = c2.chapter_id join subjects s2 on s2.id = ch2.subject_id where c2.code = 'C001')
+    and c.code is distinct from 'C001' order by c.position limit 2`;
 for (const c of others) await sql`insert into course_versions (course_id, version, status, document, source_name, imported_by)
   values (${c.id}, 1, 'draft', ${sql.json({ ...src.document, code: c.code, title: c.title })}, 'test', ${src.imported_by})`;
 
@@ -28,7 +31,7 @@ await ad.getByLabel('Tout sélectionner').check();
 await ad.getByRole('button', { name: /Publier la sélection \(2\)/ }).click();
 await ad.click('[data-dialog-ok]');   // fenêtre de confirmation de l’application
 await ad.waitForLoadState('networkidle');
-const [{ n: pub }] = await sql`select count(*)::int as n from course_versions v join courses c on c.id = v.course_id where c.id in (2, 3) and v.status = 'published'`;
+const [{ n: pub }] = await sql`select count(*)::int as n from course_versions v join courses c on c.id = v.course_id where c.id in ${sql(others.map(o => o.id))} and v.status = 'published'`;
 ok(pub === 2, '2 brouillons publiés d’un coup');
 
 console.log('Parent · ordre du parcours groupé');
