@@ -52,6 +52,7 @@ export function ExercisesPlayer({ courseId, items, texts, initial, submitted, so
   const [saved, setSaved] = useState<'idle' | 'saving' | 'saved'>('idle');
   const [pending, start] = useTransition();
   const [confirming, setConfirming] = useState(false);
+  const [confirmSave, setConfirmSave] = useState(false);
   const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const levels = [...new Set(items.map(q => q.stars ?? 0))].sort();
   const [tab, setTab] = useState(levels[0]);
@@ -115,6 +116,15 @@ export function ExercisesPlayer({ courseId, items, texts, initial, submitted, so
       el?.scrollIntoView({ behavior: 'smooth', block: 'center' });
       (el?.querySelector('input, textarea') as HTMLElement | null)?.focus({ preventScroll: true });
     }, 60);
+  };
+
+  // après la remise : aller à la prochaine réponse rédigée à comparer avec le corrigé
+  const toCheckIds = openIds.filter(id => !(id in self));
+  const jumpToCheck = () => {
+    const q = levels.flatMap(l => items.filter(x => (x.stars ?? 0) === l)).find(x => toCheckIds.includes(x.id));
+    if (!q) return;
+    setTab(q.stars ?? 0); setConfirmSave(false);
+    setTimeout(() => document.getElementById(`q-${q.id}`)?.scrollIntoView({ behavior: 'smooth', block: 'center' }), 60);
   };
 
   return (
@@ -184,7 +194,19 @@ export function ExercisesPlayer({ courseId, items, texts, initial, submitted, so
           </>)}
           {submitted && !checked && (<>
             <span className="text-sm">{allJudged ? <>Score : <strong>{score}/10</strong> · {success} exercice{success > 1 ? 's' : ''} réussi{success > 1 ? 's' : ''} sur {items.length}.</> : `Compare tes réponses rédigées avec le corrigé : encore ${openIds.filter(id => !(id in self)).length} à vérifier (voir les onglets marqués).`}</span>
-            <button className="btn btn-primary" type="button" disabled={!allJudged || pending} onClick={() => start(() => validateExercises(courseId, self))}>Enregistrer mon résultat</button>
+            {/* jamais bloquant : une réponse non comparée compte « Pas encore », l'élève peut toujours passer à l'évaluation */}
+            {confirmSave && !allJudged && !pending ? (
+              <span role="alertdialog" aria-label="Confirmer" className="flex flex-wrap items-center gap-2" data-confirm-save>
+                <span className="text-sm font-semibold">{toCheckIds.length} réponse{toCheckIds.length > 1 ? 's' : ''} pas encore comparée{toCheckIds.length > 1 ? 's' : ''} : elle{toCheckIds.length > 1 ? 's' : ''} compteront « Pas encore ».</span>
+                <button className="btn" type="button" autoFocus onClick={jumpToCheck}>Les comparer</button>
+                <button className="btn btn-primary" type="button" onClick={() => start(() => validateExercises(courseId, self))}>Enregistrer quand même</button>
+              </span>
+            ) : (
+              <span className="flex flex-wrap gap-2">
+                {!allJudged && <button className="btn" type="button" onClick={jumpToCheck}>Prochaine à comparer</button>}
+                <button className="btn btn-primary" type="button" disabled={pending} onClick={() => { if (allJudged) start(() => validateExercises(courseId, self)); else setConfirmSave(true); }}>Enregistrer mon résultat</button>
+              </span>
+            )}
           </>)}
           {checked && (
             <>

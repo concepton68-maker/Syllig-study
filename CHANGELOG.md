@@ -416,3 +416,13 @@ Recette complète de l'espace élève (un agent testeur a joué l'élève sur t�
   - « Mes progrès » dans ses résultats : lui par rapport à lui-même (temps de travail, niveaux gagnés, plus belle remontée), jamais de comparaison avec d'autres.
 - 6 premiers cours de 4e publiés (leçon, exercices, évaluation) : classes de mots et fonctions, accord du participe passé, multiplier et diviser des relatifs, additionner et soustraire des fractions, réduire une expression littérale, Pythagore (calculer une longueur).
 - Correction automatique plus juste pour les réponses courtes : les signes + et − d'une expression et les exposants comptent désormais (« 5x+9 » n'est plus accepté pour « 5x−9 », ni « 3x » pour « 3x² ») ; « 3 x » = « 3x », et les mots composés (« peut-être ») restent tolérants.
+
+## 0.41 — 25/11/2026
+- Exercices : l'élève n'est plus jamais bloqué avant l'évaluation. « Enregistrer mon résultat » est toujours disponible ; les réponses rédigées non comparées au corrigé comptent « Pas encore », avec un avertissement clair et un bouton « Prochaine à comparer » qui y mène directement (même dans un autre onglet).
+- Parent, « Activité » : journal regroupé jour par jour, un bloc par cours : où l'élève en est arrivé (leçon, contrôles, exercices, note), son temps effectif, ce qui mérite d'en parler ; le détail minute par minute se déplie ; pages de 7 jours.
+- Parent, « Bilan » : « Où va-t-il ? », la trajectoire sur 12 semaines :
+  - investissement semaine par semaine et compréhension (3 semaines glissantes, travail sérieux seulement), avec tendance (en hausse, stable, en baisse) et une lecture en clair ;
+  - « Dans quoi il progresse » : une courbe par matière ;
+  - son ressenti d'un questionnaire à l'autre (envie, confiance, stress, organisation) ;
+  - la semaine en cours est comptée au prorata des jours écoulés et tracée en pointillés.
+- Site d'essai (préparé) : une copie séparée de l'application sur le même serveur (« essai.study.syllig.com »), avec sa propre base recopiée chaque nuit depuis les vraies données, IA désactivée et bandeau « Site d'essai ». Les nouveautés y passent d'abord, sans jamais toucher au travail des élèves. Il s'active dès que l'adresse existe dans le DNS.

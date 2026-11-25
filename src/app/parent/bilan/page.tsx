@@ -16,6 +16,8 @@ import { engagement } from '@/lib/engagement';
 import { entryBank } from '@/lib/entry-test';
 import { EngagementCard } from '@/components/Engagement';
 import { CheckinCard, type CheckinRow } from '@/components/Checkin';
+import { TrajectoryCard } from '@/components/Trajectory';
+import { trajectory } from '@/lib/trajectory';
 
 export const metadata = { title: 'Bilan' };
 export const dynamic = 'force-dynamic';
@@ -32,7 +34,7 @@ export default async function Bilan({ searchParams }: { searchParams: Promise<{ 
   if (!student) return <Screen top={<PageTitle kicker="Bilan" title="Aucun enfant" />}><p className="muted">Ajoutez d’abord un enfant.</p></Screen>;
   const ai = await aiOverview();
   const aiOn = ai.ready.bilan;
-  const [profile, eng] = await Promise.all([studentProfile(student.id), engagement(student.id)]);
+  const [profile, eng, traj] = await Promise.all([studentProfile(student.id), engagement(student.id), trajectory(student.id)]);
   const reports = await sql<Report[]>`select id, created_at, provider, model, data, indicators from student_reports where student_id = ${student.id} order by created_at desc limit 30`;
   const shown = reports.find(r => r.id === sp.rapport) ?? reports[0];
   const tests = await sql<Test[]>`select id, report_id, created_at, status, score, total, duration_min, started_at, submitted_at, results
@@ -59,6 +61,7 @@ export default async function Bilan({ searchParams }: { searchParams: Promise<{ 
 
       {/* 0. Ne veut pas ou n'arrive pas */}
       <EngagementCard e={eng} name={name} />
+      <TrajectoryCard tr={traj} name={name} />
       <CheckinCard rows={checkins} name={name} requestAction={requestCheckin.bind(null, student.id)} requested={!!(student.settings as { checkin_requested?: boolean }).checkin_requested} fille={student.settings.gender === 'fille'} />
 
       {/* 1. Les faits */}
