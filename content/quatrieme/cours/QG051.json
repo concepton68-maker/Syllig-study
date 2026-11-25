@@ -1,0 +1,1110 @@
+{
+  "format": "syllig-course/1",
+  "code": "QG051",
+  "level": "quatrieme",
+  "subject": "Mathématiques",
+  "chapter": "Géométrie plane",
+  "title": "Théorème de Pythagore : calculer une longueur",
+  "skills": [
+    {
+      "id": "m4-pyth-vocabulaire",
+      "label": "Reconnaître l'hypoténuse et les côtés de l'angle droit d'un triangle rectangle"
+    },
+    {
+      "id": "m4-pyth-egalite",
+      "label": "Écrire l'égalité de Pythagore dans un triangle rectangle"
+    },
+    {
+      "id": "m4-pyth-racine",
+      "label": "Utiliser la racine carrée : valeur exacte, valeur arrondie, calculatrice"
+    },
+    {
+      "id": "m4-pyth-hypotenuse",
+      "label": "Calculer la longueur de l'hypoténuse"
+    },
+    {
+      "id": "m4-pyth-cote",
+      "label": "Calculer la longueur d'un côté de l'angle droit"
+    },
+    {
+      "id": "m4-pyth-probleme",
+      "label": "Repérer un triangle rectangle dans une situation et rédiger la solution d'un problème"
+    }
+  ],
+  "lesson": {
+    "duration_min": 45,
+    "objectives": [
+      "reconnaître l'hypoténuse et les côtés de l'angle droit d'un triangle rectangle ;",
+      "écrire l'égalité de Pythagore, quelles que soient les lettres du triangle ;",
+      "utiliser la touche √ de la calculatrice et donner une valeur exacte ou arrondie ;",
+      "calculer la longueur de l'hypoténuse connaissant les deux autres côtés ;",
+      "calculer la longueur d'un côté de l'angle droit connaissant l'hypoténuse et l'autre côté, et rédiger la solution d'un problème."
+    ],
+    "essential": "Dans un triangle **rectangle**, le côté en face de l'angle droit s'appelle l'**hypoténuse** : c'est le plus long côté. Le théorème de Pythagore dit que **le carré de l'hypoténuse est égal à la somme des carrés des deux autres côtés**. Si ABC est rectangle en A : BC² = AB² + AC². Pour trouver l'hypoténuse, on **additionne** les carrés ; pour trouver un côté de l'angle droit, on **soustrait** les carrés (le plus grand moins le plus petit). Dans les deux cas, on termine avec la touche √ de la calculatrice, et on arrondit seulement à la fin. Ce théorème ne s'utilise **que** si l'on sait que le triangle est rectangle.",
+    "parts": [
+      {
+        "title": "Le triangle rectangle et son vocabulaire",
+        "blocks": [
+          {
+            "type": "callout",
+            "kind": "definition",
+            "text": "Un **triangle rectangle** est un triangle qui a un angle droit.\nLe côté situé **en face de l'angle droit** s'appelle l'**hypoténuse**. Les deux autres côtés sont les **côtés de l'angle droit** : ils forment l'angle droit."
+          },
+          {
+            "type": "text",
+            "text": "**Figure.** Le triangle ABC ci-dessous est rectangle en A : le petit carré dessiné dans le coin A indique l'angle droit. Les côtés [AB] et [AC] partent du sommet A et forment l'angle droit. Le côté [BC] est en face du sommet A : c'est l'hypoténuse."
+          },
+          {
+            "type": "formula",
+            "latex": "            C\n            +\n            |\\\n            | \\\n            |  \\\n            |   \\      [BC] : l'hypoténuse,\n            |    \\     en face de l'angle droit\n            |_    \\\n            |_|____\\\n            A       B\n\n   [AB] et [AC] : les côtés de l'angle droit"
+          },
+          {
+            "type": "callout",
+            "kind": "retiens",
+            "text": "• L'hypoténuse est toujours le **plus long** côté du triangle rectangle.\n• Pour la trouver : je repère le sommet de l'angle droit, puis je prends le côté qui **ne passe pas** par ce sommet.\n• Exemple : si MNP est rectangle en N, l'hypoténuse est [MP] (le seul côté qui ne contient pas la lettre N)."
+          },
+          {
+            "type": "heading",
+            "text": "Rappel : le carré d'un nombre"
+          },
+          {
+            "type": "text",
+            "text": "Le carré d'un nombre a est a² = a × a. Par exemple : 5² = 25 ; 1,2² = 1,44 ; 10² = 100. En géométrie, AB² désigne le carré de la longueur AB : si AB = 3 cm, alors AB² = 9."
+          },
+          {
+            "type": "formula",
+            "latex": "Quelques carrés à connaître :\n1² = 1     2² = 4     3² = 9     4² = 16    5² = 25\n6² = 36    7² = 49    8² = 64    9² = 81    10² = 100\n11² = 121  12² = 144  13² = 169  15² = 225  20² = 400"
+          },
+          {
+            "type": "callout",
+            "kind": "attention",
+            "text": "Le carré n'est pas le double : 3² = 3 × 3 = 9, et non 3 × 2 = 6. Sur la calculatrice, utilise la touche x² ou tape 3 × 3."
+          }
+        ],
+        "checkpoint": {
+          "variants": [
+            {
+              "prompt": "Le triangle MNP est rectangle en N. Quelle est son hypoténuse ?",
+              "options": [
+                "[MN]",
+                "[NP]",
+                "[MP]",
+                "On ne peut pas savoir"
+              ],
+              "answer": 2,
+              "hint": "L'hypoténuse est le côté qui ne passe pas par le sommet de l'angle droit.",
+              "explanation": "L'angle droit est en N ; le seul côté qui ne contient pas N est [MP] : c'est l'hypoténuse."
+            },
+            {
+              "prompt": "Le triangle RST est rectangle en T. Quels sont les côtés de l'angle droit ?",
+              "options": [
+                "[RS] et [ST]",
+                "[RT] et [ST]",
+                "[RS] et [RT]",
+                "[RS] seulement"
+              ],
+              "answer": 1,
+              "hint": "Les côtés de l'angle droit partent tous les deux du sommet de l'angle droit.",
+              "explanation": "L'angle droit est en T : les côtés qui partent de T sont [RT] et [ST]. L'hypoténuse est [RS]."
+            },
+            {
+              "prompt": "Combien vaut 7² ?",
+              "options": [
+                "14",
+                "49",
+                "72",
+                "77"
+              ],
+              "answer": 1,
+              "hint": "Le carré d'un nombre, c'est ce nombre multiplié par lui-même.",
+              "explanation": "7² = 7 × 7 = 49. La réponse 14 correspond à 7 × 2, ce n'est pas un carré."
+            },
+            {
+              "prompt": "Dans un triangle rectangle, l'hypoténuse est :",
+              "options": [
+                "le plus petit côté",
+                "le plus long côté",
+                "un côté de l'angle droit",
+                "toujours le côté horizontal"
+              ],
+              "answer": 1,
+              "hint": "Relis l'encadré « Je retiens ».",
+              "explanation": "L'hypoténuse, en face de l'angle droit, est toujours le plus long côté du triangle rectangle, quelle que soit la position du triangle sur la feuille."
+            }
+          ]
+        }
+      },
+      {
+        "title": "Le théorème de Pythagore",
+        "blocks": [
+          {
+            "type": "callout",
+            "kind": "retiens",
+            "title": "Théorème de Pythagore",
+            "text": "**Si** un triangle est rectangle, **alors** le carré de la longueur de l'hypoténuse est égal à la somme des carrés des longueurs des deux autres côtés."
+          },
+          {
+            "type": "formula",
+            "latex": "ABC est rectangle en A, donc, d'après le théorème de Pythagore :\n\n        BC² = AB² + AC²\n   (hypoténuse)² = (côté 1)² + (côté 2)²"
+          },
+          {
+            "type": "heading",
+            "text": "Une illustration avec des aires"
+          },
+          {
+            "type": "text",
+            "text": "Prenons un triangle rectangle dont les côtés de l'angle droit mesurent 3 cm et 4 cm ; son hypoténuse mesure 5 cm. Construisons un carré à l'extérieur, sur chacun des trois côtés :\n• le carré construit sur le côté de 3 cm a une aire de 3² = 9 cm² ;\n• celui construit sur le côté de 4 cm a une aire de 4² = 16 cm² ;\n• celui construit sur l'hypoténuse a une aire de 5² = 25 cm².\nOn constate que 9 + 16 = 25 : l'aire du grand carré est égale à la somme des aires des deux petits. C'est exactement ce que dit le théorème."
+          },
+          {
+            "type": "callout",
+            "kind": "methode",
+            "title": "Écrire l'égalité sans se tromper",
+            "text": "1. Je repère le sommet de l'angle droit.\n2. J'écris d'abord, **seule à gauche du signe =**, l'hypoténuse au carré.\n3. À droite, j'écris la somme des carrés des deux autres côtés.\nExemples :\n• DEF rectangle en E : DF² = DE² + EF².\n• KLM rectangle en K : LM² = KL² + KM²."
+          },
+          {
+            "type": "callout",
+            "kind": "attention",
+            "text": "• Le théorème ne s'applique **que** dans un triangle rectangle. Il faut le savoir (codage, énoncé) avant de l'utiliser.\n• L'égalité porte sur les **carrés** des longueurs, pas sur les longueurs : avec 3, 4 et 5, on a bien 9 + 16 = 25, mais 3 + 4 = 7 et non 5."
+          },
+          {
+            "type": "callout",
+            "kind": "plus",
+            "text": "Ce théorème porte le nom de Pythagore, savant grec du VIe siècle avant J.-C. Mais des scribes babyloniens utilisaient déjà des triangles comme (3 ; 4 ; 5) plus de mille ans avant lui ! Dans le cours sur la réciproque, tu verras comment prouver qu'un triangle est rectangle."
+          }
+        ],
+        "checkpoint": {
+          "variants": [
+            {
+              "prompt": "Le triangle DEF est rectangle en E. Quelle égalité est juste ?",
+              "options": [
+                "DE² = DF² + EF²",
+                "DF² = DE² + EF²",
+                "EF² = DE² + DF²",
+                "DF = DE + EF"
+              ],
+              "answer": 1,
+              "hint": "À gauche du signe =, on écrit l'hypoténuse au carré. Quel côté est en face de E ?",
+              "explanation": "L'angle droit est en E, donc l'hypoténuse est [DF] : DF² = DE² + EF²."
+            },
+            {
+              "prompt": "Le triangle KLM est rectangle en K. Quelle égalité est juste ?",
+              "options": [
+                "KL² = KM² + LM²",
+                "KM² = KL² + LM²",
+                "LM² = KL² + KM²",
+                "LM = KL + KM"
+              ],
+              "answer": 2,
+              "hint": "Le côté qui ne passe pas par K est l'hypoténuse.",
+              "explanation": "L'hypoténuse est [LM] (en face de K) : LM² = KL² + KM²."
+            },
+            {
+              "prompt": "Un triangle rectangle a des côtés de l'angle droit de 6 cm et 8 cm. Que vaut le carré de son hypoténuse ?",
+              "options": [
+                "14",
+                "48",
+                "100",
+                "28"
+              ],
+              "answer": 2,
+              "hint": "Additionne les carrés des deux côtés de l'angle droit.",
+              "explanation": "6² + 8² = 36 + 64 = 100. L'hypoténuse au carré vaut 100 (donc l'hypoténuse mesure 10 cm)."
+            }
+          ]
+        }
+      },
+      {
+        "title": "La racine carrée : valeur exacte et valeur arrondie",
+        "blocks": [
+          {
+            "type": "text",
+            "text": "Le théorème donne le **carré** d'une longueur. Pour revenir à la longueur, il faut faire l'opération « inverse » du carré : la racine carrée."
+          },
+          {
+            "type": "callout",
+            "kind": "definition",
+            "text": "Soit a un nombre positif. La **racine carrée** de a, notée **√a**, est le nombre positif dont le carré est égal à a.\nExemples : √49 = 7 car 7² = 49 ; √100 = 10 car 10² = 100 ; √2,25 = 1,5 car 1,5² = 2,25."
+          },
+          {
+            "type": "text",
+            "text": "Lorsque a est un carré connu (1, 4, 9, 16, 25…), on trouve √a de tête. Sinon, on utilise la touche **√** de la calculatrice. Par exemple, la calculatrice affiche √50 ≈ 7,071067812 : ce nombre a une infinité de chiffres après la virgule, on ne peut pas l'écrire en entier."
+          },
+          {
+            "type": "callout",
+            "kind": "retiens",
+            "title": "Valeur exacte, valeur arrondie",
+            "text": "• **√50** est la **valeur exacte** : elle est parfaite, mais elle ne « parle » pas beaucoup.\n• **7,1** est la valeur **arrondie au dixième** (un chiffre après la virgule) ; **7,07** est la valeur **arrondie au centième** (deux chiffres après la virgule). On écrit √50 ≈ 7,07 avec le signe ≈ (« environ égal à »)."
+          },
+          {
+            "type": "callout",
+            "kind": "methode",
+            "title": "Arrondir un résultat",
+            "text": "1. J'écris le résultat de la calculatrice : √30 ≈ 5,477225…\n2. Pour arrondir au dixième, je regarde le chiffre des centièmes (ici 7).\n3. S'il vaut 5, 6, 7, 8 ou 9, j'augmente le chiffre des dixièmes de 1 ; sinon je le garde.\n√30 ≈ 5,5 au dixième ; √30 ≈ 5,48 au centième."
+          },
+          {
+            "type": "table",
+            "caption": "Exemples d'arrondis",
+            "columns": [
+              "Valeur exacte",
+              "Calculatrice",
+              "Arrondi au dixième",
+              "Arrondi au centième"
+            ],
+            "rows": [
+              [
+                "√50",
+                "7,071067…",
+                "7,1",
+                "7,07"
+              ],
+              [
+                "√30",
+                "5,477225…",
+                "5,5",
+                "5,48"
+              ],
+              [
+                "√74",
+                "8,602325…",
+                "8,6",
+                "8,60"
+              ],
+              [
+                "√2",
+                "1,414213…",
+                "1,4",
+                "1,41"
+              ]
+            ]
+          },
+          {
+            "type": "callout",
+            "kind": "attention",
+            "text": "• √50 n'est pas égal à 50 ÷ 2 = 25 ! Vérifie toujours : 7,07² ≈ 50, alors que 25² = 625.\n• On arrondit **seulement à la fin** du calcul, jamais au milieu : sinon l'erreur grossit.\n• « Au millimètre près » pour une longueur en cm signifie : arrondi au dixième de cm."
+          }
+        ],
+        "checkpoint": {
+          "variants": [
+            {
+              "prompt": "Combien vaut √64 ?",
+              "options": [
+                "32",
+                "8",
+                "4 096",
+                "16"
+              ],
+              "answer": 1,
+              "hint": "Cherche le nombre positif dont le carré vaut 64.",
+              "explanation": "8² = 64, donc √64 = 8."
+            },
+            {
+              "prompt": "La calculatrice affiche √40 ≈ 6,324555… Quel est l'arrondi au dixième ?",
+              "options": [
+                "6,32",
+                "6,4",
+                "6,3",
+                "6"
+              ],
+              "answer": 2,
+              "hint": "Regarde le chiffre des centièmes pour décider.",
+              "explanation": "Le chiffre des centièmes est 2 (inférieur à 5) : on garde le chiffre des dixièmes. √40 ≈ 6,3."
+            },
+            {
+              "prompt": "La calculatrice affiche √85 ≈ 9,219544… Quel est l'arrondi au centième ?",
+              "options": [
+                "9,21",
+                "9,22",
+                "9,2",
+                "9,3"
+              ],
+              "answer": 1,
+              "hint": "Pour arrondir au centième, regarde le chiffre des millièmes.",
+              "explanation": "Le chiffre des millièmes est 9 : on augmente le chiffre des centièmes. √85 ≈ 9,22."
+            },
+            {
+              "prompt": "Une longueur vaut √50 cm. Quelle est sa valeur exacte ?",
+              "options": [
+                "7,07 cm",
+                "7,1 cm",
+                "√50 cm",
+                "25 cm"
+              ],
+              "answer": 2,
+              "hint": "Relis l'encadré « Valeur exacte, valeur arrondie ».",
+              "explanation": "La valeur exacte est √50 cm. Les nombres 7,07 et 7,1 sont des valeurs arrondies, et 25 est faux."
+            }
+          ]
+        }
+      },
+      {
+        "title": "Calculer la longueur de l'hypoténuse",
+        "blocks": [
+          {
+            "type": "callout",
+            "kind": "methode",
+            "title": "La rédaction en 4 lignes",
+            "text": "1. **Je cite les données** : « Le triangle … est rectangle en …, »\n2. **Je cite le théorème et j'écris l'égalité** : « donc, d'après le théorème de Pythagore : (hypoténuse)² = … + … »\n3. **Je remplace et je calcule** la somme des carrés.\n4. **Je prends la racine carrée** et je conclus avec l'unité (valeur exacte, puis arrondi si on le demande)."
+          },
+          {
+            "type": "text",
+            "text": "**Exemple 1.** Le triangle EFG est rectangle en F, avec EF = 6 cm et FG = 8 cm. Calculons EG."
+          },
+          {
+            "type": "formula",
+            "latex": "Le triangle EFG est rectangle en F,\ndonc, d'après le théorème de Pythagore :\nEG² = EF² + FG²\nEG² = 6² + 8²\nEG² = 36 + 64\nEG² = 100\nEG = √100 = 10\nL'hypoténuse [EG] mesure 10 cm."
+          },
+          {
+            "type": "text",
+            "text": "**Exemple 2.** Le triangle RST est rectangle en S, avec RS = 5 cm et ST = 7 cm. Calculons RT, arrondi au dixième."
+          },
+          {
+            "type": "formula",
+            "latex": "Le triangle RST est rectangle en S,\ndonc, d'après le théorème de Pythagore :\nRT² = RS² + ST²\nRT² = 5² + 7²\nRT² = 25 + 49\nRT² = 74\nRT = √74          (valeur exacte)\nRT ≈ 8,6 cm       (arrondi au dixième)"
+          },
+          {
+            "type": "callout",
+            "kind": "retiens",
+            "text": "Pour l'hypoténuse, on **additionne** les carrés des deux côtés de l'angle droit. Contrôle : le résultat doit être **plus grand** que chacun des deux côtés (ici 8,6 > 5 et 8,6 > 7)."
+          },
+          {
+            "type": "callout",
+            "kind": "attention",
+            "text": "Erreur classique : écrire RT = 5 + 7 = 12. C'est faux, car le théorème porte sur les carrés. Une autre erreur : oublier la racine carrée à la fin et répondre RT = 74 cm. Un côté de 74 cm dans un triangle dont les autres côtés mesurent 5 et 7 cm, c'est impossible !"
+          }
+        ],
+        "checkpoint": {
+          "variants": [
+            {
+              "prompt": "ABC est rectangle en A, avec AB = 5 cm et AC = 12 cm. Combien mesure BC ?",
+              "options": [
+                "17 cm",
+                "13 cm",
+                "169 cm",
+                "√119 cm"
+              ],
+              "answer": 1,
+              "hint": "Calcule AB² + AC², puis prends la racine carrée.",
+              "explanation": "BC² = 5² + 12² = 25 + 144 = 169, donc BC = √169 = 13 cm."
+            },
+            {
+              "prompt": "IJK est rectangle en I, avec IJ = 3 cm et IK = 5 cm. Quelle est la valeur exacte de JK ?",
+              "options": [
+                "8 cm",
+                "√34 cm",
+                "34 cm",
+                "√16 cm"
+              ],
+              "answer": 1,
+              "hint": "Ne prends pas la somme des longueurs, mais la somme de leurs carrés.",
+              "explanation": "JK² = 3² + 5² = 9 + 25 = 34, donc JK = √34 cm (environ 5,8 cm)."
+            },
+            {
+              "prompt": "Une élève trouve qu'une hypoténuse mesure 5 cm alors que les côtés de l'angle droit mesurent 3 cm et 6 cm. Que peut-on dire ?",
+              "options": [
+                "C'est possible",
+                "C'est impossible : l'hypoténuse est le plus long côté",
+                "C'est possible si le triangle est petit"
+              ],
+              "answer": 1,
+              "hint": "Relis l'encadré « Je retiens » de cette partie.",
+              "explanation": "L'hypoténuse doit être plus longue que chacun des deux autres côtés : 5 cm < 6 cm, il y a forcément une erreur. (Le bon résultat est √45 ≈ 6,7 cm.)"
+            }
+          ]
+        }
+      },
+      {
+        "title": "Calculer un côté de l'angle droit et résoudre un problème",
+        "blocks": [
+          {
+            "type": "text",
+            "text": "Si l'on connaît l'**hypoténuse** et **un** côté de l'angle droit, on peut calculer l'autre côté. On écrit la même égalité de Pythagore, puis on fait une **soustraction**."
+          },
+          {
+            "type": "text",
+            "text": "**Exemple 1.** Le triangle KLM est rectangle en L, avec KM = 13 cm et KL = 5 cm. Calculons LM."
+          },
+          {
+            "type": "formula",
+            "latex": "Le triangle KLM est rectangle en L,\ndonc, d'après le théorème de Pythagore :\nKM² = KL² + LM²\n13² = 5² + LM²\n169 = 25 + LM²\nLM² = 169 − 25\nLM² = 144\nLM = √144 = 12\nLe côté [LM] mesure 12 cm."
+          },
+          {
+            "type": "text",
+            "text": "**Exemple 2.** Le triangle UVW est rectangle en V, avec UW = 10 cm et UV = 7 cm. Calculons VW, arrondi au dixième."
+          },
+          {
+            "type": "formula",
+            "latex": "UW² = UV² + VW²\n10² = 7² + VW²\n100 = 49 + VW²\nVW² = 100 − 49 = 51\nVW = √51 ≈ 7,1 cm"
+          },
+          {
+            "type": "callout",
+            "kind": "retiens",
+            "text": "Pour un côté de l'angle droit, on **soustrait** : (côté cherché)² = (hypoténuse)² − (autre côté)².\nOn fait toujours « le plus grand carré moins le plus petit ». Contrôle : le résultat doit être **plus petit** que l'hypoténuse."
+          },
+          {
+            "type": "heading",
+            "text": "Dans un problème"
+          },
+          {
+            "type": "callout",
+            "kind": "methode",
+            "title": "Repérer le triangle rectangle",
+            "text": "1. Je fais un **schéma à main levée** et je code l'angle droit.\n2. Je cherche **pourquoi** le triangle est rectangle : un mur vertical sur un sol horizontal, la diagonale d'un rectangle ou d'un carré, une hauteur…\n3. Je repère l'hypoténuse : c'est elle qui décide si j'additionne ou si je soustrais."
+          },
+          {
+            "type": "callout",
+            "kind": "methode",
+            "title": "Problème résolu : l'échelle",
+            "text": "Une échelle de 2,5 m est posée contre un mur vertical. Son pied est à 0,7 m du mur, sur un sol horizontal. À quelle hauteur l'échelle touche-t-elle le mur ?\n• Schéma : le mur, le sol et l'échelle forment un triangle rectangle ; l'angle droit est au pied du mur.\n• L'échelle est en face de l'angle droit : c'est l'**hypoténuse** (2,5 m). On cherche un côté de l'angle droit (la hauteur h), donc on soustrait.\n• 2,5² = 0,7² + h², soit 6,25 = 0,49 + h², donc h² = 6,25 − 0,49 = 5,76 et h = √5,76 = 2,4.\n• L'échelle touche le mur à 2,4 m de hauteur."
+          },
+          {
+            "type": "callout",
+            "kind": "attention",
+            "text": "Dans un problème, l'hypoténuse n'est pas toujours la longueur « cherchée » : lis bien l'énoncé. Erreur fréquente pour l'échelle : additionner 6,25 + 0,49 et trouver une hauteur plus grande que l'échelle elle-même, ce qui est impossible."
+          }
+        ],
+        "checkpoint": {
+          "variants": [
+            {
+              "prompt": "RST est rectangle en T, avec RS = 10 cm et RT = 6 cm. Combien mesure ST ?",
+              "options": [
+                "16 cm",
+                "8 cm",
+                "4 cm",
+                "√136 cm"
+              ],
+              "answer": 1,
+              "hint": "[RS] est l'hypoténuse : il faut soustraire.",
+              "explanation": "ST² = RS² − RT² = 100 − 36 = 64, donc ST = √64 = 8 cm."
+            },
+            {
+              "prompt": "Le triangle ABC est rectangle en C, avec AB = 7 cm et AC = 4 cm. Quel calcul permet de trouver BC ?",
+              "options": [
+                "BC² = 7² + 4²",
+                "BC² = 7² − 4²",
+                "BC = 7 − 4",
+                "BC² = 4² − 7²"
+              ],
+              "answer": 1,
+              "hint": "Repère d'abord l'hypoténuse : c'est le côté en face de C.",
+              "explanation": "L'hypoténuse est [AB] = 7 cm. Donc AB² = AC² + BC², d'où BC² = 7² − 4² = 49 − 16 = 33 et BC = √33 ≈ 5,7 cm."
+            },
+            {
+              "prompt": "Un rectangle mesure 8 cm sur 6 cm. Combien mesure sa diagonale ?",
+              "options": [
+                "14 cm",
+                "10 cm",
+                "√28 cm",
+                "48 cm"
+              ],
+              "answer": 1,
+              "hint": "La diagonale partage le rectangle en deux triangles rectangles : elle en est l'hypoténuse.",
+              "explanation": "Diagonale² = 8² + 6² = 64 + 36 = 100, donc la diagonale mesure √100 = 10 cm."
+            },
+            {
+              "prompt": "Une échelle de 5 m est posée contre un mur vertical, son pied à 3 m du mur. À quelle hauteur touche-t-elle le mur ?",
+              "options": [
+                "4 m",
+                "√34 m",
+                "2 m",
+                "8 m"
+              ],
+              "answer": 0,
+              "hint": "L'échelle est l'hypoténuse : on soustrait.",
+              "explanation": "h² = 5² − 3² = 25 − 9 = 16, donc h = √16 = 4 m."
+            }
+          ]
+        }
+      }
+    ],
+    "memo": [
+      {
+        "label": "Hypoténuse",
+        "text": "Le côté en face de l'angle droit ; c'est le plus long côté du triangle rectangle."
+      },
+      {
+        "label": "Théorème",
+        "text": "Si ABC est rectangle en A, alors BC² = AB² + AC² (l'hypoténuse au carré, seule d'un côté du signe =)."
+      },
+      {
+        "label": "Racine carrée",
+        "text": "√a est le nombre positif dont le carré vaut a : √49 = 7. Touche √ de la calculatrice."
+      },
+      {
+        "label": "Exact ou arrondi",
+        "text": "√74 est la valeur exacte ; 8,6 est l'arrondi au dixième, 8,60 au centième. On arrondit seulement à la fin."
+      },
+      {
+        "label": "Chercher l'hypoténuse",
+        "text": "On additionne les carrés : EG² = 6² + 8² = 100, EG = 10."
+      },
+      {
+        "label": "Chercher un côté de l'angle droit",
+        "text": "On soustrait : LM² = 13² − 5² = 144, LM = 12. Le plus grand carré moins le plus petit."
+      },
+      {
+        "label": "Rédaction",
+        "text": "« Le triangle … est rectangle en …, donc, d'après le théorème de Pythagore : … » puis calculs, racine carrée, conclusion avec l'unité."
+      }
+    ]
+  },
+  "exercises": {
+    "duration_min": 40,
+    "instructions": "Calculatrice autorisée. Fais un schéma à main levée pour chaque exercice et code l'angle droit. Donne seulement le nombre dans la case réponse (l'unité est facultative), avec une virgule ou un point. Quand on demande un arrondi, respecte exactement la précision demandée (au dixième : un chiffre après la virgule ; au centième : deux chiffres). Les corrigés s'affichent après tes réponses.",
+    "pass_threshold": 8,
+    "texts": [],
+    "items": [
+      {
+        "id": "ex1",
+        "type": "qcm",
+        "stars": 1,
+        "lesson_part": 1,
+        "skills": [
+          "m4-pyth-vocabulaire"
+        ],
+        "cognitive": "connaitre",
+        "prompt": "Le triangle GHI est rectangle en H. Quelle est son hypoténuse ?",
+        "options": [
+          "[GH]",
+          "[HI]",
+          "[GI]",
+          "Il n'y en a pas"
+        ],
+        "answer": 2,
+        "solution": "L'angle droit est en H. Le côté qui ne passe pas par H est [GI] : c'est l'hypoténuse. [GH] et [HI] sont les côtés de l'angle droit."
+      },
+      {
+        "id": "ex2",
+        "type": "qcm",
+        "stars": 1,
+        "lesson_part": 2,
+        "skills": [
+          "m4-pyth-egalite",
+          "m4-pyth-vocabulaire"
+        ],
+        "cognitive": "connaitre",
+        "prompt": "Le triangle XYZ est rectangle en Z. Quelle égalité traduit le théorème de Pythagore ?",
+        "options": [
+          "XZ² = XY² + YZ²",
+          "YZ² = XY² + XZ²",
+          "XY² = XZ² + YZ²",
+          "XY = XZ + YZ"
+        ],
+        "answer": 2,
+        "solution": "L'angle droit est en Z, donc l'hypoténuse est [XY] (en face de Z). L'égalité est XY² = XZ² + YZ²."
+      },
+      {
+        "id": "ex3",
+        "type": "numeric",
+        "stars": 1,
+        "lesson_part": 4,
+        "skills": [
+          "m4-pyth-hypotenuse",
+          "m4-pyth-egalite"
+        ],
+        "cognitive": "appliquer",
+        "prompt": "Le triangle ABC est rectangle en A, avec AB = 9 cm et AC = 12 cm. Calcule BC, en cm.",
+        "answer": 15,
+        "solution": "Le triangle ABC est rectangle en A, donc, d'après le théorème de Pythagore :\nBC² = AB² + AC²\nBC² = 9² + 12² = 81 + 144 = 225\nBC = √225 = 15 cm."
+      },
+      {
+        "id": "ex4",
+        "type": "numeric",
+        "stars": 1,
+        "lesson_part": 3,
+        "skills": [
+          "m4-pyth-racine"
+        ],
+        "cognitive": "appliquer",
+        "prompt": "À l'aide de la calculatrice, donne l'arrondi au dixième de √40.",
+        "answer": 6.3,
+        "tolerance": 0.0001,
+        "solution": "La calculatrice affiche √40 ≈ 6,324555…\nLe chiffre des centièmes est 2 (inférieur à 5) : on garde le chiffre des dixièmes.\n√40 ≈ 6,3."
+      },
+      {
+        "id": "ex5",
+        "type": "numeric",
+        "stars": 2,
+        "lesson_part": 4,
+        "skills": [
+          "m4-pyth-hypotenuse",
+          "m4-pyth-racine"
+        ],
+        "cognitive": "appliquer",
+        "prompt": "Le triangle IJK est rectangle en I, avec IJ = 4 cm et IK = 6 cm. Calcule JK, arrondi au dixième de cm.",
+        "answer": 7.2,
+        "tolerance": 0.0001,
+        "solution": "Le triangle IJK est rectangle en I, donc, d'après le théorème de Pythagore :\nJK² = IJ² + IK²\nJK² = 4² + 6² = 16 + 36 = 52\nJK = √52 ≈ 7,211… donc JK ≈ 7,2 cm."
+      },
+      {
+        "id": "ex6",
+        "type": "numeric",
+        "stars": 2,
+        "lesson_part": 5,
+        "skills": [
+          "m4-pyth-cote",
+          "m4-pyth-egalite"
+        ],
+        "cognitive": "appliquer",
+        "prompt": "Le triangle RST est rectangle en T, avec RS = 17 cm et RT = 8 cm. Calcule ST, en cm.",
+        "answer": 15,
+        "solution": "Le triangle RST est rectangle en T, donc, d'après le théorème de Pythagore (l'hypoténuse est [RS]) :\nRS² = RT² + ST²\n17² = 8² + ST², soit 289 = 64 + ST²\nST² = 289 − 64 = 225\nST = √225 = 15 cm."
+      },
+      {
+        "id": "ex7",
+        "type": "numeric",
+        "stars": 2,
+        "lesson_part": 5,
+        "skills": [
+          "m4-pyth-cote",
+          "m4-pyth-racine"
+        ],
+        "cognitive": "appliquer",
+        "prompt": "Le triangle UVW est rectangle en V, avec UW = 9 cm et UV = 5 cm. Calcule VW, arrondi au centième de cm.",
+        "answer": 7.48,
+        "tolerance": 0.0001,
+        "solution": "Le triangle UVW est rectangle en V, donc, d'après le théorème de Pythagore (l'hypoténuse est [UW]) :\nUW² = UV² + VW²\n81 = 25 + VW²\nVW² = 81 − 25 = 56\nVW = √56 ≈ 7,4833… donc VW ≈ 7,48 cm."
+      },
+      {
+        "id": "ex8",
+        "type": "qcm",
+        "stars": 2,
+        "lesson_part": 5,
+        "skills": [
+          "m4-pyth-cote",
+          "m4-pyth-vocabulaire"
+        ],
+        "cognitive": "analyser",
+        "prompt": "Le triangle DEF est rectangle en F, avec DE = 10 cm et DF = 6 cm. Quel calcul permet de trouver EF ?",
+        "options": [
+          "EF² = 10² + 6²",
+          "EF = 10 − 6",
+          "EF² = 6² − 10²",
+          "EF² = 10² − 6²"
+        ],
+        "answer": 3,
+        "solution": "L'angle droit est en F : l'hypoténuse est [DE] = 10 cm.\nDE² = DF² + EF², donc EF² = DE² − DF² = 10² − 6² = 100 − 36 = 64.\nEF = √64 = 8 cm.\nLa réponse « 10² + 6² » serait juste si l'on cherchait l'hypoténuse, ce qui n'est pas le cas ici."
+      },
+      {
+        "id": "ex9",
+        "type": "numeric",
+        "stars": 3,
+        "lesson_part": 5,
+        "skills": [
+          "m4-pyth-probleme",
+          "m4-pyth-cote",
+          "m4-pyth-racine"
+        ],
+        "cognitive": "analyser",
+        "prompt": "Une échelle de 6 m est posée contre un mur vertical. Son pied est sur le sol horizontal, à 1,8 m du pied du mur. À quelle hauteur le haut de l'échelle touche-t-il le mur ? Donne le résultat en m, arrondi au centimètre (c'est-à-dire au centième de m).",
+        "answer": 5.72,
+        "tolerance": 0.0001,
+        "solution": "Schéma : le mur et le sol sont perpendiculaires, donc le mur, le sol et l'échelle forment un triangle rectangle ; l'angle droit est au pied du mur. L'échelle (6 m) est l'hypoténuse.\nD'après le théorème de Pythagore : 6² = 1,8² + h²\n36 = 3,24 + h²\nh² = 36 − 3,24 = 32,76\nh = √32,76 ≈ 5,7236… donc h ≈ 5,72 m."
+      },
+      {
+        "id": "ex10",
+        "type": "numeric",
+        "stars": 3,
+        "lesson_part": 4,
+        "skills": [
+          "m4-pyth-probleme",
+          "m4-pyth-hypotenuse"
+        ],
+        "cognitive": "analyser",
+        "prompt": "**Figure décrite.** Le triangle ABC est rectangle en B, avec AB = 6 cm et BC = 8 cm. Sur le côté [AC], on construit un deuxième triangle ACD, rectangle en C, avec CD = 24 cm (les deux triangles sont collés le long de [AC]).\nCalcule AC, puis AD. Donne AD en cm.",
+        "answer": 26,
+        "solution": "Étape 1 – Dans le triangle ABC rectangle en B, d'après le théorème de Pythagore :\nAC² = AB² + BC² = 6² + 8² = 36 + 64 = 100, donc AC = 10 cm.\nÉtape 2 – Dans le triangle ACD rectangle en C, l'hypoténuse est [AD] (en face de C) :\nAD² = AC² + CD² = 10² + 24² = 100 + 576 = 676, donc AD = √676 = 26 cm.\nAstuce : on peut aussi garder AC² = 100 sans calculer AC, et écrire directement AD² = 100 + 576."
+      }
+    ]
+  },
+  "evaluation": {
+    "duration_min": 40,
+    "conditions": "Calculatrice autorisée, sans la leçon, en 40 minutes. Dans les cases réponse, donne seulement le nombre (l'unité est facultative), avec une virgule ou un point, et respecte exactement l'arrondi demandé. Barème : A = 4 points · B = 9 points · C = 7 points. Dans les questions rédigées, cite le triangle rectangle et le théorème, et écris tous les calculs.",
+    "total_points": 20,
+    "variants": [
+      {
+        "texts": [],
+        "sections": [
+          {
+            "label": "A · Vocabulaire, égalité et racine carrée (4 points)",
+            "questions": [
+              {
+                "id": "q1",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 1,
+                "skills": [
+                  "m4-pyth-vocabulaire"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Le triangle VWX est rectangle en W. Quelle est son hypoténuse ?",
+                "options": [
+                  "[VW]",
+                  "[VX]",
+                  "[WX]",
+                  "On ne peut pas savoir"
+                ],
+                "answer": 1,
+                "solution": "L'hypoténuse est le côté en face de l'angle droit, celui qui ne passe pas par W : [VX]."
+              },
+              {
+                "id": "q2",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 2,
+                "skills": [
+                  "m4-pyth-egalite"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Le triangle LMN est rectangle en M. Quelle égalité est juste ?",
+                "options": [
+                  "LM² = LN² + MN²",
+                  "LN = LM + MN",
+                  "MN² = LM² + LN²",
+                  "LN² = LM² + MN²"
+                ],
+                "answer": 3,
+                "solution": "L'hypoténuse est [LN] (en face de M) : LN² = LM² + MN²."
+              },
+              {
+                "id": "q3",
+                "type": "numeric",
+                "points": 1,
+                "lesson_part": 3,
+                "skills": [
+                  "m4-pyth-racine"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "À l'aide de la calculatrice, donne l'arrondi au dixième de √87.",
+                "answer": 9.3,
+                "tolerance": 0.0001,
+                "solution": "√87 ≈ 9,327… Le chiffre des centièmes est 2 : on garde le 3. √87 ≈ 9,3."
+              },
+              {
+                "id": "q4",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 1,
+                "skills": [
+                  "m4-pyth-vocabulaire"
+                ],
+                "cognitive": "analyser",
+                "prompt": "On sait que le triangle ABC est rectangle, avec AB = 5 cm, AC = 12 cm et BC = 13 cm. En quel sommet se trouve l'angle droit ?",
+                "options": [
+                  "En A",
+                  "En B",
+                  "En C",
+                  "On ne peut pas savoir"
+                ],
+                "answer": 0,
+                "solution": "L'hypoténuse est le plus long côté : [BC] = 13 cm. Elle est en face de l'angle droit, donc l'angle droit est au sommet qui n'est pas sur [BC] : le sommet A. (Contrôle : 5² + 12² = 25 + 144 = 169 = 13².)"
+              }
+            ]
+          },
+          {
+            "label": "B · Calculer une longueur (9 points)",
+            "questions": [
+              {
+                "id": "q5",
+                "type": "numeric",
+                "points": 2,
+                "lesson_part": 4,
+                "skills": [
+                  "m4-pyth-hypotenuse",
+                  "m4-pyth-egalite"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Le triangle PQR est rectangle en P, avec PQ = 7 cm et PR = 24 cm. Calcule QR, en cm.",
+                "answer": 25,
+                "solution": "Le triangle PQR est rectangle en P, donc, d'après le théorème de Pythagore :\nQR² = PQ² + PR² = 7² + 24² = 49 + 576 = 625\nQR = √625 = 25 cm."
+              },
+              {
+                "id": "q6",
+                "type": "numeric",
+                "points": 2,
+                "lesson_part": 5,
+                "skills": [
+                  "m4-pyth-cote",
+                  "m4-pyth-racine"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Le triangle EFG est rectangle en G, avec EF = 11 cm et EG = 6 cm. Calcule FG, arrondi au dixième de cm.",
+                "answer": 9.2,
+                "tolerance": 0.0001,
+                "solution": "L'hypoténuse est [EF] (en face de G). D'après le théorème de Pythagore :\nEF² = EG² + FG², soit 121 = 36 + FG²\nFG² = 121 − 36 = 85\nFG = √85 ≈ 9,22… donc FG ≈ 9,2 cm."
+              },
+              {
+                "id": "q7",
+                "type": "open",
+                "points": 3,
+                "lesson_part": 4,
+                "skills": [
+                  "m4-pyth-hypotenuse",
+                  "m4-pyth-racine",
+                  "m4-pyth-egalite"
+                ],
+                "cognitive": "rediger",
+                "prompt": "Le triangle ABC est rectangle en A, avec AB = 3,5 cm et AC = 6 cm.\nCalcule la longueur BC : donne sa valeur exacte, puis son arrondi au dixième de cm. Rédige complètement ta réponse.",
+                "solution": "Le triangle ABC est rectangle en A, donc, d'après le théorème de Pythagore :\nBC² = AB² + AC²\nBC² = 3,5² + 6²\nBC² = 12,25 + 36\nBC² = 48,25\nBC = √48,25 cm (valeur exacte)\nBC ≈ 6,9 cm (arrondi au dixième, car √48,25 ≈ 6,946).",
+                "rubric": "0,5 pt : « le triangle ABC est rectangle en A » cité. 0,5 pt : théorème de Pythagore cité et égalité BC² = AB² + AC² juste. 0,5 pt : 3,5² = 12,25 et 6² = 36. 0,5 pt : BC² = 48,25. 0,5 pt : valeur exacte BC = √48,25. 0,5 pt : arrondi 6,9 cm avec l'unité. Si l'égalité est écrite avec le mauvais côté en hypoténuse : 1 pt au maximum."
+              },
+              {
+                "id": "q8",
+                "type": "numeric",
+                "points": 2,
+                "lesson_part": 5,
+                "skills": [
+                  "m4-pyth-cote"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Le triangle XYZ est rectangle en Y, avec XZ = 8,5 cm et XY = 4 cm. Calcule YZ, en cm (le résultat tombe juste).",
+                "answer": 7.5,
+                "solution": "L'hypoténuse est [XZ] (en face de Y). D'après le théorème de Pythagore :\nXZ² = XY² + YZ², soit 72,25 = 16 + YZ²\nYZ² = 72,25 − 16 = 56,25\nYZ = √56,25 = 7,5 cm."
+              }
+            ]
+          },
+          {
+            "label": "C · Problèmes (7 points)",
+            "questions": [
+              {
+                "id": "q9",
+                "type": "numeric",
+                "points": 2,
+                "lesson_part": 5,
+                "skills": [
+                  "m4-pyth-probleme",
+                  "m4-pyth-hypotenuse",
+                  "m4-pyth-racine"
+                ],
+                "cognitive": "analyser",
+                "prompt": "L'écran d'une télévision est un rectangle de 88 cm de largeur et 50 cm de hauteur. On mesure la taille d'un écran par la longueur de sa diagonale. Calcule cette diagonale, arrondie au centimètre.",
+                "answer": 101,
+                "tolerance": 0.0001,
+                "solution": "La diagonale partage l'écran en deux triangles rectangles ; elle est leur hypoténuse.\nD² = 88² + 50² = 7 744 + 2 500 = 10 244\nD = √10 244 ≈ 101,2 donc D ≈ 101 cm."
+              },
+              {
+                "id": "q10",
+                "type": "open",
+                "points": 3,
+                "lesson_part": 5,
+                "skills": [
+                  "m4-pyth-probleme",
+                  "m4-pyth-cote"
+                ],
+                "cognitive": "rediger",
+                "prompt": "Une échelle de 5,2 m est appuyée contre un mur vertical. Son pied est posé sur le sol horizontal, à 2 m du pied du mur.\nÀ quelle hauteur l'échelle touche-t-elle le mur ? Fais un schéma à main levée et rédige ta réponse.",
+                "solution": "Schéma : le mur est vertical et le sol est horizontal, donc l'angle au pied du mur est droit. Le mur, le sol et l'échelle forment un triangle rectangle dont l'hypoténuse est l'échelle (5,2 m).\nD'après le théorème de Pythagore : 5,2² = 2² + h²\n27,04 = 4 + h²\nh² = 27,04 − 4 = 23,04\nh = √23,04 = 4,8\nL'échelle touche le mur à 4,8 m de hauteur.",
+                "rubric": "0,5 pt : schéma avec l'angle droit codé au pied du mur. 0,5 pt : justification de l'angle droit (mur vertical, sol horizontal) et triangle rectangle identifié. 0,5 pt : l'échelle reconnue comme hypoténuse, égalité juste. 0,5 pt : h² = 27,04 − 4 = 23,04. 0,5 pt : h = 4,8. 0,5 pt : phrase de conclusion avec l'unité. Si l'élève additionne (h² = 31,04, h ≈ 5,57 m) : 1 pt au maximum."
+              },
+              {
+                "id": "q11",
+                "type": "numeric",
+                "points": 2,
+                "lesson_part": 5,
+                "skills": [
+                  "m4-pyth-probleme",
+                  "m4-pyth-hypotenuse"
+                ],
+                "cognitive": "analyser",
+                "prompt": "Un parc a la forme d'un rectangle de 120 m sur 50 m. Pour aller d'un coin au coin opposé, Léa peut longer deux côtés du parc ou traverser en ligne droite par la diagonale. Combien de mètres économise-t-elle en prenant la diagonale ?",
+                "answer": 40,
+                "solution": "En longeant les bords : 120 + 50 = 170 m.\nLa diagonale est l'hypoténuse d'un triangle rectangle de côtés 120 m et 50 m :\nD² = 120² + 50² = 14 400 + 2 500 = 16 900, donc D = √16 900 = 130 m.\nÉconomie : 170 − 130 = 40 m."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "texts": [],
+        "sections": [
+          {
+            "label": "A · Vocabulaire, égalité et racine carrée (4 points)",
+            "questions": [
+              {
+                "id": "q1",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 1,
+                "skills": [
+                  "m4-pyth-vocabulaire"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Le triangle STU est rectangle en U. Quelle est son hypoténuse ?",
+                "options": [
+                  "[ST]",
+                  "[SU]",
+                  "[TU]",
+                  "On ne peut pas savoir"
+                ],
+                "answer": 0,
+                "solution": "L'hypoténuse est le côté en face de l'angle droit, celui qui ne passe pas par U : [ST]."
+              },
+              {
+                "id": "q2",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 2,
+                "skills": [
+                  "m4-pyth-egalite"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Le triangle KOL est rectangle en O. Quelle égalité est juste ?",
+                "options": [
+                  "KO² = KL² + OL²",
+                  "KL² = KO² + OL²",
+                  "KL = KO + OL",
+                  "OL² = KO² + KL²"
+                ],
+                "answer": 1,
+                "solution": "L'hypoténuse est [KL] (en face de O) : KL² = KO² + OL²."
+              },
+              {
+                "id": "q3",
+                "type": "numeric",
+                "points": 1,
+                "lesson_part": 3,
+                "skills": [
+                  "m4-pyth-racine"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "À l'aide de la calculatrice, donne l'arrondi au dixième de √61.",
+                "answer": 7.8,
+                "tolerance": 0.0001,
+                "solution": "√61 ≈ 7,810… Le chiffre des centièmes est 1 : on garde le 8. √61 ≈ 7,8."
+              },
+              {
+                "id": "q4",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 1,
+                "skills": [
+                  "m4-pyth-vocabulaire"
+                ],
+                "cognitive": "analyser",
+                "prompt": "On sait que le triangle DEF est rectangle, avec DE = 8 cm, EF = 15 cm et DF = 17 cm. En quel sommet se trouve l'angle droit ?",
+                "options": [
+                  "En D",
+                  "En F",
+                  "On ne peut pas savoir",
+                  "En E"
+                ],
+                "answer": 3,
+                "solution": "L'hypoténuse est le plus long côté : [DF] = 17 cm. L'angle droit est au sommet qui n'est pas sur [DF] : le sommet E. (Contrôle : 8² + 15² = 64 + 225 = 289 = 17².)"
+              }
+            ]
+          },
+          {
+            "label": "B · Calculer une longueur (9 points)",
+            "questions": [
+              {
+                "id": "q5",
+                "type": "numeric",
+                "points": 2,
+                "lesson_part": 4,
+                "skills": [
+                  "m4-pyth-hypotenuse",
+                  "m4-pyth-egalite"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Le triangle IJK est rectangle en J, avec IJ = 9 cm et JK = 40 cm. Calcule IK, en cm.",
+                "answer": 41,
+                "solution": "Le triangle IJK est rectangle en J, donc, d'après le théorème de Pythagore :\nIK² = IJ² + JK² = 9² + 40² = 81 + 1 600 = 1 681\nIK = √1 681 = 41 cm."
+              },
+              {
+                "id": "q6",
+                "type": "numeric",
+                "points": 2,
+                "lesson_part": 5,
+                "skills": [
+                  "m4-pyth-cote",
+                  "m4-pyth-racine"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Le triangle MNP est rectangle en N, avec MP = 12 cm et MN = 7 cm. Calcule NP, arrondi au dixième de cm.",
+                "answer": 9.7,
+                "tolerance": 0.0001,
+                "solution": "L'hypoténuse est [MP] (en face de N). D'après le théorème de Pythagore :\nMP² = MN² + NP², soit 144 = 49 + NP²\nNP² = 144 − 49 = 95\nNP = √95 ≈ 9,75… donc NP ≈ 9,7 cm."
+              },
+              {
+                "id": "q7",
+                "type": "open",
+                "points": 3,
+                "lesson_part": 4,
+                "skills": [
+                  "m4-pyth-hypotenuse",
+                  "m4-pyth-racine",
+                  "m4-pyth-egalite"
+                ],
+                "cognitive": "rediger",
+                "prompt": "Le triangle ABC est rectangle en A, avec AB = 4,5 cm et AC = 5 cm.\nCalcule la longueur BC : donne sa valeur exacte, puis son arrondi au dixième de cm. Rédige complètement ta réponse.",
+                "solution": "Le triangle ABC est rectangle en A, donc, d'après le théorème de Pythagore :\nBC² = AB² + AC²\nBC² = 4,5² + 5²\nBC² = 20,25 + 25\nBC² = 45,25\nBC = √45,25 cm (valeur exacte)\nBC ≈ 6,7 cm (arrondi au dixième, car √45,25 ≈ 6,727).",
+                "rubric": "0,5 pt : « le triangle ABC est rectangle en A » cité. 0,5 pt : théorème de Pythagore cité et égalité BC² = AB² + AC² juste. 0,5 pt : 4,5² = 20,25 et 5² = 25. 0,5 pt : BC² = 45,25. 0,5 pt : valeur exacte BC = √45,25. 0,5 pt : arrondi 6,7 cm avec l'unité. Si l'égalité est écrite avec le mauvais côté en hypoténuse : 1 pt au maximum."
+              },
+              {
+                "id": "q8",
+                "type": "numeric",
+                "points": 2,
+                "lesson_part": 5,
+                "skills": [
+                  "m4-pyth-cote"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Le triangle XYZ est rectangle en Y, avec XZ = 6,5 cm et XY = 2,5 cm. Calcule YZ, en cm (le résultat tombe juste).",
+                "answer": 6,
+                "solution": "L'hypoténuse est [XZ] (en face de Y). D'après le théorème de Pythagore :\nXZ² = XY² + YZ², soit 42,25 = 6,25 + YZ²\nYZ² = 42,25 − 6,25 = 36\nYZ = √36 = 6 cm."
+              }
+            ]
+          },
+          {
+            "label": "C · Problèmes (7 points)",
+            "questions": [
+              {
+                "id": "q9",
+                "type": "numeric",
+                "points": 2,
+                "lesson_part": 5,
+                "skills": [
+                  "m4-pyth-probleme",
+                  "m4-pyth-hypotenuse",
+                  "m4-pyth-racine"
+                ],
+                "cognitive": "analyser",
+                "prompt": "L'écran d'une télévision est un rectangle de 96 cm de largeur et 54 cm de hauteur. On mesure la taille d'un écran par la longueur de sa diagonale. Calcule cette diagonale, arrondie au centimètre.",
+                "answer": 110,
+                "tolerance": 0.0001,
+                "solution": "La diagonale partage l'écran en deux triangles rectangles ; elle est leur hypoténuse.\nD² = 96² + 54² = 9 216 + 2 916 = 12 132\nD = √12 132 ≈ 110,1 donc D ≈ 110 cm."
+              },
+              {
+                "id": "q10",
+                "type": "open",
+                "points": 3,
+                "lesson_part": 5,
+                "skills": [
+                  "m4-pyth-probleme",
+                  "m4-pyth-cote"
+                ],
+                "cognitive": "rediger",
+                "prompt": "Une échelle de 3,4 m est appuyée contre un mur vertical. Son pied est posé sur le sol horizontal, à 1,6 m du pied du mur.\nÀ quelle hauteur l'échelle touche-t-elle le mur ? Fais un schéma à main levée et rédige ta réponse.",
+                "solution": "Schéma : le mur est vertical et le sol est horizontal, donc l'angle au pied du mur est droit. Le mur, le sol et l'échelle forment un triangle rectangle dont l'hypoténuse est l'échelle (3,4 m).\nD'après le théorème de Pythagore : 3,4² = 1,6² + h²\n11,56 = 2,56 + h²\nh² = 11,56 − 2,56 = 9\nh = √9 = 3\nL'échelle touche le mur à 3 m de hauteur.",
+                "rubric": "0,5 pt : schéma avec l'angle droit codé au pied du mur. 0,5 pt : justification de l'angle droit (mur vertical, sol horizontal) et triangle rectangle identifié. 0,5 pt : l'échelle reconnue comme hypoténuse, égalité juste. 0,5 pt : h² = 11,56 − 2,56 = 9. 0,5 pt : h = 3. 0,5 pt : phrase de conclusion avec l'unité. Si l'élève additionne (h² = 14,12, h ≈ 3,76 m) : 1 pt au maximum."
+              },
+              {
+                "id": "q11",
+                "type": "numeric",
+                "points": 2,
+                "lesson_part": 5,
+                "skills": [
+                  "m4-pyth-probleme",
+                  "m4-pyth-hypotenuse"
+                ],
+                "cognitive": "analyser",
+                "prompt": "Un parc a la forme d'un rectangle de 105 m sur 36 m. Pour aller d'un coin au coin opposé, Léa peut longer deux côtés du parc ou traverser en ligne droite par la diagonale. Combien de mètres économise-t-elle en prenant la diagonale ?",
+                "answer": 30,
+                "solution": "En longeant les bords : 105 + 36 = 141 m.\nLa diagonale est l'hypoténuse d'un triangle rectangle de côtés 105 m et 36 m :\nD² = 105² + 36² = 11 025 + 1 296 = 12 321, donc D = √12 321 = 111 m.\nÉconomie : 141 − 111 = 30 m."
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
