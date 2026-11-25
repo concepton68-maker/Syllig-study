@@ -17,6 +17,20 @@ const more: [boolean, boolean][] = [
   [autoCorrect(N(0), 'abc')!, false], [autoCorrect(N(0), '%')!, false], [autoCorrect(N(0), '.')!, false], [autoCorrect(N(0), '0')!, true],
   [autoCorrect(N(0.5, 0.5), 'cm')!, false], [autoCorrect(N(25), '25 %')!, true], [autoCorrect(N(-4.5), '−4,5')!, true], [autoCorrect(N(3.5), '3,5 cm³')!, true],
   [n('3²') === n('32'), false], [n('2^10') === n('210'), false], [n('x²') === n('x^2'), true],
+  // analyseur numérique strict : ni hexadécimal ni notation e ; fractions acceptées
+  [autoCorrect(N(16), '0x10')!, false], [autoCorrect(N(1000), '1e3')!, false], [autoCorrect(N(0.5), '1/2')!, true],
+  [autoCorrect(N(-0.75), '-3/4')!, true], [autoCorrect(N(-0.75), '−3/4')!, true], [autoCorrect(N(0.75), '-3/4')!, false],
+  [autoCorrect(N(0), '3/0')!, false], [autoCorrect(N(Infinity), '3/0')!, false], [autoCorrect(N(-0.75), '−0,75')!, true],
+  [autoCorrect(N(12), '12 €')!, true], [autoCorrect(N(0), '')!, false], [autoCorrect(N(1.25), '2,5/2')!, true],
+  [autoCorrect(N(1500), '1 500')!, true], [autoCorrect(N(1500), '1\u202f500')!, true], [autoCorrect(N(0.5), '0.5')!, true],
+  [autoCorrect(N(0.5), ',5')!, true], [autoCorrect(N(0.5), '1/2 cm')!, true], [autoCorrect(N(Infinity), 'Infinity')!, false],
+  [autoCorrect(N(3), '3x')!, true], [autoCorrect(N(3), 'x3')!, false], [autoCorrect(N(2), '1+1')!, false],
+  [autoCorrect(N(0.5), '1/2/3')!, false], [autoCorrect(N(5), '5,')!, true], [autoCorrect(N(-5), '--5')!, false],
+  // jetons internes improbables : « w2 », « q », « d » écrits par l'élève ne se confondent plus avec un exposant / une fraction / une virgule
+  [n('xw2') === n('x²'), false], [n('aw2') === n('a^2'), false], [n('1q3') === n('1/3'), false], [n('1d3') === n('1,3'), false],
+  [n('3 ^2') === n('3^2'), true], [n('x ²') === n('x²'), true], [n('3 x²') === n('3x²'), true],
+  [autoCorrect({ id: 's', type: 'short', prompt: '', points: 1, answer: ['w2'] } as never, 'W2')!, true],
+  [autoCorrect({ id: 's', type: 'short', prompt: '', points: 1, answer: ['x²'] } as never, 'xw2')!, false],
 ];
 const badMore = more.filter(([g, w]) => g !== w).length;
 console.log(badMore ? `${badMore} échec(s) numériques/exposants : ${JSON.stringify(more.map(([g]) => g))}` : `${more.length} cas numériques/exposants OK`);

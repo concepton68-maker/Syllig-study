@@ -78,7 +78,7 @@ export async function breakdown(studentId: string) {
     d as (select (started_at at time zone 'Europe/Paris')::date as day, sum(active_seconds) as a from s group by 1)
     select coalesce((select sum(active_seconds) from s), 0)::int as active, coalesce((select sum(open_seconds) from s), 0)::int as open,
       (select count(*) from s where open_seconds > 0)::int as sessions,
-      (select count(*) from d where a >= 60)::int as days, coalesce((select sum(idle_pauses) from s), 0)::int as pauses,
+      (select count(*) from d where a >= 600)::int as days, coalesce((select sum(idle_pauses) from s), 0)::int as pauses,
       (select coalesce(sum(focus_losses), 0)::int from eval_attempts where student_id = ${studentId} and started_at >= (select start from b)) as focus`;
   return { byKind, bySubject, week: k };
 }

@@ -4,7 +4,7 @@ import { C_WORK, C_PAUSE } from './LiveBoard';
 
 const dur = (s: number) => { const m = Math.round(s / 60); return m < 60 ? `${m} min` : `${Math.floor(m / 60)} h ${String(m % 60).padStart(2, '0')}`; };
 
-// 7 derniers jours : barres empilées travail effectif / pause, ligne pointillée = objectif quotidien.
+// 7 derniers jours : barres empilées temps actif / temps sans geste (page ouverte).
 // En HTML (pas en SVG mis à l'échelle) pour que les textes restent lisibles sur téléphone.
 export function WeekBars({ days, goalMin }: { days: { day: string; label: string; active: number; pause: number }[]; goalMin: number }) {
   const [hover, setHover] = useState<number | null>(null);
@@ -35,8 +35,8 @@ export function WeekBars({ days, goalMin }: { days: { day: string; label: string
           <div className="absolute top-0 bg-ink text-white text-xs rounded-md px-2.5 py-1.5 pointer-events-none whitespace-nowrap shadow -translate-x-1/2 z-10"
             style={{ left: `${Math.min(80, Math.max(20, ((hover + 0.5) / days.length) * 100))}%` }}>
             <strong>{new Date(`${days[hover].day}T12:00:00Z`).toLocaleDateString('fr-FR', { weekday: 'long', day: 'numeric', month: 'long' })}</strong>
-            <span className="block">Travail effectif : {dur(days[hover].active)}</span>
-            <span className="block">Pause : {dur(days[hover].pause)}</span>
+            <span className="block">Actif : {dur(days[hover].active)}</span>
+            <span className="block">Sans geste : {dur(days[hover].pause)}</span>
           </div>
         )}
       </div>

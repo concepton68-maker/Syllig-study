@@ -43,14 +43,15 @@ await pa.goto(BASE + '/parent/bilan');
 const card = pa.locator('[data-trajectory]');
 const row = async label => (await card.locator(`[data-compare-row="${label}"]`).innerText()).replace(/\s+/g, ' ');
 ok((await row('Temps de travail effectif')).includes(`${minutesBefore} min → ${minutesAfter} min`), `temps : ${await row('Temps de travail effectif')} (attendu ${minutesBefore} → ${minutesAfter})`);
-ok((await row('Exercices réussis (corrigés par la plateforme)')).includes(`${exBefore} % → ${exAfter} %`), `exercices : ${await row('Exercices réussis (corrigés par la plateforme)')} (attendu ${exBefore} % → ${exAfter} %)`);
+ok((await row('Exercices réussis (corrigés par la plateforme)')).includes(`${exBefore} % (36 sur 80) → ${exAfter} % (68 sur 80)`), `exercices : ${await row('Exercices réussis (corrigés par la plateforme)')} (attendu ${exBefore} % → ${exAfter} %)`);
 ok((await row('Moyenne des copies complètes')).includes('— → —'), 'pas de copie : « — », pas de valeur inventée');
 await card.locator('details summary').first().click();
-const mins = (await card.locator('table tbody tr td:nth-child(2)').allInnerTexts()).map(t => parseInt(t, 10));
+const mins = (await card.locator('table tbody tr td:nth-child(2)').allInnerTexts()).map(t => t.trim() === '—' ? 0 : parseInt(t, 10));   // « — » : avant la première activité
 ok(mins.length === 12 && mins.reduce((a, x) => a + x, 0) === tot.m, `12 semaines ; total ${mins.reduce((a, x) => a + x, 0)} min = somme des séances ${tot.m} min (aucune heure perdue)`);
 ok(await card.locator('[data-bar-week]').count() === 12 && await card.locator('[data-point="ex"]').count() === 8, 'barres et points tracés (8 semaines mesurées)');
 ok(await card.locator('[data-subject-trend]').count() === 2, 'résultats par matière');
-ok((await card.locator('[data-subject-trend="Mathématiques"]').innerText()).includes('40 % → 90 %'), `maths : moyenne des 3 premiers et des 3 derniers (${(await card.locator('[data-subject-trend="Mathématiques"]').innerText()).replace(/\s+/g, ' ')})`);
+const mt = (await card.locator('[data-subject-trend="Mathématiques"]').innerText()).replace(/\s+/g, ' ');
+ok(mt.includes('Exercices (8)') && mt.includes('3/10') && mt.includes('10/10') && !mt.includes('→'), `maths : chaque série telle quelle, sans moyenne ni comparaison (${mt})`);
 ok((await card.locator('[data-feeling="q6"]').innerText()).includes('Plutôt pas → Tout à fait') && await card.locator('[data-feeling="q1"]').count() === 0, 'questionnaire : seulement les réponses qui ont changé, en toutes lettres');
 ok(!/hausse|baisse|lassitude|effort paie|découragement/i.test(await card.innerText()), 'aucune tendance extrapolée ni cause supposée');
 await card.locator('[data-bar-week]').nth(10).hover();

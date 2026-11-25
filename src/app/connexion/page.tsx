@@ -10,7 +10,7 @@ export const dynamic = 'force-dynamic';
 const POINTS = [
   { icon: Target, title: 'Un parcours calculé chaque jour', text: 'Les priorités du programme d’abord, puis les révisions au bon moment.' },
   { icon: LineChart, title: 'Des progrès visibles', text: 'Niveaux de maîtrise, points de progrès et carte des forces et des points à travailler.' },
-  { icon: ShieldCheck, title: 'Un vrai temps de travail', text: 'Seul le temps actif compte, horodaté par le serveur. Les parents suivent tout.' },
+  { icon: ShieldCheck, title: 'Un temps de travail mesuré', text: 'Seul le temps actif sur la page compte, horodaté par le serveur.' },
 ];
 
 export default async function LoginPage() {
@@ -20,7 +20,7 @@ export default async function LoginPage() {
       <section className="login-hero hidden lg:flex flex-col justify-between w-[46%] max-w-[680px] p-12 text-white">
         <Logo onDark size="lg" id="logo-hero" />
         <div className="flex flex-col gap-8 max-w-[460px]">
-          <h1 className="text-[40px] leading-[1.1] font-bold tracking-tight">Le parcours qui fait <span className="login-hl">vraiment progresser</span>.</h1>
+          <h1 className="text-[40px] leading-[1.1] font-bold tracking-tight">Leçons, exercices, évaluations : <span className="login-hl">un parcours suivi</span>.</h1>
           <ul className="flex flex-col gap-5 m-0 p-0 list-none">
             {POINTS.map(({ icon: Icon, title, text }) => (
               <li key={title} className="flex gap-4">

@@ -85,7 +85,7 @@ export function AddChildForm({ levels }: { levels: { code: string; name: string 
       </div>
       <label className="flex items-start gap-3 text-[15px]">
         <input type="checkbox" name="entry_test" defaultChecked className="mt-1 w-5 h-5" />
-        <span><strong>Commencer par le test de rentrée</strong><span className="block muted text-sm">25 à 30 minutes sur les bases des années précédentes, non noté, corrigé automatiquement (sans IA). Il montre par où commencer : ce qui manque vraiment, et ce qui est déjà su.</span></span>
+        <span><strong>Commencer par le test de rentrée</strong><span className="block muted text-sm">25 à 30 minutes sur les bases des années précédentes, non noté, corrigé automatiquement (sans IA). Il donne un score par matière et la liste des questions ratées : des pistes pour savoir par où commencer.</span></span>
       </label>
       <Msg s={state} />
       <div><button className="btn btn-primary" type="submit" disabled={pending}>Créer le compte</button></div>

@@ -1,10 +1,10 @@
 import { TrendingUp } from 'lucide-react';
-import type { Trajectory } from '@/lib/trajectory';
-import { WeeklyBars, RateLines, Sparkline } from './TrajectoryChart';
+import { MIN_ITEMS, type Trajectory } from '@/lib/trajectory';
+import { WeeklyBars, RateLines } from './TrajectoryChart';
 
 // Trajectoire sur 12 semaines : les mesures semaine après semaine et une comparaison chiffrée. Aucune extrapolation, aucune cause supposée.
 const C_CP = '#2F4FD8', C_EX = '#00b894';
-const ratio = (ok: number, t: number) => t ? `${Math.round((ok / t) * 100)} % (${ok} sur ${t})` : null;
+const ratio = (ok: number, t: number) => t ? (t >= MIN_ITEMS ? `${Math.round((ok / t) * 100)} % (${ok} sur ${t})` : `${ok} sur ${t} (trop peu pour un %)`) : null;
 
 export function TrajectoryCard({ tr, name, goalMin }: { tr: Trajectory; name: string; goalMin: number }) {
   const any = tr.weeks.some(w => w.minutes > 0 || w.cp_total || w.ex_total);
@@ -28,7 +28,7 @@ export function TrajectoryCard({ tr, name, goalMin }: { tr: Trajectory; name: st
           <h3 className="text-base font-semibold m-0">Temps de travail effectif par semaine</h3>
           <span className="muted text-xs">Ligne pointillée : l’objectif que vous avez fixé ({goalMin} min). Semaine en cours en pointillés : elle n’est pas finie.</span>
           <WeeklyBars goal={goalMin} bars={tr.weeks.map(w => ({ key: w.week, label: w.label, value: w.minutes, current: w.current,
-            tip: [`Semaine du ${w.label}${w.current ? ' (en cours)' : ''}`, `${w.minutes} min de travail effectif`, `${w.days} jour${w.days > 1 ? 's' : ''} avec 10 min ou plus`] }))} />
+            tip: w.started ? [`Semaine du ${w.label}${w.current ? ' (en cours)' : ''}`, `${w.minutes} min de travail effectif`, `${w.days} jour${w.days > 1 ? 's' : ''} avec 10 min ou plus`] : [`Semaine du ${w.label}`, 'avant la première activité'] }))} />
         </div>
         <div className="flex flex-col gap-1">
           <h3 className="text-base font-semibold m-0">Réussite par semaine</h3>
@@ -37,17 +37,17 @@ export function TrajectoryCard({ tr, name, goalMin }: { tr: Trajectory; name: st
             <span className="flex items-center gap-1.5"><i className="inline-block w-4 h-[3px] rounded" style={{ background: C_EX }} />Exercices réussis (corrigés par la plateforme)</span>
           </div>
           <RateLines labels={labels} lines={[
-            { key: 'cp', label: 'Contrôles', color: C_CP, values: tr.weeks.map(w => w.cp_total ? { v: Math.round((w.cp_ok / w.cp_total) * 100), tip: ratio(w.cp_ok, w.cp_total)! } : null) },
-            { key: 'ex', label: 'Exercices', color: C_EX, values: tr.weeks.map(w => w.ex_total ? { v: Math.round((w.ex_ok / w.ex_total) * 100), tip: ratio(w.ex_ok, w.ex_total)! } : null) },
+            { key: 'cp', label: 'Contrôles', color: C_CP, values: tr.weeks.map(w => w.cp_total >= MIN_ITEMS ? { v: Math.round((w.cp_ok / w.cp_total) * 100), tip: ratio(w.cp_ok, w.cp_total)! } : null) },
+            { key: 'ex', label: 'Exercices', color: C_EX, values: tr.weeks.map(w => w.ex_total >= MIN_ITEMS ? { v: Math.round((w.ex_ok / w.ex_total) * 100), tip: ratio(w.ex_ok, w.ex_total)! } : null) },
           ]} />
-          <span className="muted text-xs">Un point n’apparaît que les semaines où il y a eu des contrôles ou des exercices ; le nombre de questions est indiqué au survol et dans le tableau.</span>
+          <span className="muted text-xs">Un point n’apparaît que les semaines avec au moins 5 questions (en dessous, un pourcentage ne veut rien dire) ; le nombre de questions est indiqué au survol et dans le tableau.</span>
         </div>
         <details className="text-sm">
           <summary className="cursor-pointer muted">Voir les chiffres semaine par semaine</summary>
           <div className="overflow-x-auto">
             <table className="w-full mt-2 text-sm min-w-[560px]">
               <thead><tr className="text-left muted"><th className="py-1 font-medium">Semaine du</th><th className="font-medium">Travail</th><th className="font-medium">Jours</th><th className="font-medium">Contrôles 1er coup</th><th className="font-medium">Exercices</th><th className="font-medium">Copies complètes</th></tr></thead>
-              <tbody>{tr.weeks.map(w => <tr key={w.week} className="border-t border-soft"><td className="py-1">{w.label}{w.current ? ' (en cours)' : ''}</td><td>{w.minutes} min</td><td>{w.days}</td>
+              <tbody>{tr.weeks.map(w => <tr key={w.week} className="border-t border-soft"><td className="py-1">{w.label}{w.current ? ' (en cours)' : ''}</td><td>{w.started ? `${w.minutes} min` : '—'}</td><td>{w.started ? w.days : '—'}</td>
                 <td>{w.cp_total ? `${w.cp_ok}/${w.cp_total}` : '—'}</td><td>{w.ex_total ? `${w.ex_ok}/${w.ex_total}` : '—'}</td><td>{w.notes.length ? w.notes.map(x => `${x.toLocaleString('fr-FR')}/20`).join(', ') : '—'}</td></tr>)}</tbody>
             </table>
           </div>
@@ -55,17 +55,21 @@ export function TrajectoryCard({ tr, name, goalMin }: { tr: Trajectory; name: st
       </>}
       {tr.subjects.length > 0 && (
         <div className="flex flex-col gap-2 border-t border-line pt-3">
-          <h3 className="text-base font-semibold m-0">Par matière : chaque résultat, dans l’ordre</h3>
+          <h3 className="text-base font-semibold m-0">Par matière : chaque résultat, du plus ancien au plus récent</h3>
           <ul className="list-none m-0 p-0 flex flex-col">
             {tr.subjects.map(s => (
-              <li key={s.subject} className="grid grid-cols-[minmax(110px,160px)_1fr_auto] max-sm:grid-cols-[1fr_auto] items-center gap-x-4 gap-y-1 py-2 border-t border-soft first:border-t-0" data-subject-trend={s.subject}>
-                <span className="text-sm font-semibold">{s.subject}<span className="block muted font-normal text-xs">{s.n} résultat{s.n > 1 ? 's' : ''}</span></span>
-                <span className="max-sm:col-span-2 max-sm:order-3"><Sparkline values={s.points.map(p => p.v)} /></span>
-                <span className="text-right text-sm tabular-nums">{s.first !== null && s.last !== null ? <>{s.first} % → <strong>{s.last} %</strong><span className="block muted text-xs">moyenne des {Math.min(3, Math.floor(s.n / 2))} premiers et des {Math.min(3, Math.floor(s.n / 2))} derniers</span></> : <span className="muted">{s.points.map(p => `${p.v} %`).join(', ')}</span>}</span>
+              <li key={s.subject} className="flex flex-col gap-1 py-2 border-t border-soft first:border-t-0 text-sm" data-subject-trend={s.subject}>
+                <strong>{s.subject}</strong>
+                {s.exercices.length > 0 && <span className="grid grid-cols-[110px_1fr] max-sm:grid-cols-1 gap-x-3 items-center">
+                  <span className="muted">Exercices ({s.exercices.length})</span>
+                  <span className="flex flex-wrap gap-1">{s.exercices.slice(-8).map((e, i) => <span key={i} className="pill bg-soft text-ink-2 tabular-nums">{e.ok}/{e.total}</span>)}</span></span>}
+                {s.copies.length > 0 && <span className="grid grid-cols-[110px_1fr] max-sm:grid-cols-1 gap-x-3 items-center">
+                  <span className="muted">Copies complètes ({s.copies.length})</span>
+                  <span className="flex flex-wrap gap-1">{s.copies.slice(-8).map((c, i) => <span key={i} className="pill bg-soft text-ink-2 tabular-nums">{c.note.toLocaleString('fr-FR')}/20</span>)}</span></span>}
               </li>
             ))}
           </ul>
-          <span className="muted text-xs">Chaque résultat : une série d’exercices (part des questions corrigées par la plateforme réussies) ou une copie complète (note ramenée en %).</span>
+          <span className="muted text-xs">Exercices : questions corrigées par la plateforme réussies sur le total de la série (8 dernières séries). Copies : notes des évaluations complètes (8 dernières).</span>
         </div>
       )}
       {tr.feelings.length > 0 && (

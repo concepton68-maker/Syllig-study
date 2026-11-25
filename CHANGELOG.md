@@ -443,3 +443,16 @@ Principe du propriétaire : on ne montre que ce qui est mesuré de façon sûre,
 - Révisions : chaque révision mène aux exercices du cours ; refaire les exercices la marque comme faite (« Révision faite » dans le journal).
 - Bilan de l'élève : « Ce que tu as réussi dans cette évaluation » (au lieu de « Ce que tu sais faire maintenant »).
 - Le bilan IA reçoit ces faits et les réponses exactes du questionnaire, avec la consigne de ne jamais conclure à un trait psychologique.
+
+## 0.43 — 25/11/2026
+Contre-audit de conformité de la 0.42 : corrections, et application de la règle « ne montrer que ce qui est sûr ».
+- « Évaluations faites en entier » compte toutes les copies remises, notées ou non (une copie vide en attente de note était oubliée).
+- Temps de leçon limité aux 28 jours affichés.
+- Évolution sur 12 semaines : les semaines antérieures à la première activité affichent « — » (plus de comparaison avec des zéros) ; chaque pourcentage indique son effectif (« 68 sur 80 ») ; aucun pourcentage sous 5 questions ; par matière, les séries d'exercices et les notes des copies sont listées telles quelles, sans moyenne ni comparaison ; le questionnaire montre tout changement de réponse.
+- Bilan par l'IA : plus d'« origine probable », de « niveau d'implication » ni de « confiance » déclarée par le modèle ; une notion n'est « à revoir » que si une erreur précise la montre.
+- Test de positionnement : score par matière et liste des questions ratées comme « pistes à vérifier » (une question par notion ne prouve pas qu'elle n'est pas sue).
+- Exercices : la note retenue (maîtrise, parent, journal) ne compte que les questions corrigées par la plateforme ; l'auto-évaluation de l'élève est affichée à part.
+- Un seul « jour travaillé » partout : 10 minutes de temps effectif cumulé dans la journée.
+- « En direct » : « Actif sur une page de travail », « Page ouverte, sans geste », « Aucune page de travail ouverte » ; plus d'objectif quotidien inventé ni de « séance moyenne ».
+- Correction automatique : nombres lus strictement (décimal, fraction a/b, unité ou % après ; refus de « 0x10 », « 1e3 », des réponses sans chiffre) ; 67 cas vérifiés.
+- Textes : plus de « travaille vraiment » ; chaque mesure de temps rappelle sa définition (geste dans les 60 s).

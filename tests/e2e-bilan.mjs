@@ -142,9 +142,10 @@ const in1 = JSON.parse(inputs[0].user.slice(inputs[0].user.indexOf('{')));
 ok(inputs[0].provider === 'mistral' && inputs[0].model === 'mistral-large-latest', 'bilan rédigé par Mistral Large (Europe)');
 ok(!inputs[0].user.includes('Léa') && in1.cours.length >= 1 && in1.cours[0].evaluations[0].wrong.length > 0, 'l’IA reçoit les faits et les questions ratées, sans le prénom');
 ok(in1.programme_syllig.length > 10, 'l’IA reçoit le programme Syllig (pour ne pas proposer des leçons déjà existantes)');
-ok(inputs[0].system.includes('lacunes_anterieures') && inputs[0].system.includes('JSON Schema'), 'consignes d’expert et schéma de réponse envoyés');
+ok(inputs[0].system.includes('sans jamais supposer de cause') && inputs[0].system.includes('JSON Schema'), 'consignes (faits seulement, aucune cause supposée) et schéma de réponse envoyés');
+ok(!/"(confiance|confiance_raison|origine|implication)"/.test(inputs[0].system), 'le schéma ne demande plus ni cause, ni profil, ni confiance');
 const view = await pa.locator('section[aria-labelledby="bilan-ia"]').innerText();
-ok(view.includes('Pas encore possible de trancher') && view.includes('Dix minutes de calcul mental') && view.includes('confiance'), 'bilan affiché : origine, conseils, niveau de confiance');
+ok(view.includes('Synthèse numéro 1') && view.includes('Dix minutes de calcul mental') && !/Origine probable|Implication de|confiance/.test(view), 'bilan affiché : synthèse et conseils, sans cause ni profil ni confiance');
 
 console.log('Test de positionnement');
 await pa.click('button:has-text("Proposer ce test à Léa")');
@@ -171,7 +172,7 @@ ok(done.status === 'termine' && done.score === 3 && done.results.filter(r => r.v
 
 await pa.goto(BASE + '/parent/bilan');
 const tv = await pa.locator('section[aria-labelledby="positionnement"]').innerText();
-ok(tv.includes('Fait : 3/6') && tv.includes('Relatifs') && tv.includes('niveau 5e'), 'le parent voit les résultats par notion et par niveau');
+ok(tv.includes('Fait : 3/6') && tv.includes('Mathématiques : 3 sur 4') && tv.includes('pistes à vérifier') && tv.includes('niveau 6e'), 'le parent voit le score par matière et les questions ratées comme pistes à vérifier');
 
 console.log('Second bilan (Claude), qui tient compte du test');
 await setGeneral({ allowNonEu: true });
@@ -191,7 +192,7 @@ await pa.click('button:has-text("Nouveau bilan")');
 await pa.waitForSelector('text=Synthèse numéro 2');
 const in2 = JSON.parse(inputs[1].user.slice(inputs[1].user.indexOf('{')));
 ok(inputs[1].provider === 'claude' && in2.tests_de_positionnement.length === 1 && in2.tests_de_positionnement[0].score === 3, 'le second bilan reçoit les résultats du test');
-ok((await pa.locator('section[aria-labelledby="bilan-ia"]').innerText()).includes('Lacunes des années précédentes'), 'origine affichée : lacunes des années précédentes');
+ok((await pa.locator('section[aria-labelledby="bilan-ia"]').innerText()).includes('Erreur sur 4 − (−11)'), 'notion à revoir appuyée sur l’erreur constatée');
 await pa.locator('section[aria-labelledby="historique"] input[data-bulk="bulk-bilans"]').nth(1).check();
 await pa.click('button:has-text("Supprimer (1)")'); await pa.click('[data-dialog-ok]');
 let left = 2; for (let i = 0; i < 50 && left !== 1; i++) { await pa.waitForTimeout(100); left = (await sql`select count(*)::int as n from student_reports`)[0].n; }

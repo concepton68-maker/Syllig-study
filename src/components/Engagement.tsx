@@ -23,16 +23,16 @@ export function EngagementCard({ f, name }: { f: Facts; name: string }) {
         <h2 id="faits-travail" className="text-xl font-semibold m-0 flex items-center gap-2 mr-auto"><ClipboardCheck size={20} aria-hidden="true" />Travail et résultats de {name}</h2>
         <span className="muted text-sm">du {day(f.from)} au {day(f.to)} (28 jours)</span>
       </div>
-      <p className="muted text-sm m-0">Uniquement ce que la plateforme mesure, avec la définition de chaque chiffre. Le travail fourni et les résultats obtenus sont montrés séparément : c’est en les mettant côte à côte que l’on voit si les difficultés viennent du travail ou de la compréhension.</p>
+      <p className="muted text-sm m-0">Uniquement ce que la plateforme mesure, avec la définition de chaque chiffre. Le travail fourni et les résultats obtenus sont présentés séparément, côte à côte.</p>
       <div className="grid gap-x-8 gap-y-4 md:grid-cols-2">
         <div>
           <h3 className="text-base font-semibold m-0 mb-1">Le travail fourni</h3>
           <ul className="list-none m-0 p-0">
             <Row testid="jours" label="Jours travaillés" value={`${w.days} sur 28`} def="jours où le temps effectif cumulé atteint 10 minutes" />
             <Row testid="temps" label="Temps de travail effectif" value={`${fr(w.active_min)} min`} def={`objectif que vous avez fixé : ${fr(w.goal_min)} min sur 28 jours`} />
-            <Row testid="actif" label="Part du temps où il agit sur la page" value={w.open_min ? `${Math.round((w.active_min / w.open_min) * 100)} %` : '—'} def={`${fr(w.active_min)} min actives sur ${fr(w.open_min)} min de page ouverte (pause après 60 s sans geste)`} />
+            <Row testid="actif" label="Part du temps actif sur la page" value={w.open_min ? `${Math.round((w.active_min / w.open_min) * 100)} %` : '—'} def={`${fr(w.active_min)} min actives sur ${fr(w.open_min)} min de page ouverte (pause après 60 s sans geste)`} />
             <Row testid="lecons" label="Leçons terminées" value={String(w.lessons_done)} def={w.lessons_done ? `${fr(w.lesson_min)} min passées dessus pour ${fr(w.lesson_expected_min)} min prévues` : 'aucune sur la période'} />
-            <Row testid="copies" label="Évaluations faites en entier" value={ratio(e.complete.n, e.complete.n + e.incomplete.n)} def={`copie complète : ${COMPLETE_RULE}`} />
+            <Row testid="copies" label="Évaluations faites en entier" value={ratio(e.complete_all, e.submitted)} def={`copies remises sur la période, notées ou non ; copie complète : ${COMPLETE_RULE}`} />
             <Row testid="sorties" label="Sorties de la fenêtre pendant les évaluations" value={String(e.focus_losses)} def="nombre de fois où la page de l’évaluation a été quittée" />
           </ul>
         </div>
@@ -40,7 +40,7 @@ export function EngagementCard({ f, name }: { f: Facts; name: string }) {
           <h3 className="text-base font-semibold m-0 mb-1">Les résultats obtenus</h3>
           <ul className="list-none m-0 p-0">
             <Row testid="moy-completes" label="Moyenne des copies complètes" value={e.complete.avg === null ? '—' : `${fr(e.complete.avg)}/20`} def={e.complete.n ? `${e.complete.n} copie${e.complete.n > 1 ? 's' : ''} notée${e.complete.n > 1 ? 's' : ''}` : 'aucune copie complète notée'} />
-            <Row testid="moy-incompletes" label="Moyenne des copies incomplètes" value={e.incomplete.avg === null ? '—' : `${fr(e.incomplete.avg)}/20`} def={e.incomplete.n ? `${e.incomplete.n} copie${e.incomplete.n > 1 ? 's' : ''} : la note reflète d’abord le travail non fait` : 'aucune'} />
+            <Row testid="moy-incompletes" label="Moyenne des copies incomplètes" value={e.incomplete.avg === null ? '—' : `${fr(e.incomplete.avg)}/20`} def={e.incomplete.n ? `${e.incomplete.n} copie${e.incomplete.n > 1 ? 's' : ''} notée${e.incomplete.n > 1 ? 's' : ''}, rendue${e.incomplete.n > 1 ? 's' : ''} très vite ou en partie vide${e.incomplete.n > 1 ? 's' : ''}` : 'aucune copie incomplète notée'} />
             <Row testid="controles" label="Points de contrôle réussis du premier coup" value={ratio(l.cp_ok, l.cp_total)} def="questions de la leçon, premier essai" />
             <Row testid="exercices" label="Exercices réussis (corrigés par la plateforme)" value={ratio(l.ex_ok, l.ex_total)} def={l.self_total ? `+ ${l.self_ok} sur ${l.self_total} réponses rédigées jugées réussies par ${name} (auto-évaluation)` : 'questions à correction automatique'} />
             {e.pending > 0 && <Row testid="attente" label="Copies en attente de correction" value={String(e.pending)} def="pas encore comptées dans les moyennes" />}

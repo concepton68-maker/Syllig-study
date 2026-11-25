@@ -9,19 +9,21 @@ import { ITEMS, SCALE } from './checkin';
 // est un simple calcul sur ces mesures. Aucune tendance extrapolée, aucune cause supposée.
 
 export type WeekRow = {
-  week: string; label: string; current: boolean;
+  week: string; label: string; current: boolean; started: boolean;   // started : semaine postérieure à la première activité
   minutes: number; days: number;
   cp_ok: number; cp_total: number;     // points de contrôle, premier essai
   ex_ok: number; ex_total: number;     // exercices corrigés par la plateforme
   notes: number[];                     // notes des copies complètes (sur 20)
 };
 export type Compare = { label: string; before: string; after: string; dir: 'up' | 'down' | 'same' | 'none'; better: 'up' | 'down' };
-export type SubjectSeries = { subject: string; points: { at: string; v: number; kind: 'exercices' | 'copie' }[]; first: number | null; last: number | null; n: number };
+export type SubjectSeries = { subject: string; exercices: { at: string; ok: number; total: number }[]; copies: { at: string; note: number }[] };
 export type FeelingRow = { id: string; text: string; answers: { at: string; label: string }[] };
 export type Trajectory = { weeks: WeekRow[]; compare: Compare[]; subjects: SubjectSeries[]; feelings: FeelingRow[] };
 
 const W = 12;
-const pct = (ok: number, total: number) => total ? Math.round((ok / total) * 100) : null;
+/** En dessous de 5 questions, aucun pourcentage n'est affiché (trop peu pour être représentatif). */
+export const MIN_ITEMS = 5;
+const pct = (ok: number, total: number) => total >= MIN_ITEMS ? Math.round((ok / total) * 100) : null;
 const mean = (xs: number[]) => xs.length ? Math.round((xs.reduce((a, b) => a + b, 0) / xs.length) * 10) / 10 : null;
 
 export async function trajectory(studentId: string): Promise<Trajectory> {
@@ -58,12 +60,16 @@ export async function trajectory(studentId: string): Promise<Trajectory> {
   }
   const exFacts = exs.map(e => { const k = Object.keys(e.auto ?? {}); return { at: e.at, ok: k.filter(id => e.auto![id]).length, total: k.length, subject: e.subject }; }).filter(e => e.total > 0);
 
+  const [fa] = await sql<{ at: Date | null }[]>`select least(
+    (select min(started_at) from work_sessions where student_id = ${studentId}), (select min(answered_at) from checkpoint_answers where student_id = ${studentId}),
+    (select min(submitted_at) from exercise_submissions where student_id = ${studentId}), (select min(submitted_at) from eval_attempts where student_id = ${studentId})) as at`;
+  const firstAt = fa.at?.getTime() ?? Infinity;
   const inW = (d: Date, w: { start: Date; end: Date }) => d.getTime() >= w.start.getTime() && d.getTime() < w.end.getTime();
   const rows: WeekRow[] = weeks.map((w, i) => {
     const dd = daysRows.filter(d => inW(d.day, w));
     const cp = cps.filter(c => inW(c.at, w)), ex = exFacts.filter(e => inW(e.at, w));
     return {
-      week: w.week, current: i === weeks.length - 1,
+      week: w.week, current: i === weeks.length - 1, started: w.end.getTime() > firstAt,
       label: new Date(`${w.week}T12:00:00Z`).toLocaleDateString('fr-FR', { day: 'numeric', month: 'short' }),
       minutes: Math.round(dd.reduce((n, d) => n + d.active, 0) / 60), days: dd.filter(d => d.active >= 600).length,
       cp_ok: cp.filter(c => c.ok).length, cp_total: cp.length,
@@ -79,32 +85,37 @@ export async function trajectory(studentId: string): Promise<Trajectory> {
     label, before: b === null ? '—' : fmt(b), after: a === null ? '—' : fmt(a), better,
     dir: a === null || b === null ? 'none' : a > b ? 'up' : a < b ? 'down' : 'same',
   });
+  // une période qui commence avant la première activité n'est pas comparable (on ne compare pas à des zéros d'avant l'inscription)
+  const okB = before.every(r => r.started), okA = after.every(r => r.started);
+  const frac = (rs: WeekRow[], ok: (r: WeekRow) => number, tot: (r: WeekRow) => number) => { const t = sum(rs, tot); return t >= MIN_ITEMS ? { v: pct(sum(rs, ok), t)!, s: `${sum(rs, ok)} sur ${t}` } : null; };
+  const rate = (label: string, ok: (r: WeekRow) => number, tot: (r: WeekRow) => number): Compare => {
+    const b = okB ? frac(before, ok, tot) : null, a = okA ? frac(after, ok, tot) : null;
+    return { label, before: b ? `${b.v} % (${b.s})` : '—', after: a ? `${a.v} % (${a.s})` : '—', better: 'up', dir: !a || !b ? 'none' : a.v > b.v ? 'up' : a.v < b.v ? 'down' : 'same' };
+  };
+  const notesB = okB ? before.flatMap(r => r.notes) : [], notesA = okA ? after.flatMap(r => r.notes) : [];
   const compare: Compare[] = [
-    cmp('Temps de travail effectif', sum(before, r => r.minutes), sum(after, r => r.minutes), x => `${x} min`),
-    cmp('Jours travaillés (10 min ou plus)', sum(before, r => r.days), sum(after, r => r.days), x => `${x} j`),
-    cmp('Contrôles réussis du premier coup', pct(sum(before, r => r.cp_ok), sum(before, r => r.cp_total)), pct(sum(after, r => r.cp_ok), sum(after, r => r.cp_total)), x => `${x} %`),
-    cmp('Exercices réussis (corrigés par la plateforme)', pct(sum(before, r => r.ex_ok), sum(before, r => r.ex_total)), pct(sum(after, r => r.ex_ok), sum(after, r => r.ex_total)), x => `${x} %`),
-    cmp('Moyenne des copies complètes', mean(before.flatMap(r => r.notes)), mean(after.flatMap(r => r.notes)), x => `${x.toLocaleString('fr-FR')}/20`),
+    cmp('Temps de travail effectif', okB ? sum(before, r => r.minutes) : null, okA ? sum(after, r => r.minutes) : null, x => `${x} min`),
+    cmp('Jours travaillés (10 min ou plus)', okB ? sum(before, r => r.days) : null, okA ? sum(after, r => r.days) : null, x => `${x} j`),
+    rate('Contrôles réussis du premier coup', r => r.cp_ok, r => r.cp_total),
+    rate('Exercices réussis (corrigés par la plateforme)', r => r.ex_ok, r => r.ex_total),
+    { ...cmp('Moyenne des copies complètes', mean(notesB), mean(notesA), x => `${x.toLocaleString('fr-FR')}/20`),
+      before: notesB.length ? `${mean(notesB)!.toLocaleString('fr-FR')}/20 (${notesB.length} copie${notesB.length > 1 ? 's' : ''})` : '—',
+      after: notesA.length ? `${mean(notesA)!.toLocaleString('fr-FR')}/20 (${notesA.length} copie${notesA.length > 1 ? 's' : ''})` : '—' },
   ];
 
-  // par matière : chaque résultat dans l'ordre du temps (exercices en % de réussite, copies complètes ramenées en %)
-  const bySubject = new Map<string, SubjectSeries['points']>();
-  const add = (subject: string, p: SubjectSeries['points'][number]) => bySubject.set(subject, [...(bySubject.get(subject) ?? []), p]);
-  for (const e of exFacts) add(e.subject, { at: e.at.toISOString(), v: Math.round((e.ok / e.total) * 100), kind: 'exercices' });
-  for (const c of copies) add(c.subject, { at: c.at.toISOString(), v: Math.round(c.note * 5), kind: 'copie' });
-  const subjects: SubjectSeries[] = [...bySubject.entries()].map(([subject, ps]) => {
-    const p = ps.sort((a, b) => a.at.localeCompare(b.at));
-    const k = Math.min(3, Math.floor(p.length / 2));
-    const m = (xs: typeof p) => Math.round(xs.reduce((n, x) => n + x.v, 0) / xs.length);
-    return { subject, points: p, n: p.length, first: k ? m(p.slice(0, k)) : null, last: k ? m(p.slice(-k)) : null };
-  }).sort((a, b) => b.n - a.n);
+  // par matière : chaque série d'exercices et chaque copie complète, dans l'ordre du temps (deux séries séparées, pas de moyenne)
+  const bySubject = new Map<string, SubjectSeries>();
+  const S = (subject: string) => { if (!bySubject.has(subject)) bySubject.set(subject, { subject, exercices: [], copies: [] }); return bySubject.get(subject)!; };
+  for (const e of exFacts) S(e.subject).exercices.push({ at: e.at.toISOString(), ok: e.ok, total: e.total });
+  for (const c of copies) S(c.subject).copies.push({ at: c.at.toISOString(), note: c.note });
+  const subjects = [...bySubject.values()].sort((a, b) => (b.exercices.length + b.copies.length) - (a.exercices.length + a.copies.length));
 
   // ressenti : la réponse exacte de l'élève à chaque phrase, questionnaire après questionnaire (seulement ce qui a changé)
   const checkins = await sql<{ created_at: Date; answers: Record<string, number> }[]>`select created_at, answers from student_checkins where student_id = ${studentId} order by created_at`;
   const feelings: FeelingRow[] = checkins.length < 2 ? [] : ITEMS.map(it => ({
     id: it.id, text: it.text,
     answers: checkins.filter(c => typeof c.answers?.[it.id] === 'number').map(c => ({ at: c.created_at.toISOString(), label: SCALE[c.answers[it.id]] })),
-  })).filter(f => f.answers.length >= 2 && f.answers[0].label !== f.answers.at(-1)!.label);
+  })).filter(f => f.answers.length >= 2 && f.answers.some(a => a.label !== f.answers[0].label));   // tout changement, même A → B → A
 
   return { weeks: rows, compare, subjects, feelings };
 }

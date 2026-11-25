@@ -30,7 +30,8 @@ function describe(e: string, d: Record<string, unknown>) {
   if (d.partie) p.push(`partie ${d.partie}`);
   if (d.tentative) p.push(`tentative ${d.tentative}`);
   if (d.note !== undefined) p.push(`${String(d.note).replace('.', ',')}/20`);
-  if (d.score_sur_10 !== undefined) p.push(`${d.score_sur_10}/10`);
+  if (d.auto_total !== undefined) p.push(`${d.auto_ok} sur ${d.auto_total} corrigés par la plateforme${Number(d.auto_eval_total) ? `, ${d.auto_eval_ok} sur ${d.auto_eval_total} auto-évalués` : ''}`);
+  else if (d.score_sur_10 !== undefined) p.push(`${d.score_sur_10}/10`);
   if (d.duree_min !== undefined && d.duree_min !== null) p.push(`${String(d.duree_min).replace('.', ',')} min`);
   if (d.absence_s !== undefined) p.push(`hors de la page ${d.absence_s} s`);
   if (d.actif_s !== undefined) p.push(`${Math.round(Number(d.actif_s) / 60)} min actives sur ${Math.round(Number(d.ouvert_s) / 60)} ouvertes`);
@@ -72,7 +73,9 @@ function summary(b: Block) {
   const ok = b.events.filter(x => x.event === 'point_controle_reussi').length, ko = b.events.filter(x => x.event === 'point_controle_a_reessayer').length;
   if (ok + ko) chips.push({ text: `Contrôles : ${ok} réussi${ok > 1 ? 's' : ''}${ko ? `, ${ko} à refaire` : ''}`, tone: ko > ok ? 'warn' : undefined });
   const ex = [...b.events].reverse().find(x => x.event === 'exercices_termines' || x.event === 'revision_faite');
-  if (ex) chips.push({ text: `② Exercices ${ex.data.score_sur_10}/10`, tone: Number(ex.data.score_sur_10) >= 8 ? 'ok' : undefined });
+  if (ex) chips.push(ex.data.auto_total !== undefined
+    ? { text: `② Exercices : ${ex.data.auto_ok} sur ${ex.data.auto_total} corrigés par la plateforme${Number(ex.data.auto_eval_total) ? ` (+ ${ex.data.auto_eval_ok} sur ${ex.data.auto_eval_total} auto-évalués)` : ''}` }
+    : { text: `② Exercices ${ex.data.score_sur_10}/10 (auto-évaluation comprise)` });
   else if (has('exercices_remis')) chips.push({ text: '② Exercices remis' });
   else if (b.sessions.some(x => x.kind === 'exercises')) chips.push({ text: '② Exercices en cours' });
   const note = [...b.events].reverse().find(x => x.event === 'evaluation_notee');
@@ -216,7 +219,7 @@ export default async function Journal({ searchParams }: { searchParams: Promise<
             <h2 className="text-base font-semibold">Comment lire ce journal</h2>
             <ul className="m-0 pl-5 text-[13px] text-ink-2 flex flex-col gap-1">
               <li>Un bloc par cours et par jour, du plus récent au plus ancien.</li>
-              <li>Le temps « effectif » ne compte que les minutes où l’élève agit vraiment sur la page.</li>
+              <li>Le temps « effectif » compte les minutes où l’élève fait un geste sur la page de travail (clic, défilement, saisie) ; après 60 s sans geste, le temps n’est plus compté.</li>
               <li><span className="text-warm-dark font-semibold">À regarder ensemble</span> : sorties de fenêtre pendant une évaluation, leçon survolée.</li>
             </ul>
           </section>

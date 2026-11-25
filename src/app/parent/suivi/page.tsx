@@ -31,7 +31,6 @@ export default async function Suivi({ searchParams }: { searchParams: Promise<{ 
   const { students, student } = await requireParent(eleve);
   if (!student) return null;
   const [live, today, days, b] = await Promise.all([liveStatus(student.id), dayTimeline(student.id), lastDays(student.id), breakdown(student.id)]);
-  const goalMin = Math.round(student.settings.weekly_goal_minutes / 7);
   const w = b.week;
   const focus = w.open ? Math.round((w.active / w.open) * 100) : null;
   const kinds = Object.entries(KIND_COLOR).map(([k, c]) => ({ label: c.label, color: c.color, value: b.byKind.find(x => x.kind === k)?.s ?? 0 }));
@@ -52,17 +51,17 @@ export default async function Suivi({ searchParams }: { searchParams: Promise<{ 
           <section className="card flex flex-col gap-3">
             <div className="flex flex-wrap items-baseline gap-x-5 gap-y-1">
               <h2 className="text-lg font-semibold mr-auto">7 derniers jours</h2>
-              <span className="flex items-center gap-1.5 text-sm"><i className="inline-block w-3 h-3 rounded-sm" style={{ background: '#2F4FD8' }} /> Travail effectif</span>
-              <span className="flex items-center gap-1.5 text-sm"><i className="inline-block w-3 h-3 rounded-sm" style={{ background: '#f47230' }} /> Pause</span>
-              <span className="flex items-center gap-1.5 text-sm"><i className="inline-block w-4 border-t-2 border-dashed border-ink-2" /> Objectif {dur(goalMin * 60)}/jour</span>
+              <span className="flex items-center gap-1.5 text-sm"><i className="inline-block w-3 h-3 rounded-sm" style={{ background: '#2F4FD8' }} /> Actif</span>
+              <span className="flex items-center gap-1.5 text-sm"><i className="inline-block w-3 h-3 rounded-sm" style={{ background: '#f47230' }} /> Sans geste</span>
+              
             </div>
-            <WeekBars days={days} goalMin={goalMin} />
+            <WeekBars days={days} goalMin={0} />
             <details className="text-sm" data-table>
               <summary className="cursor-pointer muted">Voir les chiffres</summary>
               <table className="w-full mt-2 text-sm">
-                <thead><tr className="text-left muted"><th className="py-1 font-medium">Jour</th><th className="font-medium">Travail effectif</th><th className="font-medium">Pause</th><th className="font-medium">Objectif atteint</th></tr></thead>
+                <thead><tr className="text-left muted"><th className="py-1 font-medium">Jour</th><th className="font-medium">Actif</th><th className="font-medium">Sans geste</th></tr></thead>
                 <tbody>{days.map(d => <tr key={d.day} className="border-t border-soft"><td className="py-1">{new Date(`${d.day}T12:00:00Z`).toLocaleDateString('fr-FR', { weekday: 'long', day: 'numeric', month: 'short' })}</td>
-                  <td>{dur(d.active)}</td><td>{dur(d.pause)}</td><td>{d.active >= goalMin * 60 ? 'oui' : 'non'}</td></tr>)}</tbody>
+                  <td>{dur(d.active)}</td><td>{dur(d.pause)}</td></tr>)}</tbody>
               </table>
             </details>
           </section>
@@ -72,9 +71,8 @@ export default async function Suivi({ searchParams }: { searchParams: Promise<{ 
             <h2 className="text-lg font-semibold">Les 7 derniers jours en un coup d’œil</h2>
             <div className="flex flex-wrap gap-3">
               <Tile testid="actif" label="Travail effectif" value={dur(weekActive)} sub={`objectif que vous avez fixé : ${dur(student.settings.weekly_goal_minutes * 60)} par semaine`} />
-              <Tile testid="concentration" label="Temps où il agit sur la page" value={focus === null ? '—' : `${focus} %`} sub="minutes avec un geste (clic, défilement, saisie) sur le temps de page ouverte ; pause après 60 s sans geste" />
-              <Tile testid="regularite" label="Jours travaillés" value={`${w.days}/7`} sub="jours avec au moins une minute de travail effectif" />
-              <Tile testid="seance" label="Séance moyenne" value={w.sessions ? dur(w.active / w.sessions) : '—'} sub={`${w.sessions} séance(s) · ${w.pauses} pause(s) détectée(s)`} />
+              <Tile testid="concentration" label="Part du temps actif sur la page" value={focus === null ? '—' : `${focus} %`} sub="minutes avec un geste (clic, défilement, saisie) sur le temps de page ouverte ; pause après 60 s sans geste" />
+              <Tile testid="regularite" label="Jours travaillés" value={`${w.days}/7`} sub="jours avec au moins 10 min de travail effectif cumulé" />
               <Tile testid="sorties" label="Sorties pendant les évaluations" value={String(w.focus)} sub="fois où la fenêtre a été quittée pendant une évaluation" />
             </div>
           </section>

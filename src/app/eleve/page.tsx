@@ -114,7 +114,7 @@ export default async function Today({ searchParams }: { searchParams: Promise<{ 
                 <Link className="btn btn-primary min-h-[52px] px-7 text-base w-full sm:w-auto" href={stepHref(next.course_id, step)}>
                   {step.kind === 'lesson' && !next.lesson_started ? 'Commencer' : 'Continuer'} : {step.label}{step.minutes ? ` · ${step.minutes} min` : ''}
                 </Link>
-                <span className="muted text-sm max-w-[460px]">Seul le temps où tu travailles vraiment est compté. Les corrigés s’ouvrent après ta réponse.</span>
+                <span className="muted text-sm max-w-[460px]">Le temps compté s’arrête après 60 s sans aucun geste sur la page. Les corrigés s’ouvrent après ta réponse.</span>
               </div>
             </section>
           ) : (

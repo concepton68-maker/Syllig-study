@@ -4,7 +4,7 @@ import { sql } from '@/lib/db';
 import { requireParent } from '@/lib/access';
 import { aiOverview } from '@/lib/ai';
 import { studentProfile, type CourseFacts, type Profile } from '@/lib/profile';
-import { ORIGINE_LABEL, IMPLICATION_LABEL, type ReportData } from '@/lib/report';
+import { type ReportData } from '@/lib/report';
 import { PageTitle } from '@/components/Shell';
 import { Screen } from '@/components/Layout';
 import { ChildPicker } from '@/components/ChildPicker';
@@ -76,7 +76,7 @@ export default async function Bilan({ searchParams }: { searchParams: Promise<{ 
             {profile.courses.map(c => <CourseRow key={c.course_id} c={c} />)}
           </div>
         )}
-        <p className="muted text-xs m-0">Temps actif : seul le temps où {name} travaille vraiment est compté (pas la page ouverte en arrière-plan).</p>
+        <p className="muted text-xs m-0">Temps actif : minutes avec un geste sur une page de travail (clic, défilement, saisie) ; après 60 s sans geste, ou page en arrière-plan, le temps n’est plus compté. Chiffres depuis l’inscription.</p>
       </section>
 
       {/* 2. Le bilan de l'IA */}
@@ -94,7 +94,7 @@ export default async function Bilan({ searchParams }: { searchParams: Promise<{ 
       {/* 3. Test de positionnement */}
       <section className="card flex flex-col gap-3" aria-labelledby="positionnement">
         <h2 id="positionnement" className="text-xl font-semibold m-0 flex items-center gap-2"><Compass size={20} aria-hidden="true" />Test de positionnement</h2>
-        <p className="muted text-sm m-0">Un court test sur les bases des années précédentes, corrigé automatiquement. Il ne compte pas dans les notes. Il sert à distinguer ce qui n’est pas su de ce qui a été fait trop vite.</p>
+        <p className="muted text-sm m-0">Un court test sur les bases des années précédentes, corrigé automatiquement. Il ne compte pas dans les notes. Il donne un score par matière et la liste des questions ratées, à vérifier ensuite.</p>
         {shown && !openTest && shown.data.test_positionnement.questions.length > 0 && (
           <form action={assignPlacement.bind(null, shown.id)} className="flex flex-wrap items-center gap-3 rounded-xl bg-surface-2 border border-line px-4 py-3">
             <span className="flex-1 text-sm"><strong>Test préparé par le bilan du {day(shown.created_at)}</strong> · {shown.data.test_positionnement.questions.length} questions sur {[...new Set(shown.data.test_positionnement.questions.map(q => q.notion))].slice(0, 4).join(', ')}{shown.data.test_positionnement.questions.length > 4 ? '…' : ''}</span>
@@ -171,7 +171,7 @@ export default async function Bilan({ searchParams }: { searchParams: Promise<{ 
           {reports.map(r => (
             <div key={r.id} className="flex flex-wrap items-center gap-3 py-2.5 border-t border-soft text-sm">
               <BulkCheck formId="bulk-bilans" value={r.id} label={`bilan du ${day(r.created_at)}`} />
-              <span className="flex-1"><strong>{day(r.created_at)}</strong> · {ORIGINE_LABEL[r.data.origine.principale]} · confiance {r.data.confiance}<span className="muted"> · {ai.catalog[r.provider]?.name ?? r.provider}</span></span>
+              <span className="flex-1"><strong>{day(r.created_at)}</strong><span className="muted"> · {ai.catalog[r.provider]?.name ?? r.provider}</span></span>
               {r.id === shown?.id ? <span className="pill bg-brand-soft text-brand-dark">Affiché</span> : <Link className="font-semibold" href={`/parent/bilan?eleve=${student.id}&rapport=${r.id}`}>Voir</Link>}
             </div>
           ))}
@@ -189,7 +189,7 @@ function CourseRow({ c }: { c: CourseFacts }) {
       <span className="min-w-0"><strong>{c.title}</strong><span className="block muted">{c.subject}</span></span>
       <Fact label="Leçon" value={c.lesson.active_min || c.lesson.done ? `${c.lesson.active_min} min / ${c.lesson.expected_min} prévues` : '—'} />
       <Fact label="Contrôles 1er coup" value={c.checkpoints.parts ? `${c.checkpoints.first_try_ok} / ${c.checkpoints.parts}` : '—'} />
-      <Fact label="Exercices" value={c.exercises.score !== null ? `${c.exercises.score}/10` : '—'} />
+      <Fact label="Exercices (corrigés auto.)" value={c.exercises.score !== null ? `${c.exercises.score}/10` : '—'} />
       <Fact label="Évaluation" value={e ? `${e.score === null ? 'en correction' : `${fr(e.score)}/20`}${e.used_min ? ` · ${e.used_min} min / ${e.allowed_min}` : ''}` : '—'} />
       {c.flags.length > 0 && (
         <span className="md:col-span-5 flex flex-wrap gap-1.5">
@@ -206,24 +206,10 @@ const Fact = ({ label, value }: { label: string; value: string }) => (
 
 function ReportView({ r, name }: { r: Report; name: string }) {
   const d = r.data;
-  const tone = d.origine.principale === 'implication' ? 'bg-warm-soft text-warm-dark' : d.origine.principale === 'indetermine' ? 'bg-soft text-ink-2' : 'bg-brand-soft text-brand-ink';
   return (
     <div className="flex flex-col gap-4">
-      <p className="m-0 muted text-xs">Bilan du {day(r.created_at)} · {r.provider} ({r.model}) · confiance <strong>{d.confiance}</strong> : {d.confiance_raison}</p>
+      <p className="m-0 muted text-xs">Bilan du {day(r.created_at)} · rédigé par {r.provider} ({r.model}) à partir des faits ci-dessus · à lire comme une proposition</p>
       <p className="m-0 text-[15.5px] leading-relaxed">{d.synthese}</p>
-      <div className="grid gap-3 md:grid-cols-2">
-        <div className={`rounded-2xl px-4 py-3 ${tone}`}>
-          <span className="lbl">Origine probable des difficultés</span>
-          <strong className="block text-lg mt-0.5">{ORIGINE_LABEL[d.origine.principale]}</strong>
-          <p className="m-0 mt-1 text-sm">{d.origine.explication}</p>
-          {d.origine.preuves.length > 0 && <ul className="m-0 mt-2 pl-5 list-disc text-sm flex flex-col gap-0.5">{d.origine.preuves.map((p, i) => <li key={i}>{p}</li>)}</ul>}
-        </div>
-        <div className="rounded-2xl px-4 py-3 bg-surface-2 border border-line">
-          <span className="lbl">Implication de {name}</span>
-          <strong className="block text-lg mt-0.5">{IMPLICATION_LABEL[d.implication.niveau]}</strong>
-          {d.implication.indices.length > 0 && <ul className="m-0 mt-2 pl-5 list-disc text-sm flex flex-col gap-0.5">{d.implication.indices.map((p, i) => <li key={i}>{p}</li>)}</ul>}
-        </div>
-      </div>
       {d.matieres.length > 0 && (
         <div className="flex flex-col gap-2">
           <h3 className="text-base font-semibold m-0">Matière par matière</h3>
@@ -240,7 +226,7 @@ function ReportView({ r, name }: { r: Report; name: string }) {
       )}
       {d.lacunes.length > 0 && (
         <div className="flex flex-col gap-1.5">
-          <h3 className="text-base font-semibold m-0 flex items-center gap-2"><ListChecks size={18} aria-hidden="true" />Bases à consolider</h3>
+          <h3 className="text-base font-semibold m-0 flex items-center gap-2"><ListChecks size={18} aria-hidden="true" />Notions à revoir (erreurs constatées)</h3>
           {d.lacunes.map((l, i) => (
             <div key={i} className="flex flex-wrap gap-2 items-baseline text-sm py-1.5 border-t border-soft">
               <span className={`pill ${l.gravite === 'haute' ? 'bg-warm-soft text-warm-dark' : 'bg-soft text-ink-2'}`}>{l.gravite === 'haute' ? 'Prioritaire' : l.gravite === 'moyenne' ? 'Important' : 'À surveiller'}</span>
@@ -265,11 +251,11 @@ function ReportView({ r, name }: { r: Report; name: string }) {
 
 function TestRow({ t, name, multi }: { t: Test; name: string; multi: boolean }) {
   const used = t.started_at && t.submitted_at ? Math.max(1, Math.round((t.submitted_at.getTime() - t.started_at.getTime()) / 60000)) : null;
-  const byNotion = new Map<string, { ok: number; n: number; level: string; subject: string; blank: number }>();
-  for (const r of t.results ?? []) {
-    const k = r.notion; const e = byNotion.get(k) ?? { ok: 0, n: 0, level: r.niveau_origine, subject: r.matiere, blank: 0 };
-    e.n++; if (r.correct) e.ok++; if (r.vide) e.blank++; byNotion.set(k, e);
-  }
+  // résultats tels quels : score par matière, puis les questions ratées ou laissées vides comme pistes à vérifier
+  // (une question par notion ne permet pas d'affirmer qu'une notion est sue ou non)
+  const bySubject = new Map<string, { ok: number; n: number }>();
+  for (const r of t.results ?? []) { const e = bySubject.get(r.matiere) ?? { ok: 0, n: 0 }; e.n++; if (r.correct) e.ok++; bySubject.set(r.matiere, e); }
+  const missed = (t.results ?? []).filter(r => !r.correct);
   return (
     <div className="flex flex-col gap-2 py-3 border-t border-soft text-sm">
       <div className="flex flex-wrap items-center gap-3">
@@ -282,13 +268,18 @@ function TestRow({ t, name, multi }: { t: Test; name: string; multi: boolean }) 
       {t.status === 'termine' && (
         <>
           {used !== null && used < t.duration_min * 0.25 && <p className="m-0 rounded-lg bg-warm-soft text-warm-dark px-3 py-2">Fait très vite ({used} min pour {t.duration_min} prévues) : les résultats sont à prendre avec prudence.</p>}
-          <div className="grid gap-1.5 sm:grid-cols-2">
-            {[...byNotion.entries()].map(([notion, e]) => (
-              <span key={notion} className={`rounded-lg px-3 py-2 ${e.ok === e.n ? 'bg-brand-soft text-brand-ink' : e.ok === 0 ? 'bg-warm-soft text-warm-dark' : 'bg-soft'}`}>
-                <strong>{e.ok === e.n ? '✓' : e.ok === 0 ? '✗' : '◐'} {notion}</strong> · {e.ok}/{e.n}<span className="block text-xs opacity-80">{e.subject} · niveau {e.level}{e.blank ? ` · ${e.blank} sans réponse` : ''}</span>
-              </span>
-            ))}
+          <div className="flex flex-wrap gap-1.5" data-test-subjects>
+            {[...bySubject.entries()].map(([m, e]) => <span key={m} className="pill bg-soft text-ink-2">{m} : {e.ok} sur {e.n}</span>)}
           </div>
+          {missed.length > 0 && (
+            <div className="flex flex-col gap-1">
+              <span className="font-semibold">Questions ratées ou sans réponse : pistes à vérifier</span>
+              <ul className="m-0 pl-5 list-disc flex flex-col gap-0.5" data-test-missed>
+                {missed.map((r, i) => <li key={i}>{r.notion} <span className="muted">· {r.matiere} · niveau {r.niveau_origine}{r.vide ? ' · sans réponse' : ''}</span></li>)}
+              </ul>
+              <span className="muted text-xs">Une seule question par notion : une erreur signale une notion à vérifier (par un exercice ou une explication), elle ne prouve pas à elle seule qu’elle n’est pas sue.</span>
+            </div>
+          )}
           <p className="m-0 muted text-xs">Demandez un nouveau bilan : il tiendra compte de ce test.</p>
         </>
       )}

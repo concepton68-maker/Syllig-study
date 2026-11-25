@@ -16,7 +16,7 @@ export type SubjectFacts = { subject: string; active_min: number; cp_ok: number;
 export type Facts = {
   from: string; to: string;
   work: { days: number; active_min: number; open_min: number; goal_min: number; lessons_done: number; lesson_min: number; lesson_expected_min: number };
-  evals: { complete: { n: number; avg: number | null }; incomplete: { n: number; avg: number | null }; focus_losses: number; pending: number };
+  evals: { submitted: number; complete_all: number; complete: { n: number; avg: number | null }; incomplete: { n: number; avg: number | null }; focus_losses: number; pending: number };
   learning: { cp_ok: number; cp_total: number; ex_ok: number; ex_total: number; self_ok: number; self_total: number };
   subjects: SubjectFacts[];
 };
@@ -39,7 +39,7 @@ export async function workFacts(studentId: string): Promise<Facts> {
   // leçons terminées dans la fenêtre : temps effectif passé sur la leçon / durée prévue
   const lessons = await sql<{ course_id: number; doc: { lesson: { duration_min: number } } | null; active: number }[]>`
     select p.course_id, (select v.document from course_versions v where v.course_id = p.course_id and v.status = 'published' order by v.version desc limit 1) as doc,
-      coalesce((select sum(active_seconds) from work_sessions s where s.student_id = p.student_id and s.course_id = p.course_id and s.kind = 'lesson'), 0)::int as active
+      coalesce((select sum(active_seconds) from work_sessions s where s.student_id = p.student_id and s.course_id = p.course_id and s.kind = 'lesson' and s.started_at >= ${win.start}), 0)::int as active
     from course_progress p where p.student_id = ${studentId} and p.lesson_done_at >= ${win.start}`;
 
   // évaluations remises dans la fenêtre
@@ -67,7 +67,7 @@ export async function workFacts(studentId: string): Promise<Facts> {
   for (const r of sessionsBySubject) S(r.subject).active_min = Math.round(r.active / 60);
 
   const complete: number[] = [], incomplete: number[] = [];
-  let pending = 0, focus = 0;
+  let pending = 0, focus = 0, completeAll = 0;
   for (const a of atts) {
     focus += a.focus_losses ?? 0;
     const doc = (await versionById(a.version_id))?.document;
@@ -77,6 +77,7 @@ export async function workFacts(studentId: string): Promise<Facts> {
     const allowed = a.deadline_at && a.started_at ? (a.deadline_at.getTime() - a.started_at.getTime()) / 60000 : doc.evaluation.duration_min;
     const used = a.started_at ? (a.submitted_at.getTime() - a.started_at.getTime()) / 60000 : null;
     const isComplete = (used === null || used >= allowed * 0.3) && answered >= 0.6;
+    if (isComplete) completeAll++;      // mesurable dès la remise, notée ou non
     if (a.status !== 'graded' || a.final_score === null) { pending++; if (!isComplete) S(a.subject).incomplete++; continue; }
     const note = Number(a.final_score);
     if (isComplete) { complete.push(note); S(a.subject).complete.push(note); } else { incomplete.push(note); S(a.subject).incomplete++; }
@@ -98,7 +99,7 @@ export async function workFacts(studentId: string): Promise<Facts> {
       lessons_done: lessons.length, lesson_min: Math.round(lessons.reduce((n, l) => n + l.active, 0) / 60),
       lesson_expected_min: lessons.reduce((n, l) => n + (l.doc?.lesson.duration_min ?? 0), 0),
     },
-    evals: { complete: { n: complete.length, avg: avg(complete) }, incomplete: { n: incomplete.length, avg: avg(incomplete) }, focus_losses: focus, pending },
+    evals: { submitted: atts.length, complete_all: completeAll, complete: { n: complete.length, avg: avg(complete) }, incomplete: { n: incomplete.length, avg: avg(incomplete) }, focus_losses: focus, pending },
     learning: { cp_ok: cps.filter(c => c.ok).length, cp_total: cps.length, ex_ok: exOk, ex_total: exTotal, self_ok: selfOk, self_total: selfTotal },
     subjects: [...subj.values()].sort((a, b) => b.active_min - a.active_min),
   };

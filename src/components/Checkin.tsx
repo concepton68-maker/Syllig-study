@@ -14,7 +14,7 @@ export function CheckinCard({ rows, name, requestAction, requested, fille }: { r
         {requested ? <span className="pill bg-soft text-ink-2">Proposé à {name}</span>
           : <form action={requestAction}><button className="btn btn-sm" type="submit">{last ? 'Lui reproposer maintenant' : 'Lui proposer maintenant'}</button></form>}
       </div>
-      <p className="muted text-sm m-0">Ses réponses au questionnaire « Comment tu travailles ? » (proposé toutes les 6 semaines), telles qu’{fille ? 'elle' : 'il'} les a données. C’est son avis sur lui-même, pas une mesure.</p>
+      <p className="muted text-sm m-0">Ses réponses au questionnaire « Comment tu travailles ? » (proposé toutes les 6 semaines), telles qu’{fille ? 'elle' : 'il'} les a données. C’est son propre avis sur sa façon de travailler, pas une mesure.</p>
       {!last ? <p className="m-0 text-sm">Pas encore de réponse. Le questionnaire apparaît dans son espace (« Aujourd’hui »), après le test de rentrée s’il y en a un.</p> : (
         <>
           <span className="text-sm muted">Réponses du {day(last.created_at)}{prev ? ` · entre parenthèses, la réponse du ${day(prev.created_at)} quand elle était différente` : ''}</span>

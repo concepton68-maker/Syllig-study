@@ -34,7 +34,7 @@ export default async function ParentDashboard({ searchParams }: { searchParams: 
   }
   const q = `?eleve=${student.id}`;
   const live = await liveStatus(student.id);
-  const LIVE = { travaille: ['En train de travailler', 'bg-brand-soft text-brand-dark'], pause: ['En pause', 'bg-warm-soft text-warm-dark'], hors_ligne: ['Hors ligne', 'bg-soft text-ink-2'] }[live.state];
+  const LIVE = { travaille: ['Actif sur une page de travail', 'bg-brand-soft text-brand-dark'], pause: ['Page ouverte, sans geste', 'bg-warm-soft text-warm-dark'], hors_ligne: ['Aucune page de travail ouverte', 'bg-soft text-ink-2'] }[live.state];
   const goal = student.settings.weekly_goal_minutes * 60;
   const [w, s, sessions, subjects] = await Promise.all([weekStats(student.id), streak(student.id), recentSessions(student.id, 30), subjectProgress(student.id, student.level_code)]);
   const toGrade = await sql<{ id: string; title: string; attempt_no: number; submitted_at: Date }[]>`
@@ -54,9 +54,9 @@ export default async function ParentDashboard({ searchParams }: { searchParams: 
 
   const kpis = [
     { label: 'Temps actif mesuré', value: hm(w.active), unit: `/ ${hm(goal)}`, sub: 'Objectif hebdomadaire fixé par vous', bar: Math.min(100, pct) },
-    { label: 'Régularité', value: String(w.activeDays), unit: 'jours / 7', sub: `Série en cours : ${s} jour${s > 1 ? 's' : ''}`, bar: (w.activeDays / 7) * 100 },
+    { label: 'Jours travaillés', value: String(w.activeDays), unit: 'jours / 7', sub: `10 min ou plus dans la journée · série en cours : ${s} jour${s > 1 ? 's' : ''}`, bar: (w.activeDays / 7) * 100 },
     { label: 'Moyenne des évaluations', value: ev.avg ? Number(ev.avg).toLocaleString('fr-FR') : '—', unit: '/ 20', sub: ev.n ? `Meilleure note retenue, ${ev.n} cours évalué${ev.n > 1 ? 's' : ''}` : 'Pas encore d’évaluation', bar: ev.avg ? (Number(ev.avg) / 20) * 100 : 0 },
-    { label: 'Cours acquis', value: String(acquired), unit: `/ ${published}`, sub: `parmi les cours disponibles · ${total} au programme`, bar: published ? (acquired / published) * 100 : 0 },
+    { label: 'Cours acquis', value: String(acquired), unit: `/ ${published}`, sub: `« acquis » : une évaluation à 14/20 ou plus · ${published} cours disponibles, ${total} au programme`, bar: published ? (acquired / published) * 100 : 0 },
     { label: 'Points de progrès', value: `+${w.week_points}`, unit: 'cette semaine', sub: `${w.total_points} au total`, bar: Math.min(100, w.week_points / 5) },
   ];
 

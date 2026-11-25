@@ -1,6 +1,9 @@
 import 'server-only';
 import { sql } from './db';
 
+// Un « jour travaillé » : au moins 10 minutes de temps effectif cumulé dans la journée (heure de Paris). Même seuil partout.
+export const WORK_DAY_S = 600;
+
 const WEEK_START = sql`(date_trunc('week', now() at time zone 'Europe/Paris') at time zone 'Europe/Paris')`;
 
 export type DayStat = { day: string; active: number; open: number };
@@ -18,14 +21,14 @@ export async function weekStats(studentId: string) {
   const [{ week_points, total_points }] = await sql<{ week_points: number; total_points: number }[]>`
     select coalesce(sum(amount) filter (where at >= ${WEEK_START}), 0)::int as week_points, coalesce(sum(amount), 0)::int as total_points
     from points_ledger where student_id = ${studentId}`;
-  return { days, active, open, activeDays: days.filter(d => d.active >= 300).length, week_points, total_points };
+  return { days, active, open, activeDays: days.filter(d => d.active >= WORK_DAY_S).length, week_points, total_points };
 }
 
 // Série : jours consécutifs (jusqu'à aujourd'hui ou hier) avec au moins 5 min de travail actif
 export async function streak(studentId: string) {
   const rows = await sql<{ day: string }[]>`
     select (started_at at time zone 'Europe/Paris')::date::text as day from work_sessions
-    where student_id = ${studentId} group by 1 having sum(active_seconds) >= 300 order by 1 desc limit 400`;
+    where student_id = ${studentId} group by 1 having sum(active_seconds) >= ${WORK_DAY_S} order by 1 desc limit 400`;
   const set = new Set(rows.map(r => r.day));
   const fmt = (d: Date) => d.toLocaleDateString('sv-SE', { timeZone: 'Europe/Paris' });
   let n = 0;

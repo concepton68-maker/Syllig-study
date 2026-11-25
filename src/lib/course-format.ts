@@ -198,17 +198,33 @@ export function autoCorrect(q: Question, answer: string | undefined): boolean | 
     return expected === given;
   }
   if (q.type === 'numeric') {
-    // signe moins typographique (claviers de téléphone) et espaces fines acceptés
-    // une chaîne vide n'est pas « 0 » ; une réponse sans aucun chiffre est fausse
-    const num = (x: string) => { const t = x.replace(/[−–]/g, '-').replace(',', '.').replace(/[\s\u00a0\u202f]/g, ''); return t === '' ? NaN : Number(t); };
+    // une réponse sans aucun chiffre est fausse ; une chaîne vide n'est pas « 0 »
     if (!/\d/.test(a)) return false;
-    let v = num(a);
-    // unité ou % écrits après le nombre (« 25 % », « 50 km », « 3,5 cm³ ») : on lit le nombre
-    if (!Number.isFinite(v)) v = num(a.replace(/\s*[%a-zA-Zµ°²³€$/.]+[a-zA-Z²³/.]*\s*$/, ''));
+    const v = parseNumericAnswer(a);
     // marge de 1e-9 : les décimaux binaires (7,071 − 7,07) ne doivent pas faire échouer une comparaison exacte
-    return Number.isFinite(v) && Math.abs(v - Number(q.answer)) <= (q.tolerance ?? 0) + 1e-9;
+    return v !== null && Math.abs(v - Number(q.answer)) <= (q.tolerance ?? 0) + 1e-9;
   }
   return (q.answer as string[]).some(x => normShort(x) === normShort(a));
+}
+
+// Lecture stricte d'une réponse numérique d'élève : décimal français ou anglais (« 3,5 », « 3.5 », « ,5 »),
+// signe moins typographique (− –) accepté, espaces et espaces fines ignorés, éventuellement signé,
+// ou fraction a/b de décimaux (b ≠ 0) ; une unité ou % peut suivre (« 25 % », « 3,5 cm³ », « 12 € »).
+// Refusé : hexadécimal (0x10), notation e (1e3), Infinity, tout autre texte. null = illisible.
+const DEC = String.raw`(?:\d+(?:[.,]\d*)?|[.,]\d+)`;
+const NUMERIC_RE = new RegExp(`^([+-]?)(${DEC})(?:/(${DEC}))?$`);
+function parseNumericAnswer(raw: string): number | null {
+  const t = raw.replace(/[−–]/g, '-').replace(/[\s\u00a0\u202f]/g, '');
+  const read = (x: string): number | null => {
+    const m = NUMERIC_RE.exec(x);
+    if (!m) return null;
+    const num = Number(m[2].replace(',', '.'));
+    const den = m[3] === undefined ? 1 : Number(m[3].replace(',', '.'));
+    if (!Number.isFinite(num) || !Number.isFinite(den) || den === 0) return null;
+    return (m[1] === '-' ? -1 : 1) * num / den;
+  };
+  // unité ou % écrits après le nombre : on lit le nombre (l'unité ne contient pas de chiffre)
+  return read(t) ?? read(t.replace(/[%a-zA-Zµ°²³€$/.]+[a-zA-Z²³/.]*$/, ''));
 }
 
 // Normalisation des réponses courtes : accents, majuscules et ponctuation ignorés,
@@ -219,10 +235,10 @@ export function normShort(s: string) {
   return s.normalize('NFC').replace(/²/g, '^2').replace(/³/g, '^3')
     .normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase()
     .replace(/[−–]/g, '-')
-    .replace(/\^\s*(\d+)/g, 'w$1')                                       // exposant : « 3² » ≠ « 32 », « x² » = « x^2 »
-    .replace(/(\d)\s*([\/.,])\s*(?=\d)/g, (_m, d: string, op: string) => d + (op === '/' ? 'q' : 'd'))
+    .replace(/\s*\^\s*(\d+)/g, 'zzexp$1')                               // exposant : « 3² » ≠ « 32 », « x² » = « x^2 »
+    .replace(/(\d)\s*([\/.,])\s*(?=\d)/g, (_m, d: string, op: string) => d + (op === '/' ? 'zzsur' : 'zzvirg'))
     .replace(/\s*\+\s*/g, ' p ')
-    .replace(/(\d)\s+(?=[a-z](?:w\d|[^a-z]|$))/g, '$1')                                // « 3 x » = « 3x »
+    .replace(/(\d)\s+(?=[a-z](?:zzexp\d|[^a-z]|$))/g, '$1')                                // « 3 x » = « 3x »
     .replace(/(?<=[0-9)])\s*-\s*(?=[0-9a-z(])/g, ' m ')                  // moins d'une expression : 3-x, (x+1)-2, 5x-9
     .replace(/(?<=(?<![a-z])[a-z])\s*-\s*(?=[0-9(]|[a-z](?![a-z]))/g, ' m ')   // x-5, x-y (mais pas « c'est-à-dire »)
     .replace(/(^|[^a-z0-9])-\s*(?=\d)/g, '$1m')                           // nombre négatif : -5

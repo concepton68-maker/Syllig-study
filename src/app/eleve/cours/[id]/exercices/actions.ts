@@ -48,16 +48,19 @@ export async function validateExercises(courseIdParam: string, selfCheck: Record
   if (!s || !s.submitted_at || s.checked_at) return;
   const doc = (await versionById(s.version_id))!.document;
   const [{ auto_results }] = await sql<{ auto_results: Record<string, boolean> }[]>`select auto_results from exercise_submissions where id = ${s.id}`;
-  const results = doc.exercises.items.map(q => (q.id in (auto_results ?? {}) ? auto_results[q.id] : !!selfCheck[q.id]));
-  const score = Math.round((10 * results.filter(Boolean).length) / results.length);
+  // note retenue (maîtrise, parent) : seulement les questions corrigées par la plateforme ; l'auto-évaluation est gardée à part
+  const autoIds = doc.exercises.items.filter(q => q.id in (auto_results ?? {})).map(q => q.id);
+  const selfIds = doc.exercises.items.filter(q => !(q.id in (auto_results ?? {}))).map(q => q.id);
+  const autoOk = autoIds.filter(id => auto_results[id]).length, selfOk = selfIds.filter(id => !!selfCheck[id]).length;
+  const score = autoIds.length ? Math.round((10 * autoOk) / autoIds.length) : null;
   await sql`update exercise_submissions set self_check = ${sql.json(selfCheck)}, checked_at = now() where id = ${s.id}`;
   await sql`update course_progress set exercises_done_at = coalesce(exercises_done_at, now()),
-    exercises_score = greatest(coalesce(exercises_score, 0), ${score}), updated_at = now()
+    exercises_score = case when ${score}::int is null then exercises_score else greatest(coalesce(exercises_score, 0), ${score}::int) end, updated_at = now()
     where student_id = ${student.id} and course_id = ${course.id}`;
   // révision faite : des exercices refaits à partir de la veille de la date prévue la marquent comme faite
   const [rev] = await sql<{ id: number }[]>`update course_progress set next_review_at = null where student_id = ${student.id} and course_id = ${course.id}
     and next_review_at is not null and next_review_at <= now() + interval '1 day' returning course_id as id`;
-  await logEvent(student.id, rev ? 'revision_faite' : 'exercices_termines', { courseId: course.id, data: { score_sur_10: score } });
+  await logEvent(student.id, rev ? 'revision_faite' : 'exercices_termines', { courseId: course.id, data: { score_sur_10: score, auto_ok: autoOk, auto_total: autoIds.length, auto_eval_ok: selfOk, auto_eval_total: selfIds.length } });
   await awardOnce(student.id, course.id, 'exercises', 50, 'Exercices terminés');
   await recomputeMastery(student.id, course.id);
   revalidatePath(`/eleve/cours/${course.id}/exercices`);
