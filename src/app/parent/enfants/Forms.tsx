@@ -83,6 +83,10 @@ export function AddChildForm({ levels }: { levels: { code: string; name: string 
         <label className="flex-[1_1_180px] flex flex-col gap-1 text-sm font-semibold">Identifiant de connexion<input className="field" name="login" required autoComplete="off" placeholder="ex. tom" /></label>
         <label className="flex-[1_1_180px] flex flex-col gap-1 text-sm font-semibold">Mot de passe (8 caractères min.)<input className="field" name="password" type="password" required autoComplete="new-password" /></label>
       </div>
+      <label className="flex items-start gap-3 text-[15px]">
+        <input type="checkbox" name="entry_test" defaultChecked className="mt-1 w-5 h-5" />
+        <span><strong>Commencer par le test de rentrée</strong><span className="block muted text-sm">25 à 30 minutes sur les bases des années précédentes, non noté, corrigé automatiquement (sans IA). Il montre par où commencer : ce qui manque vraiment, et ce qui est déjà su.</span></span>
+      </label>
       <Msg s={state} />
       <div><button className="btn btn-primary" type="submit" disabled={pending}>Créer le compte</button></div>
     </form>

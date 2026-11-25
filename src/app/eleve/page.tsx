@@ -9,12 +9,14 @@ import { PageTitle } from '@/components/Shell';
 import { MasteryPill } from '@/components/Mastery';
 import { PaneScreen, Panes, Pane } from '@/components/Layout';
 import { EmptyState, PriorityPill } from '@/components/EmptyState';
-import { Compass } from 'lucide-react';
+import { Compass, MessageCircleHeart } from 'lucide-react';
+import { CHECKIN_EVERY_DAYS } from '@/lib/checkin';
 
 export const metadata = { title: 'Aujourd’hui' };
 export const dynamic = 'force-dynamic';
 
-export default async function Today() {
+export default async function Today({ searchParams }: { searchParams: Promise<{ questionnaire?: string }> }) {
+  const { questionnaire } = await searchParams;
   const { student } = await requireStudent();
   const items = await parcours(student.id, student.level_code);
   const goal = student.settings.weekly_goal_minutes * 60;
@@ -31,6 +33,9 @@ export default async function Today() {
   const soonCount = items.filter(c => !c.published).length;
   const [placement] = await sql<{ id: string; status: string; total: number; duration_min: number }[]>`
     select id, status, total, duration_min from placement_tests where student_id = ${student.id} and status <> 'termine' order by created_at desc limit 1`;
+  // questionnaire « Comment je travaille » : au début, puis toutes les 6 semaines (jamais en même temps que le test)
+  const [ck] = await sql<{ due: boolean }[]>`select coalesce(max(created_at) < now() - make_interval(days => ${CHECKIN_EVERY_DAYS}), true) as due from student_checkins where student_id = ${student.id}`;
+  const checkinDue = (ck.due || !!(student.settings as { checkin_requested?: boolean }).checkin_requested) && !placement;
   const acquired = items.filter(c => c.mastery >= 4);
   const reviews = items.filter(c => c.next_review_at && new Date(c.next_review_at).getTime() < Date.now() + 7 * 864e5)
     .sort((a, b) => new Date(a.next_review_at!).getTime() - new Date(b.next_review_at!).getTime());
@@ -74,6 +79,15 @@ export default async function Today() {
               <Link className="btn btn-primary" href={`/eleve/positionnement/${placement.id}`}>{placement.status === 'en_cours' ? 'Reprendre le test' : 'Faire le test'}</Link>
             </section>
           )}
+          {questionnaire === 'merci' && <p role="status" className="m-0 rounded-xl bg-brand-soft text-brand-ink px-4 py-3 text-sm"><strong>Merci !</strong> Tes réponses aident ton parent à mieux t’accompagner.</p>}
+          {checkinDue && (
+            <section className="card p-5 flex flex-wrap items-center gap-4" data-checkin-due>
+              <span className="kpi-icon tone-brand !w-12 !h-12" aria-hidden="true"><MessageCircleHeart size={24} /></span>
+              <span className="flex-[1_1_240px]"><span className="lbl">2 minutes pour toi</span><strong className="block text-lg">Comment tu travailles ?</strong>
+                <span className="muted text-sm">14 petites phrases : ce qui te motive, ce qui te stresse, ce qui t’aide. Pas de note.</span></span>
+              <Link className="btn" href="/eleve/questionnaire">Répondre</Link>
+            </section>
+          )}
           {next && step ? (
             <section className="card p-7 flex flex-col gap-5 border-2 border-brand">
               <div className="flex flex-wrap justify-between gap-3">
@@ -112,7 +126,8 @@ export default async function Today() {
           )}
 
           <section className="card flex flex-col gap-1">
-            <div className="flex justify-between items-center mb-2"><h2 className="text-xl font-semibold">Ensuite dans ton parcours</h2><Link href="/eleve/parcours" className="text-sm font-semibold">Tous mes cours</Link></div>
+            <div className="flex justify-between items-center mb-2"><h2 className="text-xl font-semibold">Ou choisis toi-même</h2><Link href="/eleve/parcours" className="text-sm font-semibold">Tous mes cours</Link></div>
+            {upcoming.length > 0 && <span className="muted text-sm -mt-1 mb-1">Tu peux commencer par le cours qui te tente le plus : ton parcours s’adapte.</span>}
             {upcoming.length === 0 && <span className="muted text-sm py-2">{soonCount ? `Les ${soonCount} autres cours du programme arrivent au fur et à mesure.` : 'Rien d’autre pour l’instant.'}</span>}
             {upcoming.map((c, i) => {
               const st = nextStep(c, student.settings.retry_delay_days);

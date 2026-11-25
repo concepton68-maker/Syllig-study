@@ -29,6 +29,14 @@ export default async function Bilan({ params }: { params: Promise<{ id: string; 
   const gain = b.final && ref !== null ? b.total! - ref : null;
   const mins = a.started_at && a.submitted_at ? Math.round((a.submitted_at.getTime() - a.started_at.getTime()) / 60000) : null;
 
+  // l'effort est souligné autant que la note (on progresse en essayant, pas seulement en réussissant)
+  const qids = variant.sections.flatMap(x => x.questions.map(q => q.id));
+  const blank = qids.filter(id => !(a.answers?.[id] ?? '').trim()).length / Math.max(1, qids.length);
+  const effort = mins !== null && mins >= doc.evaluation.duration_min * 0.5 && blank < 0.2
+    ? { tone: 'ok', text: 'Tu as pris le temps et tout tenté : c’est exactement comme ça qu’on progresse.' }
+    : blank >= 0.4 ? { tone: 'tip', text: 'Beaucoup de questions laissées vides : la prochaine fois, tente même sans être sûr(e). C’est en essayant qu’on apprend, et une réponse tentée peut rapporter des points.' }
+    : mins !== null && mins < doc.evaluation.duration_min * 0.3 ? { tone: 'tip', text: `Copie rendue en ${mins} min sur ${doc.evaluation.duration_min} : prends le temps de relire, c’est souvent là qu’on gagne des points.` }
+    : null;
   let headline: string;
   if (!b.final) headline = 'Copie remise, bravo pour l’effort';
   else if (gain !== null && gain > 0) headline = `Tu as progressé de ${fr(gain)} point${gain >= 2 ? 's' : ''}, bravo ${student.first_name}`;
@@ -52,6 +60,7 @@ export default async function Bilan({ params }: { params: Promise<{ id: string; 
               ? (ref !== null ? `Ta meilleure note jusqu’ici : ${fr(ref)}/${max}. C’est toujours ta meilleure note qui compte.` : 'C’est ta meilleure note qui compte : tu pourras retenter dans quelques jours pour viser plus haut.')
               : `Questions corrigées automatiquement : ${fr(b.provisional)}/${fr(b.provisionalMax)}. Les réponses rédigées sont en cours de correction ; ton parent valide la note. Les corrigés sont déjà disponibles ci-dessous.`}
           </span>
+          {effort && <span data-effort={effort.tone} className={`text-sm rounded-xl px-3.5 py-2.5 ${effort.tone === 'ok' ? 'bg-brand-soft text-brand-ink' : 'bg-soft text-ink-2'}`}>{effort.text}</span>}
         </div>
         {b.final && (
           <div className="flex items-end gap-4" role="img" aria-label={ref !== null ? `Note passée de ${fr(ref)} à ${fr(b.total!)} sur ${max}` : `Note : ${fr(b.total!)} sur ${max}`}>

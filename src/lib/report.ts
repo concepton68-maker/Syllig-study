@@ -47,6 +47,7 @@ Ta mission : expliquer d'où viennent les difficultés, en distinguant :
 - « apprentissage_syllig » : les notions de cette année, travaillées sur Syllig, ne sont pas encore acquises (temps correct, bases présentes) ;
 - « implication » : le travail est survolé (leçon lue bien plus vite que prévu, points de contrôle ratés, évaluation rendue très vite ou laissée vide) ;
 - « investissement_et_comprehension » sépare deux mesures calculées par la plateforme (0–100) : l'investissement (régularité, concentration, lecture, effort en évaluation) et la compréhension mesurée seulement sur le travail fait sérieusement. Appuie-toi dessus pour distinguer l'élève qui ne veut pas de celui qui n'arrive pas, et signale un possible découragement si la tendance le montre ;
+- « ressenti_eleve » : réponses de l'élève à un questionnaire (envie, sens, pression, confiance, stress, organisation, soutien, conditions ; 0–100 ; pour « pression » et « stress », un score élevé est un signal d'alerte). C'est son ressenti, pas un diagnostic : croise-le avec les mesures, et adapte les conseils aux parents (ex. stress élevé → dédramatiser ; confiance basse → réussites faciles d'abord) ;
 - « mixte » ou « indetermine » si les faits ne permettent pas de trancher. Une copie rendue vite et vide sans autre donnée ne permet PAS de distinguer lacune et manque d'implication : dis-le et compte sur le test de positionnement.
 
 Règles :
@@ -98,6 +99,8 @@ export async function generateReport(studentId: string, actorId: string | null):
     indicateurs_globaux: profile.global,
     cours: profile.courses.map(({ course_id: _c, code: _k, ...c }) => c),
     tests_de_positionnement: profile.placement,
+    ressenti_eleve: (await sql<{ created_at: Date; scores: unknown }[]>`select created_at, scores from student_checkins where student_id = ${studentId} order by created_at desc limit 2`)
+      .map(r => ({ date: r.created_at.toISOString().slice(0, 10), scores_0_100: r.scores })),
     investissement_et_comprehension: await (async () => { const e = await engagement(studentId); return {
       investissement: e.serieux, comprehension: e.comprehension, profil: e.quadrant, fiabilite: e.confidence, par_matiere: e.subjects,
       evaluations_baclees_ecartees: e.excluded_evals, tendance: e.trend }; })(),

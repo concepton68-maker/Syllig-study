@@ -402,3 +402,15 @@ Recette complète de l'espace élève (un agent testeur a joué l'élève sur t�
 - Fiche de l'enfant, « Règles et thème » : profil scolaire modifiable (naissance, fille ou garçon, tiers-temps).
 - Liste des enfants : âge et aménagement visibles.
 - Contenu, catalogue : s'ouvre sur le niveau où il y a le plus de cours publiés ; la recherche porte sur tous les niveaux (le niveau est indiqué sur chaque ligne).
+
+## 0.40 — 25/11/2026
+- Test de rentrée pour chaque classe (6e, 5e, 4e, 3e, Seconde) : 24 questions sur les bases des années précédentes (maths, français, anglais), écrites à l'avance et corrigées automatiquement, sans IA ni donnée envoyée.
+  - Proposé d'emblée quand le parent ajoute un enfant (case cochée par défaut), ou à tout moment depuis le Bilan.
+- Questionnaire « Comment tu travailles ? » pour l'élève (2 minutes, 14 phrases + 2 questions libres facultatives), au début puis toutes les 6 semaines, jamais en même temps qu'un test :
+  - le parent voit dans le Bilan son ressenti : envie d'apprendre, sens, pression, confiance, stress, organisation, aide disponible, conditions de travail ; les points d'attention sont signalés avec ce qui aide ; l'évolution depuis la fois précédente ;
+  - « Lui reproposer maintenant » ;
+  - le bilan IA reçoit les scores (jamais les phrases libres).
+- Motivation (approche « soutien plutôt que contrôle ») :
+  - l'élève peut choisir lui-même son prochain cours (« Ou choisis toi-même ») ;
+  - après une évaluation, l'effort est souligné autant que la note (temps pris, tout tenté), avec un conseil quand la copie est rendue trop vite ou laissée vide ;
+  - « Mes progrès » dans ses résultats : lui par rapport à lui-même (temps de travail, niveaux gagnés, plus belle remontée), jamais de comparaison avec d'autres.

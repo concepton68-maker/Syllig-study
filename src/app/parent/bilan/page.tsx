@@ -10,10 +10,12 @@ import { Screen } from '@/components/Layout';
 import { ChildPicker } from '@/components/ChildPicker';
 import { BulkBar, BulkCheck } from '@/components/Bulk';
 import { AiButton } from '../a-faire/AiButton';
-import { requestReport, assignPlacement, deleteReports, deletePlacementTests, saveAiConsent, deleteAiRequests } from './actions';
+import { requestReport, assignPlacement, assignEntry, requestCheckin, deleteReports, deletePlacementTests, saveAiConsent, deleteAiRequests } from './actions';
 import { ShieldCheck } from 'lucide-react';
 import { engagement } from '@/lib/engagement';
+import { entryBank } from '@/lib/entry-test';
 import { EngagementCard } from '@/components/Engagement';
+import { CheckinCard, type CheckinRow } from '@/components/Checkin';
 
 export const metadata = { title: 'Bilan' };
 export const dynamic = 'force-dynamic';
@@ -36,6 +38,8 @@ export default async function Bilan({ searchParams }: { searchParams: Promise<{ 
   const tests = await sql<Test[]>`select id, report_id, created_at, status, score, total, duration_min, started_at, submitted_at, results
     from placement_tests where student_id = ${student.id} order by created_at desc limit 20`;
   const openTest = tests.find(t => t.status !== 'termine');
+  const bank = entryBank(student.level_code);
+  const checkins = await sql<CheckinRow[]>`select created_at, scores, free from student_checkins where student_id = ${student.id} order by created_at desc limit 2`;
   const name = student.first_name;
   const consent = { correction: !!student.settings.ai_correction, bilan: !!student.settings.ai_bilan };
   const sent = await sql<{ id: string; task: string; provider: string; model: string; eu: boolean; payload: string; error: string | null; created_at: Date }[]>`
@@ -55,6 +59,7 @@ export default async function Bilan({ searchParams }: { searchParams: Promise<{ 
 
       {/* 0. Ne veut pas ou n'arrive pas */}
       <EngagementCard e={eng} name={name} />
+      <CheckinCard rows={checkins} name={name} requestAction={requestCheckin.bind(null, student.id)} requested={!!(student.settings as { checkin_requested?: boolean }).checkin_requested} fille={student.settings.gender === 'fille'} />
 
       {/* 1. Les faits */}
       <section className="card flex flex-col gap-3" aria-labelledby="faits">
@@ -93,7 +98,13 @@ export default async function Bilan({ searchParams }: { searchParams: Promise<{ 
             <button className="btn btn-primary" type="submit">Proposer ce test à {name}</button>
           </form>
         )}
-        {tests.length === 0 ? <p className="m-0 text-sm">{shown ? '' : 'Demandez d’abord un bilan : il prépare le test.'}</p> : (
+        {bank && !openTest && (
+          <form action={assignEntry.bind(null, student.id)} className="flex flex-wrap items-center gap-3 rounded-xl bg-surface-2 border border-line px-4 py-3" data-entry-test>
+            <span className="flex-1 text-sm"><strong>Test de rentrée de {student.level_name}</strong> · {bank.questions.length} questions sur les bases des années précédentes ({[...new Set(bank.questions.map(q => q.matiere))].join(', ')}), environ {bank.duree_min} min. Sans IA, rien n’est envoyé.</span>
+            <button className="btn" type="submit">Proposer le test de rentrée</button>
+          </form>
+        )}
+        {tests.length === 0 ? <p className="m-0 text-sm">{shown || bank ? '' : 'Demandez d’abord un bilan : il prépare le test.'}</p> : (
           <>
             {tests.length > 1 && <BulkBar formId="bulk-tests" noun="test" actions={[{ label: 'Retirer', action: deletePlacementTests, tone: 'danger', confirm: 'Retirer {n} ? Les réponses éventuelles seront effacées.' }]} />}
             {tests.map(t => <TestRow key={t.id} t={t} name={name} multi={tests.length > 1} />)}

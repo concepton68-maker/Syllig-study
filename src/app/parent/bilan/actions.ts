@@ -8,6 +8,7 @@ import { logEvent } from '@/lib/activity';
 import { generateReport } from '@/lib/report';
 import { assignPlacementFromReport } from '@/lib/automation';
 import { enqueue } from '@/lib/jobs';
+import { assignEntryTest } from '@/lib/entry-test';
 
 const back = (studentId: string, q: Record<string, string>) => `/parent/bilan?${new URLSearchParams({ eleve: studentId, ...q })}`;
 
@@ -32,6 +33,24 @@ export async function assignPlacement(reportId: string) {
   if ('error' in res) redirect(back(r.student_id, { rapport: reportId, erreur: res.error }));
   revalidatePath('/parent', 'layout'); revalidatePath('/eleve', 'layout');
   redirect(back(r.student_id, { rapport: reportId, test: 'propose' }));
+}
+
+// Proposer le test de rentrée de sa classe (sans IA)
+export async function assignEntry(studentId: string) {
+  const u = await requireUser('parent');
+  await assertParentOf(u.id, studentId);
+  const res = await assignEntryTest(studentId, u.id);
+  if ('error' in res) redirect(back(studentId, { erreur: res.error }));
+  revalidatePath('/parent', 'layout'); revalidatePath('/eleve', 'layout');
+  redirect(back(studentId, { test: 'propose' }));
+}
+
+// Proposer le questionnaire « Comment je travaille » maintenant (sans attendre les 6 semaines)
+export async function requestCheckin(studentId: string) {
+  const u = await requireUser('parent');
+  await assertParentOf(u.id, studentId);
+  await sql`update students set settings = settings || '{"checkin_requested": true}'::jsonb where id = ${studentId}`;
+  revalidatePath('/parent', 'layout'); revalidatePath('/eleve', 'layout');
 }
 
 // Suppressions groupées (bilans, tests)

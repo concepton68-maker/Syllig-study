@@ -7,6 +7,7 @@ import { setPassword } from '@/lib/password';
 import { assertParentOf } from '@/lib/access';
 import { isTheme } from '@/lib/settings';
 import { profileFrom } from '@/lib/child-profile';
+import { assignEntryTest } from '@/lib/entry-test';
 
 export type ChildState = { error?: string; ok?: string } | undefined;
 
@@ -34,13 +35,20 @@ export async function addChild(_: ChildState, form: FormData): Promise<ChildStat
   const [exists] = await sql`select 1 from users where login = ${p.data.login}`;
   if (exists) return { error: 'Cet identifiant est déjà pris.' };
   const hash = await hashPassword(p.data.password);
-  await sql.begin(async tx => {
+  const studentId = await sql.begin(async tx => {
     const [su] = await tx<{ id: string }[]>`insert into users (login, password_hash, display_name, role) values (${p.data.login}, ${hash}, ${p.data.first_name}, 'student') returning id`;
     await tx`insert into household_members values (${h.household_id}, ${su.id}, 'student')`;
-    await tx`insert into students (household_id, user_id, first_name, level_code, settings) values (${h.household_id}, ${su.id}, ${p.data.first_name}, ${p.data.level}, ${tx.json({ ...profileFrom(form), theme: isTheme(p.data.theme) ? p.data.theme : p.data.gender === 'fille' ? 'glacier' : p.data.gender === 'garcon' ? 'graphite' : 'classique' })})`;
+    const [st] = await tx<{ id: string }[]>`insert into students (household_id, user_id, first_name, level_code, settings) values (${h.household_id}, ${su.id}, ${p.data.first_name}, ${p.data.level}, ${tx.json({ ...profileFrom(form), theme: isTheme(p.data.theme) ? p.data.theme : p.data.gender === 'fille' ? 'glacier' : p.data.gender === 'garcon' ? 'graphite' : 'classique' })}) returning id`;
+    return st.id;
   });
-  revalidatePath('/parent/enfants');
-  return { ok: `Compte de ${p.data.first_name} créé. Identifiant : ${p.data.login}` };
+  // test de rentrée proposé d'emblée (case cochée par défaut) : on commence par ce que l'enfant sait vraiment
+  let test = '';
+  if (form.get('entry_test') === 'on') {
+    const r = await assignEntryTest(studentId, u.id);
+    test = 'ok' in r ? ` Le test de rentrée (${r.questions} questions) l’attend dans son espace.` : '';
+  }
+  revalidatePath('/parent', 'layout');
+  return { ok: `Compte de ${p.data.first_name} créé. Identifiant : ${p.data.login}.${test}` };
 }
 
 export async function resetChildPassword(_: ChildState, form: FormData): Promise<ChildState> {
