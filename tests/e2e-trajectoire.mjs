@@ -44,7 +44,7 @@ const card = pa.locator('[data-trajectory]');
 const row = async label => (await card.locator(`[data-compare-row="${label}"]`).innerText()).replace(/\s+/g, ' ');
 ok((await row('Temps de travail effectif')).includes(`${minutesBefore} min → ${minutesAfter} min`), `temps : ${await row('Temps de travail effectif')} (attendu ${minutesBefore} → ${minutesAfter})`);
 ok((await row('Exercices réussis (corrigés par la plateforme)')).includes(`${exBefore} % (36 sur 80) → ${exAfter} % (68 sur 80)`), `exercices : ${await row('Exercices réussis (corrigés par la plateforme)')} (attendu ${exBefore} % → ${exAfter} %)`);
-ok((await row('Moyenne des copies complètes')).includes('— → —'), 'pas de copie : « — », pas de valeur inventée');
+ok((await row('Moyenne des copies sans question vide')).includes('— → —'), 'pas de copie : « — », pas de valeur inventée');
 await card.locator('details summary').first().click();
 const mins = (await card.locator('table tbody tr td:nth-child(2)').allInnerTexts()).map(t => t.trim() === '—' ? 0 : parseInt(t, 10));   // « — » : avant la première activité
 ok(mins.length === 12 && mins.reduce((a, x) => a + x, 0) === tot.m, `12 semaines ; total ${mins.reduce((a, x) => a + x, 0)} min = somme des séances ${tot.m} min (aucune heure perdue)`);
