@@ -10,6 +10,9 @@ export type StudentSettings = {
   auto_correction: boolean;      // automatisme : copie corrigée par l'IA dès sa remise
   auto_bilan: 'off' | '3_evals' | 'hebdo';   // automatisme : bilan toutes les 3 évaluations notées, ou chaque semaine
   auto_test: boolean;            // automatisme : test de positionnement proposé dès qu'un bilan en prépare un
+  birth: string | null;          // mois de naissance « AAAA-MM » (classe attendue, âge) — jamais envoyé à l'IA
+  gender: 'fille' | 'garcon' | null;   // pour accorder les textes (il / elle)
+  extra_time: boolean;           // aménagement (PAP, PPS) : temps majoré d'un tiers aux évaluations
 };
 export const THEMES = [
   { id: 'glacier', kind: 'girly', name: 'Girly ✦ Ice blue', desc: 'Bleu nuit, bleu glacier et rose poudré, titres arrondis' },
@@ -38,7 +41,12 @@ export const DEFAULT_SETTINGS: StudentSettings = {
   auto_correction: false,
   auto_bilan: 'off',
   auto_test: false,
+  birth: null,
+  gender: null,
+  extra_time: false,
 };
+/** Durée d'une évaluation pour cet élève (tiers-temps éventuel). */
+export const evalMinutes = (base: number, s: Pick<StudentSettings, 'extra_time'>) => s.extra_time ? Math.ceil(base * 4 / 3) : base;
 export const settingsOf = (raw: unknown): StudentSettings => {
   const s = { ...DEFAULT_SETTINGS, ...((raw as object) ?? {}) } as StudentSettings;
   return { ...s, retry_delay_days: Math.max(1, s.retry_delay_days) };   // au moins 1 jour entre deux tentatives

@@ -1,4 +1,5 @@
 'use server';
+import { evalMinutes } from '@/lib/settings';
 import { redirect } from 'next/navigation';
 import { z } from 'zod';
 import { sql } from '@/lib/db';
@@ -20,7 +21,7 @@ export async function startEvaluation(courseIdParam: string) {
     await tx`select pg_advisory_xact_lock(hashtext(${'student:' + student.id}))`;
     if (approvedId) {
       const r = await tx`update eval_attempts set status = 'in_progress', version_id = ${version.id}, started_at = now(),
-        deadline_at = now() + make_interval(mins => ${doc.evaluation.duration_min}) where id = ${approvedId} and status = 'approved' returning 1`;
+        deadline_at = now() + make_interval(mins => ${evalMinutes(doc.evaluation.duration_min, student.settings)}) where id = ${approvedId} and status = 'approved' returning 1`;
       return r.length > 0;
     }
     // re-vérifié sous verrou : pas de deuxième tentative ouverte (double clic, deux onglets)
@@ -34,7 +35,7 @@ export async function startEvaluation(courseIdParam: string) {
     } else {
       await tx`insert into eval_attempts (student_id, course_id, version_id, attempt_no, variant, status, started_at, deadline_at)
         values (${student.id}, ${course.id}, ${version.id}, ${n}, ${(n - 1) % doc.evaluation.variants.length}, 'in_progress', now(),
-          now() + make_interval(mins => ${doc.evaluation.duration_min}))`;
+          now() + make_interval(mins => ${evalMinutes(doc.evaluation.duration_min, student.settings)}))`;
     }
     return true;
   });

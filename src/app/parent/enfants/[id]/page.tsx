@@ -139,7 +139,7 @@ export default async function ChildSheet({ params, searchParams }: { params: Pro
   } else if (tab === 'regles') {
     body = (
       <>
-        <section className="card max-w-[900px]"><RulesForm studentId={s.id} s={s.settings} /></section>
+        <section className="card max-w-[900px]"><RulesForm studentId={s.id} s={s.settings} level={s.level_code} levels={(await allLevels()).map(l => ({ code: l.code, name: l.name }))} /></section>
         <section className="card max-w-[900px] bg-surface-2 flex flex-col gap-2">
           <h2 className="text-lg font-semibold">Ce que Syllig Study ne fait jamais</h2>
           <ul className="m-0 pl-5 list-disc text-sm text-ink-2 flex flex-col gap-1"><li>Filmer, enregistrer le micro ou l’écran</li><li>Lire ce que l’élève fait hors de Syllig Study</li><li>Comparer l’élève à d’autres ou afficher un classement</li></ul>

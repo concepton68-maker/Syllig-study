@@ -1,4 +1,5 @@
 'use server';
+import { profileFrom } from '@/lib/child-profile';
 import { revalidatePath } from 'next/cache';
 import { redirect } from 'next/navigation';
 import { z } from 'zod';
@@ -53,7 +54,7 @@ export async function saveRulesAction(_: ResetState, form: FormData): Promise<Re
   }).safeParse({ weekly_goal_minutes: Number(form.get('goal_h')) * 60, retry_delay_days: form.get('retry'), idle_seconds: form.get('idle') });
   if (!p.success) return { error: 'Valeurs invalides.' };
   const t = form.get('theme');
-  const patch = { ...p.data, eval_requires_approval: form.get('approval') === 'on', ...(isTheme(t) ? { theme: t } : {}) };
+  const patch = { ...p.data, ...profileFrom(form), eval_requires_approval: form.get('approval') === 'on', ...(isTheme(t) ? { theme: t } : {}) };
   await sql`update students set settings = settings || ${sql.json(patch)} where id = ${s.id}`;
   revalidatePath('/parent', 'layout');
   revalidatePath('/eleve', 'layout');

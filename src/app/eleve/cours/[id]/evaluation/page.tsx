@@ -1,5 +1,6 @@
 import { ConfirmButton } from '@/components/ConfirmButton';
 import Link from 'next/link';
+import { evalMinutes } from '@/lib/settings';
 import { redirect } from 'next/navigation';
 import { sql } from '@/lib/db';
 import { loadCourse } from '../data';
@@ -54,13 +55,13 @@ export default async function EvaluationPage({ params }: { params: Promise<{ id:
         <h1 className="text-2xl font-bold">{graded ? 'Nouvelle tentative' : 'Avant de commencer l’évaluation'}</h1>
         {doc.evaluation.conditions && <p className="m-0">{doc.evaluation.conditions}</p>}
         <ul className="m-0 pl-5 list-disc flex flex-col gap-1.5 text-[15px]">
-          <li><strong>{doc.evaluation.duration_min} minutes</strong>, chrono tenu par le serveur. À la fin du temps, ta copie est remise automatiquement.</li>
+          <li><strong>{evalMinutes(doc.evaluation.duration_min, student.settings)} minutes</strong>{student.settings.extra_time ? ' (temps majoré d’un tiers)' : ''}, chrono tenu par le serveur. À la fin du temps, ta copie est remise automatiquement.</li>
           <li>Sans la leçon ni les corrigés. Le collage de texte est désactivé.</li>
           <li>Reste sur cette page jusqu’à la fin. Astuce : active « Ne pas déranger » avant de commencer.</li>
           <li>{graded ? 'C’est ta meilleure note qui compte.' : 'Tu pourras retenter plus tard : c’est ta meilleure note qui compte.'}</li>
         </ul>
         {av.ok || (('pending' in av) && av.pending?.status === 'approved') ? (
-          <form action={startEvaluation.bind(null, id)}><ConfirmButton className="btn btn-primary min-h-[52px] px-7">{student.settings.eval_requires_approval && !('pending' in av) ? 'Demander à passer l’évaluation' : `Commencer · ${doc.evaluation.duration_min} min`}</ConfirmButton></form>
+          <form action={startEvaluation.bind(null, id)}><ConfirmButton className="btn btn-primary min-h-[52px] px-7">{student.settings.eval_requires_approval && !('pending' in av) ? 'Demander à passer l’évaluation' : `Commencer · ${evalMinutes(doc.evaluation.duration_min, student.settings)} min${student.settings.extra_time ? ' (tiers-temps)' : ''}`}</ConfirmButton></form>
         ) : 'pending' in av && av.pending?.status === 'requested' ? (
           <p className="m-0 rounded-xl bg-soft px-4 py-3">Ta demande est envoyée à ton parent. L’évaluation s’ouvrira dès son accord.</p>
         ) : 'readyAt' in av && av.readyAt ? (

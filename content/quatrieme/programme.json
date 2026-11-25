@@ -1,0 +1,1432 @@
+{
+ "level": {
+  "code": "quatrieme",
+  "name": "4e",
+  "cycle": "Collège",
+  "position": 3
+ },
+ "source": "Analyse du programme de 4e (programmes officiels du cycle 4 en vigueur, consultés le 25-11-2026)",
+ "subjects": [
+  {
+   "name": "Français",
+   "chapters": [
+    {
+     "name": "Bases de la langue (début d'année)",
+     "courses": [
+      {
+       "title": "Classes de mots et fonctions dans la phrase",
+       "priority": "prioritaire",
+       "code": "QG001",
+       "official_note": "Repères de 4e : identifier classes de mots et fonctions syntaxiques (sujet, compléments, attribut)."
+      },
+      {
+       "title": "Compléments du verbe : COD, COI, attribut du sujet et du COD",
+       "priority": "prioritaire",
+       "code": "QG002"
+      },
+      {
+       "title": "Compléments circonstanciels et compléments du nom",
+       "priority": "prioritaire",
+       "code": "QG003"
+      },
+      {
+       "title": "Phrase simple, phrase complexe : juxtaposition, coordination, subordination",
+       "priority": "prioritaire",
+       "code": "QG004",
+       "official_note": "Repères de 4e : analyser la phrase complexe."
+      },
+      {
+       "title": "La proposition subordonnée relative",
+       "priority": "prioritaire",
+       "code": "QG005"
+      },
+      {
+       "title": "La subordonnée conjonctive complétive",
+       "priority": "prioritaire",
+       "code": "QG006"
+      },
+      {
+       "title": "Le présent, l'imparfait et le passé simple de l'indicatif",
+       "priority": "prioritaire",
+       "code": "QG007"
+      },
+      {
+       "title": "Les temps composés et les valeurs des temps du récit",
+       "priority": "prioritaire",
+       "code": "QG008"
+      },
+      {
+       "title": "Le subjonctif présent",
+       "priority": "prioritaire",
+       "code": "QG009",
+       "official_note": "Repères de 4e : morphologie du subjonctif présent."
+      },
+      {
+       "title": "Le conditionnel présent et ses emplois",
+       "priority": "prioritaire",
+       "code": "QG010"
+      },
+      {
+       "title": "Accords dans le groupe nominal et accord sujet-verbe",
+       "priority": "prioritaire",
+       "code": "QG011"
+      },
+      {
+       "title": "L'accord du participe passé avec être et avoir",
+       "priority": "prioritaire",
+       "code": "QG012",
+       "official_note": "Repères de 4e : accord du participe passé employé avec avoir (COD placé avant)."
+      },
+      {
+       "title": "Homophones grammaticaux fréquents",
+       "priority": "prioritaire",
+       "code": "QG013"
+      }
+     ]
+    },
+    {
+     "name": "La fiction pour interroger le réel",
+     "courses": [
+      {
+       "title": "La nouvelle réaliste au XIXe siècle",
+       "priority": "prioritaire",
+       "code": "QG014",
+       "official_note": "Entrée officielle : « La fiction pour interroger le réel »."
+      },
+      {
+       "title": "Le narrateur et les points de vue (focalisations)",
+       "priority": "prioritaire",
+       "code": "QG015"
+      },
+      {
+       "title": "Décrire et faire un portrait réaliste",
+       "priority": "ensuite",
+       "code": "QG016"
+      },
+      {
+       "title": "Les subordonnées circonstancielles de temps, cause et conséquence",
+       "priority": "prioritaire",
+       "code": "QG017"
+      },
+      {
+       "title": "Écrire une nouvelle réaliste",
+       "priority": "ensuite",
+       "code": "QG018"
+      }
+     ]
+    },
+    {
+     "name": "Individu et société : confrontations de valeurs ?",
+     "courses": [
+      {
+       "title": "Le théâtre : texte, représentation et vocabulaire",
+       "priority": "prioritaire",
+       "code": "QG019",
+       "official_note": "Entrée officielle : « Individu et société : confrontations de valeurs ? »."
+      },
+      {
+       "title": "La tragédie et le conflit des valeurs (Corneille, Racine)",
+       "priority": "ensuite",
+       "code": "QG020"
+      },
+      {
+       "title": "Le comique et la critique de la société (Molière, Marivaux)",
+       "priority": "ensuite",
+       "code": "QG021"
+      },
+      {
+       "title": "Le discours rapporté : direct et indirect",
+       "priority": "prioritaire",
+       "code": "QG022"
+      }
+     ]
+    },
+    {
+     "name": "Dire l'amour",
+     "courses": [
+      {
+       "title": "La poésie lyrique : dire ses sentiments",
+       "priority": "ensuite",
+       "code": "QG023",
+       "official_note": "Entrée officielle : « Dire l'amour »."
+      },
+      {
+       "title": "Versification : vers, rimes, strophes et sonnet",
+       "priority": "prioritaire",
+       "code": "QG024"
+      },
+      {
+       "title": "Images poétiques : comparaison, métaphore, personnification",
+       "priority": "ensuite",
+       "code": "QG025"
+      }
+     ]
+    },
+    {
+     "name": "Informer, s'informer, déformer ?",
+     "courses": [
+      {
+       "title": "Lire et analyser un article de presse",
+       "priority": "ensuite",
+       "code": "QG026",
+       "official_note": "Entrée officielle : « Informer, s'informer, déformer ? »."
+      },
+      {
+       "title": "Distinguer faits et opinions, repérer une fausse information",
+       "priority": "ensuite",
+       "code": "QG027"
+      },
+      {
+       "title": "Voix active et voix passive",
+       "priority": "prioritaire",
+       "code": "QG028",
+       "official_note": "Repères de 4e : identifier et transformer la voix passive."
+      }
+     ]
+    },
+    {
+     "name": "La ville, lieu de tous les possibles ?",
+     "courses": [
+      {
+       "title": "La ville dans le roman et la poésie",
+       "priority": "mis_de_cote",
+       "code": "QG029",
+       "official_note": "Complément au programme : « La ville, lieu de tous les possibles ? »."
+      }
+     ]
+    },
+    {
+     "name": "Lexique et écriture",
+     "courses": [
+      {
+       "title": "Formation des mots : préfixes, suffixes, familles de mots",
+       "priority": "ensuite",
+       "code": "QG030"
+      },
+      {
+       "title": "Sens propre, sens figuré, synonymes et champs lexicaux",
+       "priority": "ensuite",
+       "code": "QG031"
+      },
+      {
+       "title": "Les connecteurs logiques et l'organisation d'un paragraphe",
+       "priority": "prioritaire",
+       "code": "QG032"
+      },
+      {
+       "title": "Exprimer et justifier son opinion (paragraphe argumentatif)",
+       "priority": "ensuite",
+       "code": "QG033"
+      }
+     ]
+    }
+   ],
+   "official_sources": [
+    {
+     "texte": "Programmes du cycle 4 (cycle des approfondissements), version consolidée",
+     "reference": "Arrêté du 17-7-2020, BO n°31 du 30 juillet 2020 (NOR MENE2018714A)",
+     "application": "En vigueur en 4e en 2026-2027 (les nouveaux programmes de français et de mathématiques de 2026 n'arrivent en 4e qu'à la rentrée 2027)",
+     "lien": "https://www.education.gouv.fr/bo/20/Hebdo31/MENE2018714A.htm",
+     "contenu": "Programme de français du cycle 4 (ajusté en 2018, consolidé en 2020). Entrées de 4e : Dire l'amour ; Individu et société : confrontations de valeurs ? ; La fiction pour interroger le réel ; Informer, s'informer, déformer ? ; complément : La ville, lieu de tous les possibles ?. Étude de la langue, écriture, oral."
+    },
+    {
+     "texte": "Repères annuels de progression et attendus de fin d'année du CP à la troisième",
+     "reference": "Éduscol, documents publiés au BO n°22 du 29 mai 2019 (français, mathématiques)",
+     "application": "Classe de 4e",
+     "lien": "https://eduscol.education.gouv.fr/6910/reperes-annuels-de-progression-et-attendus-de-fin-d-annee-du-cp-la-troisieme",
+     "contenu": "Attendus de fin de 4e et repères annuels en français : phrase complexe et subordonnées, subjonctif et conditionnel, voix passive, accord du participe passé, lexique, écriture."
+    },
+    {
+     "texte": "Nouveaux programmes de français et de mathématiques du cycle 4",
+     "reference": "Arrêté du 18-2-2026, BO n°10 du 5 mars 2026 (NOR MENE2602912A)",
+     "application": "5e à la rentrée 2026, 4e à la rentrée 2027, 3e à la rentrée 2028 (non applicable en 4e en 2026-2027)",
+     "lien": "https://www.education.gouv.fr/bo/2026/Hebdo10/MENE2602912A",
+     "contenu": "Cité pour mémoire : non retenu pour la 4e de 2026-2027 (il s'appliquera en 4e à la rentrée 2027)."
+    }
+   ]
+  },
+  {
+   "name": "Mathématiques",
+   "chapters": [
+    {
+     "name": "Nombres et calculs (début d'année)",
+     "courses": [
+      {
+       "title": "Additionner et soustraire des nombres relatifs (révision)",
+       "priority": "prioritaire",
+       "code": "QG034",
+       "official_note": "Repères de 4e : consolider le calcul sur les relatifs."
+      },
+      {
+       "title": "Multiplier et diviser des nombres relatifs",
+       "priority": "prioritaire",
+       "code": "QG035",
+       "official_note": "Repères de 4e : produit et quotient de nombres relatifs."
+      },
+      {
+       "title": "Priorités opératoires et calculs avec les relatifs",
+       "priority": "prioritaire",
+       "code": "QG036"
+      },
+      {
+       "title": "Comparer et simplifier des fractions, fractions égales",
+       "priority": "prioritaire",
+       "code": "QG037"
+      },
+      {
+       "title": "Additionner et soustraire des fractions",
+       "priority": "prioritaire",
+       "code": "QG038"
+      },
+      {
+       "title": "Multiplier des fractions",
+       "priority": "prioritaire",
+       "code": "QG039",
+       "official_note": "Repères de 4e : multiplier des nombres en écriture fractionnaire."
+      },
+      {
+       "title": "Diviser par une fraction, inverse d'un nombre",
+       "priority": "prioritaire",
+       "code": "QG040",
+       "official_note": "Repères de 4e : diviser des nombres en écriture fractionnaire."
+      },
+      {
+       "title": "Puissances entières d'un nombre",
+       "priority": "prioritaire",
+       "code": "QG041"
+      },
+      {
+       "title": "Puissances de 10 et notation scientifique",
+       "priority": "prioritaire",
+       "code": "QG042",
+       "official_note": "Repères de 4e : puissances de 10, notation scientifique, préfixes de nano à giga."
+      },
+      {
+       "title": "Multiples, diviseurs et nombres premiers",
+       "priority": "ensuite",
+       "code": "QG043"
+      }
+     ]
+    },
+    {
+     "name": "Calcul littéral et équations",
+     "courses": [
+      {
+       "title": "Produire et utiliser une expression littérale",
+       "priority": "prioritaire",
+       "code": "QG044",
+       "official_note": "Repères de 4e : utiliser le calcul littéral."
+      },
+      {
+       "title": "Réduire une expression littérale",
+       "priority": "prioritaire",
+       "code": "QG045"
+      },
+      {
+       "title": "Développer avec la simple et la double distributivité",
+       "priority": "prioritaire",
+       "code": "QG046"
+      },
+      {
+       "title": "Factoriser une expression (facteur commun)",
+       "priority": "prioritaire",
+       "code": "QG047"
+      },
+      {
+       "title": "Tester une égalité, résoudre une équation du premier degré",
+       "priority": "prioritaire",
+       "code": "QG048",
+       "official_note": "Repères de 4e : résoudre algébriquement une équation du premier degré."
+      },
+      {
+       "title": "Mettre un problème en équation",
+       "priority": "prioritaire",
+       "code": "QG049"
+      },
+      {
+       "title": "Démontrer avec le calcul littéral",
+       "priority": "ensuite",
+       "code": "QG050"
+      }
+     ]
+    },
+    {
+     "name": "Géométrie plane",
+     "courses": [
+      {
+       "title": "Théorème de Pythagore : calculer une longueur",
+       "priority": "prioritaire",
+       "code": "QG051",
+       "official_note": "Repères de 4e : théorème de Pythagore."
+      },
+      {
+       "title": "Réciproque et contraposée du théorème de Pythagore",
+       "priority": "prioritaire",
+       "code": "QG052"
+      },
+      {
+       "title": "Théorème de Thalès dans le triangle (configuration emboîtée)",
+       "priority": "prioritaire",
+       "code": "QG053",
+       "official_note": "Repères de 4e : Thalès dans la configuration des triangles emboîtés."
+      },
+      {
+       "title": "Le cosinus d'un angle aigu dans un triangle rectangle",
+       "priority": "ensuite",
+       "code": "QG054"
+      },
+      {
+       "title": "Les translations",
+       "priority": "ensuite",
+       "code": "QG055"
+      },
+      {
+       "title": "Les rotations",
+       "priority": "mis_de_cote",
+       "code": "QG056"
+      },
+      {
+       "title": "Démontrer en géométrie : rédiger un raisonnement",
+       "priority": "ensuite",
+       "code": "QG057"
+      }
+     ]
+    },
+    {
+     "name": "Proportionnalité et fonctions",
+     "courses": [
+      {
+       "title": "Reconnaître une situation de proportionnalité, quatrième proportionnelle",
+       "priority": "prioritaire",
+       "code": "QG058"
+      },
+      {
+       "title": "Représentation graphique d'une situation de proportionnalité",
+       "priority": "ensuite",
+       "code": "QG059"
+      },
+      {
+       "title": "Pourcentages et échelles",
+       "priority": "ensuite",
+       "code": "QG060"
+      },
+      {
+       "title": "Grandeurs composées : vitesse moyenne et conversions",
+       "priority": "ensuite",
+       "code": "QG061"
+      },
+      {
+       "title": "Lire et utiliser des formules et des graphiques",
+       "priority": "ensuite",
+       "code": "QG062",
+       "official_note": "Repères de 4e : approche de la notion de fonction (dépendance entre deux grandeurs)."
+      }
+     ]
+    },
+    {
+     "name": "Statistiques et probabilités",
+     "courses": [
+      {
+       "title": "Moyenne, médiane et étendue",
+       "priority": "ensuite",
+       "code": "QG063",
+       "official_note": "Repères de 4e : médiane d'une série statistique."
+      },
+      {
+       "title": "Probabilités : issues, événements et calculs simples",
+       "priority": "ensuite",
+       "code": "QG064"
+      },
+      {
+       "title": "Fréquence et probabilité",
+       "priority": "mis_de_cote",
+       "code": "QG065"
+      }
+     ]
+    },
+    {
+     "name": "Espace",
+     "courses": [
+      {
+       "title": "Pyramides et cônes : description et patrons",
+       "priority": "ensuite",
+       "code": "QG066"
+      },
+      {
+       "title": "Volumes de pyramides et de cônes",
+       "priority": "ensuite",
+       "code": "QG067"
+      },
+      {
+       "title": "Se repérer dans un pavé droit",
+       "priority": "mis_de_cote",
+       "code": "QG068"
+      }
+     ]
+    },
+    {
+     "name": "Algorithmique et programmation",
+     "courses": [
+      {
+       "title": "Programmer avec Scratch : boucles, conditions et variables",
+       "priority": "ensuite",
+       "code": "QG069",
+       "official_note": "Thème officiel « Algorithmique et programmation »."
+      },
+      {
+       "title": "Lire et compléter un programme de calcul",
+       "priority": "ensuite",
+       "code": "QG070"
+      }
+     ]
+    }
+   ],
+   "official_sources": [
+    {
+     "texte": "Programmes du cycle 4 (cycle des approfondissements), version consolidée",
+     "reference": "Arrêté du 17-7-2020, BO n°31 du 30 juillet 2020 (NOR MENE2018714A)",
+     "application": "En vigueur en 4e en 2026-2027 (les nouveaux programmes de français et de mathématiques de 2026 n'arrivent en 4e qu'à la rentrée 2027)",
+     "lien": "https://www.education.gouv.fr/bo/20/Hebdo31/MENE2018714A.htm",
+     "contenu": "Programme de mathématiques du cycle 4 (ajusté en 2018, consolidé en 2020). Thèmes : nombres et calculs, organisation et gestion de données – fonctions, grandeurs et mesures, espace et géométrie, algorithmique et programmation."
+    },
+    {
+     "texte": "Repères annuels de progression et attendus de fin d'année du CP à la troisième",
+     "reference": "Éduscol, documents publiés au BO n°22 du 29 mai 2019 (français, mathématiques)",
+     "application": "Classe de 4e",
+     "lien": "https://eduscol.education.gouv.fr/6910/reperes-annuels-de-progression-et-attendus-de-fin-d-annee-du-cp-la-troisieme",
+     "contenu": "Attendus de fin de 4e et repères annuels de progression du cycle 4 en mathématiques (relatifs, fractions, puissances, calcul littéral, Pythagore, Thalès, cosinus)."
+    },
+    {
+     "texte": "Nouveaux programmes de français et de mathématiques du cycle 4",
+     "reference": "Arrêté du 18-2-2026, BO n°10 du 5 mars 2026 (NOR MENE2602912A)",
+     "application": "5e à la rentrée 2026, 4e à la rentrée 2027, 3e à la rentrée 2028 (non applicable en 4e en 2026-2027)",
+     "lien": "https://www.education.gouv.fr/bo/2026/Hebdo10/MENE2602912A",
+     "contenu": "Cité pour mémoire : non retenu pour la 4e de 2026-2027 (il s'appliquera en 4e à la rentrée 2027, confirmé par l'académie de Bordeaux et l'académie de Nancy-Metz)."
+    }
+   ]
+  },
+  {
+   "name": "Histoire-Géographie",
+   "chapters": [
+    {
+     "name": "Histoire 1 – Le XVIIIe siècle. Expansions, Lumières et révolutions",
+     "courses": [
+      {
+       "title": "Bourgeoisies marchandes, négoces internationaux et traites négrières",
+       "priority": "prioritaire",
+       "code": "QG071",
+       "official_note": "Officiel : « Bourgeoisies marchandes, négoces internationaux et traites négrières au XVIIIe siècle »."
+      },
+      {
+       "title": "L'Europe des Lumières : circulation des idées et contestation de l'absolutisme",
+       "priority": "prioritaire",
+       "code": "QG072",
+       "official_note": "Officiel : « L'Europe des Lumières : circulation des idées, despotisme éclairé et contestation de l'absolutisme »."
+      },
+      {
+       "title": "La Révolution française (1789-1799)",
+       "priority": "prioritaire",
+       "code": "QG073"
+      },
+      {
+       "title": "Napoléon et l'Empire : un nouvel ordre politique en France et en Europe",
+       "priority": "prioritaire",
+       "code": "QG074"
+      }
+     ]
+    },
+    {
+     "name": "Géographie 1 – L'urbanisation du monde",
+     "courses": [
+      {
+       "title": "Espaces et paysages de l'urbanisation : centres et périphéries",
+       "priority": "prioritaire",
+       "code": "QG075",
+       "official_note": "Officiel : « Espaces et paysages de l'urbanisation : géographie des centres et des périphéries »."
+      },
+      {
+       "title": "Des villes inégalement connectées aux réseaux de la mondialisation",
+       "priority": "prioritaire",
+       "code": "QG076"
+      }
+     ]
+    },
+    {
+     "name": "Histoire 2 – L'Europe et le monde au XIXe siècle",
+     "courses": [
+      {
+       "title": "L'Europe de la « révolution industrielle »",
+       "priority": "prioritaire",
+       "code": "QG077"
+      },
+      {
+       "title": "Conquêtes et sociétés coloniales",
+       "priority": "prioritaire",
+       "code": "QG078"
+      }
+     ]
+    },
+    {
+     "name": "Géographie 2 – Les mobilités humaines transnationales",
+     "courses": [
+      {
+       "title": "Un monde de migrants",
+       "priority": "prioritaire",
+       "code": "QG079"
+      },
+      {
+       "title": "Le tourisme et ses espaces",
+       "priority": "ensuite",
+       "code": "QG080"
+      }
+     ]
+    },
+    {
+     "name": "Histoire 3 – Société, culture et politique dans la France du XIXe siècle",
+     "courses": [
+      {
+       "title": "Voter de 1815 à 1870 : une difficile conquête",
+       "priority": "prioritaire",
+       "code": "QG081",
+       "official_note": "Officiel : « Une difficile conquête : voter de 1815 à 1870 »."
+      },
+      {
+       "title": "La Troisième République",
+       "priority": "prioritaire",
+       "code": "QG082"
+      },
+      {
+       "title": "Conditions féminines dans une société en mutation",
+       "priority": "ensuite",
+       "code": "QG083"
+      }
+     ]
+    },
+    {
+     "name": "Géographie 3 – Des espaces transformés par la mondialisation",
+     "courses": [
+      {
+       "title": "Mers et océans : un monde maritimisé",
+       "priority": "prioritaire",
+       "code": "QG084"
+      },
+      {
+       "title": "Les États-Unis et la mondialisation",
+       "priority": "ensuite",
+       "code": "QG085",
+       "official_note": "Officiel : « L'adaptation du territoire des États-Unis aux nouvelles conditions de la mondialisation »."
+      },
+      {
+       "title": "Les dynamiques d'un grand ensemble géographique africain",
+       "priority": "ensuite",
+       "code": "QG086",
+       "official_note": "Officiel : au choix Afrique de l'Ouest, orientale ou australe."
+      }
+     ]
+    },
+    {
+     "name": "Méthodes",
+     "courses": [
+      {
+       "title": "Analyser un document en histoire-géographie",
+       "priority": "prioritaire",
+       "code": "QG087"
+      },
+      {
+       "title": "Rédiger un développement construit",
+       "priority": "ensuite",
+       "code": "QG088"
+      },
+      {
+       "title": "Repères chronologiques et spatiaux de 4e",
+       "priority": "prioritaire",
+       "code": "QG089"
+      }
+     ]
+    }
+   ],
+   "official_sources": [
+    {
+     "texte": "Programmes du cycle 4 (cycle des approfondissements), version consolidée",
+     "reference": "Arrêté du 17-7-2020, BO n°31 du 30 juillet 2020 (NOR MENE2018714A)",
+     "application": "En vigueur en 4e en 2026-2027",
+     "lien": "https://www.education.gouv.fr/bo/20/Hebdo31/MENE2018714A.htm",
+     "contenu": "Programme d'histoire-géographie de 4e. Histoire : Le XVIIIe siècle. Expansions, Lumières et révolutions ; L'Europe et le monde au XIXe siècle ; Société, culture et politique dans la France du XIXe siècle. Géographie : L'urbanisation du monde ; Les mobilités humaines transnationales ; Des espaces transformés par la mondialisation."
+    }
+   ]
+  },
+  {
+   "name": "Enseignement moral et civique",
+   "chapters": [
+    {
+     "name": "L'État de droit et les libertés",
+     "courses": [
+      {
+       "title": "Libertés et droits fondamentaux",
+       "priority": "prioritaire",
+       "code": "QG090",
+       "official_note": "Thème de 4e (programme 2024) : « Défendre les droits et les libertés »."
+      },
+      {
+       "title": "État de droit et hiérarchie des normes",
+       "priority": "prioritaire",
+       "code": "QG091"
+      },
+      {
+       "title": "La justice et les institutions judiciaires",
+       "priority": "prioritaire",
+       "code": "QG092"
+      },
+      {
+       "title": "Libertés et ordre public",
+       "priority": "ensuite",
+       "code": "QG093"
+      }
+     ]
+    },
+    {
+     "name": "Défendre le cadre démocratique : sécurité et défense nationale",
+     "courses": [
+      {
+       "title": "La sécurité des citoyens : police, gendarmerie, sécurité civile",
+       "priority": "ensuite",
+       "code": "QG094"
+      },
+      {
+       "title": "La défense nationale et l'engagement des citoyens",
+       "priority": "ensuite",
+       "code": "QG095"
+      }
+     ]
+    }
+   ],
+   "official_sources": [
+    {
+     "texte": "Programme d'enseignement moral et civique (du CP à la terminale)",
+     "reference": "Arrêté du 29-5-2024, BO n°24 du 13 juin 2024 (NOR MENE2413934A)",
+     "application": "En vigueur en 4e depuis la rentrée 2025 (5e en 2024, 3e en 2026)",
+     "lien": "https://www.education.gouv.fr/bo/2024/Hebdo24/MENE2413934A",
+     "contenu": "4e : « Défendre les droits et les libertés » — L'État de droit et les libertés ; Défendre le cadre démocratique : sécurité et défense nationale. Notions : ordre public, libertés et droits fondamentaux, État de droit et hiérarchie des normes, justice et institutions judiciaires (d'après le livret d'accompagnement Éduscol d'octobre 2025 ; texte du BO non consultable directement le 25-11-2026)."
+    },
+    {
+     "texte": "Ressources d'accompagnement pour l'EMC au collège",
+     "reference": "Éduscol, livret d'accompagnement de 4e « Défendre les droits et les libertés » (octobre 2025)",
+     "application": "Classe de 4e",
+     "lien": "https://eduscol.education.gouv.fr/4752/ressources-d-accompagnement-pour-l-enseignement-moral-et-civique-au-college",
+     "contenu": "Ressources et repères de mise en œuvre du programme 2024 en 4e."
+    }
+   ]
+  },
+  {
+   "name": "Physique-Chimie",
+   "chapters": [
+    {
+     "name": "Organisation et transformations de la matière",
+     "courses": [
+      {
+       "title": "Corps purs et mélanges, masse volumique (révision)",
+       "priority": "prioritaire",
+       "code": "QG096",
+       "official_note": "Thème officiel « Organisation et transformations de la matière »."
+      },
+      {
+       "title": "Atomes et molécules : le modèle moléculaire",
+       "priority": "prioritaire",
+       "code": "QG097"
+      },
+      {
+       "title": "Transformation physique et transformation chimique",
+       "priority": "prioritaire",
+       "code": "QG098"
+      },
+      {
+       "title": "Les combustions et l'équation de réaction",
+       "priority": "prioritaire",
+       "code": "QG099"
+      },
+      {
+       "title": "Conservation de la masse lors d'une transformation chimique",
+       "priority": "prioritaire",
+       "code": "QG100"
+      },
+      {
+       "title": "Solutions, solubilité et miscibilité",
+       "priority": "ensuite",
+       "code": "QG101"
+      }
+     ]
+    },
+    {
+     "name": "Mouvement et interactions",
+     "courses": [
+      {
+       "title": "Décrire un mouvement : référentiel, trajectoire et vitesse",
+       "priority": "prioritaire",
+       "code": "QG102",
+       "official_note": "Thème officiel « Mouvement et interactions »."
+      },
+      {
+       "title": "Calculer une vitesse moyenne",
+       "priority": "prioritaire",
+       "code": "QG103"
+      },
+      {
+       "title": "Actions mécaniques et modélisation par une force",
+       "priority": "ensuite",
+       "code": "QG104"
+      }
+     ]
+    },
+    {
+     "name": "L'énergie et ses conversions",
+     "courses": [
+      {
+       "title": "Circuits électriques en série et en dérivation",
+       "priority": "prioritaire",
+       "code": "QG105",
+       "official_note": "Thème officiel « L'énergie et ses conversions »."
+      },
+      {
+       "title": "L'intensité du courant et ses lois",
+       "priority": "prioritaire",
+       "code": "QG106"
+      },
+      {
+       "title": "La tension électrique et ses lois",
+       "priority": "prioritaire",
+       "code": "QG107"
+      },
+      {
+       "title": "La résistance et la loi d'Ohm",
+       "priority": "ensuite",
+       "code": "QG108"
+      },
+      {
+       "title": "Formes et conversions d'énergie",
+       "priority": "ensuite",
+       "code": "QG109"
+      }
+     ]
+    },
+    {
+     "name": "Des signaux pour observer et communiquer",
+     "courses": [
+      {
+       "title": "La lumière : propagation, vitesse et année-lumière",
+       "priority": "ensuite",
+       "code": "QG110",
+       "official_note": "Thème officiel « Des signaux pour observer et communiquer »."
+      },
+      {
+       "title": "Couleurs et lumières colorées",
+       "priority": "mis_de_cote",
+       "code": "QG111"
+      },
+      {
+       "title": "Le son : propagation et fréquence",
+       "priority": "ensuite",
+       "code": "QG112"
+      }
+     ]
+    }
+   ],
+   "official_sources": [
+    {
+     "texte": "Programmes du cycle 4 (cycle des approfondissements), version consolidée",
+     "reference": "Arrêté du 17-7-2020, BO n°31 du 30 juillet 2020 (NOR MENE2018714A)",
+     "application": "En vigueur en 4e en 2026-2027",
+     "lien": "https://www.education.gouv.fr/bo/20/Hebdo31/MENE2018714A.htm",
+     "contenu": "Programme de physique-chimie du cycle 4. Thèmes : Organisation et transformations de la matière ; Mouvement et interactions ; L'énergie et ses conversions ; Des signaux pour observer et communiquer. La répartition par classe est laissée aux équipes : le découpage de 4e proposé ici suit les progressions habituelles (pas de repère annuel officiel)."
+    }
+   ]
+  },
+  {
+   "name": "SVT",
+   "chapters": [
+    {
+     "name": "Le corps humain et la santé",
+     "courses": [
+      {
+       "title": "Puberté et organes reproducteurs",
+       "priority": "prioritaire",
+       "code": "QG113",
+       "official_note": "Thème officiel « Le corps humain et la santé »."
+      },
+      {
+       "title": "La reproduction humaine : de la fécondation à la naissance",
+       "priority": "prioritaire",
+       "code": "QG114"
+      },
+      {
+       "title": "Sexualité, contraception et prévention des IST",
+       "priority": "ensuite",
+       "code": "QG115"
+      },
+      {
+       "title": "Système nerveux, réflexes et mouvements",
+       "priority": "prioritaire",
+       "code": "QG116"
+      },
+      {
+       "title": "Effort physique, respiration et circulation",
+       "priority": "ensuite",
+       "code": "QG117"
+      }
+     ]
+    },
+    {
+     "name": "Le vivant et son évolution",
+     "courses": [
+      {
+       "title": "Reproduction sexuée et asexuée des êtres vivants",
+       "priority": "prioritaire",
+       "code": "QG118",
+       "official_note": "Thème officiel « Le vivant et son évolution »."
+      },
+      {
+       "title": "Les relations entre les êtres vivants dans un écosystème",
+       "priority": "ensuite",
+       "code": "QG119"
+      },
+      {
+       "title": "Biodiversité et ses variations",
+       "priority": "ensuite",
+       "code": "QG120"
+      }
+     ]
+    },
+    {
+     "name": "La planète Terre, l'environnement et l'action humaine",
+     "courses": [
+      {
+       "title": "La Terre dans le système solaire",
+       "priority": "ensuite",
+       "code": "QG121",
+       "official_note": "Thème officiel « La planète Terre, l'environnement et l'action humaine »."
+      },
+      {
+       "title": "Tectonique des plaques : séismes et volcans",
+       "priority": "prioritaire",
+       "code": "QG122"
+      },
+      {
+       "title": "Risques géologiques et prévention",
+       "priority": "ensuite",
+       "code": "QG123"
+      },
+      {
+       "title": "Les ressources en eau et leur gestion",
+       "priority": "ensuite",
+       "code": "QG124"
+      }
+     ]
+    }
+   ],
+   "official_sources": [
+    {
+     "texte": "Programmes du cycle 4 (cycle des approfondissements), version consolidée",
+     "reference": "Arrêté du 17-7-2020, BO n°31 du 30 juillet 2020 (NOR MENE2018714A)",
+     "application": "En vigueur en 4e en 2026-2027",
+     "lien": "https://www.education.gouv.fr/bo/20/Hebdo31/MENE2018714A.htm",
+     "contenu": "Programme de SVT du cycle 4. Thèmes : La planète Terre, l'environnement et l'action humaine ; Le vivant et son évolution ; Le corps humain et la santé. La répartition par classe est laissée aux équipes : le découpage de 4e proposé ici suit les progressions habituelles (pas de repère annuel officiel)."
+    }
+   ]
+  },
+  {
+   "name": "Technologie",
+   "chapters": [
+    {
+     "name": "Objets techniques et société",
+     "courses": [
+      {
+       "title": "Besoin, fonction d'usage et cahier des charges",
+       "priority": "prioritaire",
+       "code": "QG125",
+       "official_note": "Thème officiel « Les objets techniques, les services et les changements induits dans la société »."
+      },
+      {
+       "title": "Évolution des objets techniques",
+       "priority": "ensuite",
+       "code": "QG126"
+      },
+      {
+       "title": "Matériaux : propriétés et choix",
+       "priority": "ensuite",
+       "code": "QG127"
+      }
+     ]
+    },
+    {
+     "name": "Modélisation et simulation",
+     "courses": [
+      {
+       "title": "Chaîne d'information et chaîne d'énergie",
+       "priority": "prioritaire",
+       "code": "QG128",
+       "official_note": "Thème officiel « La modélisation et la simulation des objets et systèmes techniques »."
+      },
+      {
+       "title": "Représenter un objet : croquis, schéma et CAO",
+       "priority": "ensuite",
+       "code": "QG129"
+      }
+     ]
+    },
+    {
+     "name": "Informatique et programmation",
+     "courses": [
+      {
+       "title": "Algorithmes et programmation par blocs",
+       "priority": "prioritaire",
+       "code": "QG130",
+       "official_note": "Thème officiel « L'informatique et la programmation »."
+      },
+      {
+       "title": "Capteurs, actionneurs et programmation d'un système",
+       "priority": "prioritaire",
+       "code": "QG131"
+      },
+      {
+       "title": "Réseaux informatiques et transmission de l'information",
+       "priority": "ensuite",
+       "code": "QG132"
+      }
+     ]
+    },
+    {
+     "name": "Design, innovation et créativité",
+     "courses": [
+      {
+       "title": "Imaginer des solutions en projet : croquis et prototype",
+       "priority": "ensuite",
+       "code": "QG133",
+       "official_note": "Thème officiel « Design, innovation et créativité »."
+      }
+     ]
+    }
+   ],
+   "official_sources": [
+    {
+     "texte": "Programmes du cycle 4 (cycle des approfondissements), version consolidée",
+     "reference": "Arrêté du 17-7-2020, BO n°31 du 30 juillet 2020 (NOR MENE2018714A)",
+     "application": "En vigueur en 4e en 2026-2027 (à vérifier dans chaque établissement : aucun nouveau programme de technologie de 4e n'a pu être vérifié)",
+     "lien": "https://www.education.gouv.fr/bo/20/Hebdo31/MENE2018714A.htm",
+     "contenu": "Programme de technologie du cycle 4. Thèmes : Design, innovation et créativité ; Les objets techniques, les services et les changements induits dans la société ; La modélisation et la simulation des objets et systèmes techniques ; L'informatique et la programmation."
+    }
+   ]
+  },
+  {
+   "name": "Anglais (LV1)",
+   "chapters": [
+    {
+     "name": "Grammaire et outils de la langue",
+     "courses": [
+      {
+       "title": "Présent simple et présent en be + -ing (révision)",
+       "priority": "prioritaire",
+       "code": "QG134"
+      },
+      {
+       "title": "Prétérit simple et prétérit en be + -ing",
+       "priority": "prioritaire",
+       "code": "QG135"
+      },
+      {
+       "title": "Present perfect : have + participe passé",
+       "priority": "prioritaire",
+       "code": "QG136"
+      },
+      {
+       "title": "Le futur : will et be going to",
+       "priority": "prioritaire",
+       "code": "QG137"
+      },
+      {
+       "title": "Les modaux : can, must, have to, should",
+       "priority": "ensuite",
+       "code": "QG138"
+      },
+      {
+       "title": "Comparatifs et superlatifs",
+       "priority": "ensuite",
+       "code": "QG139"
+      },
+      {
+       "title": "Quantifieurs et dénombrables / indénombrables",
+       "priority": "ensuite",
+       "code": "QG140"
+      }
+     ]
+    },
+    {
+     "name": "Activités langagières (niveau A2-B1)",
+     "courses": [
+      {
+       "title": "Comprendre un document audio ou vidéo",
+       "priority": "prioritaire",
+       "code": "QG141",
+       "official_note": "Activité langagière officielle : écouter et comprendre."
+      },
+      {
+       "title": "Lire et comprendre un texte",
+       "priority": "prioritaire",
+       "code": "QG142"
+      },
+      {
+       "title": "S'exprimer à l'oral : décrire, raconter, donner son avis",
+       "priority": "ensuite",
+       "code": "QG143"
+      },
+      {
+       "title": "Écrire un texte court : récit, message, opinion",
+       "priority": "ensuite",
+       "code": "QG144"
+      }
+     ]
+    },
+    {
+     "name": "Culture du monde anglophone",
+     "courses": [
+      {
+       "title": "Langages : arts, médias et réseaux",
+       "priority": "ensuite",
+       "code": "QG145",
+       "official_note": "Axe culturel « Langages »."
+      },
+      {
+       "title": "École et société dans les pays anglophones",
+       "priority": "ensuite",
+       "code": "QG146"
+      },
+      {
+       "title": "Voyages et migrations",
+       "priority": "ensuite",
+       "code": "QG147"
+      },
+      {
+       "title": "Rencontres avec d'autres cultures",
+       "priority": "ensuite",
+       "code": "QG148"
+      }
+     ]
+    }
+   ],
+   "official_sources": [
+    {
+     "texte": "Programmes du cycle 4 (cycle des approfondissements), version consolidée",
+     "reference": "Arrêté du 17-7-2020, BO n°31 du 30 juillet 2020 (NOR MENE2018714A)",
+     "application": "En vigueur en 4e en 2026-2027",
+     "lien": "https://www.education.gouv.fr/bo/20/Hebdo31/MENE2018714A.htm",
+     "contenu": "Programme de langues vivantes étrangères et régionales du cycle 4 (anglais LV1). Niveau visé en fin de cycle : A2 pour toutes les activités langagières en LV2, B1 dans plusieurs activités pour la LV1. Axes culturels : langages ; école et société ; voyages et migrations ; rencontres avec d'autres cultures."
+    },
+    {
+     "texte": "Nouveaux programmes de langues vivantes du cycle 4",
+     "reference": "Nouveau programme publié en 2025 (référence BO non vérifiée)",
+     "application": "Calendrier d'entrée en vigueur en 4e non vérifié ; programme 2020 retenu pour 2026-2027",
+     "lien": "https://eduscol.education.gouv.fr/4362/enseigner-au-cycle-4",
+     "contenu": "Signalé pour information seulement : référence et calendrier non vérifiés le 25-11-2026 (texte du BO inaccessible) ; ce fichier suit le programme de langues vivantes du cycle 4 de 2015/2020."
+    }
+   ]
+  },
+  {
+   "name": "Espagnol (LV2)",
+   "chapters": [
+    {
+     "name": "Grammaire et outils de la langue",
+     "courses": [
+      {
+       "title": "Le présent de l'indicatif (réguliers, irréguliers, diphtongues)",
+       "priority": "prioritaire",
+       "code": "QG149"
+      },
+      {
+       "title": "Ser, estar et hay",
+       "priority": "prioritaire",
+       "code": "QG150"
+      },
+      {
+       "title": "Gustar et l'expression des goûts",
+       "priority": "ensuite",
+       "code": "QG151"
+      },
+      {
+       "title": "Le passé : prétérit des verbes réguliers",
+       "priority": "ensuite",
+       "code": "QG152"
+      },
+      {
+       "title": "L'obligation et le futur proche (tener que, ir a)",
+       "priority": "ensuite",
+       "code": "QG153"
+      }
+     ]
+    },
+    {
+     "name": "Activités langagières (niveau A1-A2)",
+     "courses": [
+      {
+       "title": "Comprendre un document audio",
+       "priority": "ensuite",
+       "code": "QG154"
+      },
+      {
+       "title": "Lire un texte court",
+       "priority": "ensuite",
+       "code": "QG155"
+      },
+      {
+       "title": "Parler de soi et de son quotidien",
+       "priority": "ensuite",
+       "code": "QG156"
+      }
+     ]
+    },
+    {
+     "name": "Culture du monde hispanophone",
+     "courses": [
+      {
+       "title": "École et société en Espagne et en Amérique latine",
+       "priority": "ensuite",
+       "code": "QG157",
+       "official_note": "Axe culturel « École et société »."
+      },
+      {
+       "title": "Voyages, fêtes et traditions",
+       "priority": "ensuite",
+       "code": "QG158"
+      }
+     ]
+    }
+   ],
+   "official_sources": [
+    {
+     "texte": "Programmes du cycle 4 (cycle des approfondissements), version consolidée",
+     "reference": "Arrêté du 17-7-2020, BO n°31 du 30 juillet 2020 (NOR MENE2018714A)",
+     "application": "En vigueur en 4e en 2026-2027",
+     "lien": "https://www.education.gouv.fr/bo/20/Hebdo31/MENE2018714A.htm",
+     "contenu": "Programme de langues vivantes étrangères et régionales du cycle 4 (espagnol LV2). Niveau visé en fin de cycle : A2 pour toutes les activités langagières en LV2, B1 dans plusieurs activités pour la LV1. Axes culturels : langages ; école et société ; voyages et migrations ; rencontres avec d'autres cultures."
+    },
+    {
+     "texte": "Nouveaux programmes de langues vivantes du cycle 4",
+     "reference": "Nouveau programme publié en 2025 (référence BO non vérifiée)",
+     "application": "Calendrier d'entrée en vigueur en 4e non vérifié ; programme 2020 retenu pour 2026-2027",
+     "lien": "https://eduscol.education.gouv.fr/4362/enseigner-au-cycle-4",
+     "contenu": "Signalé pour information seulement : référence et calendrier non vérifiés le 25-11-2026 (texte du BO inaccessible) ; ce fichier suit le programme de langues vivantes du cycle 4 de 2015/2020."
+    }
+   ]
+  },
+  {
+   "name": "Allemand (LV2)",
+   "chapters": [
+    {
+     "name": "Grammaire et outils de la langue",
+     "courses": [
+      {
+       "title": "Le présent et la place du verbe",
+       "priority": "prioritaire",
+       "code": "QG159"
+      },
+      {
+       "title": "Les cas : nominatif et accusatif",
+       "priority": "prioritaire",
+       "code": "QG160"
+      },
+      {
+       "title": "Le datif et les prépositions",
+       "priority": "ensuite",
+       "code": "QG161"
+      },
+      {
+       "title": "Les verbes de modalité",
+       "priority": "ensuite",
+       "code": "QG162"
+      },
+      {
+       "title": "Le parfait",
+       "priority": "ensuite",
+       "code": "QG163"
+      }
+     ]
+    },
+    {
+     "name": "Activités langagières (niveau A1-A2)",
+     "courses": [
+      {
+       "title": "Comprendre un document audio",
+       "priority": "ensuite",
+       "code": "QG164"
+      },
+      {
+       "title": "Lire un texte court",
+       "priority": "ensuite",
+       "code": "QG165"
+      },
+      {
+       "title": "Parler de soi et de son quotidien",
+       "priority": "ensuite",
+       "code": "QG166"
+      }
+     ]
+    },
+    {
+     "name": "Culture des pays germanophones",
+     "courses": [
+      {
+       "title": "École et société en Allemagne, Autriche et Suisse",
+       "priority": "ensuite",
+       "code": "QG167",
+       "official_note": "Axe culturel « École et société »."
+      },
+      {
+       "title": "Voyages et rencontres : villes et régions",
+       "priority": "ensuite",
+       "code": "QG168"
+      }
+     ]
+    }
+   ],
+   "official_sources": [
+    {
+     "texte": "Programmes du cycle 4 (cycle des approfondissements), version consolidée",
+     "reference": "Arrêté du 17-7-2020, BO n°31 du 30 juillet 2020 (NOR MENE2018714A)",
+     "application": "En vigueur en 4e en 2026-2027",
+     "lien": "https://www.education.gouv.fr/bo/20/Hebdo31/MENE2018714A.htm",
+     "contenu": "Programme de langues vivantes étrangères et régionales du cycle 4 (allemand LV2). Niveau visé en fin de cycle : A2 pour toutes les activités langagières en LV2, B1 dans plusieurs activités pour la LV1. Axes culturels : langages ; école et société ; voyages et migrations ; rencontres avec d'autres cultures."
+    },
+    {
+     "texte": "Nouveaux programmes de langues vivantes du cycle 4",
+     "reference": "Nouveau programme publié en 2025 (référence BO non vérifiée)",
+     "application": "Calendrier d'entrée en vigueur en 4e non vérifié ; programme 2020 retenu pour 2026-2027",
+     "lien": "https://eduscol.education.gouv.fr/4362/enseigner-au-cycle-4",
+     "contenu": "Signalé pour information seulement : référence et calendrier non vérifiés le 25-11-2026 (texte du BO inaccessible) ; ce fichier suit le programme de langues vivantes du cycle 4 de 2015/2020."
+    }
+   ]
+  },
+  {
+   "name": "Arts plastiques",
+   "chapters": [
+    {
+     "name": "Questionnements du cycle 4",
+     "courses": [
+      {
+       "title": "La représentation : images, réalité et fiction",
+       "priority": "ensuite",
+       "code": "QG169",
+       "official_note": "Questionnement officiel du cycle 4."
+      },
+      {
+       "title": "La matérialité de l'œuvre : l'objet et l'œuvre",
+       "priority": "ensuite",
+       "code": "QG170"
+      },
+      {
+       "title": "L'œuvre, l'espace, l'auteur, le spectateur",
+       "priority": "ensuite",
+       "code": "QG171"
+      },
+      {
+       "title": "Le numérique dans la création artistique",
+       "priority": "ensuite",
+       "code": "QG172"
+      }
+     ]
+    },
+    {
+     "name": "Histoire des arts",
+     "courses": [
+      {
+       "title": "Analyser une œuvre d'art (méthode)",
+       "priority": "ensuite",
+       "code": "QG173"
+      }
+     ]
+    }
+   ],
+   "official_sources": [
+    {
+     "texte": "Programmes du cycle 4 (cycle des approfondissements), version consolidée",
+     "reference": "Arrêté du 17-7-2020, BO n°31 du 30 juillet 2020 (NOR MENE2018714A)",
+     "application": "En vigueur en 4e en 2026-2027",
+     "lien": "https://www.education.gouv.fr/bo/20/Hebdo31/MENE2018714A.htm",
+     "contenu": "Programme d'arts plastiques du cycle 4 : la représentation, images, réalité et fiction ; la matérialité de l'œuvre, l'objet et l'œuvre ; l'œuvre, l'espace, l'auteur, le spectateur. Histoire des arts."
+    }
+   ]
+  },
+  {
+   "name": "Éducation musicale",
+   "chapters": [
+    {
+     "name": "Compétences du cycle 4",
+     "courses": [
+      {
+       "title": "Écouter et comparer des œuvres musicales",
+       "priority": "ensuite",
+       "code": "QG174",
+       "official_note": "Compétence officielle : « Écouter, comparer, construire une culture musicale et artistique »."
+      },
+      {
+       "title": "Le vocabulaire musical : timbre, rythme, mélodie, forme",
+       "priority": "ensuite",
+       "code": "QG175"
+      },
+      {
+       "title": "Musique et société : la musique dans l'histoire des XVIIIe et XIXe siècles",
+       "priority": "ensuite",
+       "code": "QG176"
+      },
+      {
+       "title": "Interpréter et créer un projet musical",
+       "priority": "ensuite",
+       "code": "QG177"
+      },
+      {
+       "title": "Argumenter un jugement sur la musique",
+       "priority": "mis_de_cote",
+       "code": "QG178"
+      }
+     ]
+    }
+   ],
+   "official_sources": [
+    {
+     "texte": "Programmes du cycle 4 (cycle des approfondissements), version consolidée",
+     "reference": "Arrêté du 17-7-2020, BO n°31 du 30 juillet 2020 (NOR MENE2018714A)",
+     "application": "En vigueur en 4e en 2026-2027",
+     "lien": "https://www.education.gouv.fr/bo/20/Hebdo31/MENE2018714A.htm",
+     "contenu": "Programme d'éducation musicale du cycle 4 : réaliser des projets musicaux d'interprétation ou de création ; écouter, comparer, construire une culture musicale commune ; explorer, imaginer et créer ; échanger, partager, argumenter."
+    }
+   ]
+  }
+ ],
+ "general_sources": [
+  {
+   "texte": "Enseigner au cycle 4 : programmes en vigueur par classe",
+   "reference": "Éduscol, page consultée le 25-11-2026",
+   "application": "Année scolaire 2026-2027",
+   "lien": "https://eduscol.education.gouv.fr/4362/enseigner-au-cycle-4",
+   "contenu": "En 2026-2027, la 4e suit le programme du cycle 4 publié au BO du 30 juillet 2020 ; les nouveaux programmes de français et de mathématiques (BO n°10 du 5 mars 2026) s'appliquent en 5e à la rentrée 2026 et n'arrivent en 4e qu'à la rentrée 2027."
+  },
+  {
+   "texte": "Nouveaux programmes de français et de mathématiques du cycle 4",
+   "reference": "Arrêté du 18-2-2026, BO n°10 du 5 mars 2026 (NOR MENE2602912A)",
+   "application": "5e à la rentrée 2026, 4e à la rentrée 2027, 3e à la rentrée 2028 (non applicable en 4e en 2026-2027)",
+   "lien": "https://www.education.gouv.fr/bo/2026/Hebdo10/MENE2602912A",
+   "contenu": "Cité pour mémoire : non retenu pour ce fichier. Calendrier par classe confirmé par les sites disciplinaires des académies de Bordeaux et de Nancy-Metz (le texte du BO n'a pas pu être ouvert directement le 25-11-2026)."
+  },
+  {
+   "texte": "Repères annuels de progression et attendus de fin d'année du CP à la troisième",
+   "reference": "Éduscol, documents publiés au BO n°22 du 29 mai 2019 (français, mathématiques)",
+   "application": "Classe de 4e",
+   "lien": "https://eduscol.education.gouv.fr/6910/reperes-annuels-de-progression-et-attendus-de-fin-d-annee-du-cp-la-troisieme",
+   "contenu": "Repères annuels et attendus de fin de 4e (français, mathématiques)."
+  },
+  {
+   "texte": "Programme d'enseignement moral et civique (du CP à la terminale)",
+   "reference": "Arrêté du 29-5-2024, BO n°24 du 13 juin 2024 (NOR MENE2413934A)",
+   "application": "En vigueur en 4e depuis la rentrée 2025",
+   "lien": "https://www.education.gouv.fr/bo/2024/Hebdo24/MENE2413934A",
+   "contenu": "4e : « Défendre les droits et les libertés »."
+  }
+ ],
+ "sources_checked": "2026-11-25"
+}
