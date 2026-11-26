@@ -3,7 +3,7 @@ import type { SchoolYear, YearSummary } from '@/lib/school-years';
 
 const hm = (min: number) => min >= 60 ? `${Math.floor(min / 60)} h ${String(min % 60).padStart(2, '0')}` : `${min} min`;
 const fmt = (d: Date) => d.toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'Europe/Paris' });
-const note = (n: number | null) => n === null ? '—' : `${n.toLocaleString('fr-FR')}/20`;
+const note = (n: number | null) => n === null ? '—' : `${(Math.round(n * 10) / 10).toLocaleString('fr-FR')}/20`;   // au dixième, comme le Bilan
 
 // Une année du dossier scolaire : en-tête, chiffres clés, avancement par matière
 // Chaque chiffre porte sa définition (règle « Mesurer ce qui est sûr ») ; les points de progrès (motivation de l'élève) ne sont montrés qu'à l'élève.
@@ -28,17 +28,17 @@ export function YearCard({ year, summary, firstName, audience = 'parent', childr
         <>
           <div className="grid gap-3 grid-cols-[repeat(auto-fit,minmax(150px,1fr))]">
             {s.evaluated !== undefined
-              ? <Kpi icon={<BookCheck size={18} />} tone="tone-green" value={`${s.evaluated}`} unit={`/ ${s.published}`} label={`cours évalués · dont ${s.acquired} acquis (14/20 ou plus)`} sub={`${s.published} cours disponibles sur ${s.courses_total} au programme`} />
+              ? <Kpi icon={<BookCheck size={18} />} tone="tone-green" value={`${s.evaluated}`} unit={`/ ${s.published}`} label={`cours évalués · dont ${s.acquired} acquis (14/20 ou plus)`} sub={`depuis l’inscription · ${s.published} disponibles sur ${s.courses_total} au programme`} />
               : <Kpi icon={<BookCheck size={18} />} tone="tone-green" value={`${s.acquired}`} unit={`/ ${s.courses_total}`} label="cours acquis (14/20 ou plus)" sub={`sur ${s.courses_total} au programme`} />}
-            <Kpi icon={<Award size={18} />} tone="tone-violet" value={note(s.avg)} label="moyenne des meilleures notes" sub={s.avg_courses !== undefined ? `la meilleure note de chaque cours évalué (${s.avg_courses} cours)` : 'la meilleure note de chaque cours évalué'} />
-            <Kpi icon={<Clock size={18} />} tone="tone-brand" value={hm(s.active_minutes)} label="de travail" sub={live ? `depuis le ${fmt(year.started_at)}` : 'sur l’année'} />
+            <Kpi icon={<Award size={18} />} tone="tone-violet" value={note(s.avg)} label="moyenne des meilleures notes" sub={s.avg_courses !== undefined ? `meilleure note de chaque cours, depuis l’inscription (${s.avg_courses} cours)` : 'meilleure note de chaque cours'} />
+            <Kpi icon={<Clock size={18} />} tone="tone-brand" value={hm(s.active_minutes)} label="de travail" sub={`${live ? `depuis le ${fmt(year.started_at)}` : 'sur l’année'} · toutes matières, révisions comprises`} />
             {audience === 'eleve'
               ? <Kpi icon={<Star size={18} />} tone="tone-accent" value={`+${s.points}`} label="points de progrès" />
-              : <Kpi icon={<Star size={18} />} tone="tone-accent" value={`${s.evaluations}`} label={`évaluation${s.evaluations > 1 ? 's' : ''} notée${s.evaluations > 1 ? 's' : ''}`} sub="tentatives comprises" />}
+              : <Kpi icon={<Star size={18} />} tone="tone-accent" value={`${s.evaluations}`} label={`évaluation${s.evaluations > 1 ? 's' : ''} notée${s.evaluations > 1 ? 's' : ''}`} sub="depuis l’inscription, tentatives comprises" />}
           </div>
           <div className="flex flex-col">
             <div className="grid grid-cols-[minmax(0,1fr)_64px_64px] sm:grid-cols-[minmax(140px,1.4fr)_2fr_90px_80px] gap-x-3 px-1 pb-2 text-[12px] font-semibold uppercase tracking-wide text-muted">
-              <span>Matière</span><span className="hidden sm:block">Avancement (cours disponibles)</span><span className="text-right">Acquis</span><span className="text-right">Moyenne</span>
+              <span>Matière</span><span className="hidden sm:block">Avancement (cours disponibles)</span><span className="text-right">Acquis</span><span className="text-right" data-tip="moyenne des meilleures notes de chaque cours, depuis l’inscription" tabIndex={0}>Meill. notes</span>
             </div>
             {s.subjects.map(m => {
               const pct = m.published ? Math.round((m.acquired / m.published) * 100) : 0;

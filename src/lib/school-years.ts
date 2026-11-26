@@ -2,8 +2,8 @@ import 'server-only';
 import { sql } from './db';
 
 // Dossier scolaire : années scolaires successives d'un élève (niveau, bilan).
-// Les cours appartiennent à un niveau : le bilan d'une année porte sur les cours de son niveau,
-// et le temps / les points / les évaluations sur la période de l'année.
+// Les cours appartiennent à un niveau : cours évalués, acquis, moyenne et évaluations notées portent sur les cours du niveau
+// depuis l'inscription (matières suivies seulement) ; le temps et les points, sur la période de l'année.
 
 export type SchoolYear = {
   id: string; level_code: string; level_name: string; cycle: string | null; school_year: string;
@@ -58,7 +58,7 @@ export async function yearSummary(studentId: string, levelCode: string, from: Da
       (select coalesce(sum(active_seconds), 0)::int / 60 from work_sessions w where w.student_id = ${studentId} and w.started_at >= ${from} and w.started_at < ${until}) as minutes,
       (select coalesce(sum(amount), 0)::int from points_ledger pl where pl.student_id = ${studentId} and pl.at >= ${from} and pl.at < ${until}) as points,
       (select count(*)::int from eval_attempts a join courses c on c.id = a.course_id join chapters ch on ch.id = c.chapter_id join subjects s on s.id = ch.subject_id
-        where a.student_id = ${studentId} and a.status = 'graded' and s.level_code = ${levelCode}) as evals,
+        where a.student_id = ${studentId} and a.status = 'graded' and s.level_code = ${levelCode} and not (s.id = any(${excluded}::int[]))) as evals,
       (select round(avg(p.best_eval_score), 2) from course_progress p join courses c on c.id = p.course_id join chapters ch on ch.id = c.chapter_id join subjects s on s.id = ch.subject_id
         where p.student_id = ${studentId} and s.level_code = ${levelCode} and p.best_eval_score is not null and not (s.id = any(${excluded}::int[]))) as avg,
       (select count(*)::int from course_progress p join courses c on c.id = p.course_id join chapters ch on ch.id = c.chapter_id join subjects s on s.id = ch.subject_id
