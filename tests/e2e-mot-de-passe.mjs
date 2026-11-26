@@ -114,7 +114,8 @@ await ad.click('button:has-text("Déconnecter de tous les appareils")'); await a
 ok(await ad.locator('[role=alertdialog]').count() === 0 && (await sql`select count(*)::int as n from auth_sessions s join users u on u.id = s.user_id where u.login = 'lea'`)[0].n > 0, 'Échap ferme aussi la fenêtre : rien n’a été fait');
 await ad.click('button:has-text("Déconnecter de tous les appareils")');
 await ad.click('[data-dialog-ok]');   // fenêtre de confirmation de l’application
-await ad.waitForLoadState('networkidle');
+// l'action serveur est asynchrone : on attend qu'elle ait réellement fermé les sessions (au plus 10 s) avant de vérifier
+for (let i = 0; i < 40 && (await sql`select count(*)::int as n from auth_sessions s join users u on u.id = s.user_id where u.login = 'lea'`)[0].n > 0; i++) await ad.waitForTimeout(250);
 await sl.goto(BASE + '/eleve'); ok(new URL(sl.url()).pathname.startsWith('/connexion'), 'action groupée « Déconnecter de tous les appareils » : l’élève doit se reconnecter');
 
 // React #418 (écart d'hydratation, intermittent, sans effet visible) : avertissement connu, non bloquant ; toute autre erreur bloque.
