@@ -3,6 +3,7 @@ import { sql } from './db';
 import { evalQuestions } from './course-format';
 import { versionById } from './progress';
 import { ITEMS, SCALE } from './checkin';
+import { pauseRuleSince, ruleNote } from './time-rule';
 
 // Trajectoire : les mêmes mesures, semaine après semaine (12 semaines, heure de Paris, changements d'heure compris).
 // Uniquement des valeurs mesurées et leurs effectifs ; la comparaison « 4 dernières semaines terminées / 4 précédentes »
@@ -18,7 +19,7 @@ export type WeekRow = {
 export type Compare = { label: string; before: string; after: string; dir: 'up' | 'down' | 'same' | 'none'; better: 'up' | 'down' };
 export type SubjectSeries = { subject: string; exercices: { at: string; ok: number; total: number }[]; copies: { at: string; note: number }[] };
 export type FeelingRow = { id: string; text: string; answers: { at: string; label: string }[] };
-export type Trajectory = { weeks: WeekRow[]; compare: Compare[]; subjects: SubjectSeries[]; feelings: FeelingRow[] };
+export type Trajectory = { weeks: WeekRow[]; compare: Compare[]; subjects: SubjectSeries[]; feelings: FeelingRow[]; timeNote: string | null; compareNote: string | null };
 
 const W = 12;
 /** En dessous de 5 questions, aucun pourcentage n'est affiché (trop peu pour être représentatif). */
@@ -93,6 +94,9 @@ export async function trajectory(studentId: string): Promise<Trajectory> {
     const b = okB ? frac(before, ok, tot) : null, a = okA ? frac(after, ok, tot) : null;
     return { label, before: b ? `${b.v} % (${b.s})` : '—', after: a ? `${a.v} % (${a.s})` : '—', better: 'up', dir: !a || !b ? 'none' : a.v > b.v ? 'up' : a.v < b.v ? 'down' : 'same' };
   };
+  // définition du temps changée pendant la période : pas de flèche sur le temps ni les jours (la hausse viendrait de la mesure)
+  const ruleAt = await pauseRuleSince();
+  const mixed = !!ruleAt && ruleAt.getTime() > weeks[weeks.length - 9].start.getTime();
   const notesB = okB ? before.flatMap(r => r.notes) : [], notesA = okA ? after.flatMap(r => r.notes) : [];
   const compare: Compare[] = [
     cmp('Temps de travail effectif', okB ? sum(before, r => r.minutes) : null, okA ? sum(after, r => r.minutes) : null, x => `${x} min`),
@@ -120,5 +124,7 @@ export async function trajectory(studentId: string): Promise<Trajectory> {
     answers: checkins.filter(c => typeof c.answers?.[it.id] === 'number').map(c => ({ at: c.created_at.toISOString(), label: SCALE[c.answers[it.id]] })),
   })).filter(f => f.answers.length >= 2 && f.answers.some(a => a.label !== f.answers[0].label));   // tout changement, même A → B → A
 
-  return { weeks: rows, compare, subjects, feelings };
+  if (mixed) for (const c of compare.slice(0, 2)) c.dir = 'none';
+  const timeNote = ruleAt && ruleAt.getTime() > weeks[0].start.getTime() ? ruleNote(ruleAt) : null;
+  return { weeks: rows, compare, subjects, feelings, timeNote, compareNote: mixed ? timeNote ?? ruleNote(ruleAt!) : null };
 }

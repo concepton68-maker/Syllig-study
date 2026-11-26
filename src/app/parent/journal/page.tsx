@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { requireParent } from '@/lib/access';
 import { weekReport, hm } from '@/lib/week';
 import { weekTimeline, type Kind } from '@/lib/review';
+import { pauseRuleSince, ruleNote } from '@/lib/time-rule';
 import { PageTitle } from '@/components/Shell';
 import { ChildPicker } from '@/components/ChildPicker';
 import { Screen } from '@/components/Layout';
@@ -28,6 +29,8 @@ export default async function Activite({ searchParams }: { searchParams: Promise
   if (!student) return null;
   const w = await weekReport(student, semaine);
   const timeline = await weekTimeline(student.id, w.start);
+  const ruleAt = await pauseRuleSince();
+  const weekNote = ruleAt && ruleAt.getTime() > new Date(`${w.start}T00:00:00+01:00`).getTime() ? ruleNote(ruleAt) : null;
   const filter = FILTERS.find(f => f.id === (type ?? '')) ?? FILTERS[0];
   const q = (s?: string | null, t?: string) => `?${new URLSearchParams({ ...(eleve ? { eleve } : {}), ...(s ? { semaine: s } : {}), ...(t ? { type: t } : {}) })}`;
   const name = student.first_name;
@@ -78,6 +81,7 @@ export default async function Activite({ searchParams }: { searchParams: Promise
           )}
         </div>
       </section>
+      {weekNote && <p className="m-0 -mt-3 text-xs muted" data-rule-note>{weekNote}</p>}
 
       <section aria-labelledby="fil" className="card flex flex-col">
         <div className="flex flex-wrap items-center justify-between gap-3 pb-3">

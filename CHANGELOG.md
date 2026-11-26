@@ -497,5 +497,6 @@ Contre-audit de conformité des versions 0.43 à 0.45 : tout ce qui a été rele
 - **Passer cette leçon** (élève) : depuis l'accueil ou la leçon, pour n'importe quelle raison, sans aucune sanction (ni points, ni niveau). Le cours suivant est proposé ; le cours passé reste dans « Tous mes cours » et reprend sa place dès que l'élève y revient. Le parent le voit dans l'Activité (« passée pour l'instant »).
 
 ## 0.49 — 26/11/2026
-- Temps de travail : le brouillon et la réflexion comptent. Le temps compte tant que la page de travail est ouverte devant l'élève ; il s'arrête s'il change d'onglet ou d'application, ou après 10 minutes sans rien toucher (au lieu de 60 secondes). Réglable par le parent : 5, 10 ou 15 minutes.
+- Temps de travail : le délai laisse le temps au brouillon et à la réflexion. Le temps compte tant que la page de travail est visible ; il s'arrête si elle est cachée (autre onglet, fenêtre réduite, écran verrouillé, autre application sur téléphone) ou après 10 minutes sans rien toucher (au lieu de 60 secondes). Réglable par le parent : 5, 10 ou 15 minutes. Pendant une évaluation, aucune fenêtre ne s'ouvre et le chrono de l'évaluation continue.
+- Les comparaisons de temps à cheval sur ce changement le disent (note sous les graphiques) et n'affichent plus de flèche.
 - « Tu es là ? » n'apparaît plus qu'à ce moment-là, plus au bout de 3 minutes.

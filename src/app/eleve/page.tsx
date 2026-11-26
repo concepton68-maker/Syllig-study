@@ -118,7 +118,7 @@ export default async function Today({ searchParams }: { searchParams: Promise<{ 
                   {step.kind === 'lesson' && !next.lesson_started ? 'Commencer' : 'Continuer'} : {step.label}{step.minutes ? ` · ${step.minutes} min` : ''}
                 </Link>
                 {next.pending_attempt !== 'in_progress' && <form action={skipCourse.bind(null, next.course_id)}><button className="btn min-h-[52px]" type="submit" data-skip>{step.kind === 'lesson' ? 'Passer cette leçon' : 'Passer ce cours'}</button></form>}
-                <span className="muted text-sm max-w-[460px]">Le temps compte tant que la page est ouverte devant toi, brouillon compris. Il s’arrête si tu changes d’onglet ou après 10 min sans rien toucher. Les corrigés s’ouvrent après ta réponse.</span>
+                <span className="muted text-sm max-w-[460px]">Le temps compte tant que la page est ouverte devant toi : tu as {student.settings.idle_seconds / 60} min sans rien toucher pour écrire au brouillon ou réfléchir. Il s’arrête si tu changes d’onglet ou réduis la fenêtre. Les corrigés s’ouvrent après ta réponse.</span>
               </div>
             </section>
           ) : (

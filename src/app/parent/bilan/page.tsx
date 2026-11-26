@@ -71,6 +71,7 @@ export default async function Bilan({ searchParams }: { searchParams: Promise<{ 
           <span className="text-[13px] muted">pointillés : objectif {student.settings.weekly_goal_minutes} min · semaine en cours en pointillés</span></div>
         <WeeklyBars goal={student.settings.weekly_goal_minutes} bars={traj.weeks.map(w => ({ key: w.week, label: w.label, value: w.minutes, current: w.current,
           tip: w.started ? [`Semaine du ${w.label}${w.current ? ' (en cours)' : ''}`, `${w.minutes} min de travail effectif`, `${w.days} jour${w.days > 1 ? 's' : ''} avec 10 min ou plus`] : [`Semaine du ${w.label}`, 'avant la première activité'] }))} />
+        {traj.timeNote && <span className="muted text-xs" data-rule-note>{traj.timeNote}</span>}
       </section>
 
       <section className="card flex flex-col !py-3" aria-labelledby="plus" data-more>
@@ -129,7 +130,7 @@ export default async function Bilan({ searchParams }: { searchParams: Promise<{ 
       )}
         </Fold>
         <Fold id="chiffres" title="Tous les chiffres détaillés" sub="28 jours, 12 semaines, cours par cours">
-          <EngagementCard f={eng} name={name} />
+          <EngagementCard f={eng} name={name} idleMin={student.settings.idle_seconds / 60} />
           <TrajectoryCard tr={traj} name={name} goalMin={student.settings.weekly_goal_minutes} />
       <section className="card flex flex-col gap-3" aria-labelledby="faits">
         <h2 id="faits" className="text-xl font-semibold m-0 flex items-center gap-2"><Gauge size={20} aria-hidden="true" />Ce que montrent les chiffres</h2>
@@ -142,7 +143,7 @@ export default async function Bilan({ searchParams }: { searchParams: Promise<{ 
             {profile.courses.map(c => <CourseRow key={c.course_id} c={c} />)}
           </div>
         )}
-        <p className="muted text-xs m-0">Temps actif : page de travail au premier plan (brouillon et réflexion compris) ; il s’arrête si la page est cachée ou après 10 min sans rien toucher. Chiffres depuis l’inscription.</p>
+        <p className="muted text-xs m-0">Temps actif : page de travail visible, avec un geste depuis moins de {student.settings.idle_seconds / 60} min (le délai laisse le temps au brouillon et à la réflexion) ; il s’arrête si la page est cachée (autre onglet, fenêtre réduite, écran verrouillé). Chiffres depuis l’inscription.</p>
       </section>
         </Fold>
         <Fold id="confidentialite" title="Confidentialité et IA" sub={`correction par l’IA : ${consent.correction ? 'oui' : 'non'} · bilan par l’IA : ${consent.bilan ? 'oui' : 'non'}`} open={!!sp.consentement}>

@@ -48,5 +48,15 @@ await pa.click('button[type=submit]'); await pa.waitForURL(u => !u.pathname.star
 await pa.goto(`${BASE}/parent/enfants/${st.id}?onglet=regles`);
 const opts = await pa.locator('select[name=idle] option').allInnerTexts();
 ok(opts.join('|') === '5 min sans rien toucher|10 min sans rien toucher|15 min sans rien toucher' && await pa.locator('select[name=idle]').inputValue() === '600', `choix 5, 10 ou 15 min, 10 min sélectionné (${opts.join(', ')})`);
+console.log('Le texte suit le réglage choisi (15 min)');
+await pa.selectOption('select[name=idle]', '900'); await pa.click('form:has(select[name=idle]) button[type=submit]');
+for (let i = 0; i < 40 && (await sql`select settings->>'idle_seconds' as v from students where id = ${st.id}`)[0].v !== '900'; i++) await pa.waitForTimeout(250);
+const [s15] = await sql`select settings->>'idle_seconds' as v from students where id = ${st.id}`;
+ok(s15.v === '900', 'réglage enregistré : 15 min');
+await pa.goto(BASE + '/parent/suivi');
+ok((await pa.locator('[data-live]').innerText()).includes('15 dernières minutes'), 'En direct : la définition dit 15 min');
+await el.clock.resume(); await el.goto(BASE + '/eleve');
+ok((await el.locator('main').innerText()).includes('tu as 15 min sans rien toucher'), 'élève : « tu as 15 min sans rien toucher »');
+ok(await pa.goto(BASE + '/parent/bilan').then(() => pa.locator('[data-rule-note]').count()) >= 1, 'Bilan : note sur le changement de mesure (minutes d’avant non comparables)');
 await b.close(); await sql.end();
 console.log('\nTemps de travail, brouillon compris : OK');

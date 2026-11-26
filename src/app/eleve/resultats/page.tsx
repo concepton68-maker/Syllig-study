@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { pauseRuleSince } from '@/lib/time-rule';
 import { Star, Sparkles, Award } from 'lucide-react';
 import { EmptyState } from '@/components/EmptyState';
 import { sql } from '@/lib/db';
@@ -21,6 +22,9 @@ export default async function Results() {
     where a.student_id = ${student.id} and a.status in ('submitted','graded') order by a.submitted_at desc`;
   const points = await sql<{ amount: number; reason: string; at: Date; title: string | null }[]>`
     select l.amount, l.reason, l.at, c.title from points_ledger l left join courses c on c.id = l.course_id where l.student_id = ${student.id} order by l.at desc limit 15`;
+  // le temps se mesure autrement depuis la migration 019 : pas de flèche tant que la période d'avant suit l'ancienne règle
+  const ruleAt = await pauseRuleSince();
+  const ruleRecent = !!ruleAt && Date.now() - ruleAt.getTime() < 14 * 864e5;
   // « Mes progrès » : toi par rapport à toi (jamais de comparaison avec d'autres élèves)
   const [pr] = await sql<{ this_w: number; last_w: number; levels: number; gain: string | null; gain_title: string | null }[]>`
     select
@@ -64,7 +68,7 @@ export default async function Results() {
           <h2 className="text-xl font-semibold">Mes progrès</h2>
           <span className="muted text-sm">Toi par rapport à toi : personne d’autre.</span>
           <div className="flex justify-between gap-3 py-2 border-t border-soft text-sm"><span>Temps de travail ces 7 derniers jours<span className="block muted">les 7 jours d’avant : {m(pr.last_w)} min</span></span>
-            <strong className={pr.this_w >= pr.last_w && pr.this_w > 0 ? 'text-brand-dark' : ''}>{m(pr.this_w)} min{pr.this_w > pr.last_w && pr.last_w > 0 ? ' ▲' : ''}</strong></div>
+            <strong className={pr.this_w >= pr.last_w && pr.this_w > 0 ? 'text-brand-dark' : ''}>{m(pr.this_w)} min{pr.this_w > pr.last_w && pr.last_w > 0 && !ruleRecent ? ' ▲' : ''}</strong></div>
           <div className="flex justify-between gap-3 py-2 border-t border-soft text-sm"><span>Niveaux gagnés ce mois-ci<span className="block muted">un niveau monte à chaque étape réussie</span></span><strong>{pr.levels}</strong></div>
           {pr.gain && Number(pr.gain) > 0 && <div className="flex justify-between gap-3 py-2 border-t border-soft text-sm"><span>Ta plus belle remontée<span className="block muted">{pr.gain_title}</span></span><strong className="text-brand-dark">+{Number(pr.gain).toLocaleString('fr-FR')} pts</strong></div>}
         </section>

@@ -220,7 +220,7 @@ export default async function Journal({ searchParams }: { searchParams: Promise<
             <h2 className="text-base font-semibold">Comment lire ce journal</h2>
             <ul className="m-0 pl-5 text-[13px] text-ink-2 flex flex-col gap-1">
               <li>Un bloc par cours et par jour, du plus récent au plus ancien.</li>
-              <li>Le temps « effectif » compte tant que la page de travail est au premier plan (brouillon et réflexion compris) ; il s’arrête si la page est cachée ou après 10 min sans rien toucher.</li>
+              <li>Le temps « effectif » compte tant que la page de travail est visible, avec un geste depuis moins de {student.settings.idle_seconds / 60} min (le délai laisse le temps au brouillon et à la réflexion) ; il s’arrête si la page est cachée (autre onglet, fenêtre réduite, écran verrouillé).</li>
               <li><span className="text-warm-dark font-semibold">À regarder ensemble</span> : page de l’évaluation masquée pendant l’évaluation, collage bloqué, leçon ouverte avec un temps actif inférieur à 30 % de la durée prévue.</li>
             </ul>
           </section>

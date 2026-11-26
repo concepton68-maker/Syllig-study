@@ -18,7 +18,7 @@ const ago = (iso: string, now: Date) => {
 // heure de Paris en heures décimales
 const parisH = (d: Date) => { const [h, m] = d.toLocaleTimeString('fr-FR', { timeZone: 'Europe/Paris', hour: '2-digit', minute: '2-digit' }).split(':').map(Number); return h + m / 60 + d.getSeconds() / 3600; };
 
-export function LiveBoard({ studentId, name, initial }: { studentId: string; name: string; initial: Data }) {
+export function LiveBoard({ studentId, name, initial, idleMin = 10 }: { studentId: string; name: string; initial: Data; idleMin?: number }) {
   const [data, setData] = useState<Data>(initial);
   const [tip, setTip] = useState<{ x: number; seg: Segment } | null>(null);
   useEffect(() => {
@@ -59,7 +59,7 @@ export function LiveBoard({ studentId, name, initial }: { studentId: string; nam
         {live.state !== 'hors_ligne' && (
           <span className="text-sm"><strong className="text-lg">{live.sessionActiveMin} min</strong> actives sur cette page<span className="block muted">sur {live.sessionMin} min depuis son ouverture</span></span>
         )}
-        <span className="muted text-xs basis-full">Mise à jour toutes les 10 secondes. « Actif » : page de travail au premier plan (brouillon et réflexion compris), avec un geste dans les 10 dernières minutes. « Sans geste » : rien touché depuis 10 min, ou page cachée.</span>
+        <span className="muted text-xs basis-full">Mise à jour toutes les 10 secondes. « Actif » : page de travail visible, avec un geste dans les {idleMin} dernières minutes (le délai laisse le temps au brouillon). « Sans geste » : rien touché depuis {idleMin} min, ou page cachée (autre onglet, fenêtre réduite, écran verrouillé).</span>
       </section>
 
       <section className="card flex flex-col gap-3">

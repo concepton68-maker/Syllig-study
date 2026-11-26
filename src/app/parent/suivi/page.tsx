@@ -28,7 +28,7 @@ export default async function Suivi({ searchParams }: { searchParams: Promise<{ 
       <PageTitle kicker="En direct" title={`${student.first_name}, en ce moment`} sub="Heures du serveur. Une minute compte si l’élève agit sur la page de travail." />
     </>}>
       <AutoRefresh active every={60_000} />
-      <LiveBoard studentId={student.id} name={student.first_name} initial={{ live, today, now: new Date().toISOString() }} />
+      <LiveBoard studentId={student.id} name={student.first_name} idleMin={student.settings.idle_seconds / 60} initial={{ live, today, now: new Date().toISOString() }} />
       <section className="card flex flex-col" aria-labelledby="seances" data-today-list>
         <h2 id="seances" className="text-lg font-semibold m-0 mb-2">Les séances commencées aujourd’hui</h2>
         {items.length === 0 && <p className="m-0 text-sm muted">Rien pour l’instant aujourd’hui.</p>}

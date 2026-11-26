@@ -15,7 +15,7 @@ function Row({ label, value, def, testid }: { label: string; value: React.ReactN
   );
 }
 
-export function EngagementCard({ f, name }: { f: Facts; name: string }) {
+export function EngagementCard({ f, name, idleMin = 10 }: { f: Facts; name: string; idleMin?: number }) {
   const w = f.work, e = f.evals, l = f.learning;
   return (
     <section className="card flex flex-col gap-4" aria-labelledby="faits-travail" data-facts>
@@ -30,7 +30,7 @@ export function EngagementCard({ f, name }: { f: Facts; name: string }) {
           <ul className="list-none m-0 p-0">
             <Row testid="jours" label="Jours travaillés" value={`${w.days} sur 28`} def="jours où le temps effectif cumulé atteint 10 minutes" />
             <Row testid="temps" label="Temps de travail effectif" value={`${fr(w.active_min)} min`} def={`objectif que vous avez fixé : ${fr(w.goal_min)} min sur 28 jours`} />
-            <Row testid="actif" label="Part du temps actif sur la page" value={w.open_min ? `${Math.round((w.active_min / w.open_min) * 100)} %` : '—'} def={`${fr(w.active_min)} min actives sur ${fr(w.open_min)} min de page ouverte (pause si la page est cachée ou après 10 min sans rien toucher)`} />
+            <Row testid="actif" label="Part du temps actif sur la page" value={w.open_min ? `${Math.round((w.active_min / w.open_min) * 100)} %` : '—'} def={`${fr(w.active_min)} min actives sur ${fr(w.open_min)} min de page ouverte (pause si la page est cachée ou après ${idleMin} min sans rien toucher)`} />
             <Row testid="lecons" label="Leçons terminées" value={String(w.lessons_done)} def={w.lessons_done ? `temps actif sur ces leçons depuis leur début : ${fr(w.lesson_min)} min, pour ${fr(w.lesson_expected_min)} min prévues` : 'aucune sur la période'} />
             <Row testid="copies" label="Copies sans question vide" value={ratio(e.no_blank, e.submitted)} def="copies remises sur la période, notées ou non" />
             <Row testid="temps-copies" label="Temps utilisé pendant les évaluations" value={e.submitted ? `${fr(e.used_min)} min sur ${fr(e.allowed_min)}` : '—'} def="total du temps utilisé sur le total du temps accordé (tiers-temps compris)" />

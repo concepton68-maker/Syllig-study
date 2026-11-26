@@ -23,6 +23,7 @@ export function TrajectoryCard({ tr, name, goalMin }: { tr: Trajectory; name: st
               </li>
             ))}
           </ul>
+          {tr.compareNote && <span className="muted text-xs" data-rule-note>{tr.compareNote} Pas de flèche sur le temps ni sur les jours.</span>}
         </div>
         <div className="flex flex-col gap-1">
           <h3 className="text-base font-semibold m-0">Temps de travail effectif par semaine</h3>

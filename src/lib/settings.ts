@@ -49,7 +49,7 @@ export const DEFAULT_SETTINGS: StudentSettings = {
 export const evalMinutes = (base: number, s: Pick<StudentSettings, 'extra_time'>) => s.extra_time ? Math.ceil(base * 4 / 3) : base;
 export const settingsOf = (raw: unknown): StudentSettings => {
   const s = { ...DEFAULT_SETTINGS, ...((raw as object) ?? {}) } as StudentSettings;
-  return { ...s, retry_delay_days: Math.max(1, s.retry_delay_days) };   // au moins 1 jour entre deux tentatives
+  return { ...s, retry_delay_days: Math.max(1, s.retry_delay_days), idle_seconds: [300, 600, 900].includes(Number(s.idle_seconds)) ? Number(s.idle_seconds) : 600 };   // au moins 1 jour entre deux tentatives
 };
 
 // Seuils de maîtrise (section 5 du cadrage) — réglages, pas du code métier dispersé.
