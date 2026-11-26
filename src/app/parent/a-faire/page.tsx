@@ -128,7 +128,7 @@ export default async function ToDo({ searchParams }: { searchParams: Promise<{ v
             <div key={r.id} className="flex flex-wrap items-center gap-3 py-2.5 border-t border-soft text-sm">
               <span className="flex-[1_1_260px]"><strong>{multi ? `${r.first_name} · ` : ''}{r.title}</strong> · tentative {r.attempt_no}</span>
               <strong className="w-16">{Number(r.final_score).toLocaleString('fr-FR')}/20</strong>
-              <Link href={`/parent/copies/${r.id}`} className="font-semibold">Voir</Link>
+              <Link href={`/parent/revoir/copie/${r.id}`} className="font-semibold">Revoir</Link>
             </div>
           ))}
         </section>

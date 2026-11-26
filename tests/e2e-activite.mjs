@@ -1,5 +1,4 @@
-// « Activité » du parent (maquette validée le 25/11/2026) : la semaine en 3 lignes, temps par jour, calendrier de 4 semaines,
-// objectif, répartitions, un cours par ligne, questions ratées (réponse de l'élève et bonne réponse), à venir, à regarder ensemble.
+// « Activité » du parent (maquette validée le 26/11/2026) : 3 chiffres, ce qui a été fait jour par jour, « Revoir ensemble » (copie et exercices).
 // Valeurs attendues calculées à la main sur des données construites. Prérequis : tests/reset-db.sh puis `node scripts/seed.mjs`.
 // Usage : BASE=… DATABASE_URL=… node tests/e2e-activite.mjs
 import { createRequire } from 'node:module';
@@ -50,41 +49,52 @@ await pa.click('button[type=submit]'); await pa.waitForURL(u => !u.pathname.star
 await pa.goto(BASE + '/parent/journal');
 const txt = async sel => (await pa.locator(sel).innerText()).replace(/\s+/g, ' ');
 
-console.log('La semaine en 3 lignes');
-const three = await txt('[data-three-lines]');
-ok(three.includes('1 jour travaillé sur') && three.includes('1 h 15') && three.includes('5 h'), `fait : 1 jour travaillé, 1 h 15 sur 5 h (« ${three.slice(0, 120)} »)`);
-ok((await txt('[data-point]')).includes(`« ${ma.title} » : ${qs.length - 1} questions sans réponse sur ${qs.length} (rendue en 2 min, 30 min accordées)`), 'point précis : questions sans réponse, temps utilisé, en faits');
-ok((await txt('[data-idea]')).includes('sans réponse'), 'idée liée au point : regarder ensemble les questions sans réponse');
-console.log('Graphiques');
-ok((await pa.locator('[data-day-bars]').getAttribute('aria-label')).includes(': 75 min'), 'barre du lundi : 75 min');
-ok((await txt('[data-goal]')).includes('25 %'), 'anneau : 75 min sur 300 = 25 %');
-ok((await txt('#matieres ~ *, section[aria-labelledby="matieres"]')).includes('Mathématiques 35 min') && (await txt('section[aria-labelledby="matieres"]')).includes('Français 40 min'), 'temps par matière : français 40 min, maths 35 min');
-ok((await txt('section[aria-labelledby="activites"]')).includes('Leçons 40 min') && (await txt('section[aria-labelledby="activites"]')).includes('Évaluations 15 min'), 'temps par activité');
-ok(await pa.locator('[data-cal-row]').count() === 4 && /2 jours travaillés sur (28|2[0-9] écoulés)/.test(await txt('section[aria-labelledby="cal"]')), 'calendrier : 4 semaines, 2 jours travaillés sur les jours écoulés');
-console.log('Un cours par ligne');
-const rows = await txt('[data-course-rows]');
-ok(await pa.locator('[data-course]').count() === 2, 'deux cours, une ligne chacun');
-ok((await txt(`[data-course="${ma.id}"]`)).includes(`3/20 · ${qs.length - 1} sans réponse sur ${qs.length}`), 'maths : 3/20 et le nombre de questions sans réponse');
-ok((await txt(`[data-course="${fr.id}"]`)).includes('Terminée cette semaine'), 'français : leçon terminée cette semaine');
-console.log('Questions ratées, à venir, à regarder');
-const miss = (await pa.locator('[data-missed]').allInnerTexts()).join(' ').replace(/\s+/g, ' ');
-ok(/réponse de/i.test(miss) && /bonne réponse/i.test(miss) && miss.includes('−15') && (q1.type !== 'qcm' || miss.includes(q1.options[Number(wrong)].slice(0, 15))), 'question ratée : réponse de l’élève (texte de l’option) et bonne réponse');
-const exCards = (await pa.locator('[data-missed]').allInnerTexts()).filter(t => t.includes('exercices'));
-ok(exCards.length === 1, `exercices refaits : la question ratée n’apparaît qu’une fois (${exCards.length})`);
-ok((await txt(`[data-course="${fr.id}"]`)).includes('0 justes sur 1 (corrigées par la plateforme)'), 'exercices : « justes sur … (corrigées par la plateforme) »');
-ok((await txt('[data-upcoming]')).includes('Révision en retard') && (await txt('[data-upcoming]')).includes('en retard de 5 jours'), 'révision en retard de 5 jours');
-ok((await txt('section[aria-labelledby="regarder"]')).includes('masquée 2 fois'), 'à regarder : page de l’évaluation masquée 2 fois');
+console.log('La semaine en chiffres');
+ok((await pa.locator('[data-goal] svg').getAttribute('aria-label')).includes('1 h 15 sur 5 h, 25 %'), 'anneau : 1 h 15 sur 5 h = 25 %');
+ok((await txt('[data-days]')).includes('1 / 7'), 'jours travaillés : 1 / 7');
+const subj = await txt('[data-subjects]');
+ok(/Français 40 min/.test(subj) && /Mathématiques 35 min/.test(subj), `par matière : français 40 min, maths 35 min (« ${subj} »)`);
+
+console.log('Ce qui a été fait, jour par jour');
+const monday = await pa.locator('[data-day]').first();
+const mt = (await monday.innerText()).replace(/\s+/g, ' ');
+ok(mt.includes('1 h 15'), 'total du lundi : 1 h 15');
+ok(await pa.locator('[data-day]').count() === 7, 'les 7 jours sont listés');
+ok(/09:00 L .*leçon terminée · 40 min/.test(mt), `leçon de français à 09:00, terminée, 40 min (« ${mt.slice(0, 200)} »)`);
+ok(/exercices, pas encore remis · 20 min/.test(mt), 'exercices de maths commencés, non remis : 20 min');
+ok(mt.includes(`évaluation rendue en 2 min sur 30 · ${qs.length - 1} sans réponse · 15 min`) && mt.includes('3/20'), 'évaluation : rendue en 2 min sur 30, questions sans réponse, 3/20');
+ok(await monday.locator('[data-item="exercises"] >> text=0 juste sur 1').count() === 2, 'les deux séries d’exercices de français : 0 juste sur 1');
+await pa.click('[data-type="evaluations"]'); await pa.waitForURL(/type=evaluations/);
+ok(await pa.locator('[data-item]').count() === 1 && await pa.locator('[data-item="evaluation"]').count() === 1, 'filtre « Évaluations » : seulement la copie');
+
+console.log('Revoir ensemble : la copie');
+await pa.click('[data-item="evaluation"] >> text=Revoir'); await pa.waitForURL(/revoir\/copie\//);
+const reviewUrl = pa.url();
+ok((await txt('[data-review-score]')).includes('3 /20'), 'note 3/20');
+const chips = await txt('[data-review-chips]');
+ok(chips.includes('1 fausse') && chips.includes(`${qs.length - 1} sans réponse`) && chips.includes('rendue en 2 min sur 30') && chips.includes('page masquée 2 fois'), `résumé (« ${chips} »)`);
+ok(await pa.locator('[data-review-q]').count() === qs.length, 'filtre « À revoir » : toutes les questions non justes');
+const first = (await pa.locator('[data-review-q]').first().innerText()).replace(/\s+/g, ' ');
+ok(/Réponse de/i.test(first) && /Corrigé/i.test(first) && (q1.type !== 'qcm' || first.includes(q1.options[Number(wrong)].replace(/\*\*|\$/g, '').slice(0, 12))), 'sa réponse à côté du corrigé');
+await pa.click('[data-filter="all"]'); await pa.waitForURL(/tout=1/);
+ok(await pa.locator('[data-review-q]').count() === qs.length, 'filtre « Toutes »');
+await pa.click('[data-edit-grade]'); await pa.waitForURL(/parent\/copies\//);
+ok(await pa.isVisible('text=Motif de la modification'), '« Modifier la note » ouvre la correction (avec motif)');
+await pa.goBack(); await pa.click('text=‹ La semaine'); await pa.waitForURL(/journal\?/);
+
+console.log('Revoir ensemble : les exercices');
+await pa.locator('[data-item="exercises"] >> text=Revoir').first().click(); await pa.waitForURL(/revoir\/exercices\//);
+ok((await txt('[data-review-score]')).includes('0/1 justes') && (await txt('[data-review-chips]')).includes('1 fausse'), 'exercices : 0/1 juste, 1 fausse');
 ok(!/hausse|baisse|motivation|implication|concentration/i.test(await pa.locator('main').innerText()), 'aucune interprétation');
+
 console.log('Navigation');
-await pa.click('a[aria-label="Semaine précédente"]');
-await pa.waitForURL(/semaine=/);
-ok((await txt('[data-three-lines]')).includes('0 jour travaillé'), 'semaine précédente : 0 jour travaillé');
-await pa.click('text=Voir le détail minute par minute');
-await pa.waitForURL(/journal\/detail/);
+await pa.goto(BASE + '/parent/journal');
+await pa.click('a[aria-label="Semaine précédente"]'); await pa.waitForURL(/semaine=/);
+ok((await txt('[data-days]')).includes('0 / 7'), 'semaine précédente : 0 / 7');
+await pa.click('text=Voir le détail minute par minute'); await pa.waitForURL(/journal\/detail/);
 ok(await pa.isVisible('text=Journal intact'), 'le détail minute par minute reste accessible');
 const ph = await (await b.newContext({ viewport: { width: 375, height: 667 }, storageState: await pa.context().storageState() })).newPage();
-await ph.goto(BASE + '/parent/journal');
-ok(await ph.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth), 'aucun débordement sur téléphone');
+for (const u of ['/parent/journal', reviewUrl]) { await ph.goto(u.startsWith('http') ? u : BASE + u); ok(await ph.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth), `aucun débordement sur téléphone (${u.replace(BASE, '')})`); }
 ok(errs.length === 0, `aucune erreur JS (${errs.join(' | ')})`);
 await b.close(); await sql.end();
 console.log('\nActivité de la semaine : OK');

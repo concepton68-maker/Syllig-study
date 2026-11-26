@@ -482,3 +482,9 @@ Contre-audit de conformité des versions 0.43 à 0.45 : tout ce qui a été rele
 - En direct : minutes arrondies vers le bas comme ailleurs ; 30 derniers jours civils ; libellés sans « séance ».
 - Correction automatique : « 2² » n'est plus accepté pour 2 ; « 5 m.s-1 » est accepté pour 5.
 - Mise à jour du serveur : le nettoyage de l'ancien site d'essai ne garde plus le verrou de mise à jour, et ne recharge Caddy que si le bloc du site des élèves est toujours présent.
+
+## 0.47 — 26/11/2026
+- Activité (parent), selon la maquette validée : 3 chiffres seulement (temps de travail face à l'objectif, jours travaillés, temps par matière), puis **ce que l'enfant a fait, jour par jour** : heure, cours, durée, résultat. Filtres Leçons / Exercices / Évaluations.
+- **Revoir ensemble** : bouton « Revoir » sur chaque série d'exercices et chaque copie. Chaque question montre la réponse de l'enfant à côté du corrigé, avec les points ; filtre « À revoir » / « Toutes ».
+- Depuis une copie, « Modifier la note » ouvre l'écran de correction (motif obligatoire, tracé dans le journal). Les copies notées de « À faire » mènent aussi à « Revoir ».
+- Le détail minute par minute reste accessible.
