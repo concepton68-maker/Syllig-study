@@ -51,6 +51,12 @@ ok(body.includes('3e générale'), 'Mes cours affiche « 3e générale »');
 ok(!body.includes('Allemand'), 'aucun cours d’allemand dans le parcours');
 await el.goto(BASE + '/eleve/dossier');
 await el.getByRole('heading', { name: '3e générale' }).waitFor({ timeout: 10000 }); ok(true, 'Mon dossier scolaire : 3e générale');
+ok((await el.locator('main').innerText()).includes('points de progrès'), 'élève : ses points de progrès restent visibles');
+await pa.goto(fiche);
+await pa.getByRole('heading', { name: '3e générale' }).waitFor({ timeout: 10000 });
+const dz = (await pa.locator('main').innerText()).replace(/\s+/g, ' ');
+ok(!dz.includes('points de progrès'), 'parent : pas de points de progrès (pas une mesure du travail)');
+ok(dz.includes('cours évalués · dont') && dz.includes('au programme') && dz.includes('moyenne des meilleures notes') && dz.includes('de travail') && !dz.includes('de travail actif'), 'parent : chaque chiffre dit ce qu’il compte (évalués, acquis, disponibles, programme)');
 
 console.log('Passage dans une nouvelle année → Seconde générale');
 await pa.goto(fiche);

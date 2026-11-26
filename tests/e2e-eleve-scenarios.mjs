@@ -109,11 +109,14 @@ console.log('Bilan et révision');
 await el.goto(`${BASE}/eleve/cours/${f.id}/bilan/${att.id}`);
 await el.waitForSelector('text=Ce que tu as réussi dans cette évaluation');
 ok(true, 'bilan final visible par l’élève');
-const [pr] = await sql`select next_review_at, best_eval_score, mastery from course_progress where student_id = ${st.id} and course_id = ${f.id}`;
-ok(!!pr.next_review_at && pr.mastery >= 1, `révision programmée le ${pr.next_review_at.toLocaleDateString('fr-FR')} (niveau ${pr.mastery})`);
-await sql`update course_progress set next_review_at = now() - interval '1 hour' where student_id = ${st.id} and course_id = ${f.id}`;
+// révisions espacées : programmées à partir de la fin de la leçon (src/lib/revisions.ts)
 await el.goto(`${BASE}/eleve`);
-ok((await el.textContent('main')).includes(f.doc.title), 'la révision apparaît dans « Aujourd’hui »');
+const [pr] = await sql`select mastery from course_progress where student_id = ${st.id} and course_id = ${f.id}`;
+const [rs] = await sql`select due_at from review_schedule where student_id = ${st.id} and course_id = ${f.id}`;
+ok(!!rs && pr.mastery >= 1, `révision programmée le ${rs?.due_at.toLocaleDateString('fr-FR')} (niveau ${pr.mastery})`);
+await sql`update review_schedule set due_at = now() - interval '1 hour' where student_id = ${st.id} and course_id = ${f.id}`;
+await el.goto(`${BASE}/eleve`);
+ok((await el.locator('[data-review-today]').innerText()).includes(f.doc.title), 'la révision apparaît dans « Aujourd’hui »');
 
 // ── 6. Deuxième tentative : l'autre sujet ──
 console.log('Deuxième tentative');

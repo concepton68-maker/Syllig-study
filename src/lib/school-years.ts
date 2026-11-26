@@ -13,6 +13,7 @@ export type SubjectLine = { subject_id: number; subject: string; total: number; 
 export type YearSummary = {
   courses_total: number; published: number; started: number; acquired: number; mastered: number;
   avg: number | null; evaluations: number; active_minutes: number; points: number; subjects: SubjectLine[];
+  evaluated?: number; avg_courses?: number;   // cours avec au moins une évaluation notée ; nombre de cours dans la moyenne (absents des bilans archivés avant le 26/11/2026)
 };
 export type Level = { code: string; name: string; cycle: string | null; position: number; courses: number };
 
@@ -52,18 +53,23 @@ export async function yearSummary(studentId: string, levelCode: string, from: Da
   const lines: SubjectLine[] = subjects.map(s => ({ subject_id: s.subject_id, subject: s.subject, total: s.total, published: s.published,
     started: s.started, acquired: s.acquired, avg: s.avg === null ? null : Number(s.avg), followed: !excluded.includes(s.subject_id) }));
   const followed = subjects.filter(s => !excluded.includes(s.subject_id));
-  const [t] = await sql<{ minutes: number; points: number; evals: number; avg: string | null }[]>`
+  const [t] = await sql<{ minutes: number; points: number; evals: number; avg: string | null; evaluated: number; avg_courses: number }[]>`
     select
       (select coalesce(sum(active_seconds), 0)::int / 60 from work_sessions w where w.student_id = ${studentId} and w.started_at >= ${from} and w.started_at < ${until}) as minutes,
       (select coalesce(sum(amount), 0)::int from points_ledger pl where pl.student_id = ${studentId} and pl.at >= ${from} and pl.at < ${until}) as points,
       (select count(*)::int from eval_attempts a join courses c on c.id = a.course_id join chapters ch on ch.id = c.chapter_id join subjects s on s.id = ch.subject_id
         where a.student_id = ${studentId} and a.status = 'graded' and s.level_code = ${levelCode}) as evals,
       (select round(avg(p.best_eval_score), 2) from course_progress p join courses c on c.id = p.course_id join chapters ch on ch.id = c.chapter_id join subjects s on s.id = ch.subject_id
-        where p.student_id = ${studentId} and s.level_code = ${levelCode} and p.best_eval_score is not null) as avg`;
+        where p.student_id = ${studentId} and s.level_code = ${levelCode} and p.best_eval_score is not null and not (s.id = any(${excluded}::int[]))) as avg,
+      (select count(*)::int from course_progress p join courses c on c.id = p.course_id join chapters ch on ch.id = c.chapter_id join subjects s on s.id = ch.subject_id
+        where p.student_id = ${studentId} and s.level_code = ${levelCode} and p.best_eval_score is not null and not (s.id = any(${excluded}::int[]))) as avg_courses,
+      (select count(distinct a.course_id)::int from eval_attempts a join courses c on c.id = a.course_id join chapters ch on ch.id = c.chapter_id join subjects s on s.id = ch.subject_id
+        where a.student_id = ${studentId} and a.status = 'graded' and s.level_code = ${levelCode} and not (s.id = any(${excluded}::int[]))) as evaluated`;
   const sum = (k: 'total' | 'published' | 'started' | 'acquired' | 'mastered') => followed.reduce((a, s) => a + s[k], 0);
   return {
     courses_total: sum('total'), published: sum('published'), started: sum('started'), acquired: sum('acquired'), mastered: sum('mastered'),
     avg: t.avg === null ? null : Number(t.avg), evaluations: t.evals, active_minutes: t.minutes, points: t.points, subjects: lines,
+    evaluated: t.evaluated, avg_courses: t.avg_courses,
   };
 }
 

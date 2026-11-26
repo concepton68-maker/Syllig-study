@@ -16,9 +16,9 @@ export default async function MyRecord() {
   const past = years.filter(y => y.status === 'terminee');
   return (
     <Screen top={<PageTitle spark title="Mon dossier scolaire" sub="Ton année en cours et tout ton parcours, année après année. Chaque cours acquis s’ajoute à ton dossier." />}>
-      {current && <YearCard year={current} summary={live} firstName={student.first_name} />}
+      {current && <YearCard year={current} summary={live} firstName={student.first_name} audience="eleve" />}
       {past.length > 0 && <h2 className="text-lg font-semibold m-0 mt-2">Mes années précédentes</h2>}
-      {past.map(y => <YearCard key={y.id} year={y} summary={y.summary} firstName={student.first_name} />)}
+      {past.map(y => <YearCard key={y.id} year={y} summary={y.summary} firstName={student.first_name} audience="eleve" />)}
     </Screen>
   );
 }

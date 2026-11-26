@@ -509,4 +509,9 @@ Contre-audit de conformité des versions 0.43 à 0.45 : tout ce qui a été rele
   - Au plus 2 cours par jour.
   - L'élève voit « Ta révision du jour » sur son accueil.
   - Le parent voit chaque révision dans le Bilan, avec la règle de calcul, les études sur lesquelles elle repose et ce qui reste une convention. L'Activité a un filtre « Révisions ».
+- Dossier scolaire, chiffres précisés :
+  - « cours évalués » (au moins une évaluation notée), dont les cours acquis (14/20 ou plus), sur les cours disponibles et sur le programme. Avant, un seul chiffre « acquis / programme » mêlait les cours pas encore publiés.
+  - « moyenne des meilleures notes » avec le nombre de cours ;
+  - « de travail » avec sa période ;
+  - pour le parent, le nombre d'évaluations notées à la place des points de progrès, qui restent visibles pour l'élève.
 - Le numéro de version n'est plus visible que pour l'administrateur.
