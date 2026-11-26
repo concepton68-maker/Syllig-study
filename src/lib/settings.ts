@@ -1,6 +1,6 @@
 // Règles parentales par élève (stockées dans students.settings), avec valeurs par défaut du cadrage.
 export type StudentSettings = {
-  weekly_goal_minutes: number;   // objectif de temps actif par semaine
+  weekly_goal_minutes: number;   // objectif de temps de travail par semaine
   retry_delay_days: number;      // délai avant une nouvelle tentative d'évaluation
   eval_requires_approval: boolean;
   idle_seconds: number;          // sans aucun geste, page au premier plan : pause du temps compté (10 min par défaut : brouillon, réflexion…)

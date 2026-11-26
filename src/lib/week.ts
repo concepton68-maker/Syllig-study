@@ -70,7 +70,7 @@ export async function weekReport(student: Student, ref?: string): Promise<Week> 
   const sid = student.id;
   const goal = student.settings.weekly_goal_minutes;
 
-  // temps actif par jour sur 4 semaines (calendrier), dont la semaine affichée
+  // temps de travail par jour sur 4 semaines (calendrier), dont la semaine affichée
   const perDay = await sql<{ day: string; s: number }[]>`
     select to_char((started_at at time zone ${PARIS})::date, 'YYYY-MM-DD') as day, sum(active_seconds)::int as s
     from work_sessions where student_id = ${sid} and started_at >= ${b.cal_start} and started_at < ${b.end} group by 1`;

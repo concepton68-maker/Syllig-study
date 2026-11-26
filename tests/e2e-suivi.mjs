@@ -48,7 +48,7 @@ ok(true, 'le parent voit « En pause »');
 await pa.waitForSelector('svg rect[data-seg="pause"]', { timeout: 15000 });
 ok(true, 'la frise montre la pause');
 await pa.locator('svg rect[data-seg="pause"]').first().focus();   // focus clavier : même bulle qu’au survol, sans dépendre de la largeur du bloc
-ok((await pa.locator('.bg-ink').first().innerText()).includes('Pause'), 'bulle au survol d’un bloc (« Pause »)');
+ok((await pa.locator('.bg-ink').first().innerText()).includes('En pause'), 'bulle au survol d’un bloc (« En pause »)');
 
 console.log('Fin de séance');
 await wait(1500); await act({ action: 'end', session, active: false });

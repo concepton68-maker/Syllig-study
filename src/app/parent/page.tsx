@@ -24,7 +24,7 @@ export default async function ParentDashboard({ searchParams }: { searchParams: 
   }
   const q = `?eleve=${student.id}`;
   const [live, w, subjects] = await Promise.all([liveStatus(student.id), weekReport(student), subjectProgress(student.id, student.level_code)]);
-  const LIVE = { travaille: ['Au travail', 'bg-brand-soft text-brand-dark'], pause: ['Temps de travail en pause', 'bg-soft text-ink-2'], hors_ligne: ['Aucune page de travail ouverte', 'bg-soft text-ink-2'] }[live.state];
+  const LIVE = { travaille: ['Au travail', 'bg-brand-soft text-brand-dark'], pause: ['En pause', 'bg-soft text-ink-2'], hors_ligne: ['Aucune page de travail ouverte', 'bg-soft text-ink-2'] }[live.state];
   const toGrade = await sql<{ n: number }[]>`select count(*)::int as n from eval_attempts where student_id = ${student.id} and status = 'submitted'`;
   const requests = await sql<{ n: number }[]>`select count(*)::int as n from eval_attempts where student_id = ${student.id} and status = 'requested'`;
   const nGrade = toGrade[0].n, nReq = requests[0].n;
@@ -59,7 +59,7 @@ export default async function ParentDashboard({ searchParams }: { searchParams: 
             <circle cx="32" cy="32" r={R} fill="none" stroke="var(--color-track)" strokeWidth="8" />
             {pct > 0 && <circle cx="32" cy="32" r={R} fill="none" stroke="var(--color-brand)" strokeWidth="8" strokeLinecap="round" strokeDasharray={`${pct * L} ${L}`} transform="rotate(-90 32 32)" />}
           </svg>
-          <span className="flex flex-col"><strong className="text-[22px]">{hm(w.active_min)}</strong><span className="text-[13px] muted">temps actif · objectif {hm(w.goal_min)}</span></span>
+          <span className="flex flex-col"><strong className="text-[22px]">{hm(w.active_min)}</strong><span className="text-[13px] muted">temps de travail · objectif {hm(w.goal_min)}</span></span>
         </div>
         <span className="flex flex-col"><strong className="text-[22px]">{w.days_worked} / 7 jours</strong><span className="text-[13px] muted">10 min ou plus</span></span>
         <Link className="btn ml-auto" href={`/parent/journal${q}`}>Ce que {student.first_name} a fait ›</Link>

@@ -33,7 +33,7 @@ export function LiveBoard({ studentId, name, initial, idleMin = 10 }: { studentI
 
   const { live, today } = data;
   const now = new Date(data.now);
-  const label = live.state === 'travaille' ? 'Au travail' : live.state === 'pause' ? 'Temps de travail en pause' : 'Aucune page de travail ouverte';
+  const label = live.state === 'travaille' ? 'Au travail' : live.state === 'pause' ? 'En pause' : 'Aucune page de travail ouverte';
   const dot = live.state === 'travaille' ? C_WORK : live.state === 'pause' ? C_PAUSE : '#98A2B3';
   // fenêtre de la frise : 8 h – 21 h, élargie si besoin
   const hs = today.segments.flatMap(s => [parisH(new Date(s.start)), parisH(new Date(s.end))]);
@@ -57,20 +57,20 @@ export function LiveBoard({ studentId, name, initial, idleMin = 10 }: { studentI
           </span>
         </span>
         {live.state !== 'hors_ligne' && (
-          <span className="text-sm"><strong className="text-lg">{live.sessionActiveMin} min</strong> actives sur cette page<span className="block muted">sur {live.sessionMin} min depuis son ouverture</span></span>
+          <span className="text-sm"><strong className="text-lg">{live.sessionActiveMin} min</strong> de travail sur cette page</span>
         )}
-        <span className="muted text-xs basis-full">Mise à jour toutes les 10 secondes. « Au travail » : page de travail ouverte devant l’élève (réflexion et brouillon compris). « En pause » : page cachée (autre onglet, fenêtre réduite, écran verrouillé) ou rien touché depuis {idleMin} min.</span>
+        <span className="muted text-xs basis-full">Mise à jour toutes les 10 secondes. « Au travail » : page de travail visible à l’écran (réflexion et brouillon compris). « En pause » : page cachée (autre onglet, fenêtre réduite, écran verrouillé) ou rien touché depuis {idleMin} min. Si personne ne répond alors à « Tu es là ? » dans les 60 s, la séance se ferme et ces {idleMin} min ne sont pas comptées.</span>
       </section>
 
       <section className="card flex flex-col gap-3">
         <div className="flex flex-wrap items-baseline gap-x-5 gap-y-1">
           <h2 className="text-lg font-semibold mr-auto">Aujourd’hui, heure par heure</h2>
           <span className="flex items-center gap-1.5 text-sm"><i className="inline-block w-3 h-3 rounded-sm" style={{ background: C_WORK }} /> Travail <strong data-today-active>{dur(today.active)}</strong></span>
-          <span className="flex items-center gap-1.5 text-sm"><i className="inline-block w-3 h-3 rounded-sm" style={{ background: C_PAUSE }} /> Pause <strong>{dur(today.pause)}</strong></span>
+          <span className="flex items-center gap-1.5 text-sm"><i className="inline-block w-3 h-3 rounded-sm" style={{ background: C_PAUSE }} /> En pause <strong>{dur(today.pause)}</strong></span>
         </div>
         <div className="relative" onMouseLeave={() => setTip(null)}>
           <div className="relative h-[30px] mt-5">
-            <svg viewBox={`0 0 ${W} 30`} preserveAspectRatio="none" className="absolute inset-0 w-full h-full block rounded-md" role="img" aria-label={`Frise de la journée : ${dur(today.active)} de travail effectif, ${dur(today.pause)} de pause`}>
+            <svg viewBox={`0 0 ${W} 30`} preserveAspectRatio="none" className="absolute inset-0 w-full h-full block rounded-md" role="img" aria-label={`Frise de la journée : ${dur(today.active)} de travail, ${dur(today.pause)} de pause`}>
               <rect x={0} y={0} width={W} height={30} fill="var(--color-track)" />
               {today.segments.map((s, i) => {
                 const a = x(parisH(new Date(s.start))), b = x(parisH(new Date(s.end)));
@@ -93,7 +93,7 @@ export function LiveBoard({ studentId, name, initial, idleMin = 10 }: { studentI
           {tip && (
             <div className="absolute top-3 -translate-x-1/2 -translate-y-full bg-ink text-white text-xs rounded-md px-2.5 py-1.5 pointer-events-none whitespace-nowrap shadow"
               style={{ left: `${Math.min(88, Math.max(12, tip.x * 100))}%` }}>
-              <strong>{tip.seg.state === 'travail' ? 'Travail' : 'Pause'}</strong> · {hhmm(new Date(tip.seg.start))} – {hhmm(new Date(tip.seg.end))} ({dur((new Date(tip.seg.end).getTime() - new Date(tip.seg.start).getTime()) / 1000)})
+              <strong>{tip.seg.state === 'travail' ? 'Travail' : 'En pause'}</strong> · {hhmm(new Date(tip.seg.start))} – {hhmm(new Date(tip.seg.end))} ({dur((new Date(tip.seg.end).getTime() - new Date(tip.seg.start).getTime()) / 1000)})
               <span className="block opacity-80">{KIND[tip.seg.kind] ?? 'Travail'}{tip.seg.course ? ` · ${tip.seg.course}` : ''}</span>
             </div>
           )}

@@ -26,10 +26,10 @@ export function TrajectoryCard({ tr, name, goalMin }: { tr: Trajectory; name: st
           {tr.compareNote && <span className="muted text-xs" data-rule-note>{tr.compareNote} Pas de flèche sur le temps ni sur les jours.</span>}
         </div>
         <div className="flex flex-col gap-1">
-          <h3 className="text-base font-semibold m-0">Temps de travail effectif par semaine</h3>
+          <h3 className="text-base font-semibold m-0">Temps de travail par semaine</h3>
           <span className="muted text-xs">Ligne pointillée : l’objectif que vous avez fixé ({goalMin} min). Semaine en cours en pointillés : elle n’est pas finie.</span>
           <WeeklyBars goal={goalMin} bars={tr.weeks.map(w => ({ key: w.week, label: w.label, value: w.minutes, current: w.current,
-            tip: w.started ? [`Semaine du ${w.label}${w.current ? ' (en cours)' : ''}`, `${w.minutes} min de travail effectif`, `${w.days} jour${w.days > 1 ? 's' : ''} avec 10 min ou plus`] : [`Semaine du ${w.label}`, 'avant la première activité'] }))} />
+            tip: w.started ? [`Semaine du ${w.label}${w.current ? ' (en cours)' : ''}`, `${w.minutes} min de travail`, `${w.days} jour${w.days > 1 ? 's' : ''} avec 10 min ou plus`] : [`Semaine du ${w.label}`, 'avant la première activité'] }))} />
         </div>
         <div className="flex flex-col gap-1">
           <h3 className="text-base font-semibold m-0">Réussite par semaine</h3>

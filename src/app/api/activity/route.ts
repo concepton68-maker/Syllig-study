@@ -55,12 +55,15 @@ export async function POST(req: Request) {
       last_beat_at = now()
     where id = ${body.session} and student_id = ${st.id} and ended_at is null returning id`;
   if (!s) return NextResponse.json({ error: 'séance terminée' }, { status: 409 });
-  if (body.action === 'end' && body.abandoned) {
+  const [kindRow] = body.action === 'end' && body.abandoned ? await sql<{ kind: string }[]>`select kind from work_sessions where id = ${body.session} and student_id = ${st.id}` : [];
+  if (body.action === 'end' && body.abandoned && kindRow && kindRow.kind !== 'evaluation') {
     // personne n'a répondu à « Tu es là ? » : le temps s'arrête au dernier geste (la période sans geste n'est pas comptée)
     await sql`update activity_beats set active = false, gesture = false where session_id = ${body.session} and student_id = ${st.id}
       and at > now() - make_interval(secs => ${body.abandoned})`;
-    const [r] = await sql<{ removed: number }[]>`update work_sessions w set active_seconds = x.a from (
-        select coalesce(sum(seconds) filter (where active), 0)::int as a from activity_beats where session_id = ${body.session}) x
+    const [r] = await sql<{ removed: number }[]>`update work_sessions w set active_seconds = x.a,
+        gesture_seconds = case when w.gesture_seconds is null then null else x.g end from (
+        select coalesce(sum(seconds) filter (where active), 0)::int as a, coalesce(sum(seconds) filter (where active and gesture), 0)::int as g
+        from activity_beats where session_id = ${body.session}) x
       where w.id = ${body.session} and w.student_id = ${st.id} returning (select active_seconds from work_sessions where id = ${body.session}) - x.a as removed`;
     const [w] = await sql<{ course_id: number | null }[]>`select course_id from work_sessions where id = ${body.session}`;
     await logEvent(st.id, 'seance_fermee_sans_reponse', { courseId: w?.course_id ?? null, data: { retire_s: Math.max(0, r?.removed ?? 0) } });

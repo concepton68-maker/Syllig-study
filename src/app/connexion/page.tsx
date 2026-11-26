@@ -10,7 +10,7 @@ export const dynamic = 'force-dynamic';
 const POINTS = [
   { icon: Target, title: 'Un parcours calculé chaque jour', text: 'Les priorités du programme d’abord, puis les révisions au bon moment.' },
   { icon: LineChart, title: 'Des progrès visibles', text: 'Niveaux de maîtrise, points de progrès et carte des forces et des points à travailler.' },
-  { icon: ShieldCheck, title: 'Un temps de travail mesuré', text: 'Seul le temps actif sur la page compte, horodaté par le serveur.' },
+  { icon: ShieldCheck, title: 'Un temps de travail mesuré', text: 'Le temps de travail est mesuré par le serveur, page de travail visible à l’écran.' },
 ];
 
 export default async function LoginPage() {

@@ -28,9 +28,9 @@ export function EngagementCard({ f, name, idleMin = 10 }: { f: Facts; name: stri
         <div>
           <h3 className="text-base font-semibold m-0 mb-1">Le travail fourni</h3>
           <ul className="list-none m-0 p-0">
-            <Row testid="jours" label="Jours travaillés" value={`${w.days} sur 28`} def="jours où le temps effectif cumulé atteint 10 minutes" />
-            <Row testid="temps" label="Temps de travail effectif" value={`${fr(w.active_min)} min`} def={`objectif que vous avez fixé : ${fr(w.goal_min)} min sur 28 jours`} />
-            <Row testid="lecons" label="Leçons terminées" value={String(w.lessons_done)} def={w.lessons_done ? `temps actif sur ces leçons depuis leur début : ${fr(w.lesson_min)} min, pour ${fr(w.lesson_expected_min)} min prévues` : 'aucune sur la période'} />
+            <Row testid="jours" label="Jours travaillés" value={`${w.days} sur 28`} def="jours où le temps de travail cumulé atteint 10 minutes" />
+            <Row testid="temps" label="Temps de travail" value={`${fr(w.active_min)} min`} def={`page de travail visible à l’écran, réflexion comprise ; objectif que vous avez fixé : ${fr(w.goal_min)} min sur 28 jours`} />
+            <Row testid="lecons" label="Leçons terminées" value={String(w.lessons_done)} def={w.lessons_done ? `temps de travail sur ces leçons depuis leur début : ${fr(w.lesson_min)} min, pour ${fr(w.lesson_expected_min)} min prévues` : 'aucune sur la période'} />
             <Row testid="copies" label="Copies sans question vide" value={ratio(e.no_blank, e.submitted)} def="copies remises sur la période, notées ou non" />
             <Row testid="temps-copies" label="Temps utilisé pendant les évaluations" value={e.submitted ? `${fr(e.used_min)} min sur ${fr(e.allowed_min)}` : '—'} def="total du temps utilisé sur le total du temps accordé (tiers-temps compris)" />
             <Row testid="sorties" label="Page de l’évaluation masquée" value={String(e.focus_losses)} def="nombre de fois (autre onglet, autre application ou écran verrouillé)" />
@@ -52,7 +52,7 @@ export function EngagementCard({ f, name, idleMin = 10 }: { f: Facts; name: stri
           <summary className="cursor-pointer muted">Par matière</summary>
           <div className="overflow-x-auto">
             <table className="w-full mt-2 text-sm min-w-[520px]">
-              <thead><tr className="text-left muted"><th className="py-1 font-medium">Matière</th><th className="font-medium">Temps effectif</th><th className="font-medium">Contrôles 1er coup</th><th className="font-medium">Exercices</th><th className="font-medium">Copies sans question vide</th></tr></thead>
+              <thead><tr className="text-left muted"><th className="py-1 font-medium">Matière</th><th className="font-medium">Temps de travail</th><th className="font-medium">Contrôles 1er coup</th><th className="font-medium">Exercices</th><th className="font-medium">Copies sans question vide</th></tr></thead>
               <tbody>{f.subjects.map(s => (
                 <tr key={s.subject} className="border-t border-soft"><td className="py-1">{s.subject}</td><td>{s.active_min} min</td><td>{ratio(s.cp_ok, s.cp_total)}</td><td>{ratio(s.ex_ok, s.ex_total)}</td>
                   <td>{s.full.length ? `${s.full.length} · moy. ${fr(Math.round((s.full.reduce((a, b) => a + b, 0) / s.full.length) * 10) / 10)}/20` : '—'}{s.withBlank ? ` · ${s.withBlank} avec questions vides` : ''}{s.pending ? ` · ${s.pending} en correction` : ''}</td></tr>

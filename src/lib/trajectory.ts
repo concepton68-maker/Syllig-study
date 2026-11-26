@@ -99,7 +99,7 @@ export async function trajectory(studentId: string): Promise<Trajectory> {
   const mixed = !!ruleAt && ruleAt.getTime() > weeks[weeks.length - 9].start.getTime();
   const notesB = okB ? before.flatMap(r => r.notes) : [], notesA = okA ? after.flatMap(r => r.notes) : [];
   const compare: Compare[] = [
-    cmp('Temps de travail effectif', okB ? sum(before, r => r.minutes) : null, okA ? sum(after, r => r.minutes) : null, x => `${x} min`),
+    cmp('Temps de travail', okB ? sum(before, r => r.minutes) : null, okA ? sum(after, r => r.minutes) : null, x => `${x} min`),
     cmp('Jours travaillés (10 min ou plus)', okB ? sum(before, r => r.days) : null, okA ? sum(after, r => r.days) : null, x => `${x} j`),
     rate('Contrôles réussis du premier coup', r => r.cp_ok, r => r.cp_total),
     rate('Exercices réussis (corrigés par la plateforme)', r => r.ex_ok, r => r.ex_total),

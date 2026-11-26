@@ -1,7 +1,7 @@
 import 'server-only';
 import { sql } from './db';
 
-// Un « jour travaillé » : au moins 10 minutes de temps effectif cumulé dans la journée (heure de Paris). Même seuil partout.
+// Un « jour travaillé » : au moins 10 minutes de temps de travail cumulé dans la journée (heure de Paris). Même seuil partout.
 export const WORK_DAY_S = 600;
 
 const WEEK_START = sql`(date_trunc('week', now() at time zone 'Europe/Paris') at time zone 'Europe/Paris')`;
@@ -24,7 +24,7 @@ export async function weekStats(studentId: string) {
   return { days, active, open, activeDays: days.filter(d => d.active >= WORK_DAY_S).length, week_points, total_points };
 }
 
-// Série : jours consécutifs (jusqu'à aujourd'hui ou hier) avec au moins 5 min de travail actif
+// Série : jours consécutifs (jusqu'à aujourd'hui ou hier) avec au moins 5 min de travail
 export async function streak(studentId: string) {
   const rows = await sql<{ day: string }[]>`
     select (started_at at time zone 'Europe/Paris')::date::text as day from work_sessions

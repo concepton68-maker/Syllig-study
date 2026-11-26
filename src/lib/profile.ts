@@ -3,7 +3,7 @@ import { sql } from './db';
 import { evalQuestions, type CourseDocument, type Question } from './course-format';
 import { versionById } from './progress';
 
-// Profil d'apprentissage d'un élève : uniquement des faits mesurés par la plateforme (temps actif, points de contrôle,
+// Profil d'apprentissage d'un élève : uniquement des faits mesurés par la plateforme (temps de travail, points de contrôle,
 // exercices, évaluations). Ils sont montrés tels quels au parent et servent de base au bilan de l'IA.
 
 export type Flag = { code: 'lecon_survolee' | 'controles_au_hasard' | 'evaluation_baclee' | 'copie_vide' | 'ecart_exercices_evaluation' | 'distraction' | 'temps_correct'; label: string };

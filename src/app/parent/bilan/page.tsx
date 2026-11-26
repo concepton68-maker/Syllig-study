@@ -74,7 +74,7 @@ export default async function Bilan({ searchParams }: { searchParams: Promise<{ 
         <div className="flex flex-wrap items-baseline justify-between gap-2"><h2 id="temps-semaine" className="text-lg font-semibold m-0">Temps de travail par semaine <span className="muted font-normal text-sm">· 12 dernières semaines</span></h2>
           <span className="text-[13px] muted">pointillés : objectif {student.settings.weekly_goal_minutes} min · semaine en cours en pointillés</span></div>
         <WeeklyBars goal={student.settings.weekly_goal_minutes} bars={traj.weeks.map(w => ({ key: w.week, label: w.label, value: w.minutes, current: w.current,
-          tip: w.started ? [`Semaine du ${w.label}${w.current ? ' (en cours)' : ''}`, `${w.minutes} min de travail effectif`, `${w.days} jour${w.days > 1 ? 's' : ''} avec 10 min ou plus`] : [`Semaine du ${w.label}`, 'avant la première activité'] }))} />
+          tip: w.started ? [`Semaine du ${w.label}${w.current ? ' (en cours)' : ''}`, `${w.minutes} min de travail`, `${w.days} jour${w.days > 1 ? 's' : ''} avec 10 min ou plus`] : [`Semaine du ${w.label}`, 'avant la première activité'] }))} />
         {traj.timeNote && <span className="muted text-xs" data-rule-note>{traj.timeNote}</span>}
       </section>
 
@@ -139,7 +139,7 @@ export default async function Bilan({ searchParams }: { searchParams: Promise<{ 
       <section className="card flex flex-col gap-3" aria-labelledby="faits">
         <h2 id="faits" className="text-xl font-semibold m-0 flex items-center gap-2"><Gauge size={20} aria-hidden="true" />Ce que montrent les chiffres</h2>
         <p className="muted text-sm m-0">
-          {profile.global.courses} cours commencé{profile.global.courses > 1 ? 's' : ''} · {fr(profile.global.active_min)} min de travail actif sur {profile.global.days_active} jour{profile.global.days_active > 1 ? 's' : ''}
+          {profile.global.courses} cours commencé{profile.global.courses > 1 ? 's' : ''} · {fr(profile.global.active_min)} min de travail sur {profile.global.days_active} jour{profile.global.days_active > 1 ? 's' : ''}
           {' · '}{profile.global.evaluations ? `moyenne des évaluations ${fr(profile.global.eval_avg!)}/20 (${profile.global.evaluations})` : 'aucune évaluation notée'}
         </p>
         {profile.courses.length === 0 ? <p className="m-0 text-sm">Pas encore de travail enregistré.</p> : (
@@ -147,7 +147,7 @@ export default async function Bilan({ searchParams }: { searchParams: Promise<{ 
             {profile.courses.map(c => <CourseRow key={c.course_id} c={c} />)}
           </div>
         )}
-        <p className="muted text-xs m-0">Temps actif : page de travail visible, avec un geste depuis moins de {student.settings.idle_seconds / 60} min (le délai laisse le temps au brouillon et à la réflexion) ; il s’arrête si la page est cachée (autre onglet, fenêtre réduite, écran verrouillé). Chiffres depuis l’inscription.</p>
+        <p className="muted text-xs m-0">Temps de travail : page de travail visible à l’écran, réflexion et brouillon compris ; il s’arrête si la page est cachée (autre onglet, fenêtre réduite, écran verrouillé) ou après {student.settings.idle_seconds / 60} min sans rien toucher, et ces minutes ne comptent pas si personne ne répond à « Tu es là ? ». Chiffres depuis l’inscription.</p>
       </section>
         </Fold>
         <Fold id="confidentialite" title="Confidentialité et IA" sub={`correction par l’IA : ${consent.correction ? 'oui' : 'non'} · bilan par l’IA : ${consent.bilan ? 'oui' : 'non'}`} open={!!sp.consentement}>

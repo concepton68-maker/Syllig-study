@@ -14,7 +14,7 @@ export function RulesForm({ studentId, s, levels, level }: { studentId: string; 
         <BirthClassFields levels={levels} birth={s.birth} gender={s.gender} level={level} extraTime={s.extra_time} fixedLevel />
       </fieldset>
       <div className="flex flex-wrap gap-4">
-        <label className="flex-[1_1_200px] flex flex-col gap-1.5 text-sm font-semibold">Temps actif visé par semaine
+        <label className="flex-[1_1_200px] flex flex-col gap-1.5 text-sm font-semibold">Temps de travail visé par semaine
           <select className="field" name="goal_h" defaultValue={String(s.weekly_goal_minutes / 60)}>{[2, 3, 4, 5, 6, 7, 8, 10].map(h => <option key={h} value={h}>{h} h</option>)}</select>
         </label>
         <label className="flex-[1_1_200px] flex flex-col gap-1.5 text-sm font-semibold">Délai avant de retenter une évaluation

@@ -35,7 +35,7 @@ function describe(e: string, d: Record<string, unknown>) {
   if (d.duree_min !== undefined && d.duree_min !== null) p.push(`${String(d.duree_min).replace('.', ',')} min`);
   if (d.absence_s !== undefined) p.push(`hors de la page ${d.absence_s} s`);
   if (d.actif_s !== undefined) p.push(`${Math.floor(Number(d.actif_s) / 60)} min de travail`);
-  if (d.retire_s !== undefined) p.push(`${Math.floor(Number(d.retire_s) / 60)} min sans geste non comptées`);
+  if (d.retire_s !== undefined && Number(d.retire_s) >= 60) p.push(`${Math.floor(Number(d.retire_s) / 60)} min sans geste non comptées`);
   if (d.libelle) p.push(String(d.libelle));
   if (e === 'niveau_corrige') p.push(`${LEVEL_NAMES[String(d.avant)] ?? d.avant} → ${LEVEL_NAMES[String(d.apres)] ?? d.apres}`);
   if (e === 'annee_scolaire_commencee') p.push(`${d.annee ?? ''} · ${LEVEL_NAMES[String(d.niveau)] ?? d.niveau}`);
@@ -94,7 +94,7 @@ export default async function Journal({ searchParams }: { searchParams: Promise<
         const ev = events.filter(e => dayKey(e.at) === d);
         const t = totals.find(x => x.d === d);
         const min = Math.floor((t?.s ?? 0) / 60);
-        const rythm = t && t.g !== null && t.gs >= 60 ? Math.round((t.g / t.gs) * 100) : null;
+        const rythm = t && t.g !== null && t.gs >= 300 ? Math.round((t.g / t.gs) * 100) : null;
         return (
           <details key={d} open={i === 0} className="card" data-day={d}>
             <summary className="cursor-pointer flex flex-wrap justify-between gap-x-4 gap-y-1 items-baseline">
@@ -112,7 +112,7 @@ export default async function Journal({ searchParams }: { searchParams: Promise<
           </details>
         );
       })}
-      <p className="m-0 text-xs muted">Temps de travail : page de travail ouverte devant l’élève ; il s’arrête si la page est cachée ou après {Math.round(student.settings.idle_seconds / 60)} min sans rien toucher. Rythme : part de ce temps avec un geste (clic, défilement, saisie) dans la minute ; ni bon ni mauvais en soi, mesuré depuis le 26/11/2026. Chaque événement porte l’empreinte du précédent : une ligne effacée ou modifiée serait détectée. Heures du serveur.</p>
+      <p className="m-0 text-xs muted">Temps de travail : page de travail visible à l’écran ; il s’arrête si la page est cachée ou après {Math.round(student.settings.idle_seconds / 60)} min sans rien toucher ; si personne ne répond alors à « Tu es là ? » dans les 60 s, la séance se ferme et ces minutes ne sont pas comptées. Rythme (au moins 5 min de travail mesurées) : part de ce temps avec un geste (clic, défilement, saisie, souris ou toucher) dans la minute ; ni bon ni mauvais en soi, mesuré depuis le 26/11/2026. Chaque événement porte l’empreinte du précédent : une ligne effacée ou modifiée serait détectée. Heures du serveur.</p>
       {more && <Link className="btn self-start" href={q({ avant: days.at(-1)! })}>Jours précédents ›</Link>}
     </Screen>
   );

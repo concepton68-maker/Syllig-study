@@ -30,7 +30,7 @@ export async function liveStatus(studentId: string): Promise<Live> {
   };
 }
 
-// Frise d'une journée (heure de Paris) : blocs de travail effectif et de pause, fusionnés quand ils se suivent
+// Frise d'une journée (heure de Paris) : blocs de travail et de pause, fusionnés quand ils se suivent
 export async function dayTimeline(studentId: string, day?: string): Promise<{ day: string; segments: Segment[]; active: number; pause: number }> {
   const d = day ?? new Date().toLocaleDateString('sv-SE', { timeZone: 'Europe/Paris' });
   const beats = await sql<{ at: Date; seconds: number; active: boolean; kind: string; course: string | null; session_id: string }[]>`
@@ -51,7 +51,7 @@ export async function dayTimeline(studentId: string, day?: string): Promise<{ da
   return { day: d, segments: segs, active, pause };
 }
 
-// 7 derniers jours : travail effectif et pauses par jour (totaux des séances, donc aussi l'historique d'avant les signaux)
+// 7 derniers jours : travail et pauses par jour (totaux des séances, donc aussi l'historique d'avant les signaux)
 export async function lastDays(studentId: string, n = 7): Promise<DaySeries[]> {
   const rows = await sql<{ day: string; active: number; open: number }[]>`
     with d as (select generate_series(0, ${n - 1}) as i)
@@ -63,7 +63,7 @@ export async function lastDays(studentId: string, n = 7): Promise<DaySeries[]> {
     label: new Date(`${r.day}T12:00:00Z`).toLocaleDateString('fr-FR', { weekday: 'short', day: 'numeric' }) }));
 }
 
-// Répartition du travail effectif (30 derniers jours) par activité et par matière ; indicateurs de la semaine
+// Répartition du travail (30 derniers jours) par activité et par matière ; indicateurs de la semaine
 export async function breakdown(studentId: string) {
   const byKind = await sql<{ kind: string; s: number }[]>`
     select kind, sum(active_seconds)::int as s from work_sessions where student_id = ${studentId} and started_at >= (((now() at time zone 'Europe/Paris')::date - 29)::timestamp at time zone 'Europe/Paris') group by kind order by 2 desc`;

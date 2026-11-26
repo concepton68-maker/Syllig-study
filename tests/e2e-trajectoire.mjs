@@ -44,7 +44,7 @@ ok(await pa.locator('[data-weekly-time] [data-bar-week]').count() === 12, 'temps
 await pa.click('[data-fold="chiffres"] > summary');
 const card = pa.locator('[data-trajectory]');
 const row = async label => (await card.locator(`[data-compare-row="${label}"]`).innerText()).replace(/\s+/g, ' ');
-ok((await row('Temps de travail effectif')).includes(`${minutesBefore} min → ${minutesAfter} min`), `temps : ${await row('Temps de travail effectif')} (attendu ${minutesBefore} → ${minutesAfter})`);
+ok((await row('Temps de travail')).includes(`${minutesBefore} min → ${minutesAfter} min`), `temps : ${await row('Temps de travail')} (attendu ${minutesBefore} → ${minutesAfter})`);
 ok((await row('Exercices réussis (corrigés par la plateforme)')).includes(`${exBefore} % (36 sur 80) → ${exAfter} % (68 sur 80)`), `exercices : ${await row('Exercices réussis (corrigés par la plateforme)')} (attendu ${exBefore} % → ${exAfter} %)`);
 ok((await row('Moyenne des copies sans question vide')).includes('— → —'), 'pas de copie : « — », pas de valeur inventée');
 await card.locator('details summary').first().click();
@@ -57,7 +57,7 @@ ok(mt.includes('Exercices (8)') && mt.includes('3/10') && mt.includes('10/10') &
 ok((await card.locator('[data-feeling="q6"]').innerText()).includes('Plutôt pas → Tout à fait') && await card.locator('[data-feeling="q1"]').count() === 0, 'questionnaire : seulement les réponses qui ont changé, en toutes lettres');
 ok(!/hausse|baisse|lassitude|effort paie|découragement/i.test(await card.innerText()), 'aucune tendance extrapolée ni cause supposée');
 await card.locator('[data-bar-week]').nth(10).hover();
-ok((await card.innerText()).includes('min de travail effectif'), 'bulle au survol');
+ok((await card.innerText()).includes('min de travail'), 'bulle au survol');
 const ph = await (await b.newContext({ viewport: { width: 375, height: 667 }, storageState: await pa.context().storageState() })).newPage();
 await ph.goto(BASE + '/parent/bilan');
 ok(await ph.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth), 'aucun débordement sur téléphone');

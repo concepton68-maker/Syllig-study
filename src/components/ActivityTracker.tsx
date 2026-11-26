@@ -53,8 +53,10 @@ export function ActivityTracker({ kind, courseId, idleSeconds = 600 }: { kind: s
     const t = setInterval(() => setLeft(n => n - 1), 1000);
     return () => clearInterval(t);
   }, [away]);
+  const closing = useRef(false);
   useEffect(() => {
-    if (!away || left > 0) return;
+    if (!away || left > 0 || closing.current) return;
+    closing.current = true;
     const s = session.current;
     session.current = null;
     const abandoned = Math.min(3600, Math.round((Date.now() - lastInput.current) / 1000));

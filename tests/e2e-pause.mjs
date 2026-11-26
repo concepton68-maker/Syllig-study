@@ -60,12 +60,15 @@ const api = body => real.evaluate(b => fetch('/api/activity', { method: 'POST', 
 const { session } = await api({ action: 'start', kind: 'lesson', courseId: c.id });
 ok(!!session, 'séance ouverte');
 // 20 signaux de 30 s : les 8 premiers il y a plus de 10 min (4 min avec gestes), les 12 suivants dans les 10 dernières minutes (sans geste)
-for (let i = 0; i < 20; i++) await sql`insert into activity_beats (session_id, student_id, active, seconds, gesture, at) values (${session}, ${st.id}, true, 30, ${i < 8}, now() - make_interval(secs => ${(20 - i) * 30 - 5}))`;
-await sql`update work_sessions set active_seconds = 600, open_seconds = 600, gesture_seconds = 240, last_beat_at = now() where id = ${session}`;
+// gestes signalés jusqu'au 10e signal (un geste reste « récent » 60 s) : 300 s avec geste avant la fermeture
+for (let i = 0; i < 20; i++) await sql`insert into activity_beats (session_id, student_id, active, seconds, gesture, at) values (${session}, ${st.id}, true, 30, ${i < 10}, now() - make_interval(secs => ${(20 - i) * 30 - 5}))`;
+await sql`update work_sessions set active_seconds = 600, open_seconds = 600, gesture_seconds = 300, last_beat_at = now() where id = ${session}`;
 await api({ action: 'end', session, active: false, abandoned: 360 });
 const [ws] = await sql`select active_seconds, ended_at from work_sessions where id = ${session}`;
 // signaux des 360 dernières secondes (12 à 30 s, dont le dernier à 25 s) retirés : il reste 8 × 30 = 240 s (+ le signal de fin, inactif)
 ok(ws.active_seconds === 240 && ws.ended_at, `temps compté jusqu’au dernier geste : ${ws.active_seconds} s (attendu 240 s)`);
+const [wg] = await sql`select gesture_seconds from work_sessions where id = ${session}`;
+ok(wg.gesture_seconds === 240, `rythme recalculé aussi : ${wg.gesture_seconds} s avec geste sur 240 s (jamais plus de 100 %)`);
 const [ev] = await sql`select data from activity_log where student_id = ${st.id} and event = 'seance_fermee_sans_reponse' order by id desc limit 1`;
 ok(ev && ev.data.retire_s === 360, `consigné : ${ev?.data.retire_s} s sans geste non comptées`);
 
@@ -83,7 +86,7 @@ const [s15] = await sql`select settings->>'idle_seconds' as v from students wher
 ok(s15.v === '900', 'réglage enregistré : 15 min');
 await pa.goto(BASE + '/parent/suivi');
 ok((await pa.locator('[data-live]').innerText()).includes('rien touché depuis 15 min'), 'En direct : la définition dit 15 min');
-ok((await pa.locator('[data-rythm]').innerText()).includes('100 %'), 'En direct : rythme du jour 100 % (240 s avec geste sur 240 s de travail)');
+ok(await pa.locator('[data-rythm]').count() === 0, 'En direct : pas de rythme affiché sous 5 min de travail mesurées (ici 240 s)');
 await el.clock.resume(); await el.goto(BASE + '/eleve');
 ok((await el.locator('main').innerText()).includes('tu as 15 min sans rien toucher'), 'élève : « tu as 15 min sans rien toucher »');
 ok(await pa.goto(BASE + '/parent/bilan').then(() => pa.locator('[data-rule-note]').count()) >= 1, 'Bilan : note sur le changement de mesure (minutes d’avant non comparables)');

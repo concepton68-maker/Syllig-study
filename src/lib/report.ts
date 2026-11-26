@@ -32,10 +32,12 @@ export type ReportData = z.infer<typeof ReportData>;
 
 const SYSTEM = `Tu es un conseiller pédagogique expérimenté (collège et lycée en France). Tu rédiges, pour les parents, le bilan d'un élève suivi sur la plateforme Syllig Study.
 
-Tu reçois uniquement des faits mesurés par la plateforme : temps actif réellement passé sur chaque leçon (et la durée prévue), points de contrôle de la leçon (réussis du premier coup ou non), score aux exercices, évaluations (note, temps utilisé sur le temps accordé, part de questions vides, sorties de la page), questions ratées avec la réponse de l'élève et le corrigé, et les résultats d'éventuels tests de positionnement.
+Tu reçois uniquement des faits mesurés par la plateforme : temps de travail réellement passé sur chaque leçon (et la durée prévue), points de contrôle de la leçon (réussis du premier coup ou non), score aux exercices, évaluations (note, temps utilisé sur le temps accordé, part de questions vides, sorties de la page), questions ratées avec la réponse de l'élève et le corrigé, et les résultats d'éventuels tests de positionnement.
+
+Le temps de travail compte la page de travail visible à l'écran, réflexion et brouillon compris : un temps court ou long ne se juge pas. Les sorties de page pendant une évaluation sont un fait, pas une intention : ne les interprète pas.
 
 Ta mission : décrire ce que montrent les faits, sans jamais supposer de cause ni de trait de caractère (pas de « manque d'implication », de « paresse », de « manque de confiance », de « lacunes » non démontrées par une erreur précise).
-- « travail_et_resultats_28_jours » : faits sur 28 jours, le travail fourni (jours travaillés, temps effectif, copies complètes ou non) séparé des résultats (moyenne des copies complètes, contrôles, exercices corrigés automatiquement) ;
+- « travail_et_resultats_28_jours » : faits sur 28 jours, le travail fourni (jours travaillés, temps de travail, copies complètes ou non) séparé des résultats (moyenne des copies complètes, contrôles, exercices corrigés automatiquement) ;
 - « ressenti_eleve » : les réponses exactes de l'élève à un questionnaire sur sa façon de travailler. C'est son avis sur lui-même, pas une mesure : cite-le comme tel si c'est utile, sans en tirer de conclusion ;
 - une notion n'est « à revoir » (« lacunes ») que si une ou plusieurs erreurs précises la montrent : cite-les dans « preuve ». Une copie rendue vite ou vide ne permet pas de savoir si la notion est sue : dis-le, et propose le test de positionnement.
 
@@ -91,7 +93,7 @@ export async function generateReport(studentId: string, actorId: string | null):
     tests_de_positionnement: profile.placement,
     ressenti_eleve: (await sql<{ created_at: Date; answers: Record<string, number> }[]>`select created_at, answers from student_checkins where student_id = ${studentId} order by created_at desc limit 2`)
       .map(r => ({ date: r.created_at.toISOString().slice(0, 10), reponses: ITEMS.filter(it => typeof r.answers?.[it.id] === 'number').map(it => `${it.text} → ${SCALE[r.answers[it.id]]}`) })),
-    travail_et_resultats_28_jours: await workFacts(studentId),
+    travail_et_resultats_28_jours: await (async () => { const f = await workFacts(studentId); const { open_min: _o, ...work } = f.work; return { ...f, work }; })(),
     programme_syllig: programme.map(p => `${p.subject} · ${p.title}`),
   };
   let data: ReportData;

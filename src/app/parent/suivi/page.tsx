@@ -25,7 +25,7 @@ export default async function Suivi({ searchParams }: { searchParams: Promise<{ 
   // rythme du jour : part du temps de travail avec un geste dans la minute (mesuré depuis le 26/11/2026), sans jugement
   const [ry] = await sql<{ g: number | null; s: number }[]>`select sum(gesture_seconds)::int as g, coalesce(sum(active_seconds), 0)::int as s from work_sessions
     where student_id = ${student.id} and gesture_seconds is not null and (started_at at time zone 'Europe/Paris')::date = (now() at time zone 'Europe/Paris')::date`;
-  const rythm = ry.g !== null && ry.s >= 60 ? Math.round((ry.g / ry.s) * 100) : null;
+  const rythm = ry.g !== null && ry.s >= 300 ? Math.round((ry.g / ry.s) * 100) : null;
 
   return (
     <Screen top={<>
@@ -36,7 +36,7 @@ export default async function Suivi({ searchParams }: { searchParams: Promise<{ 
       <LiveBoard studentId={student.id} name={student.first_name} idleMin={student.settings.idle_seconds / 60} initial={{ live, today, now: new Date().toISOString() }} />
       <section className="card flex flex-col" aria-labelledby="seances" data-today-list>
         <div className="flex flex-wrap justify-between items-baseline gap-2 mb-2"><h2 id="seances" className="text-lg font-semibold m-0">Les séances commencées aujourd’hui</h2>
-          {rythm !== null && <span className="text-sm" data-rythm data-tip="Part du temps de travail avec un geste (clic, défilement, saisie) dans la minute. Ni bon ni mauvais en soi : réfléchir ou écrire au brouillon ne fait pas de geste." tabIndex={0}>Rythme du jour : <strong>{rythm} %</strong> <span className="muted">du temps avec un geste</span></span>}</div>
+          {rythm !== null && <span className="text-sm" data-rythm data-tip="Part du temps de travail avec un geste (clic, défilement, saisie, souris ou toucher) dans la minute. Ni bon ni mauvais en soi : réfléchir ou écrire au brouillon ne fait pas de geste." tabIndex={0}>Rythme du jour : <strong>{rythm} %</strong> <span className="muted">du temps avec un geste</span></span>}</div>
         {items.length === 0 && <p className="m-0 text-sm muted">Rien pour l’instant aujourd’hui.</p>}
         {items.map(it => (
           <div key={it.key} className="grid grid-cols-[52px_minmax(0,1fr)_auto] items-center gap-3 py-2.5 border-t border-soft text-sm">

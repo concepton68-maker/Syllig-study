@@ -20,7 +20,7 @@ export default async function Privacy() {
           <h2 className="text-xl font-semibold m-0">Données enregistrées</h2>
           <ul className="m-0 pl-5 list-disc flex flex-col gap-1">
             <li>Le compte : prénom de l’élève, identifiant, niveau ; e-mail et nom du parent.</li>
-            <li>Le travail : leçons, réponses aux exercices et évaluations, notes, temps de travail actif, journal d’activité.</li>
+            <li>Le travail : leçons, réponses aux exercices et évaluations, notes, temps de travail, journal d’activité.</li>
             <li>Les bilans pédagogiques et tests de positionnement, si le parent les demande.</li>
           </ul>
           <p className="m-0">Elles servent uniquement au suivi scolaire de l’élève par sa famille. Elles ne sont ni vendues, ni utilisées pour de la publicité.</p>

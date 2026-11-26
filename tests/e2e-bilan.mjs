@@ -129,8 +129,8 @@ const pa = await page('parent@test.local', 'parent-test-1234');
 await pa.addInitScript(() => { const f = () => document.querySelectorAll('details[data-fold]:not([open])').forEach(d => { d.open = true; }); new MutationObserver(f).observe(document, { childList: true, subtree: true }); });
 await pa.goto(BASE + '/parent/bilan');
 const facts = await pa.locator('section[aria-labelledby="faits"]').innerText();
-ok(/4 min \/ \d+ min/.test(facts) && !/survol|bâcl|distraction|correct/i.test(facts), 'leçon : 4 min de travail à côté de la durée prévue, sans jugement');
-ok(/\d+ min \/ \d+/.test(facts), 'évaluation : temps utilisé sur temps accordé, sans jugement');
+ok(/4 min \/ \d+ min/.test(facts) && !/survol|bâcl|distraction|temps correct/i.test(facts), 'leçon : 4 min de travail à côté de la durée prévue, sans jugement');
+ok(/\/20 · \d+ min \/ \d+/.test(facts), 'évaluation : note, temps utilisé sur temps accordé, sans jugement');
 ok(/Exercices\s*8\/10/.test(facts.replace(/\n/g, ' ')) || facts.includes('8/10'), 'exercices 8/10 comparés à l’évaluation 2/20');
 
 console.log('Premier bilan (Mistral, Europe)');
