@@ -90,7 +90,7 @@ export async function weekTimeline(studentId: string, monday: string): Promise<T
       result: a.status === 'graded' && a.final_score !== null ? `${fr(Number(a.final_score))}/20` : 'en correction', warn: blank > 0, href: `/parent/revoir/copie/${a.id}` });
   }
   // le reste : leçons, exercices non remis, évaluations non remises, autres pages
-  for (const g of groups.values()) {
+  for (const g of [...groups.values()].filter(g => g.sec > 0)) {   // une séance sans aucune seconde active n'est pas une activité
     const cp = g.course_id === null ? [] : cps.filter(c => c.course_id === g.course_id && dayOf(c.at) === g.day);
     const finished = g.kind === 'lesson' && done.some(d => d.course_id === g.course_id && dayOf(d.at) === g.day);
     const okN = cp.filter(c => c.ok).length;
@@ -105,8 +105,7 @@ export async function weekTimeline(studentId: string, monday: string): Promise<T
     where l.student_id = ${studentId} and l.event = 'lecon_passee' and l.at >= ${start} and l.at < ${end}`;
   for (const k of skips) items.push({ key: `skip-${k.course_id}-${k.at.getTime()}`, at: k.at.getTime(), time: hhmm(k.at), kind: 'lesson', title: k.title, subject: k.subject,
     what: 'passée pour l’instant', minutes: null, result: null, warn: false, href: null });
-  // une séance de moins d'une minute sans rien remis n'est pas une activité à retracer
-  const shown = items.filter(i => i.href || (i.minutes ?? 0) > 0 || i.result || i.key.startsWith('skip-'));
+  const shown = items;
   return weekDays.map(d => ({ day: d, minutes: dayTotal.get(d) ?? 0, items: shown.filter(i => dayOf(new Date(i.at)) === d).sort((a, b) => a.at - b.at) }));
 }
 

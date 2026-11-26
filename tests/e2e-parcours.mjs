@@ -162,7 +162,7 @@ try {
   await pa.waitForSelector('text=Note validée.');
   ok(true, 'note validée par le parent');
   await pa.goto(BASE + '/parent/journal');
-  ok((await pa.locator('[data-course-rows]').innerText()).includes('15,25/20'), 'Activité : le cours de la semaine et sa note');
+  ok((await pa.locator('[data-item="evaluation"]').first().innerText()).includes('15,25/20'), 'Activité : le cours de la semaine et sa note');
   await pa.click('text=Voir le détail minute par minute');
   await pa.waitForURL(/journal\/detail/);
   ok(await pa.isVisible('text=Journal intact'), 'journal chaîné intact');

@@ -36,7 +36,7 @@ export default async function Suivi({ searchParams }: { searchParams: Promise<{ 
           <div key={it.key} className="grid grid-cols-[52px_minmax(0,1fr)_auto] items-center gap-3 py-2.5 border-t border-soft text-sm">
             <span className="muted tabular-nums">{it.time}</span>
             <span className="min-w-0"><strong>{it.title}</strong><span className="muted"> · {[it.subject, it.what].filter(Boolean).join(' · ')}</span></span>
-            <span className="flex items-center gap-2.5 whitespace-nowrap">{it.minutes ? hm(it.minutes) : ''}{it.result ? <strong>{it.result}</strong> : null}{it.href && <Link className="font-semibold" href={it.href}>Revoir</Link>}</span>
+            <span className="flex items-center gap-2.5 whitespace-nowrap">{it.minutes === null ? '' : it.minutes ? hm(it.minutes) : 'moins d’1 min'}{it.result ? <strong>{it.result}</strong> : null}{it.href && <Link className="font-semibold" href={it.href}>Revoir</Link>}</span>
           </div>
         ))}
         <span className="text-xs muted mt-2">Une séance compte pour le jour où elle commence ; la frise ci-dessus compte chaque minute le jour où elle a lieu.</span>

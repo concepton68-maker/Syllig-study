@@ -99,7 +99,7 @@ export default async function Activite({ searchParams }: { searchParams: Promise
                   <span className="text-[13px] muted tabular-nums">{it.time}</span>
                   <span className={`size-9 rounded-[10px] grid place-items-center font-bold ${ICON[it.kind].cls}`} aria-label={ICON[it.kind].label}>{ICON[it.kind].letter}</span>
                   <span className="min-w-0 flex flex-col"><span className="text-[15px] font-semibold leading-snug">{it.title}</span>
-                    <span className="text-[13px] muted">{[it.subject, it.what, it.minutes ? hm(it.minutes) : null].filter(Boolean).join(' · ')}</span></span>
+                    <span className="text-[13px] muted">{[it.subject, it.what, it.minutes === null ? null : it.minutes ? hm(it.minutes) : 'moins d’1 min'].filter(Boolean).join(' · ')}</span></span>
                   <span className="flex items-center gap-2.5 justify-end col-span-3 sm:col-span-1">
                     {it.result && <strong className={`text-[15px] tabular-nums whitespace-nowrap ${it.warn ? 'text-warm-dark' : ''}`} data-result>{it.result}</strong>}
                     {it.href && <Link className="btn btn-primary min-h-10" href={it.href}>Revoir</Link>}
