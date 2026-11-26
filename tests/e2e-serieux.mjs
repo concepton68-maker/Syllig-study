@@ -70,7 +70,7 @@ const val = async k => (await card.locator(`[data-fact="${k}"] strong`).innerTex
 console.log('Faits mesurés (valeurs calculées à la main)');
 ok(await val('jours') === '2 sur 28', `jours travaillés comptés par jour, pas par séance : ${await val('jours')} (attendu 2 sur 28)`);
 ok(await val('temps') === '37 min', `temps effectif sur 28 jours : ${await val('temps')} (attendu 14 + 15 + 8 = 37 min)`);
-ok(await val('actif') === `${Math.round((37 / 54) * 100)} %`, `part du temps où il agit : ${await val('actif')} (37 sur 54 min)`);
+ok(await card.locator('[data-fact="actif"]').count() === 0, 'plus de « part du temps actif » (le temps sans geste est du travail)');
 ok(await val('copies') === '2 sur 3', `copies sans question vide : ${await val('copies')}`);
 ok(await val('temps-copies') === '45 min sur 100', `temps utilisé pendant les évaluations : ${await val('temps-copies')} (13 + 30 + 2 sur 40 + 30 + 30, tiers-temps compris)`);
 ok(await val('moy-completes') === '14/20', `moyenne des copies sans question vide : ${await val('moy-completes')} (12 et 16)`);

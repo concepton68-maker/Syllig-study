@@ -24,7 +24,7 @@ export default async function ParentDashboard({ searchParams }: { searchParams: 
   }
   const q = `?eleve=${student.id}`;
   const [live, w, subjects] = await Promise.all([liveStatus(student.id), weekReport(student), subjectProgress(student.id, student.level_code)]);
-  const LIVE = { travaille: ['Actif sur une page de travail', 'bg-brand-soft text-brand-dark'], pause: ['Page ouverte, sans geste', 'bg-warm-soft text-warm-dark'], hors_ligne: ['Aucune page de travail ouverte', 'bg-soft text-ink-2'] }[live.state];
+  const LIVE = { travaille: ['Au travail', 'bg-brand-soft text-brand-dark'], pause: ['Temps de travail en pause', 'bg-soft text-ink-2'], hors_ligne: ['Aucune page de travail ouverte', 'bg-soft text-ink-2'] }[live.state];
   const toGrade = await sql<{ n: number }[]>`select count(*)::int as n from eval_attempts where student_id = ${student.id} and status = 'submitted'`;
   const requests = await sql<{ n: number }[]>`select count(*)::int as n from eval_attempts where student_id = ${student.id} and status = 'requested'`;
   const nGrade = toGrade[0].n, nReq = requests[0].n;

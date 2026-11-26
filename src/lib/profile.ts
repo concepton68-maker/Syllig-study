@@ -91,20 +91,7 @@ export async function studentProfile(studentId: string): Promise<Profile> {
       exercises: { score: c.exercises_score, active_min: act('exercises') },
       evaluations: evals, flags: [],
     };
-    // signaux simples, toujours expliqués par les chiffres
-    const L = f.lesson, E = evals.at(-1);
-    if (L.done && L.expected_min > 0 && L.active_min < L.expected_min * 0.35)
-      f.flags.push({ code: 'lecon_survolee', label: `Leçon lue en ${L.active_min} min pour ${L.expected_min} prévues` });
-    else if (L.done && L.expected_min > 0 && L.active_min >= L.expected_min * 0.6)
-      f.flags.push({ code: 'temps_correct', label: `Temps de leçon correct (${L.active_min} min pour ${L.expected_min} prévues)` });
-    if (f.checkpoints.parts >= 2 && f.checkpoints.first_try_ok / f.checkpoints.parts < 0.5)
-      f.flags.push({ code: 'controles_au_hasard', label: `Points de contrôle réussis du premier coup : ${f.checkpoints.first_try_ok} sur ${f.checkpoints.parts}` });
-    if (E?.used_min && E.used_min < E.allowed_min * 0.3 && (E.score ?? 0) < 10)
-      f.flags.push({ code: 'evaluation_baclee', label: `Évaluation rendue en ${E.used_min} min sur ${E.allowed_min}` });
-    if (E && E.blank_ratio >= 0.4) f.flags.push({ code: 'copie_vide', label: `${Math.round(E.blank_ratio * 100)} % de questions laissées vides` });
-    if (E && E.score !== null && (f.exercises.score ?? 0) >= 7 && E.score < 10)
-      f.flags.push({ code: 'ecart_exercices_evaluation', label: `Exercices ${f.exercises.score}/10 mais évaluation ${E.score.toLocaleString('fr-FR')}/20` });
-    if (E && E.focus_losses >= 3) f.flags.push({ code: 'distraction', label: `A quitté la page ${E.focus_losses} fois pendant l’évaluation` });
+    // plus aucun « signal » interprété (survolée, bâclée, distraction…) : seuls les faits ci-dessus (décision du propriétaire, 26/11/2026)
     out.push(f);
   }
   const scored = out.flatMap(c => c.evaluations.filter(e => e.status === 'graded' && e.score !== null).map(e => e.score!));

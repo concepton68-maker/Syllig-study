@@ -4,31 +4,37 @@ import { useEffect, useRef, useState } from 'react';
 // Le temps compte tant que la page de travail est visible et qu'un geste a eu lieu depuis moins de `idleSeconds` (10 min par défaut :
 // le délai laisse le temps au brouillon et à la réflexion). Mesuré : page cachée = autre onglet, fenêtre réduite, écran verrouillé,
 // autre application sur téléphone ; une fenêtre posée à côté sur ordinateur laisse la page visible.
-// Rien de ce qui est tapé n'est transmis : seulement « actif » ou « inactif ».
+// Au-delà du délai : « Tu es là ? » avec un compte à rebours de 60 s ; sans réponse, la séance se ferme et le temps s'arrête
+// au dernier geste (décision du propriétaire, 26/11/2026). Jamais pendant une évaluation (son chrono officiel continue).
+// En plus, sans effet sur le temps : « geste dans la dernière minute » (rythme). Rien de ce qui est tapé n'est transmis.
+const COUNTDOWN = 60;
+
 export function ActivityTracker({ kind, courseId, idleSeconds = 600 }: { kind: string; courseId: number | null; idleSeconds?: number }) {
   const session = useRef<string | null>(null);
   const lastInput = useRef(Date.now());
   const [away, setAway] = useState(false);
   const [paused, setPaused] = useState(false);
+  const [left, setLeft] = useState(COUNTDOWN);
 
   useEffect(() => {
     let stopped = false;
-    const mark = () => { lastInput.current = Date.now(); setPaused(false); setAway(false); };
+    const mark = () => { lastInput.current = Date.now(); setPaused(false); setAway(false); setLeft(COUNTDOWN); };
     const events = ['pointerdown', 'keydown', 'scroll', 'wheel', 'touchstart', 'mousemove'] as const;
     // capture : le défilement des zones intérieures (pas seulement de la fenêtre) compte comme activité
     events.forEach(e => window.addEventListener(e, mark, { passive: true, capture: true }));
     const isActive = () => document.visibilityState === 'visible' && Date.now() - lastInput.current < idleSeconds * 1000;
+    const gesture = () => Date.now() - lastInput.current < 60_000;
     const post = (body: object) => fetch('/api/activity', { method: 'POST', body: JSON.stringify(body), keepalive: true }).then(r => r.json()).catch(() => null);
 
     post({ action: 'start', kind, courseId }).then(r => { if (!stopped && r?.session) session.current = r.session; });
     const timer = setInterval(() => {
       const idle = Date.now() - lastInput.current;
       setPaused(idle >= idleSeconds * 1000);
-      if (idle >= idleSeconds * 1000 && document.visibilityState === 'visible' && kind !== 'evaluation') setAway(true);   // jamais pendant une évaluation
-      if (session.current) post({ action: 'beat', session: session.current, active: isActive() });
+      if (idle >= idleSeconds * 1000 && document.visibilityState === 'visible' && kind !== 'evaluation') setAway(true);
+      if (session.current) post({ action: 'beat', session: session.current, active: isActive(), gesture: gesture() });
     }, 15_000);
     const end = () => {
-      if (session.current) navigator.sendBeacon('/api/activity', JSON.stringify({ action: 'end', session: session.current, active: isActive() }));
+      if (session.current) navigator.sendBeacon('/api/activity', JSON.stringify({ action: 'end', session: session.current, active: isActive(), gesture: gesture() }));
       session.current = null;
     };
     window.addEventListener('pagehide', end);
@@ -41,6 +47,21 @@ export function ActivityTracker({ kind, courseId, idleSeconds = 600 }: { kind: s
     };
   }, [kind, courseId, idleSeconds]);
 
+  // compte à rebours : sans réponse, la séance se ferme (le temps sans geste n'est pas compté) et l'élève revient à son accueil
+  useEffect(() => {
+    if (!away) return;
+    const t = setInterval(() => setLeft(n => n - 1), 1000);
+    return () => clearInterval(t);
+  }, [away]);
+  useEffect(() => {
+    if (!away || left > 0) return;
+    const s = session.current;
+    session.current = null;
+    const abandoned = Math.min(3600, Math.round((Date.now() - lastInput.current) / 1000));
+    (s ? fetch('/api/activity', { method: 'POST', body: JSON.stringify({ action: 'end', session: s, active: false, abandoned }) }).catch(() => null) : Promise.resolve())
+      .finally(() => { window.location.href = '/eleve?ferme=1'; });
+  }, [away, left]);
+
   return (
     <>
       <span className={`pill ${paused ? 'bg-soft text-ink-2' : 'bg-brand-soft text-brand-dark'}`} aria-live="polite">
@@ -51,8 +72,8 @@ export function ActivityTracker({ kind, courseId, idleSeconds = 600 }: { kind: s
         <div role="dialog" aria-modal="true" aria-labelledby="away-title" className="fixed inset-0 z-50 bg-black/40 flex items-center justify-center p-6">
           <div className="card max-w-sm flex flex-col gap-3">
             <h2 id="away-title" className="text-xl font-semibold">Tu es là ?</h2>
-            <p className="muted m-0">Le temps de travail est en pause. Il reprend dès que tu continues.</p>
-            <button className="btn btn-primary" type="button" autoFocus onClick={() => { lastInput.current = Date.now(); setAway(false); setPaused(false); }}>Je reprends</button>
+            <p className="muted m-0">Rien n’a bougé depuis {Math.round(idleSeconds / 60)} min. La séance se ferme dans <strong className="text-ink" data-countdown>{Math.max(0, left)} s</strong>.</p>
+            <button className="btn btn-primary" type="button" autoFocus onClick={() => { lastInput.current = Date.now(); setAway(false); setPaused(false); setLeft(COUNTDOWN); }}>Je suis là</button>
           </div>
         </div>
       )}

@@ -205,19 +205,13 @@ export default async function Bilan({ searchParams }: { searchParams: Promise<{ 
 
 function CourseRow({ c }: { c: CourseFacts }) {
   const e = c.evaluations.at(-1);
-  const warn = c.flags.filter(f => f.code !== 'temps_correct');   // « temps correct » est un jugement : pas affiché
   return (
     <div className="grid gap-x-4 gap-y-1.5 py-3 border-t border-soft text-sm md:grid-cols-[minmax(0,1.3fr)_repeat(4,minmax(0,1fr))]">
       <span className="min-w-0"><strong>{c.title}</strong><span className="block muted">{c.subject}</span></span>
-      <Fact label="Leçon" value={c.lesson.active_min || c.lesson.done ? `${c.lesson.active_min} min / ${c.lesson.expected_min} prévues` : '—'} />
+      <Fact label="Leçon (temps de travail / durée prévue)" value={c.lesson.active_min || c.lesson.done ? `${c.lesson.active_min} min / ${c.lesson.expected_min} min` : '—'} />
       <Fact label="Contrôles 1er coup" value={c.checkpoints.parts ? `${c.checkpoints.first_try_ok} / ${c.checkpoints.parts}` : '—'} />
       <Fact label="Exercices, meilleure série (corrigés par la plateforme)" value={c.exercises.score !== null ? `${c.exercises.score}/10` : '—'} />
       <Fact label="Évaluation" value={e ? `${e.score === null ? 'en correction' : `${fr(e.score)}/20`}${e.used_min ? ` · ${e.used_min} min / ${e.allowed_min}` : ''}` : '—'} />
-      {warn.length > 0 && (
-        <span className="md:col-span-5 flex flex-wrap gap-1.5">
-          {warn.map(f => <span key={f.code} className="pill bg-soft text-ink-2 inline-flex items-center gap-1"><AlertTriangle size={13} aria-hidden="true" />{f.label}</span>)}
-        </span>
-      )}
     </div>
   );
 }

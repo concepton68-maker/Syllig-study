@@ -37,7 +37,7 @@ ok(!!session, 'séance ouverte');
 await wait(2500); await act({ action: 'beat', session, active: true });
 await wait(2500); await act({ action: 'beat', session, active: true });
 await pa.waitForSelector('[data-live="travaille"]', { timeout: 15000 });
-ok((await pa.locator('[data-live-label]').innerText()).includes('Actif sur une page de travail'), 'le parent voit « Actif sur une page de travail » sans recharger');
+ok((await pa.locator('[data-live-label]').innerText()).includes('Au travail'), 'le parent voit « Au travail » sans recharger');
 ok((await pa.locator('[data-live]').innerText()).includes(c.title), 'le cours en cours est affiché');
 ok(await pa.locator('svg rect[data-seg="travail"]').count() >= 1, 'la frise du jour montre un bloc de travail');
 
@@ -48,7 +48,7 @@ ok(true, 'le parent voit « En pause »');
 await pa.waitForSelector('svg rect[data-seg="pause"]', { timeout: 15000 });
 ok(true, 'la frise montre la pause');
 await pa.locator('svg rect[data-seg="pause"]').first().focus();   // focus clavier : même bulle qu’au survol, sans dépendre de la largeur du bloc
-ok((await pa.locator('.bg-ink').first().innerText()).includes('Sans geste'), 'bulle au survol d’un bloc (« Sans geste »)');
+ok((await pa.locator('.bg-ink').first().innerText()).includes('Pause'), 'bulle au survol d’un bloc (« Pause »)');
 
 console.log('Fin de séance');
 await wait(1500); await act({ action: 'end', session, active: false });

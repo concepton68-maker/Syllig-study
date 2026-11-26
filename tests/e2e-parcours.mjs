@@ -167,12 +167,9 @@ try {
   await pa.waitForURL(/journal\/detail/);
   ok(await pa.isVisible('text=Journal intact'), 'journal chaîné intact');
   const today = pa.locator('[data-day]').first();
-  const blocks = await today.locator('[data-course-block]:not([data-course-block="hors"])').count();
-  ok(blocks === 1, `journal regroupé : un seul bloc pour le cours du jour (${blocks})`);
-  const blk = await today.locator('[data-course-block]').first().innerText();
-  ok(blk.includes('Leçon terminée') && /Évaluation 15,25\/20/.test(blk), 'le bloc résume la journée : leçon terminée, évaluation 15,25/20');
-  await today.locator('[data-course-block] summary').first().click();
-  ok(await today.locator('[data-course-block] details li').count() > 3, 'le détail minute par minute se déplie');
+  const tt = (await today.innerText()).replace(/\s+/g, ' ');
+  ok(tt.includes('Leçon terminée') && tt.includes('Évaluation notée') && tt.includes('15,25/20'), 'la trace du jour : une ligne par événement (leçon terminée, évaluation notée 15,25/20)');
+  ok(await today.locator('li[data-event]').count() > 3 && !/À regarder ensemble|actives sur/.test(tt), 'une ligne par événement, sans étiquette d’interprétation');
   await shot(pa, '11-parent-journal');
   await pa.goto(BASE + '/parent');
   await shot(pa, '12-parent-tableau-de-bord-apres');

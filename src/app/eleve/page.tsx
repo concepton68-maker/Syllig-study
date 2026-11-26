@@ -17,8 +17,8 @@ import { CHECKIN_EVERY_DAYS } from '@/lib/checkin';
 export const metadata = { title: 'Aujourd’hui' };
 export const dynamic = 'force-dynamic';
 
-export default async function Today({ searchParams }: { searchParams: Promise<{ questionnaire?: string; passee?: string }> }) {
-  const { questionnaire, passee } = await searchParams;
+export default async function Today({ searchParams }: { searchParams: Promise<{ questionnaire?: string; passee?: string; ferme?: string }> }) {
+  const { questionnaire, passee, ferme } = await searchParams;
   const { student } = await requireStudent();
   const items = await parcours(student.id, student.level_code);
   const goal = student.settings.weekly_goal_minutes * 60;
@@ -95,6 +95,7 @@ export default async function Today({ searchParams }: { searchParams: Promise<{ 
               <Link className="btn btn-primary min-h-[52px] text-base" href="/eleve/revision">{reviewStarted ? 'Continuer' : 'Commencer'}</Link>
             </section>
           )}
+          {ferme && <p role="status" className="m-0 rounded-xl bg-soft px-4 py-3 text-sm" data-closed><strong>Ta séance a été fermée</strong> : personne n’a répondu à « Tu es là ? ». Tu reprends quand tu veux.</p>}
           {skippedTitle && <p role="status" className="m-0 rounded-xl bg-soft px-4 py-3 text-sm" data-skipped><strong>C’est noté.</strong> « {skippedTitle} » t’attend dans Tous mes cours : tu y reviens quand tu veux.</p>}
           {questionnaire === 'merci' && <p role="status" className="m-0 rounded-xl bg-brand-soft text-brand-ink px-4 py-3 text-sm"><strong>Merci !</strong> Tes réponses aident ton parent à mieux t’accompagner.</p>}
           {checkinDue && (

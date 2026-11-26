@@ -7,8 +7,9 @@ import { logEvent } from '@/lib/activity';
 // Mesure d'activité : le navigateur envoie un signal toutes les 15 s ; le serveur seul compte le temps.
 const Body = z.discriminatedUnion('action', [
   z.object({ action: z.literal('start'), kind: z.enum(['lesson', 'exercises', 'evaluation', 'review', 'other']), courseId: z.number().int().nullable() }),
-  z.object({ action: z.literal('beat'), session: z.string().uuid(), active: z.boolean() }),
-  z.object({ action: z.literal('end'), session: z.string().uuid(), active: z.boolean().optional() }),
+  z.object({ action: z.literal('beat'), session: z.string().uuid(), active: z.boolean(), gesture: z.boolean().optional() }),
+  // abandoned : secondes depuis le dernier geste quand la séance se ferme faute de réponse à « Tu es là ? »
+  z.object({ action: z.literal('end'), session: z.string().uuid(), active: z.boolean().optional(), gesture: z.boolean().optional(), abandoned: z.number().int().min(0).max(3600).optional() }),
 ]);
 const MAX_GAP = 30; // secondes comptées au plus entre deux signaux (onglet fermé, veille…)
 
@@ -40,18 +41,30 @@ export async function POST(req: Request) {
 
   const delta = sql`least(greatest(extract(epoch from now() - last_beat_at), 0), ${MAX_GAP})::int`;
   const active = body.active ?? false;
+  const gesture = active && (body.gesture ?? false);   // un geste dans la dernière minute (rythme, sans effet sur le temps)
   // signal conservé (frise de la journée et suivi en direct du parent), avant la mise à jour des totaux
-  await sql`insert into activity_beats (session_id, student_id, active, seconds)
-    select id, student_id, ${active}, ${delta} from work_sessions where id = ${body.session} and student_id = ${st.id} and ended_at is null`;
+  await sql`insert into activity_beats (session_id, student_id, active, seconds, gesture)
+    select id, student_id, ${active}, ${delta}, ${gesture} from work_sessions where id = ${body.session} and student_id = ${st.id} and ended_at is null`;
   const [s] = await sql<{ id: string }[]>`
     update work_sessions set
       open_seconds = open_seconds + ${delta},
       active_seconds = active_seconds + case when ${active} then ${delta} else 0 end,
+      gesture_seconds = coalesce(gesture_seconds, 0) + case when ${gesture} then ${delta} else 0 end,
       idle_pauses = idle_pauses + case when was_active and not ${active} then 1 else 0 end,
       was_active = ${active},
       last_beat_at = now()
     where id = ${body.session} and student_id = ${st.id} and ended_at is null returning id`;
   if (!s) return NextResponse.json({ error: 'séance terminée' }, { status: 409 });
+  if (body.action === 'end' && body.abandoned) {
+    // personne n'a répondu à « Tu es là ? » : le temps s'arrête au dernier geste (la période sans geste n'est pas comptée)
+    await sql`update activity_beats set active = false, gesture = false where session_id = ${body.session} and student_id = ${st.id}
+      and at > now() - make_interval(secs => ${body.abandoned})`;
+    const [r] = await sql<{ removed: number }[]>`update work_sessions w set active_seconds = x.a from (
+        select coalesce(sum(seconds) filter (where active), 0)::int as a from activity_beats where session_id = ${body.session}) x
+      where w.id = ${body.session} and w.student_id = ${st.id} returning (select active_seconds from work_sessions where id = ${body.session}) - x.a as removed`;
+    const [w] = await sql<{ course_id: number | null }[]>`select course_id from work_sessions where id = ${body.session}`;
+    await logEvent(st.id, 'seance_fermee_sans_reponse', { courseId: w?.course_id ?? null, data: { retire_s: Math.max(0, r?.removed ?? 0) } });
+  }
   if (body.action === 'end') await closeSession(body.session, st.id);
   return NextResponse.json({ ok: true });
 }

@@ -36,7 +36,7 @@ export function WeekBars({ days, goalMin }: { days: { day: string; label: string
             style={{ left: `${Math.min(80, Math.max(20, ((hover + 0.5) / days.length) * 100))}%` }}>
             <strong>{new Date(`${days[hover].day}T12:00:00Z`).toLocaleDateString('fr-FR', { weekday: 'long', day: 'numeric', month: 'long' })}</strong>
             <span className="block">Actif : {dur(days[hover].active)}</span>
-            <span className="block">Sans geste : {dur(days[hover].pause)}</span>
+            <span className="block">Pause : {dur(days[hover].pause)}</span>
           </div>
         )}
       </div>

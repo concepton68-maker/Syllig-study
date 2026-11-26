@@ -515,3 +515,13 @@ Contre-audit de conformité des versions 0.43 à 0.45 : tout ce qui a été rele
   - « de travail » avec sa période ;
   - pour le parent, le nombre d'évaluations notées à la place des points de progrès, qui restent visibles pour l'élève.
 - Le numéro de version n'est plus visible que pour l'administrateur.
+
+## 0.51 — 26/11/2026
+- La mesure ne change pas, seule l'interprétation change. Le temps sans geste (réflexion, brouillon) est du temps de travail. Retirés partout :
+  - « Actif / Sans geste » (devenus « Au travail / En pause ») ;
+  - « Part du temps actif » ;
+  - « X min actives sur Y ouvertes » ;
+  - les signaux interprétés du Bilan (leçon « survolée », évaluation « bâclée », « distraction »…).
+- Rythme, sans jugement : la part du temps de travail avec un geste dans la minute. Il est affiché dans En direct et dans le détail jour par jour.
+- Après 10 minutes sans rien toucher (délai choisi par le parent) : « Tu es là ? » avec un compte à rebours de 60 s. Sans réponse, la séance se ferme, l'élève revient à son accueil et le temps s'arrête à son dernier geste. Jamais pendant une évaluation.
+- « Détail minute par minute » simplifié : la trace exacte, une ligne par événement, regroupée par jour, sans pastilles ni « à regarder ensemble ».
