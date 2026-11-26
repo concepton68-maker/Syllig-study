@@ -24,14 +24,14 @@ export function RevisionsCard({ r }: { r: { courses: Row[]; ok: number; total: n
                   <span><strong className="text-[15px]">{c.title}</strong><span className="block text-[13px] muted">{c.subject}</span></span>
                   <span className="flex flex-wrap gap-1.5">{c.results.length === 0 ? <span className="text-[13px] muted">pas encore de révision</span>
                     : c.results.map((x, i) => <span key={i} data-tip={`le ${fr(x.at)}`} tabIndex={0} className={`pill text-[13px] font-semibold ${x.passed ? 'bg-brand-soft text-brand-dark' : 'bg-warm-soft text-warm-dark'}`}>J+{x.gap_days} · {x.ok}/{x.total}</span>)}</span>
-                  <span className="text-right text-sm"><strong>{fr(c.due_at)}</strong><span className="block text-[13px] muted">{d < 0 ? 'en retard' : d === 0 ? 'aujourd’hui' : d === 1 ? 'demain' : `dans ${d} jours`}</span></span>
+                  <span className="text-right text-sm"><strong>{fr(c.due_at)}</strong><span className="block text-[13px] muted">{d < 0 ? 'pas encore faite' : d === 0 ? 'aujourd’hui' : d === 1 ? 'demain' : `dans ${d} jours`}</span></span>
                 </div>
               );
             })}
           </div>
         </div>
       )}
-      <span className="text-xs muted">J+n : révision faite n jours après la précédente (ou après la fin de la leçon). 4/5 : questions justes, corrigées par la plateforme. Orange : moins de 80 % de bonnes réponses.</span>
+      <span className="text-xs muted">J+n : révision faite n jours après la précédente (ou après la fin de la leçon, même ancienne : les leçons finies avant la mise en place des révisions sont rattrapées à 2 par jour). 4/5 : questions justes, corrigées par la plateforme. Orange : moins de 80 % de bonnes réponses.</span>
       <details className="border-t border-line pt-3" data-revisions-sources>
         <summary className="cursor-pointer font-semibold text-[15px]">Comment c’est calculé, et sur quelles études</summary>
         <div className="flex flex-col gap-3 pt-2.5 text-sm leading-relaxed">
@@ -44,7 +44,7 @@ export function RevisionsCard({ r }: { r: { courses: Row[]; ok: number; total: n
             <li><strong>Espacer fait mieux retenir que tout faire d’un coup</strong> : méta-analyse Cepeda et al. (2006), <em>Psychological Bulletin</em> ; revue Kang (2016), <em>Policy Insights from the Behavioral and Brain Sciences</em>.</li>
             <li><strong>Les deux seules techniques notées « utilité élevée » sur dix étudiées</strong> : Dunlosky et al. (2013), <em>Psychological Science in the Public Interest</em>.</li>
           </ul>
-          <span className="text-[13px] muted">Ce qui n’est pas prouvé, donc choisi par convention : les intervalles qui s’allongent (méthode des boîtes de Leitner, 1972) ne font pas mieux que des intervalles égaux dans les comparaisons publiées (Karpicke &amp; Roediger, 2007) ; l’intervalle idéal dépend de la date à laquelle on veut retenir (Cepeda et al., 2008) ; le retour à 1 jour après un échec est une convention.</span>
+          <span className="text-[13px] muted">Ce qui n’est pas prouvé, donc choisi par convention : les intervalles qui s’allongent (méthode des boîtes de Leitner, 1972) n’ont pas d’avantage établi sur des intervalles égaux : les résultats publiés sont partagés (par ex. Karpicke &amp; Roediger, 2007 ; Storm, Bjork &amp; Storm, 2010) ; l’intervalle idéal dépend de la date à laquelle on veut retenir (Cepeda et al., 2008) ; le retour à 1 jour après un échec est une convention.</span>
         </div>
       </details>
     </section>

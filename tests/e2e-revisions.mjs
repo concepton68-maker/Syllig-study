@@ -1,5 +1,5 @@
 // Révisions espacées (maquette validée le 26/11/2026) : leçon finie → révision le lendemain ; réussite (≥ 4/5) → intervalle
-// suivant (1, 3, 7, 14, 30, 60 j) ; échec → 1 jour ; 5 questions nouvelles par cours, corrigées par la plateforme ; au plus 2 cours.
+// suivant (1, 3, 7, 14, 30, 60 j) ; échec → 1 jour ; jusqu'à 5 questions par cours (exercices et points de contrôle), corrigées par la plateforme ; au plus 2 cours.
 // Valeurs attendues calculées à la main. Prérequis : tests/reset-db.sh puis `node scripts/seed.mjs`.
 import { createRequire } from 'node:module';
 const require = createRequire(import.meta.url);
