@@ -33,13 +33,15 @@ await el.click('button[type=submit]'); await el.waitForURL(u => !u.pathname.star
 
 console.log('Accueil de l’élève');
 const card = (await el.locator('[data-review-today]').innerText()).replace(/\s+/g, ' ');
-ok(card.includes('Ta révision du jour') && card.includes('10 questions') && card.includes(ma.title) && card.includes(fr.title), `2 cours, 5 questions chacun (« ${card.slice(0, 140)} »)`);
+ok(card.includes('Ta révision du jour') && card.includes('2 cours') && card.includes(ma.title) && card.includes(fr.title), `2 cours à revoir (« ${card.slice(0, 140)} »)`);
 
 console.log('La révision : maths tout juste, français tout faux');
 await el.click('[data-review-today] a:has-text("Commencer")'); await el.waitForURL(/\/eleve\/revision/);
 const [ses] = await sql`select id, questions from review_sessions where student_id = ${st.id} and finished_at is null`;
 ok(ses.questions.length === 10 && ses.questions.slice(0, 5).every(q => q.course_id === ma.id) && ses.questions.slice(5).every(q => q.course_id === fr.id), '10 questions : 5 de maths (plus en retard) puis 5 de français');
 ok(new Set(ses.questions.map(q => q.key)).size === 10, 'aucune question en double');
+ok(ses.questions.every(q => !q.key.startsWith('ev:')), 'aucune question de l’évaluation (elle doit rester inconnue)');
+ok(new Set(ses.questions.filter(q => q.key.startsWith('cp:')).map(q => `${q.course_id}:${q.key.split(':')[1]}`)).size === ses.questions.filter(q => q.key.startsWith('cp:')).length, 'une seule variante par point de contrôle');
 const answerIt = async (i, right) => {
   const sq = ses.questions[i]; const q = findQ(sq.course_id === ma.id ? ma.doc : fr.doc, sq.key);
   await el.waitForSelector(`[data-review-q="${i}"]`);
@@ -64,14 +66,19 @@ for (let i = 5; i < 10; i++) await answerIt(i, false);
 await el.waitForSelector('[data-review-done]');
 ok((await el.locator('[data-review-score]').innerText()).includes('5 / 10'), 'résultat : 5 / 10');
 ok(await el.locator('[data-next="3"]').count() === 1 && await el.locator('[data-next="1"]').count() === 1, 'maths 5/5 → dans 3 jours ; français 0/5 → demain');
-const sch = await sql`select course_id, step, round(extract(epoch from due_at - now()) / 86400)::int as d from review_schedule where student_id = ${st.id} order by course_id`;
+const sch = await sql`select course_id, step, ((due_at at time zone 'Europe/Paris')::date - (now() at time zone 'Europe/Paris')::date)::int as d from review_schedule where student_id = ${st.id} order by course_id`;
 const s = Object.fromEntries(sch.map(r => [r.course_id, r]));
 ok(s[ma.id].step === 1 && s[ma.id].d === 3 && s[fr.id].step === 0 && s[fr.id].d === 1, 'calendrier enregistré : maths palier 2 (3 j), français palier 1 (1 j)');
 const pts = await sql`select coalesce(sum(amount), 0)::int as n from points_ledger where student_id = ${st.id}`;
 ok(pts[0].n === 0, 'pas de points retirés ni ajoutés en douce');
 
-console.log('Questions nouvelles à la révision suivante');
+console.log('Au plus 2 cours par jour');
 await sql`update review_schedule set due_at = now() - interval '1 minute' where student_id = ${st.id} and course_id = ${ma.id}`;
+await el.goto(BASE + '/eleve/revision');
+ok(await el.locator('[data-no-review]').count() === 1, 'déjà 2 cours revus aujourd’hui : pas de nouvelle séance');
+
+console.log('Le lendemain : d’autres questions');
+await sql`update review_results set at = at - interval '1 day' where student_id = ${st.id}`;
 await el.goto(BASE + '/eleve/revision');
 const [ses2] = await sql`select questions from review_sessions where student_id = ${st.id} and finished_at is null`;
 const before = new Set(ses.questions.filter(q => q.course_id === ma.id).map(q => q.key));
@@ -93,7 +100,9 @@ await pa.click('[data-revisions-sources] summary');
 const src = await pa.locator('[data-revisions-sources]').innerText();
 ok(src.includes('Roediger') && src.includes('Cepeda') && src.includes('Dunlosky') && src.includes('pas prouvé'), 'règle, études et limite affichées');
 await pa.goto(BASE + '/parent/journal?type=revisions');
-ok(await pa.locator('[data-item="review"]').count() === 2 && (await pa.locator('main').innerText()).includes('0/5'), 'Activité : les 2 révisions, filtre « Révisions »');
+await sql`update review_results set at = at + interval '1 day' where student_id = ${st.id}`;
+await pa.goto(BASE + '/parent/journal?type=revisions');
+ok(await pa.locator('[data-item="review"]:has-text("5/5")').count() === 1 && await pa.locator('[data-item="review"]:has-text("0/5")').count() === 1, 'Activité : les 2 révisions, filtre « Révisions »');
 ok(errs.length === 0, `aucune erreur JS ni fenêtre native (${errs.join(' | ')})`);
 await b.close(); await sql.end();
 console.log('\nRévisions espacées : OK');

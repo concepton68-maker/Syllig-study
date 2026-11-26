@@ -89,9 +89,9 @@ export default async function Today({ searchParams }: { searchParams: Promise<{ 
           )}
           {dueRev.length > 0 && (
             <section className="card flex flex-col gap-3" data-review-today>
-              <div className="flex justify-between items-center gap-3"><h2 className="text-xl font-semibold m-0">Ta révision du jour</h2><span className="pill bg-brand-soft text-brand-dark">{dueRev.length * PER_COURSE} min</span></div>
-              <span className="text-[15px] text-ink-2">{dueRev.length * PER_COURSE} questions nouvelles sur ce que tu as déjà appris.</span>
-              <div className="flex flex-col gap-2">{dueRev.map(r => <div key={r.course_id} className="flex justify-between gap-3 rounded-xl bg-surface-2 px-3 py-2.5 text-sm"><span>{r.title}</span><span className="muted whitespace-nowrap">{PER_COURSE} questions</span></div>)}</div>
+              <div className="flex justify-between items-center gap-3"><h2 className="text-xl font-semibold m-0">Ta révision du jour</h2><span className="pill bg-brand-soft text-brand-dark">{dueRev.length} cours</span></div>
+              <span className="text-[15px] text-ink-2">Jusqu’à {PER_COURSE} questions par cours, pour vérifier ce que tu retiens.</span>
+              <div className="flex flex-col gap-2">{dueRev.map(r => <div key={r.course_id} className="flex justify-between gap-3 rounded-xl bg-surface-2 px-3 py-2.5 text-sm"><span>{r.title}</span><span className="muted whitespace-nowrap">jusqu’à {PER_COURSE} questions</span></div>)}</div>
               <Link className="btn btn-primary min-h-[52px] text-base" href="/eleve/revision">{reviewStarted ? 'Continuer' : 'Commencer'}</Link>
             </section>
           )}
@@ -172,7 +172,7 @@ export default async function Today({ searchParams }: { searchParams: Promise<{ 
           <section className="card flex flex-col gap-2" data-reviews-next>
             <h2 className="text-xl font-semibold">Révisions</h2>
             {nextRev.length === 0 && <span className="muted text-sm">Après chaque leçon finie, une révision courte est programmée le lendemain, puis de plus en plus espacée.</span>}
-            {nextRev.map(r => <div key={r.course_id} className="flex justify-between gap-3 text-sm py-1"><span>{r.title}</span><span className="muted whitespace-nowrap">{r.days <= 1 ? 'demain' : `dans ${r.days} jours`}</span></div>)}
+            {nextRev.map(r => <div key={r.course_id} className="flex justify-between gap-3 text-sm py-1"><span>{r.title}</span><span className="muted whitespace-nowrap">{r.days === 0 ? 'aujourd’hui' : r.days === 1 ? 'demain' : `dans ${r.days} jours`}</span></div>)}
           </section>
           {waiting.length > 0 && (
             <section className="card flex flex-col gap-2">

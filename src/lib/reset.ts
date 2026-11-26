@@ -18,6 +18,11 @@ async function wipe(tx: typeof sql, studentId: string, courseId: number | null, 
     seances: withSessions ? await n(tx`delete from work_sessions where student_id = ${studentId} and ${byCourse} returning 1`) : 0,
   };
   await tx`delete from course_progress where student_id = ${studentId} and ${byCourse}`;
+  // révisions espacées : résultats, réponses, calendrier ; séances en cours (elles peuvent mêler plusieurs cours)
+  await tx`delete from review_results where student_id = ${studentId} and ${byCourse}`;
+  await tx`delete from review_items where student_id = ${studentId} and ${byCourse}`;
+  await tx`delete from review_schedule where student_id = ${studentId} and ${byCourse}`;
+  await tx`delete from review_sessions s where s.student_id = ${studentId} and (${courseId === null} or s.finished_at is null or not exists (select 1 from review_items i where i.session_id = s.id))`;
   return counts;
 }
 

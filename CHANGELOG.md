@@ -503,8 +503,10 @@ Contre-audit de conformité des versions 0.43 à 0.45 : tout ce qui a été rele
 
 ## 0.50 — 26/11/2026
 - **Révisions espacées**, selon la maquette validée. Une leçon finie est révisée le lendemain, puis à 3, 7, 14, 30 et 60 jours si l'élève a au moins 4 bonnes réponses sur 5. Sinon, retour à 1 jour.
-  - Chaque révision pose 5 questions par cours, corrigées tout de suite : des questions nouvelles, prises parmi les exercices, les évaluations et les points de contrôle du cours, en commençant par celles qu'il a vues le moins récemment.
+  - Chaque révision pose jusqu'à 5 questions par cours, corrigées tout de suite, prises dans les exercices et les points de contrôle du cours, en commençant par celles revues le moins récemment. Jamais de question de l'évaluation, qui doit rester inconnue.
+  - Les leçons déjà finies avant cette version sont programmées à 2 par jour à partir d'aujourd'hui.
+  - L'ancienne révision unique (exercices refaits 3 à 30 jours après l'évaluation) est remplacée. La réinitialisation d'un cours efface aussi ses révisions.
   - Au plus 2 cours par jour.
   - L'élève voit « Ta révision du jour » sur son accueil.
-  - Le parent voit chaque révision dans le Bilan, avec la règle de calcul et les études sur lesquelles elle repose. L'Activité a un filtre « Révisions ».
+  - Le parent voit chaque révision dans le Bilan, avec la règle de calcul, les études sur lesquelles elle repose et ce qui reste une convention. L'Activité a un filtre « Révisions ».
 - Le numéro de version n'est plus visible que pour l'administrateur.

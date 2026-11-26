@@ -31,21 +31,20 @@ export function RevisionsCard({ r }: { r: { courses: Row[]; ok: number; total: n
           </div>
         </div>
       )}
-      <span className="text-xs muted">J+n : révision faite n jours après la précédente (ou après la fin de la leçon). 4/5 : questions justes, corrigées par la plateforme. Orange : moins de 4 sur 5.</span>
+      <span className="text-xs muted">J+n : révision faite n jours après la précédente (ou après la fin de la leçon). 4/5 : questions justes, corrigées par la plateforme. Orange : moins de 80 % de bonnes réponses.</span>
       <details className="border-t border-line pt-3" data-revisions-sources>
         <summary className="cursor-pointer font-semibold text-[15px]">Comment c’est calculé, et sur quelles études</summary>
         <div className="flex flex-col gap-3 pt-2.5 text-sm leading-relaxed">
           <div className="grid gap-3 [grid-template-columns:repeat(auto-fit,minmax(240px,1fr))]">
-            <div className="rounded-xl bg-surface-2 px-3.5 py-3"><strong>La règle</strong><br />Leçon finie → révision le lendemain. Puis 3, 7, 14, 30 et 60 jours si au moins 4 sur 5. Moins de 4 sur 5 → on revient à 1 jour. Au plus 2 cours par jour.</div>
-            <div className="rounded-xl bg-surface-2 px-3.5 py-3"><strong>Les questions</strong><br />5 par cours, corrigées par la plateforme (exercices, évaluations, points de contrôle), celles vues le moins récemment en révision ; jamais deux fois de suite la même quand le cours en a assez.</div>
+            <div className="rounded-xl bg-surface-2 px-3.5 py-3"><strong>La règle</strong><br />Leçon finie → révision le lendemain. Puis 3, 7, 14, 30 et 60 jours si au moins 80 % de bonnes réponses (4 sur 5). Sinon → on revient à 1 jour. Au plus 2 cours par jour.</div>
+            <div className="rounded-xl bg-surface-2 px-3.5 py-3"><strong>Les questions</strong><br />Jusqu’à 5 par cours, corrigées par la plateforme, prises dans les exercices et les points de contrôle du cours (jamais dans l’évaluation), celles revues le moins récemment ; pas deux fois de suite la même quand le cours en a assez.</div>
           </div>
           <ul className="m-0 pl-5 flex flex-col gap-1.5">
-            <li><strong>Se tester fait mieux retenir que relire</strong> : Roediger &amp; Karpicke (2006), <em>Psychological Science</em> ; méta-analyse Adesope, Trevisan &amp; Sundararajan (2017), <em>Review of Educational Research</em>.</li>
-            <li><strong>Espacer fait mieux retenir que tout faire d’un coup</strong> : méta-analyse Cepeda et al. (2006), <em>Psychological Bulletin</em>.</li>
-            <li><strong>Les deux techniques jugées les plus utiles sur dix étudiées</strong> : Dunlosky et al. (2013), <em>Psychological Science in the Public Interest</em>.</li>
-            <li><strong>Intervalles qui s’allongent après une réussite</strong> : boîtes de Leitner (1972) ; revue Kang (2016), <em>Policy Insights from the Behavioral and Brain Sciences</em>.</li>
+            <li><strong>Se tester fait mieux retenir que relire</strong>, mesuré à plusieurs jours : Roediger &amp; Karpicke (2006), <em>Psychological Science</em> ; méta-analyse Adesope, Trevisan &amp; Sundararajan (2017), <em>Review of Educational Research</em>.</li>
+            <li><strong>Espacer fait mieux retenir que tout faire d’un coup</strong> : méta-analyse Cepeda et al. (2006), <em>Psychological Bulletin</em> ; revue Kang (2016), <em>Policy Insights from the Behavioral and Brain Sciences</em>.</li>
+            <li><strong>Les deux seules techniques notées « utilité élevée » sur dix étudiées</strong> : Dunlosky et al. (2013), <em>Psychological Science in the Public Interest</em>.</li>
           </ul>
-          <span className="text-[13px] muted">Ce qui n’est pas prouvé : l’intervalle idéal exact. Il dépend de la date à laquelle on veut retenir (Cepeda et al., 2008). La règle ci-dessus est simple et prudente, pas « optimale ».</span>
+          <span className="text-[13px] muted">Ce qui n’est pas prouvé, donc choisi par convention : les intervalles qui s’allongent (méthode des boîtes de Leitner, 1972) ne font pas mieux que des intervalles égaux dans les comparaisons publiées (Karpicke &amp; Roediger, 2007) ; l’intervalle idéal dépend de la date à laquelle on veut retenir (Cepeda et al., 2008) ; le retour à 1 jour après un échec est une convention.</span>
         </div>
       </details>
     </section>

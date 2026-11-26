@@ -1,5 +1,6 @@
 -- Révisions espacées (maquette validée par le propriétaire le 26/11/2026) : se tester (effet de test) à intervalles
--- qui s'allongent après une réussite (Leitner) et reviennent à 1 jour après un échec. Questions nouvelles, corrigées par la plateforme.
+-- qui s'allongent après une réussite (convention de Leitner) et reviennent à 1 jour après un échec. Questions des exercices et
+-- points de contrôle (jamais de l'évaluation), corrigées par la plateforme.
 create table if not exists review_schedule (
   student_id uuid not null references students(id) on delete cascade,
   course_id  int  not null references courses(id) on delete cascade,
@@ -40,3 +41,6 @@ create table if not exists review_results (
   next_days   int not null
 );
 create index if not exists review_results_student on review_results(student_id, at desc);
+
+-- l'ancienne révision unique (exercices refaits 3 à 30 jours après l'évaluation) est remplacée
+update course_progress set next_review_at = null where next_review_at is not null;

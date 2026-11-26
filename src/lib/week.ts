@@ -35,7 +35,7 @@ const hm = (m: number) => m < 60 ? `${m} min` : `${Math.floor(m / 60)} h${m % 60
 const clip = (s: string | undefined, n: number) => { const t = (s ?? '').replace(/\*\*|__|`|\$/g, '').replace(/\s+/g, ' ').trim(); return t.length > n ? `${t.slice(0, n - 1)}…` : t; };
 // une citation dans une phrase : sans le point final (« Calcule 3 + 4 » et non « Calcule 3 + 4. »)
 const quote = (s: string, n: number) => clip(s, n).replace(/[.\s]+$/, '');
-const KIND: Record<string, string> = { lesson: 'Leçons', exercises: 'Exercices', evaluation: 'Évaluations' };
+const KIND: Record<string, string> = { lesson: 'Leçons', exercises: 'Exercices', evaluation: 'Évaluations', review: 'Révisions' };
 
 // réponse lisible : pour un QCM, le texte de l'option choisie plutôt que son numéro
 function readable(q: Question, a: string | undefined) {
@@ -94,7 +94,7 @@ export async function weekReport(student: Student, ref?: string): Promise<Week> 
     where w.student_id = ${sid} and w.started_at >= ${b.start} and w.started_at < ${b.end} and w.open_seconds > 0 order by w.started_at`;
   const subj = new Map<string, number>(), kinds = new Map<string, number>();
   for (const s of sessions) {
-    subj.set(s.subject ?? 'Autre', (subj.get(s.subject ?? 'Autre') ?? 0) + s.active);
+    const sn = s.subject ?? (s.kind === 'review' ? 'Révisions' : 'Autre'); subj.set(sn, (subj.get(sn) ?? 0) + s.active);
     const k = KIND[s.kind] ?? 'Autre'; kinds.set(k, (kinds.get(k) ?? 0) + s.active);
   }
   // répartition en minutes entières dont la somme vaut exactement le total de la semaine (méthode du plus grand reste)

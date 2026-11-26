@@ -140,7 +140,7 @@ export async function gradeAttemptFinal(attemptId: string, scores: Record<string
       (select max(final_score) from eval_attempts o where o.student_id = e.student_id and o.course_id = e.course_id and o.status = 'graded' and o.id <> e.id) as best`;
   if (!a) return null;
   const prev = { best: a.best };
-  await sql`update course_progress set next_review_at = ${nextReviewDate(total)} where student_id = ${a.student_id} and course_id = ${a.course_id}`;
+  // les révisions sont désormais espacées à partir de la fin de la leçon (src/lib/revisions.ts) : plus de date posée ici
   await logEvent(a.student_id, 'evaluation_notee', { courseId: a.course_id, actorId: gradedBy, data: { tentative: a.attempt_no, note: total } });
   const before = prev.best === null ? null : Number(prev.best);
   if (before === null) await addPoints(a.student_id, 50, 'Première évaluation notée', a.course_id);

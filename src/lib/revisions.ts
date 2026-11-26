@@ -1,31 +1,32 @@
 import 'server-only';
 import { sql } from './db';
-import { autoCorrect, evalQuestions, type CourseDocument, type Question } from './course-format';
+import { autoCorrect, type CourseDocument, type Question } from './course-format';
 import { versionById } from './progress';
 import { logEvent } from './activity';
 import { answerText, expectedText } from './review';
 
 // Révisions espacées (maquette validée par le propriétaire le 26/11/2026).
 // Fondements : effet de test (Roediger & Karpicke 2006 ; méta-analyse Adesope et al. 2017), espacement (méta-analyse
-// Cepeda et al. 2006), jugés les plus utiles par Dunlosky et al. 2013 ; intervalles qui s'allongent après une réussite (Leitner ;
-// revue Kang 2016). L'intervalle optimal exact n'est pas connu (Cepeda et al. 2008) : la règle ci-dessous est simple et prudente.
+// Cepeda et al. 2006), les deux seules techniques notées « utilité élevée » par Dunlosky et al. 2013. Les intervalles qui
+// s'allongent (boîtes de Leitner) et le retour à 1 jour après un échec sont des conventions : les études ne montrent pas
+// qu'ils valent mieux que des intervalles égaux (Karpicke & Roediger 2007), et l'intervalle idéal n'est pas connu (Cepeda et al. 2008).
 //  - leçon finie → première révision le lendemain ;
-//  - réussite (au moins 4 questions justes sur 5) → intervalle suivant : 1, 3, 7, 14, 30, 60 jours ;
+//  - réussite (au moins 80 % de questions justes, soit 4 sur 5) → intervalle suivant : 1, 3, 7, 14, 30, 60 jours (en jours civils) ;
 //  - sinon → retour à 1 jour ;
-//  - 5 questions par cours, corrigées par la plateforme, celles que l'élève a vues le moins récemment en révision ;
-//  - au plus 2 cours par jour (les plus en retard d'abord).
+//  - jusqu'à 5 questions par cours, corrigées par la plateforme, prises dans les exercices et les points de contrôle (jamais
+//    dans l'évaluation, qui doit rester inconnue), celles revues le moins récemment ;
+//  - au plus 2 cours par jour civil (les plus en retard d'abord).
 export const INTERVALS = [1, 3, 7, 14, 30, 60];
 export const PER_COURSE = 5;
 export const MAX_COURSES = 2;
 const passes = (ok: number, total: number) => ok >= Math.ceil(total * 0.8);   // 4 sur 5
 
 type PoolItem = { key: string; q: Question };
-/** Questions corrigeables par la plateforme : exercices, évaluations (sans texte support), points de contrôle de la leçon. */
+/** Questions corrigeables par la plateforme : exercices (sans texte support) et points de contrôle de la leçon. Jamais l'évaluation. */
 export function questionPool(doc: CourseDocument): PoolItem[] {
   const ok = (q: Question) => q.type !== 'open' && !q.text_ref && autoCorrect(q, '') !== null;
   const out: PoolItem[] = [];
   for (const q of doc.exercises.items) if (ok(q)) out.push({ key: `ex:${q.id}`, q });
-  doc.evaluation.variants.forEach((_, v) => { for (const q of evalQuestions(doc, v)) if (ok(q)) out.push({ key: `ev:${v}:${q.id}`, q }); });
   doc.lesson.parts.forEach((p, i) => p.checkpoint?.variants.forEach((c, j) => out.push({ key: `cp:${i}:${j}`, q: {
     id: `cp${i}_${j}`, type: 'qcm', prompt: c.quote ? `${c.prompt}\n\n« ${c.quote} »` : c.prompt, options: c.options, answer: c.answer,
     solution: c.explanation ?? c.options[c.answer] } as Question })));
@@ -37,20 +38,33 @@ const findQ = (doc: CourseDocument, key: string) => questionPool(doc).find(x => 
 
 /** Programme les premières révisions : leçons finies sans calendrier → le lendemain de la fin de la leçon. */
 async function ensureSchedule(studentId: string) {
+  // leçons finies avant la mise en place (ou jamais programmées) : étalées à 2 par jour à partir d'aujourd'hui, jamais dans le passé
   await sql`insert into review_schedule (student_id, course_id, step, due_at)
-    select p.student_id, p.course_id, 0, p.lesson_done_at + interval '1 day' from course_progress p
-    join courses c on c.id = p.course_id join course_versions v on v.course_id = c.id and v.status = 'published'
-    where p.student_id = ${studentId} and p.lesson_done_at is not null
+    select student_id, course_id, 0, (greatest(done_day + 1, today + ((rk - 1) / ${MAX_COURSES})::int))::timestamp at time zone 'Europe/Paris' from (
+      select p.student_id, p.course_id, (p.lesson_done_at at time zone 'Europe/Paris')::date as done_day, (now() at time zone 'Europe/Paris')::date as today,
+        row_number() over (order by p.lesson_done_at) as rk
+      from course_progress p join course_versions v on v.course_id = p.course_id and v.status = 'published'
+      where p.student_id = ${studentId} and p.lesson_done_at is not null
+        and not exists (select 1 from review_schedule r where r.student_id = p.student_id and r.course_id = p.course_id)) x
     on conflict do nothing`;
 }
+/** Minuit (heure de Paris) dans n jours civils. */
+const dayIn = (n: number) => sql`(((now() at time zone 'Europe/Paris')::date + ${n}::int)::timestamp at time zone 'Europe/Paris')`;
 
 export type DueCourse = { course_id: number; title: string; subject: string; due_at: Date; step: number };
 export async function dueCourses(studentId: string, levelCode: string): Promise<DueCourse[]> {
   await ensureSchedule(studentId);
+  // au plus 2 cours par jour civil, séances du jour comprises
+  const [t] = await sql<{ n: number }[]>`select count(distinct course_id)::int as n from review_results where student_id = ${studentId}
+    and (at at time zone 'Europe/Paris')::date = (now() at time zone 'Europe/Paris')::date`;
+  const room = Math.max(0, MAX_COURSES - t.n);
+  if (!room) return [];
   return sql<DueCourse[]>`select r.course_id, c.title, sj.name as subject, r.due_at, r.step from review_schedule r
     join courses c on c.id = r.course_id join chapters ch on ch.id = c.chapter_id join subjects sj on sj.id = ch.subject_id
+    join course_versions v on v.course_id = c.id and v.status = 'published'
+    left join course_progress p on p.student_id = r.student_id and p.course_id = r.course_id
     where r.student_id = ${studentId} and r.due_at <= now() and sj.level_code = ${levelCode}
-    order by r.due_at limit ${MAX_COURSES}`;
+    order by r.due_at, p.lesson_done_at, r.course_id limit ${room}`;   // à date égale : la leçon finie la plus ancienne d'abord
 }
 export async function nextReviews(studentId: string, levelCode: string, n = 3) {
   await ensureSchedule(studentId);
@@ -75,7 +89,7 @@ export async function openSession(studentId: string, levelCode: string): Promise
     if (!v) continue;
     const pool = questionPool(v.document);
     if (!pool.length) {   // aucun question corrigeable : on ne bloque pas, on passe à l'intervalle suivant
-      await sql`update review_schedule set due_at = now() + make_interval(days => ${INTERVALS[Math.min(d.step + 1, INTERVALS.length - 1)]}) where student_id = ${studentId} and course_id = ${d.course_id}`;
+      await sql`update review_schedule set due_at = ${dayIn(INTERVALS[Math.min(d.step + 1, INTERVALS.length - 1)])} where student_id = ${studentId} and course_id = ${d.course_id}`;
       continue;
     }
     const seen = await sql<{ key: string; last: Date }[]>`select key, max(answered_at) as last from review_items where student_id = ${studentId} and course_id = ${d.course_id} group by key`;
@@ -86,7 +100,14 @@ export async function openSession(studentId: string, levelCode: string): Promise
     // jamais vues d'abord (au hasard), puis les plus anciennes ; jamais deux fois de suite la même si le choix le permet
     const ranked = pool.map(p => ({ p, t: last.get(p.key) ?? -1, r: Math.random() })).sort((a, b) => a.t - b.t || a.r - b.r);
     const fresh = ranked.filter(x => !recent.has(x.p.key));
-    const pick = [...fresh, ...ranked.filter(x => recent.has(x.p.key))].slice(0, PER_COURSE);
+    const parts = new Set<string>(), pick: typeof ranked = [];
+    for (const x of [...fresh, ...ranked.filter(x => recent.has(x.p.key))]) {
+      const part = x.p.key.startsWith('cp:') ? x.p.key.split(':').slice(0, 2).join(':') : null;   // une seule variante d'un même point de contrôle
+      if (part && parts.has(part)) continue;
+      if (part) parts.add(part);
+      pick.push(x);
+      if (pick.length >= PER_COURSE) break;
+    }
     for (const x of pick) questions.push({ course_id: d.course_id, version_id: v.id, key: x.p.key });
   }
   if (!questions.length) return null;
@@ -158,7 +179,7 @@ async function finish(studentId: string, s: Session): Promise<Summary> {
         (select lesson_done_at from course_progress where student_id = ${studentId} and course_id = ${r.course_id}), now()) at time zone 'Europe/Paris')::date))::int as gap`;
     await sql`insert into review_results (student_id, course_id, session_id, ok, total, gap_days, passed, next_days)
       values (${studentId}, ${r.course_id}, ${s.id}, ${r.ok}, ${r.total}, ${g.gap}, ${passed}, ${nextDays})`;
-    await sql`insert into review_schedule (student_id, course_id, step, due_at) values (${studentId}, ${r.course_id}, ${nextStep}, now() + make_interval(days => ${nextDays}))
+    await sql`insert into review_schedule (student_id, course_id, step, due_at) values (${studentId}, ${r.course_id}, ${nextStep}, ${dayIn(nextDays)})
       on conflict (student_id, course_id) do update set step = excluded.step, due_at = excluded.due_at`;
     await logEvent(studentId, 'revision_espacee', { courseId: r.course_id, data: { justes: r.ok, total: r.total, prochaine_dans_jours: nextDays } });
     out.push({ course_id: r.course_id, title: r.title, ok: r.ok, total: r.total, passed, next_days: nextDays });
@@ -175,5 +196,6 @@ export async function reviewOverview(studentId: string, levelCode: string, since
   const res = await sql<{ course_id: number; at: Date; ok: number; total: number; gap_days: number; passed: boolean }[]>`
     select course_id, at, ok, total, gap_days, passed from review_results where student_id = ${studentId} and at >= ${since} order by at`;
   const courses = sched.map(c => ({ ...c, results: res.filter(r => r.course_id === c.course_id) }));
-  return { courses, ok: res.reduce((n, r) => n + r.ok, 0), total: res.reduce((n, r) => n + r.total, 0), count: res.length };
+  const shown = res.filter(r => sched.some(c => c.course_id === r.course_id));   // même périmètre que les lignes (niveau de l'élève)
+  return { courses, ok: shown.reduce((n, r) => n + r.ok, 0), total: shown.reduce((n, r) => n + r.total, 0), count: shown.length };
 }
