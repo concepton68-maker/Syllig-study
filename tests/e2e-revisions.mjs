@@ -39,7 +39,7 @@ console.log('La révision : maths tout juste, français tout faux');
 await el.click('[data-review-today] a:has-text("Commencer")'); await el.waitForURL(/\/eleve\/revision/);
 const [ses] = await sql`select id, questions from review_sessions where student_id = ${st.id} and finished_at is null`;
 ok(ses.questions.length === 10 && ses.questions.slice(0, 5).every(q => q.course_id === ma.id) && ses.questions.slice(5).every(q => q.course_id === fr.id), '10 questions : 5 de maths (plus en retard) puis 5 de français');
-ok(new Set(ses.questions.map(q => q.key)).size === 10, 'aucune question en double');
+ok(new Set(ses.questions.map(q => `${q.course_id}:${q.key}`)).size === 10, 'aucune question en double (un même numéro peut exister dans deux cours)');
 ok(ses.questions.every(q => !q.key.startsWith('ev:')), 'aucune question de l’évaluation (elle doit rester inconnue)');
 ok(new Set(ses.questions.filter(q => q.key.startsWith('cp:')).map(q => `${q.course_id}:${q.key.split(':')[1]}`)).size === ses.questions.filter(q => q.key.startsWith('cp:')).length, 'une seule variante par point de contrôle');
 const answerIt = async (i, right) => {
