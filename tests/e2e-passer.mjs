@@ -55,6 +55,15 @@ await el.waitForTimeout(2500);
 const [back] = await sql`select skipped_at from course_progress where student_id = ${st.id} and course_id = ${c1.id}`;
 ok(back.skipped_at === null, 'en rouvrant la leçon, le cours reprend sa place normale');
 
+console.log('Pas pendant une évaluation commencée');
+const [v1] = await sql`select id from course_versions where course_id = ${c1.id} and status = 'published'`;
+await sql`update course_progress set forced = 'now' where student_id = ${st.id} and course_id = ${c1.id}`;
+await sql`insert into eval_attempts (student_id, course_id, version_id, attempt_no, status, started_at, deadline_at, answers)
+  values (${st.id}, ${c1.id}, ${v1.id}, 1, 'in_progress', now(), now() + interval '30 minutes', '{}')`;
+await el.goto(BASE + '/eleve');
+ok((await el.locator('main h2').first().innerText()).trim() === first && await el.locator('[data-skip]').count() === 0, 'évaluation en cours (chronomètre) : pas de bouton « Passer », rien ne file à son insu');
+await sql`delete from eval_attempts where student_id = ${st.id} and course_id = ${c1.id}`;
+
 console.log('Côté parent');
 const pa = await login('parent@test.local', 'parent-test-1234', { width: 1366, height: 900 });
 await pa.goto(BASE + '/parent/journal');

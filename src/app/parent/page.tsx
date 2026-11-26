@@ -31,7 +31,7 @@ export default async function ParentDashboard({ searchParams }: { searchParams: 
   const notes = await sql<{ id: string; title: string; subject: string; note: string; at: Date }[]>`
     select a.id, c.title, sj.name as subject, a.final_score as note, a.submitted_at as at from eval_attempts a join courses c on c.id = a.course_id
     join chapters ch on ch.id = c.chapter_id join subjects sj on sj.id = ch.subject_id
-    where a.student_id = ${student.id} and a.status = 'graded' and a.final_score is not null order by a.submitted_at desc limit 3`;
+    where a.student_id = ${student.id} and a.status = 'graded' and a.final_score is not null order by a.graded_at desc nulls last limit 3`;
   const shown = subjects.filter(s => s.published > 0);
   const pct = w.goal_min ? Math.min(1, w.active_min / w.goal_min) : 0;
   const R = 26, L = 2 * Math.PI * R;
@@ -59,7 +59,7 @@ export default async function ParentDashboard({ searchParams }: { searchParams: 
             <circle cx="32" cy="32" r={R} fill="none" stroke="var(--color-track)" strokeWidth="8" />
             {pct > 0 && <circle cx="32" cy="32" r={R} fill="none" stroke="var(--color-brand)" strokeWidth="8" strokeLinecap="round" strokeDasharray={`${pct * L} ${L}`} transform="rotate(-90 32 32)" />}
           </svg>
-          <span className="flex flex-col"><strong className="text-[22px]">{hm(w.active_min)}</strong><span className="text-[13px] muted">objectif {hm(w.goal_min)}</span></span>
+          <span className="flex flex-col"><strong className="text-[22px]">{hm(w.active_min)}</strong><span className="text-[13px] muted">temps actif · objectif {hm(w.goal_min)}</span></span>
         </div>
         <span className="flex flex-col"><strong className="text-[22px]">{w.days_worked} / 7 jours</strong><span className="text-[13px] muted">10 min ou plus</span></span>
         <Link className="btn ml-auto" href={`/parent/journal${q}`}>Ce que {student.first_name} a fait ›</Link>

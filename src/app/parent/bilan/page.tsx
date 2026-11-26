@@ -57,7 +57,7 @@ export default async function Bilan({ searchParams }: { searchParams: Promise<{ 
   return (
     <Screen top={<>
       <ChildPicker students={students} current={student} path="/parent/bilan" />
-      <PageTitle kicker="Bilan" title={`Bilan de ${name}`} sub={`depuis le ${new Date(`${sum.from}T12:00:00Z`).toLocaleDateString('fr-FR', { timeZone: 'UTC', day: 'numeric', month: 'long' }).replace(/^1 /, '1er ')}`} />
+      <PageTitle kicker="Bilan" title={`Bilan de ${name}`} />
     </>}>
       {sp.erreur && <p role="alert" className="m-0 rounded-xl bg-warm-soft text-warm-dark px-4 py-3 text-sm">{sp.erreur}</p>}
       {sp.note && <p role="status" className="m-0 rounded-xl bg-soft px-4 py-3 text-sm">{sp.note}</p>}
@@ -67,7 +67,7 @@ export default async function Bilan({ searchParams }: { searchParams: Promise<{ 
       <SubjectCards s={sum} />
 
       <section className="card flex flex-col gap-2" aria-labelledby="temps-semaine" data-weekly-time>
-        <div className="flex flex-wrap items-baseline justify-between gap-2"><h2 id="temps-semaine" className="text-lg font-semibold m-0">Temps de travail par semaine</h2>
+        <div className="flex flex-wrap items-baseline justify-between gap-2"><h2 id="temps-semaine" className="text-lg font-semibold m-0">Temps de travail par semaine <span className="muted font-normal text-sm">· 12 dernières semaines</span></h2>
           <span className="text-[13px] muted">pointillés : objectif {student.settings.weekly_goal_minutes} min · semaine en cours en pointillés</span></div>
         <WeeklyBars goal={student.settings.weekly_goal_minutes} bars={traj.weeks.map(w => ({ key: w.week, label: w.label, value: w.minutes, current: w.current,
           tip: w.started ? [`Semaine du ${w.label}${w.current ? ' (en cours)' : ''}`, `${w.minutes} min de travail effectif`, `${w.days} jour${w.days > 1 ? 's' : ''} avec 10 min ou plus`] : [`Semaine du ${w.label}`, 'avant la première activité'] }))} />

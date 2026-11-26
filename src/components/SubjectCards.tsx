@@ -15,7 +15,7 @@ function Notes({ notes }: { notes: SubjectSummary['notes'] }) {
         <line x1="0" x2={W} y1={y(10)} y2={y(10)} stroke="var(--color-line-strong)" strokeDasharray="4 4" />
         {shown.length > 1 && <polyline points={shown.map((n, i) => `${x(i)},${y(n.note)}`).join(' ')} fill="none" stroke="var(--color-brand)" strokeWidth="2" />}
         {shown.map((n, i) => <circle key={n.id} cx={x(i)} cy={y(n.note)} r="5" fill="var(--color-brand)" stroke="var(--color-white)" strokeWidth="2" />)}
-        {shown.map((n, i) => <text key={`t${n.id}`} x={x(i)} y={y(n.note) + 18} fontSize="11" textAnchor="middle" fill="var(--color-ink-2)">{fr(n.note)}</text>)}
+        {shown.map((n, i) => <text key={`t${n.id}`} x={x(i)} y={n.note < 5 ? y(n.note) - 9 : y(n.note) + 18} fontSize="11" textAnchor="middle" fill="var(--color-ink-2)">{fr(n.note)}</text>)}
       </svg>
       <div className="absolute inset-0 flex">
         {shown.map(n => <span key={n.id} tabIndex={0} className="flex-1" data-tip={`${n.title} · ${date(n.at)} · ${fr(n.note)}/20`} />)}
@@ -27,7 +27,7 @@ function Notes({ notes }: { notes: SubjectSummary['notes'] }) {
 export function SubjectCards({ s }: { s: { subjects: SubjectSummary[] } }) {
   return (
     <section aria-labelledby="matieres" className="flex flex-col gap-3" data-subject-cards>
-      <h2 id="matieres" className="text-lg font-semibold m-0">Matière par matière</h2>
+      <h2 id="matieres" className="text-lg font-semibold m-0">Matière par matière <span className="muted font-normal text-sm">· notes depuis le 1er septembre</span></h2>
       {s.subjects.length === 0 ? <p className="card m-0 text-sm muted">Pas encore de cours commencé.</p> : (
         <div className="grid gap-4 [grid-template-columns:repeat(auto-fill,minmax(280px,1fr))]">
           {s.subjects.map(m => (
@@ -45,7 +45,7 @@ export function SubjectCards({ s }: { s: { subjects: SubjectSummary[] } }) {
           ))}
         </div>
       )}
-      <span className="text-xs muted">Notes : chaque copie notée depuis le 1er septembre, tentatives comprises. Pointillés : 10/20. Acquis : évaluation à 14/20 ou plus, sur les cours disponibles. À revoir : cours dont la dernière copie notée a une question à 0 point ou sans réponse.</span>
+      <span className="text-xs muted">Notes : chaque copie notée depuis le 1er septembre, tentatives comprises. Pointillés : 10/20. Acquis : au moins une évaluation à 14/20 ou plus, depuis l’inscription, sur les cours disponibles. Graphique : les 12 dernières notes. À revoir : cours dont la dernière copie notée a une question à 0 point ou sans réponse.</span>
     </section>
   );
 }

@@ -41,7 +41,7 @@ export async function studentProfile(studentId: string): Promise<Profile> {
     from courses c join chapters ch on ch.id = c.chapter_id join subjects s on s.id = ch.subject_id join levels l on l.code = s.level_code
     left join course_progress p on p.student_id = ${studentId} and p.course_id = c.id
     where c.id in (
-      select course_id from course_progress where student_id = ${studentId}
+      select course_id from course_progress where student_id = ${studentId} and (lesson_done_at is not null or exercises_done_at is not null or mastery > 0)
       union select course_id from eval_attempts where student_id = ${studentId}
       union select course_id from work_sessions where student_id = ${studentId} and course_id is not null
       union select course_id from checkpoint_answers where student_id = ${studentId})

@@ -30,17 +30,18 @@ export async function subjectSummary(studentId: string, level: string): Promise<
     answers: Record<string, string>; scores: Record<string, number> | null; auto_scores: Record<string, number> | null }[]>`
     select a.id, a.course_id, c.title, sj.name as subject, a.final_score as note, a.submitted_at as at, a.version_id, a.variant, a.answers, a.scores, a.auto_scores
     from eval_attempts a join courses c on c.id = a.course_id join chapters ch on ch.id = c.chapter_id join subjects sj on sj.id = ch.subject_id
-    where a.student_id = ${studentId} and a.status = 'graded' and a.final_score is not null and a.submitted_at >= ${start} order by a.submitted_at`;
+    where a.student_id = ${studentId} and a.status = 'graded' and a.final_score is not null and a.submitted_at >= ${start} and sj.level_code = ${level} order by a.submitted_at`;
   const by = new Map<string, SubjectSummary>();
   const S = (name: string) => {
     if (!by.has(name)) { const p = progress.find(x => x.subject === name); by.set(name, { subject: name, notes: [], avg: null, acquired: p?.acquired ?? 0, published: p?.published ?? 0, review: [] }); }
     return by.get(name)!;
   };
-  for (const a of atts) S(a.subject).notes.push({ id: a.id, at: a.at.toISOString(), note: Number(a.note), title: a.title });
+  const followed = new Set(progress.map(p => p.subject));   // matières du niveau, sans les matières non suivies
+  for (const a of atts.filter(a => followed.has(a.subject))) S(a.subject).notes.push({ id: a.id, at: a.at.toISOString(), note: Number(a.note), title: a.title });
   // dernière copie notée de chaque cours
   const last = new Map<number, (typeof atts)[number]>();
   for (const a of atts) last.set(a.course_id, a);
-  for (const a of last.values()) {
+  for (const a of [...last.values()].filter(a => followed.has(a.subject))) {
     const doc = (await versionById(a.version_id))?.document;
     if (!doc) continue;
     const pts = { ...(a.auto_scores ?? {}), ...(a.scores ?? {}) };

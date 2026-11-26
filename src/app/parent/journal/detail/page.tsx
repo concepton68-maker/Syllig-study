@@ -12,7 +12,7 @@ export const dynamic = 'force-dynamic';
 const EVENT: Record<string, string> = {
   bilan_ia: 'Bilan pédagogique demandé à l’IA', consentement_ia: 'Accord pour l’IA modifié', remise_a_niveau_ajoutee: 'Leçon de remise à niveau ajoutée au parcours', positionnement_propose: 'Test de positionnement proposé',
   positionnement_commence: 'Test de positionnement commencé', positionnement_termine: 'Test de positionnement terminé',
-  seance_terminee: 'Séance terminée', lecon_terminee: 'Leçon terminée', point_controle_reussi: 'Point de contrôle réussi',
+  seance_terminee: 'Séance terminée', lecon_passee: 'Passée pour l’instant', lecon_terminee: 'Leçon terminée', point_controle_reussi: 'Point de contrôle réussi',
   point_controle_a_reessayer: 'Point de contrôle à réessayer', exercices_remis: 'Exercices remis', exercices_termines: 'Exercices terminés',
   evaluation_commencee: 'Évaluation commencée', evaluation_remise: 'Copie remise', evaluation_remise_automatiquement: 'Copie remise à la fin du temps',
   evaluation_sortie_fenetre: 'Sortie de la fenêtre', evaluation_retour_fenetre: 'Retour dans la fenêtre', evaluation_coller_bloque: 'Collage bloqué',
