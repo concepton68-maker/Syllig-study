@@ -87,6 +87,14 @@ await pa.locator('[data-item="exercises"] >> text=Revoir').first().click(); awai
 ok((await txt('[data-review-score]')).includes('0/1 justes') && (await txt('[data-review-chips]')).includes('1 fausse'), 'exercices : 0/1 juste, 1 fausse');
 ok(!/hausse|baisse|motivation|implication|concentration/i.test(await pa.locator('main').innerText()), 'aucune interprétation');
 
+console.log('Accueil (mêmes chiffres que l’Activité)');
+await pa.goto(BASE + '/parent');
+const hw = await txt('[data-home-week]');
+ok(hw.includes('1 h 15') && hw.includes('1 / 7 jours') && (await pa.locator('[data-home-week] svg').getAttribute('aria-label')).includes('25 %'), `cette semaine : 1 h 15, 1 / 7 jours, 25 % (« ${hw} »)`);
+const hn = await txt('[data-home-notes]');
+ok(hn.includes('3/20') && await pa.locator('[data-home-notes] a[href^="/parent/revoir/copie/"]').count() === 1, 'dernières notes : 3/20 avec « Revoir »');
+ok(await pa.locator('[data-home-acquired] [data-acq]').count() >= 1, 'cours acquis par matière');
+
 console.log('Navigation');
 await pa.goto(BASE + '/parent/journal');
 await pa.click('a[aria-label="Semaine précédente"]'); await pa.waitForURL(/semaine=/);

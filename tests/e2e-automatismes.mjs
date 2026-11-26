@@ -146,6 +146,8 @@ const [{ value: s0 }] = await sql`select value from app_settings where key = 'ia
 ok(s0.tasks.cours?.model === 'mistral-large-latest', 'la rédaction des cours reçoit Mistral Large d’office');
 
 const pa = await page('parent@test.local', 'parent-test-1234');
+// Bilan : les lignes « Pour aller plus loin » sont repliées ; ce test vérifie leur contenu, il les ouvre toutes
+await pa.addInitScript(() => { const f = () => document.querySelectorAll('details[data-fold]:not([open])').forEach(d => { d.open = true; }); new MutationObserver(f).observe(document, { childList: true, subtree: true }); });
 await pa.goto(BASE + '/parent/bilan#confidentialite');
 await pa.check('input[name=ai_correction]'); await pa.check('input[name=auto_correction]');
 await pa.check('input[name=ai_bilan]'); await pa.selectOption('select[name=auto_bilan]', 'hebdo'); await pa.check('input[name=auto_test]');

@@ -54,6 +54,17 @@ const errs = []; pa.on('pageerror', e => { if (!/#418/.test(e.message)) errs.pus
 await pa.goto(BASE + '/connexion'); await pa.fill('input[name=login]', 'parent@test.local'); await pa.fill('input[name=password]', 'parent-test-1234');
 await pa.click('button[type=submit]'); await pa.waitForURL(u => !u.pathname.startsWith('/connexion'));
 await pa.goto(BASE + '/parent/bilan');
+console.log('Matière par matière (valeurs calculées à la main)');
+const subj = async name => (await pa.locator(`[data-subject="${name}"]`).innerText()).replace(/\s+/g, ' ');
+const math = await subj('Mathématiques');
+ok(math.includes('2 copies notées') && math.includes('9,5 /20 de moyenne'), `maths : copies 3 et 16 → moyenne 9,5 (« ${math.slice(0, 120)} »)`);
+// la copie de français d'il y a 45 jours compte seulement si elle est dans l'année scolaire (depuis le 1er septembre)
+const now = new Date(), y0 = now.getMonth() >= 8 ? now.getFullYear() : now.getFullYear() - 1;
+const inYear = Date.now() - 45 * 864e5 >= new Date(y0, 8, 1).getTime();
+const fra = await subj('Français');
+ok(inYear ? fra.includes('2 copies notées') && fra.includes('16 /20 de moyenne') : fra.includes('1 copie notée') && fra.includes('12 /20'), `français : ${inYear ? '20 et 12 → 16' : '12 seulement'} (« ${fra.slice(0, 120)} »)`);
+ok(math.includes('rien pour l’instant') && fra.includes('rien pour l’instant'), 'à revoir : rien (dernières copies sans question à 0 point ni vide)');
+await pa.click('[data-fold="chiffres"] > summary');
 const card = pa.locator('[data-facts]');
 const val = async k => (await card.locator(`[data-fact="${k}"] strong`).innerText()).trim();
 console.log('Faits mesurés (valeurs calculées à la main)');

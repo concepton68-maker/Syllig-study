@@ -488,3 +488,10 @@ Contre-audit de conformité des versions 0.43 à 0.45 : tout ce qui a été rele
 - **Revoir ensemble** : bouton « Revoir » sur chaque série d'exercices et chaque copie. Chaque question montre la réponse de l'enfant à côté du corrigé, avec les points ; filtre « À revoir » / « Toutes ».
 - Depuis une copie, « Modifier la note » ouvre l'écran de correction (motif obligatoire, tracé dans le journal). Les copies notées de « À faire » mènent aussi à « Revoir ».
 - Le détail minute par minute reste accessible.
+
+## 0.48 — 26/11/2026
+- Pages du parent allégées, selon la maquette validée : chaque page a un rôle et aucun chiffre n'est en double.
+  - **Accueil** : ce que fait l'enfant en ce moment, « À faire », la semaine en 2 chiffres, les 3 dernières notes (avec « Revoir »), les cours acquis par matière.
+  - **En direct** : maintenant et aujourd'hui seulement (frise de la journée, séances du jour).
+  - **Bilan** : matière par matière (notes une par une depuis le 1er septembre, moyenne avec leur nombre, cours acquis, cours à revoir), temps de travail par semaine, puis « Pour aller plus loin » replié : test de positionnement, questionnaire, bilan par l'IA, tous les chiffres détaillés, confidentialité.
+- **Passer cette leçon** (élève) : depuis l'accueil ou la leçon, pour n'importe quelle raison, sans aucune sanction (ni points, ni niveau). Le cours suivant est proposé ; le cours passé reste dans « Tous mes cours » et reprend sa place dès que l'élève y revient. Le parent le voit dans l'Activité (« passée pour l'instant »).

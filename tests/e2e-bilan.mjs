@@ -125,6 +125,8 @@ await setKey('mistral', 'cle-mistral');
 
 console.log('Indicateurs');
 const pa = await page('parent@test.local', 'parent-test-1234');
+// Bilan : les lignes « Pour aller plus loin » sont repliées ; ce test vérifie leur contenu, il les ouvre toutes
+await pa.addInitScript(() => { const f = () => document.querySelectorAll('details[data-fold]:not([open])').forEach(d => { d.open = true; }); new MutationObserver(f).observe(document, { childList: true, subtree: true }); });
 await pa.goto(BASE + '/parent/bilan');
 const facts = await pa.locator('section[aria-labelledby="faits"]').innerText();
 ok(facts.includes('Leçon lue en 4 min pour'), 'leçon survolée repérée (4 min pour la durée prévue)');

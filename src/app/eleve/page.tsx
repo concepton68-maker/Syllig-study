@@ -2,6 +2,7 @@ import { Flame, Star } from 'lucide-react';
 import Link from 'next/link';
 import { requireStudent } from '@/lib/access';
 import { parcours, nextStep, pickNext } from '@/lib/progress';
+import { skipCourse } from './skip-actions';
 import { weekStats, streak, hm } from '@/lib/stats';
 import { stepHref } from '@/lib/links';
 import { sql } from '@/lib/db';
@@ -15,8 +16,8 @@ import { CHECKIN_EVERY_DAYS } from '@/lib/checkin';
 export const metadata = { title: 'Aujourd’hui' };
 export const dynamic = 'force-dynamic';
 
-export default async function Today({ searchParams }: { searchParams: Promise<{ questionnaire?: string }> }) {
-  const { questionnaire } = await searchParams;
+export default async function Today({ searchParams }: { searchParams: Promise<{ questionnaire?: string; passee?: string }> }) {
+  const { questionnaire, passee } = await searchParams;
   const { student } = await requireStudent();
   const items = await parcours(student.id, student.level_code);
   const goal = student.settings.weekly_goal_minutes * 60;
@@ -27,6 +28,7 @@ export default async function Today({ searchParams }: { searchParams: Promise<{ 
   const tier = Math.floor(total / TIER) + 1;
   const tierPct = Math.round(((total % TIER) / TIER) * 100);
   const next = pickNext(items, student.settings.retry_delay_days);
+  const skippedTitle = passee ? items.find(c => String(c.course_id) === passee && c.skipped)?.title ?? null : null;
   const step = next ? nextStep(next, student.settings.retry_delay_days) : null;
   // « Ensuite » : uniquement des cours disponibles où il reste quelque chose à faire
   const upcoming = items.filter(c => c !== next && c.published && !['done', 'soon'].includes(nextStep(c, student.settings.retry_delay_days).kind)).slice(0, 5);
@@ -79,6 +81,7 @@ export default async function Today({ searchParams }: { searchParams: Promise<{ 
               <Link className="btn btn-primary" href={`/eleve/positionnement/${placement.id}`}>{placement.status === 'en_cours' ? 'Reprendre le test' : 'Faire le test'}</Link>
             </section>
           )}
+          {skippedTitle && <p role="status" className="m-0 rounded-xl bg-soft px-4 py-3 text-sm" data-skipped><strong>C’est noté.</strong> « {skippedTitle} » t’attend dans Tous mes cours : tu y reviens quand tu veux.</p>}
           {questionnaire === 'merci' && <p role="status" className="m-0 rounded-xl bg-brand-soft text-brand-ink px-4 py-3 text-sm"><strong>Merci !</strong> Tes réponses aident ton parent à mieux t’accompagner.</p>}
           {checkinDue && (
             <section className="card p-5 flex flex-wrap items-center gap-4" data-checkin-due>
@@ -114,6 +117,7 @@ export default async function Today({ searchParams }: { searchParams: Promise<{ 
                 <Link className="btn btn-primary min-h-[52px] px-7 text-base w-full sm:w-auto" href={stepHref(next.course_id, step)}>
                   {step.kind === 'lesson' && !next.lesson_started ? 'Commencer' : 'Continuer'} : {step.label}{step.minutes ? ` · ${step.minutes} min` : ''}
                 </Link>
+                <form action={skipCourse.bind(null, next.course_id)}><button className="btn min-h-[52px]" type="submit" data-skip>{step.kind === 'lesson' ? 'Passer cette leçon' : 'Passer ce cours'}</button></form>
                 <span className="muted text-sm max-w-[460px]">Le temps compté s’arrête après 60 s sans aucun geste sur la page. Les corrigés s’ouvrent après ta réponse.</span>
               </div>
             </section>

@@ -39,6 +39,7 @@ export default async function MyCourses({ searchParams }: { searchParams: Promis
           <Link href={`/eleve/cours/${c.course_id}`} className="font-semibold text-[15px] text-ink">{c.title}</Link>
           <div className="muted text-xs">{c.subject} · {c.chapter}</div>
         </div>
+        {c.skipped && <span className="pill bg-soft text-ink-2" data-skipped-pill>Passée pour l’instant</span>}
         {c.priority === 'prioritaire' && c.mastery < 4 && <PriorityPill />}
         <MasteryPill level={c.mastery} started={c.lesson_started} />
         {st.kind !== 'done' && <Link href={stepHref(c.course_id, st)} className="btn w-full sm:w-[240px]">

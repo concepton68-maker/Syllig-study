@@ -28,6 +28,8 @@ for (const lv of fs.readdirSync('content').filter(d => fs.existsSync(`content/${
 
 console.log('Nouvel enfant : test de rentrée proposé d’emblée');
 const pa = await page('parent@test.local', 'parent-test-1234');
+// Bilan : les lignes « Pour aller plus loin » sont repliées ; ce test vérifie leur contenu, il les ouvre toutes
+await pa.addInitScript(() => { const f = () => document.querySelectorAll('details[data-fold]:not([open])').forEach(d => { d.open = true; }); new MutationObserver(f).observe(document, { childList: true, subtree: true }); });
 await pa.goto(BASE + '/parent/enfants');
 const f = pa.locator('[data-add-child]');
 await f.locator('input[name=first_name]').fill('Nora');

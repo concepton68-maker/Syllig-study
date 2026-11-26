@@ -40,6 +40,8 @@ const errs = []; pa.on('pageerror', e => { if (!/#418/.test(e.message)) errs.pus
 await pa.goto(BASE + '/connexion'); await pa.fill('input[name=login]', 'parent@test.local'); await pa.fill('input[name=password]', 'parent-test-1234');
 await pa.click('button[type=submit]'); await pa.waitForURL(u => !u.pathname.startsWith('/connexion'));
 await pa.goto(BASE + '/parent/bilan');
+ok(await pa.locator('[data-weekly-time] [data-bar-week]').count() === 12, 'temps de travail par semaine : 12 barres, visibles sans rien ouvrir');
+await pa.click('[data-fold="chiffres"] > summary');
 const card = pa.locator('[data-trajectory]');
 const row = async label => (await card.locator(`[data-compare-row="${label}"]`).innerText()).replace(/\s+/g, ' ');
 ok((await row('Temps de travail effectif')).includes(`${minutesBefore} min → ${minutesAfter} min`), `temps : ${await row('Temps de travail effectif')} (attendu ${minutesBefore} → ${minutesAfter})`);

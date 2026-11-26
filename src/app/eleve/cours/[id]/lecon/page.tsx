@@ -6,6 +6,7 @@ import { LessonBook, type BookPage } from './Book';
 import { ActivityTracker } from '@/components/ActivityTracker';
 import { PaneScreen } from '@/components/Layout';
 import { completeLessonWithoutCheckpoint } from './actions';
+import { skipCourse } from '../../../skip-actions';
 
 export const dynamic = 'force-dynamic';
 
@@ -40,7 +41,8 @@ export default async function LessonPage({ params }: { params: Promise<{ id: str
             <h1 className="font-[family-name:var(--font-display)] !text-lg font-bold m-0 leading-snug">{course.title} · ① Leçon</h1></div>
         </div>
         <div className="flex items-center gap-2.5"><ActivityTracker kind="lesson" courseId={course.id} idleSeconds={student.settings.idle_seconds} />
-          <span className="pill bg-soft text-ink-2">{done ? 'Leçon terminée' : `Partie ${st.current + 1} sur ${parts.length}`}</span></div>
+          <span className="pill bg-soft text-ink-2">{done ? 'Leçon terminée' : `Partie ${st.current + 1} sur ${parts.length}`}</span>
+          {!done && <form action={skipCourse.bind(null, course.id)}><button className="btn" type="submit" data-skip>Passer cette leçon</button></form>}</div>
       </div>
     }>
       <LessonBook pointsJustEarned={fresh} courseId={id} pages={pages} startPage={startPage} current={st.current} checkpoint={st.checkpoint}

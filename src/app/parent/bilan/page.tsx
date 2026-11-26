@@ -18,6 +18,10 @@ import { EngagementCard } from '@/components/Engagement';
 import { CheckinCard, type CheckinRow } from '@/components/Checkin';
 import { TrajectoryCard } from '@/components/Trajectory';
 import { trajectory } from '@/lib/trajectory';
+import { subjectSummary } from '@/lib/subject-summary';
+import { WeeklyBars } from '@/components/TrajectoryChart';
+import { SubjectCards } from '@/components/SubjectCards';
+import { Fold, OpenFromHash } from '@/components/Fold';
 
 export const metadata = { title: 'Bilan' };
 export const dynamic = 'force-dynamic';
@@ -34,7 +38,7 @@ export default async function Bilan({ searchParams }: { searchParams: Promise<{ 
   if (!student) return <Screen top={<PageTitle kicker="Bilan" title="Aucun enfant" />}><p className="muted">Ajoutez d’abord un enfant.</p></Screen>;
   const ai = await aiOverview();
   const aiOn = ai.ready.bilan;
-  const [profile, eng, traj] = await Promise.all([studentProfile(student.id), workFacts(student.id), trajectory(student.id)]);
+  const [profile, eng, traj, sum] = await Promise.all([studentProfile(student.id), workFacts(student.id), trajectory(student.id), subjectSummary(student.id, student.level_code)]);
   const reports = await sql<Report[]>`select id, created_at, provider, model, data, indicators from student_reports where student_id = ${student.id} order by created_at desc limit 30`;
   // ancienne consigne (avant le 25/11/2026) : le bilan attribuait une « origine » et une « implication » ; jamais affiché par défaut
   const oldStyle = (r: Report) => 'origine' in (r.data as object) || 'implication' in (r.data as object);
@@ -53,47 +57,26 @@ export default async function Bilan({ searchParams }: { searchParams: Promise<{ 
   return (
     <Screen top={<>
       <ChildPicker students={students} current={student} path="/parent/bilan" />
-      <PageTitle kicker="Bilan pédagogique" title={`Où en est ${name} ?`}
-        sub="Les chiffres mesurés par la plateforme, puis le bilan rédigé par l’IA à partir de ces seuls chiffres, et un test de positionnement pour vérifier les bases des années précédentes." />
+      <PageTitle kicker="Bilan" title={`Bilan de ${name}`} sub={`depuis le ${new Date(`${sum.from}T12:00:00Z`).toLocaleDateString('fr-FR', { timeZone: 'UTC', day: 'numeric', month: 'long' }).replace(/^1 /, '1er ')}`} />
     </>}>
       {sp.erreur && <p role="alert" className="m-0 rounded-xl bg-warm-soft text-warm-dark px-4 py-3 text-sm">{sp.erreur}</p>}
       {sp.note && <p role="status" className="m-0 rounded-xl bg-soft px-4 py-3 text-sm">{sp.note}</p>}
       {sp.consentement && <p role="status" className="m-0 rounded-xl bg-brand-soft text-brand-ink px-4 py-3 text-sm"><strong>Choix enregistrés pour {name}.</strong> Vous pouvez les changer à tout moment.</p>}
       {sp.test === 'propose' && <p role="status" className="m-0 rounded-xl bg-brand-soft text-brand-ink px-4 py-3 text-sm"><strong>Test proposé à {name}.</strong> Il apparaît dans son espace, rubrique « Aujourd’hui ». Les résultats s’afficheront ici.</p>}
 
-      {/* 0. Travail et résultats (faits sur 28 jours) */}
-      <EngagementCard f={eng} name={name} />
-      <TrajectoryCard tr={traj} name={name} goalMin={student.settings.weekly_goal_minutes} />
-      <CheckinCard rows={checkins} name={name} requestAction={requestCheckin.bind(null, student.id)} requested={!!(student.settings as { checkin_requested?: boolean }).checkin_requested} fille={student.settings.gender === 'fille'} />
+      <SubjectCards s={sum} />
 
-      {/* 1. Les faits */}
-      <section className="card flex flex-col gap-3" aria-labelledby="faits">
-        <h2 id="faits" className="text-xl font-semibold m-0 flex items-center gap-2"><Gauge size={20} aria-hidden="true" />Ce que montrent les chiffres</h2>
-        <p className="muted text-sm m-0">
-          {profile.global.courses} cours commencé{profile.global.courses > 1 ? 's' : ''} · {fr(profile.global.active_min)} min de travail actif sur {profile.global.days_active} jour{profile.global.days_active > 1 ? 's' : ''}
-          {' · '}{profile.global.evaluations ? `moyenne des évaluations ${fr(profile.global.eval_avg!)}/20 (${profile.global.evaluations})` : 'aucune évaluation notée'}
-        </p>
-        {profile.courses.length === 0 ? <p className="m-0 text-sm">Pas encore de travail enregistré.</p> : (
-          <div className="flex flex-col">
-            {profile.courses.map(c => <CourseRow key={c.course_id} c={c} />)}
-          </div>
-        )}
-        <p className="muted text-xs m-0">Temps actif : minutes avec un geste sur une page de travail (clic, défilement, saisie) ; après 60 s sans geste, ou page en arrière-plan, le temps n’est plus compté. Chiffres depuis l’inscription.</p>
+      <section className="card flex flex-col gap-2" aria-labelledby="temps-semaine" data-weekly-time>
+        <div className="flex flex-wrap items-baseline justify-between gap-2"><h2 id="temps-semaine" className="text-lg font-semibold m-0">Temps de travail par semaine</h2>
+          <span className="text-[13px] muted">pointillés : objectif {student.settings.weekly_goal_minutes} min · semaine en cours en pointillés</span></div>
+        <WeeklyBars goal={student.settings.weekly_goal_minutes} bars={traj.weeks.map(w => ({ key: w.week, label: w.label, value: w.minutes, current: w.current,
+          tip: w.started ? [`Semaine du ${w.label}${w.current ? ' (en cours)' : ''}`, `${w.minutes} min de travail effectif`, `${w.days} jour${w.days > 1 ? 's' : ''} avec 10 min ou plus`] : [`Semaine du ${w.label}`, 'avant la première activité'] }))} />
       </section>
 
-      {/* 2. Le bilan de l'IA */}
-      <section className="card flex flex-col gap-4" aria-labelledby="bilan-ia">
-        <div className="flex flex-wrap items-center justify-between gap-3">
-          <h2 id="bilan-ia" className="text-xl font-semibold m-0 flex items-center gap-2"><Sparkles size={20} aria-hidden="true" />Bilan par l’IA</h2>
-          {aiOn && !consent.bilan ? <a className="btn" href="#confidentialite">Autoriser le bilan par l’IA</a> : aiOn
-            ? <form action={requestReport.bind(null, student.id)}><AiButton n={0} label={reports.length ? 'Nouveau bilan' : 'Demander un bilan'} busy="Rédaction du bilan… (une à deux minutes)" /></form>
-            : <span className="muted text-sm">IA non configurée pour le bilan : Contenu › IA.</span>}
-        </div>
-        {!shown ? <p className="m-0 text-sm">Aucun bilan pour l’instant. L’IA lit les chiffres ci-dessus (sans le prénom de {name}) et rédige un bilan pour vous.</p>
-          : <ReportView r={shown} name={name} />}
-      </section>
-
-      {/* 3. Test de positionnement */}
+      <section className="card flex flex-col !py-3" aria-labelledby="plus" data-more>
+        <OpenFromHash />
+        <h2 id="plus" className="text-lg font-semibold m-0 py-2">Pour aller plus loin</h2>
+        <Fold id="test" title="Test de positionnement" sub={tests[0] ? (tests[0].status === 'termine' ? `fait le ${day(tests[0].submitted_at ?? tests[0].created_at)}${tests[0].total ? ` · ${tests[0].score} / ${tests[0].total}` : ''}` : 'proposé, pas encore terminé') : 'pas encore fait'} open={!!sp.test}>
       <section className="card flex flex-col gap-3" aria-labelledby="positionnement">
         <h2 id="positionnement" className="text-xl font-semibold m-0 flex items-center gap-2"><Compass size={20} aria-hidden="true" />Test de positionnement</h2>
         <p className="muted text-sm m-0">Un court test sur les bases des années précédentes, corrigé automatiquement. Il ne compte pas dans les notes. Il donne un score par matière et la liste des questions ratées, à vérifier ensuite.</p>
@@ -116,9 +99,54 @@ export default async function Bilan({ searchParams }: { searchParams: Promise<{ 
           </>
         )}
       </section>
-
-      {/* Confidentialité et IA (RGPD) */}
-      <section id="confidentialite" className="card flex flex-col gap-3 scroll-mt-4" aria-labelledby="rgpd">
+        </Fold>
+        <Fold id="questionnaire" title="Ses réponses « Comment je travaille »" sub={checkins.length ? `dernières réponses le ${day(checkins[0].created_at)}` : 'pas encore rempli'}>
+          <CheckinCard rows={checkins} name={name} requestAction={requestCheckin.bind(null, student.id)} requested={!!(student.settings as { checkin_requested?: boolean }).checkin_requested} fille={student.settings.gender === 'fille'} />
+        </Fold>
+        <Fold id="bilan-ia-plus" title="Bilan rédigé par l’IA" sub={shown ? `dernier bilan le ${day(shown.created_at)}` : aiOn ? 'demander un bilan' : 'IA non configurée'} open={!!sp.rapport}>
+      <section className="card flex flex-col gap-4" aria-labelledby="bilan-ia">
+        <div className="flex flex-wrap items-center justify-between gap-3">
+          <h2 id="bilan-ia" className="text-xl font-semibold m-0 flex items-center gap-2"><Sparkles size={20} aria-hidden="true" />Bilan par l’IA</h2>
+          {aiOn && !consent.bilan ? <a className="btn" href="#confidentialite">Autoriser le bilan par l’IA</a> : aiOn
+            ? <form action={requestReport.bind(null, student.id)}><AiButton n={0} label={reports.length ? 'Nouveau bilan' : 'Demander un bilan'} busy="Rédaction du bilan… (une à deux minutes)" /></form>
+            : <span className="muted text-sm">IA non configurée pour le bilan : Contenu › IA.</span>}
+        </div>
+        {!shown ? <p className="m-0 text-sm">Aucun bilan pour l’instant. L’IA lit les chiffres ci-dessus (sans le prénom de {name}) et rédige un bilan pour vous.</p>
+          : <ReportView r={shown} name={name} />}
+      </section>
+      {reports.length > 1 && (
+        <section className="card flex flex-col" aria-labelledby="historique">
+          <h2 id="historique" className="text-lg font-semibold mb-2">Bilans précédents</h2>
+          <div className="mb-2"><BulkBar formId="bulk-bilans" noun="bilan" actions={[{ label: 'Supprimer', action: deleteReports, tone: 'danger', confirm: 'Supprimer {n} ? (les leçons à créer déjà proposées restent dans l’espace Contenu)' }]} hidden={{ eleve: student.id }} /></div>
+          {reports.map(r => (
+            <div key={r.id} className="flex flex-wrap items-center gap-3 py-2.5 border-t border-soft text-sm">
+              <BulkCheck formId="bulk-bilans" value={r.id} label={`bilan du ${day(r.created_at)}`} />
+              <span className="flex-1"><strong>{day(r.created_at)}</strong><span className="muted"> · {ai.catalog[r.provider]?.name ?? r.provider}</span>{oldStyle(r) && <span className="block text-[13px] text-warm-dark">Ancienne consigne : ce bilan supposait des causes. Demandez un nouveau bilan.</span>}</span>
+              {r.id === shown?.id ? <span className="pill bg-brand-soft text-brand-dark">Affiché</span> : <Link className="font-semibold" href={`/parent/bilan?eleve=${student.id}&rapport=${r.id}`}>Voir</Link>}
+            </div>
+          ))}
+        </section>
+      )}
+        </Fold>
+        <Fold id="chiffres" title="Tous les chiffres détaillés" sub="28 jours, 12 semaines, cours par cours">
+          <EngagementCard f={eng} name={name} />
+          <TrajectoryCard tr={traj} name={name} goalMin={student.settings.weekly_goal_minutes} />
+      <section className="card flex flex-col gap-3" aria-labelledby="faits">
+        <h2 id="faits" className="text-xl font-semibold m-0 flex items-center gap-2"><Gauge size={20} aria-hidden="true" />Ce que montrent les chiffres</h2>
+        <p className="muted text-sm m-0">
+          {profile.global.courses} cours commencé{profile.global.courses > 1 ? 's' : ''} · {fr(profile.global.active_min)} min de travail actif sur {profile.global.days_active} jour{profile.global.days_active > 1 ? 's' : ''}
+          {' · '}{profile.global.evaluations ? `moyenne des évaluations ${fr(profile.global.eval_avg!)}/20 (${profile.global.evaluations})` : 'aucune évaluation notée'}
+        </p>
+        {profile.courses.length === 0 ? <p className="m-0 text-sm">Pas encore de travail enregistré.</p> : (
+          <div className="flex flex-col">
+            {profile.courses.map(c => <CourseRow key={c.course_id} c={c} />)}
+          </div>
+        )}
+        <p className="muted text-xs m-0">Temps actif : minutes avec un geste sur une page de travail (clic, défilement, saisie) ; après 60 s sans geste, ou page en arrière-plan, le temps n’est plus compté. Chiffres depuis l’inscription.</p>
+      </section>
+        </Fold>
+        <Fold id="confidentialite" title="Confidentialité et IA" sub={`correction par l’IA : ${consent.correction ? 'oui' : 'non'} · bilan par l’IA : ${consent.bilan ? 'oui' : 'non'}`} open={!!sp.consentement}>
+      <section className="card flex flex-col gap-3" aria-labelledby="rgpd">
         <h2 id="rgpd" className="text-xl font-semibold m-0 flex items-center gap-2"><ShieldCheck size={20} aria-hidden="true" />Confidentialité et IA</h2>
         <p className="m-0 text-sm">Rien n’est envoyé à une IA pour {name} sans votre accord. Ce qui part ne contient <strong>jamais</strong> son nom : prénoms, identifiants, e-mails, téléphones et adresses sont retirés des réponses avant l’envoi.</p>
         <form action={saveAiConsent.bind(null, student.id)} className="flex flex-col gap-3">
@@ -164,21 +192,8 @@ export default async function Bilan({ searchParams }: { searchParams: Promise<{ 
         )}
         <p className="muted text-xs m-0">Les bilans et ce journal sont effacés automatiquement après {ai.retention_days >= 730 ? '2 ans' : ai.retention_days >= 365 ? '1 an' : '6 mois'}.</p>
       </section>
-
-      {/* 4. Historique */}
-      {reports.length > 1 && (
-        <section className="card flex flex-col" aria-labelledby="historique">
-          <h2 id="historique" className="text-lg font-semibold mb-2">Bilans précédents</h2>
-          <div className="mb-2"><BulkBar formId="bulk-bilans" noun="bilan" actions={[{ label: 'Supprimer', action: deleteReports, tone: 'danger', confirm: 'Supprimer {n} ? (les leçons à créer déjà proposées restent dans l’espace Contenu)' }]} hidden={{ eleve: student.id }} /></div>
-          {reports.map(r => (
-            <div key={r.id} className="flex flex-wrap items-center gap-3 py-2.5 border-t border-soft text-sm">
-              <BulkCheck formId="bulk-bilans" value={r.id} label={`bilan du ${day(r.created_at)}`} />
-              <span className="flex-1"><strong>{day(r.created_at)}</strong><span className="muted"> · {ai.catalog[r.provider]?.name ?? r.provider}</span>{oldStyle(r) && <span className="block text-[13px] text-warm-dark">Ancienne consigne : ce bilan supposait des causes. Demandez un nouveau bilan.</span>}</span>
-              {r.id === shown?.id ? <span className="pill bg-brand-soft text-brand-dark">Affiché</span> : <Link className="font-semibold" href={`/parent/bilan?eleve=${student.id}&rapport=${r.id}`}>Voir</Link>}
-            </div>
-          ))}
-        </section>
-      )}
+        </Fold>
+      </section>
     </Screen>
   );
 }

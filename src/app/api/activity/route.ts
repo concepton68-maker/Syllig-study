@@ -33,6 +33,8 @@ export async function POST(req: Request) {
     const open = await sql<{ id: string }[]>`select id from work_sessions where student_id = ${st.id} and ended_at is null`;
     for (const o of open) await closeSession(o.id, st.id);
     const [s] = await sql<{ id: string }[]>`insert into work_sessions (student_id, course_id, kind) values (${st.id}, ${body.courseId}, ${body.kind}) returning id`;
+    // l'élève revient sur un cours qu'il avait passé : il reprend sa place normale dans le parcours
+    if (body.courseId) await sql`update course_progress set skipped_at = null where student_id = ${st.id} and course_id = ${body.courseId} and skipped_at is not null`;
     return NextResponse.json({ session: s.id });
   }
 

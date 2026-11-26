@@ -57,16 +57,12 @@ ok((await pa.locator('[data-live]').innerText()).includes('Dernière activité')
 const beats = await sql`select count(*)::int as n from activity_beats where session_id = ${session}`;
 ok(beats[0].n === 4, `signaux conservés (${beats[0].n})`);
 
-console.log('Graphiques et chiffres');
+console.log('Aujourd’hui');
 await pa.reload();
-ok(await pa.locator('[data-day]').count() === 7, 'barres des 7 derniers jours');
-const yest = await pa.locator('[data-day] [data-bar="travail"]').count();
-ok(yest >= 1, 'travail effectif d’hier visible dans les barres');
-await pa.click('[data-table] summary');
-ok((await pa.locator('[data-table] table').innerText()).includes('40 min'), 'tableau des chiffres : 40 min d’hier');
-ok((await pa.locator('[data-tile="regularite"]').innerText()).includes('/7'), 'indicateur de régularité');
-ok(!(await pa.locator('[data-tile="concentration"]').innerText()).includes('—'), 'indicateur de concentration calculé');
-ok((await pa.locator('body').innerText()).includes('Exercices'), 'répartition par activité');
+const todayList = (await pa.locator('[data-today-list]').innerText()).replace(/\s+/g, ' ');
+ok(todayList.includes(c.title) && todayList.includes('leçon'), `la séance du jour est listée (« ${todayList.slice(0, 160)} »)`);
+ok(await pa.locator('[data-tile]').count() === 0 && !(await pa.locator('main').innerText()).includes('7 derniers jours'), 'plus de chiffres en double : la semaine est dans Activité');
+ok(await pa.locator('[data-today-list] a[href*="/parent/journal"]').count() === 1, 'lien « Toute la semaine »');
 
 console.log('Accueil');
 await pa.goto(BASE + '/parent');

@@ -98,8 +98,15 @@ export async function weekTimeline(studentId: string, monday: string): Promise<T
       what: g.kind === 'lesson' ? (finished ? 'leçon terminée' : 'leçon') : g.kind === 'exercises' ? 'exercices, pas encore remis' : g.kind === 'evaluation' ? 'évaluation, pas encore remise' : 'autre page',
       minutes: g.minutes, result: g.kind === 'lesson' && cp.length ? `contrôles ${okN}/${cp.length}` : null, warn: false, href: null });
   }
+  // leçons passées par l'élève (fait neutre, sans sanction)
+  const skips = await sql<{ course_id: number; at: Date; title: string; subject: string }[]>`
+    select l.course_id, l.at, c.title, sj.name as subject from activity_log l join courses c on c.id = l.course_id
+    join chapters ch on ch.id = c.chapter_id join subjects sj on sj.id = ch.subject_id
+    where l.student_id = ${studentId} and l.event = 'lecon_passee' and l.at >= ${start} and l.at < ${end}`;
+  for (const k of skips) items.push({ key: `skip-${k.course_id}-${k.at.getTime()}`, at: k.at.getTime(), time: hhmm(k.at), kind: 'lesson', title: k.title, subject: k.subject,
+    what: 'passée pour l’instant', minutes: null, result: null, warn: false, href: null });
   // une séance de moins d'une minute sans rien remis n'est pas une activité à retracer
-  const shown = items.filter(i => i.href || (i.minutes ?? 0) > 0 || i.result);
+  const shown = items.filter(i => i.href || (i.minutes ?? 0) > 0 || i.result || i.key.startsWith('skip-'));
   return weekDays.map(d => ({ day: d, minutes: dayTotal.get(d) ?? 0, items: shown.filter(i => dayOf(new Date(i.at)) === d).sort((a, b) => a.at - b.at) }));
 }
 

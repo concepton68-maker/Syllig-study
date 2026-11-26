@@ -1,91 +1,47 @@
 import { requireParent } from '@/lib/access';
 import Link from 'next/link';
-import { liveStatus, dayTimeline, lastDays, breakdown } from '@/lib/live';
+import { liveStatus, dayTimeline } from '@/lib/live';
+import { mondayOf, hm } from '@/lib/week';
+import { weekTimeline } from '@/lib/review';
 import { PageTitle } from '@/components/Shell';
 import { ChildPicker } from '@/components/ChildPicker';
-import { PaneScreen, Panes, Pane } from '@/components/Layout';
+import { Screen } from '@/components/Layout';
 import { AutoRefresh } from '@/components/AutoRefresh';
 import { LiveBoard } from './LiveBoard';
-import { WeekBars, SplitBar, BarList } from './Charts';
 
 export const metadata = { title: 'Suivi en direct' };
 export const dynamic = 'force-dynamic';
 
-const KIND_COLOR: Record<string, { label: string; color: string }> = {
-  lesson: { label: 'Leçons', color: '#257de0' }, exercises: { label: 'Exercices', color: '#00b894' }, evaluation: { label: 'Évaluations', color: '#6a4ce2' },
-};
-const dur = (s: number) => { const m = Math.floor(s / 60); return m < 60 ? `${m} min` : `${Math.floor(m / 60)} h ${String(m % 60).padStart(2, '0')}`; };
-
-function Tile({ label, value, sub, testid }: { label: string; value: string; sub: string; testid?: string }) {
-  return (
-    <div className="flex-[1_1_150px] rounded-xl border border-line bg-surface-2 px-4 py-3" data-tile={testid}>
-      <span className="block muted text-xs uppercase tracking-wide">{label}</span>
-      <span className="block text-2xl font-bold tabular-nums">{value}</span>
-      <span className="block muted text-[13px]">{sub}</span>
-    </div>
-  );
-}
+// En direct (maquette validée le 26/11/2026) : seulement maintenant et aujourd'hui. La semaine est dans Activité, la durée dans Bilan.
+const WHAT: Record<string, string> = { lesson: 'leçon', exercises: 'exercices', evaluation: 'évaluation', other: 'autre page' };
 
 export default async function Suivi({ searchParams }: { searchParams: Promise<{ eleve?: string }> }) {
   const { eleve } = await searchParams;
   const { students, student } = await requireParent(eleve);
   if (!student) return null;
-  const [live, today, days, b] = await Promise.all([liveStatus(student.id), dayTimeline(student.id), lastDays(student.id), breakdown(student.id)]);
-  const w = b.week;
-  const focus = w.open ? Math.round((w.active / w.open) * 100) : null;
-  const kinds = Object.entries(KIND_COLOR).map(([k, c]) => ({ label: c.label, color: c.color, value: b.byKind.find(x => x.kind === k)?.s ?? 0 }));
-  const other = b.byKind.filter(x => !(x.kind in KIND_COLOR)).reduce((a, x) => a + x.s, 0);
-  if (other) kinds.push({ label: 'Autre', color: '#98A2B3', value: other });
-  const weekActive = days.reduce((a, d) => a + d.active, 0);
+  const { current } = await mondayOf();
+  const [live, today, week] = await Promise.all([liveStatus(student.id), dayTimeline(student.id), weekTimeline(student.id, current)]);
+  const items = week.find(d => d.day === today.day)?.items ?? [];
 
   return (
-    <PaneScreen top={<>
+    <Screen top={<>
       <ChildPicker students={students} current={student} path="/parent/suivi" />
-      <PageTitle kicker="Suivi en direct" title={`Ce que fait ${student.first_name}, en ce moment et ces derniers jours`}
-        sub="Le temps « effectif » ne compte que les minutes où l’élève agit sur la page de travail. Les heures viennent du serveur." />
+      <PageTitle kicker="En direct" title={`${student.first_name}, en ce moment`} sub="Heures du serveur. Une minute compte si l’élève agit sur la page de travail." />
     </>}>
       <AutoRefresh active every={60_000} />
-      <Panes>
-        <Pane className="flex-[999_1_560px]">
-          <LiveBoard studentId={student.id} name={student.first_name} initial={{ live, today, now: new Date().toISOString() }} />
-          <section className="card flex flex-col gap-3">
-            <div className="flex flex-wrap items-baseline gap-x-5 gap-y-1">
-              <h2 className="text-lg font-semibold mr-auto">7 derniers jours</h2>
-              <span className="flex items-center gap-1.5 text-sm"><i className="inline-block w-3 h-3 rounded-sm" style={{ background: '#2F4FD8' }} /> Actif</span>
-              <span className="flex items-center gap-1.5 text-sm"><i className="inline-block w-3 h-3 rounded-sm" style={{ background: '#f47230' }} /> Sans geste</span>
-              
-            </div>
-            <WeekBars days={days} goalMin={0} />
-            <details className="text-sm" data-table>
-              <summary className="cursor-pointer muted">Voir les chiffres</summary>
-              <table className="w-full mt-2 text-sm">
-                <thead><tr className="text-left muted"><th className="py-1 font-medium">Jour</th><th className="font-medium">Actif</th><th className="font-medium">Sans geste</th></tr></thead>
-                <tbody>{days.map(d => <tr key={d.day} className="border-t border-soft"><td className="py-1">{new Date(`${d.day}T12:00:00Z`).toLocaleDateString('fr-FR', { weekday: 'long', day: 'numeric', month: 'short' })}</td>
-                  <td>{dur(d.active)}</td><td>{dur(d.pause)}</td></tr>)}</tbody>
-              </table>
-            </details>
-          </section>
-        </Pane>
-        <Pane className="flex-[1_1_380px]">
-          <section className="card flex flex-col gap-3">
-            <h2 className="text-lg font-semibold">Les 7 derniers jours en un coup d’œil</h2>
-            <div className="flex flex-wrap gap-3">
-              <Tile testid="actif" label="Travail effectif" value={dur(weekActive)} sub={`objectif que vous avez fixé : ${dur(student.settings.weekly_goal_minutes * 60)} par semaine`} />
-              <Tile testid="concentration" label="Part du temps actif sur la page" value={focus === null ? '—' : `${focus} %`} sub="minutes avec un geste (clic, défilement, saisie) sur le temps de page ouverte ; pause après 60 s sans geste" />
-              <Tile testid="regularite" label="Jours travaillés" value={`${w.days}/7`} sub="jours avec au moins 10 min de travail effectif cumulé" />
-              <Tile testid="sorties" label="Sorties pendant les évaluations" value={String(w.focus)} sub="fois où la fenêtre a été quittée pendant une évaluation" />
-            </div>
-          </section>
-          <section className="card flex flex-col gap-3">
-            <h2 className="text-lg font-semibold">À quoi sert le temps de travail <span className="muted font-normal text-sm">· 30 derniers jours, aujourd’hui compris</span></h2>
-            <SplitBar parts={kinds} />
-          </section>
-          <section className="card flex flex-col gap-3">
-            <h2 className="text-lg font-semibold">Par matière <span className="muted font-normal text-sm">· 30 derniers jours, aujourd’hui compris</span></h2>
-            <BarList rows={b.bySubject.map(r => ({ label: r.subject, value: r.s }))} />
-          </section>
-        </Pane>
-      </Panes>
-    </PaneScreen>
+      <LiveBoard studentId={student.id} name={student.first_name} initial={{ live, today, now: new Date().toISOString() }} />
+      <section className="card flex flex-col" aria-labelledby="seances" data-today-list>
+        <h2 id="seances" className="text-lg font-semibold m-0 mb-2">Les séances d’aujourd’hui</h2>
+        {items.length === 0 && <p className="m-0 text-sm muted">Rien pour l’instant aujourd’hui.</p>}
+        {items.map(it => (
+          <div key={it.key} className="grid grid-cols-[52px_minmax(0,1fr)_auto] items-center gap-3 py-2.5 border-t border-soft text-sm">
+            <span className="muted tabular-nums">{it.time}</span>
+            <span className="min-w-0"><strong>{it.title}</strong><span className="muted"> · {[it.subject, it.kind === 'evaluation' || it.kind === 'exercises' ? it.what : WHAT[it.kind]].filter(Boolean).join(' · ')}</span></span>
+            <span className="flex items-center gap-2.5 whitespace-nowrap">{it.minutes ? hm(it.minutes) : ''}{it.result ? <strong>{it.result}</strong> : null}{it.href && <Link className="font-semibold" href={it.href}>Revoir</Link>}</span>
+          </div>
+        ))}
+        <Link className="text-sm font-semibold self-start min-h-11 inline-flex items-center mt-1" href={`/parent/journal?eleve=${student.id}`}>Toute la semaine ›</Link>
+      </section>
+    </Screen>
   );
 }

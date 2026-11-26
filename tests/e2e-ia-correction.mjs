@@ -99,6 +99,8 @@ const ids = Object.keys(expected);
 ok((await sql`select count(*)::int as n from eval_attempts where status = 'submitted'`)[0].n === 2, 'deux copies en attente de correction');
 
 const pa = await page('parent@test.local', 'parent-test-1234');
+// Bilan : les lignes « Pour aller plus loin » sont repliées ; ce test vérifie leur contenu, il les ouvre toutes
+await pa.addInitScript(() => { const f = () => document.querySelectorAll('details[data-fold]:not([open])').forEach(d => { d.open = true; }); new MutationObserver(f).observe(document, { childList: true, subtree: true }); });
 await pa.goto(BASE + '/parent/a-faire');
 ok(await pa.locator('button:has-text("Corriger avec l’IA")').count() === 0, 'sans IA configurée : pas de bouton « Corriger avec l’IA »');
 

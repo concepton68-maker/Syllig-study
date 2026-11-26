@@ -66,7 +66,7 @@ export function nextReviewDate(score: number) {
 export type ParcoursItem = {
   course_id: number; code: string | null; title: string; priority: string; position: number;
   subject: string; chapter: string; published: boolean; mastery: number;
-  lesson_done: boolean; lesson_started: boolean; exercises_done: boolean; forced: string | null; next_review_at: Date | null;
+  lesson_done: boolean; lesson_started: boolean; exercises_done: boolean; forced: string | null; skipped: boolean; next_review_at: Date | null;
   pending_attempt: string | null; graded_count: number; last_graded_at: Date | null; best: string | null;
   durations: { lesson: number; exercises: number; evaluation: number } | null;
 };
@@ -77,7 +77,7 @@ export async function parcours(studentId: string, levelCode: string): Promise<Pa
       (v.id is not null) as published, coalesce(p.mastery, 0) as mastery,
       (p.lesson_done_at is not null) as lesson_done, (p.exercises_done_at is not null) as exercises_done,
       exists (select 1 from checkpoint_answers ca where ca.student_id = ${studentId} and ca.course_id = c.id) as lesson_started,
-      p.forced, p.next_review_at, p.best_eval_score as best,
+      p.forced, (p.skipped_at is not null) as skipped, p.next_review_at, p.best_eval_score as best,
       (select a.status from eval_attempts a where a.student_id = ${studentId} and a.course_id = c.id
         and a.status in ('requested','approved','in_progress','submitted') order by a.attempt_no desc limit 1) as pending_attempt,
       (select count(*)::int from eval_attempts a where a.student_id = ${studentId} and a.course_id = c.id and a.status = 'graded') as graded_count,
@@ -123,8 +123,10 @@ export function pickNext(items: ParcoursItem[], retryDelayDays: number) {
     const s = nextStep(c, retryDelayDays);
     return ['lesson', 'exercises', 'evaluation'].includes(s.kind) || (s.kind === 'retry' && s.label.startsWith('Nouvelle tentative possible'));
   });
-  const started = actionable.filter(c => c.forced !== 'later' && (c.lesson_done || c.pending_attempt));
-  return actionable.find(c => c.forced === 'now') ?? started[0] ?? actionable.find(c => c.forced !== 'later') ?? actionable[0] ?? null;
+  // un cours passé par l'élève (« Passer cette leçon ») vient après les autres, comme un cours mis « plus tard »
+  const later = (c: ParcoursItem) => c.forced === 'later' || c.skipped;
+  const started = actionable.filter(c => !later(c) && (c.lesson_done || c.pending_attempt));
+  return actionable.find(c => c.forced === 'now' && !c.skipped) ?? started[0] ?? actionable.find(c => !later(c)) ?? actionable[0] ?? null;
 }
 
 export async function gradeAttemptFinal(attemptId: string, scores: Record<string, number>, feedback: Record<string, string>, gradedBy: string) {
