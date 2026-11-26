@@ -42,7 +42,6 @@ export default async function LoginPage() {
           </div>
           <div className="card !p-7"><LoginForm /></div>
           <div className="flex flex-wrap gap-x-5 gap-y-1"><a href="/connexion/oubli" className="font-semibold text-sm">Mot de passe oublié ?</a><a href="/confidentialite" className="text-sm muted">Confidentialité</a></div>
-          <p className="text-xs text-muted-2 m-0">Version {process.env.APP_RELEASE ?? 'dev'} · {process.env.APP_VERSION ?? 'dev'}</p>
         </div>
       </section>
     </main>

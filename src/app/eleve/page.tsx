@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { requireStudent } from '@/lib/access';
 import { parcours, nextStep, pickNext } from '@/lib/progress';
 import { skipCourse } from './skip-actions';
+import { dueCourses, nextReviews, PER_COURSE } from '@/lib/revisions';
 import { weekStats, streak, hm } from '@/lib/stats';
 import { stepHref } from '@/lib/links';
 import { sql } from '@/lib/db';
@@ -39,8 +40,13 @@ export default async function Today({ searchParams }: { searchParams: Promise<{ 
   const [ck] = await sql<{ due: boolean }[]>`select coalesce(max(created_at) < now() - make_interval(days => ${CHECKIN_EVERY_DAYS}), true) as due from student_checkins where student_id = ${student.id}`;
   const checkinDue = (ck.due || !!(student.settings as { checkin_requested?: boolean }).checkin_requested) && !placement;
   const acquired = items.filter(c => c.mastery >= 4);
-  const reviews = items.filter(c => c.next_review_at && new Date(c.next_review_at).getTime() < Date.now() + 7 * 864e5)
-    .sort((a, b) => new Date(a.next_review_at!).getTime() - new Date(b.next_review_at!).getTime());
+  // révisions espacées : cours à revoir aujourd'hui (ou séance commencée) et les prochaines dates
+  const [openRev] = await sql<{ n: number }[]>`select count(*)::int as n from review_sessions where student_id = ${student.id} and finished_at is null`;
+  const reviewStarted = openRev.n > 0;
+  const dueRev = reviewStarted ? await sql<{ course_id: number; title: string }[]>`select distinct on ((q->>'course_id')::int) (q->>'course_id')::int as course_id, c.title
+    from review_sessions s cross join jsonb_array_elements(s.questions) q join courses c on c.id = (q->>'course_id')::int
+    where s.student_id = ${student.id} and s.finished_at is null` : await dueCourses(student.id, student.level_code);
+  const nextRev = await nextReviews(student.id, student.level_code);
   const waiting = items.filter(c => c.pending_attempt === 'submitted');
   const [lastGraded] = await sql<{ id: string; course_id: number; title: string; final_score: string }[]>`
     select a.id, a.course_id, c.title, a.final_score from eval_attempts a join courses c on c.id = a.course_id
@@ -79,6 +85,14 @@ export default async function Today({ searchParams }: { searchParams: Promise<{ 
               <span className="flex-[1_1_240px]"><span className="lbl">À faire en premier</span><strong className="block text-lg">Test de positionnement</strong>
                 <span className="muted text-sm">{placement.total} questions · environ {placement.duration_min} min · ne compte pas dans tes notes</span></span>
               <Link className="btn btn-primary" href={`/eleve/positionnement/${placement.id}`}>{placement.status === 'en_cours' ? 'Reprendre le test' : 'Faire le test'}</Link>
+            </section>
+          )}
+          {dueRev.length > 0 && (
+            <section className="card flex flex-col gap-3" data-review-today>
+              <div className="flex justify-between items-center gap-3"><h2 className="text-xl font-semibold m-0">Ta révision du jour</h2><span className="pill bg-brand-soft text-brand-dark">{dueRev.length * PER_COURSE} min</span></div>
+              <span className="text-[15px] text-ink-2">{dueRev.length * PER_COURSE} questions nouvelles sur ce que tu as déjà appris.</span>
+              <div className="flex flex-col gap-2">{dueRev.map(r => <div key={r.course_id} className="flex justify-between gap-3 rounded-xl bg-surface-2 px-3 py-2.5 text-sm"><span>{r.title}</span><span className="muted whitespace-nowrap">{PER_COURSE} questions</span></div>)}</div>
+              <Link className="btn btn-primary min-h-[52px] text-base" href="/eleve/revision">{reviewStarted ? 'Continuer' : 'Commencer'}</Link>
             </section>
           )}
           {skippedTitle && <p role="status" className="m-0 rounded-xl bg-soft px-4 py-3 text-sm" data-skipped><strong>C’est noté.</strong> « {skippedTitle} » t’attend dans Tous mes cours : tu y reviens quand tu veux.</p>}
@@ -155,19 +169,10 @@ export default async function Today({ searchParams }: { searchParams: Promise<{ 
               <span className="flex items-center justify-between gap-2"><span className="muted text-sm">Ce que tu as réussi dans cette évaluation</span><span className="pill bg-brand text-white num">{Number(lastGraded.final_score).toLocaleString('fr-FR')}/20</span></span>
             </Link>
           )}
-          <section className="card flex flex-col gap-3">
+          <section className="card flex flex-col gap-2" data-reviews-next>
             <h2 className="text-xl font-semibold">Révisions</h2>
-            {reviews.length === 0 && <EmptyState title="Aucune révision cette semaine" text="Après chaque évaluation, une révision est programmée (de 3 à 30 jours plus tard selon ta note) : tu refais les exercices du cours." />}
-            {reviews.map(r => {
-              const due = new Date(r.next_review_at!);
-              const late = due.getTime() < Date.now();
-              return (
-                <Link key={r.course_id} href={`/eleve/cours/${r.course_id}/exercices`} data-review className={`p-3 rounded-xl no-underline text-ink ${late ? 'bg-warm-soft' : 'bg-soft'}`}>
-                  <strong className="text-sm">{r.title}</strong>
-                  <div className={`text-sm ${late ? 'text-warm-dark' : 'muted'}`}>{r.subject} · {late ? 'à faire dès que possible' : `prévue le ${due.toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', timeZone: 'Europe/Paris' })}`} · refaire les exercices ›</div>
-                </Link>
-              );
-            })}
+            {nextRev.length === 0 && <span className="muted text-sm">Après chaque leçon finie, une révision courte est programmée le lendemain, puis de plus en plus espacée.</span>}
+            {nextRev.map(r => <div key={r.course_id} className="flex justify-between gap-3 text-sm py-1"><span>{r.title}</span><span className="muted whitespace-nowrap">{r.days <= 1 ? 'demain' : `dans ${r.days} jours`}</span></div>)}
           </section>
           {waiting.length > 0 && (
             <section className="card flex flex-col gap-2">

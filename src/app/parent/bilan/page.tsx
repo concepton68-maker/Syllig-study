@@ -18,7 +18,9 @@ import { EngagementCard } from '@/components/Engagement';
 import { CheckinCard, type CheckinRow } from '@/components/Checkin';
 import { TrajectoryCard } from '@/components/Trajectory';
 import { trajectory } from '@/lib/trajectory';
-import { subjectSummary } from '@/lib/subject-summary';
+import { subjectSummary, schoolYearStart } from '@/lib/subject-summary';
+import { reviewOverview } from '@/lib/revisions';
+import { RevisionsCard } from '@/components/RevisionsCard';
 import { WeeklyBars } from '@/components/TrajectoryChart';
 import { SubjectCards } from '@/components/SubjectCards';
 import { Fold, OpenFromHash } from '@/components/Fold';
@@ -39,6 +41,7 @@ export default async function Bilan({ searchParams }: { searchParams: Promise<{ 
   const ai = await aiOverview();
   const aiOn = ai.ready.bilan;
   const [profile, eng, traj, sum] = await Promise.all([studentProfile(student.id), workFacts(student.id), trajectory(student.id), subjectSummary(student.id, student.level_code)]);
+  const revs = await reviewOverview(student.id, student.level_code, (await schoolYearStart()).start);
   const reports = await sql<Report[]>`select id, created_at, provider, model, data, indicators from student_reports where student_id = ${student.id} order by created_at desc limit 30`;
   // ancienne consigne (avant le 25/11/2026) : le bilan attribuait une « origine » et une « implication » ; jamais affiché par défaut
   const oldStyle = (r: Report) => 'origine' in (r.data as object) || 'implication' in (r.data as object);
@@ -65,6 +68,7 @@ export default async function Bilan({ searchParams }: { searchParams: Promise<{ 
       {sp.test === 'propose' && <p role="status" className="m-0 rounded-xl bg-brand-soft text-brand-ink px-4 py-3 text-sm"><strong>Test proposé à {name}.</strong> Il apparaît dans son espace, rubrique « Aujourd’hui ». Les résultats s’afficheront ici.</p>}
 
       <SubjectCards s={sum} />
+      <RevisionsCard r={revs} />
 
       <section className="card flex flex-col gap-2" aria-labelledby="temps-semaine" data-weekly-time>
         <div className="flex flex-wrap items-baseline justify-between gap-2"><h2 id="temps-semaine" className="text-lg font-semibold m-0">Temps de travail par semaine <span className="muted font-normal text-sm">· 12 dernières semaines</span></h2>

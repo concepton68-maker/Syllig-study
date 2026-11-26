@@ -8,8 +8,9 @@ export type Space = { href: string; label: string; current: boolean };
 
 // Coquille de l'application : barre latérale (grand écran) ou barre du haut + onglets en bas (téléphone).
 // Seule la zone de contenu défile.
-export function Shell({ role, nav, theme, spaces, user, children }: {
-  role: string; nav: NavItem[]; theme?: string; spaces?: Space[]; user: { name: string; sub?: string }; right?: React.ReactNode; version?: string; children: React.ReactNode;
+// Le numéro de version n'est montré qu'à l'administrateur (le développeur), jamais aux familles (décision du propriétaire, 26/11/2026).
+export function Shell({ role, nav, theme, spaces, user, showVersion = false, children }: {
+  role: string; nav: NavItem[]; theme?: string; spaces?: Space[]; user: { name: string; sub?: string }; right?: React.ReactNode; showVersion?: boolean; children: React.ReactNode;
 }) {
   const initials = user.name.split(/\s+/).map(w => w[0]).join('').slice(0, 2).toUpperCase();
   const release = process.env.APP_RELEASE ?? 'dev';
@@ -30,7 +31,7 @@ export function Shell({ role, nav, theme, spaces, user, children }: {
       <aside className="sidebar hidden lg:flex">
         <div className="px-5 pt-6 pb-5 flex items-start justify-between gap-2">
           <Logo onDark id="logo-side" />
-          <span className="pill version-pill mt-1" data-tip-pos="bottom" data-tip={`Version en ligne · ${process.env.APP_VERSION ?? 'dev'}`}>v{release}</span>
+          {showVersion && <span className="pill version-pill mt-1" data-tip-pos="bottom" data-tip={`Version en ligne · ${process.env.APP_VERSION ?? 'dev'}`}>v{release}</span>}
         </div>
         {switcher && <div className="px-4 pb-4">{switcher}</div>}
         <div className="px-3 flex-1 min-h-0 overflow-y-auto"><NavLinks items={nav} /></div>
@@ -49,7 +50,7 @@ export function Shell({ role, nav, theme, spaces, user, children }: {
         {/* barre du haut, téléphone et tablette */}
         <header className="mobile-bar lg:hidden">
           <Logo onDark id="logo-mobile" />
-          <span className="pill version-pill">v{release}</span>
+          {showVersion && <span className="pill version-pill">v{release}</span>}
           <span className="flex-1" />
           {switcher}
           <span className="avatar !w-8 !h-8 !text-xs" data-tip-pos="bottom" data-tip={user.name}>{initials}</span>

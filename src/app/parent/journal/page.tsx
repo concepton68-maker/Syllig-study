@@ -16,10 +16,11 @@ const ICON: Record<Kind, { letter: string; cls: string; label: string }> = {
   lesson: { letter: 'L', cls: 'bg-brand-soft text-brand-dark', label: 'Leçon' },
   exercises: { letter: 'E', cls: 'bg-[#E7F8EE] text-[#1B5E3A]', label: 'Exercices' },
   evaluation: { letter: 'É', cls: 'bg-warm-soft text-warm-dark', label: 'Évaluation' },
+  review: { letter: 'R', cls: 'bg-[#F1ECFF] text-[#5B3CC4]', label: 'Révision' },
   other: { letter: '·', cls: 'bg-soft text-ink-2', label: 'Autre' },
 };
 const FILTERS: { id: string; label: string; kind?: Kind }[] = [
-  { id: '', label: 'Tout' }, { id: 'lecons', label: 'Leçons', kind: 'lesson' }, { id: 'exercices', label: 'Exercices', kind: 'exercises' }, { id: 'evaluations', label: 'Évaluations', kind: 'evaluation' },
+  { id: '', label: 'Tout' }, { id: 'lecons', label: 'Leçons', kind: 'lesson' }, { id: 'exercices', label: 'Exercices', kind: 'exercises' }, { id: 'evaluations', label: 'Évaluations', kind: 'evaluation' }, { id: 'revisions', label: 'Révisions', kind: 'review' },
 ];
 const dayName = (d: string) => { const s = new Date(`${d}T12:00:00Z`).toLocaleDateString('fr-FR', { timeZone: 'UTC', weekday: 'long', day: 'numeric' }); return s.charAt(0).toUpperCase() + s.slice(1); };
 

@@ -10,7 +10,7 @@ export default async function ParentLayout({ children }: { children: React.React
     select (select count(*)::int from eval_attempts a where a.student_id in (select id from mine) and a.status in ('submitted', 'requested'))
          + (select count(*)::int from password_requests r where r.user_id in (select user_id from mine) and r.done_at is null) as n`;
   return (
-    <Shell role="Parent" spaces={spacesFor(u, 'parent')} nav={[
+    <Shell showVersion={u.roles.includes('admin')} role="Parent" spaces={spacesFor(u, 'parent')} nav={[
       { href: '/parent', label: 'Accueil', icon: 'home', exact: true },
       { href: '/parent/a-faire', label: 'À faire', icon: 'todo', badge: n },
       { href: '/parent/suivi', label: 'En direct', icon: 'live' },

@@ -500,3 +500,11 @@ Contre-audit de conformité des versions 0.43 à 0.45 : tout ce qui a été rele
 - Temps de travail : le délai laisse le temps au brouillon et à la réflexion. Le temps compte tant que la page de travail est visible ; il s'arrête si elle est cachée (autre onglet, fenêtre réduite, écran verrouillé, autre application sur téléphone) ou après 10 minutes sans rien toucher (au lieu de 60 secondes). Réglable par le parent : 5, 10 ou 15 minutes. Pendant une évaluation, aucune fenêtre ne s'ouvre et le chrono de l'évaluation continue.
 - Les comparaisons de temps à cheval sur ce changement le disent (note sous les graphiques) et n'affichent plus de flèche.
 - « Tu es là ? » n'apparaît plus qu'à ce moment-là, plus au bout de 3 minutes.
+
+## 0.50 — 26/11/2026
+- **Révisions espacées**, selon la maquette validée. Une leçon finie est révisée le lendemain, puis à 3, 7, 14, 30 et 60 jours si l'élève a au moins 4 bonnes réponses sur 5. Sinon, retour à 1 jour.
+  - Chaque révision pose 5 questions par cours, corrigées tout de suite : des questions nouvelles, prises parmi les exercices, les évaluations et les points de contrôle du cours, en commençant par celles qu'il a vues le moins récemment.
+  - Au plus 2 cours par jour.
+  - L'élève voit « Ta révision du jour » sur son accueil.
+  - Le parent voit chaque révision dans le Bilan, avec la règle de calcul et les études sur lesquelles elle repose. L'Activité a un filtre « Révisions ».
+- Le numéro de version n'est plus visible que pour l'administrateur.

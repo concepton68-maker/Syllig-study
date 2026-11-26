@@ -8,7 +8,7 @@ import { getAttempt } from './evaluation';
 // Uniquement ce qui est enregistré : séances, contrôles, exercices remis, copies remises. Aucune interprétation.
 
 const PARIS = 'Europe/Paris';
-export type Kind = 'lesson' | 'exercises' | 'evaluation' | 'other';
+export type Kind = 'lesson' | 'exercises' | 'evaluation' | 'review' | 'other';
 export type TimelineItem = {
   key: string; at: number; time: string; kind: Kind; title: string; subject: string;
   what: string; minutes: number | null; result: string | null; warn: boolean; href: string | null;
@@ -46,11 +46,11 @@ export async function weekTimeline(studentId: string, monday: string): Promise<T
 
   // temps de chaque activité : regroupé par jour, cours et type ; minutes entières dont la somme = le total du jour (plus grand reste)
   type G = { day: string; course_id: number | null; kind: Kind; first: Date; sec: number; title: string; subject: string; minutes: number };
-  const kindOf = (k: string): Kind => k === 'lesson' ? 'lesson' : k === 'exercises' || k === 'review' ? 'exercises' : k === 'evaluation' ? 'evaluation' : 'other';
+  const kindOf = (k: string): Kind => k === 'lesson' ? 'lesson' : k === 'exercises' ? 'exercises' : k === 'review' ? 'review' : k === 'evaluation' ? 'evaluation' : 'other';
   const groups = new Map<string, G>();
   for (const s of sessions) {
     const day = dayOf(s.started_at), kind = kindOf(s.kind), key = `${day}|${s.course_id ?? '-'}|${kind}`;
-    const g = groups.get(key) ?? { day, course_id: s.course_id, kind, first: s.started_at, sec: 0, title: s.title ?? 'Autre activité', subject: s.subject ?? '', minutes: 0 };
+    const g = groups.get(key) ?? { day, course_id: s.course_id, kind, first: s.started_at, sec: 0, title: s.title ?? (kind === 'review' ? 'Révision du jour' : 'Autre activité'), subject: s.subject ?? '', minutes: 0 };
     g.sec += s.active; groups.set(key, g);
   }
   const dayTotal = new Map<string, number>();
@@ -90,12 +90,24 @@ export async function weekTimeline(studentId: string, monday: string): Promise<T
       result: a.status === 'graded' && a.final_score !== null ? `${fr(Number(a.final_score))}/20` : 'en correction', warn: blank > 0, href: `/parent/revoir/copie/${a.id}` });
   }
   // le reste : leçons, exercices non remis, évaluations non remises, autres pages
+  // révisions espacées : un résultat par cours ; le temps de la révision du jour est rattaché au dernier cours revu ce jour-là
+  const revs = await sql<{ course_id: number; at: Date; ok: number; total: number; title: string; subject: string }[]>`
+    select r.course_id, r.at, r.ok, r.total, c.title, sj.name as subject from review_results r join courses c on c.id = r.course_id
+    join chapters ch on ch.id = c.chapter_id join subjects sj on sj.id = ch.subject_id
+    where r.student_id = ${studentId} and r.at >= ${start} and r.at < ${end} order by r.at`;
+  for (const [i, r] of revs.entries()) {
+    const day = dayOf(r.at), last = !revs.slice(i + 1).some(x => dayOf(x.at) === day);
+    let m: number | null = null;
+    if (last) { const k = `${day}|-|review`; const g = groups.get(k); if (g) { m = g.minutes; groups.delete(k); } }
+    items.push({ key: `rev-${r.course_id}-${r.at.getTime()}`, at: r.at.getTime(), time: hhmm(r.at), kind: 'review', title: r.title, subject: r.subject,
+      what: 'révision', minutes: m, result: `${r.ok}/${r.total}`, warn: r.ok < Math.ceil(r.total * 0.8), href: null });
+  }
   for (const g of [...groups.values()].filter(g => g.sec > 0)) {   // une séance sans aucune seconde active n'est pas une activité
     const cp = g.course_id === null ? [] : cps.filter(c => c.course_id === g.course_id && dayOf(c.at) === g.day);
     const finished = g.kind === 'lesson' && done.some(d => d.course_id === g.course_id && dayOf(d.at) === g.day);
     const okN = cp.filter(c => c.ok).length;
     items.push({ key: `g-${g.day}-${g.course_id}-${g.kind}`, at: g.first.getTime(), time: hhmm(g.first), kind: g.kind, title: g.title, subject: g.subject,
-      what: g.kind === 'lesson' ? (finished ? 'leçon terminée' : 'leçon') : g.kind === 'exercises' ? 'exercices, pas encore remis' : g.kind === 'evaluation' ? 'évaluation, pas encore remise' : 'autre page',
+      what: g.kind === 'lesson' ? (finished ? 'leçon terminée' : 'leçon') : g.kind === 'exercises' ? 'exercices, pas encore remis' : g.kind === 'evaluation' ? 'évaluation, pas encore remise' : g.kind === 'review' ? 'révision commencée' : 'autre page',
       minutes: g.minutes, result: g.kind === 'lesson' && cp.length ? `contrôles ${okN}/${cp.length}` : null, warn: false, href: null });
   }
   // leçons passées par l'élève (fait neutre, sans sanction)
@@ -118,12 +130,12 @@ export type Review = {
   questions: ReviewQuestion[]; editHref: string | null; editLabel: string | null; texts: unknown[];
 };
 
-const answerText = (q: Question, a: string | undefined) => {
+export const answerText = (q: Question, a: string | undefined) => {
   if (!(a ?? '').trim()) return { text: '—', option: false };
   if (q.type === 'qcm' && q.options) return { text: a!.split(',').map(i => q.options![Number(i)] ?? i).join(' ; '), option: true };
   return { text: a!, option: false };
 };
-const expectedText = (q: Question) => {
+export const expectedText = (q: Question) => {
   if (q.type === 'qcm' && q.options) return (Array.isArray(q.answer) ? q.answer : [q.answer]).map(i => q.options![Number(i)]).join(' ; ');
   if (q.type === 'numeric') return String(q.answer).replace('.', ',').replace(/^-/, '−') + (q.tolerance ? ` (à ${String(q.tolerance).replace('.', ',')} près)` : '');
   if (q.type === 'short' && Array.isArray(q.answer)) return String(q.answer[0]) + (q.answer.length > 1 ? ` (aussi accepté : ${q.answer.slice(1).join(', ')})` : '');
