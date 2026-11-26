@@ -6,7 +6,7 @@ import { versionById } from './progress';
 // « Travail et résultats » : uniquement des faits mesurés par la plateforme, sur une fenêtre de dates explicite.
 // Aucune note composite, aucun seuil caché, aucune interprétation psychologique : chaque chiffre a une définition affichée.
 //  - jours travaillés : jours (heure de Paris) où le temps effectif cumulé atteint 10 minutes ;
-//  - temps effectif : minutes où l'élève agit sur une page de travail (signal toutes les 15 s, pause après 60 s sans geste) ;
+//  - temps effectif : minutes où l'élève agit sur une page de travail (signal toutes les 15 s, pause si la page est cachée ou après 10 min sans geste) ;
 //  - copies : deux faits séparés, sans seuil — copies sans question vide, et temps utilisé sur temps accordé ;
 //  - exercices : seulement les questions corrigées par la plateforme (les auto-évaluations de l'élève sont comptées à part).
 

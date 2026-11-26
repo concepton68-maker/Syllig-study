@@ -495,3 +495,7 @@ Contre-audit de conformité des versions 0.43 à 0.45 : tout ce qui a été rele
   - **En direct** : maintenant et aujourd'hui seulement (frise de la journée, séances du jour).
   - **Bilan** : matière par matière (notes une par une depuis le 1er septembre, moyenne avec leur nombre, cours acquis, cours à revoir), temps de travail par semaine, puis « Pour aller plus loin » replié : test de positionnement, questionnaire, bilan par l'IA, tous les chiffres détaillés, confidentialité.
 - **Passer cette leçon** (élève) : depuis l'accueil ou la leçon, pour n'importe quelle raison, sans aucune sanction (ni points, ni niveau). Le cours suivant est proposé ; le cours passé reste dans « Tous mes cours » et reprend sa place dès que l'élève y revient. Le parent le voit dans l'Activité (« passée pour l'instant »).
+
+## 0.49 — 26/11/2026
+- Temps de travail : le brouillon et la réflexion comptent. Le temps compte tant que la page de travail est ouverte devant l'élève ; il s'arrête s'il change d'onglet ou d'application, ou après 10 minutes sans rien toucher (au lieu de 60 secondes). Réglable par le parent : 5, 10 ou 15 minutes.
+- « Tu es là ? » n'apparaît plus qu'à ce moment-là, plus au bout de 3 minutes.

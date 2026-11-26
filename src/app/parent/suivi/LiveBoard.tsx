@@ -59,7 +59,7 @@ export function LiveBoard({ studentId, name, initial }: { studentId: string; nam
         {live.state !== 'hors_ligne' && (
           <span className="text-sm"><strong className="text-lg">{live.sessionActiveMin} min</strong> actives sur cette page<span className="block muted">sur {live.sessionMin} min depuis son ouverture</span></span>
         )}
-        <span className="muted text-xs basis-full">Mise à jour toutes les 10 secondes. « Actif » : un geste (clic, défilement, saisie) dans les 60 dernières secondes. « Sans geste » : aucun geste depuis 60 s, ou fenêtre cachée.</span>
+        <span className="muted text-xs basis-full">Mise à jour toutes les 10 secondes. « Actif » : page de travail au premier plan (brouillon et réflexion compris), avec un geste dans les 10 dernières minutes. « Sans geste » : rien touché depuis 10 min, ou page cachée.</span>
       </section>
 
       <section className="card flex flex-col gap-3">

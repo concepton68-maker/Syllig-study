@@ -1,9 +1,10 @@
 'use client';
 import { useEffect, useRef, useState } from 'react';
 
-// Détecte l'activité réelle (défilement, clic, saisie, page au premier plan) et l'envoie au serveur.
+// Le temps compte tant que la page de travail est au premier plan (brouillon, réflexion compris) ; il s'arrête si la page
+// est cachée (autre onglet, autre application, écran verrouillé) ou après `idleSeconds` sans aucun geste (10 min par défaut).
 // Rien de ce qui est tapé n'est transmis : seulement « actif » ou « inactif ».
-export function ActivityTracker({ kind, courseId, idleSeconds = 60 }: { kind: string; courseId: number | null; idleSeconds?: number }) {
+export function ActivityTracker({ kind, courseId, idleSeconds = 600 }: { kind: string; courseId: number | null; idleSeconds?: number }) {
   const session = useRef<string | null>(null);
   const lastInput = useRef(Date.now());
   const [away, setAway] = useState(false);
@@ -22,7 +23,7 @@ export function ActivityTracker({ kind, courseId, idleSeconds = 60 }: { kind: st
     const timer = setInterval(() => {
       const idle = Date.now() - lastInput.current;
       setPaused(idle >= idleSeconds * 1000);
-      if (idle >= 180_000 && document.visibilityState === 'visible') setAway(true);
+      if (idle >= idleSeconds * 1000 && document.visibilityState === 'visible') setAway(true);
       if (session.current) post({ action: 'beat', session: session.current, active: isActive() });
     }, 15_000);
     const end = () => {
@@ -49,7 +50,7 @@ export function ActivityTracker({ kind, courseId, idleSeconds = 60 }: { kind: st
         <div role="dialog" aria-modal="true" aria-labelledby="away-title" className="fixed inset-0 z-50 bg-black/40 flex items-center justify-center p-6">
           <div className="card max-w-sm flex flex-col gap-3">
             <h2 id="away-title" className="text-xl font-semibold">Tu es là ?</h2>
-            <p className="muted m-0">Le chrono est en pause depuis un moment. Il reprend dès que tu continues.</p>
+            <p className="muted m-0">Le temps de travail est en pause. Il reprend dès que tu continues.</p>
             <button className="btn btn-primary" type="button" autoFocus onClick={() => { lastInput.current = Date.now(); setAway(false); setPaused(false); }}>Je reprends</button>
           </div>
         </div>

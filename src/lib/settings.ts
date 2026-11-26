@@ -3,7 +3,7 @@ export type StudentSettings = {
   weekly_goal_minutes: number;   // objectif de temps actif par semaine
   retry_delay_days: number;      // délai avant une nouvelle tentative d'évaluation
   eval_requires_approval: boolean;
-  idle_seconds: number;          // inactivité avant pause du chrono
+  idle_seconds: number;          // sans aucun geste, page au premier plan : pause du temps compté (10 min par défaut : brouillon, réflexion…)
   theme: ThemeId;                // thème d'affichage de l'espace élève
   ai_correction: boolean;        // consentement du parent (RGPD) : copies corrigées par l'IA
   ai_bilan: boolean;             // consentement du parent (RGPD) : bilan pédagogique et test de positionnement par l'IA
@@ -34,7 +34,7 @@ export const DEFAULT_SETTINGS: StudentSettings = {
   weekly_goal_minutes: 300,
   retry_delay_days: 3,
   eval_requires_approval: false,
-  idle_seconds: 60,
+  idle_seconds: 600,
   theme: 'classique',
   ai_correction: false,
   ai_bilan: false,

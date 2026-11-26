@@ -21,7 +21,7 @@ export function RulesForm({ studentId, s, levels, level }: { studentId: string; 
           <select className="field" name="retry" defaultValue={String(Math.max(1, s.retry_delay_days))}>{[1, 2, 3, 5, 7].map(d => <option key={d} value={d}>{d} jour{d > 1 ? 's' : ''}</option>)}</select>
         </label>
         <label className="flex-[1_1_200px] flex flex-col gap-1.5 text-sm font-semibold">Pause du chrono après
-          <select className="field" name="idle" defaultValue={String(s.idle_seconds)}>{[45, 60, 90, 120].map(d => <option key={d} value={d}>{d} s sans activité</option>)}</select>
+          <select className="field" name="idle" defaultValue={String([300, 600, 900].includes(s.idle_seconds) ? s.idle_seconds : 600)}>{[300, 600, 900].map(d => <option key={d} value={d}>{d / 60} min sans rien toucher</option>)}</select>
         </label>
       </div>
       <label className="flex items-start gap-3 text-[15px]">

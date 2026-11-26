@@ -142,7 +142,7 @@ export default async function Bilan({ searchParams }: { searchParams: Promise<{ 
             {profile.courses.map(c => <CourseRow key={c.course_id} c={c} />)}
           </div>
         )}
-        <p className="muted text-xs m-0">Temps actif : minutes avec un geste sur une page de travail (clic, défilement, saisie) ; après 60 s sans geste, ou page en arrière-plan, le temps n’est plus compté. Chiffres depuis l’inscription.</p>
+        <p className="muted text-xs m-0">Temps actif : page de travail au premier plan (brouillon et réflexion compris) ; il s’arrête si la page est cachée ou après 10 min sans rien toucher. Chiffres depuis l’inscription.</p>
       </section>
         </Fold>
         <Fold id="confidentialite" title="Confidentialité et IA" sub={`correction par l’IA : ${consent.correction ? 'oui' : 'non'} · bilan par l’IA : ${consent.bilan ? 'oui' : 'non'}`} open={!!sp.consentement}>

@@ -50,7 +50,7 @@ export async function saveRulesAction(_: ResetState, form: FormData): Promise<Re
   const p = z.object({
     weekly_goal_minutes: z.coerce.number().int().min(30).max(1500),
     retry_delay_days: z.coerce.number().int().min(1).max(30),
-    idle_seconds: z.coerce.number().int().min(30).max(300),
+    idle_seconds: z.coerce.number().int().min(300).max(900),
   }).safeParse({ weekly_goal_minutes: Number(form.get('goal_h')) * 60, retry_delay_days: form.get('retry'), idle_seconds: form.get('idle') });
   if (!p.success) return { error: 'Valeurs invalides.' };
   const t = form.get('theme');
