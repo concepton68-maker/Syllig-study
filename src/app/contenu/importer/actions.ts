@@ -2,7 +2,7 @@
 import { redirect } from 'next/navigation';
 import { requireUser } from '@/lib/auth';
 import { importCourse } from '@/lib/import-course';
-import { importBatch, isBatch } from '@/lib/course-batch';
+import { importBatch, isBatch, type BatchImported } from '@/lib/course-batch';
 
 export type ImportState = { errors?: string[]; warnings?: string[]; file?: string; summary?: string[] } | undefined;
 
@@ -39,4 +39,18 @@ export async function importAction(_: ImportState, form: FormData): Promise<Impo
   if (errors.length || !last) return { errors, warnings };
   if (inputs.length === 1) redirect(`/contenu/cours/${last.courseId}?v=${last.versionId}&importe=1`);
   redirect('/contenu/a-relire?importes=' + inputs.length);
+}
+
+// Panneau « Faire relire par Claude » (maquette validée le 27/11/2026) : la réponse de Claude (fichier ou texte collé),
+// importée en brouillon ; renvoie, pour chaque cours corrigé, ce qui a changé (la publication se fait ensuite, cochée par cochée)
+export type LotState = { errors?: string[]; warnings?: string[]; imported?: BatchImported[]; unchanged?: string[] } | undefined;
+export async function importLotAction(_: LotState, form: FormData): Promise<LotState> {
+  const user = await requireUser('admin');
+  const f = form.get('file');
+  const raw = f instanceof File && f.size > 0 ? await f.text() : String(form.get('json') ?? '').trim();
+  if (!raw) return { errors: ['Dépose le fichier renvoyé par Claude, ou colle sa réponse.'] };
+  if (!isBatch(raw)) return { errors: ['Ce n’est pas une réponse au fichier exporté (format syllig-cours-lot/1). Vérifie que Claude a bien renvoyé le fichier JSON.'] };
+  const r = await importBatch(raw, f instanceof File && f.size > 0 ? f.name : 'réponse collée', user.id, false);
+  if (!r.ok) return { errors: r.errors, warnings: r.warnings };
+  return { imported: r.imported, unchanged: r.unchanged, warnings: r.warnings };
 }

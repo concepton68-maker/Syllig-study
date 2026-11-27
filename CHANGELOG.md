@@ -587,3 +587,16 @@ Contre-audit de conformité des versions 0.43 à 0.45 : tout ce qui a été rele
 - **Une seule règle de calcul**, pour que les totaux soient justes :
   - les minutes sont toujours arrondies vers le bas, alors que certaines pages arrondissaient au plus proche ;
   - le temps par matière s'additionne exactement au temps total (`src/lib/duration.ts`).
+
+## 0.58 — 27/11/2026
+- **Catalogue resserré** (maquette validée le 27/11/2026). Le titre, les chiffres et les filtres tiennent en haut, chaque cours sur une ligne, et les actions groupées sont en bas : 12 cours visibles à l'écran au lieu de 4.
+- **Le circuit de relecture affiché en haut** : ① cocher → ② faire relire par Claude → ③ importer sa réponse → ④ vérifier et publier.
+- **Panneau « Faire relire par Claude »** :
+  - le fichier se télécharge tout seul ;
+  - un message à copier pour Claude (ou une autre IA) et un lien vers claude.ai ;
+  - on dépose sa réponse au même endroit.
+- **Après l'import** :
+  - le nombre de cours corrigés et de cours inchangés ;
+  - pour chaque cours, les parties qui ont changé (par exemple « Exercices · ex3 ») ;
+  - « Comparer » met l'ancien et le nouveau texte côte à côte ;
+  - on publie les cours cochés, ou on les laisse dans « À relire », où « Comparer » est aussi disponible.

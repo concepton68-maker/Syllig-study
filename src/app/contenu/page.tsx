@@ -1,10 +1,7 @@
-import Link from 'next/link';
 import { sql } from '@/lib/db';
-import { PageTitle } from '@/components/Shell';
 import { CatalogueList, type CatRow } from './CatalogueList';
 import { aiOverview } from '@/lib/ai';
 import { AutoRefresh } from '@/components/AutoRefresh';
-import { ExportTotal } from '@/components/ExportSize';
 
 export const metadata = { title: 'Catalogue' };
 export const dynamic = 'force-dynamic';
@@ -23,16 +20,10 @@ export default async function Catalogue() {
     left join lateral (select status, error, kind, progress from jobs where kind in ('cours', 'relecture', 'cours_corrige') and payload->>'courseId' = c.id::text order by id desc limit 1) j on true
     left join lateral (select data from course_reviews where course_id = c.id order by created_at desc limit 1) rv on true
     order by l.position, s.position, ch.position, c.position`;
-  const pub = rows.filter(r => r.published).length;
   const ov = await aiOverview();
   const aiReady = ov.ready.cours, reviewReady = ov.ready.relecture;
   return (
-    <div className="flex flex-col gap-5 lg:flex-1 lg:min-h-0">
-      <PageTitle kicker="Catalogue" title={`${pub} cours publié${pub > 1 ? 's' : ''} sur ${rows.length}`} sub={aiReady ? 'Pour créer un cours : « Rédiger avec l’IA » (le brouillon arrive dans « À relire »), ou préparer la consigne pour Claude et importer le résultat.' : 'Pour créer un cours : « Préparer la consigne », la coller dans Claude, puis importer le JSON obtenu. (Rédaction automatique : choisir une IA dans Contenu › IA.)'}>
-        <span className="flex flex-col items-end gap-1"><a className="btn" href="/api/contenu/lot" download data-export-all>Tout exporter pour relecture</a>
-          <ExportTotal chars={rows.reduce((s, r) => s + (r.size ?? 0), 0)} n={rows.filter(r => r.size).length} /></span>
-        <Link className="btn btn-primary" href="/contenu/importer">Importer des cours</Link>
-      </PageTitle>
+    <div className="flex flex-col lg:flex-1 lg:min-h-0">
       <AutoRefresh active={rows.some(r => r.ai_job === 'en_attente' || r.ai_job === 'en_cours')} />
       <CatalogueList rows={rows.map(r => ({ ...r }))} aiReady={aiReady} reviewReady={reviewReady} />
     </div>

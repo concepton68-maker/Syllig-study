@@ -2,7 +2,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import Link from 'next/link';
 import { BulkBar, BulkCheck } from '@/components/Bulk';
-import { ExportSize } from '@/components/ExportSize';
+import { Pipeline } from './Relecture';
 import { publishCoursesDraftsAction, draftWithAiAction, draftWithAiBulkAction, reviewAction, reviewBulkAction } from './cours/[id]/actions';
 import { Bot, MoreHorizontal } from 'lucide-react';
 
@@ -28,37 +28,41 @@ export function CatalogueList({ rows, aiReady, reviewReady }: { rows: CatRow[]; 
     (!status || (status === 'publie' ? !!r.published : status === 'brouillon' ? !!r.draft && (!r.published || r.draft > r.published) : !r.published && !r.draft)) &&
     (!q || norm(`${r.code ?? ''} ${r.title} ${r.chapter}`).includes(norm(q))));
   const sizes = useMemo(() => Object.fromEntries(rows.map(r => [String(r.id), r.size ?? 0])), [rows]);
+  const toReview = rows.filter(r => !!r.draft && (!r.published || r.draft > r.published)).length;
+  const pub = rows.filter(r => r.published).length, empty = rows.filter(r => !r.published && !r.draft).length;
+  const fld = 'field !w-auto lg:max-w-[180px] !min-h-9 !py-1 text-sm';
+  // écran fixe : en-tête et filtres sur une ligne, circuit de relecture, puis la liste (seule zone qui défile), actions en bas
   return (
-    <div className="flex flex-col gap-4 lg:flex-1 lg:min-h-0">
-      <div className="card !py-3 flex flex-wrap gap-3 items-end shrink-0">
-        <label className="flex-[2_1_260px] flex flex-col gap-1 text-sm font-semibold">Rechercher
-          <input className="field" type="search" value={q} onChange={e => setQ(e.target.value)} placeholder="Titre, chapitre ou code (C001…)" /></label>
-        <label className="flex-[1_1_180px] flex flex-col gap-1 text-sm font-semibold">Niveau
-          <select className="field" value={level} onChange={e => { setLevel(e.target.value); setSubject(''); }}>
-            <option value="">Tous les niveaux</option>{levelList.map(([c, n]) => <option key={c} value={c}>{n}</option>)}</select></label>
-        <label className="flex-[1_1_180px] flex flex-col gap-1 text-sm font-semibold">Matière
-          <select className="field" value={subject} onChange={e => setSubject(e.target.value)}><option value="">Toutes</option>{subjects.map(s => <option key={s}>{s}</option>)}</select></label>
-        <label className="flex-[1_1_180px] flex flex-col gap-1 text-sm font-semibold">Statut
-          <select className="field" value={status} onChange={e => setStatus(e.target.value)}>
-            <option value="">Tous</option><option value="publie">Publiés</option><option value="brouillon">À relire</option><option value="vide">Sans contenu</option>
-          </select></label>
-        <span className="muted text-sm pb-3">{shown.length} cours</span>
+    <div className="flex flex-col gap-2.5 lg:flex-1 lg:min-h-0">
+      <div className="flex flex-wrap items-center gap-x-3 gap-y-2 shrink-0" data-cat-head>
+        <h1 className="m-0 text-[22px] font-bold">Catalogue</h1>
+        <span className="text-[13px] muted" data-cat-stats>{pub} publié{pub > 1 ? 's' : ''} · {toReview} à relire · {empty} sans contenu</span>
+        <span className="flex-1" />
+        <input className={`${fld} !w-full sm:!w-52 lg:!max-w-none`} type="search" value={q} onChange={e => setQ(e.target.value)} placeholder="Rechercher (titre, chapitre, code)" aria-label="Rechercher" />
+        <select className={fld} aria-label="Niveau" value={level} onChange={e => { setLevel(e.target.value); setSubject(''); }}>
+          <option value="">Tous les niveaux</option>{levelList.map(([c, n]) => <option key={c} value={c}>{n}</option>)}</select>
+        <select className={fld} aria-label="Matière" value={subject} onChange={e => setSubject(e.target.value)}><option value="">Toutes matières</option>{subjects.map(s => <option key={s}>{s}</option>)}</select>
+        <select className={fld} aria-label="Statut" value={status} onChange={e => setStatus(e.target.value)}>
+          <option value="">Tous statuts</option><option value="publie">Publiés</option><option value="brouillon">À relire</option><option value="vide">Sans contenu</option></select>
+        <Link className="btn btn-sm" href="/contenu/importer">Importer un fichier</Link>
       </div>
-      <BulkBar formId="bulk-catalogue" noun="cours" children={<ExportSize formId="bulk-catalogue" sizes={sizes} />}
-        actions={[
-          ...(aiReady ? [{ label: 'Rédiger avec l’IA', action: draftWithAiBulkAction, confirm: 'Faire rédiger {n} par l’IA ? Chaque cours arrivera en brouillon dans « À relire » (quelques minutes par cours).' }] : []),
-          ...(reviewReady ? [{ label: 'Relire avec l’IA', action: reviewBulkAction, confirm: 'Faire relire {n} par l’IA ? Les problèmes relevés s’afficheront sur chaque cours.' }] : []),
-          { label: 'Exporter pour relecture (1 fichier)', action: '/api/contenu/lot' },
-          { label: 'Publier les brouillons', action: publishCoursesDraftsAction, confirm: 'Publier les brouillons de {n} ? Les élèves les verront aussitôt. (Les cours sans brouillon sont ignorés.)' }]} />
+      <Pipeline formId="bulk-catalogue" sizes={sizes} toReview={toReview} />
       <section className="card !p-0 flex flex-col lg:flex-1 lg:min-h-0 overflow-hidden">
-        <div className="hidden lg:grid cat-grid px-4 py-2.5 border-b border-line bg-surface-2 text-xs font-semibold uppercase tracking-wide text-muted shrink-0">
-          <span /><span>Code</span><span>Cours</span><span>Statut</span><span className="text-right">Actions</span>
+        <div className="hidden lg:grid cat-grid px-3 py-2 border-b border-line bg-surface-2 text-xs font-semibold uppercase tracking-wide text-muted shrink-0">
+          <span /><span>Code</span><span>Cours</span><span>Matière · chapitre</span><span>Statut</span><span className="text-right">{shown.length} cours</span>
         </div>
         <div className="flex flex-col lg:flex-1 lg:min-h-0 lg:overflow-y-auto pane">
           {shown.length === 0 && <span className="muted text-sm p-4">Aucun cours ne correspond.</span>}
           {shown.map(c => <Row key={c.id} c={c} showLevel={!level || !!q} aiReady={aiReady} reviewReady={reviewReady} />)}
         </div>
       </section>
+      <div className="shrink-0">
+        <BulkBar formId="bulk-catalogue" noun="cours" children={<span className="contents" data-launch-slot="bulk-catalogue" />}
+          actions={[
+            ...(aiReady ? [{ label: 'Rédiger avec l’IA', action: draftWithAiBulkAction, confirm: 'Faire rédiger {n} par l’IA ? Chaque cours arrivera en brouillon dans « À relire » (quelques minutes par cours).' }] : []),
+            ...(reviewReady ? [{ label: 'Relire avec l’IA', action: reviewBulkAction, confirm: 'Faire relire {n} par l’IA ? Les problèmes relevés s’afficheront sur chaque cours.' }] : []),
+            { label: 'Publier les brouillons', action: publishCoursesDraftsAction, confirm: 'Publier les brouillons de {n} ? Les élèves les verront aussitôt. (Les cours sans brouillon sont ignorés.)' }]} />
+      </div>
     </div>
   );
 }
@@ -71,21 +75,19 @@ function Row({ c, showLevel, aiReady, reviewReady }: { c: CatRow; showLevel: boo
   const status = hasDraft ? { label: `À relire · v${c.draft}`, cls: 'bg-warm-soft text-warm-dark' }
     : c.published ? { label: `Publié · v${c.published}`, cls: 'bg-brand-soft text-brand-dark' } : { label: 'Sans contenu', cls: 'bg-soft text-muted' };
   return (
-    <div className="cat-grid grid items-center gap-x-3 gap-y-1.5 px-4 py-2.5 border-t border-soft first:border-t-0 hover:bg-surface-2/60">
+    <div className="cat-grid grid items-center gap-x-3 gap-y-1 px-3 py-1.5 lg:py-1 lg:min-h-[40px] border-t border-soft first:border-t-0 hover:bg-surface-2/60 text-sm" data-cat-row>
       <BulkCheck formId="bulk-catalogue" value={c.id} label={c.title} />
-      <span className="text-sm num muted">{c.code ?? '—'}</span>
-      <span className="min-w-0">
-        <span className="block text-[15px] font-medium leading-snug">{c.title}</span>
-        <span className="block muted text-xs mt-0.5">{c.priority === 'prioritaire' && <span className="text-warm font-semibold" data-tip="Notion prioritaire du programme">▲ Prioritaire · </span>}{showLevel ? `${c.level_name} · ` : ''}{c.subject} · {c.chapter}</span>
-      </span>
-      <span className="cat-status flex flex-col items-start gap-1">
-        <span className={`pill ${status.cls}`}>{status.label}</span>
+      <span className="num muted">{c.code ?? '—'}</span>
+      <span className="min-w-0 font-medium lg:truncate" data-tip={c.title}>{c.priority === 'prioritaire' && <span className="text-warm font-semibold" aria-label="Prioritaire" data-tip="Notion prioritaire du programme">▲ </span>}{c.title}</span>
+      <span className="min-w-0 muted text-[13px] lg:truncate">{showLevel ? `${c.level_name} · ` : ''}{c.subject} · {c.chapter}</span>
+      <span className="cat-status flex flex-wrap items-center gap-x-2 gap-y-0.5">
+        <span className={`pill !py-0.5 text-xs ${status.cls}`}>{status.label}</span>
         {running ? <span className="text-xs text-ink-2 inline-flex items-center gap-1"><Bot size={13} aria-hidden="true" />{kind} IA : {c.ai_progress ?? 'en cours…'}</span>
           : c.ai_job === 'echec' ? <span className="text-xs text-warm-dark font-semibold" data-tip={c.ai_error ?? undefined}>{kind} IA : échec</span>
           : c.review_verdict ? <Link href={`/contenu/cours/${c.id}`} className={`text-xs font-semibold no-underline ${c.review_verdict === 'publiable' ? 'text-brand-dark' : 'text-warm-dark'}`}>
-              {c.review_verdict === 'publiable' ? 'Relu par l’IA : publiable' : `Relu par l’IA : ${c.review_count} problème${(c.review_count ?? 0) > 1 ? 's' : ''}`}</Link> : null}
+              {c.review_verdict === 'publiable' ? 'IA : publiable' : `IA : ${c.review_count} problème${(c.review_count ?? 0) > 1 ? 's' : ''}`}</Link> : null}
       </span>
-      <span className="cat-actions flex items-center justify-end gap-2">
+      <span className="cat-actions flex items-center justify-end gap-1.5">
         {hasContent ? <Link href={`/contenu/cours/${c.id}`} className="btn btn-sm">Ouvrir</Link>
           : aiReady && !running ? <form action={draftWithAiAction.bind(null, c.id)}><button className="btn btn-sm btn-primary inline-flex items-center gap-1.5" type="submit"><Bot size={14} aria-hidden="true" />Rédiger avec l’IA</button></form>
           : <Link href={`/contenu/generer/${c.id}`} className="btn btn-sm">Préparer la consigne</Link>}

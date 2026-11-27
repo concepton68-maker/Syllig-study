@@ -1,6 +1,7 @@
 import 'server-only';
 import { sql } from './db';
 import { importCourse, publishVersion } from './import-course';
+import { diffCourse, changeSummary } from './course-diff';
 
 // Relecture groupée par Claude (demande du propriétaire, 27/11/2026) : un seul fichier avec la consigne et les cours choisis,
 // Claude le renvoie corrigé, on le réimporte. Tout ou rien : si un cours est refusé, aucun n'est enregistré.
@@ -53,7 +54,8 @@ const canon = (x: unknown): unknown => Array.isArray(x) ? x.map(canon)
   : x && typeof x === 'object' ? Object.fromEntries(Object.keys(x as object).sort().map(k => [k, canon((x as Record<string, unknown>)[k])])) : x;
 const same = (a: unknown, b: unknown) => JSON.stringify(canon(a)) === JSON.stringify(canon(b));
 
-export type BatchResult = { ok: true; imported: { code: string; version: number; courseId: number }[]; unchanged: string[]; published: number; warnings: string[] }
+export type BatchImported = { code: string; title: string; version: number; courseId: number; versionId: string; changes: string; count: number };
+export type BatchResult = { ok: true; imported: BatchImported[]; unchanged: string[]; published: number; warnings: string[] }
   | { ok: false; errors: string[]; warnings: string[] };
 
 export async function importBatch(raw: string, sourceName: string, userId: string, publish: boolean): Promise<BatchResult> {
@@ -73,7 +75,7 @@ export async function importBatch(raw: string, sourceName: string, userId: strin
     where c.code = any(${codes.filter(Boolean)}) order by c.id, v.version desc`).map(r => [r.code, r.document]));
 
   const errors: string[] = [], warnings: string[] = [], unchanged: string[] = [];
-  const imported: { code: string; version: number; courseId: number; versionId: string }[] = [];
+  const imported: BatchImported[] = [];
   class Rollback extends Error {}
   try {
     await sql.begin(async tx => {
@@ -81,7 +83,11 @@ export async function importBatch(raw: string, sourceName: string, userId: strin
         const label = codes[i] || `cours n° ${i + 1}`;
         if (codes[i] && current.has(codes[i]) && same(current.get(codes[i]), d)) { unchanged.push(codes[i]); continue; }
         const r = await importCourse(JSON.stringify(d), `${sourceName} · ${label}`, userId, tx);
-        if (r.ok) imported.push({ code: label, version: r.version, courseId: r.courseId, versionId: r.versionId });
+        if (r.ok) {
+          const ch = current.has(codes[i]) ? diffCourse(current.get(codes[i]) as Record<string, unknown>, d) : [];
+          imported.push({ code: label, title: String(d.title ?? ''), version: r.version, courseId: r.courseId, versionId: r.versionId,
+            changes: current.has(codes[i]) ? changeSummary(ch) : 'nouveau cours', count: ch.length });
+        }
         else errors.push(...r.errors.map(e => `${label} — ${e}`));
         warnings.push(...r.warnings.map(w => `${label} — ${w}`));
       }
@@ -93,5 +99,5 @@ export async function importBatch(raw: string, sourceName: string, userId: strin
   }
   let published = 0;
   if (publish) for (const x of imported) { await publishVersion(x.versionId); published++; }
-  return { ok: true, imported: imported.map(({ versionId: _, ...x }) => x), unchanged, published, warnings };
+  return { ok: true, imported, unchanged, published, warnings };
 }

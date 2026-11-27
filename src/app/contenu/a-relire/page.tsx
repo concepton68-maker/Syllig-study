@@ -35,6 +35,7 @@ export default async function ToReview({ searchParams }: { searchParams: Promise
             {rows.length > 1 && <BulkCheck formId="bulk-publier" value={r.id} label={r.title} />}
             <span className="w-14 text-sm num muted">{r.code ?? '—'}</span>
             <span className="flex-[1_1_300px] min-w-0"><strong>{r.title}</strong><span className="block muted text-sm">{r.level} · {r.subject} · v{r.version}{r.replaces ? ` (remplacera la v${r.replaces} publiée)` : ' · nouveau cours'} · importé le {r.imported_at.toLocaleString('fr-FR', { timeZone: 'Europe/Paris', day: 'numeric', month: 'long', hour: '2-digit', minute: '2-digit' })}</span></span>
+            {r.replaces && <Link className="btn" href={`/contenu/cours/${r.course_id}/comparer?v=${r.id}`}>Comparer</Link>}
             <Link className="btn btn-primary" href={`/contenu/cours/${r.course_id}?v=${r.id}`}>Relire et publier</Link>
           </div>
         ))}

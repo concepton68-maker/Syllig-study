@@ -596,11 +596,11 @@ section.card > h2, section.card > div > h2, section.card h2.text-xl { font-size:
 
 /* ── Catalogue en tableau, boutons compacts, menu « ⋯ » ── */
 .cat-grid { grid-template-columns: 22px 56px minmax(0, 1fr); }
-.cat-grid > .cat-status, .cat-grid > .cat-actions { grid-column: 3; }
+.cat-grid > :nth-child(4), .cat-grid > .cat-status, .cat-grid > .cat-actions { grid-column: 3; }
 .cat-grid > .cat-actions { justify-content: flex-start; }
 @media (min-width: 1024px) {
-  .cat-grid { grid-template-columns: 22px 64px minmax(0, 1fr) 210px 250px; }
-  .cat-grid > .cat-status, .cat-grid > .cat-actions { grid-column: auto; }
+  .cat-grid { grid-template-columns: 22px 60px minmax(0, 2fr) minmax(0, 1.2fr) 190px 210px; }
+  .cat-grid > :nth-child(4), .cat-grid > .cat-status, .cat-grid > .cat-actions { grid-column: auto; }
   .cat-grid > .cat-actions { justify-content: flex-end; }
 }
 .btn.btn-sm { min-height: 34px; padding: 6px 12px; font-size: 13.5px; border-radius: 10px; }
