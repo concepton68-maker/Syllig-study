@@ -37,7 +37,7 @@ export default async function ParentDashboard({ searchParams }: { searchParams: 
   // message du lundi : la semaine écoulée (créé à la première visite s'il ne l'est pas encore)
   const monday = await lastMonday();
   const [inWeek] = await sql<{ ok: boolean }[]>`select created_at < ((${monday}::date + 7)::timestamp at time zone 'Europe/Paris') as ok from students where id = ${student.id}`;
-  const msg = inWeek?.ok && await weekOpen() ? await ensureMessage(student.id, monday) : null;   // jamais avant le lundi 7 h
+  const msg = inWeek?.ok && await weekOpen() ? await ensureMessage(student.id, monday).catch(() => null) : null;   // jamais avant le lundi 7 h ; une erreur ne bloque pas l'Accueil
   const shown = subjects.filter(s => s.published > 0);
   const pct = w.goal_min ? Math.min(1, w.active_min / w.goal_min) : 0;
   const R = 26, L = 2 * Math.PI * R;

@@ -40,9 +40,12 @@ export const checkUnsubscribe = (userId: string, token: string) => {
   return a.length === b.length && crypto.timingSafeEqual(a, b);
 };
 // Confirmation de l'adresse : lien signé qui porte l'adresse saisie
-export const confirmToken = (userId: string, email: string) => crypto.createHmac('sha256', signKey()).update(`confirmer|${userId}|${email.toLowerCase()}`).digest('base64url').slice(0, 32);
-export const checkConfirm = (userId: string, email: string, token: string) => {
-  const a = Buffer.from(confirmToken(userId, email)), b = Buffer.from(token);
+// valable 7 jours (`exp` : date limite en secondes, signée avec l'adresse)
+export const confirmToken = (userId: string, email: string, exp: number) => crypto.createHmac('sha256', signKey()).update(`confirmer|${userId}|${email.toLowerCase()}|${exp}`).digest('base64url').slice(0, 32);
+export const confirmExp = () => Math.floor(Date.now() / 1000) + 7 * 86400;
+export const checkConfirm = (userId: string, email: string, exp: number, token: string) => {
+  if (!Number.isInteger(exp) || exp < Date.now() / 1000) return false;
+  const a = Buffer.from(confirmToken(userId, email, exp)), b = Buffer.from(token);
   return a.length === b.length && crypto.timingSafeEqual(a, b);
 };
 export const appUrl = () => (process.env.APP_URL ?? 'https://study.syllig.com').replace(/\/$/, '');

@@ -92,9 +92,15 @@ const weeklyTo = () => toParent().filter(m => /semaine_de/i.test(m.raw.split('\r
 ok(toParent().length === 1 && /confirmer-email/.test(body(toParent()[0])), 'seul un lien de confirmation part à la nouvelle adresse');
 await new Promise(r => setTimeout(r, 3000));
 ok(weeklyTo().length === 0, 'aucun message du lundi tant que l’adresse n’est pas confirmée');
-const confirm = (body(toParent()[0]).match(/https?:\/\/\S*\/confirmer-email\?u=[^\s&]+&e=[^\s&]+&t=[\w-]+/) || [])[0];
+const confirm = (body(toParent()[0]).match(/https?:\/\/\S*\/confirmer-email\?u=[^\s&]+&e=[^\s&]+&x=\d+&t=[\w-]+/) || [])[0];
 await pa.goto(confirm.replace(/^https?:\/\/[^/]+/, BASE));
-ok(await pa.locator('[data-confirmed="oui"]').count() === 1, 'adresse confirmée par le lien reçu');
+await pa.waitForSelector('[data-confirm]');
+const [c0] = await sql`select email from users where login = 'parent@test.local'`;
+ok(c0.email === null, 'ouvrir le lien ne confirme rien (les messageries ouvrent parfois les liens) : un bouton confirme');
+await pa.click('[data-confirm]'); await pa.waitForSelector('[data-confirmed="oui"]');
+ok(true, 'adresse confirmée par le bouton');
+await pa.goto(confirm.replace(/^https?:\/\/[^/]+/, BASE).replace(/&x=\d+/, '&x=1000'));
+ok(await pa.locator('[data-confirmed="non"]').count() === 1, 'un lien expiré (ou modifié) est refusé');
 console.log('Envoi automatique (file de tâches)');
 for (let i = 0; i < 40 && weeklyTo().length === 0; i++) await new Promise(r => setTimeout(r, 250));
 ok(weeklyTo().length === 1, 'le message de la semaine écoulée part tout seul au parent abonné et confirmé');

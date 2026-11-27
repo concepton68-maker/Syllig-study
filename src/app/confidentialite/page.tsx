@@ -45,7 +45,7 @@ export default async function Privacy() {
 
         <section className="card flex flex-col gap-2">
           <h2 className="text-xl font-semibold m-0">Durée de conservation</h2>
-          <p className="m-0">Le message du lundi (prénom de l’enfant et faits de sa semaine) est envoyé par e-mail seulement au parent qui l’a demandé et a confirmé son adresse, par un service d’envoi hébergé dans l’Union européenne choisi par l’administrateur (sous-traitant). Chaque e-mail contient un lien pour ne plus le recevoir. Les messages restent visibles sur l’Accueil du parent et sont effacés quand il « repart de zéro » ou quand le compte de l’enfant est supprimé.</p>
+          <p className="m-0">Le message du lundi (prénom de l’enfant et faits de sa semaine) est envoyé par e-mail seulement au parent qui l’a demandé et a confirmé son adresse, par un service d’envoi que l’administrateur s’engage à choisir dans l’Union européenne (sous-traitant). Chaque e-mail contient un lien pour ne plus le recevoir. Les messages restent visibles sur l’Accueil du parent et sont effacés quand il « repart de zéro » ou quand le compte de l’enfant est supprimé.</p>
           <p className="m-0">Les bilans, tests de positionnement terminés et le journal des envois à l’IA sont effacés automatiquement après <strong>{keep}</strong>. Toutes les données d’un enfant sont effacées quand son compte est supprimé ; le parent peut aussi « repartir de zéro » à tout moment.</p>
         </section>
 

@@ -4,7 +4,7 @@ import { checkNewPassword, setPassword } from '@/lib/password';
 import { sql } from '@/lib/db';
 import { studentsOfParent } from '@/lib/access';
 import { ensureMessage, lastMonday, sendMessage } from '@/lib/weekly';
-import { mailSettings, sendMail, appUrl, confirmToken } from '@/lib/mailer';
+import { mailSettings, sendMail, appUrl, confirmToken, confirmExp } from '@/lib/mailer';
 
 export async function changeOwnPassword(_: { ok?: string; error?: string } | undefined, form: FormData) {
   const u = await requireUser();
@@ -46,8 +46,9 @@ export async function saveWeekly(_: { ok?: string; error?: string } | undefined,
   if (email === me?.email) return { ok: on ? 'Enregistré : vous recevrez le message chaque lundi.' : 'Enregistré : pas de message par e-mail.' };
   // nouvelle adresse : rien n'y est envoyé (hors ce lien) tant qu'elle n'est pas confirmée
   await sql`update users set email_pending = ${email} where id = ${u.id}`;
-  if (!(await mailSettings())) return { ok: 'Adresse notée. Le lien de confirmation partira dès que l’envoi des e-mails sera configuré.' };
-  const link = `${appUrl()}/confirmer-email?u=${u.id}&e=${encodeURIComponent(email)}&t=${confirmToken(u.id, email)}`;
+  if (!(await mailSettings())) return { error: 'L’envoi des e-mails n’est pas encore configuré par l’administrateur : réessayez plus tard.' };
+  const exp = confirmExp();
+  const link = `${appUrl()}/confirmer-email?u=${u.id}&e=${encodeURIComponent(email)}&x=${exp}&t=${confirmToken(u.id, email, exp)}`;
   try {
     await sendMail(email, 'Syllig Study : confirmez votre adresse', `<p>Bonjour,</p><p>Pour recevoir le message du lundi sur le travail de votre enfant, confirmez cette adresse :</p><p><a href="${link}">Confirmer mon adresse</a></p><p>Si vous n’êtes pas à l’origine de cette demande, ignorez ce message.</p>`,
       `Pour recevoir le message du lundi, confirmez cette adresse : ${link}\n\nSi vous n’êtes pas à l’origine de cette demande, ignorez ce message.`);
