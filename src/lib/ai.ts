@@ -51,13 +51,13 @@ export const CLAUDE_MODELS: Model[] = [
 
 // ── Clé chiffrée en base (AES-256-GCM), avec une clé dérivée de la configuration du serveur (jamais dans la base ni les sauvegardes)
 const secret = () => crypto.createHash('sha256').update(`syllig-ia|${process.env.DATABASE_URL ?? ''}`).digest();
-function seal(plain: string) {
+export function seal(plain: string) {
   const iv = crypto.randomBytes(12);
   const c = crypto.createCipheriv('aes-256-gcm', secret(), iv);
   const data = Buffer.concat([c.update(plain, 'utf8'), c.final()]);
   return [iv, c.getAuthTag(), data].map(b => b.toString('base64')).join('.');
 }
-function open(sealed: string) {
+export function open(sealed: string) {
   const [iv, tag, data] = sealed.split('.').map(s => Buffer.from(s, 'base64'));
   const d = crypto.createDecipheriv('aes-256-gcm', secret(), iv);
   d.setAuthTag(tag);

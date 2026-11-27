@@ -7,6 +7,8 @@ import { PageTitle } from '@/components/Shell';
 import { ChildPicker } from '@/components/ChildPicker';
 import { Screen } from '@/components/Layout';
 import { liveStatus } from '@/lib/live';
+import { ensureMessage, lastMonday } from '@/lib/weekly';
+import { WeeklyCard } from '@/components/WeeklyCard';
 
 export const metadata = { title: 'Tableau de bord' };
 export const dynamic = 'force-dynamic';
@@ -32,6 +34,10 @@ export default async function ParentDashboard({ searchParams }: { searchParams: 
     select a.id, c.title, sj.name as subject, a.final_score as note, a.submitted_at as at from eval_attempts a join courses c on c.id = a.course_id
     join chapters ch on ch.id = c.chapter_id join subjects sj on sj.id = ch.subject_id
     where a.student_id = ${student.id} and a.status = 'graded' and a.final_score is not null order by a.graded_at desc nulls last limit 3`;
+  // message du lundi : la semaine écoulée (créé à la première visite s'il ne l'est pas encore)
+  const monday = await lastMonday();
+  const [inWeek] = await sql<{ ok: boolean }[]>`select created_at < ((${monday}::date + 7)::timestamp at time zone 'Europe/Paris') as ok from students where id = ${student.id}`;
+  const msg = inWeek?.ok ? await ensureMessage(student.id, monday) : null;
   const shown = subjects.filter(s => s.published > 0);
   const pct = w.goal_min ? Math.min(1, w.active_min / w.goal_min) : 0;
   const R = 26, L = 2 * Math.PI * R;
@@ -51,6 +57,8 @@ export default async function ParentDashboard({ searchParams }: { searchParams: 
           <span className="btn btn-primary">Ouvrir</span>
         </Link>
       )}
+
+      {msg && <WeeklyCard d={msg.data} more={`/parent/messages${q}`} />}
 
       <section aria-labelledby="semaine" className="card flex flex-wrap items-center gap-x-8 gap-y-4" data-home-week>
         <h2 id="semaine" className="text-lg font-semibold m-0 basis-full">Cette semaine</h2>

@@ -16,6 +16,7 @@ export default async function ContentLayout({ children }: { children: React.Reac
       { href: '/contenu/programmes', label: 'Programmes', short: 'Niveaux', icon: 'programmes' },
       { href: '/contenu/comptes', label: 'Comptes', icon: 'accounts' },
       { href: '/contenu/ia', label: 'IA', short: 'IA', icon: 'ai' },
+      { href: '/contenu/emails', label: 'E-mails', short: 'E-mails', icon: 'mail' },
     ]} user={{ name: u.display_name, sub: 'Contenu pédagogique' }}>
       {children}
     </Shell>

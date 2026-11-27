@@ -21,7 +21,7 @@ export function Shell({ role, nav, theme, spaces, user, showVersion = false, chi
   );
   const logout = (
     <form action={logoutAction} className="flex items-center gap-1">
-      <a href="/compte" className="side-icon-btn" data-tip="Mon mot de passe" aria-label="Mon mot de passe"><KeyRound size={18} aria-hidden="true" /></a>
+      <a href="/compte" className="side-icon-btn" data-tip="Mon compte" aria-label="Mon compte"><KeyRound size={18} aria-hidden="true" /></a>
       <button type="submit" className="side-icon-btn" data-tip="Se déconnecter" aria-label="Se déconnecter"><LogOut size={18} aria-hidden="true" /></button>
     </form>
   );

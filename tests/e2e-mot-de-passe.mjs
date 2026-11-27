@@ -67,7 +67,7 @@ ok(!(await login(pa, 'parent@test.local', 'parent-test-1234')) && await login(pa
 ok((await sql`select count(*)::int as n from password_requests where done_at is null`)[0].n === 0, 'la demande disparaît de la liste de l’administrateur');
 
 console.log('Changer son mot de passe');
-await pa.click('a[aria-label="Mon mot de passe"] >> visible=true');
+await pa.click('a[aria-label="Mon compte"] >> visible=true');
 await pa.waitForURL(/\/compte/);
 await pa.fill('input[name=current]', 'mauvais'); await pa.fill('input[name=password]', 'parent-test-1234'); await pa.fill('input[name=confirm]', 'parent-test-1234');
 await pa.click('button:has-text("Changer mon mot de passe")'); await pa.waitForSelector('text=Mot de passe actuel incorrect');
@@ -79,14 +79,14 @@ const sc = watch(await ctx(true));
 ok(await login(sc, 'lea', 'lea-nouveau-5678'), 'téléphone 360 px : connexion');
 await sc.waitForSelector('.mobile-bar');
 const bar = await sc.evaluate(() => { const h = document.querySelector('.mobile-bar'); return h ? h.scrollWidth <= h.clientWidth + 1 : true; });
-ok(bar && await sc.locator('.mobile-bar a[aria-label="Mon mot de passe"]').isVisible(), 'téléphone 360 px : la clé « Mon mot de passe » tient dans la barre du haut');
+ok(bar && await sc.locator('.mobile-bar a[aria-label="Mon compte"]').isVisible(), 'téléphone 360 px : la clé « Mon mot de passe » tient dans la barre du haut');
 
 await sql`insert into user_roles select id, 'admin' from users where login = 'parent@test.local' on conflict do nothing`;   // compte parent + Contenu
 const sd = watch(await ctx(true));
 ok(await login(sd, 'parent@test.local', 'parent-test-1234'), 'téléphone 360 px : compte à deux espaces');
 await sd.waitForSelector('.mobile-bar .space-switch');
 const fits = await sd.evaluate(() => { const h = document.querySelector('.mobile-bar'); return `${h.scrollWidth}/${h.clientWidth}`; });
-ok(fits.split('/')[0] <= fits.split('/')[1] && await sd.locator('.mobile-bar a[aria-label="Mon mot de passe"]').isVisible(), `téléphone 360 px, deux espaces : la barre du haut ne déborde pas (${fits})`);
+ok(fits.split('/')[0] <= fits.split('/')[1] && await sd.locator('.mobile-bar a[aria-label="Mon compte"]').isVisible(), `téléphone 360 px, deux espaces : la barre du haut ne déborde pas (${fits})`);
 await sql`delete from user_roles where role = 'admin' and user_id = (select id from users where login = 'parent@test.local')`;
 
 console.log('Fenêtres et bulles de l’application');

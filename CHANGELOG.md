@@ -525,3 +525,11 @@ Contre-audit de conformité des versions 0.43 à 0.45 : tout ce qui a été rele
 - Rythme, sans jugement : la part du temps de travail avec un geste dans la minute. Il est affiché dans En direct et dans le détail jour par jour.
 - Après 10 minutes sans rien toucher (délai choisi par le parent) : « Tu es là ? » avec un compte à rebours de 60 s. Sans réponse, la séance se ferme, l'élève revient à son accueil et le temps s'arrête à son dernier geste. Jamais pendant une évaluation.
 - « Détail minute par minute » simplifié : la trace exacte, une ligne par événement, regroupée par jour, sans pastilles ni « à regarder ensemble ».
+
+## 0.52 — 27/11/2026
+- **Message hebdomadaire au parent**, selon la maquette validée. Chaque lundi à partir de 7 h, pour chaque enfant :
+  - les faits de la semaine écoulée : temps de travail face à l'objectif, jours travaillés, leçons finies, évaluations notées, révisions ;
+  - un seul point à regarder ensemble : la copie (ou la série d'exercices) la plus récente avec des questions fausses ou sans réponse, avec le lien « Revoir » ;
+  - une idée liée à ce point.
+  - En haut de l'Accueil, avec la page « Messages précédents », et par e-mail.
+- E-mails : service d'envoi européen à configurer une fois dans Contenu › E-mails (mot de passe chiffré). Le parent indique son adresse et peut demander un message d'essai dans Mon compte. Chaque e-mail a un lien pour se désabonner, sans connexion.
