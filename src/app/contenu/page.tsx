@@ -26,7 +26,8 @@ export default async function Catalogue() {
   return (
     <div className="flex flex-col gap-5 lg:flex-1 lg:min-h-0">
       <PageTitle kicker="Catalogue" title={`${pub} cours publié${pub > 1 ? 's' : ''} sur ${rows.length}`} sub={aiReady ? 'Pour créer un cours : « Rédiger avec l’IA » (le brouillon arrive dans « À relire »), ou préparer la consigne pour Claude et importer le résultat.' : 'Pour créer un cours : « Préparer la consigne », la coller dans Claude, puis importer le JSON obtenu. (Rédaction automatique : choisir une IA dans Contenu › IA.)'}>
-        <Link className="btn btn-primary" href="/contenu/importer">Importer un cours</Link>
+        <a className="btn" href="/api/contenu/lot" download data-export-all>Tout exporter pour relecture</a>
+        <Link className="btn btn-primary" href="/contenu/importer">Importer des cours</Link>
       </PageTitle>
       <AutoRefresh active={rows.some(r => r.ai_job === 'en_attente' || r.ai_job === 'en_cours')} />
       <CatalogueList rows={rows.map(r => ({ ...r }))} aiReady={aiReady} reviewReady={reviewReady} />

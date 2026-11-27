@@ -547,3 +547,14 @@ Contre-audit de conformité des versions 0.43 à 0.45 : tout ce qui a été rele
 - **Cours déjà faits** :
   - « Revoir ce cours » sur les cours acquis ;
   - une leçon déjà finie se rouvre au début, pour être ré-étudiée, et non plus sur la dernière page.
+
+## 0.54 — 27/11/2026
+- **Relecture groupée des cours par Claude** (Contenu) :
+  - cocher des cours puis « Exporter pour relecture (1 fichier) », ou « Tout exporter pour relecture » ;
+  - un seul fichier contient la consigne pour Claude et les cours (dernière version de chacun, aucune donnée d'élève) ;
+  - on le donne à Claude, puis on réimporte le fichier corrigé dans « Importer des cours ».
+- **Réimport tout ou rien** :
+  - si un cours est refusé, aucun n'est enregistré, et l'erreur nomme le cours fautif ;
+  - les cours renvoyés sans changement sont ignorés ;
+  - les cours corrigés arrivent en brouillon « À relire », ou sont publiés aussitôt si la case est cochée ;
+  - l'ancienne version reste toujours dans l'historique.

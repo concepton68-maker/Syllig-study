@@ -1,5 +1,6 @@
 import 'server-only';
 import { sql } from './db';
+import type { TransactionSql } from 'postgres';
 import { validateCourse, type CourseDocument } from './course-format';
 
 export type ImportResult =
@@ -7,7 +8,7 @@ export type ImportResult =
   | { ok: false; errors: string[]; warnings: string[] };
 
 // Rattache le document au catalogue, puis l'enregistre comme nouveau brouillon.
-export async function importCourse(raw: string, sourceName: string, userId: string): Promise<ImportResult> {
+export async function importCourse(raw: string, sourceName: string, userId: string, inTx?: TransactionSql): Promise<ImportResult> {
   let json: unknown;
   try { json = JSON.parse(raw); } catch (e) {
     return { ok: false, warnings: [], errors: [`Le fichier n'est pas un JSON valide : ${(e as Error).message}`] };
@@ -16,12 +17,14 @@ export async function importCourse(raw: string, sourceName: string, userId: stri
   if (!v.ok) return v;
   const doc: CourseDocument = v.doc;
 
-  const [chap] = await sql<{ id: number }[]>`
+  const db = inTx ?? sql;
+  const [chap] = await db<{ id: number }[]>`
     select ch.id from chapters ch join subjects s on s.id = ch.subject_id
     where s.level_code = ${doc.level} and s.name = ${doc.subject} and ch.name = ${doc.chapter}`;
   if (!chap) return { ok: false, warnings: v.warnings, errors: [`Chapitre introuvable dans le catalogue : ${doc.level} › ${doc.subject} › ${doc.chapter}`] };
 
-  return sql.begin(async tx => {
+  const run = <T,>(cb: (tx: TransactionSql) => Promise<T>) => inTx ? inTx.savepoint(cb) : sql.begin(cb);
+  return run(async tx => {
     let created = false;
     let [course] = await tx<{ id: number; chapter_id: number; title: string }[]>`select id, chapter_id, title from courses where code = ${doc.code}`;
     if (course && (course.chapter_id !== chap.id || course.title !== doc.title)) {

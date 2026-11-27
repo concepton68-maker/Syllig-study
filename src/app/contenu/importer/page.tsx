@@ -8,7 +8,7 @@ export const metadata = { title: 'Importer un cours' };
 export default function ImportPage() {
   return (
     <Screen top={<>
-      <PageTitle kicker="Import" title="Importer un cours généré par Claude"
+      <PageTitle kicker="Import" title="Importer des cours"
         sub={<>Le fichier est contrôlé puis enregistré en <strong>brouillon</strong>. Rien n’est visible par les élèves avant la publication.</>} />
     </>}>
       <ImportForm />

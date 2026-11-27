@@ -46,6 +46,7 @@ export function CatalogueList({ rows, aiReady, reviewReady }: { rows: CatRow[]; 
         actions={[
           ...(aiReady ? [{ label: 'Rédiger avec l’IA', action: draftWithAiBulkAction, confirm: 'Faire rédiger {n} par l’IA ? Chaque cours arrivera en brouillon dans « À relire » (quelques minutes par cours).' }] : []),
           ...(reviewReady ? [{ label: 'Relire avec l’IA', action: reviewBulkAction, confirm: 'Faire relire {n} par l’IA ? Les problèmes relevés s’afficheront sur chaque cours.' }] : []),
+          { label: 'Exporter pour relecture (1 fichier)', action: '/api/contenu/lot' },
           { label: 'Publier les brouillons', action: publishCoursesDraftsAction, confirm: 'Publier les brouillons de {n} ? Les élèves les verront aussitôt. (Les cours sans brouillon sont ignorés.)' }]} />
       <section className="card !p-0 flex flex-col lg:flex-1 lg:min-h-0 overflow-hidden">
         <div className="hidden lg:grid cat-grid px-4 py-2.5 border-b border-line bg-surface-2 text-xs font-semibold uppercase tracking-wide text-muted shrink-0">
