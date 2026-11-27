@@ -581,3 +581,9 @@ Contre-audit de conformité des versions 0.43 à 0.45 : tout ce qui a été rele
   - en repassant le test, le sujet est toujours différent de la dernière copie, même après une demande annulée ;
   - « Un autre sujet » ne s'affiche que si le cours en a deux ;
   - la date d'une nouvelle tentative est donnée avec l'heure.
+
+## 0.57 — 27/11/2026
+- **Durées en HH:MM côté parent**. Par exemple « 01:15 » au lieu de « 75 min » ou de « 1 h 15 ». C'est le cas partout : Accueil, En direct, Activité, Bilan, dossier, copies et message du lundi.
+- **Une seule règle de calcul**, pour que les totaux soient justes :
+  - les minutes sont toujours arrondies vers le bas, alors que certaines pages arrondissaient au plus proche ;
+  - le temps par matière s'additionne exactement au temps total (`src/lib/duration.ts`).
