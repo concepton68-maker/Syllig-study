@@ -23,7 +23,6 @@ export default async function Today({ searchParams }: { searchParams: Promise<{ 
   const { questionnaire, passee, ferme } = await searchParams;
   const { student } = await requireStudent();
   const items = await parcours(student.id, student.level_code);
-  const goal = student.settings.weekly_goal_minutes * 60;
   const [w, s, [{ total }]] = await Promise.all([weekStats(student.id), streak(student.id),
     sql<{ total: number }[]>`select coalesce(sum(amount), 0)::int as total from points_ledger where student_id = ${student.id}`]);
   // paliers de progression : un nouveau palier tous les 250 points, jamais de retour en arrière

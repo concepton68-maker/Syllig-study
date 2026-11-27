@@ -36,7 +36,8 @@ export function RulesForm({ studentId, s, levels, level }: { studentId: string; 
             <span className="text-sm text-ink-2" data-goal-week>Soit <strong>{fmt(daily * days.length)} par semaine</strong> ({fmt(daily)} × {days.length} jour{days.length > 1 ? 's' : ''}) : c’est ce chiffre qu’affichent l’Activité, le Bilan et le message du lundi. Un changement s’applique aussi aux jours déjà passés.</span>
           </>) : (
             <label className="flex flex-col gap-1.5 text-sm font-semibold max-w-[260px]">Temps de travail visé par semaine
-              <select className="field" name="goal_h" defaultValue={String(s.weekly_goal_minutes / 60)}>{[...new Set([2, 3, 4, 5, 6, 7, 8, 10, s.weekly_goal_minutes / 60])].sort((a, b) => a - b).map(h => <option key={h} value={h}>{fmt(Math.round(h * 60))}</option>)}</select></label>
+              <select className="field" name="goal_h" defaultValue={String(s.weekly_goal_minutes / 60)}>{[...new Set([2, 3, 4, 5, 6, 7, 8, 10, s.weekly_goal_minutes / 60])].sort((a, b) => a - b).map(h => <option key={h} value={h}>{fmt(Math.round(h * 60))}</option>)}</select>
+              <span className="text-xs muted font-normal">Un changement s’applique aussi aux semaines déjà passées dans l’Activité et le Bilan.</span></label>
           )}
         </fieldset>
         <label className="flex-[1_1_200px] flex flex-col gap-1.5 text-sm font-semibold">Délai avant de retenter une évaluation

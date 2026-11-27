@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { subjectSummary } from '@/lib/subject-summary';
+import { subjectSummary, schoolYearStart } from '@/lib/subject-summary';
 import { goalView } from '@/lib/goal';
 import { pauseRuleSince } from '@/lib/time-rule';
 import { Star, Sparkles, Award } from 'lucide-react';
@@ -41,6 +41,7 @@ export default async function Results() {
   const m = (s: number) => Math.floor(s / 60);
   // notes par matière et erreurs à reprendre : la dernière copie de chaque cours avec des questions fausses ou vides, puis les exercices
   const sum = await subjectSummary(student.id, student.level_code);
+  const yearStart = await schoolYearStart();
   const errors: { title: string; what: string; href: string }[] = sum.subjects.flatMap(x => x.review.map(r => ({ title: r.title, what: `${r.missed} question${r.missed > 1 ? 's' : ''} fausse${r.missed > 1 ? 's' : ''} ou sans réponse dans l’évaluation`, href: `/eleve/cours/${r.course_id}/bilan/${r.attempt_id}` })));
   // exercices : la série la plus récente de chaque cours (celle qu'ouvre la page Exercices), seulement si elle est remise ;
   // même période et même niveau que les notes (depuis le 1er septembre, niveau actuel)
@@ -49,7 +50,7 @@ export default async function Results() {
       (select count(*) from jsonb_each(coalesce(e.auto_results, '{}'::jsonb)) j where j.value = 'false'::jsonb)::int as wrong
       from exercise_submissions e join courses c on c.id = e.course_id join chapters ch on ch.id = c.chapter_id join subjects sj on sj.id = ch.subject_id
       where e.student_id = ${student.id} and sj.level_code = ${student.level_code} order by e.course_id, e.created_at desc) x
-    where x.submitted_at is not null and x.submitted_at >= ${sum.from}::date`;
+    where x.submitted_at is not null and x.submitted_at >= ${yearStart.start}`;
   const review = new Set(sum.subjects.flatMap(x => x.review.map(r => r.course_id)));
   for (const x of exErr.filter(x => x.wrong > 0 && !review.has(x.course_id))) errors.push({ title: x.title, what: `${x.wrong} erreur${x.wrong > 1 ? 's' : ''} dans les exercices`, href: `/eleve/cours/${x.course_id}/exercices` });
   const gv = await goalView(student.id, student.settings);
