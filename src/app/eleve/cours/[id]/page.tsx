@@ -27,7 +27,7 @@ export default async function CourseOverview({ params }: { params: Promise<{ id:
   const main = nextOpen ?? steps[0];
   // cours déjà fait (maquette validée le 27/11/2026) : s'entraîner d'abord (effet de test), relire, repasser le test (autre sujet)
   const canTrain = !!progress.exercises_done_at && questionPool(doc).length > 0;
-  const revDue = canTrain && await revisionDueFor(student.id, course.id);
+  const revDue = canTrain && await revisionDueFor(student.id, course.id, student.level_code);
   const av = !nextOpen ? await evalAvailability(student.id, course.id, !!progress.exercises_done_at, student.settings.retry_delay_days) : null;
   const twoSubjects = doc.evaluation.variants.length > 1;
   const best = attempts.filter(a => a.status === 'graded').reduce((m, a) => Math.max(m, Number(a.final_score)), -1);
@@ -54,10 +54,10 @@ export default async function CourseOverview({ params }: { params: Promise<{ id:
                 ? <Link href="/eleve/revision" className="flex flex-col gap-1 p-4 rounded-2xl bg-brand text-white no-underline" data-train-revision>
                   <strong className="text-lg">Ta révision du jour</strong><span className="text-sm opacity-90">Ce cours est à réviser aujourd’hui : l’entraînement sera possible après.</span></Link>
                 : <Link href={`${base}/entrainement`} className="flex flex-col gap-1 p-4 rounded-2xl bg-brand text-white no-underline" data-train>
-                  <strong className="text-lg">M’entraîner</strong><span className="text-sm opacity-90">5 questions du cours, d’abord celles que tu n’as jamais vues en révision ou que tu as vues il y a le plus longtemps</span></Link>)}
+                  <strong className="text-lg">M’entraîner</strong><span className="text-sm opacity-90">5 questions du cours, d’abord celles que tu n’as jamais vues en révision ni à l’entraînement, puis les plus anciennes</span></Link>)}
               <Link href={`${base}/lecon?debut=1`} className="flex flex-col gap-1 p-4 rounded-2xl bg-white border border-line text-ink no-underline hover:border-brand" data-reread>
                 <strong className="text-lg">Relire la leçon</strong><span className="text-sm muted">Depuis le début, puis la fiche mémo</span></Link>
-              {av?.ok ? <Link href={`${base}/evaluation`} className="flex flex-col gap-1 p-4 rounded-2xl bg-white border border-line text-ink no-underline hover:border-brand" data-retake>
+              {av?.ok || (av && 'pending' in av && av.pending?.status === 'approved') ? <Link href={`${base}/evaluation`} className="flex flex-col gap-1 p-4 rounded-2xl bg-white border border-line text-ink no-underline hover:border-brand" data-retake>
                 <strong className="text-lg">Repasser le test</strong><span className="text-sm muted">{twoSubjects ? 'Un autre sujet que la dernière fois. ' : ''}Ta meilleure note reste.</span></Link>
                 : <div className="flex flex-col gap-1 p-4 rounded-2xl bg-white border border-line" data-retake="plus-tard">
                   <strong className="text-lg">Repasser le test</strong><span className="text-sm muted">{twoSubjects ? 'Un autre sujet que la dernière fois. ' : ''}Ta meilleure note reste.</span>

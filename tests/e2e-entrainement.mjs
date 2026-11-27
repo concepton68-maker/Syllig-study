@@ -110,6 +110,14 @@ ok(new URL(el.url()).pathname === `/eleve/cours/${c.id}`, 'adresse directe le jo
 await el.goto(`${BASE}/eleve/revision`);
 ok(await el.locator('[data-review-q]').count() === 1, 'la révision du jour s’ouvre normalement');
 
+// révision due mais limite de 2 cours atteinte aujourd'hui : la révision du jour ne le propose pas, l'entraînement reste possible
+const others = await sql`select id from courses where code in ('TG034', 'TG035')`;
+const [sess] = await sql`insert into review_sessions (student_id, questions, finished_at) values (${st.id}, '[]', now()) returning id`;
+for (const o of others) await sql`insert into review_results (student_id, course_id, session_id, ok, total, gap_days, passed, next_days) values (${st.id}, ${o.id}, ${sess.id}, 5, 5, 1, true, 3)`;
+await sql`delete from review_sessions where student_id = ${st.id} and kind = 'revision' and finished_at is null`;
+await el.goto(`${BASE}/eleve/cours/${c.id}`);
+ok(await el.locator('[data-train]').count() === 1 && await el.locator('[data-train-revision]').count() === 0, '2 cours déjà révisés aujourd’hui : ce cours n’est pas proposé en révision, « M’entraîner » revient');
+
 console.log('5. Le parent le voit dans l’Activité');
 const pa = await login('parent@test.local', 'parent-test-1234');
 await pa.goto(`${BASE}/parent/journal?eleve=${st.id}`);

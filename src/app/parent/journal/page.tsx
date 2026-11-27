@@ -20,7 +20,7 @@ const ICON: Record<Kind, { letter: string; cls: string; label: string }> = {
   other: { letter: '·', cls: 'bg-soft text-ink-2', label: 'Autre' },
 };
 const FILTERS: { id: string; label: string; kind?: Kind }[] = [
-  { id: '', label: 'Tout' }, { id: 'lecons', label: 'Leçons', kind: 'lesson' }, { id: 'exercices', label: 'Exercices', kind: 'exercises' }, { id: 'evaluations', label: 'Évaluations', kind: 'evaluation' }, { id: 'revisions', label: 'Révisions', kind: 'review' },
+  { id: '', label: 'Tout' }, { id: 'lecons', label: 'Leçons', kind: 'lesson' }, { id: 'exercices', label: 'Exercices', kind: 'exercises' }, { id: 'evaluations', label: 'Évaluations', kind: 'evaluation' }, { id: 'revisions', label: 'Révisions et entraînements', kind: 'review' },
 ];
 const dayName = (d: string) => { const s = new Date(`${d}T12:00:00Z`).toLocaleDateString('fr-FR', { timeZone: 'UTC', weekday: 'long', day: 'numeric' }); return s.charAt(0).toUpperCase() + s.slice(1); };
 

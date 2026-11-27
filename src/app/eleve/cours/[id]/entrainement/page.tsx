@@ -14,7 +14,7 @@ export const dynamic = 'force-dynamic';
 export default async function TrainingPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
   const { student, course } = await loadCourse(id);
-  const s = await openTraining(student.id, course.id);
+  const s = await openTraining(student.id, course.id, student.level_code);
   if (!s) redirect(`/eleve/cours/${course.id}`);
   const view = await sessionView(s);
   return (

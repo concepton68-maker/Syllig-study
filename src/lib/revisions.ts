@@ -121,20 +121,23 @@ async function pickKeys(studentId: string, courseId: number, pool: PoolItem[]) {
 }
 
 /** Ce cours est à réviser aujourd'hui (révision espacée due ou commencée) : l'entraînement attend, pour ne pas fausser la révision. */
-export async function revisionDueFor(studentId: string, courseId: number) {
-  const [r] = await sql<{ due: boolean }[]>`select exists (select 1 from review_schedule where student_id = ${studentId} and course_id = ${courseId} and due_at <= now())
-    or exists (select 1 from review_sessions s, jsonb_array_elements(s.questions) q where s.student_id = ${studentId} and s.kind = 'revision'
-      and s.finished_at is null and (q->>'course_id')::int = ${courseId}) as due`;
-  return r.due;
+// mêmes règles que la révision du jour (niveau de l'élève, au plus 2 cours par jour) : seulement si elle le proposerait vraiment
+export async function revisionDueFor(studentId: string, courseId: number, levelCode: string) {
+  const [r] = await sql<{ open: boolean }[]>`select exists (select 1 from review_sessions s, jsonb_array_elements(s.questions) q where s.student_id = ${studentId} and s.kind = 'revision'
+      and s.finished_at is null and (q->>'course_id')::int = ${courseId}) as open`;
+  if (r.open) return true;
+  const [anyOpen] = await sql`select 1 from review_sessions where student_id = ${studentId} and kind = 'revision' and finished_at is null`;
+  if (anyOpen) return false;   // une révision est ouverte sans ce cours : il n'en fait pas partie aujourd'hui
+  return (await dueCourses(studentId, levelCode)).some(d => d.course_id === courseId);
 }
 
 /** « M'entraîner » sur un cours dont les exercices sont remis (sinon leurs corrigés s'afficheraient avant) : la séance commencée,
  *  sinon 5 nouvelles questions. Pas le jour où sa révision espacée est due. Sans effet sur la note ni le calendrier. */
-export async function openTraining(studentId: string, courseId: number): Promise<Session | null> {
+export async function openTraining(studentId: string, courseId: number, levelCode: string): Promise<Session | null> {
   const [cur] = await sql<Session[]>`select id, kind, questions, created_at, finished_at from review_sessions
     where student_id = ${studentId} and kind = 'entrainement' and course_id = ${courseId} and finished_at is null order by created_at desc limit 1`;
   if (cur) return cur;
-  if (await revisionDueFor(studentId, courseId)) return null;
+  if (await revisionDueFor(studentId, courseId, levelCode)) return null;
   const [v] = await sql<{ id: string; document: CourseDocument }[]>`select v.id, v.document from course_versions v
     join course_progress p on p.course_id = v.course_id and p.student_id = ${studentId} and p.exercises_done_at is not null
     where v.course_id = ${courseId} and v.status = 'published'`;
