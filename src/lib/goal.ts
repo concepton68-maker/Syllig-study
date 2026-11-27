@@ -8,10 +8,10 @@ import type { StudentSettings } from './settings';
 // qui parlent de la semaine restent cohérentes. Mêmes temps que partout : séances comptées le jour où elles commencent (Paris).
 
 export const weeklyFrom = (s: Pick<StudentSettings, 'goal_mode' | 'daily_goal_minutes' | 'goal_days' | 'weekly_goal_minutes'>) =>
-  s.goal_mode === 'jour' ? s.daily_goal_minutes * s.goal_days.length : s.weekly_goal_minutes;
+  s.goal_mode === 'jour' && s.goal_days.length ? s.daily_goal_minutes * s.goal_days.length : s.weekly_goal_minutes;
 
 export type GoalDay = { day: string; dow: number; minutes: number; goal: number | null; met: boolean; today: boolean; future: boolean };
-export type GoalView = { mode: 'semaine' | 'jour'; today: GoalDay; days: GoalDay[]; week_min: number; week_goal: number; goal_days_met: number; goal_days_elapsed: number };
+export type GoalView = { worked_days: number; worked_elapsed: number; mode: 'semaine' | 'jour'; today: GoalDay; days: GoalDay[]; week_min: number; week_goal: number; goal_days_met: number; goal_days_elapsed: number };
 
 /** Temps de travail du jour en secondes (heure de Paris). */
 export async function todaySeconds(studentId: string) {
@@ -34,11 +34,14 @@ export async function goalView(studentId: string, s: StudentSettings): Promise<G
     const met = goal !== null ? minutes >= goal : s.goal_mode === 'semaine' && r.s >= WORK_DAY_S;
     return { day: r.day, dow: r.dow, minutes, goal, met, today: r.today, future: r.future };
   });
-  const goalDays = days.filter(d => d.goal !== null && !d.future);
+  // jours comptés : les jours d'objectif déjà passés, plus aujourd'hui seulement s'il est déjà atteint (sinon « 0 sur 1 » le matin)
+  const goalDays = days.filter(d => d.goal !== null && !d.future && (!d.today || d.met));
   return {
     mode: s.goal_mode, today: days.find(d => d.today)!, days,
     week_min: days.reduce((n, d) => n + d.minutes, 0), week_goal: weeklyFrom(s),
     goal_days_met: goalDays.filter(d => d.met).length, goal_days_elapsed: goalDays.length,
+    // objectif par semaine : jours travaillés (10 min ou plus), même convention de jours écoulés
+    worked_days: days.filter(d => d.met).length, worked_elapsed: days.filter(d => !d.future && (!d.today || d.met)).length,
   };
 }
 

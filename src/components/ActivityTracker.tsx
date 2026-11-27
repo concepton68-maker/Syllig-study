@@ -15,7 +15,7 @@ export function ActivityTracker({ kind, courseId, idleSeconds = 600, todaySec, g
   const [away, setAway] = useState(false);
   const [paused, setPaused] = useState(false);
   const [left, setLeft] = useState(COUNTDOWN);
-  // temps du jour affiché en direct : valeur du serveur au chargement, puis +15 s à chaque signal compté
+  // temps du jour affiché en direct : toujours le total compté par le serveur (au chargement, puis renvoyé à chaque signal accepté)
   const [today, setToday] = useState(todaySec ?? 0);
 
   useEffect(() => {
@@ -33,8 +33,8 @@ export function ActivityTracker({ kind, courseId, idleSeconds = 600, todaySec, g
       const idle = Date.now() - lastInput.current;
       setPaused(idle >= idleSeconds * 1000);
       if (idle >= idleSeconds * 1000 && document.visibilityState === 'visible' && kind !== 'evaluation') setAway(true);
-      if (session.current) post({ action: 'beat', session: session.current, active: isActive(), gesture: gesture() });
-      if (isActive()) setToday(t => t + 15);
+      if (session.current) post({ action: 'beat', session: session.current, active: isActive(), gesture: gesture() })
+        .then(r => { if (!stopped && typeof r?.today === 'number') setToday(r.today); });
     }, 15_000);
     const end = () => {
       if (session.current) navigator.sendBeacon('/api/activity', JSON.stringify({ action: 'end', session: session.current, active: isActive(), gesture: gesture() }));

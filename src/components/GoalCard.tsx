@@ -30,7 +30,7 @@ export function GoalCard({ g }: { g: GoalView }) {
               className={`h-8 rounded-lg text-xs font-bold grid place-items-center ${d.met ? 'bg-brand text-white' : d.goal === null && g.mode === 'jour' ? 'border border-dashed border-line-strong muted' : d.minutes > 0 ? 'bg-brand-soft text-brand-dark' : 'bg-track text-ink-2'} ${d.today ? 'ring-2 ring-brand' : ''}`}>{L[i]}</span>
           ))}
         </div>
-        <span className="text-xs muted">{g.mode === 'jour' ? 'Bleu : objectif du jour atteint · pointillés : pas d’objectif ce jour-là' : 'Bleu : 10 min ou plus ce jour-là'}</span>
+        <span className="text-xs muted">{g.mode === 'jour' ? 'Bleu : objectif atteint · bleu clair : commencé · gris : rien · pointillés : pas d’objectif ce jour-là' : 'Bleu : 10 min ou plus · bleu clair : moins de 10 min · gris : rien'}</span>
       </div>
     </section>
   );

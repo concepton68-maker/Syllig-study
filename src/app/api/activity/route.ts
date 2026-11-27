@@ -69,5 +69,8 @@ export async function POST(req: Request) {
     await logEvent(st.id, 'seance_fermee_sans_reponse', { courseId: w?.course_id ?? null, data: { retire_s: Math.max(0, r?.removed ?? 0) } });
   }
   if (body.action === 'end') await closeSession(body.session, st.id);
-  return NextResponse.json({ ok: true });
+  // temps du jour compté par le serveur (heure de Paris, séances comptées le jour où elles commencent) : la barre affiche ce chiffre
+  const [t] = await sql<{ s: number }[]>`select coalesce(sum(active_seconds), 0)::int as s from work_sessions
+    where student_id = ${st.id} and (started_at at time zone 'Europe/Paris')::date = (now() at time zone 'Europe/Paris')::date`;
+  return NextResponse.json({ ok: true, today: t.s });
 }

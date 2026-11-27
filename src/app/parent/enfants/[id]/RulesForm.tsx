@@ -33,10 +33,10 @@ export function RulesForm({ studentId, s, levels, level }: { studentId: string; 
                     <input type="checkbox" name="goal_days" value={d} checked={on} onChange={() => setDays(x => on ? x.filter(y => y !== d) : [...x, d].sort())} className="sr-only" aria-label={['lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi', 'dimanche'][i]} />{l}</label>); })}</div>
               </div>
             </div>
-            <span className="text-sm text-ink-2" data-goal-week>Soit <strong>{fmt(daily * days.length)} par semaine</strong> ({fmt(daily)} × {days.length} jour{days.length > 1 ? 's' : ''}) : c’est ce chiffre qu’affichent l’Activité, le Bilan et le message du lundi.</span>
+            <span className="text-sm text-ink-2" data-goal-week>Soit <strong>{fmt(daily * days.length)} par semaine</strong> ({fmt(daily)} × {days.length} jour{days.length > 1 ? 's' : ''}) : c’est ce chiffre qu’affichent l’Activité, le Bilan et le message du lundi. Un changement s’applique aussi aux jours déjà passés.</span>
           </>) : (
             <label className="flex flex-col gap-1.5 text-sm font-semibold max-w-[260px]">Temps de travail visé par semaine
-              <select className="field" name="goal_h" defaultValue={String(Math.round(s.weekly_goal_minutes / 60))}>{[2, 3, 4, 5, 6, 7, 8, 10].map(h => <option key={h} value={h}>{h} h</option>)}</select></label>
+              <select className="field" name="goal_h" defaultValue={String(s.weekly_goal_minutes / 60)}>{[...new Set([2, 3, 4, 5, 6, 7, 8, 10, s.weekly_goal_minutes / 60])].sort((a, b) => a - b).map(h => <option key={h} value={h}>{fmt(Math.round(h * 60))}</option>)}</select></label>
           )}
         </fieldset>
         <label className="flex-[1_1_200px] flex flex-col gap-1.5 text-sm font-semibold">Délai avant de retenter une évaluation

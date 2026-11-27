@@ -51,8 +51,8 @@ export async function saveRulesAction(_: ResetState, form: FormData): Promise<Re
   const mode = form.get('goal_mode') === 'jour' ? 'jour' : 'semaine';
   const daily = Number(form.get('daily') ?? 30);
   const days = [...new Set(form.getAll('goal_days').map(Number).filter(d => Number.isInteger(d) && d >= 1 && d <= 7))].sort();
-  if (mode === 'jour' && (!days.length || !(daily >= 10 && daily <= 240))) return { error: 'Choisissez un temps par jour et au moins un jour.' };
-  const weekly = mode === 'jour' ? daily * days.length : Number(form.get('goal_h') ?? s.settings.weekly_goal_minutes / 60) * 60;
+  if (mode === 'jour' && (!days.length || !(Number.isInteger(daily) && daily >= 10 && daily <= 240))) return { error: 'Choisissez un temps par jour et au moins un jour.' };
+  const weekly = mode === 'jour' ? daily * days.length : Math.round(Number(form.get('goal_h') ?? s.settings.weekly_goal_minutes / 60) * 60);
   const p = z.object({
     weekly_goal_minutes: z.coerce.number().int().min(10).max(1680),
     retry_delay_days: z.coerce.number().int().min(1).max(30),

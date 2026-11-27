@@ -16,7 +16,7 @@ export default async function CourseOverview({ params }: { params: Promise<{ id:
   const [{ started }] = await sql<{ started: boolean }[]>`select exists (select 1 from checkpoint_answers where student_id = ${student.id} and course_id = ${course.id}) as started`;
   const base = `/eleve/cours/${course.id}`;
   const steps = [
-    { n: '①', name: 'Leçon', href: `${base}/lecon`, done: !!progress.lesson_done_at, meta: `${doc.lesson.duration_min} min · ${doc.lesson.parts.length} parties`, open: true },
+    { n: '①', name: 'Leçon', href: progress.lesson_done_at ? `${base}/lecon?debut=1` : `${base}/lecon`, done: !!progress.lesson_done_at, meta: `${doc.lesson.duration_min} min · ${doc.lesson.parts.length} parties`, open: true },
     { n: '②', name: 'Exercices', href: `${base}/exercices`, done: !!progress.exercises_done_at, meta: `${doc.exercises.duration_min} min · ${doc.exercises.items.length} exercices${progress.exercises_score !== null ? ` · ${progress.exercises_score}/10` : ''}`, open: !!progress.lesson_done_at },
     { n: '③', name: 'Évaluation', href: `${base}/evaluation`, done: attempts.some(a => a.status === 'graded'), meta: `${doc.evaluation.duration_min} min chronométrées · sur ${doc.evaluation.total_points}`, open: !!progress.exercises_done_at },
   ];
