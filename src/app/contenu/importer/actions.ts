@@ -23,7 +23,7 @@ export async function importAction(_: ImportState, form: FormData): Promise<Impo
     if (!r.ok) return { errors: r.errors, warnings: r.warnings };
     const n = r.imported.length;
     return { warnings: r.warnings, summary: [
-      n ? `${n} cours ${publish ? 'corrigé' + (n > 1 ? 's et publiés' : ' et publié') + ' (l’ancienne version reste dans l’historique)' : 'enregistré' + (n > 1 ? 's' : '') + ' en brouillon « À relire »'} : ${r.imported.map(x => `${x.code} (v${x.version})`).join(', ')}.` : 'Aucun cours modifié.',
+      n ? `${n} cours ${publish ? 'corrigé' + (n > 1 ? 's et publiés' : ' et publié') + ' (l’ancienne version reste dans l’historique)' : 'enregistré' + (n > 1 ? 's' : '') + ' en brouillon « À relire »'} : ${r.imported.map(x => `${x.code} (v${x.version})`).join(', ')}.` : 'Aucun cours à corriger : rien n’a changé.',
       ...(r.unchanged.length ? [`${r.unchanged.length} cours renvoyé${r.unchanged.length > 1 ? 's' : ''} sans changement, ignoré${r.unchanged.length > 1 ? 's' : ''} : ${r.unchanged.join(', ')}.`] : []),
     ] };
   }

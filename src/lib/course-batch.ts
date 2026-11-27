@@ -17,11 +17,11 @@ Pour chaque cours de « cours », vérifie et corrige :
 3. l'adéquation au niveau et au programme officiel, la clarté pour un élève.
 
 Règles :
-- Renvoie UNIQUEMENT ce même fichier JSON complet, corrigé, sans texte avant ou après, sans balises de code.
-- Garde le champ « format », et pour chaque cours exactement la même structure, le même code, le même niveau, la même matière, le même chapitre et le même titre.
-- Ne modifie que ce qui est nécessaire. Un cours sans erreur est renvoyé tel quel.
-- Si le fichier est trop long pour toi, traite les cours un par un et renvoie à la fin le fichier complet.
-- Après le JSON, rien.`;
+- Renvoie UNIQUEMENT un fichier JSON de la forme { "format": "syllig-cours-lot/1", "cours": [ … ] }, sans texte avant ou après.
+- Mets dans « cours » SEULEMENT les cours que tu as corrigés, chacun en entier. N'y mets pas les cours sans erreur : la plateforme les garde tels quels.
+- Pour un cours corrigé, garde exactement la même structure, le même code, le même niveau, la même matière, le même chapitre et le même titre ; ne modifie que ce qui est nécessaire.
+- Si aucun cours n'a d'erreur, renvoie { "format": "syllig-cours-lot/1", "cours": [] }.
+- Si tous les cours corrigés ne tiennent pas dans une seule réponse, fais plusieurs fichiers de la même forme : chacun s'importe à part.`;
 
 type Row = { id: number; code: string | null; title: string; version: number; status: string; document: Record<string, unknown> };
 
@@ -44,7 +44,9 @@ export async function exportBatch(ids: number[] | null) {
   };
 }
 
-export const isBatch = (raw: string) => { try { return (JSON.parse(raw) as { format?: string })?.format === BATCH_FORMAT; } catch { return false; } };
+// Claude entoure parfois le JSON de balises de code : on les retire
+const unfence = (raw: string) => raw.trim().replace(/^```[a-z]*\s*/i, '').replace(/\s*```$/, '');
+export const isBatch = (raw: string) => { try { return (JSON.parse(unfence(raw)) as { format?: string })?.format === BATCH_FORMAT; } catch { return false; } };
 
 // comparaison indépendante de l'ordre des clés
 const canon = (x: unknown): unknown => Array.isArray(x) ? x.map(canon)
@@ -56,8 +58,10 @@ export type BatchResult = { ok: true; imported: { code: string; version: number;
 
 export async function importBatch(raw: string, sourceName: string, userId: string, publish: boolean): Promise<BatchResult> {
   let json: { format?: string; cours?: unknown };
-  try { json = JSON.parse(raw); } catch (e) { return { ok: false, warnings: [], errors: [`Le fichier n'est pas un JSON valide : ${(e as Error).message}`] }; }
-  if (json.format !== BATCH_FORMAT || !Array.isArray(json.cours) || !json.cours.length) return { ok: false, warnings: [], errors: ['Ce fichier n’est pas un lot de cours (format syllig-cours-lot/1) ou il ne contient aucun cours.'] };
+  try { json = JSON.parse(unfence(raw)); } catch (e) { return { ok: false, warnings: [], errors: [`Le fichier n'est pas un JSON valide : ${(e as Error).message}`] }; }
+  if (json.format !== BATCH_FORMAT || !Array.isArray(json.cours)) return { ok: false, warnings: [], errors: ['Ce fichier n’est pas un lot de cours (format syllig-cours-lot/1).'] };
+  // lot vide : Claude n'a rien trouvé à corriger
+  if (!json.cours.length) return { ok: true, imported: [], unchanged: [], published: 0, warnings: [] };
   const docs = json.cours as Record<string, unknown>[];
   const codes = docs.map(d => String(d?.code ?? ''));
   const dup = codes.filter((c, i) => c && codes.indexOf(c) !== i);
