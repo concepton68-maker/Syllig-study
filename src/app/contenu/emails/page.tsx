@@ -19,7 +19,7 @@ export default async function EmailsPage() {
       <section className="card flex flex-col gap-4">
         <h2 className="text-lg font-semibold m-0">Service d’envoi</h2>
         <ol className="m-0 pl-5 text-sm flex flex-col gap-1 muted">
-          <li>Créez un compte gratuit chez un service européen, par exemple Brevo (brevo.com) ou Scaleway (scaleway.com).</li>
+          <li>Créez un compte gratuit chez un service hébergé dans l’Union européenne, par exemple Brevo (brevo.com) ou Scaleway (scaleway.com) : les e-mails contiennent le prénom et les notes des enfants.</li>
           <li>Dans son espace, ouvrez la page « SMTP » : il donne le serveur, le port, l’identifiant et une clé.</li>
           <li>Collez-les ici, puis envoyez-vous un e-mail d’essai.</li>
         </ol>

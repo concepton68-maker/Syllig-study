@@ -55,6 +55,7 @@ export async function resetStudent(studentId: string, actorId: string, opts: { p
     // nouveau départ : les bilans et tests de positionnement de l'ancien parcours n'ont plus de sens
     await tx`delete from placement_tests where student_id = ${studentId}`;
     await tx`delete from student_reports where student_id = ${studentId}`;
+    await tx`delete from weekly_messages where student_id = ${studentId}`;   // messages du lundi (et leurs envois)
     if (opts.purgeLog) {
       // seule voie d'effacement du journal (même mécanisme que le droit à l'effacement)
       await tx`set local syllig.allow_log_purge = 'on'`;

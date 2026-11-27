@@ -532,4 +532,8 @@ Contre-audit de conformité des versions 0.43 à 0.45 : tout ce qui a été rele
   - un seul point à regarder ensemble : la copie (ou la série d'exercices) la plus récente avec des questions fausses ou sans réponse, avec le lien « Revoir » ;
   - une idée liée à ce point.
   - En haut de l'Accueil, avec la page « Messages précédents », et par e-mail.
-- E-mails : service d'envoi européen à configurer une fois dans Contenu › E-mails (mot de passe chiffré). Le parent indique son adresse et peut demander un message d'essai dans Mon compte. Chaque e-mail a un lien pour se désabonner, sans connexion.
+- E-mails : service d'envoi européen à configurer une fois dans Contenu › E-mails (mot de passe chiffré, chiffrement de la connexion obligatoire).
+  - Consentement explicite : dans Mon compte, la case est décochée par défaut, et rien n'est envoyé avant que le parent ait confirmé son adresse par le lien reçu.
+  - Désabonnement par un bouton (ouvrir le lien ne suffit pas), et en un clic depuis la messagerie.
+  - Le message est figé à sa création : la date d'arrêt des chiffres est indiquée. Les copies encore en correction sont comptées.
+- Le numéro de version n'apparaît plus non plus sur la page de connexion.

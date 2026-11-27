@@ -26,7 +26,8 @@ export async function sendMail(to: string, subject: string, html: string, text: 
   if (!s) throw new Error('Envoi des e-mails non configuré (Contenu › E-mails).');
   const t = nodemailer.createTransport({
     host: s.host, port: s.port, secure: s.port === 465, auth: s.user ? { user: s.user, pass: s.pass_sealed ? open(s.pass_sealed) : '' } : undefined,
-    ...(s.host === '127.0.0.1' ? { ignoreTLS: true } : {}),   // serveur de test local
+    ...(s.host === '127.0.0.1' ? { ignoreTLS: true } : { requireTLS: true }),   // chiffrement obligatoire (sauf serveur de test local)
+    connectionTimeout: 10_000, greetingTimeout: 10_000, socketTimeout: 20_000,
   });
   await t.sendMail({ from: s.from, to, subject, html, text, headers });
 }
@@ -36,6 +37,12 @@ const signKey = () => crypto.createHash('sha256').update(`syllig-desabonnement|$
 export const unsubscribeToken = (userId: string) => crypto.createHmac('sha256', signKey()).update(userId).digest('base64url').slice(0, 32);
 export const checkUnsubscribe = (userId: string, token: string) => {
   const a = Buffer.from(unsubscribeToken(userId)), b = Buffer.from(token);
+  return a.length === b.length && crypto.timingSafeEqual(a, b);
+};
+// Confirmation de l'adresse : lien signé qui porte l'adresse saisie
+export const confirmToken = (userId: string, email: string) => crypto.createHmac('sha256', signKey()).update(`confirmer|${userId}|${email.toLowerCase()}`).digest('base64url').slice(0, 32);
+export const checkConfirm = (userId: string, email: string, token: string) => {
+  const a = Buffer.from(confirmToken(userId, email)), b = Buffer.from(token);
   return a.length === b.length && crypto.timingSafeEqual(a, b);
 };
 export const appUrl = () => (process.env.APP_URL ?? 'https://study.syllig.com').replace(/\/$/, '');

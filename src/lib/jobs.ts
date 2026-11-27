@@ -58,7 +58,7 @@ async function run(j: Job): Promise<Record<string, unknown>> {
 }
 
 export async function tick() {
-  await (await import('./weekly')).weeklyTick().catch(e => console.error('message hebdomadaire :', (e as Error).message));
+  void import('./weekly').then(w => w.weeklyTick()).catch(e => console.error('message hebdomadaire :', (e as Error).message));   // n'attend pas : les corrections passent avant
   if (Date.now() - lastAuto > AUTO_EVERY) { lastAuto = Date.now(); await (await import('./automation')).scheduleAuto().catch(() => null); }
   await Promise.all([drain('rapide'), drain('cours')]);
 }

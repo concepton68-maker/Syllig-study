@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { rows, pointText, type WeeklyData } from '@/lib/weekly';
+import { rows, pointText, frozenAt, type WeeklyData } from '@/lib/weekly';
 
 // Le message du lundi, tel qu'il est envoyé par e-mail (maquette validée le 27/11/2026)
 export function WeeklyCard({ d, more }: { d: WeeklyData; more?: string }) {
@@ -17,7 +17,7 @@ export function WeeklyCard({ d, more }: { d: WeeklyData; more?: string }) {
           <Link className="text-sm font-semibold" href={d.point.href}>{d.point.kind === 'copie' ? 'Revoir la copie' : 'Revoir les exercices'} ›</Link></div>}
         {d.idea && <div className="rounded-xl bg-soft px-3.5 py-3 flex flex-col gap-1"><strong className="text-sm">Une idée</strong><span className="text-[15px]">{d.idea}</span></div>}
       </div>}
-      <span className="text-xs muted">Uniquement des faits mesurés par la plateforme. Aussi envoyé par e-mail le lundi si vous l’avez demandé (Mon compte).</span>
+      <span className="text-xs muted">Chiffres mesurés par la plateforme{frozenAt(d) ? `, arrêtés le ${frozenAt(d)}` : ''} (l’Activité, elle, est à jour) ; l’idée est une simple suggestion. Aussi par e-mail le lundi si vous l’avez demandé (Mon compte).</span>
     </section>
   );
 }

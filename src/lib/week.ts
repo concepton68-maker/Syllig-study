@@ -6,7 +6,7 @@ import { WORK_DAY_S } from './stats';
 import type { Student } from './access';
 
 // « Activité » du parent : une semaine (lundi → dimanche, heure de Paris), uniquement des faits mesurés.
-// Inspiré de pratiques évaluées : résumé hebdomadaire en 3 lignes (Bergman & Chan 2021 ; Kraft & Rogers 2015),
+// Inspiré de pratiques courantes :
 // rapport d'usage et « questions ratées » (IXL, Khan Academy), calendrier d'assiduité, aucune comparaison avec d'autres élèves.
 
 export type DayBar = { day: string; label: string; minutes: number };

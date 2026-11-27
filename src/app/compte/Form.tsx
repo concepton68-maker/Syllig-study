@@ -20,12 +20,13 @@ export function ChangePasswordForm({ login }: { login: string }) {
   );
 }
 
-export function WeeklyForm({ email, on }: { email: string; on: boolean }) {
+export function WeeklyForm({ email, pending: waiting, on }: { email: string; pending: string; on: boolean }) {
   const [state, action, pending] = useActionState(saveWeekly, undefined);
   return (
     <form action={action} className="flex flex-col gap-4" data-weekly-form>
       <label className="flex flex-col gap-1.5 text-sm font-semibold">Mon adresse e-mail
-        <input className="field" name="email" type="email" defaultValue={email} autoComplete="email" /></label>
+        <input className="field" name="email" type="email" defaultValue={waiting || email} autoComplete="email" />
+        <span className="font-normal text-[13px] muted">{email && !waiting ? `Adresse confirmée : ${email}` : waiting ? `En attente de confirmation : cliquez sur le lien envoyé à ${waiting}` : 'Un lien de confirmation vous sera envoyé.'}</span></label>
       <label className="flex items-start gap-2.5 text-[15px]">
         <input type="checkbox" name="weekly" defaultChecked={on} className="w-5 h-5 mt-0.5 accent-[var(--color-brand)]" />
         <span><strong>Recevoir le message chaque lundi à 7 h</strong><span className="block muted text-sm">Un message par enfant suivi, avec son prénom et ses résultats de la semaine.</span></span>

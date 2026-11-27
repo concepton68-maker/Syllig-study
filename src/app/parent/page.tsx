@@ -7,7 +7,7 @@ import { PageTitle } from '@/components/Shell';
 import { ChildPicker } from '@/components/ChildPicker';
 import { Screen } from '@/components/Layout';
 import { liveStatus } from '@/lib/live';
-import { ensureMessage, lastMonday } from '@/lib/weekly';
+import { ensureMessage, lastMonday, weekOpen } from '@/lib/weekly';
 import { WeeklyCard } from '@/components/WeeklyCard';
 
 export const metadata = { title: 'Tableau de bord' };
@@ -37,7 +37,7 @@ export default async function ParentDashboard({ searchParams }: { searchParams: 
   // message du lundi : la semaine écoulée (créé à la première visite s'il ne l'est pas encore)
   const monday = await lastMonday();
   const [inWeek] = await sql<{ ok: boolean }[]>`select created_at < ((${monday}::date + 7)::timestamp at time zone 'Europe/Paris') as ok from students where id = ${student.id}`;
-  const msg = inWeek?.ok ? await ensureMessage(student.id, monday) : null;
+  const msg = inWeek?.ok && await weekOpen() ? await ensureMessage(student.id, monday) : null;   // jamais avant le lundi 7 h
   const shown = subjects.filter(s => s.published > 0);
   const pct = w.goal_min ? Math.min(1, w.active_min / w.goal_min) : 0;
   const R = 26, L = 2 * Math.PI * R;

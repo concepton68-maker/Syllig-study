@@ -12,7 +12,6 @@ export function AuthFrame({ title, sub, children, back = { href: '/connexion', l
         </div>
         <div className="card !p-7">{children}</div>
         <a href={back.href} className="font-semibold text-sm">{back.label}</a>
-        <p className="text-xs text-muted-2 m-0">Version {process.env.APP_RELEASE ?? 'dev'}</p>
       </div>
     </main>
   );
