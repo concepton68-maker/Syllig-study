@@ -22,7 +22,9 @@ async function wipe(tx: typeof sql, studentId: string, courseId: number | null, 
   await tx`delete from review_results where student_id = ${studentId} and ${byCourse}`;
   await tx`delete from review_items where student_id = ${studentId} and ${byCourse}`;
   await tx`delete from review_schedule where student_id = ${studentId} and ${byCourse}`;
-  await tx`delete from review_sessions s where s.student_id = ${studentId} and (${courseId === null} or s.finished_at is null or not exists (select 1 from review_items i where i.session_id = s.id))`;
+  await tx`delete from review_sessions s where s.student_id = ${studentId} and (${courseId === null}
+    or (s.kind = 'entrainement' and s.course_id = ${courseId ?? 0})
+    or (s.kind = 'revision' and (s.finished_at is null or not exists (select 1 from review_items i where i.session_id = s.id))))`;
   return counts;
 }
 

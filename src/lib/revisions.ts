@@ -36,15 +36,16 @@ export function questionPool(doc: CourseDocument): PoolItem[] {
 }
 const findQ = (doc: CourseDocument, key: string) => questionPool(doc).find(x => x.key === key)?.q ?? null;
 
-/** Programme les premières révisions : leçons finies sans calendrier → le lendemain de la fin de la leçon. */
+/** Programme les premières révisions : cours dont les exercices sont remis (la révision en montre les corrigés), sans calendrier
+ *  → le lendemain de la remise des exercices. */
 async function ensureSchedule(studentId: string) {
   // leçons finies avant la mise en place (ou jamais programmées) : étalées à 2 par jour à partir d'aujourd'hui, jamais dans le passé
   await sql`insert into review_schedule (student_id, course_id, step, due_at)
     select student_id, course_id, 0, (greatest(done_day + 1, today + ((rk - 1) / ${MAX_COURSES})::int))::timestamp at time zone 'Europe/Paris' from (
-      select p.student_id, p.course_id, (p.lesson_done_at at time zone 'Europe/Paris')::date as done_day, (now() at time zone 'Europe/Paris')::date as today,
-        row_number() over (order by p.lesson_done_at) as rk
+      select p.student_id, p.course_id, (greatest(p.lesson_done_at, p.exercises_done_at) at time zone 'Europe/Paris')::date as done_day, (now() at time zone 'Europe/Paris')::date as today,
+        row_number() over (order by p.exercises_done_at) as rk
       from course_progress p join course_versions v on v.course_id = p.course_id and v.status = 'published'
-      where p.student_id = ${studentId} and p.lesson_done_at is not null
+      where p.student_id = ${studentId} and p.lesson_done_at is not null and p.exercises_done_at is not null
         and not exists (select 1 from review_schedule r where r.student_id = p.student_id and r.course_id = p.course_id)) x
     on conflict do nothing`;
 }
@@ -119,13 +120,23 @@ async function pickKeys(studentId: string, courseId: number, pool: PoolItem[]) {
   return pick;
 }
 
-/** « M'entraîner » sur un cours dont la leçon est finie : la séance commencée, sinon 5 nouvelles questions. Sans effet sur la note ni le calendrier. */
+/** Ce cours est à réviser aujourd'hui (révision espacée due ou commencée) : l'entraînement attend, pour ne pas fausser la révision. */
+export async function revisionDueFor(studentId: string, courseId: number) {
+  const [r] = await sql<{ due: boolean }[]>`select exists (select 1 from review_schedule where student_id = ${studentId} and course_id = ${courseId} and due_at <= now())
+    or exists (select 1 from review_sessions s, jsonb_array_elements(s.questions) q where s.student_id = ${studentId} and s.kind = 'revision'
+      and s.finished_at is null and (q->>'course_id')::int = ${courseId}) as due`;
+  return r.due;
+}
+
+/** « M'entraîner » sur un cours dont les exercices sont remis (sinon leurs corrigés s'afficheraient avant) : la séance commencée,
+ *  sinon 5 nouvelles questions. Pas le jour où sa révision espacée est due. Sans effet sur la note ni le calendrier. */
 export async function openTraining(studentId: string, courseId: number): Promise<Session | null> {
   const [cur] = await sql<Session[]>`select id, kind, questions, created_at, finished_at from review_sessions
     where student_id = ${studentId} and kind = 'entrainement' and course_id = ${courseId} and finished_at is null order by created_at desc limit 1`;
   if (cur) return cur;
+  if (await revisionDueFor(studentId, courseId)) return null;
   const [v] = await sql<{ id: string; document: CourseDocument }[]>`select v.id, v.document from course_versions v
-    join course_progress p on p.course_id = v.course_id and p.student_id = ${studentId} and p.lesson_done_at is not null
+    join course_progress p on p.course_id = v.course_id and p.student_id = ${studentId} and p.exercises_done_at is not null
     where v.course_id = ${courseId} and v.status = 'published'`;
   if (!v) return null;
   const pool = questionPool(v.document);

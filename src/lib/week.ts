@@ -35,7 +35,7 @@ const hm = (m: number) => m < 60 ? `${m} min` : `${Math.floor(m / 60)} h${m % 60
 const clip = (s: string | undefined, n: number) => { const t = (s ?? '').replace(/\*\*|__|`|\$/g, '').replace(/\s+/g, ' ').trim(); return t.length > n ? `${t.slice(0, n - 1)}…` : t; };
 // une citation dans une phrase : sans le point final (« Calcule 3 + 4 » et non « Calcule 3 + 4. »)
 const quote = (s: string, n: number) => clip(s, n).replace(/[.\s]+$/, '');
-const KIND: Record<string, string> = { lesson: 'Leçons', exercises: 'Exercices', evaluation: 'Évaluations', review: 'Révisions' };
+const KIND: Record<string, string> = { lesson: 'Leçons', exercises: 'Exercices', evaluation: 'Évaluations', review: 'Révisions et entraînements' };
 
 // réponse lisible : pour un QCM, le texte de l'option choisie plutôt que son numéro
 function readable(q: Question, a: string | undefined) {

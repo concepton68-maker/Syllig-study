@@ -29,12 +29,16 @@ export async function startEvaluation(courseIdParam: string) {
       and status in ('requested','approved','in_progress','submitted')`;
     if (open) return false;
     const [{ n }] = await tx<{ n: number }[]>`select coalesce(max(attempt_no), 0) + 1 as n from eval_attempts where student_id = ${student.id} and course_id = ${course.id}`;
+    // sujet : le suivant de celui de la dernière copie remise ou notée (une demande annulée ne compte pas), le premier sinon
+    const [lastV] = await tx<{ variant: number }[]>`select variant from eval_attempts where student_id = ${student.id} and course_id = ${course.id}
+      and status in ('submitted', 'graded') order by attempt_no desc limit 1`;
+    const variant = lastV ? (lastV.variant + 1) % doc.evaluation.variants.length : 0;
     if (requestOnly) {
       await tx`insert into eval_attempts (student_id, course_id, version_id, attempt_no, variant, status, requested_at)
-        values (${student.id}, ${course.id}, ${version.id}, ${n}, ${(n - 1) % doc.evaluation.variants.length}, 'requested', now())`;
+        values (${student.id}, ${course.id}, ${version.id}, ${n}, ${variant}, 'requested', now())`;
     } else {
       await tx`insert into eval_attempts (student_id, course_id, version_id, attempt_no, variant, status, started_at, deadline_at)
-        values (${student.id}, ${course.id}, ${version.id}, ${n}, ${(n - 1) % doc.evaluation.variants.length}, 'in_progress', now(),
+        values (${student.id}, ${course.id}, ${version.id}, ${n}, ${variant}, 'in_progress', now(),
           now() + make_interval(mins => ${evalMinutes(doc.evaluation.duration_min, student.settings)}))`;
     }
     return true;

@@ -575,3 +575,9 @@ Contre-audit de conformité des versions 0.43 à 0.45 : tout ce qui a été rele
 - **L'entraînement ne change rien au reste** : ni la note, ni le niveau, ni le calendrier des révisions espacées. Son temps compte comme du travail.
 - **À la fin**, le résultat question par question, un lien vers la partie de la leçon à relire, et « 5 autres questions ».
 - **Le parent** le voit dans l'Activité, sous le nom « entraînement (sans note) ».
+- **Garde-fous** :
+  - l'entraînement et les révisions espacées ne s'ouvrent qu'une fois les exercices remis, sinon leurs corrigés s'afficheraient avant ;
+  - pas d'entraînement le jour où la révision du cours est prévue ;
+  - en repassant le test, le sujet est toujours différent de la dernière copie, même après une demande annulée ;
+  - « Un autre sujet » ne s'affiche que si le cours en a deux ;
+  - la date d'une nouvelle tentative est donnée avec l'heure.

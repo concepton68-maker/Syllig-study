@@ -94,6 +94,22 @@ const freshN = s2.questions.filter(q => !before.has(q.key)).length;
 ok(s2.questions.length === 5 && freshN === 5, `nouvelle série : ${freshN} questions sur 5 pas vues au tour précédent`);
 ok((await sql`select count(*)::int as n from review_sessions where student_id = ${st.id} and kind = 'revision'`)[0].n === 0, 'la révision du jour n’est pas mélangée avec l’entraînement');
 
+console.log('6. Pas avant les exercices remis (leurs corrigés s’y affichent), pas le jour de la révision du cours');
+const [c2] = await sql`select id from courses where code = 'TG002'`;
+await sql`insert into course_progress (student_id, course_id, lesson_done_at, mastery) values (${st.id}, ${c2.id}, now() - interval '1 day', 1)`;
+await el.goto(`${BASE}/eleve/cours/${c2.id}`);
+ok(await el.locator('[data-train]').count() === 0, 'leçon finie, exercices pas remis : pas de « M’entraîner »');
+await el.goto(`${BASE}/eleve/cours/${c2.id}/entrainement`);
+ok(new URL(el.url()).pathname === `/eleve/cours/${c2.id}` && (await sql`select count(*)::int as n from review_sessions where course_id = ${c2.id}`)[0].n === 0, 'adresse directe : renvoyé au cours, aucune séance créée');
+await sql`delete from review_sessions where student_id = ${st.id} and kind = 'entrainement' and finished_at is null`;
+await sql`update review_schedule set due_at = now() - interval '1 hour' where student_id = ${st.id} and course_id = ${c.id}`;
+await el.goto(`${BASE}/eleve/cours/${c.id}`);
+ok(await el.locator('[data-train-revision][href="/eleve/revision"]').count() === 1 && await el.locator('[data-train]').count() === 0, 'révision du cours due : « Ta révision du jour » à la place de l’entraînement');
+await el.goto(`${BASE}/eleve/cours/${c.id}/entrainement`);
+ok(new URL(el.url()).pathname === `/eleve/cours/${c.id}`, 'adresse directe le jour de la révision : renvoyé au cours');
+await el.goto(`${BASE}/eleve/revision`);
+ok(await el.locator('[data-review-q]').count() === 1, 'la révision du jour s’ouvre normalement');
+
 console.log('5. Le parent le voit dans l’Activité');
 const pa = await login('parent@test.local', 'parent-test-1234');
 await pa.goto(`${BASE}/parent/journal?eleve=${st.id}`);

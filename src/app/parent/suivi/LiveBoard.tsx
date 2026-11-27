@@ -7,7 +7,7 @@ type Segment = { start: string; end: string; state: 'travail' | 'pause'; kind: s
 type Data = { live: Live; today: { day: string; segments: Segment[]; active: number; pause: number }; now: string };
 
 export const C_WORK = '#2F4FD8', C_PAUSE = '#f47230';
-const KIND: Record<string, string> = { lesson: 'Leçon', exercises: 'Exercices', evaluation: 'Évaluation', review: 'Révision', other: 'Travail' };
+const KIND: Record<string, string> = { lesson: 'Leçon', exercises: 'Exercices', evaluation: 'Évaluation', review: 'Révision ou entraînement', other: 'Travail' };
 const hhmm = (d: Date) => d.toLocaleTimeString('fr-FR', { timeZone: 'Europe/Paris', hour: '2-digit', minute: '2-digit' });
 const dur = (s: number) => { const m = Math.floor(s / 60); return m < 60 ? `${m} min` : `${Math.floor(m / 60)} h ${String(m % 60).padStart(2, '0')}`; };
 const ago = (iso: string, now: Date) => {

@@ -50,4 +50,4 @@ export async function subjectProgress(studentId: string, level: string) {
     group by s.id, s.name, s.position order by s.position`;
 }
 
-export const KIND: Record<string, string> = { lesson: '① Leçon', exercises: '② Exercices', evaluation: '③ Évaluation', review: 'Révision', other: 'Autre' };
+export const KIND: Record<string, string> = { lesson: '① Leçon', exercises: '② Exercices', evaluation: '③ Évaluation', review: 'Révision ou entraînement', other: 'Autre' };

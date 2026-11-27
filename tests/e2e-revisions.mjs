@@ -1,4 +1,4 @@
-// Révisions espacées (maquette validée le 26/11/2026) : leçon finie → révision le lendemain ; réussite (≥ 4/5) → intervalle
+// Révisions espacées (maquette validée le 26/11/2026) : exercices remis → révision le lendemain ; réussite (≥ 4/5) → intervalle
 // suivant (1, 3, 7, 14, 30, 60 j) ; échec → 1 jour ; jusqu'à 5 questions par cours (exercices et points de contrôle), corrigées par la plateforme ; au plus 2 cours.
 // Valeurs attendues calculées à la main. Prérequis : tests/reset-db.sh puis `node scripts/seed.mjs`.
 import { createRequire } from 'node:module';
@@ -15,7 +15,10 @@ await sql`update student_years set level_code = 'troisieme-generale' where stude
 const cs = await sql`select c.id, c.code, c.title, v.document as doc from courses c join course_versions v on v.course_id = c.id and v.status = 'published' where c.code in ('TG001', 'TG034') order by c.code`;
 const [fr, ma] = cs;
 // maths finie il y a 3 jours (révision due il y a 2 jours), français il y a 2 jours (due hier) : maths passe en premier
-await sql`insert into course_progress (student_id, course_id, lesson_done_at) values (${st.id}, ${ma.id}, now() - interval '3 days'), (${st.id}, ${fr.id}, now() - interval '2 days')`;
+await sql`insert into course_progress (student_id, course_id, lesson_done_at, exercises_done_at) values (${st.id}, ${ma.id}, now() - interval '3 days', now() - interval '3 days'), (${st.id}, ${fr.id}, now() - interval '2 days', now() - interval '2 days')`;
+// leçon finie mais exercices pas remis : jamais en révision (la révision montre les corrigés des exercices)
+const [ex3] = await sql`select id from courses where code = 'TG002'`;
+await sql`insert into course_progress (student_id, course_id, lesson_done_at) values (${st.id}, ${ex3.id}, now() - interval '4 days')`;
 
 // bonne réponse d'une question de la séance, à partir du cours (clé ex:/ev:/cp:)
 const findQ = (doc, key) => {
@@ -35,6 +38,7 @@ console.log('Accueil de l’élève');
 const card = (await el.locator('[data-review-today]').innerText()).replace(/\s+/g, ' ');
 ok(card.includes('Ta révision du jour') && card.includes('2 cours') && card.includes(ma.title) && card.includes(fr.title), `2 cours à revoir (« ${card.slice(0, 140)} »)`);
 
+ok((await sql`select count(*)::int as n from review_schedule where student_id = ${st.id} and course_id = ${ex3.id}`)[0].n === 0, 'exercices pas remis : cours pas programmé en révision');
 console.log('La révision : maths tout juste, français tout faux');
 await el.click('[data-review-today] a:has-text("Commencer")'); await el.waitForURL(/\/eleve\/revision/);
 const [ses] = await sql`select id, questions from review_sessions where student_id = ${st.id} and finished_at is null`;
