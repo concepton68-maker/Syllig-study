@@ -552,7 +552,8 @@ Contre-audit de conformité des versions 0.43 à 0.45 : tout ce qui a été rele
 - **Relecture groupée des cours par Claude** (Contenu) :
   - cocher des cours puis « Exporter pour relecture (1 fichier) », ou « Tout exporter pour relecture » ;
   - un seul fichier contient la consigne pour Claude et les cours (dernière version de chacun, aucune donnée d'élève) ;
-  - on le donne à Claude, puis on réimporte le fichier corrigé dans « Importer des cours ».
+  - on le donne à Claude, qui ne renvoie que les cours qu'il a corrigés, puis on importe sa réponse dans « Importer des cours » ;
+  - les cours absents de la réponse ne sont pas touchés.
 - **Réimport tout ou rien** :
   - si un cours est refusé, aucun n'est enregistré, et l'erreur nomme le cours fautif ;
   - les cours renvoyés sans changement sont ignorés ;
