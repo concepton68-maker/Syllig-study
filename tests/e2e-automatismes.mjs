@@ -223,10 +223,10 @@ const [empty] = await sql`select c.id, c.title from courses c where c.code = 'TG
 await sql`delete from course_versions where course_id = ${empty.id}`;
 await ad.goto(BASE + '/contenu');
 await ad.fill('input[type=search]', 'TG002');
-await ad.locator(`div:has(> span > span:text-is("${empty.title}")) button:has-text("Rédiger avec l’IA")`).click();
+await ad.locator(`[data-cat-row][data-title="${empty.title}"] button:has-text("Rédiger avec l’IA")`).click();
 await ad.waitForSelector('text=/Rédaction IA/');
 ok(true, 'catalogue : « Rédaction IA… » affiché pendant le travail');
-await ad.locator(`div:has(> span > span:text-is("${empty.title}")) >> text=À relire · v1`).waitFor({ timeout: 60_000 });
+await ad.locator(`[data-cat-row][data-title="${empty.title}"] >> text=À relire · v1`).waitFor({ timeout: 60_000 });
 ok(!!(await sql`select 1 from course_versions where course_id = ${empty.id} and status = 'draft'`)[0], 'bouton du catalogue : le cours est rédigé, et la page affiche « À relire » toute seule (sans F5)');
 await ad.goto(BASE + '/contenu/ia');
 ok((await ad.locator('section[aria-labelledby="file"]').innerText()).includes('Terminé'), 'la file d’attente montre les tâches terminées');
@@ -270,8 +270,8 @@ const [glmCourse] = await sql`select c.id, c.title from courses c where c.code =
 await sql`delete from course_versions where course_id = ${glmCourse.id}`;
 await ad.goto(BASE + '/contenu');
 await ad.fill('input[type=search]', glmCourse.title.slice(0, 25));
-await ad.locator(`div:has(> span > span:text-is("${glmCourse.title}")) button:has-text("Rédiger avec l’IA")`).click();
-await ad.locator(`div:has(> span > span:text-is("${glmCourse.title}")) >> text=À relire · v1`).waitFor({ timeout: 60_000 });
+await ad.locator(`[data-cat-row][data-title="${glmCourse.title}"] button:has-text("Rédiger avec l’IA")`).click();
+await ad.locator(`[data-cat-row][data-title="${glmCourse.title}"] >> text=À relire · v1`).waitFor({ timeout: 60_000 });
 const glmCall = calls.cours.at(-1);
 ok(glmCall.path === '/api/paas/v4/chat/completions' && glmCall.model === 'glm-4.6' && glmCall.stream,
   'cours rédigé par GLM et placé en brouillon, alors que GLM refuse le mode JSON et réfléchit avant d’écrire');
