@@ -34,10 +34,13 @@ const lot = JSON.parse(fs.readFileSync(file, 'utf8'));
 ok(/^cours-a-relire-\d{4}-\d{2}-\d{2}-3\.json$/.test(dl.suggestedFilename()), `un seul fichier : ${dl.suggestedFilename()}`);
 ok(lot.format === 'syllig-cours-lot/1' && lot.cours.length === 3 && lot.cours.map(c => c.code).join(',') === 'TG001,TG002,TG034', 'le lot contient les 3 cours, dans l’ordre des codes');
 ok(lot.consigne.includes('SEULEMENT les cours que tu as corrigés') && lot.consigne.includes('même code'), 'la consigne pour Claude est dans le fichier (ne renvoyer que les cours corrigés)');
-ok(!/lea|Léa|parent@|students/i.test(JSON.stringify(lot)), 'aucune donnée d’élève dans le fichier');
-const all = await ad.request.get(BASE + '/api/contenu/lot');
+const txt = JSON.stringify(lot);
+const ids = (await sql`select id::text as id from students union all select id::text from users`).map(r => r.id);
+ok(!/@test\.local|lea-test|student_id/.test(txt) && !ids.some(i => txt.includes(i)) && Object.keys(lot).sort().join(',') === 'consigne,cours,exported_at,format', 'aucune donnée d’élève dans le fichier (seulement la consigne et les cours)');
+const all = await ad.evaluate(async () => { const r = await fetch('/api/contenu/lot'); return { status: r.status, body: r.ok ? await r.json() : null }; });
 const [{ n }] = await sql`select count(distinct course_id)::int as n from course_versions where status in ('draft', 'published')`;
-ok(all.ok() && (await all.json()).cours.length === n, `« Tout exporter » : les ${n} cours qui ont un contenu`);
+const allN = all.body ? all.body.cours.length : `HTTP ${all.status}`;
+ok(allN === n, `« Tout exporter » : les ${n} cours qui ont un contenu (${allN})`);
 
 // « Claude » corrige : TG001 modifié, TG002 renvoyé tel quel, TG034 modifié
 const fixed = structuredClone(lot);
@@ -51,7 +54,7 @@ await ad.goto(BASE + '/contenu/importer');
 await ad.setInputFiles('input[name=files]', path.join(dir, 'mauvais.json'));
 await ad.click('button:has-text("Vérifier et importer")');
 await ad.waitForSelector('text=Import refusé, rien n’a été enregistré');
-ok((await ad.locator('[role=alert]').innerText()).includes('TG034'), 'l’erreur nomme le cours fautif (TG034)');
+ok((await ad.locator('div.bg-warm-soft[role=alert]').innerText()).includes('TG034'), 'l’erreur nomme le cours fautif (TG034)');
 ok((await ver('TG001')) === before.TG001 && (await ver('TG034')) === before.TG034, 'aucune nouvelle version, même pour le cours correct (TG001)');
 
 console.log('3. Import en brouillon « À relire »');
