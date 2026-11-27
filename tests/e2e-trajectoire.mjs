@@ -8,6 +8,7 @@ const { chromium } = require('playwright');
 const postgres = require('postgres');
 const BASE = process.env.BASE ?? 'http://127.0.0.1:3100';
 const sql = postgres(process.env.DATABASE_URL, { max: 1, onnotice: () => {} });
+const hhmm = m => `${String(Math.floor(m / 60)).padStart(2, '0')}:${String(m % 60).padStart(2, '0')}`;   // format parent HH:MM
 const ok = (c, m) => { if (!c) { console.error('ÉCHEC :', m); process.exit(1); } console.log('  ✓', m); };
 
 const [st] = await sql`select id from students limit 1`;
@@ -44,11 +45,11 @@ ok(await pa.locator('[data-weekly-time] [data-bar-week]').count() === 12, 'temps
 await pa.click('[data-fold="chiffres"] > summary');
 const card = pa.locator('[data-trajectory]');
 const row = async label => (await card.locator(`[data-compare-row="${label}"]`).innerText()).replace(/\s+/g, ' ');
-ok((await row('Temps de travail')).includes(`${minutesBefore} min → ${minutesAfter} min`), `temps : ${await row('Temps de travail')} (attendu ${minutesBefore} → ${minutesAfter})`);
+ok((await row('Temps de travail')).includes(`${hhmm(minutesBefore)} → ${hhmm(minutesAfter)}`), `temps : ${await row('Temps de travail')} (attendu ${minutesBefore} → ${minutesAfter})`);
 ok((await row('Exercices réussis (corrigés par la plateforme)')).includes(`${exBefore} % (36 sur 80) → ${exAfter} % (68 sur 80)`), `exercices : ${await row('Exercices réussis (corrigés par la plateforme)')} (attendu ${exBefore} % → ${exAfter} %)`);
 ok((await row('Moyenne des copies sans question vide')).includes('— → —'), 'pas de copie : « — », pas de valeur inventée');
 await card.locator('details summary').first().click();
-const mins = (await card.locator('table tbody tr td:nth-child(2)').allInnerTexts()).map(t => t.trim() === '—' ? 0 : parseInt(t, 10));   // « — » : avant la première activité
+const mins = (await card.locator('table tbody tr td:nth-child(2)').allInnerTexts()).map(t => t.trim() === '—' ? 0 : (([h, m]) => h * 60 + m)(t.trim().split(':').map(Number)));   // « — » : avant la première activité
 ok(mins.length === 12 && mins.reduce((a, x) => a + x, 0) === tot.m, `12 semaines ; total ${mins.reduce((a, x) => a + x, 0)} min = somme des séances ${tot.m} min (aucune heure perdue)`);
 ok(await card.locator('[data-bar-week]').count() === 12 && await card.locator('[data-point="ex"]').count() === 8, 'barres et points tracés (8 semaines mesurées)');
 ok(await card.locator('[data-subject-trend]').count() === 2, 'résultats par matière');
@@ -57,7 +58,7 @@ ok(mt.includes('Exercices (8)') && mt.includes('3/10') && mt.includes('10/10') &
 ok((await card.locator('[data-feeling="q6"]').innerText()).includes('Plutôt pas → Tout à fait') && await card.locator('[data-feeling="q1"]').count() === 0, 'questionnaire : seulement les réponses qui ont changé, en toutes lettres');
 ok(!/hausse|baisse|lassitude|effort paie|découragement/i.test(await card.innerText()), 'aucune tendance extrapolée ni cause supposée');
 await card.locator('[data-bar-week]').nth(10).hover();
-ok((await card.innerText()).includes('min de travail'), 'bulle au survol');
+ok((await card.innerText()).includes(' de travail'), 'bulle au survol');
 const ph = await (await b.newContext({ viewport: { width: 375, height: 667 }, storageState: await pa.context().storageState() })).newPage();
 await ph.goto(BASE + '/parent/bilan');
 ok(await ph.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth), 'aucun débordement sur téléphone');

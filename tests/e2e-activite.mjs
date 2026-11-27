@@ -50,19 +50,19 @@ await pa.goto(BASE + '/parent/journal');
 const txt = async sel => (await pa.locator(sel).innerText()).replace(/\s+/g, ' ');
 
 console.log('La semaine en chiffres');
-ok((await pa.locator('[data-goal] svg').getAttribute('aria-label')).includes('1 h 15 sur 5 h, 25 %'), 'anneau : 1 h 15 sur 5 h = 25 %');
+ok((await pa.locator('[data-goal] svg').getAttribute('aria-label')).includes('01:15 sur 05:00, 25 %'), 'anneau : 1 h 15 sur 5 h = 25 %');
 ok((await txt('[data-days]')).includes('1 / 7'), 'jours travaillés : 1 / 7');
 const subj = await txt('[data-subjects]');
-ok(/Français 40 min/.test(subj) && /Mathématiques 35 min/.test(subj), `par matière : français 40 min, maths 35 min (« ${subj} »)`);
+ok(/Français 00:40/.test(subj) && /Mathématiques 00:35/.test(subj), `par matière : français 40 min, maths 35 min (« ${subj} »)`);
 
 console.log('Ce qui a été fait, jour par jour');
 const monday = await pa.locator('[data-day]').first();
 const mt = (await monday.innerText()).replace(/\s+/g, ' ');
-ok(mt.includes('1 h 15'), 'total du lundi : 1 h 15');
+ok(mt.includes('01:15'), 'total du lundi : 1 h 15');
 ok(await pa.locator('[data-day]').count() === 7, 'les 7 jours sont listés');
-ok(/09:00 L .*leçon terminée · 40 min/.test(mt), `leçon de français à 09:00, terminée, 40 min (« ${mt.slice(0, 200)} »)`);
-ok(/exercices, pas encore remis · 20 min/.test(mt), 'exercices de maths commencés, non remis : 20 min');
-ok(mt.includes(`évaluation rendue en 2 min sur 30 · ${qs.length - 1} sans réponse · 15 min`) && mt.includes('3/20'), 'évaluation : rendue en 2 min sur 30, questions sans réponse, 3/20');
+ok(/09:00 L .*leçon terminée · 00:40/.test(mt), `leçon de français à 09:00, terminée, 40 min (« ${mt.slice(0, 200)} »)`);
+ok(/exercices, pas encore remis · 00:20/.test(mt), 'exercices de maths commencés, non remis : 20 min');
+ok(mt.includes(`évaluation rendue en 00:02 sur 00:30 · ${qs.length - 1} sans réponse · 00:15`) && mt.includes('3/20'), 'évaluation : rendue en 2 min sur 30, questions sans réponse, 3/20');
 ok(await monday.locator('[data-item="exercises"] >> text=0 juste sur 1').count() === 2, 'les deux séries d’exercices de français : 0 juste sur 1');
 await pa.click('[data-type="evaluations"]'); await pa.waitForURL(/type=evaluations/);
 ok(await pa.locator('[data-item]').count() === 1 && await pa.locator('[data-item="evaluation"]').count() === 1, 'filtre « Évaluations » : seulement la copie');
@@ -72,7 +72,7 @@ await pa.click('[data-item="evaluation"] >> text=Revoir'); await pa.waitForURL(/
 const reviewUrl = pa.url();
 ok((await txt('[data-review-score]')).includes('3 /20'), 'note 3/20');
 const chips = await txt('[data-review-chips]');
-ok(chips.includes('1 fausse') && chips.includes(`${qs.length - 1} sans réponse`) && chips.includes('rendue en 2 min sur 30') && chips.includes('page masquée 2 fois'), `résumé (« ${chips} »)`);
+ok(chips.includes('1 fausse') && chips.includes(`${qs.length - 1} sans réponse`) && chips.includes('rendue en 00:02 sur 00:30') && chips.includes('page masquée 2 fois'), `résumé (« ${chips} »)`);
 ok(await pa.locator('[data-review-q]').count() === qs.length, 'filtre « À revoir » : toutes les questions non justes');
 const first = (await pa.locator('[data-review-q]').first().innerText()).replace(/\s+/g, ' ');
 ok(/Réponse de/i.test(first) && /Corrigé/i.test(first) && (q1.type !== 'qcm' || first.includes(q1.options[Number(wrong)].replace(/\*\*|\$/g, '').slice(0, 12))), 'sa réponse à côté du corrigé');
@@ -90,7 +90,7 @@ ok(!/hausse|baisse|motivation|implication|concentration/i.test(await pa.locator(
 console.log('Accueil (mêmes chiffres que l’Activité)');
 await pa.goto(BASE + '/parent');
 const hw = await txt('[data-home-week]');
-ok(hw.includes('1 h 15') && hw.includes('1 / 7 jours') && (await pa.locator('[data-home-week] svg').getAttribute('aria-label')).includes('25 %'), `cette semaine : 1 h 15, 1 / 7 jours, 25 % (« ${hw} »)`);
+ok(hw.includes('01:15') && hw.includes('1 / 7 jours') && (await pa.locator('[data-home-week] svg').getAttribute('aria-label')).includes('25 %'), `cette semaine : 1 h 15, 1 / 7 jours, 25 % (« ${hw} »)`);
 const hn = await txt('[data-home-notes]');
 ok(hn.includes('3/20') && await pa.locator('[data-home-notes] a[href^="/parent/revoir/copie/"]').count() === 1, 'dernières notes : 3/20 avec « Revoir »');
 ok(await pa.locator('[data-home-acquired] [data-acq]').count() >= 1, 'cours acquis par matière');

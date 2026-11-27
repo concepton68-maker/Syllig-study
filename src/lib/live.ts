@@ -26,7 +26,7 @@ export async function liveStatus(studentId: string): Promise<Live> {
   const [chg] = await sql<{ at: Date }[]>`select at from activity_beats where session_id = ${s.id} and active <> ${s.was_active} order by at desc limit 1`;
   return {
     state: s.was_active ? 'travaille' : 'pause', since: (chg?.at ?? s.started_at).toISOString(), lastSeen: s.last_beat_at.toISOString(),
-    kind: s.kind, course: s.course, sessionMin: Math.round(s.open_seconds / 60), sessionActiveMin: Math.round(s.active_seconds / 60),
+    kind: s.kind, course: s.course, sessionMin: Math.floor(s.open_seconds / 60), sessionActiveMin: Math.floor(s.active_seconds / 60),
   };
 }
 

@@ -1,5 +1,6 @@
 'use client';
 import { useState } from 'react';
+import { duree } from '@/lib/duration';
 
 // Graphiques de la trajectoire : barres (temps par semaine) et courbes de réussite (même unité, un seul axe 0–100 %).
 // Lignes en SVG étiré (trait constant), points, textes et bulles en HTML : lisible du téléphone à l'ordinateur.
@@ -32,7 +33,7 @@ export function WeeklyBars({ bars, goal, unit = 'min' }: { bars: Bar[]; goal?: n
     <div className="flex flex-col gap-1.5" onMouseLeave={() => setHover(null)}>
       <div className="relative h-40 ml-12 mr-1">
         {ticks.map(t => <span key={t} className="absolute left-0 right-0 border-t border-line" style={{ bottom: `${(t / max) * 100}%` }}>
-          <span className="absolute -left-12 w-10 -translate-y-1/2 text-right text-xs muted tabular-nums whitespace-nowrap">{t} {unit}</span></span>)}
+          <span className="absolute -left-12 w-10 -translate-y-1/2 text-right text-xs muted tabular-nums whitespace-nowrap">{unit === 'hhmm' ? duree(t) : `${t} ${unit}`}</span></span>)}
         <div className="absolute inset-0 grid" style={{ gridTemplateColumns: `repeat(${bars.length}, 1fr)` }}>
           {bars.map((b, i) => (
             <div key={b.key} data-bar-week={b.key} tabIndex={0} onMouseEnter={() => setHover(i)} onFocus={() => setHover(i)} onBlur={() => setHover(null)}

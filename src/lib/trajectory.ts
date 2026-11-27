@@ -4,6 +4,7 @@ import { evalQuestions } from './course-format';
 import { versionById } from './progress';
 import { ITEMS, SCALE } from './checkin';
 import { pauseRuleSince, ruleNote } from './time-rule';
+import { duree } from './duration';
 
 // Trajectoire : les mêmes mesures, semaine après semaine (12 semaines, heure de Paris, changements d'heure compris).
 // Uniquement des valeurs mesurées et leurs effectifs ; la comparaison « 4 dernières semaines terminées / 4 précédentes »
@@ -73,7 +74,7 @@ export async function trajectory(studentId: string): Promise<Trajectory> {
     return {
       week: w.week, current: i === weeks.length - 1, started: w.end.getTime() > firstAt, fullWeek: w.start.getTime() >= startOfFirstDay,
       label: new Date(`${w.week}T12:00:00Z`).toLocaleDateString('fr-FR', { day: 'numeric', month: 'short' }),
-      minutes: Math.round(dd.reduce((n, d) => n + d.active, 0) / 60), days: dd.filter(d => d.active >= 600).length,
+      minutes: Math.floor(dd.reduce((n, d) => n + d.active, 0) / 60), days: dd.filter(d => d.active >= 600).length,
       cp_ok: cp.filter(c => c.ok).length, cp_total: cp.length,
       ex_ok: ex.reduce((n, e) => n + e.ok, 0), ex_total: ex.reduce((n, e) => n + e.total, 0),
       notes: copies.filter(c => inW(c.at, w)).map(c => c.note),
@@ -99,7 +100,7 @@ export async function trajectory(studentId: string): Promise<Trajectory> {
   const mixed = !!ruleAt && ruleAt.getTime() > weeks[weeks.length - 9].start.getTime();
   const notesB = okB ? before.flatMap(r => r.notes) : [], notesA = okA ? after.flatMap(r => r.notes) : [];
   const compare: Compare[] = [
-    cmp('Temps de travail', okB ? sum(before, r => r.minutes) : null, okA ? sum(after, r => r.minutes) : null, x => `${x} min`),
+    cmp('Temps de travail', okB ? sum(before, r => r.minutes) : null, okA ? sum(after, r => r.minutes) : null, x => duree(x)),
     cmp('Jours travaillés (10 min ou plus)', okB ? sum(before, r => r.days) : null, okA ? sum(after, r => r.days) : null, x => `${x} j`),
     rate('Contrôles réussis du premier coup', r => r.cp_ok, r => r.cp_total),
     rate('Exercices réussis (corrigés par la plateforme)', r => r.ex_ok, r => r.ex_total),

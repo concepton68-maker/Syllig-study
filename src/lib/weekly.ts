@@ -1,4 +1,5 @@
 import 'server-only';
+import { duree } from './duration';
 import { sql } from './db';
 import { settingsOf } from './settings';
 import { weekReport, mondayOf } from './week';
@@ -21,7 +22,7 @@ export type WeeklyData = {
   idea: string | null;
 };
 
-const hm = (m: number) => m < 60 ? `${m} min` : `${Math.floor(m / 60)} h${m % 60 ? ` ${String(m % 60).padStart(2, '0')}` : ''}`;
+const hm = duree;
 const clip = (s: string, n: number) => { const t = s.replace(/\*\*|__|`|\$/g, '').replace(/\s+/g, ' ').trim(); return t.length > n ? `${t.slice(0, n - 1)}…` : t; };
 const fmtDay = (d: string, o: Intl.DateTimeFormatOptions) => new Date(`${d}T12:00:00Z`).toLocaleDateString('fr-FR', { timeZone: 'UTC', ...o });
 

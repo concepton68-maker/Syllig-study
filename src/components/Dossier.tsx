@@ -1,7 +1,7 @@
 import { GraduationCap, Clock, Star, BookCheck, Award } from 'lucide-react';
 import type { SchoolYear, YearSummary } from '@/lib/school-years';
 
-const hm = (min: number) => min >= 60 ? `${Math.floor(min / 60)} h ${String(min % 60).padStart(2, '0')}` : `${min} min`;
+import { duree as hm } from '@/lib/duration';
 const fmt = (d: Date) => d.toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'Europe/Paris' });
 const note = (n: number | null) => n === null ? '—' : `${(Math.round(n * 10) / 10).toLocaleString('fr-FR')}/20`;   // au dixième, comme le Bilan
 

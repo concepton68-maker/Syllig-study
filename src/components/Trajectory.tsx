@@ -1,6 +1,7 @@
 import { TrendingUp } from 'lucide-react';
 import { MIN_ITEMS, type Trajectory } from '@/lib/trajectory';
 import { WeeklyBars, RateLines } from './TrajectoryChart';
+import { duree } from '@/lib/duration';
 
 // Trajectoire sur 12 semaines : les mesures semaine après semaine et une comparaison chiffrée. Aucune extrapolation, aucune cause supposée.
 const C_CP = '#2F4FD8', C_EX = '#00b894';
@@ -27,9 +28,9 @@ export function TrajectoryCard({ tr, name, goalMin }: { tr: Trajectory; name: st
         </div>
         <div className="flex flex-col gap-1">
           <h3 className="text-base font-semibold m-0">Temps de travail par semaine</h3>
-          <span className="muted text-xs">Ligne pointillée : l’objectif que vous avez fixé ({goalMin} min). Semaine en cours en pointillés : elle n’est pas finie.</span>
-          <WeeklyBars goal={goalMin} bars={tr.weeks.map(w => ({ key: w.week, label: w.label, value: w.minutes, current: w.current,
-            tip: w.started ? [`Semaine du ${w.label}${w.current ? ' (en cours)' : ''}`, `${w.minutes} min de travail`, `${w.days} jour${w.days > 1 ? 's' : ''} avec 10 min ou plus`] : [`Semaine du ${w.label}`, 'avant la première activité'] }))} />
+          <span className="muted text-xs">Ligne pointillée : l’objectif que vous avez fixé ({duree(goalMin)}). Semaine en cours en pointillés : elle n’est pas finie.</span>
+          <WeeklyBars unit="hhmm" goal={goalMin} bars={tr.weeks.map(w => ({ key: w.week, label: w.label, value: w.minutes, current: w.current,
+            tip: w.started ? [`Semaine du ${w.label}${w.current ? ' (en cours)' : ''}`, `${duree(w.minutes)} de travail`, `${w.days} jour${w.days > 1 ? 's' : ''} avec 10 min ou plus`] : [`Semaine du ${w.label}`, 'avant la première activité'] }))} />
         </div>
         <div className="flex flex-col gap-1">
           <h3 className="text-base font-semibold m-0">Réussite par semaine</h3>
@@ -48,7 +49,7 @@ export function TrajectoryCard({ tr, name, goalMin }: { tr: Trajectory; name: st
           <div className="overflow-x-auto">
             <table className="w-full mt-2 text-sm min-w-[560px]">
               <thead><tr className="text-left muted"><th className="py-1 font-medium">Semaine du</th><th className="font-medium">Travail</th><th className="font-medium">Jours</th><th className="font-medium">Contrôles 1er coup</th><th className="font-medium">Exercices</th><th className="font-medium">Copies sans question vide</th></tr></thead>
-              <tbody>{tr.weeks.map(w => <tr key={w.week} className="border-t border-soft"><td className="py-1">{w.label}{w.current ? ' (en cours)' : ''}</td><td>{w.started ? `${w.minutes} min` : '—'}</td><td>{w.started ? w.days : '—'}</td>
+              <tbody>{tr.weeks.map(w => <tr key={w.week} className="border-t border-soft"><td className="py-1">{w.label}{w.current ? ' (en cours)' : ''}</td><td>{w.started ? duree(w.minutes) : '—'}</td><td>{w.started ? w.days : '—'}</td>
                 <td>{w.cp_total ? `${w.cp_ok}/${w.cp_total}` : '—'}</td><td>{w.ex_total ? `${w.ex_ok}/${w.ex_total}` : '—'}</td><td>{w.notes.length ? w.notes.map(x => `${x.toLocaleString('fr-FR')}/20`).join(', ') : '—'}</td></tr>)}</tbody>
             </table>
           </div>

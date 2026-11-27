@@ -29,7 +29,7 @@ export type Profile = {
   placement: PlacementFacts[];
 };
 
-const min = (s: number) => Math.round(s / 60);
+const min = (s: number) => Math.floor(s / 60);   // minutes entières vers le bas, comme partout (src/lib/duration.ts)
 const cut = (s: string | undefined, n: number) => { const t = (s ?? '').replace(/\s+/g, ' ').trim(); return t.length > n ? `${t.slice(0, n - 1)}…` : t; };
 
 export async function studentProfile(studentId: string): Promise<Profile> {

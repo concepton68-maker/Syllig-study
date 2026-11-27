@@ -24,6 +24,7 @@ import { RevisionsCard } from '@/components/RevisionsCard';
 import { WeeklyBars } from '@/components/TrajectoryChart';
 import { SubjectCards } from '@/components/SubjectCards';
 import { Fold, OpenFromHash } from '@/components/Fold';
+import { duree } from '@/lib/duration';
 
 export const metadata = { title: 'Bilan' };
 export const dynamic = 'force-dynamic';
@@ -72,9 +73,9 @@ export default async function Bilan({ searchParams }: { searchParams: Promise<{ 
 
       <section className="card flex flex-col gap-2" aria-labelledby="temps-semaine" data-weekly-time>
         <div className="flex flex-wrap items-baseline justify-between gap-2"><h2 id="temps-semaine" className="text-lg font-semibold m-0">Temps de travail par semaine <span className="muted font-normal text-sm">· 12 dernières semaines</span></h2>
-          <span className="text-[13px] muted">pointillés : objectif {student.settings.weekly_goal_minutes} min · semaine en cours en pointillés</span></div>
-        <WeeklyBars goal={student.settings.weekly_goal_minutes} bars={traj.weeks.map(w => ({ key: w.week, label: w.label, value: w.minutes, current: w.current,
-          tip: w.started ? [`Semaine du ${w.label}${w.current ? ' (en cours)' : ''}`, `${w.minutes} min de travail`, `${w.days} jour${w.days > 1 ? 's' : ''} avec 10 min ou plus`] : [`Semaine du ${w.label}`, 'avant la première activité'] }))} />
+          <span className="text-[13px] muted">pointillés : objectif {duree(student.settings.weekly_goal_minutes)} · semaine en cours en pointillés</span></div>
+        <WeeklyBars unit="hhmm" goal={student.settings.weekly_goal_minutes} bars={traj.weeks.map(w => ({ key: w.week, label: w.label, value: w.minutes, current: w.current,
+          tip: w.started ? [`Semaine du ${w.label}${w.current ? ' (en cours)' : ''}`, `${duree(w.minutes)} de travail`, `${w.days} jour${w.days > 1 ? 's' : ''} avec 10 min ou plus`] : [`Semaine du ${w.label}`, 'avant la première activité'] }))} />
         {traj.timeNote && <span className="muted text-xs" data-rule-note>{traj.timeNote}</span>}
       </section>
 
@@ -139,7 +140,7 @@ export default async function Bilan({ searchParams }: { searchParams: Promise<{ 
       <section className="card flex flex-col gap-3" aria-labelledby="faits">
         <h2 id="faits" className="text-xl font-semibold m-0 flex items-center gap-2"><Gauge size={20} aria-hidden="true" />Ce que montrent les chiffres</h2>
         <p className="muted text-sm m-0">
-          {profile.global.courses} cours commencé{profile.global.courses > 1 ? 's' : ''} · {fr(profile.global.active_min)} min de travail sur {profile.global.days_active} jour{profile.global.days_active > 1 ? 's' : ''}
+          {profile.global.courses} cours commencé{profile.global.courses > 1 ? 's' : ''} · {duree(profile.global.active_min)} de travail sur {profile.global.days_active} jour{profile.global.days_active > 1 ? 's' : ''}
           {' · '}{profile.global.evaluations ? `moyenne des évaluations ${fr(profile.global.eval_avg!)}/20 (${profile.global.evaluations})` : 'aucune évaluation notée'}
         </p>
         {profile.courses.length === 0 ? <p className="m-0 text-sm">Pas encore de travail enregistré.</p> : (
@@ -208,10 +209,10 @@ function CourseRow({ c }: { c: CourseFacts }) {
   return (
     <div className="grid gap-x-4 gap-y-1.5 py-3 border-t border-soft text-sm md:grid-cols-[minmax(0,1.3fr)_repeat(4,minmax(0,1fr))]">
       <span className="min-w-0"><strong>{c.title}</strong><span className="block muted">{c.subject}</span></span>
-      <Fact label="Leçon (temps de travail / durée prévue)" value={c.lesson.active_min || c.lesson.done ? `${c.lesson.active_min} min / ${c.lesson.expected_min} min` : '—'} />
+      <Fact label="Leçon (temps de travail / durée prévue)" value={c.lesson.active_min || c.lesson.done ? `${duree(c.lesson.active_min)} / ${duree(c.lesson.expected_min)}` : '—'} />
       <Fact label="Contrôles 1er coup" value={c.checkpoints.parts ? `${c.checkpoints.first_try_ok} / ${c.checkpoints.parts}` : '—'} />
       <Fact label="Exercices, meilleure série (corrigés par la plateforme)" value={c.exercises.score !== null ? `${c.exercises.score}/10` : '—'} />
-      <Fact label="Évaluation" value={e ? `${e.score === null ? 'en correction' : `${fr(e.score)}/20`}${e.used_min ? ` · ${e.used_min} min / ${e.allowed_min}` : ''}` : '—'} />
+      <Fact label="Évaluation" value={e ? `${e.score === null ? 'en correction' : `${fr(e.score)}/20`}${e.used_min ? ` · ${duree(e.used_min)} / ${duree(e.allowed_min)}` : ''}` : '—'} />
     </div>
   );
 }
@@ -275,14 +276,14 @@ function TestRow({ t, name, multi }: { t: Test; name: string; multi: boolean }) 
     <div className="flex flex-col gap-2 py-3 border-t border-soft text-sm">
       <div className="flex flex-wrap items-center gap-3">
         {multi && <BulkCheck formId="bulk-tests" value={t.id} label={`test du ${day(t.created_at)}`} />}
-        <span className="flex-1"><strong>Test du {day(t.created_at)}</strong> · {t.total} questions · {t.duration_min} min prévues</span>
+        <span className="flex-1"><strong>Test du {day(t.created_at)}</strong> · {t.total} questions · {duree(t.duration_min)} prévues</span>
         <span className={`pill ${t.status === 'termine' ? 'bg-brand-soft text-brand-dark' : 'bg-soft text-ink-2'}`}>
-          {t.status === 'termine' ? `Fait : ${t.score}/${t.total}${used ? ` en ${used} min` : ''}` : t.status === 'en_cours' ? `${name} l’a commencé` : `Proposé à ${name}`}
+          {t.status === 'termine' ? `Fait : ${t.score}/${t.total}${used ? ` en ${duree(used)}` : ''}` : t.status === 'en_cours' ? `${name} l’a commencé` : `Proposé à ${name}`}
         </span>
       </div>
       {t.status === 'termine' && (
         <>
-          {used !== null && used < t.duration_min * 0.25 && <p className="m-0 rounded-lg bg-warm-soft text-warm-dark px-3 py-2">Fait très vite ({used} min pour {t.duration_min} prévues) : les résultats sont à prendre avec prudence.</p>}
+          {used !== null && used < t.duration_min * 0.25 && <p className="m-0 rounded-lg bg-warm-soft text-warm-dark px-3 py-2">Fait très vite ({duree(used)} pour {duree(t.duration_min)} prévues) : les résultats sont à prendre avec prudence.</p>}
           <div className="flex flex-wrap gap-1.5" data-test-subjects>
             {[...bySubject.entries()].map(([m, e]) => <span key={m} className="pill bg-soft text-ink-2">{m} : {e.ok} sur {e.n}</span>)}
           </div>

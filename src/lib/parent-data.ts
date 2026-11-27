@@ -1,5 +1,6 @@
 import 'server-only';
 import { sql } from './db';
+import { duree } from './duration';
 
 export type SessionRow = {
   id: string; started_at: Date; kind: string; course_id: number | null; title: string | null; subject: string | null;
@@ -31,7 +32,7 @@ export function lookTogether(s: SessionRow): string | null {
     return parts.join(', ');
   }
   if (s.kind === 'lesson' && s.planned_min && s.active_seconds < 0.3 * s.planned_min * 60 && s.open_seconds >= 120)
-    return `leçon : ${Math.floor(s.active_seconds / 60)} min actives pour ${s.planned_min} prévues`;
+    return `leçon : ${duree(Math.floor(s.active_seconds / 60))} de travail pour ${duree(s.planned_min)} prévues`;
   return null;
 }
 

@@ -84,7 +84,7 @@ await el.goto(BASE + '/eleve/resultats');
 ok(await el.locator(`[data-my-errors] a[href="/eleve/cours/${ex.id}/exercices"]`).count() === 0, 'série recommencée (vide) : plus de lien vers une page sans les erreurs');
 console.log('Le parent voit le même objectif');
 await pa.goto(`${BASE}/parent/journal?eleve=${st.id}`);
-ok((await pa.locator('main').innerText()).includes('objectif 3 h 30'), 'Activité : objectif 3 h 30');
+ok((await pa.locator('main').innerText()).includes('objectif 03:30'), 'Activité : objectif 03:30');
 console.log('Leçon finie : relire depuis le début');
 await sql`update course_progress set lesson_done_at = now() where student_id = ${st.id} and course_id = ${fr.id}`;
 await el.goto(`${BASE}/eleve/cours/${fr.id}`);

@@ -1,4 +1,5 @@
 import 'server-only';
+import { duree } from './duration';
 import { sql } from './db';
 import { evalQuestions, autoCorrect, type Question } from './course-format';
 import { versionById, parcours, pickNext } from './progress';
@@ -31,7 +32,7 @@ export type Week = {
 
 const PARIS = 'Europe/Paris';
 const fmtDay = (d: string, o: Intl.DateTimeFormatOptions) => new Date(`${d}T12:00:00Z`).toLocaleDateString('fr-FR', { timeZone: 'UTC', ...o });
-const hm = (m: number) => m < 60 ? `${m} min` : `${Math.floor(m / 60)} h${m % 60 ? ` ${String(m % 60).padStart(2, '0')}` : ''}`;
+const hm = duree;
 const clip = (s: string | undefined, n: number) => { const t = (s ?? '').replace(/\*\*|__|`|\$/g, '').replace(/\s+/g, ' ').trim(); return t.length > n ? `${t.slice(0, n - 1)}…` : t; };
 // une citation dans une phrase : sans le point final (« Calcule 3 + 4 » et non « Calcule 3 + 4. »)
 const quote = (s: string, n: number) => clip(s, n).replace(/[.\s]+$/, '');
@@ -217,7 +218,7 @@ export async function weekReport(student: Student, ref?: string): Promise<Week> 
   let ideaExplain = true;
   let point: Week['point'] = null, idea = `Demandez-lui de vous montrer ce qu’${elle} a fait cette semaine et de vous expliquer une notion en 2 minutes.`;
   if (blankCopy) {
-    point = { text: `Dernière évaluation « ${blankCopy.title} » : ${blankCopy.blank} question${blankCopy.blank > 1 ? 's' : ''} sans réponse sur ${blankCopy.total} (rendue en ${blankCopy.used} min, ${blankCopy.allowed} min accordées).`, href: '#questions' };
+    point = { text: `Dernière évaluation « ${blankCopy.title} » : ${blankCopy.blank} question${blankCopy.blank > 1 ? 's' : ''} sans réponse sur ${blankCopy.total} (rendue en ${hm(blankCopy.used)}, ${hm(blankCopy.allowed)} accordées).`, href: '#questions' };
     idea = 'Regardez ensemble les questions laissées sans réponse, et demandez-lui comment ' + elle + ' s’y prendrait pour l’une d’elles.';
   } else if (late) {
     point = { text: `La révision « ${late.title} » est en retard de ${late.late_days} jours.` };

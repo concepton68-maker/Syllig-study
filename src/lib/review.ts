@@ -3,6 +3,7 @@ import { sql } from './db';
 import { evalQuestions, type Question } from './course-format';
 import { versionById } from './progress';
 import { getAttempt } from './evaluation';
+import { duree } from './duration';
 
 // « Retracer » et « Revoir ensemble » (maquette validée par le propriétaire le 26/11/2026).
 // Uniquement ce qui est enregistré : séances, contrôles, exercices remis, copies remises. Aucune interprétation.
@@ -86,7 +87,7 @@ export async function weekTimeline(studentId: string, monday: string): Promise<T
     const start0 = a.started_at ?? a.submitted_at;
     const m = last ? take(day, a.course_id, 'evaluation') : null;
     items.push({ key: `ev-${a.id}`, at: start0.getTime(), time: hhmm(start0), kind: 'evaluation', title: a.title, subject: a.subject,
-      what: `évaluation rendue en ${used} min sur ${allowed}${blank ? ` · ${blank} sans réponse` : ''}`, minutes: m === null ? null : m,
+      what: `évaluation rendue en ${duree(used)} sur ${duree(allowed)}${blank ? ` · ${blank} sans réponse` : ''}`, minutes: m === null ? null : m,
       result: a.status === 'graded' && a.final_score !== null ? `${fr(Number(a.final_score))}/20` : 'en correction', warn: blank > 0, href: `/parent/revoir/copie/${a.id}` });
   }
   // le reste : leçons, exercices non remis, évaluations non remises, autres pages
@@ -182,7 +183,7 @@ export async function copyReview(id: string): Promise<Review | null> {
     ...(n('ko') ? [{ label: plural(n('ko'), 'fausse'), status: 'ko' as const }] : []),
     ...(n('vide') ? [{ label: `${n('vide')} sans réponse`, status: 'vide' as const }] : []),
     ...(n('attente') ? [{ label: `${n('attente')} à corriger`, status: 'attente' as const }] : []),
-    { label: `rendue en ${used} min sur ${allowed}`, status: 'info' },
+    { label: `rendue en ${duree(used)} sur ${duree(allowed)}`, status: 'info' },
     ...(a.focus_losses ? [{ label: `page masquée ${a.focus_losses} fois`, status: 'info' as const }] : []),
   ];
   const variant = doc.evaluation.variants[a.variant % doc.evaluation.variants.length];

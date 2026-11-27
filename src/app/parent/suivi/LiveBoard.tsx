@@ -1,5 +1,6 @@
 'use client';
 import { useEffect, useState } from 'react';
+import { duree, dureeSec } from '@/lib/duration';
 
 // Partie « en direct » : état de l'élève à l'instant et frise de la journée, rafraîchis toutes les 10 secondes.
 type Live = { state: 'travaille' | 'pause' | 'hors_ligne'; since: string | null; lastSeen: string | null; kind: string | null; course: string | null; sessionMin: number; sessionActiveMin: number };
@@ -9,10 +10,10 @@ type Data = { live: Live; today: { day: string; segments: Segment[]; active: num
 export const C_WORK = '#2F4FD8', C_PAUSE = '#f47230';
 const KIND: Record<string, string> = { lesson: 'Leçon', exercises: 'Exercices', evaluation: 'Évaluation', review: 'Révision ou entraînement', other: 'Travail' };
 const hhmm = (d: Date) => d.toLocaleTimeString('fr-FR', { timeZone: 'Europe/Paris', hour: '2-digit', minute: '2-digit' });
-const dur = (s: number) => { const m = Math.floor(s / 60); return m < 60 ? `${m} min` : `${Math.floor(m / 60)} h ${String(m % 60).padStart(2, '0')}`; };
+const dur = dureeSec;
 const ago = (iso: string, now: Date) => {
   const m = Math.max(0, Math.round((now.getTime() - new Date(iso).getTime()) / 60000));
-  if (m < 1) return 'à l’instant'; if (m < 60) return `depuis ${m} min`; if (m < 24 * 60) return `depuis ${Math.floor(m / 60)} h ${String(m % 60).padStart(2, '0')}`;
+  if (m < 1) return 'à l’instant'; if (m < 24 * 60) return `depuis ${duree(m)}`;
   return `depuis le ${new Date(iso).toLocaleDateString('fr-FR', { timeZone: 'Europe/Paris', day: 'numeric', month: 'long' })}`;
 };
 // heure de Paris en heures décimales
@@ -57,7 +58,7 @@ export function LiveBoard({ studentId, name, initial, idleMin = 10 }: { studentI
           </span>
         </span>
         {live.state !== 'hors_ligne' && (
-          <span className="text-sm"><strong className="text-lg">{live.sessionActiveMin} min</strong> de travail sur cette page</span>
+          <span className="text-sm"><strong className="text-lg">{duree(live.sessionActiveMin)}</strong> de travail sur cette page</span>
         )}
         <span className="muted text-xs basis-full">Mise à jour toutes les 10 secondes. « Au travail » : page de travail visible à l’écran (réflexion et brouillon compris). « En pause » : page cachée (autre onglet, fenêtre réduite, écran verrouillé) ou rien touché depuis {idleMin} min. Si personne ne répond alors à « Tu es là ? » dans les 60 s, la séance se ferme et ces {idleMin} min ne sont pas comptées.</span>
       </section>

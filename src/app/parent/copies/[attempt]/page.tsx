@@ -12,6 +12,7 @@ import { RichText } from '@/components/RichText';
 import { SupportTextView } from '@/components/CourseBlocks';
 import { validateGrade } from '../actions';
 import { Screen } from '@/components/Layout';
+import { duree } from '@/lib/duration';
 
 export const dynamic = 'force-dynamic';
 
@@ -30,7 +31,7 @@ export default async function CopyReview({ params, searchParams }: { params: Pro
   const graded = a.status === 'graded';
   const val = (id: string) => graded ? a.scores?.[id] : a.proposal?.[id]?.points;
   const com = (id: string) => graded ? a.feedback?.[id] : a.proposal?.[id]?.comment;
-  const mins = a.started_at && a.submitted_at ? Math.round((a.submitted_at.getTime() - a.started_at.getTime()) / 60000) : null;
+  const mins = a.started_at && a.submitted_at ? Math.max(1, Math.round((a.submitted_at.getTime() - a.started_at.getTime()) / 60000)) : null;
 
   return (
     <Screen top={
@@ -38,7 +39,7 @@ export default async function CopyReview({ params, searchParams }: { params: Pro
         <div className="flex flex-col gap-1.5">
           <span className="lbl">{student.first_name} · tentative {a.attempt_no}</span>
           <h1 className="text-[28px] font-bold">{c.title}</h1>
-          <span className="muted text-sm">{mins !== null ? `Remise en ${mins} min sur ${doc.evaluation.duration_min}` : ''}{a.focus_losses ? ` · ${a.focus_losses} sortie(s) de fenêtre (${a.focus_lost_seconds} s)` : ' · aucune sortie de fenêtre'}{a.paste_blocked ? ` · ${a.paste_blocked} collage(s) bloqué(s)` : ''}</span>
+          <span className="muted text-sm">{mins !== null ? `Remise en ${duree(mins)} sur ${duree(doc.evaluation.duration_min)}` : ''}{a.focus_losses ? ` · ${a.focus_losses} sortie(s) de fenêtre (${a.focus_lost_seconds} s)` : ' · aucune sortie de fenêtre'}{a.paste_blocked ? ` · ${a.paste_blocked} collage(s) bloqué(s)` : ''}</span>
         </div>
         <Link className="btn" href="/parent/a-faire">‹ À faire</Link>
       </div>

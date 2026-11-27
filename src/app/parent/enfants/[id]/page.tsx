@@ -14,6 +14,7 @@ import { AutoSubmitSelect } from '@/components/AutoSubmitSelect';
 import { YearCard } from '@/components/Dossier';
 import { LevelForm, SubjectsForm } from './LevelForms';
 import { levels as allLevels, yearsOf, yearSummary } from '@/lib/school-years';
+import { duree } from '@/lib/duration';
 
 export const metadata = { title: 'Fiche enfant' };
 export const dynamic = 'force-dynamic';
@@ -78,7 +79,7 @@ export default async function ChildSheet({ params, searchParams }: { params: Pro
               <span className="flex-[1_1_260px] min-w-0"><strong>{r.title}</strong><span className="block muted">{r.subject}</span></span>
               <MasteryPill level={r.mastery} />
               <span className="w-32">{r.attempts} tentative{r.attempts > 1 ? 's' : ''}{r.best ? ` · ${Number(r.best).toLocaleString('fr-FR')}/20` : ''}</span>
-              <span className="w-20 muted">{r.minutes} min</span>
+              <span className="w-20 muted tabular-nums">{duree(r.minutes)}</span>
               <ResetCourse studentId={s.id} courseId={r.course_id} title={r.title} />
             </div>
           ))}

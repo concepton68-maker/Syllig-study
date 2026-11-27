@@ -2,6 +2,7 @@ import 'server-only';
 import { sql } from './db';
 import { evalQuestions } from './course-format';
 import { versionById } from './progress';
+import { splitMinutes } from './duration';
 
 // « Travail et résultats » : uniquement des faits mesurés par la plateforme, sur une fenêtre de dates explicite.
 // Aucune note composite, aucun seuil caché, aucune interprétation psychologique : chaque chiffre a une définition affichée.
@@ -63,7 +64,6 @@ export async function workFacts(studentId: string): Promise<Facts> {
 
   const subj = new Map<string, SubjectFacts>();
   const S = (name: string) => { if (!subj.has(name)) subj.set(name, { subject: name, active_min: 0, cp_ok: 0, cp_total: 0, ex_ok: 0, ex_total: 0, full: [], withBlank: 0, pending: 0 }); return subj.get(name)!; };
-  for (const r of sessionsBySubject) S(r.subject).active_min = Math.floor(r.active / 60);
 
   const full: number[] = [], withBlank: number[] = [];
   let pending = 0, focus = 0, noBlank = 0, usedMin = 0, allowedMin = 0;
@@ -91,11 +91,16 @@ export async function workFacts(studentId: string): Promise<Facts> {
   }
   for (const c of cps) { S(c.subject).cp_total++; if (c.ok) S(c.subject).cp_ok++; }
 
+  // temps par matière : réparti au plus grand reste pour que la somme du tableau = le temps total (révisions sans cours en reste)
+  const subjSec = sessionsBySubject.map(r => r.active);
+  const restSec = Math.max(0, w.active - subjSec.reduce((n, s) => n + s, 0));
+  const split = splitMinutes([...subjSec, restSec]);
+  sessionsBySubject.forEach((r, i) => { S(r.subject).active_min = split[i]; });
   return {
     from: win.from, to: win.to,
     work: {
       days: w.days, active_min: Math.floor(w.active / 60), open_min: Math.floor(w.open / 60), goal_min: st.goal * 4,
-      lessons_done: lessons.length, lesson_min: Math.round(lessons.reduce((n, l) => n + l.active, 0) / 60),
+      lessons_done: lessons.length, lesson_min: Math.floor(lessons.reduce((n, l) => n + l.active, 0) / 60),
       lesson_expected_min: lessons.reduce((n, l) => n + (l.doc?.lesson.duration_min ?? 0), 0),
     },
     evals: { submitted: atts.length, no_blank: noBlank, used_min: Math.round(usedMin), allowed_min: Math.round(allowedMin), full: { n: full.length, avg: avg(full) }, withBlank: { n: withBlank.length, avg: avg(withBlank) }, focus_losses: focus, pending },

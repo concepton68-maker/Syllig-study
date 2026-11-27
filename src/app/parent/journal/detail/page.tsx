@@ -5,6 +5,7 @@ import { PageTitle } from '@/components/Shell';
 import { ChildPicker } from '@/components/ChildPicker';
 import { Screen } from '@/components/Layout';
 import Link from 'next/link';
+import { duree } from '@/lib/duration';
 
 export const metadata = { title: 'Détail de l’activité' };
 export const dynamic = 'force-dynamic';
@@ -32,10 +33,10 @@ function describe(e: string, d: Record<string, unknown>) {
   if (d.note !== undefined) p.push(`${String(d.note).replace('.', ',')}/20`);
   if (d.auto_total !== undefined) p.push(`${d.auto_ok} sur ${d.auto_total} corrigés par la plateforme${Number(d.auto_eval_total) ? `, ${d.auto_eval_ok} sur ${d.auto_eval_total} auto-évalués` : ''}`);
   else if (d.score_sur_10 !== undefined) p.push(`${d.score_sur_10}/10`);
-  if (d.duree_min !== undefined && d.duree_min !== null) p.push(`${String(d.duree_min).replace('.', ',')} min`);
+  if (d.duree_min !== undefined && d.duree_min !== null) p.push(duree(Number(d.duree_min)));
   if (d.absence_s !== undefined) p.push(`hors de la page ${d.absence_s} s`);
-  if (d.actif_s !== undefined) p.push(`${Math.floor(Number(d.actif_s) / 60)} min de travail`);
-  if (d.retire_s !== undefined && Number(d.retire_s) >= 60) p.push(`${Math.floor(Number(d.retire_s) / 60)} min sans geste non comptées`);
+  if (d.actif_s !== undefined) p.push(`${duree(Math.floor(Number(d.actif_s) / 60))} de travail`);
+  if (d.retire_s !== undefined && Number(d.retire_s) >= 60) p.push(`${duree(Math.floor(Number(d.retire_s) / 60))} sans geste non comptées`);
   if (d.libelle) p.push(String(d.libelle));
   if (e === 'niveau_corrige') p.push(`${LEVEL_NAMES[String(d.avant)] ?? d.avant} → ${LEVEL_NAMES[String(d.apres)] ?? d.apres}`);
   if (e === 'annee_scolaire_commencee') p.push(`${d.annee ?? ''} · ${LEVEL_NAMES[String(d.niveau)] ?? d.niveau}`);
