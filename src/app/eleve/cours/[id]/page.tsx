@@ -5,6 +5,8 @@ import { PageTitle } from '@/components/Shell';
 import { MasteryPill } from '@/components/Mastery';
 import { Screen } from '@/components/Layout';
 import { RichText } from '@/components/RichText';
+import { evalAvailability } from '@/lib/evaluation';
+import { questionPool } from '@/lib/revisions';
 
 export const dynamic = 'force-dynamic';
 
@@ -23,6 +25,10 @@ export default async function CourseOverview({ params }: { params: Promise<{ id:
   // action principale : la première étape ouverte et non terminée
   const nextOpen = steps.find(x => x.open && !x.done);
   const main = nextOpen ?? steps[0];
+  // cours déjà fait (maquette validée le 27/11/2026) : s'entraîner d'abord (effet de test), relire, repasser le test (autre sujet)
+  const canTrain = !!progress.lesson_done_at && questionPool(doc).length > 0;
+  const av = !nextOpen ? await evalAvailability(student.id, course.id, !!progress.exercises_done_at, student.settings.retry_delay_days) : null;
+  const best = attempts.filter(a => a.status === 'graded').reduce((m, a) => Math.max(m, Number(a.final_score)), -1);
   return (
     <Screen top={<PageTitle kicker={`${course.subject} · ${course.chapter}${course.code ? ` · ${course.code}` : ''}`} title={course.title}
         sub={<span className="inline-flex items-center gap-2 mt-1"><MasteryPill level={progress.mastery} started={started} /></span>}>
@@ -31,12 +37,30 @@ export default async function CourseOverview({ params }: { params: Promise<{ id:
       <section className="card flex flex-col gap-4">
         {doc.lesson.objectives.length > 0 && (<div><span className="lbl">À la fin de ce cours, je sais</span>
           <ul className="mt-2 mb-0 pl-5 list-disc">{doc.lesson.objectives.map((o, i) => <li key={i}><RichText text={o} /></li>)}</ul></div>)}
-        <div className="flex flex-wrap items-center gap-3">
-          <Link className="btn btn-primary min-h-[52px] px-7 text-base w-full sm:w-auto" href={main.href}>
-            {nextOpen ? `${main.done ? 'Continuer' : progress.lesson_done_at || started ? 'Continuer' : 'Commencer'} : ${main.n} ${main.name}` : 'Revoir la leçon'}
-          </Link>
-          {!nextOpen && <span className="muted text-sm">Toutes les étapes sont faites : tu peux revoir la leçon ou retenter l’évaluation.</span>}
-        </div>
+        {nextOpen ? (
+          <div className="flex flex-wrap items-center gap-3">
+            <Link className="btn btn-primary min-h-[52px] px-7 text-base w-full sm:w-auto" href={main.href}>
+              {`${main.done ? 'Continuer' : progress.lesson_done_at || started ? 'Continuer' : 'Commencer'} : ${main.n} ${main.name}`}
+            </Link>
+            {canTrain && <Link className="btn min-h-[52px]" href={`${base}/entrainement`} data-train>M’entraîner</Link>}
+          </div>
+        ) : (
+          <div className="flex flex-col gap-3" data-redo>
+            {best >= 0 && <span className="pill bg-brand-soft text-brand-dark self-start">Ta meilleure note : {best.toLocaleString('fr-FR')}/20</span>}
+            <div className="grid gap-3 sm:grid-cols-3">
+              {canTrain && <Link href={`${base}/entrainement`} className="flex flex-col gap-1 p-4 rounded-2xl bg-brand text-white no-underline" data-train>
+                <strong className="text-lg">M’entraîner</strong><span className="text-sm opacity-90">5 questions que tu n’as pas vues depuis longtemps · environ 5 min</span></Link>}
+              <Link href={`${base}/lecon?debut=1`} className="flex flex-col gap-1 p-4 rounded-2xl bg-white border border-line text-ink no-underline hover:border-brand" data-reread>
+                <strong className="text-lg">Relire la leçon</strong><span className="text-sm muted">Depuis le début, puis la fiche mémo</span></Link>
+              {av?.ok ? <Link href={`${base}/evaluation`} className="flex flex-col gap-1 p-4 rounded-2xl bg-white border border-line text-ink no-underline hover:border-brand" data-retake>
+                <strong className="text-lg">Repasser le test</strong><span className="text-sm muted">Un autre sujet que la dernière fois. Ta meilleure note reste.</span></Link>
+                : <div className="flex flex-col gap-1 p-4 rounded-2xl bg-white border border-line" data-retake="plus-tard">
+                  <strong className="text-lg">Repasser le test</strong><span className="text-sm muted">Un autre sujet que la dernière fois. Ta meilleure note reste.</span>
+                  <span className="text-sm">{av && 'readyAt' in av && av.readyAt ? `Possible à partir du ${av.readyAt.toLocaleDateString('fr-FR', { timeZone: 'Europe/Paris', weekday: 'long', day: 'numeric', month: 'long' })}` : av && 'pending' in av ? 'Une évaluation est déjà en cours' : ''}</span></div>}
+            </div>
+            {canTrain && <span className="text-sm muted">Se tester avec des questions nouvelles fait mieux retenir que relire.</span>}
+          </div>
+        )}
         <ol className="list-none m-0 p-0 flex flex-wrap gap-3">
           {steps.map(s => (
             <li key={s.n} className="flex-[1_1_220px]">

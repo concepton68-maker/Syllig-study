@@ -99,12 +99,25 @@ export async function weekTimeline(studentId: string, monday: string): Promise<T
     items.push({ key: `rev-${r.course_id}-${r.at.getTime()}`, at: r.at.getTime(), time: hhmm(r.at), kind: 'review', title: r.title, subject: r.subject,
       what: 'révision', minutes: null, result: `${r.ok}/${r.total}`, warn: r.ok < Math.ceil(r.total * 0.8), href: null });
   }
+  // entraînements (« M'entraîner » sur un cours) : résultat sans note, temps rattaché (séance de révision liée au cours)
+  const trains = await sql<{ id: string; course_id: number; at: Date; ok: number; total: number; title: string; subject: string }[]>`
+    select s.id, s.course_id, s.finished_at as at, count(*) filter (where i.correct)::int as ok, count(*)::int as total, c.title, sj.name as subject
+    from review_sessions s join review_items i on i.session_id = s.id join courses c on c.id = s.course_id
+    join chapters ch on ch.id = c.chapter_id join subjects sj on sj.id = ch.subject_id
+    where s.student_id = ${studentId} and s.kind = 'entrainement' and s.finished_at >= ${start} and s.finished_at < ${end}
+    group by s.id, s.course_id, s.finished_at, c.title, sj.name order by s.finished_at`;
+  for (const [i, t] of trains.entries()) {
+    const day = dayOf(t.at);
+    const last = !trains.slice(i + 1).some(x => x.course_id === t.course_id && dayOf(x.at) === day);
+    items.push({ key: `tr-${t.id}`, at: t.at.getTime(), time: hhmm(t.at), kind: 'review', title: t.title, subject: t.subject,
+      what: 'entraînement (sans note)', minutes: last ? take(day, t.course_id, 'review') : null, result: `${t.ok} juste${t.ok > 1 ? 's' : ''} sur ${t.total}`, warn: false, href: null });
+  }
   for (const g of [...groups.values()].filter(g => g.sec > 0)) {   // une séance sans aucune seconde active n'est pas une activité
     const cp = g.course_id === null ? [] : cps.filter(c => c.course_id === g.course_id && dayOf(c.at) === g.day);
     const finished = g.kind === 'lesson' && done.some(d => d.course_id === g.course_id && dayOf(d.at) === g.day);
     const okN = cp.filter(c => c.ok).length;
     items.push({ key: `g-${g.day}-${g.course_id}-${g.kind}`, at: g.first.getTime(), time: hhmm(g.first), kind: g.kind, title: g.title, subject: g.subject,
-      what: g.kind === 'lesson' ? (finished ? 'leçon terminée' : 'leçon') : g.kind === 'exercises' ? 'exercices, pas encore remis' : g.kind === 'evaluation' ? 'évaluation, pas encore remise' : g.kind === 'review' ? 'temps de révision' : 'autre page',
+      what: g.kind === 'lesson' ? (finished ? 'leçon terminée' : 'leçon') : g.kind === 'exercises' ? 'exercices, pas encore remis' : g.kind === 'evaluation' ? 'évaluation, pas encore remise' : g.kind === 'review' ? (g.course_id === null ? 'temps de révision' : 'entraînement, pas terminé') : 'autre page',
       minutes: g.minutes, result: g.kind === 'lesson' && cp.length ? `contrôles ${okN}/${cp.length}` : null, warn: false, href: null });
   }
   // leçons passées par l'élève (fait neutre, sans sanction)

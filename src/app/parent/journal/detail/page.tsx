@@ -16,7 +16,7 @@ const EVENT: Record<string, string> = {
   point_controle_a_reessayer: 'Point de contrôle à réessayer', exercices_remis: 'Exercices remis', exercices_termines: 'Exercices terminés',
   evaluation_commencee: 'Évaluation commencée', evaluation_remise: 'Copie remise', evaluation_remise_automatiquement: 'Copie remise à la fin du temps',
   evaluation_sortie_fenetre: 'Sortie de la fenêtre', evaluation_retour_fenetre: 'Retour dans la fenêtre', evaluation_coller_bloque: 'Collage bloqué',
-  revision_faite: 'Révision faite (exercices refaits)', revision_espacee: 'Révision espacée', questionnaire_rempli: 'Questionnaire « Comment je travaille » rempli', evaluation_notee: 'Évaluation notée', evaluation_demandee: 'Évaluation demandée', evaluation_autorisee: 'Évaluation autorisée',
+  revision_faite: 'Révision faite (exercices refaits)', revision_espacee: 'Révision espacée', entrainement: 'Entraînement (sans note)', questionnaire_rempli: 'Questionnaire « Comment je travaille » rempli', evaluation_notee: 'Évaluation notée', evaluation_demandee: 'Évaluation demandée', evaluation_autorisee: 'Évaluation autorisée',
   evaluation_reportee: 'Évaluation reportée', niveau_atteint: 'Niveau atteint', copies_exportees: 'Copies exportées pour correction',
   corrections_importees: 'Corrections importées', note_modifiee: 'Note modifiée',
   cours_reinitialise: 'Cours réinitialisé', parcours_reinitialise: 'Parcours réinitialisé',

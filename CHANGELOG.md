@@ -566,3 +566,12 @@ Contre-audit de conformité des versions 0.43 à 0.45 : tout ce qui a été rele
   - une couleur indique si l'export tient dans une conversation Claude, s'il est à la limite, ou s'il est trop gros ;
   - « Tout exporter » affiche aussi son poids total.
 - L'export est compact, sans espaces inutiles, donc moins de tokens pour Claude.
+
+## 0.56 — 27/11/2026
+- **Refaire un cours déjà fait** (maquette validée le 27/11/2026). Sur un cours acquis, trois choix :
+  - **M'entraîner** : 5 questions tirées des exercices et des points de contrôle (jamais du test noté), en commençant par celles qui n'ont pas été vues depuis le plus longtemps. Elles sont corrigées tout de suite, avec l'explication.
+  - **Relire la leçon** : depuis le début.
+  - **Repasser le test** : avec l'autre sujet, et la date à partir de laquelle c'est possible.
+- **L'entraînement ne change rien au reste** : ni la note, ni le niveau, ni le calendrier des révisions espacées. Son temps compte comme du travail.
+- **À la fin**, le résultat question par question, un lien vers la partie de la leçon à relire, et « 5 autres questions ».
+- **Le parent** le voit dans l'Activité, sous le nom « entraînement (sans note) ».

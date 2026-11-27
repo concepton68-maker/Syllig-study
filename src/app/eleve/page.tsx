@@ -42,11 +42,11 @@ export default async function Today({ searchParams }: { searchParams: Promise<{ 
   const checkinDue = (ck.due || !!(student.settings as { checkin_requested?: boolean }).checkin_requested) && !placement;
   const acquired = items.filter(c => c.mastery >= 4);
   // révisions espacées : cours à revoir aujourd'hui (ou séance commencée) et les prochaines dates
-  const [openRev] = await sql<{ n: number }[]>`select count(*)::int as n from review_sessions where student_id = ${student.id} and finished_at is null`;
+  const [openRev] = await sql<{ n: number }[]>`select count(*)::int as n from review_sessions where student_id = ${student.id} and kind = 'revision' and finished_at is null`;
   const reviewStarted = openRev.n > 0;
   const dueRev = reviewStarted ? await sql<{ course_id: number; title: string }[]>`select distinct on ((q->>'course_id')::int) (q->>'course_id')::int as course_id, c.title
     from review_sessions s cross join jsonb_array_elements(s.questions) q join courses c on c.id = (q->>'course_id')::int
-    where s.student_id = ${student.id} and s.finished_at is null` : await dueCourses(student.id, student.level_code);
+    where s.student_id = ${student.id} and s.kind = 'revision' and s.finished_at is null` : await dueCourses(student.id, student.level_code);
   const nextRev = await nextReviews(student.id, student.level_code);
   const waiting = items.filter(c => c.pending_attempt === 'submitted');
   const [lastGraded] = await sql<{ id: string; course_id: number; title: string; final_score: string }[]>`

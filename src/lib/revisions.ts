@@ -76,11 +76,11 @@ export async function nextReviews(studentId: string, levelCode: string, n = 3) {
 }
 
 type SessionQ = { course_id: number; version_id: string; key: string };
-export type Session = { id: string; questions: SessionQ[]; created_at: Date; finished_at: Date | null };
+export type Session = { id: string; kind: 'revision' | 'entrainement'; questions: SessionQ[]; created_at: Date; finished_at: Date | null };
 
 /** La révision du jour : celle qui est commencée, sinon une nouvelle si des cours sont à revoir. */
 export async function openSession(studentId: string, levelCode: string): Promise<Session | null> {
-  const [cur] = await sql<Session[]>`select id, questions, created_at, finished_at from review_sessions where student_id = ${studentId} and finished_at is null order by created_at desc limit 1`;
+  const [cur] = await sql<Session[]>`select id, kind, questions, created_at, finished_at from review_sessions where student_id = ${studentId} and kind = 'revision' and finished_at is null order by created_at desc limit 1`;
   if (cur) return cur;
   const due = await dueCourses(studentId, levelCode);
   const questions: SessionQ[] = [];
@@ -92,31 +92,55 @@ export async function openSession(studentId: string, levelCode: string): Promise
       await sql`update review_schedule set due_at = ${dayIn(INTERVALS[Math.min(d.step + 1, INTERVALS.length - 1)])} where student_id = ${studentId} and course_id = ${d.course_id}`;
       continue;
     }
-    const seen = await sql<{ key: string; last: Date }[]>`select key, max(answered_at) as last from review_items where student_id = ${studentId} and course_id = ${d.course_id} group by key`;
-    const last = new Map(seen.map(s => [s.key, s.last.getTime()]));
-    const [prev] = await sql<{ keys: string[] }[]>`select array_agg(i.key) as keys from review_items i where i.session_id = (
-      select session_id from review_items where student_id = ${studentId} and course_id = ${d.course_id} order by answered_at desc limit 1) and i.course_id = ${d.course_id}`;
-    const recent = new Set(prev?.keys ?? []);
-    // jamais vues d'abord (au hasard), puis les plus anciennes ; jamais deux fois de suite la même si le choix le permet
-    const ranked = pool.map(p => ({ p, t: last.get(p.key) ?? -1, r: Math.random() })).sort((a, b) => a.t - b.t || a.r - b.r);
-    const fresh = ranked.filter(x => !recent.has(x.p.key));
-    const parts = new Set<string>(), pick: typeof ranked = [];
-    for (const x of [...fresh, ...ranked.filter(x => recent.has(x.p.key))]) {
-      const part = x.p.key.startsWith('cp:') ? x.p.key.split(':').slice(0, 2).join(':') : null;   // une seule variante d'un même point de contrôle
-      if (part && parts.has(part)) continue;
-      if (part) parts.add(part);
-      pick.push(x);
-      if (pick.length >= PER_COURSE) break;
-    }
-    for (const x of pick) questions.push({ course_id: d.course_id, version_id: v.id, key: x.p.key });
+    for (const key of await pickKeys(studentId, d.course_id, pool)) questions.push({ course_id: d.course_id, version_id: v.id, key });
   }
   if (!questions.length) return null;
-  const [s] = await sql<Session[]>`insert into review_sessions (student_id, questions) values (${studentId}, ${sql.json(questions)}) returning id, questions, created_at, finished_at`;
+  const [s] = await sql<Session[]>`insert into review_sessions (student_id, questions) values (${studentId}, ${sql.json(questions)}) returning id, kind, questions, created_at, finished_at`;
   return s;
 }
 
+/** 5 questions d'un cours : jamais vues d'abord (au hasard), puis les moins récemment vues ; pas celles de la dernière séance si le choix le permet. */
+async function pickKeys(studentId: string, courseId: number, pool: PoolItem[]) {
+  const seen = await sql<{ key: string; last: Date }[]>`select key, max(answered_at) as last from review_items where student_id = ${studentId} and course_id = ${courseId} group by key`;
+  const last = new Map(seen.map(s => [s.key, s.last.getTime()]));
+  const [prev] = await sql<{ keys: string[] }[]>`select array_agg(i.key) as keys from review_items i where i.session_id = (
+    select session_id from review_items where student_id = ${studentId} and course_id = ${courseId} order by answered_at desc limit 1) and i.course_id = ${courseId}`;
+  const recent = new Set(prev?.keys ?? []);
+  const ranked = pool.map(p => ({ p, t: last.get(p.key) ?? -1, r: Math.random() })).sort((a, b) => a.t - b.t || a.r - b.r);
+  const fresh = ranked.filter(x => !recent.has(x.p.key));
+  const parts = new Set<string>(), pick: string[] = [];
+  for (const x of [...fresh, ...ranked.filter(x => recent.has(x.p.key))]) {
+    const part = x.p.key.startsWith('cp:') ? x.p.key.split(':').slice(0, 2).join(':') : null;   // une seule variante d'un même point de contrôle
+    if (part && parts.has(part)) continue;
+    if (part) parts.add(part);
+    pick.push(x.p.key);
+    if (pick.length >= PER_COURSE) break;
+  }
+  return pick;
+}
+
+/** « M'entraîner » sur un cours dont la leçon est finie : la séance commencée, sinon 5 nouvelles questions. Sans effet sur la note ni le calendrier. */
+export async function openTraining(studentId: string, courseId: number): Promise<Session | null> {
+  const [cur] = await sql<Session[]>`select id, kind, questions, created_at, finished_at from review_sessions
+    where student_id = ${studentId} and kind = 'entrainement' and course_id = ${courseId} and finished_at is null order by created_at desc limit 1`;
+  if (cur) return cur;
+  const [v] = await sql<{ id: string; document: CourseDocument }[]>`select v.id, v.document from course_versions v
+    join course_progress p on p.course_id = v.course_id and p.student_id = ${studentId} and p.lesson_done_at is not null
+    where v.course_id = ${courseId} and v.status = 'published'`;
+  if (!v) return null;
+  const pool = questionPool(v.document);
+  if (!pool.length) return null;
+  const questions = (await pickKeys(studentId, courseId, pool)).map(key => ({ course_id: courseId, version_id: v.id, key }));
+  const [s] = await sql<Session[]>`insert into review_sessions (student_id, kind, course_id, questions) values (${studentId}, 'entrainement', ${courseId}, ${sql.json(questions)})
+    returning id, kind, questions, created_at, finished_at`;
+  return s;
+}
+
+/** Partie de la leçon (1, 2…) à relire pour une question : celle du point de contrôle, ou celle indiquée par l'exercice. */
+const partOf = (key: string, q: Question) => key.startsWith('cp:') ? Number(key.split(':')[1]) + 1 : (q as { lesson_part?: number }).lesson_part ?? null;
+
 export type PublicQ = { idx: number; course: string; prompt: string; type: Question['type']; options: string[] | null; multi: boolean };
-export type Answered = { idx: number; correct: boolean; given: string; expected: string; solution: string | null };
+export type Answered = { idx: number; correct: boolean; given: string; expected: string; solution: string | null; part: number | null };
 export type Summary = { course_id: number; title: string; ok: number; total: number; passed: boolean; next_days: number }[];
 
 /** Questions de la séance, sans les réponses (envoyées au navigateur), et ce qui est déjà répondu (reprise). */
@@ -130,19 +154,19 @@ export async function sessionView(s: Session): Promise<{ questions: PublicQ[]; a
     if (!q) continue;
     questions.push({ idx, course: titles.get(x.course_id) ?? '', prompt: q.prompt, type: q.type, options: q.options ?? null, multi: Array.isArray(q.answer) && q.type === 'qcm' && q.answer.length > 1 });
     const it = items.find(i => i.idx === idx);
-    if (it) answered.push(feedback(idx, q, it.answer, it.correct));
+    if (it) answered.push(feedback(idx, q, it.answer, it.correct, partOf(x.key, q)));
   }
   return { questions, answered };
 }
-function feedback(idx: number, q: Question, given: string, correct: boolean): Answered {
+function feedback(idx: number, q: Question, given: string, correct: boolean, part: number | null): Answered {
   const exp = expectedText(q);
   const sol = q.solution?.trim() && q.solution.trim() !== exp ? q.solution.trim() : null;
-  return { idx, correct, given: answerText(q, given).text, expected: exp, solution: sol };
+  return { idx, correct, given: answerText(q, given).text, expected: exp, solution: sol, part };
 }
 
 /** Une réponse : corrigée aussitôt ; à la dernière, la séance est close et les prochaines dates calculées. */
 export async function answerQuestion(studentId: string, sessionId: string, idx: number, answer: string): Promise<{ result: Answered; summary: Summary | null } | null> {
-  const [s] = await sql<Session[]>`select id, questions, created_at, finished_at from review_sessions where id = ${sessionId} and student_id = ${studentId}`;
+  const [s] = await sql<Session[]>`select id, kind, questions, created_at, finished_at from review_sessions where id = ${sessionId} and student_id = ${studentId}`;
   if (!s || s.finished_at || !s.questions[idx]) return null;
   const x = s.questions[idx];
   const doc = (await versionById(x.version_id))?.document;
@@ -153,16 +177,24 @@ export async function answerQuestion(studentId: string, sessionId: string, idx: 
     on conflict do nothing returning 1`;
   if (!ins.length) {   // déjà répondu (double clic) : on renvoie la réponse enregistrée
     const [it] = await sql<{ answer: string; correct: boolean }[]>`select answer, correct from review_items where session_id = ${s.id} and idx = ${idx}`;
-    return { result: feedback(idx, q, it.answer, it.correct), summary: null };
+    return { result: feedback(idx, q, it.answer, it.correct, partOf(x.key, q)), summary: null };
   }
   const [{ n }] = await sql<{ n: number }[]>`select count(*)::int as n from review_items where session_id = ${s.id}`;
   const summary = n >= s.questions.length ? await finish(studentId, s) : null;
-  return { result: feedback(idx, q, answer, correct), summary };
+  return { result: feedback(idx, q, answer, correct, partOf(x.key, q)), summary };
 }
 
 async function finish(studentId: string, s: Session): Promise<Summary> {
   const done = await sql`update review_sessions set finished_at = now() where id = ${s.id} and finished_at is null returning 1`;
   if (!done.length) return [];
+  if (s.kind === 'entrainement') {   // entraînement : le résultat est consigné, sans toucher au calendrier des révisions
+    const [r] = await sql<{ course_id: number; title: string; ok: number; total: number }[]>`
+      select i.course_id, c.title, count(*) filter (where i.correct)::int as ok, count(*)::int as total from review_items i join courses c on c.id = i.course_id
+      where i.session_id = ${s.id} group by i.course_id, c.title`;
+    if (!r) return [];
+    await logEvent(studentId, 'entrainement', { courseId: r.course_id, data: { justes: r.ok, total: r.total } });
+    return [{ course_id: r.course_id, title: r.title, ok: r.ok, total: r.total, passed: passes(r.ok, r.total), next_days: 0 }];
+  }
   const rows = await sql<{ course_id: number; title: string; ok: number; total: number }[]>`
     select i.course_id, c.title, count(*) filter (where i.correct)::int as ok, count(*)::int as total from review_items i join courses c on c.id = i.course_id
     where i.session_id = ${s.id} group by i.course_id, c.title`;
