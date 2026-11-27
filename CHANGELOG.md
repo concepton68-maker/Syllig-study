@@ -537,3 +537,13 @@ Contre-audit de conformité des versions 0.43 à 0.45 : tout ce qui a été rele
   - Désabonnement par un bouton (ouvrir le lien ne suffit pas), et en un clic depuis la messagerie.
   - Le message est figé à sa création : la date d'arrêt des chiffres est indiquée. Les copies encore en correction sont comptées.
 - Le numéro de version n'apparaît plus non plus sur la page de connexion.
+
+## 0.53 — 27/11/2026
+- **Objectif de temps par jour ou par semaine** (réglage du parent, Enfants › Règles). Par jour : un temps et les jours concernés ; l'objectif de la semaine se calcule tout seul (temps × jours), pour que l'Activité, le Bilan et le message du lundi restent cohérents.
+- **L'élève voit où il en est** :
+  - sur son accueil, un anneau « Aujourd'hui : 18 sur 30 min » et la semaine en 7 cases ;
+  - pendant la leçon, les exercices et les révisions, une barre « Aujourd'hui 18 / 30 min » en haut de l'écran.
+- **Mes résultats** (élève) : notes par matière (moyenne et chaque note), « Mes erreurs à reprendre » avec un lien vers la copie ou les exercices, et la semaine (temps, jours où l'objectif est atteint, révisions).
+- **Cours déjà faits** :
+  - « Revoir ce cours » sur les cours acquis ;
+  - une leçon déjà finie se rouvre au début, pour être ré-étudiée, et non plus sur la dernière page.

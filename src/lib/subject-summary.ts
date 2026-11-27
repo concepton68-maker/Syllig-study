@@ -12,7 +12,7 @@ import { subjectProgress } from './parent-data';
 
 export type SubjectSummary = {
   subject: string; notes: { id: string; at: string; note: number; title: string }[]; avg: number | null;
-  acquired: number; published: number; review: { title: string; href: string; missed: number }[];
+  acquired: number; published: number; review: { title: string; href: string; missed: number; attempt_id: string; course_id: number }[];
 };
 
 export async function schoolYearStart() {
@@ -46,7 +46,7 @@ export async function subjectSummary(studentId: string, level: string): Promise<
     if (!doc) continue;
     const pts = { ...(a.auto_scores ?? {}), ...(a.scores ?? {}) };
     const missed = evalQuestions(doc, a.variant).filter(q => !(a.answers?.[q.id] ?? '').trim() || pts[q.id] === 0).length;
-    if (missed) S(a.subject).review.push({ title: a.title, href: `/parent/revoir/copie/${a.id}`, missed });
+    if (missed) S(a.subject).review.push({ title: a.title, href: `/parent/revoir/copie/${a.id}`, missed, attempt_id: a.id, course_id: a.course_id });
   }
   for (const p of progress) if (p.started > 0 || p.acquired > 0) S(p.subject);
   const subjects = [...by.values()].map(s => ({ ...s, avg: s.notes.length ? Math.round((s.notes.reduce((n, x) => n + x.note, 0) / s.notes.length) * 10) / 10 : null }));

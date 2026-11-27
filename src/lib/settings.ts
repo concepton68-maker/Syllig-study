@@ -1,6 +1,9 @@
 // Règles parentales par élève (stockées dans students.settings), avec valeurs par défaut du cadrage.
 export type StudentSettings = {
-  weekly_goal_minutes: number;   // objectif de temps de travail par semaine
+  weekly_goal_minutes: number;   // objectif de temps de travail par semaine (calculé « par jour × jours » si goal_mode = 'jour')
+  goal_mode: 'semaine' | 'jour'; // objectif réglé par semaine, ou par jour sur les jours choisis
+  daily_goal_minutes: number;    // objectif par jour (si goal_mode = 'jour')
+  goal_days: number[];           // jours concernés, 1 = lundi … 7 = dimanche
   retry_delay_days: number;      // délai avant une nouvelle tentative d'évaluation
   eval_requires_approval: boolean;
   idle_seconds: number;          // sans aucun geste, page au premier plan : pause du temps compté (10 min par défaut : brouillon, réflexion…)
@@ -32,6 +35,9 @@ export type ThemeId = (typeof THEMES)[number]['id'];
 export const isTheme = (t: unknown): t is ThemeId => THEMES.some(x => x.id === t);
 export const DEFAULT_SETTINGS: StudentSettings = {
   weekly_goal_minutes: 300,
+  goal_mode: 'semaine',
+  daily_goal_minutes: 30,
+  goal_days: [1, 2, 3, 4, 5],
   retry_delay_days: 3,
   eval_requires_approval: false,
   idle_seconds: 600,
@@ -49,7 +55,8 @@ export const DEFAULT_SETTINGS: StudentSettings = {
 export const evalMinutes = (base: number, s: Pick<StudentSettings, 'extra_time'>) => s.extra_time ? Math.ceil(base * 4 / 3) : base;
 export const settingsOf = (raw: unknown): StudentSettings => {
   const s = { ...DEFAULT_SETTINGS, ...((raw as object) ?? {}) } as StudentSettings;
-  return { ...s, retry_delay_days: Math.max(1, s.retry_delay_days), idle_seconds: [300, 600, 900].includes(Number(s.idle_seconds)) ? Number(s.idle_seconds) : 600 };   // au moins 1 jour entre deux tentatives
+  const days = Array.isArray(s.goal_days) ? [...new Set(s.goal_days.map(Number).filter(d => d >= 1 && d <= 7))].sort() : [1, 2, 3, 4, 5];
+  return { ...s, goal_mode: s.goal_mode === 'jour' ? 'jour' : 'semaine', goal_days: days, retry_delay_days: Math.max(1, s.retry_delay_days), idle_seconds: [300, 600, 900].includes(Number(s.idle_seconds)) ? Number(s.idle_seconds) : 600 };   // au moins 1 jour entre deux tentatives
 };
 
 // Seuils de maîtrise (section 5 du cadrage) — réglages, pas du code métier dispersé.

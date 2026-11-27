@@ -1,4 +1,5 @@
 import { sql } from '@/lib/db';
+import { todayInfo } from '@/lib/goal';
 import Link from 'next/link';
 import { loadCourse } from '../data';
 import { lessonState } from './state';
@@ -25,9 +26,9 @@ export default async function LessonPage({ params }: { params: Promise<{ id: str
     })),
     { kind: 'memo', title: 'Fiche mémo', memo: done ? (doc.lesson.memo ?? []) : null },
   ];
-  // page d'ouverture : la partie en cours (ou la fiche mémo si tout est validé ; l'intro au tout début)
+  // page d'ouverture : la partie en cours ; une leçon déjà finie se rouvre au début pour la ré-étudier (la fiche mémo reste à un clic)
   const firstVisit = st.current === 0 && !st.checkpoint?.attempt;
-  const startPage = done ? pages.length - 1 : firstVisit ? 0 : st.current + 1;
+  const startPage = done ? 0 : firstVisit ? 0 : st.current + 1;
 
   // « +50 points » annoncé seulement juste après les avoir gagnés (pas à chaque retour sur la page)
   const [{ fresh }] = await sql<{ fresh: boolean }[]>`select exists (select 1 from points_ledger where student_id = ${student.id} and course_id = ${course.id}
@@ -40,7 +41,7 @@ export default async function LessonPage({ params }: { params: Promise<{ id: str
           <div><div className="lbl">{course.subject} · {course.chapter}{course.code ? ` · ${course.code}` : ''}</div>
             <h1 className="font-[family-name:var(--font-display)] !text-lg font-bold m-0 leading-snug">{course.title} · ① Leçon</h1></div>
         </div>
-        <div className="flex items-center gap-2.5"><ActivityTracker kind="lesson" courseId={course.id} idleSeconds={student.settings.idle_seconds} />
+        <div className="flex items-center gap-2.5"><ActivityTracker kind="lesson" courseId={course.id} idleSeconds={student.settings.idle_seconds} {...(await todayInfo(student.id, student.settings))} />
           <span className="pill bg-soft text-ink-2">{done ? 'Leçon terminée' : `Partie ${st.current + 1} sur ${parts.length}`}</span>
           {!done && <form action={skipCourse.bind(null, course.id)}><button className="btn" type="submit" data-skip>Passer cette leçon</button></form>}</div>
       </div>

@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { todayInfo } from '@/lib/goal';
 import { requireStudent } from '@/lib/access';
 import { openSession, sessionView, nextReviews } from '@/lib/revisions';
 import { ActivityTracker } from '@/components/ActivityTracker';
@@ -25,7 +26,7 @@ export default async function RevisionPage() {
   }
   const view = await sessionView(s);
   return (
-    <Screen top={<div className="flex items-center justify-between gap-3"><Link className="btn" href="/eleve">‹ Quitter</Link><ActivityTracker kind="review" courseId={null} idleSeconds={student.settings.idle_seconds} /></div>}>
+    <Screen top={<div className="flex items-center justify-between gap-3"><Link className="btn" href="/eleve">‹ Quitter</Link><ActivityTracker kind="review" courseId={null} idleSeconds={student.settings.idle_seconds} {...(await todayInfo(student.id, student.settings))} /></div>}>
       <ReviewRunner sessionId={s.id} questions={view.questions} answered={view.answered} />
     </Screen>
   );

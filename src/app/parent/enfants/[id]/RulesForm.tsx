@@ -1,11 +1,15 @@
 'use client';
-import { useActionState } from 'react';
+import { useActionState, useState } from 'react';
 import { THEMES, type StudentSettings } from '@/lib/settings';
 import { saveRulesAction } from './actions';
 import { BirthClassFields } from '../Forms';
 
 export function RulesForm({ studentId, s, levels, level }: { studentId: string; s: StudentSettings; levels: { code: string; name: string }[]; level: string }) {
   const [state, action, pending] = useActionState(saveRulesAction, undefined);
+  const [mode, setMode] = useState<'semaine' | 'jour'>(s.goal_mode);
+  const [daily, setDaily] = useState(s.daily_goal_minutes);
+  const [days, setDays] = useState<number[]>(s.goal_days);
+  const fmt = (m: number) => m >= 60 ? `${Math.floor(m / 60)} h${m % 60 ? ` ${String(m % 60).padStart(2, '0')}` : ''}` : `${m} min`;
   return (
     <form action={action} className="flex flex-col gap-5">
       <input type="hidden" name="student" value={studentId} />
@@ -14,9 +18,27 @@ export function RulesForm({ studentId, s, levels, level }: { studentId: string; 
         <BirthClassFields levels={levels} birth={s.birth} gender={s.gender} level={level} extraTime={s.extra_time} fixedLevel />
       </fieldset>
       <div className="flex flex-wrap gap-4">
-        <label className="flex-[1_1_200px] flex flex-col gap-1.5 text-sm font-semibold">Temps de travail visé par semaine
-          <select className="field" name="goal_h" defaultValue={String(s.weekly_goal_minutes / 60)}>{[2, 3, 4, 5, 6, 7, 8, 10].map(h => <option key={h} value={h}>{h} h</option>)}</select>
-        </label>
+        <fieldset className="basis-full flex flex-col gap-3 border-0 p-0 m-0" data-goal-form>
+          <legend className="text-sm font-semibold mb-1.5">Objectif de temps de travail</legend>
+          <div role="radiogroup" className="flex gap-2">
+            {(['jour', 'semaine'] as const).map(m => <label key={m} className={`btn ${mode === m ? 'btn-primary' : ''}`}><input type="radio" name="goal_mode" value={m} checked={mode === m} onChange={() => setMode(m)} className="sr-only" />{m === 'jour' ? 'Par jour' : 'Par semaine'}</label>)}
+          </div>
+          {mode === 'jour' ? (<>
+            <div className="flex flex-wrap gap-4 items-end">
+              <label className="flex flex-col gap-1.5 text-sm font-semibold">Temps par jour
+                <select className="field" name="daily" value={daily} onChange={e => setDaily(Number(e.target.value))}>{[15, 20, 30, 45, 60, 90, 120].map(m => <option key={m} value={m}>{fmt(m)}</option>)}</select></label>
+              <div className="flex flex-col gap-1.5 text-sm font-semibold">Les jours concernés
+                <div className="flex gap-1.5">{['L', 'M', 'M', 'J', 'V', 'S', 'D'].map((l, i) => { const d = i + 1, on = days.includes(d); return (
+                  <label key={d} className={`size-11 rounded-[10px] grid place-items-center cursor-pointer font-semibold ${on ? 'bg-brand text-white' : 'border border-line-strong'}`}>
+                    <input type="checkbox" name="goal_days" value={d} checked={on} onChange={() => setDays(x => on ? x.filter(y => y !== d) : [...x, d].sort())} className="sr-only" aria-label={['lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi', 'dimanche'][i]} />{l}</label>); })}</div>
+              </div>
+            </div>
+            <span className="text-sm text-ink-2" data-goal-week>Soit <strong>{fmt(daily * days.length)} par semaine</strong> ({fmt(daily)} × {days.length} jour{days.length > 1 ? 's' : ''}) : c’est ce chiffre qu’affichent l’Activité, le Bilan et le message du lundi.</span>
+          </>) : (
+            <label className="flex flex-col gap-1.5 text-sm font-semibold max-w-[260px]">Temps de travail visé par semaine
+              <select className="field" name="goal_h" defaultValue={String(Math.round(s.weekly_goal_minutes / 60))}>{[2, 3, 4, 5, 6, 7, 8, 10].map(h => <option key={h} value={h}>{h} h</option>)}</select></label>
+          )}
+        </fieldset>
         <label className="flex-[1_1_200px] flex flex-col gap-1.5 text-sm font-semibold">Délai avant de retenter une évaluation
           <select className="field" name="retry" defaultValue={String(Math.max(1, s.retry_delay_days))}>{[1, 2, 3, 5, 7].map(d => <option key={d} value={d}>{d} jour{d > 1 ? 's' : ''}</option>)}</select>
         </label>

@@ -47,14 +47,21 @@ export async function resetStudentAction(_: ResetState, form: FormData): Promise
 export async function saveRulesAction(_: ResetState, form: FormData): Promise<ResetState> {
   const u = await requireUser('parent');
   const s = await assertParentOf(u.id, z.string().uuid().parse(form.get('student')));
+  // objectif par jour (minutes × jours choisis) ou par semaine ; l'objectif de la semaine est toujours enregistré (pages et message du lundi)
+  const mode = form.get('goal_mode') === 'jour' ? 'jour' : 'semaine';
+  const daily = Number(form.get('daily') ?? 30);
+  const days = [...new Set(form.getAll('goal_days').map(Number).filter(d => Number.isInteger(d) && d >= 1 && d <= 7))].sort();
+  if (mode === 'jour' && (!days.length || !(daily >= 10 && daily <= 240))) return { error: 'Choisissez un temps par jour et au moins un jour.' };
+  const weekly = mode === 'jour' ? daily * days.length : Number(form.get('goal_h') ?? s.settings.weekly_goal_minutes / 60) * 60;
   const p = z.object({
-    weekly_goal_minutes: z.coerce.number().int().min(30).max(1500),
+    weekly_goal_minutes: z.coerce.number().int().min(10).max(1680),
     retry_delay_days: z.coerce.number().int().min(1).max(30),
     idle_seconds: z.coerce.number().int().min(300).max(900),
-  }).safeParse({ weekly_goal_minutes: Number(form.get('goal_h')) * 60, retry_delay_days: form.get('retry'), idle_seconds: form.get('idle') });
+  }).safeParse({ weekly_goal_minutes: weekly, retry_delay_days: form.get('retry'), idle_seconds: form.get('idle') });
   if (!p.success) return { error: 'Valeurs invalides.' };
+  const goal = mode === 'jour' ? { goal_mode: mode, daily_goal_minutes: daily, goal_days: days } : { goal_mode: mode };
   const t = form.get('theme');
-  const patch = { ...p.data, ...profileFrom(form), eval_requires_approval: form.get('approval') === 'on', ...(isTheme(t) ? { theme: t } : {}) };
+  const patch = { ...p.data, ...goal, ...profileFrom(form), eval_requires_approval: form.get('approval') === 'on', ...(isTheme(t) ? { theme: t } : {}) };
   await sql`update students set settings = settings || ${sql.json(patch)} where id = ${s.id}`;
   revalidatePath('/parent', 'layout');
   revalidatePath('/eleve', 'layout');

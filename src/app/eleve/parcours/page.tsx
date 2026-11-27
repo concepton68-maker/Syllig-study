@@ -42,6 +42,7 @@ export default async function MyCourses({ searchParams }: { searchParams: Promis
         {c.skipped && <span className="pill bg-soft text-ink-2" data-skipped-pill>Passée pour l’instant</span>}
         {c.priority === 'prioritaire' && c.mastery < 4 && <PriorityPill />}
         <MasteryPill level={c.mastery} started={c.lesson_started} />
+        {st.kind === 'done' && <Link href={`/eleve/cours/${c.course_id}`} className="btn w-full sm:w-[240px]" data-review-course>Revoir ce cours</Link>}
         {st.kind !== 'done' && <Link href={stepHref(c.course_id, st)} className="btn w-full sm:w-[240px]">
           {st.kind === 'lesson' ? (c.lesson_started || c.mastery > 0 ? 'Continuer : ' : 'Commencer : ') : st.kind === 'exercises' || st.kind === 'evaluation' ? 'Continuer : ' : ''}{st.label}</Link>}
         {c.best && <span className="num text-sm font-semibold w-16 text-right">{Number(c.best).toLocaleString('fr-FR')}/20</span>}

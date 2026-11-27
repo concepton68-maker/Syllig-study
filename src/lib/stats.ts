@@ -24,7 +24,7 @@ export async function weekStats(studentId: string) {
   return { days, active, open, activeDays: days.filter(d => d.active >= WORK_DAY_S).length, week_points, total_points };
 }
 
-// Série : jours consécutifs (jusqu'à aujourd'hui ou hier) avec au moins 5 min de travail
+// Série : jours consécutifs (jusqu'à aujourd'hui ou hier) avec au moins 10 min de travail (WORK_DAY_S, même seuil partout)
 export async function streak(studentId: string) {
   const rows = await sql<{ day: string }[]>`
     select (started_at at time zone 'Europe/Paris')::date::text as day from work_sessions

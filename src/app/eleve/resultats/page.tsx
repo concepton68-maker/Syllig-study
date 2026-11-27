@@ -1,4 +1,6 @@
 import Link from 'next/link';
+import { subjectSummary } from '@/lib/subject-summary';
+import { goalView } from '@/lib/goal';
 import { pauseRuleSince } from '@/lib/time-rule';
 import { Star, Sparkles, Award } from 'lucide-react';
 import { EmptyState } from '@/components/EmptyState';
@@ -37,10 +39,40 @@ export default async function Results() {
       from eval_attempts a join courses c on c.id = a.course_id where a.student_id = ${student.id} and a.status = 'graded'
       group by a.course_id, c.title having count(*) > 1 order by 1 desc limit 1) g on true`;
   const m = (s: number) => Math.round(s / 60);
+  // notes par matière et erreurs à reprendre : la dernière copie de chaque cours avec des questions fausses ou vides, puis les exercices
+  const sum = await subjectSummary(student.id, student.level_code);
+  const errors: { title: string; what: string; href: string }[] = sum.subjects.flatMap(x => x.review.map(r => ({ title: r.title, what: `${r.missed} question${r.missed > 1 ? 's' : ''} fausse${r.missed > 1 ? 's' : ''} ou sans réponse dans l’évaluation`, href: `/eleve/cours/${r.course_id}/bilan/${r.attempt_id}` })));
+  const exErr = await sql<{ course_id: number; title: string; wrong: number }[]>`
+    select distinct on (e.course_id) e.course_id, c.title, (select count(*) from jsonb_each(coalesce(e.auto_results, '{}'::jsonb)) j where j.value = 'false'::jsonb)::int as wrong
+    from exercise_submissions e join courses c on c.id = e.course_id where e.student_id = ${student.id} and e.submitted_at is not null order by e.course_id, e.submitted_at desc`;
+  for (const x of exErr.filter(x => x.wrong > 0 && !errors.some(e => e.title === x.title))) errors.push({ title: x.title, what: `${x.wrong} erreur${x.wrong > 1 ? 's' : ''} dans les exercices`, href: `/eleve/cours/${x.course_id}/exercices` });
+  const gv = await goalView(student.id, student.settings);
+  const [rv] = await sql<{ ok: number; total: number }[]>`select coalesce(sum(ok), 0)::int as ok, coalesce(sum(total), 0)::int as total from review_results
+    where student_id = ${student.id} and at >= (date_trunc('week', now() at time zone 'Europe/Paris') at time zone 'Europe/Paris')`;
+  const hmin = (x: number) => x < 60 ? `${x} min` : `${Math.floor(x / 60)} h${x % 60 ? ` ${String(x % 60).padStart(2, '0')}` : ''}`;
   return (
     <PaneScreen top={<PageTitle title="Mes résultats" sub="Tes niveaux montent avec tes progrès. C’est toujours ta meilleure note qui compte." />}>
       <Panes>
         <Pane className="flex-[999_1_560px]">
+          <section className="card flex flex-col gap-1" data-my-subjects>
+            <h2 className="text-xl font-semibold mb-1">Mes notes par matière <span className="muted font-normal text-sm">· depuis le 1er septembre</span></h2>
+            {sum.subjects.every(x => !x.notes.length) && <span className="muted text-sm">Tes notes apparaîtront ici après ta première évaluation.</span>}
+            {sum.subjects.filter(x => x.notes.length).map(x => (
+              <div key={x.subject} className="grid grid-cols-[1fr_auto] gap-x-3 py-2.5 border-t border-soft text-sm">
+                <strong>{x.subject}</strong><strong className="tabular-nums">{x.avg!.toLocaleString('fr-FR')} /20</strong>
+                <span className="muted tabular-nums">{x.notes.slice(-8).map(n => n.note.toLocaleString('fr-FR')).join(' · ')}</span><span className="muted text-xs">{x.notes.length} copie{x.notes.length > 1 ? 's' : ''}</span>
+              </div>
+            ))}
+          </section>
+          <section className="card flex flex-col gap-2" data-my-errors>
+            <h2 className="text-xl font-semibold m-0">Mes erreurs à reprendre</h2>
+            {errors.length === 0 && <span className="muted text-sm">Rien à reprendre pour l’instant.</span>}
+            {errors.map(e => (
+              <Link key={e.href} href={e.href} className="flex justify-between items-center gap-3 rounded-xl bg-warm-soft px-3 py-2.5 no-underline text-ink">
+                <span className="text-sm"><strong>{e.title}</strong><span className="block text-warm-dark">{e.what}</span></span><span className="font-semibold text-brand-dark whitespace-nowrap">Revoir ›</span>
+              </Link>
+            ))}
+          </section>
           <section className="card flex flex-col">
             <h2 className="text-xl font-semibold mb-2">Mes cours</h2>
             {courses.length === 0 && <EmptyState icon={<Sparkles size={20} />} title="Tes niveaux apparaîtront ici" text="Commence ton premier cours : chaque étape réussie fait monter ton niveau." action={<Link className="btn btn-primary" href="/eleve">Commencer</Link>} />}
@@ -64,7 +96,14 @@ export default async function Results() {
             ))}
           </section>
         </Pane>
-        <Pane className="flex-[1_1_340px]"><section className="card flex flex-col gap-2" data-my-progress>
+        <Pane className="flex-[1_1_340px]"><section className="card flex flex-col gap-2" data-my-week>
+          <h2 className="text-xl font-semibold">Cette semaine</h2>
+          <div className="flex justify-between gap-3 py-2 border-t border-soft text-sm"><span>Temps de travail</span><strong>{hmin(gv.week_min)} / {hmin(gv.week_goal)}</strong></div>
+          {gv.mode === 'jour'
+            ? <div className="flex justify-between gap-3 py-2 border-t border-soft text-sm"><span>Jours avec l’objectif atteint</span><strong>{gv.goal_days_met} sur {gv.goal_days_elapsed}</strong></div>
+            : <div className="flex justify-between gap-3 py-2 border-t border-soft text-sm"><span>Jours travaillés (10 min ou plus)</span><strong>{gv.days.filter(d => d.met).length} sur 7</strong></div>}
+          <div className="flex justify-between gap-3 py-2 border-t border-soft text-sm"><span>Révisions</span><strong>{rv.total ? `${rv.ok} justes sur ${rv.total}` : 'pas encore'}</strong></div>
+        </section><section className="card flex flex-col gap-2" data-my-progress>
           <h2 className="text-xl font-semibold">Mes progrès</h2>
           <span className="muted text-sm">Toi par rapport à toi : personne d’autre.</span>
           <div className="flex justify-between gap-3 py-2 border-t border-soft text-sm"><span>Temps de travail ces 7 derniers jours<span className="block muted">les 7 jours d’avant : {m(pr.last_w)} min</span></span>

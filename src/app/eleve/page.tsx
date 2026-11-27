@@ -3,6 +3,8 @@ import Link from 'next/link';
 import { requireStudent } from '@/lib/access';
 import { parcours, nextStep, pickNext } from '@/lib/progress';
 import { skipCourse } from './skip-actions';
+import { goalView } from '@/lib/goal';
+import { GoalCard } from '@/components/GoalCard';
 import { dueCourses, nextReviews, PER_COURSE } from '@/lib/revisions';
 import { weekStats, streak, hm } from '@/lib/stats';
 import { stepHref } from '@/lib/links';
@@ -51,22 +53,14 @@ export default async function Today({ searchParams }: { searchParams: Promise<{ 
   const [lastGraded] = await sql<{ id: string; course_id: number; title: string; final_score: string }[]>`
     select a.id, a.course_id, c.title, a.final_score from eval_attempts a join courses c on c.id = a.course_id
     where a.student_id = ${student.id} and a.status = 'graded' and a.graded_at > now() - interval '3 days' order by a.graded_at desc limit 1`;
-  const pct = Math.min(100, Math.round((w.active / goal) * 100));
-  const C = 2 * Math.PI * 17;
+  const gv = await goalView(student.id, student.settings);
 
   return (
     <PaneScreen top={
       <div className="flex flex-wrap justify-between items-center gap-x-6 gap-y-4">
         <PageTitle spark title={`Salut ${student.first_name}${step?.minutes ? `, on y va pour ${step.minutes} minutes ?` : ' !'}`}
           sub="Ton parcours est calculé pour toi : les priorités d’abord, puis les révisions." />
-        <div className="grid grid-cols-3 gap-3 w-full sm:w-auto">
-          <div className="card !p-3 flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3">
-            <svg width="42" height="42" viewBox="0 0 42 42" role="img" aria-label={`Objectif de la semaine : ${pct} %`} className="shrink-0">
-              <circle cx="21" cy="21" r="17" fill="none" style={{ stroke: 'var(--color-track)' }} strokeWidth="6" />
-              <circle cx="21" cy="21" r="17" fill="none" style={{ stroke: 'var(--color-brand)' }} strokeWidth="6" strokeDasharray={`${(C * pct) / 100} ${C}`} strokeLinecap="round" transform="rotate(-90 21 21)" />
-            </svg>
-            <div><strong className="num text-base">{hm(w.active)}</strong><div className="muted text-xs">sur {hm(goal)} cette semaine</div></div>
-          </div>
+        <div className="grid grid-cols-2 gap-3 w-full sm:w-auto">
           <div className="card !p-3 flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3 sm:min-w-[170px]"><span className="kpi-icon tone-warm"><Flame size={20} aria-hidden="true" /></span>
             <div>{s > 0 ? <><strong className="num text-base">{s} jour{s > 1 ? 's' : ''}</strong><div className="muted text-xs">de suite</div></>
               : <><strong className="text-[15px]">Lance ta série</strong><div className="muted text-xs">un peu de travail chaque jour</div></>}</div></div>
@@ -79,6 +73,7 @@ export default async function Today({ searchParams }: { searchParams: Promise<{ 
     }>
       <Panes>
         <Pane className="flex-[999_1_600px]">
+          <GoalCard g={gv} />
           {placement && (
             <section className="card p-6 flex flex-wrap items-center gap-4 border-2 border-accent">
               <span className="kpi-icon tone-brand !w-12 !h-12" aria-hidden="true"><Compass size={24} /></span>

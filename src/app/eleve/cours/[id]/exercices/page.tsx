@@ -1,4 +1,5 @@
 import { ConfirmButton } from '@/components/ConfirmButton';
+import { todayInfo } from '@/lib/goal';
 import Link from 'next/link';
 import { redirect } from 'next/navigation';
 import { sql } from '@/lib/db';
@@ -41,7 +42,7 @@ export default async function ExercisesPage({ params }: { params: Promise<{ id: 
           <div><div className="lbl">{course.subject} · {course.chapter} · environ {ex.duration_min} min · {ex.pass_threshold}/10 conseillé avant l’évaluation</div>
             <h1 className="font-[family-name:var(--font-display)] !text-lg font-bold m-0 leading-snug">{course.title} · ② Exercices</h1></div>
         </div>
-        {!sub.checked_at && <ActivityTracker kind="exercises" courseId={course.id} idleSeconds={student.settings.idle_seconds} />}
+        {!sub.checked_at && <ActivityTracker kind="exercises" courseId={course.id} idleSeconds={student.settings.idle_seconds} {...(await todayInfo(student.id, student.settings))} />}
       </div>
     }>
       <ExercisesPlayer pointsJustEarned={fresh} key={sub.id} courseId={id} items={ex.items.map(publicQuestion)} texts={ex.texts} initial={sub.answers} submitted={!!sub.submitted_at}

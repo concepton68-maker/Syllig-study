@@ -9,12 +9,14 @@ import { useEffect, useRef, useState } from 'react';
 // En plus, sans effet sur le temps : « geste dans la dernière minute » (rythme). Rien de ce qui est tapé n'est transmis.
 const COUNTDOWN = 60;
 
-export function ActivityTracker({ kind, courseId, idleSeconds = 600 }: { kind: string; courseId: number | null; idleSeconds?: number }) {
+export function ActivityTracker({ kind, courseId, idleSeconds = 600, todaySec, goalMin }: { kind: string; courseId: number | null; idleSeconds?: number; todaySec?: number; goalMin?: number | null }) {
   const session = useRef<string | null>(null);
   const lastInput = useRef(Date.now());
   const [away, setAway] = useState(false);
   const [paused, setPaused] = useState(false);
   const [left, setLeft] = useState(COUNTDOWN);
+  // temps du jour affiché en direct : valeur du serveur au chargement, puis +15 s à chaque signal compté
+  const [today, setToday] = useState(todaySec ?? 0);
 
   useEffect(() => {
     let stopped = false;
@@ -32,6 +34,7 @@ export function ActivityTracker({ kind, courseId, idleSeconds = 600 }: { kind: s
       setPaused(idle >= idleSeconds * 1000);
       if (idle >= idleSeconds * 1000 && document.visibilityState === 'visible' && kind !== 'evaluation') setAway(true);
       if (session.current) post({ action: 'beat', session: session.current, active: isActive(), gesture: gesture() });
+      if (isActive()) setToday(t => t + 15);
     }, 15_000);
     const end = () => {
       if (session.current) navigator.sendBeacon('/api/activity', JSON.stringify({ action: 'end', session: session.current, active: isActive(), gesture: gesture() }));
@@ -64,8 +67,16 @@ export function ActivityTracker({ kind, courseId, idleSeconds = 600 }: { kind: s
       .finally(() => { window.location.href = '/eleve?ferme=1'; });
   }, [away, left]);
 
+  const mins = Math.floor(today / 60);
   return (
     <>
+      {todaySec !== undefined && (
+        <span className="flex items-center gap-2 text-[13px] font-semibold whitespace-nowrap" data-today-bar aria-label={goalMin ? `Aujourd’hui ${mins} minutes sur ${goalMin}` : `Aujourd’hui ${mins} minutes`}>
+          {goalMin ? <>{mins >= goalMin ? 'Objectif du jour atteint' : `Aujourd’hui ${mins} / ${goalMin} min`}
+            <span className="w-20 h-2 rounded-full bg-track overflow-hidden"><span className="block h-2 rounded-full bg-brand" style={{ width: `${Math.min(100, (mins / goalMin) * 100)}%` }} /></span></>
+            : <>Aujourd’hui {mins} min</>}
+        </span>
+      )}
       <span className={`pill ${paused ? 'bg-soft text-ink-2' : 'bg-brand-soft text-brand-dark'}`} aria-live="polite">
         <span className={`w-2 h-2 rounded-full ${paused ? 'bg-muted-2' : 'bg-brand'}`} />
         {paused ? (kind === 'evaluation' ? 'Temps de travail en pause (le chrono de l’évaluation continue)' : 'Temps de travail en pause') : 'Temps de travail compté'}
