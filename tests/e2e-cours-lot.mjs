@@ -32,6 +32,13 @@ const [dl] = await Promise.all([ad.waitForEvent('download'), ad.click('button:ha
 const file = path.join(dir, dl.suggestedFilename()); await dl.saveAs(file);
 const lot = JSON.parse(fs.readFileSync(file, 'utf8'));
 ok(/^cours-a-relire-\d{4}-\d{2}-\d{2}-3\.json$/.test(dl.suggestedFilename()), `un seul fichier : ${dl.suggestedFilename()}`);
+// poids affiché avant l'export : à 10 % près de la taille réelle du fichier
+const real = fs.readFileSync(file, 'utf8').length;
+const pill = await ad.locator('[data-export-size]').innerText();
+const shownKo = Number(pill.match(/(\d+) Ko/)?.[1]);
+ok(pill.includes('3 cours') && Math.abs(shownKo * 1000 - real) / real < 0.1 && /environ [\d\s ]+ tokens/.test(pill), `poids annoncé avant l’export : « ${pill} » (fichier réel : ${Math.round(real / 1000)} Ko)`);
+const total = await ad.locator('[data-export-total]').innerText();
+ok(total.includes('37 cours') && (await ad.locator('[data-export-total]').getAttribute('data-export-total')) === 'trop', `« Tout exporter » : poids total annoncé, signalé trop gros (« ${total} »)`);
 ok(lot.format === 'syllig-cours-lot/1' && lot.cours.length === 3 && lot.cours.map(c => c.code).join(',') === 'TG001,TG002,TG034', 'le lot contient les 3 cours, dans l’ordre des codes');
 ok(lot.consigne.includes('SEULEMENT les cours que tu as corrigés') && lot.consigne.includes('même code'), 'la consigne pour Claude est dans le fichier (ne renvoyer que les cours corrigés)');
 const txt = JSON.stringify(lot);

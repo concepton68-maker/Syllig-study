@@ -57,7 +57,7 @@ const claudeJson = JSON.stringify({ ...sample, code: f('code'), level: f('level'
 await click('a:has-text("Importer")');
 await ad.waitForURL(/\/contenu\/importer/);
 await ad.fill('textarea[name=json]', claudeJson);
-await click('button:has-text("Vérifier et importer en brouillon")');
+await click('button:has-text("Vérifier et importer")');
 await ad.waitForURL(/importe=1/);
 const [v] = await sql`select id, status from course_versions where course_id = ${c.id}`;
 ok(v?.status === 'draft', 'le cours collé est vérifié et importé en brouillon');

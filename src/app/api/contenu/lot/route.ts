@@ -9,7 +9,7 @@ export async function GET(req: Request) {
   const lot = await exportBatch(ids.length ? ids : null);
   if (!lot.cours.length) return new Response('Aucun cours avec un contenu dans la sélection.', { status: 404 });
   const day = new Date().toISOString().slice(0, 10);
-  return new Response(JSON.stringify(lot, null, 1), { headers: {
+  return new Response(JSON.stringify(lot), { headers: {
     'Content-Type': 'application/json; charset=utf-8',
     'Content-Disposition': `attachment; filename="cours-a-relire-${day}-${lot.cours.length}.json"`,
   } });

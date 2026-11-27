@@ -23,7 +23,7 @@ try {
   await login(admin, 'admin@test.local', 'admin-test-1234');
   await admin.goto(BASE + '/contenu/importer');
   await admin.setInputFiles('input[name=files]', COURSE);
-  await admin.click('text=Vérifier et importer en brouillon');
+  await admin.click('text=Vérifier et importer');
   await admin.waitForURL(/\/contenu\/cours\/\d+/);
   ok(await admin.isVisible('text=Import réussi'), 'import de C001 en brouillon');
   await shot(admin, '01-apercu-contenu');
@@ -34,7 +34,7 @@ try {
   await admin.goto(BASE + '/contenu/importer');
   const bad = { ...doc, evaluation: { ...doc.evaluation, total_points: 25 } };
   await admin.fill('textarea[name=json]', JSON.stringify(bad));
-  await admin.click('text=Vérifier et importer en brouillon');
+  await admin.click('text=Vérifier et importer');
   await admin.waitForSelector('text=Import refusé');
   ok(await admin.isVisible('text=les évaluations sont notées sur 20'), 'fichier incohérent (barème sur 25) refusé avec un message clair');
 

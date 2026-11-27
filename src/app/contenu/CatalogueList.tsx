@@ -2,10 +2,11 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import Link from 'next/link';
 import { BulkBar, BulkCheck } from '@/components/Bulk';
+import { ExportSize } from '@/components/ExportSize';
 import { publishCoursesDraftsAction, draftWithAiAction, draftWithAiBulkAction, reviewAction, reviewBulkAction } from './cours/[id]/actions';
 import { Bot, MoreHorizontal } from 'lucide-react';
 
-export type CatRow = { id: number; code: string | null; title: string; level: string; level_name: string; subject: string; chapter: string; priority: string; published: number | null; draft: number | null; draft_id: string | null; ai_job: string | null; ai_error: string | null; ai_progress: string | null; ai_kind: string | null; review_verdict: string | null; review_count: number | null };
+export type CatRow = { id: number; code: string | null; title: string; level: string; level_name: string; subject: string; chapter: string; priority: string; published: number | null; draft: number | null; draft_id: string | null; ai_job: string | null; ai_error: string | null; ai_progress: string | null; ai_kind: string | null; review_verdict: string | null; review_count: number | null; size: number | null };
 
 // Catalogue filtrable : recherche, matière, statut
 export function CatalogueList({ rows, aiReady, reviewReady }: { rows: CatRow[]; aiReady: boolean; reviewReady: boolean }) {
@@ -26,6 +27,7 @@ export function CatalogueList({ rows, aiReady, reviewReady }: { rows: CatRow[]; 
     (!subject || r.subject === subject) &&
     (!status || (status === 'publie' ? !!r.published : status === 'brouillon' ? !!r.draft && (!r.published || r.draft > r.published) : !r.published && !r.draft)) &&
     (!q || norm(`${r.code ?? ''} ${r.title} ${r.chapter}`).includes(norm(q))));
+  const sizes = useMemo(() => Object.fromEntries(rows.map(r => [String(r.id), r.size ?? 0])), [rows]);
   return (
     <div className="flex flex-col gap-4 lg:flex-1 lg:min-h-0">
       <div className="card !py-3 flex flex-wrap gap-3 items-end shrink-0">
@@ -42,7 +44,7 @@ export function CatalogueList({ rows, aiReady, reviewReady }: { rows: CatRow[]; 
           </select></label>
         <span className="muted text-sm pb-3">{shown.length} cours</span>
       </div>
-      <BulkBar formId="bulk-catalogue" noun="cours"
+      <BulkBar formId="bulk-catalogue" noun="cours" children={<ExportSize formId="bulk-catalogue" sizes={sizes} />}
         actions={[
           ...(aiReady ? [{ label: 'Rédiger avec l’IA', action: draftWithAiBulkAction, confirm: 'Faire rédiger {n} par l’IA ? Chaque cours arrivera en brouillon dans « À relire » (quelques minutes par cours).' }] : []),
           ...(reviewReady ? [{ label: 'Relire avec l’IA', action: reviewBulkAction, confirm: 'Faire relire {n} par l’IA ? Les problèmes relevés s’afficheront sur chaque cours.' }] : []),

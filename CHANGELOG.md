@@ -559,3 +559,10 @@ Contre-audit de conformité des versions 0.43 à 0.45 : tout ce qui a été rele
   - les cours renvoyés sans changement sont ignorés ;
   - les cours corrigés arrivent en brouillon « À relire », ou sont publiés aussitôt si la case est cochée ;
   - l'ancienne version reste toujours dans l'historique.
+
+## 0.55 — 27/11/2026
+- **Poids de l'export, avant d'exporter** (Contenu › catalogue) :
+  - en cochant des cours, on voit le nombre de cours, la taille du fichier et une estimation en tokens ;
+  - une couleur indique si l'export tient dans une conversation Claude, s'il est à la limite, ou s'il est trop gros ;
+  - « Tout exporter » affiche aussi son poids total.
+- L'export est compact, sans espaces inutiles, donc moins de tokens pour Claude.
