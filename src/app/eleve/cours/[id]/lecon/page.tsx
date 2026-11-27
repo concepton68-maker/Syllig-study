@@ -30,7 +30,7 @@ export default async function LessonPage({ params, searchParams }: { params: Pro
   // page d'ouverture : la partie en cours ; une leçon déjà finie se rouvre au début pour la ré-étudier (la fiche mémo reste à un clic)
   const firstVisit = st.current === 0 && !st.checkpoint?.attempt;
   // relire une leçon finie (lien « ?debut=1 ») : depuis le début ; sinon on reprend où on en était (fiche mémo juste après la fin)
-  const startPage = done && debut ? 0 : firstVisit ? 0 : st.current + 1;
+  const startPage = done ? (debut ? 0 : pages.length - 1) : firstVisit ? 0 : st.current + 1;
 
   // « +50 points » annoncé seulement juste après les avoir gagnés (pas à chaque retour sur la page)
   const [{ fresh }] = await sql<{ fresh: boolean }[]>`select exists (select 1 from points_ledger where student_id = ${student.id} and course_id = ${course.id}
