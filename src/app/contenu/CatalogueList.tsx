@@ -6,7 +6,7 @@ import { Pipeline } from './Relecture';
 import { publishCoursesDraftsAction, draftWithAiAction, draftWithAiBulkAction, reviewAction, reviewBulkAction } from './cours/[id]/actions';
 import { Bot, MoreHorizontal } from 'lucide-react';
 
-export type CatRow = { id: number; code: string | null; title: string; level: string; level_name: string; subject: string; chapter: string; priority: string; published: number | null; draft: number | null; draft_id: string | null; ai_job: string | null; ai_error: string | null; ai_progress: string | null; ai_kind: string | null; review_verdict: string | null; review_count: number | null; size: number | null };
+export type CatRow = { id: number; code: string | null; title: string; level: string; level_name: string; subject: string; chapter: string; priority: string; published: number | null; draft: number | null; draft_id: string | null; ai_job: string | null; ai_error: string | null; ai_progress: string | null; ai_kind: string | null; review_verdict: string | null; review_count: number | null; size: number | null; live: boolean };
 
 // Catalogue filtrable : recherche, matière, statut
 export function CatalogueList({ rows, aiReady, reviewReady }: { rows: CatRow[]; aiReady: boolean; reviewReady: boolean }) {
@@ -82,6 +82,7 @@ function Row({ c, showLevel, aiReady, reviewReady }: { c: CatRow; showLevel: boo
       <span className="min-w-0 muted text-[13px] lg:truncate">{showLevel ? `${c.level_name} · ` : ''}{c.subject} · {c.chapter}</span>
       <span className="cat-status flex flex-wrap items-center gap-x-2 gap-y-0.5">
         <span className={`pill !py-0.5 text-xs ${status.cls}`}>{status.label}</span>
+        {!c.live && <span className="text-xs font-semibold muted" data-tip="Niveau, matière ou chapitre désactivé dans Programmes : invisible pour les élèves">Désactivé</span>}
         {running ? <span className="text-xs text-ink-2 inline-flex items-center gap-1"><Bot size={13} aria-hidden="true" />{kind} IA : {c.ai_progress ?? 'en cours…'}</span>
           : c.ai_job === 'echec' ? <span className="text-xs text-warm-dark font-semibold" data-tip={c.ai_error ?? undefined}>{kind} IA : échec</span>
           : c.review_verdict ? <Link href={`/contenu/cours/${c.id}`} className={`text-xs font-semibold no-underline ${c.review_verdict === 'publiable' ? 'text-brand-dark' : 'text-warm-dark'}`}>

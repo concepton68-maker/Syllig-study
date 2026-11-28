@@ -17,23 +17,30 @@ try {
     const { code, name, cycle = null, position = null } = prog.level;
     let count = 0;
     await sql.begin(async tx => {
+      // rien de ce que l'administrateur a renommé, désactivé ou supprimé ne change : chaque élément est retrouvé
+      // par son nom d'origine (source_name / source_title), son nom et son état ne sont jamais touchés (migration 024)
       await tx`insert into levels (code, name, general_sources, cycle, position) values (${code}, ${name}, ${tx.json(prog.general_sources ?? [])}, ${cycle}, ${position ?? 0})
-        on conflict (code) do update set name = excluded.name, general_sources = excluded.general_sources,
+        on conflict (code) do update set name = case when levels.renamed then levels.name else excluded.name end, general_sources = excluded.general_sources,
           cycle = coalesce(excluded.cycle, levels.cycle), position = coalesce(${position}, levels.position)`;
       let sPos = 0, cPos = 0;
       for (const s of prog.subjects) {
         if (EXCLUDED_SUBJECTS.has(s.name)) continue;
-        const [subj] = await tx`insert into subjects (level_code, name, position, official_sources) values (${code}, ${s.name}, ${++sPos}, ${tx.json(s.official_sources ?? [])})
-          on conflict (level_code, name) do update set position = excluded.position, official_sources = excluded.official_sources returning id`;
+        let [subj] = await tx`select id from subjects where level_code = ${code} and coalesce(source_name, name) = ${s.name} order by (source_name = ${s.name}) desc limit 1`;
+        if (subj) await tx`update subjects set position = ${++sPos}, official_sources = ${tx.json(s.official_sources ?? [])} where id = ${subj.id}`;
+        else [subj] = await tx`insert into subjects (level_code, name, source_name, position, official_sources) values (${code}, ${s.name}, ${s.name}, ${++sPos}, ${tx.json(s.official_sources ?? [])})
+          on conflict (level_code, name) do update set source_name = excluded.source_name returning id`;
         let chPos = 0;
         for (const ch of s.chapters) {
-          const [chap] = await tx`insert into chapters (subject_id, name, position) values (${subj.id}, ${ch.name}, ${++chPos})
-            on conflict (subject_id, name) do update set position = excluded.position returning id`;
+          let [chap] = await tx`select id from chapters where subject_id = ${subj.id} and coalesce(source_name, name) = ${ch.name} order by (source_name = ${ch.name}) desc limit 1`;
+          if (chap) await tx`update chapters set position = ${++chPos} where id = ${chap.id}`;
+          else [chap] = await tx`insert into chapters (subject_id, name, source_name, position) values (${subj.id}, ${ch.name}, ${ch.name}, ${++chPos})
+            on conflict (subject_id, name) do update set source_name = excluded.source_name returning id`;
           for (const c of ch.courses) {
-            await tx`insert into courses (chapter_id, code, title, priority, position, official_note)
-              values (${chap.id}, ${c.code ?? null}, ${c.title}, ${c.priority}, ${++cPos}, ${c.official_note ?? null})
-              on conflict (chapter_id, title) do update set priority = excluded.priority, position = excluded.position,
-                official_note = excluded.official_note, code = coalesce(courses.code, excluded.code)`;
+            const [co] = await tx`select id from courses where chapter_id = ${chap.id} and coalesce(source_title, title) = ${c.title} order by (source_title = ${c.title}) desc limit 1`;
+            if (co) await tx`update courses set priority = ${c.priority}, position = ${++cPos}, official_note = ${c.official_note ?? null}, code = coalesce(code, ${c.code ?? null}) where id = ${co.id}`;
+            else await tx`insert into courses (chapter_id, code, source_title, title, priority, position, official_note)
+              values (${chap.id}, ${c.code ?? null}, ${c.title}, ${c.title}, ${c.priority}, ${++cPos}, ${c.official_note ?? null})
+              on conflict (chapter_id, title) do update set source_title = excluded.source_title`;
             count++;
           }
         }

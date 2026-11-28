@@ -11,7 +11,7 @@ export const dynamic = 'force-dynamic';
 
 export default async function Children() {
   const { students } = await requireParent();
-  const levels = await sql<{ code: string; name: string }[]>`select code, name from levels order by position, name`;
+  const levels = await sql<{ code: string; name: string }[]>`select code, name from levels where (active and removed_at is null) or code in (select level_code from students) order by position, name`;
   const logins = await sql<{ id: string; login: string; last_login_at: Date | null }[]>`
     select s.id, u.login, u.last_login_at from students s join users u on u.id = s.user_id where s.id in ${sql(students.length ? students.map(s => s.id) : ['00000000-0000-0000-0000-000000000000'])}`;
   const byId = new Map(logins.map(l => [l.id, l]));

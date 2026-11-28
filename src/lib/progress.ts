@@ -91,7 +91,7 @@ export async function parcours(studentId: string, levelCode: string): Promise<Pa
     join subjects s on s.id = ch.subject_id
     left join course_versions v on v.course_id = c.id and v.status = 'published'
     left join course_progress p on p.course_id = c.id and p.student_id = ${studentId}
-    where s.level_code = ${levelCode}
+    where s.level_code = ${levelCode} and c.id in (select id from live_courses)   -- rien de désactivé ni de supprimé
       -- matières non suivies par l'élève (réglage du parent)
       and not (s.id::text in (select jsonb_array_elements_text(coalesce(st.settings->'excluded_subjects', '[]'::jsonb)) from students st where st.id = ${studentId}))
     order by

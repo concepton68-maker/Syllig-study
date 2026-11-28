@@ -30,7 +30,7 @@ export async function addChild(_: ChildState, form: FormData): Promise<ChildStat
   if (!p.success) return { error: p.error.issues[0].message };
   const [h] = await sql<{ household_id: string }[]>`select household_id from household_members where user_id = ${u.id} and role = 'parent' limit 1`;
   if (!h) return { error: 'Aucun foyer associé à votre compte.' };
-  const [lvl] = await sql`select 1 from levels where code = ${p.data.level}`;
+  const [lvl] = await sql`select 1 from levels where code = ${p.data.level} and active and removed_at is null`;
   if (!lvl) return { error: 'Niveau inconnu.' };
   const [exists] = await sql`select 1 from users where login = ${p.data.login}`;
   if (exists) return { error: 'Cet identifiant est déjà pris.' };

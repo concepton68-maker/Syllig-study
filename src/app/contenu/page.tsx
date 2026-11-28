@@ -15,10 +15,12 @@ export default async function Catalogue() {
       j.status as ai_job, j.error as ai_error, j.kind as ai_kind, coalesce(j.progress, case when j.status = 'en_attente' then 'en attente' end) as ai_progress,
       -- taille de la dernière version (celle qu'exporte « Exporter pour relecture »), en caractères du JSON
       (select length(v.document::text) from course_versions v where v.course_id = c.id and v.status in ('draft', 'published') order by version desc limit 1)::int as size,
+      (c.id in (select id from live_courses)) as live,
       rv.data->>'verdict' as review_verdict, jsonb_array_length(coalesce(rv.data->'problemes', '[]'::jsonb)) as review_count
     from courses c join chapters ch on ch.id = c.chapter_id join subjects s on s.id = ch.subject_id join levels l on l.code = s.level_code
     left join lateral (select status, error, kind, progress from jobs where kind in ('cours', 'relecture', 'cours_corrige') and payload->>'courseId' = c.id::text order by id desc limit 1) j on true
     left join lateral (select data from course_reviews where course_id = c.id order by created_at desc limit 1) rv on true
+    where c.removed_at is null and ch.removed_at is null and s.removed_at is null and l.removed_at is null
     order by l.position, s.position, ch.position, c.position`;
   const ov = await aiOverview();
   const aiReady = ov.ready.cours, reviewReady = ov.ready.relecture;

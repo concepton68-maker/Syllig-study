@@ -21,7 +21,7 @@ export async function levels(): Promise<Level[]> {
   return sql<Level[]>`
     select l.code, l.name, l.cycle, l.position,
       (select count(*)::int from courses c join chapters ch on ch.id = c.chapter_id join subjects s on s.id = ch.subject_id where s.level_code = l.code) as courses
-    from levels l order by l.position, l.name`;
+    from levels l where l.active and l.removed_at is null order by l.position, l.name`;
 }
 
 export async function yearsOf(studentId: string): Promise<SchoolYear[]> {
@@ -81,7 +81,7 @@ export class LevelChangeRefused extends Error {}
 export async function startNewYear(studentId: string, levelCode: string, actorId: string, opts: { schoolYear?: string; note?: string }) {
   const [current] = await sql<{ id: string; level_code: string; school_year: string; started_at: Date }[]>`
     select id, level_code, school_year, started_at from student_years where student_id = ${studentId} and status = 'en_cours'`;
-  const [lvl] = await sql`select 1 from levels where code = ${levelCode}`;
+  const [lvl] = await sql`select 1 from levels where code = ${levelCode} and active and removed_at is null`;
   if (!lvl) throw new LevelChangeRefused('Niveau inconnu.');
   const summary = current ? await yearSummary(studentId, current.level_code, current.started_at, new Date()) : null;
   const schoolYear = opts.schoolYear?.match(/^\d{4}-\d{4}$/) ? opts.schoolYear : current ? nextSchoolYear(current.school_year) : null;
@@ -100,7 +100,7 @@ export async function startNewYear(studentId: string, levelCode: string, actorId
 
 // Correction du niveau de l'année en cours (erreur de saisie) : rien n'est clôturé
 export async function correctLevel(studentId: string, levelCode: string, actorId: string) {
-  const [lvl] = await sql`select 1 from levels where code = ${levelCode}`;
+  const [lvl] = await sql`select 1 from levels where code = ${levelCode} and active and removed_at is null`;
   if (!lvl) throw new LevelChangeRefused('Niveau inconnu.');
   await sql.begin(async tx => {
     await tx`select pg_advisory_xact_lock(hashtext(${'student:' + studentId}))`;

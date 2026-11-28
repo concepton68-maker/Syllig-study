@@ -1,65 +1,144 @@
 import Link from 'next/link';
-import { GraduationCap } from 'lucide-react';
 import { sql } from '@/lib/db';
-import { PageTitle } from '@/components/Shell';
-import { Screen } from '@/components/Layout';
+import { PaneScreen, Panes, Pane } from '@/components/Layout';
+import { BulkBar, BulkCheck } from '@/components/Bulk';
+import { activateAction, deactivateAction, removeAction, addLevelAction, addSubjectAction, addChapterAction, addCourseAction, renameAction, importProgrammeAction } from './actions';
 
 export const metadata = { title: 'Programmes' };
 export const dynamic = 'force-dynamic';
 
-type Lvl = { code: string; name: string; cycle: string | null; subjects: number; courses: number; published: number; drafts: number; students: number };
-type Sub = { level_code: string; name: string; courses: number; published: number };
+type Lvl = { code: string; name: string; cycle: string | null; active: boolean; subjects: number; courses: number; published: number; students: number };
+type Sub = { id: number; name: string; active: boolean; courses: number; published: number };
+type Chap = { id: number; subject_id: number; name: string; active: boolean };
+type Co = { id: number; chapter_id: number; title: string; code: string | null; published: boolean; draft: boolean };
 
-// Vue d'ensemble des niveaux : programme officiel chargé, cours rédigés, élèves inscrits
-export default async function Programmes() {
+const BULK = (_kind: string, _niveau: string, feminine = false) => [
+  { label: 'Activer', action: activateAction },
+  { label: 'Désactiver', action: deactivateAction, confirm: `Désactiver {n} ? ${feminine ? 'Elles' : 'Ils'} ne seront plus visibles pour les élèves ; rien n’est effacé.` },
+  { label: 'Supprimer', action: removeAction, tone: 'danger' as const, confirm: `Supprimer {n} ? Ce qui a déjà servi (cours rédigés, élèves inscrits ou qui ont commencé) sera seulement désactivé : les notes et le dossier scolaire restent.` },
+];
+
+// Niveaux, matières, chapitres et cours (maquette validée le 28/11/2026) : ajouter, renommer, activer, désactiver, supprimer, importer
+export default async function Programmes({ searchParams }: { searchParams: Promise<{ niveau?: string; fait?: string; erreur?: string }> }) {
+  const sp = await searchParams;
   const levels = await sql<Lvl[]>`
-    select l.code, l.name, l.cycle,
-      (select count(*)::int from subjects s where s.level_code = l.code) as subjects,
-      (select count(*)::int from courses c join chapters ch on ch.id = c.chapter_id join subjects s on s.id = ch.subject_id where s.level_code = l.code) as courses,
+    select l.code, l.name, l.cycle, l.active,
+      (select count(*)::int from subjects s where s.level_code = l.code and s.removed_at is null) as subjects,
+      (select count(*)::int from courses c join chapters ch on ch.id = c.chapter_id join subjects s on s.id = ch.subject_id
+         where s.level_code = l.code and c.removed_at is null and ch.removed_at is null and s.removed_at is null) as courses,
       (select count(distinct c.id)::int from courses c join chapters ch on ch.id = c.chapter_id join subjects s on s.id = ch.subject_id
-         join course_versions v on v.course_id = c.id and v.status = 'published' where s.level_code = l.code) as published,
-      (select count(distinct c.id)::int from courses c join chapters ch on ch.id = c.chapter_id join subjects s on s.id = ch.subject_id
-         join course_versions v on v.course_id = c.id and v.status = 'draft' where s.level_code = l.code) as drafts,
+         join course_versions v on v.course_id = c.id and v.status = 'published' where s.level_code = l.code and c.removed_at is null and ch.removed_at is null and s.removed_at is null) as published,
       (select count(*)::int from students st where st.level_code = l.code) as students
-    from levels l order by l.position, l.name`;
-  const subs = await sql<Sub[]>`
-    select s.level_code, s.name, count(c.id)::int as courses, count(v.id)::int as published
-    from subjects s join chapters ch on ch.subject_id = s.id join courses c on c.chapter_id = ch.id
-    left join course_versions v on v.course_id = c.id and v.status = 'published'
-    group by s.id, s.level_code, s.name, s.position order by s.position`;
+    from levels l where l.removed_at is null order by l.position, l.name`;
+  const cur = levels.find(l => l.code === sp.niveau) ?? levels[0];
+  const subs = cur ? await sql<Sub[]>`
+    select s.id, s.name, s.active,
+      (select count(*)::int from courses c join chapters ch on ch.id = c.chapter_id where ch.subject_id = s.id and c.removed_at is null and ch.removed_at is null) as courses,
+      (select count(distinct c.id)::int from courses c join chapters ch on ch.id = c.chapter_id join course_versions v on v.course_id = c.id and v.status = 'published'
+         where ch.subject_id = s.id and c.removed_at is null and ch.removed_at is null) as published
+    from subjects s where s.level_code = ${cur.code} and s.removed_at is null order by s.position, s.name` : [];
+  const chaps = subs.length ? await sql<Chap[]>`select id, subject_id, name, active from chapters where subject_id in ${sql(subs.map(s => s.id))} and removed_at is null order by position, name` : [];
+  const cos = chaps.length ? await sql<Co[]>`select c.id, c.chapter_id, c.title, c.code,
+      exists (select 1 from course_versions v where v.course_id = c.id and v.status = 'published') as published,
+      exists (select 1 from course_versions v where v.course_id = c.id and v.status = 'draft') as draft
+    from courses c where c.chapter_id in ${sql(chaps.map(c => c.id))} and c.removed_at is null order by c.position` : [];
+  const niv = cur?.code ?? '';
+  const off = (a: boolean) => a ? '' : 'opacity-60';
+  const pill = (a: boolean) => <span className={`text-xs font-bold ${a ? 'text-brand-dark' : 'muted'}`}>{a ? 'Actif' : 'Désactivé'}</span>;
+  const Rename = ({ kind, id, value }: { kind: string; id: string | number; value: string }) => (
+    <details className="relative"><summary className="text-[13px] font-semibold text-brand-dark cursor-pointer list-none">Renommer</summary>
+      <form action={renameAction} className="absolute right-0 z-20 mt-1 flex gap-1.5 bg-white border border-line rounded-xl p-2 shadow-lg">
+        <input type="hidden" name="kind" value={kind} /><input type="hidden" name="id" value={id} /><input type="hidden" name="niveau" value={niv} />
+        <input className="field !min-h-9 !py-1 text-sm w-60" name="name" defaultValue={value} aria-label="Nouveau nom" required />
+        <button className="btn btn-sm btn-primary" type="submit">OK</button></form></details>);
   return (
-    <Screen top={<PageTitle kicker="Programmes" title="Niveaux et programmes"
-      sub="Chaque niveau charge son programme officiel au démarrage du site. Les cours se rédigent ensuite matière par matière depuis le catalogue." />}>
-      {levels.map(l => {
-        const pct = l.courses ? Math.round((l.published / l.courses) * 100) : 0;
-        return (
-          <section key={l.code} className="card flex flex-col gap-4">
-            <header className="flex flex-wrap items-center justify-between gap-3">
-              <div className="flex items-center gap-3">
-                <span className="kpi-icon tone-brand !w-11 !h-11"><GraduationCap size={22} aria-hidden="true" /></span>
-                <div><span className="lbl">{l.cycle ?? 'Niveau'}</span><h2 className="text-xl font-bold m-0">{l.name}</h2></div>
+    <PaneScreen top={<div className="flex flex-wrap items-center gap-x-3 gap-y-2">
+      <h1 className="m-0 text-[22px] font-bold">Programmes</h1>
+      <span className="text-[13px] muted">Ce qui est désactivé disparaît pour les élèves, sans rien effacer.</span>
+      <span className="flex-1" />
+      <details className="relative"><summary className="btn btn-sm cursor-pointer list-none">Importer un programme (fichier)</summary>
+        <form action={importProgrammeAction} className="absolute right-0 z-20 mt-1 w-[340px] flex flex-col gap-2 bg-white border border-line rounded-xl p-3 shadow-lg text-sm" data-import-programme>
+          <input type="hidden" name="niveau" value={niv} />
+          <span>Fichier au format <code>programme.json</code> (niveau, matières, chapitres, cours). Ce qui existe déjà ne change pas.</span>
+          <input type="file" name="file" accept=".json,application/json" className="text-xs" />
+          <button className="btn btn-primary btn-sm self-start" type="submit">Importer</button></form></details>
+      {sp.fait && <p role="status" className="basis-full m-0 rounded-xl bg-brand-soft text-brand-ink px-4 py-2 text-sm" data-done>{sp.fait}</p>}
+      {sp.erreur && <p role="alert" className="basis-full m-0 rounded-xl bg-warm-soft text-warm-dark px-4 py-2 text-sm">{sp.erreur}</p>}
+    </div>}>
+      <Panes>
+        <Pane className="flex-[1_1_280px] lg:max-w-[320px]">
+          <section className="card !p-0 flex flex-col" aria-label="Niveaux" data-levels>
+            <div className="flex items-center justify-between gap-2 px-3 py-2.5 border-b border-line"><strong>Niveaux</strong>
+              <details className="relative"><summary className="btn btn-sm cursor-pointer list-none">+ Ajouter</summary>
+                <form action={addLevelAction} className="absolute right-0 z-20 mt-1 flex flex-col gap-1.5 bg-white border border-line rounded-xl p-2 shadow-lg w-64">
+                  <input className="field !min-h-9 !py-1 text-sm" name="name" placeholder="Nom (ex. 5e)" aria-label="Nom du niveau" required />
+                  <input className="field !min-h-9 !py-1 text-sm" name="cycle" placeholder="Cycle (facultatif)" aria-label="Cycle" />
+                  <button className="btn btn-sm btn-primary self-start" type="submit">Ajouter le niveau</button></form></details></div>
+            {levels.map(l => (
+              <div key={l.code} className={`grid grid-cols-[22px_minmax(0,1fr)_auto] gap-2 items-center px-3 py-2.5 border-t border-soft first:border-t-0 ${l.code === niv ? 'bg-brand-soft' : ''}`} data-level={l.code}>
+                <BulkCheck formId="bulk-levels" value={l.code} label={l.name} />
+                <Link href={`/contenu/programmes?niveau=${l.code}`} className={`no-underline text-ink min-w-0 ${off(l.active)}`}><strong className="block truncate">{l.name}</strong>
+                  <span className="block text-xs muted">{l.subjects} matières · {l.published} / {l.courses} cours · {l.students} élève{l.students > 1 ? 's' : ''}</span></Link>
+                <span className="flex flex-col items-end gap-0.5">{pill(l.active)}<Rename kind="level" id={l.code} value={l.name} /></span>
               </div>
-              <div className="flex flex-wrap gap-2 text-sm">
-                <span className="pill bg-soft text-ink-2">{l.subjects} matières</span>
-                <span className="pill bg-brand-soft text-brand-dark">{l.published} / {l.courses} cours publiés</span>
-                {l.drafts > 0 && <span className="pill bg-warm-soft text-warm-dark">{l.drafts} à relire</span>}
-                <span className="pill bg-soft text-ink-2">{l.students} élève{l.students > 1 ? 's' : ''}</span>
-              </div>
-            </header>
-            <div className="h-2 bg-track rounded-full overflow-hidden"><div className="h-full bg-brand rounded-full" style={{ width: `${Math.max(pct, 1)}%` }} /></div>
-            <div className="grid gap-2 grid-cols-[repeat(auto-fill,minmax(230px,1fr))]">
-              {subs.filter(s => s.level_code === l.code).map(s => (
-                <div key={s.name} className="rounded-xl border border-line px-3 py-2.5 flex items-center justify-between gap-2 text-sm">
-                  <span className="font-semibold truncate">{s.name}</span>
-                  <span className={`num ${s.published ? 'text-brand-dark font-semibold' : 'muted'}`}>{s.published} / {s.courses}</span>
-                </div>
-              ))}
-            </div>
-            <div><Link className="btn" href="/contenu">Ouvrir le catalogue</Link></div>
+            ))}
+            <div className="p-2 border-t border-line"><BulkBar formId="bulk-levels" noun="niveau" hidden={{ kind: 'level', niveau: niv }} actions={BULK('level', niv)} /></div>
           </section>
-        );
-      })}
-      <p className="muted text-sm m-0 max-w-[760px]">Ajouter un niveau : déposer son programme (<code>content/&lt;niveau&gt;/programme.json</code>) dans le dépôt ; il est chargé automatiquement à la mise en ligne suivante, puis apparaît ici et dans le choix de niveau des élèves.</p>
-    </Screen>
+        </Pane>
+        <Pane className="flex-[999_1_560px]">
+          {cur && <section className="card !p-0 flex flex-col" aria-label={`Matières de ${cur.name}`} data-subjects>
+            <div className="flex flex-wrap items-center gap-2 px-3 py-2.5 border-b border-line">
+              <strong>{cur.name} · matières</strong><span className="flex-1" />
+              <form action={addSubjectAction} className="flex gap-1.5" data-add-subject><input type="hidden" name="niveau" value={niv} />
+                <input className="field !min-h-9 !py-1 text-sm w-48" name="name" placeholder="Nouvelle matière" aria-label="Nom de la matière" required />
+                <button className="btn btn-sm btn-primary" type="submit">Ajouter</button></form>
+            </div>
+            {subs.length === 0 && <span className="muted text-sm p-4">Aucune matière : ajoute-en une, ou importe un programme.</span>}
+            {subs.map(s => {
+              const sc = chaps.filter(c => c.subject_id === s.id);
+              return (
+                <div key={s.id} className="border-t border-soft first:border-t-0" data-subject={s.name}>
+                  <div className="grid grid-cols-[22px_minmax(0,1fr)_auto_auto_auto] gap-3 items-center px-3 py-2 text-sm">
+                    <BulkCheck formId="bulk-subjects" value={s.id} label={s.name} />
+                    <strong className={`truncate ${off(s.active)}`}>{s.name}</strong>
+                    <span className="muted text-[13px] whitespace-nowrap">{s.published} / {s.courses} cours publiés</span>
+                    {pill(s.active)}<Rename kind="subject" id={s.id} value={s.name} />
+                  </div>
+                  <details className="px-3 pb-2 group" data-subject-details>
+                    <summary className="text-[13px] font-semibold text-brand-dark cursor-pointer pl-[34px]">{sc.length} chapitre{sc.length > 1 ? 's' : ''} : voir, ajouter, retirer</summary>
+                    <div className="pl-[34px] pt-2 flex flex-col gap-2 text-[13px]">
+                      {sc.map(ch => {
+                        const cc = cos.filter(c => c.chapter_id === ch.id);
+                        return (
+                          <div key={ch.id} className="rounded-xl border border-line p-2.5 flex flex-col gap-1.5" data-chapter={ch.name}>
+                            <div className="flex flex-wrap items-center gap-2"><BulkCheck formId={`bulk-ch-${s.id}`} value={ch.id} label={ch.name} />
+                              <strong className={`flex-1 min-w-0 ${off(ch.active)}`}>{ch.name}</strong>{pill(ch.active)}<Rename kind="chapter" id={ch.id} value={ch.name} /></div>
+                            <ul className="list-none m-0 p-0 pl-7 flex flex-col gap-1">
+                              {cc.map(c => <li key={c.id} className="flex items-center gap-2" data-course={c.title}><BulkCheck formId={`bulk-co-${s.id}`} value={c.id} label={c.title} />
+                                <span className="muted w-14">{c.code ?? '—'}</span><span className="flex-1 min-w-0 truncate">{c.title}</span>
+                                <span className="muted">{c.published ? 'publié' : c.draft ? 'à relire' : 'à rédiger'}</span></li>)}
+                            </ul>
+                            <form action={addCourseAction} className="flex gap-1.5 pl-7"><input type="hidden" name="niveau" value={niv} /><input type="hidden" name="chapter" value={ch.id} />
+                              <input className="field !min-h-8 !py-0.5 text-[13px] flex-1" name="name" placeholder="Ajouter un cours (titre)" aria-label={`Nouveau cours dans ${ch.name}`} required />
+                              <button className="btn btn-sm" type="submit">Ajouter</button></form>
+                          </div>
+                        );
+                      })}
+                      <form action={addChapterAction} className="flex gap-1.5"><input type="hidden" name="niveau" value={niv} /><input type="hidden" name="subject" value={s.id} />
+                        <input className="field !min-h-8 !py-0.5 text-[13px] flex-1" name="name" placeholder="Ajouter un chapitre" aria-label={`Nouveau chapitre en ${s.name}`} required />
+                        <button className="btn btn-sm" type="submit">Ajouter</button></form>
+                      {sc.length > 0 && <BulkBar formId={`bulk-ch-${s.id}`} noun="chapitre" hidden={{ kind: 'chapter', niveau: niv }} actions={BULK('chapter', niv)} />}
+                      {cos.some(c => sc.some(ch => ch.id === c.chapter_id)) && <BulkBar formId={`bulk-co-${s.id}`} noun="cours" hidden={{ kind: 'course', niveau: niv }}
+                        actions={[{ label: 'Retirer', action: removeAction, tone: 'danger' as const, confirm: 'Retirer {n} du programme ? Ils ne seront plus proposés aux élèves ; l’historique de ceux qui les ont faits est gardé.' }]} />}
+                    </div>
+                  </details>
+                </div>
+              );
+            })}
+            {subs.length > 0 && <div className="p-2 border-t border-line"><BulkBar formId="bulk-subjects" noun="matière" feminine hidden={{ kind: 'subject', niveau: niv }} actions={BULK('subject', niv, true)} /></div>}
+          </section>}
+        </Pane>
+      </Panes>
+    </PaneScreen>
   );
 }

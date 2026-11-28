@@ -64,7 +64,7 @@ export async function dueCourses(studentId: string, levelCode: string): Promise<
     join courses c on c.id = r.course_id join chapters ch on ch.id = c.chapter_id join subjects sj on sj.id = ch.subject_id
     join course_versions v on v.course_id = c.id and v.status = 'published'
     left join course_progress p on p.student_id = r.student_id and p.course_id = r.course_id
-    where r.student_id = ${studentId} and r.due_at <= now() and sj.level_code = ${levelCode}
+    where r.student_id = ${studentId} and r.due_at <= now() and sj.level_code = ${levelCode} and c.id in (select id from live_courses)
     order by r.due_at, p.lesson_done_at, r.course_id limit ${room}`;   // à date égale : la leçon finie la plus ancienne d'abord
 }
 export async function nextReviews(studentId: string, levelCode: string, n = 3) {
@@ -73,7 +73,7 @@ export async function nextReviews(studentId: string, levelCode: string, n = 3) {
     select r.course_id, c.title, r.due_at,
       greatest(0, ((r.due_at at time zone 'Europe/Paris')::date - (now() at time zone 'Europe/Paris')::date))::int as days
     from review_schedule r join courses c on c.id = r.course_id join chapters ch on ch.id = c.chapter_id join subjects sj on sj.id = ch.subject_id
-    where r.student_id = ${studentId} and r.due_at > now() and sj.level_code = ${levelCode} order by r.due_at limit ${n}`;
+    where r.student_id = ${studentId} and r.due_at > now() and sj.level_code = ${levelCode} and c.id in (select id from live_courses) order by r.due_at limit ${n}`;
 }
 
 type SessionQ = { course_id: number; version_id: string; key: string };
@@ -140,7 +140,7 @@ export async function openTraining(studentId: string, courseId: number, levelCod
   if (await revisionDueFor(studentId, courseId, levelCode)) return null;
   const [v] = await sql<{ id: string; document: CourseDocument }[]>`select v.id, v.document from course_versions v
     join course_progress p on p.course_id = v.course_id and p.student_id = ${studentId} and p.exercises_done_at is not null
-    where v.course_id = ${courseId} and v.status = 'published'`;
+    where v.course_id = ${courseId} and v.status = 'published' and v.course_id in (select id from live_courses)`;
   if (!v) return null;
   const pool = questionPool(v.document);
   if (!pool.length) return null;

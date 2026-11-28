@@ -603,3 +603,12 @@ Contre-audit de conformité des versions 0.43 à 0.45 : tout ce qui a été rele
 
 ## 0.59 — 28/11/2026
 - **Menu de l'administrateur** : dans le thème par défaut, le nombre affiché dans la pastille (par exemple « À relire ») est de nouveau lisible quand la ligne est sélectionnée.
+
+## 0.60 — 28/11/2026
+- **Gérer les niveaux, matières et programmes** (Contenu › Programmes, maquette validée le 28/11/2026) :
+  - ajouter un niveau, une matière, un chapitre ou un cours ;
+  - renommer, activer, désactiver, supprimer, en cochant plusieurs lignes à la fois ;
+  - importer un programme complet depuis un fichier.
+- **Désactivé** : invisible pour les élèves (parcours, révisions, entraînement, niveaux proposés aux parents), mais rien n'est effacé et l'administrateur le voit encore, marqué « Désactivé » dans le catalogue.
+- **Supprimer** : ce qui n'a jamais servi disparaît. Ce qui a déjà servi (cours rédigés, élève inscrit ou qui a commencé) est seulement désactivé, pour garder les notes et le dossier scolaire. Le message dit ce qui a été fait pour chaque ligne.
+- **Rien ne revient à la mise à jour suivante** : ce qui a été renommé, désactivé ou supprimé reste ainsi quand les programmes sont rechargés (migration 024).
