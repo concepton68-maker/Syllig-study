@@ -59,7 +59,8 @@ console.log('Ce qui a été fait, jour par jour');
 const monday = await pa.locator('[data-day]').first();
 const mt = (await monday.innerText()).replace(/\s+/g, ' ');
 ok(mt.includes('01:15'), 'total du lundi : 1 h 15');
-ok(await pa.locator('[data-day]').count() === 7, 'les 7 jours sont listés');
+const emptyN = (await pa.locator('[data-empty-days]').evaluateAll(xs => xs.map(x => Number(x.getAttribute('data-empty-days'))))).reduce((a, b) => a + b, 0);
+ok(await pa.locator('[data-day]').count() + emptyN === 7, `les 7 jours sont couverts (${await pa.locator('[data-day]').count()} avec activité, ${emptyN} sans, regroupés)`);
 ok(/09:00 L .*leçon terminée · 00:40/.test(mt), `leçon de français à 09:00, terminée, 40 min (« ${mt.slice(0, 200)} »)`);
 ok(/exercices, pas encore remis · 00:20/.test(mt), 'exercices de maths commencés, non remis : 20 min');
 ok(mt.includes(`évaluation rendue en 00:02 sur 00:30 · ${qs.length - 1} sans réponse · 00:15`) && mt.includes('3/20'), 'évaluation : rendue en 2 min sur 30, questions sans réponse, 3/20');
@@ -90,10 +91,12 @@ ok(!/hausse|baisse|motivation|implication|concentration/i.test(await pa.locator(
 console.log('Accueil (mêmes chiffres que l’Activité)');
 await pa.goto(BASE + '/parent');
 const hw = await txt('[data-home-week]');
-ok(hw.includes('01:15') && hw.includes('1 / 7 jours') && (await pa.locator('[data-home-week] svg').getAttribute('aria-label')).includes('25 %'), `cette semaine : 1 h 15, 1 / 7 jours, 25 % (« ${hw} »)`);
+ok(hw.includes('Cette semaine 01:15 sur 05:00') && hw.includes('1 / 7 jours') && await pa.locator('[data-home-week] [data-tip]').count() === 7, `cette semaine : 01:15 sur 05:00, 1 / 7 jours, 7 cases (« ${hw} »)`);
 const hn = await txt('[data-home-notes]');
 ok(hn.includes('3/20') && await pa.locator('[data-home-notes] a[href^="/parent/revoir/copie/"]').count() === 1, 'dernières notes : 3/20 avec « Revoir »');
-ok(await pa.locator('[data-home-acquired] [data-acq]').count() >= 1, 'cours acquis par matière');
+ok((await txt('[data-home-next="revoir"]')).includes('1') && (await txt('[data-home-next="cours"]')).length > 0, 'la suite : prochain cours et 1 cours à revoir (la copie à 3/20 a des questions sans réponse)');
+await pa.goto(BASE + '/parent/journal');
+ok(await pa.locator('[data-empty-days]').count() >= 1 && !(await pa.locator('main').innerText()).includes('Rien ce jour-là'), 'Activité : les jours vides sont regroupés');
 
 console.log('Navigation');
 await pa.goto(BASE + '/parent/journal');

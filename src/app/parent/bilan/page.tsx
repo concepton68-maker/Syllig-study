@@ -69,6 +69,7 @@ export default async function Bilan({ searchParams }: { searchParams: Promise<{ 
       {sp.test === 'propose' && <p role="status" className="m-0 rounded-xl bg-brand-soft text-brand-ink px-4 py-3 text-sm"><strong>Test proposé à {name}.</strong> Il apparaît dans son espace, rubrique « Aujourd’hui ». Les résultats s’afficheront ici.</p>}
 
       <SubjectCards s={sum} />
+      <div className="grid gap-4 xl:grid-cols-2 items-start">
       <RevisionsCard r={revs} />
 
       <section className="card flex flex-col gap-2" aria-labelledby="temps-semaine" data-weekly-time>
@@ -78,6 +79,7 @@ export default async function Bilan({ searchParams }: { searchParams: Promise<{ 
           tip: w.started ? [`Semaine du ${w.label}${w.current ? ' (en cours)' : ''}`, `${duree(w.minutes)} de travail`, `${w.days} jour${w.days > 1 ? 's' : ''} avec 10 min ou plus`] : [`Semaine du ${w.label}`, 'avant la première activité'] }))} />
         {traj.timeNote && <span className="muted text-xs" data-rule-note>{traj.timeNote}</span>}
       </section>
+      </div>
 
       <section className="card flex flex-col !py-3" aria-labelledby="plus" data-more>
         <OpenFromHash />

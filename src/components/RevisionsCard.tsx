@@ -1,5 +1,6 @@
 // Bilan : chaque révision espacée, par cours, et la prochaine date (maquette validée le 26/11/2026). Faits seulement.
 type Row = { course_id: number; title: string; subject: string; due_at: Date; results: { at: Date; ok: number; total: number; gap_days: number; passed: boolean }[] };
+const LEGEND = 'J+n : révision faite n jours après la précédente (ou après la fin de la leçon, même ancienne : les leçons finies avant la mise en place des révisions sont rattrapées à 2 par jour). 4/5 : questions justes, corrigées par la plateforme. Orange : moins de 80 % de bonnes réponses.';
 const fr = (d: Date) => d.toLocaleDateString('fr-FR', { timeZone: 'Europe/Paris', day: 'numeric', month: 'short' });
 const daysTo = (d: Date) => {
   const p = (x: Date) => new Date(x.toLocaleDateString('sv-SE', { timeZone: 'Europe/Paris' })).getTime();
@@ -10,10 +11,10 @@ export function RevisionsCard({ r }: { r: { courses: Row[]; ok: number; total: n
   return (
     <section className="card flex flex-col gap-3" aria-labelledby="revisions" data-revisions>
       <div className="flex flex-wrap justify-between items-baseline gap-2">
-        <h2 id="revisions" className="text-lg font-semibold m-0">Révisions <span className="muted font-normal text-sm">· depuis le 1er septembre</span></h2>
+        <h2 id="revisions" className="text-lg font-semibold m-0">Révisions <span className="muted font-normal text-sm">· depuis le 1er septembre</span> <span className="muted text-sm font-normal" tabIndex={0} data-tip={LEGEND} aria-label={`Définitions : ${LEGEND}`}>ⓘ</span></h2>
         {r.count > 0 && <span className="text-sm" data-revisions-total><strong>{r.ok} questions justes sur {r.total}</strong> <span className="muted">· {r.count} révision{r.count > 1 ? 's' : ''} faite{r.count > 1 ? 's' : ''}</span></span>}
       </div>
-      {r.courses.length === 0 ? <p className="m-0 text-sm muted">La première révision est programmée le lendemain d’une leçon finie.</p> : (
+      {r.courses.length === 0 ? <p className="m-0 text-sm muted">La première révision est programmée le lendemain des exercices remis.</p> : (
         <div className="overflow-x-auto">
           <div className="min-w-[620px] flex flex-col">
             <div className="grid grid-cols-[minmax(200px,1.4fr)_2fr_140px] gap-3 py-2 text-xs font-bold tracking-wide muted border-b border-line"><span>COURS</span><span>CHAQUE RÉVISION</span><span className="text-right">PROCHAINE</span></div>
@@ -31,7 +32,6 @@ export function RevisionsCard({ r }: { r: { courses: Row[]; ok: number; total: n
           </div>
         </div>
       )}
-      <span className="text-xs muted">J+n : révision faite n jours après la précédente (ou après la fin de la leçon, même ancienne : les leçons finies avant la mise en place des révisions sont rattrapées à 2 par jour). 4/5 : questions justes, corrigées par la plateforme. Orange : moins de 80 % de bonnes réponses.</span>
       <details className="border-t border-line pt-3" data-revisions-sources>
         <summary className="cursor-pointer font-semibold text-[15px]">Comment c’est calculé, et sur quelles études</summary>
         <div className="flex flex-col gap-3 pt-2.5 text-sm leading-relaxed">

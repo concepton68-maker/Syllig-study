@@ -24,6 +24,18 @@ const FILTERS: { id: string; label: string; kind?: Kind }[] = [
 ];
 const dayName = (d: string) => { const s = new Date(`${d}T12:00:00Z`).toLocaleDateString('fr-FR', { timeZone: 'UTC', weekday: 'long', day: 'numeric' }); return s.charAt(0).toUpperCase() + s.slice(1); };
 
+type TDay = { day: string; minutes: number; items: { kind: string }[] };
+/** Regroupe les jours sans aucune activité qui se suivent (un jour passé ou à venir sans rien). */
+function groupEmpty<T extends TDay>(days: T[]): ({ day: T } | { empty: T[] })[] {
+  const out: ({ day: T } | { empty: T[] })[] = [];
+  for (const d of days) {
+    const last = out[out.length - 1];
+    if (d.items.length === 0 && d.minutes === 0) { if (last && 'empty' in last) last.empty.push(d); else out.push({ empty: [d] }); }
+    else out.push({ day: d });
+  }
+  return out;
+}
+
 export default async function Activite({ searchParams }: { searchParams: Promise<{ eleve?: string; semaine?: string; type?: string }> }) {
   const { eleve, semaine, type } = await searchParams;
   const { students, student } = await requireParent(eleve);
@@ -92,7 +104,14 @@ export default async function Activite({ searchParams }: { searchParams: Promise
               className={`btn rounded-full min-h-10 px-3.5 text-sm ${f.id === filter.id ? 'btn-primary' : ''}`}>{f.label}</Link>)}
           </nav>
         </div>
-        {timeline.map(d => {
+        {groupEmpty(timeline).map(g => {
+          if ('empty' in g) {   // jours sans activité qui se suivent : une seule ligne
+            if (filter.kind) return null;
+            const names = g.empty.map(d => dayName(d.day));
+            return <div key={g.empty[0].day} className="border-t border-line py-2.5 flex justify-between gap-3 text-sm muted" data-empty-days={g.empty.length}>
+              <span>{names.length === 1 ? names[0] : names.length === 2 ? `${names[0]}, ${names[1].toLowerCase()}` : `${names[0]} → ${names[names.length - 1].toLowerCase()}`}</span><span>{names.length > 1 ? 'rien ces jours-là' : 'rien ce jour-là'}</span></div>;
+          }
+          const d = g.day;
           const items = d.items.filter(i => !filter.kind || i.kind === filter.kind);
           if (filter.kind && items.length === 0) return null;
           return (

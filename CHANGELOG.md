@@ -654,3 +654,16 @@ Contre-audit de conformité des versions 0.43 à 0.45 : tout ce qui a été rele
 
 ## 0.68 — 28/11/2026
 - **Catalogue : un niveau tout juste ajouté apparaît** dans le choix du niveau, même s'il n'a encore aucun cours. Pour ce niveau, le catalogue indique la marche à suivre : ajouter ses matières, ses chapitres et ses cours dans Programmes, ou importer son programme. Ensuite, chaque cours apparaît ici, prêt à être rédigé.
+
+## 0.69 — 28/11/2026
+- **Espace parent plus clair** (maquette validée le 28/11/2026).
+- **Accueil** :
+  - « Aujourd'hui » : temps du jour face à l'objectif et la semaine en 7 cases, comme ce que voit l'élève ;
+  - « À faire pour vous » : chaque copie à valider et chaque demande d'évaluation, avec son bouton ;
+  - les dernières notes ;
+  - « La suite » : prochain cours, révisions prévues aujourd'hui, cours à revoir, chacun avec sa définition (ⓘ).
+  - La liste des cours acquis par matière reste dans le Bilan.
+- **Choix de l'enfant** : un point vert sur celui qui travaille en ce moment.
+- **Bilan** : les matières avec des notes d'abord, les autres repliées sur une ligne. Les définitions passent derrière « ⓘ ». Révisions et temps par semaine sont côte à côte.
+- **Activité** : les jours sans activité qui se suivent tiennent sur une seule ligne.
+- Aucun nouvel indicateur : tout ce qui s'affiche existait déjà.

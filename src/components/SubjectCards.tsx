@@ -24,13 +24,20 @@ function Notes({ notes }: { notes: SubjectSummary['notes'] }) {
   );
 }
 
+const DEF = 'Notes : chaque copie notée depuis le 1er septembre, tentatives comprises. Pointillés : 10/20. Acquis : au moins une évaluation à 14/20 ou plus, depuis l’inscription, sur les cours disponibles. Graphique : les 12 dernières notes. À revoir : cours dont la dernière copie notée a une question à 0 point ou sans réponse.';
+
 export function SubjectCards({ s }: { s: { subjects: SubjectSummary[] } }) {
+  // d'abord les matières qui ont des notes ; les autres sont repliées sur une ligne
+  const withNotes = s.subjects.filter(m => m.notes.length > 0 || m.review.length > 0);
+  const others = s.subjects.filter(m => !withNotes.includes(m));
   return (
     <section aria-labelledby="matieres" className="flex flex-col gap-3" data-subject-cards>
-      <h2 id="matieres" className="text-lg font-semibold m-0">Matière par matière <span className="muted font-normal text-sm">· notes depuis le 1er septembre</span></h2>
+      <h2 id="matieres" className="text-lg font-semibold m-0 flex items-baseline gap-2">Matière par matière <span className="muted font-normal text-sm">· notes depuis le 1er septembre</span>
+        <span className="muted text-sm font-normal" tabIndex={0} data-tip={DEF} aria-label={`Définitions : ${DEF}`} data-defs>ⓘ</span></h2>
       {s.subjects.length === 0 ? <p className="card m-0 text-sm muted">Pas encore de cours commencé.</p> : (
         <div className="grid gap-4 [grid-template-columns:repeat(auto-fill,minmax(280px,1fr))]">
-          {s.subjects.map(m => (
+          {withNotes.length === 0 && <p className="card m-0 text-sm muted">Pas encore de copie notée.</p>}
+          {withNotes.map(m => (
             <article key={m.subject} className="card flex flex-col gap-3" data-subject={m.subject}>
               <div className="flex justify-between items-baseline gap-2"><strong className="text-[17px]">{m.subject}</strong>
                 <span className="text-[13px] muted">{m.notes.length ? `${m.notes.length} copie${m.notes.length > 1 ? 's' : ''} notée${m.notes.length > 1 ? 's' : ''}` : 'aucune copie notée'}</span></div>
@@ -45,7 +52,14 @@ export function SubjectCards({ s }: { s: { subjects: SubjectSummary[] } }) {
           ))}
         </div>
       )}
-      <span className="text-xs muted">Notes : chaque copie notée depuis le 1er septembre, tentatives comprises. Pointillés : 10/20. Acquis : au moins une évaluation à 14/20 ou plus, depuis l’inscription, sur les cours disponibles. Graphique : les 12 dernières notes. À revoir : cours dont la dernière copie notée a une question à 0 point ou sans réponse.</span>
+      {others.length > 0 && (
+        <details className="card !py-3" data-subjects-without-notes>
+          <summary className="cursor-pointer text-sm"><strong>Sans note pour l’instant</strong> <span className="muted">· {others.map(m => m.subject).join(', ')}</span></summary>
+          <ul className="list-none m-0 mt-2 p-0 grid gap-x-6 gap-y-1 [grid-template-columns:repeat(auto-fill,minmax(240px,1fr))] text-sm">
+            {others.map(m => <li key={m.subject} className="flex justify-between gap-2" data-subject={m.subject}><span>{m.subject}</span><span className="muted">cours acquis {m.acquired} / {m.published}</span></li>)}
+          </ul>
+        </details>
+      )}
     </section>
   );
 }
