@@ -9,8 +9,8 @@ import { Bot, MoreHorizontal } from 'lucide-react';
 export type CatRow = { id: number; code: string | null; title: string; level: string; level_name: string; subject: string; chapter: string; priority: string; published: number | null; draft: number | null; draft_id: string | null; ai_job: string | null; ai_error: string | null; ai_progress: string | null; ai_kind: string | null; review_verdict: string | null; review_count: number | null; size: number | null; live: boolean };
 
 // Catalogue filtrable : recherche, matière, statut
-export function CatalogueList({ rows, aiReady, reviewReady }: { rows: CatRow[]; aiReady: boolean; reviewReady: boolean }) {
-  const levelList = useMemo(() => [...new Map(rows.map(r => [r.level, r.level_name])).entries()], [rows]);
+export function CatalogueList({ rows, levels, aiReady, reviewReady }: { rows: CatRow[]; levels: { code: string; name: string; subjects: number }[]; aiReady: boolean; reviewReady: boolean }) {
+  const levelList = useMemo(() => levels.map(l => [l.code, l.name] as [string, string]), [levels]);
   // niveau ouvert par défaut : celui où il y a le plus de cours publiés (là où l'on travaille)
   const [level, setLevel] = useState(() => {
     const n = new Map<string, number>();
@@ -52,7 +52,14 @@ export function CatalogueList({ rows, aiReady, reviewReady }: { rows: CatRow[]; 
           <span /><span>Code</span><span>Cours</span><span>Matière · chapitre</span><span>Statut</span><span className="text-right">{shown.length} cours</span>
         </div>
         <div className="flex flex-col lg:flex-1 lg:min-h-0 lg:overflow-y-auto pane">
-          {shown.length === 0 && <span className="muted text-sm p-4">Aucun cours ne correspond.</span>}
+          {shown.length === 0 && (level && !q && !rows.some(r => r.level === level)
+            ? <div className="p-5 flex flex-col gap-2 text-sm max-w-[640px]" data-empty-level>
+                <strong className="text-base">Aucun cours en {levels.find(l => l.code === level)?.name} pour l’instant</strong>
+                <span>Les cours se créent à partir du programme du niveau : ses matières, ses chapitres et la liste de ses cours. {(levels.find(l => l.code === level)?.subjects ?? 0) > 0 ? 'Les matières sont là : ajoute maintenant les chapitres et les cours.' : 'Commence par ajouter ses matières.'} Ensuite, chaque cours apparaît ici, prêt à être rédigé avec l’IA ou avec la consigne pour Claude.</span>
+                <span className="flex flex-wrap gap-2 mt-1"><Link className="btn btn-primary btn-sm" href={`/contenu/programmes?niveau=${level}`}>Compléter le programme</Link>
+                  <Link className="btn btn-sm" href={`/contenu/programmes?niveau=${level}`}>Importer un programme (fichier)</Link></span>
+              </div>
+            : <span className="muted text-sm p-4">Aucun cours ne correspond.</span>)}
           {shown.map(c => <Row key={c.id} c={c} showLevel={!level || !!q} aiReady={aiReady} reviewReady={reviewReady} />)}
         </div>
       </section>

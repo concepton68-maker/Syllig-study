@@ -22,12 +22,16 @@ export default async function Catalogue() {
     left join lateral (select data from course_reviews where course_id = c.id order by created_at desc limit 1) rv on true
     where c.removed_at is null and ch.removed_at is null and s.removed_at is null and l.removed_at is null
     order by l.position, s.position, ch.position, c.position`;
+  // tous les niveaux (même sans cours encore) : un niveau tout juste ajouté doit apparaître dans le catalogue
+  const levels = await sql<{ code: string; name: string; subjects: number }[]>`select l.code, l.name,
+    (select count(*)::int from subjects s where s.level_code = l.code and s.removed_at is null) as subjects
+    from levels l where l.removed_at is null order by l.position, l.name`;
   const ov = await aiOverview();
   const aiReady = ov.ready.cours, reviewReady = ov.ready.relecture;
   return (
     <div className="flex flex-col lg:flex-1 lg:min-h-0">
       <AutoRefresh active={rows.some(r => r.ai_job === 'en_attente' || r.ai_job === 'en_cours')} />
-      <CatalogueList rows={rows.map(r => ({ ...r }))} aiReady={aiReady} reviewReady={reviewReady} />
+      <CatalogueList levels={levels} rows={rows.map(r => ({ ...r }))} aiReady={aiReady} reviewReady={reviewReady} />
     </div>
   );
 }

@@ -116,6 +116,10 @@ await ad.check('form#add-levels input[data-pick="premiere-generale"]'); await ad
 await ad.click('form#add-levels [data-pick-submit]:has-text("Ajouter (2)")');
 await ad.waitForSelector('[data-level="premiere-generale"]'); await ad.waitForSelector('[data-level="cm2"]');
 ok(true, 'deux niveaux ajoutés en une fois (Première générale et CM2)');
+await ad.goto(BASE + '/contenu');
+await ad.selectOption('select[aria-label="Niveau"]', 'premiere-generale');
+ok(await ad.locator('[data-empty-level]').count() === 1 && (await ad.locator('[data-empty-level] a').first().getAttribute('href')).includes('niveau=premiere-generale'), 'catalogue : le niveau tout juste ajouté apparaît, avec la marche à suivre pour créer ses cours');
+await ad.goto(BASE + '/contenu/programmes?niveau=premiere-generale');
 const pa = await login('parent@test.local', 'parent-test-1234');
 await pa.goto(BASE + '/parent/enfants');
 ok((await pa.locator('select[name=level] option').allInnerTexts()).includes('Première générale'), 'le nouveau niveau est proposé aux parents');
