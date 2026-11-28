@@ -1,5 +1,6 @@
 import 'server-only';
 import { sql } from './db';
+import { levelDef, LEVEL_CATALOG } from './levels-catalog';
 
 // Niveaux, matières, chapitres et cours gérés par l'administrateur (maquette validée le 28/11/2026).
 // Désactiver : invisible pour les élèves (vue live_courses), rien n'est effacé. Supprimer : retiré partout ; si l'élément a déjà
@@ -57,16 +58,17 @@ export async function remove(k: Kind, ids: string[]) {
   return out;
 }
 
-const slug = (s: string) => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 40);
+export const slug = (s: string) => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 40);
 
-export async function addLevel(name: string, cycle: string | null) {
-  const code = slug(name);
-  if (!code) throw new Error('Nom de niveau invalide.');
+/** Ajoute un niveau choisi dans la liste des niveaux scolaires (LEVEL_CATALOG) ; un niveau supprimé est rétabli. */
+export async function addLevel(code: string) {
+  const def = levelDef(code);
+  if (!def) throw new Error('Choisis un niveau dans la liste.');
   const [ex] = await sql<{ removed: boolean }[]>`select removed_at is not null as removed from levels where code = ${code}`;
-  if (ex && !ex.removed) throw new Error('Ce niveau existe déjà.');
-  if (ex) { await sql`update levels set removed_at = null, active = true, name = ${name}, renamed = true where code = ${code}`; return code; }
-  await sql`insert into levels (code, name, cycle, position, renamed) values (${code}, ${name}, ${cycle}, (select coalesce(max(position), 0) + 1 from levels), true)`;
-  return code;
+  if (ex && !ex.removed) throw new Error(`Le niveau « ${def.name} » existe déjà.`);
+  if (ex) { await sql`update levels set removed_at = null, active = true where code = ${code}`; return def; }
+  await sql`insert into levels (code, name, cycle, position) values (${def.code}, ${def.name}, ${def.cycle}, ${def.position})`;
+  return def;
 }
 
 export async function addSubject(level: string, name: string) {
@@ -107,11 +109,13 @@ export async function importProgramme(raw: string) {
   let p: Prog;
   try { p = JSON.parse(raw); } catch (e) { throw new Error(`Le fichier n’est pas un JSON valide : ${(e as Error).message}`); }
   if (!p?.level?.code || !p.level.name || !Array.isArray(p.subjects)) throw new Error('Format attendu : { level: { code, name }, subjects: [{ name, chapters: [{ name, courses: [{ title }] }] }] }');
-  const code = slug(p.level.code);
+  const def = levelDef(slug(p.level.code));
+  if (!def) throw new Error(`Le niveau du fichier (« ${p.level.code} ») n’est pas dans la liste des niveaux scolaires. Codes possibles : ${LEVEL_CATALOG.map(l => l.code).join(', ')}.`);
+  const code = def.code;
   let added = { subjects: 0, chapters: 0, courses: 0 };
   await sql.begin(async tx => {
-    await tx`insert into levels (code, name, cycle, general_sources, position) values (${code}, ${p.level.name}, ${p.level.cycle ?? null}, ${tx.json((p.general_sources ?? []) as never)}, (select coalesce(max(position), 0) + 1 from levels))
-      on conflict (code) do nothing`;
+    await tx`insert into levels (code, name, cycle, general_sources, position) values (${code}, ${def.name}, ${def.cycle}, ${tx.json((p.general_sources ?? []) as never)}, ${def.position})
+      on conflict (code) do update set removed_at = null where levels.removed_at is not null`;
     for (const s of p.subjects) {
       if (!s?.name) continue;
       let [subj] = await tx<{ id: number }[]>`select id from subjects where level_code = ${code} and coalesce(source_name, name) = ${s.name} limit 1`;
@@ -134,5 +138,5 @@ export async function importProgramme(raw: string) {
       }
     }
   });
-  return { code, name: p.level.name, ...added };
+  return { code, name: def.name, ...added };
 }

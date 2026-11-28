@@ -36,7 +36,7 @@ async function guarded(f: FormData, fn: () => Promise<string>) {
   back(f, msg);
 }
 export async function addLevelAction(f: FormData) {
-  await guarded(f, async () => { const n = name(f); if (!n) throw new Error('Donne un nom au niveau.'); const code = await addLevel(n, name(f, 'cycle') || null); f.set('niveau', code); return `Niveau « ${n} » ajouté.`; });
+  await guarded(f, async () => { const d = await addLevel(String(f.get('code') ?? '')); f.set('niveau', d.code); return `Niveau « ${d.name} » ajouté.`; });
 }
 export async function addSubjectAction(f: FormData) {
   await guarded(f, async () => { const n = name(f); if (!n) throw new Error('Donne un nom à la matière.'); await addSubject(String(f.get('niveau')), n); return `Matière « ${n} » ajoutée.`; });

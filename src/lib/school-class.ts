@@ -2,7 +2,8 @@
 // la classe ne dépend pas du mois de naissance). Le parent garde la main : redoublement, saut de classe…
 export const CLASSES = ['CP', 'CE1', 'CE2', 'CM1', 'CM2', '6e', '5e', '4e', '3e', 'Seconde', 'Première', 'Terminale'] as const;
 // classes de la plateforme, dans le même ordre (null = pas encore de programme)
-export const LEVEL_OF_CLASS: Record<string, string> = { '6e': 'sixieme', '5e': 'cinquieme', '4e': 'quatrieme', '3e': 'troisieme-generale', Seconde: 'seconde-generale' };
+export const LEVEL_OF_CLASS: Record<string, string> = { CP: 'cp', CE1: 'ce1', CE2: 'ce2', CM1: 'cm1', CM2: 'cm2', '6e': 'sixieme', '5e': 'cinquieme', '4e': 'quatrieme', '3e': 'troisieme-generale',
+  Seconde: 'seconde-generale', 'Première': 'premiere-generale', Terminale: 'terminale-generale' };   // codes de src/lib/levels-catalog.ts
 
 /** Année de la rentrée en cours (septembre). */
 export function schoolYearStart(today = new Date()) { return today.getMonth() >= 8 ? today.getFullYear() : today.getFullYear() - 1; }

@@ -105,17 +105,19 @@ await bulk('bulk-subjects', [ma.id], 'Activer');
 
 console.log('5. Niveaux : ajouter, désactiver, supprimer');
 await ad.locator('[data-levels] summary:has-text("+ Ajouter")').click();
-await ad.fill('input[aria-label="Nom du niveau"]', 'Niveau essai'); await ad.click('button:has-text("Ajouter le niveau")');
-await ad.waitForSelector('[data-level="niveau-essai"]');
+const opts = await ad.locator('select[aria-label="Niveau à ajouter"] option').allInnerTexts();
+ok(opts.includes('Première générale') && opts.includes('CM2') && !opts.includes('3e générale'), 'liste des niveaux scolaires, sans ceux déjà présents');
+await ad.selectOption('select[aria-label="Niveau à ajouter"]', 'premiere-generale'); await ad.click('button:has-text("Ajouter le niveau")');
+await ad.waitForSelector('[data-level="premiere-generale"]');
 const pa = await login('parent@test.local', 'parent-test-1234');
 await pa.goto(BASE + '/parent/enfants');
-ok((await pa.locator('select[name=level] option').allInnerTexts()).includes('Niveau essai'), 'le nouveau niveau est proposé aux parents');
-await ad.goto(BASE + '/contenu/programmes?niveau=niveau-essai');
-await bulk('bulk-levels', ['niveau-essai'], 'Désactiver');
+ok((await pa.locator('select[name=level] option').allInnerTexts()).includes('Première générale'), 'le nouveau niveau est proposé aux parents');
+await ad.goto(BASE + '/contenu/programmes?niveau=premiere-generale');
+await bulk('bulk-levels', ['premiere-generale'], 'Désactiver');
 await pa.goto(BASE + '/parent/enfants');
-ok(!(await pa.locator('select[name=level] option').allInnerTexts()).includes('Niveau essai'), 'désactivé : plus proposé aux parents');
-await bulk('bulk-levels', ['niveau-essai'], 'Supprimer');
-ok((await done()).includes('Niveau essai : supprimé') && await ad.locator('[data-level="niveau-essai"]').count() === 0, 'niveau jamais utilisé : supprimé');
+ok(!(await pa.locator('select[name=level] option').allInnerTexts()).includes('Première générale'), 'désactivé : plus proposé aux parents');
+await bulk('bulk-levels', ['premiere-generale'], 'Supprimer');
+ok((await done()).includes('Première générale : supprimé') && await ad.locator('[data-level="premiere-generale"]').count() === 0, 'niveau jamais utilisé : supprimé');
 await ad.goto(P);
 await bulk('bulk-levels', ['troisieme-generale'], 'Supprimer');
 ok((await done()).includes('désactivé') && (await done()).includes('inscrit'), `niveau avec un élève : seulement désactivé (« ${await done()} »)`);
@@ -123,7 +125,7 @@ await bulk('bulk-levels', ['troisieme-generale'], 'Activer');
 
 console.log('6. Importer un programme');
 const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'prog-'));
-fs.writeFileSync(path.join(dir, 'programme.json'), JSON.stringify({ level: { code: 'niveau-import', name: 'Niveau importé', cycle: 'Cycle 3' }, subjects: [
+fs.writeFileSync(path.join(dir, 'programme.json'), JSON.stringify({ level: { code: 'terminale-generale', name: 'Terminale générale' }, subjects: [
   { name: 'Mathématiques', chapters: [{ name: 'Nombres entiers', courses: [{ title: 'Écrire les grands nombres', priority: 'prioritaire' }, { title: 'Comparer des nombres' }] }] },
   { name: 'Français', chapters: [{ name: 'Lire', courses: [{ title: 'Le conte' }] }] }] }));
 await ad.goto(P);
@@ -131,11 +133,16 @@ await ad.locator('summary:has-text("Importer un programme")').click();
 await ad.setInputFiles('[data-import-programme] input[type=file]', path.join(dir, 'programme.json'));
 await ad.click('[data-import-programme] button');
 await ad.waitForSelector('[data-done]:has-text("importé")');
-ok((await done()).includes('2 matière(s), 2 chapitre(s) et 3 cours ajoutés') && await ad.locator('[data-level="niveau-import"]').count() === 1, `programme importé (« ${await done()} »)`);
-await ad.goto(P.replace('troisieme-generale', 'niveau-import')); await ad.locator('summary:has-text("Importer un programme")').click();
+ok((await done()).includes('2 matière(s), 2 chapitre(s) et 3 cours ajoutés') && await ad.locator('[data-level="terminale-generale"]').count() === 1, `programme importé (« ${await done()} »)`);
+await ad.goto(P.replace('troisieme-generale', 'terminale-generale')); await ad.locator('summary:has-text("Importer un programme")').click();
 await ad.setInputFiles('[data-import-programme] input[type=file]', path.join(dir, 'programme.json'));
 await ad.click('[data-import-programme] button'); await ad.waitForSelector('[data-done]:has-text("0 matière")');
 ok((await done()).includes('0 matière(s), 0 chapitre(s) et 0 cours ajoutés'), 'réimporter le même fichier ne crée aucun doublon');
+fs.writeFileSync(path.join(dir, 'inconnu.json'), JSON.stringify({ level: { code: 'niveau-invente', name: 'Inventé' }, subjects: [] }));
+await ad.locator('summary:has-text("Importer un programme")').click();
+await ad.setInputFiles('[data-import-programme] input[type=file]', path.join(dir, 'inconnu.json'));
+await ad.click('[data-import-programme] button'); await ad.waitForSelector('[role=alert]:has-text("pas dans la liste")');
+ok((await sql`select 1 from levels where code = 'niveau-invente'`).length === 0, 'un niveau hors de la liste est refusé, rien n’est créé');
 
 for (const p of [ad, el, pa]) ok(p.errs.length === 0, `aucune erreur JS (${p.errs.join(' | ')})`);
 await b.close(); await sql.end();

@@ -612,3 +612,8 @@ Contre-audit de conformité des versions 0.43 à 0.45 : tout ce qui a été rele
 - **Désactivé** : invisible pour les élèves (parcours, révisions, entraînement, niveaux proposés aux parents), mais rien n'est effacé et l'administrateur le voit encore, marqué « Désactivé » dans le catalogue.
 - **Supprimer** : ce qui n'a jamais servi disparaît. Ce qui a déjà servi (cours rédigés, élève inscrit ou qui a commencé) est seulement désactivé, pour garder les notes et le dossier scolaire. Le message dit ce qui a été fait pour chaque ligne.
 - **Rien ne revient à la mise à jour suivante** : ce qui a été renommé, désactivé ou supprimé reste ainsi quand les programmes sont rechargés (migration 024).
+
+## 0.61 — 28/11/2026
+- **Niveaux choisis dans une liste** (Contenu › Programmes) : on ajoute un niveau en le choisissant parmi les niveaux scolaires français, du CP à la Terminale, voies générale, technologique et professionnelle, et CAP. On ne tape plus de nom. Seuls les niveaux absents sont proposés.
+- L'import d'un programme n'accepte que ces niveaux.
+- La classe attendue selon l'âge de l'enfant couvre aussi l'école élémentaire, la Première et la Terminale.

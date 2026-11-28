@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { sql } from '@/lib/db';
 import { PaneScreen, Panes, Pane } from '@/components/Layout';
 import { BulkBar, BulkCheck } from '@/components/Bulk';
+import { LEVEL_CATALOG } from '@/lib/levels-catalog';
 import { activateAction, deactivateAction, removeAction, addLevelAction, addSubjectAction, addChapterAction, addCourseAction, renameAction, importProgrammeAction } from './actions';
 
 export const metadata = { title: 'Programmes' };
@@ -43,6 +44,9 @@ export default async function Programmes({ searchParams }: { searchParams: Promi
       exists (select 1 from course_versions v where v.course_id = c.id and v.status = 'draft') as draft
     from courses c where c.chapter_id in ${sql(chaps.map(c => c.id))} and c.removed_at is null order by c.position` : [];
   const niv = cur?.code ?? '';
+  // niveaux de la liste officielle pas encore présents (un niveau supprimé peut être rétabli)
+  const present = new Set(levels.map(l => l.code));
+  const missing = LEVEL_CATALOG.filter(l => !present.has(l.code));
   const off = (a: boolean) => a ? '' : 'opacity-60';
   const pill = (a: boolean) => <span className={`text-xs font-bold ${a ? 'text-brand-dark' : 'muted'}`}>{a ? 'Actif' : 'Désactivé'}</span>;
   const Rename = ({ kind, id, value }: { kind: string; id: string | number; value: string }) => (
@@ -71,9 +75,13 @@ export default async function Programmes({ searchParams }: { searchParams: Promi
             <div className="flex items-center justify-between gap-2 px-3 py-2.5 border-b border-line"><strong>Niveaux</strong>
               <details className="relative"><summary className="btn btn-sm cursor-pointer list-none">+ Ajouter</summary>
                 <form action={addLevelAction} className="absolute right-0 z-20 mt-1 flex flex-col gap-1.5 bg-white border border-line rounded-xl p-2 shadow-lg w-64">
-                  <input className="field !min-h-9 !py-1 text-sm" name="name" placeholder="Nom (ex. 5e)" aria-label="Nom du niveau" required />
-                  <input className="field !min-h-9 !py-1 text-sm" name="cycle" placeholder="Cycle (facultatif)" aria-label="Cycle" />
-                  <button className="btn btn-sm btn-primary self-start" type="submit">Ajouter le niveau</button></form></details></div>
+                  {missing.length ? <>
+                    <select className="field !min-h-9 !py-1 text-sm" name="code" aria-label="Niveau à ajouter" required defaultValue="">
+                      <option value="" disabled>Choisir un niveau…</option>
+                      {[...new Set(missing.map(l => l.cycle))].map(c => <optgroup key={c} label={c}>{missing.filter(l => l.cycle === c).map(l => <option key={l.code} value={l.code}>{l.name}</option>)}</optgroup>)}
+                    </select>
+                    <button className="btn btn-sm btn-primary self-start" type="submit">Ajouter le niveau</button></>
+                    : <span className="text-sm muted">Tous les niveaux sont déjà là.</span>}</form></details></div>
             {levels.map(l => (
               <div key={l.code} className={`grid grid-cols-[22px_minmax(0,1fr)_auto] gap-2 items-center px-3 py-2.5 border-t border-soft first:border-t-0 ${l.code === niv ? 'bg-brand-soft' : ''}`} data-level={l.code}>
                 <BulkCheck formId="bulk-levels" value={l.code} label={l.name} />
