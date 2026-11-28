@@ -136,7 +136,7 @@ try {
   const pa = await ctx();
   await login(pa, 'parent@test.local', 'parent-test-1234');
   await shot(pa, '09-parent-tableau-de-bord');
-  ok(await pa.isVisible('text=1 copie à valider'), 'le parent voit la copie à valider dès l’accueil');
+  ok((await pa.locator('[data-home-todo]').innerText()).includes('Copie à valider'), 'le parent voit la copie à valider dès l’accueil');
   await pa.click('nav >> text=À faire');
   await pa.waitForURL(/a-faire/);
   const [dl] = await Promise.all([pa.waitForEvent('download'), pa.click('text=Tout exporter pour Claude (1)')]);
