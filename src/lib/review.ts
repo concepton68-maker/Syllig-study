@@ -134,7 +134,7 @@ export async function weekTimeline(studentId: string, monday: string): Promise<T
 
 // ——— Revoir ensemble ———
 export type Status = 'ok' | 'part' | 'ko' | 'vide' | 'attente' | 'self_ok' | 'self_ko' | 'nc';
-export type ReviewQuestion = { id: string; n: number; prompt: string; status: Status; points: string | null; answer: string; answerIsOption: boolean; expected: string; solution: string | null; comment: string | null };
+export type ReviewQuestion = { id: string; n: number; prompt: string; figure?: Question['figure']; status: Status; points: string | null; answer: string; answerIsOption: boolean; expected: string; solution: string | null; comment: string | null };
 export type Review = {
   kind: 'copie' | 'exercices'; studentId: string; courseTitle: string; subject: string; when: string; day: string;
   score: { big: string; small: string }; chips: { label: string; status: Status | 'info' }[];
@@ -170,7 +170,7 @@ export async function copyReview(id: string): Promise<Review | null> {
     const pts = ans.text === '—' ? 0 : graded ? (a.scores?.[q.id] ?? a.auto_scores?.[q.id]) : a.auto_scores?.[q.id];
     const status: Status = ans.text === '—' ? 'vide' : pts === undefined || pts === null ? 'attente' : pts >= max ? 'ok' : pts <= 0 ? 'ko' : 'part';
     const sol = q.type === 'open' ? null : q.solution?.trim() || null;
-    return { id: q.id, n: i + 1, prompt: q.prompt, status, points: pts === undefined || pts === null ? `? / ${fr(max)}` : `${fr(pts)} / ${fr(max)}`,
+    return { id: q.id, n: i + 1, prompt: q.prompt, figure: q.figure, status, points: pts === undefined || pts === null ? `? / ${fr(max)}` : `${fr(pts)} / ${fr(max)}`,
       answer: ans.text, answerIsOption: ans.option, expected: expectedText(q), solution: sol && sol !== expectedText(q) ? sol : null,
       comment: (graded ? a.feedback?.[q.id] : null) || null };
   });
@@ -208,7 +208,7 @@ export async function exerciseReview(id: string): Promise<Review | null> {
     const ans = answerText(q, e.answers?.[q.id]);
     const status: Status = ans.text === '—' ? 'vide' : q.id in auto ? (auto[q.id] ? 'ok' : 'ko') : q.id in self ? (self[q.id] ? 'self_ok' : 'self_ko') : 'nc';
     const sol = q.type === 'open' ? null : q.solution?.trim() || null;
-    return { id: q.id, n: i + 1, prompt: q.prompt, status, points: null, answer: ans.text, answerIsOption: ans.option,
+    return { id: q.id, n: i + 1, prompt: q.prompt, figure: q.figure, status, points: null, answer: ans.text, answerIsOption: ans.option,
       expected: expectedText(q), solution: sol && sol !== expectedText(q) ? sol : null, comment: null };
   });
   const autoIds = Object.keys(auto), okN = autoIds.filter(k => auto[k]).length;

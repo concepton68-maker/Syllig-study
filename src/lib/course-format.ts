@@ -6,6 +6,17 @@ import { z } from 'zod';
 const text = z.string().trim().min(1);
 const str = z.string();
 
+// Schéma dessiné en SVG, écrit dans le cours lui-même (demande du propriétaire, 28/11/2026 : bête à cornes, figures de
+// géométrie, circuits, graphiques…). Affiché comme une image (jamais inséré dans la page : aucun script ne peut s'exécuter).
+export const SVG_MAX = 60_000;
+export const svgCode = z.string().trim()
+  .refine(s => /^<svg[\s>]/i.test(s) && /<\/svg>\s*$/i.test(s), 'le schéma doit être un SVG complet (<svg …>…</svg>)')
+  .refine(s => s.length <= SVG_MAX, `schéma trop lourd (${SVG_MAX / 1000} 000 caractères au plus)`)
+  .refine(s => !/<script|<foreignObject|\son[a-z]+\s*=|javascript:/i.test(s), 'le schéma ne doit contenir ni script, ni foreignObject, ni attribut on…')
+  .refine(s => !/(href|src)\s*=\s*["'](https?:|\/\/|data:)/i.test(s) && !/url\(\s*["']?(https?:|\/\/)/i.test(s), 'le schéma ne doit charger aucune ressource extérieure');
+export const Figure = z.object({ svg: svgCode, alt: text, caption: str.optional() });
+export type Figure = z.infer<typeof Figure>;
+
 export const Block = z.discriminatedUnion('type', [
   z.object({ type: z.literal('text'), text }),
   z.object({ type: z.literal('heading'), text }),
@@ -25,6 +36,7 @@ export const Block = z.discriminatedUnion('type', [
   z.object({ type: z.literal('quote'), text, source: str.optional() }),
   z.object({ type: z.literal('formula'), latex: text }),
   z.object({ type: z.literal('image'), url: z.string().url(), alt: text }),
+  z.object({ type: z.literal('figure'), svg: svgCode, alt: text, caption: str.optional() }),
 ]);
 export type Block = z.infer<typeof Block>;
 
@@ -34,6 +46,7 @@ export const Question = z.object({
   id: z.string().regex(/^[a-z0-9_-]{1,24}$/i, 'identifiant de question invalide (lettres, chiffres, - ou _)'),
   type: z.enum(['open', 'qcm', 'numeric', 'short']),
   prompt: text,
+  figure: Figure.optional(),                    // schéma de l'énoncé (figure de géométrie, montage, graphique…)
   text_ref: str.optional(),                     // texte support (id d'un des "texts")
   points: z.number().positive().optional(),     // obligatoire en évaluation
   stars: z.number().int().min(1).max(3).optional(),

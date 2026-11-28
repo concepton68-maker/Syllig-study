@@ -5,6 +5,7 @@ import { RichText } from '@/components/RichText';
 import { Stars, SupportTextView } from '@/components/CourseBlocks';
 import { AnswerProgress } from '@/components/AnswerProgress';
 import { submitExercises, validateExercises } from './actions';
+import { FigureView } from '@/components/Figure';
 
 export type Solved = { solution: string; auto: boolean | null; expected?: string };
 
@@ -153,6 +154,7 @@ export function ExercisesPlayer({ courseId, items, texts, initial, submitted, so
               <section key={q.id} id={`q-${q.id}`} className={`rounded-2xl border p-5 flex flex-col gap-3 bg-white scroll-mt-4 ${!submitted && (answers[q.id] ?? '').trim() ? 'border-brand-mid' : 'border-line'}`}>
                 <div className="flex gap-2 items-center text-sm"><strong>Ex. {q.id.replace(/^ex/, '')}</strong><Stars n={q.stars} /></div>
                 <p className="m-0 text-[16px] font-medium"><RichText text={q.prompt} /></p>
+                {q.figure && <FigureView f={q.figure} />}
                 <AnswerInput q={q} value={answers[q.id] ?? ''} onChange={v => set(q.id, v)} disabled={submitted} />
                 {sol && (
                   <div className="flex flex-col gap-2">

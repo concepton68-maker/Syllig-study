@@ -7,6 +7,7 @@ import { AnswerProgress } from '@/components/AnswerProgress';
 import { AnswerInput, TextsAside } from '../exercices/Player';
 import { submitEvaluation } from './actions';
 import { isStaleBuildError, reloadOnceForNewVersion } from '@/lib/stale-build';
+import { FigureView } from '@/components/Figure';
 
 type Section = { label: string; questions: PublicQuestion[] };
 
@@ -156,6 +157,7 @@ export function EvalRunner({ courseId, attemptId, remaining, sections, texts, in
             <section key={q.id} id={`q-${q.id}`} className={`rounded-2xl border p-5 flex flex-col gap-3 bg-white scroll-mt-4 ${(answers[q.id] ?? '').trim() ? 'border-brand-mid' : 'border-line'}`}>
               <div className="flex gap-2 items-center text-sm"><strong>{q.id.toUpperCase()}</strong><span className="pill bg-soft text-ink-2">{q.points} pt{(q.points ?? 0) > 1 ? 's' : ''}</span></div>
               <p className="m-0 text-[16px] font-medium"><RichText text={q.prompt} /></p>
+              {q.figure && <FigureView f={q.figure} />}
               <AnswerInput q={q} value={answers[q.id] ?? ''} onChange={v => set(q.id, v)} noPaste
                 onPasteBlocked={() => { post({ action: 'paste_blocked' }); setNotice('Le collage est désactivé pendant l’évaluation : écris ta réponse toi-même.'); }} />
             </section>

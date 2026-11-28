@@ -2,6 +2,7 @@ import 'server-only';
 import { sql } from './db';
 import { importCourse, publishVersion } from './import-course';
 import { diffCourse, changeSummary } from './course-diff';
+import { FIGURE_RULE } from './prompt-builder';
 
 // Relecture groupée par Claude (demande du propriétaire, 27/11/2026) : un seul fichier avec la consigne et les cours choisis,
 // Claude le renvoie corrigé, on le réimporte. Tout ou rien : si un cours est refusé, aucun n'est enregistré.
@@ -15,7 +16,10 @@ export const BATCH_INSTRUCTIONS = `Tu es relecteur et inspecteur pédagogique (c
 Pour chaque cours de « cours », vérifie et corrige :
 1. les erreurs de fond : règle fausse, définition inexacte, exemple qui contredit la règle, calcul faux, fait erroné ;
 2. les corrigés : réponse attendue fausse, « answer » d'un QCM qui ne désigne pas la bonne option, barème incohérent avec les points ;
-3. l'adéquation au niveau et au programme officiel, la clarté pour un élève.
+3. l'adéquation au niveau et au programme officiel, la clarté pour un élève ;
+4. les schémas : ajoute ceux qui manquent quand une notion se comprend mal sans dessin, et corrige ceux qui sont faux.
+
+${FIGURE_RULE}
 
 Règles :
 - Renvoie UNIQUEMENT un fichier JSON de la forme { "format": "syllig-cours-lot/1", "cours": [ … ] }, sans texte avant ou après.

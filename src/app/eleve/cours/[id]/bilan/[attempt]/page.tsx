@@ -9,6 +9,7 @@ import { MASTERY } from '@/lib/settings';
 import { RichText } from '@/components/RichText';
 import { SupportTextView } from '@/components/CourseBlocks';
 import { Screen } from '@/components/Layout';
+import { FigureView } from '@/components/Figure';
 
 export const dynamic = 'force-dynamic';
 const fr = (n: number) => n.toLocaleString('fr-FR', { maximumFractionDigits: 2 });
@@ -123,6 +124,7 @@ export default async function Bilan({ params }: { params: Promise<{ id: string; 
         {b.results.map(r => (
           <div key={r.q.id} className="border border-line rounded-xl p-4 flex flex-col gap-2">
             <div className="flex flex-wrap justify-between gap-2 text-sm"><strong>{r.q.id.toUpperCase()} · <RichText text={r.q.prompt} /></strong>
+              {r.q.figure && <FigureView f={r.q.figure} />}
               <span className={`pill ${r.points === null ? 'bg-soft text-ink-2' : r.points >= r.max ? 'bg-brand text-white' : 'bg-brand-soft text-brand-dark'}`}>{r.points === null ? 'en correction' : `${fr(r.points)} / ${fr(r.max)}`}</span></div>
             <div className="text-sm"><span className="lbl">Ta réponse</span><p className="m-0 mt-1 whitespace-pre-wrap">{r.q.type === 'qcm' && r.q.options ? <RichText text={r.q.options[Number(r.answer)] ?? '—'} /> : r.answer || '—'}</p></div>
             {r.comment && <div className="text-sm rounded-lg bg-soft px-3 py-2"><strong>Commentaire : </strong>{r.comment}</div>}

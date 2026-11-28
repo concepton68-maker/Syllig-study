@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { RichText } from '@/components/RichText';
 import type { PublicQ, Answered, Summary } from '@/lib/revisions';
 import { answerReview } from './actions';
+import { FigureView } from '@/components/Figure';
 
 // Révision du jour (maquette validée le 26/11/2026) : une question à la fois, corrigée aussitôt, puis la suivante.
 // `training` : « M'entraîner » sur un cours (maquette validée le 27/11/2026) — même déroulé, fin différente, sans calendrier
@@ -73,6 +74,7 @@ export function ReviewRunner({ sessionId, questions, answered: initial, training
       <div className="flex justify-between items-center gap-3 text-sm"><span className="muted">{q.course}</span><strong>Question {answered.length + (res ? 0 : 1)} sur {questions.length}</strong></div>
       <div className="h-1.5 rounded-full bg-track"><div className="h-1.5 rounded-full bg-brand" style={{ width: `${(answered.length / questions.length) * 100}%` }} /></div>
       <h1 className="text-xl font-semibold m-0 leading-snug"><RichText text={q.prompt} /></h1>
+      {q.figure && <FigureView f={q.figure} />}
       {q.type === 'qcm' ? (
         <div className="flex flex-col gap-2.5">
           {opts.map((o, k) => {

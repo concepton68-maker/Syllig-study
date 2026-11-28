@@ -13,6 +13,7 @@ import { SupportTextView } from '@/components/CourseBlocks';
 import { validateGrade } from '../actions';
 import { Screen } from '@/components/Layout';
 import { duree } from '@/lib/duration';
+import { FigureView } from '@/components/Figure';
 
 export const dynamic = 'force-dynamic';
 
@@ -57,6 +58,7 @@ export default async function CopyReview({ params, searchParams }: { params: Pro
           return (
             <section key={q.id} className="card flex flex-col gap-3">
               <div className="flex flex-wrap justify-between gap-2"><strong>{q.id.toUpperCase()} · <RichText text={q.prompt} /></strong><span className="pill bg-soft text-ink-2">/ {q.points}</span></div>
+              {q.figure && <FigureView f={q.figure} />}
               <div className="rounded-lg border border-line px-3 py-2"><span className="lbl">Réponse de l’élève</span><p className="m-0 mt-1 whitespace-pre-wrap">{q.type === 'qcm' && q.options ? <RichText text={q.options[Number(a.answers[q.id])] ?? '—'} /> : a.answers[q.id] || '—'}</p></div>
               <div className="flex flex-wrap gap-3 text-sm">
                 <div className="flex-[1_1_300px] rounded-lg bg-brand-soft px-3 py-2 text-brand-ink"><strong>Corrigé : </strong><RichText text={q.solution} /></div>

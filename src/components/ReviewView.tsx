@@ -4,6 +4,7 @@ import { SupportTextView } from './CourseBlocks';
 import { PageTitle } from './Shell';
 import type { Review, Status } from '@/lib/review';
 import type { SupportText } from '@/lib/course-format';
+import { FigureView } from './Figure';
 
 // « Revoir ensemble » : chaque question, sa réponse à côté du corrigé (maquette validée le 26/11/2026).
 const TONE: Record<Status | 'info', string> = {
@@ -47,6 +48,7 @@ export function ReviewView({ r, name, back, all, base }: { r: Review; name: stri
           <article key={q.id} className="card flex flex-col gap-3" data-review-q={q.status}>
             <div className="flex items-start justify-between gap-3">
               <span className="text-[16px] font-semibold leading-snug"><span className="muted mr-1.5">{q.n}.</span><RichText text={q.prompt} /></span>
+              {q.figure && <FigureView f={q.figure} className="self-start" />}
               <span className={`pill shrink-0 text-[13px] font-bold ${TONE[q.status]}`}>{badge(q.status)}{q.points ? ` · ${q.points}` : ''}</span>
             </div>
             <div className="grid gap-2.5 sm:grid-cols-2">

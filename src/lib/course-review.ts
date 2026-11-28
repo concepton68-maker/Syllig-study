@@ -4,6 +4,7 @@ import { sql } from './db';
 import { aiConfigFor, askJson, askText, logAiRequest } from './ai';
 import { enqueue, progressReporter } from './jobs';
 import { importCourse } from './import-course';
+import { FIGURE_RULE } from './prompt-builder';
 import type { CourseDocument } from './course-format';
 
 // Relecture d'un cours existant par l'IA (comme un inspecteur pédagogique) : erreurs de fond, corrigés faux, barèmes,
@@ -29,11 +30,13 @@ Vérifie, dans cet ordre de priorité :
 1. Les erreurs de fond : règle fausse, définition inexacte, exemple qui contredit la règle, calcul faux, fait historique erroné.
 2. Les corrigés : réponse attendue fausse, « answer » d'un QCM qui ne désigne pas la bonne option, réponse numérique erronée, barème incohérent avec les points.
 3. L'adéquation au niveau et au programme officiel, la progression, la clarté pour un élève.
-4. Les manques importants pour le niveau (notion attendue absente).
+4. Les manques importants pour le niveau (notion attendue absente), dont les schémas : une notion qui se comprend mal sans dessin (bête à cornes, figure de géométrie, circuit, schéma de SVT, graphique…) et qui n'a pas de bloc « figure » est un problème « important » ; un schéma faux est « bloquant ».
 
 Règles : ne signale que des problèmes réels et vérifiés, avec l'endroit précis (« ou » : partie, exercice ex3, sujet 2 · q4…), le constat et la correction exacte à faire. Gravité : « bloquant » = enseigne une erreur ou corrigé faux ; « important » = ambigu, manque notable ; « mineur » = forme. Verdict : « publiable » si aucun problème bloquant ni important. Français, phrases courtes.`;
 
-const SYSTEM_FIX = `Tu es auteur de cours pour Syllig Study. Tu corriges un cours existant. Tu réponds UNIQUEMENT par le document JSON complet du cours corrigé (format syllig-course/1), sans texte avant ou après, sans balises de code. Garde exactement la même structure, le même code, le même niveau, la même matière, le même chapitre et le même titre ; ne modifie que ce qui est nécessaire pour corriger les problèmes listés.`;
+const SYSTEM_FIX = `Tu es auteur de cours pour Syllig Study. Tu corriges un cours existant. Tu réponds UNIQUEMENT par le document JSON complet du cours corrigé (format syllig-course/1), sans texte avant ou après, sans balises de code. Garde exactement la même structure, le même code, le même niveau, la même matière, le même chapitre et le même titre ; ne modifie que ce qui est nécessaire pour corriger les problèmes listés. Un schéma manquant s'ajoute en bloc « figure ».
+
+${FIGURE_RULE}`;
 
 export async function requestReview(courseId: number) {
   const [v] = await sql<{ id: string }[]>`select id from course_versions where course_id = ${courseId} and status in ('draft', 'published') order by status = 'draft' desc, version desc limit 1`;

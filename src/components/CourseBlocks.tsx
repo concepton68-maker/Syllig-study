@@ -1,5 +1,6 @@
 import type { Block, SupportText } from '@/lib/course-format';
 import { RichText } from './RichText';
+import { FigureView } from './Figure';
 
 const CALLOUT: Record<string, { label: string; cls: string }> = {
   retiens: { label: 'Je retiens', cls: 'bg-brand-soft text-brand-ink' },
@@ -46,6 +47,8 @@ export function BlockView({ block }: { block: Block }) {
     case 'image':
       // eslint-disable-next-line @next/next/no-img-element
       return <img src={block.url} alt={block.alt} className="max-w-full rounded-lg" />;
+    case 'figure':
+      return <FigureView f={block} />;
   }
 }
 

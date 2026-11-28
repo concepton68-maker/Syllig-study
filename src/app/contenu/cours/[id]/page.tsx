@@ -14,6 +14,7 @@ import { ConfirmButton } from '@/components/ConfirmButton';
 import { Screen } from '@/components/Layout';
 import { promptContext } from '@/lib/prompt-context';
 import { suggestOptions } from '@/lib/prompt-builder';
+import { FigureView } from '@/components/Figure';
 
 type V = { id: string; version: number; status: string; document: CourseDocument; imported_at: Date; source_name: string | null; published_at: Date | null };
 
@@ -28,6 +29,7 @@ function QuestionAdmin({ q }: { q: Question }) {
         {q.skills?.map(s => <span key={s} className="pill bg-brand-soft text-brand-dark">{s}</span>)}
       </div>
       <p className="m-0 text-[15px]"><RichText text={q.prompt} /></p>
+      {q.figure && <FigureView f={q.figure} />}
       {q.options && <ol className="m-0 pl-6 list-[upper-alpha] text-sm">{q.options.map((o, i) => <li key={i} className={((Array.isArray(q.answer) ? q.answer : [q.answer]) as unknown[]).includes(i) ? 'font-bold text-brand-dark' : ''}><RichText text={o} /></li>)}</ol>}
       {(q.type === 'numeric' || q.type === 'short') && <p className="m-0 text-sm"><strong>Réponse attendue :</strong> {Array.isArray(q.answer) ? q.answer.join(' · ') : String(q.answer)}{q.tolerance ? ` (± ${q.tolerance})` : ''}</p>}
       <div className="rounded-lg bg-brand-soft px-3 py-2 text-sm text-brand-ink"><strong>Corrigé :</strong> <RichText text={q.solution} /></div>

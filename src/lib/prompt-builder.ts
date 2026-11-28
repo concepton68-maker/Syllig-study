@@ -110,7 +110,8 @@ export function buildPrompt(c: PromptContext, o: PromptOptions): string {
   p('## Exigences pédagogiques');
   p(`- Conforme au programme officiel ; vocabulaire et difficulté adaptés à un élève de ${c.level.name}.`);
   p('- **Textes et exemples originaux** : aucun extrait de manuel ni d\'œuvre sous droits. Une œuvre du domaine public peut être citée brièvement, avec sa source.');
-  p(`- Leçon d'environ ${o.lessonMinutes} min, en ${o.partsMin} à ${o.partsMax} parties. Blocs possibles : text, heading, list, table, callout (retiens, definition, attention, plus, methode, essentiel), quote, formula (LaTeX, pour les maths et sciences). Termine par une fiche mémo (« memo »).`);
+  p(`- Leçon d'environ ${o.lessonMinutes} min, en ${o.partsMin} à ${o.partsMax} parties. Blocs possibles : text, heading, list, table, callout (retiens, definition, attention, plus, methode, essentiel), quote, formula (LaTeX, pour les maths et sciences), figure (schéma en SVG). Termine par une fiche mémo (« memo »).`);
+  p(`- ${FIGURE_RULE}`);
   p('- Chaque partie se termine par un **point de contrôle** : 2 à 4 variantes de QCM, une seule bonne réponse, un indice (« hint ») qui renvoie à la partie sans donner la réponse, et une « explanation ».');
   p(`- Exercices : environ ${o.exercises}, en trois niveaux (« stars » 1 = je repère, 2 = j'analyse, 3 = je rédige), chacun avec un corrigé (« solution »). Préfère « qcm », « numeric » ou « short » quand une correction automatique est fiable${/math|physique|chimie|svt|ses|snt/i.test(c.subject) ? ' (calculs : « numeric » avec « tolerance » si besoin)' : ''}.`);
   p(`- Évaluation de ${o.evalMinutes} min, total **exactement 20 points**, en sections (connaissances, application/analyse, rédaction). Propose **${o.evalVariants} sujet${o.evalVariants > 1 ? 's' : ''} équivalent${o.evalVariants > 1 ? 's' : ''}** (« variants ») de même difficulté, pour permettre une nouvelle tentative.`);
@@ -134,6 +135,9 @@ export function buildPrompt(c: PromptContext, o: PromptOptions): string {
   }
   return lines.join('\n');
 }
+
+// Schémas dans les cours (demande du propriétaire, 28/11/2026)
+export const FIGURE_RULE = "**Schémas** : dès qu'une notion se comprend mieux avec un dessin (bête à cornes, diagramme, figure de géométrie, circuit électrique, schéma de SVT, graphique, frise, carte simplifiée), ajoute un bloc « figure » : { \"type\": \"figure\", \"svg\": \"<svg viewBox=…>…</svg>\", \"alt\": \"description complète pour qui ne voit pas le schéma\", \"caption\": \"légende courte\" }. Une question d'exercice ou d'évaluation peut aussi porter une « figure » (même forme, sans « type ») quand son énoncé en a besoin. SVG autonome : viewBox, largeur utile 600 au plus, textes en français lisibles (font-family sans-serif, 14 px au moins), traits nets, fond blanc ; ni script, ni foreignObject, ni image ou police extérieure ; 60 000 caractères au plus. Vérifie que le dessin est juste (mesures, angles, légendes) : un schéma faux est pire que pas de schéma.";
 
 export const SKILL_PREFIX: Record<string, string> = {
   'Français': 'fr', 'Mathématiques': 'ma', 'Histoire-Géographie': 'hg', 'LVA': 'lva', 'LVB': 'lvb', 'SES': 'ses',

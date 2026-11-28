@@ -153,7 +153,7 @@ export async function openTraining(studentId: string, courseId: number, levelCod
 /** Partie de la leçon (1, 2…) à relire pour une question : celle du point de contrôle, ou celle indiquée par l'exercice. */
 const partOf = (key: string, q: Question) => key.startsWith('cp:') ? Number(key.split(':')[1]) + 1 : (q as { lesson_part?: number }).lesson_part ?? null;
 
-export type PublicQ = { idx: number; course: string; prompt: string; type: Question['type']; options: string[] | null; multi: boolean };
+export type PublicQ = { idx: number; course: string; prompt: string; figure?: Question['figure']; type: Question['type']; options: string[] | null; multi: boolean };
 export type Answered = { idx: number; correct: boolean; given: string; expected: string; solution: string | null; part: number | null };
 export type Summary = { course_id: number; title: string; ok: number; total: number; passed: boolean; next_days: number }[];
 
@@ -166,7 +166,7 @@ export async function sessionView(s: Session): Promise<{ questions: PublicQ[]; a
     const doc = (await versionById(x.version_id))?.document;
     const q = doc ? findQ(doc, x.key) : null;
     if (!q) continue;
-    questions.push({ idx, course: titles.get(x.course_id) ?? '', prompt: q.prompt, type: q.type, options: q.options ?? null, multi: Array.isArray(q.answer) && q.type === 'qcm' && q.answer.length > 1 });
+    questions.push({ idx, course: titles.get(x.course_id) ?? '', prompt: q.prompt, figure: q.figure, type: q.type, options: q.options ?? null, multi: Array.isArray(q.answer) && q.type === 'qcm' && q.answer.length > 1 });
     const it = items.find(i => i.idx === idx);
     if (it) answered.push(feedback(idx, q, it.answer, it.correct, partOf(x.key, q)));
   }

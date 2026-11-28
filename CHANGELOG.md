@@ -625,3 +625,9 @@ Contre-audit de conformité des versions 0.43 à 0.45 : tout ce qui a été rele
 
 ## 0.63 — 28/11/2026
 - **Ajout groupé** (Contenu › Programmes) : on coche plusieurs matières de la liste du niveau, ou plusieurs niveaux de la liste des niveaux scolaires, puis « Ajouter (n) ». Un seul clic suffit pour ajouter toutes les matières d'un niveau (« Tout sélectionner »).
+
+## 0.64 — 28/11/2026
+- **Schémas dans les cours**. Le format des cours accepte un bloc « figure » : un dessin en SVG écrit dans le cours lui-même, avec sa description et sa légende. Une question d'exercice ou d'évaluation peut aussi avoir son schéma. Le schéma s'affiche dans la leçon, les exercices, l'évaluation, les révisions, l'entraînement, le bilan et la copie vue par le parent.
+- **Sécurité** : le schéma est affiché comme une image, donc rien ne peut s'y exécuter. Un SVG contenant un script, un attribut « on… » ou une ressource extérieure est refusé à l'import, et sa taille est limitée.
+- **L'IA dessine les schémas nécessaires** : la rédaction, la relecture et la relecture groupée par Claude demandent maintenant les schémas utiles (bête à cornes, figures de géométrie, circuits, schémas de SVT, graphiques). La relecture signale un schéma manquant comme un problème important, et un schéma faux comme bloquant.
+- **TG135 « Analyser le besoin et le cahier des charges »** : ajout de la bête à cornes et du diagramme pieuvre du distributeur Croqui.
