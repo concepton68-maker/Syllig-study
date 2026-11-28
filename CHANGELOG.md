@@ -631,3 +631,16 @@ Contre-audit de conformité des versions 0.43 à 0.45 : tout ce qui a été rele
 - **Sécurité** : le schéma est affiché comme une image, donc rien ne peut s'y exécuter. Un SVG contenant un script, un attribut « on… » ou une ressource extérieure est refusé à l'import, et sa taille est limitée.
 - **L'IA dessine les schémas nécessaires** : la rédaction, la relecture et la relecture groupée par Claude demandent maintenant les schémas utiles (bête à cornes, figures de géométrie, circuits, schémas de SVT, graphiques). La relecture signale un schéma manquant comme un problème important, et un schéma faux comme bloquant.
 - **TG135 « Analyser le besoin et le cahier des charges »** : ajout de la bête à cornes et du diagramme pieuvre du distributeur Croqui.
+
+## 0.65 — 28/11/2026
+- **Schémas dans 35 cours de la bibliothèque** : 83 schémas, 59 dans les leçons et 24 dans les exercices et évaluations.
+  - Sciences : molécules, atome, ions, tests d'identification, du corps à l'ADN, allèles, mitose.
+  - Maths : droites graduées, fractions, arbre de facteurs premiers, Pythagore et racines carrées, avec un triangle pour chaque question qui en décrit un.
+  - Technologie : FAST, cycle de vie, bilan carbone.
+  - EMC : institutions de la Ve République, trois pouvoirs.
+  - Histoire : frises.
+  - Français et langues : schémas de phrases, frises des temps, accord du participe passé, place du verbe en allemand, schéma narratif.
+- **Vérifications** :
+  - chaque schéma a été relu par un relecteur indépendant (exactitude, cohérence avec le cours, aucune réponse donnée), puis corrigé ;
+  - en dehors des schémas, seul QG051 change : le dessin du triangle en caractères est retiré, remplacé par la figure.
+- Les cours de la bibliothèque se republient automatiquement.
