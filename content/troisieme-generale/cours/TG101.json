@@ -6,12 +6,30 @@
   "chapter": "Organisation et transformations de la matière",
   "title": "Atomes, molécules et structure de l'atome",
   "skills": [
-    { "id": "pc-atome-molecule", "label": "Distinguer atome, molécule et élément chimique" },
-    { "id": "pc-formule", "label": "Lire et écrire une formule chimique" },
-    { "id": "pc-structure", "label": "Décrire la structure de l'atome (noyau, protons, neutrons, électrons)" },
-    { "id": "pc-numeros", "label": "Utiliser Z et A pour dénombrer les particules d'un atome" },
-    { "id": "pc-grandeurs", "label": "Utiliser des ordres de grandeur et des puissances de 10" },
-    { "id": "pc-rediger", "label": "Rédiger une explication scientifique argumentée" }
+    {
+      "id": "pc-atome-molecule",
+      "label": "Distinguer atome, molécule et élément chimique"
+    },
+    {
+      "id": "pc-formule",
+      "label": "Lire et écrire une formule chimique"
+    },
+    {
+      "id": "pc-structure",
+      "label": "Décrire la structure de l'atome (noyau, protons, neutrons, électrons)"
+    },
+    {
+      "id": "pc-numeros",
+      "label": "Utiliser Z et A pour dénombrer les particules d'un atome"
+    },
+    {
+      "id": "pc-grandeurs",
+      "label": "Utiliser des ordres de grandeur et des puissances de 10"
+    },
+    {
+      "id": "pc-rediger",
+      "label": "Rédiger une explication scientifique argumentée"
+    }
   ],
   "lesson": {
     "duration_min": 35,
@@ -27,42 +45,109 @@
       {
         "title": "La matière est faite d'atomes et de molécules",
         "blocks": [
-          { "type": "text", "text": "L'eau que tu bois, l'air que tu respires, ton stylo et même ton corps sont faits de particules beaucoup trop petites pour être vues, même au microscope optique : les **atomes**. On peut les imaginer comme les briques de base de toute la matière." },
-          { "type": "callout", "kind": "definition", "title": "Atome et molécule", "text": "Un **atome** est la plus petite particule d'un élément chimique.\nUne **molécule** est un assemblage d'atomes liés entre eux. Exemple : une molécule d'eau est formée de 2 atomes d'hydrogène et de 1 atome d'oxygène." },
-          { "type": "text", "text": "On connaît environ 118 **éléments chimiques**. Chacun est représenté par un **symbole** d'une ou deux lettres : la première est toujours une majuscule, la deuxième (s'il y en a une) une minuscule. Dans les modèles moléculaires (les « boules » colorées utilisées en classe), chaque élément a une couleur conventionnelle." },
-          { "type": "table", "caption": "Quelques éléments à connaître", "columns": ["Élément", "Symbole", "Couleur dans les modèles moléculaires"], "rows": [
-            ["Hydrogène", "H", "blanc"],
-            ["Carbone", "C", "noir"],
-            ["Oxygène", "O", "rouge"],
-            ["Azote", "N", "bleu"],
-            ["Chlore", "Cl", "vert"],
-            ["Soufre", "S", "jaune"]
-          ] },
-          { "type": "list", "items": [
-            "Autres symboles utiles : fer **Fe**, cuivre **Cu**, zinc **Zn**, aluminium **Al**, sodium **Na**, magnésium **Mg**, calcium **Ca**.",
-            "Le symbole vient parfois du nom latin : Na pour *natrium* (sodium), Fe pour *ferrum* (fer), Cu pour *cuprum* (cuivre)."
-          ] },
-          { "type": "callout", "kind": "attention", "title": "Majuscule ou minuscule ?", "text": "**Co** (un seul symbole) désigne l'atome de cobalt, alors que **CO** (deux majuscules) désigne une molécule formée d'un atome de carbone et d'un atome d'oxygène. Une majuscule = un nouvel élément." }
+          {
+            "type": "text",
+            "text": "L'eau que tu bois, l'air que tu respires, ton stylo et même ton corps sont faits de particules beaucoup trop petites pour être vues, même au microscope optique : les **atomes**. On peut les imaginer comme les briques de base de toute la matière."
+          },
+          {
+            "type": "callout",
+            "kind": "definition",
+            "title": "Atome et molécule",
+            "text": "Un **atome** est la plus petite particule d'un élément chimique.\nUne **molécule** est un assemblage d'atomes liés entre eux. Exemple : une molécule d'eau est formée de 2 atomes d'hydrogène et de 1 atome d'oxygène."
+          },
+          {
+            "type": "text",
+            "text": "On connaît environ 118 **éléments chimiques**. Chacun est représenté par un **symbole** d'une ou deux lettres : la première est toujours une majuscule, la deuxième (s'il y en a une) une minuscule. Dans les modèles moléculaires (les « boules » colorées utilisées en classe), chaque élément a une couleur conventionnelle."
+          },
+          {
+            "type": "table",
+            "caption": "Quelques éléments à connaître",
+            "columns": [
+              "Élément",
+              "Symbole",
+              "Couleur dans les modèles moléculaires"
+            ],
+            "rows": [
+              [
+                "Hydrogène",
+                "H",
+                "blanc"
+              ],
+              [
+                "Carbone",
+                "C",
+                "noir"
+              ],
+              [
+                "Oxygène",
+                "O",
+                "rouge"
+              ],
+              [
+                "Azote",
+                "N",
+                "bleu"
+              ],
+              [
+                "Chlore",
+                "Cl",
+                "vert"
+              ],
+              [
+                "Soufre",
+                "S",
+                "jaune"
+              ]
+            ]
+          },
+          {
+            "type": "list",
+            "items": [
+              "Autres symboles utiles : fer **Fe**, cuivre **Cu**, zinc **Zn**, aluminium **Al**, sodium **Na**, magnésium **Mg**, calcium **Ca**.",
+              "Le symbole vient parfois du nom latin : Na pour *natrium* (sodium), Fe pour *ferrum* (fer), Cu pour *cuprum* (cuivre)."
+            ]
+          },
+          {
+            "type": "callout",
+            "kind": "attention",
+            "title": "Majuscule ou minuscule ?",
+            "text": "**Co** (un seul symbole) désigne l'atome de cobalt, alors que **CO** (deux majuscules) désigne une molécule formée d'un atome de carbone et d'un atome d'oxygène. Une majuscule = un nouvel élément."
+          }
         ],
         "checkpoint": {
           "variants": [
             {
               "prompt": "Une molécule est…",
-              "options": ["la plus petite partie d'un atome", "un assemblage d'atomes liés entre eux", "un élément chimique", "une particule chargée du noyau"],
+              "options": [
+                "la plus petite partie d'un atome",
+                "un assemblage d'atomes liés entre eux",
+                "un élément chimique",
+                "une particule chargée du noyau"
+              ],
               "answer": 1,
               "hint": "Relis l'encadré « Atome et molécule ».",
               "explanation": "Une molécule est formée de plusieurs atomes liés entre eux, comme la molécule d'eau (2 H et 1 O)."
             },
             {
               "prompt": "Quel est le symbole de l'élément azote ?",
-              "options": ["A", "Az", "N", "Na"],
+              "options": [
+                "A",
+                "Az",
+                "N",
+                "Na"
+              ],
               "answer": 2,
               "hint": "Regarde le tableau des éléments à connaître : le symbole ne correspond pas toujours à l'initiale française.",
               "explanation": "Le symbole de l'azote est N. Na est le symbole du sodium."
             },
             {
               "prompt": "Dans un modèle moléculaire, de quelle couleur est la boule qui représente un atome d'oxygène ?",
-              "options": ["Blanche", "Noire", "Rouge", "Bleue"],
+              "options": [
+                "Blanche",
+                "Noire",
+                "Rouge",
+                "Bleue"
+              ],
               "answer": 2,
               "hint": "Retrouve la colonne « Couleur » du tableau.",
               "explanation": "L'oxygène est représenté en rouge, l'hydrogène en blanc, le carbone en noir et l'azote en bleu."
@@ -73,39 +158,123 @@
       {
         "title": "Lire et écrire une formule chimique",
         "blocks": [
-          { "type": "text", "text": "Une **formule chimique** indique la composition d'une molécule : on écrit les symboles des atomes présents, et un petit chiffre en bas à droite, l'**indice**, donne le nombre d'atomes de l'élément placé juste avant. Quand il n'y a pas d'indice, il y a un seul atome." },
-          { "type": "table", "caption": "Des formules de molécules courantes", "columns": ["Molécule", "Formule", "Composition", "Nombre total d'atomes"], "rows": [
-            ["Eau", "H₂O", "2 atomes H + 1 atome O", "3"],
-            ["Dioxygène", "O₂", "2 atomes O", "2"],
-            ["Diazote", "N₂", "2 atomes N", "2"],
-            ["Dioxyde de carbone", "CO₂", "1 atome C + 2 atomes O", "3"],
-            ["Méthane", "CH₄", "1 atome C + 4 atomes H", "5"],
-            ["Glucose", "C₆H₁₂O₆", "6 atomes C + 12 atomes H + 6 atomes O", "24"]
-          ] },
-          { "type": "callout", "kind": "methode", "title": "Compter les atomes d'une formule", "text": "1. Repère chaque symbole (il commence par une majuscule).\n2. Lis l'indice placé juste après (pas d'indice = 1).\n3. Additionne.\nExemple : C₃H₈ (propane) → 3 C + 8 H = 11 atomes." },
-          { "type": "callout", "kind": "attention", "title": "Indice ou nombre devant ?", "text": "Le nombre écrit **devant** une formule compte les molécules. 2 H₂O signifie « deux molécules d'eau », soit 2 × 2 = 4 atomes H et 2 × 1 = 2 atomes O." },
-          { "type": "callout", "kind": "definition", "title": "Corps simple, corps composé", "text": "Un **corps simple** est formé d'un seul élément : O₂, N₂, H₂.\nUn **corps composé** est formé de plusieurs éléments : H₂O, CO₂, CH₄." },
-          { "type": "callout", "kind": "plus", "title": "Lien avec les transformations chimiques", "text": "Lors d'une transformation chimique, les molécules se cassent et les atomes se réorganisent pour former de nouvelles molécules, mais **aucun atome n'apparaît ni ne disparaît**. Tu l'étudieras en détail avec les équations de réaction." }
+          {
+            "type": "text",
+            "text": "Une **formule chimique** indique la composition d'une molécule : on écrit les symboles des atomes présents, et un petit chiffre en bas à droite, l'**indice**, donne le nombre d'atomes de l'élément placé juste avant. Quand il n'y a pas d'indice, il y a un seul atome."
+          },
+          {
+            "type": "table",
+            "caption": "Des formules de molécules courantes",
+            "columns": [
+              "Molécule",
+              "Formule",
+              "Composition",
+              "Nombre total d'atomes"
+            ],
+            "rows": [
+              [
+                "Eau",
+                "H₂O",
+                "2 atomes H + 1 atome O",
+                "3"
+              ],
+              [
+                "Dioxygène",
+                "O₂",
+                "2 atomes O",
+                "2"
+              ],
+              [
+                "Diazote",
+                "N₂",
+                "2 atomes N",
+                "2"
+              ],
+              [
+                "Dioxyde de carbone",
+                "CO₂",
+                "1 atome C + 2 atomes O",
+                "3"
+              ],
+              [
+                "Méthane",
+                "CH₄",
+                "1 atome C + 4 atomes H",
+                "5"
+              ],
+              [
+                "Glucose",
+                "C₆H₁₂O₆",
+                "6 atomes C + 12 atomes H + 6 atomes O",
+                "24"
+              ]
+            ]
+          },
+          {
+            "type": "figure",
+            "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 600 310\" width=\"600\" height=\"310\"><rect width=\"600\" height=\"310\" fill=\"#ffffff\"/><circle cx=\"48.1\" cy=\"125.8\" r=\"16\" fill=\"#FFFFFF\" stroke=\"#344054\" stroke-width=\"1.5\"/><circle cx=\"101.9\" cy=\"125.8\" r=\"16\" fill=\"#FFFFFF\" stroke=\"#344054\" stroke-width=\"1.5\"/><circle cx=\"75.0\" cy=\"105.0\" r=\"24\" fill=\"#D92D20\" stroke=\"#344054\" stroke-width=\"1.5\"/><circle cx=\"209.0\" cy=\"105.0\" r=\"24\" fill=\"#D92D20\" stroke=\"#344054\" stroke-width=\"1.5\"/><circle cx=\"241.0\" cy=\"105.0\" r=\"24\" fill=\"#D92D20\" stroke=\"#344054\" stroke-width=\"1.5\"/><circle cx=\"337.0\" cy=\"105.0\" r=\"23\" fill=\"#D92D20\" stroke=\"#344054\" stroke-width=\"1.5\"/><circle cx=\"413.0\" cy=\"105.0\" r=\"23\" fill=\"#D92D20\" stroke=\"#344054\" stroke-width=\"1.5\"/><circle cx=\"375.0\" cy=\"105.0\" r=\"25\" fill=\"#1F1F1F\" stroke=\"#344054\" stroke-width=\"1.5\"/><circle cx=\"525.0\" cy=\"71.0\" r=\"16\" fill=\"#FFFFFF\" stroke=\"#344054\" stroke-width=\"1.5\"/><circle cx=\"493.0\" cy=\"119.0\" r=\"16\" fill=\"#FFFFFF\" stroke=\"#344054\" stroke-width=\"1.5\"/><circle cx=\"557.0\" cy=\"119.0\" r=\"16\" fill=\"#FFFFFF\" stroke=\"#344054\" stroke-width=\"1.5\"/><circle cx=\"525.0\" cy=\"105.0\" r=\"25\" fill=\"#1F1F1F\" stroke=\"#344054\" stroke-width=\"1.5\"/><circle cx=\"531.0\" cy=\"129.0\" r=\"16\" fill=\"#FFFFFF\" stroke=\"#344054\" stroke-width=\"1.5\"/><text x=\"75\" y=\"190\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"15\" font-weight=\"bold\" fill=\"#101828\" text-anchor=\"middle\">Eau</text><text x=\"75\" y=\"212\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"16\" fill=\"#1E36A8\" text-anchor=\"middle\">H₂O</text><text x=\"75\" y=\"233\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"13\" fill=\"#475467\" text-anchor=\"middle\">2 H + 1 O</text><text x=\"225\" y=\"190\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"15\" font-weight=\"bold\" fill=\"#101828\" text-anchor=\"middle\">Dioxygène</text><text x=\"225\" y=\"212\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"16\" fill=\"#1E36A8\" text-anchor=\"middle\">O₂</text><text x=\"225\" y=\"233\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"13\" fill=\"#475467\" text-anchor=\"middle\">2 O</text><text x=\"375\" y=\"190\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"15\" font-weight=\"bold\" fill=\"#101828\" text-anchor=\"middle\">Dioxyde de carbone</text><text x=\"375\" y=\"212\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"16\" fill=\"#1E36A8\" text-anchor=\"middle\">CO₂</text><text x=\"375\" y=\"233\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"13\" fill=\"#475467\" text-anchor=\"middle\">1 C + 2 O</text><text x=\"525\" y=\"190\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"15\" font-weight=\"bold\" fill=\"#101828\" text-anchor=\"middle\">Méthane</text><text x=\"525\" y=\"212\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"16\" fill=\"#1E36A8\" text-anchor=\"middle\">CH₄</text><text x=\"525\" y=\"233\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"13\" fill=\"#475467\" text-anchor=\"middle\">1 C + 4 H</text><rect x=\"90\" y=\"256\" width=\"420\" height=\"40\" rx=\"10\" fill=\"#F9FAFB\" stroke=\"#D0D5DD\"/><circle cx=\"130.0\" cy=\"276.0\" r=\"9\" fill=\"#FFFFFF\" stroke=\"#344054\" stroke-width=\"1.5\"/><text x=\"146\" y=\"281\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"13\" fill=\"#101828\" text-anchor=\"start\">hydrogène H : blanc</text><circle cx=\"280.0\" cy=\"276.0\" r=\"9\" fill=\"#1F1F1F\" stroke=\"#344054\" stroke-width=\"1.5\"/><text x=\"296\" y=\"281\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"13\" fill=\"#101828\" text-anchor=\"start\">carbone C : noir</text><circle cx=\"415.0\" cy=\"276.0\" r=\"9\" fill=\"#D92D20\" stroke=\"#344054\" stroke-width=\"1.5\"/><text x=\"431\" y=\"281\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"13\" fill=\"#101828\" text-anchor=\"start\">oxygène O : rouge</text></svg>",
+            "alt": "Modèles moléculaires de quatre molécules, avec les couleurs conventionnelles (hydrogène blanc, carbone noir, oxygène rouge). Eau H₂O : une grosse boule rouge d'oxygène reliée à deux petites boules blanches d'hydrogène, la molécule est coudée. Dioxygène O₂ : deux boules rouges accolées. Dioxyde de carbone CO₂ : une boule noire de carbone au centre, entre deux boules rouges d'oxygène, alignées. Méthane CH₄ : une boule noire de carbone entourée de quatre petites boules blanches d'hydrogène.",
+            "caption": "Modèles moléculaires de H₂O, O₂, CO₂ et CH₄"
+          },
+          {
+            "type": "callout",
+            "kind": "methode",
+            "title": "Compter les atomes d'une formule",
+            "text": "1. Repère chaque symbole (il commence par une majuscule).\n2. Lis l'indice placé juste après (pas d'indice = 1).\n3. Additionne.\nExemple : C₃H₈ (propane) → 3 C + 8 H = 11 atomes."
+          },
+          {
+            "type": "callout",
+            "kind": "attention",
+            "title": "Indice ou nombre devant ?",
+            "text": "Le nombre écrit **devant** une formule compte les molécules. 2 H₂O signifie « deux molécules d'eau », soit 2 × 2 = 4 atomes H et 2 × 1 = 2 atomes O."
+          },
+          {
+            "type": "callout",
+            "kind": "definition",
+            "title": "Corps simple, corps composé",
+            "text": "Un **corps simple** est formé d'un seul élément : O₂, N₂, H₂.\nUn **corps composé** est formé de plusieurs éléments : H₂O, CO₂, CH₄."
+          },
+          {
+            "type": "callout",
+            "kind": "plus",
+            "title": "Lien avec les transformations chimiques",
+            "text": "Lors d'une transformation chimique, les molécules se cassent et les atomes se réorganisent pour former de nouvelles molécules, mais **aucun atome n'apparaît ni ne disparaît**. Tu l'étudieras en détail avec les équations de réaction."
+          }
         ],
         "checkpoint": {
           "variants": [
             {
               "prompt": "Combien d'atomes contient une molécule de méthane CH₄ ?",
-              "options": ["4", "5", "2", "8"],
+              "options": [
+                "4",
+                "5",
+                "2",
+                "8"
+              ],
               "answer": 1,
               "hint": "Applique la méthode : pas d'indice après C signifie 1 atome.",
               "explanation": "1 atome de carbone + 4 atomes d'hydrogène = 5 atomes."
             },
             {
               "prompt": "Quelle est la formule d'une molécule formée de 1 atome de soufre et de 2 atomes d'oxygène ?",
-              "options": ["S₂O", "SO₂", "So₂", "2SO"],
+              "options": [
+                "S₂O",
+                "SO₂",
+                "So₂",
+                "2SO"
+              ],
               "answer": 1,
               "hint": "L'indice se place après le symbole de l'élément qu'il compte.",
               "explanation": "SO₂ (dioxyde de soufre) : 1 atome S, puis l'indice 2 après O pour 2 atomes d'oxygène."
             },
             {
               "prompt": "Parmi ces molécules, laquelle est un corps simple ?",
-              "options": ["H₂O", "CO₂", "N₂", "CH₄"],
+              "options": [
+                "H₂O",
+                "CO₂",
+                "N₂",
+                "CH₄"
+              ],
               "answer": 2,
               "hint": "Un corps simple ne contient qu'une seule sorte d'atome.",
               "explanation": "N₂ ne contient que des atomes d'azote : c'est un corps simple."
@@ -116,39 +285,101 @@
       {
         "title": "À l'intérieur de l'atome : noyau et électrons",
         "blocks": [
-          { "type": "text", "text": "L'atome n'est pas une petite bille pleine : il possède une structure. On peut le modéliser ainsi :" },
-          { "type": "list", "items": [
-            "au centre, un **noyau** très petit, chargé positivement ;",
-            "le noyau contient des **protons** (charge positive) et des **neutrons** (charge nulle) : ensemble, on les appelle les **nucléons** ;",
-            "autour du noyau se déplacent des **électrons** (charge négative), qui forment le **nuage électronique**."
-          ] },
-          { "type": "table", "caption": "Les particules de l'atome (e désigne la charge élémentaire)", "columns": ["Particule", "Où ?", "Charge électrique", "Masse approximative"], "rows": [
-            ["Proton", "dans le noyau", "+e (positive)", "1,67 × 10⁻²⁷ kg"],
-            ["Neutron", "dans le noyau", "0 (neutre)", "1,67 × 10⁻²⁷ kg"],
-            ["Électron", "autour du noyau", "−e (négative)", "9,11 × 10⁻³¹ kg"]
-          ] },
-          { "type": "callout", "kind": "retiens", "title": "L'atome est électriquement neutre", "text": "Un proton et un électron ont des charges opposées de même valeur. Dans un atome, il y a **autant d'électrons que de protons** : les charges positives et négatives se compensent, l'atome est **électriquement neutre**." },
-          { "type": "callout", "kind": "plus", "title": "Un modèle construit petit à petit", "text": "L'électron a été mis en évidence par J. J. Thomson en 1897, le noyau par Ernest Rutherford en 1911 et le neutron par James Chadwick en 1932. Le modèle de l'atome a évolué au fil des expériences : c'est ainsi que progresse la science." }
+          {
+            "type": "text",
+            "text": "L'atome n'est pas une petite bille pleine : il possède une structure. On peut le modéliser ainsi :"
+          },
+          {
+            "type": "list",
+            "items": [
+              "au centre, un **noyau** très petit, chargé positivement ;",
+              "le noyau contient des **protons** (charge positive) et des **neutrons** (charge nulle) : ensemble, on les appelle les **nucléons** ;",
+              "autour du noyau se déplacent des **électrons** (charge négative), qui forment le **nuage électronique**."
+            ]
+          },
+          {
+            "type": "figure",
+            "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 600 410\" width=\"600\" height=\"410\"><rect width=\"600\" height=\"410\" fill=\"#ffffff\"/><circle cx=\"165\" cy=\"200\" r=\"135\" fill=\"#EEF2FF\" stroke=\"#1E36A8\" stroke-width=\"1.5\" stroke-dasharray=\"6 5\"/><circle cx=\"165\" cy=\"200\" r=\"84\" fill=\"#E0E7FF\" stroke=\"none\" opacity=\"0.7\"/><circle cx=\"263.9\" cy=\"236.0\" r=\"10\" fill=\"#1E36A8\" stroke=\"#1E36A8\" stroke-width=\"1\"/><text x=\"263.9\" y=\"241.0\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"15\" font-weight=\"bold\" fill=\"#FFFFFF\" text-anchor=\"middle\">−</text><circle cx=\"158.5\" cy=\"274.0\" r=\"10\" fill=\"#1E36A8\" stroke=\"#1E36A8\" stroke-width=\"1\"/><text x=\"158.5\" y=\"279.0\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"15\" font-weight=\"bold\" fill=\"#FFFFFF\" text-anchor=\"middle\">−</text><circle cx=\"65.6\" cy=\"257.4\" r=\"10\" fill=\"#1E36A8\" stroke=\"#1E36A8\" stroke-width=\"1\"/><text x=\"65.6\" y=\"262.4\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"15\" font-weight=\"bold\" fill=\"#FFFFFF\" text-anchor=\"middle\">−</text><circle cx=\"96.4\" cy=\"152.0\" r=\"10\" fill=\"#1E36A8\" stroke=\"#1E36A8\" stroke-width=\"1\"/><text x=\"96.4\" y=\"157.0\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"15\" font-weight=\"bold\" fill=\"#FFFFFF\" text-anchor=\"middle\">−</text><circle cx=\"174.6\" cy=\"89.7\" r=\"10\" fill=\"#1E36A8\" stroke=\"#1E36A8\" stroke-width=\"1\"/><text x=\"174.6\" y=\"94.7\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"15\" font-weight=\"bold\" fill=\"#FFFFFF\" text-anchor=\"middle\">−</text><circle cx=\"221.1\" cy=\"167.6\" r=\"10\" fill=\"#1E36A8\" stroke=\"#1E36A8\" stroke-width=\"1\"/><text x=\"221.1\" y=\"172.6\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"15\" font-weight=\"bold\" fill=\"#FFFFFF\" text-anchor=\"middle\">−</text><circle cx=\"165.0\" cy=\"200.0\" r=\"6\" fill=\"#9A3412\" stroke=\"#9A3412\" stroke-width=\"1\"/><text x=\"165\" y=\"184\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"13\" font-weight=\"bold\" fill=\"#9A3412\" text-anchor=\"middle\">noyau</text><text x=\"165\" y=\"361\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"14\" font-weight=\"bold\" fill=\"#1E36A8\" text-anchor=\"middle\">nuage électronique</text><line x1=\"169\" y1=\"195\" x2=\"405\" y2=\"121\" stroke=\"#475467\" stroke-width=\"1.2\" stroke-dasharray=\"4 4\"/><line x1=\"169\" y1=\"205\" x2=\"405\" y2=\"229\" stroke=\"#475467\" stroke-width=\"1.2\" stroke-dasharray=\"4 4\"/><circle cx=\"465.0\" cy=\"175.0\" r=\"80\" fill=\"#FFFFFF\" stroke=\"#9A3412\" stroke-width=\"2\"/><circle cx=\"441.0\" cy=\"139.0\" r=\"12.5\" fill=\"#FEF0E6\" stroke=\"#9A3412\" stroke-width=\"1.8\"/><text x=\"441\" y=\"144\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"15\" font-weight=\"bold\" fill=\"#9A3412\" text-anchor=\"middle\">+</text><circle cx=\"465.0\" cy=\"139.0\" r=\"12.5\" fill=\"#E4E7EC\" stroke=\"#475467\" stroke-width=\"1.8\"/><circle cx=\"489.0\" cy=\"139.0\" r=\"12.5\" fill=\"#FEF0E6\" stroke=\"#9A3412\" stroke-width=\"1.8\"/><text x=\"489\" y=\"144\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"15\" font-weight=\"bold\" fill=\"#9A3412\" text-anchor=\"middle\">+</text><circle cx=\"429.0\" cy=\"163.0\" r=\"12.5\" fill=\"#E4E7EC\" stroke=\"#475467\" stroke-width=\"1.8\"/><circle cx=\"453.0\" cy=\"163.0\" r=\"12.5\" fill=\"#FEF0E6\" stroke=\"#9A3412\" stroke-width=\"1.8\"/><text x=\"453\" y=\"168\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"15\" font-weight=\"bold\" fill=\"#9A3412\" text-anchor=\"middle\">+</text><circle cx=\"477.0\" cy=\"163.0\" r=\"12.5\" fill=\"#E4E7EC\" stroke=\"#475467\" stroke-width=\"1.8\"/><circle cx=\"501.0\" cy=\"163.0\" r=\"12.5\" fill=\"#FEF0E6\" stroke=\"#9A3412\" stroke-width=\"1.8\"/><text x=\"501\" y=\"168\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"15\" font-weight=\"bold\" fill=\"#9A3412\" text-anchor=\"middle\">+</text><circle cx=\"441.0\" cy=\"187.0\" r=\"12.5\" fill=\"#FEF0E6\" stroke=\"#9A3412\" stroke-width=\"1.8\"/><text x=\"441\" y=\"192\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"15\" font-weight=\"bold\" fill=\"#9A3412\" text-anchor=\"middle\">+</text><circle cx=\"465.0\" cy=\"187.0\" r=\"12.5\" fill=\"#E4E7EC\" stroke=\"#475467\" stroke-width=\"1.8\"/><circle cx=\"489.0\" cy=\"187.0\" r=\"12.5\" fill=\"#FEF0E6\" stroke=\"#9A3412\" stroke-width=\"1.8\"/><text x=\"489\" y=\"192\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"15\" font-weight=\"bold\" fill=\"#9A3412\" text-anchor=\"middle\">+</text><circle cx=\"453.0\" cy=\"211.0\" r=\"12.5\" fill=\"#E4E7EC\" stroke=\"#475467\" stroke-width=\"1.8\"/><circle cx=\"477.0\" cy=\"211.0\" r=\"12.5\" fill=\"#E4E7EC\" stroke=\"#475467\" stroke-width=\"1.8\"/><text x=\"465\" y=\"83\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"14\" font-weight=\"bold\" fill=\"#9A3412\" text-anchor=\"middle\">Le noyau agrandi</text><text x=\"465\" y=\"277\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"14\" fill=\"#101828\" text-anchor=\"middle\">6 protons + 6 neutrons</text><circle cx=\"385.0\" cy=\"302.0\" r=\"11\" fill=\"#FEF0E6\" stroke=\"#9A3412\" stroke-width=\"1.8\"/><text x=\"385\" y=\"307\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"14\" font-weight=\"bold\" fill=\"#9A3412\" text-anchor=\"middle\">+</text><text x=\"405\" y=\"307\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"13\" fill=\"#101828\" text-anchor=\"start\">proton (charge +)</text><circle cx=\"385.0\" cy=\"329.0\" r=\"11\" fill=\"#E4E7EC\" stroke=\"#475467\" stroke-width=\"1.8\"/><text x=\"405\" y=\"334\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"13\" fill=\"#101828\" text-anchor=\"start\">neutron (charge nulle)</text><circle cx=\"385.0\" cy=\"356.0\" r=\"10\" fill=\"#1E36A8\" stroke=\"#1E36A8\" stroke-width=\"1\"/><text x=\"385\" y=\"361\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"15\" font-weight=\"bold\" fill=\"#FFFFFF\" text-anchor=\"middle\">−</text><text x=\"405\" y=\"361\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"13\" fill=\"#101828\" text-anchor=\"start\">électron (charge −)</text><text x=\"300\" y=\"22\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"15\" font-weight=\"bold\" fill=\"#101828\" text-anchor=\"middle\">Modèle de l’atome de carbone (Z = 6, A = 12)</text><text x=\"300\" y=\"400\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"13\" font-style=\"italic\" fill=\"#475467\" text-anchor=\"middle\">Schéma non à l’échelle : en réalité, l’atome est 100 000 fois plus grand que son noyau.</text></svg>",
+            "alt": "Modèle de l'atome de carbone, Z = 6 et A = 12. À gauche, un grand disque bleu clair aux bords flous représente le nuage électronique ; six électrons, notés avec un signe moins, y sont dispersés. Au centre, un point minuscule : le noyau. À droite, une loupe montre le noyau agrandi : un amas de 6 protons, marqués d'un signe plus, et de 6 neutrons, sans signe. Légende : proton de charge positive, neutron de charge nulle, électron de charge négative. Le schéma n'est pas à l'échelle : en réalité l'atome est 100 000 fois plus grand que son noyau.",
+            "caption": "L'atome de carbone : 6 protons et 6 neutrons dans le noyau, 6 électrons autour"
+          },
+          {
+            "type": "table",
+            "caption": "Les particules de l'atome (e désigne la charge élémentaire)",
+            "columns": [
+              "Particule",
+              "Où ?",
+              "Charge électrique",
+              "Masse approximative"
+            ],
+            "rows": [
+              [
+                "Proton",
+                "dans le noyau",
+                "+e (positive)",
+                "1,67 × 10⁻²⁷ kg"
+              ],
+              [
+                "Neutron",
+                "dans le noyau",
+                "0 (neutre)",
+                "1,67 × 10⁻²⁷ kg"
+              ],
+              [
+                "Électron",
+                "autour du noyau",
+                "−e (négative)",
+                "9,11 × 10⁻³¹ kg"
+              ]
+            ]
+          },
+          {
+            "type": "callout",
+            "kind": "retiens",
+            "title": "L'atome est électriquement neutre",
+            "text": "Un proton et un électron ont des charges opposées de même valeur. Dans un atome, il y a **autant d'électrons que de protons** : les charges positives et négatives se compensent, l'atome est **électriquement neutre**."
+          },
+          {
+            "type": "callout",
+            "kind": "plus",
+            "title": "Un modèle construit petit à petit",
+            "text": "L'électron a été mis en évidence par J. J. Thomson en 1897, le noyau par Ernest Rutherford en 1911 et le neutron par James Chadwick en 1932. Le modèle de l'atome a évolué au fil des expériences : c'est ainsi que progresse la science."
+          }
         ],
         "checkpoint": {
           "variants": [
             {
               "prompt": "Que contient le noyau d'un atome ?",
-              "options": ["Des protons et des électrons", "Des protons et des neutrons", "Uniquement des électrons", "Des neutrons et des électrons"],
+              "options": [
+                "Des protons et des électrons",
+                "Des protons et des neutrons",
+                "Uniquement des électrons",
+                "Des neutrons et des électrons"
+              ],
               "answer": 1,
               "hint": "Les électrons ne sont pas dans le noyau : relis la liste du modèle de l'atome.",
               "explanation": "Le noyau contient les nucléons : protons et neutrons. Les électrons sont autour."
             },
             {
               "prompt": "Quelle est la charge électrique d'un neutron ?",
-              "options": ["Positive", "Négative", "Nulle", "Cela dépend de l'atome"],
+              "options": [
+                "Positive",
+                "Négative",
+                "Nulle",
+                "Cela dépend de l'atome"
+              ],
               "answer": 2,
               "hint": "Le nom « neutron » donne un indice.",
               "explanation": "Le neutron est neutre : sa charge est nulle."
             },
             {
               "prompt": "Pourquoi un atome est-il électriquement neutre ?",
-              "options": ["Parce qu'il ne contient aucune particule chargée", "Parce qu'il a autant d'électrons que de protons", "Parce qu'il a autant de neutrons que de protons", "Parce que les électrons sont dans le noyau"],
+              "options": [
+                "Parce qu'il ne contient aucune particule chargée",
+                "Parce qu'il a autant d'électrons que de protons",
+                "Parce qu'il a autant de neutrons que de protons",
+                "Parce que les électrons sont dans le noyau"
+              ],
               "answer": 1,
               "hint": "Relis l'encadré « L'atome est électriquement neutre ».",
               "explanation": "Les charges des protons (+) et des électrons (−) se compensent car ils sont en nombre égal."
@@ -159,38 +390,125 @@
       {
         "title": "Numéro atomique Z et nombre de nucléons A",
         "blocks": [
-          { "type": "callout", "kind": "definition", "title": "Deux nombres pour décrire un atome", "text": "Le **numéro atomique Z** est le nombre de protons du noyau. C'est lui qui définit l'élément : tous les atomes de carbone ont Z = 6.\nLe **nombre de nucléons A** est le nombre total de particules du noyau : protons + neutrons." },
-          { "type": "text", "text": "On note parfois un atome avec A en haut à gauche et Z en bas à gauche du symbole. Par exemple ¹²₆C désigne un atome de carbone avec A = 12 et Z = 6." },
-          { "type": "callout", "kind": "methode", "title": "Dénombrer les particules d'un atome", "text": "Nombre de protons = Z\nNombre de neutrons = A − Z\nNombre d'électrons = Z (car l'atome est neutre)\nExemple : sodium, Z = 11 et A = 23 → 11 protons, 23 − 11 = 12 neutrons, 11 électrons." },
-          { "type": "table", "caption": "Quelques atomes", "columns": ["Atome", "Z", "A", "Protons", "Neutrons", "Électrons"], "rows": [
-            ["Hydrogène H", "1", "1", "1", "0", "1"],
-            ["Carbone C", "6", "12", "6", "6", "6"],
-            ["Oxygène O", "8", "16", "8", "8", "8"],
-            ["Sodium Na", "11", "23", "11", "12", "11"],
-            ["Aluminium Al", "13", "27", "13", "14", "13"],
-            ["Fer Fe", "26", "56", "26", "30", "26"]
-          ] },
-          { "type": "callout", "kind": "attention", "title": "Et si le nombre d'électrons change ?", "text": "Un atome peut perdre ou gagner un ou plusieurs électrons : il devient alors un **ion**, qui n'est plus neutre. Son noyau, lui, ne change pas : Z reste le même. Ce sera l'objet du cours sur les ions." }
+          {
+            "type": "callout",
+            "kind": "definition",
+            "title": "Deux nombres pour décrire un atome",
+            "text": "Le **numéro atomique Z** est le nombre de protons du noyau. C'est lui qui définit l'élément : tous les atomes de carbone ont Z = 6.\nLe **nombre de nucléons A** est le nombre total de particules du noyau : protons + neutrons."
+          },
+          {
+            "type": "text",
+            "text": "On note parfois un atome avec A en haut à gauche et Z en bas à gauche du symbole. Par exemple ¹²₆C désigne un atome de carbone avec A = 12 et Z = 6."
+          },
+          {
+            "type": "callout",
+            "kind": "methode",
+            "title": "Dénombrer les particules d'un atome",
+            "text": "Nombre de protons = Z\nNombre de neutrons = A − Z\nNombre d'électrons = Z (car l'atome est neutre)\nExemple : sodium, Z = 11 et A = 23 → 11 protons, 23 − 11 = 12 neutrons, 11 électrons."
+          },
+          {
+            "type": "table",
+            "caption": "Quelques atomes",
+            "columns": [
+              "Atome",
+              "Z",
+              "A",
+              "Protons",
+              "Neutrons",
+              "Électrons"
+            ],
+            "rows": [
+              [
+                "Hydrogène H",
+                "1",
+                "1",
+                "1",
+                "0",
+                "1"
+              ],
+              [
+                "Carbone C",
+                "6",
+                "12",
+                "6",
+                "6",
+                "6"
+              ],
+              [
+                "Oxygène O",
+                "8",
+                "16",
+                "8",
+                "8",
+                "8"
+              ],
+              [
+                "Sodium Na",
+                "11",
+                "23",
+                "11",
+                "12",
+                "11"
+              ],
+              [
+                "Aluminium Al",
+                "13",
+                "27",
+                "13",
+                "14",
+                "13"
+              ],
+              [
+                "Fer Fe",
+                "26",
+                "56",
+                "26",
+                "30",
+                "26"
+              ]
+            ]
+          },
+          {
+            "type": "callout",
+            "kind": "attention",
+            "title": "Et si le nombre d'électrons change ?",
+            "text": "Un atome peut perdre ou gagner un ou plusieurs électrons : il devient alors un **ion**, qui n'est plus neutre. Son noyau, lui, ne change pas : Z reste le même. Ce sera l'objet du cours sur les ions."
+          }
         ],
         "checkpoint": {
           "variants": [
             {
               "prompt": "Un atome de chlore a Z = 17 et A = 35. Combien a-t-il de neutrons ?",
-              "options": ["17", "35", "18", "52"],
+              "options": [
+                "17",
+                "35",
+                "18",
+                "52"
+              ],
               "answer": 2,
               "hint": "Utilise la méthode : neutrons = A − Z.",
               "explanation": "35 − 17 = 18 neutrons."
             },
             {
               "prompt": "Un atome d'azote a Z = 7. Combien a-t-il d'électrons ?",
-              "options": ["7", "14", "0", "On ne peut pas savoir sans A"],
+              "options": [
+                "7",
+                "14",
+                "0",
+                "On ne peut pas savoir sans A"
+              ],
               "answer": 0,
               "hint": "Un atome est neutre : compare le nombre d'électrons à celui des protons.",
               "explanation": "Atome neutre : autant d'électrons que de protons, donc 7 électrons."
             },
             {
               "prompt": "Que représente le numéro atomique Z ?",
-              "options": ["Le nombre de neutrons", "Le nombre de protons", "Le nombre de nucléons", "Le nombre de molécules"],
+              "options": [
+                "Le nombre de neutrons",
+                "Le nombre de protons",
+                "Le nombre de nucléons",
+                "Le nombre de molécules"
+              ],
               "answer": 1,
               "hint": "Relis l'encadré « Deux nombres pour décrire un atome ».",
               "explanation": "Z est le nombre de protons ; il caractérise l'élément chimique."
@@ -201,32 +519,71 @@
       {
         "title": "Un monde minuscule et presque vide",
         "blocks": [
-          { "type": "text", "text": "Un atome a un diamètre de l'ordre de **10⁻¹⁰ m** (un dix-milliardième de mètre, soit 0,1 nanomètre). Son noyau est encore beaucoup plus petit : environ **10⁻¹⁵ m**." },
-          { "type": "callout", "kind": "methode", "title": "Comparer deux ordres de grandeur", "text": "On divise le plus grand par le plus petit : 10⁻¹⁰ ÷ 10⁻¹⁵ = 10⁻¹⁰⁺¹⁵ = 10⁵ = 100 000.\nL'atome est environ **100 000 fois plus grand** que son noyau." },
-          { "type": "text", "text": "Pour se représenter cela : si le noyau avait la taille d'une bille de 1 cm, l'atome aurait un diamètre de 100 000 cm, c'est-à-dire 1 km ! Entre le noyau et les électrons, il n'y a rien : on dit que la matière a une **structure lacunaire** (elle est faite essentiellement de vide)." },
-          { "type": "text", "text": "Côté masse, c'est l'inverse : un électron est environ 1 800 fois plus léger qu'un proton. Presque toute la masse de l'atome (plus de 99,9 %) est donc concentrée dans son noyau. On peut estimer la masse d'un atome en multipliant A par la masse d'un nucléon : pour le carbone, 12 × 1,67 × 10⁻²⁷ kg ≈ 2,0 × 10⁻²⁶ kg." },
-          { "type": "callout", "kind": "retiens", "title": "Retiens", "text": "Atome : environ 10⁻¹⁰ m. Noyau : environ 10⁻¹⁵ m, soit 100 000 fois plus petit.\nLa masse de l'atome est concentrée dans le noyau ; le reste de l'atome est presque vide." },
-          { "type": "callout", "kind": "plus", "title": "Combien d'atomes dans une goutte ?", "text": "Une seule goutte d'eau contient environ 10²¹ molécules d'eau, soit mille milliards de milliards : c'est parce que les atomes sont si petits qu'il en faut un nombre gigantesque pour former un objet visible." }
+          {
+            "type": "text",
+            "text": "Un atome a un diamètre de l'ordre de **10⁻¹⁰ m** (un dix-milliardième de mètre, soit 0,1 nanomètre). Son noyau est encore beaucoup plus petit : environ **10⁻¹⁵ m**."
+          },
+          {
+            "type": "callout",
+            "kind": "methode",
+            "title": "Comparer deux ordres de grandeur",
+            "text": "On divise le plus grand par le plus petit : 10⁻¹⁰ ÷ 10⁻¹⁵ = 10⁻¹⁰⁺¹⁵ = 10⁵ = 100 000.\nL'atome est environ **100 000 fois plus grand** que son noyau."
+          },
+          {
+            "type": "text",
+            "text": "Pour se représenter cela : si le noyau avait la taille d'une bille de 1 cm, l'atome aurait un diamètre de 100 000 cm, c'est-à-dire 1 km ! Entre le noyau et les électrons, il n'y a rien : on dit que la matière a une **structure lacunaire** (elle est faite essentiellement de vide)."
+          },
+          {
+            "type": "text",
+            "text": "Côté masse, c'est l'inverse : un électron est environ 1 800 fois plus léger qu'un proton. Presque toute la masse de l'atome (plus de 99,9 %) est donc concentrée dans son noyau. On peut estimer la masse d'un atome en multipliant A par la masse d'un nucléon : pour le carbone, 12 × 1,67 × 10⁻²⁷ kg ≈ 2,0 × 10⁻²⁶ kg."
+          },
+          {
+            "type": "callout",
+            "kind": "retiens",
+            "title": "Retiens",
+            "text": "Atome : environ 10⁻¹⁰ m. Noyau : environ 10⁻¹⁵ m, soit 100 000 fois plus petit.\nLa masse de l'atome est concentrée dans le noyau ; le reste de l'atome est presque vide."
+          },
+          {
+            "type": "callout",
+            "kind": "plus",
+            "title": "Combien d'atomes dans une goutte ?",
+            "text": "Une seule goutte d'eau contient environ 10²¹ molécules d'eau, soit mille milliards de milliards : c'est parce que les atomes sont si petits qu'il en faut un nombre gigantesque pour former un objet visible."
+          }
         ],
         "checkpoint": {
           "variants": [
             {
               "prompt": "Quel est l'ordre de grandeur du diamètre d'un atome ?",
-              "options": ["10⁻³ m", "10⁻¹⁰ m", "10⁻¹⁵ m", "10¹⁰ m"],
+              "options": [
+                "10⁻³ m",
+                "10⁻¹⁰ m",
+                "10⁻¹⁵ m",
+                "10¹⁰ m"
+              ],
               "answer": 1,
               "hint": "10⁻¹⁵ m correspond à une autre partie de l'atome.",
               "explanation": "Un atome mesure environ 10⁻¹⁰ m ; 10⁻¹⁵ m est la taille du noyau."
             },
             {
               "prompt": "Où se trouve presque toute la masse d'un atome ?",
-              "options": ["Dans les électrons", "Dans le noyau", "Répartie dans le vide", "Dans le nuage électronique"],
+              "options": [
+                "Dans les électrons",
+                "Dans le noyau",
+                "Répartie dans le vide",
+                "Dans le nuage électronique"
+              ],
               "answer": 1,
               "hint": "Compare la masse d'un électron à celle d'un proton dans le tableau de la partie 3.",
               "explanation": "Protons et neutrons sont environ 1 800 fois plus lourds que les électrons : la masse est dans le noyau."
             },
             {
               "prompt": "Que signifie « la matière a une structure lacunaire » ?",
-              "options": ["Elle est pleine et compacte", "Elle est faite essentiellement de vide", "Elle ne contient pas d'électrons", "Elle est toujours liquide"],
+              "options": [
+                "Elle est pleine et compacte",
+                "Elle est faite essentiellement de vide",
+                "Elle ne contient pas d'électrons",
+                "Elle est toujours liquide"
+              ],
               "answer": 1,
               "hint": "Pense à l'image de la bille de 1 cm dans un atome de 1 km.",
               "explanation": "Entre le noyau et les électrons, il n'y a rien : l'atome est presque entièrement vide."
@@ -236,12 +593,30 @@
       }
     ],
     "memo": [
-      { "label": "Atome / molécule", "text": "Atome = plus petite particule d'un élément (symbole : H, C, O, N, Cl…). Molécule = atomes liés entre eux." },
-      { "label": "Formule chimique", "text": "L'indice en bas à droite compte les atomes de l'élément qui le précède (pas d'indice = 1). H₂O = 2 H + 1 O. Le nombre devant compte les molécules." },
-      { "label": "Corps simple / composé", "text": "Simple : un seul élément (O₂, N₂). Composé : plusieurs éléments (H₂O, CO₂)." },
-      { "label": "Structure de l'atome", "text": "Noyau (protons + et neutrons neutres) + électrons − autour. Autant d'électrons que de protons : atome neutre." },
-      { "label": "Z et A", "text": "Z = protons = électrons (atome). A = protons + neutrons. Neutrons = A − Z." },
-      { "label": "Ordres de grandeur", "text": "Atome ≈ 10⁻¹⁰ m ; noyau ≈ 10⁻¹⁵ m (100 000 fois plus petit). Masse concentrée dans le noyau ; le reste est vide." }
+      {
+        "label": "Atome / molécule",
+        "text": "Atome = plus petite particule d'un élément (symbole : H, C, O, N, Cl…). Molécule = atomes liés entre eux."
+      },
+      {
+        "label": "Formule chimique",
+        "text": "L'indice en bas à droite compte les atomes de l'élément qui le précède (pas d'indice = 1). H₂O = 2 H + 1 O. Le nombre devant compte les molécules."
+      },
+      {
+        "label": "Corps simple / composé",
+        "text": "Simple : un seul élément (O₂, N₂). Composé : plusieurs éléments (H₂O, CO₂)."
+      },
+      {
+        "label": "Structure de l'atome",
+        "text": "Noyau (protons + et neutrons neutres) + électrons − autour. Autant d'électrons que de protons : atome neutre."
+      },
+      {
+        "label": "Z et A",
+        "text": "Z = protons = électrons (atome). A = protons + neutrons. Neutrons = A − Z."
+      },
+      {
+        "label": "Ordres de grandeur",
+        "text": "Atome ≈ 10⁻¹⁰ m ; noyau ≈ 10⁻¹⁵ m (100 000 fois plus petit). Masse concentrée dans le noyau ; le reste est vide."
+      }
     ]
   },
   "exercises": {
@@ -255,10 +630,17 @@
         "type": "qcm",
         "stars": 1,
         "lesson_part": 2,
-        "skills": ["pc-formule"],
+        "skills": [
+          "pc-formule"
+        ],
         "cognitive": "connaitre",
         "prompt": "Quelle formule correspond à une molécule formée de 1 atome de carbone et de 2 atomes d'oxygène ?",
-        "options": ["CO", "C₂O", "CO₂", "Co₂"],
+        "options": [
+          "CO",
+          "C₂O",
+          "CO₂",
+          "Co₂"
+        ],
         "answer": 2,
         "solution": "CO₂ (dioxyde de carbone) : 1 atome C, et l'indice 2 après O indique 2 atomes d'oxygène. Co₂ est faux : Co est le symbole du cobalt."
       },
@@ -267,7 +649,9 @@
         "type": "numeric",
         "stars": 1,
         "lesson_part": 2,
-        "skills": ["pc-formule"],
+        "skills": [
+          "pc-formule"
+        ],
         "cognitive": "appliquer",
         "prompt": "Combien d'atomes contient au total une molécule de butane C₄H₁₀ ?",
         "answer": 14,
@@ -278,10 +662,17 @@
         "type": "qcm",
         "stars": 1,
         "lesson_part": 3,
-        "skills": ["pc-structure"],
+        "skills": [
+          "pc-structure"
+        ],
         "cognitive": "connaitre",
         "prompt": "Quelle particule porte une charge électrique négative ?",
-        "options": ["Le proton", "Le neutron", "L'électron", "Le noyau"],
+        "options": [
+          "Le proton",
+          "Le neutron",
+          "L'électron",
+          "Le noyau"
+        ],
         "answer": 2,
         "solution": "L'électron porte une charge négative (−e). Le proton est positif, le neutron est neutre et le noyau est globalement positif."
       },
@@ -290,10 +681,14 @@
         "type": "short",
         "stars": 1,
         "lesson_part": 1,
-        "skills": ["pc-atome-molecule"],
+        "skills": [
+          "pc-atome-molecule"
+        ],
         "cognitive": "connaitre",
         "prompt": "Écris le symbole chimique de l'élément sodium.",
-        "answer": ["Na"],
+        "answer": [
+          "Na"
+        ],
         "solution": "Na (du latin *natrium*). Attention : N est le symbole de l'azote."
       },
       {
@@ -301,7 +696,9 @@
         "type": "numeric",
         "stars": 2,
         "lesson_part": 4,
-        "skills": ["pc-numeros"],
+        "skills": [
+          "pc-numeros"
+        ],
         "cognitive": "appliquer",
         "prompt": "Un atome de lithium a pour numéro atomique Z = 3 et pour nombre de nucléons A = 7. Combien son noyau contient-il de neutrons ?",
         "answer": 4,
@@ -312,7 +709,10 @@
         "type": "numeric",
         "stars": 2,
         "lesson_part": 4,
-        "skills": ["pc-numeros", "pc-structure"],
+        "skills": [
+          "pc-numeros",
+          "pc-structure"
+        ],
         "cognitive": "appliquer",
         "prompt": "Un atome de calcium a Z = 20 et A = 40. Combien possède-t-il d'électrons ?",
         "answer": 20,
@@ -323,10 +723,17 @@
         "type": "qcm",
         "stars": 2,
         "lesson_part": 2,
-        "skills": ["pc-formule"],
+        "skills": [
+          "pc-formule"
+        ],
         "cognitive": "appliquer",
         "prompt": "La molécule d'ammoniac est formée de 1 atome d'azote et de 3 atomes d'hydrogène. Quelle est sa formule ?",
-        "options": ["N₃H", "NH₃", "Na₃H", "H₃N₃"],
+        "options": [
+          "N₃H",
+          "NH₃",
+          "Na₃H",
+          "H₃N₃"
+        ],
         "answer": 1,
         "solution": "NH₃ : le symbole N (azote) sans indice = 1 atome, puis H avec l'indice 3 = 3 atomes d'hydrogène."
       },
@@ -335,7 +742,9 @@
         "type": "numeric",
         "stars": 2,
         "lesson_part": 2,
-        "skills": ["pc-formule"],
+        "skills": [
+          "pc-formule"
+        ],
         "cognitive": "appliquer",
         "prompt": "Combien d'atomes d'oxygène y a-t-il au total dans 3 CO₂ (trois molécules de dioxyde de carbone) ?",
         "answer": 6,
@@ -346,7 +755,9 @@
         "type": "numeric",
         "stars": 3,
         "lesson_part": 5,
-        "skills": ["pc-grandeurs"],
+        "skills": [
+          "pc-grandeurs"
+        ],
         "cognitive": "analyser",
         "prompt": "L'atome est environ 100 000 fois plus grand que son noyau. Si l'on agrandissait un noyau jusqu'à 2 cm de diamètre, quel serait le diamètre de l'atome, en kilomètres ? (Rappel : 1 km = 100 000 cm.)",
         "answer": 2,
@@ -357,7 +768,10 @@
         "type": "open",
         "stars": 3,
         "lesson_part": 3,
-        "skills": ["pc-structure", "pc-rediger"],
+        "skills": [
+          "pc-structure",
+          "pc-rediger"
+        ],
         "cognitive": "rediger",
         "prompt": "Un atome contient des particules chargées électriquement. Explique en deux ou trois phrases pourquoi il est pourtant électriquement neutre. Appuie-toi sur l'exemple de l'atome d'oxygène (Z = 8).",
         "solution": "Un atome contient des protons, chargés positivement, dans son noyau, et des électrons, chargés négativement, autour du noyau. Un proton et un électron ont des charges opposées de même valeur. Comme il y a autant d'électrons que de protons, les charges se compensent. Par exemple, l'atome d'oxygène possède 8 protons (8 charges +) et 8 électrons (8 charges −) : sa charge totale est nulle. Les neutrons, eux, ne sont pas chargés."
@@ -380,10 +794,17 @@
                 "type": "qcm",
                 "points": 1,
                 "lesson_part": 3,
-                "skills": ["pc-structure"],
+                "skills": [
+                  "pc-structure"
+                ],
                 "cognitive": "connaitre",
                 "prompt": "Le noyau d'un atome est constitué…",
-                "options": ["de protons et d'électrons", "de protons et de neutrons", "d'électrons uniquement", "de molécules"],
+                "options": [
+                  "de protons et d'électrons",
+                  "de protons et de neutrons",
+                  "d'électrons uniquement",
+                  "de molécules"
+                ],
                 "answer": 1,
                 "solution": "Le noyau est constitué de protons et de neutrons (les nucléons)."
               },
@@ -392,10 +813,17 @@
                 "type": "qcm",
                 "points": 1,
                 "lesson_part": 3,
-                "skills": ["pc-structure"],
+                "skills": [
+                  "pc-structure"
+                ],
                 "cognitive": "connaitre",
                 "prompt": "La charge électrique d'un électron est…",
-                "options": ["positive", "nulle", "négative", "variable"],
+                "options": [
+                  "positive",
+                  "nulle",
+                  "négative",
+                  "variable"
+                ],
                 "answer": 2,
                 "solution": "L'électron porte une charge négative (−e)."
               },
@@ -404,10 +832,17 @@
                 "type": "qcm",
                 "points": 1,
                 "lesson_part": 3,
-                "skills": ["pc-structure"],
+                "skills": [
+                  "pc-structure"
+                ],
                 "cognitive": "connaitre",
                 "prompt": "Dans un atome, le nombre d'électrons est égal…",
-                "options": ["au nombre de neutrons", "au nombre de protons", "au nombre de nucléons", "à zéro"],
+                "options": [
+                  "au nombre de neutrons",
+                  "au nombre de protons",
+                  "au nombre de nucléons",
+                  "à zéro"
+                ],
                 "answer": 1,
                 "solution": "L'atome est neutre : il possède autant d'électrons que de protons."
               },
@@ -416,10 +851,17 @@
                 "type": "qcm",
                 "points": 1,
                 "lesson_part": 5,
-                "skills": ["pc-grandeurs"],
+                "skills": [
+                  "pc-grandeurs"
+                ],
                 "cognitive": "connaitre",
                 "prompt": "L'ordre de grandeur du diamètre d'un atome est…",
-                "options": ["10⁻¹⁰ m", "10⁻¹⁵ m", "10⁻³ m", "10⁻⁶ m"],
+                "options": [
+                  "10⁻¹⁰ m",
+                  "10⁻¹⁵ m",
+                  "10⁻³ m",
+                  "10⁻⁶ m"
+                ],
                 "answer": 0,
                 "solution": "Un atome mesure environ 10⁻¹⁰ m (le noyau, environ 10⁻¹⁵ m)."
               },
@@ -428,7 +870,10 @@
                 "type": "open",
                 "points": 2,
                 "lesson_part": 1,
-                "skills": ["pc-atome-molecule", "pc-formule"],
+                "skills": [
+                  "pc-atome-molecule",
+                  "pc-formule"
+                ],
                 "cognitive": "connaitre",
                 "prompt": "Donne la définition d'une molécule, puis cite un exemple de molécule avec son nom et sa formule chimique.",
                 "solution": "Une molécule est un assemblage d'atomes liés entre eux. Exemple : la molécule d'eau, de formule H₂O, formée de 2 atomes d'hydrogène et de 1 atome d'oxygène.",
@@ -444,7 +889,9 @@
                 "type": "numeric",
                 "points": 1,
                 "lesson_part": 2,
-                "skills": ["pc-formule"],
+                "skills": [
+                  "pc-formule"
+                ],
                 "cognitive": "appliquer",
                 "prompt": "L'éthanol a pour formule C₂H₆O. Combien une molécule d'éthanol contient-elle d'atomes au total ?",
                 "answer": 9,
@@ -455,7 +902,9 @@
                 "type": "numeric",
                 "points": 1,
                 "lesson_part": 2,
-                "skills": ["pc-formule"],
+                "skills": [
+                  "pc-formule"
+                ],
                 "cognitive": "appliquer",
                 "prompt": "Combien d'atomes d'hydrogène y a-t-il au total dans 2 CH₄ (deux molécules de méthane) ?",
                 "answer": 8,
@@ -466,7 +915,9 @@
                 "type": "numeric",
                 "points": 1,
                 "lesson_part": 4,
-                "skills": ["pc-numeros"],
+                "skills": [
+                  "pc-numeros"
+                ],
                 "cognitive": "appliquer",
                 "prompt": "Un atome de chlore a Z = 17 et A = 35. Combien son noyau contient-il de protons ?",
                 "answer": 17,
@@ -477,7 +928,9 @@
                 "type": "numeric",
                 "points": 1,
                 "lesson_part": 4,
-                "skills": ["pc-numeros"],
+                "skills": [
+                  "pc-numeros"
+                ],
                 "cognitive": "appliquer",
                 "prompt": "Pour ce même atome de chlore (Z = 17, A = 35), combien le noyau contient-il de neutrons ?",
                 "answer": 18,
@@ -488,7 +941,10 @@
                 "type": "numeric",
                 "points": 1,
                 "lesson_part": 4,
-                "skills": ["pc-numeros", "pc-structure"],
+                "skills": [
+                  "pc-numeros",
+                  "pc-structure"
+                ],
                 "cognitive": "appliquer",
                 "prompt": "Combien cet atome de chlore (Z = 17, A = 35) possède-t-il d'électrons ?",
                 "answer": 17,
@@ -499,7 +955,10 @@
                 "type": "open",
                 "points": 2,
                 "lesson_part": 2,
-                "skills": ["pc-atome-molecule", "pc-formule"],
+                "skills": [
+                  "pc-atome-molecule",
+                  "pc-formule"
+                ],
                 "cognitive": "analyser",
                 "prompt": "Classe les molécules suivantes en corps simples et corps composés, en justifiant : O₂ ; H₂O ; N₂ ; CO₂.",
                 "solution": "Corps simples : O₂ et N₂, car ils ne contiennent qu'un seul élément (oxygène, ou azote). Corps composés : H₂O et CO₂, car ils contiennent plusieurs éléments (H et O ; C et O).",
@@ -510,7 +969,9 @@
                 "type": "numeric",
                 "points": 2,
                 "lesson_part": 5,
-                "skills": ["pc-grandeurs"],
+                "skills": [
+                  "pc-grandeurs"
+                ],
                 "cognitive": "appliquer",
                 "prompt": "Un atome a un diamètre d'environ 10⁻¹⁰ m et son noyau un diamètre d'environ 10⁻¹⁵ m. Combien de fois l'atome est-il plus grand que son noyau ? (Écris le nombre en chiffres.)",
                 "answer": 100000,
@@ -526,7 +987,11 @@
                 "type": "open",
                 "points": 5,
                 "lesson_part": 5,
-                "skills": ["pc-rediger", "pc-structure", "pc-grandeurs"],
+                "skills": [
+                  "pc-rediger",
+                  "pc-structure",
+                  "pc-grandeurs"
+                ],
                 "cognitive": "rediger",
                 "prompt": "Ton voisin affirme : « Un atome, c'est une petite boule pleine, et sa masse est répartie partout de la même façon. » Explique-lui, en quelques phrases, pourquoi il se trompe. Utilise le vocabulaire de la leçon (noyau, électrons, vide, masse) et au moins une donnée chiffrée.",
                 "solution": "Un atome n'est pas une boule pleine. Il est formé d'un noyau, au centre, qui contient des protons et des neutrons, et d'électrons qui se déplacent autour. Le noyau est environ 100 000 fois plus petit que l'atome (environ 10⁻¹⁵ m contre 10⁻¹⁰ m) : entre le noyau et les électrons, il n'y a que du vide. On dit que la matière a une structure lacunaire. De plus, la masse n'est pas répartie partout : les électrons sont environ 1 800 fois plus légers que les protons et les neutrons, donc presque toute la masse de l'atome est concentrée dans le noyau.",
@@ -547,10 +1012,17 @@
                 "type": "qcm",
                 "points": 1,
                 "lesson_part": 3,
-                "skills": ["pc-structure"],
+                "skills": [
+                  "pc-structure"
+                ],
                 "cognitive": "connaitre",
                 "prompt": "La charge électrique d'un neutron est…",
-                "options": ["positive", "négative", "nulle", "égale à celle d'un électron"],
+                "options": [
+                  "positive",
+                  "négative",
+                  "nulle",
+                  "égale à celle d'un électron"
+                ],
                 "answer": 2,
                 "solution": "Le neutron est électriquement neutre : sa charge est nulle."
               },
@@ -559,10 +1031,17 @@
                 "type": "qcm",
                 "points": 1,
                 "lesson_part": 4,
-                "skills": ["pc-numeros"],
+                "skills": [
+                  "pc-numeros"
+                ],
                 "cognitive": "connaitre",
                 "prompt": "Le numéro atomique Z d'un atome est…",
-                "options": ["son nombre de neutrons", "son nombre de protons", "son nombre de nucléons", "sa masse"],
+                "options": [
+                  "son nombre de neutrons",
+                  "son nombre de protons",
+                  "son nombre de nucléons",
+                  "sa masse"
+                ],
                 "answer": 1,
                 "solution": "Z est le nombre de protons du noyau ; il caractérise l'élément."
               },
@@ -571,10 +1050,17 @@
                 "type": "qcm",
                 "points": 1,
                 "lesson_part": 3,
-                "skills": ["pc-structure"],
+                "skills": [
+                  "pc-structure"
+                ],
                 "cognitive": "connaitre",
                 "prompt": "Dans un atome, les électrons se trouvent…",
-                "options": ["dans le noyau", "autour du noyau", "à l'intérieur des protons", "entre deux molécules"],
+                "options": [
+                  "dans le noyau",
+                  "autour du noyau",
+                  "à l'intérieur des protons",
+                  "entre deux molécules"
+                ],
                 "answer": 1,
                 "solution": "Les électrons se déplacent autour du noyau et forment le nuage électronique."
               },
@@ -583,10 +1069,17 @@
                 "type": "qcm",
                 "points": 1,
                 "lesson_part": 5,
-                "skills": ["pc-grandeurs"],
+                "skills": [
+                  "pc-grandeurs"
+                ],
                 "cognitive": "connaitre",
                 "prompt": "L'ordre de grandeur du diamètre du noyau d'un atome est…",
-                "options": ["10⁻¹⁰ m", "10⁻¹⁵ m", "10⁻³ m", "10⁻⁶ m"],
+                "options": [
+                  "10⁻¹⁰ m",
+                  "10⁻¹⁵ m",
+                  "10⁻³ m",
+                  "10⁻⁶ m"
+                ],
                 "answer": 1,
                 "solution": "Le noyau mesure environ 10⁻¹⁵ m, soit 100 000 fois moins que l'atome (10⁻¹⁰ m)."
               },
@@ -595,7 +1088,9 @@
                 "type": "open",
                 "points": 2,
                 "lesson_part": 1,
-                "skills": ["pc-atome-molecule"],
+                "skills": [
+                  "pc-atome-molecule"
+                ],
                 "cognitive": "connaitre",
                 "prompt": "Qu'est-ce qu'un atome ? Explique ensuite comment s'écrit le symbole d'un élément chimique, avec deux exemples.",
                 "solution": "Un atome est la plus petite particule d'un élément chimique, la brique de base de la matière. Le symbole d'un élément s'écrit avec une ou deux lettres : la première en majuscule, la deuxième en minuscule. Exemples : C pour le carbone, Cl pour le chlore.",
@@ -611,7 +1106,9 @@
                 "type": "numeric",
                 "points": 1,
                 "lesson_part": 2,
-                "skills": ["pc-formule"],
+                "skills": [
+                  "pc-formule"
+                ],
                 "cognitive": "appliquer",
                 "prompt": "Le propane a pour formule C₃H₈. Combien une molécule de propane contient-elle d'atomes au total ?",
                 "answer": 11,
@@ -622,7 +1119,9 @@
                 "type": "numeric",
                 "points": 1,
                 "lesson_part": 2,
-                "skills": ["pc-formule"],
+                "skills": [
+                  "pc-formule"
+                ],
                 "cognitive": "appliquer",
                 "prompt": "Combien d'atomes d'hydrogène y a-t-il au total dans 4 H₂O (quatre molécules d'eau) ?",
                 "answer": 8,
@@ -633,7 +1132,9 @@
                 "type": "numeric",
                 "points": 1,
                 "lesson_part": 4,
-                "skills": ["pc-numeros"],
+                "skills": [
+                  "pc-numeros"
+                ],
                 "cognitive": "appliquer",
                 "prompt": "Un atome de magnésium a Z = 12 et A = 25. Combien son noyau contient-il de protons ?",
                 "answer": 12,
@@ -644,7 +1145,9 @@
                 "type": "numeric",
                 "points": 1,
                 "lesson_part": 4,
-                "skills": ["pc-numeros"],
+                "skills": [
+                  "pc-numeros"
+                ],
                 "cognitive": "appliquer",
                 "prompt": "Pour ce même atome de magnésium (Z = 12, A = 25), combien le noyau contient-il de neutrons ?",
                 "answer": 13,
@@ -655,7 +1158,10 @@
                 "type": "numeric",
                 "points": 1,
                 "lesson_part": 4,
-                "skills": ["pc-numeros", "pc-structure"],
+                "skills": [
+                  "pc-numeros",
+                  "pc-structure"
+                ],
                 "cognitive": "appliquer",
                 "prompt": "Combien cet atome de magnésium (Z = 12, A = 25) possède-t-il d'électrons ?",
                 "answer": 12,
@@ -666,7 +1172,10 @@
                 "type": "open",
                 "points": 2,
                 "lesson_part": 2,
-                "skills": ["pc-atome-molecule", "pc-formule"],
+                "skills": [
+                  "pc-atome-molecule",
+                  "pc-formule"
+                ],
                 "cognitive": "analyser",
                 "prompt": "Classe les molécules suivantes en corps simples et corps composés, en justifiant : NH₃ ; O₃ ; CH₄ ; H₂.",
                 "solution": "Corps simples : O₃ (ozone) et H₂ (dihydrogène), car ils ne contiennent qu'un seul élément. Corps composés : NH₃ (N et H) et CH₄ (C et H), car ils contiennent plusieurs éléments.",
@@ -677,7 +1186,9 @@
                 "type": "numeric",
                 "points": 2,
                 "lesson_part": 5,
-                "skills": ["pc-grandeurs"],
+                "skills": [
+                  "pc-grandeurs"
+                ],
                 "cognitive": "appliquer",
                 "prompt": "L'atome est environ 100 000 fois plus grand que son noyau. Sur une maquette, le noyau est représenté par une graine de 1 mm. Quel devrait être le diamètre de l'atome sur cette maquette, en mètres ? (Rappel : 1 m = 1 000 mm.)",
                 "answer": 100,
@@ -693,7 +1204,11 @@
                 "type": "open",
                 "points": 5,
                 "lesson_part": 3,
-                "skills": ["pc-rediger", "pc-structure", "pc-grandeurs"],
+                "skills": [
+                  "pc-rediger",
+                  "pc-structure",
+                  "pc-grandeurs"
+                ],
                 "cognitive": "rediger",
                 "prompt": "Une camarade affirme : « Un atome contient des électrons, donc il est chargé négativement. Et comme les électrons sont tout autour, ce sont eux qui font l'essentiel de sa masse. » Explique-lui, en quelques phrases, ses deux erreurs. Utilise le vocabulaire de la leçon et au moins une donnée chiffrée.",
                 "solution": "Première erreur : l'atome n'est pas chargé négativement. Il contient des électrons (charge négative) mais aussi, dans son noyau, des protons (charge positive). Il y a autant d'électrons que de protons, donc les charges se compensent : l'atome est électriquement neutre. Seconde erreur : les électrons sont très légers, environ 1 800 fois plus légers qu'un proton ou un neutron (9,11 × 10⁻³¹ kg contre 1,67 × 10⁻²⁷ kg). Presque toute la masse de l'atome est donc concentrée dans son noyau, qui est pourtant 100 000 fois plus petit que l'atome.",

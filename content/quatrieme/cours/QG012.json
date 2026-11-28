@@ -6,12 +6,30 @@
   "chapter": "Bases de la langue (début d'année)",
   "title": "L'accord du participe passé avec être et avoir",
   "skills": [
-    { "id": "fr-pp-former", "label": "Former le participe passé et écrire sa terminaison (-é, -i, -u, -s, -t)" },
-    { "id": "fr-pp-etre", "label": "Accorder le participe passé employé seul ou avec être (temps composés, voix passive)" },
-    { "id": "fr-pp-avoir", "label": "Appliquer la règle du participe passé avec avoir (jamais d'accord avec le sujet)" },
-    { "id": "fr-pp-cod", "label": "Repérer le COD et sa place pour décider de l'accord" },
-    { "id": "fr-pp-cod-avant", "label": "Accorder le participe passé avec le COD placé avant (l', la, les, que, quel…)" },
-    { "id": "fr-pp-justifier", "label": "Justifier un accord, corriger une erreur et réécrire une phrase" }
+    {
+      "id": "fr-pp-former",
+      "label": "Former le participe passé et écrire sa terminaison (-é, -i, -u, -s, -t)"
+    },
+    {
+      "id": "fr-pp-etre",
+      "label": "Accorder le participe passé employé seul ou avec être (temps composés, voix passive)"
+    },
+    {
+      "id": "fr-pp-avoir",
+      "label": "Appliquer la règle du participe passé avec avoir (jamais d'accord avec le sujet)"
+    },
+    {
+      "id": "fr-pp-cod",
+      "label": "Repérer le COD et sa place pour décider de l'accord"
+    },
+    {
+      "id": "fr-pp-cod-avant",
+      "label": "Accorder le participe passé avec le COD placé avant (l', la, les, que, quel…)"
+    },
+    {
+      "id": "fr-pp-justifier",
+      "label": "Justifier un accord, corriger une erreur et réécrire une phrase"
+    }
   ],
   "lesson": {
     "duration_min": 35,
@@ -27,131 +45,599 @@
       {
         "title": "Reconnaître le participe passé et bien écrire sa terminaison",
         "blocks": [
-          { "type": "callout", "kind": "definition", "title": "Le participe passé", "text": "Le **participe passé** est une forme du verbe qui sert surtout à former les **temps composés** avec un auxiliaire (« j'**ai** mangé », « elle **est** partie ») et la **voix passive** (« le match **a été** gagné »). Il peut aussi être employé **seul**, comme un adjectif (« une porte **fermée** »)." },
-          { "type": "table", "columns": ["Verbes", "Terminaison au masculin singulier", "Exemples"], "rows": [
-            ["1er groupe (-er) et le verbe aller", "-é", "chanter → chanté ; jouer → joué ; aller → allé"],
-            ["2e groupe (-ir, -issons)", "-i", "finir → fini ; choisir → choisi ; grandir → grandi"],
-            ["3e groupe", "-i, -u, -s, -t (à apprendre)", "partir → parti ; venir → venu ; voir → vu ; lire → lu ; prendre → pris ; mettre → mis ; faire → fait ; dire → dit ; écrire → écrit ; ouvrir → ouvert ; peindre → peint ; naître → né ; mourir → mort"]
-          ] },
-          { "type": "callout", "kind": "methode", "title": "Astuce : la consonne muette", "text": "Tu hésites sur la dernière lettre d'un participe passé ? **Mets-le au féminin** : la consonne finale s'entend.\nune leçon **prise** → pris ; une tarte **faite** → fait ; une lettre **écrite** → écrit ; une fenêtre **ouverte** → ouvert.\nSi rien ne s'entend au féminin (finie, venue, chantée), il n'y a pas de consonne muette : fini, venu, chanté." },
-          { "type": "heading", "text": "« -é » ou « -er » ?" },
-          { "type": "text", "text": "Les verbes du 1er groupe posent souvent problème, car « chanté » (participe passé) et « chanter » (infinitif) se prononcent de la même façon. Pour choisir, remplace le verbe par un verbe du 3e groupe, comme **vendre** ou **prendre**." },
-          { "type": "table", "columns": ["Phrase", "Test", "Conclusion"], "rows": [
-            ["Nous avons regard… un film.", "Nous avons **vendu** un film. (on entend « vendu »)", "participe passé → regard**é**"],
-            ["Nous allons regard… un film.", "Nous allons **vendre** un film. (on entend « vendre »)", "infinitif → regard**er**"]
-          ] },
-          { "type": "callout", "kind": "retiens", "title": "Employé seul, il s'accorde comme un adjectif", "text": "Sans auxiliaire, le participe passé s'accorde en genre et en nombre avec le nom auquel il se rapporte :\ndes feuilles **tombées** ; une fenêtre **ouverte** ; des devoirs **terminés** ; **Épuisées**, les coureuses s'arrêtèrent." }
+          {
+            "type": "callout",
+            "kind": "definition",
+            "title": "Le participe passé",
+            "text": "Le **participe passé** est une forme du verbe qui sert surtout à former les **temps composés** avec un auxiliaire (« j'**ai** mangé », « elle **est** partie ») et la **voix passive** (« le match **a été** gagné »). Il peut aussi être employé **seul**, comme un adjectif (« une porte **fermée** »)."
+          },
+          {
+            "type": "table",
+            "columns": [
+              "Verbes",
+              "Terminaison au masculin singulier",
+              "Exemples"
+            ],
+            "rows": [
+              [
+                "1er groupe (-er) et le verbe aller",
+                "-é",
+                "chanter → chanté ; jouer → joué ; aller → allé"
+              ],
+              [
+                "2e groupe (-ir, -issons)",
+                "-i",
+                "finir → fini ; choisir → choisi ; grandir → grandi"
+              ],
+              [
+                "3e groupe",
+                "-i, -u, -s, -t (à apprendre)",
+                "partir → parti ; venir → venu ; voir → vu ; lire → lu ; prendre → pris ; mettre → mis ; faire → fait ; dire → dit ; écrire → écrit ; ouvrir → ouvert ; peindre → peint ; naître → né ; mourir → mort"
+              ]
+            ]
+          },
+          {
+            "type": "callout",
+            "kind": "methode",
+            "title": "Astuce : la consonne muette",
+            "text": "Tu hésites sur la dernière lettre d'un participe passé ? **Mets-le au féminin** : la consonne finale s'entend.\nune leçon **prise** → pris ; une tarte **faite** → fait ; une lettre **écrite** → écrit ; une fenêtre **ouverte** → ouvert.\nSi rien ne s'entend au féminin (finie, venue, chantée), il n'y a pas de consonne muette : fini, venu, chanté."
+          },
+          {
+            "type": "heading",
+            "text": "« -é » ou « -er » ?"
+          },
+          {
+            "type": "text",
+            "text": "Les verbes du 1er groupe posent souvent problème, car « chanté » (participe passé) et « chanter » (infinitif) se prononcent de la même façon. Pour choisir, remplace le verbe par un verbe du 3e groupe, comme **vendre** ou **prendre**."
+          },
+          {
+            "type": "table",
+            "columns": [
+              "Phrase",
+              "Test",
+              "Conclusion"
+            ],
+            "rows": [
+              [
+                "Nous avons regard… un film.",
+                "Nous avons **vendu** un film. (on entend « vendu »)",
+                "participe passé → regard**é**"
+              ],
+              [
+                "Nous allons regard… un film.",
+                "Nous allons **vendre** un film. (on entend « vendre »)",
+                "infinitif → regard**er**"
+              ]
+            ]
+          },
+          {
+            "type": "callout",
+            "kind": "retiens",
+            "title": "Employé seul, il s'accorde comme un adjectif",
+            "text": "Sans auxiliaire, le participe passé s'accorde en genre et en nombre avec le nom auquel il se rapporte :\ndes feuilles **tombées** ; une fenêtre **ouverte** ; des devoirs **terminés** ; **Épuisées**, les coureuses s'arrêtèrent."
+          }
         ],
-        "checkpoint": { "variants": [
-          { "prompt": "Quel est le participe passé du verbe « mettre » ?", "options": ["metté", "mis", "mit", "mettu"], "answer": 1, "hint": "Mets-le au féminin : « une table mi… ». Quelle consonne entends-tu ?", "explanation": "« Une table mise » : on entend le « s ». Le participe passé de « mettre » est « mis »." },
-          { "prompt": "Complète : « Hier, j'ai mang… une pomme. »", "options": ["mangé", "manger", "mangez"], "answer": 0, "hint": "Remplace par « vendre » : dis-tu « j'ai vendu » ou « j'ai vendre » ?", "explanation": "On dirait « j'ai vendu » : c'est le participe passé, donc « mangé »." },
-          { "prompt": "Dans « des volets **fermés** », pourquoi « fermés » prend-il un -s ?", "options": ["Parce que le verbe est au pluriel", "Parce qu'il s'accorde avec le nom « volets », comme un adjectif", "Parce qu'il est employé avec l'auxiliaire avoir"], "answer": 1, "hint": "Y a-t-il un auxiliaire ? Relis l'encadré « Employé seul ».", "explanation": "Employé sans auxiliaire, le participe passé s'accorde comme un adjectif avec le nom « volets » (masculin pluriel)." }
-        ] }
+        "checkpoint": {
+          "variants": [
+            {
+              "prompt": "Quel est le participe passé du verbe « mettre » ?",
+              "options": [
+                "metté",
+                "mis",
+                "mit",
+                "mettu"
+              ],
+              "answer": 1,
+              "hint": "Mets-le au féminin : « une table mi… ». Quelle consonne entends-tu ?",
+              "explanation": "« Une table mise » : on entend le « s ». Le participe passé de « mettre » est « mis »."
+            },
+            {
+              "prompt": "Complète : « Hier, j'ai mang… une pomme. »",
+              "options": [
+                "mangé",
+                "manger",
+                "mangez"
+              ],
+              "answer": 0,
+              "hint": "Remplace par « vendre » : dis-tu « j'ai vendu » ou « j'ai vendre » ?",
+              "explanation": "On dirait « j'ai vendu » : c'est le participe passé, donc « mangé »."
+            },
+            {
+              "prompt": "Dans « des volets **fermés** », pourquoi « fermés » prend-il un -s ?",
+              "options": [
+                "Parce que le verbe est au pluriel",
+                "Parce qu'il s'accorde avec le nom « volets », comme un adjectif",
+                "Parce qu'il est employé avec l'auxiliaire avoir"
+              ],
+              "answer": 1,
+              "hint": "Y a-t-il un auxiliaire ? Relis l'encadré « Employé seul ».",
+              "explanation": "Employé sans auxiliaire, le participe passé s'accorde comme un adjectif avec le nom « volets » (masculin pluriel)."
+            }
+          ]
+        }
       },
       {
         "title": "Avec l'auxiliaire être : l'accord avec le sujet",
         "blocks": [
-          { "type": "callout", "kind": "retiens", "title": "La règle", "text": "Le participe passé employé avec l'auxiliaire **être** s'accorde en genre et en nombre **avec le sujet** du verbe." },
-          { "type": "table", "columns": ["Sujet", "Phrase", "Accord"], "rows": [
-            ["masculin singulier", "Le train **est parti** à l'heure.", "parti"],
-            ["féminin singulier", "Ma grand-mère **est née** à Marseille.", "née (+ e)"],
-            ["masculin pluriel", "Les joueurs **sont rentrés** au vestiaire.", "rentrés (+ s)"],
-            ["féminin pluriel", "Mes cousines **sont arrivées** hier soir.", "arrivées (+ es)"],
-            ["masculin et féminin mélangés", "Léo et ses sœurs **sont venus** dîner.", "venus : le masculin l'emporte (+ s)"]
-          ] },
-          { "type": "heading", "text": "Quels verbes se conjuguent avec être ?" },
-          { "type": "text", "text": "Aux temps composés, la plupart des verbes utilisent l'auxiliaire avoir. Une petite liste de verbes, qui expriment souvent un **mouvement** ou un **changement d'état**, se conjuguent avec **être** : aller, venir, arriver, partir, entrer, sortir, monter, descendre, tomber, rester, naître, mourir, devenir, revenir, rentrer, retourner, passer." },
-          { "type": "callout", "kind": "attention", "title": "Monter, descendre, sortir, rentrer…", "text": "Ces verbes prennent l'auxiliaire **avoir** quand ils sont suivis d'un COD :\n« Elle **est montée** au grenier. » (pas de COD → être, accord avec le sujet)\n« Elle **a monté** les cartons au grenier. » (COD « les cartons » → avoir)" },
-          { "type": "heading", "text": "À la voix passive" },
-          { "type": "text", "text": "À la voix passive, le verbe est formé de l'auxiliaire **être** conjugué et du participe passé. Le participe passé s'accorde donc **avec le sujet**, comme dans les temps composés avec être." },
-          { "type": "table", "columns": ["Phrase passive", "Sujet", "Accord"], "rows": [
-            ["La route **est coupée** par la neige.", "la route (féminin singulier)", "coupée"],
-            ["Les décors **ont été peints** par les élèves.", "les décors (masculin pluriel)", "peints ; « été » ne s'accorde jamais"],
-            ["Ces chansons **seront chantées** à la fête.", "ces chansons (féminin pluriel)", "chantées"]
-          ] },
-          { "type": "callout", "kind": "plus", "title": "Pour aller plus loin", "text": "Quand « vous » désigne une seule personne par politesse, on accorde avec cette personne : « Madame, vous êtes **arrivée** la première. »\nQuand une fille parle d'elle et de ses amies : « Nous sommes **parties** tôt », dit Chloé." }
+          {
+            "type": "callout",
+            "kind": "retiens",
+            "title": "La règle",
+            "text": "Le participe passé employé avec l'auxiliaire **être** s'accorde en genre et en nombre **avec le sujet** du verbe."
+          },
+          {
+            "type": "table",
+            "columns": [
+              "Sujet",
+              "Phrase",
+              "Accord"
+            ],
+            "rows": [
+              [
+                "masculin singulier",
+                "Le train **est parti** à l'heure.",
+                "parti"
+              ],
+              [
+                "féminin singulier",
+                "Ma grand-mère **est née** à Marseille.",
+                "née (+ e)"
+              ],
+              [
+                "masculin pluriel",
+                "Les joueurs **sont rentrés** au vestiaire.",
+                "rentrés (+ s)"
+              ],
+              [
+                "féminin pluriel",
+                "Mes cousines **sont arrivées** hier soir.",
+                "arrivées (+ es)"
+              ],
+              [
+                "masculin et féminin mélangés",
+                "Léo et ses sœurs **sont venus** dîner.",
+                "venus : le masculin l'emporte (+ s)"
+              ]
+            ]
+          },
+          {
+            "type": "heading",
+            "text": "Quels verbes se conjuguent avec être ?"
+          },
+          {
+            "type": "text",
+            "text": "Aux temps composés, la plupart des verbes utilisent l'auxiliaire avoir. Une petite liste de verbes, qui expriment souvent un **mouvement** ou un **changement d'état**, se conjuguent avec **être** : aller, venir, arriver, partir, entrer, sortir, monter, descendre, tomber, rester, naître, mourir, devenir, revenir, rentrer, retourner, passer."
+          },
+          {
+            "type": "callout",
+            "kind": "attention",
+            "title": "Monter, descendre, sortir, rentrer…",
+            "text": "Ces verbes prennent l'auxiliaire **avoir** quand ils sont suivis d'un COD :\n« Elle **est montée** au grenier. » (pas de COD → être, accord avec le sujet)\n« Elle **a monté** les cartons au grenier. » (COD « les cartons » → avoir)"
+          },
+          {
+            "type": "heading",
+            "text": "À la voix passive"
+          },
+          {
+            "type": "text",
+            "text": "À la voix passive, le verbe est formé de l'auxiliaire **être** conjugué et du participe passé. Le participe passé s'accorde donc **avec le sujet**, comme dans les temps composés avec être."
+          },
+          {
+            "type": "table",
+            "columns": [
+              "Phrase passive",
+              "Sujet",
+              "Accord"
+            ],
+            "rows": [
+              [
+                "La route **est coupée** par la neige.",
+                "la route (féminin singulier)",
+                "coupée"
+              ],
+              [
+                "Les décors **ont été peints** par les élèves.",
+                "les décors (masculin pluriel)",
+                "peints ; « été » ne s'accorde jamais"
+              ],
+              [
+                "Ces chansons **seront chantées** à la fête.",
+                "ces chansons (féminin pluriel)",
+                "chantées"
+              ]
+            ]
+          },
+          {
+            "type": "callout",
+            "kind": "plus",
+            "title": "Pour aller plus loin",
+            "text": "Quand « vous » désigne une seule personne par politesse, on accorde avec cette personne : « Madame, vous êtes **arrivée** la première. »\nQuand une fille parle d'elle et de ses amies : « Nous sommes **parties** tôt », dit Chloé."
+          }
         ],
-        "checkpoint": { "variants": [
-          { "prompt": "Complète : « Mes tantes sont **arriv…** en avance. »", "options": ["arrivé", "arrivés", "arrivée", "arrivées"], "answer": 3, "hint": "Avec être, avec quel mot s'accorde le participe ? Quel est son genre et son nombre ?", "explanation": "Avec être, accord avec le sujet « mes tantes » (féminin pluriel) : arrivées." },
-          { "prompt": "Complète : « Ces tableaux ont été **vend…** aux enchères. »", "options": ["vendu", "vendus", "vendue", "vendues"], "answer": 1, "hint": "C'est une phrase à la voix passive. Quel est le sujet ?", "explanation": "Voix passive : accord avec le sujet « ces tableaux » (masculin pluriel) : vendus. « Été » reste invariable." },
-          { "prompt": "Quel verbe se conjugue avec l'auxiliaire être au passé composé ?", "options": ["manger", "tomber", "finir", "lire"], "answer": 1, "hint": "Cherche le verbe qui exprime un mouvement. Dirais-tu « j'ai tombé » ou « je suis tombé » ?", "explanation": "On dit « je suis tombé(e) » : « tomber » se conjugue avec être." }
-        ] }
+        "checkpoint": {
+          "variants": [
+            {
+              "prompt": "Complète : « Mes tantes sont **arriv…** en avance. »",
+              "options": [
+                "arrivé",
+                "arrivés",
+                "arrivée",
+                "arrivées"
+              ],
+              "answer": 3,
+              "hint": "Avec être, avec quel mot s'accorde le participe ? Quel est son genre et son nombre ?",
+              "explanation": "Avec être, accord avec le sujet « mes tantes » (féminin pluriel) : arrivées."
+            },
+            {
+              "prompt": "Complète : « Ces tableaux ont été **vend…** aux enchères. »",
+              "options": [
+                "vendu",
+                "vendus",
+                "vendue",
+                "vendues"
+              ],
+              "answer": 1,
+              "hint": "C'est une phrase à la voix passive. Quel est le sujet ?",
+              "explanation": "Voix passive : accord avec le sujet « ces tableaux » (masculin pluriel) : vendus. « Été » reste invariable."
+            },
+            {
+              "prompt": "Quel verbe se conjugue avec l'auxiliaire être au passé composé ?",
+              "options": [
+                "manger",
+                "tomber",
+                "finir",
+                "lire"
+              ],
+              "answer": 1,
+              "hint": "Cherche le verbe qui exprime un mouvement. Dirais-tu « j'ai tombé » ou « je suis tombé » ?",
+              "explanation": "On dit « je suis tombé(e) » : « tomber » se conjugue avec être."
+            }
+          ]
+        }
       },
       {
         "title": "Avec l'auxiliaire avoir : jamais d'accord avec le sujet",
         "blocks": [
-          { "type": "callout", "kind": "retiens", "title": "La règle", "text": "Le participe passé employé avec l'auxiliaire **avoir** ne s'accorde **jamais avec le sujet**.\n« Les filles **ont chanté**. » — « Mes parents **ont acheté** une voiture. » — « Ma sœur **a fini** ses devoirs. »" },
-          { "type": "text", "text": "Ce n'est pas parce que le sujet est féminin ou pluriel que le participe passé change. Avec avoir, la seule question à se poser est : **y a-t-il un COD, et où est-il placé ?**" },
-          { "type": "callout", "kind": "methode", "title": "Trouver le COD", "text": "1. Pose la question « **quoi ?** » ou « **qui ?** » juste après le verbe : « Ma sœur a fini **quoi ?** → ses devoirs ».\n2. Vérifie qu'il n'y a pas de préposition (à, de) devant : « Elle a téléphoné **à** ses amies » → pas de COD (c'est un COI).\n3. Regarde **où** est placé le COD : après le verbe, ou avant ?" },
-          { "type": "table", "columns": ["Phrase", "COD ?", "Place du COD", "Accord ?"], "rows": [
-            ["Les enfants **ont dormi**.", "aucun", "—", "non : dormi"],
-            ["Elles **ont dansé** une valse.", "une valse", "après le verbe", "non : dansé"],
-            ["Ma mère **a préparé** des crêpes.", "des crêpes", "après le verbe", "non : préparé"],
-            ["Nous **avons parlé** à la directrice.", "aucun (« à la directrice » est un COI)", "—", "non : parlé"]
-          ] },
-          { "type": "callout", "kind": "attention", "title": "Piège fréquent", "text": "✗ « Elles ont mangé**es** une glace. » → on n'accorde pas avec « elles » !\n✓ « Elles ont mangé une glace. » : le COD « une glace » est placé après le verbe, donc pas d'accord." }
+          {
+            "type": "callout",
+            "kind": "retiens",
+            "title": "La règle",
+            "text": "Le participe passé employé avec l'auxiliaire **avoir** ne s'accorde **jamais avec le sujet**.\n« Les filles **ont chanté**. » — « Mes parents **ont acheté** une voiture. » — « Ma sœur **a fini** ses devoirs. »"
+          },
+          {
+            "type": "text",
+            "text": "Ce n'est pas parce que le sujet est féminin ou pluriel que le participe passé change. Avec avoir, la seule question à se poser est : **y a-t-il un COD, et où est-il placé ?**"
+          },
+          {
+            "type": "callout",
+            "kind": "methode",
+            "title": "Trouver le COD",
+            "text": "1. Pose la question « **quoi ?** » ou « **qui ?** » juste après le verbe : « Ma sœur a fini **quoi ?** → ses devoirs ».\n2. Vérifie qu'il n'y a pas de préposition (à, de) devant : « Elle a téléphoné **à** ses amies » → pas de COD (c'est un COI).\n3. Regarde **où** est placé le COD : après le verbe, ou avant ?"
+          },
+          {
+            "type": "table",
+            "columns": [
+              "Phrase",
+              "COD ?",
+              "Place du COD",
+              "Accord ?"
+            ],
+            "rows": [
+              [
+                "Les enfants **ont dormi**.",
+                "aucun",
+                "—",
+                "non : dormi"
+              ],
+              [
+                "Elles **ont dansé** une valse.",
+                "une valse",
+                "après le verbe",
+                "non : dansé"
+              ],
+              [
+                "Ma mère **a préparé** des crêpes.",
+                "des crêpes",
+                "après le verbe",
+                "non : préparé"
+              ],
+              [
+                "Nous **avons parlé** à la directrice.",
+                "aucun (« à la directrice » est un COI)",
+                "—",
+                "non : parlé"
+              ]
+            ]
+          },
+          {
+            "type": "callout",
+            "kind": "attention",
+            "title": "Piège fréquent",
+            "text": "✗ « Elles ont mangé**es** une glace. » → on n'accorde pas avec « elles » !\n✓ « Elles ont mangé une glace. » : le COD « une glace » est placé après le verbe, donc pas d'accord."
+          }
         ],
-        "checkpoint": { "variants": [
-          { "prompt": "Complète : « Mes amies ont **regard…** un match de rugby. »", "options": ["regardé", "regardés", "regardée", "regardées"], "answer": 0, "hint": "Avec avoir, regarde-t-on le sujet ? Où est placé le COD ?", "explanation": "Avec avoir, pas d'accord avec le sujet. Le COD « un match de rugby » est placé après le verbe : regardé." },
-          { "prompt": "Avec l'auxiliaire avoir, le participe passé s'accorde-t-il avec le sujet ?", "options": ["Oui, toujours", "Seulement si le sujet est au pluriel", "Non, jamais"], "answer": 2, "hint": "Relis l'encadré « La règle » de cette partie.", "explanation": "Avec avoir, le participe passé ne s'accorde jamais avec le sujet." },
-          { "prompt": "Dans « Les élèves ont écrit une lettre au maire », quel est le COD du verbe « ont écrit » ?", "options": ["Les élèves", "une lettre", "au maire"], "answer": 1, "hint": "Pose la question « ont écrit quoi ? ». Attention : un COD n'a pas de préposition.", "explanation": "« Ont écrit quoi ? → une lettre » : c'est le COD, placé après le verbe. « Au maire » est un COI." }
-        ] }
+        "checkpoint": {
+          "variants": [
+            {
+              "prompt": "Complète : « Mes amies ont **regard…** un match de rugby. »",
+              "options": [
+                "regardé",
+                "regardés",
+                "regardée",
+                "regardées"
+              ],
+              "answer": 0,
+              "hint": "Avec avoir, regarde-t-on le sujet ? Où est placé le COD ?",
+              "explanation": "Avec avoir, pas d'accord avec le sujet. Le COD « un match de rugby » est placé après le verbe : regardé."
+            },
+            {
+              "prompt": "Avec l'auxiliaire avoir, le participe passé s'accorde-t-il avec le sujet ?",
+              "options": [
+                "Oui, toujours",
+                "Seulement si le sujet est au pluriel",
+                "Non, jamais"
+              ],
+              "answer": 2,
+              "hint": "Relis l'encadré « La règle » de cette partie.",
+              "explanation": "Avec avoir, le participe passé ne s'accorde jamais avec le sujet."
+            },
+            {
+              "prompt": "Dans « Les élèves ont écrit une lettre au maire », quel est le COD du verbe « ont écrit » ?",
+              "options": [
+                "Les élèves",
+                "une lettre",
+                "au maire"
+              ],
+              "answer": 1,
+              "hint": "Pose la question « ont écrit quoi ? ». Attention : un COD n'a pas de préposition.",
+              "explanation": "« Ont écrit quoi ? → une lettre » : c'est le COD, placé après le verbe. « Au maire » est un COI."
+            }
+          ]
+        }
       },
       {
         "title": "Avec avoir : l'accord avec le COD placé avant le verbe",
         "blocks": [
-          { "type": "callout", "kind": "retiens", "title": "La règle", "text": "Le participe passé employé avec **avoir** s'accorde avec le **COD** quand ce COD est **placé avant** le verbe.\nQuand on écrit le participe, on sait déjà de quoi on parle : on peut donc l'accorder." },
-          { "type": "text", "text": "Le COD se trouve placé avant le verbe dans trois cas principaux." },
-          { "type": "table", "columns": ["Le COD placé avant est…", "Exemple", "Ce qu'il représente", "Accord"], "rows": [
-            ["un **pronom personnel** : me (m'), te (t'), le, la, l', nous, vous, les", "Ta lettre ? Je **l'**ai **lue** hier.\nMes clés, je **les** ai **retrouvées** sous le canapé.", "l' = ta lettre (féminin singulier)\nles = mes clés (féminin pluriel)", "lue (+ e)\nretrouvées (+ es)"],
-            ["le **pronom relatif « que »**", "Les gâteaux **que** nous avons **préparés** ont disparu.", "que = les gâteaux (masculin pluriel)", "préparés (+ s)"],
-            ["un groupe nominal avec **quel, quelle, quels, quelles**", "**Quelles villes** avez-vous **visitées** ?", "quelles villes (féminin pluriel)", "visitées (+ es)"]
-          ] },
-          { "type": "callout", "kind": "methode", "title": "Comment faire avec un pronom ?", "text": "Un pronom ne montre pas toujours son genre : « l' » peut être masculin ou féminin, « que » peut tout représenter. Cherche **le mot qu'il remplace** :\n« Ce film, je l'ai **vu**. » (l' = ce film, masculin) / « Cette série, je l'ai **vue**. » (l' = cette série, féminin)\n« La robe **que** j'ai **choisie** » : que = la robe → choisie." },
-          { "type": "callout", "kind": "attention", "title": "Quand celle qui parle est une fille", "text": "« Mes parents **m'**ont **attendue** à la sortie », raconte Chloé.\n« m' » = Chloé (féminin singulier) : le COD est placé avant, donc « attendue »." },
-          { "type": "callout", "kind": "attention", "title": "Pas n'importe quel pronom !", "text": "Seul un **COD** placé avant entraîne l'accord. « lui » et « leur » sont des COI :\n« Mes amies, je **leur** ai **téléphoné**. » → pas d'accord (on téléphone **à** quelqu'un)." }
+          {
+            "type": "callout",
+            "kind": "retiens",
+            "title": "La règle",
+            "text": "Le participe passé employé avec **avoir** s'accorde avec le **COD** quand ce COD est **placé avant** le verbe.\nQuand on écrit le participe, on sait déjà de quoi on parle : on peut donc l'accorder."
+          },
+          {
+            "type": "text",
+            "text": "Le COD se trouve placé avant le verbe dans trois cas principaux."
+          },
+          {
+            "type": "table",
+            "columns": [
+              "Le COD placé avant est…",
+              "Exemple",
+              "Ce qu'il représente",
+              "Accord"
+            ],
+            "rows": [
+              [
+                "un **pronom personnel** : me (m'), te (t'), le, la, l', nous, vous, les",
+                "Ta lettre ? Je **l'**ai **lue** hier.\nMes clés, je **les** ai **retrouvées** sous le canapé.",
+                "l' = ta lettre (féminin singulier)\nles = mes clés (féminin pluriel)",
+                "lue (+ e)\nretrouvées (+ es)"
+              ],
+              [
+                "le **pronom relatif « que »**",
+                "Les gâteaux **que** nous avons **préparés** ont disparu.",
+                "que = les gâteaux (masculin pluriel)",
+                "préparés (+ s)"
+              ],
+              [
+                "un groupe nominal avec **quel, quelle, quels, quelles**",
+                "**Quelles villes** avez-vous **visitées** ?",
+                "quelles villes (féminin pluriel)",
+                "visitées (+ es)"
+              ]
+            ]
+          },
+          {
+            "type": "callout",
+            "kind": "methode",
+            "title": "Comment faire avec un pronom ?",
+            "text": "Un pronom ne montre pas toujours son genre : « l' » peut être masculin ou féminin, « que » peut tout représenter. Cherche **le mot qu'il remplace** :\n« Ce film, je l'ai **vu**. » (l' = ce film, masculin) / « Cette série, je l'ai **vue**. » (l' = cette série, féminin)\n« La robe **que** j'ai **choisie** » : que = la robe → choisie."
+          },
+          {
+            "type": "callout",
+            "kind": "attention",
+            "title": "Quand celle qui parle est une fille",
+            "text": "« Mes parents **m'**ont **attendue** à la sortie », raconte Chloé.\n« m' » = Chloé (féminin singulier) : le COD est placé avant, donc « attendue »."
+          },
+          {
+            "type": "callout",
+            "kind": "attention",
+            "title": "Pas n'importe quel pronom !",
+            "text": "Seul un **COD** placé avant entraîne l'accord. « lui » et « leur » sont des COI :\n« Mes amies, je **leur** ai **téléphoné**. » → pas d'accord (on téléphone **à** quelqu'un)."
+          }
         ],
-        "checkpoint": { "variants": [
-          { "prompt": "Complète : « Ces photos, je **les** ai **pri…** pendant le voyage. »", "options": ["pris", "prise", "prises", "prit"], "answer": 2, "hint": "« les » est-il placé avant ou après le verbe ? Que remplace-t-il ?", "explanation": "« les » est COD placé avant et représente « ces photos » (féminin pluriel) : prises." },
-          { "prompt": "Complète : « La chanson **que** tu as **chant…** était magnifique. »", "options": ["chanté", "chantée", "chantés", "chanter"], "answer": 1, "hint": "Que représente le pronom « que » ? Est-il placé avant le verbe ?", "explanation": "« que » représente « la chanson » (féminin singulier) et est placé avant le verbe : chantée." },
-          { "prompt": "Dans « Mes voisins, je leur ai **prêté** mon échelle », pourquoi « prêté » ne s'accorde-t-il pas avec « leur » ?", "options": ["Parce que « leur » est COI, pas COD", "Parce que « leur » est placé après le verbe", "Parce que « mes voisins » est le sujet"], "answer": 0, "hint": "On prête quelque chose **à** quelqu'un. Quel est le COD ?", "explanation": "« leur » (= à mes voisins) est un COI. Le COD est « mon échelle », placé après le verbe : pas d'accord." }
-        ] }
+        "checkpoint": {
+          "variants": [
+            {
+              "prompt": "Complète : « Ces photos, je **les** ai **pri…** pendant le voyage. »",
+              "options": [
+                "pris",
+                "prise",
+                "prises",
+                "prit"
+              ],
+              "answer": 2,
+              "hint": "« les » est-il placé avant ou après le verbe ? Que remplace-t-il ?",
+              "explanation": "« les » est COD placé avant et représente « ces photos » (féminin pluriel) : prises."
+            },
+            {
+              "prompt": "Complète : « La chanson **que** tu as **chant…** était magnifique. »",
+              "options": [
+                "chanté",
+                "chantée",
+                "chantés",
+                "chanter"
+              ],
+              "answer": 1,
+              "hint": "Que représente le pronom « que » ? Est-il placé avant le verbe ?",
+              "explanation": "« que » représente « la chanson » (féminin singulier) et est placé avant le verbe : chantée."
+            },
+            {
+              "prompt": "Dans « Mes voisins, je leur ai **prêté** mon échelle », pourquoi « prêté » ne s'accorde-t-il pas avec « leur » ?",
+              "options": [
+                "Parce que « leur » est COI, pas COD",
+                "Parce que « leur » est placé après le verbe",
+                "Parce que « mes voisins » est le sujet"
+              ],
+              "answer": 0,
+              "hint": "On prête quelque chose **à** quelqu'un. Quel est le COD ?",
+              "explanation": "« leur » (= à mes voisins) est un COI. Le COD est « mon échelle », placé après le verbe : pas d'accord."
+            }
+          ]
+        }
       },
       {
         "title": "La méthode complète et les pièges à éviter",
         "blocks": [
-          { "type": "heading", "text": "Méthode en quatre questions" },
-          { "type": "list", "ordered": true, "items": [
-            "Y a-t-il un auxiliaire ? **Non** → j'accorde avec le nom, comme un adjectif (« des fleurs **fanées** »).",
-            "L'auxiliaire est **être** (temps composé ou voix passive) → j'accorde avec le **sujet** (« Elles sont **parties** »).",
-            "L'auxiliaire est **avoir** → je ne regarde **pas** le sujet. Je cherche le COD (… quoi ? … qui ?).",
-            "Le COD est placé **avant** le verbe → j'accorde avec lui (« la lettre **que** j'ai **écrite** »). Le COD est **après**, ou il n'y a pas de COD → je n'accorde pas (« J'ai **écrit** une lettre »)."
-          ] },
-          { "type": "table", "caption": "Tableau récapitulatif", "columns": ["Situation", "Accord avec…", "Exemple"], "rows": [
-            ["Sans auxiliaire", "le nom", "des cahiers **oubliés**"],
-            ["Avec être", "le sujet", "Les filles sont **revenues**."],
-            ["Avec avoir, sans COD ou COD après", "rien (pas d'accord)", "Elles ont **couru**. Elles ont **gagné** la course."],
-            ["Avec avoir, COD avant", "le COD", "La course, elles l'ont **gagnée**."]
-          ] },
-          { "type": "callout", "kind": "attention", "title": "Les pièges", "text": "✗ Accorder avec le sujet quand l'auxiliaire est avoir : « Mes sœurs ont **joué** » (et non « jouées »).\n✗ Confondre l'article « les » et le pronom « les » : « J'ai rangé **les** assiettes » (article, COD après → rangé) / « Je **les** ai rangées » (pronom COD avant → rangées).\n✗ Accorder « été » : il ne change jamais (« elles ont **été** invitées »).\n✗ Accorder avec « en » : « Des cerises ? J'**en** ai **mangé**. » Avec le pronom « en », le participe reste invariable." },
-          { "type": "callout", "kind": "methode", "title": "Justifier un accord en une phrase", "text": "Une bonne justification nomme l'auxiliaire et le mot avec lequel on accorde.\nExemple : « Les fleurs que j'ai cueillies » → auxiliaire avoir ; le COD « que », mis pour « les fleurs » (féminin pluriel), est placé avant le verbe, donc « cueillies » s'accorde avec lui." },
-          { "type": "callout", "kind": "plus", "title": "Pour plus tard", "text": "Les verbes pronominaux (se laver, se souvenir, s'enfuir…) se conjuguent avec être mais suivent des règles particulières. Tu les étudieras plus tard ; dans ce cours, on ne travaille que sur les verbes non pronominaux." }
+          {
+            "type": "heading",
+            "text": "Méthode en quatre questions"
+          },
+          {
+            "type": "list",
+            "ordered": true,
+            "items": [
+              "Y a-t-il un auxiliaire ? **Non** → j'accorde avec le nom, comme un adjectif (« des fleurs **fanées** »).",
+              "L'auxiliaire est **être** (temps composé ou voix passive) → j'accorde avec le **sujet** (« Elles sont **parties** »).",
+              "L'auxiliaire est **avoir** → je ne regarde **pas** le sujet. Je cherche le COD (… quoi ? … qui ?).",
+              "Le COD est placé **avant** le verbe → j'accorde avec lui (« la lettre **que** j'ai **écrite** »). Le COD est **après**, ou il n'y a pas de COD → je n'accorde pas (« J'ai **écrit** une lettre »)."
+            ]
+          },
+          {
+            "type": "figure",
+            "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 600 400\" width=\"600\" height=\"400\"><rect width=\"600\" height=\"400\" fill=\"#ffffff\"/><defs><marker id=\"qg012-b\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"8\" markerHeight=\"8\" orient=\"auto\"><path d=\"M0,0 L10,5 L0,10 z\" fill=\"#1E36A8\"/></marker><marker id=\"qg012-o\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"8\" markerHeight=\"8\" orient=\"auto\"><path d=\"M0,0 L10,5 L0,10 z\" fill=\"#9A3412\"/></marker><marker id=\"qg012-g\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"8\" markerHeight=\"8\" orient=\"auto\"><path d=\"M0,0 L10,5 L0,10 z\" fill=\"#475467\"/></marker></defs><rect x=\"170\" y=\"14\" width=\"260\" height=\"36\" rx=\"10\" fill=\"#EEF2FF\" stroke=\"#1E36A8\" stroke-width=\"2\"/><text x=\"300.0\" y=\"36\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"14\" font-weight=\"bold\" fill=\"#101828\" text-anchor=\"middle\"><tspan x=\"300.0\" dy=\"0\">Y a-t-il un auxiliaire ?</tspan></text><rect x=\"14\" y=\"120\" width=\"180\" height=\"56\" rx=\"10\" fill=\"#FEF0E6\" stroke=\"#9A3412\" stroke-width=\"2\"/><text x=\"104.0\" y=\"142\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"14\" font-weight=\"bold\" fill=\"#101828\" text-anchor=\"middle\"><tspan x=\"104.0\" dy=\"0\">Accord avec le nom</tspan></text><text x=\"104.0\" y=\"162\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"13\" font-weight=\"normal\" fill=\"#101828\" text-anchor=\"middle\" font-style=\"italic\"><tspan x=\"104.0\" dy=\"0\">des fleurs <tspan font-weight=\"bold\">fanées</tspan></tspan></text><rect x=\"210\" y=\"120\" width=\"180\" height=\"56\" rx=\"10\" fill=\"#FEF0E6\" stroke=\"#9A3412\" stroke-width=\"2\"/><text x=\"300.0\" y=\"142\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"14\" font-weight=\"bold\" fill=\"#101828\" text-anchor=\"middle\"><tspan x=\"300.0\" dy=\"0\">Accord avec le sujet</tspan></text><text x=\"300.0\" y=\"162\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"13\" font-weight=\"normal\" fill=\"#101828\" text-anchor=\"middle\" font-style=\"italic\"><tspan x=\"300.0\" dy=\"0\">Elles sont <tspan font-weight=\"bold\">parties</tspan>.</tspan></text><rect x=\"406\" y=\"120\" width=\"180\" height=\"56\" rx=\"10\" fill=\"#EEF2FF\" stroke=\"#1E36A8\" stroke-width=\"2\"/><text x=\"496.0\" y=\"142\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"14\" font-weight=\"bold\" fill=\"#101828\" text-anchor=\"middle\"><tspan x=\"496.0\" dy=\"0\">Avoir : où est le COD ?</tspan></text><line x1=\"300\" y1=\"50\" x2=\"104\" y2=\"116\" stroke=\"#475467\" stroke-width=\"2\" marker-end=\"url(#qg012-g)\"/><line x1=\"300\" y1=\"50\" x2=\"300\" y2=\"116\" stroke=\"#475467\" stroke-width=\"2\" marker-end=\"url(#qg012-g)\"/><line x1=\"300\" y1=\"50\" x2=\"496\" y2=\"116\" stroke=\"#475467\" stroke-width=\"2\" marker-end=\"url(#qg012-g)\"/><text x=\"178\" y=\"90\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"14\" font-weight=\"bold\" fill=\"#475467\" text-anchor=\"end\"><tspan x=\"178\" dy=\"0\">non</tspan></text><text x=\"308\" y=\"92\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"14\" font-weight=\"bold\" fill=\"#475467\" text-anchor=\"start\"><tspan x=\"308\" dy=\"0\">être</tspan></text><text x=\"420\" y=\"90\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"14\" font-weight=\"bold\" fill=\"#475467\" text-anchor=\"start\"><tspan x=\"420\" dy=\"0\">avoir</tspan></text><rect x=\"196\" y=\"290\" width=\"196\" height=\"56\" rx=\"10\" fill=\"#FEF0E6\" stroke=\"#9A3412\" stroke-width=\"2\"/><text x=\"294.0\" y=\"312\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"14\" font-weight=\"bold\" fill=\"#101828\" text-anchor=\"middle\"><tspan x=\"294.0\" dy=\"0\">Accord avec le COD</tspan></text><text x=\"294.0\" y=\"332\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"13\" font-weight=\"normal\" fill=\"#101828\" text-anchor=\"middle\" font-style=\"italic\"><tspan x=\"294.0\" dy=\"0\">la lettre que j'ai <tspan font-weight=\"bold\">écrite</tspan></tspan></text><rect x=\"404\" y=\"290\" width=\"186\" height=\"56\" rx=\"10\" fill=\"#F2F4F7\" stroke=\"#475467\" stroke-width=\"2\"/><text x=\"497.0\" y=\"312\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"14\" font-weight=\"bold\" fill=\"#101828\" text-anchor=\"middle\"><tspan x=\"497.0\" dy=\"0\">Pas d'accord</tspan></text><text x=\"497.0\" y=\"332\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"13\" font-weight=\"normal\" fill=\"#101828\" text-anchor=\"middle\" font-style=\"italic\"><tspan x=\"497.0\" dy=\"0\">J'ai <tspan font-weight=\"bold\">écrit</tspan> une lettre.</tspan></text><line x1=\"440\" y1=\"176\" x2=\"294\" y2=\"286\" stroke=\"#475467\" stroke-width=\"2\" marker-end=\"url(#qg012-g)\"/><line x1=\"540\" y1=\"176\" x2=\"497\" y2=\"286\" stroke=\"#475467\" stroke-width=\"2\" marker-end=\"url(#qg012-g)\"/><text x=\"352\" y=\"222\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"13\" font-weight=\"bold\" fill=\"#475467\" text-anchor=\"end\"><tspan x=\"352\" dy=\"0\">avant le verbe</tspan></text><text x=\"458\" y=\"226\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"13\" font-weight=\"bold\" fill=\"#475467\" text-anchor=\"middle\"><tspan x=\"458\" dy=\"0\">après le verbe,</tspan></text><text x=\"458\" y=\"244\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"13\" font-weight=\"bold\" fill=\"#475467\" text-anchor=\"middle\"><tspan x=\"458\" dy=\"0\">ou pas de COD</tspan></text><text x=\"300\" y=\"380\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"14\" font-weight=\"normal\" fill=\"#101828\" text-anchor=\"middle\"><tspan x=\"300\" dy=\"0\">Avec avoir, on ne regarde jamais le sujet.</tspan></text></svg>",
+            "alt": "Arbre de décision pour accorder le participe passé. Première question : y a-t-il un auxiliaire ? Non : accord avec le nom, comme un adjectif (des fleurs fanées). Être : accord avec le sujet (Elles sont parties.). Avoir : on cherche où est le COD. S'il est placé avant le verbe : accord avec le COD (la lettre que j'ai écrite). S'il est après le verbe, ou s'il n'y a pas de COD : pas d'accord (J'ai écrit une lettre.). En bas : avec avoir, on ne regarde jamais le sujet.",
+            "caption": "Accorder le participe passé en trois questions"
+          },
+          {
+            "type": "table",
+            "caption": "Tableau récapitulatif",
+            "columns": [
+              "Situation",
+              "Accord avec…",
+              "Exemple"
+            ],
+            "rows": [
+              [
+                "Sans auxiliaire",
+                "le nom",
+                "des cahiers **oubliés**"
+              ],
+              [
+                "Avec être",
+                "le sujet",
+                "Les filles sont **revenues**."
+              ],
+              [
+                "Avec avoir, sans COD ou COD après",
+                "rien (pas d'accord)",
+                "Elles ont **couru**. Elles ont **gagné** la course."
+              ],
+              [
+                "Avec avoir, COD avant",
+                "le COD",
+                "La course, elles l'ont **gagnée**."
+              ]
+            ]
+          },
+          {
+            "type": "callout",
+            "kind": "attention",
+            "title": "Les pièges",
+            "text": "✗ Accorder avec le sujet quand l'auxiliaire est avoir : « Mes sœurs ont **joué** » (et non « jouées »).\n✗ Confondre l'article « les » et le pronom « les » : « J'ai rangé **les** assiettes » (article, COD après → rangé) / « Je **les** ai rangées » (pronom COD avant → rangées).\n✗ Accorder « été » : il ne change jamais (« elles ont **été** invitées »).\n✗ Accorder avec « en » : « Des cerises ? J'**en** ai **mangé**. » Avec le pronom « en », le participe reste invariable."
+          },
+          {
+            "type": "callout",
+            "kind": "methode",
+            "title": "Justifier un accord en une phrase",
+            "text": "Une bonne justification nomme l'auxiliaire et le mot avec lequel on accorde.\nExemple : « Les fleurs que j'ai cueillies » → auxiliaire avoir ; le COD « que », mis pour « les fleurs » (féminin pluriel), est placé avant le verbe, donc « cueillies » s'accorde avec lui."
+          },
+          {
+            "type": "callout",
+            "kind": "plus",
+            "title": "Pour plus tard",
+            "text": "Les verbes pronominaux (se laver, se souvenir, s'enfuir…) se conjuguent avec être mais suivent des règles particulières. Tu les étudieras plus tard ; dans ce cours, on ne travaille que sur les verbes non pronominaux."
+          }
         ],
-        "checkpoint": { "variants": [
-          { "prompt": "Quelle phrase est correctement écrite ?", "options": ["Les pommes que j'ai cueilli sont mûres.", "Elles ont cueillies des pommes.", "Les pommes, je les ai cueillies hier.", "Les pommes sont tombé de l'arbre."], "answer": 2, "hint": "Applique la méthode en quatre questions à chaque phrase.", "explanation": "« les » (= les pommes) est COD placé avant : cueillies. Les autres phrases devraient être : « que j'ai cueillies », « ont cueilli », « sont tombées »." },
-          { "prompt": "Complète : « Des bonbons ? Mon petit frère en a **mang…** beaucoup. »", "options": ["mangé", "mangés", "mangées"], "answer": 0, "hint": "Relis le dernier piège de l'encadré « Les pièges ».", "explanation": "Avec le pronom « en », le participe passé reste invariable : mangé." },
-          { "prompt": "Dans « Les invitées ont été **accueilli…** par le maire », comment écrire le participe ?", "options": ["accueilli", "accueillis", "accueillies"], "answer": 2, "hint": "C'est une phrase passive : l'auxiliaire est être (« ont été »). Quel est le sujet ?", "explanation": "Voix passive : accord avec le sujet « les invitées » (féminin pluriel) : accueillies." }
-        ] }
+        "checkpoint": {
+          "variants": [
+            {
+              "prompt": "Quelle phrase est correctement écrite ?",
+              "options": [
+                "Les pommes que j'ai cueilli sont mûres.",
+                "Elles ont cueillies des pommes.",
+                "Les pommes, je les ai cueillies hier.",
+                "Les pommes sont tombé de l'arbre."
+              ],
+              "answer": 2,
+              "hint": "Applique la méthode en quatre questions à chaque phrase.",
+              "explanation": "« les » (= les pommes) est COD placé avant : cueillies. Les autres phrases devraient être : « que j'ai cueillies », « ont cueilli », « sont tombées »."
+            },
+            {
+              "prompt": "Complète : « Des bonbons ? Mon petit frère en a **mang…** beaucoup. »",
+              "options": [
+                "mangé",
+                "mangés",
+                "mangées"
+              ],
+              "answer": 0,
+              "hint": "Relis le dernier piège de l'encadré « Les pièges ».",
+              "explanation": "Avec le pronom « en », le participe passé reste invariable : mangé."
+            },
+            {
+              "prompt": "Dans « Les invitées ont été **accueilli…** par le maire », comment écrire le participe ?",
+              "options": [
+                "accueilli",
+                "accueillis",
+                "accueillies"
+              ],
+              "answer": 2,
+              "hint": "C'est une phrase passive : l'auxiliaire est être (« ont été »). Quel est le sujet ?",
+              "explanation": "Voix passive : accord avec le sujet « les invitées » (féminin pluriel) : accueillies."
+            }
+          ]
+        }
       }
     ],
     "memo": [
-      { "label": "Terminaison", "text": "Mets le participe au féminin pour entendre la consonne muette : prise → pris ; faite → fait ; ouverte → ouvert." },
-      { "label": "-é ou -er ?", "text": "Remplace par « vendre » : « vendu » → participe passé en -é ; « vendre » → infinitif en -er." },
-      { "label": "Sans auxiliaire", "text": "Accord avec le nom, comme un adjectif : des feuilles tombées." },
-      { "label": "Avec être", "text": "Accord avec le sujet, aux temps composés comme à la voix passive : elles sont parties ; les décors ont été peints." },
-      { "label": "Avec avoir", "text": "Jamais d'accord avec le sujet. Accord avec le COD seulement s'il est placé avant : la lettre que j'ai écrite / j'ai écrit une lettre." },
-      { "label": "COD placé avant", "text": "Pronom personnel (l', la, les, me, te, nous, vous), pronom relatif « que », ou « quel(le)(s) + nom » : cherche ce qu'il représente." },
-      { "label": "Invariables", "text": "« été » ne s'accorde jamais ; avec « en », pas d'accord ; « lui » et « leur » sont des COI, pas des COD." }
+      {
+        "label": "Terminaison",
+        "text": "Mets le participe au féminin pour entendre la consonne muette : prise → pris ; faite → fait ; ouverte → ouvert."
+      },
+      {
+        "label": "-é ou -er ?",
+        "text": "Remplace par « vendre » : « vendu » → participe passé en -é ; « vendre » → infinitif en -er."
+      },
+      {
+        "label": "Sans auxiliaire",
+        "text": "Accord avec le nom, comme un adjectif : des feuilles tombées."
+      },
+      {
+        "label": "Avec être",
+        "text": "Accord avec le sujet, aux temps composés comme à la voix passive : elles sont parties ; les décors ont été peints."
+      },
+      {
+        "label": "Avec avoir",
+        "text": "Jamais d'accord avec le sujet. Accord avec le COD seulement s'il est placé avant : la lettre que j'ai écrite / j'ai écrit une lettre."
+      },
+      {
+        "label": "COD placé avant",
+        "text": "Pronom personnel (l', la, les, me, te, nous, vous), pronom relatif « que », ou « quel(le)(s) + nom » : cherche ce qu'il représente."
+      },
+      {
+        "label": "Invariables",
+        "text": "« été » ne s'accorde jamais ; avec « en », pas d'accord ; « lui » et « leur » sont des COI, pas des COD."
+      }
     ]
   },
   "exercises": {
@@ -160,46 +646,186 @@
     "pass_threshold": 8,
     "texts": [],
     "items": [
-      { "id": "ex1", "type": "qcm", "stars": 1, "lesson_part": 1, "skills": ["fr-pp-former"], "cognitive": "connaitre",
+      {
+        "id": "ex1",
+        "type": "qcm",
+        "stars": 1,
+        "lesson_part": 1,
+        "skills": [
+          "fr-pp-former"
+        ],
+        "cognitive": "connaitre",
         "prompt": "Quel est le participe passé du verbe « prendre » (au masculin singulier) ?",
-        "options": ["prendu", "pris", "prit", "prenu"], "answer": 1,
-        "solution": "« Pris » : au féminin, on dit « une photo prise », on entend le « s ». « Prit » est une forme du passé simple (« il prit »), pas le participe passé." },
-      { "id": "ex2", "type": "short", "stars": 1, "lesson_part": 1, "skills": ["fr-pp-former"], "cognitive": "appliquer",
+        "options": [
+          "prendu",
+          "pris",
+          "prit",
+          "prenu"
+        ],
+        "answer": 1,
+        "solution": "« Pris » : au féminin, on dit « une photo prise », on entend le « s ». « Prit » est une forme du passé simple (« il prit »), pas le participe passé."
+      },
+      {
+        "id": "ex2",
+        "type": "short",
+        "stars": 1,
+        "lesson_part": 1,
+        "skills": [
+          "fr-pp-former"
+        ],
+        "cognitive": "appliquer",
         "prompt": "« Hier soir, nous avons regard… un documentaire sur les volcans. » Écris le mot « regard… » complet et correctement orthographié.",
-        "answer": ["regardé"],
-        "solution": "« Regardé » : on peut dire « nous avons vendu », donc c'est un participe passé en -é. Avec avoir et un COD placé après (« un documentaire »), il n'y a pas d'accord." },
-      { "id": "ex3", "type": "qcm", "stars": 1, "lesson_part": 2, "skills": ["fr-pp-etre"], "cognitive": "appliquer",
+        "answer": [
+          "regardé"
+        ],
+        "solution": "« Regardé » : on peut dire « nous avons vendu », donc c'est un participe passé en -é. Avec avoir et un COD placé après (« un documentaire »), il n'y a pas d'accord."
+      },
+      {
+        "id": "ex3",
+        "type": "qcm",
+        "stars": 1,
+        "lesson_part": 2,
+        "skills": [
+          "fr-pp-etre"
+        ],
+        "cognitive": "appliquer",
         "prompt": "« Mes cousines sont **arriv…** hier soir. » Choisis la bonne orthographe.",
-        "options": ["arrivé", "arrivés", "arrivée", "arrivées"], "answer": 3,
-        "solution": "« Arrivées » : avec l'auxiliaire être, le participe passé s'accorde avec le sujet « mes cousines », féminin pluriel (+ es)." },
-      { "id": "ex4", "type": "qcm", "stars": 2, "lesson_part": 3, "skills": ["fr-pp-avoir", "fr-pp-cod"], "cognitive": "appliquer",
+        "options": [
+          "arrivé",
+          "arrivés",
+          "arrivée",
+          "arrivées"
+        ],
+        "answer": 3,
+        "solution": "« Arrivées » : avec l'auxiliaire être, le participe passé s'accorde avec le sujet « mes cousines », féminin pluriel (+ es)."
+      },
+      {
+        "id": "ex4",
+        "type": "qcm",
+        "stars": 2,
+        "lesson_part": 3,
+        "skills": [
+          "fr-pp-avoir",
+          "fr-pp-cod"
+        ],
+        "cognitive": "appliquer",
         "prompt": "« Les enfants ont **mang…** toutes les crêpes. » Choisis la bonne orthographe.",
-        "options": ["mangé", "mangés", "mangées", "manger"], "answer": 0,
-        "solution": "« Mangé » : avec avoir, pas d'accord avec le sujet « les enfants ». Le COD « toutes les crêpes » est placé après le verbe : pas d'accord. (« Manger » est l'infinitif : on dirait « ont vendu », pas « ont vendre ».)" },
-      { "id": "ex5", "type": "qcm", "stars": 2, "lesson_part": 4, "skills": ["fr-pp-cod-avant"], "cognitive": "appliquer",
+        "options": [
+          "mangé",
+          "mangés",
+          "mangées",
+          "manger"
+        ],
+        "answer": 0,
+        "solution": "« Mangé » : avec avoir, pas d'accord avec le sujet « les enfants ». Le COD « toutes les crêpes » est placé après le verbe : pas d'accord. (« Manger » est l'infinitif : on dirait « ont vendu », pas « ont vendre ».)"
+      },
+      {
+        "id": "ex5",
+        "type": "qcm",
+        "stars": 2,
+        "lesson_part": 4,
+        "skills": [
+          "fr-pp-cod-avant"
+        ],
+        "cognitive": "appliquer",
         "prompt": "« Ces baskets, je les ai **achet…** en solde. » Choisis la bonne orthographe.",
-        "options": ["acheté", "achetés", "achetée", "achetées"], "answer": 3,
-        "solution": "« Achetées » : auxiliaire avoir ; le COD « les », mis pour « ces baskets » (féminin pluriel), est placé avant le verbe, donc le participe s'accorde avec lui." },
-      { "id": "ex6", "type": "short", "stars": 2, "lesson_part": 4, "skills": ["fr-pp-cod-avant", "fr-pp-former"], "cognitive": "appliquer",
+        "options": [
+          "acheté",
+          "achetés",
+          "achetée",
+          "achetées"
+        ],
+        "answer": 3,
+        "solution": "« Achetées » : auxiliaire avoir ; le COD « les », mis pour « ces baskets » (féminin pluriel), est placé avant le verbe, donc le participe s'accorde avec lui."
+      },
+      {
+        "id": "ex6",
+        "type": "short",
+        "stars": 2,
+        "lesson_part": 4,
+        "skills": [
+          "fr-pp-cod-avant",
+          "fr-pp-former"
+        ],
+        "cognitive": "appliquer",
         "prompt": "« La lettre que tu m'as (écrire) m'a fait très plaisir. » Écris le participe passé du verbe « écrire », correctement accordé.",
-        "answer": ["écrite"],
-        "solution": "« Écrite » : auxiliaire avoir ; le COD « que » représente « la lettre » (féminin singulier) et il est placé avant le verbe. Au féminin, on entend bien le « t » : écrit → écrite." },
-      { "id": "ex7", "type": "qcm", "stars": 2, "lesson_part": 2, "skills": ["fr-pp-etre"], "cognitive": "appliquer",
+        "answer": [
+          "écrite"
+        ],
+        "solution": "« Écrite » : auxiliaire avoir ; le COD « que » représente « la lettre » (féminin singulier) et il est placé avant le verbe. Au féminin, on entend bien le « t » : écrit → écrite."
+      },
+      {
+        "id": "ex7",
+        "type": "qcm",
+        "stars": 2,
+        "lesson_part": 2,
+        "skills": [
+          "fr-pp-etre"
+        ],
+        "cognitive": "appliquer",
         "prompt": "« Ces maisons ont été **construi…** au XIXe siècle. » Choisis la bonne orthographe.",
-        "options": ["construit", "construits", "construite", "construites"], "answer": 3,
-        "solution": "« Construites » : la phrase est à la voix passive (« ont été » + participe passé). Le participe s'accorde avec le sujet « ces maisons » (féminin pluriel). « Été » reste toujours invariable." },
-      { "id": "ex8", "type": "qcm", "stars": 2, "lesson_part": 5, "skills": ["fr-pp-justifier", "fr-pp-avoir", "fr-pp-cod-avant"], "cognitive": "analyser",
+        "options": [
+          "construit",
+          "construits",
+          "construite",
+          "construites"
+        ],
+        "answer": 3,
+        "solution": "« Construites » : la phrase est à la voix passive (« ont été » + participe passé). Le participe s'accorde avec le sujet « ces maisons » (féminin pluriel). « Été » reste toujours invariable."
+      },
+      {
+        "id": "ex8",
+        "type": "qcm",
+        "stars": 2,
+        "lesson_part": 5,
+        "skills": [
+          "fr-pp-justifier",
+          "fr-pp-avoir",
+          "fr-pp-cod-avant"
+        ],
+        "cognitive": "analyser",
         "prompt": "Une seule de ces phrases est correctement écrite. Laquelle ?",
-        "options": ["Les photos que tu as pris sont floues.", "Elles ont mangées une glace à la fraise.", "Les clés, je les ai oubliées sur la table.", "Mes amies sont venu me voir."], "answer": 2,
-        "solution": "« Les clés, je les ai oubliées sur la table » est correcte : COD « les » (= les clés, féminin pluriel) placé avant le verbe.\nCorrections des autres : « que tu as prises » (COD « que » = les photos, placé avant) ; « Elles ont mangé une glace » (avoir, COD après) ; « Mes amies sont venues » (être, accord avec le sujet)." },
-      { "id": "ex9", "type": "open", "stars": 3, "lesson_part": 5, "skills": ["fr-pp-justifier", "fr-pp-etre", "fr-pp-avoir", "fr-pp-cod-avant"], "cognitive": "analyser",
+        "options": [
+          "Les photos que tu as pris sont floues.",
+          "Elles ont mangées une glace à la fraise.",
+          "Les clés, je les ai oubliées sur la table.",
+          "Mes amies sont venu me voir."
+        ],
+        "answer": 2,
+        "solution": "« Les clés, je les ai oubliées sur la table » est correcte : COD « les » (= les clés, féminin pluriel) placé avant le verbe.\nCorrections des autres : « que tu as prises » (COD « que » = les photos, placé avant) ; « Elles ont mangé une glace » (avoir, COD après) ; « Mes amies sont venues » (être, accord avec le sujet)."
+      },
+      {
+        "id": "ex9",
+        "type": "open",
+        "stars": 3,
+        "lesson_part": 5,
+        "skills": [
+          "fr-pp-justifier",
+          "fr-pp-etre",
+          "fr-pp-avoir",
+          "fr-pp-cod-avant"
+        ],
+        "cognitive": "analyser",
         "prompt": "Justifie l'orthographe du participe passé en gras dans chaque phrase (auxiliaire, mot avec lequel on accorde ou raison de l'absence d'accord).\na) Nos voisins sont **partis** en vacances.\nb) Nos voisins ont **repeint** leur portail.\nc) Le portail qu'ils ont **repeint** brille au soleil.\nd) Les volets, ils les ont **repeints** aussi.",
         "solution": "a) Auxiliaire être : accord avec le sujet « nos voisins » (masculin pluriel) → partis.\nb) Auxiliaire avoir : pas d'accord avec le sujet ; le COD « leur portail » est placé après le verbe → repeint, sans accord.\nc) Auxiliaire avoir : le COD « qu' » (que), mis pour « le portail », est placé avant → accord avec un masculin singulier, donc la forme ne change pas : repeint.\nd) Auxiliaire avoir : le COD « les », mis pour « les volets » (masculin pluriel), est placé avant → repeints.",
-        "rubric": "Pour chaque phrase : 0,5 pour l'auxiliaire et la règle appliquée, 0,5 pour le mot avec lequel on accorde (ou la raison de l'absence d'accord). En c), accepter toute réponse qui explique que l'accord se fait au masculin singulier." },
-      { "id": "ex10", "type": "open", "stars": 3, "lesson_part": 5, "skills": ["fr-pp-justifier", "fr-pp-etre", "fr-pp-avoir", "fr-pp-cod-avant"], "cognitive": "rediger",
+        "rubric": "Pour chaque phrase : 0,5 pour l'auxiliaire et la règle appliquée, 0,5 pour le mot avec lequel on accorde (ou la raison de l'absence d'accord). En c), accepter toute réponse qui explique que l'accord se fait au masculin singulier."
+      },
+      {
+        "id": "ex10",
+        "type": "open",
+        "stars": 3,
+        "lesson_part": 5,
+        "skills": [
+          "fr-pp-justifier",
+          "fr-pp-etre",
+          "fr-pp-avoir",
+          "fr-pp-cod-avant"
+        ],
+        "cognitive": "rediger",
         "prompt": "Réécris ce texte en remplaçant « Mon frère » par « Mes sœurs ». Fais toutes les modifications nécessaires, puis explique en une phrase pourquoi « préparé » et « mangé » ne changent pas.\n« Mon frère est rentré tard. Il a posé son sac dans l'entrée. Le gâteau que maman avait préparé l'attendait. Il l'a mangé en entier. »",
         "solution": "« Mes sœurs sont rentrées tard. Elles ont posé leur sac (ou leurs sacs) dans l'entrée. Le gâteau que maman avait préparé les attendait. Elles l'ont mangé en entier. »\n« Rentrées » s'accorde avec le nouveau sujet (auxiliaire être). « Posé » ne change pas (avoir, COD après). « Préparé » et « mangé » ne changent pas, car ils s'accordent avec leur COD placé avant (« que » et « l' »), qui représente toujours « le gâteau », masculin singulier : changer le sujet ne change rien avec avoir.",
-        "rubric": "Réécriture : 0,5 « sont rentrées » ; 0,5 « Elles ont posé » (sans accord) ; 0,5 « leur sac » ou « leurs sacs » ; 0,5 « les attendait » ; 0,5 « Elles l'ont mangé » (sans accord). Explication : 1 point si elle cite le COD placé avant qui représente toujours « le gâteau »." }
+        "rubric": "Réécriture : 0,5 « sont rentrées » ; 0,5 « Elles ont posé » (sans accord) ; 0,5 « leur sac » ou « leurs sacs » ; 0,5 « les attendait » ; 0,5 « Elles l'ont mangé » (sans accord). Explication : 1 point si elle cite le COD placé avant qui représente toujours « le gâteau »."
+      }
     ]
   },
   "evaluation": {
@@ -210,143 +836,496 @@
       {
         "texts": [],
         "sections": [
-          { "label": "A · Je connais mon cours (4 points)", "questions": [
-            { "id": "q1", "type": "qcm", "points": 1, "lesson_part": 2, "skills": ["fr-pp-etre"], "cognitive": "connaitre",
-              "prompt": "Avec l'auxiliaire être, le participe passé s'accorde…",
-              "options": ["avec le sujet", "avec le COD", "jamais", "avec le complément circonstanciel"], "answer": 0,
-              "solution": "Avec l'auxiliaire être (temps composés et voix passive), le participe passé s'accorde en genre et en nombre avec le sujet.",
-              "rubric": "1 point pour la bonne réponse, 0 sinon." },
-            { "id": "q2", "type": "qcm", "points": 1, "lesson_part": 4, "skills": ["fr-pp-avoir", "fr-pp-cod-avant"], "cognitive": "connaitre",
-              "prompt": "Avec l'auxiliaire avoir, le participe passé s'accorde avec le COD…",
-              "options": ["toujours", "seulement si le COD est placé avant le verbe", "seulement si le COD est placé après le verbe", "jamais"], "answer": 1,
-              "solution": "Avec avoir, le participe passé s'accorde avec le COD seulement si celui-ci est placé avant le verbe (« la robe que j'ai choisie ») ; jamais avec le sujet.",
-              "rubric": "1 point pour la bonne réponse, 0 sinon." },
-            { "id": "q3", "type": "open", "points": 2, "lesson_part": 3, "skills": ["fr-pp-avoir", "fr-pp-cod"], "cognitive": "connaitre",
-              "prompt": "Explique comment on décide d'accorder ou non un participe passé employé avec l'auxiliaire avoir. Donne un exemple sans accord et un exemple avec accord.",
-              "solution": "Avec avoir, on ne regarde jamais le sujet. On cherche le COD (question « quoi ? » ou « qui ? » après le verbe) et sa place : s'il est placé avant le verbe, on accorde avec lui ; s'il est après, ou s'il n'y a pas de COD, on n'accorde pas. Sans accord : « Hugo a lu une histoire. » Avec accord : « Cette histoire, je l'ai lue. »",
-              "rubric": "0,5 : pas d'accord avec le sujet. 0,5 : accord seulement avec le COD placé avant. 0,5 : exemple correct sans accord. 0,5 : exemple correct avec accord." }
-          ] },
-          { "label": "B · J'accorde et je justifie (11 points)", "questions": [
-            { "id": "q4", "type": "short", "points": 1, "lesson_part": 2, "skills": ["fr-pp-etre"], "cognitive": "appliquer",
-              "prompt": "« Les vacances sont (finir). » Écris le participe passé du verbe « finir », correctement accordé.",
-              "answer": ["finies"],
-              "solution": "« Finies » : avec être, accord avec le sujet « les vacances », féminin pluriel (+ es).",
-              "rubric": "1 point pour « finies » ; 0 sinon." },
-            { "id": "q5", "type": "qcm", "points": 1, "lesson_part": 2, "skills": ["fr-pp-etre", "fr-pp-former"], "cognitive": "appliquer",
-              "prompt": "« Ma grand-mère est **n…** en 1958. » Choisis la bonne orthographe.",
-              "options": ["né", "née", "nés", "nées"], "answer": 1,
-              "solution": "« Née » : « naître » se conjugue avec être ; le participe s'accorde avec le sujet « ma grand-mère » (féminin singulier).",
-              "rubric": "1 point pour la bonne réponse, 0 sinon." },
-            { "id": "q6", "type": "qcm", "points": 1, "lesson_part": 3, "skills": ["fr-pp-avoir"], "cognitive": "appliquer",
-              "prompt": "« Les élèves ont **rend…** leurs copies à la fin de l'heure. » Choisis la bonne orthographe.",
-              "options": ["rendu", "rendus", "rendue", "rendues"], "answer": 0,
-              "solution": "« Rendu » : avec avoir, pas d'accord avec le sujet ; le COD « leurs copies » est placé après le verbe.",
-              "rubric": "1 point pour la bonne réponse, 0 sinon." },
-            { "id": "q7", "type": "qcm", "points": 1, "lesson_part": 4, "skills": ["fr-pp-cod-avant"], "cognitive": "appliquer",
-              "prompt": "« Les copies que les élèves ont **rend…** étaient très soignées. » Choisis la bonne orthographe.",
-              "options": ["rendu", "rendus", "rendue", "rendues"], "answer": 3,
-              "solution": "« Rendues » : auxiliaire avoir ; le COD « que », mis pour « les copies » (féminin pluriel), est placé avant le verbe.",
-              "rubric": "1 point pour la bonne réponse, 0 sinon." },
-            { "id": "q8", "type": "short", "points": 1, "lesson_part": 4, "skills": ["fr-pp-cod-avant"], "cognitive": "appliquer",
-              "prompt": "« Cette histoire, je l'ai (lire) deux fois. » Écris le participe passé du verbe « lire », correctement accordé.",
-              "answer": ["lue"],
-              "solution": "« Lue » : auxiliaire avoir ; le COD « l' », mis pour « cette histoire » (féminin singulier), est placé avant le verbe.",
-              "rubric": "1 point pour « lue » ; 0 sinon." },
-            { "id": "q9", "type": "qcm", "points": 1, "lesson_part": 2, "skills": ["fr-pp-etre"], "cognitive": "appliquer",
-              "prompt": "« La fenêtre a été **ouver…** par le vent. » Choisis la bonne orthographe.",
-              "options": ["ouvert", "ouverts", "ouverte", "ouvertes"], "answer": 2,
-              "solution": "« Ouverte » : voix passive (« a été » + participe passé) ; accord avec le sujet « la fenêtre » (féminin singulier).",
-              "rubric": "1 point pour la bonne réponse, 0 sinon." },
-            { "id": "q10", "type": "open", "points": 3, "lesson_part": 5, "skills": ["fr-pp-justifier", "fr-pp-etre", "fr-pp-avoir", "fr-pp-cod-avant"], "cognitive": "analyser",
-              "prompt": "Chaque phrase contient une erreur d'accord du participe passé. Recopie la phrase corrigée, puis justifie ta correction.\na) Mes amies sont allé au cinéma.\nb) Elles ont regardées un film d'aventure.\nc) Les places qu'elles ont réservé étaient au premier rang.",
-              "solution": "a) « Mes amies sont allées au cinéma. » Auxiliaire être : accord avec le sujet « mes amies » (féminin pluriel).\nb) « Elles ont regardé un film d'aventure. » Auxiliaire avoir : pas d'accord avec le sujet ; le COD « un film d'aventure » est placé après.\nc) « Les places qu'elles ont réservées étaient au premier rang. » Auxiliaire avoir : le COD « qu' » (que), mis pour « les places » (féminin pluriel), est placé avant.",
-              "rubric": "Pour chaque phrase : 0,5 pour la correction juste, 0,5 pour une justification qui nomme l'auxiliaire et le mot avec lequel on accorde (ou la raison de l'absence d'accord)." },
-            { "id": "q11", "type": "open", "points": 2, "lesson_part": 4, "skills": ["fr-pp-cod-avant", "fr-pp-justifier"], "cognitive": "analyser",
-              "prompt": "« Quelles chansons as-tu (choisir) pour la fête ? » Écris le participe passé du verbe « choisir » correctement accordé, puis explique cet accord.",
-              "solution": "« Quelles chansons as-tu choisies pour la fête ? » Auxiliaire avoir ; le COD « quelles chansons » (féminin pluriel) est placé avant le verbe, donc le participe s'accorde avec lui.",
-              "rubric": "1 : « choisies » bien écrit. 1 : explication citant l'auxiliaire avoir et le COD « quelles chansons » placé avant (0,5 si un seul des deux éléments)." }
-          ] },
-          { "label": "C · Je réécris et je rédige (5 points)", "questions": [
-            { "id": "q12", "type": "open", "points": 2, "lesson_part": 5, "skills": ["fr-pp-justifier", "fr-pp-cod-avant"], "cognitive": "appliquer",
-              "prompt": "Réécris ce passage en remplaçant « le livre » par « les bandes dessinées ». Fais toutes les modifications nécessaires.\n« Le livre que j'ai emprunté est passionnant. Je l'ai terminé en deux jours. »",
-              "solution": "« Les bandes dessinées que j'ai empruntées sont passionnantes. Je les ai terminées en deux jours. »",
-              "rubric": "0,5 : « empruntées » (COD « que » placé avant). 0,5 : « sont passionnantes ». 0,5 : pronom « les ». 0,5 : « terminées »." },
-            { "id": "q13", "type": "open", "points": 3, "lesson_part": 5, "skills": ["fr-pp-justifier", "fr-pp-etre", "fr-pp-avoir", "fr-pp-cod-avant"], "cognitive": "rediger",
-              "prompt": "Écris trois phrases sur le thème « un week-end en famille ». La première contiendra un participe passé employé avec être ; la deuxième, un participe passé employé avec avoir et un COD placé après le verbe ; la troisième, un participe passé employé avec avoir et un COD placé avant le verbe. Pour chaque phrase, recopie le participe passé et justifie son orthographe.",
-              "solution": "Exemple :\n1. « Samedi, mes cousines sont venues à la maison. » → « venues » : auxiliaire être, accord avec le sujet « mes cousines » (féminin pluriel).\n2. « Nous avons préparé un grand repas. » → « préparé » : auxiliaire avoir, COD « un grand repas » placé après, pas d'accord.\n3. « Les photos que papa a prises sont très drôles. » → « prises » : auxiliaire avoir, COD « que » (= les photos, féminin pluriel) placé avant.",
-              "rubric": "Pour chaque phrase : 0,5 si la phrase est correcte, sur le thème et respecte la contrainte ; 0,5 si le participe est bien accordé et la justification juste." }
-          ] }
+          {
+            "label": "A · Je connais mon cours (4 points)",
+            "questions": [
+              {
+                "id": "q1",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 2,
+                "skills": [
+                  "fr-pp-etre"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Avec l'auxiliaire être, le participe passé s'accorde…",
+                "options": [
+                  "avec le sujet",
+                  "avec le COD",
+                  "jamais",
+                  "avec le complément circonstanciel"
+                ],
+                "answer": 0,
+                "solution": "Avec l'auxiliaire être (temps composés et voix passive), le participe passé s'accorde en genre et en nombre avec le sujet.",
+                "rubric": "1 point pour la bonne réponse, 0 sinon."
+              },
+              {
+                "id": "q2",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 4,
+                "skills": [
+                  "fr-pp-avoir",
+                  "fr-pp-cod-avant"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Avec l'auxiliaire avoir, le participe passé s'accorde avec le COD…",
+                "options": [
+                  "toujours",
+                  "seulement si le COD est placé avant le verbe",
+                  "seulement si le COD est placé après le verbe",
+                  "jamais"
+                ],
+                "answer": 1,
+                "solution": "Avec avoir, le participe passé s'accorde avec le COD seulement si celui-ci est placé avant le verbe (« la robe que j'ai choisie ») ; jamais avec le sujet.",
+                "rubric": "1 point pour la bonne réponse, 0 sinon."
+              },
+              {
+                "id": "q3",
+                "type": "open",
+                "points": 2,
+                "lesson_part": 3,
+                "skills": [
+                  "fr-pp-avoir",
+                  "fr-pp-cod"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Explique comment on décide d'accorder ou non un participe passé employé avec l'auxiliaire avoir. Donne un exemple sans accord et un exemple avec accord.",
+                "solution": "Avec avoir, on ne regarde jamais le sujet. On cherche le COD (question « quoi ? » ou « qui ? » après le verbe) et sa place : s'il est placé avant le verbe, on accorde avec lui ; s'il est après, ou s'il n'y a pas de COD, on n'accorde pas. Sans accord : « Hugo a lu une histoire. » Avec accord : « Cette histoire, je l'ai lue. »",
+                "rubric": "0,5 : pas d'accord avec le sujet. 0,5 : accord seulement avec le COD placé avant. 0,5 : exemple correct sans accord. 0,5 : exemple correct avec accord."
+              }
+            ]
+          },
+          {
+            "label": "B · J'accorde et je justifie (11 points)",
+            "questions": [
+              {
+                "id": "q4",
+                "type": "short",
+                "points": 1,
+                "lesson_part": 2,
+                "skills": [
+                  "fr-pp-etre"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "« Les vacances sont (finir). » Écris le participe passé du verbe « finir », correctement accordé.",
+                "answer": [
+                  "finies"
+                ],
+                "solution": "« Finies » : avec être, accord avec le sujet « les vacances », féminin pluriel (+ es).",
+                "rubric": "1 point pour « finies » ; 0 sinon."
+              },
+              {
+                "id": "q5",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 2,
+                "skills": [
+                  "fr-pp-etre",
+                  "fr-pp-former"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "« Ma grand-mère est **n…** en 1958. » Choisis la bonne orthographe.",
+                "options": [
+                  "né",
+                  "née",
+                  "nés",
+                  "nées"
+                ],
+                "answer": 1,
+                "solution": "« Née » : « naître » se conjugue avec être ; le participe s'accorde avec le sujet « ma grand-mère » (féminin singulier).",
+                "rubric": "1 point pour la bonne réponse, 0 sinon."
+              },
+              {
+                "id": "q6",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 3,
+                "skills": [
+                  "fr-pp-avoir"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "« Les élèves ont **rend…** leurs copies à la fin de l'heure. » Choisis la bonne orthographe.",
+                "options": [
+                  "rendu",
+                  "rendus",
+                  "rendue",
+                  "rendues"
+                ],
+                "answer": 0,
+                "solution": "« Rendu » : avec avoir, pas d'accord avec le sujet ; le COD « leurs copies » est placé après le verbe.",
+                "rubric": "1 point pour la bonne réponse, 0 sinon."
+              },
+              {
+                "id": "q7",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 4,
+                "skills": [
+                  "fr-pp-cod-avant"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "« Les copies que les élèves ont **rend…** étaient très soignées. » Choisis la bonne orthographe.",
+                "options": [
+                  "rendu",
+                  "rendus",
+                  "rendue",
+                  "rendues"
+                ],
+                "answer": 3,
+                "solution": "« Rendues » : auxiliaire avoir ; le COD « que », mis pour « les copies » (féminin pluriel), est placé avant le verbe.",
+                "rubric": "1 point pour la bonne réponse, 0 sinon."
+              },
+              {
+                "id": "q8",
+                "type": "short",
+                "points": 1,
+                "lesson_part": 4,
+                "skills": [
+                  "fr-pp-cod-avant"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "« Cette histoire, je l'ai (lire) deux fois. » Écris le participe passé du verbe « lire », correctement accordé.",
+                "answer": [
+                  "lue"
+                ],
+                "solution": "« Lue » : auxiliaire avoir ; le COD « l' », mis pour « cette histoire » (féminin singulier), est placé avant le verbe.",
+                "rubric": "1 point pour « lue » ; 0 sinon."
+              },
+              {
+                "id": "q9",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 2,
+                "skills": [
+                  "fr-pp-etre"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "« La fenêtre a été **ouver…** par le vent. » Choisis la bonne orthographe.",
+                "options": [
+                  "ouvert",
+                  "ouverts",
+                  "ouverte",
+                  "ouvertes"
+                ],
+                "answer": 2,
+                "solution": "« Ouverte » : voix passive (« a été » + participe passé) ; accord avec le sujet « la fenêtre » (féminin singulier).",
+                "rubric": "1 point pour la bonne réponse, 0 sinon."
+              },
+              {
+                "id": "q10",
+                "type": "open",
+                "points": 3,
+                "lesson_part": 5,
+                "skills": [
+                  "fr-pp-justifier",
+                  "fr-pp-etre",
+                  "fr-pp-avoir",
+                  "fr-pp-cod-avant"
+                ],
+                "cognitive": "analyser",
+                "prompt": "Chaque phrase contient une erreur d'accord du participe passé. Recopie la phrase corrigée, puis justifie ta correction.\na) Mes amies sont allé au cinéma.\nb) Elles ont regardées un film d'aventure.\nc) Les places qu'elles ont réservé étaient au premier rang.",
+                "solution": "a) « Mes amies sont allées au cinéma. » Auxiliaire être : accord avec le sujet « mes amies » (féminin pluriel).\nb) « Elles ont regardé un film d'aventure. » Auxiliaire avoir : pas d'accord avec le sujet ; le COD « un film d'aventure » est placé après.\nc) « Les places qu'elles ont réservées étaient au premier rang. » Auxiliaire avoir : le COD « qu' » (que), mis pour « les places » (féminin pluriel), est placé avant.",
+                "rubric": "Pour chaque phrase : 0,5 pour la correction juste, 0,5 pour une justification qui nomme l'auxiliaire et le mot avec lequel on accorde (ou la raison de l'absence d'accord)."
+              },
+              {
+                "id": "q11",
+                "type": "open",
+                "points": 2,
+                "lesson_part": 4,
+                "skills": [
+                  "fr-pp-cod-avant",
+                  "fr-pp-justifier"
+                ],
+                "cognitive": "analyser",
+                "prompt": "« Quelles chansons as-tu (choisir) pour la fête ? » Écris le participe passé du verbe « choisir » correctement accordé, puis explique cet accord.",
+                "solution": "« Quelles chansons as-tu choisies pour la fête ? » Auxiliaire avoir ; le COD « quelles chansons » (féminin pluriel) est placé avant le verbe, donc le participe s'accorde avec lui.",
+                "rubric": "1 : « choisies » bien écrit. 1 : explication citant l'auxiliaire avoir et le COD « quelles chansons » placé avant (0,5 si un seul des deux éléments)."
+              }
+            ]
+          },
+          {
+            "label": "C · Je réécris et je rédige (5 points)",
+            "questions": [
+              {
+                "id": "q12",
+                "type": "open",
+                "points": 2,
+                "lesson_part": 5,
+                "skills": [
+                  "fr-pp-justifier",
+                  "fr-pp-cod-avant"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Réécris ce passage en remplaçant « le livre » par « les bandes dessinées ». Fais toutes les modifications nécessaires.\n« Le livre que j'ai emprunté est passionnant. Je l'ai terminé en deux jours. »",
+                "solution": "« Les bandes dessinées que j'ai empruntées sont passionnantes. Je les ai terminées en deux jours. »",
+                "rubric": "0,5 : « empruntées » (COD « que » placé avant). 0,5 : « sont passionnantes ». 0,5 : pronom « les ». 0,5 : « terminées »."
+              },
+              {
+                "id": "q13",
+                "type": "open",
+                "points": 3,
+                "lesson_part": 5,
+                "skills": [
+                  "fr-pp-justifier",
+                  "fr-pp-etre",
+                  "fr-pp-avoir",
+                  "fr-pp-cod-avant"
+                ],
+                "cognitive": "rediger",
+                "prompt": "Écris trois phrases sur le thème « un week-end en famille ». La première contiendra un participe passé employé avec être ; la deuxième, un participe passé employé avec avoir et un COD placé après le verbe ; la troisième, un participe passé employé avec avoir et un COD placé avant le verbe. Pour chaque phrase, recopie le participe passé et justifie son orthographe.",
+                "solution": "Exemple :\n1. « Samedi, mes cousines sont venues à la maison. » → « venues » : auxiliaire être, accord avec le sujet « mes cousines » (féminin pluriel).\n2. « Nous avons préparé un grand repas. » → « préparé » : auxiliaire avoir, COD « un grand repas » placé après, pas d'accord.\n3. « Les photos que papa a prises sont très drôles. » → « prises » : auxiliaire avoir, COD « que » (= les photos, féminin pluriel) placé avant.",
+                "rubric": "Pour chaque phrase : 0,5 si la phrase est correcte, sur le thème et respecte la contrainte ; 0,5 si le participe est bien accordé et la justification juste."
+              }
+            ]
+          }
         ]
       },
       {
         "texts": [],
         "sections": [
-          { "label": "A · Je connais mon cours (4 points)", "questions": [
-            { "id": "q1", "type": "qcm", "points": 1, "lesson_part": 3, "skills": ["fr-pp-avoir"], "cognitive": "connaitre",
-              "prompt": "Dans « Elles ont dansé toute la soirée », pourquoi « dansé » ne s'accorde-t-il pas ?",
-              "options": ["Parce que l'auxiliaire est avoir et qu'il n'y a pas de COD placé avant", "Parce que le sujet est au féminin", "Parce que « dansé » est un adjectif", "Parce que le verbe est au présent"], "answer": 0,
-              "solution": "Avec avoir, on n'accorde jamais avec le sujet « elles ». Il n'y a pas de COD placé avant (« toute la soirée » indique une durée et n'est pas un COD) : pas d'accord.",
-              "rubric": "1 point pour la bonne réponse, 0 sinon." },
-            { "id": "q2", "type": "qcm", "points": 1, "lesson_part": 2, "skills": ["fr-pp-etre"], "cognitive": "connaitre",
-              "prompt": "Quel verbe se conjugue avec l'auxiliaire être au passé composé ?",
-              "options": ["chanter", "partir", "finir", "prendre"], "answer": 1,
-              "solution": "On dit « je suis parti(e) » : « partir », verbe de mouvement, se conjugue avec être. Les autres se conjuguent avec avoir (j'ai chanté, j'ai fini, j'ai pris).",
-              "rubric": "1 point pour la bonne réponse, 0 sinon." },
-            { "id": "q3", "type": "open", "points": 2, "lesson_part": 2, "skills": ["fr-pp-etre"], "cognitive": "connaitre",
-              "prompt": "Énonce la règle d'accord du participe passé employé avec l'auxiliaire être. Donne un exemple au passé composé et un exemple à la voix passive.",
-              "solution": "Le participe passé employé avec être s'accorde en genre et en nombre avec le sujet. Passé composé : « Mes sœurs sont arrivées. » Voix passive : « Les gâteaux ont été mangés par les invités. »",
-              "rubric": "1 : règle juste (accord avec le sujet, en genre et en nombre ; 0,5 si « en genre et en nombre » manque). 0,5 : exemple correct au passé composé. 0,5 : exemple correct à la voix passive." }
-          ] },
-          { "label": "B · J'accorde et je justifie (11 points)", "questions": [
-            { "id": "q4", "type": "short", "points": 1, "lesson_part": 2, "skills": ["fr-pp-etre"], "cognitive": "appliquer",
-              "prompt": "« Mes sœurs sont (sortir) ce soir. » Écris le participe passé du verbe « sortir », correctement accordé.",
-              "answer": ["sorties"],
-              "solution": "« Sorties » : sans COD, « sortir » se conjugue avec être ; accord avec le sujet « mes sœurs », féminin pluriel (+ es).",
-              "rubric": "1 point pour « sorties » ; 0 sinon." },
-            { "id": "q5", "type": "qcm", "points": 1, "lesson_part": 2, "skills": ["fr-pp-etre"], "cognitive": "appliquer",
-              "prompt": "« Les invités sont **ven…** nombreux. » Choisis la bonne orthographe.",
-              "options": ["venu", "venus", "venue", "venues"], "answer": 1,
-              "solution": "« Venus » : avec être, accord avec le sujet « les invités » (masculin pluriel).",
-              "rubric": "1 point pour la bonne réponse, 0 sinon." },
-            { "id": "q6", "type": "qcm", "points": 1, "lesson_part": 3, "skills": ["fr-pp-avoir"], "cognitive": "appliquer",
-              "prompt": "« Ma mère a **prépar…** des crêpes pour le goûter. » Choisis la bonne orthographe.",
-              "options": ["préparé", "préparés", "préparées", "préparer"], "answer": 0,
-              "solution": "« Préparé » : avec avoir, pas d'accord avec le sujet ; le COD « des crêpes » est placé après le verbe.",
-              "rubric": "1 point pour la bonne réponse, 0 sinon." },
-            { "id": "q7", "type": "qcm", "points": 1, "lesson_part": 4, "skills": ["fr-pp-cod-avant"], "cognitive": "appliquer",
-              "prompt": "« Les crêpes que ma mère a **prépar…** étaient délicieuses. » Choisis la bonne orthographe.",
-              "options": ["préparé", "préparés", "préparée", "préparées"], "answer": 3,
-              "solution": "« Préparées » : auxiliaire avoir ; le COD « que », mis pour « les crêpes » (féminin pluriel), est placé avant le verbe.",
-              "rubric": "1 point pour la bonne réponse, 0 sinon." },
-            { "id": "q8", "type": "short", "points": 1, "lesson_part": 4, "skills": ["fr-pp-cod-avant", "fr-pp-former"], "cognitive": "appliquer",
-              "prompt": "« Ces exercices, tu les as (faire) ? » Écris le participe passé du verbe « faire », correctement accordé.",
-              "answer": ["faits"],
-              "solution": "« Faits » : auxiliaire avoir ; le COD « les », mis pour « ces exercices » (masculin pluriel), est placé avant le verbe. N'oublie pas le « t » : une chose faite → fait.",
-              "rubric": "1 point pour « faits » ; 0 sinon." },
-            { "id": "q9", "type": "qcm", "points": 1, "lesson_part": 2, "skills": ["fr-pp-etre"], "cognitive": "appliquer",
-              "prompt": "« Les gagnants seront **récompens…** par le maire. » Choisis la bonne orthographe.",
-              "options": ["récompensé", "récompensés", "récompensée", "récompensées"], "answer": 1,
-              "solution": "« Récompensés » : voix passive (« seront » + participe passé) ; accord avec le sujet « les gagnants » (masculin pluriel).",
-              "rubric": "1 point pour la bonne réponse, 0 sinon." },
-            { "id": "q10", "type": "open", "points": 3, "lesson_part": 5, "skills": ["fr-pp-justifier", "fr-pp-etre", "fr-pp-avoir", "fr-pp-cod-avant"], "cognitive": "analyser",
-              "prompt": "Chaque phrase contient une erreur d'accord du participe passé. Recopie la phrase corrigée, puis justifie ta correction.\na) Les filles sont parti tôt ce matin.\nb) Mon frère a ouverte la porte du garage.\nc) La robe que Zoé a acheté est bleue.",
-              "solution": "a) « Les filles sont parties tôt ce matin. » Auxiliaire être : accord avec le sujet « les filles » (féminin pluriel).\nb) « Mon frère a ouvert la porte du garage. » Auxiliaire avoir : le COD « la porte du garage » est placé après le verbe, pas d'accord.\nc) « La robe que Zoé a achetée est bleue. » Auxiliaire avoir : le COD « que », mis pour « la robe » (féminin singulier), est placé avant.",
-              "rubric": "Pour chaque phrase : 0,5 pour la correction juste, 0,5 pour une justification qui nomme l'auxiliaire et le mot avec lequel on accorde (ou la raison de l'absence d'accord)." },
-            { "id": "q11", "type": "open", "points": 2, "lesson_part": 4, "skills": ["fr-pp-cod-avant", "fr-pp-justifier"], "cognitive": "analyser",
-              "prompt": "« Quels films avez-vous (voir) cette année ? » Écris le participe passé du verbe « voir » correctement accordé, puis explique cet accord.",
-              "solution": "« Quels films avez-vous vus cette année ? » Auxiliaire avoir ; le COD « quels films » (masculin pluriel) est placé avant le verbe, donc le participe s'accorde avec lui.",
-              "rubric": "1 : « vus » bien écrit. 1 : explication citant l'auxiliaire avoir et le COD « quels films » placé avant (0,5 si un seul des deux éléments)." }
-          ] },
-          { "label": "C · Je réécris et je rédige (5 points)", "questions": [
-            { "id": "q12", "type": "open", "points": 2, "lesson_part": 5, "skills": ["fr-pp-justifier", "fr-pp-etre", "fr-pp-cod-avant"], "cognitive": "appliquer",
-              "prompt": "Réécris ce passage en remplaçant « Ce gâteau » par « Ces tartes ». Fais toutes les modifications nécessaires.\n« Ce gâteau, je l'ai préparé hier. Il a été dévoré en dix minutes ! »",
-              "solution": "« Ces tartes, je les ai préparées hier. Elles ont été dévorées en dix minutes ! »",
-              "rubric": "0,5 : pronom « les ». 0,5 : « préparées » (COD placé avant). 0,5 : « Elles ont été » (« été » invariable). 0,5 : « dévorées » (voix passive, accord avec le sujet)." },
-            { "id": "q13", "type": "open", "points": 3, "lesson_part": 5, "skills": ["fr-pp-justifier", "fr-pp-etre", "fr-pp-avoir", "fr-pp-cod-avant"], "cognitive": "rediger",
-              "prompt": "Écris trois phrases sur le thème « une sortie scolaire ». La première contiendra un participe passé employé avec être ; la deuxième, un participe passé employé avec avoir et un COD placé après le verbe ; la troisième, un participe passé employé avec avoir et un COD placé avant le verbe. Pour chaque phrase, recopie le participe passé et justifie son orthographe.",
-              "solution": "Exemple :\n1. « Les élèves sont arrivés au musée à neuf heures. » → « arrivés » : auxiliaire être, accord avec le sujet « les élèves » (masculin pluriel).\n2. « La guide a montré des statues grecques. » → « montré » : auxiliaire avoir, COD « des statues grecques » placé après, pas d'accord.\n3. « Les statues que nous avons dessinées étaient immenses. » → « dessinées » : auxiliaire avoir, COD « que » (= les statues, féminin pluriel) placé avant.",
-              "rubric": "Pour chaque phrase : 0,5 si la phrase est correcte, sur le thème et respecte la contrainte ; 0,5 si le participe est bien accordé et la justification juste." }
-          ] }
+          {
+            "label": "A · Je connais mon cours (4 points)",
+            "questions": [
+              {
+                "id": "q1",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 3,
+                "skills": [
+                  "fr-pp-avoir"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Dans « Elles ont dansé toute la soirée », pourquoi « dansé » ne s'accorde-t-il pas ?",
+                "options": [
+                  "Parce que l'auxiliaire est avoir et qu'il n'y a pas de COD placé avant",
+                  "Parce que le sujet est au féminin",
+                  "Parce que « dansé » est un adjectif",
+                  "Parce que le verbe est au présent"
+                ],
+                "answer": 0,
+                "solution": "Avec avoir, on n'accorde jamais avec le sujet « elles ». Il n'y a pas de COD placé avant (« toute la soirée » indique une durée et n'est pas un COD) : pas d'accord.",
+                "rubric": "1 point pour la bonne réponse, 0 sinon."
+              },
+              {
+                "id": "q2",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 2,
+                "skills": [
+                  "fr-pp-etre"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Quel verbe se conjugue avec l'auxiliaire être au passé composé ?",
+                "options": [
+                  "chanter",
+                  "partir",
+                  "finir",
+                  "prendre"
+                ],
+                "answer": 1,
+                "solution": "On dit « je suis parti(e) » : « partir », verbe de mouvement, se conjugue avec être. Les autres se conjuguent avec avoir (j'ai chanté, j'ai fini, j'ai pris).",
+                "rubric": "1 point pour la bonne réponse, 0 sinon."
+              },
+              {
+                "id": "q3",
+                "type": "open",
+                "points": 2,
+                "lesson_part": 2,
+                "skills": [
+                  "fr-pp-etre"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Énonce la règle d'accord du participe passé employé avec l'auxiliaire être. Donne un exemple au passé composé et un exemple à la voix passive.",
+                "solution": "Le participe passé employé avec être s'accorde en genre et en nombre avec le sujet. Passé composé : « Mes sœurs sont arrivées. » Voix passive : « Les gâteaux ont été mangés par les invités. »",
+                "rubric": "1 : règle juste (accord avec le sujet, en genre et en nombre ; 0,5 si « en genre et en nombre » manque). 0,5 : exemple correct au passé composé. 0,5 : exemple correct à la voix passive."
+              }
+            ]
+          },
+          {
+            "label": "B · J'accorde et je justifie (11 points)",
+            "questions": [
+              {
+                "id": "q4",
+                "type": "short",
+                "points": 1,
+                "lesson_part": 2,
+                "skills": [
+                  "fr-pp-etre"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "« Mes sœurs sont (sortir) ce soir. » Écris le participe passé du verbe « sortir », correctement accordé.",
+                "answer": [
+                  "sorties"
+                ],
+                "solution": "« Sorties » : sans COD, « sortir » se conjugue avec être ; accord avec le sujet « mes sœurs », féminin pluriel (+ es).",
+                "rubric": "1 point pour « sorties » ; 0 sinon."
+              },
+              {
+                "id": "q5",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 2,
+                "skills": [
+                  "fr-pp-etre"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "« Les invités sont **ven…** nombreux. » Choisis la bonne orthographe.",
+                "options": [
+                  "venu",
+                  "venus",
+                  "venue",
+                  "venues"
+                ],
+                "answer": 1,
+                "solution": "« Venus » : avec être, accord avec le sujet « les invités » (masculin pluriel).",
+                "rubric": "1 point pour la bonne réponse, 0 sinon."
+              },
+              {
+                "id": "q6",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 3,
+                "skills": [
+                  "fr-pp-avoir"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "« Ma mère a **prépar…** des crêpes pour le goûter. » Choisis la bonne orthographe.",
+                "options": [
+                  "préparé",
+                  "préparés",
+                  "préparées",
+                  "préparer"
+                ],
+                "answer": 0,
+                "solution": "« Préparé » : avec avoir, pas d'accord avec le sujet ; le COD « des crêpes » est placé après le verbe.",
+                "rubric": "1 point pour la bonne réponse, 0 sinon."
+              },
+              {
+                "id": "q7",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 4,
+                "skills": [
+                  "fr-pp-cod-avant"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "« Les crêpes que ma mère a **prépar…** étaient délicieuses. » Choisis la bonne orthographe.",
+                "options": [
+                  "préparé",
+                  "préparés",
+                  "préparée",
+                  "préparées"
+                ],
+                "answer": 3,
+                "solution": "« Préparées » : auxiliaire avoir ; le COD « que », mis pour « les crêpes » (féminin pluriel), est placé avant le verbe.",
+                "rubric": "1 point pour la bonne réponse, 0 sinon."
+              },
+              {
+                "id": "q8",
+                "type": "short",
+                "points": 1,
+                "lesson_part": 4,
+                "skills": [
+                  "fr-pp-cod-avant",
+                  "fr-pp-former"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "« Ces exercices, tu les as (faire) ? » Écris le participe passé du verbe « faire », correctement accordé.",
+                "answer": [
+                  "faits"
+                ],
+                "solution": "« Faits » : auxiliaire avoir ; le COD « les », mis pour « ces exercices » (masculin pluriel), est placé avant le verbe. N'oublie pas le « t » : une chose faite → fait.",
+                "rubric": "1 point pour « faits » ; 0 sinon."
+              },
+              {
+                "id": "q9",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 2,
+                "skills": [
+                  "fr-pp-etre"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "« Les gagnants seront **récompens…** par le maire. » Choisis la bonne orthographe.",
+                "options": [
+                  "récompensé",
+                  "récompensés",
+                  "récompensée",
+                  "récompensées"
+                ],
+                "answer": 1,
+                "solution": "« Récompensés » : voix passive (« seront » + participe passé) ; accord avec le sujet « les gagnants » (masculin pluriel).",
+                "rubric": "1 point pour la bonne réponse, 0 sinon."
+              },
+              {
+                "id": "q10",
+                "type": "open",
+                "points": 3,
+                "lesson_part": 5,
+                "skills": [
+                  "fr-pp-justifier",
+                  "fr-pp-etre",
+                  "fr-pp-avoir",
+                  "fr-pp-cod-avant"
+                ],
+                "cognitive": "analyser",
+                "prompt": "Chaque phrase contient une erreur d'accord du participe passé. Recopie la phrase corrigée, puis justifie ta correction.\na) Les filles sont parti tôt ce matin.\nb) Mon frère a ouverte la porte du garage.\nc) La robe que Zoé a acheté est bleue.",
+                "solution": "a) « Les filles sont parties tôt ce matin. » Auxiliaire être : accord avec le sujet « les filles » (féminin pluriel).\nb) « Mon frère a ouvert la porte du garage. » Auxiliaire avoir : le COD « la porte du garage » est placé après le verbe, pas d'accord.\nc) « La robe que Zoé a achetée est bleue. » Auxiliaire avoir : le COD « que », mis pour « la robe » (féminin singulier), est placé avant.",
+                "rubric": "Pour chaque phrase : 0,5 pour la correction juste, 0,5 pour une justification qui nomme l'auxiliaire et le mot avec lequel on accorde (ou la raison de l'absence d'accord)."
+              },
+              {
+                "id": "q11",
+                "type": "open",
+                "points": 2,
+                "lesson_part": 4,
+                "skills": [
+                  "fr-pp-cod-avant",
+                  "fr-pp-justifier"
+                ],
+                "cognitive": "analyser",
+                "prompt": "« Quels films avez-vous (voir) cette année ? » Écris le participe passé du verbe « voir » correctement accordé, puis explique cet accord.",
+                "solution": "« Quels films avez-vous vus cette année ? » Auxiliaire avoir ; le COD « quels films » (masculin pluriel) est placé avant le verbe, donc le participe s'accorde avec lui.",
+                "rubric": "1 : « vus » bien écrit. 1 : explication citant l'auxiliaire avoir et le COD « quels films » placé avant (0,5 si un seul des deux éléments)."
+              }
+            ]
+          },
+          {
+            "label": "C · Je réécris et je rédige (5 points)",
+            "questions": [
+              {
+                "id": "q12",
+                "type": "open",
+                "points": 2,
+                "lesson_part": 5,
+                "skills": [
+                  "fr-pp-justifier",
+                  "fr-pp-etre",
+                  "fr-pp-cod-avant"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Réécris ce passage en remplaçant « Ce gâteau » par « Ces tartes ». Fais toutes les modifications nécessaires.\n« Ce gâteau, je l'ai préparé hier. Il a été dévoré en dix minutes ! »",
+                "solution": "« Ces tartes, je les ai préparées hier. Elles ont été dévorées en dix minutes ! »",
+                "rubric": "0,5 : pronom « les ». 0,5 : « préparées » (COD placé avant). 0,5 : « Elles ont été » (« été » invariable). 0,5 : « dévorées » (voix passive, accord avec le sujet)."
+              },
+              {
+                "id": "q13",
+                "type": "open",
+                "points": 3,
+                "lesson_part": 5,
+                "skills": [
+                  "fr-pp-justifier",
+                  "fr-pp-etre",
+                  "fr-pp-avoir",
+                  "fr-pp-cod-avant"
+                ],
+                "cognitive": "rediger",
+                "prompt": "Écris trois phrases sur le thème « une sortie scolaire ». La première contiendra un participe passé employé avec être ; la deuxième, un participe passé employé avec avoir et un COD placé après le verbe ; la troisième, un participe passé employé avec avoir et un COD placé avant le verbe. Pour chaque phrase, recopie le participe passé et justifie son orthographe.",
+                "solution": "Exemple :\n1. « Les élèves sont arrivés au musée à neuf heures. » → « arrivés » : auxiliaire être, accord avec le sujet « les élèves » (masculin pluriel).\n2. « La guide a montré des statues grecques. » → « montré » : auxiliaire avoir, COD « des statues grecques » placé après, pas d'accord.\n3. « Les statues que nous avons dessinées étaient immenses. » → « dessinées » : auxiliaire avoir, COD « que » (= les statues, féminin pluriel) placé avant.",
+                "rubric": "Pour chaque phrase : 0,5 si la phrase est correcte, sur le thème et respecte la contrainte ; 0,5 si le participe est bien accordé et la justification juste."
+              }
+            ]
+          }
         ]
       }
     ]

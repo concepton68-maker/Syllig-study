@@ -6,13 +6,34 @@
   "chapter": "Le vivant et son évolution : génétique",
   "title": "Cellules, noyau, chromosomes et ADN",
   "skills": [
-    { "id": "svt-cellule", "label": "Décrire l'organisation d'une cellule" },
-    { "id": "svt-echelles", "label": "Utiliser les échelles du vivant (µm, grossissement)" },
-    { "id": "svt-noyau", "label": "Montrer que le noyau contient l'information génétique" },
-    { "id": "svt-chromosomes", "label": "Décrire les chromosomes et lire un caryotype" },
-    { "id": "svt-adn", "label": "Relier chromosome, ADN et gène" },
-    { "id": "svt-document", "label": "Exploiter une expérience ou un document" },
-    { "id": "svt-rediger", "label": "Rédiger une explication scientifique" }
+    {
+      "id": "svt-cellule",
+      "label": "Décrire l'organisation d'une cellule"
+    },
+    {
+      "id": "svt-echelles",
+      "label": "Utiliser les échelles du vivant (µm, grossissement)"
+    },
+    {
+      "id": "svt-noyau",
+      "label": "Montrer que le noyau contient l'information génétique"
+    },
+    {
+      "id": "svt-chromosomes",
+      "label": "Décrire les chromosomes et lire un caryotype"
+    },
+    {
+      "id": "svt-adn",
+      "label": "Relier chromosome, ADN et gène"
+    },
+    {
+      "id": "svt-document",
+      "label": "Exploiter une expérience ou un document"
+    },
+    {
+      "id": "svt-rediger",
+      "label": "Rédiger une explication scientifique"
+    }
   ],
   "lesson": {
     "duration_min": 35,
@@ -27,37 +48,97 @@
       {
         "title": "Tous les êtres vivants sont faits de cellules",
         "blocks": [
-          { "type": "text", "text": "La **cellule** est l'unité de base du vivant. Certains êtres vivants ne sont formés que d'une seule cellule (**unicellulaires** : bactéries, levures, paramécies) ; d'autres en comptent un très grand nombre (**pluricellulaires** : plantes, animaux, la plupart des champignons). Le corps humain en contient environ 30 000 milliards." },
-          { "type": "table", "caption": "Ce que l'on observe au microscope", "columns": ["Constituant", "Rôle", "Où le trouve-t-on ?"], "rows": [
-            ["Membrane", "limite la cellule et contrôle les échanges", "toutes les cellules"],
-            ["Cytoplasme", "lieu de nombreuses réactions chimiques", "toutes les cellules"],
-            ["Noyau", "contient l'information génétique", "cellules animales, végétales, de champignons (pas chez les bactéries)"],
-            ["Paroi", "rigidifie et protège la cellule", "cellules végétales (et bactéries, champignons)"],
-            ["Chloroplastes", "réalisent la photosynthèse", "cellules végétales chlorophylliennes"]
-          ] },
-          { "type": "callout", "kind": "attention", "title": "Des exceptions intéressantes", "text": "Les **bactéries** n'ont pas de noyau : leur information génétique est libre dans le cytoplasme. Chez l'être humain, les **globules rouges** perdent leur noyau en se formant." },
-          { "type": "text", "text": "Les cellules sont minuscules : on les mesure en **micromètres** (µm). 1 µm = 0,001 mm, donc 1 mm = 1 000 µm. Une bactérie mesure environ 2 µm, un globule rouge environ 7 µm, une cellule de la joue environ 50 µm." },
-          { "type": "callout", "kind": "methode", "title": "Calculer la taille réelle d'une cellule", "text": "Taille réelle = taille mesurée sur l'image ÷ grossissement.\nExemple : une cellule mesure 2 cm sur une photo grossie 400 fois. 2 cm = 20 mm = 20 000 µm. Taille réelle = 20 000 ÷ 400 = **50 µm**." }
+          {
+            "type": "text",
+            "text": "La **cellule** est l'unité de base du vivant. Certains êtres vivants ne sont formés que d'une seule cellule (**unicellulaires** : bactéries, levures, paramécies) ; d'autres en comptent un très grand nombre (**pluricellulaires** : plantes, animaux, la plupart des champignons). Le corps humain en contient environ 30 000 milliards."
+          },
+          {
+            "type": "table",
+            "caption": "Ce que l'on observe au microscope",
+            "columns": [
+              "Constituant",
+              "Rôle",
+              "Où le trouve-t-on ?"
+            ],
+            "rows": [
+              [
+                "Membrane",
+                "limite la cellule et contrôle les échanges",
+                "toutes les cellules"
+              ],
+              [
+                "Cytoplasme",
+                "lieu de nombreuses réactions chimiques",
+                "toutes les cellules"
+              ],
+              [
+                "Noyau",
+                "contient l'information génétique",
+                "cellules animales, végétales, de champignons (pas chez les bactéries)"
+              ],
+              [
+                "Paroi",
+                "rigidifie et protège la cellule",
+                "cellules végétales (et bactéries, champignons)"
+              ],
+              [
+                "Chloroplastes",
+                "réalisent la photosynthèse",
+                "cellules végétales chlorophylliennes"
+              ]
+            ]
+          },
+          {
+            "type": "callout",
+            "kind": "attention",
+            "title": "Des exceptions intéressantes",
+            "text": "Les **bactéries** n'ont pas de noyau : leur information génétique est libre dans le cytoplasme. Chez l'être humain, les **globules rouges** perdent leur noyau en se formant."
+          },
+          {
+            "type": "text",
+            "text": "Les cellules sont minuscules : on les mesure en **micromètres** (µm). 1 µm = 0,001 mm, donc 1 mm = 1 000 µm. Une bactérie mesure environ 2 µm, un globule rouge environ 7 µm, une cellule de la joue environ 50 µm."
+          },
+          {
+            "type": "callout",
+            "kind": "methode",
+            "title": "Calculer la taille réelle d'une cellule",
+            "text": "Taille réelle = taille mesurée sur l'image ÷ grossissement.\nExemple : une cellule mesure 2 cm sur une photo grossie 400 fois. 2 cm = 20 mm = 20 000 µm. Taille réelle = 20 000 ÷ 400 = **50 µm**."
+          }
         ],
         "checkpoint": {
           "variants": [
             {
               "prompt": "Quel constituant est présent dans une cellule végétale mais absent d'une cellule animale ?",
-              "options": ["Le noyau", "La membrane", "La paroi", "Le cytoplasme"],
+              "options": [
+                "Le noyau",
+                "La membrane",
+                "La paroi",
+                "Le cytoplasme"
+              ],
               "answer": 2,
               "hint": "Regarde la dernière colonne du tableau.",
               "explanation": "La paroi (et les chloroplastes) n'existent pas dans les cellules animales."
             },
             {
               "prompt": "Combien de micromètres y a-t-il dans 1 mm ?",
-              "options": ["10", "100", "1 000", "1 000 000"],
+              "options": [
+                "10",
+                "100",
+                "1 000",
+                "1 000 000"
+              ],
               "answer": 2,
               "hint": "Relis le paragraphe sur les micromètres.",
               "explanation": "1 µm = 0,001 mm, donc 1 mm = 1 000 µm."
             },
             {
               "prompt": "Quel être vivant ne possède pas de noyau dans sa cellule ?",
-              "options": ["Une bactérie", "Une levure", "Une paramécie", "Un champignon"],
+              "options": [
+                "Une bactérie",
+                "Une levure",
+                "Une paramécie",
+                "Un champignon"
+              ],
               "answer": 0,
               "hint": "Relis l'encadré « Des exceptions intéressantes ».",
               "explanation": "Les bactéries n'ont pas de noyau : leur information génétique est dans le cytoplasme."
@@ -68,36 +149,74 @@
       {
         "title": "Le noyau contient l'information génétique",
         "blocks": [
-          { "type": "text", "text": "Comment savoir où se trouve, dans la cellule, l'information qui détermine les caractères héréditaires (couleur du pelage, groupe sanguin…) ? Une expérience célèbre répond à cette question : le **clonage de la brebis Dolly**, réalisé en Écosse (Dolly est née en 1996)." },
-          { "type": "list", "ordered": true, "items": [
-            "On prélève une cellule de mamelle d'une brebis A, de race à **tête blanche**, et on garde son noyau.",
-            "On prélève un ovule d'une brebis B, de race à **tête noire**, et on lui retire son noyau (on dit qu'il est énucléé).",
-            "On place le noyau de la brebis A dans l'ovule énucléé de la brebis B. Cette cellule se divise et forme un embryon.",
-            "L'embryon est placé dans l'utérus d'une brebis C (mère porteuse) à tête noire.",
-            "Résultat : l'agnelle Dolly naît avec une **tête blanche**, comme la brebis A qui a donné le noyau."
-          ] },
-          { "type": "callout", "kind": "methode", "title": "Raisonner sur une expérience", "text": "Je compare : Dolly ressemble à la brebis A. Or la brebis A n'a donné que le **noyau** ; le reste de la cellule vient de B, et la gestation de C.\nJe conclus : l'information génétique qui détermine les caractères héréditaires se trouve dans le noyau." },
-          { "type": "callout", "kind": "retiens", "title": "Retiens", "text": "Le **noyau** contient l'**information génétique** : c'est elle qui détermine les caractères héréditaires d'un individu." }
+          {
+            "type": "text",
+            "text": "Comment savoir où se trouve, dans la cellule, l'information qui détermine les caractères héréditaires (couleur du pelage, groupe sanguin…) ? Une expérience célèbre répond à cette question : le **clonage de la brebis Dolly**, réalisé en Écosse (Dolly est née en 1996)."
+          },
+          {
+            "type": "list",
+            "ordered": true,
+            "items": [
+              "On prélève une cellule de mamelle d'une brebis A, de race à **tête blanche**, et on garde son noyau.",
+              "On prélève un ovule d'une brebis B, de race à **tête noire**, et on lui retire son noyau (on dit qu'il est énucléé).",
+              "On place le noyau de la brebis A dans l'ovule énucléé de la brebis B. Cette cellule se divise et forme un embryon.",
+              "L'embryon est placé dans l'utérus d'une brebis C (mère porteuse) à tête noire.",
+              "Résultat : l'agnelle Dolly naît avec une **tête blanche**, comme la brebis A qui a donné le noyau."
+            ]
+          },
+          {
+            "type": "figure",
+            "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 600 466\" width=\"600\" height=\"466\"><rect width=\"600\" height=\"466\" fill=\"#ffffff\"/><defs><marker id=\"a\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"7\" markerHeight=\"7\" orient=\"auto\"><path d=\"M0,0 L10,5 L0,10 z\" fill=\"#1E36A8\"/></marker><marker id=\"o\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"7\" markerHeight=\"7\" orient=\"auto\"><path d=\"M0,0 L10,5 L0,10 z\" fill=\"#9A3412\"/></marker></defs><text x=\"140\" y=\"22\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"14\" font-weight=\"bold\" fill=\"#101828\" text-anchor=\"middle\">Brebis A : tête blanche</text><line x1=\"114.0\" y1=\"66.0\" x2=\"114.0\" y2=\"86.0\" stroke=\"#344054\" stroke-width=\"3.5\" stroke-linecap=\"round\"/><line x1=\"126.0\" y1=\"66.0\" x2=\"126.0\" y2=\"86.0\" stroke=\"#344054\" stroke-width=\"3.5\" stroke-linecap=\"round\"/><line x1=\"142.0\" y1=\"66.0\" x2=\"142.0\" y2=\"86.0\" stroke=\"#344054\" stroke-width=\"3.5\" stroke-linecap=\"round\"/><line x1=\"154.0\" y1=\"66.0\" x2=\"154.0\" y2=\"86.0\" stroke=\"#344054\" stroke-width=\"3.5\" stroke-linecap=\"round\"/><ellipse cx=\"132\" cy=\"56\" rx=\"32.0\" ry=\"18.0\" fill=\"#F9FAFB\" stroke=\"#475467\" stroke-width=\"1.8\"/><ellipse cx=\"168.0\" cy=\"44.0\" rx=\"12.0\" ry=\"9.0\" fill=\"#FFFFFF\" stroke=\"#344054\" stroke-width=\"1.8\" transform=\"rotate(25 168.0 44.0)\"/><text x=\"460\" y=\"22\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"14\" font-weight=\"bold\" fill=\"#101828\" text-anchor=\"middle\">Brebis B : tête noire</text><line x1=\"434.0\" y1=\"66.0\" x2=\"434.0\" y2=\"86.0\" stroke=\"#344054\" stroke-width=\"3.5\" stroke-linecap=\"round\"/><line x1=\"446.0\" y1=\"66.0\" x2=\"446.0\" y2=\"86.0\" stroke=\"#344054\" stroke-width=\"3.5\" stroke-linecap=\"round\"/><line x1=\"462.0\" y1=\"66.0\" x2=\"462.0\" y2=\"86.0\" stroke=\"#344054\" stroke-width=\"3.5\" stroke-linecap=\"round\"/><line x1=\"474.0\" y1=\"66.0\" x2=\"474.0\" y2=\"86.0\" stroke=\"#344054\" stroke-width=\"3.5\" stroke-linecap=\"round\"/><ellipse cx=\"452\" cy=\"56\" rx=\"32.0\" ry=\"18.0\" fill=\"#F9FAFB\" stroke=\"#475467\" stroke-width=\"1.8\"/><ellipse cx=\"488.0\" cy=\"44.0\" rx=\"12.0\" ry=\"9.0\" fill=\"#1F1F1F\" stroke=\"#344054\" stroke-width=\"1.8\" transform=\"rotate(25 488.0 44.0)\"/><line x1=\"140\" y1=\"96\" x2=\"140\" y2=\"122\" stroke=\"#1E36A8\" stroke-width=\"2.5\" marker-end=\"url(#a)\"/><line x1=\"460\" y1=\"96\" x2=\"460\" y2=\"122\" stroke=\"#1E36A8\" stroke-width=\"2.5\" marker-end=\"url(#a)\"/><ellipse cx=\"140\" cy=\"160\" rx=\"44\" ry=\"30\" fill=\"#FEF7E6\" stroke=\"#475467\" stroke-width=\"2\"/><circle cx=\"140.0\" cy=\"160.0\" r=\"12\" fill=\"#E0E7FF\" stroke=\"#1E36A8\" stroke-width=\"2\"/><text x=\"86\" y=\"152\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"13\" fill=\"#475467\" text-anchor=\"end\">cellule de</text><text x=\"86\" y=\"168\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"13\" fill=\"#475467\" text-anchor=\"end\">mamelle</text><line x1=\"152\" y1=\"160\" x2=\"262\" y2=\"228\" stroke=\"#9A3412\" stroke-width=\"2\" marker-end=\"url(#o)\"/><text x=\"212\" y=\"214\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"13\" font-weight=\"bold\" fill=\"#9A3412\" text-anchor=\"end\">on garde</text><text x=\"212\" y=\"230\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"13\" font-weight=\"bold\" fill=\"#9A3412\" text-anchor=\"end\">le noyau</text><circle cx=\"460.0\" cy=\"160.0\" r=\"32\" fill=\"#FEF7E6\" stroke=\"#475467\" stroke-width=\"2\"/><circle cx=\"468\" cy=\"158\" r=\"11\" fill=\"none\" stroke=\"#475467\" stroke-width=\"1.5\" stroke-dasharray=\"3 3\"/><line x1=\"461\" y1=\"151\" x2=\"475\" y2=\"165\" stroke=\"#9A3412\" stroke-width=\"2.5\"/><line x1=\"475\" y1=\"151\" x2=\"461\" y2=\"165\" stroke=\"#9A3412\" stroke-width=\"2.5\"/><text x=\"502\" y=\"152\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"13\" fill=\"#475467\" text-anchor=\"start\">ovule :</text><text x=\"502\" y=\"168\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"13\" fill=\"#475467\" text-anchor=\"start\">noyau retiré</text><line x1=\"438\" y1=\"186\" x2=\"338\" y2=\"230\" stroke=\"#1E36A8\" stroke-width=\"2\" marker-end=\"url(#a)\"/><circle cx=\"300.0\" cy=\"250.0\" r=\"32\" fill=\"#FEF7E6\" stroke=\"#475467\" stroke-width=\"2\"/><circle cx=\"300.0\" cy=\"250.0\" r=\"12\" fill=\"#E0E7FF\" stroke=\"#1E36A8\" stroke-width=\"2\"/><text x=\"300\" y=\"304\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"13\" font-weight=\"bold\" fill=\"#101828\" text-anchor=\"middle\">noyau de A dans l’ovule énucléé de B</text><line x1=\"300\" y1=\"312\" x2=\"300\" y2=\"336\" stroke=\"#1E36A8\" stroke-width=\"2.5\" marker-end=\"url(#a)\"/><text x=\"300\" y=\"354\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"13\" fill=\"#475467\" text-anchor=\"middle\">la cellule se divise : un embryon</text><circle cx=\"250.0\" cy=\"378.0\" r=\"7\" fill=\"#FEF7E6\" stroke=\"#475467\" stroke-width=\"1.2\"/><circle cx=\"262.0\" cy=\"378.0\" r=\"7\" fill=\"#FEF7E6\" stroke=\"#475467\" stroke-width=\"1.2\"/><circle cx=\"250.0\" cy=\"390.0\" r=\"7\" fill=\"#FEF7E6\" stroke=\"#475467\" stroke-width=\"1.2\"/><circle cx=\"262.0\" cy=\"390.0\" r=\"7\" fill=\"#FEF7E6\" stroke=\"#475467\" stroke-width=\"1.2\"/><line x1=\"274\" y1=\"384\" x2=\"312\" y2=\"384\" stroke=\"#1E36A8\" stroke-width=\"2.5\" marker-end=\"url(#a)\"/><line x1=\"339.8\" y1=\"395.0\" x2=\"339.8\" y2=\"413.0\" stroke=\"#344054\" stroke-width=\"3.1\" stroke-linecap=\"round\"/><line x1=\"350.6\" y1=\"395.0\" x2=\"350.6\" y2=\"413.0\" stroke=\"#344054\" stroke-width=\"3.1\" stroke-linecap=\"round\"/><line x1=\"365.0\" y1=\"395.0\" x2=\"365.0\" y2=\"413.0\" stroke=\"#344054\" stroke-width=\"3.1\" stroke-linecap=\"round\"/><line x1=\"375.8\" y1=\"395.0\" x2=\"375.8\" y2=\"413.0\" stroke=\"#344054\" stroke-width=\"3.1\" stroke-linecap=\"round\"/><ellipse cx=\"356\" cy=\"386\" rx=\"28.8\" ry=\"16.2\" fill=\"#F9FAFB\" stroke=\"#475467\" stroke-width=\"1.8\"/><ellipse cx=\"388.4\" cy=\"375.2\" rx=\"10.8\" ry=\"8.1\" fill=\"#1F1F1F\" stroke=\"#344054\" stroke-width=\"1.8\" transform=\"rotate(25 388.4 375.2)\"/><text x=\"352\" y=\"436\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"13\" font-weight=\"bold\" fill=\"#101828\" text-anchor=\"middle\">Brebis C : tête noire</text><text x=\"352\" y=\"452\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"13\" fill=\"#475467\" text-anchor=\"middle\">(mère porteuse)</text><line x1=\"404\" y1=\"384\" x2=\"452\" y2=\"384\" stroke=\"#1E36A8\" stroke-width=\"2.5\" marker-end=\"url(#a)\"/><line x1=\"483.8\" y1=\"395.0\" x2=\"483.8\" y2=\"413.0\" stroke=\"#344054\" stroke-width=\"3.1\" stroke-linecap=\"round\"/><line x1=\"494.6\" y1=\"395.0\" x2=\"494.6\" y2=\"413.0\" stroke=\"#344054\" stroke-width=\"3.1\" stroke-linecap=\"round\"/><line x1=\"509.0\" y1=\"395.0\" x2=\"509.0\" y2=\"413.0\" stroke=\"#344054\" stroke-width=\"3.1\" stroke-linecap=\"round\"/><line x1=\"519.8\" y1=\"395.0\" x2=\"519.8\" y2=\"413.0\" stroke=\"#344054\" stroke-width=\"3.1\" stroke-linecap=\"round\"/><ellipse cx=\"500\" cy=\"386\" rx=\"28.8\" ry=\"16.2\" fill=\"#F9FAFB\" stroke=\"#475467\" stroke-width=\"1.8\"/><ellipse cx=\"532.4\" cy=\"375.2\" rx=\"10.8\" ry=\"8.1\" fill=\"#FFFFFF\" stroke=\"#344054\" stroke-width=\"1.8\" transform=\"rotate(25 532.4 375.2)\"/><text x=\"512\" y=\"436\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"13\" font-weight=\"bold\" fill=\"#1E36A8\" text-anchor=\"middle\">Dolly : tête blanche,</text><text x=\"512\" y=\"452\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"13\" font-weight=\"bold\" fill=\"#1E36A8\" text-anchor=\"middle\">comme la brebis A</text></svg>",
+            "alt": "Schéma du clonage de la brebis Dolly. En haut à gauche, la brebis A, à tête blanche : on prélève une cellule de mamelle et on garde son noyau. En haut à droite, la brebis B, à tête noire : on prélève un ovule et on lui retire son noyau. Au centre, le noyau de A est placé dans l'ovule énucléé de B ; cette cellule se divise et forme un embryon. En bas, l'embryon est placé dans l'utérus de la brebis C, à tête noire, la mère porteuse. Elle donne naissance à Dolly, qui a une tête blanche, comme la brebis A.",
+            "caption": "Le clonage de Dolly : l'agnelle ressemble à la brebis qui a donné le noyau"
+          },
+          {
+            "type": "callout",
+            "kind": "methode",
+            "title": "Raisonner sur une expérience",
+            "text": "Je compare : Dolly ressemble à la brebis A. Or la brebis A n'a donné que le **noyau** ; le reste de la cellule vient de B, et la gestation de C.\nJe conclus : l'information génétique qui détermine les caractères héréditaires se trouve dans le noyau."
+          },
+          {
+            "type": "callout",
+            "kind": "retiens",
+            "title": "Retiens",
+            "text": "Le **noyau** contient l'**information génétique** : c'est elle qui détermine les caractères héréditaires d'un individu."
+          }
         ],
         "checkpoint": {
           "variants": [
             {
               "prompt": "Dans l'expérience de Dolly, à quelle brebis Dolly ressemble-t-elle ?",
-              "options": ["À la brebis qui a donné l'ovule", "À la brebis qui a donné le noyau", "À la mère porteuse", "À aucune des trois"],
+              "options": [
+                "À la brebis qui a donné l'ovule",
+                "À la brebis qui a donné le noyau",
+                "À la mère porteuse",
+                "À aucune des trois"
+              ],
               "answer": 1,
               "hint": "Regarde la couleur de la tête de Dolly et celle de chaque brebis.",
               "explanation": "Dolly a la tête blanche comme la brebis A, qui a fourni le noyau."
             },
             {
               "prompt": "Que conclut-on de cette expérience ?",
-              "options": ["L'information génétique est dans le cytoplasme", "L'information génétique vient de la mère porteuse", "L'information génétique est dans le noyau", "Les caractères ne sont pas héréditaires"],
+              "options": [
+                "L'information génétique est dans le cytoplasme",
+                "L'information génétique vient de la mère porteuse",
+                "L'information génétique est dans le noyau",
+                "Les caractères ne sont pas héréditaires"
+              ],
               "answer": 2,
               "hint": "La seule chose que la brebis A a donnée, c'est…",
               "explanation": "Seul le noyau vient de la brebis A, et Dolly lui ressemble : l'information génétique est dans le noyau."
             },
             {
               "prompt": "Que veut dire « ovule énucléé » ?",
-              "options": ["Ovule auquel on a retiré le noyau", "Ovule fécondé", "Ovule sans membrane", "Ovule qui contient deux noyaux"],
+              "options": [
+                "Ovule auquel on a retiré le noyau",
+                "Ovule fécondé",
+                "Ovule sans membrane",
+                "Ovule qui contient deux noyaux"
+              ],
               "answer": 0,
               "hint": "Le mot vient de « nucleus », qui signifie noyau en latin.",
               "explanation": "Énucléer, c'est retirer le noyau."
@@ -108,44 +227,108 @@
       {
         "title": "Les chromosomes, rangés par paires",
         "blocks": [
-          { "type": "text", "text": "Quand une cellule se prépare à se diviser, on voit apparaître dans son noyau de petits bâtonnets colorables : les **chromosomes**. Ce sont eux qui portent l'information génétique." },
-          { "type": "callout", "kind": "definition", "title": "Caryotype", "text": "Un **caryotype** est la photographie des chromosomes d'une cellule, classés par paires, de la plus grande à la plus petite." },
-          { "type": "list", "items": [
-            "Chaque cellule humaine (sauf les gamètes et les globules rouges) contient **46 chromosomes**, soit **23 paires**.",
-            "Dans chaque paire, un chromosome vient du père et l'autre de la mère.",
-            "Les 22 premières paires sont identiques chez la fille et le garçon.",
-            "La 23e paire est celle des **chromosomes sexuels** : **XX** chez une fille, **XY** chez un garçon.",
-            "Les **gamètes** (spermatozoïdes et ovules) n'ont que **23 chromosomes**, un de chaque paire."
-          ] },
-          { "type": "table", "caption": "Nombre de chromosomes par cellule selon l'espèce", "columns": ["Espèce", "Nombre de chromosomes", "Nombre de paires"], "rows": [
-            ["Être humain", "46", "23"],
-            ["Chimpanzé", "48", "24"],
-            ["Pomme de terre", "48", "24"],
-            ["Chat", "38", "19"],
-            ["Chien", "78", "39"],
-            ["Mouche du vinaigre (drosophile)", "8", "4"]
-          ] },
-          { "type": "callout", "kind": "attention", "title": "Le nombre ne dit pas tout", "text": "Le nombre de chromosomes est fixe pour une espèce, mais il n'indique pas si un être vivant est « plus évolué » : le chien en a 78 et l'être humain 46. Une anomalie du nombre peut avoir des conséquences : la trisomie 21 correspond à trois chromosomes 21 au lieu de deux (47 chromosomes)." }
+          {
+            "type": "text",
+            "text": "Quand une cellule se prépare à se diviser, on voit apparaître dans son noyau de petits bâtonnets colorables : les **chromosomes**. Ce sont eux qui portent l'information génétique."
+          },
+          {
+            "type": "callout",
+            "kind": "definition",
+            "title": "Caryotype",
+            "text": "Un **caryotype** est la photographie des chromosomes d'une cellule, classés par paires, de la plus grande à la plus petite."
+          },
+          {
+            "type": "list",
+            "items": [
+              "Chaque cellule humaine (sauf les gamètes et les globules rouges) contient **46 chromosomes**, soit **23 paires**.",
+              "Dans chaque paire, un chromosome vient du père et l'autre de la mère.",
+              "Les 22 premières paires sont identiques chez la fille et le garçon.",
+              "La 23e paire est celle des **chromosomes sexuels** : **XX** chez une fille, **XY** chez un garçon.",
+              "Les **gamètes** (spermatozoïdes et ovules) n'ont que **23 chromosomes**, un de chaque paire."
+            ]
+          },
+          {
+            "type": "table",
+            "caption": "Nombre de chromosomes par cellule selon l'espèce",
+            "columns": [
+              "Espèce",
+              "Nombre de chromosomes",
+              "Nombre de paires"
+            ],
+            "rows": [
+              [
+                "Être humain",
+                "46",
+                "23"
+              ],
+              [
+                "Chimpanzé",
+                "48",
+                "24"
+              ],
+              [
+                "Pomme de terre",
+                "48",
+                "24"
+              ],
+              [
+                "Chat",
+                "38",
+                "19"
+              ],
+              [
+                "Chien",
+                "78",
+                "39"
+              ],
+              [
+                "Mouche du vinaigre (drosophile)",
+                "8",
+                "4"
+              ]
+            ]
+          },
+          {
+            "type": "callout",
+            "kind": "attention",
+            "title": "Le nombre ne dit pas tout",
+            "text": "Le nombre de chromosomes est fixe pour une espèce, mais il n'indique pas si un être vivant est « plus évolué » : le chien en a 78 et l'être humain 46. Une anomalie du nombre peut avoir des conséquences : la trisomie 21 correspond à trois chromosomes 21 au lieu de deux (47 chromosomes)."
+          }
         ],
         "checkpoint": {
           "variants": [
             {
               "prompt": "Combien de chromosomes contient une cellule de muscle humaine ?",
-              "options": ["23", "44", "46", "48"],
+              "options": [
+                "23",
+                "44",
+                "46",
+                "48"
+              ],
               "answer": 2,
               "hint": "Les 23 chromosomes concernent seulement les gamètes.",
               "explanation": "Une cellule humaine (hors gamètes) contient 46 chromosomes, soit 23 paires."
             },
             {
               "prompt": "Un caryotype présente une 23e paire XY. Il s'agit…",
-              "options": ["d'une fille", "d'un garçon", "d'un gamète", "d'une cellule de chat"],
+              "options": [
+                "d'une fille",
+                "d'un garçon",
+                "d'un gamète",
+                "d'une cellule de chat"
+              ],
               "answer": 1,
               "hint": "Relis la liste : chromosomes sexuels.",
               "explanation": "XY correspond à un garçon, XX à une fille."
             },
             {
               "prompt": "Combien de chromosomes contient un ovule humain ?",
-              "options": ["23", "46", "22", "92"],
+              "options": [
+                "23",
+                "46",
+                "22",
+                "92"
+              ],
               "answer": 0,
               "hint": "Un gamète reçoit un seul chromosome de chaque paire.",
               "explanation": "Les gamètes n'ont qu'un chromosome de chaque paire : 23 chromosomes."
@@ -156,39 +339,85 @@
       {
         "title": "L'ADN et les gènes",
         "blocks": [
-          { "type": "text", "text": "Chaque chromosome est formé d'une **très longue molécule d'ADN** (acide désoxyribonucléique), enroulée et repliée sur elle-même. Mis bout à bout, l'ADN contenu dans le noyau d'une seule de nos cellules mesurerait environ 2 mètres !" },
-          { "type": "callout", "kind": "definition", "title": "ADN et gène", "text": "L'**ADN** est la molécule qui porte l'information génétique. Elle a la forme d'une **double hélice** (comme une échelle torsadée).\nUn **gène** est une **portion d'ADN**, située à un endroit précis d'un chromosome, qui porte l'information pour un caractère héréditaire. L'être humain possède environ 20 000 gènes." },
-          { "type": "text", "text": "Du plus grand au plus petit, on peut ranger les niveaux d'organisation ainsi :" },
-          { "type": "list", "ordered": true, "items": [
-            "l'**organisme** (ton corps) ;",
-            "la **cellule** (environ 30 000 milliards dans ton corps) ;",
-            "le **noyau** de la cellule ;",
-            "les **chromosomes** (46 dans le noyau) ;",
-            "la **molécule d'ADN** qui forme chaque chromosome ;",
-            "les **gènes**, portions de cette molécule d'ADN."
-          ] },
-          { "type": "callout", "kind": "plus", "title": "Une molécule universelle", "text": "Tous les êtres vivants, de la bactérie à la baleine, ont de l'ADN de même nature. C'est pourquoi on peut transférer un gène d'une espèce à une autre : par exemple, le gène d'une protéine fluorescente de méduse a été introduit dans des bactéries, qui deviennent alors fluorescentes. La structure en double hélice a été décrite en 1953 par James Watson et Francis Crick, grâce notamment aux images obtenues par Rosalind Franklin." },
-          { "type": "callout", "kind": "retiens", "title": "Retiens", "text": "Noyau → chromosomes → ADN → gènes. L'information génétique est écrite dans l'ADN des chromosomes ; un gène est une portion d'ADN qui gouverne un caractère." }
+          {
+            "type": "text",
+            "text": "Chaque chromosome est formé d'une **très longue molécule d'ADN** (acide désoxyribonucléique), enroulée et repliée sur elle-même. Mis bout à bout, l'ADN contenu dans le noyau d'une seule de nos cellules mesurerait environ 2 mètres !"
+          },
+          {
+            "type": "callout",
+            "kind": "definition",
+            "title": "ADN et gène",
+            "text": "L'**ADN** est la molécule qui porte l'information génétique. Elle a la forme d'une **double hélice** (comme une échelle torsadée).\nUn **gène** est une **portion d'ADN**, située à un endroit précis d'un chromosome, qui porte l'information pour un caractère héréditaire. L'être humain possède environ 20 000 gènes."
+          },
+          {
+            "type": "text",
+            "text": "Du plus grand au plus petit, on peut ranger les niveaux d'organisation ainsi :"
+          },
+          {
+            "type": "list",
+            "ordered": true,
+            "items": [
+              "l'**organisme** (ton corps) ;",
+              "la **cellule** (environ 30 000 milliards dans ton corps) ;",
+              "le **noyau** de la cellule ;",
+              "les **chromosomes** (46 dans le noyau) ;",
+              "la **molécule d'ADN** qui forme chaque chromosome ;",
+              "les **gènes**, portions de cette molécule d'ADN."
+            ]
+          },
+          {
+            "type": "figure",
+            "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 600 448\" width=\"600\" height=\"448\"><rect width=\"600\" height=\"448\" fill=\"#ffffff\"/><defs><marker id=\"a\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"7\" markerHeight=\"7\" orient=\"auto\"><path d=\"M0,0 L10,5 L0,10 z\" fill=\"#1E36A8\"/></marker></defs><rect x=\"20\" y=\"34\" width=\"176\" height=\"176\" rx=\"12\" fill=\"#ffffff\" stroke=\"#D0D5DD\" stroke-width=\"1.5\"/><text x=\"108.0\" y=\"24\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"14\" font-weight=\"bold\" fill=\"#101828\" text-anchor=\"middle\">1. L’organisme</text><rect x=\"212\" y=\"34\" width=\"176\" height=\"176\" rx=\"12\" fill=\"#ffffff\" stroke=\"#D0D5DD\" stroke-width=\"1.5\"/><text x=\"300.0\" y=\"24\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"14\" font-weight=\"bold\" fill=\"#101828\" text-anchor=\"middle\">2. Une cellule</text><rect x=\"404\" y=\"34\" width=\"176\" height=\"176\" rx=\"12\" fill=\"#ffffff\" stroke=\"#D0D5DD\" stroke-width=\"1.5\"/><text x=\"492.0\" y=\"24\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"14\" font-weight=\"bold\" fill=\"#101828\" text-anchor=\"middle\">3. Le noyau</text><rect x=\"20\" y=\"258\" width=\"176\" height=\"176\" rx=\"12\" fill=\"#ffffff\" stroke=\"#D0D5DD\" stroke-width=\"1.5\"/><text x=\"108.0\" y=\"248\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"14\" font-weight=\"bold\" fill=\"#101828\" text-anchor=\"middle\">4. Un chromosome</text><rect x=\"212\" y=\"258\" width=\"176\" height=\"176\" rx=\"12\" fill=\"#ffffff\" stroke=\"#D0D5DD\" stroke-width=\"1.5\"/><text x=\"300.0\" y=\"248\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"14\" font-weight=\"bold\" fill=\"#101828\" text-anchor=\"middle\">5. La molécule d’ADN</text><rect x=\"404\" y=\"258\" width=\"176\" height=\"176\" rx=\"12\" fill=\"#ffffff\" stroke=\"#D0D5DD\" stroke-width=\"1.5\"/><text x=\"492.0\" y=\"248\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"14\" font-weight=\"bold\" fill=\"#101828\" text-anchor=\"middle\">6. Un gène</text><line x1=\"198\" y1=\"122.0\" x2=\"208\" y2=\"122.0\" stroke=\"#1E36A8\" stroke-width=\"2.5\" marker-end=\"url(#a)\"/><line x1=\"198\" y1=\"346.0\" x2=\"208\" y2=\"346.0\" stroke=\"#1E36A8\" stroke-width=\"2.5\" marker-end=\"url(#a)\"/><line x1=\"390\" y1=\"122.0\" x2=\"400\" y2=\"122.0\" stroke=\"#1E36A8\" stroke-width=\"2.5\" marker-end=\"url(#a)\"/><line x1=\"390\" y1=\"346.0\" x2=\"400\" y2=\"346.0\" stroke=\"#1E36A8\" stroke-width=\"2.5\" marker-end=\"url(#a)\"/><path d=\"M492.0 212 L492.0 222 L108.0 222 L108.0 232\" fill=\"none\" stroke=\"#1E36A8\" stroke-width=\"2.5\" marker-end=\"url(#a)\"/><circle cx=\"108.0\" cy=\"68\" r=\"15\" fill=\"#C7D2FE\" stroke=\"#1E36A8\" stroke-width=\"1.5\"/><path d=\"M84.0 88 Q108.0 82 132.0 88 L130.0 146 L86.0 146 Z\" fill=\"#C7D2FE\" stroke=\"#1E36A8\" stroke-width=\"1.5\"/><path d=\"M84.0 90 L68.0 142\" stroke=\"#1E36A8\" stroke-width=\"9\" stroke-linecap=\"round\"/><path d=\"M132.0 90 L148.0 142\" stroke=\"#1E36A8\" stroke-width=\"9\" stroke-linecap=\"round\"/><path d=\"M96.0 146 L93.0 196\" stroke=\"#1E36A8\" stroke-width=\"11\" stroke-linecap=\"round\"/><path d=\"M120.0 146 L123.0 196\" stroke=\"#1E36A8\" stroke-width=\"11\" stroke-linecap=\"round\"/><rect x=\"138.0\" y=\"114\" width=\"18\" height=\"18\" fill=\"none\" stroke=\"#9A3412\" stroke-width=\"2\"/><path d=\"M230.0 112.0 C228.0 67.0 280.0 50.0 325.0 58.0 C370.0 66.0 376.0 112.0 368.0 147.0 C360.0 188.0 305.0 196.0 265.0 184.0 C230.0 172.0 232.0 142.0 230.0 112.0 Z\" fill=\"#FEF7E6\" stroke=\"#475467\" stroke-width=\"2\"/><circle cx=\"304.0\" cy=\"122.0\" r=\"24\" fill=\"#E0E7FF\" stroke=\"#1E36A8\" stroke-width=\"2\"/><rect x=\"276.0\" y=\"94.0\" width=\"56\" height=\"56\" fill=\"none\" stroke=\"#9A3412\" stroke-width=\"2\"/><circle cx=\"492.0\" cy=\"122.0\" r=\"70\" fill=\"#E0E7FF\" stroke=\"#1E36A8\" stroke-width=\"2.5\"/><g transform=\"rotate(20 458.0 94.0)\"><rect x=\"454.5\" y=\"77.0\" width=\"7\" height=\"34\" rx=\"3.5\" fill=\"#1E36A8\" stroke=\"#1E36A8\" stroke-width=\"1\"/></g><g transform=\"rotate(-35 502.0 82.0)\"><rect x=\"498.5\" y=\"69.0\" width=\"7\" height=\"26\" rx=\"3.5\" fill=\"#F79009\" stroke=\"#F79009\" stroke-width=\"1\"/></g><g transform=\"rotate(70 522.0 118.0)\"><rect x=\"518.5\" y=\"99.0\" width=\"7\" height=\"38\" rx=\"3.5\" fill=\"#1E36A8\" stroke=\"#1E36A8\" stroke-width=\"1\"/></g><g transform=\"rotate(-60 456.0 140.0)\"><rect x=\"452.5\" y=\"125.0\" width=\"7\" height=\"30\" rx=\"3.5\" fill=\"#F79009\" stroke=\"#F79009\" stroke-width=\"1\"/></g><g transform=\"rotate(10 492.0 150.0)\"><rect x=\"488.5\" y=\"130.0\" width=\"7\" height=\"40\" rx=\"3.5\" fill=\"#1E36A8\" stroke=\"#1E36A8\" stroke-width=\"1\"/></g><g transform=\"rotate(-20 530.0 158.0)\"><rect x=\"526.5\" y=\"147.0\" width=\"7\" height=\"22\" rx=\"3.5\" fill=\"#F79009\" stroke=\"#F79009\" stroke-width=\"1\"/></g><g transform=\"rotate(45 486.0 116.0)\"><rect x=\"482.5\" y=\"105.0\" width=\"7\" height=\"22\" rx=\"3.5\" fill=\"#1E36A8\" stroke=\"#1E36A8\" stroke-width=\"1\"/></g><rect x=\"474.0\" y=\"128.0\" width=\"36\" height=\"44\" fill=\"none\" stroke=\"#9A3412\" stroke-width=\"2\"/><rect x=\"95.0\" y=\"276.0\" width=\"26\" height=\"140\" rx=\"13\" fill=\"#A5B4FC\" stroke=\"#1E36A8\" stroke-width=\"1.5\"/><rect x=\"95.0\" y=\"356.0\" width=\"26\" height=\"12\" fill=\"#9A3412\"/><line x1=\"124.0\" y1=\"362.0\" x2=\"142.0\" y2=\"362.0\" stroke=\"#9A3412\" stroke-width=\"1.5\"/><text x=\"145.0\" y=\"367.0\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"13\" font-weight=\"bold\" fill=\"#9A3412\" text-anchor=\"start\">gène</text><line x1=\"231.0\" y1=\"355.1\" x2=\"231.0\" y2=\"336.9\" stroke=\"#98A2B3\" stroke-width=\"2.5\"/><line x1=\"241.0\" y1=\"367.0\" x2=\"241.0\" y2=\"325.0\" stroke=\"#98A2B3\" stroke-width=\"2.5\"/><line x1=\"251.0\" y1=\"364.7\" x2=\"251.0\" y2=\"327.3\" stroke=\"#98A2B3\" stroke-width=\"2.5\"/><line x1=\"261.0\" y1=\"349.7\" x2=\"261.0\" y2=\"342.3\" stroke=\"#98A2B3\" stroke-width=\"2.5\"/><line x1=\"271.0\" y1=\"332.2\" x2=\"271.0\" y2=\"359.8\" stroke=\"#98A2B3\" stroke-width=\"2.5\"/><line x1=\"281.0\" y1=\"324.0\" x2=\"281.0\" y2=\"368.0\" stroke=\"#98A2B3\" stroke-width=\"2.5\"/><line x1=\"291.0\" y1=\"330.8\" x2=\"291.0\" y2=\"361.2\" stroke=\"#98A2B3\" stroke-width=\"2.5\"/><line x1=\"301.0\" y1=\"347.9\" x2=\"301.0\" y2=\"344.1\" stroke=\"#98A2B3\" stroke-width=\"2.5\"/><line x1=\"311.0\" y1=\"363.7\" x2=\"311.0\" y2=\"328.3\" stroke=\"#98A2B3\" stroke-width=\"2.5\"/><line x1=\"321.0\" y1=\"367.5\" x2=\"321.0\" y2=\"324.5\" stroke=\"#98A2B3\" stroke-width=\"2.5\"/><line x1=\"331.0\" y1=\"356.7\" x2=\"331.0\" y2=\"335.3\" stroke=\"#98A2B3\" stroke-width=\"2.5\"/><line x1=\"341.0\" y1=\"338.7\" x2=\"341.0\" y2=\"353.3\" stroke=\"#98A2B3\" stroke-width=\"2.5\"/><line x1=\"351.0\" y1=\"325.6\" x2=\"351.0\" y2=\"366.4\" stroke=\"#98A2B3\" stroke-width=\"2.5\"/><line x1=\"361.0\" y1=\"326.4\" x2=\"361.0\" y2=\"365.6\" stroke=\"#98A2B3\" stroke-width=\"2.5\"/><line x1=\"371.0\" y1=\"340.5\" x2=\"371.0\" y2=\"351.5\" stroke=\"#98A2B3\" stroke-width=\"2.5\"/><path d=\"M226.0 346.0 L228.0 349.7 L230.0 353.3 L232.0 356.7 L234.0 359.8 L236.0 362.5 L238.0 364.7 L240.0 366.4 L242.0 367.5 L244.0 368.0 L246.0 367.8 L248.0 367.0 L250.0 365.6 L252.0 363.7 L254.0 361.2 L256.0 358.3 L258.0 355.1 L260.0 351.5 L262.0 347.9 L264.0 344.1 L266.0 340.5 L268.0 336.9 L270.0 333.7 L272.0 330.8 L274.0 328.3 L276.0 326.4 L278.0 325.0 L280.0 324.2 L282.0 324.0 L284.0 324.5 L286.0 325.6 L288.0 327.3 L290.0 329.5 L292.0 332.2 L294.0 335.3 L296.0 338.7 L298.0 342.3 L300.0 346.0 L302.0 349.7 L304.0 353.3 L306.0 356.7 L308.0 359.8 L310.0 362.5 L312.0 364.7 L314.0 366.4 L316.0 367.5 L318.0 368.0 L320.0 367.8 L322.0 367.0 L324.0 365.6 L326.0 363.7 L328.0 361.2 L330.0 358.3 L332.0 355.1 L334.0 351.5 L336.0 347.9 L338.0 344.1 L340.0 340.5 L342.0 336.9 L344.0 333.7 L346.0 330.8 L348.0 328.3 L350.0 326.4 L352.0 325.0 L354.0 324.2 L356.0 324.0 L358.0 324.5 L360.0 325.6 L362.0 327.3 L364.0 329.5 L366.0 332.2 L368.0 335.3 L370.0 338.7 L372.0 342.3 L374.0 346.0\" fill=\"none\" stroke=\"#1E36A8\" stroke-width=\"3.5\"/><path d=\"M226.0 346.0 L228.0 342.3 L230.0 338.7 L232.0 335.3 L234.0 332.2 L236.0 329.5 L238.0 327.3 L240.0 325.6 L242.0 324.5 L244.0 324.0 L246.0 324.2 L248.0 325.0 L250.0 326.4 L252.0 328.3 L254.0 330.8 L256.0 333.7 L258.0 336.9 L260.0 340.5 L262.0 344.1 L264.0 347.9 L266.0 351.5 L268.0 355.1 L270.0 358.3 L272.0 361.2 L274.0 363.7 L276.0 365.6 L278.0 367.0 L280.0 367.8 L282.0 368.0 L284.0 367.5 L286.0 366.4 L288.0 364.7 L290.0 362.5 L292.0 359.8 L294.0 356.7 L296.0 353.3 L298.0 349.7 L300.0 346.0 L302.0 342.3 L304.0 338.7 L306.0 335.3 L308.0 332.2 L310.0 329.5 L312.0 327.3 L314.0 325.6 L316.0 324.5 L318.0 324.0 L320.0 324.2 L322.0 325.0 L324.0 326.4 L326.0 328.3 L328.0 330.8 L330.0 333.7 L332.0 336.9 L334.0 340.5 L336.0 344.1 L338.0 347.9 L340.0 351.5 L342.0 355.1 L344.0 358.3 L346.0 361.2 L348.0 363.7 L350.0 365.6 L352.0 367.0 L354.0 367.8 L356.0 368.0 L358.0 367.5 L360.0 366.4 L362.0 364.7 L364.0 362.5 L366.0 359.8 L368.0 356.7 L370.0 353.3 L372.0 349.7 L374.0 346.0\" fill=\"none\" stroke=\"#1E36A8\" stroke-width=\"3.5\"/><text x=\"300.0\" y=\"418\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"13\" fill=\"#475467\" text-anchor=\"middle\">double hélice</text><line x1=\"423.0\" y1=\"355.1\" x2=\"423.0\" y2=\"336.9\" stroke=\"#98A2B3\" stroke-width=\"2.5\"/><line x1=\"433.0\" y1=\"367.0\" x2=\"433.0\" y2=\"325.0\" stroke=\"#98A2B3\" stroke-width=\"2.5\"/><line x1=\"443.0\" y1=\"364.7\" x2=\"443.0\" y2=\"327.3\" stroke=\"#98A2B3\" stroke-width=\"2.5\"/><line x1=\"453.0\" y1=\"349.7\" x2=\"453.0\" y2=\"342.3\" stroke=\"#98A2B3\" stroke-width=\"2.5\"/><line x1=\"463.0\" y1=\"332.2\" x2=\"463.0\" y2=\"359.8\" stroke=\"#F79009\" stroke-width=\"2.5\"/><line x1=\"473.0\" y1=\"324.0\" x2=\"473.0\" y2=\"368.0\" stroke=\"#F79009\" stroke-width=\"2.5\"/><line x1=\"483.0\" y1=\"330.8\" x2=\"483.0\" y2=\"361.2\" stroke=\"#F79009\" stroke-width=\"2.5\"/><line x1=\"493.0\" y1=\"347.9\" x2=\"493.0\" y2=\"344.1\" stroke=\"#F79009\" stroke-width=\"2.5\"/><line x1=\"503.0\" y1=\"363.7\" x2=\"503.0\" y2=\"328.3\" stroke=\"#F79009\" stroke-width=\"2.5\"/><line x1=\"513.0\" y1=\"367.5\" x2=\"513.0\" y2=\"324.5\" stroke=\"#F79009\" stroke-width=\"2.5\"/><line x1=\"523.0\" y1=\"356.7\" x2=\"523.0\" y2=\"335.3\" stroke=\"#98A2B3\" stroke-width=\"2.5\"/><line x1=\"533.0\" y1=\"338.7\" x2=\"533.0\" y2=\"353.3\" stroke=\"#98A2B3\" stroke-width=\"2.5\"/><line x1=\"543.0\" y1=\"325.6\" x2=\"543.0\" y2=\"366.4\" stroke=\"#98A2B3\" stroke-width=\"2.5\"/><line x1=\"553.0\" y1=\"326.4\" x2=\"553.0\" y2=\"365.6\" stroke=\"#98A2B3\" stroke-width=\"2.5\"/><line x1=\"563.0\" y1=\"340.5\" x2=\"563.0\" y2=\"351.5\" stroke=\"#98A2B3\" stroke-width=\"2.5\"/><path d=\"M418.0 346.0 L420.0 349.7 L422.0 353.3 L424.0 356.7 L426.0 359.8 L428.0 362.5 L430.0 364.7 L432.0 366.4 L434.0 367.5 L436.0 368.0 L438.0 367.8 L440.0 367.0 L442.0 365.6 L444.0 363.7 L446.0 361.2 L448.0 358.3 L450.0 355.1 L452.0 351.5 L454.0 347.9 L456.0 344.1 L458.0 340.5 L460.0 336.9 L462.0 333.7 L464.0 330.8 L466.0 328.3 L468.0 326.4 L470.0 325.0 L472.0 324.2 L474.0 324.0 L476.0 324.5 L478.0 325.6 L480.0 327.3 L482.0 329.5 L484.0 332.2 L486.0 335.3 L488.0 338.7 L490.0 342.3 L492.0 346.0 L494.0 349.7 L496.0 353.3 L498.0 356.7 L500.0 359.8 L502.0 362.5 L504.0 364.7 L506.0 366.4 L508.0 367.5 L510.0 368.0 L512.0 367.8 L514.0 367.0 L516.0 365.6 L518.0 363.7 L520.0 361.2 L522.0 358.3 L524.0 355.1 L526.0 351.5 L528.0 347.9 L530.0 344.1 L532.0 340.5 L534.0 336.9 L536.0 333.7 L538.0 330.8 L540.0 328.3 L542.0 326.4 L544.0 325.0 L546.0 324.2 L548.0 324.0 L550.0 324.5 L552.0 325.6 L554.0 327.3 L556.0 329.5 L558.0 332.2 L560.0 335.3 L562.0 338.7 L564.0 342.3 L566.0 346.0\" fill=\"none\" stroke=\"#1E36A8\" stroke-width=\"3.5\"/><path d=\"M462.0 333.7 L464.0 330.8 L466.0 328.3 L468.0 326.4 L470.0 325.0 L472.0 324.2 L474.0 324.0 L476.0 324.5 L478.0 325.6 L480.0 327.3 L482.0 329.5 L484.0 332.2 L486.0 335.3 L488.0 338.7 L490.0 342.3 L492.0 346.0 L494.0 349.7 L496.0 353.3 L498.0 356.7 L500.0 359.8 L502.0 362.5 L504.0 364.7 L506.0 366.4 L508.0 367.5 L510.0 368.0 L512.0 367.8 L514.0 367.0 L516.0 365.6 L518.0 363.7 L520.0 361.2 L522.0 358.3\" fill=\"none\" stroke=\"#9A3412\" stroke-width=\"4.5\"/><path d=\"M418.0 346.0 L420.0 342.3 L422.0 338.7 L424.0 335.3 L426.0 332.2 L428.0 329.5 L430.0 327.3 L432.0 325.6 L434.0 324.5 L436.0 324.0 L438.0 324.2 L440.0 325.0 L442.0 326.4 L444.0 328.3 L446.0 330.8 L448.0 333.7 L450.0 336.9 L452.0 340.5 L454.0 344.1 L456.0 347.9 L458.0 351.5 L460.0 355.1 L462.0 358.3 L464.0 361.2 L466.0 363.7 L468.0 365.6 L470.0 367.0 L472.0 367.8 L474.0 368.0 L476.0 367.5 L478.0 366.4 L480.0 364.7 L482.0 362.5 L484.0 359.8 L486.0 356.7 L488.0 353.3 L490.0 349.7 L492.0 346.0 L494.0 342.3 L496.0 338.7 L498.0 335.3 L500.0 332.2 L502.0 329.5 L504.0 327.3 L506.0 325.6 L508.0 324.5 L510.0 324.0 L512.0 324.2 L514.0 325.0 L516.0 326.4 L518.0 328.3 L520.0 330.8 L522.0 333.7 L524.0 336.9 L526.0 340.5 L528.0 344.1 L530.0 347.9 L532.0 351.5 L534.0 355.1 L536.0 358.3 L538.0 361.2 L540.0 363.7 L542.0 365.6 L544.0 367.0 L546.0 367.8 L548.0 368.0 L550.0 367.5 L552.0 366.4 L554.0 364.7 L556.0 362.5 L558.0 359.8 L560.0 356.7 L562.0 353.3 L564.0 349.7 L566.0 346.0\" fill=\"none\" stroke=\"#1E36A8\" stroke-width=\"3.5\"/><path d=\"M462.0 358.3 L464.0 361.2 L466.0 363.7 L468.0 365.6 L470.0 367.0 L472.0 367.8 L474.0 368.0 L476.0 367.5 L478.0 366.4 L480.0 364.7 L482.0 362.5 L484.0 359.8 L486.0 356.7 L488.0 353.3 L490.0 349.7 L492.0 346.0 L494.0 342.3 L496.0 338.7 L498.0 335.3 L500.0 332.2 L502.0 329.5 L504.0 327.3 L506.0 325.6 L508.0 324.5 L510.0 324.0 L512.0 324.2 L514.0 325.0 L516.0 326.4 L518.0 328.3 L520.0 330.8 L522.0 333.7\" fill=\"none\" stroke=\"#9A3412\" stroke-width=\"4.5\"/><path d=\"M462 312.0 L462 306.0 L522 306.0 L522 312.0\" fill=\"none\" stroke=\"#9A3412\" stroke-width=\"2\"/><text x=\"492\" y=\"299.0\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"13\" font-weight=\"bold\" fill=\"#9A3412\" text-anchor=\"middle\">gène</text><text x=\"492.0\" y=\"418\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"13\" fill=\"#475467\" text-anchor=\"middle\">une portion d’ADN</text></svg>",
+            "alt": "Six vignettes reliées par des flèches de zoom, du plus grand au plus petit. 1. L'organisme : une silhouette humaine, un petit carré marque une zone du bras. 2. Une cellule : contour irrégulier de la cellule avec, au centre, son noyau encadré. 3. Le noyau : un disque contenant quelques chromosomes en forme de bâtonnets (seuls quelques-uns des 46 sont dessinés), l'un d'eux est encadré. 4. Un chromosome : un bâtonnet sur lequel une bande sombre repère un gène. 5. La molécule d'ADN : une double hélice, comme une échelle torsadée. 6. Un gène : la même double hélice, dont une portion colorée en orange est le gène.",
+            "caption": "Du corps au gène : organisme, cellule, noyau, chromosome, ADN, gène (schéma non à l'échelle)"
+          },
+          {
+            "type": "callout",
+            "kind": "plus",
+            "title": "Une molécule universelle",
+            "text": "Tous les êtres vivants, de la bactérie à la baleine, ont de l'ADN de même nature. C'est pourquoi on peut transférer un gène d'une espèce à une autre : par exemple, le gène d'une protéine fluorescente de méduse a été introduit dans des bactéries, qui deviennent alors fluorescentes. La structure en double hélice a été décrite en 1953 par James Watson et Francis Crick, grâce notamment aux images obtenues par Rosalind Franklin."
+          },
+          {
+            "type": "callout",
+            "kind": "retiens",
+            "title": "Retiens",
+            "text": "Noyau → chromosomes → ADN → gènes. L'information génétique est écrite dans l'ADN des chromosomes ; un gène est une portion d'ADN qui gouverne un caractère."
+          }
         ],
         "checkpoint": {
           "variants": [
             {
               "prompt": "Un gène est…",
-              "options": ["une cellule", "une portion d'ADN", "un chromosome entier", "un noyau"],
+              "options": [
+                "une cellule",
+                "une portion d'ADN",
+                "un chromosome entier",
+                "un noyau"
+              ],
               "answer": 1,
               "hint": "Relis l'encadré « ADN et gène ».",
               "explanation": "Un gène est une portion d'une molécule d'ADN, située à un endroit précis d'un chromosome."
             },
             {
               "prompt": "De quoi est formé un chromosome ?",
-              "options": ["D'une très longue molécule d'ADN", "De plusieurs cellules", "De plusieurs noyaux", "D'eau uniquement"],
+              "options": [
+                "D'une très longue molécule d'ADN",
+                "De plusieurs cellules",
+                "De plusieurs noyaux",
+                "D'eau uniquement"
+              ],
               "answer": 0,
               "hint": "Lis la première phrase de la partie.",
               "explanation": "Chaque chromosome est une très longue molécule d'ADN, enroulée et repliée."
             },
             {
               "prompt": "Quel ordre va du plus grand au plus petit ?",
-              "options": ["Gène → ADN → chromosome → noyau", "Noyau → chromosome → gène → ADN", "Noyau → chromosome → ADN → gène", "Chromosome → noyau → ADN → gène"],
+              "options": [
+                "Gène → ADN → chromosome → noyau",
+                "Noyau → chromosome → gène → ADN",
+                "Noyau → chromosome → ADN → gène",
+                "Chromosome → noyau → ADN → gène"
+              ],
               "answer": 2,
               "hint": "Le noyau contient les chromosomes, qui sont faits d'ADN…",
               "explanation": "Le noyau contient les chromosomes ; chaque chromosome est une molécule d'ADN ; un gène est une portion de cet ADN."
@@ -198,11 +427,26 @@
       }
     ],
     "memo": [
-      { "label": "Cellule", "text": "Unité du vivant : membrane, cytoplasme, noyau (+ paroi et chloroplastes chez les végétaux). Les bactéries n'ont pas de noyau." },
-      { "label": "Échelle", "text": "1 mm = 1 000 µm. Taille réelle = taille mesurée ÷ grossissement." },
-      { "label": "Noyau", "text": "Il contient l'information génétique (preuve : clonage de Dolly, qui ressemble à la donneuse du noyau)." },
-      { "label": "Chromosomes", "text": "46 chez l'être humain = 23 paires (22 paires + XX ou XY). Gamètes : 23. Nombre fixe pour une espèce." },
-      { "label": "ADN et gène", "text": "Un chromosome = une longue molécule d'ADN en double hélice. Un gène = portion d'ADN qui porte l'information d'un caractère." }
+      {
+        "label": "Cellule",
+        "text": "Unité du vivant : membrane, cytoplasme, noyau (+ paroi et chloroplastes chez les végétaux). Les bactéries n'ont pas de noyau."
+      },
+      {
+        "label": "Échelle",
+        "text": "1 mm = 1 000 µm. Taille réelle = taille mesurée ÷ grossissement."
+      },
+      {
+        "label": "Noyau",
+        "text": "Il contient l'information génétique (preuve : clonage de Dolly, qui ressemble à la donneuse du noyau)."
+      },
+      {
+        "label": "Chromosomes",
+        "text": "46 chez l'être humain = 23 paires (22 paires + XX ou XY). Gamètes : 23. Nombre fixe pour une espèce."
+      },
+      {
+        "label": "ADN et gène",
+        "text": "Un chromosome = une longue molécule d'ADN en double hélice. Un gène = portion d'ADN qui porte l'information d'un caractère."
+      }
     ]
   },
   "exercises": {
@@ -216,10 +460,17 @@
         "type": "qcm",
         "stars": 1,
         "lesson_part": 2,
-        "skills": ["svt-noyau"],
+        "skills": [
+          "svt-noyau"
+        ],
         "cognitive": "connaitre",
         "prompt": "Dans une cellule animale, où se trouve l'information génétique ?",
-        "options": ["Dans la membrane", "Dans le noyau", "Dans la paroi", "Dans les chloroplastes"],
+        "options": [
+          "Dans la membrane",
+          "Dans le noyau",
+          "Dans la paroi",
+          "Dans les chloroplastes"
+        ],
         "answer": 1,
         "solution": "L'information génétique se trouve dans le noyau. (Une cellule animale n'a ni paroi ni chloroplastes.)"
       },
@@ -228,7 +479,9 @@
         "type": "numeric",
         "stars": 1,
         "lesson_part": 3,
-        "skills": ["svt-chromosomes"],
+        "skills": [
+          "svt-chromosomes"
+        ],
         "cognitive": "connaitre",
         "prompt": "Combien de chromosomes contient une cellule de peau humaine ?",
         "answer": 46,
@@ -239,10 +492,17 @@
         "type": "qcm",
         "stars": 1,
         "lesson_part": 1,
-        "skills": ["svt-cellule"],
+        "skills": [
+          "svt-cellule"
+        ],
         "cognitive": "connaitre",
         "prompt": "Quel constituant ne se trouve que dans les cellules végétales chlorophylliennes ?",
-        "options": ["Le noyau", "Les chloroplastes", "La membrane", "Le cytoplasme"],
+        "options": [
+          "Le noyau",
+          "Les chloroplastes",
+          "La membrane",
+          "Le cytoplasme"
+        ],
         "answer": 1,
         "solution": "Les chloroplastes, qui réalisent la photosynthèse, n'existent que dans les cellules végétales chlorophylliennes."
       },
@@ -251,10 +511,22 @@
         "type": "short",
         "stars": 1,
         "lesson_part": 4,
-        "skills": ["svt-adn"],
+        "skills": [
+          "svt-adn"
+        ],
         "cognitive": "connaitre",
         "prompt": "Quelle molécule forme les chromosomes ? (Réponds par son sigle.)",
-        "answer": ["ADN", "l'ADN", "de l'ADN", "molécule d'ADN", "une molécule d'ADN", "la molécule d'ADN", "acide désoxyribonucléique", "l'acide désoxyribonucléique", "DNA"],
+        "answer": [
+          "ADN",
+          "l'ADN",
+          "de l'ADN",
+          "molécule d'ADN",
+          "une molécule d'ADN",
+          "la molécule d'ADN",
+          "acide désoxyribonucléique",
+          "l'acide désoxyribonucléique",
+          "DNA"
+        ],
         "solution": "L'ADN (acide désoxyribonucléique)."
       },
       {
@@ -262,7 +534,9 @@
         "type": "numeric",
         "stars": 2,
         "lesson_part": 1,
-        "skills": ["svt-echelles"],
+        "skills": [
+          "svt-echelles"
+        ],
         "cognitive": "appliquer",
         "prompt": "Sur une photo grossie 800 fois, une cellule mesure 4 cm. Quelle est sa taille réelle, en micromètres (µm) ? (1 cm = 10 000 µm.)",
         "answer": 50,
@@ -273,10 +547,18 @@
         "type": "qcm",
         "stars": 2,
         "lesson_part": 3,
-        "skills": ["svt-chromosomes", "svt-document"],
+        "skills": [
+          "svt-chromosomes",
+          "svt-document"
+        ],
         "cognitive": "analyser",
         "prompt": "Un caryotype humain montre 22 paires de chromosomes non sexuels et une paire XX. Que peut-on en déduire ?",
-        "options": ["C'est le caryotype d'un garçon", "C'est le caryotype d'une fille", "C'est le caryotype d'un gamète", "Il manque des chromosomes"],
+        "options": [
+          "C'est le caryotype d'un garçon",
+          "C'est le caryotype d'une fille",
+          "C'est le caryotype d'un gamète",
+          "Il manque des chromosomes"
+        ],
         "answer": 1,
         "solution": "La paire de chromosomes sexuels est XX : c'est le caryotype d'une fille. Le nombre total (46) est normal."
       },
@@ -285,7 +567,9 @@
         "type": "numeric",
         "stars": 2,
         "lesson_part": 3,
-        "skills": ["svt-chromosomes"],
+        "skills": [
+          "svt-chromosomes"
+        ],
         "cognitive": "appliquer",
         "prompt": "Les cellules du cheval contiennent 64 chromosomes. Combien de paires de chromosomes cela représente-t-il ?",
         "answer": 32,
@@ -296,7 +580,9 @@
         "type": "numeric",
         "stars": 2,
         "lesson_part": 3,
-        "skills": ["svt-chromosomes"],
+        "skills": [
+          "svt-chromosomes"
+        ],
         "cognitive": "appliquer",
         "prompt": "Combien de chromosomes contient un spermatozoïde humain ?",
         "answer": 23,
@@ -307,10 +593,18 @@
         "type": "qcm",
         "stars": 3,
         "lesson_part": 2,
-        "skills": ["svt-noyau", "svt-document"],
+        "skills": [
+          "svt-noyau",
+          "svt-document"
+        ],
         "cognitive": "analyser",
         "prompt": "On réalise un clonage chez la souris. Le noyau d'une cellule d'une souris à pelage noir est placé dans un ovule énucléé d'une souris à pelage blanc. L'embryon obtenu se développe dans l'utérus d'une souris à pelage gris. Quelle sera la couleur du pelage du souriceau ?",
-        "options": ["Blanc", "Gris", "Noir", "Un mélange des trois couleurs"],
+        "options": [
+          "Blanc",
+          "Gris",
+          "Noir",
+          "Un mélange des trois couleurs"
+        ],
         "answer": 2,
         "solution": "Noir : le souriceau possède l'information génétique contenue dans le noyau, qui vient de la souris à pelage noir. L'ovule (blanc) a perdu son noyau, et la mère porteuse (grise) ne transmet pas son information génétique."
       },
@@ -319,7 +613,10 @@
         "type": "open",
         "stars": 3,
         "lesson_part": 4,
-        "skills": ["svt-adn", "svt-rediger"],
+        "skills": [
+          "svt-adn",
+          "svt-rediger"
+        ],
         "cognitive": "rediger",
         "prompt": "En trois ou quatre phrases, explique le lien entre les mots suivants : noyau, chromosome, ADN, gène.",
         "solution": "Le noyau de la cellule contient l'information génétique. Cette information est portée par les chromosomes (46 chez l'être humain). Chaque chromosome est formé d'une très longue molécule d'ADN, enroulée sur elle-même. Un gène est une portion de cette molécule d'ADN, située à un endroit précis d'un chromosome, qui porte l'information pour un caractère héréditaire."
@@ -355,10 +652,17 @@
                 "type": "qcm",
                 "points": 1,
                 "lesson_part": 1,
-                "skills": ["svt-cellule"],
+                "skills": [
+                  "svt-cellule"
+                ],
                 "cognitive": "connaitre",
                 "prompt": "L'unité de base de tous les êtres vivants est…",
-                "options": ["le gène", "la cellule", "le chromosome", "l'organe"],
+                "options": [
+                  "le gène",
+                  "la cellule",
+                  "le chromosome",
+                  "l'organe"
+                ],
                 "answer": 1,
                 "solution": "La cellule est l'unité de base du vivant."
               },
@@ -367,10 +671,17 @@
                 "type": "qcm",
                 "points": 1,
                 "lesson_part": 3,
-                "skills": ["svt-chromosomes"],
+                "skills": [
+                  "svt-chromosomes"
+                ],
                 "cognitive": "connaitre",
                 "prompt": "Chez une fille, la paire de chromosomes sexuels est…",
-                "options": ["XY", "XX", "YY", "il n'y en a pas"],
+                "options": [
+                  "XY",
+                  "XX",
+                  "YY",
+                  "il n'y en a pas"
+                ],
                 "answer": 1,
                 "solution": "XX chez une fille, XY chez un garçon."
               },
@@ -379,10 +690,17 @@
                 "type": "qcm",
                 "points": 1,
                 "lesson_part": 4,
-                "skills": ["svt-adn"],
+                "skills": [
+                  "svt-adn"
+                ],
                 "cognitive": "connaitre",
                 "prompt": "Un gène est…",
-                "options": ["une portion d'ADN", "un ensemble de chromosomes", "une cellule sexuelle", "un constituant de la membrane"],
+                "options": [
+                  "une portion d'ADN",
+                  "un ensemble de chromosomes",
+                  "une cellule sexuelle",
+                  "un constituant de la membrane"
+                ],
                 "answer": 0,
                 "solution": "Un gène est une portion d'ADN qui porte l'information d'un caractère héréditaire."
               },
@@ -391,10 +709,17 @@
                 "type": "qcm",
                 "points": 1,
                 "lesson_part": 1,
-                "skills": ["svt-cellule"],
+                "skills": [
+                  "svt-cellule"
+                ],
                 "cognitive": "connaitre",
                 "prompt": "Quel être vivant est formé d'une cellule sans noyau ?",
-                "options": ["Une levure", "Une bactérie", "Une paramécie", "Une cellule de chêne"],
+                "options": [
+                  "Une levure",
+                  "Une bactérie",
+                  "Une paramécie",
+                  "Une cellule de chêne"
+                ],
                 "answer": 1,
                 "solution": "Les bactéries n'ont pas de noyau."
               },
@@ -403,7 +728,9 @@
                 "type": "open",
                 "points": 2,
                 "lesson_part": 1,
-                "skills": ["svt-cellule"],
+                "skills": [
+                  "svt-cellule"
+                ],
                 "cognitive": "connaitre",
                 "prompt": "Nomme les trois constituants que l'on observe dans une cellule animale, et donne le rôle de l'un d'entre eux.",
                 "solution": "Membrane, cytoplasme, noyau. Par exemple, le noyau contient l'information génétique (ou : la membrane limite la cellule et contrôle les échanges ; le cytoplasme est le lieu de nombreuses réactions).",
@@ -420,10 +747,17 @@
                 "points": 1,
                 "text_ref": "t1",
                 "lesson_part": 2,
-                "skills": ["svt-document"],
+                "skills": [
+                  "svt-document"
+                ],
                 "cognitive": "analyser",
                 "prompt": "Dans l'expérience du document, que vient de la grenouille albinos ?",
-                "options": ["L'ovule entier", "Seulement le noyau", "Le cytoplasme de l'ovule", "Rien"],
+                "options": [
+                  "L'ovule entier",
+                  "Seulement le noyau",
+                  "Le cytoplasme de l'ovule",
+                  "Rien"
+                ],
                 "answer": 1,
                 "solution": "Seul le noyau provient du têtard albinos (étape 2)."
               },
@@ -433,10 +767,17 @@
                 "points": 1,
                 "text_ref": "t1",
                 "lesson_part": 2,
-                "skills": ["svt-document"],
+                "skills": [
+                  "svt-document"
+                ],
                 "cognitive": "analyser",
                 "prompt": "Pourquoi détruit-on le noyau de l'ovule à l'étape 1 ?",
-                "options": ["Pour que l'ovule grossisse", "Pour que seule l'information génétique du noyau injecté soit présente", "Pour tuer l'ovule", "Pour que la grenouille soit sombre"],
+                "options": [
+                  "Pour que l'ovule grossisse",
+                  "Pour que seule l'information génétique du noyau injecté soit présente",
+                  "Pour tuer l'ovule",
+                  "Pour que la grenouille soit sombre"
+                ],
                 "answer": 1,
                 "solution": "On détruit le noyau de l'ovule pour que la cellule ne contienne que l'information génétique du noyau injecté : on peut alors savoir d'où vient le caractère observé."
               },
@@ -446,7 +787,10 @@
                 "points": 3,
                 "text_ref": "t1",
                 "lesson_part": 2,
-                "skills": ["svt-noyau", "svt-document"],
+                "skills": [
+                  "svt-noyau",
+                  "svt-document"
+                ],
                 "cognitive": "analyser",
                 "prompt": "Quelle conclusion peut-on tirer de cette expérience ? Justifie en comparant la grenouille obtenue aux deux grenouilles de départ.",
                 "solution": "La grenouille obtenue est albinos, comme le têtard qui a donné le noyau, et non sombre comme la grenouille qui a donné l'ovule. Or l'ovule ne contenait plus son propre noyau : seul le noyau venait du têtard albinos. On en conclut que l'information génétique qui détermine la couleur de la peau (un caractère héréditaire) se trouve dans le noyau.",
@@ -457,7 +801,9 @@
                 "type": "numeric",
                 "points": 2,
                 "lesson_part": 1,
-                "skills": ["svt-echelles"],
+                "skills": [
+                  "svt-echelles"
+                ],
                 "cognitive": "appliquer",
                 "prompt": "Sur une photo grossie 600 fois, une cellule d'intestin mesure 3 cm. Quelle est sa taille réelle, en micromètres ? (1 cm = 10 000 µm.)",
                 "answer": 50,
@@ -468,7 +814,9 @@
                 "type": "numeric",
                 "points": 2,
                 "lesson_part": 3,
-                "skills": ["svt-chromosomes"],
+                "skills": [
+                  "svt-chromosomes"
+                ],
                 "cognitive": "appliquer",
                 "prompt": "Le caryotype du chimpanzé compte 24 paires de chromosomes. Combien de chromosomes contient un ovule de chimpanzé ?",
                 "answer": 24,
@@ -484,7 +832,11 @@
                 "type": "open",
                 "points": 5,
                 "lesson_part": 4,
-                "skills": ["svt-adn", "svt-rediger", "svt-chromosomes"],
+                "skills": [
+                  "svt-adn",
+                  "svt-rediger",
+                  "svt-chromosomes"
+                ],
                 "cognitive": "rediger",
                 "prompt": "Explique à un élève de 6e où se trouve l'information génétique dans son corps, en allant du plus grand au plus petit : organisme, cellule, noyau, chromosome, ADN, gène. Donne au moins deux nombres de la leçon.",
                 "solution": "Notre corps (l'organisme) est formé d'environ 30 000 milliards de cellules. Dans presque chaque cellule se trouve un noyau, qui contient l'information génétique. Cette information est portée par 46 chromosomes, rangés en 23 paires. Chaque chromosome est une très longue molécule d'ADN, enroulée sur elle-même. Un gène est une portion de cette molécule d'ADN : il porte l'information pour un caractère héréditaire. Nous avons environ 20 000 gènes.",
@@ -519,10 +871,17 @@
                 "type": "qcm",
                 "points": 1,
                 "lesson_part": 1,
-                "skills": ["svt-cellule"],
+                "skills": [
+                  "svt-cellule"
+                ],
                 "cognitive": "connaitre",
                 "prompt": "Un être vivant unicellulaire est formé…",
-                "options": ["d'une seule cellule", "de deux cellules", "de cellules sans membrane", "d'un seul chromosome"],
+                "options": [
+                  "d'une seule cellule",
+                  "de deux cellules",
+                  "de cellules sans membrane",
+                  "d'un seul chromosome"
+                ],
                 "answer": 0,
                 "solution": "Unicellulaire signifie formé d'une seule cellule (bactérie, levure, paramécie…)."
               },
@@ -531,10 +890,17 @@
                 "type": "qcm",
                 "points": 1,
                 "lesson_part": 3,
-                "skills": ["svt-chromosomes"],
+                "skills": [
+                  "svt-chromosomes"
+                ],
                 "cognitive": "connaitre",
                 "prompt": "Chez un garçon, la paire de chromosomes sexuels est…",
-                "options": ["XX", "XY", "YY", "il n'y en a pas"],
+                "options": [
+                  "XX",
+                  "XY",
+                  "YY",
+                  "il n'y en a pas"
+                ],
                 "answer": 1,
                 "solution": "XY chez un garçon, XX chez une fille."
               },
@@ -543,10 +909,17 @@
                 "type": "qcm",
                 "points": 1,
                 "lesson_part": 4,
-                "skills": ["svt-adn"],
+                "skills": [
+                  "svt-adn"
+                ],
                 "cognitive": "connaitre",
                 "prompt": "La molécule d'ADN a la forme…",
-                "options": ["d'une sphère", "d'une double hélice", "d'un cube", "d'un simple trait droit"],
+                "options": [
+                  "d'une sphère",
+                  "d'une double hélice",
+                  "d'un cube",
+                  "d'un simple trait droit"
+                ],
                 "answer": 1,
                 "solution": "L'ADN a la forme d'une double hélice, comme une échelle torsadée."
               },
@@ -555,10 +928,17 @@
                 "type": "qcm",
                 "points": 1,
                 "lesson_part": 1,
-                "skills": ["svt-cellule"],
+                "skills": [
+                  "svt-cellule"
+                ],
                 "cognitive": "connaitre",
                 "prompt": "Quelle cellule humaine ne possède pas de noyau ?",
-                "options": ["Une cellule de peau", "Un globule rouge", "Une cellule de muscle", "Un ovule"],
+                "options": [
+                  "Une cellule de peau",
+                  "Un globule rouge",
+                  "Une cellule de muscle",
+                  "Un ovule"
+                ],
                 "answer": 1,
                 "solution": "Le globule rouge humain perd son noyau en se formant."
               },
@@ -567,7 +947,9 @@
                 "type": "open",
                 "points": 2,
                 "lesson_part": 1,
-                "skills": ["svt-cellule"],
+                "skills": [
+                  "svt-cellule"
+                ],
                 "cognitive": "connaitre",
                 "prompt": "Cite deux constituants présents dans une cellule végétale chlorophyllienne mais absents d'une cellule animale, et donne le rôle de chacun.",
                 "solution": "La paroi, qui rigidifie et protège la cellule ; les chloroplastes, qui réalisent la photosynthèse.",
@@ -584,10 +966,17 @@
                 "points": 1,
                 "text_ref": "t1",
                 "lesson_part": 2,
-                "skills": ["svt-document"],
+                "skills": [
+                  "svt-document"
+                ],
                 "cognitive": "analyser",
                 "prompt": "Dans l'expérience du document, que vient de la souris à pelage brun ?",
-                "options": ["L'ovule entier", "Seulement le noyau", "L'utérus", "Le cytoplasme de l'ovule"],
+                "options": [
+                  "L'ovule entier",
+                  "Seulement le noyau",
+                  "L'utérus",
+                  "Le cytoplasme de l'ovule"
+                ],
                 "answer": 1,
                 "solution": "Seul le noyau provient de la souris à pelage brun (étape 2)."
               },
@@ -597,10 +986,17 @@
                 "points": 1,
                 "text_ref": "t1",
                 "lesson_part": 2,
-                "skills": ["svt-document"],
+                "skills": [
+                  "svt-document"
+                ],
                 "cognitive": "analyser",
                 "prompt": "Quel est le rôle de la souris à pelage gris dans cette expérience ?",
-                "options": ["Elle donne le noyau", "Elle donne l'ovule", "Elle porte l'embryon jusqu'à la naissance", "Elle transmet la couleur de son pelage"],
+                "options": [
+                  "Elle donne le noyau",
+                  "Elle donne l'ovule",
+                  "Elle porte l'embryon jusqu'à la naissance",
+                  "Elle transmet la couleur de son pelage"
+                ],
                 "answer": 2,
                 "solution": "La souris grise est la mère porteuse : elle porte l'embryon, mais ne lui transmet pas d'information génétique."
               },
@@ -610,7 +1006,10 @@
                 "points": 3,
                 "text_ref": "t1",
                 "lesson_part": 2,
-                "skills": ["svt-noyau", "svt-document"],
+                "skills": [
+                  "svt-noyau",
+                  "svt-document"
+                ],
                 "cognitive": "analyser",
                 "prompt": "Quelle conclusion peut-on tirer de cette expérience ? Justifie en comparant le souriceau aux trois souris utilisées.",
                 "solution": "Le souriceau a un pelage brun, comme la souris qui a donné le noyau. Il ne ressemble ni à la souris blanche, qui a donné l'ovule sans son noyau, ni à la souris grise, qui l'a seulement porté. Comme seul le noyau vient de la souris brune, on conclut que l'information génétique qui détermine la couleur du pelage se trouve dans le noyau.",
@@ -621,7 +1020,9 @@
                 "type": "numeric",
                 "points": 2,
                 "lesson_part": 1,
-                "skills": ["svt-echelles"],
+                "skills": [
+                  "svt-echelles"
+                ],
                 "cognitive": "appliquer",
                 "prompt": "Sur une photo grossie 1 500 fois, une cellule de peau mesure 6 cm. Quelle est sa taille réelle, en micromètres ? (1 cm = 10 000 µm.)",
                 "answer": 40,
@@ -632,7 +1033,9 @@
                 "type": "numeric",
                 "points": 2,
                 "lesson_part": 3,
-                "skills": ["svt-chromosomes"],
+                "skills": [
+                  "svt-chromosomes"
+                ],
                 "cognitive": "appliquer",
                 "prompt": "Le caryotype du chat compte 19 paires de chromosomes. Combien de chromosomes contient une cellule de peau de chat ?",
                 "answer": 38,
@@ -648,7 +1051,11 @@
                 "type": "open",
                 "points": 5,
                 "lesson_part": 4,
-                "skills": ["svt-adn", "svt-rediger", "svt-chromosomes"],
+                "skills": [
+                  "svt-adn",
+                  "svt-rediger",
+                  "svt-chromosomes"
+                ],
                 "cognitive": "rediger",
                 "prompt": "Un camarade affirme : « Plus une espèce a de chromosomes, plus elle est évoluée. Et de toute façon, chromosome, ADN et gène, c'est la même chose. » Explique-lui ses deux erreurs, en utilisant des exemples chiffrés de la leçon.",
                 "solution": "Première erreur : le nombre de chromosomes ne mesure pas le degré d'évolution. Par exemple, le chien a 78 chromosomes, la pomme de terre 48, et l'être humain 46. Ce nombre est simplement fixe pour chaque espèce. Seconde erreur : ces trois mots ne désignent pas la même chose. Un chromosome est formé d'une très longue molécule d'ADN ; l'ADN est la molécule qui porte l'information génétique ; un gène est seulement une portion de cette molécule d'ADN, qui porte l'information pour un caractère. Un chromosome contient donc de nombreux gènes.",

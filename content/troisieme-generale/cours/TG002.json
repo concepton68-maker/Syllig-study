@@ -6,12 +6,30 @@
   "chapter": "Bases de la langue (début d'année)",
   "title": "Phrase simple, phrase complexe : juxtaposition, coordination, subordination",
   "skills": [
-    { "id": "fr-proposition", "label": "Repérer les verbes conjugués et délimiter les propositions" },
-    { "id": "fr-phrase-simple-complexe", "label": "Distinguer phrase simple, phrase complexe et phrase non verbale" },
-    { "id": "fr-juxtaposition", "label": "Identifier des propositions juxtaposées" },
-    { "id": "fr-coordination", "label": "Identifier des propositions coordonnées et le sens du mot de liaison" },
-    { "id": "fr-subordination", "label": "Identifier une proposition principale et une proposition subordonnée" },
-    { "id": "fr-reecriture-liens", "label": "Relier des propositions et analyser l'effet du lien choisi" }
+    {
+      "id": "fr-proposition",
+      "label": "Repérer les verbes conjugués et délimiter les propositions"
+    },
+    {
+      "id": "fr-phrase-simple-complexe",
+      "label": "Distinguer phrase simple, phrase complexe et phrase non verbale"
+    },
+    {
+      "id": "fr-juxtaposition",
+      "label": "Identifier des propositions juxtaposées"
+    },
+    {
+      "id": "fr-coordination",
+      "label": "Identifier des propositions coordonnées et le sens du mot de liaison"
+    },
+    {
+      "id": "fr-subordination",
+      "label": "Identifier une proposition principale et une proposition subordonnée"
+    },
+    {
+      "id": "fr-reecriture-liens",
+      "label": "Relier des propositions et analyser l'effet du lien choisi"
+    }
   ],
   "lesson": {
     "duration_min": 35,
@@ -27,119 +45,518 @@
       {
         "title": "Phrase simple, phrase complexe : compter les propositions",
         "blocks": [
-          { "type": "callout", "kind": "definition", "title": "La proposition", "text": "Une **proposition** est un groupe de mots organisé autour d'un **verbe conjugué**. Pour savoir combien une phrase contient de propositions, on compte ses verbes conjugués." },
-          { "type": "table", "columns": ["Type de phrase", "Définition", "Exemple"], "rows": [
-            ["Phrase non verbale", "Elle ne contient aucun verbe conjugué.", "Quel beau matin ! Silence absolu dans la salle."],
-            ["Phrase simple", "Elle contient **un seul** verbe conjugué, donc une seule proposition.", "Le bus **arrive** devant le collège."],
-            ["Phrase complexe", "Elle contient **au moins deux** verbes conjugués, donc au moins deux propositions.", "Le bus **arrive** et les élèves **montent**."]
-          ] },
-          { "type": "callout", "kind": "attention", "title": "Ce qui compte, ce qui ne compte pas", "text": "✓ Un verbe à un temps composé compte pour **un seul** verbe : « Elle **a terminé** son exposé » → 1 proposition.\n✗ En général, l'infinitif et le participe ne forment pas une proposition à eux seuls : « Elsa continuait **de marcher** » → 1 seul verbe conjugué.\n✗ « et » ne relie pas toujours deux propositions : « Lucas **et** Malik préparent un exposé » est une phrase simple (un seul verbe)." },
-          { "type": "callout", "kind": "plus", "text": "Il existe aussi des propositions subordonnées organisées autour d'un infinitif (« J'entends **les oiseaux chanter** ») ou d'un participe (« **La nuit tombée**, nous rentrâmes »). On les étudie à part ; dans ce cours, on compte les verbes conjugués." }
+          {
+            "type": "callout",
+            "kind": "definition",
+            "title": "La proposition",
+            "text": "Une **proposition** est un groupe de mots organisé autour d'un **verbe conjugué**. Pour savoir combien une phrase contient de propositions, on compte ses verbes conjugués."
+          },
+          {
+            "type": "table",
+            "columns": [
+              "Type de phrase",
+              "Définition",
+              "Exemple"
+            ],
+            "rows": [
+              [
+                "Phrase non verbale",
+                "Elle ne contient aucun verbe conjugué.",
+                "Quel beau matin ! Silence absolu dans la salle."
+              ],
+              [
+                "Phrase simple",
+                "Elle contient **un seul** verbe conjugué, donc une seule proposition.",
+                "Le bus **arrive** devant le collège."
+              ],
+              [
+                "Phrase complexe",
+                "Elle contient **au moins deux** verbes conjugués, donc au moins deux propositions.",
+                "Le bus **arrive** et les élèves **montent**."
+              ]
+            ]
+          },
+          {
+            "type": "callout",
+            "kind": "attention",
+            "title": "Ce qui compte, ce qui ne compte pas",
+            "text": "✓ Un verbe à un temps composé compte pour **un seul** verbe : « Elle **a terminé** son exposé » → 1 proposition.\n✗ En général, l'infinitif et le participe ne forment pas une proposition à eux seuls : « Elsa continuait **de marcher** » → 1 seul verbe conjugué.\n✗ « et » ne relie pas toujours deux propositions : « Lucas **et** Malik préparent un exposé » est une phrase simple (un seul verbe)."
+          },
+          {
+            "type": "callout",
+            "kind": "plus",
+            "text": "Il existe aussi des propositions subordonnées organisées autour d'un infinitif (« J'entends **les oiseaux chanter** ») ou d'un participe (« **La nuit tombée**, nous rentrâmes »). On les étudie à part ; dans ce cours, on compte les verbes conjugués."
+          }
         ],
-        "checkpoint": { "variants": [
-          { "prompt": "Combien de propositions contient la phrase : « Le train ralentit, les voyageurs se lèvent et une voix annonce l'arrivée » ?", "options": ["1", "2", "3", "4"], "answer": 2, "hint": "Compte les verbes conjugués.", "explanation": "Trois verbes conjugués : ralentit, se lèvent, annonce → trois propositions." },
-          { "prompt": "Laquelle est une phrase simple ?", "options": ["Lucas et Malik préparent un exposé sur les volcans.", "Nous rentrons car il fait froid.", "Le chien aboie, le chat s'enfuit."], "answer": 0, "hint": "Une phrase simple ne contient qu'un verbe conjugué. « Et » peut relier deux noms.", "explanation": "Un seul verbe conjugué (« préparent ») : « et » relie ici deux noms sujets, pas deux propositions." },
-          { "prompt": "« Quel orage hier soir ! » est une phrase…", "options": ["simple", "complexe", "non verbale"], "answer": 2, "hint": "Cherche un verbe conjugué.", "explanation": "Il n'y a aucun verbe conjugué : c'est une phrase non verbale." }
-        ] }
+        "checkpoint": {
+          "variants": [
+            {
+              "prompt": "Combien de propositions contient la phrase : « Le train ralentit, les voyageurs se lèvent et une voix annonce l'arrivée » ?",
+              "options": [
+                "1",
+                "2",
+                "3",
+                "4"
+              ],
+              "answer": 2,
+              "hint": "Compte les verbes conjugués.",
+              "explanation": "Trois verbes conjugués : ralentit, se lèvent, annonce → trois propositions."
+            },
+            {
+              "prompt": "Laquelle est une phrase simple ?",
+              "options": [
+                "Lucas et Malik préparent un exposé sur les volcans.",
+                "Nous rentrons car il fait froid.",
+                "Le chien aboie, le chat s'enfuit."
+              ],
+              "answer": 0,
+              "hint": "Une phrase simple ne contient qu'un verbe conjugué. « Et » peut relier deux noms.",
+              "explanation": "Un seul verbe conjugué (« préparent ») : « et » relie ici deux noms sujets, pas deux propositions."
+            },
+            {
+              "prompt": "« Quel orage hier soir ! » est une phrase…",
+              "options": [
+                "simple",
+                "complexe",
+                "non verbale"
+              ],
+              "answer": 2,
+              "hint": "Cherche un verbe conjugué.",
+              "explanation": "Il n'y a aucun verbe conjugué : c'est une phrase non verbale."
+            }
+          ]
+        }
       },
       {
         "title": "La juxtaposition : relier par la ponctuation",
         "blocks": [
-          { "type": "callout", "kind": "definition", "text": "Des propositions sont **juxtaposées** quand elles sont placées côte à côte, séparées par un signe de ponctuation : **virgule**, **point-virgule** ou **deux-points**, sans aucun mot de liaison." },
-          { "type": "quote", "text": "Je suis venu, j'ai vu, j'ai vaincu.", "source": "Jules César, d'après Suétone, Vie des douze Césars (texte du domaine public, traduction usuelle de « Veni, vidi, vici »)" },
-          { "type": "text", "text": "Ici, trois propositions indépendantes sont juxtaposées par des virgules : le rythme est rapide, la victoire paraît immédiate." },
-          { "type": "table", "columns": ["Ponctuation", "Effet fréquent", "Exemple"], "rows": [
-            ["Virgule", "Succession rapide d'actions, accumulation.", "Le réveil sonne, je me lève, je file sous la douche."],
-            ["Point-virgule", "Deux idées liées mais distinctes, souvent mises en parallèle.", "Le ciel s'assombrit ; l'orage approche."],
-            ["Deux-points", "Annonce une explication, une cause ou une conséquence.", "Le match a été annulé : le terrain était inondé."]
-          ] },
-          { "type": "callout", "kind": "retiens", "title": "Proposition indépendante", "text": "Une proposition **indépendante** ne dépend d'aucune autre, et aucune autre ne dépend d'elle. Les propositions juxtaposées sont le plus souvent des indépendantes." },
-          { "type": "callout", "kind": "methode", "text": "Avec la juxtaposition, le lien logique (cause, conséquence, opposition) n'est pas écrit : c'est au lecteur de le deviner. Dans « Le match a été annulé : le terrain était inondé », les deux-points expriment une **cause implicite**." }
+          {
+            "type": "callout",
+            "kind": "definition",
+            "text": "Des propositions sont **juxtaposées** quand elles sont placées côte à côte, séparées par un signe de ponctuation : **virgule**, **point-virgule** ou **deux-points**, sans aucun mot de liaison."
+          },
+          {
+            "type": "quote",
+            "text": "Je suis venu, j'ai vu, j'ai vaincu.",
+            "source": "Jules César, d'après Suétone, Vie des douze Césars (texte du domaine public, traduction usuelle de « Veni, vidi, vici »)"
+          },
+          {
+            "type": "text",
+            "text": "Ici, trois propositions indépendantes sont juxtaposées par des virgules : le rythme est rapide, la victoire paraît immédiate."
+          },
+          {
+            "type": "table",
+            "columns": [
+              "Ponctuation",
+              "Effet fréquent",
+              "Exemple"
+            ],
+            "rows": [
+              [
+                "Virgule",
+                "Succession rapide d'actions, accumulation.",
+                "Le réveil sonne, je me lève, je file sous la douche."
+              ],
+              [
+                "Point-virgule",
+                "Deux idées liées mais distinctes, souvent mises en parallèle.",
+                "Le ciel s'assombrit ; l'orage approche."
+              ],
+              [
+                "Deux-points",
+                "Annonce une explication, une cause ou une conséquence.",
+                "Le match a été annulé : le terrain était inondé."
+              ]
+            ]
+          },
+          {
+            "type": "callout",
+            "kind": "retiens",
+            "title": "Proposition indépendante",
+            "text": "Une proposition **indépendante** ne dépend d'aucune autre, et aucune autre ne dépend d'elle. Les propositions juxtaposées sont le plus souvent des indépendantes."
+          },
+          {
+            "type": "callout",
+            "kind": "methode",
+            "text": "Avec la juxtaposition, le lien logique (cause, conséquence, opposition) n'est pas écrit : c'est au lecteur de le deviner. Dans « Le match a été annulé : le terrain était inondé », les deux-points expriment une **cause implicite**."
+          }
         ],
-        "checkpoint": { "variants": [
-          { "prompt": "« Le ciel s'assombrit ; l'orage approche. » Comment les propositions sont-elles reliées ?", "options": ["Par juxtaposition", "Par coordination", "Par subordination"], "answer": 0, "hint": "Y a-t-il un mot de liaison, ou seulement un signe de ponctuation ?", "explanation": "Seul un point-virgule sépare les deux propositions : elles sont juxtaposées." },
-          { "prompt": "« Je suis rentré : il pleuvait trop. » Quel lien logique les deux-points expriment-ils ici ?", "options": ["L'opposition", "La cause", "Le but"], "answer": 1, "hint": "Pose la question « pourquoi suis-je rentré ? ».", "explanation": "« Il pleuvait trop » explique pourquoi je suis rentré : les deux-points expriment une cause implicite." },
-          { "prompt": "Une proposition indépendante…", "options": ["dépend toujours d'une principale", "ne dépend d'aucune autre proposition et n'en a aucune qui dépend d'elle", "est toujours introduite par « et »"], "answer": 1, "hint": "Relis l'encadré « Proposition indépendante ».", "explanation": "L'indépendante se suffit à elle-même : elle ne dépend d'aucune proposition et n'en commande aucune." }
-        ] }
+        "checkpoint": {
+          "variants": [
+            {
+              "prompt": "« Le ciel s'assombrit ; l'orage approche. » Comment les propositions sont-elles reliées ?",
+              "options": [
+                "Par juxtaposition",
+                "Par coordination",
+                "Par subordination"
+              ],
+              "answer": 0,
+              "hint": "Y a-t-il un mot de liaison, ou seulement un signe de ponctuation ?",
+              "explanation": "Seul un point-virgule sépare les deux propositions : elles sont juxtaposées."
+            },
+            {
+              "prompt": "« Je suis rentré : il pleuvait trop. » Quel lien logique les deux-points expriment-ils ici ?",
+              "options": [
+                "L'opposition",
+                "La cause",
+                "Le but"
+              ],
+              "answer": 1,
+              "hint": "Pose la question « pourquoi suis-je rentré ? ».",
+              "explanation": "« Il pleuvait trop » explique pourquoi je suis rentré : les deux-points expriment une cause implicite."
+            },
+            {
+              "prompt": "Une proposition indépendante…",
+              "options": [
+                "dépend toujours d'une principale",
+                "ne dépend d'aucune autre proposition et n'en a aucune qui dépend d'elle",
+                "est toujours introduite par « et »"
+              ],
+              "answer": 1,
+              "hint": "Relis l'encadré « Proposition indépendante ».",
+              "explanation": "L'indépendante se suffit à elle-même : elle ne dépend d'aucune proposition et n'en commande aucune."
+            }
+          ]
+        }
       },
       {
         "title": "La coordination : relier par un mot de liaison",
         "blocks": [
-          { "type": "callout", "kind": "definition", "text": "Des propositions sont **coordonnées** quand elles sont reliées par une **conjonction de coordination** (mais, ou, et, donc, or, ni, car) ou par un **adverbe de liaison** (puis, ensuite, alors, pourtant, cependant, en effet…). Chaque proposition pourrait exister seule." },
-          { "type": "table", "columns": ["Mot de liaison", "Sens exprimé", "Exemple"], "rows": [
-            ["et, puis, ensuite", "Addition, succession", "Elle ferma la porte **et** elle éteignit la lumière."],
-            ["mais, pourtant, cependant", "Opposition", "Nous voulions aller à la plage, **mais** la marée était haute."],
-            ["car, en effet", "Cause", "Je ne sortirai pas, **car** je suis enrhumé."],
-            ["donc, alors, c'est pourquoi", "Conséquence", "Elle avait faim, **donc** elle ouvrit le placard."],
-            ["ou", "Alternative, choix", "Tu viens avec nous **ou** tu restes ici ?"],
-            ["ni… ni", "Négation de deux éléments", "Il **ne** riait **ni** ne pleurait."],
-            ["or", "Ajout d'un élément décisif dans un raisonnement", "Je comptais sur lui ; **or** il n'est pas venu."]
-          ] },
-          { "type": "callout", "kind": "attention", "title": "Sujet non répété", "text": "Quand deux propositions coordonnées ont le même sujet, on ne le répète pas toujours : « Elle sortit **et** ferma la porte. » Il y a bien **deux** verbes conjugués, donc deux propositions." },
-          { "type": "callout", "kind": "attention", "title": "Le piège de « car »", "text": "« Car » exprime la cause, comme « parce que », mais c'est une **conjonction de coordination** : « Je reste ici, **car** il pleut » est une coordination. « Je reste ici **parce qu'**il pleut » est une subordination." }
+          {
+            "type": "callout",
+            "kind": "definition",
+            "text": "Des propositions sont **coordonnées** quand elles sont reliées par une **conjonction de coordination** (mais, ou, et, donc, or, ni, car) ou par un **adverbe de liaison** (puis, ensuite, alors, pourtant, cependant, en effet…). Chaque proposition pourrait exister seule."
+          },
+          {
+            "type": "table",
+            "columns": [
+              "Mot de liaison",
+              "Sens exprimé",
+              "Exemple"
+            ],
+            "rows": [
+              [
+                "et, puis, ensuite",
+                "Addition, succession",
+                "Elle ferma la porte **et** elle éteignit la lumière."
+              ],
+              [
+                "mais, pourtant, cependant",
+                "Opposition",
+                "Nous voulions aller à la plage, **mais** la marée était haute."
+              ],
+              [
+                "car, en effet",
+                "Cause",
+                "Je ne sortirai pas, **car** je suis enrhumé."
+              ],
+              [
+                "donc, alors, c'est pourquoi",
+                "Conséquence",
+                "Elle avait faim, **donc** elle ouvrit le placard."
+              ],
+              [
+                "ou",
+                "Alternative, choix",
+                "Tu viens avec nous **ou** tu restes ici ?"
+              ],
+              [
+                "ni… ni",
+                "Négation de deux éléments",
+                "Il **ne** riait **ni** ne pleurait."
+              ],
+              [
+                "or",
+                "Ajout d'un élément décisif dans un raisonnement",
+                "Je comptais sur lui ; **or** il n'est pas venu."
+              ]
+            ]
+          },
+          {
+            "type": "callout",
+            "kind": "attention",
+            "title": "Sujet non répété",
+            "text": "Quand deux propositions coordonnées ont le même sujet, on ne le répète pas toujours : « Elle sortit **et** ferma la porte. » Il y a bien **deux** verbes conjugués, donc deux propositions."
+          },
+          {
+            "type": "callout",
+            "kind": "attention",
+            "title": "Le piège de « car »",
+            "text": "« Car » exprime la cause, comme « parce que », mais c'est une **conjonction de coordination** : « Je reste ici, **car** il pleut » est une coordination. « Je reste ici **parce qu'**il pleut » est une subordination."
+          }
         ],
-        "checkpoint": { "variants": [
-          { "prompt": "« Je ne sortirai pas, car je suis enrhumé. » Comment les propositions sont-elles reliées ?", "options": ["Par juxtaposition", "Par coordination", "Par subordination"], "answer": 1, "hint": "« Car » fait-il partie de « Mais où est donc Ornicar ? » ?", "explanation": "« Car » est une conjonction de coordination : les propositions sont coordonnées." },
-          { "prompt": "« Il pleuvait, pourtant nous sommes sortis. » Quel sens exprime le mot de liaison ?", "options": ["La cause", "La conséquence", "L'opposition"], "answer": 2, "hint": "Relis le tableau : avec quels mots se range « pourtant » ?", "explanation": "« Pourtant » est un adverbe de liaison qui exprime l'opposition, comme « mais » ou « cependant »." },
-          { "prompt": "Combien de propositions dans « Elle sortit et ferma la porte » ?", "options": ["Une", "Deux", "Trois"], "answer": 1, "hint": "Compte les verbes conjugués, même si le sujet n'est pas répété.", "explanation": "Deux verbes conjugués (sortit, ferma) : deux propositions coordonnées par « et », avec le même sujet « elle »." }
-        ] }
+        "checkpoint": {
+          "variants": [
+            {
+              "prompt": "« Je ne sortirai pas, car je suis enrhumé. » Comment les propositions sont-elles reliées ?",
+              "options": [
+                "Par juxtaposition",
+                "Par coordination",
+                "Par subordination"
+              ],
+              "answer": 1,
+              "hint": "« Car » fait-il partie de « Mais où est donc Ornicar ? » ?",
+              "explanation": "« Car » est une conjonction de coordination : les propositions sont coordonnées."
+            },
+            {
+              "prompt": "« Il pleuvait, pourtant nous sommes sortis. » Quel sens exprime le mot de liaison ?",
+              "options": [
+                "La cause",
+                "La conséquence",
+                "L'opposition"
+              ],
+              "answer": 2,
+              "hint": "Relis le tableau : avec quels mots se range « pourtant » ?",
+              "explanation": "« Pourtant » est un adverbe de liaison qui exprime l'opposition, comme « mais » ou « cependant »."
+            },
+            {
+              "prompt": "Combien de propositions dans « Elle sortit et ferma la porte » ?",
+              "options": [
+                "Une",
+                "Deux",
+                "Trois"
+              ],
+              "answer": 1,
+              "hint": "Compte les verbes conjugués, même si le sujet n'est pas répété.",
+              "explanation": "Deux verbes conjugués (sortit, ferma) : deux propositions coordonnées par « et », avec le même sujet « elle »."
+            }
+          ]
+        }
       },
       {
         "title": "La subordination : une proposition qui dépend d'une autre",
         "blocks": [
-          { "type": "callout", "kind": "definition", "text": "Dans la **subordination**, une proposition **subordonnée** dépend d'une proposition **principale**. La subordonnée est introduite par un **mot subordonnant** et ne peut pas former une phrase seule." },
-          { "type": "table", "columns": ["Mot subordonnant", "Exemples", "Phrase exemple (subordonnée en gras)"], "rows": [
-            ["Pronom relatif", "qui, que, dont, où, lequel…", "Le gâteau **que Nina a préparé** a disparu."],
-            ["Conjonction de subordination", "que, quand, si, comme, lorsque, puisque, parce que, bien que, pour que…", "Mathis a raté le bus **parce qu'il s'est réveillé tard**."],
-            ["Mot interrogatif (interrogation indirecte)", "si, qui, où, quand, pourquoi, comment…", "Je me demande **pourquoi il est parti**."]
-          ] },
-          { "type": "callout", "kind": "retiens", "title": "Test de la phrase seule", "text": "« Mathis a raté le bus. » peut former une phrase seule : c'est la **principale**.\n« Parce qu'il s'est réveillé tard. » ne peut pas former une phrase seule : c'est la **subordonnée**." },
-          { "type": "callout", "kind": "attention", "title": "Une principale coupée en deux", "text": "La subordonnée peut être placée au milieu de la principale : [Le gâteau (**que Nina a préparé**) a disparu en une heure]. La principale est ici « Le gâteau… a disparu en une heure »." },
-          { "type": "text", "text": "Il existe trois grandes familles de subordonnées, que tu étudieras dans les cours suivants : les **relatives** (introduites par un pronom relatif), les **conjonctives complétives** (introduites par « que », souvent COD du verbe) et les **conjonctives circonstancielles** (temps, cause, but, opposition…)." }
+          {
+            "type": "callout",
+            "kind": "definition",
+            "text": "Dans la **subordination**, une proposition **subordonnée** dépend d'une proposition **principale**. La subordonnée est introduite par un **mot subordonnant** et ne peut pas former une phrase seule."
+          },
+          {
+            "type": "table",
+            "columns": [
+              "Mot subordonnant",
+              "Exemples",
+              "Phrase exemple (subordonnée en gras)"
+            ],
+            "rows": [
+              [
+                "Pronom relatif",
+                "qui, que, dont, où, lequel…",
+                "Le gâteau **que Nina a préparé** a disparu."
+              ],
+              [
+                "Conjonction de subordination",
+                "que, quand, si, comme, lorsque, puisque, parce que, bien que, pour que…",
+                "Mathis a raté le bus **parce qu'il s'est réveillé tard**."
+              ],
+              [
+                "Mot interrogatif (interrogation indirecte)",
+                "si, qui, où, quand, pourquoi, comment…",
+                "Je me demande **pourquoi il est parti**."
+              ]
+            ]
+          },
+          {
+            "type": "callout",
+            "kind": "retiens",
+            "title": "Test de la phrase seule",
+            "text": "« Mathis a raté le bus. » peut former une phrase seule : c'est la **principale**.\n« Parce qu'il s'est réveillé tard. » ne peut pas former une phrase seule : c'est la **subordonnée**."
+          },
+          {
+            "type": "callout",
+            "kind": "attention",
+            "title": "Une principale coupée en deux",
+            "text": "La subordonnée peut être placée au milieu de la principale : [Le gâteau (**que Nina a préparé**) a disparu en une heure]. La principale est ici « Le gâteau… a disparu en une heure »."
+          },
+          {
+            "type": "text",
+            "text": "Il existe trois grandes familles de subordonnées, que tu étudieras dans les cours suivants : les **relatives** (introduites par un pronom relatif), les **conjonctives complétives** (introduites par « que », souvent COD du verbe) et les **conjonctives circonstancielles** (temps, cause, but, opposition…)."
+          }
         ],
-        "checkpoint": { "variants": [
-          { "prompt": "« Je t'appellerai dès que j'arriverai. » Comment les propositions sont-elles reliées ?", "options": ["Par juxtaposition", "Par coordination", "Par subordination"], "answer": 2, "hint": "« Dès que j'arriverai » peut-il former une phrase seule ?", "explanation": "« Dès que » introduit une proposition subordonnée qui dépend de la principale « Je t'appellerai »." },
-          { "prompt": "Dans « Le gâteau que Nina a préparé a disparu en une heure », quelle est la proposition principale ?", "options": ["Le gâteau… a disparu en une heure", "que Nina a préparé", "Nina a préparé le gâteau"], "answer": 0, "hint": "La subordonnée est placée au milieu de la principale.", "explanation": "La principale est « Le gâteau… a disparu en une heure », interrompue par la subordonnée relative « que Nina a préparé »." },
-          { "prompt": "Quelle liste ne contient que des mots subordonnants ?", "options": ["mais, ou, et, car", "qui, quand, parce que, si", "puis, ensuite, alors, donc"], "answer": 1, "hint": "Les conjonctions de coordination et les adverbes de liaison ne sont pas des subordonnants.", "explanation": "« Qui » (pronom relatif), « quand », « parce que » et « si » (conjonctions de subordination) introduisent des subordonnées." }
-        ] }
+        "checkpoint": {
+          "variants": [
+            {
+              "prompt": "« Je t'appellerai dès que j'arriverai. » Comment les propositions sont-elles reliées ?",
+              "options": [
+                "Par juxtaposition",
+                "Par coordination",
+                "Par subordination"
+              ],
+              "answer": 2,
+              "hint": "« Dès que j'arriverai » peut-il former une phrase seule ?",
+              "explanation": "« Dès que » introduit une proposition subordonnée qui dépend de la principale « Je t'appellerai »."
+            },
+            {
+              "prompt": "Dans « Le gâteau que Nina a préparé a disparu en une heure », quelle est la proposition principale ?",
+              "options": [
+                "Le gâteau… a disparu en une heure",
+                "que Nina a préparé",
+                "Nina a préparé le gâteau"
+              ],
+              "answer": 0,
+              "hint": "La subordonnée est placée au milieu de la principale.",
+              "explanation": "La principale est « Le gâteau… a disparu en une heure », interrompue par la subordonnée relative « que Nina a préparé »."
+            },
+            {
+              "prompt": "Quelle liste ne contient que des mots subordonnants ?",
+              "options": [
+                "mais, ou, et, car",
+                "qui, quand, parce que, si",
+                "puis, ensuite, alors, donc"
+              ],
+              "answer": 1,
+              "hint": "Les conjonctions de coordination et les adverbes de liaison ne sont pas des subordonnants.",
+              "explanation": "« Qui » (pronom relatif), « quand », « parce que » et « si » (conjonctions de subordination) introduisent des subordonnées."
+            }
+          ]
+        }
       },
       {
         "title": "Méthode : analyser une phrase complexe et choisir le bon lien",
         "blocks": [
-          { "type": "heading", "text": "Analyser une phrase complexe en 4 étapes" },
-          { "type": "list", "ordered": true, "items": [
-            "Je repère les verbes conjugués : leur nombre donne le nombre de propositions.",
-            "Je délimite chaque proposition entre crochets [ ].",
-            "Je cherche ce qui les relie : ponctuation seule, conjonction de coordination ou adverbe de liaison, mot subordonnant.",
-            "Je nomme chaque proposition (indépendante, principale, subordonnée) et le lien (juxtaposée, coordonnée, subordonnée)."
-          ] },
-          { "type": "table", "columns": ["Phrase", "Analyse"], "rows": [
-            ["[Le réveil a sonné], [Hugo s'est levé] [et il a ouvert les volets].", "Trois propositions indépendantes : les deux premières sont juxtaposées (virgule), les deux dernières coordonnées par « et »."],
-            ["[La nuit tombait], [mais Elsa continuait de marcher] [parce qu'elle voulait atteindre le refuge].", "Trois propositions : « La nuit tombait » (indépendante) est coordonnée par « mais » à « Elsa continuait de marcher », qui est la principale de la subordonnée « parce qu'elle voulait atteindre le refuge »."]
-          ] },
-          { "type": "heading", "text": "Une même idée, trois constructions" },
-          { "type": "table", "columns": ["Construction", "Exemple", "Effet"], "rows": [
-            ["Juxtaposition", "Il neigeait : le match a été annulé.", "Lien implicite, style rapide et sec."],
-            ["Coordination", "Il neigeait, donc le match a été annulé.", "Lien explicite (conséquence), deux idées de même importance."],
-            ["Subordination", "Le match a été annulé parce qu'il neigeait.", "Lien explicite (cause) ; une idée principale et une idée secondaire."]
-          ] },
-          { "type": "callout", "kind": "methode", "title": "Réponse type au brevet", "text": "« Cette phrase est complexe : elle contient trois propositions, car elle compte trois verbes conjugués (…). Les deux premières sont juxtaposées par une virgule ; la dernière est coordonnée par la conjonction « et ». »" },
-          { "type": "callout", "kind": "attention", "title": "Pièges à éviter", "text": "✗ Compter un infinitif ou un participe comme un verbe conjugué.\n✗ Compter deux verbes dans un temps composé (« a sonné » = un seul verbe).\n✗ Croire que « car » subordonne : c'est une conjonction de coordination.\n✗ Croire que « et » relie toujours deux propositions : il peut relier deux noms ou deux adjectifs." }
+          {
+            "type": "heading",
+            "text": "Analyser une phrase complexe en 4 étapes"
+          },
+          {
+            "type": "list",
+            "ordered": true,
+            "items": [
+              "Je repère les verbes conjugués : leur nombre donne le nombre de propositions.",
+              "Je délimite chaque proposition entre crochets [ ].",
+              "Je cherche ce qui les relie : ponctuation seule, conjonction de coordination ou adverbe de liaison, mot subordonnant.",
+              "Je nomme chaque proposition (indépendante, principale, subordonnée) et le lien (juxtaposée, coordonnée, subordonnée)."
+            ]
+          },
+          {
+            "type": "table",
+            "columns": [
+              "Phrase",
+              "Analyse"
+            ],
+            "rows": [
+              [
+                "[Le réveil a sonné], [Hugo s'est levé] [et il a ouvert les volets].",
+                "Trois propositions indépendantes : les deux premières sont juxtaposées (virgule), les deux dernières coordonnées par « et »."
+              ],
+              [
+                "[La nuit tombait], [mais Elsa continuait de marcher] [parce qu'elle voulait atteindre le refuge].",
+                "Trois propositions : « La nuit tombait » (indépendante) est coordonnée par « mais » à « Elsa continuait de marcher », qui est la principale de la subordonnée « parce qu'elle voulait atteindre le refuge »."
+              ]
+            ]
+          },
+          {
+            "type": "heading",
+            "text": "Une même idée, trois constructions"
+          },
+          {
+            "type": "table",
+            "columns": [
+              "Construction",
+              "Exemple",
+              "Effet"
+            ],
+            "rows": [
+              [
+                "Juxtaposition",
+                "Il neigeait : le match a été annulé.",
+                "Lien implicite, style rapide et sec."
+              ],
+              [
+                "Coordination",
+                "Il neigeait, donc le match a été annulé.",
+                "Lien explicite (conséquence), deux idées de même importance."
+              ],
+              [
+                "Subordination",
+                "Le match a été annulé parce qu'il neigeait.",
+                "Lien explicite (cause) ; une idée principale et une idée secondaire."
+              ]
+            ]
+          },
+          {
+            "type": "figure",
+            "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 600 390\" width=\"600\" height=\"390\"><rect width=\"600\" height=\"390\" fill=\"#ffffff\"/><defs><marker id=\"tg002-b\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"8\" markerHeight=\"8\" orient=\"auto\"><path d=\"M0,0 L10,5 L0,10 z\" fill=\"#1E36A8\"/></marker><marker id=\"tg002-o\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"8\" markerHeight=\"8\" orient=\"auto\"><path d=\"M0,0 L10,5 L0,10 z\" fill=\"#9A3412\"/></marker><marker id=\"tg002-g\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"8\" markerHeight=\"8\" orient=\"auto\"><path d=\"M0,0 L10,5 L0,10 z\" fill=\"#475467\"/></marker></defs><text x=\"24\" y=\"26\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"15\" font-weight=\"bold\" fill=\"#101828\" text-anchor=\"start\"><tspan x=\"24\" dy=\"0\">Juxtaposition : deux propositions au même niveau</tspan></text><rect x=\"24\" y=\"38\" width=\"101\" height=\"34\" rx=\"8\" fill=\"#EEF2FF\" stroke=\"#1E36A8\" stroke-width=\"1.5\"/><text x=\"74.5\" y=\"60.76\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"16\" font-weight=\"normal\" fill=\"#101828\" text-anchor=\"middle\"><tspan x=\"74.5\" dy=\"0\">Il neigeait</tspan></text><text x=\"74.5\" y=\"90\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"13\" font-weight=\"normal\" fill=\"#1E36A8\" text-anchor=\"middle\"><tspan x=\"74.5\" dy=\"0\">indépendante</tspan></text><rect x=\"165\" y=\"38\" width=\"26\" height=\"34\" rx=\"8\" fill=\"#F2F4F7\" stroke=\"#475467\" stroke-width=\"1.5\"/><text x=\"178.0\" y=\"60.76\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"16\" font-weight=\"normal\" fill=\"#101828\" text-anchor=\"middle\"><tspan x=\"178.0\" dy=\"0\">:</tspan></text><text x=\"178.0\" y=\"90\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"13\" font-weight=\"normal\" fill=\"#475467\" text-anchor=\"middle\"><tspan x=\"178.0\" dy=\"0\">ponctuation</tspan></text><rect x=\"231\" y=\"38\" width=\"182\" height=\"34\" rx=\"8\" fill=\"#EEF2FF\" stroke=\"#1E36A8\" stroke-width=\"1.5\"/><text x=\"322.0\" y=\"60.76\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"16\" font-weight=\"normal\" fill=\"#101828\" text-anchor=\"middle\"><tspan x=\"322.0\" dy=\"0\">le match a été annulé</tspan></text><text x=\"322.0\" y=\"90\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"13\" font-weight=\"normal\" fill=\"#1E36A8\" text-anchor=\"middle\"><tspan x=\"322.0\" dy=\"0\">indépendante</tspan></text><text x=\"24\" y=\"136\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"15\" font-weight=\"bold\" fill=\"#101828\" text-anchor=\"start\"><tspan x=\"24\" dy=\"0\">Coordination : deux propositions au même niveau</tspan></text><rect x=\"24\" y=\"148\" width=\"106\" height=\"34\" rx=\"8\" fill=\"#EEF2FF\" stroke=\"#1E36A8\" stroke-width=\"1.5\"/><text x=\"77.0\" y=\"170.76\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"16\" font-weight=\"normal\" fill=\"#101828\" text-anchor=\"middle\"><tspan x=\"77.0\" dy=\"0\">Il neigeait,</tspan></text><text x=\"77.0\" y=\"200\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"13\" font-weight=\"normal\" fill=\"#1E36A8\" text-anchor=\"middle\"><tspan x=\"77.0\" dy=\"0\">indépendante</tspan></text><rect x=\"174\" y=\"148\" width=\"58\" height=\"34\" rx=\"8\" fill=\"#F2F4F7\" stroke=\"#475467\" stroke-width=\"1.5\"/><text x=\"203.0\" y=\"170.76\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"16\" font-weight=\"normal\" fill=\"#101828\" text-anchor=\"middle\"><tspan x=\"203.0\" dy=\"0\">donc</tspan></text><text x=\"203.0\" y=\"200\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"13\" font-weight=\"normal\" fill=\"#475467\" text-anchor=\"middle\"><tspan x=\"203.0\" dy=\"0\">conjonction</tspan><tspan x=\"203.0\" dy=\"16\">de coordination</tspan></text><rect x=\"276\" y=\"148\" width=\"182\" height=\"34\" rx=\"8\" fill=\"#EEF2FF\" stroke=\"#1E36A8\" stroke-width=\"1.5\"/><text x=\"367.0\" y=\"170.76\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"16\" font-weight=\"normal\" fill=\"#101828\" text-anchor=\"middle\"><tspan x=\"367.0\" dy=\"0\">le match a été annulé</tspan></text><text x=\"367.0\" y=\"200\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"13\" font-weight=\"normal\" fill=\"#1E36A8\" text-anchor=\"middle\"><tspan x=\"367.0\" dy=\"0\">indépendante</tspan></text><text x=\"24\" y=\"246\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"15\" font-weight=\"bold\" fill=\"#101828\" text-anchor=\"start\"><tspan x=\"24\" dy=\"0\">Subordination : une proposition dépend de l'autre</tspan></text><rect x=\"24\" y=\"258\" width=\"188\" height=\"34\" rx=\"8\" fill=\"#EEF2FF\" stroke=\"#1E36A8\" stroke-width=\"1.5\"/><text x=\"118.0\" y=\"280.76\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"16\" font-weight=\"normal\" fill=\"#101828\" text-anchor=\"middle\"><tspan x=\"118.0\" dy=\"0\">Le match a été annulé</tspan></text><text x=\"118.0\" y=\"312\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"13\" font-weight=\"normal\" fill=\"#1E36A8\" text-anchor=\"middle\"><tspan x=\"118.0\" dy=\"0\">principale</tspan></text><rect x=\"272\" y=\"318\" width=\"163\" height=\"34\" rx=\"8\" fill=\"#FEF0E6\" stroke=\"#9A3412\" stroke-width=\"1.5\"/><text x=\"353.5\" y=\"340.76\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"16\" font-weight=\"normal\" fill=\"#101828\" text-anchor=\"middle\"><tspan x=\"353.5\" dy=\"0\">parce qu'il neigeait</tspan></text><text x=\"353.5\" y=\"372\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"13\" font-weight=\"normal\" fill=\"#9A3412\" text-anchor=\"middle\"><tspan x=\"353.5\" dy=\"0\">subordonnée</tspan></text><path d=\"M272 335 C242 335, 222 300, 216 282\" fill=\"none\" stroke=\"#9A3412\" stroke-width=\"2.5\" marker-end=\"url(#tg002-o)\"/><text x=\"262\" y=\"296\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"13\" font-weight=\"normal\" fill=\"#9A3412\" text-anchor=\"start\"><tspan x=\"262\" dy=\"0\">dépend de</tspan></text></svg>",
+            "alt": "Trois schémas pour la même idée. 1. Juxtaposition : « Il neigeait » et « le match a été annulé », deux propositions indépendantes, côte à côte au même niveau, séparées par la ponctuation (deux-points). 2. Coordination : « Il neigeait, » et « le match a été annulé », deux indépendantes au même niveau, reliées par la conjonction de coordination « donc ». 3. Subordination : « Le match a été annulé » est la principale ; en dessous, « parce qu'il neigeait » est la subordonnée, reliée à la principale par une flèche « dépend de ».",
+            "caption": "Juxtaposition et coordination : même niveau ; subordination : dépendance"
+          },
+          {
+            "type": "callout",
+            "kind": "methode",
+            "title": "Réponse type au brevet",
+            "text": "« Cette phrase est complexe : elle contient trois propositions, car elle compte trois verbes conjugués (…). Les deux premières sont juxtaposées par une virgule ; la dernière est coordonnée par la conjonction « et ». »"
+          },
+          {
+            "type": "callout",
+            "kind": "attention",
+            "title": "Pièges à éviter",
+            "text": "✗ Compter un infinitif ou un participe comme un verbe conjugué.\n✗ Compter deux verbes dans un temps composé (« a sonné » = un seul verbe).\n✗ Croire que « car » subordonne : c'est une conjonction de coordination.\n✗ Croire que « et » relie toujours deux propositions : il peut relier deux noms ou deux adjectifs."
+          }
         ],
-        "checkpoint": { "variants": [
-          { "prompt": "« Le match a été annulé parce qu'il neigeait » : quel lien les propositions entretiennent-elles ?", "options": ["Juxtaposition", "Coordination", "Subordination"], "answer": 2, "hint": "« Parce que » est-il une conjonction de coordination ?", "explanation": "« Parce que » est une locution conjonctive de subordination : « parce qu'il neigeait » est subordonnée à la principale." },
-          { "prompt": "Quelle est la première étape pour analyser une phrase complexe ?", "options": ["Chercher les conjonctions de coordination", "Repérer les verbes conjugués", "Mettre toute la phrase entre crochets"], "answer": 1, "hint": "Relis la liste « Analyser une phrase complexe en 4 étapes ».", "explanation": "On commence par les verbes conjugués : leur nombre donne le nombre de propositions." },
-          { "prompt": "Combien de propositions dans « La nuit tombait, mais Elsa continuait de marcher parce qu'elle voulait atteindre le refuge » ?", "options": ["2", "3", "5"], "answer": 1, "hint": "« Marcher » et « atteindre » sont à l'infinitif.", "explanation": "Trois verbes conjugués : tombait, continuait, voulait. Les infinitifs ne comptent pas." }
-        ] }
+        "checkpoint": {
+          "variants": [
+            {
+              "prompt": "« Le match a été annulé parce qu'il neigeait » : quel lien les propositions entretiennent-elles ?",
+              "options": [
+                "Juxtaposition",
+                "Coordination",
+                "Subordination"
+              ],
+              "answer": 2,
+              "hint": "« Parce que » est-il une conjonction de coordination ?",
+              "explanation": "« Parce que » est une locution conjonctive de subordination : « parce qu'il neigeait » est subordonnée à la principale."
+            },
+            {
+              "prompt": "Quelle est la première étape pour analyser une phrase complexe ?",
+              "options": [
+                "Chercher les conjonctions de coordination",
+                "Repérer les verbes conjugués",
+                "Mettre toute la phrase entre crochets"
+              ],
+              "answer": 1,
+              "hint": "Relis la liste « Analyser une phrase complexe en 4 étapes ».",
+              "explanation": "On commence par les verbes conjugués : leur nombre donne le nombre de propositions."
+            },
+            {
+              "prompt": "Combien de propositions dans « La nuit tombait, mais Elsa continuait de marcher parce qu'elle voulait atteindre le refuge » ?",
+              "options": [
+                "2",
+                "3",
+                "5"
+              ],
+              "answer": 1,
+              "hint": "« Marcher » et « atteindre » sont à l'infinitif.",
+              "explanation": "Trois verbes conjugués : tombait, continuait, voulait. Les infinitifs ne comptent pas."
+            }
+          ]
+        }
       }
     ],
     "memo": [
-      { "label": "Proposition", "text": "Groupe de mots organisé autour d'un verbe conjugué. Nombre de verbes conjugués = nombre de propositions." },
-      { "label": "Types de phrases", "text": "Non verbale (aucun verbe conjugué), simple (une proposition), complexe (au moins deux)." },
-      { "label": "Juxtaposition", "text": "Ponctuation seule : virgule, point-virgule, deux-points. Lien logique implicite." },
-      { "label": "Coordination", "text": "Mais, ou, et, donc, or, ni, car ; adverbes de liaison (puis, pourtant, cependant, alors…)." },
-      { "label": "Subordination", "text": "Mot subordonnant (pronom relatif, conjonction de subordination, mot interrogatif). La subordonnée dépend de la principale et ne peut pas former une phrase seule." },
-      { "label": "Pièges", "text": "« Car » coordonne ; « parce que » subordonne. Temps composé = un seul verbe. L'infinitif ne compte pas." }
+      {
+        "label": "Proposition",
+        "text": "Groupe de mots organisé autour d'un verbe conjugué. Nombre de verbes conjugués = nombre de propositions."
+      },
+      {
+        "label": "Types de phrases",
+        "text": "Non verbale (aucun verbe conjugué), simple (une proposition), complexe (au moins deux)."
+      },
+      {
+        "label": "Juxtaposition",
+        "text": "Ponctuation seule : virgule, point-virgule, deux-points. Lien logique implicite."
+      },
+      {
+        "label": "Coordination",
+        "text": "Mais, ou, et, donc, or, ni, car ; adverbes de liaison (puis, pourtant, cependant, alors…)."
+      },
+      {
+        "label": "Subordination",
+        "text": "Mot subordonnant (pronom relatif, conjonction de subordination, mot interrogatif). La subordonnée dépend de la principale et ne peut pas former une phrase seule."
+      },
+      {
+        "label": "Pièges",
+        "text": "« Car » coordonne ; « parce que » subordonne. Temps composé = un seul verbe. L'infinitif ne compte pas."
+      }
     ]
   },
   "exercises": {
@@ -148,46 +565,187 @@
     "pass_threshold": 8,
     "texts": [],
     "items": [
-      { "id": "ex1", "type": "numeric", "stars": 1, "lesson_part": 1, "skills": ["fr-proposition"], "cognitive": "appliquer",
+      {
+        "id": "ex1",
+        "type": "numeric",
+        "stars": 1,
+        "lesson_part": 1,
+        "skills": [
+          "fr-proposition"
+        ],
+        "cognitive": "appliquer",
         "prompt": "Combien de propositions contient cette phrase ? « Le soleil se couchait, les oiseaux se taisaient et le lac devenait immobile. »",
         "answer": 3,
-        "solution": "3 propositions : trois verbes conjugués (se couchait, se taisaient, devenait). [Le soleil se couchait], [les oiseaux se taisaient] [et le lac devenait immobile]." },
-      { "id": "ex2", "type": "qcm", "stars": 1, "lesson_part": 1, "skills": ["fr-phrase-simple-complexe"], "cognitive": "connaitre",
+        "solution": "3 propositions : trois verbes conjugués (se couchait, se taisaient, devenait). [Le soleil se couchait], [les oiseaux se taisaient] [et le lac devenait immobile]."
+      },
+      {
+        "id": "ex2",
+        "type": "qcm",
+        "stars": 1,
+        "lesson_part": 1,
+        "skills": [
+          "fr-phrase-simple-complexe"
+        ],
+        "cognitive": "connaitre",
         "prompt": "Laquelle de ces phrases est une phrase simple ?",
-        "options": ["Elle a ri quand il est tombé.", "Les voisins et leurs enfants ont repeint la clôture du jardin.", "Le chien aboie, le chat s'enfuit.", "Nous rentrons car il fait froid."], "answer": 1,
-        "solution": "« Les voisins et leurs enfants ont repeint la clôture du jardin » ne contient qu'un verbe conjugué (« ont repeint », temps composé) : c'est une phrase simple. « Et » relie deux groupes nominaux sujets." },
-      { "id": "ex3", "type": "qcm", "stars": 1, "lesson_part": 2, "skills": ["fr-juxtaposition"], "cognitive": "connaitre",
+        "options": [
+          "Elle a ri quand il est tombé.",
+          "Les voisins et leurs enfants ont repeint la clôture du jardin.",
+          "Le chien aboie, le chat s'enfuit.",
+          "Nous rentrons car il fait froid."
+        ],
+        "answer": 1,
+        "solution": "« Les voisins et leurs enfants ont repeint la clôture du jardin » ne contient qu'un verbe conjugué (« ont repeint », temps composé) : c'est une phrase simple. « Et » relie deux groupes nominaux sujets."
+      },
+      {
+        "id": "ex3",
+        "type": "qcm",
+        "stars": 1,
+        "lesson_part": 2,
+        "skills": [
+          "fr-juxtaposition"
+        ],
+        "cognitive": "connaitre",
         "prompt": "« Les lumières s'éteignirent : le spectacle commençait. » Comment ces deux propositions sont-elles reliées ?",
-        "options": ["Par juxtaposition", "Par coordination", "Par subordination"], "answer": 0,
-        "solution": "Par juxtaposition : seuls les deux-points séparent les deux propositions, sans mot de liaison." },
-      { "id": "ex4", "type": "short", "stars": 1, "lesson_part": 3, "skills": ["fr-coordination"], "cognitive": "connaitre",
+        "options": [
+          "Par juxtaposition",
+          "Par coordination",
+          "Par subordination"
+        ],
+        "answer": 0,
+        "solution": "Par juxtaposition : seuls les deux-points séparent les deux propositions, sans mot de liaison."
+      },
+      {
+        "id": "ex4",
+        "type": "short",
+        "stars": 1,
+        "lesson_part": 3,
+        "skills": [
+          "fr-coordination"
+        ],
+        "cognitive": "connaitre",
         "prompt": "Relève la conjonction de coordination : « Nous voulions pique-niquer au bord de la rivière, or le pont était fermé. »",
-        "answer": ["or", "« or »", "la conjonction or", "conjonction de coordination or", "la conjonction de coordination or", "or (conjonction de coordination)", "c'est or"],
-        "solution": "« or » : c'est une conjonction de coordination. Elle introduit un élément nouveau et décisif (le pont fermé empêche le pique-nique)." },
-      { "id": "ex5", "type": "qcm", "stars": 2, "lesson_part": 3, "skills": ["fr-coordination", "fr-subordination"], "cognitive": "analyser",
+        "answer": [
+          "or",
+          "« or »",
+          "la conjonction or",
+          "conjonction de coordination or",
+          "la conjonction de coordination or",
+          "or (conjonction de coordination)",
+          "c'est or"
+        ],
+        "solution": "« or » : c'est une conjonction de coordination. Elle introduit un élément nouveau et décisif (le pont fermé empêche le pique-nique)."
+      },
+      {
+        "id": "ex5",
+        "type": "qcm",
+        "stars": 2,
+        "lesson_part": 3,
+        "skills": [
+          "fr-coordination",
+          "fr-subordination"
+        ],
+        "cognitive": "analyser",
         "prompt": "« Je ne sortirai pas ce soir, car je dois réviser mon brevet blanc. » Comment les propositions sont-elles reliées ?",
-        "options": ["Par juxtaposition", "Par coordination", "Par subordination"], "answer": 1,
-        "solution": "Par coordination : « car » est une conjonction de coordination (mais, ou, et, donc, or, ni, car), même s'il exprime la cause comme « parce que »." },
-      { "id": "ex6", "type": "qcm", "stars": 2, "lesson_part": 4, "skills": ["fr-subordination"], "cognitive": "analyser",
+        "options": [
+          "Par juxtaposition",
+          "Par coordination",
+          "Par subordination"
+        ],
+        "answer": 1,
+        "solution": "Par coordination : « car » est une conjonction de coordination (mais, ou, et, donc, or, ni, car), même s'il exprime la cause comme « parce que »."
+      },
+      {
+        "id": "ex6",
+        "type": "qcm",
+        "stars": 2,
+        "lesson_part": 4,
+        "skills": [
+          "fr-subordination"
+        ],
+        "cognitive": "analyser",
         "prompt": "« Le vélo que mon frère a réparé roule de nouveau parfaitement. » Quelle est la proposition principale ?",
-        "options": ["Le vélo… roule de nouveau parfaitement", "que mon frère a réparé", "mon frère a réparé le vélo", "Le vélo que mon frère a réparé"], "answer": 0,
-        "solution": "La principale est « Le vélo… roule de nouveau parfaitement » : elle est interrompue par la subordonnée relative « que mon frère a réparé », qui ne peut pas former une phrase seule." },
-      { "id": "ex7", "type": "numeric", "stars": 2, "lesson_part": 1, "skills": ["fr-proposition", "fr-subordination"], "cognitive": "analyser",
+        "options": [
+          "Le vélo… roule de nouveau parfaitement",
+          "que mon frère a réparé",
+          "mon frère a réparé le vélo",
+          "Le vélo que mon frère a réparé"
+        ],
+        "answer": 0,
+        "solution": "La principale est « Le vélo… roule de nouveau parfaitement » : elle est interrompue par la subordonnée relative « que mon frère a réparé », qui ne peut pas former une phrase seule."
+      },
+      {
+        "id": "ex7",
+        "type": "numeric",
+        "stars": 2,
+        "lesson_part": 1,
+        "skills": [
+          "fr-proposition",
+          "fr-subordination"
+        ],
+        "cognitive": "analyser",
         "prompt": "Combien de propositions contient cette phrase ? « Quand la cloche a sonné, les élèves qui attendaient dans la cour sont entrés en silence. »",
         "answer": 3,
-        "solution": "3 propositions : trois verbes conjugués (a sonné, attendaient, sont entrés). Principale : « les élèves… sont entrés en silence » ; subordonnées : « Quand la cloche a sonné » et « qui attendaient dans la cour »." },
-      { "id": "ex8", "type": "short", "stars": 2, "lesson_part": 4, "skills": ["fr-subordination"], "cognitive": "appliquer",
+        "solution": "3 propositions : trois verbes conjugués (a sonné, attendaient, sont entrés). Principale : « les élèves… sont entrés en silence » ; subordonnées : « Quand la cloche a sonné » et « qui attendaient dans la cour »."
+      },
+      {
+        "id": "ex8",
+        "type": "short",
+        "stars": 2,
+        "lesson_part": 4,
+        "skills": [
+          "fr-subordination"
+        ],
+        "cognitive": "appliquer",
         "prompt": "Relève le mot (ou la locution) subordonnant : « Mathis a raté le bus parce qu'il s'est réveillé tard. »",
-        "answer": ["parce que", "parce qu'", "parce qu", "« parce que »", "« parce qu' »", "la locution parce que", "locution conjonctive parce que", "la locution conjonctive parce que", "locution conjonctive de subordination parce que", "la locution conjonctive de subordination parce que", "conjonction de subordination parce que", "la conjonction de subordination parce que", "parce que (locution conjonctive de subordination)"],
-        "solution": "« parce que » (ici élidé en « parce qu' ») : c'est une locution conjonctive de subordination qui introduit la subordonnée « parce qu'il s'est réveillé tard »." },
-      { "id": "ex9", "type": "open", "stars": 3, "lesson_part": 5, "skills": ["fr-reecriture-liens", "fr-juxtaposition", "fr-coordination", "fr-subordination"], "cognitive": "rediger",
+        "answer": [
+          "parce que",
+          "parce qu'",
+          "parce qu",
+          "« parce que »",
+          "« parce qu' »",
+          "la locution parce que",
+          "locution conjonctive parce que",
+          "la locution conjonctive parce que",
+          "locution conjonctive de subordination parce que",
+          "la locution conjonctive de subordination parce que",
+          "conjonction de subordination parce que",
+          "la conjonction de subordination parce que",
+          "parce que (locution conjonctive de subordination)"
+        ],
+        "solution": "« parce que » (ici élidé en « parce qu' ») : c'est une locution conjonctive de subordination qui introduit la subordonnée « parce qu'il s'est réveillé tard »."
+      },
+      {
+        "id": "ex9",
+        "type": "open",
+        "stars": 3,
+        "lesson_part": 5,
+        "skills": [
+          "fr-reecriture-liens",
+          "fr-juxtaposition",
+          "fr-coordination",
+          "fr-subordination"
+        ],
+        "cognitive": "rediger",
         "prompt": "Relie les deux phrases simples « Il neigeait. Le match a été annulé. » de trois façons : par juxtaposition, par coordination, puis par subordination. Indique pour chaque phrase obtenue le mot ou le signe qui relie les propositions.",
         "solution": "Juxtaposition : « Il neigeait : le match a été annulé. » (deux-points).\nCoordination : « Il neigeait, donc le match a été annulé. » (conjonction de coordination « donc » ; « alors » ou « c'est pourquoi » acceptés).\nSubordination : « Le match a été annulé parce qu'il neigeait. » ou « Comme il neigeait, le match a été annulé. » (« parce que », « comme », « puisque »).",
-        "rubric": "1 point par construction correcte avec le bon outil nommé (0,5 si la phrase est juste mais l'outil n'est pas nommé). Le sens (la neige cause l'annulation) doit être respecté." },
-      { "id": "ex10", "type": "open", "stars": 3, "lesson_part": 5, "skills": ["fr-proposition", "fr-coordination", "fr-subordination"], "cognitive": "analyser",
+        "rubric": "1 point par construction correcte avec le bon outil nommé (0,5 si la phrase est juste mais l'outil n'est pas nommé). Le sens (la neige cause l'annulation) doit être respecté."
+      },
+      {
+        "id": "ex10",
+        "type": "open",
+        "stars": 3,
+        "lesson_part": 5,
+        "skills": [
+          "fr-proposition",
+          "fr-coordination",
+          "fr-subordination"
+        ],
+        "cognitive": "analyser",
         "prompt": "« La nuit tombait, mais Elsa continuait de marcher parce qu'elle voulait atteindre le refuge. »\nDélimite les propositions entre crochets, puis nomme chacune (indépendante, principale, subordonnée) et explique comment elles sont reliées.",
         "solution": "[La nuit tombait], [mais Elsa continuait de marcher] [parce qu'elle voulait atteindre le refuge].\nTrois verbes conjugués : tombait, continuait, voulait (« marcher » et « atteindre » sont des infinitifs).\n« La nuit tombait » : proposition indépendante, coordonnée par « mais » à la suivante.\n« mais Elsa continuait de marcher » : proposition principale (coordonnée à la première).\n« parce qu'elle voulait atteindre le refuge » : proposition subordonnée (introduite par « parce que »), qui dépend de la principale.",
-        "rubric": "1 : délimitation correcte en trois propositions. 1 : nature de chaque proposition (indépendante, principale, subordonnée). 1 : liens nommés (coordination par « mais », subordination par « parce que »)." }
+        "rubric": "1 : délimitation correcte en trois propositions. 1 : nature de chaque proposition (indépendante, principale, subordonnée). 1 : liens nommés (coordination par « mais », subordination par « parce que »)."
+      }
     ]
   },
   "evaluation": {
@@ -198,143 +756,472 @@
       {
         "texts": [],
         "sections": [
-          { "label": "A · Je connais mon cours (4 points)", "questions": [
-            { "id": "q1", "type": "qcm", "points": 1, "lesson_part": 1, "skills": ["fr-proposition"], "cognitive": "connaitre",
-              "prompt": "Qu'est-ce qu'une proposition ?",
-              "options": ["Un groupe de mots organisé autour d'un verbe conjugué", "Une phrase qui commence par une majuscule", "Un groupe de mots sans verbe", "Un mot de liaison entre deux phrases"], "answer": 0,
-              "solution": "Une proposition est un groupe de mots organisé autour d'un verbe conjugué.",
-              "rubric": "1 point pour la bonne réponse, 0 sinon." },
-            { "id": "q2", "type": "qcm", "points": 1, "lesson_part": 3, "skills": ["fr-coordination"], "cognitive": "connaitre",
-              "prompt": "Quelle liste ne contient que des conjonctions de coordination ?",
-              "options": ["mais, ou, et, donc, or, ni, car", "mais, parce que, et, donc, quand", "et, puis, si, car, que", "or, ni, lorsque, ou, mais"], "answer": 0,
-              "solution": "Les sept conjonctions de coordination : mais, ou, et, donc, or, ni, car. « Parce que », « quand », « si », « que » et « lorsque » sont des subordonnants.",
-              "rubric": "1 point pour la bonne réponse, 0 sinon." },
-            { "id": "q3", "type": "open", "points": 2, "lesson_part": 4, "skills": ["fr-coordination", "fr-subordination"], "cognitive": "connaitre",
-              "prompt": "Explique la différence entre deux propositions coordonnées et une proposition subordonnée à une principale. Donne un exemple de chaque.",
-              "solution": "Des propositions coordonnées sont reliées par une conjonction de coordination (ou un adverbe de liaison) ; chacune pourrait exister seule. Ex. : « Il pleuvait, mais nous sommes sortis. » Une subordonnée est introduite par un mot subordonnant et dépend de la principale ; elle ne peut pas former une phrase seule. Ex. : « Nous sommes restés à l'intérieur parce qu'il pleuvait. »",
-              "rubric": "0,5 : coordination = mot de coordination, propositions autonomes. 0,5 : subordination = mot subordonnant, dépendance envers la principale. 0,5 : exemple correct de coordination. 0,5 : exemple correct de subordination." }
-          ] },
-          { "label": "B · J'analyse des phrases (11 points)", "questions": [
-            { "id": "q4", "type": "numeric", "points": 1, "lesson_part": 1, "skills": ["fr-proposition"], "cognitive": "appliquer",
-              "prompt": "Combien de propositions contient la phrase : « Le vent soufflait si fort que les volets claquaient » ?",
-              "answer": 2,
-              "solution": "2 propositions : deux verbes conjugués (soufflait, claquaient).",
-              "rubric": "1 point pour 2." },
-            { "id": "q5", "type": "numeric", "points": 1, "lesson_part": 1, "skills": ["fr-proposition", "fr-phrase-simple-complexe"], "cognitive": "appliquer",
-              "prompt": "Combien de propositions contient la phrase : « Après le dîner, nous avons regardé un vieux film en noir et blanc » ?",
-              "answer": 1,
-              "solution": "1 proposition : un seul verbe conjugué (« avons regardé », temps composé). C'est une phrase simple ; « et » relie deux adjectifs (noir, blanc).",
-              "rubric": "1 point pour 1." },
-            { "id": "q6", "type": "qcm", "points": 1, "lesson_part": 3, "skills": ["fr-coordination"], "cognitive": "appliquer",
-              "prompt": "« Tu viens avec nous ou tu restes ici ? » Comment les propositions sont-elles reliées ?",
-              "options": ["Par juxtaposition", "Par coordination", "Par subordination"], "answer": 1,
-              "solution": "Par coordination, grâce à la conjonction « ou » (alternative).",
-              "rubric": "1 point pour la bonne réponse, 0 sinon." },
-            { "id": "q7", "type": "qcm", "points": 1, "lesson_part": 2, "skills": ["fr-juxtaposition"], "cognitive": "appliquer",
-              "prompt": "« Les spectateurs se levèrent, les applaudissements éclatèrent. » Comment les propositions sont-elles reliées ?",
-              "options": ["Par juxtaposition", "Par coordination", "Par subordination"], "answer": 0,
-              "solution": "Par juxtaposition : une simple virgule sépare les deux propositions, sans mot de liaison.",
-              "rubric": "1 point pour la bonne réponse, 0 sinon." },
-            { "id": "q8", "type": "qcm", "points": 1, "lesson_part": 4, "skills": ["fr-subordination"], "cognitive": "appliquer",
-              "prompt": "« Je t'appellerai dès que j'arriverai à la gare. » Comment les propositions sont-elles reliées ?",
-              "options": ["Par juxtaposition", "Par coordination", "Par subordination"], "answer": 2,
-              "solution": "Par subordination : « dès que » introduit une subordonnée qui dépend de la principale « Je t'appellerai ».",
-              "rubric": "1 point pour la bonne réponse, 0 sinon." },
-            { "id": "q9", "type": "short", "points": 1, "lesson_part": 4, "skills": ["fr-subordination"], "cognitive": "appliquer",
-              "prompt": "Recopie la proposition subordonnée : « Le livre dont tu m'as parlé est introuvable. »",
-              "answer": ["dont tu m'as parlé", "dont tu m as parle", "« dont tu m'as parlé »"],
-              "solution": "« dont tu m'as parlé » : subordonnée (relative) introduite par le pronom relatif « dont » ; la principale est « Le livre… est introuvable ».",
-              "rubric": "1 point si la subordonnée est recopiée exactement (avec « dont »)." },
-            { "id": "q10", "type": "open", "points": 3, "lesson_part": 5, "skills": ["fr-proposition", "fr-juxtaposition", "fr-coordination"], "cognitive": "analyser",
-              "prompt": "« Le réveil a sonné, Hugo s'est levé et il a ouvert les volets. »\nDélimite les propositions entre crochets, donne leur nature et explique comment elles sont reliées.",
-              "solution": "[Le réveil a sonné], [Hugo s'est levé] [et il a ouvert les volets]. Trois verbes conjugués (a sonné, s'est levé, a ouvert) : trois propositions indépendantes. Les deux premières sont juxtaposées (virgule) ; la troisième est coordonnée à la deuxième par la conjonction « et ».",
-              "rubric": "1 : délimitation correcte en trois propositions. 1 : nature (trois indépendantes). 1 : liens (0,5 juxtaposition par la virgule, 0,5 coordination par « et »)." },
-            { "id": "q11", "type": "open", "points": 2, "lesson_part": 5, "skills": ["fr-reecriture-liens", "fr-subordination", "fr-coordination"], "cognitive": "analyser",
-              "prompt": "« Le spectacle a été annulé, car l'artiste était malade. » Réécris cette phrase en remplaçant la coordination par une subordination qui garde le même sens. Explique ce qui a changé dans la construction.",
-              "solution": "« Le spectacle a été annulé parce que l'artiste était malade. » (ou « Comme l'artiste était malade, le spectacle a été annulé. ») On passe de la coordination (« car », conjonction de coordination) à la subordination (« parce que », locution conjonctive de subordination) : « l'artiste était malade » devient une subordonnée de cause qui dépend de la principale.",
-              "rubric": "1 : réécriture correcte avec un subordonnant de cause (parce que, comme, puisque). 1 : explication (coordination → subordination, la proposition devient dépendante)." }
-          ] },
-          { "label": "C · Je rédige (5 points)", "questions": [
-            { "id": "q12", "type": "open", "points": 2, "lesson_part": 5, "skills": ["fr-reecriture-liens"], "cognitive": "rediger",
-              "prompt": "Relie les phrases « Le bateau quitta le port. La tempête se levait. » de deux façons : a) par une coordination qui exprime l'opposition ; b) par une subordination qui exprime le temps.",
-              "solution": "a) « Le bateau quitta le port, mais la tempête se levait. » (ou « pourtant », « cependant »).\nb) « Le bateau quitta le port au moment où la tempête se levait. » (ou « quand », « lorsque », « pendant que », « tandis que » ; « alors que » est accepté ici au sens temporel).",
-              "rubric": "1 par phrase correcte : 0,5 pour l'outil adapté au sens demandé, 0,5 pour la correction de la phrase." },
-            { "id": "q13", "type": "open", "points": 3, "lesson_part": 5, "skills": ["fr-reecriture-liens", "fr-coordination", "fr-subordination"], "cognitive": "rediger",
-              "prompt": "Écris une phrase complexe sur le thème de la rentrée, qui contienne exactement trois propositions, avec au moins une coordination et une subordination. Délimite ensuite les propositions entre crochets.",
-              "solution": "Exemple : [Le premier jour, je cherchais ma salle] [et la sonnerie a retenti] [avant que je la trouve]. Trois verbes conjugués : cherchais, a retenti, trouve. Coordination par « et » ; subordination par « avant que ».",
-              "rubric": "1 : exactement trois verbes conjugués, phrase correcte et sur le thème. 0,5 : présence d'une coordination. 0,5 : présence d'une subordination. 1 : crochets bien placés." }
-          ] }
+          {
+            "label": "A · Je connais mon cours (4 points)",
+            "questions": [
+              {
+                "id": "q1",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 1,
+                "skills": [
+                  "fr-proposition"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Qu'est-ce qu'une proposition ?",
+                "options": [
+                  "Un groupe de mots organisé autour d'un verbe conjugué",
+                  "Une phrase qui commence par une majuscule",
+                  "Un groupe de mots sans verbe",
+                  "Un mot de liaison entre deux phrases"
+                ],
+                "answer": 0,
+                "solution": "Une proposition est un groupe de mots organisé autour d'un verbe conjugué.",
+                "rubric": "1 point pour la bonne réponse, 0 sinon."
+              },
+              {
+                "id": "q2",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 3,
+                "skills": [
+                  "fr-coordination"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Quelle liste ne contient que des conjonctions de coordination ?",
+                "options": [
+                  "mais, ou, et, donc, or, ni, car",
+                  "mais, parce que, et, donc, quand",
+                  "et, puis, si, car, que",
+                  "or, ni, lorsque, ou, mais"
+                ],
+                "answer": 0,
+                "solution": "Les sept conjonctions de coordination : mais, ou, et, donc, or, ni, car. « Parce que », « quand », « si », « que » et « lorsque » sont des subordonnants.",
+                "rubric": "1 point pour la bonne réponse, 0 sinon."
+              },
+              {
+                "id": "q3",
+                "type": "open",
+                "points": 2,
+                "lesson_part": 4,
+                "skills": [
+                  "fr-coordination",
+                  "fr-subordination"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Explique la différence entre deux propositions coordonnées et une proposition subordonnée à une principale. Donne un exemple de chaque.",
+                "solution": "Des propositions coordonnées sont reliées par une conjonction de coordination (ou un adverbe de liaison) ; chacune pourrait exister seule. Ex. : « Il pleuvait, mais nous sommes sortis. » Une subordonnée est introduite par un mot subordonnant et dépend de la principale ; elle ne peut pas former une phrase seule. Ex. : « Nous sommes restés à l'intérieur parce qu'il pleuvait. »",
+                "rubric": "0,5 : coordination = mot de coordination, propositions autonomes. 0,5 : subordination = mot subordonnant, dépendance envers la principale. 0,5 : exemple correct de coordination. 0,5 : exemple correct de subordination."
+              }
+            ]
+          },
+          {
+            "label": "B · J'analyse des phrases (11 points)",
+            "questions": [
+              {
+                "id": "q4",
+                "type": "numeric",
+                "points": 1,
+                "lesson_part": 1,
+                "skills": [
+                  "fr-proposition"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Combien de propositions contient la phrase : « Le vent soufflait si fort que les volets claquaient » ?",
+                "answer": 2,
+                "solution": "2 propositions : deux verbes conjugués (soufflait, claquaient).",
+                "rubric": "1 point pour 2."
+              },
+              {
+                "id": "q5",
+                "type": "numeric",
+                "points": 1,
+                "lesson_part": 1,
+                "skills": [
+                  "fr-proposition",
+                  "fr-phrase-simple-complexe"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Combien de propositions contient la phrase : « Après le dîner, nous avons regardé un vieux film en noir et blanc » ?",
+                "answer": 1,
+                "solution": "1 proposition : un seul verbe conjugué (« avons regardé », temps composé). C'est une phrase simple ; « et » relie deux adjectifs (noir, blanc).",
+                "rubric": "1 point pour 1."
+              },
+              {
+                "id": "q6",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 3,
+                "skills": [
+                  "fr-coordination"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "« Tu viens avec nous ou tu restes ici ? » Comment les propositions sont-elles reliées ?",
+                "options": [
+                  "Par juxtaposition",
+                  "Par coordination",
+                  "Par subordination"
+                ],
+                "answer": 1,
+                "solution": "Par coordination, grâce à la conjonction « ou » (alternative).",
+                "rubric": "1 point pour la bonne réponse, 0 sinon."
+              },
+              {
+                "id": "q7",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 2,
+                "skills": [
+                  "fr-juxtaposition"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "« Les spectateurs se levèrent, les applaudissements éclatèrent. » Comment les propositions sont-elles reliées ?",
+                "options": [
+                  "Par juxtaposition",
+                  "Par coordination",
+                  "Par subordination"
+                ],
+                "answer": 0,
+                "solution": "Par juxtaposition : une simple virgule sépare les deux propositions, sans mot de liaison.",
+                "rubric": "1 point pour la bonne réponse, 0 sinon."
+              },
+              {
+                "id": "q8",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 4,
+                "skills": [
+                  "fr-subordination"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "« Je t'appellerai dès que j'arriverai à la gare. » Comment les propositions sont-elles reliées ?",
+                "options": [
+                  "Par juxtaposition",
+                  "Par coordination",
+                  "Par subordination"
+                ],
+                "answer": 2,
+                "solution": "Par subordination : « dès que » introduit une subordonnée qui dépend de la principale « Je t'appellerai ».",
+                "rubric": "1 point pour la bonne réponse, 0 sinon."
+              },
+              {
+                "id": "q9",
+                "type": "short",
+                "points": 1,
+                "lesson_part": 4,
+                "skills": [
+                  "fr-subordination"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Recopie la proposition subordonnée : « Le livre dont tu m'as parlé est introuvable. »",
+                "answer": [
+                  "dont tu m'as parlé",
+                  "dont tu m as parle",
+                  "« dont tu m'as parlé »"
+                ],
+                "solution": "« dont tu m'as parlé » : subordonnée (relative) introduite par le pronom relatif « dont » ; la principale est « Le livre… est introuvable ».",
+                "rubric": "1 point si la subordonnée est recopiée exactement (avec « dont »)."
+              },
+              {
+                "id": "q10",
+                "type": "open",
+                "points": 3,
+                "lesson_part": 5,
+                "skills": [
+                  "fr-proposition",
+                  "fr-juxtaposition",
+                  "fr-coordination"
+                ],
+                "cognitive": "analyser",
+                "prompt": "« Le réveil a sonné, Hugo s'est levé et il a ouvert les volets. »\nDélimite les propositions entre crochets, donne leur nature et explique comment elles sont reliées.",
+                "solution": "[Le réveil a sonné], [Hugo s'est levé] [et il a ouvert les volets]. Trois verbes conjugués (a sonné, s'est levé, a ouvert) : trois propositions indépendantes. Les deux premières sont juxtaposées (virgule) ; la troisième est coordonnée à la deuxième par la conjonction « et ».",
+                "rubric": "1 : délimitation correcte en trois propositions. 1 : nature (trois indépendantes). 1 : liens (0,5 juxtaposition par la virgule, 0,5 coordination par « et »)."
+              },
+              {
+                "id": "q11",
+                "type": "open",
+                "points": 2,
+                "lesson_part": 5,
+                "skills": [
+                  "fr-reecriture-liens",
+                  "fr-subordination",
+                  "fr-coordination"
+                ],
+                "cognitive": "analyser",
+                "prompt": "« Le spectacle a été annulé, car l'artiste était malade. » Réécris cette phrase en remplaçant la coordination par une subordination qui garde le même sens. Explique ce qui a changé dans la construction.",
+                "solution": "« Le spectacle a été annulé parce que l'artiste était malade. » (ou « Comme l'artiste était malade, le spectacle a été annulé. ») On passe de la coordination (« car », conjonction de coordination) à la subordination (« parce que », locution conjonctive de subordination) : « l'artiste était malade » devient une subordonnée de cause qui dépend de la principale.",
+                "rubric": "1 : réécriture correcte avec un subordonnant de cause (parce que, comme, puisque). 1 : explication (coordination → subordination, la proposition devient dépendante)."
+              }
+            ]
+          },
+          {
+            "label": "C · Je rédige (5 points)",
+            "questions": [
+              {
+                "id": "q12",
+                "type": "open",
+                "points": 2,
+                "lesson_part": 5,
+                "skills": [
+                  "fr-reecriture-liens"
+                ],
+                "cognitive": "rediger",
+                "prompt": "Relie les phrases « Le bateau quitta le port. La tempête se levait. » de deux façons : a) par une coordination qui exprime l'opposition ; b) par une subordination qui exprime le temps.",
+                "solution": "a) « Le bateau quitta le port, mais la tempête se levait. » (ou « pourtant », « cependant »).\nb) « Le bateau quitta le port au moment où la tempête se levait. » (ou « quand », « lorsque », « pendant que », « tandis que » ; « alors que » est accepté ici au sens temporel).",
+                "rubric": "1 par phrase correcte : 0,5 pour l'outil adapté au sens demandé, 0,5 pour la correction de la phrase."
+              },
+              {
+                "id": "q13",
+                "type": "open",
+                "points": 3,
+                "lesson_part": 5,
+                "skills": [
+                  "fr-reecriture-liens",
+                  "fr-coordination",
+                  "fr-subordination"
+                ],
+                "cognitive": "rediger",
+                "prompt": "Écris une phrase complexe sur le thème de la rentrée, qui contienne exactement trois propositions, avec au moins une coordination et une subordination. Délimite ensuite les propositions entre crochets.",
+                "solution": "Exemple : [Le premier jour, je cherchais ma salle] [et la sonnerie a retenti] [avant que je la trouve]. Trois verbes conjugués : cherchais, a retenti, trouve. Coordination par « et » ; subordination par « avant que ».",
+                "rubric": "1 : exactement trois verbes conjugués, phrase correcte et sur le thème. 0,5 : présence d'une coordination. 0,5 : présence d'une subordination. 1 : crochets bien placés."
+              }
+            ]
+          }
         ]
       },
       {
         "texts": [],
         "sections": [
-          { "label": "A · Je connais mon cours (4 points)", "questions": [
-            { "id": "q1", "type": "qcm", "points": 1, "lesson_part": 1, "skills": ["fr-phrase-simple-complexe"], "cognitive": "connaitre",
-              "prompt": "Une phrase complexe contient…",
-              "options": ["une seule proposition", "au moins deux propositions", "aucun verbe conjugué", "toujours une proposition subordonnée"], "answer": 1,
-              "solution": "Une phrase complexe contient au moins deux propositions, donc au moins deux verbes conjugués (reliés par juxtaposition, coordination ou subordination).",
-              "rubric": "1 point pour la bonne réponse, 0 sinon." },
-            { "id": "q2", "type": "qcm", "points": 1, "lesson_part": 4, "skills": ["fr-subordination"], "cognitive": "connaitre",
-              "prompt": "Quelle liste ne contient que des mots subordonnants ?",
-              "options": ["qui, quand, parce que, si", "mais, quand, car, que", "et, ou, donc, or", "puis, ensuite, alors, ni"], "answer": 0,
-              "solution": "« Qui » (pronom relatif), « quand », « parce que », « si » (conjonctions de subordination) introduisent des subordonnées. « Mais », « car », « et », « ou », « donc », « or », « ni » coordonnent ; « puis », « ensuite », « alors » sont des adverbes de liaison.",
-              "rubric": "1 point pour la bonne réponse, 0 sinon." },
-            { "id": "q3", "type": "open", "points": 2, "lesson_part": 2, "skills": ["fr-juxtaposition"], "cognitive": "connaitre",
-              "prompt": "Explique ce qu'est la juxtaposition. Donne un exemple de deux propositions juxtaposées et précise le signe qui les sépare.",
-              "solution": "La juxtaposition consiste à placer des propositions côte à côte en les séparant seulement par un signe de ponctuation (virgule, point-virgule, deux-points), sans mot de liaison. Ex. : « Le public applaudit ; les acteurs saluent. » (point-virgule).",
-              "rubric": "1 : définition (ponctuation, aucun mot de liaison). 0,5 : exemple correct de deux propositions juxtaposées. 0,5 : signe de ponctuation nommé." }
-          ] },
-          { "label": "B · J'analyse des phrases (11 points)", "questions": [
-            { "id": "q4", "type": "numeric", "points": 1, "lesson_part": 1, "skills": ["fr-proposition"], "cognitive": "appliquer",
-              "prompt": "Combien de propositions contient la phrase : « Le chat que j'ai adopté dort toute la journée » ?",
-              "answer": 2,
-              "solution": "2 propositions : deux verbes conjugués (ai adopté, dort).",
-              "rubric": "1 point pour 2." },
-            { "id": "q5", "type": "numeric", "points": 1, "lesson_part": 1, "skills": ["fr-proposition", "fr-phrase-simple-complexe"], "cognitive": "appliquer",
-              "prompt": "Combien de propositions contient la phrase : « Sous la pluie fine, les promeneurs et leurs chiens pressaient le pas » ?",
-              "answer": 1,
-              "solution": "1 proposition : un seul verbe conjugué (« pressaient »). C'est une phrase simple ; « et » relie deux groupes nominaux sujets.",
-              "rubric": "1 point pour 1." },
-            { "id": "q6", "type": "qcm", "points": 1, "lesson_part": 3, "skills": ["fr-coordination"], "cognitive": "appliquer",
-              "prompt": "« Elle avait faim, donc elle ouvrit le placard. » Comment les propositions sont-elles reliées ?",
-              "options": ["Par juxtaposition", "Par coordination", "Par subordination"], "answer": 1,
-              "solution": "Par coordination, grâce à la conjonction « donc » (conséquence).",
-              "rubric": "1 point pour la bonne réponse, 0 sinon." },
-            { "id": "q7", "type": "qcm", "points": 1, "lesson_part": 2, "skills": ["fr-juxtaposition"], "cognitive": "appliquer",
-              "prompt": "« Le public applaudit ; les acteurs saluent. » Comment les propositions sont-elles reliées ?",
-              "options": ["Par juxtaposition", "Par coordination", "Par subordination"], "answer": 0,
-              "solution": "Par juxtaposition : un point-virgule sépare les deux propositions, sans mot de liaison.",
-              "rubric": "1 point pour la bonne réponse, 0 sinon." },
-            { "id": "q8", "type": "qcm", "points": 1, "lesson_part": 4, "skills": ["fr-subordination"], "cognitive": "appliquer",
-              "prompt": "« Je partirai quand tu seras prêt. » Comment les propositions sont-elles reliées ?",
-              "options": ["Par juxtaposition", "Par coordination", "Par subordination"], "answer": 2,
-              "solution": "Par subordination : « quand » introduit une subordonnée qui dépend de la principale « Je partirai ».",
-              "rubric": "1 point pour la bonne réponse, 0 sinon." },
-            { "id": "q9", "type": "short", "points": 1, "lesson_part": 4, "skills": ["fr-subordination"], "cognitive": "appliquer",
-              "prompt": "Recopie la proposition subordonnée : « Le village où j'ai grandi compte trois cents habitants. »",
-              "answer": ["où j'ai grandi", "ou j ai grandi", "« où j'ai grandi »"],
-              "solution": "« où j'ai grandi » : subordonnée (relative) introduite par le pronom relatif « où » ; la principale est « Le village… compte trois cents habitants ».",
-              "rubric": "1 point si la subordonnée est recopiée exactement (avec « où »)." },
-            { "id": "q10", "type": "open", "points": 3, "lesson_part": 5, "skills": ["fr-proposition", "fr-juxtaposition", "fr-coordination"], "cognitive": "analyser",
-              "prompt": "« La porte s'ouvrit, un courant d'air traversa la pièce et les bougies s'éteignirent. »\nDélimite les propositions entre crochets, donne leur nature et explique comment elles sont reliées.",
-              "solution": "[La porte s'ouvrit], [un courant d'air traversa la pièce] [et les bougies s'éteignirent]. Trois verbes conjugués (s'ouvrit, traversa, s'éteignirent) : trois propositions indépendantes. Les deux premières sont juxtaposées (virgule) ; la troisième est coordonnée à la deuxième par la conjonction « et ».",
-              "rubric": "1 : délimitation correcte en trois propositions. 1 : nature (trois indépendantes). 1 : liens (0,5 juxtaposition par la virgule, 0,5 coordination par « et »)." },
-            { "id": "q11", "type": "open", "points": 2, "lesson_part": 5, "skills": ["fr-reecriture-liens", "fr-subordination", "fr-coordination"], "cognitive": "analyser",
-              "prompt": "« Nous sommes restés à l'intérieur, car il pleuvait à verse. » Réécris cette phrase en remplaçant la coordination par une subordination qui garde le même sens. Explique ce qui a changé dans la construction.",
-              "solution": "« Nous sommes restés à l'intérieur parce qu'il pleuvait à verse. » (ou « Comme il pleuvait à verse, nous sommes restés à l'intérieur. ») On passe de la coordination (« car ») à la subordination (« parce que », « comme ») : « il pleuvait à verse » devient une subordonnée de cause qui dépend de la principale.",
-              "rubric": "1 : réécriture correcte avec un subordonnant de cause (parce que, comme, puisque). 1 : explication (coordination → subordination, la proposition devient dépendante)." }
-          ] },
-          { "label": "C · Je rédige (5 points)", "questions": [
-            { "id": "q12", "type": "open", "points": 2, "lesson_part": 5, "skills": ["fr-reecriture-liens"], "cognitive": "rediger",
-              "prompt": "Relie les phrases « Le randonneur était épuisé. Il s'arrêta au refuge. » de deux façons : a) par une coordination qui exprime la conséquence ; b) par une subordination qui exprime la cause.",
-              "solution": "a) « Le randonneur était épuisé, donc il s'arrêta au refuge. » (ou « alors », « c'est pourquoi »).\nb) « Le randonneur s'arrêta au refuge parce qu'il était épuisé. » (ou « Comme il était épuisé, le randonneur s'arrêta au refuge. »).",
-              "rubric": "1 par phrase correcte : 0,5 pour l'outil adapté au sens demandé, 0,5 pour la correction de la phrase." },
-            { "id": "q13", "type": "open", "points": 3, "lesson_part": 5, "skills": ["fr-reecriture-liens", "fr-coordination", "fr-subordination"], "cognitive": "rediger",
-              "prompt": "Écris une phrase complexe sur le thème d'un match ou d'une compétition, qui contienne exactement trois propositions, avec au moins une coordination et une subordination. Délimite ensuite les propositions entre crochets.",
-              "solution": "Exemple : [Notre équipe menait au score] [mais elle a perdu] [parce que l'arbitre a accordé un penalty à la dernière minute]. Trois verbes conjugués : menait, a perdu, a accordé. Coordination par « mais » ; subordination par « parce que ».",
-              "rubric": "1 : exactement trois verbes conjugués, phrase correcte et sur le thème. 0,5 : présence d'une coordination. 0,5 : présence d'une subordination. 1 : crochets bien placés." }
-          ] }
+          {
+            "label": "A · Je connais mon cours (4 points)",
+            "questions": [
+              {
+                "id": "q1",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 1,
+                "skills": [
+                  "fr-phrase-simple-complexe"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Une phrase complexe contient…",
+                "options": [
+                  "une seule proposition",
+                  "au moins deux propositions",
+                  "aucun verbe conjugué",
+                  "toujours une proposition subordonnée"
+                ],
+                "answer": 1,
+                "solution": "Une phrase complexe contient au moins deux propositions, donc au moins deux verbes conjugués (reliés par juxtaposition, coordination ou subordination).",
+                "rubric": "1 point pour la bonne réponse, 0 sinon."
+              },
+              {
+                "id": "q2",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 4,
+                "skills": [
+                  "fr-subordination"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Quelle liste ne contient que des mots subordonnants ?",
+                "options": [
+                  "qui, quand, parce que, si",
+                  "mais, quand, car, que",
+                  "et, ou, donc, or",
+                  "puis, ensuite, alors, ni"
+                ],
+                "answer": 0,
+                "solution": "« Qui » (pronom relatif), « quand », « parce que », « si » (conjonctions de subordination) introduisent des subordonnées. « Mais », « car », « et », « ou », « donc », « or », « ni » coordonnent ; « puis », « ensuite », « alors » sont des adverbes de liaison.",
+                "rubric": "1 point pour la bonne réponse, 0 sinon."
+              },
+              {
+                "id": "q3",
+                "type": "open",
+                "points": 2,
+                "lesson_part": 2,
+                "skills": [
+                  "fr-juxtaposition"
+                ],
+                "cognitive": "connaitre",
+                "prompt": "Explique ce qu'est la juxtaposition. Donne un exemple de deux propositions juxtaposées et précise le signe qui les sépare.",
+                "solution": "La juxtaposition consiste à placer des propositions côte à côte en les séparant seulement par un signe de ponctuation (virgule, point-virgule, deux-points), sans mot de liaison. Ex. : « Le public applaudit ; les acteurs saluent. » (point-virgule).",
+                "rubric": "1 : définition (ponctuation, aucun mot de liaison). 0,5 : exemple correct de deux propositions juxtaposées. 0,5 : signe de ponctuation nommé."
+              }
+            ]
+          },
+          {
+            "label": "B · J'analyse des phrases (11 points)",
+            "questions": [
+              {
+                "id": "q4",
+                "type": "numeric",
+                "points": 1,
+                "lesson_part": 1,
+                "skills": [
+                  "fr-proposition"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Combien de propositions contient la phrase : « Le chat que j'ai adopté dort toute la journée » ?",
+                "answer": 2,
+                "solution": "2 propositions : deux verbes conjugués (ai adopté, dort).",
+                "rubric": "1 point pour 2."
+              },
+              {
+                "id": "q5",
+                "type": "numeric",
+                "points": 1,
+                "lesson_part": 1,
+                "skills": [
+                  "fr-proposition",
+                  "fr-phrase-simple-complexe"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Combien de propositions contient la phrase : « Sous la pluie fine, les promeneurs et leurs chiens pressaient le pas » ?",
+                "answer": 1,
+                "solution": "1 proposition : un seul verbe conjugué (« pressaient »). C'est une phrase simple ; « et » relie deux groupes nominaux sujets.",
+                "rubric": "1 point pour 1."
+              },
+              {
+                "id": "q6",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 3,
+                "skills": [
+                  "fr-coordination"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "« Elle avait faim, donc elle ouvrit le placard. » Comment les propositions sont-elles reliées ?",
+                "options": [
+                  "Par juxtaposition",
+                  "Par coordination",
+                  "Par subordination"
+                ],
+                "answer": 1,
+                "solution": "Par coordination, grâce à la conjonction « donc » (conséquence).",
+                "rubric": "1 point pour la bonne réponse, 0 sinon."
+              },
+              {
+                "id": "q7",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 2,
+                "skills": [
+                  "fr-juxtaposition"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "« Le public applaudit ; les acteurs saluent. » Comment les propositions sont-elles reliées ?",
+                "options": [
+                  "Par juxtaposition",
+                  "Par coordination",
+                  "Par subordination"
+                ],
+                "answer": 0,
+                "solution": "Par juxtaposition : un point-virgule sépare les deux propositions, sans mot de liaison.",
+                "rubric": "1 point pour la bonne réponse, 0 sinon."
+              },
+              {
+                "id": "q8",
+                "type": "qcm",
+                "points": 1,
+                "lesson_part": 4,
+                "skills": [
+                  "fr-subordination"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "« Je partirai quand tu seras prêt. » Comment les propositions sont-elles reliées ?",
+                "options": [
+                  "Par juxtaposition",
+                  "Par coordination",
+                  "Par subordination"
+                ],
+                "answer": 2,
+                "solution": "Par subordination : « quand » introduit une subordonnée qui dépend de la principale « Je partirai ».",
+                "rubric": "1 point pour la bonne réponse, 0 sinon."
+              },
+              {
+                "id": "q9",
+                "type": "short",
+                "points": 1,
+                "lesson_part": 4,
+                "skills": [
+                  "fr-subordination"
+                ],
+                "cognitive": "appliquer",
+                "prompt": "Recopie la proposition subordonnée : « Le village où j'ai grandi compte trois cents habitants. »",
+                "answer": [
+                  "où j'ai grandi",
+                  "ou j ai grandi",
+                  "« où j'ai grandi »"
+                ],
+                "solution": "« où j'ai grandi » : subordonnée (relative) introduite par le pronom relatif « où » ; la principale est « Le village… compte trois cents habitants ».",
+                "rubric": "1 point si la subordonnée est recopiée exactement (avec « où »)."
+              },
+              {
+                "id": "q10",
+                "type": "open",
+                "points": 3,
+                "lesson_part": 5,
+                "skills": [
+                  "fr-proposition",
+                  "fr-juxtaposition",
+                  "fr-coordination"
+                ],
+                "cognitive": "analyser",
+                "prompt": "« La porte s'ouvrit, un courant d'air traversa la pièce et les bougies s'éteignirent. »\nDélimite les propositions entre crochets, donne leur nature et explique comment elles sont reliées.",
+                "solution": "[La porte s'ouvrit], [un courant d'air traversa la pièce] [et les bougies s'éteignirent]. Trois verbes conjugués (s'ouvrit, traversa, s'éteignirent) : trois propositions indépendantes. Les deux premières sont juxtaposées (virgule) ; la troisième est coordonnée à la deuxième par la conjonction « et ».",
+                "rubric": "1 : délimitation correcte en trois propositions. 1 : nature (trois indépendantes). 1 : liens (0,5 juxtaposition par la virgule, 0,5 coordination par « et »)."
+              },
+              {
+                "id": "q11",
+                "type": "open",
+                "points": 2,
+                "lesson_part": 5,
+                "skills": [
+                  "fr-reecriture-liens",
+                  "fr-subordination",
+                  "fr-coordination"
+                ],
+                "cognitive": "analyser",
+                "prompt": "« Nous sommes restés à l'intérieur, car il pleuvait à verse. » Réécris cette phrase en remplaçant la coordination par une subordination qui garde le même sens. Explique ce qui a changé dans la construction.",
+                "solution": "« Nous sommes restés à l'intérieur parce qu'il pleuvait à verse. » (ou « Comme il pleuvait à verse, nous sommes restés à l'intérieur. ») On passe de la coordination (« car ») à la subordination (« parce que », « comme ») : « il pleuvait à verse » devient une subordonnée de cause qui dépend de la principale.",
+                "rubric": "1 : réécriture correcte avec un subordonnant de cause (parce que, comme, puisque). 1 : explication (coordination → subordination, la proposition devient dépendante)."
+              }
+            ]
+          },
+          {
+            "label": "C · Je rédige (5 points)",
+            "questions": [
+              {
+                "id": "q12",
+                "type": "open",
+                "points": 2,
+                "lesson_part": 5,
+                "skills": [
+                  "fr-reecriture-liens"
+                ],
+                "cognitive": "rediger",
+                "prompt": "Relie les phrases « Le randonneur était épuisé. Il s'arrêta au refuge. » de deux façons : a) par une coordination qui exprime la conséquence ; b) par une subordination qui exprime la cause.",
+                "solution": "a) « Le randonneur était épuisé, donc il s'arrêta au refuge. » (ou « alors », « c'est pourquoi »).\nb) « Le randonneur s'arrêta au refuge parce qu'il était épuisé. » (ou « Comme il était épuisé, le randonneur s'arrêta au refuge. »).",
+                "rubric": "1 par phrase correcte : 0,5 pour l'outil adapté au sens demandé, 0,5 pour la correction de la phrase."
+              },
+              {
+                "id": "q13",
+                "type": "open",
+                "points": 3,
+                "lesson_part": 5,
+                "skills": [
+                  "fr-reecriture-liens",
+                  "fr-coordination",
+                  "fr-subordination"
+                ],
+                "cognitive": "rediger",
+                "prompt": "Écris une phrase complexe sur le thème d'un match ou d'une compétition, qui contienne exactement trois propositions, avec au moins une coordination et une subordination. Délimite ensuite les propositions entre crochets.",
+                "solution": "Exemple : [Notre équipe menait au score] [mais elle a perdu] [parce que l'arbitre a accordé un penalty à la dernière minute]. Trois verbes conjugués : menait, a perdu, a accordé. Coordination par « mais » ; subordination par « parce que ».",
+                "rubric": "1 : exactement trois verbes conjugués, phrase correcte et sur le thème. 0,5 : présence d'une coordination. 0,5 : présence d'une subordination. 1 : crochets bien placés."
+              }
+            ]
+          }
         ]
       }
     ]
