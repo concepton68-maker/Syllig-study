@@ -82,22 +82,26 @@ function Row({ c, showLevel, aiReady, reviewReady }: { c: CatRow; showLevel: boo
   const status = hasDraft ? { label: `À relire · v${c.draft}`, cls: 'bg-warm-soft text-warm-dark' }
     : c.published ? { label: `Publié · v${c.published}`, cls: 'bg-brand-soft text-brand-dark' } : { label: 'Sans contenu', cls: 'bg-soft text-muted' };
   return (
-    <div className="cat-grid grid items-center gap-x-3 gap-y-1 px-3 py-1.5 lg:py-1 lg:min-h-[40px] border-t border-soft first:border-t-0 hover:bg-surface-2/60 text-sm" data-cat-row data-title={c.title}>
+    <div className="cat-grid grid shrink-0 items-center gap-x-3 gap-y-1 px-3 py-1.5 lg:py-1 lg:min-h-[44px] border-t border-soft first:border-t-0 hover:bg-surface-2/60 text-sm" data-cat-row data-title={c.title}>
       <BulkCheck formId="bulk-catalogue" value={c.id} label={c.title} />
       <span className="num muted">{c.code ?? '—'}</span>
       <span className="min-w-0 font-medium lg:truncate" data-tip={c.title}>{c.priority === 'prioritaire' && <span className="text-warm font-semibold" aria-label="Prioritaire" data-tip="Notion prioritaire du programme">▲ </span>}{c.title}</span>
       <span className="min-w-0 muted text-[13px] lg:truncate">{showLevel ? `${c.level_name} · ` : ''}{c.subject} · {c.chapter}</span>
-      <span className="cat-status flex flex-wrap items-center gap-x-2 gap-y-0.5">
-        <span className={`pill !py-0.5 text-xs ${status.cls}`}>{status.label}</span>
-        {!c.live && <span className="text-xs font-semibold muted" data-tip="Niveau, matière ou chapitre désactivé dans Programmes : invisible pour les élèves">Désactivé</span>}
-        {running ? <span className="text-xs text-ink-2 inline-flex items-center gap-1"><Bot size={13} aria-hidden="true" />{kind} IA : {c.ai_progress ?? 'en cours…'}</span>
-          : c.ai_job === 'echec' ? <span className="text-xs text-warm-dark font-semibold" data-tip={c.ai_error ?? undefined}>{kind} IA : échec</span>
-          : c.review_verdict ? <Link href={`/contenu/cours/${c.id}`} className={`text-xs font-semibold no-underline ${c.review_verdict === 'publiable' ? 'text-brand-dark' : 'text-warm-dark'}`}>
-              {c.review_verdict === 'publiable' ? 'Relu par l’IA : publiable' : `Relu par l’IA : ${c.review_count} problème${(c.review_count ?? 0) > 1 ? 's' : ''}`}</Link> : null}
+      <span className="cat-status flex items-center gap-2 min-w-0">
+        {running
+          ? <span className="pill !py-0.5 text-xs bg-brand-soft text-brand-dark inline-flex items-center gap-1 min-w-0 max-w-full" data-tip={`${kind} par l’IA : ${c.ai_job === 'en_attente' ? 'en attente' : c.ai_progress ?? 'en cours…'}`} data-ai-running>
+              <Bot size={13} aria-hidden="true" className="shrink-0" /><span className="truncate">{kind} IA · {c.ai_job === 'en_attente' ? 'en attente' : c.ai_progress ?? 'en cours…'}</span></span>
+          : <span className={`pill !py-0.5 text-xs shrink-0 ${status.cls}`}>{status.label}</span>}
+        {!c.live && <span className="text-xs font-semibold muted shrink-0" data-tip="Niveau, matière ou chapitre désactivé dans Programmes : invisible pour les élèves">Désactivé</span>}
+        {running ? null
+          : c.ai_job === 'echec' ? <span className="text-xs text-warm-dark font-semibold truncate" data-tip={c.ai_error ?? undefined}>{kind} IA : échec</span>
+          : c.review_verdict ? <Link href={`/contenu/cours/${c.id}`} className={`text-xs font-semibold no-underline truncate ${c.review_verdict === 'publiable' ? 'text-brand-dark' : 'text-warm-dark'}`}>
+              {c.review_verdict === 'publiable' ? 'Relu : publiable' : `Relu : ${c.review_count} problème${(c.review_count ?? 0) > 1 ? 's' : ''}`}</Link> : null}
       </span>
       <span className="cat-actions flex items-center justify-end gap-1.5">
         {hasContent ? <Link href={`/contenu/cours/${c.id}`} className="btn btn-sm">Ouvrir</Link>
           : aiReady && !running ? <form action={draftWithAiAction.bind(null, c.id)}><button className="btn btn-sm btn-primary inline-flex items-center gap-1.5" type="submit"><Bot size={14} aria-hidden="true" />Rédiger avec l’IA</button></form>
+          : running ? null
           : <Link href={`/contenu/generer/${c.id}`} className="btn btn-sm">Préparer la consigne</Link>}
         <RowMenu>
           {hasContent && reviewReady && !running && <form action={reviewAction.bind(null, c.id)}><button role="menuitem" className="menu-item" type="submit">Relire avec l’IA</button></form>}

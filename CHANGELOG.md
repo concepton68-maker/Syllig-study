@@ -675,3 +675,6 @@ Contre-audit de conformité des versions 0.43 à 0.45 : tout ce qui a été rele
 - Page « Programme proposé » : tout est coché, on décoche une matière, un chapitre ou un cours ; les matières hors de la liste officielle sont écartées et signalées ; rien n’est ajouté avant « Ajouter les N matières cochées ». Les cours arrivent ensuite dans le catalogue, à rédiger.
 - Nouvelle fonction d’IA « Programme d’un niveau » (Contenu › IA), par défaut la même IA que la rédaction des cours.
 - Catalogue : un niveau vide renvoie vers « Préparer le programme ».
+
+## 0.71 — 28/11/2026
+- Catalogue : les lignes ne se chevauchent plus quand un cours est en cours de rédaction par l’IA. Le statut tient sur une ligne (« Rédaction IA · en attente », détail au survol), le bouton « Préparer la consigne » n’apparaît plus pendant la rédaction, et le résultat de relecture devient « Relu : N problèmes ».

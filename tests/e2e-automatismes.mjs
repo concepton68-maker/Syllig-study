@@ -244,7 +244,7 @@ ok(fixed.version === 2 && fixed.status === 'draft' && fixed.ess.includes('moins 
   'correction : l’IA reçoit la liste des problèmes, la version corrigée (v2) arrive en brouillon à relire, la v1 reste publiée');
 await ad.goto(BASE + '/contenu');
 await ad.fill('input[type=search]', rn1.title.slice(0, 20));
-ok((await ad.locator('main').innerText()).includes('Relu par l’IA : 2 problèmes'), 'catalogue : la colonne Statut indique le résultat de la relecture');
+ok((await ad.locator('main').innerText()).includes('Relu : 2 problèmes'), 'catalogue : la colonne Statut indique le résultat de la relecture');
 
 console.log('Fournisseur ajouté (GLM) pour la rédaction des cours');
 const glmBad = await setKey('glm', 'mauvaise', { base_url: 'http://127.0.0.1:3999/api/paas/v4', models: 'glm-4.6' });
