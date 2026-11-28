@@ -600,3 +600,6 @@ Contre-audit de conformité des versions 0.43 à 0.45 : tout ce qui a été rele
   - pour chaque cours, les parties qui ont changé (par exemple « Exercices · ex3 ») ;
   - « Comparer » met l'ancien et le nouveau texte côte à côte ;
   - on publie les cours cochés, ou on les laisse dans « À relire », où « Comparer » est aussi disponible.
+
+## 0.59 — 28/11/2026
+- **Menu de l'administrateur** : dans le thème par défaut, le nombre affiché dans la pastille (par exemple « À relire ») est de nouveau lisible quand la ligne est sélectionnée.
