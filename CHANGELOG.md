@@ -651,3 +651,6 @@ Contre-audit de conformité des versions 0.43 à 0.45 : tout ce qui a été rele
 ## 0.67 — 28/11/2026
 - **Ajouter des matières ou des niveaux, en plus propre** (Contenu › Programmes). Le panneau a un titre et un lien « Tout cocher ». La liste est alignée sur une colonne, chaque ligne se coche en cliquant dessus, et les niveaux sont rangés par cycle. En bas : « n à ajouter », « Annuler » et « Ajouter (n) ». Le panneau se ferme avec Échap ou un clic à côté.
 - Comprend les flèches corrigées de la 0.66, qui n'avait pas été mise en ligne.
+
+## 0.68 — 28/11/2026
+- **Catalogue : un niveau tout juste ajouté apparaît** dans le choix du niveau, même s'il n'a encore aucun cours. Pour ce niveau, le catalogue indique la marche à suivre : ajouter ses matières, ses chapitres et ses cours dans Programmes, ou importer son programme. Ensuite, chaque cours apparaît ici, prêt à être rédigé.
