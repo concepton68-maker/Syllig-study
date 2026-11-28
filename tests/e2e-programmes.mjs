@@ -47,7 +47,9 @@ const bulk = async (formId, values, label) => {
 console.log('1. Ajouter une matière, un chapitre, un cours');
 await ad.goto(P);
 ok(await ad.locator('[data-level]').count() >= 3, 'les niveaux sont listés');
-await ad.fill('[data-add-subject] input[name=name]', 'Latin'); await ad.click('[data-add-subject] button');
+const subjOpts = await ad.locator('select[aria-label="Matière à ajouter"] option').allInnerTexts();
+ok(subjOpts.includes('Latin') && !subjOpts.includes('Français'), 'liste des matières du niveau, sans celles déjà présentes');
+await ad.selectOption('select[aria-label="Matière à ajouter"]', 'Latin'); await ad.click('[data-add-subject] button');
 await ad.waitForSelector('[data-done]');
 const [latin] = await sql`select id from subjects where level_code = 'troisieme-generale' and name = 'Latin'`;
 ok(!!latin && await ad.locator('[data-subject="Latin"]').count() === 1, 'matière « Latin » ajoutée');
@@ -66,12 +68,12 @@ const [hg] = await sql`select id, name from subjects where level_code = 'troisie
 await ad.goto(P);
 const row = ad.locator(`[data-subject="${hg.name}"] > div`).first();
 await row.locator('summary:text-is("Renommer")').click();
-await row.locator('input[aria-label="Nouveau nom"]').fill('Histoire');
+await row.locator('select[aria-label="Nouveau nom"]').selectOption('Grec');
 await row.locator('form button:has-text("OK")').click();
-await ad.waitForSelector('[data-subject="Histoire"]');
+await ad.waitForSelector('[data-subject="Grec"]');
 seed();
-const hs = await sql`select name from subjects where level_code = 'troisieme-generale' and removed_at is null and (name = 'Histoire' or name = ${hg.name})`;
-ok(hs.length === 1 && hs[0].name === 'Histoire', `matière du programme renommée « Histoire » : gardée après rechargement, pas de doublon « ${hg.name} »`);
+const hs = await sql`select name from subjects where level_code = 'troisieme-generale' and removed_at is null and (name = 'Grec' or name = ${hg.name})`;
+ok(hs.length === 1 && hs[0].name === 'Grec', `matière du programme renommée « Grec » (choisie dans la liste) : gardée après rechargement, pas de doublon « ${hg.name} »`);
 
 console.log('3. Désactiver le français : invisible pour l’élève, rien d’effacé');
 const [fr] = await sql`select id from subjects where level_code = 'troisieme-generale' and name = 'Français'`;
@@ -127,7 +129,7 @@ console.log('6. Importer un programme');
 const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'prog-'));
 fs.writeFileSync(path.join(dir, 'programme.json'), JSON.stringify({ level: { code: 'terminale-generale', name: 'Terminale générale' }, subjects: [
   { name: 'Mathématiques', chapters: [{ name: 'Nombres entiers', courses: [{ title: 'Écrire les grands nombres', priority: 'prioritaire' }, { title: 'Comparer des nombres' }] }] },
-  { name: 'Français', chapters: [{ name: 'Lire', courses: [{ title: 'Le conte' }] }] }] }));
+  { name: 'Philosophie', chapters: [{ name: 'La conscience', courses: [{ title: 'Conscience et inconscient' }] }] }] }));
 await ad.goto(P);
 await ad.locator('summary:has-text("Importer un programme")').click();
 await ad.setInputFiles('[data-import-programme] input[type=file]', path.join(dir, 'programme.json'));
@@ -143,6 +145,11 @@ await ad.locator('summary:has-text("Importer un programme")').click();
 await ad.setInputFiles('[data-import-programme] input[type=file]', path.join(dir, 'inconnu.json'));
 await ad.click('[data-import-programme] button'); await ad.waitForSelector('[role=alert]:has-text("pas dans la liste")');
 ok((await sql`select 1 from levels where code = 'niveau-invente'`).length === 0, 'un niveau hors de la liste est refusé, rien n’est créé');
+fs.writeFileSync(path.join(dir, 'matiere.json'), JSON.stringify({ level: { code: 'terminale-generale', name: 'Terminale générale' }, subjects: [{ name: 'Cuisine', chapters: [] }] }));
+await ad.goto(P.replace('troisieme-generale', 'terminale-generale')); await ad.locator('summary:has-text("Importer un programme")').click();
+await ad.setInputFiles('[data-import-programme] input[type=file]', path.join(dir, 'matiere.json'));
+await ad.click('[data-import-programme] button'); await ad.waitForSelector('[role=alert]:has-text("hors de la liste")');
+ok((await sql`select 1 from subjects where name = 'Cuisine'`).length === 0, 'une matière hors de la liste est refusée, rien n’est créé');
 
 for (const p of [ad, el, pa]) ok(p.errs.length === 0, `aucune erreur JS (${p.errs.join(' | ')})`);
 await b.close(); await sql.end();

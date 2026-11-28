@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { sql } from '@/lib/db';
 import { PaneScreen, Panes, Pane } from '@/components/Layout';
 import { BulkBar, BulkCheck } from '@/components/Bulk';
-import { LEVEL_CATALOG } from '@/lib/levels-catalog';
+import { LEVEL_CATALOG, subjectsFor } from '@/lib/levels-catalog';
 import { activateAction, deactivateAction, removeAction, addLevelAction, addSubjectAction, addChapterAction, addCourseAction, renameAction, importProgrammeAction } from './actions';
 
 export const metadata = { title: 'Programmes' };
@@ -47,13 +47,17 @@ export default async function Programmes({ searchParams }: { searchParams: Promi
   // niveaux de la liste officielle pas encore présents (un niveau supprimé peut être rétabli)
   const present = new Set(levels.map(l => l.code));
   const missing = LEVEL_CATALOG.filter(l => !present.has(l.code));
+  // matières de la liste du niveau, pas encore présentes
+  const freeSubjects = subjectsFor(niv).filter(n => !subs.some(s => s.name === n));
   const off = (a: boolean) => a ? '' : 'opacity-60';
   const pill = (a: boolean) => <span className={`text-xs font-bold ${a ? 'text-brand-dark' : 'muted'}`}>{a ? 'Actif' : 'Désactivé'}</span>;
-  const Rename = ({ kind, id, value }: { kind: string; id: string | number; value: string }) => (
+  const Rename = ({ kind, id, value, choices }: { kind: string; id: string | number; value: string; choices?: string[] }) => (
     <details className="relative"><summary className="text-[13px] font-semibold text-brand-dark cursor-pointer list-none">Renommer</summary>
       <form action={renameAction} className="absolute right-0 z-20 mt-1 flex gap-1.5 bg-white border border-line rounded-xl p-2 shadow-lg">
         <input type="hidden" name="kind" value={kind} /><input type="hidden" name="id" value={id} /><input type="hidden" name="niveau" value={niv} />
-        <input className="field !min-h-9 !py-1 text-sm w-60" name="name" defaultValue={value} aria-label="Nouveau nom" required />
+        {choices ? <select className="field !min-h-9 !py-1 text-sm w-60" name="name" defaultValue={value} aria-label="Nouveau nom">
+          {[value, ...choices].map(n => <option key={n}>{n}</option>)}</select>
+          : <input className="field !min-h-9 !py-1 text-sm w-60" name="name" defaultValue={value} aria-label="Nouveau nom" required />}
         <button className="btn btn-sm btn-primary" type="submit">OK</button></form></details>);
   return (
     <PaneScreen top={<div className="flex flex-wrap items-center gap-x-3 gap-y-2">
@@ -97,9 +101,11 @@ export default async function Programmes({ searchParams }: { searchParams: Promi
           {cur && <section className="card !p-0 flex flex-col" aria-label={`Matières de ${cur.name}`} data-subjects>
             <div className="flex flex-wrap items-center gap-2 px-3 py-2.5 border-b border-line">
               <strong>{cur.name} · matières</strong><span className="flex-1" />
-              <form action={addSubjectAction} className="flex gap-1.5" data-add-subject><input type="hidden" name="niveau" value={niv} />
-                <input className="field !min-h-9 !py-1 text-sm w-48" name="name" placeholder="Nouvelle matière" aria-label="Nom de la matière" required />
+              {freeSubjects.length ? <form action={addSubjectAction} className="flex gap-1.5" data-add-subject><input type="hidden" name="niveau" value={niv} />
+                <select className="field !w-auto !min-h-9 !py-1 text-sm" name="name" aria-label="Matière à ajouter" required defaultValue="">
+                  <option value="" disabled>Ajouter une matière…</option>{freeSubjects.map(n => <option key={n}>{n}</option>)}</select>
                 <button className="btn btn-sm btn-primary" type="submit">Ajouter</button></form>
+                : <span className="text-sm muted">{subjectsFor(niv).length ? 'Toutes les matières de la liste sont là.' : ''}</span>}
             </div>
             {subs.length === 0 && <span className="muted text-sm p-4">Aucune matière : ajoute-en une, ou importe un programme.</span>}
             {subs.map(s => {
@@ -110,7 +116,7 @@ export default async function Programmes({ searchParams }: { searchParams: Promi
                     <BulkCheck formId="bulk-subjects" value={s.id} label={s.name} />
                     <strong className={`truncate ${off(s.active)}`}>{s.name}</strong>
                     <span className="muted text-[13px] whitespace-nowrap">{s.published} / {s.courses} cours publiés</span>
-                    {pill(s.active)}<Rename kind="subject" id={s.id} value={s.name} />
+                    {pill(s.active)}<Rename kind="subject" id={s.id} value={s.name} choices={freeSubjects} />
                   </div>
                   <details className="px-3 pb-2 group" data-subject-details>
                     <summary className="text-[13px] font-semibold text-brand-dark cursor-pointer pl-[34px]">{sc.length} chapitre{sc.length > 1 ? 's' : ''} : voir, ajouter, retirer</summary>

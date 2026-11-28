@@ -1,6 +1,6 @@
 import 'server-only';
 import { sql } from './db';
-import { levelDef, LEVEL_CATALOG } from './levels-catalog';
+import { levelDef, LEVEL_CATALOG, subjectsFor } from './levels-catalog';
 
 // Niveaux, matières, chapitres et cours gérés par l'administrateur (maquette validée le 28/11/2026).
 // Désactiver : invisible pour les élèves (vue live_courses), rien n'est effacé. Supprimer : retiré partout ; si l'élément a déjà
@@ -72,6 +72,7 @@ export async function addLevel(code: string) {
 }
 
 export async function addSubject(level: string, name: string) {
+  if (!subjectsFor(level).includes(name)) throw new Error('Choisis une matière dans la liste.');
   const [ex] = await sql<{ id: number; removed: boolean }[]>`select id, removed_at is not null as removed from subjects where level_code = ${level} and name = ${name}`;
   if (ex && !ex.removed) throw new Error('Cette matière existe déjà dans ce niveau.');
   if (ex) { await sql`update subjects set removed_at = null, active = true where id = ${ex.id}`; return ex.id; }
@@ -98,6 +99,12 @@ export async function addCourse(chapterId: number, title: string) {
 export async function rename(k: Kind, id: string, name: string) {
   if (k === 'level') return (await sql`update levels set name = ${name}, renamed = true where code = ${id} returning 1`).length;
   if (k === 'course') return (await sql`update courses set title = ${name} where id = ${Number(id)} returning 1`).length;
+  if (k === 'subject') {   // une matière se renomme en une autre matière de la liste de son niveau
+    const [s] = await sql<{ level_code: string }[]>`select level_code from subjects where id = ${Number(id)}`;
+    if (!s || !subjectsFor(s.level_code).includes(name)) throw new Error('Choisis une matière dans la liste.');
+    const [dup] = await sql`select 1 from subjects where level_code = ${s.level_code} and name = ${name} and id <> ${Number(id)}`;
+    if (dup) throw new Error(`La matière « ${name} » existe déjà dans ce niveau.`);
+  }
   return (await sql`update ${table(k)} set name = ${name} where id = ${Number(id)} returning 1`).length;
 }
 
@@ -112,6 +119,8 @@ export async function importProgramme(raw: string) {
   const def = levelDef(slug(p.level.code));
   if (!def) throw new Error(`Le niveau du fichier (« ${p.level.code} ») n’est pas dans la liste des niveaux scolaires. Codes possibles : ${LEVEL_CATALOG.map(l => l.code).join(', ')}.`);
   const code = def.code;
+  const unknown = p.subjects.map(s => s?.name).filter(n => n && !subjectsFor(code).includes(n));
+  if (unknown.length) throw new Error(`Matières hors de la liste de ${def.name} : ${unknown.join(', ')}. Matières possibles : ${subjectsFor(code).join(', ')}.`);
   let added = { subjects: 0, chapters: 0, courses: 0 };
   await sql.begin(async tx => {
     await tx`insert into levels (code, name, cycle, general_sources, position) values (${code}, ${def.name}, ${def.cycle}, ${tx.json((p.general_sources ?? []) as never)}, ${def.position})

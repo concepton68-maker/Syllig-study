@@ -617,3 +617,8 @@ Contre-audit de conformité des versions 0.43 à 0.45 : tout ce qui a été rele
 - **Niveaux choisis dans une liste** (Contenu › Programmes) : on ajoute un niveau en le choisissant parmi les niveaux scolaires français, du CP à la Terminale, voies générale, technologique et professionnelle, et CAP. On ne tape plus de nom. Seuls les niveaux absents sont proposés.
 - L'import d'un programme n'accepte que ces niveaux.
 - La classe attendue selon l'âge de l'enfant couvre aussi l'école élémentaire, la Première et la Terminale.
+
+## 0.62 — 28/11/2026
+- **Matières choisies dans une liste** (Contenu › Programmes). Chaque niveau a sa liste de matières officielles : école élémentaire, collège, lycée général, technologique et professionnel, CAP. On ajoute une matière en la choisissant ; seules les matières absentes sont proposées.
+- Renommer une matière se fait aussi dans la liste du niveau.
+- L'import d'un programme refuse une matière hors de la liste, en donnant les matières possibles.
