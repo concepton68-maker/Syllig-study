@@ -36,10 +36,21 @@ async function guarded(f: FormData, fn: () => Promise<string>) {
   back(f, msg);
 }
 export async function addLevelAction(f: FormData) {
-  await guarded(f, async () => { const d = await addLevel(String(f.get('code') ?? '')); f.set('niveau', d.code); return `Niveau « ${d.name} » ajouté.`; });
+  // un ou plusieurs niveaux cochés dans la liste
+  await guarded(f, async () => {
+    const codes = ids(f); if (!codes.length) throw new Error('Coche au moins un niveau.');
+    const added = []; for (const c of codes) added.push(await addLevel(c));
+    f.set('niveau', added[0].code);
+    return added.length > 1 ? `${added.length} niveaux ajoutés : ${added.map(d => d.name).join(', ')}.` : `Niveau « ${added[0].name} » ajouté.`;
+  });
 }
 export async function addSubjectAction(f: FormData) {
-  await guarded(f, async () => { const n = name(f); if (!n) throw new Error('Donne un nom à la matière.'); await addSubject(String(f.get('niveau')), n); return `Matière « ${n} » ajoutée.`; });
+  // une ou plusieurs matières cochées dans la liste du niveau
+  await guarded(f, async () => {
+    const names = f.getAll('ids').map(x => String(x).trim()).filter(Boolean); if (!names.length) throw new Error('Coche au moins une matière.');
+    for (const n of names) await addSubject(String(f.get('niveau')), n);
+    return names.length > 1 ? `${names.length} matières ajoutées : ${names.join(', ')}.` : `Matière « ${names[0]} » ajoutée.`;
+  });
 }
 export async function addChapterAction(f: FormData) {
   await guarded(f, async () => { const n = name(f); if (!n) throw new Error('Donne un nom au chapitre.'); await addChapter(Number(f.get('subject')), n); return `Chapitre « ${n} » ajouté.`; });

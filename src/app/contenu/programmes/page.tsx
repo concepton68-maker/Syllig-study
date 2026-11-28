@@ -76,16 +76,16 @@ export default async function Programmes({ searchParams }: { searchParams: Promi
       <Panes>
         <Pane className="flex-[1_1_280px] lg:max-w-[320px]">
           <section className="card !p-0 flex flex-col" aria-label="Niveaux" data-levels>
-            <div className="flex items-center justify-between gap-2 px-3 py-2.5 border-b border-line"><strong>Niveaux</strong>
-              <details className="relative"><summary className="btn btn-sm cursor-pointer list-none">+ Ajouter</summary>
-                <form action={addLevelAction} className="absolute right-0 z-20 mt-1 flex flex-col gap-1.5 bg-white border border-line rounded-xl p-2 shadow-lg w-64">
-                  {missing.length ? <>
-                    <select className="field !min-h-9 !py-1 text-sm" name="code" aria-label="Niveau à ajouter" required defaultValue="">
-                      <option value="" disabled>Choisir un niveau…</option>
-                      {[...new Set(missing.map(l => l.cycle))].map(c => <optgroup key={c} label={c}>{missing.filter(l => l.cycle === c).map(l => <option key={l.code} value={l.code}>{l.name}</option>)}</optgroup>)}
-                    </select>
-                    <button className="btn btn-sm btn-primary self-start" type="submit">Ajouter le niveau</button></>
-                    : <span className="text-sm muted">Tous les niveaux sont déjà là.</span>}</form></details></div>
+            <details className="px-3 py-2.5 border-b border-line" data-add-levels-box>
+              <summary className="flex items-center justify-between gap-2 cursor-pointer list-none"><strong>Niveaux</strong><span className="btn btn-sm">+ Ajouter</span></summary>
+              <div className="mt-2 flex flex-col gap-2 max-h-[50vh] overflow-y-auto" data-add-levels>
+                {missing.length ? <>
+                  {[...new Set(missing.map(l => l.cycle))].map(c => <fieldset key={c} className="m-0 p-0 border-0 flex flex-col gap-1"><legend className="text-xs font-semibold muted mb-1">{c}</legend>
+                    {missing.filter(l => l.cycle === c).map(l => <label key={l.code} className="flex items-center gap-2 text-sm"><BulkCheck formId="add-levels" value={l.code} label={l.name} />{l.name}</label>)}</fieldset>)}
+                  <BulkBar formId="add-levels" noun="niveau" hidden={{ niveau: niv }} actions={[{ label: 'Ajouter', action: addLevelAction, tone: 'primary' as const }]} /></>
+                  : <span className="text-sm muted">Tous les niveaux sont déjà là.</span>}
+              </div>
+            </details>
             {levels.map(l => (
               <div key={l.code} className={`grid grid-cols-[22px_minmax(0,1fr)_auto] gap-2 items-center px-3 py-2.5 border-t border-soft first:border-t-0 ${l.code === niv ? 'bg-brand-soft' : ''}`} data-level={l.code}>
                 <BulkCheck formId="bulk-levels" value={l.code} label={l.name} />
@@ -101,10 +101,11 @@ export default async function Programmes({ searchParams }: { searchParams: Promi
           {cur && <section className="card !p-0 flex flex-col" aria-label={`Matières de ${cur.name}`} data-subjects>
             <div className="flex flex-wrap items-center gap-2 px-3 py-2.5 border-b border-line">
               <strong>{cur.name} · matières</strong><span className="flex-1" />
-              {freeSubjects.length ? <form action={addSubjectAction} className="flex gap-1.5" data-add-subject><input type="hidden" name="niveau" value={niv} />
-                <select className="field !w-auto !min-h-9 !py-1 text-sm" name="name" aria-label="Matière à ajouter" required defaultValue="">
-                  <option value="" disabled>Ajouter une matière…</option>{freeSubjects.map(n => <option key={n}>{n}</option>)}</select>
-                <button className="btn btn-sm btn-primary" type="submit">Ajouter</button></form>
+              {freeSubjects.length ? <details className="relative"><summary className="btn btn-sm btn-primary cursor-pointer list-none">+ Ajouter des matières</summary>
+                <div className="absolute right-0 z-20 mt-1 flex flex-col gap-2 bg-white border border-line rounded-xl p-3 shadow-lg w-[420px] max-h-[60vh] overflow-y-auto" data-add-subject>
+                  <div className="grid grid-cols-2 gap-x-3 gap-y-1">{freeSubjects.map(n => <label key={n} className="flex items-center gap-2 text-sm"><BulkCheck formId="add-subjects" value={n} label={n} />{n}</label>)}</div>
+                  <BulkBar formId="add-subjects" noun="matière" feminine hidden={{ niveau: niv }} actions={[{ label: 'Ajouter', action: addSubjectAction, tone: 'primary' as const }]} />
+                </div></details>
                 : <span className="text-sm muted">{subjectsFor(niv).length ? 'Toutes les matières de la liste sont là.' : ''}</span>}
             </div>
             {subs.length === 0 && <span className="muted text-sm p-4">Aucune matière : ajoute-en une, ou importe un programme.</span>}

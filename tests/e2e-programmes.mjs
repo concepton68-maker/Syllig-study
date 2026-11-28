@@ -47,10 +47,13 @@ const bulk = async (formId, values, label) => {
 console.log('1. Ajouter une matière, un chapitre, un cours');
 await ad.goto(P);
 ok(await ad.locator('[data-level]').count() >= 3, 'les niveaux sont listés');
-const subjOpts = await ad.locator('select[aria-label="Matière à ajouter"] option').allInnerTexts();
-ok(subjOpts.includes('Latin') && !subjOpts.includes('Français'), 'liste des matières du niveau, sans celles déjà présentes');
-await ad.selectOption('select[aria-label="Matière à ajouter"]', 'Latin'); await ad.click('[data-add-subject] button');
-await ad.waitForSelector('[data-done]');
+await ad.locator('summary:has-text("+ Ajouter des matières")').click();
+const subjOpts = await ad.locator('[data-add-subject] input[data-bulk="add-subjects"]').evaluateAll(xs => xs.map(x => x.value));
+ok(subjOpts.includes('Latin') && subjOpts.includes('Italien (LV2)') && !subjOpts.includes('Français'), 'liste des matières du niveau à cocher, sans celles déjà présentes');
+await ad.check('input[data-bulk="add-subjects"][value="Latin"]'); await ad.check('input[data-bulk="add-subjects"][value="Italien (LV2)"]');
+await ad.click('form#add-subjects button:has-text("Ajouter (2)")');
+await ad.waitForSelector('[data-done]:has-text("2 matières ajoutées")');
+ok(await ad.locator('[data-subject="Italien (LV2)"]').count() === 1, 'deux matières ajoutées en une fois (Latin et Italien)');
 const [latin] = await sql`select id from subjects where level_code = 'troisieme-generale' and name = 'Latin'`;
 ok(!!latin && await ad.locator('[data-subject="Latin"]').count() === 1, 'matière « Latin » ajoutée');
 await ad.locator('[data-subject="Latin"] [data-subject-details] > summary').click();
@@ -106,11 +109,13 @@ ok((await sql`select count(*)::int as n from subjects where level_code = 'troisi
 await bulk('bulk-subjects', [ma.id], 'Activer');
 
 console.log('5. Niveaux : ajouter, désactiver, supprimer');
-await ad.locator('[data-levels] summary:has-text("+ Ajouter")').click();
-const opts = await ad.locator('select[aria-label="Niveau à ajouter"] option').allInnerTexts();
-ok(opts.includes('Première générale') && opts.includes('CM2') && !opts.includes('3e générale'), 'liste des niveaux scolaires, sans ceux déjà présents');
-await ad.selectOption('select[aria-label="Niveau à ajouter"]', 'premiere-generale'); await ad.click('button:has-text("Ajouter le niveau")');
-await ad.waitForSelector('[data-level="premiere-generale"]');
+await ad.locator('[data-add-levels-box] > summary').click();
+const opts = await ad.locator('input[data-bulk="add-levels"]').evaluateAll(xs => xs.map(x => x.value));
+ok(opts.includes('premiere-generale') && opts.includes('cm2') && !opts.includes('troisieme-generale'), 'liste des niveaux scolaires à cocher, sans ceux déjà présents');
+await ad.check('input[data-bulk="add-levels"][value="premiere-generale"]'); await ad.check('input[data-bulk="add-levels"][value="cm2"]');
+await ad.click('form#add-levels button:has-text("Ajouter (2)")');
+await ad.waitForSelector('[data-level="premiere-generale"]'); await ad.waitForSelector('[data-level="cm2"]');
+ok(true, 'deux niveaux ajoutés en une fois (Première générale et CM2)');
 const pa = await login('parent@test.local', 'parent-test-1234');
 await pa.goto(BASE + '/parent/enfants');
 ok((await pa.locator('select[name=level] option').allInnerTexts()).includes('Première générale'), 'le nouveau niveau est proposé aux parents');

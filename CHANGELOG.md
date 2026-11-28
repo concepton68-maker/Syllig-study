@@ -622,3 +622,6 @@ Contre-audit de conformité des versions 0.43 à 0.45 : tout ce qui a été rele
 - **Matières choisies dans une liste** (Contenu › Programmes). Chaque niveau a sa liste de matières officielles : école élémentaire, collège, lycée général, technologique et professionnel, CAP. On ajoute une matière en la choisissant ; seules les matières absentes sont proposées.
 - Renommer une matière se fait aussi dans la liste du niveau.
 - L'import d'un programme refuse une matière hors de la liste, en donnant les matières possibles.
+
+## 0.63 — 28/11/2026
+- **Ajout groupé** (Contenu › Programmes) : on coche plusieurs matières de la liste du niveau, ou plusieurs niveaux de la liste des niveaux scolaires, puis « Ajouter (n) ». Un seul clic suffit pour ajouter toutes les matières d'un niveau (« Tout sélectionner »).
