@@ -667,3 +667,11 @@ Contre-audit de conformité des versions 0.43 à 0.45 : tout ce qui a été rele
 - **Bilan** : les matières avec des notes d'abord, les autres repliées sur une ligne. Les définitions passent derrière « ⓘ ». Révisions et temps par semaine sont côte à côte.
 - **Activité** : les jours sans activité qui se suivent tiennent sur une seule ligne.
 - Aucun nouvel indicateur : tout ce qui s'affiche existait déjà.
+
+## 0.70 — 28/11/2026
+- Programmes : un niveau sans programme affiche « <niveau> n’a pas encore de programme » avec deux chemins (maquette validée) :
+  - « Proposer le programme » : l’IA propose le programme officiel (matières de la liste du niveau, chapitres, cours, priorités) ; aucune donnée d’élève envoyée, envoi consigné ;
+  - « Télécharger la consigne » pour Claude, puis « Importer sa réponse » (fichier ou texte collé).
+- Page « Programme proposé » : tout est coché, on décoche une matière, un chapitre ou un cours ; les matières hors de la liste officielle sont écartées et signalées ; rien n’est ajouté avant « Ajouter les N matières cochées ». Les cours arrivent ensuite dans le catalogue, à rédiger.
+- Nouvelle fonction d’IA « Programme d’un niveau » (Contenu › IA), par défaut la même IA que la rédaction des cours.
+- Catalogue : un niveau vide renvoie vers « Préparer le programme ».

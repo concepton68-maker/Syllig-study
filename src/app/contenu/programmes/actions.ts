@@ -2,6 +2,7 @@
 import { redirect } from 'next/navigation';
 import { revalidatePath } from 'next/cache';
 import { requireUser } from '@/lib/auth';
+import { proposeWithAi, proposeFromText, getProposal, applyProposal } from '@/lib/programme-proposal';
 import { setActive, remove, addLevel, addSubject, addChapter, addCourse, rename, importProgramme, kindLabel, type Kind } from '@/lib/programmes';
 
 const KINDS: Kind[] = ['level', 'subject', 'chapter', 'course'];
@@ -69,5 +70,36 @@ export async function importProgrammeAction(f: FormData) {
     const r = await importProgramme(await file.text());
     f.set('niveau', r.code);
     return `Programme « ${r.name} » importé : ${r.subjects} matière(s), ${r.chapters} chapitre(s) et ${r.courses} cours ajoutés. Ce qui existait déjà n’a pas changé.`;
+  });
+}
+
+// ——— Programme proposé (IA ou réponse de Claude), vérifié puis ajouté (maquette validée le 28/11/2026) ———
+export async function proposeAiAction(f: FormData) {
+  await requireUser('admin');
+  const lvl = String(f.get('niveau') ?? '');
+  let id: string;
+  try { id = await proposeWithAi(lvl); } catch (e) { return back(f, (e as Error).message, true); }
+  redirect(`/contenu/programmes/proposition/${id}`);
+}
+export async function proposeImportAction(f: FormData) {
+  await requireUser('admin');
+  const lvl = String(f.get('niveau') ?? '');
+  const file = f.get('file');
+  let id: string;
+  try {
+    const text = file instanceof File && file.size ? await file.text() : String(f.get('text') ?? '');
+    if (!text.trim()) throw new Error('Dépose le fichier de réponse de Claude, ou colle sa réponse.');
+    id = await proposeFromText(lvl, text);
+  } catch (e) { return back(f, (e as Error).message, true); }
+  redirect(`/contenu/programmes/proposition/${id}`);
+}
+export async function applyProposalAction(id: string, f: FormData) {
+  await requireUser('admin');
+  const pr = await getProposal(id);
+  if (!pr) return back(f, 'Proposition introuvable.', true);
+  f.set('niveau', pr.level_code);
+  await guarded(f, async () => {
+    const r = await applyProposal(id, f.getAll('k').map(String));
+    return `Programme de ${r.name} ajouté : ${r.subjects} matière(s), ${r.chapters} chapitre(s) et ${r.courses} cours. Les cours sont dans le catalogue, à rédiger.`;
   });
 }

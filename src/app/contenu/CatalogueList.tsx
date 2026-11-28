@@ -55,8 +55,8 @@ export function CatalogueList({ rows, levels, aiReady, reviewReady }: { rows: Ca
           {shown.length === 0 && (level && !q && !rows.some(r => r.level === level)
             ? <div className="p-5 flex flex-col gap-2 text-sm max-w-[640px]" data-empty-level>
                 <strong className="text-base">Aucun cours en {levels.find(l => l.code === level)?.name} pour l’instant</strong>
-                <span>Les cours se créent à partir du programme du niveau : ses matières, ses chapitres et la liste de ses cours. {(levels.find(l => l.code === level)?.subjects ?? 0) > 0 ? 'Les matières sont là : ajoute maintenant les chapitres et les cours.' : 'Commence par ajouter ses matières.'} Ensuite, chaque cours apparaît ici, prêt à être rédigé avec l’IA ou avec la consigne pour Claude.</span>
-                <span className="flex flex-wrap gap-2 mt-1"><Link className="btn btn-primary btn-sm" href={`/contenu/programmes?niveau=${level}`}>Compléter le programme</Link>
+                <span>Les cours se créent à partir du programme du niveau : ses matières, ses chapitres et la liste de ses cours. {(levels.find(l => l.code === level)?.subjects ?? 0) > 0 ? 'Les matières sont là : ajoute maintenant les chapitres et les cours.' : 'Commence par ajouter ses matières.'} Le programme peut être proposé par l’IA ou préparé par Claude, puis vérifié. Ensuite, chaque cours apparaît ici, prêt à être rédigé.</span>
+                <span className="flex flex-wrap gap-2 mt-1"><Link className="btn btn-primary btn-sm" href={`/contenu/programmes?niveau=${level}`}>Préparer le programme</Link>
                   <Link className="btn btn-sm" href={`/contenu/programmes?niveau=${level}`}>Importer un programme (fichier)</Link></span>
               </div>
             : <span className="muted text-sm p-4">Aucun cours ne correspond.</span>)}

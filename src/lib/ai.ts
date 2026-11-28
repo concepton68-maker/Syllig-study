@@ -14,7 +14,7 @@ import type { Attempt } from './evaluation';
 export type Provider = string;
 export type ProviderKind = 'claude' | 'gemini' | 'openai';
 export type ProviderInfo = { id: string; name: string; eu: boolean; where: string; help: string; placeholder: string; kind: ProviderKind; base?: string; custom?: boolean };
-export type Task = 'correction' | 'bilan' | 'cours' | 'relecture';
+export type Task = 'correction' | 'bilan' | 'cours' | 'relecture' | 'programme';
 export type AiConfig = { provider: Provider; model: string; key: string; kind: ProviderKind; base?: string; eu: boolean; name: string };
 export type Model = { id: string; label: string };
 
@@ -40,6 +40,7 @@ export const TASKS: Record<Task, { label: string; desc: string; studentData: boo
   bilan: { label: 'Bilan pédagogique et test de positionnement', desc: 'Temps de travail, notes, questions ratées (sans nom).', studentData: true },
   cours: { label: 'Rédaction des cours', desc: 'Fiche du cours et programme officiel seulement : aucune donnée d’élève (toute IA possible).', studentData: false },
   relecture: { label: 'Relecture et correction des cours', desc: 'Le cours seulement : aucune donnée d’élève (toute IA possible).', studentData: false, fallback: 'cours' },
+  programme: { label: 'Programme d’un niveau', desc: 'Le nom du niveau et sa liste officielle de matières : aucune donnée d’élève (toute IA possible).', studentData: false, fallback: 'cours' },
 };
 // IA effectivement utilisée pour une fonction (sans choix : celle de la fonction de repli, ex. relecture → rédaction)
 const taskConf = (s: AiSettings, t: Task) => s.tasks[t] ?? (TASKS[t].fallback ? s.tasks[TASKS[t].fallback!] : undefined);

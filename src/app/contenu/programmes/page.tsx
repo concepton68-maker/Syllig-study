@@ -1,10 +1,12 @@
 import Link from 'next/link';
+import { AiButton } from '@/app/parent/a-faire/AiButton';
 import { sql } from '@/lib/db';
 import { PaneScreen, Panes, Pane } from '@/components/Layout';
 import { BulkBar, BulkCheck } from '@/components/Bulk';
 import { LEVEL_CATALOG, subjectsFor } from '@/lib/levels-catalog';
 import { PickList, PickPopover } from '@/components/PickList';
-import { activateAction, deactivateAction, removeAction, addLevelAction, addSubjectAction, addChapterAction, addCourseAction, renameAction, importProgrammeAction } from './actions';
+import { aiOverview } from '@/lib/ai';
+import { activateAction, proposeAiAction, proposeImportAction, deactivateAction, removeAction, addLevelAction, addSubjectAction, addChapterAction, addCourseAction, renameAction, importProgrammeAction } from './actions';
 
 export const metadata = { title: 'Programmes' };
 export const dynamic = 'force-dynamic';
@@ -50,6 +52,7 @@ export default async function Programmes({ searchParams }: { searchParams: Promi
   const missing = LEVEL_CATALOG.filter(l => !present.has(l.code));
   // matières de la liste du niveau, pas encore présentes
   const freeSubjects = subjectsFor(niv).filter(n => !subs.some(s => s.name === n));
+  const aiProg = (await aiOverview()).ready.programme;
   const off = (a: boolean) => a ? '' : 'opacity-60';
   const pill = (a: boolean) => <span className={`text-xs font-bold ${a ? 'text-brand-dark' : 'muted'}`}>{a ? 'Actif' : 'Désactivé'}</span>;
   const Rename = ({ kind, id, value, choices }: { kind: string; id: string | number; value: string; choices?: string[] }) => (
@@ -89,7 +92,7 @@ export default async function Programmes({ searchParams }: { searchParams: Promi
               <div key={l.code} className={`grid grid-cols-[22px_minmax(0,1fr)_auto] gap-2 items-center px-3 py-2.5 border-t border-soft first:border-t-0 ${l.code === niv ? 'bg-brand-soft' : ''}`} data-level={l.code}>
                 <BulkCheck formId="bulk-levels" value={l.code} label={l.name} />
                 <Link href={`/contenu/programmes?niveau=${l.code}`} className={`no-underline text-ink min-w-0 ${off(l.active)}`}><strong className="block truncate">{l.name}</strong>
-                  <span className="block text-xs muted">{l.subjects} matières · {l.published} / {l.courses} cours · {l.students} élève{l.students > 1 ? 's' : ''}</span></Link>
+                  <span className="block text-xs muted">{l.subjects} matière{l.subjects > 1 ? 's' : ''} · {l.published} / {l.courses} cours · {l.students} élève{l.students > 1 ? 's' : ''}</span></Link>
                 <span className="flex flex-col items-end gap-0.5">{pill(l.active)}<Rename kind="level" id={l.code} value={l.name} /></span>
               </div>
             ))}
@@ -97,6 +100,37 @@ export default async function Programmes({ searchParams }: { searchParams: Promi
           </section>
         </Pane>
         <Pane className="flex-[999_1_560px]">
+          {cur && cur.courses === 0 && subjectsFor(niv).length > 0 && <section className="card flex flex-col gap-4 !p-6" data-empty-programme={niv}>
+            <div className="flex flex-col gap-1.5">
+              <h2 className="m-0 text-[22px] font-bold">{cur.name} n’a pas encore de programme</h2>
+              <span className="text-[15px]">Le programme, c’est la liste des matières, de leurs chapitres et des cours à faire. Une fois ajouté, chaque cours apparaît dans le catalogue, prêt à être rédigé.</span>
+            </div>
+            <div className="grid gap-3.5 md:grid-cols-2">
+              <form action={proposeAiAction} className="flex flex-col gap-2 p-4 rounded-2xl border-2 border-brand bg-brand-soft" data-propose-ai>
+                <input type="hidden" name="niveau" value={niv} />
+                <strong className="text-[17px]">Le faire proposer par l’IA</strong>
+                <span className="text-sm">L’IA propose le programme officiel de {cur.name} : matières, chapitres et cours. Tu vérifies, tu retires ce qui ne va pas, puis tu l’ajoutes.</span>
+                {aiProg ? <><span className="self-start mt-1"><AiButton n={0} label="Proposer le programme" busy="Proposition en cours… (environ 1 minute)" /></span>
+                  <span className="text-xs muted">Aucune donnée d’élève n’est envoyée. Environ 1 minute.</span></>
+                  : <span className="text-sm muted">Aucune IA prête pour la rédaction des cours : <Link href="/contenu/ia">configurer l’IA</Link>, ou passer par Claude ci-contre.</span>}
+              </form>
+              <div className="flex flex-col gap-2 p-4 rounded-2xl border border-line-strong" data-propose-claude>
+                <strong className="text-[17px]">Le faire préparer par Claude (sans clé)</strong>
+                <span className="text-sm">Un fichier avec la consigne se télécharge ; tu le donnes à Claude, il renvoie le programme ; tu l’importes ici.</span>
+                <span className="flex flex-wrap gap-2 mt-1">
+                  <a className="btn" href={`/api/contenu/programme-consigne?niveau=${niv}`} download data-consigne>Télécharger la consigne</a>
+                  <details className="relative"><summary className="btn cursor-pointer list-none">Importer sa réponse</summary>
+                    <form action={proposeImportAction} className="absolute left-0 z-20 mt-1 w-[340px] flex flex-col gap-2 bg-white border border-line rounded-xl p-3 shadow-lg text-sm" data-import-reply>
+                      <input type="hidden" name="niveau" value={niv} />
+                      <span>Dépose le fichier renvoyé par Claude, ou colle sa réponse.</span>
+                      <input type="file" name="file" accept=".json,.txt,application/json,text/plain" className="text-xs" />
+                      <textarea name="text" className="field text-xs min-h-24" placeholder="{ &quot;subjects&quot;: [ … ] }" aria-label="Réponse de Claude" />
+                      <button className="btn btn-primary btn-sm self-start" type="submit">Vérifier la proposition</button></form></details>
+                </span>
+              </div>
+            </div>
+            <span className="text-[13px] muted">Ou à la main : « + Ajouter des matières », puis dans chaque matière ses chapitres et ses cours.</span>
+          </section>}
           {cur && <section className="card !p-0 flex flex-col" aria-label={`Matières de ${cur.name}`} data-subjects>
             <div className="flex flex-wrap items-center gap-2 px-3 py-2.5 border-b border-line">
               <strong>{cur.name} · matières</strong><span className="flex-1" />
@@ -104,7 +138,7 @@ export default async function Programmes({ searchParams }: { searchParams: Promi
                 action={addSubjectAction} hidden={{ niveau: niv }} items={freeSubjects.map(n => ({ value: n, label: n }))} />
                 : <span className="text-sm muted">{subjectsFor(niv).length ? 'Toutes les matières de la liste sont là.' : ''}</span>}
             </div>
-            {subs.length === 0 && <span className="muted text-sm p-4">Aucune matière : ajoute-en une, ou importe un programme.</span>}
+            {subs.length === 0 && <span className="muted text-sm p-4">Aucune matière pour l’instant.</span>}
             {subs.map(s => {
               const sc = chaps.filter(c => c.subject_id === s.id);
               return (
