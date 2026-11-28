@@ -644,3 +644,6 @@ Contre-audit de conformité des versions 0.43 à 0.45 : tout ce qui a été rele
   - chaque schéma a été relu par un relecteur indépendant (exactitude, cohérence avec le cours, aucune réponse donnée), puis corrigé ;
   - en dehors des schémas, seul QG051 change : le dessin du triangle en caractères est retiré, remplacé par la figure.
 - Les cours de la bibliothèque se republient automatiquement.
+
+## 0.66 — 28/11/2026
+- **Flèches des schémas** : les pointes avaient une taille multipliée par l'épaisseur du trait. Elles étaient énormes et mordaient sur les cadres. Elles ont maintenant une taille fixe dans les 25 cours concernés.
