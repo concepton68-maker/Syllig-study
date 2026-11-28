@@ -3,6 +3,7 @@ import { sql } from '@/lib/db';
 import { PaneScreen, Panes, Pane } from '@/components/Layout';
 import { BulkBar, BulkCheck } from '@/components/Bulk';
 import { LEVEL_CATALOG, subjectsFor } from '@/lib/levels-catalog';
+import { PickList, PickPopover } from '@/components/PickList';
 import { activateAction, deactivateAction, removeAction, addLevelAction, addSubjectAction, addChapterAction, addCourseAction, renameAction, importProgrammeAction } from './actions';
 
 export const metadata = { title: 'Programmes' };
@@ -78,12 +79,10 @@ export default async function Programmes({ searchParams }: { searchParams: Promi
           <section className="card !p-0 flex flex-col" aria-label="Niveaux" data-levels>
             <details className="px-3 py-2.5 border-b border-line" data-add-levels-box>
               <summary className="flex items-center justify-between gap-2 cursor-pointer list-none"><strong>Niveaux</strong><span className="btn btn-sm">+ Ajouter</span></summary>
-              <div className="mt-2 flex flex-col gap-2 max-h-[50vh] overflow-y-auto" data-add-levels>
-                {missing.length ? <>
-                  {[...new Set(missing.map(l => l.cycle))].map(c => <fieldset key={c} className="m-0 p-0 border-0 flex flex-col gap-1"><legend className="text-xs font-semibold muted mb-1">{c}</legend>
-                    {missing.filter(l => l.cycle === c).map(l => <label key={l.code} className="flex items-center gap-2 text-sm"><BulkCheck formId="add-levels" value={l.code} label={l.name} />{l.name}</label>)}</fieldset>)}
-                  <BulkBar formId="add-levels" noun="niveau" hidden={{ niveau: niv }} actions={[{ label: 'Ajouter', action: addLevelAction, tone: 'primary' as const }]} /></>
-                  : <span className="text-sm muted">Tous les niveaux sont déjà là.</span>}
+              <div className="mt-2 -mx-3 border-y border-line bg-white" data-add-levels>
+                {missing.length ? <PickList id="add-levels" title="Niveaux à ajouter" nounPlural="niveaux" action={addLevelAction} hidden={{ niveau: niv }}
+                  items={missing.map(l => ({ value: l.code, label: l.name, group: l.cycle }))} />
+                  : <span className="block px-4 py-3 text-sm muted">Tous les niveaux sont déjà là.</span>}
               </div>
             </details>
             {levels.map(l => (
@@ -101,11 +100,8 @@ export default async function Programmes({ searchParams }: { searchParams: Promi
           {cur && <section className="card !p-0 flex flex-col" aria-label={`Matières de ${cur.name}`} data-subjects>
             <div className="flex flex-wrap items-center gap-2 px-3 py-2.5 border-b border-line">
               <strong>{cur.name} · matières</strong><span className="flex-1" />
-              {freeSubjects.length ? <details className="relative"><summary className="btn btn-sm btn-primary cursor-pointer list-none">+ Ajouter des matières</summary>
-                <div className="absolute right-0 z-20 mt-1 flex flex-col gap-2 bg-white border border-line rounded-xl p-3 shadow-lg w-[420px] max-h-[60vh] overflow-y-auto" data-add-subject>
-                  <div className="grid grid-cols-2 gap-x-3 gap-y-1">{freeSubjects.map(n => <label key={n} className="flex items-center gap-2 text-sm"><BulkCheck formId="add-subjects" value={n} label={n} />{n}</label>)}</div>
-                  <BulkBar formId="add-subjects" noun="matière" feminine hidden={{ niveau: niv }} actions={[{ label: 'Ajouter', action: addSubjectAction, tone: 'primary' as const }]} />
-                </div></details>
+              {freeSubjects.length ? <PickPopover id="add-subjects" label="+ Ajouter des matières" title={`Matières à ajouter en ${cur.name}`} nounPlural="matières"
+                action={addSubjectAction} hidden={{ niveau: niv }} items={freeSubjects.map(n => ({ value: n, label: n }))} />
                 : <span className="text-sm muted">{subjectsFor(niv).length ? 'Toutes les matières de la liste sont là.' : ''}</span>}
             </div>
             {subs.length === 0 && <span className="muted text-sm p-4">Aucune matière : ajoute-en une, ou importe un programme.</span>}

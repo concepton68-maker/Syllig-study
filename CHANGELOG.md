@@ -647,3 +647,7 @@ Contre-audit de conformité des versions 0.43 à 0.45 : tout ce qui a été rele
 
 ## 0.66 — 28/11/2026
 - **Flèches des schémas** : les pointes avaient une taille multipliée par l'épaisseur du trait. Elles étaient énormes et mordaient sur les cadres. Elles ont maintenant une taille fixe dans les 25 cours concernés.
+
+## 0.67 — 28/11/2026
+- **Ajouter des matières ou des niveaux, en plus propre** (Contenu › Programmes). Le panneau a un titre et un lien « Tout cocher ». La liste est alignée sur une colonne, chaque ligne se coche en cliquant dessus, et les niveaux sont rangés par cycle. En bas : « n à ajouter », « Annuler » et « Ajouter (n) ». Le panneau se ferme avec Échap ou un clic à côté.
+- Comprend les flèches corrigées de la 0.66, qui n'avait pas été mise en ligne.
