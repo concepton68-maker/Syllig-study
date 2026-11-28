@@ -104,9 +104,13 @@ ok((await ad.locator('main').innerText()).includes('Les formes poétiques'), 'le
 
 console.log('3. Proposition par l’IA');
 await ad.goto(BASE + '/contenu/ia');
-if (!(await ad.locator('form[data-slot]').count())) await ad.click('button:has-text("Ajouter une clé")');
-const f = ad.locator('form[data-slot]').last();
-await f.locator('select[name=preset]').selectOption('mistral'); await f.locator('input[name=key]').fill('cle');
+let f = ad.locator('form[data-provider="mistral"]');
+if (await f.count()) await ad.locator('details:has(form[data-provider="mistral"]) > summary').click();   // clé déjà là : « Remplacer la clé »
+else {
+  if (!(await ad.locator('form[data-slot]').count())) await ad.click('button:has-text("Ajouter une clé")');
+  f = ad.locator('form[data-slot]').last(); await f.locator('select[name=preset]').selectOption('mistral');
+}
+await f.locator('input[name=key]').fill('cle');
 await f.locator('button:has-text("Vérifier et enregistrer")').click(); await ad.waitForSelector('text=vérifiée et enregistrée');
 await ad.goto(BASE + '/contenu/programmes?niveau=terminale-generale');
 await ad.click('[data-propose-ai] button[type=submit]');
